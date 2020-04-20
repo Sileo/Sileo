@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InstallViewController" customModule="Sileo" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicatorView" destination="19i-8J-rmy" id="A89-Ib-HFJ"/>
+                <outlet property="completeButton" destination="p1C-xt-2qL" id="PCg-l3-5Ba"/>
+                <outlet property="detailsTextView" destination="aIR-zp-JS7" id="xKj-Ke-swZ"/>
+                <outlet property="detailsView" destination="A3v-PE-MEb" id="hWW-eg-xbs"/>
+                <outlet property="hideDetailsButton" destination="n5a-hA-hXj" id="mcb-Qh-ADA"/>
+                <outlet property="progressView" destination="ESx-ag-uUx" id="9US-d2-iYh"/>
+                <outlet property="showDetailsButton" destination="7Ah-cE-N79" id="bpa-y8-yoi"/>
+                <outlet property="teleprompterView" destination="ELx-1T-9zc" id="iEZ-ul-xNI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="SileoRootView" customModule="Sileo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELx-1T-9zc">
+                    <rect key="frame" x="27.5" y="243.5" width="320" height="180"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ESx-ag-uUx">
+                            <rect key="frame" x="52" y="170" width="236" height="2"/>
+                        </progressView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="19i-8J-rmy">
+                            <rect key="frame" x="16" y="136" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ESx-ag-uUx" secondAttribute="trailing" constant="32" id="4JF-Xt-Ef9"/>
+                        <constraint firstAttribute="bottom" secondItem="19i-8J-rmy" secondAttribute="bottom" constant="24" id="7Lr-hf-fdK"/>
+                        <constraint firstAttribute="bottom" secondItem="ESx-ag-uUx" secondAttribute="bottom" constant="8" id="E7K-3D-81I"/>
+                        <constraint firstItem="ESx-ag-uUx" firstAttribute="leading" secondItem="ELx-1T-9zc" secondAttribute="leading" constant="52" id="Zx8-jI-9q6"/>
+                        <constraint firstAttribute="height" constant="180" id="bxr-6H-Fsx"/>
+                        <constraint firstItem="19i-8J-rmy" firstAttribute="leading" secondItem="ELx-1T-9zc" secondAttribute="leading" constant="16" id="j4h-ij-Rcc"/>
+                        <constraint firstAttribute="width" constant="320" id="m1s-aL-3HZ"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-xt-2qL" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="20" y="585" width="335" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hUV-0F-01k"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="completeButtonTapped:" destination="-1" eventType="touchUpInside" id="FW8-xt-M87"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ah-cE-N79">
+                    <rect key="frame" x="143" y="431.5" width="89" height="30"/>
+                    <state key="normal" title="Show Details"/>
+                    <connections>
+                        <action selector="showDetails:" destination="-1" eventType="touchUpInside" id="sac-iF-ucJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7Ah-cE-N79" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="STb-tS-XH7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="p1C-xt-2qL" secondAttribute="trailing" constant="20" id="a2s-tw-JmU"/>
+                <constraint firstItem="ELx-1T-9zc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kTp-hZ-Y3s"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="p1C-xt-2qL" secondAttribute="bottom" constant="32" id="mE7-Py-kdk"/>
+                <constraint firstItem="7Ah-cE-N79" firstAttribute="top" secondItem="ELx-1T-9zc" secondAttribute="bottom" constant="8" id="nVu-8z-iSy"/>
+                <constraint firstItem="ELx-1T-9zc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o3q-Zd-8kk"/>
+                <constraint firstItem="p1C-xt-2qL" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="vhB-mN-MxQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="706" y="154"/>
+        </view>
+        <view contentMode="scaleToFill" id="A3v-PE-MEb">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-hA-hXj" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="20" y="585" width="335" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gBt-2k-r0l"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="Hide Details">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="hideDetails:" destination="-1" eventType="touchUpInside" id="U2S-lB-VM7"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIR-zp-JS7">
+                    <rect key="frame" x="16" y="0.0" width="343" height="577"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="0.11764705882352941" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="trailing" secondItem="aIR-zp-JS7" secondAttribute="trailing" constant="16" id="5Y2-ud-dyn"/>
+                <constraint firstItem="aIR-zp-JS7" firstAttribute="leading" secondItem="XF6-Az-efD" secondAttribute="leading" constant="16" id="Jrr-Nu-4rf"/>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="trailing" secondItem="n5a-hA-hXj" secondAttribute="trailing" constant="20" id="N4J-Ky-ask"/>
+                <constraint firstItem="aIR-zp-JS7" firstAttribute="top" secondItem="XF6-Az-efD" secondAttribute="top" id="XVb-F6-vYj"/>
+                <constraint firstItem="n5a-hA-hXj" firstAttribute="leading" secondItem="XF6-Az-efD" secondAttribute="leading" constant="20" id="bbT-hX-S2r"/>
+                <constraint firstItem="n5a-hA-hXj" firstAttribute="top" secondItem="aIR-zp-JS7" secondAttribute="bottom" constant="8" id="cVo-M3-L5z"/>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="bottom" secondItem="n5a-hA-hXj" secondAttribute="bottom" constant="32" id="twU-AS-FMA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="XF6-Az-efD"/>
+            <point key="canvasLocation" x="466.5" y="196.5"/>
+        </view>
+    </objects>
+</document>

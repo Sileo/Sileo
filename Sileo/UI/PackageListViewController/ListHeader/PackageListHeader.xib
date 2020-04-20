@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="PackageListHeader" customModule="Sileo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-Rb-AnK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                    <items/>
+                </toolbar>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqr-mH-ppT">
+                    <rect key="frame" x="16" y="20" width="288" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="ipE-jK-vsY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-yp-qSd" customClass="SileoSeparatorView" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="16" y="61" width="304" height="1"/>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="V9B-qu-4e9"/>
+                    </constraints>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZU-hB-Pd7">
+                    <rect key="frame" x="251" y="20" width="53" height="33"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WE-WV-fxE">
+                    <rect key="frame" x="151" y="25" width="100" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="uY1-D4-mla"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                    <state key="normal" title="Name" image="SortChevron"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Separator" translatesAutoresizingMaskIntoConstraints="NO" id="OC0-Ve-bBQ">
+                    <rect key="frame" x="266" y="25" width="1" height="22"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFI-we-ZUo">
+                    <rect key="frame" x="282" y="25" width="22" height="22"/>
+                    <state key="normal" image="Filter"/>
+                </button>
+                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uuZ-BO-ae2">
+                    <rect key="frame" x="8" y="20" width="304" height="32"/>
+                    <segments>
+                        <segment title="Segment"/>
+                        <segment title="Segment 2"/>
+                    </segments>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstItem="uuZ-BO-ae2" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" constant="8" id="064-Ar-QJF"/>
+                <constraint firstItem="kZU-hB-Pd7" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="20" id="4Al-S8-NI0"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="bottom" secondItem="9Gg-ye-v9C" secondAttribute="bottom" constant="-10" id="4wt-0D-Hv1"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" id="94u-Kc-K6a"/>
+                <constraint firstItem="cGW-yp-qSd" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="B4c-Cp-B62"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="kZU-hB-Pd7" secondAttribute="trailing" constant="16" id="FHp-zc-W7c"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="trailing" secondItem="9Gg-ye-v9C" secondAttribute="trailing" id="HhK-Km-n3O"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" id="JXK-KF-dt5"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="uuZ-BO-ae2" secondAttribute="trailing" constant="8" id="NFE-C6-VlF"/>
+                <constraint firstItem="Jqr-mH-ppT" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="20" id="OF2-8f-Zkh"/>
+                <constraint firstItem="Jqr-mH-ppT" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" constant="16" id="aDA-hd-svO"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="Jqr-mH-ppT" secondAttribute="trailing" constant="16" id="bvp-7o-VdN"/>
+                <constraint firstItem="OC0-Ve-bBQ" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="25" id="lLS-I6-Ows"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="uuZ-BO-ae2" secondAttribute="bottom" constant="20" id="m4F-Xj-ryV"/>
+                <constraint firstItem="mFI-we-ZUo" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="25" id="nIx-sH-PcE"/>
+                <constraint firstItem="4WE-WV-fxE" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="25" id="oaj-9E-aG8"/>
+                <constraint firstAttribute="trailing" secondItem="cGW-yp-qSd" secondAttribute="trailing" id="rvJ-5s-JKX"/>
+                <constraint firstItem="OC0-Ve-bBQ" firstAttribute="leading" secondItem="4WE-WV-fxE" secondAttribute="trailing" constant="15" id="v5F-fU-Jaw"/>
+                <constraint firstItem="mFI-we-ZUo" firstAttribute="leading" secondItem="OC0-Ve-bBQ" secondAttribute="trailing" constant="15" id="x5i-bz-FDd"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="cGW-yp-qSd" secondAttribute="bottom" constant="9" id="zhv-WA-fTi"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="mFI-we-ZUo" secondAttribute="trailing" constant="16" id="zsx-8D-NaJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="9Gg-ye-v9C"/>
+            <connections>
+                <outlet property="label" destination="Jqr-mH-ppT" id="qpZ-mf-1wS"/>
+                <outlet property="separatorView" destination="OC0-Ve-bBQ" id="r2E-sP-crL"/>
+                <outlet property="settingsButton" destination="mFI-we-ZUo" id="peH-FF-PDx"/>
+                <outlet property="settingsControl" destination="uuZ-BO-ae2" id="jvs-rx-QYO"/>
+                <outlet property="sortButton" destination="4WE-WV-fxE" id="XEB-qF-rF6"/>
+                <outlet property="toolbar" destination="bUD-Rb-AnK" id="HxE-p7-lS3"/>
+                <outlet property="upgradeButton" destination="kZU-hB-Pd7" id="oXJ-89-Asj"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="154"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="Filter" width="22" height="22"/>
+        <image name="Separator" width="1" height="22"/>
+        <image name="SortChevron" width="12" height="8"/>
+    </resources>
+</document>

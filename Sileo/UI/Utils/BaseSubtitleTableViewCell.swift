@@ -1,0 +1,119 @@
+//
+//  BaseSubtitleTableViewCell.swift
+//  Sileo
+//
+//  Created by CoolStar on 7/27/19.
+//  Copyright © 2019 CoolStar. All rights reserved.
+//
+
+import Foundation
+import SDWebImage
+
+class BaseSubtitleTableViewCell: UITableViewCell {
+    let iconView: PackageIconView
+    let progressView: SourceProgressIndicatorView
+    var iconURL: URL?
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        iconView = PackageIconView(frame: CGRect(x: 16, y: 8, width: 40, height: 40))
+        progressView = SourceProgressIndicatorView(frame: .zero)
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.contentView.addSubview(iconView)
+        progressView.tintColor = UIColor(red: 44.0/255.0, green: 177.0/255.0, blue: 190.0/255.0, alpha: 1)
+        self.contentView.insertSubview(progressView, at: 0)
+        
+        self.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        self.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
+        self.detailTextLabel?.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
+        
+        self.backgroundColor = .clear
+        
+        weak var weakSelf: BaseSubtitleTableViewCell? = self
+        if UIColor.useSileoColors {
+            NotificationCenter.default.addObserver(weakSelf as Any,
+                                                   selector: #selector(BaseSubtitleTableViewCell.updateSileoColors),
+                                                   name: UIColor.sileoDarkModeNotification,
+                                                   object: nil)
+            self.textLabel?.textColor = .sileoLabel
+            self.selectedBackgroundView = SileoSelectionView(frame: .zero)
+        }
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func updateSileoColors() {
+        if UIColor.useSileoColors {
+            self.textLabel?.textColor = .sileoLabel
+        }
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard var textLabelFrame = self.textLabel?.frame,
+            var detailTextLabelFrame = self.detailTextLabel?.frame else {
+                return
+        }
+        let progressX = CGFloat(16)
+        textLabelFrame.origin.y = 9
+        detailTextLabelFrame.origin.y = 30
+        
+        if icon != nil {
+            textLabelFrame.origin.x = 72
+            detailTextLabelFrame.origin.x = 72
+        } else {
+            textLabelFrame.origin.x = 16
+            detailTextLabelFrame.origin.x = 16
+        }
+        
+        self.textLabel?.frame = textLabelFrame
+        self.detailTextLabel?.frame = detailTextLabelFrame
+        progressView.frame = CGRect(x: progressX, y: self.contentView.bounds.height - 2, width: self.contentView.bounds.width - progressX, height: 2)
+    }
+    
+    public var title: String? = nil {
+        didSet {
+            self.textLabel?.text = title
+        }
+    }
+    
+    public var subtitle: String? = nil {
+        didSet {
+            self.detailTextLabel?.text = subtitle
+        }
+    }
+    
+    public var icon: UIImage? = nil {
+        didSet {
+            iconView.image = icon
+            iconView.isHidden = (icon == nil)
+        }
+    }
+    
+    func loadIcon(url: URL?, placeholderIcon: UIImage?) {
+        icon = placeholderIcon
+        iconURL = nil
+        
+        guard let url = url else {
+            return
+        }
+        SDWebImageManager.shared().loadImage(with: url, options: [], progress: nil) { image, _, _, _, finished, _ in
+            DispatchQueue.main.async {
+                if finished && url == self.iconURL && image != nil {
+                    self.icon = image
+                }
+            }
+        }
+    }
+    
+    public var progress: CGFloat = 0 {
+        didSet {
+            progressView.progress = progress
+        }
+    }
+}

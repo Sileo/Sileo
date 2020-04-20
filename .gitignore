@@ -1,0 +1,8 @@
+.DS_Store
+xcuserdata/
+*.ipa
+build/
+Pods/
+.theos/
+packages/
+giveMeRoot/bin/

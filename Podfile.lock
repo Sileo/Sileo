@@ -1,0 +1,98 @@
+PODS:
+  - Alamofire (5.1.0)
+  - BitByteData (1.4.3)
+  - Cosmos (19.0.3)
+  - Down (0.9.2)
+  - FLAnimatedImage (1.0.12)
+  - Flurry-iOS-SDK/FlurrySDK (10.3.0)
+  - Google-Mobile-Ads-SDK (7.41.0)
+  - LNZTreeView (1.1.2)
+  - SDWebImage (4.4.8):
+    - SDWebImage/Core (= 4.4.8)
+  - SDWebImage/Core (4.4.8)
+  - SDWebImage/GIF (4.4.8):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
+  - SWCompression (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/BZip2 (= 4.5.4)
+    - SWCompression/Deflate (= 4.5.4)
+    - SWCompression/GZip (= 4.5.4)
+    - SWCompression/LZMA (= 4.5.4)
+    - SWCompression/LZMA2 (= 4.5.4)
+    - SWCompression/SevenZip (= 4.5.4)
+    - SWCompression/TAR (= 4.5.4)
+    - SWCompression/XZ (= 4.5.4)
+    - SWCompression/ZIP (= 4.5.4)
+    - SWCompression/Zlib (= 4.5.4)
+  - SWCompression/BZip2 (4.5.4):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/Deflate (4.5.4):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/GZip (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/LZMA (4.5.4):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/LZMA2 (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA
+  - SWCompression/SevenZip (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/TAR (4.5.4):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/XZ (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/ZIP (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/Zlib (4.5.4):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SwiftSoup (2.3.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0)
+  - Cosmos (~> 19.0)
+  - Down
+  - FLAnimatedImage (~> 1.0)
+  - Flurry-iOS-SDK/FlurrySDK
+  - Google-Mobile-Ads-SDK (~> 7.41.0)
+  - LNZTreeView
+  - SDWebImage (~> 4.0)
+  - SDWebImage/GIF
+  - SWCompression (~> 4.5)
+  - SwiftSoup
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - BitByteData
+    - Cosmos
+    - Down
+    - FLAnimatedImage
+    - Flurry-iOS-SDK
+    - Google-Mobile-Ads-SDK
+    - LNZTreeView
+    - SDWebImage
+    - SWCompression
+    - SwiftSoup
+
+SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  BitByteData: 36729e2125ec321935754f9feb1f4b297e00b501
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  Down: 1f6a14846dff45ae8e7e4334b4e386a5fd3b2412
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  Flurry-iOS-SDK: 128715435b5fb3a97b63d0175782ab9458175dd0
+  Google-Mobile-Ads-SDK: 101ce89b94fdf60ec64ba7b6e9b9d812dc765936
+  LNZTreeView: f04b4a96e5780f5071f8c08b0f6f6554775e46f4
+  SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  SWCompression: 34f891e1791c25a0411d8f70e7c86bfc1ac081a4
+  SwiftSoup: e5af192bc99be8398d5f93e15ff6a3c80ba81de1
+
+PODFILE CHECKSUM: b8c74b06e203654ea3786718aa05f33f105612f5
+
+COCOAPODS: 1.9.1

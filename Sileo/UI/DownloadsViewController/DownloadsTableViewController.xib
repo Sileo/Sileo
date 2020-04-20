@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadsTableViewController" customModule="Sileo" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="KuX-Le-H3l" id="16m-ge-uUj"/>
+                <outlet property="confirmButton" destination="hbf-91-V4N" id="9fS-G9-FPU"/>
+                <outlet property="footerView" destination="pjN-7s-mF9" id="RbK-Ma-Gbg"/>
+                <outlet property="footerViewHeight" destination="K05-0C-3LC" id="Uzg-6M-emy"/>
+                <outlet property="tableView" destination="KRs-py-Nfv" id="LlG-8q-Wfg"/>
+                <outlet property="view" destination="iN0-l3-epB" id="2Ja-mX-tSq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SileoRootView" customModule="Sileo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KRs-py-Nfv" customClass="EditableTableView" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Vf8-pA-yXN"/>
+                        <outlet property="delegate" destination="-1" id="0Ie-Lj-82B"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjN-7s-mF9">
+                    <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbf-91-V4N" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                            <rect key="frame" x="20" y="15" width="335" height="50"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="4pu-Ne-j3e"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="Confirm">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="confirmQueued:" destination="-1" eventType="touchUpInside" id="drK-cu-L5d"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-Le-H3l">
+                            <rect key="frame" x="20" y="80" width="335" height="33"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="Clear Queue"/>
+                            <connections>
+                                <action selector="cancelQueued:" destination="-1" eventType="touchUpInside" id="oeb-3w-HUC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="KuX-Le-H3l" secondAttribute="trailing" constant="20" id="H6X-AB-nMM"/>
+                        <constraint firstItem="hbf-91-V4N" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="Hvh-RJ-VEE"/>
+                        <constraint firstAttribute="height" id="K05-0C-3LC"/>
+                        <constraint firstItem="hbf-91-V4N" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="TUG-m2-dVI"/>
+                        <constraint firstAttribute="trailing" secondItem="hbf-91-V4N" secondAttribute="trailing" constant="20" id="dR4-XQ-9rN"/>
+                        <constraint firstItem="KuX-Le-H3l" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="jYs-Ng-FWQ"/>
+                        <constraint firstItem="hbf-91-V4N" firstAttribute="centerX" secondItem="pjN-7s-mF9" secondAttribute="centerX" id="lgJ-Bn-Qs5"/>
+                        <constraint firstItem="KuX-Le-H3l" firstAttribute="centerX" secondItem="pjN-7s-mF9" secondAttribute="centerX" id="qeW-Cs-bdO"/>
+                        <constraint firstItem="KuX-Le-H3l" firstAttribute="top" secondItem="hbf-91-V4N" secondAttribute="bottom" constant="15" id="yjI-qJ-aTJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="KRs-py-Nfv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IMx-ir-88S"/>
+                <constraint firstItem="KRs-py-Nfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KOk-Ml-Epx"/>
+                <constraint firstItem="pjN-7s-mF9" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="PFZ-hc-mwd"/>
+                <constraint firstItem="pjN-7s-mF9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZB1-RH-Veh"/>
+                <constraint firstItem="pjN-7s-mF9" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fRN-YB-xBv"/>
+                <constraint firstItem="KRs-py-Nfv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fv6-cd-mCC"/>
+                <constraint firstItem="pjN-7s-mF9" firstAttribute="top" secondItem="KRs-py-Nfv" secondAttribute="bottom" id="wdn-Vb-Qa1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="78.5"/>
+        </view>
+    </objects>
+</document>

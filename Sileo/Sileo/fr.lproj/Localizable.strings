@@ -1,0 +1,145 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ BASE (Français) LOCALISATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+"__LocalizationCredit.Title" = "Traduction française par Justin Proulx";
+"__LocalizationCredit.URL" = "https://www.twitter.com/JustinAlexP"; // (optional)
+
+// Common Prompts
+"Close" = "Fermer";
+"Double tap to open." = "Touchez deux fois pour ouvrir.";
+"Untitled_Repo" = "Source sans-titre";
+"OK" = "OK";
+"Done" = "Terminé";
+"Done_Editing" = "Terminé";
+"More_Info" = "Plus d'information";
+"Loading" = "Chargement en cours…";
+"Share" = "Partager";
+"Delete" = "Supprimer";
+"Cancel" = "Annuler";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Installation";
+"Downloading_Package_Status" = "Téléchargement";
+"Queued_Package_Status" = "En Attente";
+"Ready_Status" = "Prêt";
+"Removal_Queued_Package_Status" = "En file d'attente pour l'enlèvement";
+"Download_Starting" = "Le téléchargement commence…";
+"Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Confirmer";
+"Queue_Clear_Button" = "Supprimer la file d'attente";
+
+"Package_Upgrade_Action" = "Mettre à jour";
+"Package_Reinstall_Action" = "Ré-installer";
+"Package_Uninstall_Action" = "Supprimer";
+"Package_Modify_Action" = "Modifier";
+"Package_Get_Action" = "Obtenir";
+"Package_Queue_Action" = "En Attente";
+"Package_Cancel_Action" = "Annuller";
+
+"Package_Share_Action" = "Partager le paquet…";
+"Package_Developer_Find_Action" = "Plus par ce développeur";
+"Package_Support_Action" = "Support";
+"Package_Hold_Enable_Action" = "Ignorer les mises à jour futurs";
+"Package_Hold_Disable_Action" = "Arrêter d'ignorer les mises à jour.";
+"Package_Wishlist_Add" = "Ajouter à la liste d'intérêt";
+"Package_Wishlist_Remove" = "Enlever de la liste d'intérêt";
+"Wishlist" = "Liste d'intérêt";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Installer";
+"Queued_Uninstall_Heading" = "Supprimer";
+"Queued_Update_Heading" = "Mettre à jour";
+"Download_Errors_Heading" = "Erreurs";
+
+"Installed_Heading" = "Installé";
+"Updates_Heading" = "Mises à jour";
+"Upgrade_All_Button" = "Mettre tout à jour";
+"Package_Search.Placeholder" = "Chercher un paquet";
+"Sort_Name" = "Nom";
+"Sort_Date" = "Date";
+"Sort_By" = "Trier par:";
+
+"Package_Unavailable" = "Paquet non disponible";
+"Package_By_Author" = "%@ par %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "par %@"; // %@ = author name
+"Packages_By_Author" = "Paquets par %@"; // %@ = author name
+
+"Featured_Page" = "En Vedette";
+"News_Page" = "Nouveau";
+"Sources_Page" = "Sources";
+"Packages_Page" = "Paquets";
+"Search_Page" = "Rechercher";
+"Refreshing_Sources_Page" = "Mise à jour de sources";
+"Package_Installed_Files_Page" = "Fichiers installés";
+
+"All_Packages.Title" = "Tous les paquets";
+"All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
+
+"All_Categories" = "Toutes les catégories";
+
+"Repos" = "Sources";
+
+"Add_Source.Title" = "Ajouter la source";
+"Add_Source.Body" = "Ajouter l'addresse APT";
+"Add_Source.Button.Add" = "Ajouter la source";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Entrer manuellement";
+
+"Untitled_Form" = "Formulaire sans-titre";
+"Form_Submitted.Default_Title" = "Formulare soumis";
+"Form_Submitted.Default_Body" = "La soumission du formulaire à succédé.";
+
+"Web_Depiction_Deprecated_Warning" = "Les représentations utilisant les Web View sont obsolets. Le gérant de la source doit se mettre à jour en utilisant les représantations natives.";
+
+"Package_Details_Tab" = "Détails";
+"Package_Changelog_Tab" = "Changements";
+"Package_No_Description_Available" = "Aucune description n'est disponible pour ce paquet.";
+"Package_Changelogs_Unavailable" = "Les changements ne sont pas disponibles pour ce paquet.";
+
+"Installed_Package_Header" = "Paquet installé";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Dévoiler les contenus du paquet";
+
+"Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
+"Settings_Translations_Heading" = "Traductions";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Achats";
+"Settings_Payment_Provider.No_Purchases" = "Aucun achat";
+
+"Cydia_Sign_In" = "Se connecter au Cydia Store.";
+"Payment_Provider_Signed_In" = "Connecté";
+"Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Déconnexion";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de télécharger vos paquets acheter avant de re-connecter.";
+
+"Package_Filter_User" = "Utilisateur";
+"Package_Filter_PowerUser" = "Super-utilisateur";
+"Package_Filter_Dev" = "Développeur";
+
+"Show_Install_Details" = "Dévoiler les détails";
+"Hide_Install_Details" = "Cacher les détails";
+
+"After_Install_Relaunch" = "Relancer le Sileo";
+"After_Install_Respring" = "Relancer le Springboard";
+"After_Install_Reboot" = "Recommencer l'appareil";
+
+"Dangerous_Repo.Title" = "Source dangereuse";
+"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue être dangereuse pour des raisons qui peuvent inclure la piratie, l'hébergement de contenu illégale ou des virus.\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit en forme de paquets payés rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil, et peuvent même réduire votre capacité pour installer un jailbreak. Nous recommendons que vous agissez avec prudence pour éviter des logiciels dangereux.";
+"Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
+"Dangerous_Repo.Cancel" = "Retournez-moi à la sécurité";
+"Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse?";
+"Dangerous_Repo.Last_Chance.Body" = "Les sources dangeureuses peuvent avoir des effets néfastes sur votre capacité d'utiliser votre appareil et appliquer les jailbreak. Nous recommendons fortement que vous retournez en sécurité.";
+"Dangerous_Repo.Last_Chance.Continue" = "Continuer";
+"Dangerous_Repo.Last_Chance.Cancel" = "Retourner";
+
+

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Featured-->
+        <scene sceneID="foz-Qc-qle">
+            <objects>
+                <navigationController title="Featured" id="aoU-cU-uDP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="QoU-8J-jlp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pOb-by-WJs">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4gF-bQ-blI" kind="relationship" relationship="rootViewController" id="ksv-lt-Lky"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QyF-L0-u9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-967" y="811"/>
+        </scene>
+        <!--Sources-->
+        <scene sceneID="gIX-S5-4CB">
+            <objects>
+                <navigationController id="tUd-Od-ybP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sources" image="Sources" id="aRV-3m-959"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="r5L-g4-1lf">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kdR-Rn-otG" kind="relationship" relationship="rootViewController" id="nPC-2R-TVC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="taI-fR-mlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="811"/>
+        </scene>
+        <!--Featured View Controller-->
+        <scene sceneID="O5X-kj-rB7">
+            <objects>
+                <viewController id="4gF-bQ-blI" customClass="FeaturedViewController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AxN-Gz-VX1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C44-Bn-2ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-967" y="1558"/>
+        </scene>
+        <!--News View Controller-->
+        <scene sceneID="ynV-27-Egk">
+            <objects>
+                <viewController id="nqe-m3-EYQ" customClass="NewsViewController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Q3C-om-58G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbW-eH-LHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-199" y="1558"/>
+        </scene>
+        <!--Sources View Controller-->
+        <scene sceneID="fZl-I6-Fvc">
+            <objects>
+                <tableViewController id="kdR-Rn-otG" customClass="SourcesViewController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AXX-d7-QJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="kdR-Rn-otG" id="acM-ah-AjX"/>
+                            <outlet property="delegate" destination="kdR-Rn-otG" id="IJx-uN-2bJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="RiC-Ke-6U7"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="YHj-OG-aY0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshSources:" destination="kdR-Rn-otG" eventType="valueChanged" id="i6q-9B-MLE"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CsM-am-yHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="1558"/>
+        </scene>
+        <!--Packages-->
+        <scene sceneID="geh-Dx-Jal">
+            <objects>
+                <navigationController title="Packages" id="SDC-ph-txK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Packages" image="Packages" id="yLs-ci-P0e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="l6t-Ht-pve">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="y5Z-4I-DKz" kind="relationship" relationship="rootViewController" id="Mbe-NC-kr3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ki1-0c-ZxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="811"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="9IM-oh-hwK">
+            <objects>
+                <navigationController title="Search" id="US1-iP-5oM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="TKd-KU-El9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="3ZO-Oe-W2h">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wK9-Uz-vcM" kind="relationship" relationship="rootViewController" id="pSR-cc-ibE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFC-Mx-ks5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="811"/>
+        </scene>
+        <!--Package List View Controller-->
+        <scene sceneID="aQd-8E-hgy">
+            <objects>
+                <viewController id="y5Z-4I-DKz" customClass="PackageListViewController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ala-mv-cIg"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showSearchField" value="NO"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="packagesLoadIdentifier" value="--installed"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showUpdates" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizableTitle" value="Packages_Page"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showWishlist" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gjk-k8-M7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="1558"/>
+        </scene>
+        <!--Package List View Controller-->
+        <scene sceneID="hkm-ea-Zrx">
+            <objects>
+                <viewController id="wK9-Uz-vcM" customClass="PackageListViewController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CmV-YM-zHy"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showSearchField" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizableTitle" value="Search_Page"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C0Y-r6-bsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="1558"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="UrV-w7-GxF">
+            <objects>
+                <navigationController title="News" id="sZb-Xb-euS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" image="News" id="KPo-mv-n2J"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nhP-mj-UHO">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nqe-m3-EYQ" kind="relationship" relationship="rootViewController" id="E4k-eN-oyo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xv-qa-dfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-198" y="811"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="Sileo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA" customClass="TabBar" customModule="Sileo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aoU-cU-uDP" kind="relationship" relationship="viewControllers" id="SGX-6a-qPM"/>
+                        <segue destination="sZb-Xb-euS" kind="relationship" relationship="viewControllers" id="b4V-VA-pI6"/>
+                        <segue destination="tUd-Od-ybP" kind="relationship" relationship="viewControllers" id="0yS-dX-pdD"/>
+                        <segue destination="SDC-ph-txK" kind="relationship" relationship="viewControllers" id="0su-LT-m0n"/>
+                        <segue destination="US1-iP-5oM" kind="relationship" relationship="viewControllers" id="YZE-cX-y8S"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="News" width="25" height="23"/>
+        <image name="Packages" width="23" height="23"/>
+        <image name="Sources" width="26" height="26"/>
+    </resources>
+</document>
