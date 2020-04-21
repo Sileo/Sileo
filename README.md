@@ -11,7 +11,7 @@ Sileo is made with love, not just in California, but by people from all over the
 
 ## Contributing
 
-If you want to contribute to the project, make a pull request with your changes and it will be reviewed by our team. Do not contact individual people personally in order to get your changes through because that will not work. Refer to [Onboarding](https://github.com/coolstar/SileoApp/blob/master/Onboarding.md)
+If you want to contribute to the project, make a pull request with your changes and it will be reviewed by our team. Do not contact individual people personally in order to get your changes through because that will not work. Refer to [Onboarding](https://github.com/Sileo/Sileo/blob/master/Onboarding.md)
 
 ## Updates
 
