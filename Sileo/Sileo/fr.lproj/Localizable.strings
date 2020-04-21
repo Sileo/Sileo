@@ -10,7 +10,8 @@
 
 // Credit Information (optional, uncomment to specify)
 "__LocalizationCredit.Title" = "Traduction française par Justin Proulx et Cimmerian Iter";
-"__LocalizationCredit.URL" = "https://www.twitter.com/JustinAlexP"; // (optional)
+"__LocalizationCredit.URL" = "https://www.twitter.com/JustinAlexP";
+"__LocalizationCredit.URL" = "https://twitter.com/cimmerian_iter"; // (optional)
 
 // Common Prompts
 "Close" = "Fermer";
