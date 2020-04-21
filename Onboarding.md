@@ -5,7 +5,7 @@ To get started with developing Sileo you must follow a few extra steps rather th
 First start by running:
 
 ```
-git clone --recursive https://github.com/coolstar/SileoApp.git
+git clone --recursive https://github.com/Sileo/Sileo.git
 ```
 
 Once you do this continue by installing the Cocoapods we use:
