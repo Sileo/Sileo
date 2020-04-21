@@ -32,7 +32,7 @@
 "Package_Reinstall_Action" = "重新安裝";
 "Package_Uninstall_Action" = "解除安裝";
 "Package_Modify_Action" = "修改";
-"Package_Get_Action" = "安裝";
+"Package_Get_Action" = "取得";
 "Package_Queue_Action" = "佇列";
 "Package_Cancel_Action" = "取消";
 
@@ -53,7 +53,7 @@
 
 "Installed_Heading" = "已安裝";
 "Updates_Heading" = "更新";
-"Upgrade_All_Button" = "全部升級";
+"Upgrade_All_Button" = "全部更新";
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
