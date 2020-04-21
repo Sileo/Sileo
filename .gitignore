@@ -1,6 +1,7 @@
 .DS_Store
 xcuserdata/
 *.ipa
+.idea/
 build/
 Pods/
 .theos/
