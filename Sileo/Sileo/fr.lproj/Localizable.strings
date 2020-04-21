@@ -109,11 +109,17 @@
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Dévoiler les contenus du paquet";
 
+"Licenses_Page_Title" = "Licenses";
+
 "Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
 "Settings_Translations_Heading" = "Traductions";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Achats";
 "Settings_Payment_Provider.No_Purchases" = "Aucun achat";
+
+"Settings" = "Paramètres";
+"Settings_Page_Title" = "Paramètres";
+"Dark_Mode_Toggle" = "Mode Nuit";
 
 "Cydia_Sign_In" = "Se connecter au Cydia Store.";
 "Payment_Provider_Signed_In" = "Connecté";
