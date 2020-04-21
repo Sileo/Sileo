@@ -1,0 +1,49 @@
+"Unknown" = "發生未知錯誤。";
+"Error_Indicator" = "錯誤：%@";
+
+"No_Package.Title" = "無法從已安裝的來源找到套件 %@。";
+"No_Package.Body" = "如果這是新的套件，請等待 Sileo 完成更新來源後重試。在網上查詢以得到更多幫助。";
+
+"Invalid_URL.Title" = "無效的網址";
+
+"Download_Size_Mismatch" = "預期大小為 %@，實際大小為 %@。";
+"Download_Failing_Status_Code" = "失敗（狀態碼：%ld）。";
+"Download_Hash_Mismatch" = "預期雜湊為 %@，實際雜湊為 %@。";
+"Untrusted_Package" = "套件 %@ 不可信任並無法被驗證";
+
+"Insecure_Paid_Download" = "下載付款授權套件的來源必須為加密網址（HTTPS）。";
+
+"Invalid_Payment_Provider_Response" = "付款服務提供者發出了無效的回應。";
+"No_Payment_Provider" = "此套件來源不支援 Sileo 付款。如果您曾在 Cydia Store 中購買過此套件，請連結到 Cydia Store 帳號以下載套件。";
+
+"Package_Unavailable" = "無法從已安裝的來源取得此套件。請檢查 %@ 套件來源是否可用。";
+
+"Installation_Error.Title" = "安裝錯誤";
+"Installation_Error.Body" = "Sileo 無法取得 Root 權限。請使用 SSH 重新安裝 Sileo。";
+
+"FixingDpkg.Title" = "Dpkg 被中斷";
+"FixingDpkg.Body" = "DpkDpkg 被中斷。我們正在嘗試修復問題，請稍候。";
+
+"Invalid_Data" = "無效資料";
+"Try_Later" = "請稍候再試。";
+
+"Sileo_Update_Required.Title" = "Sileo 需要更新";
+"Featured_Requires_Sileo_Update" = "需要更新 Sileo 以查看精選頁面，否則可能會出現渲染錯誤。";
+"Depiction_Requires_Sileo_Update" = "需要更新 Sileo 以查看此頁面，否則可能會出現渲染錯誤。";
+
+"Form_Error.Title" = "無法載入表單";
+"Form_Load_Error" = "無法從伺服器載入表單。";
+"Invalid_Form_Data" = "伺服器提供了無效的表單資料。";
+"Form_Submit_Failure" = "嘗試提交表單時發生錯誤：%@";
+"Form_Submit_Error.Title" = "無法提交表單";
+"Form_Action_Host_Mismatch" = "表單操作的網址主機與表單的原始主機不匹配。";
+
+"Email_Unavailable.Title" = "無法送出電郵";
+"Email_Unavailable.Body" = "電郵服務無法使用。";
+
+"Settings_Payment_Provider.Profile.Title" = "無法載入資料";
+
+"Provider_Auth_Fail.Title" = "無法認證提供者";
+"Purchase_Initiate_Fail.Title" = "無法初始購買";
+"Purchase_Complete_Fail.Title" = "無法完成購買";
+"Purchase_Auth_Complete_Fail.Title" = "無法完成認證";
