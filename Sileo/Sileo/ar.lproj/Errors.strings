@@ -34,7 +34,7 @@
 "Form_Error.Title" = "تعذر تحميل النموذج";
 "Form_Load_Error" = "لا يمكن تحميل النموذج من الخادم.";
 "Invalid_Form_Data" = "الخادم قدم بيانات نموذج غير صالحة.";
-"Form_Submit_Failure" = "حدث خطأ أثناء محاولة إوسال النموذج: %@";
+"Form_Submit_Failure" = "حدث خطأ أثناء محاولة إرسال النموذج: %@";
 "Form_Submit_Error.Title" = "تعذر إرسال النموذج";
 "Form_Action_Host_Mismatch" = "مضيف عنوان URL إجراء النموذج غير متطابق مع مضيف النموذج الأصلي.";
 
