@@ -123,15 +123,6 @@ class PackageViewController: UIViewController,
             packageName.textColor = .sileoLabel
         }
         
-        /*if let host = self.package?.sourceRepo?.url?.host?.lowercased(),
-            host.contains("nepeta.me"){
-            let alertController = UIAlertController(title: "Warning",
-                                                    message: "Warning: This repo has been reported to host packages that contain malicious software.\nContinue at your own risk.",
-                                                    preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }*/
-
         self.navigationItem.largeTitleDisplayMode = .never
         scrollView.delegate = self
 

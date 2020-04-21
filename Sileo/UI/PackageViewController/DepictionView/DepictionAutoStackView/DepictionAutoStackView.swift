@@ -34,24 +34,6 @@ class DepictionAutoStackView: DepictionBaseView {
             }
         }
         
-        if let packageViewController = viewController as? PackageViewController,
-            let repo = packageViewController.package?.sourceRepo,
-            let host = repo.url?.host?.lowercased(),
-            host.contains("nepeta.me") {
-            if dictionary["backgroundColor"] as? String == nil,
-                views.count == 1,
-                let viewClass = views[0]["class"] as? String,
-                (viewClass == "DepictionHeaderView" ||
-                    viewClass == "DepictionSubheaderView" ||
-                    viewClass == "DepictionMarkdownView" ||
-                    viewClass == "DepictionLabelView" ||
-                    viewClass == "DepictionStackView" ||
-                    viewClass == "DepictionTableTextView" ||
-                    viewClass == "DepictionTableButtonView") {
-                return nil
-            }
-        }
-
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor)
         for viewDict in views {
             guard let preferredWidth = viewDict["preferredWidth"] as? CGFloat else {

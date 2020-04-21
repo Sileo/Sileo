@@ -23,24 +23,6 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
         guard let title = dictionary["title"] as? String else {
             return nil
         }
-        if let packageViewController = viewController as? PackageViewController,
-            let repo = packageViewController.package?.sourceRepo,
-            let host = repo.url?.host?.lowercased(),
-            host.contains("nepeta.me") {
-            let lowerTitle = title.lowercased()
-
-            let search1 = ["package", "apt", "repo"]
-            let search2 = ["manager", "browser", "downloader", "installer"]
-            guard search1.filter({ lowerTitle.contains($0) }).isEmpty || search2.filter({ lowerTitle.contains($0) }).isEmpty else {
-                return nil
-            }
-
-            let search4 = ["link", "get", "download", "install", "view", "preview", "try"]
-            let search5 = ["zebra", "installer", "cydia", "manager"]
-            guard search4.filter({ lowerTitle.contains($0) }).isEmpty || search5.filter({ lowerTitle.contains($0) }).isEmpty else {
-                return nil
-            }
-        }
 
         guard let action = dictionary["action"] as? String else {
             return nil
