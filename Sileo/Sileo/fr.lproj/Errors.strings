@@ -3,6 +3,8 @@
   Sileo
 
   Created by AppleBetas on 2018-12-28.
+  Original translation : Justin Proulx
+  Updated by : Cimmerian-Iter and Dadoum
   Copyright © 2018 CoolStar. All rights reserved.
  
  BASE (English) LOCALISATIONS
@@ -21,33 +23,32 @@
 "Download_Hash_Mismatch" = "Hachage attendu était %@, reçu %@ au lieu.";
 "Untrusted_Package" = "Le paquet %@ ne peut pas être vérifié.";
 
-"Insecure_Paid_Download" = "L'addresse de téléchargement pour un paquet ayant authorisé les paiements doit être sécurisé (HTTPS).";
+"Insecure_Paid_Download" = "L'adresse de téléchargement pour les paquets payants doit être sécurisé (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Le fournisseur de service de paiement a rendu une réponse non-valide.";
-"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez attacher votre compte pour le télécharger.";
+"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez vous connecter votre compte pour le télécharger.";
 
 "Package_Unavailable" = "Ce paquet n'est pas disponible dans vos sources installés. Veuillez vérifier que la source %@ est disponible.";
 
 "Installation_Error.Title" = "Erreur d'Installation";
 "Installation_Error.Body" = "Sileo n'a pas été capable d'obtenir des permissions root. Veuillez réinstaller Sileo en utilisant le SSH.";
 
-"FixingDpkg.Title" = "Intérruption de Dpkg";
-"FixingDpkg.Body" = "Dpkg a été intérrompu. Veuillez attendre que nous essayons de réparer le problème.";
+"FixingDpkg.Title" = "Interruption de Dpkg";
+"FixingDpkg.Body" = "Dpkg a été interrompu. Veuillez patienter pendant que nous essayons de réparer le problème.";
 
 "Invalid_Data" = "Données non-valides";
 "Try_Later" = "Ré-essayer plus tard, s'il vous plaît.";
 
 "Sileo_Update_Required.Title" = "Une mise à jour de Sileo est requise";
-"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet de paquets mise en vedette. Cet onglet sera possiblement rendu incorrectement.";
-"Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. La page sera possiblement rendu incorrectement.";
+"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet "Mise en vedette". La page a des chances d'être rendue incorrectement.";
+"Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. L'affichage de la page sera peut être incorrect.";
 
 "Form_Error.Title" = "Incapable de charger le formulaire";
-"Form_Load_Error" = "Le formulaire n'a pas pu être rendu par le serveur.";
+"Form_Load_Error" = "Le formulaire n'a pas pu être chargé depuis le serveur.";
 "Invalid_Form_Data" = "Le serveur a rendu des données invalides.";
 "Form_Submit_Failure" = "Un erreur s'est produit en essayant de soumettre le formulaire: %@";
 "Form_Submit_Error.Title" = "Incapable de soumettre le formulaire";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
-"L'hébergeur de l'addresse de l'action du formulaire n'est pas égal à celui de l'origine du formulaire.";
+"Form_Action_Host_Mismatch" = "L'URL hôte de l'action du formulaire ne correspond pas à celui de ce même formulaire.";
 
 "Email_Unavailable.Title" = "Incapable d'envoyer le courriel";
 "Email_Unavailable.Body" = "Les services de courriel ne sont pas disponibles.";
