@@ -9,7 +9,7 @@
 */
 
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Traduction française par Justin Proulx";
+"__LocalizationCredit.Title" = "Traduction française par Justin Proulx et Cimmerian Iter";
 "__LocalizationCredit.URL" = "https://www.twitter.com/JustinAlexP"; // (optional)
 
 // Common Prompts
@@ -30,7 +30,7 @@
 "Downloading_Package_Status" = "Téléchargement";
 "Queued_Package_Status" = "En Attente";
 "Ready_Status" = "Prêt";
-"Removal_Queued_Package_Status" = "En file d'attente pour l'enlèvement";
+"Removal_Queued_Package_Status" = "En file d'attente pour la suppression";
 "Download_Starting" = "Le téléchargement commence…";
 "Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
 
@@ -96,14 +96,14 @@
 
 "Untitled_Form" = "Formulaire sans-titre";
 "Form_Submitted.Default_Title" = "Formulare soumis";
-"Form_Submitted.Default_Body" = "La soumission du formulaire à succédé.";
+"Form_Submitted.Default_Body" = "Le formulaire a été soumis avec succès.";
 
 "Web_Depiction_Deprecated_Warning" = "Les représentations utilisant les Web View sont obsolets. Le gérant de la source doit se mettre à jour en utilisant les représantations natives.";
 
 "Package_Details_Tab" = "Détails";
 "Package_Changelog_Tab" = "Changements";
 "Package_No_Description_Available" = "Aucune description n'est disponible pour ce paquet.";
-"Package_Changelogs_Unavailable" = "Les changements ne sont pas disponibles pour ce paquet.";
+"Package_Changelogs_Unavailable" = "Pas d'historique de changement disponible pour ce paquet";
 
 "Installed_Package_Header" = "Paquet installé";
 "Version" = "Version";
@@ -120,26 +120,32 @@
 "Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Déconnexion";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de télécharger vos paquets acheter avant de re-connecter.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de télécharger vos paquets achetés avant de vous re-connecter.";
 
 "Package_Filter_User" = "Utilisateur";
 "Package_Filter_PowerUser" = "Super-utilisateur";
 "Package_Filter_Dev" = "Développeur";
 
-"Show_Install_Details" = "Dévoiler les détails";
+"Show_Install_Details" = "Afficher les détails";
 "Hide_Install_Details" = "Cacher les détails";
 
-"After_Install_Relaunch" = "Relancer le Sileo";
+"After_Install_Relaunch" = "Relancer Sileo";
 "After_Install_Respring" = "Relancer le Springboard";
-"After_Install_Reboot" = "Recommencer l'appareil";
+"After_Install_Reboot" = "Redémarrer l'appareil";
 
 "Dangerous_Repo.Title" = "Source dangereuse";
-"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue être dangereuse pour des raisons qui peuvent inclure la piratie, l'hébergement de contenu illégale ou des virus.\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit en forme de paquets payés rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil, et peuvent même réduire votre capacité pour installer un jailbreak. Nous recommendons que vous agissez avec prudence pour éviter des logiciels dangereux.";
+"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue être dangereuse pour des raisons qui peuvent inclure la piratie, l'hébergement de contenu illégale ou des virus.\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit en forme de paquets payés rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil,votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous recommendons que vous agissez avec prudence pour éviter des logiciels dangereux.";
 "Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
-"Dangerous_Repo.Cancel" = "Retournez-moi à la sécurité";
+"Dangerous_Repo.Cancel" = "Retour à la sécurité";
 "Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse?";
-"Dangerous_Repo.Last_Chance.Body" = "Les sources dangeureuses peuvent avoir des effets néfastes sur votre capacité d'utiliser votre appareil et appliquer les jailbreak. Nous recommendons fortement que vous retournez en sécurité.";
+"Dangerous_Repo.Last_Chance.Body" = "Les sources dangeureuses peuvent avoir des effets néfastes sur l'utilisation votre appareil et de votre jailbreak. Nous recommendons fortement que vous restez en securité.";
 "Dangerous_Repo.Last_Chance.Continue" = "Continuer";
 "Dangerous_Repo.Last_Chance.Cancel" = "Retourner";
 
+// All export-based strings
+"Export" = "Exporter";
+"Export_Packages" = "Voulez vous exporter votre liste de paquets?. Cela copiera tout les noms de paquets et leurs versions dans le press-papier.";
+"Export_Sources" = "Voulez vous exporter votre liste de sources? Cela copiera tout les URL des sources dans le presse-papier.";
+"Export_Yes" = "Oui, copier.";
+"Export_No" = "Non, retour.";
 
