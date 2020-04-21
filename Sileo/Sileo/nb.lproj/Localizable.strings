@@ -11,7 +11,7 @@
 
 // Credit Information (optional, uncomment to specify)
 //"__LocalizationCredit.Title" = "Sileo oversatt til Norsk Bokmål av WorldlyDev";
-//"__LocalizationCredit.URL" = "https://github.com/worldlydev"; // (optional)
+//"__LocalizationCredit.URL" = "https://twitter.com/worldlydev"; // (optional)
 
 // Common Prompts
 "About" = "Om";
