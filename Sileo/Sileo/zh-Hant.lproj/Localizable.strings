@@ -102,7 +102,7 @@
 
 "Licenses_Page_Title" = "許可";
 
-"Settings_Payment_Provider_Heading" = "付款提供者";
+"Settings_Payment_Provider_Heading" = "付款服務提供者";
 "Settings_Translations_Heading" = "翻譯";
 
 "Settings_Payment_Provider.Purchases_Heading" = "已購買的套件";
@@ -131,11 +131,11 @@
 "After_Install_Reboot" = "重新啟動裝置";
 
 "Dangerous_Repo.Title" = "危險來源";
-"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的軟件包）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
+"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的套件）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
 "Dangerous_Repo.Continue" = "我接受風險並繼續";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
 "Dangerous_Repo.Last_Chance.Title" = "新增危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全而返回。";
+"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全並返回。";
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
