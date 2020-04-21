@@ -3,19 +3,20 @@
   Sileo
 
   Created by AppleBetas on 2018-12-28.
+  Translated to Norwegian Bokmål by : WorldlyDev (2020-04-21) 
   Copyright © 2018 CoolStar. All rights reserved.
  
- BASE (English) LOCALISATIONS
+ NORWEGIAN BOKMÅL LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
+"No_Category" = "(Ingen kategori)";
 "Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support"; 
-"Text_Editors" = "Text Editors";
+"Themes" = "Temaer";
+"Utilities" = "Verktøy";
+"Applications" = "Applikasjoner";
+"Addons" = "Utvidelser";
+"Games" = "Spill";
+"Developer" = "Utvikler";
+"Data_Storage" = "Data lagring";
+"Terminal_Support" = "Terminalstøtte"; 
+"Text_Editors" = "Tekstredigeringsverktøy";
