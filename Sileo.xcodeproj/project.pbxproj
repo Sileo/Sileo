@@ -329,21 +329,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */ = {
+		CF6B3BAE244E92AF000A608B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
 			proxyType = 1;
@@ -1701,9 +1687,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */,
-				CFBC7FD1221D7F310066D501 /* PBXTargetDependency */,
-				CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */,
+				CF6B3BAF244E92AF000A608B /* PBXTargetDependency */,
 			);
 			name = Sileo;
 			productName = iTweak;
@@ -2365,20 +2349,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */ = {
+		CF6B3BAF244E92AF000A608B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LNPopupController;
-			targetProxy = C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */;
-		};
-		CFBC7FD1221D7F310066D501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */;
-		};
-		CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */;
+			targetProxy = CF6B3BAE244E92AF000A608B /* PBXContainerItemProxy */;
 		};
 		F139D09022EA9209007F5C0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
