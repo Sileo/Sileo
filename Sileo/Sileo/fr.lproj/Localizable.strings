@@ -3,13 +3,15 @@
   Sileo
 
   Created by AppleBetas on 2018-12-27.
+  Original french translation : Justin Proulx
+  Fixed by : Cimmerian-Iter and Dadoum
   Copyright © 2018 CoolStar. All rights reserved.
  
  BASE (Français) LOCALISATIONS
 */
 
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Traduction française par Cimmerian Iter";
+"__LocalizationCredit.Title" = "Traduction française par Cimmerian Iter et Dadoum";
 "__LocalizationCredit.URL" = "https://twitter.com/cimmerian_iter"; // (optional)
 
 // Common Prompts
@@ -103,7 +105,7 @@
 "Package_Details_Tab" = "Détails";
 "Package_Changelog_Tab" = "Changements";
 "Package_No_Description_Available" = "Aucune description n'est disponible pour ce paquet.";
-"Package_Changelogs_Unavailable" = "Pas d'historique de changement disponible pour ce paquet";
+"Package_Changelogs_Unavailable" = "Pas de journal de changement disponible pour ce paquet";
 
 "Installed_Package_Header" = "Paquet installé";
 "Version" = "Version";
@@ -126,7 +128,7 @@
 "Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Déconnexion";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de télécharger vos paquets achetés avant de vous re-connecter.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous re-connecter.";
 
 "Package_Filter_User" = "Utilisateur";
 "Package_Filter_PowerUser" = "Super-utilisateur";
@@ -140,18 +142,18 @@
 "After_Install_Reboot" = "Redémarrer l'appareil";
 
 "Dangerous_Repo.Title" = "Source dangereuse";
-"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue être dangereuse pour des raisons qui peuvent inclure la piratie, l'hébergement de contenu illégale ou des virus.\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit en forme de paquets payés rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil,votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous recommendons que vous agissez avec prudence pour éviter des logiciels dangereux.";
+"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit sous forme de paquets payant rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
 "Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
-"Dangerous_Repo.Cancel" = "Retour à la sécurité";
+"Dangerous_Repo.Cancel" = "Revenir en lieu sûr";
 "Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse?";
-"Dangerous_Repo.Last_Chance.Body" = "Les sources dangeureuses peuvent avoir des effets néfastes sur l'utilisation votre appareil et de votre jailbreak. Nous recommendons fortement que vous restez en securité.";
+"Dangerous_Repo.Last_Chance.Body" = "Les sources dangereuses peuvent avoir des effets dévastateurs sur votre appareil et votre jailbreak. Nous vous recommandons fortement de revenir en lieu sûr pour votre propre sécurité.";
 "Dangerous_Repo.Last_Chance.Continue" = "Continuer";
 "Dangerous_Repo.Last_Chance.Cancel" = "Retourner";
 
 // All export-based strings
 "Export" = "Exporter";
-"Export_Packages" = "Voulez vous exporter votre liste de paquets?. Cela copiera tout les noms de paquets et leurs versions dans le press-papier.";
+"Export_Packages" = "Voulez vous exporter votre liste de paquets? Cela copiera le nom de tous les paquets et leurs versions dans le presse-papier.";
 "Export_Sources" = "Voulez vous exporter votre liste de sources? Cela copiera tout les URL des sources dans le presse-papier.";
 "Export_Yes" = "Oui, copier.";
-"Export_No" = "Non, retour.";
+"Export_No" = "Non, annulé.";
 
