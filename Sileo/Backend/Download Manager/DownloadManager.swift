@@ -17,7 +17,7 @@ public enum DownloadManagerQueue: Int {
     case none
 }
 
-@objc class DownloadManager: NSObject {
+class DownloadManager: NSObject {
     static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
     
@@ -47,14 +47,14 @@ public enum DownloadManagerQueue: Int {
         }
     }
     
-    @objc static let shared = DownloadManager()
+    static let shared = DownloadManager()
     
-    @objc public var lockedForInstallation = false {
+    public var lockedForInstallation = false {
         didSet {
             NotificationCenter.default.post(name: DownloadManager.lockStateChangeNotification, object: nil)
         }
     }
-    @objc public var totalProgress = CGFloat(0)
+    public var totalProgress = CGFloat(0)
     
     var upgrades: [DownloadPackage] = []
     var installations: [DownloadPackage] = []
@@ -73,7 +73,7 @@ public enum DownloadManagerQueue: Int {
     
     var repoDownloadOverrideProviders: [String: Set<NSObject>] = [:]
     
-    @objc var viewController: DownloadsTableViewController
+    var viewController: DownloadsTableViewController
     
     override init() {
         viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
@@ -81,7 +81,7 @@ public enum DownloadManagerQueue: Int {
         super.init()
     }
     
-    @objc public func downloadingPackages() -> Int {
+    public func downloadingPackages() -> Int {
         var downloadsCount = 0
         for keyValue in downloads where keyValue.value.progress < 1 {
             downloadsCount += 1
@@ -89,7 +89,7 @@ public enum DownloadManagerQueue: Int {
         return downloadsCount
     }
     
-    @objc public func queuedPackages() -> Int {
+    public func queuedPackages() -> Int {
         queued.count + queuedRemovals.count
     }
     
@@ -97,7 +97,7 @@ public enum DownloadManagerQueue: Int {
         upgrades.count + installations.count + installdeps.count
     }
     
-    @objc public func readyPackages() -> Int {
+    public func readyPackages() -> Int {
         var readyCount = 0
         for keyValue in downloads {
             let download = keyValue.value
@@ -109,7 +109,7 @@ public enum DownloadManagerQueue: Int {
         return readyCount
     }
     
-    @objc public func uninstallingPackages() -> Int {
+    public func uninstallingPackages() -> Int {
         uninstallations.count + uninstalldeps.count
     }
     
