@@ -275,4 +275,283 @@ class APTWrapper {
         }
         return keyIsGood && keyIsTrusted
     }
+    
+    public class func performOperations(installs: [DownloadPackage],
+                                        removals: [DownloadPackage],
+                                        progressCallback: @escaping (Double, Bool, String) -> Void,
+                                        outputCallback: @escaping (String, Int) -> Void,
+                                        completionCallback: @escaping (Int, FINISH) -> Void) {
+        guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
+            fatalError("Unable to find giveMeRoot")
+        }
+        
+        #warning("TODO: remove --allow-unauthenticated")
+        var arguments = ["apt-get", "install", "--reinstall", "--allow-unauthenticated",
+                         "--allow-downgrades", "--no-download", "--allow-remove-essential",
+                         "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
+                         "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
+                         "-o", "APT::Sandbox::User=root"]
+        for package in installs {
+            var packagesStr = package.package.package + "=" + package.package.version
+            if package.package.package.contains("/") {
+                packagesStr = package.package.package
+            }
+            packagesStr = "\"\(packagesStr)\""
+            arguments.append(packagesStr)
+        }
+        for package in removals {
+            var packageStr = package.package.package + "-"
+            packageStr = "\"\(packageStr)\""
+            arguments.append(packageStr)
+        }
+        
+        let command = "CYDIA=\"6 1\" SILEO=\"6 1\" " + arguments.joined(separator: " ")
+        
+        DispatchQueue.global(qos: .default).async {
+            var oldApps = APTWrapper.dictionaryOfScannedApps()
+            
+            var pipestatusfd: [Int32] = [0, 0]
+            var pipestdout: [Int32] = [0, 0]
+            var pipestderr: [Int32] = [0, 0]
+            var pipesileo: [Int32] = [0, 0]
+            
+            var bufsiz = Int(BUFSIZ)
+            
+            pipe(&pipestdout)
+            pipe(&pipestderr)
+            pipe(&pipestatusfd)
+            pipe(&pipesileo)
+            
+            guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1,
+                fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1,
+                fcntl(pipestatusfd[0], F_SETFL, O_NONBLOCK) != -1,
+                fcntl(pipesileo[0], F_SETFL, O_NONBLOCK) != -1 else {
+                    fatalError("Unable to set attributes on pipe")
+            }
+            
+            var fileActions: posix_spawn_file_actions_t?
+            posix_spawn_file_actions_init(&fileActions)
+            posix_spawn_file_actions_addclose(&fileActions, pipestdout[0])
+            posix_spawn_file_actions_addclose(&fileActions, pipestderr[0])
+            posix_spawn_file_actions_addclose(&fileActions, pipestatusfd[0])
+            posix_spawn_file_actions_addclose(&fileActions, pipesileo[0])
+            posix_spawn_file_actions_adddup2(&fileActions, pipestdout[1], STDOUT_FILENO)
+            posix_spawn_file_actions_adddup2(&fileActions, pipestderr[1], STDERR_FILENO)
+            posix_spawn_file_actions_adddup2(&fileActions, pipestatusfd[1], 5)
+            posix_spawn_file_actions_adddup2(&fileActions, pipesileo[1], Int32(sileoFD))
+            posix_spawn_file_actions_addclose(&fileActions, pipestdout[1])
+            posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
+            posix_spawn_file_actions_addclose(&fileActions, pipestatusfd[1])
+            posix_spawn_file_actions_addclose(&fileActions, pipesileo[1])
+            
+            let args = ["giveMeRoot", command]
+            
+            let argv: [UnsafeMutablePointer<CChar>?] = args.map { $0.withCString(strdup) }
+            defer { for case let arg? in argv { free(arg) } }
+            
+            var pid: pid_t = 0
+            
+            let retVal = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], environ)
+            if retVal < 0 {
+                return
+            }
+            
+            close(pipestdout[1])
+            close(pipestderr[1])
+            close(pipestatusfd[1])
+            close(pipesileo[1])
+            
+            var finish = FINISH.back
+            var runUICache = false
+            
+            let mutex = DispatchSemaphore(value: 0)
+            
+            let readQueue = DispatchQueue(label: "org.coolstar.sileo.command",
+                                          qos: .userInitiated,
+                                          attributes: .concurrent,
+                                          autoreleaseFrequency: .inherit,
+                                          target: nil)
+            
+            let stdoutSource = DispatchSource.makeReadSource(fileDescriptor: pipestdout[0], queue: readQueue)
+            let stderrSource = DispatchSource.makeReadSource(fileDescriptor: pipestderr[0], queue: readQueue)
+            let statusFdSource = DispatchSource.makeReadSource(fileDescriptor: pipestatusfd[0], queue: readQueue)
+            let sileoFdSource = DispatchSource.makeReadSource(fileDescriptor: pipesileo[0], queue: readQueue)
+            
+            stdoutSource.setCancelHandler {
+                close(pipestdout[0])
+                mutex.signal()
+            }
+            stderrSource.setCancelHandler {
+                close(pipestderr[0])
+                mutex.signal()
+            }
+            statusFdSource.setCancelHandler {
+                close(pipestatusfd[0])
+                mutex.signal()
+            }
+            sileoFdSource.setCancelHandler {
+                close(pipesileo[0])
+            }
+            
+            stdoutSource.setEventHandler {
+                let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
+                defer { buffer.deallocate() }
+                
+                let bytesRead = read(pipestdout[0], buffer, bufsiz)
+                guard bytesRead > 0 else {
+                    if bytesRead == -1 && errno == EAGAIN {
+                        return
+                    }
+                    
+                    stdoutSource.cancel()
+                    return
+                }
+                
+                let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
+                array.withUnsafeBufferPointer { ptr in
+                    let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    outputCallback(str, Int(STDOUT_FILENO))
+                }
+            }
+            stderrSource.setEventHandler {
+                let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
+                defer { buffer.deallocate() }
+                
+                let bytesRead = read(pipestderr[0], buffer, bufsiz)
+                guard bytesRead > 0 else {
+                    if bytesRead == -1 && errno == EAGAIN {
+                        return
+                    }
+                    
+                    stderrSource.cancel()
+                    return
+                }
+                
+                let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
+                array.withUnsafeBufferPointer { ptr in
+                    let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    outputCallback(str, Int(STDERR_FILENO))
+                }
+            }
+            statusFdSource.setEventHandler {
+                let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
+                defer { buffer.deallocate() }
+                
+                let bytesRead = read(pipestatusfd[0], buffer, bufsiz)
+                guard bytesRead > 0 else {
+                    if bytesRead == -1 && errno == EAGAIN {
+                        return
+                    }
+                    
+                    statusFdSource.cancel()
+                    return
+                }
+                
+                let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
+                array.withUnsafeBufferPointer { ptr in
+                    let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    
+                    let statusLines = str.components(separatedBy: "\n")
+                    for status in statusLines {
+                        let (statusValid, statusProgress, statusReadable) = self.installProgress(aptStatus: status)
+                        progressCallback(statusProgress, statusValid, statusReadable)
+                    }
+                }
+            }
+            sileoFdSource.setEventHandler {
+                let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
+                defer { buffer.deallocate() }
+                
+                let bytesRead = read(pipesileo[0], buffer, bufsiz)
+                guard bytesRead > 0 else {
+                    if bytesRead == -1 && errno == EAGAIN {
+                        return
+                    }
+                    
+                    statusFdSource.cancel()
+                    return
+                }
+                
+                let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
+                array.withUnsafeBufferPointer { ptr in
+                    let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    
+                    let sileoLines = str.components(separatedBy: "\n")
+                    for sileoLine in sileoLines {
+                        if sileoLine.hasPrefix("finish:") {
+                            var newFinish = FINISH.back
+                            if sileoLine.hasPrefix("finish:return") {
+                                newFinish = .back
+                            }
+                            if sileoLine.hasPrefix("finish:uicache") {
+                                newFinish = .uicache
+                                runUICache = true
+                            }
+                            if sileoLine.hasPrefix("finish:reopen") {
+                                newFinish = .reopen
+                            }
+                            if sileoLine.hasPrefix("finish:restart") {
+                                newFinish = .restart
+                            }
+                            if sileoLine.hasPrefix("finish:reload") {
+                                newFinish = .reload
+                            }
+                            if sileoLine.hasPrefix("finish:reboot") {
+                                newFinish = .reboot
+                            }
+                            
+                            if newFinish.rawValue > finish.rawValue {
+                                finish = newFinish
+                            }
+                        }
+                    }
+                }
+            }
+            
+            stdoutSource.resume()
+            stderrSource.resume()
+            statusFdSource.resume()
+            sileoFdSource.resume()
+            
+            mutex.wait()
+            mutex.wait()
+            mutex.wait()
+            
+            if !sileoFdSource.isCancelled {
+                sileoFdSource.cancel()
+            }
+            
+            var status: Int32 = 0
+            waitpid(pid, &status, 0)
+            
+            if runUICache {
+                progressCallback(99, true, "Updating icon cache...")
+                outputCallback("Updating Icon Cache\n", debugFD)
+                
+                var newApps = dictionaryOfScannedApps()
+                
+                for key in oldApps.keys where oldApps[key] == newApps[key] {
+                    oldApps.removeValue(forKey: key)
+                    newApps.removeValue(forKey: key)
+                }
+                
+                for key in newApps.keys where oldApps[key] == newApps[key] {
+                    oldApps.removeValue(forKey: key)
+                    newApps.removeValue(forKey: key)
+                }
+                
+                let diff = newApps.merging(oldApps) { current, _ in current }
+                
+                for appName in diff.keys {
+                    let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
+                    
+                    spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", appPath.path])
+                }
+            }
+            
+            spawnAsRoot(command: "/usr/bin/apt-get clean")
+            
+            completionCallback(Int(status), finish)
+        }
+    }
 }

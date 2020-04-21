@@ -72,6 +72,55 @@ class InstallViewController: UIViewController {
                 self.completeButton?.alpha = 1
             }
         }
+        #else
+        let downloadManager = DownloadManager.shared
+        
+        let installs = downloadManager.installations + downloadManager.upgrades
+        let removals = downloadManager.uninstallations
+        
+        if let detailsAttributedString = self.detailsAttributedString {
+            detailsTextView?.attributedText = self.transform(attributedString: detailsAttributedString)
+        }
+        
+        APTWrapper.performOperations(installs: installs, removals: removals, progressCallback: { installProgress, statusValid, statusReadable in
+            if statusValid {
+                DispatchQueue.main.async {
+                    self.push(text: statusReadable)
+                    self.setProgress(Float(installProgress)/100, animated: true)
+                }
+            }
+        }, outputCallback: { output, pipe in
+            var textColor = Dusk.foregroundColor
+            if pipe == STDERR_FILENO {
+                textColor = Dusk.errorColor
+            }
+            if pipe == APTWrapper.debugFD {
+                textColor = Dusk.debugColor
+            }
+            
+            let substring = NSMutableAttributedString(string: output, attributes: [NSAttributedString.Key.foregroundColor: textColor])
+            DispatchQueue.main.async {
+                self.detailsAttributedString?.append(substring)
+                
+                guard let detailsAttributedString = self.detailsAttributedString else {
+                    return
+                }
+                
+                self.detailsTextView?.attributedText = self.transform(attributedString: detailsAttributedString)
+                
+                self.detailsTextView?.scrollRangeToVisible(NSRange(location: detailsAttributedString.string.count - 1, length: 1))
+            }
+        }, completionCallback: { _, finish in
+            DispatchQueue.main.async {
+                self.returnButtonAction = finish
+                
+                self.setProgress(1, animated: true)
+                self.activityIndicatorView?.stopAnimating()
+                self.progressView?.alpha = 0
+                self.updateCompleteButton()
+                self.completeButton?.alpha = 1
+            }
+        })
         #endif
     }
     
