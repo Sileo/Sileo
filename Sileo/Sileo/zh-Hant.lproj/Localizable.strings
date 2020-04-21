@@ -105,7 +105,7 @@
 "Settings_Payment_Provider_Heading" = "付款服務提供者";
 "Settings_Translations_Heading" = "翻譯";
 
-"Settings_Payment_Provider.Purchases_Heading" = "已購買的套件";
+"Settings_Payment_Provider.Purchases_Heading" = "已購買套件";
 "Settings_Payment_Provider.No_Purchases" = "沒有已購買的套件";
 
 "Settings" = "設定";
