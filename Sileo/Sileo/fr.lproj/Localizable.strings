@@ -155,5 +155,5 @@
 "Export_Packages" = "Voulez vous exporter votre liste de paquets? Cela copiera le nom de tous les paquets et leurs versions dans le presse-papier.";
 "Export_Sources" = "Voulez vous exporter votre liste de sources? Cela copiera tout les URL des sources dans le presse-papier.";
 "Export_Yes" = "Oui, copier.";
-"Export_No" = "Non, annulé.";
+"Export_No" = "Non, annuler.";
 
