@@ -47,7 +47,7 @@
 "Installed_Heading" = "مثبت";
 "Updates_Heading" = "التحديثات";
 "Upgrade_All_Button" = "ترقية الكل";
-"Package_Search.Placeholder" = "البحث عن حزم";
+"Package_Search.Placeholder" = "ابحث عن حزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
 "Sort_By" = "فرز حسب:";
@@ -84,7 +84,7 @@
 
 "Web_Depiction_Deprecated_Warning" = "تم إيقاف عرض وصف الويب. يرجى التواصل مع مشرف المستودع حول التحديث إلى الوصف الأصلي.";
 
-"Package_Details_Tab" = "التفاصبل";
+"Package_Details_Tab" = "التفاصيل";
 "Package_Changelog_Tab" = "سجل التغييرات";
 "Package_No_Description_Available" = "لا يوجد وصف متاح لهذه الحزمة.";
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
@@ -108,7 +108,7 @@
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
 "Payment_Provider_Signed_In_With_Name" = "تم تسجيل الدخول كـ %@";
-"Payment_Provider_Sign_Out" = "Sign out";
+"Payment_Provider_Sign_Out" = "تسجيل الخروج";
 "Payment_Provider_Sign_Out_Confirm.Title" = "تسجيل الخروج من %@";
 "Payment_Provider_Sign_Out_Confirm.Body" = "لن تصبح قادرًا على تنزيل حزمك المشتراة حتى تسجل الدخول مرة أخرى.";
 
@@ -128,7 +128,7 @@
 "Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
 "Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
-"Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو علو الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك.";
+"Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك.";
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
 "Dangerous_Repo.Last_Chance.Cancel" = "العودة";
 
