@@ -143,14 +143,7 @@ class APTWrapper {
                 fullJsonParseMode = true
                 fullJsonToParse.append(aptLine)
             } else if fullJsonParseMode {
-                // TODO: We can remove the workaround for the final line when Sam adds \n after the
-                // JSON output. Currently it ends up like "}6 upgraded, 0 newly installed, …".
-                if aptLine.hasPrefix("}") {
-                    fullJsonToParse.append("}")
-                    break
-                } else {
-                    fullJsonToParse.append(aptLine)
-                }
+                fullJsonToParse.append(aptLine)
             } else if aptLine.hasPrefix("{") && aptLine.hasSuffix("}") {
                 guard let aptOp = try? JSONSerialization.jsonObject(with: aptLine.data(using: .utf8) ?? Data(),
                                                                     options: []) as? [String: String] else {
@@ -182,14 +175,15 @@ class APTWrapper {
             if let operations = json["operations"] as? [[String: String]] {
                 for aptOp in operations {
                     if let type = aptOp["Type"],
-                        let packageID = aptOp["Package"],
-                        let version = aptOp["CandidateVersion"] {
-                        if type == "Inst"{
+                        let packageID = aptOp["Package"] {
+                        if type == "Inst",
+                            let version = aptOp["CandidateVersion"] {
                             packageInstalls.append([
                                 "package": packageID,
                                 "version": version
                             ])
-                        } else if type == "Remv" || type == "Purg" {
+                        } else if type == "Remv" || type == "Purg",
+                            let version = aptOp["CurrentVersion"] {
                             packageRemovals.append([
                                 "package": packageID,
                                 "version": version
