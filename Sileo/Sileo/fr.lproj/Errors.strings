@@ -40,7 +40,7 @@
 "Try_Later" = "Ré-essayer plus tard, s'il vous plaît.";
 
 "Sileo_Update_Required.Title" = "Une mise à jour de Sileo est requise";
-"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet "Mise en vedette". La page a des chances d'être rendue incorrectement.";
+"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet \"Mise en vedette\". La page a des chances d'être rendue incorrectement.";
 "Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. L'affichage de la page sera peut être incorrect.";
 
 "Form_Error.Title" = "Incapable de charger le formulaire";
