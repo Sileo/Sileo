@@ -128,11 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         #endif
         
-        /*let builder = FlurrySessionBuilder()
+        let builder = FlurrySessionBuilder()
             .withAppVersion(appVer)
             .withLogLevel(FlurryLogLevelAll)
             .withCrashReporting(true).withSessionContinueSeconds(10)
-        Flurry.startSession("", with: builder)*/
+        Flurry.startSession("TSNTB888V4FZTR8F6RHK", with: builder)
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
