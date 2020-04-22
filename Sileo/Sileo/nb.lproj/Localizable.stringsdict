@@ -5,7 +5,7 @@
 	<key>Auto_Add_Pasteboard_Sources.Title</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Automatically Add %#@sources@</string>
+		<string>Legg til %#@sources@ automatisk</string>
 		<key>sources</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -13,15 +13,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Source</string>
+			<string>Kilde</string>
 			<key>other</key>
-			<string>Sources</string>
+			<string>Kilder</string>
 		</dict>
 	</dict>
 	<key>Auto_Add_Pasteboard_Sources.Button.Add</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Add %lu %#@sources@</string>
+		<string>Legg til %lu %#@sources@</string>
 		<key>sources</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -29,15 +29,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Source</string>
+			<string>Kilde</string>
 			<key>other</key>
-			<string>Sources</string>
+			<string>Kilder</string>
 		</dict>
 	</dict>
 	<key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Add the following %#@urls@ found on your pasteboard:</string>
+		<string>Legg til følgende %#@urls@ funnet i utklippstavlen din:</string>
 		<key>urls</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -45,9 +45,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>URL</string>
+			<string>Nettadresse</string>
 			<key>other</key>
-			<string>URLs</string>
+			<string>Nettadresser</string>
 		</dict>
 	</dict>
 	<key>Package_Queue_Count</key>
@@ -61,11 +61,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>No Packages</string>
+			<string>Ingen pakker</string>
 			<key>one</key>
-			<string>%d Package</string>
+			<string>%d pakke</string>
 			<key>other</key>
-			<string>%d Packages</string>
+			<string>%d pakker</string>
 		</dict>
 	</dict>
 </dict>
