@@ -37,7 +37,7 @@
 	<key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Legg til følgende %#@urls@ funnet i utklippstavlen din:</string>
+		<string>Legg til følgende %#@urls@ fra utklippstavlen din:</string>
 		<key>urls</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
