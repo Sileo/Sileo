@@ -129,6 +129,8 @@ final class RepoManager {
         for url in urls {
             guard !hasRepo(with: url),
                 url.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+                url.host?.localizedCaseInsensitiveContains("apt.modmyi.com") == false,
+                url.host?.localizedCaseInsensitiveContains("cydia.zodttd.com") == false,
                 url.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false else { continue }
 
             repoListLock.wait()
@@ -190,6 +192,8 @@ final class RepoManager {
                 }
             }
             guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
+                !repoURL.localizedCaseInsensitiveContains("apt.modmyi.com"),
+                !repoURL.localizedCaseInsensitiveContains("cydia.zodttd.com"),
                 !hasRepo(with: URL(string: repoURL)!)
                 else { continue }
 
