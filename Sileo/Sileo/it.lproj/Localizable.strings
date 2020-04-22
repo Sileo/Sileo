@@ -138,7 +138,6 @@
 "Dangerous_Repo.Continue" = "Accetto i rischi, continua";
 "Dangerous_Repo.Cancel" = "Riportami al Sicuro";
 "Dangerous_Repo.Last_Chance.Title" = "Aggiungere la sorgente dannosa?";
-"Dangerous_Repo.Last_Chance.Body" = "Le Sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza.";
 "Dangerous_Repo.Last_Chance.Continue" = "Continua";
 "Dangerous_Repo.Last_Chance.Cancel" = "Torna Indietro";
 

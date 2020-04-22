@@ -22,6 +22,8 @@ class FlaggedSourceWarningViewController: UIViewController {
     
     @objc var shouldAddAnywayCallback: (() -> Void)?
     
+    var url: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         safetyButton.layer.cornerRadius = 8
@@ -53,8 +55,9 @@ class FlaggedSourceWarningViewController: UIViewController {
     }
     
     func presentLastChanceAlert() {
+        let urlString = url?.absoluteString ?? "this repo"
         let lastChanceAlert = UIAlertController(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Title"),
-                                                message: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"),
+                                                message: String(format: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"), urlString),
                                                 preferredStyle: .alert)
         
         lastChanceAlert.addAction(.init(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Cancel"),

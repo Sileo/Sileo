@@ -24,7 +24,6 @@
 "Payment_Provider_Signed_In_With_Name" = "Angemeldet als %@";
 "Package_Get_Action" = "Installieren";
 "All_Packages.Title" = "Alle Pakete";
-"Dangerous_Repo.Last_Chance.Body" = "Gefährliche Quellen können verheerende Auswirkungen auf die Verwendung Ihres Geräts oder den Jailbreak haben. Wir empfehlen Ihnen dringend, zu Ihrer eigenen Sicherheit abzubrechen.";
 "By_Author" = "von %@";
 "Refreshing_Sources_Page" = "Aktualisiere Quellen";
 "Search_Page" = "Suchen";

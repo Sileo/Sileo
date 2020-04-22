@@ -25,7 +25,6 @@
 "Packages_Page" = "パッケージ";
 "Package_Get_Action" = "入手";
 "All_Packages.Title" = "全てのパッケージ";
-"Dangerous_Repo.Last_Chance.Body" = "この危険なリポジトリの登録によって、お使いのデバイスを破損させる恐れがあります。安全性を確保するためにも、登録しないことを強く推奨します。";
 "Search_Page" = "検索";
 "Upgrade_All_Button" = "全てをアップデートする";
 "Web_Depiction_Deprecated_Warning" = "このパッケージの詳細は、推奨されていないWebViewで記述されています。ネイティブによる記述に変更するようリポジトリの管理者に連絡してください。";

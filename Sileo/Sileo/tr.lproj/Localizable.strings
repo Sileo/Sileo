@@ -24,7 +24,6 @@
 "Packages_Page" = "Paketler";
 "Package_Get_Action" = "Kur";
 "All_Packages.Title" = "Tüm Paketler";
-"Dangerous_Repo.Last_Chance.Body" = "Tehlikeli depolar, cihazınızı ve jailbreak sürümünüzü kaybetmenize neden olabilir.  Kendi güvenliğiniz için geri dönmenizi şiddetle tavsiye ederiz.";
 "Search_Page" = "Arama";
 "Upgrade_All_Button" = "Tümünü Güncelle";
 "Web_Depiction_Deprecated_Warning" = "Web Görünümü tanımları kullanımdan kaldırılmıştır. Yerel tanımlarda güncelleme yapmak için lütfen depo sorumlusuna başvurun.";
