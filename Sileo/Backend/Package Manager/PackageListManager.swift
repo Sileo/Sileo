@@ -8,7 +8,7 @@
 import Foundation
 import CoreSpotlight
 
-class PackageListManager: NSObject {
+class PackageListManager {
     static let reloadNotification = Notification.Name("SileoPackageCacheReloaded")
     static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
