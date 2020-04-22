@@ -47,6 +47,11 @@ class FlaggedSourceWarningViewController: UIViewController {
         scrollHairlineConstraint.constant = 1 / view.window!.screen.scale
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
     func presentLastChanceAlert() {
         let lastChanceAlert = UIAlertController(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Title"),
                                                 message: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"),
