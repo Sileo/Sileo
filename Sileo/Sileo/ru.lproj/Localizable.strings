@@ -75,7 +75,7 @@
 "By_Author" = "от %@"; // %@ = author name
 "Packages_By_Author" = "Пакеты от %@"; // %@ = author name
 
-"Featured_Page" = "Изьранные";
+"Featured_Page" = "Избранные";
 "News_Page" = "Новые";
 "Sources_Page" = "Источники";
 "Packages_Page" = "Пакеты";
@@ -131,7 +131,7 @@
 "Payment_Provider_Sign_Out_Confirm.Body" = "Вы не сможете скачивать купленные пакеты до повторного входа.";
 
 "Package_Filter_User" = "Пользователь";
-"Package_Filter_PowerUser" = "Power User";
+"Package_Filter_PowerUser" = "Опытный пользователь";
 "Package_Filter_Dev" = "Разработчик";
 
 "Show_Install_Details" = "Показать детали";
