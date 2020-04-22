@@ -25,24 +25,6 @@ class DepictionMarkdownView: DepictionBaseView, CSTextViewActionHandler {
             return nil
         }
         
-        if let packageViewController = viewController as? PackageViewController,
-            let repo = packageViewController.package?.sourceRepo,
-            let host = repo.url?.host?.lowercased(),
-            host.contains("nepeta.me") {
-            let lowerMarkdown = markdown.lowercased()
-            let search1 = ["package", "apt", "repo"]
-            let search2 = ["manager", "browser", "downloader", "installer"]
-            guard search1.filter({ lowerMarkdown.contains($0) }).isEmpty || search2.filter({ lowerMarkdown.contains($0) }).isEmpty else {
-                return nil
-            }
-            
-            let search4 = ["link", "get", "download", "install", "view", "preview", "try"]
-            let search5 = ["zebra", "installer", "cydia", "manager"]
-            guard search4.filter({ lowerMarkdown.contains($0) }).isEmpty || search5.filter({ lowerMarkdown.contains($0) }).isEmpty else {
-                return nil
-            }
-        }
-        
         useSpacing = (dictionary["useSpacing"] as? Bool) ?? true
         useMargins = (dictionary["useMargins"] as? Bool) ?? true
 
