@@ -73,7 +73,7 @@ class DownloadManager {
     
     var repoDownloadOverrideProviders: [String: Set<NSObject>] = [:]
     
-    var viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
+    let viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
     
     public func downloadingPackages() -> Int {
         var downloadsCount = 0
