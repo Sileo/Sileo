@@ -128,8 +128,10 @@ final class RepoManager {
     func addRepos(with urls: [URL]) {
         for url in urls {
             guard !hasRepo(with: url),
-                url.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-                url.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false else { continue }
+                url.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false, //shouldn't need to ever add this manually
+                url.host?.localizedCaseInsensitiveContains("apt.modmyi.com") == false, //See: https://github.com/Sileo/Sileo/pull/26
+                url.host?.localizedCaseInsensitiveContains("cydia.zodttd.com") == false, //See: https://github.com/Sileo/Sileo/pull/26
+                url.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false else { continue } //Replaced by repo.chariz.com
 
             repoListLock.wait()
             let repo = Repo()
@@ -185,11 +187,13 @@ final class RepoManager {
         for repoURL in uris {
             if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
                 FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
-                guard !repoURL.localizedCaseInsensitiveContains("apt.bingner.com") else {
+                guard !repoURL.localizedCaseInsensitiveContains("apt.bingner.com") else { //can cause problems on electra/chimera
                     continue
                 }
             }
-            guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
+            guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"), //replaced by repo.chariz.com
+                !repoURL.localizedCaseInsensitiveContains("apt.modmyi.com"), //see: https://github.com/Sileo/Sileo/pull/26
+                !repoURL.localizedCaseInsensitiveContains("cydia.zodttd.com"), //see: https://github.com/Sileo/Sileo/pull/26
                 !hasRepo(with: URL(string: repoURL)!)
                 else { continue }
 
