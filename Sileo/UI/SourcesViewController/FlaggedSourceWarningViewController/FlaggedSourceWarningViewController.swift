@@ -34,6 +34,10 @@ class FlaggedSourceWarningViewController: UIViewController {
                                                       attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         continueButton.setTitle(String(localizationKey: "Dangerous_Repo.Continue"), for: .normal)
         safetyButton.setTitle(String(localizationKey: "Dangerous_Repo.Cancel"), for: .normal)
+        
+        if UIScreen.main.bounds.width < 350 {
+            bodyLabel.font = UIFont.systemFont(ofSize: 14)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
