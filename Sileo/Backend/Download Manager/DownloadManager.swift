@@ -17,7 +17,7 @@ public enum DownloadManagerQueue: Int {
     case none
 }
 
-class DownloadManager: NSObject {
+class DownloadManager {
     static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
     
@@ -73,13 +73,7 @@ class DownloadManager: NSObject {
     
     var repoDownloadOverrideProviders: [String: Set<NSObject>] = [:]
     
-    var viewController: DownloadsTableViewController
-    
-    override init() {
-        viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
-        
-        super.init()
-    }
+    let viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
     
     public func downloadingPackages() -> Int {
         var downloadsCount = 0

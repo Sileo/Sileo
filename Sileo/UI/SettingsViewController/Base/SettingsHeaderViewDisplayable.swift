@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SettingsHeaderViewDisplayable: NSObject {
+protocol SettingsHeaderViewDisplayable {
     func headerHeight(forWidth: CGFloat) -> CGFloat
 }
