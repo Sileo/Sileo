@@ -52,9 +52,9 @@
 "Package_Support_Action" = "サポート";
 "Package_Hold_Enable_Action" = "アップデートを非表示";
 "Package_Hold_Disable_Action" = "アップデートを表示;
-"Package_Wishlist_Add" = "ウィッシュリストに追加";
-"Package_Wishlist_Remove" = "ウィッシュリストから削除";
-"Wishlist" = "ウィッシュリスト";
+"Package_Wishlist_Add" = "ほしいものリストに追加";
+"Package_Wishlist_Remove" = "ほしいものリストから削除";
+"Wishlist" = "ほしいものリスト";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "インストール";
