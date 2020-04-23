@@ -1,23 +1,22 @@
+/*
+  Categories.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  (Re)Translated to Japanese by eve0415 on 2020-04-23.
+  Copyright © 2018 CoolStar. All rights reserved.
+
+  JAPANESE LOCALISATIONS
+*/
+
+"No_Category" = "カテゴリー無し";
 "Tweaks" = "Tweaks";
-"Networking" = "ネットワーク";
-"No_Category" = "(カテゴリー無し)";
-"Text_Editors" = "テキストエディタ";
-"Keyboards" = "キーボード";
-"Keyboard" = "キーボード";
-"Utilities" = "ユーティリティ";
 "Themes" = "テーマ";
-"Entertainment" = "エンターテイメント";
-"Development" = "開発";
-"Security" = "セキュリティ";
-"System" = "システム";
-"Games" = "ゲーム";
-"Administration" = "システム管理";
-"Terminal_Support" = "ターミナル";
-"Wallpaper" = "壁紙";
-"Developer" = "開発";
-"Data_Storage" = "データストレージ";
-"Ringtones" = "着信音";
-"Applications" = "App";
-"Education" = "教育";
-"Widgets" = "ウィジェット";
+"Utilities" = "ユーティリティ";
+"Applications" = "アプリ";
 "Addons" = "アドオン";
+"Games" = "ゲーム";
+"Developer" = "開発";
+"Data_Storage" = "データ容量";
+"Terminal_Support" = "ターミナル";
+"Text_Editors" = "テキスト編集";
