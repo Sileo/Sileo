@@ -57,7 +57,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
-"Sort_By" = "排序：";
+"Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
 "Package_By_Author" = "%@ 由 %@ 開發"; // first %@ = package name, second %@ = author name
