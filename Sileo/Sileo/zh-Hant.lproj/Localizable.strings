@@ -23,7 +23,7 @@
 "Ready_Status" = "已預備";
 "Removal_Queued_Package_Status" = "在解除安裝的佇列中";
 "Download_Starting" = "正在開始...";
-"Download_Progress" = "%@（共 %@ 個）"; // first %@ = amount downloaded, second %@ = total to download
+"Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";
@@ -140,8 +140,8 @@
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
-"Export" = "導出";
-"Export_Packages" = "您想導出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
-"Export_Sources" = "您想導出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
+"Export" = "匯出";
+"Export_Packages" = "您想匯出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
+"Export_Sources" = "您想匯出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
 "Export_Yes" = "確認";
 "Export_No" = "取消";
