@@ -11,7 +11,7 @@
 
 // Credit Information (optional, uncomment to specify)
 "__LocalizationCredit.Title" = "Перевод на русский от gkeep";
-"__LocalizationCredit.URL" = "https://twitter.com/gkeep_"; // (optional)
+"__LocalizationCredit.URL" = "https://gkeep.xyz"; // (optional)
 
 // Common Prompts
 "About" = "About";
