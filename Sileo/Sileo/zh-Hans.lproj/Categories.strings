@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Addons</key>
+	<string>附加组件</string>
+	<key>Applications</key>
+	<string>应用</string>
+	<key>Data_Storage</key>
+	<string>数据存储</string>
+	<key>Developer</key>
+	<string>开发</string>
+	<key>Games</key>
+	<string>游戏</string>
+	<key>No_Category</key>
+	<string>(没有类别)</string>
+	<key>Terminal_Support</key>
+	<string>终端支持</string>
+	<key>Text_Editors</key>
+	<string>文字编辑</string>
+	<key>Themes</key>
+	<string>主题</string>
+	<key>Tweaks</key>
+	<string>插件</string>
+	<key>Utilities</key>
+	<string>实用工具</string>
+</dict>
+</plist>

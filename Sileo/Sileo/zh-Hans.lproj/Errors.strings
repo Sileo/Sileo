@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Depiction_Requires_Sileo_Update</key>
+	<string>查看此页面需要更新 Sileo。否则页面可能会被错误地呈现。</string>
+	<key>Download_Failing_Status_Code</key>
+	<string>错误代码为 %ld</string>
+	<key>Download_Hash_Mismatch</key>
+	<string>哈希值 %@, %@ 已安装。</string>
+	<key>Download_Size_Mismatch</key>
+	<string>预计大小 %@, %@ 已安装。</string>
+	<key>Email_Unavailable.Body</key>
+	<string>邮件服务不可用。</string>
+	<key>Email_Unavailable.Title</key>
+	<string>不能发送电子邮件</string>
+	<key>Error_Indicator</key>
+	<string>错误: %@</string>
+	<key>Featured_Requires_Sileo_Update</key>
+	<string>需要更新 Sileo 才能显示“精选”选项卡,否则“精选”选项卡可能无法显示。</string>
+	<key>FixingDpkg.Body</key>
+	<string>请稍候，Sileo 正在尝试解决此问题</string>
+	<key>FixingDpkg.Title</key>
+	<string>Dpkg 中断</string>
+	<key>Form_Action_Host_Mismatch</key>
+	<string>表单的操作 URL 主机与表单的源主机不匹配。</string>
+	<key>Form_Error.Title</key>
+	<string>无法加载表单</string>
+	<key>Form_Load_Error</key>
+	<string>无法从服务器加载表单。</string>
+	<key>Form_Submit_Error.Title</key>
+	<string>不能提交表单</string>
+	<key>Form_Submit_Failure</key>
+	<string>尝试提交表单时发生错误: %@</string>
+	<key>Insecure_Paid_Download</key>
+	<string>付费授权包下载地址必须是安全的[HTTPS]链接。</string>
+	<key>Installation_Error.Body</key>
+	<string>Sileo 无法获得 root 权限，
+请使用 SSH 重新安装 Sileo。</string>
+	<key>Installation_Error.Title</key>
+	<string>安装错误</string>
+	<key>Invalid_Data</key>
+	<string>无效数据</string>
+	<key>Invalid_Form_Data</key>
+	<string>服务器提供了无效的表单数据。</string>
+	<key>Invalid_Payment_Provider_Response</key>
+	<string>支付系统无响应。</string>
+	<key>Invalid_URL.Title</key>
+	<string>无效网址</string>
+	<key>No_Package.Body</key>
+	<string>请等待 Sileo 完成更新,然后再试一次。在线查看更多帮助。</string>
+	<key>No_Package.Title</key>
+	<string>无法在您当前安装的存储库中找到 %@</string>
+	<key>No_Payment_Provider</key>
+	<string>此回购不支持 Sileo 购买。如果这是您已购买的 Cydia Store 软件包,您可以链接您的帐户以下载它。</string>
+	<key>Package_Unavailable</key>
+	<string>此软件包无法从已安装的源文件中获得,请检查以确保 %@ repo 可用。</string>
+	<key>Provider_Auth_Fail.Title</key>
+	<string>无法验证提供商</string>
+	<key>Purchase_Auth_Complete_Fail.Title</key>
+	<string>无法完成身份验证</string>
+	<key>Purchase_Complete_Fail.Title</key>
+	<string>无法完成购买</string>
+	<key>Purchase_Initiate_Fail.Title</key>
+	<string>无法开始购买</string>
+	<key>Settings_Payment_Provider.Profile.Title</key>
+	<string>无法加载个人资料</string>
+	<key>Sileo_Update_Required.Title</key>
+	<string>需要 Sileo 更新</string>
+	<key>Try_Later</key>
+	<string>请稍后再试。</string>
+	<key>Unknown</key>
+	<string>出现未知错误。</string>
+	<key>Untrusted_Package</key>
+	<string>软件包 %@ 是不受信任的,无法验证。</string>
+</dict>
+</plist>
