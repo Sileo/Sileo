@@ -22,7 +22,7 @@
 "Installation_Error.Body" = "Sileo 無法取得 Root 權限。請使用 SSH 重新安裝 Sileo。";
 
 "FixingDpkg.Title" = "Dpkg 被中斷";
-"FixingDpkg.Body" = "DpkDpkg 被中斷。我們正在嘗試修復問題，請稍候。";
+"FixingDpkg.Body" = "Dpkg 被中斷。我們正在嘗試修復問題，請稍候。";
 
 "Invalid_Data" = "無效資料";
 "Try_Later" = "請稍候再試。";
