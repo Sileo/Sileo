@@ -33,23 +33,23 @@
 	<key>Cydia_Sign_In</key>
 	<string>Cydia Store 登录</string>
 	<key>Dangerous_Repo.Body</key>
-	<string>您正在尝试添加因盗版、非法内容或恶意软件等原因而被认定为有害的存储库。
+	<string>您正在尝试添加因盗版、非法内容或恶意软件等原因而被认定为有害的软件源。
 
-被标记为有害的存储库通常会以免费的付费包或其他恶意软件包的形式分发具有意想不到的效果。这可能会对您的设备和隐私造成持久的影响，甚至有时会影响您的越狱能力。我们建议您要非常谨慎，避免使用有害软件。</string>
+被标记为有害的软件源通常会以免费的付费包或其他恶意软件包的形式分发具有意想不到的效果。这可能会对您的设备和隐私造成持久的影响，甚至有时会影响您的越狱能力。我们建议您要非常谨慎，避免使用有害软件。</string>
 	<key>Dangerous_Repo.Cancel</key>
 	<string>带我回到安全的地方</string>
 	<key>Dangerous_Repo.Continue</key>
 	<string>我接受风险,继续</string>
 	<key>Dangerous_Repo.Last_Chance.Body</key>
-	<string>危险的存储库会对您使用设备或越狱的能力产生破坏性影响。为了您的安全，我们强烈建议您取消添加。</string>
+	<string>危险的软件源会对您使用设备或越狱的能力产生破坏性影响。为了您的安全，我们强烈建议您取消添加。</string>
 	<key>Dangerous_Repo.Last_Chance.Cancel</key>
 	<string>返回</string>
 	<key>Dangerous_Repo.Last_Chance.Continue</key>
 	<string>继续</string>
 	<key>Dangerous_Repo.Last_Chance.Title</key>
-	<string>添加有害回购？?</string>
+	<string>你确定要添加有害的软件源吗？？？</string>
 	<key>Dangerous_Repo.Title</key>
-	<string>危险的回购</string>
+	<string>危险的软件源</string>
 	<key>Dark_Mode_Toggle</key>
 	<string>暗色模式</string>
 	<key>Delete</key>
