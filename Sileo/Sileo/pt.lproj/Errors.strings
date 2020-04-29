@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by Pheux on 2020-04-29.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ PORTUGUESE LOCALISATIONS
+ */
+
+"Unknown" = "Ocorreu um erro desconhecido";
+"Error_Indicator" = "Erro: %@";
+
+"No_Package.Title" = "Não foi encontrado o pacote %@ nas origens atualmente instaladas.";
+"No_Package.Body" = "Se o pacote foi adicionado recentemente, espera que o Sileo acabe de atualizar e de seguida tenta novamente. Para mais ajuda, verifica na internet.";
+
+"Invalid_URL.Title" = "Endereço Inválido<";
+
+"Download_Size_Mismatch" = "Era esperado %@, mas foi descarregado %@.";
+"Download_Failing_Status_Code" = "Falhou com o estado %ld";
+"Download_Hash_Mismatch" = "Era esperado o hash %@, mas obteu-se %@.";
+"Untrusted_Package" = "O pacote %@ não é confiável e não pode ser verificado";
+
+"Insecure_Paid_Download" = "As URLs de pacotes com pagamentos autorizados devem ser seguras (HTTPS";
+
+"Invalid_Payment_Provider_Response" = "O provedor de pagamentos emitiu uma resposta errada.";
+"No_Payment_Provider" = "Este repositório não suporta pagamentos através do Sileo. Se isto é um pacote que compraste previamente na Cydia Store, podes fazer login com a tua conta e fazer a transferência novamente.";
+
+"Package_Unavailable" = "Este pacote está indisponível através das tuas origens. Por favor verifica e certifica-te que o %@ repositório está disponível.";
+
+"Installation_Error.Title" = "Erro de Instalação";
+"Installation_Error.Body" = "O Sileo não conseguiu obter permissões root. Por favor reinstala o Sileo utilizando um terminal ou através de SSH.";
+
+"FixingDpkg.Title" = "Dpkg Interrompido";
+"FixingDpkg.Body" = "Dpkg foi interrompido. Por favor aguarda enquanto tentamos resolver o problema.";
+
+"Invalid_Data" = "Dados inválidos";
+"Try_Later" = "Por favor, tenta mais tarde.";
+
+"Sileo_Update_Required.Title" = "É necessário atualizar o Sileo";
+"Featured_Requires_Sileo_Update" = "É necessária uma atualização do Sileo para visualizares esta aba em destaque. A aba em destaque poderá ser renderizada incorretamente.";
+"Depiction_Requires_Sileo_Update" = "É necessário atualizar o Sileo para visualizar esta página. A página poderá ser renderizada incorretamente.";
+
+"Form_Error.Title" = "Impossível Carregar o Formulário";
+"Form_Load_Error" = "Não conseguimos obter o formulário através do servidor.";
+"Invalid_Form_Data" = "O servidor retornou dados de formulário inválidos.";
+"Form_Submit_Failure" = "Ocorreu um erro ao tentar submeter o formulário: %@";
+"Form_Submit_Error.Title" = "Impossível Enviar o Formulário";
+"Form_Action_Host_Mismatch" = "O host da URL de acesso ao formulário não coincide com o host de origem do formulário.";
+
+"Email_Unavailable.Title" = "Impossível Enviar Email";
+"Email_Unavailable.Body" = "Os serviços de correio eletrónico não estão disponíveis.";
+
+"Settings_Payment_Provider.Profile.Title" = "Impossível Carregar o Perfil";
+
+"Provider_Auth_Fail.Title" = "Impossível Autenticar o Fornecedor";
+"Purchase_Initiate_Fail.Title" = "Impossível Iniciar a Compra";
+"Purchase_Complete_Fail.Title" = "Impossível Completar a Compra";
+"Purchase_Auth_Complete_Fail.Title" = "Impossível Completar a Autenticação";
