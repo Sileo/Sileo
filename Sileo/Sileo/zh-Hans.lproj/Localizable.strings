@@ -67,7 +67,7 @@
 	<key>Download_Starting</key>
 	<string>开始…</string>
 	<key>Downloading_Package_Status</key>
-	<string>下载中</string>
+	<string>正在下载</string>
 	<key>Export</key>
 	<string>导出</string>
 	<key>Export_No</key>
