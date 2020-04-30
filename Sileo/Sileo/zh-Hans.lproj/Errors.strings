@@ -33,7 +33,7 @@
 	<key>Form_Submit_Failure</key>
 	<string>尝试提交表单时发生错误: %@</string>
 	<key>Insecure_Paid_Download</key>
-	<string>付费授权包下载地址必须是安全的[HTTPS]链接。</string>
+	<string>付费软件包的下载地址必须是安全的[HTTPS]链接。</string>
 	<key>Installation_Error.Body</key>
 	<string>Sileo 无法获得 root 权限，
 请使用 SSH 重新安装 Sileo。</string>
@@ -52,7 +52,7 @@
 	<key>No_Package.Title</key>
 	<string>无法在您当前安装的存储库中找到 %@</string>
 	<key>No_Payment_Provider</key>
-	<string>此回购不支持 Sileo 购买。如果这是您已购买的 Cydia Store 软件包,您可以链接您的帐户以下载它。</string>
+	<string>此软件源不支持在 Sileo 购买。如果这是您在 Cydia Store 已购买的软件包,您可以链接您的帐户以下载它。</string>
 	<key>Package_Unavailable</key>
 	<string>此软件包无法从已安装的源文件中获得,请检查以确保 %@ repo 可用。</string>
 	<key>Provider_Auth_Fail.Title</key>
@@ -66,7 +66,7 @@
 	<key>Settings_Payment_Provider.Profile.Title</key>
 	<string>无法加载个人资料</string>
 	<key>Sileo_Update_Required.Title</key>
-	<string>需要 Sileo 更新</string>
+	<string>需要更新 Sileo</string>
 	<key>Try_Later</key>
 	<string>请稍后再试。</string>
 	<key>Unknown</key>
