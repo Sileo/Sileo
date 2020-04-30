@@ -91,7 +91,7 @@
 	<key>Installed_Package_Header</key>
 	<string>已安装此软件包</string>
 	<key>Installing_Package_Status</key>
-	<string>安装中</string>
+	<string>正在安装</string>
 	<key>Licenses_Page_Title</key>
 	<string>许可证</string>
 	<key>Loading</key>
@@ -109,7 +109,7 @@
 	<key>Package_Changelog_Tab</key>
 	<string>更新日志</string>
 	<key>Package_Changelogs_Unavailable</key>
-	<string>更新日志不适用于此程序包。</string>
+	<string>更新日志不适用于此软件包。</string>
 	<key>Package_Details_Tab</key>
 	<string>描述</string>
 	<key>Package_Developer_Find_Action</key>
