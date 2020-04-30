@@ -153,5 +153,5 @@
 "Export" = "Exportar";
 "Export_Packages" = "Gostarias de exportar a tua lista completa de pacotes instalados? Isto irá copiar todos os teus pacotes e as respetivas versões para a tua área de transferências.";
 "Export_Sources" = "Gostarias de exportar a tua lista completa de repositórios? Isto irá fazer uma cópia de todos os repositórios para a tua área de transferências.";
-"Export_Yes" = "Sim, copiar..";
+"Export_Yes" = "Sim, copiar.";
 "Export_No" = "Não, cancelar.";
