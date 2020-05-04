@@ -5,7 +5,7 @@
 	<key>Auto_Add_Pasteboard_Sources.Title</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Automaticamente Adicionar %#@origens@</string>
+		<string>Adicionar Automaticamente %#@origens@</string>
 		<key>sources</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
