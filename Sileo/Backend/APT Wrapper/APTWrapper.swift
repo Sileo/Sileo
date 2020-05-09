@@ -32,8 +32,6 @@ class APTWrapper {
     static let GNUPGEXPSIG = "[GNUPG:] EXPSIG"
     static let GNUPGREVKEYSIG = "[GNUPG:] REVKEYSIG"
     static let GNUPGNODATA = "[GNUPG:] NODATA"
-    static let APTKEYWARNING = "[APTKEY:] WARNING"
-    static let APTKEYERROR = "[APTKEY:] ERROR"
     
     enum DigestState {
         case untrusted,
@@ -232,19 +230,16 @@ class APTWrapper {
         error = "GnuPG not available in iOS Simulator"
         return false
         #endif
-
-	let sileoKeyring = "/tmp/sileokeyring.gpg"
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: sileoKeyring) {
-            try fileManager.removeItem(atPath: sileoKeyring)
-        }
-
-	spawn(command: "/bin/sh", args: ["sh", "/usr/bin/gpg", "--no-default-keyring", "--keyring=\(sileoKeyring)", "--batch", "--yes, "--import", "/etc/apt/trusted.gpg.d/*"])
-	let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/gpg", "-q", "--no-default-keyring", "--keyring=\(sileoKeyring)", "--status-fd", "1", "--verify", key, data])
-	
-	if fileManager.fileExists(atPath: sileoKeyring) {
-            try fileManager.removeItem(atPath: sileoKeyring)
-        }        
+        
+        let bundleID = Bundle.main.infoDictionary?[kCFBundleIdentifierKey as String] ?? ""
+        let sileoTmp = "/tmp/\(bundleID)"
+        let sileoKeyring = sileoTmp + "/keyring.gpg"
+    
+        spawnAsRoot(command: "/usr/bin/mkdir -p \(sileoTmp)")
+        spawnAsRoot(command: "/usr/bin/rm -f \(sileoKeyring)")
+        spawnAsRoot(command: "/usr/bin/gpg -q --no-default-keyring --keyring=\(sileoKeyring) --batch --yes --import /etc/apt/trusted.gpg.d/*.gpg")
+        let (_, output, _) = spawnAsRoot(command: "/usr/bin/gpg -q --no-default-keyring --keyring=\(sileoKeyring) --status-fd 1 --verify \(key) \(data)")
+        spawnAsRoot(command: "/usr/bin/rm -f \(sileoKeyring)")
 
         let outputLines = output.components(separatedBy: "\n")
         
