@@ -232,9 +232,20 @@ class APTWrapper {
         error = "GnuPG not available in iOS Simulator"
         return false
         #endif
-        
-        let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/apt-key", "verify", "-q", "--status-fd", "1", key, data])
-        
+
+	let sileoKeyring = "/tmp/sileokeyring.gpg"
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: sileoKeyring) {
+            try fileManager.removeItem(atPath: sileoKeyring)
+        }
+
+	spawn(command: "/bin/sh", args: ["sh", "/usr/bin/gpg", "--no-default-keyring", "--keyring=\(sileoKeyring)", "--batch", "--yes, "--import", "/etc/apt/trusted.gpg.d/*"])
+	let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/gpg", "-q", "--no-default-keyring", "--keyring=\(sileoKeyring)", "--status-fd", "1", "--verify", key, data])
+	
+	if fileManager.fileExists(atPath: sileoKeyring) {
+            try fileManager.removeItem(atPath: sileoKeyring)
+        }        
+
         let outputLines = output.components(separatedBy: "\n")
         
         var keyIsGood = false
