@@ -1,0 +1,21 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by Pheux on 2020-04-29.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ PORTUGUESE LOCALISATIONS
+*/
+
+"No_Category" = "(Sem Categoria)";
+"Tweaks" = "Tweaks";
+"Themes" = "Temas";
+"Utilities" = "Utilitários";
+"Applications" = "Aplicações";
+"Addons" = "Extensões";
+"Games" = "Jogos";
+"Developer" = "Programador";
+"Data_Storage" = "Armazenamento de Dados";
+"Terminal_Support" = "Suporte de Terminal";
+"Text_Editors" = "Editores de Texto";
