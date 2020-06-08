@@ -249,7 +249,7 @@ class SourcesViewController: UITableViewController {
                                                         
                                                         if let repoURL = addSourceController.textFields?[0].text,
                                                             let url = URL(string: repoURL) {
-                                                            self.handleSourceAdd(urls: [url])
+                                                            self.handleSourceAdd(urls: [url], bypassFlagCheck: false)
                                                         }
         }))
         self.present(addSourceController, animated: true, completion: nil)
@@ -273,7 +273,7 @@ class SourcesViewController: UITableViewController {
         autoPasteboardSourceController.addAction(UIAlertAction(title: addButtonText,
                                                                style: .default,
                                                                handler: { _ in
-                                                                self.handleSourceAdd(urls: sources)
+                                                                self.handleSourceAdd(urls: sources, bypassFlagCheck: false)
                                                                 self.dismiss(animated: true, completion: nil)
         }))
         autoPasteboardSourceController.addAction(UIAlertAction(title: String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Manual"),
@@ -300,11 +300,69 @@ class SourcesViewController: UITableViewController {
         }
     }
     
-    func handleSourceAdd(urls: [URL]) {
-        RepoManager.shared.addRepos(with: urls)
-        self.reloadData()
+    func isSourceFlagged(_ url: URL, completion: @escaping (Bool) -> Void) throws {
+        let apiURL = URL(string: "https://flagged-repo-api.getsileo.app/flagged")!
+        let requestDict = ["url": url.absoluteString]
+        let requestJSON = try JSONSerialization.data(withJSONObject: requestDict, options: [])
         
-        self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+        var request = URLRequest(url: apiURL)
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = requestJSON
+        
+        URLSession.shared.dataTask(with: request) { (data: Data?, _, error: Error?) in
+            if let data = data, error == nil {
+                let isBanned = String(data: data, encoding: .utf8)
+                return completion(isBanned == "true")
+            }
+            print("Failed to check for flagged repo with error: \(error?.localizedDescription ?? "")")
+            return completion(false)
+        }.resume()
+    }
+    
+    func showFlaggedSourceWarningController(url: URL) {
+        let flaggedSourceController = FlaggedSourceWarningViewController(nibName: "FlaggedSourceWarningViewController", bundle: nil)
+        flaggedSourceController.shouldAddAnywayCallback = {
+            self.handleSourceAdd(urls: [url], bypassFlagCheck: true)
+            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+        }
+        flaggedSourceController.url = url
+        flaggedSourceController.modalPresentationStyle = .formSheet
+        
+        present(flaggedSourceController, animated: true)
+    }
+    
+    func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
+        if !bypassFlagCheck {
+            for url in urls {
+                do {
+                    try isSourceFlagged(url) { isFlagged in
+                        DispatchQueue.main.async {
+                            if isFlagged {
+                                return self.showFlaggedSourceWarningController(url: url)
+                            }
+                            
+                            RepoManager.shared.addRepos(with: [url])
+                            self.reloadData()
+                            
+                            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                        }
+                    }
+                } catch {
+                    print("Failed to check if source is flagged.")
+                    
+                    RepoManager.shared.addRepos(with: [url])
+                    self.reloadData()
+                    
+                    self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                }
+            }
+        } else {
+            RepoManager.shared.addRepos(with: urls)
+            self.reloadData()
+            
+            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+        }
     }
 }
 

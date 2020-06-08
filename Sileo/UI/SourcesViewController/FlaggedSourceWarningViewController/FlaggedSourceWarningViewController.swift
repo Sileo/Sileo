@@ -22,6 +22,8 @@ class FlaggedSourceWarningViewController: UIViewController {
     
     @objc var shouldAddAnywayCallback: (() -> Void)?
     
+    var url: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         safetyButton.layer.cornerRadius = 8
@@ -34,6 +36,10 @@ class FlaggedSourceWarningViewController: UIViewController {
                                                       attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         continueButton.setTitle(String(localizationKey: "Dangerous_Repo.Continue"), for: .normal)
         safetyButton.setTitle(String(localizationKey: "Dangerous_Repo.Cancel"), for: .normal)
+        
+        if UIScreen.main.bounds.width < 350 {
+            bodyLabel.font = UIFont.systemFont(ofSize: 14)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,9 +49,15 @@ class FlaggedSourceWarningViewController: UIViewController {
         scrollHairlineConstraint.constant = 1 / view.window!.screen.scale
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
     func presentLastChanceAlert() {
+        let urlString = url?.absoluteString ?? "this repo"
         let lastChanceAlert = UIAlertController(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Title"),
-                                                message: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"),
+                                                message: String(format: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"), urlString),
                                                 preferredStyle: .alert)
         
         lastChanceAlert.addAction(.init(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Cancel"),

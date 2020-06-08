@@ -25,7 +25,6 @@
 "Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登录";
 "Package_Get_Action" = "获取";
 "All_Packages.Title" = "所有软件包";
-"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备\/越狱状态造成破坏性的影响.我们建议您为了设备的安全而取消操作.";
 "By_Author" = "由 %@ 开发";
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Search_Page" = "搜索";

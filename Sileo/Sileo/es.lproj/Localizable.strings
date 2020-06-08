@@ -138,7 +138,6 @@
 "Dangerous_Repo.Continue" = "Acepto los riesgos, continuar";
 "Dangerous_Repo.Cancel" = "Regresar a la seguridad";
 "Dangerous_Repo.Last_Chance.Title" = "Añadir Repo Riesgosa?";
-"Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad.";
 "Dangerous_Repo.Last_Chance.Continue" = "Continuar";
 "Dangerous_Repo.Last_Chance.Cancel" = "Regresar";
 

@@ -145,7 +145,8 @@
 "Dangerous_Repo.Continue" = "I accept the risks, continue";
 "Dangerous_Repo.Cancel" = "Take me back to safety";
 "Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety.";
+"Dangerous_Repo.Last_Chance.Title_URL" = "Add %@?";
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Continue";
 "Dangerous_Repo.Last_Chance.Cancel" = "Go back";
 
