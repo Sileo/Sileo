@@ -101,3 +101,13 @@
 "Installed_Package_Header" = "Kurulu Paket";
 "Licenses_Page_Title" = "Lisanslar";
 "Queued_Install_Heading" = "Kur";
+"Export" = "Dışa Aktar";
+"Export_Packages" = "Paket listenizi dışa aktarmak ister misiniz? Bu, tüm paket adlarını ve sürümlerini panonuza kopyalayacaktır.";
+"Export_Sources" = "Kaynak listenizi dışa aktarmak ister misiniz? Bu, tüm kaynak URL'lerini panonuza kopyalayacaktır.";
+"Export_Yes" = "Evet, kopyala.";
+"Export_No" = "Hayır, iptal et.";
+"Dangerous_Repo.Last_Chance.Title_URL" = "%@ 'yı Ekle?";
+"Dangerous_Repo.Last_Chance.Body" = "Tehlikeli depolar, cihazınızı veya jailbreak'i kullanma beceriniz üzerinde yıkıcı etkilere sahip olabilir. Kendi güvenliğiniz için geri dönmenizi şiddetle tavsiye ederiz. %@ 'i Eklemek istediğinizden emin misiniz?";
+"Settings" = "Ayarlar";
+"Settings_Page_Title" = "Ayarlar";
+"Dark_Mode_Toggle" = "Karanlık Mod";
