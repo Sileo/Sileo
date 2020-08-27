@@ -73,9 +73,11 @@
 	<key>Export_No</key>
 	<string>取消</string>
 	<key>Export_Packages</key>
-	<string>您要导出已安装的软件包清单吗？这会将所有软件包名称及其版本复制到剪贴板。</string>
+	<string>您要导出已安装的软件包清单吗？
+这会将所有软件包名称及其版本复制到剪贴板。</string>
 	<key>Export_Sources</key>
-	<string>您要导出源列表吗？这会将将所有源的源地址复制到剪贴板。</string>
+	<string>您要导出源列表吗？
+这会将将所有源的源地址复制到剪贴板。</string>
 	<key>Export_Yes</key>
 	<string>导出</string>
 	<key>Featured_Page</key>
@@ -189,9 +191,9 @@
 	<key>Search_Page</key>
 	<string>搜索</string>
 	<key>Settings</key>
-	<string>便好设置</string>
+	<string>偏好设置</string>
 	<key>Settings_Page_Title</key>
-	<string>便好设置</string>
+	<string>偏好设置</string>
 	<key>Settings_Payment_Provider.No_Purchases</key>
 	<string>没有购买记录</string>
 	<key>Settings_Payment_Provider.Purchases_Heading</key>
@@ -206,6 +208,12 @@
 	<string>显示细节</string>
 	<key>Show_Package_Contents_Button</key>
 	<string>显示文件系统内容</string>
+	<key>Sileo_Adaptive</key>
+	<string>自适应</string>
+	<key>Sileo_Dark</key>
+	<string>暗黑</string>
+	<key>Sileo_Light</key>
+	<string>高亮</string>
 	<key>Sort_By</key>
 	<string>排列方式:</string>
 	<key>Sort_Date</key>
@@ -214,6 +222,12 @@
 	<string>名称</string>
 	<key>Sources_Page</key>
 	<string>软件源</string>
+	<key>System</key>
+	<string>跟随系统</string>
+	<key>Theme</key>
+	<string>主题</string>
+	<key>Tint_Color</key>
+	<string>主色调</string>
 	<key>Untitled_Form</key>
 	<string>无标题表格</string>
 	<key>Untitled_Repo</key>
