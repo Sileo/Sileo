@@ -13,7 +13,7 @@
 "Installation_Error.Title" = "Kurulum Hatası";
 "FixingDpkg.Body" = "Dpkg yarıda kesildi. Sorunu gidermeye çalışırken lütfen bekleyin.";
 "Email_Unavailable.Title" = "E-Posta Gönderilemedi";
-"No_Payment_Provider" = "Bu depo Sileo alımlarını desteklememektedir. Bu, daha önce satın almış olduğunuz bir Cydia Store paketi ise, indirmek için hesabınızı bağlayabilirsiniz.";
+"No_Payment_Provider" = "Bu kaynak Sileo alımlarını desteklememektedir. Bu, daha önce satın almış olduğunuz bir Cydia Store paketi ise, indirmek için hesabınızı bağlayabilirsiniz.";
 "Try_Later" = "Daha sonra tekrar deneyin.";
 "Sileo_Update_Required.Title" = "Sileo Güncellemesi Gerekli";
 "Form_Submit_Error.Title" = "Form Gönderilemedi";
@@ -22,14 +22,14 @@
 "Form_Error.Title" = "Form Yüklenemedi";
 "Download_Hash_Mismatch" = "Beklenen %@, %@ ile uyuşmuyor.";
 "Unknown" = "Bilinmeyen bir hata oluştu.";
-"Package_Unavailable" = "Bu paket ekli kaynaklarınızda mevcut değil. Lütfen %@ deposunun mevcut olduğundan emin olmak için kontrol edin.";
+"Package_Unavailable" = "Bu paket ekli kaynaklarınızda mevcut değil. Lütfen %@ kaynağının mevcut olduğundan emin olmak için kontrol edin.";
 "FixingDpkg.Title" = "Dpkg Kesildi";
 "Purchase_Initiate_Fail.Title" = "Satın Alma İşlemi Başlatılamadı";
-"No_Package.Title" = "%@ paketi şu anda eklediğiniz depolarda bulunamadı.";
+"No_Package.Title" = "%@ paketi şu anda eklediğiniz kaynaklarda bulunamadı.";
 "Invalid_Data" = "Geçersiz Veri";
 "Provider_Auth_Fail.Title" = "Sağlayıcı Kimliği Doğrulanamadı";
 "Error_Indicator" = "Hata: %@";
 "Installation_Error.Body" = "Sileo, kök izinlerini alamadı. Lütfen SSH kullanarak Sileo'yu tekrar kurun.";
 "Invalid_URL.Title" = "Geçersiz URL";
-"Form_Action_Host_Mismatch" = "Form işleminin URL ana sunucusu, formun başlangıç ​​ana sunucusu ile eşleşmiyor.";
+"Form_Action_Host_Mismatch" = "Form işleminin URL ana sunucusu, formun başlangıç ana sunucusu ile eşleşmiyor.";
 "Featured_Requires_Sileo_Update" = "Öne çıkan sekmeyi görüntülemek için bir Sileo güncellemesi gerekir. Öne çıkan sekme yanlış oluşturulmuş olabilir.";
