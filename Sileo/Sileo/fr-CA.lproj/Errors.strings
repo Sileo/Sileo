@@ -1,0 +1,60 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ BASE (English) LOCALISATIONS
+ */
+
+"Unknown" = "Il y a eu un erreur inconnu.";
+"Error_Indicator" = "Erreur: %@";
+
+"No_Package.Title" = "Incapable de trouver %@ dans les sources actuellement installés";
+"No_Package.Body" = "Si c'est nouveau, veuillez attendre que Sileo finisse sa mise à jour, et re-essayez. Pour plus d'aide, recherchez en ligne.";
+
+"Invalid_URL.Title" = "Addresse invalide.";
+
+"Download_Size_Mismatch" = "Taille attendue était %@, reçu %@ au lieu.";
+"Download_Failing_Status_Code" = "Échec avec état %ld";
+"Download_Hash_Mismatch" = "Hachage attendu était %@, reçu %@ au lieu.";
+"Untrusted_Package" = "Le paquet %@ ne peut pas être vérifié.";
+
+"Insecure_Paid_Download" = "L'addresse de téléchargement pour un paquet ayant authorisé les paiements doit être sécurisé (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Le fournisseur de service de paiement a rendu une réponse non-valide.";
+"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez attacher votre compte pour le télécharger.";
+
+"Package_Unavailable" = "Ce paquet n'est pas disponible dans vos sources installés. Veuillez vérifier que la source %@ est disponible.";
+
+"Installation_Error.Title" = "Erreur d'Installation";
+"Installation_Error.Body" = "Sileo n'a pas été capable d'obtenir des permissions root. Veuillez réinstaller Sileo en utilisant le SSH.";
+
+"FixingDpkg.Title" = "Intérruption de Dpkg";
+"FixingDpkg.Body" = "Dpkg a été intérrompu. Veuillez attendre que nous essayons de réparer le problème.";
+
+"Invalid_Data" = "Données non-valides";
+"Try_Later" = "Ré-essayer plus tard, s'il vous plaît.";
+
+"Sileo_Update_Required.Title" = "Une mise à jour de Sileo est requise";
+"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet de paquets mise en vedette. Cet onglet sera possiblement rendu incorrectement.";
+"Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. La page sera possiblement rendu incorrectement.";
+
+"Form_Error.Title" = "Incapable de charger le formulaire";
+"Form_Load_Error" = "Le formulaire n'a pas pu être rendu par le serveur.";
+"Invalid_Form_Data" = "Le serveur a rendu des données invalides.";
+"Form_Submit_Failure" = "Un erreur s'est produit en essayant de soumettre le formulaire: %@";
+"Form_Submit_Error.Title" = "Incapable de soumettre le formulaire";
+"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"L'hébergeur de l'addresse de l'action du formulaire n'est pas égal à celui de l'origine du formulaire.";
+
+"Email_Unavailable.Title" = "Incapable d'envoyer le courriel";
+"Email_Unavailable.Body" = "Les services de courriel ne sont pas disponibles.";
+
+"Settings_Payment_Provider.Profile.Title" = "Incapable de charger le profil";
+
+"Provider_Auth_Fail.Title" = "Incapable de vérifier le fournisseur";
+"Purchase_Initiate_Fail.Title" = "Incapable d'initier l'achat";
+"Purchase_Complete_Fail.Title" = "Incapable de compléter l'achat";
+"Purchase_Auth_Complete_Fail.Title" = "Incapable de compléter la vérification";

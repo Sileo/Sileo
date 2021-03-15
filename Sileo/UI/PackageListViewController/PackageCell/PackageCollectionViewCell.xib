@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PackageCollectionViewCell" customModule="Sileo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tweak Icon" translatesAutoresizingMaskIntoConstraints="NO" id="it9-7N-8bk" customClass="PackageIconView" customModule="Sileo" customModuleProvider="target">
+                        <rect key="frame" x="16" y="7" width="40" height="40"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="AUL-hL-gcB"/>
+                            <constraint firstAttribute="height" constant="40" id="Zqk-iO-xQ0"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="sby-cE-NzL"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vqU-Sn-vx9"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOC-zg-ysw">
+                        <rect key="frame" x="72" y="29.5" width="232" height="17"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q0-OR-u7v">
+                        <rect key="frame" x="72" y="49.5" width="232" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfK-b9-MQX" customClass="SileoSeparatorView" customModule="Sileo" customModuleProvider="target">
+                        <rect key="frame" x="72" y="72" width="248" height="1"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EIV-66-wAA"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="kSf-7z-r3S">
+                        <rect key="frame" x="72" y="7" width="232" height="20.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJu-AY-hsk">
+                                <rect key="frame" x="0.0" y="5.5" width="10" height="10"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="kBh-bs-eQS"/>
+                                    <constraint firstAttribute="width" constant="10" id="uaz-2g-ksA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTX-Eh-SPw">
+                                <rect key="frame" x="16" y="0.0" width="216" height="20.5"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kSf-7z-r3S" secondAttribute="trailing" constant="16" id="0ad-aB-cVk"/>
+                <constraint firstItem="9Q0-OR-u7v" firstAttribute="top" secondItem="KOC-zg-ysw" secondAttribute="bottom" constant="3" id="2QX-BO-PrU"/>
+                <constraint firstAttribute="trailing" secondItem="vfK-b9-MQX" secondAttribute="trailing" id="7Wb-j9-dBZ"/>
+                <constraint firstAttribute="trailing" secondItem="KOC-zg-ysw" secondAttribute="trailing" constant="16" id="AjQ-Yg-VLT"/>
+                <constraint firstAttribute="bottom" secondItem="vfK-b9-MQX" secondAttribute="bottom" id="IMU-5L-iiR"/>
+                <constraint firstItem="vfK-b9-MQX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="72" id="Jar-G9-OZ2"/>
+                <constraint firstAttribute="trailing" secondItem="9Q0-OR-u7v" secondAttribute="trailing" constant="16" id="V8c-Nl-vnN"/>
+                <constraint firstItem="it9-7N-8bk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="WgU-Vi-zGr"/>
+                <constraint firstItem="9Q0-OR-u7v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="72" id="aCH-fu-dAX"/>
+                <constraint firstItem="KOC-zg-ysw" firstAttribute="top" secondItem="kSf-7z-r3S" secondAttribute="bottom" constant="2" id="hLd-kS-LA1"/>
+                <constraint firstItem="kSf-7z-r3S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="kR2-01-07m"/>
+                <constraint firstItem="it9-7N-8bk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="xtP-nQ-woV"/>
+                <constraint firstItem="kSf-7z-r3S" firstAttribute="leading" secondItem="it9-7N-8bk" secondAttribute="trailing" constant="16" id="xws-5l-kzR"/>
+                <constraint firstItem="KOC-zg-ysw" firstAttribute="leading" secondItem="it9-7N-8bk" secondAttribute="trailing" constant="16" id="y26-bv-iDn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="authorLabel" destination="KOC-zg-ysw" id="awz-5T-GQX"/>
+                <outlet property="descriptionLabel" destination="9Q0-OR-u7v" id="Gu1-Ne-jX5"/>
+                <outlet property="imageView" destination="it9-7N-8bk" id="tyj-mI-IEW"/>
+                <outlet property="separatorView" destination="vfK-b9-MQX" id="7gE-zz-OUM"/>
+                <outlet property="titleLabel" destination="PTX-Eh-SPw" id="PUK-i2-bmm"/>
+                <outlet property="unreadView" destination="AJu-AY-hsk" id="Og4-kL-Raj"/>
+            </connections>
+            <point key="canvasLocation" x="134" y="129"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Tweak Icon" width="40" height="40"/>
+    </resources>
+</document>

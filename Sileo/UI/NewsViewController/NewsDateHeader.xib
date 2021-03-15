@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="PackageListHeader" customModule="Sileo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-Rb-AnK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <items/>
+                </toolbar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tER-hV-Qnl" customClass="SileoContentView" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="15" y="15" width="181.5" height="24"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 FEBRUARY 2019, 2:34 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqr-mH-ppT">
+                            <rect key="frame" x="10" y="0.0" width="161.5" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Jqr-mH-ppT" secondAttribute="trailing" constant="10" id="7dE-5p-qd5"/>
+                        <constraint firstAttribute="bottom" secondItem="Jqr-mH-ppT" secondAttribute="bottom" id="A5y-dZ-Zl7"/>
+                        <constraint firstItem="Jqr-mH-ppT" firstAttribute="top" secondItem="tER-hV-Qnl" secondAttribute="top" id="bNe-jI-fI3"/>
+                        <constraint firstItem="Jqr-mH-ppT" firstAttribute="leading" secondItem="tER-hV-Qnl" secondAttribute="leading" constant="10" id="s8x-2o-gZq"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="bottom" secondItem="9Gg-ye-v9C" secondAttribute="bottom" constant="-10" id="4wt-0D-Hv1"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" id="94u-Kc-K6a"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="trailing" secondItem="9Gg-ye-v9C" secondAttribute="trailing" id="HhK-Km-n3O"/>
+                <constraint firstItem="bUD-Rb-AnK" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" id="JXK-KF-dt5"/>
+                <constraint firstItem="tER-hV-Qnl" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" constant="15" id="Pwi-pD-eSc"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tER-hV-Qnl" secondAttribute="trailing" constant="15" id="fki-tJ-xaU"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="tER-hV-Qnl" secondAttribute="bottom" constant="15" id="j3L-KV-fSi"/>
+                <constraint firstItem="tER-hV-Qnl" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="15" id="rvZ-jM-z0D"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="9Gg-ye-v9C"/>
+            <connections>
+                <outlet property="label" destination="Jqr-mH-ppT" id="gjN-Nc-VeT"/>
+                <outlet property="toolbar" destination="bUD-Rb-AnK" id="Zzj-y9-EfQ"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

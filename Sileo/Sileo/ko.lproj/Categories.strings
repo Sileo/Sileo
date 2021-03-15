@@ -1,0 +1,22 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+  Modified by PeterDev on 2019-05-03.
+ 
+ Korean LOCALISATIONS
+*/
+
+"No_Category" = "(분류 안됨)";
+"Tweaks" = "트윅";
+"Themes" = "테마";
+"Utilities" = "유틸리티";
+"Applications" = "애플리케이션";
+"Addons" = "애드온";
+"Games" = "게임";
+"Developer" = "개발자";
+"Data_Storage" = "저장 공간";
+"Terminal_Support" = "터미널 지원";
+"Text_Editors" = "텍스트 편집기";

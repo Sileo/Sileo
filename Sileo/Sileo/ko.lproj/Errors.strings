@@ -1,0 +1,60 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+  Modified by PeterDev on 2019-05-03.
+ 
+ Korean LOCALISATIONS
+ */
+
+"Unknown" = "알수 없는 에러 발생.";
+"Error_Indicator" = "에러: %@";
+
+"No_Package.Title" = "%@ 패키지를 현재 설치된 리포에서 찾을 수 없습니다.";
+"No_Package.Body" = "만약 새로운 패키지라면, Sileo가 업데이트 되기를 기다려주세요, 그리고 다시 시도하세요. 더 많은 도움을 위해 온라인을 확인하세요.";
+
+"Invalid_URL.Title" = "유효하지 않은 URL";
+
+"Download_Size_Mismatch" = "예상된 크기 %@, 하지만 받은 크기 %@.";
+"Download_Failing_Status_Code" = "%ld 상태로 실패";
+"Download_Hash_Mismatch" = "예상된 해시값 %@, 하지만 받은 해시값 %@.";
+"Untrusted_Package" = "%@ 패키지는 확인되지 않았습니다";
+
+"Insecure_Paid_Download" = "유료 패키지의 다운로드 URL은 무조건 보호되어야 합니다 (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "결제 제공자의 유효하지 않은 반응으로 문제가 발생하였습니다.";
+"No_Payment_Provider" = "이 리포는 Sileo에서의 결제를 지원하지 않습니다. 만약 Cydia Store에서 이미 결제된 패키지라면, 계정을 연동하여 설치할 수 있습니다.";
+
+"Package_Unavailable" = "이 패키지는 현재 설치된 리포에서 찾을 수 없습니다. %@리포가 있는지 확인해주세요.";
+
+"Installation_Error.Title" = "설치 에러";
+"Installation_Error.Body" = "Sileo가 루트 권한을 얻는데 실패했습니다. SSH를 사용하여 Sileo를 재설치해주세요.";
+
+"FixingDpkg.Title" = "Dpkg 중단됨";
+"FixingDpkg.Body" = "Dpkg가 중단되었습니다. 이 문제를 해결할 때 까지 잠시만 기다려주세요.";
+
+"Invalid_Data" = "유효하지 않은 데이터";
+"Try_Later" = "잠시 후에 다시 시도해주세요.";
+
+"Sileo_Update_Required.Title" = "Sileo업데이트가 필요합니다";
+"Featured_Requires_Sileo_Update" = "추천 탭을 보기 위해서 Sileo의 업데이트가 필요합니다. 추천 탭이 잘못 표시될 수도 있습니다.";
+"Depiction_Requires_Sileo_Update" = "이 페이질를 보기 위해서 Sileo의 업데이트가 필요합니다. 페이지가 잘못 표시될 수도 있습니다.";
+
+"Form_Error.Title" = "양식 가져오기 실패";
+"Form_Load_Error" = "서버에서 양식을 가져오지 못했습니다.";
+"Invalid_Form_Data" = "서버에서 유효하지 않은 데이터를 받았습니다.";
+"Form_Submit_Failure" = "이 양식을 전송하는데 문제가 발생하였습니다: %@";
+"Form_Submit_Error.Title" = "양식 전송 실패";
+"Form_Action_Host_Mismatch" = "양식 URL 호스트가 원본 호스트와 일치하지 않음.";
+
+"Email_Unavailable.Title" = "이메일을 전송할 수 없습니다.";
+"Email_Unavailable.Body" = "이메일 서비스가 존재하지 않습니다.";
+
+"Settings_Payment_Provider.Profile.Title" = "프로필을 불러올 수 없습니다.";
+
+"Provider_Auth_Fail.Title" = "공급자를 인증할 수 없습니다";
+"Purchase_Initiate_Fail.Title" = "구매를 시작할 수 없습니다";
+"Purchase_Complete_Fail.Title" = "구매를 완료할 수 없습니다";
+"Purchase_Auth_Complete_Fail.Title" = "인증을 완료할 수 없습니다";

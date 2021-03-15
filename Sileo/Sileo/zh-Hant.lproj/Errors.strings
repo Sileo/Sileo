@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by Hayden Seay on 2020-07-24.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ Chinese Traditional LOCALISATIONS
+ */
+
+"Unknown" = "發生了一個未知錯誤.";
+"Error_Indicator" = "錯誤: %@";
+
+"No_Package.Title" = "無法在 %@ 個已經安裝的軟體來源中找到這個軟體包.";
+"No_Package.Body" = "如果這是剛剛出現的,請等待Sileo完成刷新,詳情請查看在線幫助.";
+
+"Invalid_URL.Title" = "無效 URL";
+
+"Download_Size_Mismatch" = "文件大小應為 %@, 獲得了 %@.";
+"Download_Failing_Status_Code" = "失敗,錯誤碼 %ld";
+"Download_Hash_Mismatch" = "Hash應為 %@, 獲得了 %@.";
+"Untrusted_Package" = "軟體包 %@ 無法被驗證並且不可信任";
+
+"Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过SSL加密 (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "此付款服務提供商處理了一個錯誤的請求.";
+"No_Payment_Provider" = "這個軟體來源不支援通過Sileo付款. 如果在Cydia Store中購買過此軟體包, 請鏈接到Cydia Store賬戶以下載此軟體包.";
+
+"Package_Unavailable" = "這個軟體包在已安裝的軟體來源中不可用. 請檢查以確保軟體來源 %@ 可用.";
+
+"Installation_Error.Title" = "安裝錯誤";
+"Installation_Error.Body" = "Sileo無法獲取Root權限. 請通過SSH重新安裝Sileo.";
+
+"FixingDpkg.Title" = "Dpkg被中断";
+"FixingDpkg.Body" = "Dpkg被中斷. 請等待我們修復此問題.";
+
+"Invalid_Data" = "無效數據";
+"Try_Later" = "請稍後重試.";
+
+"Sileo_Update_Required.Title" = "需要更新Sileo";
+"Featured_Requires_Sileo_Update" = "需要更新Sileo以查看精選頁面. 不更新可能會導致精選頁面出現渲染錯誤.";
+"Depiction_Requires_Sileo_Update" = "需要更新Sileo以查看此頁面. 這個頁面可能會出現渲染錯誤.";
+
+"Form_Error.Title" = "無法加載表單";
+"Form_Load_Error" = "無法從服務器載入此表單.";
+"Invalid_Form_Data" = "此服務器提供了無效的表單數據.";
+"Form_Submit_Failure" = "在下載此表單時發生了錯誤: %@";
+"Form_Submit_Error.Title" = "無法提交表單";
+"Form_Action_Host_Mismatch" = "表單操作的URL主機與表單的源主機不匹配.";
+
+"Email_Unavailable.Title" = "無法發送郵件";
+"Email_Unavailable.Body" = "郵件服務不可用.";
+
+"Settings_Payment_Provider.Profile.Title" = "無法加載資料";
+
+"Provider_Auth_Fail.Title" = "無法驗證提供商";
+"Purchase_Initiate_Fail.Title" = "無法初始化付款";
+"Purchase_Complete_Fail.Title" = "無法完成付款";
+"Purchase_Auth_Complete_Fail.Title" = "無法完成驗證";
