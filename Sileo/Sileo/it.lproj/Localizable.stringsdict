@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Aggiungi la seguente %#@urls@ che hai precedentemente copiato:</string>
+		<key>urls</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>URL</string>
+			<key>other</key>
+			<string>URLs</string>
+		</dict>
+	</dict>
+	<key>Auto_Add_Pasteboard_Sources.Button.Add</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Aggiungi %lu %#@sources@</string>
+		<key>sources</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>Sorgente</string>
+			<key>other</key>
+			<string>Sorgenti</string>
+		</dict>
+	</dict>
+	<key>Auto_Add_Pasteboard_Sources.Title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Aggiungi automaticamente %lu %#@sources@</string>
+		<key>sources</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>Sorgente</string>
+			<key>other</key>
+			<string>Sorgenti</string>
+		</dict>
+	</dict>
+	<key>Package_Queue_Count</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@packages@</string>
+		<key>packages</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d Pacchetto</string>
+			<key>other</key>
+			<string>%d Pacchetti</string>
+			<key>zero</key>
+			<string>Nessun Pacchetto</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

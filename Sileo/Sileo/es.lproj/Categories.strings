@@ -1,0 +1,21 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by OfficialHoSay on 2019-04-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ SPANISH LOCALISATIONS
+*/
+
+"No_Category" = "(Sin Categoría)";
+"Tweaks" = "Tweaks";
+"Themes" = "Temas";
+"Utilities" = "Utilidades";
+"Applications" = "Aplicaciones";
+"Addons" = "Addons";
+"Games" = "Juegos";
+"Developer" = "Desarrollador";
+"Data_Storage" = "Almacenamiento de Datos";
+"Terminal_Support" = "Soporte para Terminal";
+"Text_Editors" = "Editores de Texto";

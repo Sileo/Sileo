@@ -1,0 +1,21 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by Hayden Seay on 2020-07-24.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ Chinese Traditional LOCALISATIONS
+*/
+
+"No_Category" = "(無分類)";
+"Tweaks" = "插件";
+"Themes" = "主題";
+"Utilities" = "工具";
+"Applications" = "應用程式";
+"Addons" = "附加";
+"Games" = "遊戲";
+"Developer" = "開發者";
+"Data_Storage" = "數據儲存";
+"Terminal_Support" = "終端機支援";
+"Text_Editors" = "文本編輯";

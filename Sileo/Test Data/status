@@ -1,0 +1,2538 @@
+Package: gsc.main-screen-pitch
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 326
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.classicfolders2
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 2712
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 2.1.2
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), ldid
+Conflicts: org.coolstar.classicfolders
+Description: Bring back iOS 6 folders to iOS 8 - 11!
+Author: CoolStar & Jeremy Goulet <coolstarorganization@gmail.com>
+Name: ClassicFolders 2
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=classicfolders2Dp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=classicfolders2Dp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: coolstar
+Tag: cydia::commercial, purpose::extension, role::enduser, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+Icon: file:///Library/PreferenceBundles/ClassicFoldersSettings.bundle/icon-29@2x.png
+
+Package: shell-cmds
+Status: install ok installed
+Priority: important
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 203
+Provides: killall, which
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: killall, mktemp, renice, time, which
+
+Package: gsc.display-mirroring
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.has-thin-bezel
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.microphone
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: unrar
+Status: install ok installed
+Priority: optional
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 5.5.8
+Depends: cy+cpu.arm64
+Description: de-compresses files in rar format
+Tag: purpose::console, role::hacker
+
+Package: gsc.panorama-camera-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-supports-navigation
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.cellular-telephony-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: firmware-sbin
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 36
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 0-1
+Replaces: system-cmds (<= 433.4-11), diskdev-cmds (<= 421.7-3)
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: represents Telesphoreo / iPhoneOS conflicts
+Name: iPhone Firmware (/sbin)
+
+Package: gsc.proximity-sensor
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.gps
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.air-drop-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.alexzielenski.zeppelin
+Status: install ok installed
+Priority: extra
+Section: Tweaks
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Architecture: iphoneos-arm
+Version: 2.1.0-12
+Depends: firmware (>= 4.2), mobilesubstrate, preferenceloader
+Description: Replaces carrier text with an image!
+Name: Zeppelin
+Icon: http://i.imgur.com/tvLxnB5.png
+Author: Alex Zielenski <support@alexzielenski.com>
+Depiction: http://modmyi.com/info/zeppelin.d.php
+Homepage: http://modmyi.com/info/zeppelin.php
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: gsc.dictation
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.aids.makecydiabuyagain
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 136
+Maintainer: Jake Ihasz
+Architecture: iphoneos-arm
+Version: 1.0-1+debug
+Depends: mobilesubstrate
+Description: Enable Cydia to purchase any package on iOS 11+
+Name: MakeCydiaBuyAgain
+Author: Jake Ihasz
+
+Package: gsc.personal-hotspot
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.wifi
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.stand-alone-contacts
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.accessibility
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: apt7
+Status: install ok installed
+Priority: standard
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.8
+Replaces: apt (<< 1:0-1)
+Depends: apt7-key, apt7-lib (>= 1.4.8), berkeleydb, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: the advanced packaging tool from Debian
+Name: APT 1.4 Strict
+
+Package: base
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 264
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1-4
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: underlying system directory structure
+Name: Base Structure
+
+Package: cy+cpu.arm64
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 0
+Description: virtual CPU dependency
+Tag: role::cydia
+
+Package: gsc.3-gvenice
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.rear-camera-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.allow-you-tube-plugin
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.contains-cellular-radio
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: grep
+Status: install ok installed
+Priority: important
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.1
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: searches files for regular expressions
+Homepage: http://www.gnu.org/software/grep/
+
+Package: gsc.encode-aac
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: apt7-key
+Status: install ok installed
+Priority: standard
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.8
+Replaces: apt (<< 1:0-1), apt7 (<< 0.7.20.2-4)
+Depends: apt7-lib (>= 1.4.8), cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: repository encryption key management tool
+Name: APT 1.4 (apt-key)
+
+Package: gsc.youtube
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.hidpi
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.unified-ipod
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.chpwn.iconsupport
+Status: install ok installed
+Section: Development
+Installed-Size: 244
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.11.0-1
+Depends: mobilesubstrate, firmware (>= 6.0) | jp.ashikase.bugfix.stuckpages, firmware (>= 6.0) | jp.ashikase.bugfix.duplicateicons
+Pre-Depends: firmware (>= 3.0), firmware (<< 12.0)
+Description: Support library for safe icon tweaks.
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=iconsupportData
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=iconsupportData
+Author: Lance Fetters (ashikase) <support@ashikase.com>
+Name: IconSupport
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: ashikase
+Tag: role::developer, purpose::extension
+
+Package: gsc.forward-camera-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.main-screen-width
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 750
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.auto-focus-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.tigisoftware.filza64bit
+Status: deinstall ok config-files
+Section: Utilities
+Installed-Size: 21052
+Maintainer: TIGI Software
+Architecture: iphoneos-arm
+Version: 3.5.0-13
+Config-Version: 3.5.0-13
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7+. This special version only supports 64-bit devices
+Name: Filza File Manager 64-bit
+Author: TIGI Software
+
+Package: debianutils
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 4.8.4
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: pretty much just run-parts. yep? run-parts
+Name: Debian Utilities
+
+Package: iokittools
+Status: install ok installed
+Priority: important
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 108
+Depends: ncurses, cy+cpu.arm64
+Description: ioalloccount, ioclasscount, ioreg
+Name: IOKit Tools
+Tag: purpose::console, role::hacker
+
+Package: pincrush
+Status: install ok installed
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.9.2-2
+Description: optimize PNGs just like Apple does
+ pincrush is an open, cross-platform alternative to Apple's proprietary PNG mangler, to optimize PNGs for display on iPhoneOS devices.
+Name: pincrush
+Author: Dustin Howett <dustin@howett.net>
+Homepage: http://howett.net/pincrush
+Tag: purpose::console, role::hacker
+
+Package: sudo
+Status: install ok installed
+Priority: standard
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.8.17p1
+Depends: cy+cpu.arm64
+Description: temporarily assume root privileges
+Tag: purpose::console, role::hacker
+
+Package: curl
+Status: install ok installed
+Priority: standard
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 7.59.0-1
+Depends: openssl, nghttp2, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: flexible multi-protocol file transfers
+Homepage: http://curl.haxx.se/
+Name: cURL
+
+Package: bash
+Status: install ok installed
+Priority: required
+Section: Terminal_Support
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 4.4.18
+Depends: grep, ncurses (>= 6.1), sed, cy+cpu.arm64
+Description: the best shell ever written by Brian Fox
+Name: Bourne-Again SHell
+Homepage: http://www.gnu.org/software/bash/
+
+Package: gsc.ambient-light-sensor
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: vim
+Status: install ok installed
+Priority: standard
+Section: Text_Editors
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 8.0.1848
+Depends: ncurses (>= 6.1), cy+cpu.arm64
+Description: the best syntax highlighter, ever
+Tag: purpose::console, role::hacker
+Name: Vi IMproved
+
+Package: gsc.wi-fi
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.opengles-2
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.homescreen-wallpaper
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.has-baseband
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: socat
+Status: install ok installed
+Priority: optional
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.7.2.3
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: "netcat++" (post-increment, not pre-)
+Homepage: http://www.dest-unreach.org/socat/
+Name: SOcket CAT
+Tag: purpose::console, role::hacker
+
+Package: lsof
+Status: install ok installed
+Priority: standard
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 62-1
+Depends: ncurses (>= 6.1), cy+cpu.arm64
+Description: shows what files programs have open
+Tag: purpose::console, role::developer
+
+Package: mobilesubstrate
+Status: install ok installed
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 99.0
+Depends: org.coolstar.tweakinject, com.ex.libsubstitute, cy+cpu.arm64
+Description: Compatibility wrapper for Substrate tweaks to work with Tweak Injector + Substitute
+Author: CoolStar <coolstarorganization@gmial.com>
+Name: Substrate Compatibility Layer
+
+Package: com.fortysixandtwo.alkaline
+Status: install ok installed
+Priority: extra
+Section: Tweaks
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Architecture: iphoneos-arm
+Version: 1.3
+Depends: firmware (>= 7.0), mobilesubstrate, preferenceloader
+Description: Themeable status bar battery replacement for iOS 7.
+Name: Alkaline
+Author: magn2o <magn2o@gmail.com>
+Depiction: http://modmyi.com/info/alkaline.d.php
+Homepage: http://modmyi.com/info/alkaline.php
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: gsc.assistant
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: cy+kernel.darwin
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 17.2.0
+Description: virtual kernel dependency
+Tag: role::cydia
+
+Package: org.coolstar.libclassictelephonyui
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 806
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.2-3
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000)
+Description: Assets for ClassicLockscreen, BetterPowerDown
+Name: libClassicTelephonyUI
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libclassictelephonyuiDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libclassictelephonyuiDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: role::hacker, purpose::library, cydia::obsolete, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+
+Package: gzip
+Status: install ok installed
+Priority: required
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.8
+Depends: grep, sed, cy+cpu.arm64
+Description: the standard Unix compression algorithm
+Homepage: http://www.gzip.org/
+
+Package: firmware
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 11.1.2
+Description: almost impressive Apple frameworks
+Tag: role::cydia
+Name: iOS Firmware
+
+Package: gsc.tv-out-crossfade
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.thebigboss.repo.icons
+Status: install ok installed
+Priority: optional
+Section: Repositories
+Installed-Size: 48
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.0
+Replaces: cydia, bigboss
+Description: locally cached package icons from BigBoss
+Name: BigBoss Icon Set
+
+Package: gsc.venice
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: uikittools
+Status: install ok installed
+Priority: optional
+Section: Utilities
+Installed-Size: 944
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.12-coolstar
+Depends: coreutils-bin, cy+cpu.arm64
+Description: UIKit/GraphicsServices command line access
+Name: UIKit Tools
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/uikittools/
+Tag: purpose::console, role::hacker
+
+Package: gsc.regional-behavior-n-t-s-c
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-supports3-d-imagery
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: system-cmds
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 790
+Provides: login, passwd, reboot
+Depends: firmware-sbin, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: iostat, login, passwd, sync, sysctl
+
+Package: gsc.mms
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.still-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.bluetooth
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: cydia-lproj
+Status: install ok installed
+Priority: required
+Section: Packaging
+Installed-Size: 712
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1.1.12
+Replaces: cydia, org.thebigboss.russiancydia
+Provides: org.thebigboss.russiancydia
+Depends: cydia
+Conflicts: org.thebigboss.russiancydia
+Description: languages and translations for Cydia
+Name: Cydia Translations
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/cydia-lproj/
+Tag: purpose::uikit, cydia::essential, role::enduser
+
+Package: gnupg
+Status: install ok installed
+Priority: required
+Section: Security
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.22
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: older encryption compatible with OpenPGP
+Name: GNU Privacy Guard
+Homepage: http://www.gnupg.org/
+
+Package: unzip
+Status: install ok installed
+Priority: important
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 6.0
+Depends: cy+cpu.arm64
+Description: de-compesses files in zip format
+Tag: purpose::console, role::hacker
+
+Package: gsc.video-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.peer-peer
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.multitasking
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.betterpowerdown
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 339
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.4.0
+Replaces: ws.hbang.repower
+Provides: ws.hbang.repower
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), firmware (<< 8.0) | org.coolstar.libclassictelephonyui
+Description: classic iOS 6 style power sliders
+Author: CoolStar <coolstarorganization@gmail.com>
+Name: BetterPowerDown
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=betterpowerdownDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=betterpowerdownDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: coolstar
+Tag: cydia::commercial, purpose::extension, role::enduser, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10
+Icon: file:///Library/PreferenceBundles/BetterPowerDownSettings.bundle/BetterPowerDownSettings@2x.png
+
+Package: com.xandesign.felicity
+Status: install ok installed
+Section: Themes
+Maintainer: XanDesign <unixdesignios@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1
+Description: An Awesome Anemone Theme!
+Name: Felicity
+Homepage: https://twitter.com/xanDesign_
+Author: XanDesign <unixdesignios@gmail.com>
+
+Package: gsc.device-supports9-pin
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.cellular-data
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.ptp-large-files
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.llvm-clang64
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 541112
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 5.0.1-2
+Replaces: org.coolstar.llvm-clang (<< 3.7.1-1)
+Depends: firmware (>= 9.0), cy+cpu.arm64
+Breaks: org.coolstar.llvm-clang (<< 3.7.1-1)
+Description: LLVM, Clang, and LLD 5.0.1 for iOS/arm64
+Name: LLVM+Clang (64 Bit)
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=llvm-clangDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=llvm-clangDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: purpose::console, cydia::obsolete
+
+Package: file
+Status: install ok installed
+Priority: important
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.3
+Depends: cy+cpu.arm64
+Description: guesses the type of a file from contents
+Tag: purpose::console, role::hacker
+
+Package: gsc.allow-you-tube
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gawk
+Status: install ok installed
+Priority: important
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 4.2.1
+Depends: cy+cpu.arm64
+Description: GNU's heavy-weight implementation of awk
+Name: Gawk
+Tag: purpose::console, role::hacker
+
+Package: gsc.additional-text-tones
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.exile90.icleanerpro
+Status: install ok installed
+Section: Utilities
+Maintainer: Ivano Bilenchi <support@ib-soft.net>
+Architecture: iphoneos-arm
+Version: 7.7.0
+Replaces: org.altervista.exilecom.icleaner
+Depends: firmware (>= 4.0), apt7, findutils, shell-cmds
+Conflicts: org.altervista.exilecom.icleaner
+Description: The first real iOS system cleaner & optimizer
+Name: iCleaner Pro
+Author: Ivano Bilenchi <support@ib-soft.net>
+Homepage: http://ib-soft.net/icleaner
+Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
+Icon: file:///Applications/iCleaner.app/Icon.png
+
+Package: darwintools
+Status: install ok installed
+Priority: required
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1-6
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: startupfiletool, sw_vers
+Name: Darwin Tools
+
+Package: tar
+Status: install ok installed
+Priority: required
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.30
+Depends: bzip2, gzip, lzma, cy+cpu.arm64
+Description: tool for making tape archives
+Name: Tape Archive
+Homepage: http://www.gnu.org/software/tar/
+
+Package: gsc.camera-flash
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.main-screen-scale
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 2
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: cydia
+Status: install ok installed
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.30-coolstar6-2
+Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
+Provides: bigbossbetarepo, cydia-sources
+Depends: apt7-lib, apt7-key, cydia-lproj (>= 1.1.10), darwintools, debianutils, dpkg (>= 1.18), org.thebigboss.repo.icons, sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), cy+cpu.arm64
+Pre-Depends: debianutils, dpkg (>= 1.14.25-8)
+Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, ste, yellowsn0w.com, zodttd
+Description: graphical iPhone front-end for APT
+Name: Cydia Installer
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/cydia/
+Icon: file:///Applications/Cydia.app/Icon-60.png
+Tag: purpose::uikit, cydia::essential, role::enduser
+
+Package: gsc.gyroscope
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: zip
+Status: install ok installed
+Priority: important
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.0
+Depends: cy+cpu.arm64
+Description: standard Windows compression tool
+Tag: purpose::console, role::hacker
+
+Package: ws.hbang.common
+Status: deinstall ok config-files
+Priority: optional
+Section: Development
+Installed-Size: 830
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.12
+Config-Version: 1.12
+Depends: preferenceloader, mobilesubstrate, jp.ashikase.techsupport, com.rpetrich.rocketbootstrap
+Description: Support library for tweak settings
+Name: Cephei
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=hashbangcommonDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=hashbangcommonDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: HASHBANG Productions <support@hbang.ws>
+Tag: purpose::extension, cydia::obsolete, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+dev: hbang
+
+Package: uuid
+Status: install ok installed
+Priority: important
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.6.2
+Depends: cy+cpu.arm64
+Description: universally unique identifiers
+Name: UUID Generator
+Tag: purpose::library, purpose::console, role::developer
+
+Package: bzip2
+Status: install ok installed
+Priority: important
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.6
+Depends: cy+cpu.arm64
+Description: compression that's slightly better than gzip
+Homepage: http://www.bzip.org/
+
+Package: gsc.gas-gauge-battery
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: ncurses
+Status: install ok installed
+Priority: required
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 6.1
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: feature-complete terminal library
+Name: New Curses
+
+Package: cy+lib.corefoundation
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1445.32
+Description: virtual corefoundation dependency
+Tag: role::cydia
+
+Package: gsc.main-screen-class
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 8
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.anemonetheming.anemone
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 7680
+Maintainer: AnemoneTeam <anemonetheming@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.5-3
+Replaces: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, com.codethemed.iconbundles, com.idd.iconomatic
+Provides: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, org.coolstar.customclock, com.codethemed.iconbundles, com.idd.iconomatic
+Depends: firmware (>= 7.0), mobilesubstrate, pincrush
+Conflicts: org.coolstar.themelib, anemoneteam.anemone, winterboard, com.codethemed.iconbundles, com.idd.iconomatic
+Description: An awesome theme manager!
+Name: Anemone
+Author: AnemoneTeam <anemonetheming@gmail.com>
+
+Package: com.eswick.harbor11
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 212
+Maintainer: CoolStar
+Architecture: iphoneos-arm
+Version: 1.2-2
+Depends: mobilesubstrate
+Description: OS X-style dock redesigned for touch screens!
+Name: Harbor (iOS 11)
+Author: Evan Swick & CoolStar
+
+Package: org.coolstar.nolargetitles
+Status: install ok installed
+Priority: optional
+Section: Tweaks
+Installed-Size: 67
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.0-1
+Depends: firmware (>= 11.0), mobilesubstrate (>= 0.9.5000)
+Description: Remove the large titles system-wide on iOS 11
+Name: NoLargeTitles
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=nolargetitlesDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=nolargetitlesDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: purpose::extension, compatible::ios11
+
+Package: gsc.hdr-image-capture
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: cy+model.iphone
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 8.1
+Description: virtual model dependency
+Tag: role::cydia
+
+Package: gsc.volume-buttons
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.main-screen-height
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1334
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: nano
+Status: install ok installed
+Priority: standard
+Section: Text_Editors
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.9.7
+Depends: ncurses (>= 6.1), cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: completely free, modern clone of Pico
+
+Package: gsc.rear-facing-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.bluetooth-le
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-supports720p
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.thebigboss.libcolorpicker
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 376
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.6-1
+Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000), preferenceloader
+Description: color picker library for developers
+Name: libcolorpicker
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libcolorpickerDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libcolorpickerDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: PixelFire <pixelfiredev@helpful.io>
+dev: pixelfiredev
+Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, cydia::obsolete
+
+Package: gsc.device-supports3-d-maps
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.tigisoftware.filza
+Status: install ok installed
+Priority: optional
+Section: Utilities
+Installed-Size: 30280
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 3.5.2-1
+Depends: firmware (>= 7.0), zip, unzip, gzip, unrar, p7zip
+Description: File Manager for iOS. Supports iOS 7+
+Name: Filza File Manager
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=filzafilemanagerDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=filzafilemanagerDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: TIGI Software <satashi2009@gmail.com>
+Tag: purpose::uikit, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+dev: satashi2009
+Icon: file:///Applications/Filza.app/AppIcon57x57.png
+
+Package: gsc.device-supports-tethering
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.voip
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.telephony
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.ex.libsubstitute
+Status: install ok installed
+Priority: optional
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.6-coolstar
+Depends: firmware (>= 8.0), cy+cpu.arm64
+Description: Substrate substitute for code substitution (library only)
+Name: Substitute
+Author: comex <comexk+da@gmail.com>
+
+Package: gsc.sms
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.rbt.batterylife
+Status: install ok installed
+Section: Utilities
+Installed-Size: 10525
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.7.0
+Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000), preferenceloader, iokittools
+Conflicts: batterylife
+Description: Displays useful information about battery health
+Author: rbt <batterylife1.7.x@rbtdigital.com>
+Name: BatteryLife
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=batterylifeDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=batterylifeDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: rbtdigital
+Tag: purpose::uikit, role::enduser, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+Icon: file:///Applications/BatteryLife.app/AppIcon57x57.png
+
+Package: top
+Status: install ok installed
+Priority: important
+Section: Administration
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 111.20.1
+Depends: ncurses, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: at-a-glance process watching tool
+
+Package: gsc.external-power-source-connected
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.cctools
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 11712
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 895
+Provides: odcctools
+Depends: openssl, uuid, org.coolstar.ld64
+Conflicts: odcctools
+Description: tools to work with mach-o files
+Name: Darwin CC Tools
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=cctoolsDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=cctoolsDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: purpose::console
+
+Package: gsc.photo-adjustments
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.board-id
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 4
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.hd-video-capture
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.armv6
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-supports1080p
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.location-services
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: p7zip
+Status: install ok installed
+Priority: optional
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 16.02
+Depends: cy+cpu.arm64
+Description: A port of 7za.exe for POSIX systems like Unix
+Name: 7-zip (POSIX)
+Tag: purpose::console, role::hacker
+
+Package: diskdev-cmds
+Status: install ok installed
+Priority: required
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 593-1
+Depends: firmware-sbin, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: mount, quota, fsck, fstyp, fdisk, tunefs
+Tag: purpose::console, role::hacker
+
+Package: gsc.load-thumbnails-while-scrolling
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.gamekit
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.chip-i-d
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 32768
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.ventana
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 674
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.2.1
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
+Description: modern lock screen inspired by Windows 10
+Author: CoolStar & Jeremy Goulet <coolstarorganization@gmail.com>
+Name: Ventana
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ventanaDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ventanaDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: coolstar
+Tag: cydia::commercial, purpose::extension, role::enduser, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+Icon: file:///Library/PreferenceBundles/MetroLockScreenSettings.bundle/icon-29@2x.png
+
+Package: coreutils-bin
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 8.29-1
+Replaces: shell-cmds (<< 118-5), coreutils (<= 7.2-9)
+Provides: dirname, kill, mktemp
+Depends: cy+cpu.arm64
+Conflicts: coreutils (<= 8.29)
+Description: just the /bin folder from GNU coreutils
+Name: Core Utilities (/bin)
+Homepage: http://www.gnu.org/software/coreutils/
+
+Package: gsc.magnetometer
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.any-telephony
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.julioverne.ext3nder-installer
+Status: install ok installed
+Section: Utilities
+Maintainer: Julio, MidnightChips
+Architecture: iphoneos-arm
+Version: 16.7
+Depends: mobilesubstrate
+Pre-Depends: unzip, zip, sed, curl
+Conflicts: com.julioverne.ext3nder
+Description: Cydia Extender Installer With Extra Features, patched for iOS 11: MidnightChips
+Name: Ext3nder Installer
+Author: julioverne, MidnightChips
+Homepage: http://twitter.com/ijulioverne
+Depiction: http://julioverne.github.io/description.html?id=com.julioverne.ext3nder-installer
+
+Package: dpkg
+Status: install ok installed
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.18.24
+Depends: bash, bzip2, coreutils-bin, diffutils, findutils, gzip, lzma, tar, cy+cpu.arm64
+Pre-Depends: tar (>= 1.23)
+Description: package maintenance tools from Debian
+Name: Debian Packager
+Homepage: http://wiki.debian.org/Teams/Dpkg
+
+Package: gsc.device-supports-simplistic-road-mesh
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: com.golddavid.colorbanners2
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 964
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.1.0
+Depends: firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader, org.thebigboss.libcolorpicker (>= 1.1)
+Conflicts: com.golddavid.colorbanners, com.golddavid.colorbanners-cb
+Description: Color your notifications
+Author: David Goldman <help@golddavid.com>
+Name: ColorBanners 2
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=colorbanners2Dp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=colorbanners2Dp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: goldmandavid0
+Tag: cydia::commercial, purpose::extension, compatible::ios10, compatible::ios11
+Icon: file:///Library/PreferenceBundles/ColorBanners2Prefs.bundle/ColorBanners@2x.png
+
+Package: openssl
+Status: install ok installed
+Priority: standard
+Section: Security
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.2n
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: SSL library and cryptographic tools
+Name: OpenSSL
+
+Package: wget
+Status: install ok installed
+Priority: important
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.19
+Depends: cy+cpu.arm64, openssl
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: simple HTTP file transfer client
+Tag: purpose::console, role::hacker
+
+Package: gsc.battery-is-charging
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.international-settings
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: inetutils
+Status: install ok installed
+Priority: standard
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.9.4
+Replaces: coreutils (<< 7.2-6)
+Provides: hostname, ping, telnet
+Depends: ncurses, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: ftp, inetd, ping, rlogin, telnet, tftp
+Homepage: http://www.gnu.org/software/inetutils/
+Tag: purpose::console, role::hacker
+
+Package: com.smokin1337.smartlpm
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 328
+Maintainer: smokin1337
+Architecture: iphoneos-arm
+Version: 1.2.0-2
+Depends: mobilesubstrate
+Description: A smarter low power mode. Low power while device is locked. Turn low power mode on automatically at the battery level you specify. Enable low power while charging. And more....
+Name: SmartLPM
+Author: smokin1337
+
+Package: gsc.io-surface-backed-images
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: diffutils
+Status: install ok installed
+Priority: important
+Section: Development
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.6
+Depends: cy+cpu.arm64
+Description: compare two files for differences
+Name: Diff Utilities
+Homepage: http://www.gnu.org/software/diffutils/
+
+Package: gsc.has-s-e-p
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.hw-encode-snapshots
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: lzma
+Status: install ok installed
+Priority: important
+Section: Archiving
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 5.2.3
+Depends: grep, sed, cy+cpu.arm64
+Description: slower, but better, compression algorithm
+Name: XZ Utils
+Homepage: https://tukaani.org/xz/
+
+Package: gsc.battery-current-capacity
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 100
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.llvm-clang
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 521112
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 3.7.1-1
+Depends: firmware (>= 5.0), firmware (<< 9.0) | org.coolstar.llvm-clang64, firmware (>= 9.0) | org.coolstar.llvm-clang32, cy+cpu.arm64 | org.coolstar.llvm-clang32
+Description: LLVM, Clang, and Compiler for 32/64Bit devices
+Name: LLVM+Clang
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=llvm-clangDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=llvm-clangDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: purpose::console
+
+Package: com.justinpetkovic.youtubetools
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 247
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.7
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader
+Description: Essential toolbox for YouTube app.
+Author: Justin Petkovic <justin.petkovic@hotmail.com>
+Name: YouTube Tools
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=youtubetoolsDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=youtubetoolsDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: justinpet26
+Tag: purpose::extension, compatible::ios9, compatible::ios10, compatible::ios11
+Icon: file:///Library/PreferenceBundles/YouTubeTools.bundle/Icon29x29.png
+
+Package: org.thebigboss.cacerts
+Status: install ok installed
+Priority: optional
+Section: Utilities
+Installed-Size: 251
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 0.0.1-1
+Depends: firmware (>= 2.0)
+Description: CA certs for curl, wget, git.
+Name: CA Certs
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=cacertsDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=cacertsDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: uroboro <uroboro.845@gmail.com>
+Tag: purpose::console, role::hacker
+dev: uroboro
+
+Package: gsc.not-green-tea
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.voice-control
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: ru.domo.cocoatop64
+Status: install ok installed
+Section: Utilities
+Installed-Size: 742
+Maintainer: Domo
+Architecture: iphoneos-arm
+Version: 2.0.2-1+debug
+Conflicts: ru.domo.cocoatop
+Description: Process Viewer for iOS GUI (64-bit)
+Name: CocoaTop
+Author: Domo
+
+Package: com.wizages.bae
+Status: install ok installed
+Priority: optional
+Section: Tweaks
+Installed-Size: 132
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.4
+Depends: firmware (>= 10.0), mobilesubstrate (>= 0.9.5000)
+Description: brings back the apple logo for resprings
+Name: MakeRespringsGreatAgain
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=makerespringsgreatagainDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=makerespringsgreatagainDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: wizages <wizagesmax@gmail.com>
+Tag: purpose::extension, compatible::ios10
+dev: wizages
+
+Package: gsc.watch-companion
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.shoebox
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.encrypted-data-partition
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: findutils
+Status: install ok installed
+Priority: important
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 4.6
+Depends: bash, sed, cy+cpu.arm64
+Description: indexes and searches filesystems
+Name: Find Utilities
+Homepage: http://www.gnu.org/software/findutils/
+
+Package: gsc.hardware-keyboard
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.displayport
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.ringer-switch
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.720p
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.accelerometer
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: apt7-lib
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.8-1
+Replaces: apt (<< 1:0-1), apt7 (<< 0.7.20.2-3), apt7-ssl
+Provides: apt7-ssl
+Depends: bzip2, dpkg (>= 1.14.25-9), gnupg, gzip, lzma, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Breaks: cydia (<< 1.1.10), apt7 (<< 0.7.25.3-7), aptitude (<< 0.4.11.11-6)
+Conflicts: apt7-ssl
+Description: the advanced packaging library from Debian
+Name: APT 1.4 Strict (lib)
+
+Package: preferenceloader
+Status: install ok installed
+Section: System
+Installed-Size: 232
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 2.2.3-3
+Depends: mobilesubstrate
+Description: load preferences in style
+Name: PreferenceLoader
+Author: Dustin Howett <cydia.pl@relay.howett.net>
+dev: dustinhowett
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
+Tag: role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9
+
+Package: gsc.u-i-parallax-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: ldid
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 272
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 2:1.2.2-coolstar
+Description: pseudo-codesign Mach-O files
+Name: Link Identity Editor
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/ldid/
+Tag: purpose::console, role::developer
+
+Package: profile.d
+Status: install ok installed
+Priority: standard
+Section: Administration
+Installed-Size: 28
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 0-2
+Depends: bash
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: makes packaging for /etc/profile reasonable
+Name: Profile Directory
+
+Package: com.samstone.translucentcydia
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 192
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 0.9.0-1
+Depends: mobilesubstrate, firmware (>= 7.0), cydia (>= 1.1.19)
+Description: Prettify the Cydia installation screen
+Name: TranslucentCydia
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=translucentcydiaDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=translucentcydiaDp
+Author: Sam Stone <stonesam92@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: stonesam92
+Tag: purpose::extension, compatible::ios7, compatible::ios8
+
+Package: gsc.has-spring-board
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: cy+os.ios
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 11.1.2
+Description: virtual operating system dependency
+Tag: role::cydia
+
+Package: org.coolstar.tweakinject
+Status: install ok installed
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.6
+Depends: firmware (>= 10.0), cy+cpu.arm64, com.ex.libsubstitute
+Description: General purpose tweak loader with safe mode in case of crashes
+Name: Tweak Injector
+Author: CoolStar <coolstarorganization@gmail.com>
+
+Package: nghttp2
+Status: install ok installed
+Priority: standard
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.31.0
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.24-8)
+Description: HTTP/2 C library
+Homepage: https://nghttp2.org/
+Name: Nghttp2
+
+Package: openssh
+Status: install ok installed
+Priority: important
+Section: Networking
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 7.6p1-4
+Depends: openssl, cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: secure remote access between machines
+Depiction: https://cydia.saurik.com/info/openssh/
+Name: OpenSSH
+Tag: purpose::daemon, purpose::console, role::enduser
+
+Package: gsc.front-facing-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.fcc-logos-via-software
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.opengles-1
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: xyz.evilgoldfish.lockglyphx
+Status: install ok installed
+Priority: optional
+Section: Tweaks
+Installed-Size: 470
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.0.0-1
+Provides: com.evilgoldfish.lockglyph
+Depends: firmware (>= 10.0), mobilesubstrate, preferenceloader, org.thebigboss.libcolorpicker (>= 1.1)
+Conflicts: com.evilgoldfish.lockglyph, com.evilgoldfish.lockglyphx
+Description: Themeable LockScreen Glyph.
+Name: LockGlyphX (iOS 10)
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=lockglyphxDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=lockglyphxDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: evilgoldfish <epdev@icloud.com>
+Tag: purpose::extension, compatible::ios10
+dev: evilgoldfish
+Icon: file:///Library/PreferenceBundles/LockGlyphX.bundle/Icon@2x.png
+
+Package: gsc.signing-fuse
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.all-features
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.photo-stream
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-class-number
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: org.coolstar.ld64
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 8112
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 274.2
+Depends: firmware (>= 5.0)
+Description: linker for building on iOS
+Name: LD64
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ld64Dp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ld64Dp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CoolStar <coolstarorganization@gmail.com>
+dev: coolstar
+Tag: purpose::console
+
+Package: gsc.armv7
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: sed
+Status: install ok installed
+Priority: important
+Section: Utilities
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 4.2.2
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: edits streams of text using patterns
+Homepage: http://www.gnu.org/software/sed/
+
+Package: com.zackh105.nottodaysatan
+Status: install ok installed
+Priority: optional
+Section: Tweaks
+Installed-Size: 165
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 2.7.1
+Depends: mobilesubstrate, firmware (>= 8.0)
+Description: Prevents Telugu characters from crashing SpringBoard
+Name: NotTodaySatan
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=nottodaysatanDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=nottodaysatanDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: Zack Hankewycz <zackh105@gmail.com>
+Tag: purpose::extension, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+dev: zackh105
+
+Package: berkeleydb
+Status: install ok installed
+Priority: standard
+Section: Data_Storage
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 6.2.23
+Depends: cy+cpu.arm64
+Pre-Depends: dpkg (>= 1.14.25-8)
+Description: Oracle's embeddable database engine
+Name: Berkeley DB
+Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
+
