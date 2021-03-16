@@ -55,7 +55,6 @@
 "Untitled_Repo" = "名前の登録されていないリポジトリ";
 "Sort_Name" = "名前";
 "Package_Uninstall_Action" = "アンインストール";
-"Package_Filter_PowerUser" = "パワーユーザー";
 "After_Install_Relaunch" = "Sileoを再起動";
 "Package_Share_Action" = "このパッケージを共有";
 "OK" = "OK";
@@ -72,13 +71,11 @@
 "Package_Hold_Enable_Action" = "アップデートを無効にする";
 "Delete" = "削除";
 "Repos" = "リポジトリ一覧";
-"Package_Filter_Dev" = "開発者";
 "After_Install_Reboot" = "再起動";
 "Package_Search.Placeholder" = "パッケージを検索";
 "Package_Changelogs_Unavailable" = "更新履歴はこのパッケージでは利用できません。";
 "Sources_Page" = "ソース";
 "Featured_Page" = "おすすめ";
-"Package_Filter_User" = "一般ユーザー";
 "Payment_Provider_Sign_Out_Confirm.Title" = "%@からサインアウトする";
 "Package_Upgrade_Action" = "アップデート";
 "Ready_Status" = "ダウンロード済み";

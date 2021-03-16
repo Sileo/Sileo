@@ -55,7 +55,6 @@
 "Untitled_Repo" = "Başlıksız Depo";
 "Sort_Name" = "Ad";
 "Package_Uninstall_Action" = "Kaldır";
-"Package_Filter_PowerUser" = "Üst Düzey";
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "Package_Share_Action" = "Paketi Paylaş…";
 "OK" = "Tamam";
@@ -71,13 +70,11 @@
 "Package_Hold_Enable_Action" = "Güncellemeleri Yoksay";
 "Delete" = "Sil";
 "Repos" = "Depolar";
-"Package_Filter_Dev" = "Geliştirici";
 "After_Install_Reboot" = "Cihazı Yeniden Başlat";
 "Package_Search.Placeholder" = "Paketlerde Ara";
 "Package_Changelogs_Unavailable" = "Değişiklikler bu paket için mevcut değil.";
 "Sources_Page" = "Kaynaklar";
 "Featured_Page" = "Öne Çıkanlar";
-"Package_Filter_User" = "Kullanıcı";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Çıkış Yapıldı: %@";
 "Package_Upgrade_Action" = "Güncelle";
 "Ready_Status" = "Hazır";

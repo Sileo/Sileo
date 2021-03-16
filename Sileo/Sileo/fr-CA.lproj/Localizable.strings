@@ -122,10 +122,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de télécharger vos paquets acheter avant de re-connecter.";
 
-"Package_Filter_User" = "Utilisateur";
-"Package_Filter_PowerUser" = "Super-utilisateur";
-"Package_Filter_Dev" = "Développeur";
-
 "Show_Install_Details" = "Dévoiler les détails";
 "Hide_Install_Details" = "Cacher les détails";
 

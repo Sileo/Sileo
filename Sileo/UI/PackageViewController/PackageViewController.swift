@@ -251,7 +251,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if package.legacyDepiction != nil && package.depiction == nil {
             rawDescription.append([
                 "class": "DepictionTableButtonView",
-                "title": "View Depiction",
+                "title": String(localizationKey: "View_Depiction"),
                 "action": package.legacyDepiction ?? ""
             ] as [String: Any])
         }

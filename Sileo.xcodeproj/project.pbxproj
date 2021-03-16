@@ -527,6 +527,14 @@
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
 		D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
+		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
+		E1B3FBB92601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Errors.strings"; sourceTree = "<group>"; };
+		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		E1B3FBBC2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Categories.strings"; sourceTree = "<group>"; };
+		E1B3FBBD2601256600F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Errors.strings"; sourceTree = "<group>"; };
 		E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1989,6 +1997,8 @@
 				tr,
 				th,
 				"zh-Hant",
+				"pt-PT",
+				"pt-BR",
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
@@ -2687,6 +2697,8 @@
 				F15E9E3F2282D54B0044344F /* tr */,
 				F15E9E432282D5F40044344F /* th */,
 				36A4571F24CAA74600390334 /* zh-Hant */,
+				E1B3FBB62601255900F2E07F /* pt-PT */,
+				E1B3FBBA2601256500F2E07F /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2706,6 +2718,8 @@
 				F15E9E422282D54C0044344F /* tr */,
 				F15E9E462282D5F40044344F /* th */,
 				36A4572224CAA74600390334 /* zh-Hant */,
+				E1B3FBB92601255900F2E07F /* pt-PT */,
+				E1B3FBBD2601256600F2E07F /* pt-BR */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -2725,6 +2739,8 @@
 				F15E9E412282D54C0044344F /* tr */,
 				F15E9E452282D5F40044344F /* th */,
 				36A4572124CAA74600390334 /* zh-Hant */,
+				E1B3FBB82601255900F2E07F /* pt-PT */,
+				E1B3FBBC2601256500F2E07F /* pt-BR */,
 			);
 			name = Categories.strings;
 			sourceTree = "<group>";
@@ -2744,6 +2760,8 @@
 				F15E9E402282D54C0044344F /* tr */,
 				F15E9E442282D5F40044344F /* th */,
 				36A4572024CAA74600390334 /* zh-Hant */,
+				E1B3FBB72601255900F2E07F /* pt-PT */,
+				E1B3FBBB2601256500F2E07F /* pt-BR */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";

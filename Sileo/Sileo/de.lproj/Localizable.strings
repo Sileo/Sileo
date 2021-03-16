@@ -55,7 +55,6 @@
 "Package_Uninstall_Action" = "Entfernen";
 "After_Install_Relaunch" = "Sileo neu starten";
 "OK" = "OK";
-"Package_Filter_PowerUser" = "Experte";
 "Package_Share_Action" = "Teile Pakete…";
 "Sort_Name" = "Name";
 "Done_Editing" = "Fertig";
@@ -71,12 +70,10 @@
 "Delete" = "Löschen";
 "Repos" = "Meine Quellen";
 "After_Install_Reboot" = "Gerät neu starten";
-"Package_Filter_Dev" = "Entwickler";
 "Package_Changelogs_Unavailable" = "Keine Änderungen für dieses Paket bekannt.";
 "Package_Search.Placeholder" = "Pakete durchsuchen";
 "Sources_Page" = "Quellen";
 "Featured_Page" = "Highlights";
-"Package_Filter_User" = "Benutzer";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Abmelden von %@";
 "Package_Upgrade_Action" = "Aktualisieren";
 "Ready_Status" = "Fertig";

@@ -1,0 +1,58 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by TheRealClarity on 2021-03-16.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ */
+
+"Unknown" = "Ocorreu um erro desconhecido.";
+"Error_Indicator" = "Erro: %@";
+
+"No_Package.Title" = "Não foi possível encontrar o pacote %@ nos repositórios instalados.";
+"No_Package.Body" = "Se é novo, espere que o Sileo termine de atualizar, e depois tente de novo. Verifique online para mais ajuda.";
+
+"Invalid_URL.Title" = "URL inválido";
+
+"Download_Size_Mismatch" = "Tamanho esperado %@, recebido %@.";
+"Download_Failing_Status_Code" = "Falha com o status %ld";
+"Download_Hash_Mismatch" = "Hash esperada %@, recebido %@.";
+"Untrusted_Package" = "O pacote %@ não é confiável e não pôde ser verificado.";
+
+"Insecure_Paid_Download" = "URLs de download de pacotes pagos devem ser seguros (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "O fornecedor de pagamento forneceu uma resposta inválida.";
+"No_Payment_Provider" = "Esta repo não suporta pagamentos do Sileo. Se este é um pacote da loja da Cydia que já foi comprado por si, poderá ser necessário ligar a sua conta para poder efetuar o download.";
+
+"Package_Unavailable" = "Este pacote não está disponível nas suas fontes atualmente instaladas. Por favor verifique que a repo %@ está disponível.";
+
+"Installation_Error.Title" = "Erro na instalação";
+"Installation_Error.Body" = "Falha na obtenção de root por parte do Sileo. Por favor reinstale o Sileo por SSH.";
+
+"FixingDpkg.Title" = "Dpkg Interrompido";
+"FixingDpkg.Body" = "Dpkg foi interrompido. Por favor espere enquanto tentamos arranjar o problema.";
+
+"Invalid_Data" = "Dados inválidos";
+"Try_Later" = "Por favor tente novamente mais tarde.";
+
+"Sileo_Update_Required.Title" = "Atualização do Sileo necessária";
+"Featured_Requires_Sileo_Update" = "Uma atualização do Sileo é necessária para poder ver o separador Destaques. O separador Destaques pode ser renderizado incorretamente.";
+"Depiction_Requires_Sileo_Update" = "Uma atualização do Sileo é necessária para poder ver esta página. Esta página pode ser renderizada incorretamente.";
+
+"Form_Error.Title" = "Falha ao carregar formulário";
+"Form_Load_Error" = "O formulário não pôde ser carregado do servidor.";
+"Invalid_Form_Data" = "O servidor forneceu dados de formulário inválidos.";
+"Form_Submit_Failure" = "Um erro ocorreu enquanto se tentava submeter o formulário: %@";
+"Form_Submit_Error.Title" = "Submissão do Formulário falhou";
+"Form_Action_Host_Mismatch" = "O host do URL de ação do formulário não corresponde ao host de origem do formulário.";
+
+"Email_Unavailable.Title" = "Falha ao enviar email";
+"Email_Unavailable.Body" = "Os serviços Mail não se encontram disponíveis.";
+
+"Settings_Payment_Provider.Profile.Title" = "Falha ao carregar Perfil";
+
+"Provider_Auth_Fail.Title" = "Falha ao autenticar Fornecedor";
+"Purchase_Initiate_Fail.Title" = "Falha ao Iniciar compra";
+"Purchase_Complete_Fail.Title" = "Falha ao Completar compra";
+"Purchase_Auth_Complete_Fail.Title" = "Falha ao Completar autenticação";

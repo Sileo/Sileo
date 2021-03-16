@@ -129,10 +129,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前,您將不能下載已經購買的軟體包.";
 
-"Package_Filter_User" = "用戶";
-"Package_Filter_PowerUser" = "專家";
-"Package_Filter_Dev" = "開發者";
-
 "Show_Install_Details" = "顯示詳情";
 "Hide_Install_Details" = "隱藏詳情";
 

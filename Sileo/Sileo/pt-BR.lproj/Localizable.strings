@@ -135,10 +135,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Terminar sessão de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Não irá ser possível fazer download das suas compras até voltar a iniciar sessão.";
 
-"Package_Filter_User" = "Utilizador";
-"Package_Filter_PowerUser" = "Utilizador avançado";
-"Package_Filter_Dev" = "Desenvolvedor";
-
 "Show_Install_Details" = "Mais Detalhes";
 "Hide_Install_Details" = "Esconder Detalhes";
 
