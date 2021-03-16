@@ -94,8 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         self.updateTintColor()
         
-        //Force all view controllers to load now
-        
+        // Force all view controllers to load now
         for controller in tabBarController.viewControllers ?? [] {
             _ = controller.view
             if let navController = controller as? UINavigationController {
@@ -103,30 +102,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
+        var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let appVer = "2.0.2-demo"
+        appVer += "-demo"
         #else
-        var appVer = "2.0.2"
-        
         if FileManager.default.fileExists(atPath: "/odyssey/jailbreakd") {
-            appVer = "2.0.2-odyssey"
+            appVer += "-odyssey"
         } else if FileManager.default.fileExists(atPath: "/chimera/jailbreakd") {
-            appVer = "2.0.2-chimera"
+            appVer += "-chimera"
         } else if FileManager.default.fileExists(atPath: "/electra/jailbreakd") {
-            appVer = "2.0.2-electra"
+            appVer += "-electra"
+        } else if FileManager.default.fileExists(atPath: "/taurine/jailbreakd") {
+            appVer += "-taurine"
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") &&
             FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer = "2.0.2-odysseyra1n"
+            appVer += "-odysseyra1n"
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") {
-            appVer = "2.0.2-libhooker"
+            appVer += "-libhooker"
         } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer = "2.0.2-procursus"
+            appVer += "-procursus"
         } else if FileManager.default.fileExists(atPath: "/var/checkra1n.dmg") {
-            appVer = "2.0.2-checkrain"
+            appVer += "-checkrain"
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/substrated") {
-            appVer = "2.0.2-substrate"
+            appVer += "-substrate"
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/substituted") {
-            appVer = "2.0.2-hackyA12"
+            appVer += "-hackyA12"
         }
         #endif
         
