@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/Cydia.app"])
             spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/SafeMode.app"])
         }
-
+            
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         SileoThemeManager.shared.updateUserInterface()
@@ -102,6 +102,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
+        if UserDefaults.standard.object(forKey: "EnableAnalytics") == nil {
+            UserDefaults.standard.setValue(true, forKey: "EnableAnalytics")
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "EnableAnalytics") { return }
         var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         appVer += "-demo"
