@@ -56,7 +56,6 @@
 "Package_Uninstall_Action" = "卸载";
 "After_Install_Relaunch" = "重启Sileo";
 "OK" = "确定";
-"Package_Filter_PowerUser" = "高级用户";
 "Package_Share_Action" = "分享软件包…";
 "Sort_Name" = "名称";
 "Done_Editing" = "完成";
@@ -72,12 +71,10 @@
 "Delete" = "删除";
 "Repos" = "软件源";
 "After_Install_Reboot" = "重启设备";
-"Package_Filter_Dev" = "开发者";
 "Package_Changelogs_Unavailable" = "现在,无法查看此软件包的更新记录.";
 "Package_Search.Placeholder" = "搜索软件包";
 "Sources_Page" = "软件源";
 "Featured_Page" = "精选";
-"Package_Filter_User" = "用户";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@";
 "Package_Upgrade_Action" = "更新";
 "Ready_Status" = "准备";

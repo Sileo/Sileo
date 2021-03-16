@@ -74,7 +74,7 @@
 "By_Author" = "by %@"; // %@ = author name
 "Packages_By_Author" = "Packages by %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
+"Featured_Page" = "wtf";
 "News_Page" = "New";
 "Sources_Page" = "Sources";
 "Packages_Page" = "Packages";
@@ -137,10 +137,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
 
-"Package_Filter_User" = "User";
-"Package_Filter_PowerUser" = "Power User";
-"Package_Filter_Dev" = "Developer";
-
 "Show_Install_Details" = "Show Details";
 "Hide_Install_Details" = "Hide Details";
 
@@ -163,3 +159,6 @@
 "Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
 "Export_Yes" = "Yes, copy.";
 "Export_No" = "No, cancel.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";

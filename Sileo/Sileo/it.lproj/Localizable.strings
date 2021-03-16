@@ -122,10 +122,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Esci da %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Non sarai più in grado di scaricare i pacchetti acquistati finché non effettui di nuovo l'accesso.";
 
-"Package_Filter_User" = "Utente";
-"Package_Filter_PowerUser" = "Utente Avanzato";
-"Package_Filter_Dev" = "Sviluppatore";
-
 "Show_Install_Details" = "Mostra Dettagli";
 "Hide_Install_Details" = "Nascondi Dettagli";
 
