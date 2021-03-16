@@ -1,35 +1,59 @@
-"Download_Size_Mismatch" = "文件大小应为 %@, 获得了 %@.";
-"Settings_Payment_Provider.Profile.Title" = "无法加载资料";
-"Depiction_Requires_Sileo_Update" = "需要更新Sileo以查看此页面. 这个页面可能会出现渲染错误.";
-"Invalid_Form_Data" = "此服务器提供了无效的表单数据.";
-"Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过SSL加密 (HTTPS).";
-"Purchase_Auth_Complete_Fail.Title" = "无法完成验证";
-"Email_Unavailable.Body" = "邮件服务不可用.";
-"Download_Failing_Status_Code" = "失败,错误码: %ld";
-"Form_Load_Error" = "无法从服务器加载此表单.";
-"Invalid_Payment_Provider_Response" = "此付款服务提供商处理了一个错误的请求.";
-"No_Package.Body" = "如果这是刚刚出现的,请等待Sileo完成刷新,详情请查看在线帮助.";
-"Form_Submit_Failure" = "在下载此表单时发生了错误: %@";
-"Installation_Error.Title" = "安装失败";
-"FixingDpkg.Body" = "dpkg被中断. 请等待我们修复此问题.";
-"Email_Unavailable.Title" = "无法发送邮件";
-"No_Payment_Provider" = "这个软件源不支持通过Sileo付款. 如果在Cydia Store中购买过此软件包, 请链接到Cydia Store账户以下载此软件包.";
-"Try_Later" = "请稍后重试.";
-"Sileo_Update_Required.Title" = "需要升级Sileo";
-"Form_Submit_Error.Title" = "无法提交表单";
-"Purchase_Complete_Fail.Title" = "无法完成付款";
-"Untrusted_Package" = "软件包 %@ 无法被验证并且不可信任";
-"Download_Hash_Mismatch" = "Hash应为 %@, 获得了 %@.";
-"FixingDpkg.Title" = "dpkg被中断";
-"Form_Error.Title" = "无法加载表单";
-"Package_Unavailable" = "这个软件包在已安装的软件源中不可用. 请检查以确保软件源 %@ 可用.";
-"Provider_Auth_Fail.Title" = "无法验证提供商";
-"Purchase_Initiate_Fail.Title" = "无法初始化付款";
-"No_Package.Title" = "无法在 %@ 个已经安装的软件源中找到这个软件包.";
-"Invalid_Data" = "无效数据";
+/*
+  Errors.strings
+  Sileo
+
+  Created by Hayden Seay on 2020-07-24.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ Chinese Traditional LOCALISATIONS
+ */
+
 "Unknown" = "发生了一个未知错误.";
 "Error_Indicator" = "错误: %@";
-"Installation_Error.Body" = "Sileo无法获取Root权限. 请通过SSH重新安装Sileo.";
+
+"No_Package.Title" = "无法在 %@ 个已经安装的软件源中找到这个软件包.";
+"No_Package.Body" = "如果这是刚刚出现的,请等待Sileo完成刷新,详情请查看在线帮助.";
+
 "Invalid_URL.Title" = "无效 URL";
+
+"Download_Size_Mismatch" = "文件大小应为 %@, 获得了 %@.";
+"Download_Failing_Status_Code" = "失败,错误码 %ld";
+"Download_Hash_Mismatch" = "Hash应为 %@, 获得了 %@.";
+"Untrusted_Package" = "软件包 %@ 无法被验证并且不可信任";
+
+"Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过SSL加密 (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "此付款服务提供商处理了一个错误的请求.";
+"No_Payment_Provider" = "这个软件源不支持通过Sileo付款. 如果在Cydia Store中购买过此软件包, 请链接到Cydia Store账户以下载此软件包.";
+
+"Package_Unavailable" = "这个软件包在已安装的软件源中不可用. 请检查以确保软件源 %@ 可用.";
+
+"Installation_Error.Title" = "安装错误";
+"Installation_Error.Body" = "Sileo无法获取Root权限. 请通过SSH重新安装Sileo.";
+
+"FixingDpkg.Title" = "Dpkg被中断";
+"FixingDpkg.Body" = "Dpkg被中断. 请等待我们修复此问题.";
+
+"Invalid_Data" = "无效数据";
+"Try_Later" = "请稍后重试.";
+
+"Sileo_Update_Required.Title" = "需要更新Sileo";
+"Featured_Requires_Sileo_Update" = "需要更新Sileo以查看精选页面. 不更新可能会导致精选页面出现渲染错误.";
+"Depiction_Requires_Sileo_Update" = "需要更新Sileo以查看此页面. 这个页面可能会出现渲染错误.";
+
+"Form_Error.Title" = "无法加载表单";
+"Form_Load_Error" = "无法从服务器载入此表单.";
+"Invalid_Form_Data" = "此服务器提供了无效的表单数据.";
+"Form_Submit_Failure" = "在下载此表单时发生了错误: %@";
+"Form_Submit_Error.Title" = "无法提交表单";
 "Form_Action_Host_Mismatch" = "表单操作的URL主机与表单的源主机不匹配.";
-"Featured_Requires_Sileo_Update" = "需要更新Sileo以查看\"精选\"页面. 不更新可能会导致\"精选\"页面出现渲染错误.";
+
+"Email_Unavailable.Title" = "无法发送邮件";
+"Email_Unavailable.Body" = "邮件服务不可用.";
+
+"Settings_Payment_Provider.Profile.Title" = "无法加载资料";
+
+"Provider_Auth_Fail.Title" = "无法验证提供商";
+"Purchase_Initiate_Fail.Title" = "无法初始化付款";
+"Purchase_Complete_Fail.Title" = "无法完成付款";
+"Purchase_Auth_Complete_Fail.Title" = "无法完成验证";

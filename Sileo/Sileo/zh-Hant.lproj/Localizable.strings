@@ -121,6 +121,14 @@
 "Settings" = "設定";
 "Settings_Page_Title" = "設定";
 "Dark_Mode_Toggle" = "深色模式";
+"Theme" = "主題";
+"Tint_Color" = "自定義顏色";
+"Reset_Tint_Color" = "重置顏色";
+
+"Sileo_Light" = "Sileo淺色模式";
+"Sileo_Dark" = "Sileo深色模式";
+"Sileo_Adaptive" = "Sileo自適配";
+"System" = "跟隨系統";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
 "Payment_Provider_Signed_In" = "登入";
