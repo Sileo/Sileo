@@ -2798,7 +2798,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0b9;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -2858,7 +2858,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0b9;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
