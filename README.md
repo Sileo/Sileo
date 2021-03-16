@@ -1,7 +1,7 @@
 # Sileo
 ![alt text](https://travis-ci.com/M4cs/SileoApp.svg?token=p6px51XnVtZqgGKqga2s&branch=master)
 
-A proper APT Package Manager for jailbroken iOS 11 and up.
+A proper APT Package Manager for jailbroken iOS 12 and up.
 
 ## But what is it really?
 
