@@ -1,101 +1,161 @@
-"Add_Source.Button.Add" = "添加源";
-"Package_Changelog_Tab" = "更新记录";
-"Installed_Heading" = "已安装";
-"Dangerous_Repo.Cancel" = "带我回到安全地带";
-"Dangerous_Repo.Title" = "危险源";
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登录前,您将不能下载已经购买的软件包.";
-"Queue_Confirm_Button" = "确认";
-"Show_Package_Contents_Button" = "显示软件包内容";
-"Download_Progress" = "%@ (总共 %@)";
-"Settings_Payment_Provider.Purchases_Heading" = "购买";
-"__LocalizationCredit.Title" = "Neveark";
-"Share" = "分享";
-"Package_Developer_Find_Action" = "更多这个开发者的作品";
-"All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
-"Download_Errors_Heading" = "错误";
-"Add_Source.Body" = "添加软件源地址";
-"Cydia_Sign_In" = "登录到 Cydia Store";
-"More_Info" = "更多信息";
-"Dangerous_Repo.Last_Chance.Continue" = "继续";
-"Download_Starting" = "开始中…";
-"Package_Details_Tab" = "详情";
-"Package_Reinstall_Action" = "重新安装";
-"Package_Support_Action" = "支持";
-"Packages_Page" = "软件包";
-"Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登录";
-"Package_Get_Action" = "获取";
-"All_Packages.Title" = "所有软件包";
-"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备\/越狱状态造成破坏性的影响.我们建议您为了设备的安全而取消操作. %@";
-"By_Author" = "由 %@ 开发";
-"Refreshing_Sources_Page" = "正在刷新软件源";
-"Search_Page" = "搜索";
-"After_Install_Respring" = "重启SpringBoard";
-"Settings_Translations_Heading" = "翻译";
-"Sort_Date" = "日期";
-"Untitled_Form" = "未命名的表单";
-"Upgrade_All_Button" = "更新全部";
-"Packages_By_Author" = "P%@ 的软件包";
-"Settings_Payment_Provider_Heading" = "付款服务提供商";
-"Web_Depiction_Deprecated_Warning" = "Web视图已经被弃用. 请联系软件源维护者以获得从旧视图升级的消息.";
-"Queued_Uninstall_Heading" = "卸载";
-"Form_Submitted.Default_Body" = "此表格已提交.";
-"Loading" = "加载中…";
-"Package_Hold_Disable_Action" = "取消忽略";
-"Package_Installed_Files_Page" = "已经安装的文件";
-"Package_No_Description_Available" = "没有针对这个软件包的描述.";
-"Queued_Update_Heading" = "更新";
-"Wishlist" = "愿望单";
-"Hide_Install_Details" = "隐藏详情";
-"Updates_Heading" = "更新";
-"Dangerous_Repo.Last_Chance.Cancel" = "返回";
-"Payment_Provider_Signed_In" = "已登录";
-"Dangerous_Repo.Continue" = "我接受风险,继续.";
-"Version" = "版本";
-"Add_Source.Title" = "添加软件源";
-"Untitled_Repo" = "未命名的源";
-"Package_Uninstall_Action" = "卸载";
-"After_Install_Relaunch" = "重启Sileo";
-"OK" = "确定";
-"Package_Share_Action" = "分享软件包…";
-"Sort_Name" = "名称";
-"Done_Editing" = "完成";
-"Package_By_Author" = "%@ 由 %@ 开发";
-"Package_Cancel_Action" = "取消";
-"News_Page" = "新内容";
-"Dangerous_Repo.Last_Chance.Title" = "添加危险源?";
-"Removal_Queued_Package_Status" = "在移除队列中";
-"Show_Install_Details" = "显示详情";
-"Downloading_Package_Status" = "下载中";
-"Package_Hold_Enable_Action" = "忽略未来的更新";
-"Package_Unavailable" = "软件包不可用";
-"Delete" = "删除";
-"Repos" = "软件源";
-"After_Install_Reboot" = "重启设备";
-"Package_Changelogs_Unavailable" = "现在,无法查看此软件包的更新记录.";
-"Package_Search.Placeholder" = "搜索软件包";
-"Sources_Page" = "软件源";
-"Featured_Page" = "精选";
-"Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@";
-"Package_Upgrade_Action" = "更新";
-"Ready_Status" = "准备";
-"Form_Submitted.Default_Title" = "已提交的表格";
-"Queued_Package_Status" = "队列";
-"Dangerous_Repo.Body" = "你正在添加一个可能因为含有盗版行为,违法内容,病毒而被标记的源.\n\n被标记的软件源可能经常发布许多转载的软件包(包括许多免费和收费的软件包).这些软件包可能会影响到您的隐私和设备,有时可能会影响到越狱状态.我们建议您提高谨慎以远离有害软件包.";
-"Payment_Provider_Sign_Out" = "登出";
-"Done" = "完成";
-"Package_Modify_Action" = "更改";
-"Package_Queue_Action" = "队列";
-"Double tap to open." = "双击以打开.";
-"Installing_Package_Status" = "正在安装";
-"Package_Wishlist_Remove" = "从愿望单移除";
-"All_Categories" = "所有分类";
-"Sort_By" = "排序方式:";
-"__LocalizationCredit.URL" = "https:\/\/www.twitter.com\/Neveark_";
-"Queue_Clear_Button" = "清除队列";
-"Settings_Payment_Provider.No_Purchases" = "没有购买";
+/*
+  Localizable.strings
+  Sileo
+
+  Created by Hayden Seay on 2020-07-24.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ Chinese Traditional LOCALISATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+"__LocalizationCredit.Title" = "由Deon翻译";
+"__LocalizationCredit.URL" = "https://www.twitter.com/BJH1234_Deon"; // (optional)
+
+// Common Prompts
+"About" = "关于";
 "Close" = "关闭";
+"Double tap to open." = "双击以打开.";
+"Untitled_Repo" = "未命名的源";
+"OK" = "确定";
+"Done" = "完成";
+"Done_Editing" = "完成";
+"More_Info" = "更多讯息";
+"Loading" = "载入中…";
+"Share" = "分享";
+"Delete" = "删除";
 "Cancel" = "取消";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "正在安装";
+"Downloading_Package_Status" = "下载中";
+"Queued_Package_Status" = "队列";
+"Ready_Status" = "准备";
+"Removal_Queued_Package_Status" = "移除队列中";
+"Download_Starting" = "开始中…";
+"Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "确认";
+"Queue_Clear_Button" = "清除队列";
+
+"Package_Upgrade_Action" = "更新";
+"Package_Reinstall_Action" = "重新安装";
+"Package_Uninstall_Action" = "移除";
+"Package_Modify_Action" = "更改";
+"Package_Get_Action" = "获取";
+"Package_Queue_Action" = "队列";
+"Package_Cancel_Action" = "取消";
+
+"Package_Share_Action" = "分享软件包…";
+"Package_Developer_Find_Action" = "更多这位开发者的作品";
+"Package_Support_Action" = "支持";
+"Package_Hold_Enable_Action" = "忽略未来的更新";
+"Package_Hold_Disable_Action" = "取消忽略更新";
 "Package_Wishlist_Add" = "添加到愿望单";
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
-"Installed_Package_Header" = "已安装的软件包";
+"Package_Wishlist_Remove" = "从愿望单移除";
+"Wishlist" = "愿望单";
+
+// Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安装";
+"Queued_Uninstall_Heading" = "移除";
+"Queued_Update_Heading" = "更新";
+"Download_Errors_Heading" = "错误";
+
+"Installed_Heading" = "已安装";
+"Updates_Heading" = "更新";
+"Upgrade_All_Button" = "全部更新";
+"Package_Search.Placeholder" = "搜索软件包";
+"Sort_Name" = "名称";
+"Sort_Date" = "日期";
+"Sort_By" = "排序方式:";
+
+"Package_Unavailable" = "软件包不可用";
+"Package_By_Author" = "%@ 由 %@ 开发"; // first %@ = package name, second %@ = author name
+"By_Author" = "由 %@ 开发"; // %@ = author name
+"Packages_By_Author" = "%@ 的软件包"; // %@ = author name
+
+"Featured_Page" = "精选";
+"News_Page" = "新内容";
+"Sources_Page" = "软件源";
+"Packages_Page" = "软件包";
+"Search_Page" = "搜索";
+"Refreshing_Sources_Page" = "正在刷新软件源";
+"Package_Installed_Files_Page" = "已经安装的文件";
+
+"All_Packages.Title" = "所有软件包";
+"All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
+
+"All_Categories" = "所有分类";
+
+"Repos" = "软件源";
+
+"Add_Source.Title" = "添加源";
+"Add_Source.Body" = "新增软件源地址";
+"Add_Source.Button.Add" = "添加源";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
+
+"Untitled_Form" = "未命名的表单";
+"Form_Submitted.Default_Title" = "已提交的表格";
+"Form_Submitted.Default_Body" = "表格提交成功.";
+
+"Web_Depiction_Deprecated_Warning" = "Web视图已经被弃用. 请联系软件源维护者以获得从旧视图升级的讯息.";
+
+"Package_Details_Tab" = "详情";
+"Package_Changelog_Tab" = "更新记录";
+"Package_No_Description_Available" = "没有针对这个软件包的描述.";
+"Package_Changelogs_Unavailable" = "无法查看此软件包的更新记录.";
+
+"Installed_Package_Header" = "已安装的软件包";
+"Version" = "版本";
+"Show_Package_Contents_Button" = "显示软件包内容";
+
+"Licenses_Page_Title" = "法律资讯";
+
+"Settings_Payment_Provider_Heading" = "付款服务提供商";
+"Settings_Translations_Heading" = "翻译";
+
+"Settings_Payment_Provider.Purchases_Heading" = "购买";
+"Settings_Payment_Provider.No_Purchases" = "没有购买";
+
+"Settings" = "设置";
+"Settings_Page_Title" = "设置";
+"Dark_Mode_Toggle" = "深色模式";
+"Theme" = "主题";
+"Tint_Color" = "自定义颜色";
+"Reset_Tint_Color" = "重置颜色";
+
+"Sileo_Light" = "Sileo浅色模式";
+"Sileo_Dark" = "Sileo深色模式";
+"Sileo_Adaptive" = "Sileo自适配";
+"System" = "跟随系统";
+
+"Cydia_Sign_In" = "登陆 Cydia Store";
+"Payment_Provider_Signed_In" = "登陆";
+"Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登陆"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "退出";
+"Payment_Provider_Sign_Out_Confirm.Title" = "退出 %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登陆前,您将不能下载已经购买的软件包.";
+
+"Show_Install_Details" = "显示详情";
+"Hide_Install_Details" = "隐藏详情";
+
+"After_Install_Relaunch" = "重启 Sileo";
+"After_Install_Respring" = "重启 SpringBoard";
+"After_Install_Reboot" = "重启设备";
+
+"Dangerous_Repo.Title" = "危险源";
+"Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为,违法内容,病毒而被标记的源.\n\n被标记的软件源可能经常发布许多转载的软件包(包括许多免费和收费的软件包).这些软件包可能会影响到您的隐私和设备,有时可能会影响到越狱环境.我们建议您提高谨慎以远离有害软件包.";
+"Dangerous_Repo.Continue" = "我接受风险,继续.";
+"Dangerous_Repo.Cancel" = "带我回到安全地带";
+"Dangerous_Repo.Last_Chance.Title" = "添加危险源？";
+"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备/越狱环境造成破坏性的影响.我们建议您为了设备的安全而取消操作. %@";
+"Dangerous_Repo.Last_Chance.Continue" = "继续";
+"Dangerous_Repo.Last_Chance.Cancel" = "返回";
+
+// All export-based strings
+"Export" = "导出";
+"Export_Packages" = "请问需要导出软件包列表吗? 这将会复制所有软件包名称和版本到您的剪贴板.";
+"Export_Sources" = "请问需要导出您的源地址吗? 这将复制所有源地址到您的剪贴板.";
+"Export_Yes" = "好的, 导出.";
+"Export_No" = "不, 取消.";

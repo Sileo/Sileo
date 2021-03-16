@@ -14,6 +14,7 @@ class SourcesSplitViewController: UISplitViewController, UISplitViewControllerDe
         
         self.delegate = self
         self.preferredDisplayMode = .allVisible
+        self.title = String(localizationKey: "Sources_Page")
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
