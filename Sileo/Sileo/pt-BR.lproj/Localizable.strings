@@ -122,6 +122,9 @@
 "Theme" = "Tema";
 "Tint_Color" = "Tom das cores";
 "Reset_Tint_Color" = "Repor tom das cores";
+"Auto_Complete_Queue" = "Completar fila automaticamente";
+"Enable_Analytics" = "Permitir recolha de dados analíticos";
+
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
