@@ -9,6 +9,7 @@
 "All_Packages.Cell_Subtitle"="Zeige alle Pakete meiner Quellen";
 "All_Packages.Title"="Alle Pakete";
 "Auto_Add_Pasteboard_Sources.Button.Manual"="Manuell eingeben";
+"Auto_Complete_Queue"="Warteschlange automatisch vervollständigen";
 "By_Author"="von %@";
 "Cancel"="Abbrechen";
 "Close"="Schließen";
@@ -30,6 +31,7 @@
 "Download_Progress"="%@ von %@";
 "Download_Starting"="Starte…";
 "Downloading_Package_Status"="Lade herunter";
+"Enable_Analytics"="Aktiviere Analyse";
 "Export"="Exportieren";
 "Export_No"="Nein, abbrechen.";
 "Export_Packages"="Möchten Sie Ihre Paketliste exportieren? Dadurch werden alle Paketnamen und ihre Versionen in Ihre Zwischenablage kopiert.";
@@ -53,9 +55,6 @@
 "Package_Changelogs_Unavailable"="Keine Änderungen für dieses Paket bekannt.";
 "Package_Details_Tab"="Details";
 "Package_Developer_Find_Action"="Mehr vom Entwickler";
-"Package_Filter_Dev"="Entwickler";
-"Package_Filter_PowerUser"="Experte";
-"Package_Filter_User"="Benutzer";
 "Package_Get_Action"="Installieren";
 "Package_Hold_Disable_Action"="Berücksichtige zukünftige Aktualisierungen";
 "Package_Hold_Enable_Action"="Ignoriere zukünftige Aktualisierungen";
@@ -115,5 +114,6 @@
 "Updates_Heading"="Aktualisierungen";
 "Upgrade_All_Button"="Alle aktualisieren";
 "Version"="Version";
+"View_Depiction"="Beschreibung anzeigen";
 "Web_Depiction_Deprecated_Warning"="Web View-Darstellungen sind veraltet. Bitte wenden Sie sich an den Quellen-Betreiber, um Informationen zu nativen Darstellungen zu erhalten.";
 "Wishlist"="Wunschliste";
