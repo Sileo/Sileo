@@ -74,7 +74,7 @@
 "By_Author" = "by %@"; // %@ = author name
 "Packages_By_Author" = "Packages by %@"; // %@ = author name
 
-"Featured_Page" = "wtf";
+"Featured_Page" = "Featured";
 "News_Page" = "New";
 "Sources_Page" = "Sources";
 "Packages_Page" = "Packages";
@@ -124,6 +124,8 @@
 "Theme" = "Theme";
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Enable_Analytics" = "Enable Analytics";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
