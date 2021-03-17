@@ -3,57 +3,59 @@
   Sileo
 
   Created by AppleBetas on 2018-12-28.
+  Translated to Norwegian Bokmål by : WorldlyDev (2020-04-21).
   Copyright © 2018 CoolStar. All rights reserved.
- 
- BASE (English) LOCALISATIONS
+
+ NORWEGIAN BOKMÅL LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "En ukjent feil oppstod.";
+"Error_Indicator" = "Feil: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "Kunne ikke finne pakken %@ i kildene du har lagt til.";
+"No_Package.Body" = "Hvis den er ny, vennligst vent til Sileo er ferdig med å oppdatere, og prøv igjen. Sjekk på nett for mer hjelp.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Ugyldig URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "Forventet størrelse %@, fikk %@ istedenfor.";
+"Download_Failing_Status_Code" = "Feilet med status %ld";
+"Download_Hash_Mismatch" = "Forventet nøkkel %@, fikk %@ istedenfor.";
+"Untrusted_Package" = "Pakke %@ er ikke verifisert og kan ikke bekreftes.";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Betalingsautoriserte-nedlastingsadresser for pakker må være sikre (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "Betalingsleverandøren ga et ugyldig svar.";
+"No_Payment_Provider" = "Denne kilden støtter ikke Sileo-kjøp. Hvis dette er en Cydia Store-pakke som du allerede har kjøpt, kan du logge inn på kontoen din for å laste den ned.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Denne pakken er ikke tilgjengelig fra dine kilder. Kontroller at kilden %@ er tilgjengelig.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "Installasjonsfeil";
+"Installation_Error.Body" = "Sileo klarte ikke å skaffe rotrettigheter. Vennligst installer Sileo på nytt ved å bruke SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg avbrutt";
+"FixingDpkg.Body" = "Dpkg ble avbrutt. Vennligst vent mens vi prøver å løse problemet.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Ugyldig Data";
+"Try_Later" = "Vennligst prøv igjen senere.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Sileo oppdatering kreves";
+"Featured_Requires_Sileo_Update" = "En Sileo oppdatering er nødvendig for å se fanen med utvalgte pakker. Fanen som nå vises, kan gjengis feil.";
+"Depiction_Requires_Sileo_Update" = "En Sileo oppdatering er nødvendig for å se denne siden. Siden kan gjengis feil.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Error.Title" = "Kunne ikke laste inn skjemaet";
+"Form_Load_Error" = "Skjemaet kunne ikke lastes inn fra serveren.";
+"Invalid_Form_Data" = "Serveren ga ugyldig skjemadata.";
+"Form_Submit_Failure" = "Det oppstod en feil under forsøk på å sende inn skjemaet: %@";
+"Form_Submit_Error.Title" = "Kunne ikke sende inn skjema";
+"Form_Action_Host_Mismatch" = "URL-verten for skjemahandlingene samsvarer ikke med skjemaets opprinnelsesvert.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "Kan ikke sende e-post";
+"Email_Unavailable.Body" = "e-posttjenester er ikke tilgjengelige.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "Kunne ikke laste inn profil";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "Kunne ikke autentisere leverandøren";
+"Purchase_Initiate_Fail.Title" = "Kunne ikke starte kjøp";
+"Purchase_Complete_Fail.Title" = "Kunne ikke fullføre kjøpet";
+"Purchase_Auth_Complete_Fail.Title" = "Kunne ikke fullføre autentiseringen";
+
