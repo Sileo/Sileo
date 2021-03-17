@@ -529,6 +529,10 @@
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
 		D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
+		E15857B126029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E15857B226029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nb; path = Sileo/nb.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		E15857B326029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Categories.strings; sourceTree = "<group>"; };
+		E15857B426029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Errors.strings; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -2008,6 +2012,7 @@
 				"pt-PT",
 				"pt-BR",
 				ro,
+				nb,
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
@@ -2711,6 +2716,7 @@
 				E1B3FBB62601255900F2E07F /* pt-PT */,
 				E1B3FBBA2601256500F2E07F /* pt-BR */,
 				E1B3FC0D260197F500F2E07F /* ro */,
+				E15857B126029DEA00E1C391 /* nb */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2733,6 +2739,7 @@
 				E1B3FBB92601255900F2E07F /* pt-PT */,
 				E1B3FBBD2601256600F2E07F /* pt-BR */,
 				E1B3FC10260197F500F2E07F /* ro */,
+				E15857B426029DEA00E1C391 /* nb */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -2755,6 +2762,7 @@
 				E1B3FBB82601255900F2E07F /* pt-PT */,
 				E1B3FBBC2601256500F2E07F /* pt-BR */,
 				E1B3FC0F260197F500F2E07F /* ro */,
+				E15857B326029DEA00E1C391 /* nb */,
 			);
 			name = Categories.strings;
 			sourceTree = "<group>";
@@ -2777,6 +2785,7 @@
 				E1B3FBB72601255900F2E07F /* pt-PT */,
 				E1B3FBBB2601256500F2E07F /* pt-BR */,
 				E1B3FC0E260197F500F2E07F /* ro */,
+				E15857B226029DEA00E1C391 /* nb */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
