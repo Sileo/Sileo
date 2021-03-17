@@ -1,0 +1,140 @@
+"About" = "حول";
+"Close" = "إغلاق";
+"Double tap to open." = "انقر مرتين للفتح.";
+"Untitled_Repo" = "مستودع بدون عنوان";
+"OK" = "حسنًا";
+"Done" = "تم";
+"Done_Editing" = "تم";
+"More_Info" = "المزيد من العلومات";
+"Loading" = "جارِ التحميل...";
+"Share" = "مشاركة";
+"Delete" = "حذف";
+"Cancel" = "إلغاء";
+
+"Installing_Package_Status" = "جارِ التثبيت";
+"Downloading_Package_Status" = "جارِ التنزيل";
+"Queued_Package_Status" = "في قائمة الإنتظار";
+"Ready_Status" = "جاهز";
+"Removal_Queued_Package_Status" = "تم وضعه في قائمة الإنتظار للإزالة";
+"Download_Starting" = "جارِ البدء...";
+"Download_Progress" = "%@ من %@";
+
+"Queue_Confirm_Button" = "تأكيد";
+"Queue_Clear_Button" = "مسح قائمة الإنتظار";
+
+"Package_Upgrade_Action" = "ترقية";
+"Package_Reinstall_Action" = "إعادة التثبيت";
+"Package_Uninstall_Action" = "إلغاء التثبيت";
+"Package_Modify_Action" = "تعديل";
+"Package_Get_Action" = "جلب";
+"Package_Queue_Action" = "قائمة الإنتظار";
+"Package_Cancel_Action" = "إلغاء";
+
+"Package_Share_Action" = "مشاركة الحزمة...";
+"Package_Developer_Find_Action" = "المزيد بواسطة هذا المطور";
+"Package_Support_Action" = "الدعم";
+"Package_Hold_Enable_Action" = "تجاهل التحديثات المستقبيلة";
+"Package_Hold_Disable_Action" = "إيقاف تجاهل التحديثات";
+"Package_Wishlist_Add" = "إضافة إلى قائمة الأمنيات";
+"Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
+"Wishlist" = "قائمة الأمنيات";
+
+"Queued_Install_Heading" = "تثبيت";
+"Queued_Uninstall_Heading" = "إلغاء التثبيت";
+"Queued_Update_Heading" = "تحديث";
+"Download_Errors_Heading" = "أخطاء";
+
+"Installed_Heading" = "مثبت";
+"Updates_Heading" = "التحديثات";
+"Upgrade_All_Button" = "ترقية الكل";
+"Package_Search.Placeholder" = "ابحث عن حزم";
+"Sort_Name" = "الاسم";
+"Sort_Date" = "التاريخ";
+"Sort_By" = "فرز حسب:";
+
+"Package_Unavailable" = "حزمة غير متاحة";
+"Package_By_Author" = "%@ بواسطة %@";
+"By_Author" = "بواسطة %@";
+"Packages_By_Author" = "حزم بواسطة %@";
+
+"Featured_Page" = "مميز";
+"News_Page" = "جديد";
+"Sources_Page" = "المصادر";
+"Packages_Page" = "الحزم";
+"Search_Page" = "بحث";
+"Refreshing_Sources_Page" = "تحديث المصادر";
+"Package_Installed_Files_Page" = "الملفات المثبتة";
+
+"All_Packages.Title" = "كل الحزم";
+"All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
+
+"All_Categories" = "كل التصنيفات";
+
+"Repos" = "المستودعات";
+
+"Add_Source.Title" = "إضافة مصدر";
+"Add_Source.Body" = "إضافة عنوان APT URL";
+"Add_Source.Button.Add" = "إضافة المصدر";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
+
+"Untitled_Form" = "نموذج بدون عنوان";
+"Form_Submitted.Default_Title" = "نموذج مقدم";
+"Form_Submitted.Default_Body" = "تم تقديم النموذج بنجاح.";
+
+"Web_Depiction_Deprecated_Warning" = "تم إيقاف عرض وصف الويب. يرجى التواصل مع مشرف المستودع حول التحديث إلى الوصف الأصلي.";
+
+"Package_Details_Tab" = "التفاصيل";
+"Package_Changelog_Tab" = "سجل التغييرات";
+"Package_No_Description_Available" = "لا يوجد وصف متاح لهذه الحزمة.";
+"Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
+
+"Installed_Package_Header" = "حزمة مثبتة";
+"Version" = "الإصدار";
+"Show_Package_Contents_Button" = "عرض محتويات الحزمة";
+
+"Licenses_Page_Title" = "التراخيص";
+
+"Settings_Payment_Provider_Heading" = "مزودي الدفع";
+"Settings_Translations_Heading" = "الترجمات";
+
+"Settings_Payment_Provider.Purchases_Heading" = "المشتريات";
+"Settings_Payment_Provider.No_Purchases" = "لا توجد مشتريات";
+
+"Settings" = "الإعدادات";
+"Settings_Page_Title" = "الإعدادات";
+"Dark_Mode_Toggle" = "الوضع الداكن";
+
+"Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
+"Payment_Provider_Signed_In" = "تم تسجيل الدخول";
+"Payment_Provider_Signed_In_With_Name" = "تم تسجيل الدخول كـ %@";
+"Payment_Provider_Sign_Out" = "تسجيل الخروج";
+"Payment_Provider_Sign_Out_Confirm.Title" = "تسجيل الخروج من %@";
+"Payment_Provider_Sign_Out_Confirm.Body" = "لن تصبح قادرًا على تنزيل حزمك المشتراة حتى تسجل الدخول مرة أخرى.";
+
+"Package_Filter_User" = "مستخدم";
+"Package_Filter_PowerUser" = "خبير";
+"Package_Filter_Dev" = "مطور";
+
+"Show_Install_Details" = "عرض التفاصيل";
+"Hide_Install_Details" = "إخفاء التفاصيل";
+
+"After_Install_Relaunch" = "إعادة تشغيل Sileo";
+"After_Install_Respring" = "إعادة تشغيل واجهة النظام";
+"After_Install_Reboot" = "إعادة تشغيل الجهاز";
+
+"Dangerous_Repo.Title" = "مستودع خطر";
+"Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
+"Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
+"Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
+"Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
+"Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك.";
+"Dangerous_Repo.Last_Chance.Continue" = "استمرار";
+"Dangerous_Repo.Last_Chance.Cancel" = "العودة";
+
+
+"Export" = "تصدير";
+"Export_Packages" = "هل ترغب في تصدير قائمة الحزم الخاصة بك؟ سيؤدي هذا إلى نسخ كل أسماء الحزم وإصداراتها إلى حافظتك.";
+"Export_Sources" = "هل ترغب في تصدير قائمة المصادر الخاصة بك؟ سيؤدي هذا إلى نسخ كل عناوين URL مصادرك إلى الحافظة الخاصة بك.";
+"Export_Yes" = "نعم، نسخ.";
+"Export_No" = "لا، إلغاء.";
