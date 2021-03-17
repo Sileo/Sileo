@@ -2,8 +2,7 @@
   Errors.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28.
-  Translated to Norwegian Bokmål by : WorldlyDev (2020-04-21).
+  Created by AppleBetas on 2018-12-28. Translated to Norwegian Bokmål by : WorldlyDev (2020-04-21).
   Copyright © 2018 CoolStar. All rights reserved.
 
  NORWEGIAN BOKMÅL LOCALISATIONS
@@ -58,4 +57,3 @@
 "Purchase_Initiate_Fail.Title" = "Kunne ikke starte kjøp";
 "Purchase_Complete_Fail.Title" = "Kunne ikke fullføre kjøpet";
 "Purchase_Auth_Complete_Fail.Title" = "Kunne ikke fullføre autentiseringen";
-
