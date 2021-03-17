@@ -1,3 +1,17 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28. Translated to Arabic by : iA7myd (2020-04-21).
+  Copyright © 2018 CoolStar. All rights reserved.
+
+ ARABIC LOCALISATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+"__LocalizationCredit.Title" = "Arabic translation by iA7myd";
+"__LocalizationCredit.URL" = "https://github.com/iA7myd"; // (optional)
+
 "About" = "حول";
 "Close" = "إغلاق";
 "Double tap to open." = "انقر مرتين للفتح.";
