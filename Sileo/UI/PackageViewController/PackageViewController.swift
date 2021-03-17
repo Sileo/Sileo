@@ -398,7 +398,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //do header view scaling magic
+        // do header view scaling magic
         let headerBounds = depictionHeaderView.bounds
         var aspectRatio = headerBounds.width / headerBounds.height
         if headerBounds.height == 0 {
@@ -419,12 +419,12 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         depictionBackgroundView.frame = headerBackgroundFrame
         depictionBackgroundShadow.frame = headerBackgroundFrame
 
-        //doing the magic on the nav bar "GET" button and package icon
+        // doing the magic on the nav bar "GET" button and package icon
         let downloadButtonPos = downloadButton.convert(downloadButton.bounds, to: scrollView)
         let container = CGRect(origin: CGPoint(x: scrollView.contentOffset.x,
                                                y: scrollView.contentOffset.y + 106 - UIApplication.shared.statusBarFrame.height),
                                size: scrollView.frame.size)
-        //TLDR: magic starts when scrolling out the lower half of the button so we don't have duplicated button too early
+        // TLDR: magic starts when scrolling out the lower half of the button so we don't have duplicated button too early
         var navBarAlphaOffset = scrollView.contentOffset.y * 1.75 / depictionHeaderImageViewHeight.constant
         if depictionHeaderImageViewHeight.constant == 0 {
             navBarAlphaOffset = 0
@@ -504,10 +504,10 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        //for those wondering about the magic numbers and what's going on here:
-        //This is the spring effect on scrolling (aka step to start or step to after header
-        //113 = header imageView height - nav bar height and 56 is simply for setitng the step boundary, aka halfway
-        //if you don't like this, we can implement the variables from above, instead, but imo it's a waste of time
+        // for those wondering about the magic numbers and what's going on here:
+        // This is the spring effect on scrolling (aka step to start or step to after header
+        // 113 = header imageView height - nav bar height and 56 is simply for setitng the step boundary, aka halfway
+        // if you don't like this, we can implement the variables from above, instead, but imo it's a waste of time
         let scrollViewOffset = scrollView.contentOffset.y + UIApplication.shared.statusBarFrame.height
         
         if scrollViewOffset < 66 {

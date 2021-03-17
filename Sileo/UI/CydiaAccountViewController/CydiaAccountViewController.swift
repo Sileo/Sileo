@@ -6,12 +6,12 @@
 //  Copyright © 2020 CoolStar. All rights reserved.
 //
 
-//THIS IS THE ONLY FILE THAT GETS TO USE OUTDATED API's
+// This is the only section that gets to use deprecated APIs
 
 import Foundation
 
 class CydiaAccountViewController: UIViewController, UIWebViewDelegate {
-    @IBOutlet var webView: UIWebView? //Ew, I know :(
+    @IBOutlet var webView: UIWebView?
     private var backButton: UIBarButtonItem?
     private var forwardButton: UIBarButtonItem?
     

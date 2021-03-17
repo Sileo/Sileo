@@ -99,7 +99,6 @@ class DpkgWrapper {
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
         guard let dpkgCmp = try? compareVersions(version, greaterThan) else {
             return false
-            //FIXME: Handle exception properly
         }
         
         if dpkgCmp > 0 {
