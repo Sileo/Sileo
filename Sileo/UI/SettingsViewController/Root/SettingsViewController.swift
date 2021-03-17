@@ -104,7 +104,7 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 3
+            return 5
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
                 return 3
@@ -175,6 +175,16 @@ extension SettingsViewController { // UITableViewDataSource
                 case 2:
                     let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
                     cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
+                    return cell
+                case 3:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
+                    cell.defaultKey = "AutoComplete"
+                    return cell
+                case 4:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
+                    cell.defaultKey = "EnableAnalytics"
                     return cell
                 default:
                     return UITableViewCell()

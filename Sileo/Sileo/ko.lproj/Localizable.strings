@@ -123,10 +123,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "%@에서 로그아웃"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "다시 로그인할 때 까지 구입한 패키지를 설치할 수 없습니다.";
 
-"Package_Filter_User" = "유저";
-"Package_Filter_PowerUser" = "파워 유지";
-"Package_Filter_Dev" = "개발자";
-
 "Show_Install_Details" = "자세히";
 "Hide_Install_Details" = "간략히";
 

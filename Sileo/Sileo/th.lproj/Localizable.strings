@@ -48,9 +48,6 @@
 "Package_Changelogs_Unavailable"="รายการเปลี่ยนแปลงไม่พร้อมสำหรับแพ็คเกจนี้";
 "Package_Details_Tab"="Details";
 "Package_Developer_Find_Action"="เพิ่มเติมจากผู้พัฒนานี้";
-"Package_Filter_Dev"="ผู้พัฒนา";
-"Package_Filter_PowerUser"="ผู้เชี่ยวชาญ";
-"Package_Filter_User"="ผู้ใช้";
 "Package_Get_Action"="ติดตั้ง";
 "Package_Hold_Disable_Action"="ยกเลิกซ่อนการอัพเดท";
 "Package_Hold_Enable_Action"="ซ่อนการอัพเดทในอนาคต";

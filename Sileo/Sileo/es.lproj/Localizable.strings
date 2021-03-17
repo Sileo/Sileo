@@ -122,10 +122,6 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Cerrar la sesión de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Ya no podrá descargar sus paquetes comprados hasta que vuelva a iniciar sesión.";
 
-"Package_Filter_User" = "Usuario";
-"Package_Filter_PowerUser" = "Usuario Avanzado";
-"Package_Filter_Dev" = "Desarrollador";
-
 "Show_Install_Details" = "Mostrar Detalles";
 "Hide_Install_Details" = "Ocultar Detalles";
 
@@ -141,5 +137,3 @@
 "Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad. %@";
 "Dangerous_Repo.Last_Chance.Continue" = "Continuar";
 "Dangerous_Repo.Last_Chance.Cancel" = "Regresar";
-
-

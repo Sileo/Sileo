@@ -123,6 +123,8 @@
 "Theme" = "Thème";
 "Tint_Color" = "Couleur de la teinte";
 "Reset_Tint_Color" = "Restaurer la couleur de la teinte";
+"Auto_Complete_Queue" = "File d'attente à saisie automatique";
+"Enable_Analytics" = "Activer les données analytiques";
 
 "Cydia_Sign_In" = "Se connecter au Cydia Store.";
 "Payment_Provider_Signed_In" = "Connecté";
@@ -131,11 +133,8 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous re-connecter.";
 
-"Auto_Complete_Queue" = "File d'attente à saisie automatique";
-"Enable_Analytics" = "Activer les données analytiques";
-"View_Depiction" = "Voir la description";
-
 "Show_Install_Details" = "Afficher les détails";
+"Show_Install_Details" = "Dévoiler les détails";
 "Hide_Install_Details" = "Cacher les détails";
 
 "After_Install_Relaunch" = "Relancer Sileo";
@@ -157,3 +156,5 @@
 "Export_Sources" = "Voulez vous exporter votre liste de sources? Cela copiera tout les URL des sources dans le presse-papier.";
 "Export_Yes" = "Oui, copier.";
 "Export_No" = "Non, annuler.";
+
+"View_Depiction" = "Voir la description";

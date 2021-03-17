@@ -121,6 +121,14 @@
 "Settings" = "設定";
 "Settings_Page_Title" = "設定";
 "Dark_Mode_Toggle" = "深色模式";
+"Theme" = "主題";
+"Tint_Color" = "自定義顏色";
+"Reset_Tint_Color" = "重置顏色";
+
+"Sileo_Light" = "Sileo淺色模式";
+"Sileo_Dark" = "Sileo深色模式";
+"Sileo_Adaptive" = "Sileo自適配";
+"System" = "跟隨系統";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
 "Payment_Provider_Signed_In" = "登入";
@@ -128,10 +136,6 @@
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前,您將不能下載已經購買的軟體包.";
-
-"Package_Filter_User" = "用戶";
-"Package_Filter_PowerUser" = "專家";
-"Package_Filter_Dev" = "開發者";
 
 "Show_Install_Details" = "顯示詳情";
 "Hide_Install_Details" = "隱藏詳情";
