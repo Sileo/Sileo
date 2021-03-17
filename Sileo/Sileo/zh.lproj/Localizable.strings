@@ -124,6 +124,8 @@
 "Theme" = "主题";
 "Tint_Color" = "自定义颜色";
 "Reset_Tint_Color" = "重置颜色";
+"Auto_Complete_Queue" = "自动完成队列";
+"Enable_Analytics" = "启用分析";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -159,3 +161,6 @@
 "Export_Sources" = "请问需要导出您的源地址吗? 这将复制所有源地址到您的剪贴板.";
 "Export_Yes" = "好的, 导出.";
 "Export_No" = "不, 取消.";
+
+// Depcitions
+"View_Depiction" = "查看介绍";
