@@ -131,9 +131,9 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous re-connecter.";
 
-"Auto_Complete_Queue" = //"Auto Complete Queue";
-"Enable_Analytics" = //"Enable Analytics";
-"View_Depiction" = //"View Depiction";
+"Auto_Complete_Queue" = "File d'attente à saisie automatique";
+"Enable_Analytics" = "Activer les données analytiques";
+"View_Depiction" = "voir la description";
 
 "Show_Install_Details" = "Afficher les détails";
 "Hide_Install_Details" = "Cacher les détails";
