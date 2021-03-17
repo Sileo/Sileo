@@ -16,7 +16,7 @@
 
 "Invalid_URL.Title" = "عنوان URL غير صالح";
 
-"Download_Size_Mismatch" = "الحجم المتوقع %@، تم الحصول على %@ بدلًا من ذلك.";
+"Download_Size_Mismatch" = "الحجم المتوقع هو %@، ولكن تم الحصول على حجم %@ بدلًا من ذلك.";
 "Download_Failing_Status_Code" = "فشل بالحالة %ld";
 "Download_Hash_Mismatch" = "التجزئة المتوقعة %@، تم الحصول على %@ بدلًا من ذلك.";
 "Untrusted_Package" = "حزمة %@ غير موثوق بها ولا يمكن التحقق منها";
