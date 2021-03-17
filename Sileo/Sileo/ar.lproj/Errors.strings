@@ -2,7 +2,7 @@
   Errors.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28. Translated to Arabic by : iA7myd (2020-04-21).
+  Created by AppleBetas on 2018-12-28. Translated to Arabic by: iA7myd (2020-04-21).
   Copyright © 2018 CoolStar. All rights reserved.
 
  ARABIC LOCALISATIONS
@@ -12,7 +12,7 @@
 "Error_Indicator" = "خطأ: %@";
 
 "No_Package.Title" = "تعذر العثور على حزمة %@ في المستودعات المثبتة لديك حاليًا.";
-"No_Package.Body" = "إذا كان جديدًا، فانتظر حتى ينتهي Sileo من التحديث، ثم حاول مرة أخرى. تحقق عبر الإنترنت للمزيد من المساعدة.";
+"No_Package.Body" = "إذا كانت الحزمة جديدة، فانتظر حتى ينتهي Sileo من تحديث المستودعات، ثم حاول مرة أخرى. تحقق عبر الإنترنت للمزيد من المساعدة.";
 
 "Invalid_URL.Title" = "عنوان URL غير صالح";
 
