@@ -538,6 +538,10 @@
 		E1B3FBBC2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Categories.strings"; sourceTree = "<group>"; };
 		E1B3FBBD2601256600F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Errors.strings"; sourceTree = "<group>"; };
 		E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		E1B3FC0D260197F500F2E07F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E1B3FC0E260197F500F2E07F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ro; path = Sileo/ro.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		E1B3FC0F260197F500F2E07F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Categories.strings; sourceTree = "<group>"; };
+		E1B3FC10260197F500F2E07F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Errors.strings; sourceTree = "<group>"; };
 		E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2003,6 +2007,7 @@
 				"zh-Hant",
 				"pt-PT",
 				"pt-BR",
+				ro,
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
@@ -2705,6 +2710,7 @@
 				36A4571F24CAA74600390334 /* zh-Hant */,
 				E1B3FBB62601255900F2E07F /* pt-PT */,
 				E1B3FBBA2601256500F2E07F /* pt-BR */,
+				E1B3FC0D260197F500F2E07F /* ro */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2726,6 +2732,7 @@
 				36A4572224CAA74600390334 /* zh-Hant */,
 				E1B3FBB92601255900F2E07F /* pt-PT */,
 				E1B3FBBD2601256600F2E07F /* pt-BR */,
+				E1B3FC10260197F500F2E07F /* ro */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -2747,6 +2754,7 @@
 				36A4572124CAA74600390334 /* zh-Hant */,
 				E1B3FBB82601255900F2E07F /* pt-PT */,
 				E1B3FBBC2601256500F2E07F /* pt-BR */,
+				E1B3FC0F260197F500F2E07F /* ro */,
 			);
 			name = Categories.strings;
 			sourceTree = "<group>";
@@ -2768,6 +2776,7 @@
 				36A4572024CAA74600390334 /* zh-Hant */,
 				E1B3FBB72601255900F2E07F /* pt-PT */,
 				E1B3FBBB2601256500F2E07F /* pt-BR */,
+				E1B3FC0E260197F500F2E07F /* ro */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -3059,7 +3068,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3118,7 +3127,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
