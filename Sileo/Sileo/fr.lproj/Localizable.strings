@@ -121,8 +121,8 @@
 "Settings_Page_Title" = "Paramètres";
 "Dark_Mode_Toggle" = "Mode Sombre";
 "Theme" = "Thème";
-"Tint_Color" = "Couleur de la teinte";
-"Reset_Tint_Color" = "Restaurer la couleur de la teinte";
+"Tint_Color" = "Couleur d'accentuation";
+"Reset_Tint_Color" = "Restaurer la couleur d'accentuation";
 "Auto_Complete_Queue" = "File d'attente à saisie automatique";
 "Enable_Analytics" = "Activer les données analytiques";
 
@@ -134,7 +134,6 @@
 "Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous re-connecter.";
 
 "Show_Install_Details" = "Afficher les détails";
-"Show_Install_Details" = "Dévoiler les détails";
 "Hide_Install_Details" = "Cacher les détails";
 
 "After_Install_Relaunch" = "Relancer Sileo";
@@ -142,7 +141,7 @@
 "After_Install_Reboot" = "Redémarrer l'appareil";
 
 "Dangerous_Repo.Title" = "Source dangereuse";
-"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit sous forme de paquets payant rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
+"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiquées comme dangereuses distribuent souvent des paquets ayant des effets inattendues, soit sous forme de paquets payant rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
 "Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
 "Dangerous_Repo.Cancel" = "Revenir en lieu sûr";
 "Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse?";
