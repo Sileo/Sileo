@@ -23,7 +23,7 @@ final class ControlFileParser {
         case expectedSeparator
     }
     
-    //static let dispatchLock = DispatchSemaphore(value: 1)
+    // static let dispatchLock = DispatchSemaphore(value: 1)
 
     class func dictionary(controlFile: String, isReleaseFile: Bool) throws -> ([String: String], PackageTags) {
         guard let controlData = controlFile.data(using: .utf8) else {
@@ -35,7 +35,7 @@ final class ControlFileParser {
     class func dictionary(controlData: Data, isReleaseFile: Bool) throws -> ([String: String], PackageTags) {
         var dictionary: [String: String] = Dictionary(minimumCapacity: 20)
         var tags: PackageTags = .none
-        //self.dispatchLock.wait()
+        // self.dispatchLock.wait()
         
         let controlDataArr = [UInt8](controlData)
         parseControlFile(controlDataArr, controlData.count, isReleaseFile, { rawKey, rawVal in
@@ -45,7 +45,7 @@ final class ControlFileParser {
         }, { rawTags in
             tags = PackageTags(rawValue: Int(rawTags))
         })
-        //self.dispatchLock.signal()
+        // self.dispatchLock.signal()
         return (dictionary, tags)
     }
     

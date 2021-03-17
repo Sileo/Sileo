@@ -25,7 +25,7 @@ func parseversion(version: String) throws -> DpkgVersion {
     var searchIdx = 0
     var found = false
     for char in version {
-        if char == 58 { //58 = :
+        if char == 58 { // 58 means a colon :
             found = true
             break
         }
@@ -62,7 +62,7 @@ func parseversion(version: String) throws -> DpkgVersion {
     found = false
     for char in version.reversed() {
         searchIdx -= 1
-        if char == 45 { //58 = -
+        if char == 45 { // 45 means a dash -
             found = true
             break
         }

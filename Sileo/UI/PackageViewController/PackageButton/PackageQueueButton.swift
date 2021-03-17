@@ -247,7 +247,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 let action = CSActionItem(title: String(localizationKey: "Package_Get_Action"),
                                           image: UIImage(systemNameOrNil: "square.and.arrow.down"),
                                           style: .default) {
-                    //here's new packages not yet queued & FREE
+                    // here's new packages not yet queued & FREE
                     downloadManager.add(package: package, queue: .installations)
                     downloadManager.reloadData(recheckPackages: true)
                 }
@@ -265,11 +265,11 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
 
         let queueFound = downloadManager.find(package: package)
         if queueFound != .none {
-            //but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
+            // but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
             TabBarController.singleton?.presentPopupController()
             downloadManager.reloadData(recheckPackages: true)
         } else if let installedPackage = installedPackage {
-            //road clear to modify an installed package, now we gotta decide what modification
+            // road clear to modify an installed package, now we gotta decide what modification
             let downloadPopup: UIAlertController! = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             if !package.commercial || (paymentInfo?.available ?? false) {
                 var repo: Repo?
@@ -316,7 +316,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 }
             })
         } else {
-            //here's new packages not yet queued
+            // here's new packages not yet queued
             if let repo = package.sourceRepo,
                 package.commercial && !purchased && !package.package.contains("/") {
                 PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in

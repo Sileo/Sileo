@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import AuthenticationServices
 import SafariServices
 
 class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextProviding*/ {

@@ -82,7 +82,7 @@ class APTWrapper {
         return dictionary
     }
     
-    //APT syntax: a- = remove a; b = install b
+    // APT syntax: a- = remove a; b = install b
     public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) -> [String: [[String: Any]]] {
         var arguments = ["-sqf", "--allow-remove-essential",
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
