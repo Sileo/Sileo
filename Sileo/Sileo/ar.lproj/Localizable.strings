@@ -9,9 +9,10 @@
 */
 
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Arabic translation by iA7myd";
+"__LocalizationCredit.Title" = "ترجمه إلى العربية iA7myd.";
 "__LocalizationCredit.URL" = "https://github.com/iA7myd"; // (optional)
 
+// Common Prompts
 "About" = "حول";
 "Close" = "إغلاق";
 "Double tap to open." = "انقر مرتين للفتح.";
@@ -25,6 +26,7 @@
 "Delete" = "حذف";
 "Cancel" = "إلغاء";
 
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "جارِ التثبيت";
 "Downloading_Package_Status" = "جارِ التنزيل";
 "Queued_Package_Status" = "في قائمة الإنتظار";
@@ -53,6 +55,7 @@
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
 "Wishlist" = "قائمة الأمنيات";
 
+// Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
 "Queued_Uninstall_Heading" = "إلغاء التثبيت";
 "Queued_Update_Heading" = "تحديث";
@@ -118,6 +121,16 @@
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
 "Dark_Mode_Toggle" = "الوضع الداكن";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Enable_Analytics" = "Enable Analytics";
+
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
@@ -125,10 +138,6 @@
 "Payment_Provider_Sign_Out" = "تسجيل الخروج";
 "Payment_Provider_Sign_Out_Confirm.Title" = "تسجيل الخروج من %@";
 "Payment_Provider_Sign_Out_Confirm.Body" = "لن تصبح قادرًا على تنزيل حزمك المشتراة حتى تسجل الدخول مرة أخرى.";
-
-"Package_Filter_User" = "مستخدم";
-"Package_Filter_PowerUser" = "خبير";
-"Package_Filter_Dev" = "مطور";
 
 "Show_Install_Details" = "عرض التفاصيل";
 "Hide_Install_Details" = "إخفاء التفاصيل";
@@ -146,9 +155,12 @@
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
 "Dangerous_Repo.Last_Chance.Cancel" = "العودة";
 
-
+// All export-based strings
 "Export" = "تصدير";
 "Export_Packages" = "هل ترغب في تصدير قائمة الحزم الخاصة بك؟ سيؤدي هذا إلى نسخ كل أسماء الحزم وإصداراتها إلى حافظتك.";
 "Export_Sources" = "هل ترغب في تصدير قائمة المصادر الخاصة بك؟ سيؤدي هذا إلى نسخ كل عناوين URL مصادرك إلى الحافظة الخاصة بك.";
 "Export_Yes" = "نعم، نسخ.";
 "Export_No" = "لا، إلغاء.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";
