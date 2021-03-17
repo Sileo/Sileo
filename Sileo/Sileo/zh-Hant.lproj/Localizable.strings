@@ -124,6 +124,8 @@
 "Theme" = "主題";
 "Tint_Color" = "自定義顏色";
 "Reset_Tint_Color" = "重置顏色";
+"Auto_Complete_Queue" = "自動完成隊列";
+"Enable_Analytics" = "啟用分析";
 
 "Sileo_Light" = "Sileo淺色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -159,3 +161,6 @@
 "Export_Sources" = "請問需要導出您的來源地址嗎? 這將複製所有來源地址到您的剪貼板.";
 "Export_Yes" = "好的, 導出.";
 "Export_No" = "不, 取消.";
+
+// Depcitions
+"View_Depiction" = "查看介紹";
