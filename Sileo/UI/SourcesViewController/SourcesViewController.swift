@@ -427,7 +427,8 @@ extension SourcesViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView() // do not show extraneous tableview separators
+        let view = UIView() // do not show extraneous tableview separators
+        return view
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
