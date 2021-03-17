@@ -109,6 +109,10 @@
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Mostra il Contenuto del Pacchetto";
 
+"Auto_Complete_Queue" = "Termina coda automaticamente";
+"Enable_Analytics" = "Consenti analisi";
+"View_Depiction" = "Mostra dettagli";
+
 "Settings_Payment_Provider_Heading" = "Fornitori di Pagamento";
 "Settings_Translations_Heading" = "Traduzioni";
 
