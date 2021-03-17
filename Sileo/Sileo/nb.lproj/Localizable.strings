@@ -130,9 +130,9 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Logg ut av %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Du vil ikke lenger kunne laste ned kjøpte pakker før du logger deg på igjen.";
 
-"Package_Filter_User" = "Bruker";
-"Package_Filter_PowerUser" = "Avansert bruker";
-"Package_Filter_Dev" = "Utvikler";
+"Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
+"Enable_Analytics" = "Aktiver analysedata";
+"View_Depiction" = "Vis beskrivelse";
 
 "Show_Install_Details" = "Vis detaljer";
 "Hide_Install_Details" = "Skjul detaljer";
