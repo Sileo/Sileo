@@ -2,8 +2,7 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-27.
-  Translated to Russian by gkeep on 2020-04-21.
+  Created by AppleBetas on 2018-12-27. Translated to Russian by gkeep on 2020-04-21.
   Copyright © 2018 CoolStar. All rights reserved.
 
   RUSSIAN LOCALISATIONS
@@ -122,6 +121,16 @@
 "Settings" = "Настройки";
 "Settings_Page_Title" = "Настройки";
 "Dark_Mode_Toggle" = "Тёмный режим";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Enable_Analytics" = "Enable Analytics";
+
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
 
 "Cydia_Sign_In" = "Войти в Cydia Store";
 "Payment_Provider_Signed_In" = "Выполнен вход";
@@ -129,10 +138,6 @@
 "Payment_Provider_Sign_Out" = "Выйти";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Выйти из %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Вы не сможете скачивать купленные пакеты до повторного входа.";
-
-"Package_Filter_User" = "Пользователь";
-"Package_Filter_PowerUser" = "Опытный пользователь";
-"Package_Filter_Dev" = "Разработчик";
 
 "Show_Install_Details" = "Показать детали";
 "Hide_Install_Details" = "Скрыть детали";
@@ -156,3 +161,6 @@
 "Export_Sources" = "Хотите ли вы экспортировать список источников? Это скопирует все URL источников в буфер обмена.";
 "Export_Yes" = "Да, копировать.";
 "Export_No" = "Нет, отменить.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";
