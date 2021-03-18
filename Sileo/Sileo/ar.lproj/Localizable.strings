@@ -121,16 +121,16 @@
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
 "Dark_Mode_Toggle" = "الوضع الداكن";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Enable_Analytics" = "Enable Analytics";
+"Theme" = "السمة";
+"Tint_Color" = "لون الصبغة";
+"Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
+"Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
+"Enable_Analytics" = "تفعيل الإحصائيات";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Light" = "Sileo فاتح";
+"Sileo_Dark" = "Sileo داكن";
+"Sileo_Adaptive" = "تكيُّف Sileo";
+"System" = "النظام";
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
@@ -163,4 +163,4 @@
 "Export_No" = "لا، إلغاء.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "عرض الوصف";
