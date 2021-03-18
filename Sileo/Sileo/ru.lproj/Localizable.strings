@@ -1,0 +1,158 @@
+/*
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Translated to Russian by gkeep on 2020-04-21.
+  Copyright © 2018 CoolStar. All rights reserved.
+
+  RUSSIAN LOCALISATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+"__LocalizationCredit.Title" = "Перевод на русский от gkeep";
+"__LocalizationCredit.URL" = "https://gkeep.xyz"; // (optional)
+
+// Common Prompts
+"About" = "About";
+"Close" = "Закрыть";
+"Double tap to open." = "Нажмите два раза, чтоьы открыть.";
+"Untitled_Repo" = "Репозиторий без названия";
+"OK" = "ОК";
+"Done" = "Готово";
+"Done_Editing" = "Готово";
+"More_Info" = "Больше информации";
+"Loading" = "Загрузка...";
+"Share" = "Поделиться";
+"Delete" = "Удалить";
+"Cancel" = "Отмена";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Установка";
+"Downloading_Package_Status" = "Загрузка";
+"Queued_Package_Status" = "В очереди";
+"Ready_Status" = "Готов";
+"Removal_Queued_Package_Status" = "В очереди для удаления";
+"Download_Starting" = "Начало...";
+"Download_Progress" = "%@ из %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Подтвердить";
+"Queue_Clear_Button" = "Очистить очередь";
+
+"Package_Upgrade_Action" = "Обновить";
+"Package_Reinstall_Action" = "Переустановить";
+"Package_Uninstall_Action" = "Удалить";
+"Package_Modify_Action" = "Изменить";
+"Package_Get_Action" = "Загрузить";
+"Package_Queue_Action" = "Очередь";
+"Package_Cancel_Action" = "Отменить";
+
+"Package_Share_Action" = "Поделиться пакетом…";
+"Package_Developer_Find_Action" = "Больше от этого разработчика";
+"Package_Support_Action" = "Поддержка";
+"Package_Hold_Enable_Action" = "Игнорировать обновления";
+"Package_Hold_Disable_Action" = "Перестать игнорировать обновления";
+"Package_Wishlist_Add" = "Добавить в список желаний";
+"Package_Wishlist_Remove" = "Удалить из списка желаний";
+"Wishlist" = "Список желаний";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Установка";
+"Queued_Uninstall_Heading" = "Удаление";
+"Queued_Update_Heading" = "Обновление";
+"Download_Errors_Heading" = "Ошибки";
+
+"Installed_Heading" = "Установлено";
+"Updates_Heading" = "Обновления";
+"Upgrade_All_Button" = "Обновиить все";
+"Package_Search.Placeholder" = "Поиск в пакетах";
+"Sort_Name" = "Имя";
+"Sort_Date" = "Дата";
+"Sort_By" = "Сортировка по:";
+
+"Package_Unavailable" = "Пакет недоступен";
+"Package_By_Author" = "%@ от %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "от %@"; // %@ = author name
+"Packages_By_Author" = "Пакеты от %@"; // %@ = author name
+
+"Featured_Page" = "Избранные";
+"News_Page" = "Новые";
+"Sources_Page" = "Источники";
+"Packages_Page" = "Пакеты";
+"Search_Page" = "Поиск";
+"Refreshing_Sources_Page" = "Обновление источников";
+"Package_Installed_Files_Page" = "Установленные файлы";
+
+"All_Packages.Title" = "Все пакеты";
+"All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
+
+"All_Categories" = "Все категории";
+
+"Repos" = "Репозитории";
+
+"Add_Source.Title" = "Добавить источник";
+"Add_Source.Body" = "Добавить APT URL";
+"Add_Source.Button.Add" = "Добавить источник";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Ввести вручную";
+
+"Untitled_Form" = "Безымянная форма";
+"Form_Submitted.Default_Title" = "Отправленная форма";
+"Form_Submitted.Default_Body" = "Форма успешно отправлена.";
+
+"Web_Depiction_Deprecated_Warning" = "Веб-описания устарели. Пожалуйста, свяжитесь с владельцем репозитория для обновления на родные описания.";
+
+"Package_Details_Tab" = "Детали";
+"Package_Changelog_Tab" = "Список изменений";
+"Package_No_Description_Available" = "Описание не доступно для этого пакета.";
+"Package_Changelogs_Unavailable" = "Список изменения не доступнен для этого пакета.";
+
+"Installed_Package_Header" = "Установленные пакеты";
+"Version" = "Версия";
+"Show_Package_Contents_Button" = "Показать содержимое пакета";
+
+"Licenses_Page_Title" = "Лицензии";
+
+"Settings_Payment_Provider_Heading" = "Поставщики платежа";
+"Settings_Translations_Heading" = "Переводы";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Покупки";
+"Settings_Payment_Provider.No_Purchases" = "Нет покупок";
+
+"Settings" = "Настройки";
+"Settings_Page_Title" = "Настройки";
+"Dark_Mode_Toggle" = "Тёмный режим";
+
+"Cydia_Sign_In" = "Войти в Cydia Store";
+"Payment_Provider_Signed_In" = "Выполнен вход";
+"Payment_Provider_Signed_In_With_Name" = "Выполнен вход как %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Выйти";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Выйти из %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Вы не сможете скачивать купленные пакеты до повторного входа.";
+
+"Package_Filter_User" = "Пользователь";
+"Package_Filter_PowerUser" = "Опытный пользователь";
+"Package_Filter_Dev" = "Разработчик";
+
+"Show_Install_Details" = "Показать детали";
+"Hide_Install_Details" = "Скрыть детали";
+
+"After_Install_Relaunch" = "Перезапустить Sileo";
+"After_Install_Respring" = "Перезапустить SpringBoard";
+"After_Install_Reboot" = "Перезагрузить девайс";
+
+"Dangerous_Repo.Title" = "Опасный репозиторий";
+"Dangerous_Repo.Body" = "Вы пытаетесь добавить репозиторий, известный за такое вредное содержимое, как пиратство, нелегальный контент или вредоносные программы.\n\nРепозитории, отмеченные как опасные, часто разпространяют П.О. с неожиданными эффектами, в форме платных пакетов бесплатно или других вредоносных пакетов. Это может повлечь длительные последствия для вашего устройства и конфиденциальности, иногда затрагивающие возможность jailbreak. Мы рекомендуем вам проявлять крайнюю осторожность, чтобы избежать вредносного П.О.";
+"Dangerous_Repo.Continue" = "Я принимаю риски, продолжить";
+"Dangerous_Repo.Cancel" = "Верните меня в безопасность";
+"Dangerous_Repo.Last_Chance.Title" = "Добавить вредоносный репозиторий?";
+"Dangerous_Repo.Last_Chance.Body" = "Опасные репозитории могут иметь разрушительные последствия для вашей способности использовать ваше устройство или jailbreak. Мы настоятельно рекомендуем вам вернуться для вашей же безопасности.";
+"Dangerous_Repo.Last_Chance.Continue" = "Продолжить";
+"Dangerous_Repo.Last_Chance.Cancel" = "Вернуться";
+
+// All export-based strings
+"Export" = "Экспорт";
+"Export_Packages" = "Хотите ли вы экспортировать список пакетов? Это скопирует все названия пакетов и их версии в буфер обмена.";
+"Export_Sources" = "Хотите ли вы экспортировать список источников? Это скопирует все URL источников в буфер обмена.";
+"Export_Yes" = "Да, копировать.";
+"Export_No" = "Нет, отменить.";
