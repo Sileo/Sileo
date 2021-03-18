@@ -11,7 +11,7 @@ import Foundation
 class DepictionReviewView: DepictionBaseView {
     private var backgroundView: UIView?
     private var containedReviewView: DepictionBaseView?
-
+    
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let title = dictionary["title"] as? String else {
             return nil
@@ -23,9 +23,9 @@ class DepictionReviewView: DepictionBaseView {
             return nil
         }
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-
+        
         let rating: Any = (dictionary["rating"] as? CGFloat) ?? ""
-
+        
         let subDepiction: [String: Any] = [
             "class": "DepictionStackView",
             "views": [
@@ -67,7 +67,7 @@ class DepictionReviewView: DepictionBaseView {
                 ]
             ]
         ]
-
+        
         backgroundView = UIView(frame: .zero)
         backgroundView?.backgroundColor = .sileoContentBackgroundColor
         backgroundView?.layer.cornerRadius = 10
@@ -78,22 +78,24 @@ class DepictionReviewView: DepictionBaseView {
                                                selector: #selector(SileoContentView.updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
-
-        containedReviewView = DepictionBaseView.view(dictionary: subDepiction, viewController: viewController, tintColor: self.tintColor, isActionable: isActionable)
-        self.addSubview(containedReviewView!)
+        
+        let color = self.tintColor
+        let view = DepictionBaseView.view(dictionary: subDepiction, viewController: viewController, tintColor: color, isActionable: isActionable)
+        self.containedReviewView = view
+        self.addSubview(view!)
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func depictionHeight(width: CGFloat) -> CGFloat {
         guard let containedReviewView = containedReviewView else {
             return 0
         }
         return containedReviewView.depictionHeight(width: width - 40.0) + 40.0
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundView?.frame = self.bounds.insetBy(dx: 8, dy: 8)

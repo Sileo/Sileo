@@ -357,16 +357,14 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                     return self.updatePurchaseStatus()
             }
             DispatchQueue.main.async {
-                PaymentAuthenticator.shared.handlePayment(actionURL: actionURL,
-                                                          provider: provider, window: self.window) { error, success in
-                                                            if error != nil {
-                                                                return self.presentAlert(paymentError: error,
-                                                                                         title: String(localizationKey: "Purchase_Complete_Fail.Title", type: .error))
-                                                            }
-                                                            if success {
-                                                                self.updatePurchaseStatus()
-                                                            }
-                                                                        
+                PaymentAuthenticator.shared.handlePayment(actionURL: actionURL, provider: provider, window: self.window) { error, success in
+                    if error != nil {
+                        let title = String(localizationKey: "Purchase_Complete_Fail.Title", type: .error)
+                        return self.presentAlert(paymentError: error, title: title)
+                    }
+                    if success {
+                        self.updatePurchaseStatus()
+                    }
                 }
             }
         }

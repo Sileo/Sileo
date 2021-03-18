@@ -12,9 +12,9 @@ import Foundation
 class DepictionStackView: DepictionBaseView {
     private var views: [DepictionBaseView] = []
     private var isLandscape: Bool = false
-
+    
     private var xPadding = CGFloat(0)
-
+    
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let views = dictionary["views"] as? [[String: Any]] else {
             return nil
@@ -27,21 +27,22 @@ class DepictionStackView: DepictionBaseView {
                 isLandscape = true
             }
         }
-
+        
         for viewDict in views {
             guard (viewDict["class"] as? String) != nil else {
                 return nil
             }
         }
-
+        
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
         for viewDict in views {
-            if let view = DepictionBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+            let view = DepictionBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
+            if let view = view {
                 self.views.append(view)
                 addSubview(view)
             }
         }
-
+        
         if let backgroundColor = dictionary["backgroundColor"] as? String {
             /*UIColor *color = [UIColor colorWithCSS:depiction[@"backgroundColor"]];
              CGFloat red, green, blue, alpha;
@@ -51,7 +52,7 @@ class DepictionStackView: DepictionBaseView {
              self.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];*/
             self.backgroundColor = UIColor(css: backgroundColor)
         }
-
+        
         if let xPadding = dictionary["xPadding"] as? CGFloat {
             self.xPadding = xPadding
         }
