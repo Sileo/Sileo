@@ -101,7 +101,6 @@ class APTWrapper {
             arguments.append(package.package.package + "-")
         }
         
-        var status: Int = 0
         var aptOutput = ""
         var aptErrorOutput = ""
         
@@ -125,7 +124,10 @@ class APTWrapper {
         if installs.isEmpty && removals.isEmpty {
             aptOutput = ""
         } else {
-            (status, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
+            let result = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
+            aptOutput = result.1
+            aptErrorOutput = result.2
+            // result.0 is the return status, but it is not needed here
         }
         #endif
         
@@ -285,7 +287,6 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         
-        #warning("TODO: remove --allow-unauthenticated")
         var arguments = ["apt-get", "install", "--reinstall", "--allow-unauthenticated",
                          "--allow-downgrades", "--no-download", "--allow-remove-essential",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",

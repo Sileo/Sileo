@@ -254,7 +254,7 @@ extension SettingsViewController { // UITableViewDataSource
             } else if hasLoadedOnce || (indexPath.row - authenticatedProviders.count - unauthenticatedProviders.count) > 0 {
                 tableView.deselectRow(at: indexPath, animated: true)
                 let nibName = "CydiaAccountViewController"
-                let cydiaAccountViewController: CydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
+                let cydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
                 let navController: UINavigationController = UINavigationController(rootViewController: cydiaAccountViewController)
                 self.present(navController, animated: true)
             }

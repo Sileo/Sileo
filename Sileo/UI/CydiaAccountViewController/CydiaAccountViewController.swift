@@ -18,24 +18,18 @@ class CydiaAccountViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backButton = UIBarButtonItem(image: UIImage.kitImageNamed("UIButtonBarArrowLeft"),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(CydiaAccountViewController.back(_:)))
-        let forwardButton = UIBarButtonItem(image: UIImage.kitImageNamed("UIButtonBarArrowRight"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(CydiaAccountViewController.forward(_:)))
+        let leftArrow = UIImage.kitImageNamed("UIButtonBarArrowLeft")
+        let rightArrow = UIImage.kitImageNamed("UIButtonBarArrowRight")
+        
+        let backButton = UIBarButtonItem(image: leftArrow, style: .plain, target: self, action: #selector(CydiaAccountViewController.back(_:)))
+        let forwardButton = UIBarButtonItem(image: rightArrow, style: .plain, target: self, action: #selector(CydiaAccountViewController.forward(_:)))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismiss(_:)))
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(CydiaAccountViewController.reload(_:)))
+        
         self.backButton = backButton
         self.forwardButton = forwardButton
-        
-        self.navigationItem.leftBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismiss(_:))),
-            backButton, forwardButton
-        ]
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
-                                                                 target: self,
-                                                                 action: #selector(CydiaAccountViewController.reload(_:)))
+        self.navigationItem.leftBarButtonItems = [doneButton, backButton, forwardButton]
+        self.navigationItem.rightBarButtonItem = refreshButton
         
         webView?.loadRequest(URLRequest(url: URL(string: "https://cydia.saurik.com/account/")!))
     }
@@ -59,17 +53,15 @@ class CydiaAccountViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         backButton?.isEnabled = webView.canGoBack
         forwardButton?.isEnabled = webView.canGoForward
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
-                                                                 target: self,
-                                                                 action: #selector(CydiaAccountViewController.stop(_:)))
+        let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(CydiaAccountViewController.stop(_:)))
+        self.navigationItem.rightBarButtonItem = button
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         backButton?.isEnabled = webView.canGoBack
         forwardButton?.isEnabled = webView.canGoForward
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
-                                                                 target: self,
-                                                                 action: #selector(CydiaAccountViewController.reload(_:)))
+        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(CydiaAccountViewController.reload(_:)))
+        self.navigationItem.rightBarButtonItem = button
         
         if webView.request?.mainDocumentURL?.absoluteString.hasPrefix("https://cydia.saurik.com/account") ?? false {
             guard var uRLRequest = webView.request else {

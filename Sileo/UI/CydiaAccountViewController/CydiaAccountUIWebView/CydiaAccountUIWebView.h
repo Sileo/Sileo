@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 @interface CydiaAccountUIWebView : UIWebView
 
 @end
+
+#pragma clang diagnostic pop
