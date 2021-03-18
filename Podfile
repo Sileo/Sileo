@@ -21,7 +21,7 @@ def sileo_pods
 	pod 'Flurry-iOS-SDK/FlurrySDK', :git => 'https://github.com/flurry/flurry-ios-sdk.git', :tag => '11.2.0.rc1'
 	pod 'Down'
 	pod 'AUPickerCell'
-	pod 'Alderis', :git => 'https://github.com/hbang/Alderis.git'
+	pod 'Alderis', '~> 1.1.2'
 	pod 'SwiftTryCatch', :modular_headers => true
 	pod 'SQLite.swift', '~> 0.12.0'
 end
