@@ -42,14 +42,14 @@
 "Package_Reinstall_Action" = "إعادة التثبيت";
 "Package_Uninstall_Action" = "إلغاء التثبيت";
 "Package_Modify_Action" = "تعديل";
-"Package_Get_Action" = "جلب";
+"Package_Get_Action" = "الحصول";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
 
 "Package_Share_Action" = "مشاركة الحزمة...";
 "Package_Developer_Find_Action" = "المزيد بواسطة هذا المطور";
 "Package_Support_Action" = "الدعم";
-"Package_Hold_Enable_Action" = "تجاهل التحديثات المستقبيلة";
+"Package_Hold_Enable_Action" = "تجاهل التحديثات المستقبلية";
 "Package_Hold_Disable_Action" = "إيقاف تجاهل التحديثات";
 "Package_Wishlist_Add" = "إضافة إلى قائمة الأمنيات";
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
