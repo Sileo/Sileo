@@ -128,8 +128,7 @@ class CategoryViewController: SileoTableViewController {
                 return
             }
             URLSession.shared.dataTask(with: featuredURL) { data, _, error in
-                guard error == nil,
-                let data = data else {
+                guard error == nil, let data = data else {
                     return
                 }
                 guard let rawDepiction = try? JSONSerialization.jsonObject(with: data, options: []) else {
@@ -140,14 +139,14 @@ class CategoryViewController: SileoTableViewController {
                         return
                 }
                 self.featuredBannerData = depiction
+                
                 DispatchQueue.main.async {
-                    guard let tableHeaderView = FeaturedBannersView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) else {
-                        return
+                    if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) {
+                        let newHeight = headerView.depictionHeight(width: self.view.bounds.width)
+                        headerView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+                        self.headerStackView?.addArrangedSubview(headerView)
+                        self.updateHeaderStackView()
                     }
-                    let newHeight = tableHeaderView.depictionHeight(width: self.view.bounds.width)
-                    tableHeaderView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                    self.headerStackView?.addArrangedSubview(tableHeaderView)
-                    self.updateHeaderStackView()
                 }
             }.resume()
         }
@@ -230,8 +229,7 @@ class CategoryViewController: SileoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        //Do not delete this, it's so the tableview doesn't display separator lines beyond the last populated row.
-        return UIView()
+        UIView() // do not show extraneous tableview separators
     }
     
     func controller(indexPath: IndexPath) -> PackageListViewController {

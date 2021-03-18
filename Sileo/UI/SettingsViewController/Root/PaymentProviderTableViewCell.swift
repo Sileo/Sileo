@@ -62,7 +62,8 @@ class PaymentProviderTableViewCell: UITableViewCell {
                     self.setImage(nil)
                     let url = info["icon"] as? String ?? ""
                     if !url.isEmpty {
-                        self.iconView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(), options: SDWebImageOptions(rawValue: 0)) { image, _, _, _ in
+                        let options = SDWebImageOptions(rawValue: 0)
+                        self.iconView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(), options: options) { image, _, _, _ in
                             DispatchQueue.main.async {
                                 self.setImage(image)
                             }
@@ -74,7 +75,8 @@ class PaymentProviderTableViewCell: UITableViewCell {
                                 if let userInfo = userInfo as [String: Any]? {
                                     if let user = userInfo["user"] as? [String: String],
                                         let username = user["name"] {
-                                        self.subtitleLabel.text = String(format: String(localizationKey: "Payment_Provider_Signed_In_With_Name"), username)
+                                        let string = String(localizationKey: "Payment_Provider_Signed_In_With_Name")
+                                        self.subtitleLabel.text = String(format: string, username)
                                     }
                                 }
                             }

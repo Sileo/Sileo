@@ -24,21 +24,22 @@ class FeaturedAutoStackView: FeaturedBaseView {
         }
         self.horizontalSpacing = horizontalSpacing
         
-        for viewDict in views {
-            guard (viewDict["class"] as? String) != nil else {
+        for dict in views {
+            guard (dict["class"] as? String) != nil else {
                 return nil
             }
-            guard (viewDict["preferredWidth"] as? CGFloat) != nil else {
+            guard (dict["preferredWidth"] as? CGFloat) != nil else {
                 return nil
             }
         }
         
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        for viewDict in views {
-            guard let preferredWidth = viewDict["preferredWidth"] as? CGFloat else {
+        
+        for dict in views {
+            guard let preferredWidth = dict["preferredWidth"] as? CGFloat else {
                 continue
             }
-            if let view = FeaturedBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+            if let view = FeaturedBaseView.view(dictionary: dict, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
                 self.views.append(view)
                 self.viewWidths.append(preferredWidth)
                 addSubview(view)

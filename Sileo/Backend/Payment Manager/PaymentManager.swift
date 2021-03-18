@@ -47,7 +47,6 @@ class PaymentManager {
         let request = URLManager.urlRequest(requestURL, includingDeviceInfo: false)
         
         URLSession.shared.dataTask(with: request) { data, _, error in
-            // TODO: more specific error handling based on status code, etc.
             // The `error` object here is almost always nil.
             // Consider using the TBURLRequestOptions pod
             guard error == nil,

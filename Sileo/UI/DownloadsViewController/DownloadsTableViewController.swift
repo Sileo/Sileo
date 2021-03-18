@@ -230,8 +230,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        //Do not delete this, it's so the tableview doesn't display separator lines beyond the last populated row.
-        return UIView()
+        UIView() // do not show extraneous tableview separators
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
