@@ -442,7 +442,7 @@ final class RepoManager {
         }
     }
 
-    private func _update(
+    private func _update (
         force: Bool,
         forceReload: Bool,
         isBackground: Bool,

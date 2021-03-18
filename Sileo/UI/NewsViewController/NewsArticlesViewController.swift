@@ -47,7 +47,7 @@ class NewsArticlesViewController: UIViewController, UICollectionViewDataSource, 
 extension NewsArticlesViewController { // Get Data
     func loadArticles() {
         isLoading = true
-        //articles = NewsArticle.instancesWhere("1 ORDER BY date desc", arguments: nil) as? [NewsArticle]
+        // articles = NewsArticle.instancesWhere("1 ORDER BY date desc", arguments: nil) as? [NewsArticle]
         articles = []
         if !articles.isEmpty {
             isLoading = false
@@ -59,7 +59,6 @@ extension NewsArticlesViewController { // Get Data
                 if error != nil || data == nil {
                     return
                 }
-                //var jsonError
                 let options = JSONSerialization.ReadingOptions.allowFragments
                 let responseData: [String: Any]? = try? JSONSerialization.jsonObject(with: data ?? Data(), options: options) as? [String: Any]
                 if responseData == nil {
@@ -75,10 +74,10 @@ extension NewsArticlesViewController { // Get Data
                     if let article = NewsArticle(dict: articleData as? [String: Any] ?? [:]) {
                         self.articles.append(article)
                     }
-                    //NewsArticle.articleFromDictionary(articleData as? [String : Any] ?? [:])
+                    // NewsArticle.articleFromDictionary(articleData as? [String : Any] ?? [:])
                 }
 
-                //self.articles = NewsArticle.instancesWhere("1 ORDER BY date desc", arguments: nil) as? [NewsArticle]
+                // self.articles = NewsArticle.instancesWhere("1 ORDER BY date desc", arguments: nil) as? [NewsArticle]
                 self.activityIndicatorView?.stopAnimating()
                 self.collectionView.reloadData()
             }

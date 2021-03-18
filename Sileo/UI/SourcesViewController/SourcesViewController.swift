@@ -369,7 +369,7 @@ class SourcesViewController: SileoTableViewController {
     }
 }
 
-extension SourcesViewController { //UITableViewDataSource
+extension SourcesViewController { // UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
@@ -427,8 +427,7 @@ extension SourcesViewController { //UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        //Do not delete this, it's so the tableview doesn't display separator lines beyond the last populated row.
-        return UIView()
+        UIView() // do not show extraneous tableview separators
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -456,7 +455,7 @@ extension SourcesViewController { //UITableViewDataSource
     }
 }
 
-extension SourcesViewController { //UITableViewDelegate
+extension SourcesViewController { // UITableViewDelegate
     override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         indexPath.section > 0
     }

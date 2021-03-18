@@ -15,11 +15,16 @@ class DepictionLayerView: DepictionBaseView {
         guard let rawViews = dictionary["views"] as? [[String: Any]] else {
             return nil
         }
+        
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
+        
         for rawView in rawViews {
-            if let view = DepictionBaseView.view(dictionary: rawView, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
-                views.append(view)
-                self.addSubview(view)
+            if let depictView = DepictionBaseView.view(dictionary: rawView,
+                                                       viewController: viewController,
+                                                       tintColor: tintColor,
+                                                       isActionable: isActionable) {
+                views.append(depictView)
+                self.addSubview(depictView)
             }
         }
     }
