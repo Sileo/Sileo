@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIColor {
-    static var isTransitionLockedForiOS13Bug: Bool = false //Fucking Apple QA/QC
+    static var isTransitionLockedForiOS13Bug: Bool = false // compensate for a bug in stock iOS
     
     static var isDarkModeEnabled: Bool {
         if SileoThemeManager.shared.currentTheme.preferredUserInterfaceStyle == .dark {

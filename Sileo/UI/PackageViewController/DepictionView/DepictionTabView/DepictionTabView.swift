@@ -41,13 +41,11 @@ class DepictionTabView: DepictionBaseView, DepictionTabControlContainer {
 
             let tabControl = DepictionTabControl(text: tabName)
 
-            guard let depictionView = DepictionBaseView.view(dictionary: tab, viewController: viewController, tintColor: tintColor, isActionable: isActionable) else {
-                continue
+            if let view = DepictionBaseView.view(dictionary: tab, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+                tabViews.append(tabControl)
+                tabView?.addSubview(tabControl)
+                tabContentViews.append(view)
             }
-
-            tabViews.append(tabControl)
-            tabView?.addSubview(tabControl)
-            tabContentViews.append(depictionView)
         }
 
         tabViewSeparator = UIView(frame: .zero)

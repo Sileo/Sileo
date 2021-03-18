@@ -77,16 +77,15 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {
                             if status != 0 {
-                                let errorsVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
-                                let mutableAttributedString = NSMutableAttributedString(string: output,
-                                                                                        attributes: [
-                                                                                            NSAttributedString.Key.foregroundColor: Dusk.foregroundColor
-                                                                                        ])
+                                let errorAttrs = [NSAttributedString.Key.foregroundColor: Dusk.errorColor]
+                                let errorString = NSMutableAttributedString(string: errorOutput, attributes: errorAttrs)
                                 
-                                let errorString = NSMutableAttributedString(string: errorOutput,
-                                                                            attributes: [NSAttributedString.Key.foregroundColor: Dusk.errorColor])
+                                let stringAttrs = [NSAttributedString.Key.foregroundColor: Dusk.foregroundColor]
+                                let mutableAttributedString = NSMutableAttributedString(string: output, attributes: stringAttrs)
                                 mutableAttributedString.append(NSAttributedString(string: "\n"))
                                 mutableAttributedString.append(errorString)
+                                
+                                let errorsVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
                                 errorsVC.attributedString = mutableAttributedString
                                 
                                 let navController = UINavigationController(rootViewController: errorsVC)

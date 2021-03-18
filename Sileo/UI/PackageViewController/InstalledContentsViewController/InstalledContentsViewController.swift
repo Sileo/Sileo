@@ -11,19 +11,19 @@ import LNZTreeView
 
 class InstalledContentsViewController: UIViewController {
    public var packageId: String = ""
-
+    
     private var treeView: LNZTreeView?
     private var filesList: [String] = []
-
+    
     fileprivate var rootNode = FileNode(withIdentifier: "/")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = String(localizationKey: "Package_Installed_Files_Page")
-
+        
         self.navigationItem.largeTitleDisplayMode = .never
-
+        
         do {
             #if targetEnvironment(simulator) || TARGET_SANDBOX
             let dpkgURL = Bundle.main.url(forResource: "dpkg", withExtension: "list") ?? URL(fileURLWithPath: "/")
@@ -32,11 +32,11 @@ class InstalledContentsViewController: UIViewController {
             #endif
             filesList = try String(contentsOf: dpkgURL).components(separatedBy: CharacterSet(charactersIn: "\n"))
         } catch {
-            //Ignore
+            
         }
-
+        
         rootNode = FileNode(withIdentifier: "/", andChildren: children(path: "/"))
-
+        
         let treeView = LNZTreeView(frame: self.view.bounds)
         treeView.dataSource = self
         treeView.delegate = self
@@ -45,7 +45,7 @@ class InstalledContentsViewController: UIViewController {
         treeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(treeView)
         treeView.subviews[0].backgroundColor = .clear
-
+        
         self.view.tintColor = UINavigationBar.appearance().tintColor
 
         self.treeView = treeView

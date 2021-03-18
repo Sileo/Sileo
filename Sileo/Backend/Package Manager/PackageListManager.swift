@@ -5,6 +5,7 @@
 //  Created by CoolStar on 7/3/19.
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
+
 import Foundation
 import CoreSpotlight
 
@@ -379,8 +380,7 @@ final class PackageListManager {
                 if firstSeparator.lowerBound != 0 {
                     let subdata = rawPackagesData.subdata(in: firstSeparator.lowerBound-1..<firstSeparator.lowerBound)
                     let character = subdata.first
-                    if character == 13 { // \r
-                        //Found windows line endings
+                    if character == 13 { // 13 means carriage return (\r, Windows line ending)
                         separator = "\r\n\r\n".data(using: .utf8)!
                     }
                 }

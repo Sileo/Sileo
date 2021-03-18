@@ -18,7 +18,6 @@ class CollectionViewTableViewCell: UITableViewCell {
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: "collectionCell")
-        //super.init()
         
         self.selectionStyle = UITableViewCell.SelectionStyle.none
         self.clipsToBounds = true

@@ -14,8 +14,7 @@ enum pkgwant {
     hold,
     deinstall,
     purge,
-    /** Not allowed except as special sentinel value in some places. */
-    sentinel
+    sentinel // Not allowed except as special sentinel value in some places
 }
 
 enum pkgeflag {
@@ -99,7 +98,6 @@ class DpkgWrapper {
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
         guard let dpkgCmp = try? compareVersions(version, greaterThan) else {
             return false
-            //FIXME: Handle exception properly
         }
         
         if dpkgCmp > 0 {
