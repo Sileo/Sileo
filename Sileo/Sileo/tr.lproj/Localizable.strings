@@ -1,3 +1,17 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+
+ TURKISH LOCALISATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+"__LocalizationCredit.Title" = "Turkish translation by CanerKaraca";
+"__LocalizationCredit.URL" = "https://twitter.com/Caner__Karaca"; // (optional)
+
 "About" = "Hakkında";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
