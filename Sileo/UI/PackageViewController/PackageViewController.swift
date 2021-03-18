@@ -69,44 +69,45 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     
     private func parseNativeDepiction(_ data: Data, host: String, failureCallback: (() -> Void)?) {
         guard let rawJSON = try? JSONSerialization.jsonObject(with: data, options: []),
-            let rawDepiction = rawJSON as? [String: Any],
-            let className = rawDepiction["class"] as? String,
-            isValidRootClass(className: className, host: host) else {
+              let rawDepict = rawJSON as? [String: Any],
+              let className = rawDepict["class"] as? String,
+              isValidRootClass(className: className, host: host)
+        else {
             failureCallback?()
             return
         }
-        DispatchQueue.main.async {
-            if let rawTintColor = rawDepiction["tintColor"] as? String,
-                let tintColor = UIColor(css: rawTintColor) {
+        DispatchQueue.main.sync {
+            if let rawTintColor = rawDepict["tintColor"] as? String, let tintColor = UIColor(css: rawTintColor) {
                 self.depictionFooterView?.tintColor = tintColor
                 self.downloadButton.tintColor = tintColor
                 self.downloadButton.updateStyle()
                 self.navBarDownloadButton?.tintColor = tintColor
                 self.navBarDownloadButton?.updateStyle()
             }
-
-            guard let depictionView = DepictionBaseView.view(dictionary: rawDepiction, viewController: self, tintColor: nil, isActionable: false) else {
+            
+            let oldDepictView = self.depictionView
+            guard let newDepictView = DepictionBaseView.view(dictionary: rawDepict, viewController: self, tintColor: nil, isActionable: false) else {
                 return
             }
-            self.depictionView?.delegate = nil
-            depictionView.delegate = self
-
-            if let headerImage = rawDepiction["headerImage"] as? String {
-                self.depictionBackgroundView.sd_setImage(with: URL(string: headerImage))
+            
+            oldDepictView?.delegate = nil
+            newDepictView.delegate = self
+            
+            if let imageURL = rawDepict["headerImage"] as? String {
+                self.depictionBackgroundView.sd_setImage(with: URL(string: imageURL))
             }
-
-            let oldDepictionView = self.depictionView
-            self.depictionView = depictionView
-            self.depictionView?.alpha = 0.1
-
-            self.contentView.addSubview(depictionView)
+            
+            newDepictView.alpha = 0.1
+            self.depictionView = newDepictView
+            self.contentView.addSubview(newDepictView)
             self.viewDidLayoutSubviews()
+            
             UIView.animate(withDuration: 0.25, animations: {
-                oldDepictionView?.alpha = 0
-                depictionView.alpha = 1
+                oldDepictView?.alpha = 0
+                newDepictView.alpha = 1
             }, completion: { _ in
-                oldDepictionView?.removeFromSuperview()
-                if let minVersion = rawDepiction["minVersion"] as? String,
+                oldDepictView?.removeFromSuperview()
+                if let minVersion = rawDepict["minVersion"] as? String,
                     minVersion.compare(StoreVersion) == .orderedDescending {
                     self.versionTooLow()
                 }
@@ -388,9 +389,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : weakNavController
+        
         allowNavbarUpdates = false
-        let navController = (splitViewController?.isCollapsed ?? false) ? (splitViewController?.viewControllers[0] as? UINavigationController) : weakNavController
         currentNavBarOpacity = navController?.navigationBar._backgroundOpacity ?? 1
+        
         UIView.animate(withDuration: 0.8) {
             navController?.navigationBar.tintColor = UINavigationBar.appearance().tintColor
             navController?.navigationBar._backgroundOpacity = 1
@@ -462,8 +467,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             return
         }
         
-        let navController = (splitViewController?.isCollapsed ?? false) ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
-
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
+        
         if navBarAlphaOffset < 1 {
             var tintColor = UINavigationBar.appearance().tintColor
             if let color = self.depictionView?.tintColor {
