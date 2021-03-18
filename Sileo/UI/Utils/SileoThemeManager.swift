@@ -84,8 +84,7 @@ class SileoThemeManager: NSObject {
         if let archivedData = UserDefaults.standard.value(forKey: "tintColor") as? Data {
             let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archivedData) as? UIColor
             self.tintColor = unarchivedData ?? fallbackColor
-        }
-        else {
+        } else {
             self.tintColor = fallbackColor
         }
         

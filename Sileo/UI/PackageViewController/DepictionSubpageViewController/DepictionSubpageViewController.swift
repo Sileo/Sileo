@@ -34,7 +34,7 @@ class DepictionSubpageViewController: UIViewController {
             return
         }
 
-        if depictionView == nil {
+        if self.depictionView == nil {
             loadingView?.startAnimating()
         }
 
@@ -62,16 +62,16 @@ class DepictionSubpageViewController: UIViewController {
                     }
                 }
 
-                guard let depictionView = DepictionBaseView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) else {
+                guard let depictView = DepictionBaseView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) else {
                     return
                 }
 
                 self.depictionView?.removeFromSuperview()
-                self.depictionView = depictionView
+                self.depictionView = depictView
 
-                self.navigationController?.navigationBar.tintColor = depictionView.tintColor
+                self.navigationController?.navigationBar.tintColor = depictView.tintColor
 
-                self.scrollView?.addSubview(depictionView)
+                self.scrollView?.addSubview(depictView)
                 self.loadingView?.stopAnimating()
                 self.viewDidLayoutSubviews()
             }

@@ -42,7 +42,7 @@ class DatabaseManager {
         }
         self.database = database
         
-        if self.schemaVersion < DatabaseSchemaVersion.version02000.rawValue { //2.x db is not compatible with 1.x
+        if self.schemaVersion < DatabaseSchemaVersion.version02000.rawValue { // 2.x database is not compatible with 1.x
             _ = try? database.run("DROP table NewsArticle")
             _ = try? database.run("DROP table PackageStub")
             self.schemaVersion = Int32(DatabaseSchemaVersion.version02000.rawValue)
@@ -52,9 +52,9 @@ class DatabaseManager {
     }
     
     private var schemaVersion: Int32 {
-        //swiftlint:disable:next force_cast force_try
+        // swiftlint:disable:next force_cast force_try
         get { Int32(try! database.scalar("PRAGMA user_version") as! Int64) }
-        //swiftlint:disable:next force_try
+        // swiftlint:disable:next force_try
         set { try! database.run("PRAGMA user_version = \(newValue)") }
     }
     

@@ -82,7 +82,7 @@ class APTWrapper {
         return dictionary
     }
     
-    //APT syntax: a- = remove a; b = install b
+    // APT syntax: a- = remove a; b = install b
     public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) -> [String: [[String: Any]]] {
         var arguments = ["-sqf", "--allow-remove-essential",
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
@@ -101,7 +101,6 @@ class APTWrapper {
             arguments.append(package.package.package + "-")
         }
         
-        var status: Int = 0
         var aptOutput = ""
         var aptErrorOutput = ""
         
@@ -125,7 +124,7 @@ class APTWrapper {
         if installs.isEmpty && removals.isEmpty {
             aptOutput = ""
         } else {
-            (status, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
+            (_, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
         }
         #endif
         
@@ -285,7 +284,6 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         
-        #warning("TODO: remove --allow-unauthenticated")
         var arguments = ["apt-get", "install", "--reinstall", "--allow-unauthenticated",
                          "--allow-downgrades", "--no-download", "--allow-remove-essential",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",

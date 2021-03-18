@@ -310,7 +310,6 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
             
             // Decode JSON
             do {
-                //let jsonData = try JSONDecoder().decode([String: AnyObject].self, from: data!)
                 guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else {
                     return completion(PaymentError(message: nil), nil)
                 }

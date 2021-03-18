@@ -56,7 +56,8 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        spawnAsRoot(command: "mkdir -p /var/lib/apt/sileolists && chown -R mobile:mobile /var/lib/apt/sileolists && chmod -R 0755 /var/lib/apt/sileolists")
+        let theCmd = "mkdir -p /var/lib/apt/sileolists && chown -R mobile:mobile /var/lib/apt/sileolists && chmod -R 0755 /var/lib/apt/sileolists"
+        spawnAsRoot(command: theCmd)
         #endif
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {

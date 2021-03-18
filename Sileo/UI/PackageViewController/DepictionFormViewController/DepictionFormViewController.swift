@@ -25,7 +25,8 @@ class DepictionFormViewController: XLFormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(DepictionFormViewController.dismiss(_:)))
+        let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(DepictionFormViewController.dismiss(_:)))
+        self.navigationItem.leftBarButtonItem = barButton
         
         let loadingView = UIActivityIndicatorView(style: .gray)
         loadingView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]

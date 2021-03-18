@@ -157,14 +157,18 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
             self.registerForPreviewing(with: self, sourceView: collectionView)
         }
         DispatchQueue.global(qos: .default).async {
+            let packageMan = PackageListManager.shared
+            
             if !self.showSearchField {
-                let packageManager = PackageListManager.shared
-                self.packages = packageManager.packagesList(loadIdentifier: self.packagesLoadIdentifier, repoContext: self.repoContext,
-                                                              sortPackages: true, lookupTable: self.searchCache) ?? []
-                self.searchCache[""] = self.packages
+                let pkgs = packageMan.packagesList(loadIdentifier: self.packagesLoadIdentifier,
+                                                   repoContext: self.repoContext,
+                                                   sortPackages: true,
+                                                   lookupTable: self.searchCache) ?? []
+                self.packages = pkgs
+                self.searchCache[""] = pkgs
             }
             if self.showUpdates {
-                self.availableUpdates = PackageListManager.shared.availableUpdates().map({ $0.0 })
+                self.availableUpdates = packageMan.availableUpdates().map({ $0.0 })
             }
             
             let updatesNotIgnored = self.availableUpdates.filter({ $0.wantInfo != .hold })

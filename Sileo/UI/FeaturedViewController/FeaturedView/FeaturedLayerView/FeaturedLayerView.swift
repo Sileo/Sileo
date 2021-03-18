@@ -15,9 +15,11 @@ class FeaturedLayerView: FeaturedBaseView {
         guard let rawViews = dictionary["views"] as? [[String: Any]] else {
             return nil
         }
+        
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        for rawView in rawViews {
-            if let view = FeaturedBaseView.view(dictionary: rawView, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+        
+        for dict in rawViews {
+            if let view = FeaturedBaseView.view(dictionary: dict, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
                 views.append(view)
                 self.addSubview(view)
             }

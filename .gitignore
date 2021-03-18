@@ -1,9 +1,14 @@
 .DS_Store
+
 xcuserdata/
-*.ipa
+.vscode/
 .idea/
-build/
+
 Pods/
+build/
 .theos/
+
 packages/
 giveMeRoot/bin/
+*.deb
+*.ipa
