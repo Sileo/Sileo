@@ -1,3 +1,13 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28. Translated to Turkish by: CanerKaraca (2021-03-18).
+  Copyright © 2018 CoolStar. All rights reserved.
+
+ TURKISH LOCALISATIONS
+*/
+
 "No_Category" = "(Kategori Yok)";
 "Tweaks" = "Tweakler";
 "Themes" = "Temalar";
@@ -7,5 +17,5 @@
 "Games" = "Oyunlar";
 "Developer" = "Geliştirici";
 "Data_Storage" = "Veri Depolama";
-"Terminal_Support" = "Terminal Desteği"; 
+"Terminal_Support" = "Terminal Desteği";
 "Text_Editors" = "Metin Düzenleyiciler";
