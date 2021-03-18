@@ -42,7 +42,7 @@
 "Package_Reinstall_Action" = "إعادة التثبيت";
 "Package_Uninstall_Action" = "إلغاء التثبيت";
 "Package_Modify_Action" = "تعديل";
-"Package_Get_Action" = "الحصول";
+"Package_Get_Action" = "جلب";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
 
