@@ -230,8 +230,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView() // do not show extraneous tableview separators
-        return view
+        UIView() // do not show extraneous tableview separators
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

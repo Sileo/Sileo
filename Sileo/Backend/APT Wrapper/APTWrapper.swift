@@ -124,10 +124,7 @@ class APTWrapper {
         if installs.isEmpty && removals.isEmpty {
             aptOutput = ""
         } else {
-            let result = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
-            aptOutput = result.1
-            aptErrorOutput = result.2
-            // result.0 is the return status, but it is not needed here
+            (_, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
         }
         #endif
         
