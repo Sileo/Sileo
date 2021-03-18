@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,9 +77,11 @@
                     </stackView>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kSf-7z-r3S" secondAttribute="trailing" constant="16" id="0ad-aB-cVk"/>
                 <constraint firstItem="9Q0-OR-u7v" firstAttribute="top" secondItem="KOC-zg-ysw" secondAttribute="bottom" constant="3" id="2QX-BO-PrU"/>
+                <constraint firstAttribute="trailing" secondItem="KOC-zg-ysw" secondAttribute="trailing" constant="16" id="2X5-P5-TOz"/>
                 <constraint firstAttribute="trailing" secondItem="vfK-b9-MQX" secondAttribute="trailing" id="7Wb-j9-dBZ"/>
                 <constraint firstAttribute="trailing" secondItem="KOC-zg-ysw" secondAttribute="trailing" constant="16" id="AjQ-Yg-VLT"/>
                 <constraint firstAttribute="bottom" secondItem="vfK-b9-MQX" secondAttribute="bottom" id="IMU-5L-iiR"/>
@@ -93,7 +95,6 @@
                 <constraint firstItem="kSf-7z-r3S" firstAttribute="leading" secondItem="it9-7N-8bk" secondAttribute="trailing" constant="16" id="xws-5l-kzR"/>
                 <constraint firstItem="KOC-zg-ysw" firstAttribute="leading" secondItem="it9-7N-8bk" secondAttribute="trailing" constant="16" id="y26-bv-iDn"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <connections>
                 <outlet property="authorLabel" destination="KOC-zg-ysw" id="awz-5T-GQX"/>
                 <outlet property="descriptionLabel" destination="9Q0-OR-u7v" id="Gu1-Ne-jX5"/>
@@ -102,7 +103,7 @@
                 <outlet property="titleLabel" destination="PTX-Eh-SPw" id="PUK-i2-bmm"/>
                 <outlet property="unreadView" destination="AJu-AY-hsk" id="Og4-kL-Raj"/>
             </connections>
-            <point key="canvasLocation" x="134" y="129"/>
+            <point key="canvasLocation" x="132.80000000000001" y="128.18590704647679"/>
         </collectionViewCell>
     </objects>
     <resources>
