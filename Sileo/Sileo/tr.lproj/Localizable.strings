@@ -9,6 +9,7 @@
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
 "All_Packages.Title" = "Tüm Paketler";
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
+"Auto_Complete_Queue" = "Sırayı Otomatik Tamamla";
 "By_Author" = "Geliştirici: %@";
 "Cancel" = "İptal";
 "Close" = "Kapat";
@@ -32,6 +33,7 @@
 "Download_Progress" = "%@ \/ %@";
 "Download_Starting" = "Başlıyor…";
 "Downloading_Package_Status" = "İndiriliyor…";
+"Enable_Analytics" = "Analizleri Etkinleştir";
 "Export" = "Dışa Aktar";
 "Export_No" = "Hayır, iptal et.";
 "Export_Packages" = "Paket listenizi dışa aktarmak ister misiniz? Bu, tüm paket adlarını ve sürümlerini panonuza kopyalayacaktır.";
@@ -117,4 +119,6 @@
 "Updates_Heading" = "Güncellemeler";
 "Upgrade_All_Button" = "Tümünü Güncelle";
 "Version" = "Sürüm";
+"View_Depiction" = "Açıklamaları Göster";
 "Web_Depiction_Deprecated_Warning" = "Web Görünümü tanımları kullanımdan kaldırılmıştır. Yerel tanımlarda güncelleme yapmak için lütfen kaynak sorumlusuna başvurun.";
+"Wishlist" = "İstek Listesi";
