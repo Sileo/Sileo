@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.4.0)
-  - Alderis (1.1)
+  - Alderis (1.1.2)
   - AUPickerCell (1.0.2.0)
   - BitByteData (1.4.3)
   - Cosmos (19.0.3)
@@ -59,7 +59,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
-  - Alderis (from `https://github.com/hbang/Alderis.git`)
+  - Alderis (~> 1.1.2)
   - AUPickerCell
   - Cosmos (~> 19.0)
   - Down
@@ -77,6 +77,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Alderis
     - AUPickerCell
     - BitByteData
     - Cosmos
@@ -92,23 +93,18 @@ SPEC REPOS:
     - XLForm
 
 EXTERNAL SOURCES:
-  Alderis:
-    :git: https://github.com/hbang/Alderis.git
   Flurry-iOS-SDK:
     :git: https://github.com/flurry/flurry-ios-sdk.git
     :tag: 11.2.0.rc1
 
 CHECKOUT OPTIONS:
-  Alderis:
-    :commit: c0a7869fb69323575ea7b60f699ba77a8e25b970
-    :git: https://github.com/hbang/Alderis.git
   Flurry-iOS-SDK:
     :git: https://github.com/flurry/flurry-ios-sdk.git
     :tag: 11.2.0.rc1
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  Alderis: 9e61fc2f8f7b04d82479cd554fb60b8c89f94031
+  Alderis: 226746f04e677de7a7a43316475162a6a217794a
   AUPickerCell: b6f788d62f449014204776ff6fdc841aebbc352f
   BitByteData: 36729e2125ec321935754f9feb1f4b297e00b501
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
@@ -124,6 +120,6 @@ SPEC CHECKSUMS:
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: a6f78bddf58bdf3506c86314106cb314c858a953
+PODFILE CHECKSUM: 5974246dcbe0a038a79455f3ed52af0c87e78232
 
 COCOAPODS: 1.10.1
