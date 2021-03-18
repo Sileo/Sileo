@@ -19,10 +19,12 @@ class DepictionLayerView: DepictionBaseView {
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
         
         for rawView in rawViews {
-            let view = DepictionBaseView.view(dictionary: rawView, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-            if let view = view {
-                views.append(view)
-                self.addSubview(view)
+            if let depictView = DepictionBaseView.view(dictionary: rawView,
+                                                       viewController: viewController,
+                                                       tintColor: tintColor,
+                                                       isActionable: isActionable) {
+                views.append(depictView)
+                self.addSubview(depictView)
             }
         }
     }
