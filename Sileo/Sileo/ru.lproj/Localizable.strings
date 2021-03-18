@@ -13,7 +13,7 @@
 "__LocalizationCredit.URL" = "https://gkeep.xyz"; // (optional)
 
 // Common Prompts
-"About" = "About";
+"About" = "О программе";
 "Close" = "Закрыть";
 "Double tap to open." = "Нажмите два раза, чтоьы открыть.";
 "Untitled_Repo" = "Репозиторий без названия";
@@ -121,16 +121,16 @@
 "Settings" = "Настройки";
 "Settings_Page_Title" = "Настройки";
 "Dark_Mode_Toggle" = "Тёмный режим";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Enable_Analytics" = "Enable Analytics";
+"Theme" = "Тема";
+"Tint_Color" = "Цвет оттенка";
+"Reset_Tint_Color" = "Сбросить цвет оттенка";
+"Auto_Complete_Queue" = "Автоматически завершать очередь";
+"Enable_Analytics" = "Включить аналитику";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Light" = "Светлый Sileo";
+"Sileo_Dark" = "Темный Sileo";
+"Sileo_Adaptive" = "Адаптивный Sileo";
+"System" = "Система";
 
 "Cydia_Sign_In" = "Войти в Cydia Store";
 "Payment_Provider_Signed_In" = "Выполнен вход";
@@ -163,4 +163,4 @@
 "Export_No" = "Нет, отменить.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Посмотреть описание";
