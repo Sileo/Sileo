@@ -5,6 +5,7 @@
 //  Created by CoolStar on 7/6/19.
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
+
 // Make sure to also update FeaturedStackView.swift
 
 import Foundation
@@ -35,24 +36,20 @@ class DepictionStackView: DepictionBaseView {
         }
         
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
+        
         for viewDict in views {
-            let view = DepictionBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-            if let view = view {
-                self.views.append(view)
-                addSubview(view)
+            if let depictView = DepictionBaseView.view(dictionary: viewDict,
+                                                       viewController: viewController,
+                                                       tintColor: tintColor,
+                                                       isActionable: isActionable) {
+                self.views.append(depictView)
+                addSubview(depictView)
             }
         }
         
         if let backgroundColor = dictionary["backgroundColor"] as? String {
-            /*UIColor *color = [UIColor colorWithCSS:depiction[@"backgroundColor"]];
-             CGFloat red, green, blue, alpha;
-             [color getRed:&red green:&green blue:&blue alpha:&alpha];
-             if (alpha > 0.2)
-             alpha = 0.2;
-             self.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];*/
             self.backgroundColor = UIColor(css: backgroundColor)
         }
-        
         if let xPadding = dictionary["xPadding"] as? CGFloat {
             self.xPadding = xPadding
         }
