@@ -2,9 +2,7 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-27.
-
-  Translated to Norwegian Bokmål by : WorldlyDev (2020-04-21).
+  Created by AppleBetas on 2018-12-27. Translated to Norwegian Bokmål by: WorldlyDev (2020-04-21).
   Copyright © 2018 CoolStar. All rights reserved.
 
  NORWEGIAN BOKMÅL LOCALISATIONS
@@ -123,6 +121,16 @@
 "Settings" = "Innstillinger";
 "Settings_Page_Title" = "Innstillinger";
 "Dark_Mode_Toggle" = "Mørk modus";
+"Theme" = "Tema";
+"Tint_Color" = "Fargetone";
+"Reset_Tint_Color" = "Nullstill fargetone";
+"Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
+"Enable_Analytics" = "Aktiver analysedata";
+
+"Sileo_Light" = "Sileo lys";
+"Sileo_Dark" = "Sileo mørk";
+"Sileo_Adaptive" = "Sileo adaptiv";
+"System" = "System";
 
 "Cydia_Sign_In" = "Logg på Cydia Store";
 "Payment_Provider_Signed_In" = "Innlogget";
@@ -130,10 +138,6 @@
 "Payment_Provider_Sign_Out" = "Logg ut";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Logg ut av %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Du vil ikke lenger kunne laste ned kjøpte pakker før du logger deg på igjen.";
-
-"Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
-"Enable_Analytics" = "Aktiver analysedata";
-"View_Depiction" = "Vis beskrivelse";
 
 "Show_Install_Details" = "Vis detaljer";
 "Hide_Install_Details" = "Skjul detaljer";
@@ -158,4 +162,5 @@
 "Export_Yes" = "Ja, kopier.";
 "Export_No" = "Nei, kanseller.";
 
-
+// Depcitions
+"View_Depiction" = "Vis beskrivelse";
