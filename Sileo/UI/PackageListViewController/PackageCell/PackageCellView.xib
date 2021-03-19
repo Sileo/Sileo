@@ -90,6 +90,14 @@
                 <constraint firstItem="9Q0-OR-u7v" firstAttribute="top" secondItem="KOC-zg-ysw" secondAttribute="bottom" constant="3" id="xZ3-Bd-sDW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="authorLabel" destination="KOC-zg-ysw" id="kU3-ck-bTI"/>
+                <outlet property="descriptionLabel" destination="9Q0-OR-u7v" id="eSL-wF-nWd"/>
+                <outlet property="imageView" destination="it9-7N-8bk" id="aEf-O7-8ex"/>
+                <outlet property="separatorView" destination="vfK-b9-MQX" id="k2f-i0-rMc"/>
+                <outlet property="titleLabel" destination="PTX-Eh-SPw" id="Hu3-RW-0qG"/>
+                <outlet property="unreadView" destination="AJu-AY-hsk" id="BtS-KH-DsP"/>
+            </connections>
             <point key="canvasLocation" x="-94" y="132"/>
         </view>
     </objects>
