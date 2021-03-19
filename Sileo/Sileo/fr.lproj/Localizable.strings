@@ -141,7 +141,7 @@
 "Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Déconnexion";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous reconnecter.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne pourrez plus télécharger les paquets que vous avez achetés jusqu'à ce que vous vous reconnectiez.";
 
 "Show_Install_Details" = "Afficher les détails";
 "Hide_Install_Details" = "Masquer les détails";
