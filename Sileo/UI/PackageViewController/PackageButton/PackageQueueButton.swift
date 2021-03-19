@@ -49,7 +49,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         
         shouldCheckPurchaseStatus = true
         
-        self.updateButton(title: "Get")
+        self.updateButton(title: String(localizationKey: "Package_Get_Action"))
         self.addTarget(self, action: #selector(PackageQueueButton.buttonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),
