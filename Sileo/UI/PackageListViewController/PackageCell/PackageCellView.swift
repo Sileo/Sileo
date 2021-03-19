@@ -37,11 +37,11 @@ class PackageCellView: UIView {
             
             self.accessibilityLabel = String(format: String(localizationKey: "Package_By_Author"),
                                              self.titleLabel?.text ?? "", self.authorLabel?.text ?? "")
-            
-            self.refreshState()
         }
     }
-
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -60,11 +60,7 @@ class PackageCellView: UIView {
                 stateBadgeView.centerYAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
             }
         }
-        
-        NotificationCenter.default.addObserver([self],
-                                               selector: #selector(PackageCollectionViewCell.refreshState),
-                                               name: DownloadManager.reloadNotification, object: nil)
-        
+
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),
@@ -93,8 +89,6 @@ class PackageCellView: UIView {
         }
     }
     
-
-    
     func setTargetPackage(_ package: Package, isUnread: Bool) {
         self.targetPackage = package
         unreadView?.isHidden = !isUnread
@@ -110,14 +104,8 @@ class PackageCellView: UIView {
         unreadView?.backgroundColor = self.tintColor
     }
     
-    @objc func refreshState() {
+    public func refreshState(queueState: DownloadManagerQueue, isInstalled: Bool) {
         stateBadgeView?.isHidden = false
-        guard let targetPackage = targetPackage else {
-            return
-        }
-        
-        let queueState = DownloadManager.shared.find(package: targetPackage)
-        let isInstalled = PackageListManager.shared.installedPackage(identifier: targetPackage.package) != nil
         switch queueState {
         case .installations:
             stateBadgeView?.state = isInstalled ? .reinstallQueued : .installQueued
