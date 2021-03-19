@@ -16,7 +16,7 @@ endif
 export EXPANDED_CODE_SIGN_IDENTITY =
 export EXPANDED_CODE_SIGN_IDENTITY_NAME =
 
-TARGET_CODESIGN = /usr/local/bin/ldid
+TARGET_CODESIGN = $(shell which ldid)
 SILEO_APP_DIR = $(THEOS_OBJ_DIR)/install/Applications/Sileo.app
 
 giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c

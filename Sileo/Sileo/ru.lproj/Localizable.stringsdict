@@ -5,7 +5,7 @@
 	<key>Auto_Add_Pasteboard_Sources.Title</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Ajouter automatiquement %#@sources@</string>
+		<string>Автоматически добавить %#@sources@</string>
 		<key>sources</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -13,15 +13,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Source</string>
+			<string>источник</string>
 			<key>other</key>
-			<string>Sources</string>
+			<string>источники</string>
 		</dict>
 	</dict>
 	<key>Auto_Add_Pasteboard_Sources.Button.Add</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Ajouter %lu %#@sources@</string>
+		<string>Добавить %lu %#@sources@</string>
 		<key>sources</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -29,15 +29,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Source</string>
+			<string>источник</string>
 			<key>other</key>
-			<string>Sources</string>
+			<string>источников</string>
 		</dict>
 	</dict>
 	<key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>Ajouter les %#@urls@ sources du presse-papier:</string>
+		<string>Добавить %#@urls@, найденный в вашем буфере обмена:</string>
 		<key>urls</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -45,9 +45,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Addresse</string>
+			<string>следующий источник</string>
 			<key>other</key>
-			<string>Addresses</string>
+			<string>следующие источники</string>
 		</dict>
 	</dict>
 	<key>Package_Queue_Count</key>
@@ -61,11 +61,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Aucun paquet</string>
+			<string>Нет пакетов</string>
 			<key>one</key>
-			<string>%d paquet</string>
+			<string>%d пакет</string>
 			<key>other</key>
-			<string>%d paquets</string>
+			<string>%d пакетов</string>
 		</dict>
 	</dict>
 </dict>

@@ -3,7 +3,9 @@
   Sileo
 
   Created by AppleBetas on 2018-12-27.
+  Updated by : CorentiOS
   Copyright © 2018 CoolStar. All rights reserved.
+  
  
  BASE (Français) LOCALISATIONS
 */
@@ -13,13 +15,14 @@
 "__LocalizationCredit.URL" = "https://twitter.com/cimmerian_iter"; // (optional)
 
 // Common Prompts
+"About" = "À propos";
 "Close" = "Fermer";
 "Double tap to open." = "Touchez deux fois pour ouvrir.";
-"Untitled_Repo" = "Source sans-titre";
+"Untitled_Repo" = "Source sans titre";
 "OK" = "OK";
 "Done" = "Terminé";
 "Done_Editing" = "Terminé";
-"More_Info" = "Plus d'information";
+"More_Info" = "Plus d'informations";
 "Loading" = "Chargement en cours…";
 "Share" = "Partager";
 "Delete" = "Supprimer";
@@ -38,21 +41,22 @@
 "Queue_Clear_Button" = "Supprimer la file d'attente";
 
 "Package_Upgrade_Action" = "Mettre à jour";
-"Package_Reinstall_Action" = "Ré-installer";
+"Package_Reinstall_Action" = "Réinstaller";
 "Package_Uninstall_Action" = "Supprimer";
 "Package_Modify_Action" = "Modifier";
 "Package_Get_Action" = "Obtenir";
 "Package_Queue_Action" = "En Attente";
-"Package_Cancel_Action" = "Annuller";
+"Package_Cancel_Action" = "Annuler";
+"Package_Paid" = "Payé";
 
 "Package_Share_Action" = "Partager le paquet…";
 "Package_Developer_Find_Action" = "Plus par ce développeur";
 "Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignorer les mises à jour futurs";
+"Package_Hold_Enable_Action" = "Ignorer les mises à jour futures";
 "Package_Hold_Disable_Action" = "Arrêter d'ignorer les mises à jour.";
-"Package_Wishlist_Add" = "Ajouter à la liste d'intérêt";
-"Package_Wishlist_Remove" = "Enlever de la liste d'intérêt";
-"Wishlist" = "Liste d'intérêt";
+"Package_Wishlist_Add" = "Ajouter à la liste de souhaits";
+"Package_Wishlist_Remove" = "Supprimer de la liste souhaits";
+"Wishlist" = "Liste de souhaits";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installer";
@@ -68,13 +72,13 @@
 "Sort_Date" = "Date";
 "Sort_By" = "Trier par:";
 
-"Package_Unavailable" = "Paquet non disponible";
+"Package_Unavailable" = "Paquet indisponible";
 "Package_By_Author" = "%@ par %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "par %@"; // %@ = author name
 "Packages_By_Author" = "Paquets par %@"; // %@ = author name
 
-"Featured_Page" = "En Vedette";
-"News_Page" = "Nouveau";
+"Featured_Page" = "À l'affiche";
+"News_Page" = "Nouveautés";
 "Sources_Page" = "Sources";
 "Packages_Page" = "Paquets";
 "Search_Page" = "Rechercher";
@@ -89,16 +93,16 @@
 "Repos" = "Sources";
 
 "Add_Source.Title" = "Ajouter la source";
-"Add_Source.Body" = "Ajouter l'addresse APT";
+"Add_Source.Body" = "Ajouter l'adresse APT";
 "Add_Source.Button.Add" = "Ajouter la source";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Entrer manuellement";
 
-"Untitled_Form" = "Formulaire sans-titre";
-"Form_Submitted.Default_Title" = "Formulare soumis";
+"Untitled_Form" = "Formulaire sans titre";
+"Form_Submitted.Default_Title" = "Formulaire soumis";
 "Form_Submitted.Default_Body" = "Le formulaire a été soumis avec succès";
 
-"Web_Depiction_Deprecated_Warning" = "Les représentations utilisant les Web View sont obsolets. Le gérant de la source doit se mettre à jour en utilisant les représantations natives.";
+"Web_Depiction_Deprecated_Warning" = "Les représentations utilisant les Web View sont obsolètes. Le gérant de la source doit se mettre à jour en utilisant les représentations natives.";
 
 "Package_Details_Tab" = "Détails";
 "Package_Changelog_Tab" = "Changements";
@@ -107,9 +111,9 @@
 
 "Installed_Package_Header" = "Paquet installé";
 "Version" = "Version";
-"Show_Package_Contents_Button" = "Dévoiler les contenus du paquet";
+"Show_Package_Contents_Button" = "Afficher les contenus du paquet";
 
-"Licenses_Page_Title" = "Licenses";
+"Licenses_Page_Title" = "Licences";
 
 "Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
 "Settings_Translations_Heading" = "Traductions";
@@ -126,33 +130,39 @@
 "Auto_Complete_Queue" = "File d'attente à saisie automatique";
 "Enable_Analytics" = "Activer les données analytiques";
 
-"Cydia_Sign_In" = "Se connecter au Cydia Store.";
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
+
+
+"Cydia_Sign_In" = "Se connecter au Cydia Store";
 "Payment_Provider_Signed_In" = "Connecté";
 "Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Déconnexion";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne serez pas capable de récupérer vos paquets achetés avant de vous re-connecter.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne pourrez plus télécharger les paquets que vous avez achetés jusqu'à ce que vous vous reconnectiez.";
 
 "Show_Install_Details" = "Afficher les détails";
-"Hide_Install_Details" = "Cacher les détails";
+"Hide_Install_Details" = "Masquer les détails";
 
 "After_Install_Relaunch" = "Relancer Sileo";
 "After_Install_Respring" = "Relancer le Springboard";
 "After_Install_Reboot" = "Redémarrer l'appareil";
 
 "Dangerous_Repo.Title" = "Source dangereuse";
-"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiquées comme dangereuses distribuent souvent des paquets ayant des effets inattendues, soit sous forme de paquets payant rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
+"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiquées comme dangereuses distribuent souvent des paquets ayant des effets inattendus, soit sous forme de paquets payants rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effets permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
 "Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
 "Dangerous_Repo.Cancel" = "Revenir en lieu sûr";
-"Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse?";
+"Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse ?";
 "Dangerous_Repo.Last_Chance.Body" = "Les sources dangereuses peuvent avoir des effets dévastateurs sur votre appareil et votre jailbreak. Nous vous recommandons fortement de revenir en lieu sûr pour votre propre sécurité. %@";
 "Dangerous_Repo.Last_Chance.Continue" = "Continuer";
 "Dangerous_Repo.Last_Chance.Cancel" = "Retourner";
 
 // All export-based strings
 "Export" = "Exporter";
-"Export_Packages" = "Voulez vous exporter votre liste de paquets? Cela copiera le nom de tous les paquets et leurs versions dans le presse-papier.";
-"Export_Sources" = "Voulez vous exporter votre liste de sources? Cela copiera tout les URL des sources dans le presse-papier.";
+"Export_Packages" = "Voulez-vous exporter votre liste de paquets ? Cela copiera le nom de tous les paquets et leurs versions dans le presse-papier.";
+"Export_Sources" = "Voulez-vous exporter votre liste de sources ? Cela copiera toutes les URL des sources dans le presse-papier.";
 "Export_Yes" = "Oui, copier.";
 "Export_No" = "Non, annuler.";
 

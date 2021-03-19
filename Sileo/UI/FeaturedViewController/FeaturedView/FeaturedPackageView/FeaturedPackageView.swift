@@ -182,7 +182,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             packageViewController.package = package
             self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
         } else {
-            let title = String(localizationKey: "Package Unavailable")
+            let title = String(localizationKey: "Package_Unavailable")
             let message = String(format: String(localizationKey: "Package_Unavailable"), repoName)
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: { _ in
@@ -254,7 +254,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         
         PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
             if error != nil {
-                let info = PaymentPackageInfo(price: "Paid", purchased: isPurchased, available: true)
+                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false
                     self.packageButton.paymentInfo = info
@@ -263,7 +263,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             provider?.getPackageInfo(forIdentifier: self.package) { error, info in
                 var info = info
                 if error != nil {
-                    info = PaymentPackageInfo(price: "Paid", purchased: isPurchased, available: true)
+                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
                 }
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false

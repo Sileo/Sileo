@@ -45,6 +45,7 @@
 "Package_Get_Action" = "Get";
 "Package_Queue_Action" = "Queue";
 "Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "Share Package…";
 "Package_Developer_Find_Action" = "More by this Developer";
