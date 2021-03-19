@@ -689,7 +689,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         let isPurchased = existingPurchased?.contains(package.package) ?? false
 
         if isPurchased {
-            let info = PaymentPackageInfo(dictionary: ["price": "Paid",
+            let info = PaymentPackageInfo(dictionary: ["price": String(localizationKey: "Package_Paid"),
                                                        "purchased": true,
                                                        "available": true])
             DispatchQueue.main.async {
@@ -700,7 +700,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 }
             }
         } else {
-            var price = "Paid"
+            var price = String(localizationKey: "Package_Paid")
             if let cydiaAPIURL = URL(string: "https://cydia.saurik.com/api/ibbignerd?query=\(package.package)"),
                 let jsonData = try? Data(contentsOf: cydiaAPIURL),
                 let rawObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),
