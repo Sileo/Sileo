@@ -1,0 +1,32 @@
+on: [push, pull_request]
+name: Run CI
+jobs:
+  build:
+    name: Build Sileo
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Restore CocoaPods cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: Pods
+          key: pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            pods-
+      - name: Install Pods
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pod install
+      - name: Build Sileo
+        run: xcodebuild -workspace Sileo.xcworkspace -scheme Sileo -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+  lint:
+    name: Lint Sileo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
