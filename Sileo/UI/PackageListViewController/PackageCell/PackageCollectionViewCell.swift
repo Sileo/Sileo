@@ -29,7 +29,8 @@ class PackageCollectionViewCell: UICollectionViewCell {
         return scrollView
     }()
     
-    let swipeContainer = UIView()
+    let visibleContainerView = UIView()
+    let hiddenContainerView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,23 +45,18 @@ class PackageCollectionViewCell: UICollectionViewCell {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(packageView)
-        stackView.addArrangedSubview(swipeContainer)
 
-        contentView.addSubview(scrollView)
-        scrollView.isUserInteractionEnabled = true
+        addSubview(scrollView)
         scrollView.addSubview(stackView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1.25).isActive = true
-        swipeContainer.frame = CGRect(x: 0, y: 0, width: 25, height: 0)
-        swipeContainer.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        swipeContainer.backgroundColor = .systemRed
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1).isActive = true
             
         NotificationCenter.default.addObserver([self],
                                                selector: #selector(PackageCollectionViewCell.refreshState),
