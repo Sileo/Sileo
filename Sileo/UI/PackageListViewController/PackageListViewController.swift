@@ -141,7 +141,8 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
         
         if let collectionView = collectionView {
             collectionView.addGestureRecognizer(tapRecognizer)
-            collectionView.register(PackageCollectionViewCell.self, forCellWithReuseIdentifier: "PackageListViewCellIdentifier")
+            collectionView.register(UINib(nibName: "PackageCollectionViewCell", bundle: nil),
+                                    forCellWithReuseIdentifier: "PackageListViewCellIdentifier")
         
             let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
             flowLayout?.sectionHeadersPinToVisibleBounds = true
@@ -390,13 +391,13 @@ extension PackageListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellIdentifier = "PackageListViewCellIdentifier"
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? PackageCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        if showUpdates && indexPath.section == 0 {
-            cell.targetPackage = availableUpdates[indexPath.row]
-        } else {
-            cell.targetPackage = packages[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        if let packageCell = cell as? PackageCollectionViewCell {
+            if showUpdates && indexPath.section == 0 {
+                packageCell.targetPackage = availableUpdates[indexPath.row]
+            } else {
+                packageCell.targetPackage = packages[indexPath.row]
+            }
         }
         return cell
     }

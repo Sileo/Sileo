@@ -46,7 +46,10 @@ class PaymentProfileViewController: BaseSettingsViewController, UICollectionView
         packageCollectionView?.delegate = self
         packageCollectionView?.dataSource = self
         packageCollectionView?.backgroundColor = UIColor.sileoBackgroundColor
-        packageCollectionView?.register(PackageCollectionViewCell.self, forCellWithReuseIdentifier: "PackageListViewCellIdentifier")
+        
+        let nib: UINib = UINib(nibName: "PackageCollectionViewCell", bundle: nil)
+        packageCollectionView?.register(nib, forCellWithReuseIdentifier: "PackageListViewCellIdentifier")
+        
         provider?.fetchInfo(fromCache: true) { error, info in
             DispatchQueue.main.async {
                 if info == nil {
@@ -204,14 +207,17 @@ extension PaymentProfileViewController { // Collection View Data Source
         packages.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellIdentifier = "PackageListViewCellIdentifier"
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? PackageCollectionViewCell else {
-            return UICollectionViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt path: IndexPath) -> UICollectionViewCell {
+        let id = "PackageListViewCellIdentifier"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: path) as? PackageCollectionViewCell
+        
+        if cell != nil {
+            cell?.alwaysHidesSeparator = true
+            cell?.targetPackage = packages[path.row]
+            return cell ?? UICollectionViewCell()
         }
-        cell.packageView.alwaysHidesSeparator = true
-        cell.targetPackage = packages[indexPath.row]
-        return cell
+        
+        return PackageCollectionViewCell()
     }
 }
 
