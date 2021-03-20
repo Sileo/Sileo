@@ -8,9 +8,9 @@
 
 import UIKit
 import Alamofire
-import SwiftTryCatch
 import XLForm
 import os.log
+import SwiftTryCatch
 
 enum DepictionFormError: Error {
     case hostOriginException

@@ -2,7 +2,7 @@
 //  SettingsSwitchCell.swift
 //  Sileo
 //
-//  Created by Andromeda on 16/03/2021.
+//  Created by Amy on 16/03/2021.
 //  Copyright © 2021 CoolStar. All rights reserved.
 //
 
@@ -11,9 +11,11 @@ import UIKit
 class SettingsSwitchTableViewCell: UITableViewCell {
     
     private var control: UISwitch = UISwitch()
+    var fallback = false
+    
     var defaultKey: String? {
         didSet {
-            if let key = defaultKey { control.isOn = UserDefaults.standard.bool(forKey: key) }
+            if let key = defaultKey { control.isOn = UserDefaults.standard.optionalBool(key, fallback: fallback) }
         }
     }
     

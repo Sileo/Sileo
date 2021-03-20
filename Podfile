@@ -22,8 +22,9 @@ def sileo_pods
 	pod 'Down'
 	pod 'AUPickerCell'
 	pod 'Alderis', '~> 1.1.2'
-	pod 'SwiftTryCatch', :modular_headers => true
 	pod 'SQLite.swift', '~> 0.12.0'
+	pod 'SwipeCellKit'
+	pod 'SwiftTryCatch', :modular_headers => true
 end
 
 target 'Sileo' do
@@ -33,7 +34,8 @@ target 'Sileo' do
     pi.pods_project.targets.each do |t|
 	t.build_configurations.each do |config|
 	    config.build_settings['ARCHS'] = '$(ARCHS_STANDARD)'
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+	    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
         end
     end
   end
