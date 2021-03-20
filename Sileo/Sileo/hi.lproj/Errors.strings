@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ BASE (English) LOCALISATIONS
+ */
+
+"Unknown" = "कुछ अजीब हुआ जिसका कोई उपाय नही";
+"Error_Indicator" = "भूल: %@";
+
+"No_Package.Title" = "अगर आप पहली बार यह प्रोग्राम खोल रहे हें, तो कृपया थोड़ा इंतज़ार करे। फिर भी ना खुले तो ऑनलाइन मदद धूँदिए।";
+"No_Package.Body" = "अगर आप पहली बार यह प्रोग्राम खोल रहे हें, तो कृपया थोड़ा इंतज़ार करे। फिर भी ना खुले तो ऑनलाइन मदद धूँदिए।";
+
+"Invalid_URL.Title" = "गलत URL";
+
+"Download_Size_Mismatch" = "प्रोग्राम का माप यह होना चाहिए %@, लेकिन यह माप %@ मिला.";
+"Download_Failing_Status_Code" = "हैसियत से असफल %ld।";
+"Download_Hash_Mismatch" = "इस प्रोग्राम का hash यह होनी चाहिए थी %@, मगर यह %@ मिली।";
+"Untrusted_Package" = "यह प्रोग्राम %@ अविश्वस्त है और इसको सत्यापित नहीं किया जा सकता।";
+
+"Insecure_Paid_Download" = "भुगतान-अधिकृत प्रोग्राम के डाउनलोड URL सुरक्षित होना चाहिए (HTTPS)।";
+
+"Invalid_Payment_Provider_Response" = "भुगतान प्रदाता ने एक अमान्य प्रतिक्रिया जारी की।";
+"No_Payment_Provider" = "यह रेपो Sileo खरीद का समर्थन नहीं करता है। यदि यह एक Cydia Store पैकेज है जिसे आपने पहले ही खरीदा है, तो आप इसे डाउनलोड करने के लिए अपने खाते को लिंक कर सकते हैं।";
+
+"Package_Unavailable" = "यह पैकेज आपके स्थापित स्रोतों से उपलब्ध नहीं है। कृपया सुनिश्चित करें कि %@ रेपो उपलब्ध है।";
+
+"Installation_Error.Title" = "इंस्टॉल नही कर सका";
+"Installation_Error.Body" = "Sileo रूट अनुमतियाँ प्राप्त करने में असमर्थ था। SSH का उपयोग करके Sileo को पुन: स्थापित करें।";
+
+"FixingDpkg.Title" = "Dpkg बाधित";
+"FixingDpkg.Body" = "Dpkg बाधित हो गया था। कृपया प्रतीक्षा करें कि समस्या को ठीक करने का प्रयास हो पाए।";
+
+"Invalid_Data" = "गलत जानकारी";
+"Try_Later" = "कृपया बाद में वापिस से प्रयास करें";
+
+"Sileo_Update_Required.Title" = "Sileo अपडेट ज़रूरी";
+"Featured_Requires_Sileo_Update" = "विशेष रुप से प्रदर्शित टैब को देखने के लिए Sileo अपडेट आवश्यक है। चित्रित टैब को गलत तरीके से प्रस्तुत किया जा सकता है।";
+"Depiction_Requires_Sileo_Update" = "इस प्रोग्राम का पेज देखने के लिए कृपया Sileo को अप्डेट करे। ना करने पर यह पेज सही नहीं दिखेगा।";
+
+"Form_Error.Title" = "फ़ॉर्म लोड ही नही हो सका।";
+"Form_Load_Error" = "सर्वर से फ़ॉर्म लोड नहीं किया जा सका।";
+"Invalid_Form_Data" = "सर्वर ने अमान्य फ़ॉर्म डेटा प्रदान किया।";
+"Form_Submit_Failure" = "Aफॉर्म जमा करने का प्रयास करते समय एक भूल हुई: %@";
+"Form_Submit_Error.Title" = "फॉर्म जमा नही हो सका।";
+"Form_Action_Host_Mismatch" = "प्रपत्र क्रिया का URL होस्ट प्रपत्र की मूल होस्ट से मेल नहीं खाता है।";
+
+"Email_Unavailable.Title" = "ईमेल भेज नही पा रहे";
+"Email_Unavailable.Body" = "मेल सेवाएँ उपलब्ध नही";
+
+"Settings_Payment_Provider.Profile.Title" = "प्रोफ़ाइल लोड नहीं कर सका";
+
+"Provider_Auth_Fail.Title" = "प्रदाता प्रमाणित नहीं कर सका।";
+"Purchase_Initiate_Fail.Title" = "खरीद शुरू नहीं कर सका";
+"Purchase_Complete_Fail.Title" = "खरीद समाप्त नहीं कर सका।";
+"Purchase_Auth_Complete_Fail.Title" = "पूर्ण प्रमाणीकरण नहीं कर सका।";

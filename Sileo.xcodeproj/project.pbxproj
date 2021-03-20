@@ -544,6 +544,14 @@
 		E15857E42603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ar; path = Sileo/ar.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E15857E52603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Categories.strings; sourceTree = "<group>"; };
 		E15857E62603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Errors.strings; sourceTree = "<group>"; };
+		E166F3B82606350700663FA1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E166F3B92606350700663FA1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = sv; path = Sileo/sv.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		E166F3BA2606350700663FA1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Categories.strings; sourceTree = "<group>"; };
+		E166F3BB2606350700663FA1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Errors.strings; sourceTree = "<group>"; };
+		E166F3BC2606358D00663FA1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = Sileo/hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E166F3BD2606358D00663FA1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = hi; path = Sileo/hi.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		E166F3BE2606358D00663FA1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = Sileo/hi.lproj/Categories.strings; sourceTree = "<group>"; };
+		E166F3BF2606358E00663FA1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = Sileo/hi.lproj/Errors.strings; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -2026,6 +2034,8 @@
 				ro,
 				nb,
 				ar,
+				sv,
+				hi,
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
@@ -2735,6 +2745,8 @@
 				E1B3FC0D260197F500F2E07F /* ro */,
 				E15857B126029DEA00E1C391 /* nb */,
 				E15857E32603C5CA00E1C391 /* ar */,
+				E166F3B82606350700663FA1 /* sv */,
+				E166F3BC2606358D00663FA1 /* hi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2759,6 +2771,8 @@
 				E1B3FC10260197F500F2E07F /* ro */,
 				E15857B426029DEA00E1C391 /* nb */,
 				E15857E62603C5CA00E1C391 /* ar */,
+				E166F3BB2606350700663FA1 /* sv */,
+				E166F3BF2606358E00663FA1 /* hi */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -2783,6 +2797,8 @@
 				E1B3FC0F260197F500F2E07F /* ro */,
 				E15857B326029DEA00E1C391 /* nb */,
 				E15857E52603C5CA00E1C391 /* ar */,
+				E166F3BA2606350700663FA1 /* sv */,
+				E166F3BE2606358D00663FA1 /* hi */,
 			);
 			name = Categories.strings;
 			sourceTree = "<group>";
@@ -2807,6 +2823,8 @@
 				E1B3FC0E260197F500F2E07F /* ro */,
 				E15857B226029DEA00E1C391 /* nb */,
 				E15857E42603C5CA00E1C391 /* ar */,
+				E166F3B92606350700663FA1 /* sv */,
+				E166F3BD2606358D00663FA1 /* hi */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
