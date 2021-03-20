@@ -65,8 +65,15 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
         super.viewWillDisappear(animated)
         
         self.navigationController?.navigationBar._hidesShadow = false
+        
+        guard let visibleCells = collectionView?.visibleCells else { return }
+        for cell in visibleCells {
+            if let packageCell = cell as? PackageCollectionViewCell {
+                packageCell.hideSwipe(animated: false)
+            }
+        }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

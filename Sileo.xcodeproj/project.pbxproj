@@ -36,12 +36,10 @@
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
-		E15857BB2603B92C00E1C391 /* PackageCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15857BA2603B92C00E1C391 /* PackageCellView.xib */; };
-		E15857BC2603B92C00E1C391 /* PackageCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15857BA2603B92C00E1C391 /* PackageCellView.xib */; };
 		E15857C02603C32800E1C391 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15857BF2603C32800E1C391 /* UIView+FromNib.swift */; };
 		E15857C12603C32800E1C391 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15857BF2603C32800E1C391 /* UIView+FromNib.swift */; };
-		E15857C72603C4A200E1C391 /* PackageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15857C62603C4A200E1C391 /* PackageCellView.swift */; };
-		E15857C82603C4A200E1C391 /* PackageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15857C62603C4A200E1C391 /* PackageCellView.swift */; };
+		E166F51F2606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */; };
+		E166F5202606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
@@ -539,13 +537,12 @@
 		E15857B226029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nb; path = Sileo/nb.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E15857B326029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Categories.strings; sourceTree = "<group>"; };
 		E15857B426029DEA00E1C391 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Errors.strings; sourceTree = "<group>"; };
-		E15857BA2603B92C00E1C391 /* PackageCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageCellView.xib; sourceTree = "<group>"; };
 		E15857BF2603C32800E1C391 /* UIView+FromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FromNib.swift"; sourceTree = "<group>"; };
-		E15857C62603C4A200E1C391 /* PackageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCellView.swift; sourceTree = "<group>"; };
 		E15857E32603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E15857E42603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ar; path = Sileo/ar.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E15857E52603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Categories.strings; sourceTree = "<group>"; };
 		E15857E62603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Errors.strings; sourceTree = "<group>"; };
+		E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Optional.swift"; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -1111,8 +1108,6 @@
 				F147E67822F0253A0048F868 /* PackageCollectionViewCell.swift */,
 				F11CD90D20DBF777000C62C3 /* PackageCollectionViewCell.xib */,
 				F147E67522F021560048F868 /* PackageStateBadgeView.swift */,
-				E15857BA2603B92C00E1C391 /* PackageCellView.xib */,
-				E15857C62603C4A200E1C391 /* PackageCellView.swift */,
 			);
 			path = PackageCell;
 			sourceTree = "<group>";
@@ -1504,6 +1499,7 @@
 				F1CA758C244CF813000BA15C /* String+Error.swift */,
 				F18B58472581A7E90064CD71 /* CSActionItem.swift */,
 				E15857BF2603C32800E1C391 /* UIView+FromNib.swift */,
+				E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */,
 			);
 			path = Contrib;
 			sourceTree = "<group>";
@@ -2086,7 +2082,6 @@
 				F139D13822EA9209007F5C0D /* NewsArticleCollectionViewCell.xib in Resources */,
 				F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */,
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
-				E15857BC2603B92C00E1C391 /* PackageCellView.xib in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
@@ -2121,7 +2116,6 @@
 				C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */,
 				F149E0BB20B6040B005CA30B /* Main.storyboard in Resources */,
 				C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */,
-				E15857BB2603B92C00E1C391 /* PackageCellView.xib in Resources */,
 				F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
@@ -2350,6 +2344,7 @@
 				F139D0D122EA9209007F5C0D /* DepictionAdmobView.swift in Sources */,
 				F1A23FAD23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */,
+				E166F5202606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */,
 				F139D0EC22EA9209007F5C0D /* DepictionBaseView.swift in Sources */,
 				F10531FC244A3B4D0042201C /* CydiaScraper.swift in Sources */,
 				F139D11522EA9209007F5C0D /* DepictionButtonView.swift in Sources */,
@@ -2429,7 +2424,6 @@
 				FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */,
 				F170605D24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
 				F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */,
-				E15857C82603C4A200E1C391 /* PackageCellView.swift in Sources */,
 				F1DD3D1E2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F10531FF244A3F6E0042201C /* CydiaAccountViewController.swift in Sources */,
 				F139D0B022EA9209007F5C0D /* Hash.swift in Sources */,
@@ -2518,6 +2512,7 @@
 				F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,
+				E166F51F2606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */,
 				F10531FB244A3B4D0042201C /* CydiaScraper.swift in Sources */,
 				F1C5D9C322D1847F0021BD89 /* DepictionButtonView.swift in Sources */,
 				FB40263323DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
@@ -2597,7 +2592,6 @@
 				F1DD3D1B2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */,
 				F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F10531FE244A3F6E0042201C /* CydiaAccountViewController.swift in Sources */,
-				E15857C72603C4A200E1C391 /* PackageCellView.swift in Sources */,
 				F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */,
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,

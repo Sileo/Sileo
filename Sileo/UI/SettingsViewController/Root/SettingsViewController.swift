@@ -104,7 +104,7 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 5
+            return 6
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
                 return 3
@@ -178,12 +178,19 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 3:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
-                    cell.defaultKey = "AutoComplete"
+                    cell.textLabel?.text = String(localizationKey: "Swipe_Actions")
+                    cell.fallback = true
+                    cell.defaultKey = "SwipeActions"
                     return cell
                 case 4:
                     let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
+                    cell.defaultKey = "AutoComplete"
+                    return cell
+                case 5:
+                    let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
+                    cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
                     return cell
                 default:

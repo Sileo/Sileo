@@ -101,12 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 _ = navController.viewControllers[0].view
             }
         }
-        
-        if UserDefaults.standard.object(forKey: "EnableAnalytics") == nil {
-            UserDefaults.standard.setValue(true, forKey: "EnableAnalytics")
-        }
-        
-        if !UserDefaults.standard.bool(forKey: "EnableAnalytics") { return }
+
+        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true)  { return }
         var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         appVer += "-demo"
