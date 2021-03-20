@@ -5,17 +5,17 @@
   Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
  
- BASE (English) LOCALISATIONS
+ Romanian LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
+"No_Category" = "(Fâră Categoriu)";
+"Tweaks" = "Tweakuri";
+"Themes" = "Teme";
+"Utilities" = "Utilități";
+"Applications" = "Aplicații";
 "Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support"; 
-"Text_Editors" = "Text Editors";
+"Games" = "Jocuri";
+"Developer" = "Dezvoltator";
+"Data_Storage" = "Depozit de Date";
+"Terminal_Support" = "Suport ptr. Terminal"; 
+"Text_Editors" = "Editori de Text";

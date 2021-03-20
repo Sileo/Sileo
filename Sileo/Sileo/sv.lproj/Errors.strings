@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by Dylan Elmbark on 2021-03-19.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ SWEDISH LOCALISATIONS
+ */
+
+"Unknown" = "Ett okänt fel inträffade";
+"Error_Indicator" = "Fel: %@";
+
+"No_Package.Title" = "Kunde inte hitta paketet %@ i dom källorna som är installerade.";
+"No_Package.Body" = "Om det är nytt, vänta tills Sileo har uppdaterat klart, sedan försök igen. Kolla nätet för mer hjälp.";
+
+"Invalid_URL.Title" = "Ogiltig URL";
+
+"Download_Size_Mismatch" = "Förväntad storlek %@, fick %@ istället.";
+"Download_Failing_Status_Code" = "Misslyckades med status %ld";
+"Download_Hash_Mismatch" = "Förväntad hash %@, fick %@ istället.";
+"Untrusted_Package" = "Paketet %@ är otillförlitligt och kan ej bli verifierad";
+
+"Insecure_Paid_Download" = "Betalningsautoriserat paket nerladdnings URLs måste vara säker (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Betalningsleverantören utfärdade ett ogiltigt svar.";
+"No_Payment_Provider" = "Denna källa stöder inte Sileo betalningar. Om detta är ett Cydia paket som du redan har köpt, kan du länka till konto för att ladda ner det.";
+
+"Package_Unavailable" = "Detta paket är inte tillgängligt från dina installerade källor. Var säker att kolla så att %@ källan är tillgänglig.";
+
+"Installation_Error.Title" = "Installations Fel";
+"Installation_Error.Body" = "Sileo kunde inte få root tillgång. Ominstallerade Sileo via SSH.";
+
+"FixingDpkg.Title" = "Dpkg Avbruten";
+"FixingDpkg.Body" = "Dpkg avbröts. Vänta medans vi försöker fixa problemet.";
+
+"Invalid_Data" = "Ogiltig Data";
+"Try_Later" = "Försök igen senare.";
+
+"Sileo_Update_Required.Title" = "Sileo Uppdatering Krävs";
+"Featured_Requires_Sileo_Update" = "En Sileo updatering krävs för att kunna visa presenterade flikar. Den presenterade fliken kan visas fel.";
+"Depiction_Requires_Sileo_Update" = "En Sileo uppdatering krävs för att visa denna sida. Sidan kan visas fel.";
+
+"Form_Error.Title" = "Kunde Ej Ladda Form";
+"Form_Load_Error" = "Formen kunde ej läsas från servern.";
+"Invalid_Form_Data" = "Servern föresedde fel data form.";
+"Form_Submit_Failure" = "Ett fel inträffade när formen skulle skickas in: %@";
+"Form_Submit_Error.Title" = "Kunde ej skicka form";
+"Form_Action_Host_Mismatch" = "Formens handlings URL värd matchar ej formens ursprungs värd.";
+
+"Email_Unavailable.Title" = "Kunde ej skicka mail";
+"Email_Unavailable.Body" = "Mail tjänster är inte tillgängliga.";
+
+"Settings_Payment_Provider.Profile.Title" = "Kunde ej ladda profil";
+
+"Provider_Auth_Fail.Title" = "Kunde Ej Autentisera Leverantör";
+"Purchase_Initiate_Fail.Title" = "Kunde Ej Inleda Köp";
+"Purchase_Complete_Fail.Title" = "Kunde Ej Genomföra Köp";
+"Purchase_Auth_Complete_Fail.Title" = "Kunde Ej Genomföra Autentisering";
