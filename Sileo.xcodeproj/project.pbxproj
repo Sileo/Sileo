@@ -59,6 +59,7 @@
 		F105321F244AD85E0042201C /* dpkgversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F105321E244AD85E0042201C /* dpkgversion.swift */; };
 		F1053220244AD85E0042201C /* dpkgversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F105321E244AD85E0042201C /* dpkgversion.swift */; };
 		F107EB62230D195A002B8C20 /* Dusk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107EB61230D195A002B8C20 /* Dusk.swift */; };
+		F11CD90F20DBF777000C62C3 /* PackageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11CD90D20DBF777000C62C3 /* PackageCollectionViewCell.xib */; };
 		F11E22DF2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E22DD2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift */; };
 		F11E22E02500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E22DD2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift */; };
 		F11E22E12500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E22DE2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib */; };
@@ -154,6 +155,7 @@
 		F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373923421D5E46900E6F704 /* Localizable.strings */; };
 		F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */; };
 		F139D14122EA9209007F5C0D /* Categories.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924721D5F80300E6F704 /* Categories.strings */; };
+		F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11CD90D20DBF777000C62C3 /* PackageCollectionViewCell.xib */; };
 		F139D14322EA9209007F5C0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F149E0B920B6040B005CA30B /* Main.storyboard */; };
 		F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C373925721D60B2600E6F704 /* Localizable.stringsdict */; };
@@ -572,6 +574,7 @@
 		F105321E244AD85E0042201C /* dpkgversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dpkgversion.swift; sourceTree = "<group>"; };
 		F107EB61230D195A002B8C20 /* Dusk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dusk.swift; sourceTree = "<group>"; };
 		F11CD90820DBF153000C62C3 /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
+		F11CD90D20DBF777000C62C3 /* PackageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageCollectionViewCell.xib; sourceTree = "<group>"; };
 		F11E22DD2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPlaceholderCollectionViewCell.swift; sourceTree = "<group>"; };
 		F11E22DE2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPlaceholderCollectionViewCell.xib; sourceTree = "<group>"; };
 		F120233F21470F69005EAFAC /* UIColor+HTMLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HTMLColors.m"; sourceTree = "<group>"; };
@@ -1106,6 +1109,7 @@
 			isa = PBXGroup;
 			children = (
 				F147E67822F0253A0048F868 /* PackageCollectionViewCell.swift */,
+				F11CD90D20DBF777000C62C3 /* PackageCollectionViewCell.xib */,
 				F147E67522F021560048F868 /* PackageStateBadgeView.swift */,
 				E15857BA2603B92C00E1C391 /* PackageCellView.xib */,
 				E15857C62603C4A200E1C391 /* PackageCellView.swift */,
@@ -2084,6 +2088,7 @@
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
 				E15857BC2603B92C00E1C391 /* PackageCellView.xib in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
+				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
@@ -2121,6 +2126,7 @@
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
 				CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */,
+				F11CD90F20DBF777000C62C3 /* PackageCollectionViewCell.xib in Resources */,
 				C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */,
 				F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */,
 				F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */,

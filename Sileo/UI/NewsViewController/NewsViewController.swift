@@ -39,7 +39,8 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         let flowLayout: UICollectionViewFlowLayout? = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.sectionHeadersPinToVisibleBounds = true
         
-        collectionView.register(PackageCollectionViewCell.self, forCellWithReuseIdentifier: "PackageCollectionViewCell")
+        collectionView.register(UINib(nibName: "PackageCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "PackageCollectionViewCell")
         collectionView.register(UINib(nibName: "NewsPlaceholderCollectionViewCell", bundle: nil),
                                 forCellWithReuseIdentifier: "NewsPlaceholderCell")
         collectionView.register(UINib(nibName: "PackageListHeader", bundle: nil),
