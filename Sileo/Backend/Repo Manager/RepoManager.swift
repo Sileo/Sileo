@@ -167,7 +167,7 @@ final class RepoManager {
     
     func remove(repos: [Repo]) {
         repoListLock.wait()
-        repoList.removeAll{ repos.contains($0) }
+        repoList.removeAll { repos.contains($0) }
         repoListLock.signal()
         writeListToFile()
     }
@@ -186,7 +186,18 @@ final class RepoManager {
     }
 
     func hasRepo(with url: URL) -> Bool {
-        repo(with: url) != nil
+        var standardRepo = [String]()
+        for repo in repoList {
+            var url = repo.rawURL
+            if url.last != "/" { url.append("/") }
+            standardRepo.append(url)
+        }
+        var standardAdd = url.absoluteString
+        if standardAdd.last != "/" {
+            standardAdd.append("/")
+        }
+        
+        return standardRepo.contains(standardAdd)
     }
 
     private func parseRepoEntry(_ repoEntry: String, at url: URL, withTypes types: [String], uris: [String], suites: [String], components: [String]?) {
