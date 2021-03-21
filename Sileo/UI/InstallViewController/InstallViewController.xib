@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="activityIndicatorView" destination="19i-8J-rmy" id="A89-Ib-HFJ"/>
                 <outlet property="completeButton" destination="p1C-xt-2qL" id="PCg-l3-5Ba"/>
+                <outlet property="completeLaterButton" destination="Xdn-dp-JBi" id="6Hv-Ym-Rah"/>
                 <outlet property="detailsTextView" destination="aIR-zp-JS7" id="xKj-Ke-swZ"/>
                 <outlet property="detailsView" destination="A3v-PE-MEb" id="hWW-eg-xbs"/>
                 <outlet property="hideDetailsButton" destination="n5a-hA-hXj" id="mcb-Qh-ADA"/>
@@ -30,7 +31,7 @@
                     <rect key="frame" x="27.5" y="243.5" width="320" height="180"/>
                     <subviews>
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ESx-ag-uUx">
-                            <rect key="frame" x="52" y="170" width="236" height="2"/>
+                            <rect key="frame" x="52" y="168" width="236" height="4"/>
                         </progressView>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="19i-8J-rmy">
                             <rect key="frame" x="16" y="136" width="20" height="20"/>
@@ -47,7 +48,7 @@
                         <constraint firstAttribute="width" constant="320" id="m1s-aL-3HZ"/>
                     </constraints>
                 </view>
-                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-xt-2qL" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-xt-2qL" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
                     <rect key="frame" x="20" y="585" width="335" height="50"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -61,32 +62,49 @@
                         <action selector="completeButtonTapped:" destination="-1" eventType="touchUpInside" id="FW8-xt-M87"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ah-cE-N79">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ah-cE-N79">
                     <rect key="frame" x="143" y="431.5" width="89" height="30"/>
                     <state key="normal" title="Show Details"/>
                     <connections>
                         <action selector="showDetails:" destination="-1" eventType="touchUpInside" id="sac-iF-ucJ"/>
                     </connections>
                 </button>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdn-dp-JBi" userLabel="Later" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="20" y="520" width="335" height="50"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="zRD-Ls-oWc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="completeLaterButtonTapped:" destination="-1" eventType="touchUpInside" id="CmT-fB-jfA"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Xdn-dp-JBi" secondAttribute="trailing" constant="20" id="CzE-Ka-e3u"/>
+                <constraint firstItem="p1C-xt-2qL" firstAttribute="top" secondItem="Xdn-dp-JBi" secondAttribute="bottom" constant="15" id="Pie-4G-37U"/>
                 <constraint firstItem="7Ah-cE-N79" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="STb-tS-XH7"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="p1C-xt-2qL" secondAttribute="trailing" constant="20" id="a2s-tw-JmU"/>
                 <constraint firstItem="ELx-1T-9zc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kTp-hZ-Y3s"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="p1C-xt-2qL" secondAttribute="bottom" constant="32" id="mE7-Py-kdk"/>
                 <constraint firstItem="7Ah-cE-N79" firstAttribute="top" secondItem="ELx-1T-9zc" secondAttribute="bottom" constant="8" id="nVu-8z-iSy"/>
                 <constraint firstItem="ELx-1T-9zc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o3q-Zd-8kk"/>
+                <constraint firstItem="Xdn-dp-JBi" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="qwH-ai-ILk"/>
                 <constraint firstItem="p1C-xt-2qL" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="vhB-mN-MxQ"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="706" y="154"/>
         </view>
         <view contentMode="scaleToFill" id="A3v-PE-MEb">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-hA-hXj" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-hA-hXj" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
                     <rect key="frame" x="20" y="585" width="335" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="gBt-2k-r0l"/>
@@ -108,6 +126,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="XF6-Az-efD"/>
             <color key="backgroundColor" red="0.11764705882352941" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="XF6-Az-efD" firstAttribute="trailing" secondItem="aIR-zp-JS7" secondAttribute="trailing" constant="16" id="5Y2-ud-dyn"/>
@@ -118,8 +137,12 @@
                 <constraint firstItem="n5a-hA-hXj" firstAttribute="top" secondItem="aIR-zp-JS7" secondAttribute="bottom" constant="8" id="cVo-M3-L5z"/>
                 <constraint firstItem="XF6-Az-efD" firstAttribute="bottom" secondItem="n5a-hA-hXj" secondAttribute="bottom" constant="32" id="twU-AS-FMA"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="XF6-Az-efD"/>
             <point key="canvasLocation" x="47" y="153"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
