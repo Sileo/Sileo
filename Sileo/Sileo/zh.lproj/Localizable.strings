@@ -45,6 +45,7 @@
 "Package_Get_Action" = "获取";
 "Package_Queue_Action" = "队列";
 "Package_Cancel_Action" = "取消";
+"Package_Paid" = "付费";
 
 "Package_Share_Action" = "分享软件包…";
 "Package_Developer_Find_Action" = "更多这位开发者的作品";
@@ -126,6 +127,7 @@
 "Reset_Tint_Color" = "重置颜色";
 "Auto_Complete_Queue" = "自动完成队列";
 "Enable_Analytics" = "启用分析";
+"Swipe_Actions" = "滑动动作";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
