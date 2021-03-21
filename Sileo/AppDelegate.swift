@@ -307,29 +307,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController,
+              let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+              let sourcesNavVC = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+              let sourcesVC = sourcesNavVC.viewControllers[0] as? SourcesViewController,
+              let packageListVC = tabBarController.viewControllers?[3] as? PackageListViewController
+        else {
             return
         }
-        if shortcutItem.type.hasSuffix("Search") {
-            tabBarController.selectedViewController = tabBarController.viewControllers?.last
-        }
-        if shortcutItem.type.hasSuffix("Installed") {
-            tabBarController.selectedViewController = tabBarController.viewControllers?[3]
-        }
         
-        guard let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-              let sourcesNavVc = sourcesSVC.viewControllers[0] as? SileoNavigationController,
-                let sourcesVC = sourcesNavVc.viewControllers[0] as? SourcesViewController else {
-                return
+        if shortcutItem.type.hasSuffix(".UpgradeAll") {
+            tabBarController.selectedViewController = packageListVC
+            PackageListManager.shared.markUpgradeAll(self)
         }
-        
-        if shortcutItem.type.hasSuffix("AddSource") {
+        else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.addSource(nil)
         }
-        if shortcutItem.type.hasSuffix("Refresh") {
+        else if shortcutItem.type.hasSuffix(".Refresh") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.refreshSources(control: nil, forceUpdate: true, forceReload: true)
+        }
+        else if shortcutItem.type.hasSuffix(".Packages") {
+            tabBarController.selectedViewController = tabBarController.viewControllers?[3]
         }
     }
     
