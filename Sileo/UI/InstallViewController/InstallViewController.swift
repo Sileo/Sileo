@@ -50,7 +50,6 @@ class InstallViewController: SileoViewController {
         hideDetailsButton?.layer.cornerRadius = 10
         
         detailsAttributedString = NSMutableAttributedString(string: "")
-        
         completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
         completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
         showDetailsButton?.setTitle(String(localizationKey: "Show_Install_Details"), for: .normal)
