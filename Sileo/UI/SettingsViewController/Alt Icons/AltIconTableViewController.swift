@@ -67,6 +67,9 @@ class AltIconTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AltIconTableViewCell()
         cell.altIcon = icons[indexPath.row]
+        if UIApplication.shared.alternateIconName == cell.altIcon?.key {
+            cell.accessoryType = .checkmark
+        }
         return cell
     }
 
@@ -74,6 +77,7 @@ class AltIconTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
         UIApplication.shared.setAlternateIconName(altIcon.key) { _ in }
+        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)
     }
 
 }

@@ -179,7 +179,7 @@ extension SettingsViewController { // UITableViewDataSource
                 case 3:
                     let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
                     cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
-                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                    cell.accessoryType = .disclosureIndicator
                     return cell
                 case 4:
                     let cell = SettingsSwitchTableViewCell()
