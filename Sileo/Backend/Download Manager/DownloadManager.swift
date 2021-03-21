@@ -580,6 +580,10 @@ final class DownloadManager {
     }
     
     public func reloadData(recheckPackages: Bool) {
+        reloadData(recheckPackages: recheckPackages, completion: nil)
+    }
+    
+    public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
         DispatchQueue.global(qos: .default).async {
             if !self.lockedForInstallation && recheckPackages {
                 self.recheckTotalOps()
@@ -593,7 +597,7 @@ final class DownloadManager {
                 
                 if self.queueLockCount == 0 {
                     self.viewController.reloadData()
-                    TabBarController.singleton?.updatePopup()
+                    TabBarController.singleton?.updatePopup(completion: completion)
                     
                     NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
                 }
