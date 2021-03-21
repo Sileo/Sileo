@@ -491,7 +491,7 @@ extension SourcesViewController { // UITableViewDelegate
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && self.canEditRow(indexPath: indexPath) {
             let repoManager = RepoManager.shared
-            repoManager.remove(sortedRepoList[indexPath.row])
+            repoManager.remove(repo: sortedRepoList[indexPath.row])
             self.reSortList()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
