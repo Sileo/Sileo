@@ -164,12 +164,16 @@ final class RepoManager {
     func addRepo(with url: URL) {
         addRepos(with: [url])
     }
-
-    func remove(_ repo: Repo) {
+    
+    func remove(repos: [Repo]) {
         repoListLock.wait()
-        repoList.removeAll { $0 == repo }
+        repoList.removeAll{ repos.contains($0) }
         repoListLock.signal()
         writeListToFile()
+    }
+    
+    func remove(repo: Repo) {
+        remove(repos: [repo])
     }
 
     func repo(with url: URL) -> Repo? {
