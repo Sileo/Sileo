@@ -104,10 +104,10 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 6
+            return 7
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
-                return 6
+                return 7
             }
             return 1
         case 3: // About section
@@ -177,17 +177,22 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
                     return cell
                 case 3:
+                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
+                    cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                    return cell
+                case 4:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Swipe_Actions")
                     cell.fallback = true
                     cell.defaultKey = "SwipeActions"
                     return cell
-                case 4:
+                case 5:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 5:
+                case 6:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
@@ -219,17 +224,22 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
                     return cell
                 case 3:
+                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
+                    cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                    return cell
+                case 4:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Swipe_Actions")
                     cell.fallback = true
                     cell.defaultKey = "SwipeActions"
                     return cell
-                case 4:
+                case 5:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 5:
+                case 6:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
@@ -304,6 +314,9 @@ extension SettingsViewController { // UITableViewDataSource
                 self.navigationController?.present(colorPickerViewController, animated: true)
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
+            } else if indexPath.row == 3 {
+                let altVC = AltIconTableViewController()
+                self.navigationController?.pushViewController(altVC, animated: true)
             }
         case 2: // Settings section OR About section
             if self.showTranslationCreditSection() {
@@ -323,6 +336,9 @@ extension SettingsViewController { // UITableViewDataSource
                     
                 } else if indexPath.row == 2 { // Tint color reset
                     SileoThemeManager.shared.resetTintColor()
+                } else if indexPath.row == 3 {
+                    let altVC = AltIconTableViewController()
+                    self.navigationController?.pushViewController(altVC, animated: true)
                 }
             } else {
                 let licensesViewController: LicensesTableViewController = LicensesTableViewController()
