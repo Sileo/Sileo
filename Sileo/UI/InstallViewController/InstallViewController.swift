@@ -29,6 +29,7 @@ class InstallViewController: SileoViewController {
     @IBOutlet var completeButton: DownloadConfirmButton?
     @IBOutlet var showDetailsButton: UIButton?
     @IBOutlet var hideDetailsButton: DownloadConfirmButton?
+    @IBOutlet var completeLaterButton: DownloadConfirmButton?
     
     @IBOutlet var detailsView: UIView?
     @IBOutlet var detailsTextView: UITextView?
@@ -45,11 +46,13 @@ class InstallViewController: SileoViewController {
         
         activityIndicatorView?.startAnimating()
         completeButton?.layer.cornerRadius = 10
+        completeLaterButton?.layer.cornerRadius = 10
         hideDetailsButton?.layer.cornerRadius = 10
         
         detailsAttributedString = NSMutableAttributedString(string: "")
         
-        completeButton?.setTitle(String(localizationKey: "Done"), for: .normal)
+        completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
+        completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
         showDetailsButton?.setTitle(String(localizationKey: "Show_Install_Details"), for: .normal)
         hideDetailsButton?.setTitle(String(localizationKey: "Hide_Install_Details"), for: .normal)
         
@@ -73,6 +76,7 @@ class InstallViewController: SileoViewController {
                 self.activityIndicatorView?.stopAnimating()
                 self.progressView?.alpha = 0
                 self.completeButton?.alpha = 1
+                self.completeLaterButton?.alpha = 1
             }
         }
         #else
@@ -122,6 +126,9 @@ class InstallViewController: SileoViewController {
                 self.progressView?.alpha = 0
                 self.updateCompleteButton()
                 self.completeButton?.alpha = 1
+                if (finish != .back || refresh) && finish != .uicache {
+                    self.completeLaterButton?.alpha = 1
+                }
                 if UserDefaults.standard.bool(forKey: "AutoComplete") {
                     self.completeButtonTapped(nil)
                 }
@@ -182,16 +189,27 @@ class InstallViewController: SileoViewController {
     func updateCompleteButton() {
         switch returnButtonAction {
         case .back:
-            if refreshSileo { completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal); break }
+            if refreshSileo {
+                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal);
+                completeLaterButton?.setTitle(String(localizationKey: "After_Install_Relaunch_Later"), for: .normal)
+                break }
             completeButton?.setTitle(String(localizationKey: "Done"), for: .normal)
         case .reopen:
             completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal)
+            completeLaterButton?.setTitle(String(localizationKey: "After_Install_Relaunch_Later"), for: .normal)
         case .restart, .reload:
             completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
+            completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
         case .reboot:
             completeButton?.setTitle(String(localizationKey: "After_Install_Reboot"), for: .normal)
+            completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
         case .uicache:
-            if refreshSileo { completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal); }
+            if refreshSileo {
+                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal);
+                completeLaterButton?.setTitle(String(localizationKey: "After_Install_Relaunch_Later"), for: .normal)
+            } else {
+                completeButton?.setTitle(String(localizationKey: "Done"), for: .normal)
+            }
         }
     }
     
@@ -199,7 +217,7 @@ class InstallViewController: SileoViewController {
         if self.returnButtonAction == .back || self.returnButtonAction == .uicache {
             if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", Bundle.main.bundlePath]); return }
             self.navigationController?.popViewController(animated: true)
-            DispatchQueue.global(qos: .default).async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.purgeCache()
                 PackageListManager.shared.waitForReady()
                 DispatchQueue.main.async {
@@ -220,6 +238,23 @@ class InstallViewController: SileoViewController {
             spawnAsRoot(command: "ldrestart")
         }
     }
+    
+    @IBAction func completeLaterButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.global(qos: .userInitiated).async {
+            PackageListManager.shared.purgeCache()
+            PackageListManager.shared.waitForReady()
+            DispatchQueue.main.async {
+                DownloadManager.shared.lockedForInstallation = false
+                DownloadManager.shared.removeAllItems()
+                
+                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                DownloadManager.shared.reloadData(recheckPackages: true)
+                TabBarController.singleton?.dismissPopupController()
+            }
+        }
+    }
+    
     
     @IBAction func showDetails(_ sender: Any?) {
         guard let detailsView = self.detailsView else {
@@ -275,6 +310,8 @@ class InstallViewController: SileoViewController {
         
         completeButton?.tintColor = UINavigationBar.appearance().tintColor
         completeButton?.isHighlighted = completeButton?.isHighlighted ?? false
+        completeLaterButton?.tintColor = .systemGray
+        completeLaterButton?.isHighlighted = completeLaterButton?.isHighlighted ?? false
         
         hideDetailsButton?.tintColor = UINavigationBar.appearance().tintColor
         hideDetailsButton?.isHighlighted = hideDetailsButton?.isHighlighted ?? false

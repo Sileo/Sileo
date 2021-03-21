@@ -196,7 +196,6 @@ final class RepoManager {
         if standardAdd.last != "/" {
             standardAdd.append("/")
         }
-        
         return standardRepo.contains(standardAdd)
     }
 
