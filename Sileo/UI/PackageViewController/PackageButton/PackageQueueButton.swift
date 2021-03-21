@@ -103,7 +103,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                     let downloadManager = DownloadManager.shared
                     let queueFound = downloadManager.find(package: package)
                     if queueFound != .none {
-                        // but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
+                        // but it's a already queued! user changed their mind about installing this new package => nuke it from the queue
                         downloadManager.remove(package: package, queue: queueFound)
                     }
 
@@ -195,7 +195,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                             if queueFound != .none {
                                 downloadManager.remove(package: package, queue: queueFound)
                             }
-
+                            self.hapticResponse()
                             downloadManager.add(package: package, queue: .upgrades)
                             downloadManager.reloadData(recheckPackages: true)
                         }
@@ -207,7 +207,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                             if queueFound != .none {
                                 downloadManager.remove(package: package, queue: queueFound)
                             }
-
+                            self.hapticResponse()
                             downloadManager.add(package: package, queue: .installations)
                             downloadManager.reloadData(recheckPackages: true)
                         }
@@ -218,6 +218,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
             let action = CSActionItem(title: String(localizationKey: "Package_Uninstall_Action"),
                                       image: UIImage(systemNameOrNil: "trash.circle"),
                                       style: .destructive) {
+                self.hapticResponse()
                 downloadManager.add(package: package, queue: .uninstallations)
                 downloadManager.reloadData(recheckPackages: true)
             }
@@ -230,6 +231,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 let action = CSActionItem(title: buttonText,
                                           image: UIImage(systemNameOrNil: "dollarsign.circle"),
                                           style: .default) {
+                    self.hapticResponse()
                     PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
                         guard let provider = provider,
                             error == nil else {
@@ -248,6 +250,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                                           image: UIImage(systemNameOrNil: "square.and.arrow.down"),
                                           style: .default) {
                     // here's new packages not yet queued & FREE
+                    self.hapticResponse()
                     downloadManager.add(package: package, queue: .installations)
                     downloadManager.reloadData(recheckPackages: true)
                 }
@@ -261,11 +264,11 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         guard let package = self.package else {
                 return
         }
+        self.hapticResponse()
         let downloadManager = DownloadManager.shared
-
         let queueFound = downloadManager.find(package: package)
         if queueFound != .none {
-            // but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
+            // but it's a already queued! user changed their mind about installing this new package => nuke it from the queue
             TabBarController.singleton?.presentPopupController()
             downloadManager.reloadData(recheckPackages: true)
         } else if let installedPackage = installedPackage {
@@ -387,6 +390,16 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
             self.viewControllerForPresentation?.present(PaymentError.alert(for: paymentError, title: title),
                                                         animated: true,
                                                         completion: nil)
+        }
+    }
+    
+    private func hapticResponse() {
+        if #available(iOS 13, *) {
+            let generator = UIImpactFeedbackGenerator(style: .soft)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
         }
     }
 }

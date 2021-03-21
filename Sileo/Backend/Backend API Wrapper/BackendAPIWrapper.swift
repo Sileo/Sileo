@@ -323,7 +323,7 @@ class BackendAPIWrapper: NSObject {
             return existingURLs.contains(url) ? nil : URL(string: url)
         })
         
-        if toAdd.count > 0 {
+        if !toAdd.isEmpty {
             repoMan.addRepos(with: toAdd)
             self.refreshRepos(forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()
@@ -343,7 +343,7 @@ class BackendAPIWrapper: NSObject {
             return URLs3.contains(url) ? $0 : nil
         })
         
-        if toRemove.count > 0 {
+        if !toRemove.isEmpty {
             repoMan.remove(repos: toRemove)
             self.refreshRepos(forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()

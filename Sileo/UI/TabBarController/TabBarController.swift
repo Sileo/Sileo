@@ -9,15 +9,17 @@
 import Foundation
 import LNPopupController
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
     static var singleton: TabBarController?
     private var downloadsController: UINavigationController?
     private var popupIsPresented = false
     private var popupLock = DispatchSemaphore(value: 1)
+    private var shouldSelectIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
         TabBarController.singleton = self
         
         downloadsController = UINavigationController(rootViewController: DownloadManager.shared.viewController)
@@ -37,6 +39,21 @@ class TabBarController: UITabBarController {
         super.viewDidAppear(animated)
         
         self.updatePopup()
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        shouldSelectIndex = tabBarController.selectedIndex
+        return true
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if shouldSelectIndex == tabBarController.selectedIndex {
+            if let splitViewController = viewController as? UISplitViewController {
+                if let navController = splitViewController.viewControllers[0] as? UINavigationController {
+                    navController.popToRootViewController(animated: true)
+                }
+            }
+        }
     }
     
     func presentPopup() {

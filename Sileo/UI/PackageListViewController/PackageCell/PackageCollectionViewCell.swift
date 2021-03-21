@@ -145,25 +145,21 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
 
 extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        // We don't want any left actions so return if that's where we are headed
+        // Different actions depending on where we are headed
         // Also making sure that the set package actually exists
-        guard orientation == .right,
-              let package = targetPackage,
+        guard let package = targetPackage,
               UserDefaults.standard.optionalBool("SwipeActions", fallback: true)  else { return nil }
-        
         var actions = [SwipeAction]()
         let queueFound = DownloadManager.shared.find(package: package)
-        print(queueFound)
-        if queueFound != .none {
-            actions.append(cancelAction(package))
+        // We only want delete if we're going left, and only if it's in the queue
+        if orientation == .left {
+            if queueFound != .none {
+                actions.append(cancelAction(package))
+            }
+            return actions
         }
-        
         // Check if the package is actually installed
         if let installedPackage = PackageListManager.shared.installedPackage(identifier: package.package) {
-            // Add our uninstall action now
-            if queueFound != .uninstallations {
-                actions.append(uninstallAction(package))
-            }
             let repo = RepoManager.shared.repoList.first(where: { $0.rawEntry == package.sourceFile })
             // Check we have a repo for the package
             if package.filename != nil && repo != nil {
@@ -179,26 +175,28 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                     }
                 }
             }
+            if queueFound != .uninstallations {
+                actions.append(uninstallAction(package))
+            }
         } else {
             if queueFound != .installations {
-                // Cringe, package isn't installed
-                if package.commercial {
-                    actions.append(purchaseAction(package))
-                } else {
-                    // The package is free, add to queue
-                    actions.append(installAction(package))
-                }
+                actions.append(getAction(package))
             }
         }
         return actions
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .selection
+        return options
     }
     
     private func cancelAction(_ package: Package) -> SwipeAction {
         let cancel = SwipeAction(style: .destructive, title: String(localizationKey: "Cancel")) { _, _ in
             DownloadManager.shared.remove(package: package.package)
             DownloadManager.shared.reloadData(recheckPackages: true)
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         return cancel
@@ -208,8 +206,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         let uninstall = SwipeAction(style: .destructive, title: String(localizationKey: "Package_Uninstall_Action")) { _, _ in
             DownloadManager.shared.add(package: package, queue: .uninstallations)
             DownloadManager.shared.reloadData(recheckPackages: true)
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         return uninstall
@@ -219,8 +216,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         let update = SwipeAction(style: .default, title: String(localizationKey: "Package_Upgrade_Action")) { _, _ in
             DownloadManager.shared.add(package: package, queue: .upgrades)
             DownloadManager.shared.reloadData(recheckPackages: true)
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         update.backgroundColor = .systemBlue
@@ -231,35 +227,160 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         let reinstall = SwipeAction(style: .default, title: String(localizationKey: "Package_Reinstall_Action")) { _, _ in
             DownloadManager.shared.add(package: package, queue: .installations)
             DownloadManager.shared.reloadData(recheckPackages: true)
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         reinstall.backgroundColor = .systemOrange
         return reinstall
     }
-    
-    private func purchaseAction(_ package: Package) -> SwipeAction {
-        // It's a paid package, that's an L. Omg this is gonna be so much pain
-        let purchase = SwipeAction(style: .default, title: "Buy") { _, _ in
-            // I'm doing this later cba right now
-            self.hideSwipe(animated: true)
-        }
-        purchase.backgroundColor = .systemGreen
-        return purchase
-    }
-    
-    private func installAction(_ package: Package) -> SwipeAction {
+
+    private func getAction(_ package: Package) -> SwipeAction {
         let install = SwipeAction(style: .default, title: String(localizationKey: "Package_Get_Action")) { _, _ in
+            
             if package.sourceRepo != nil && !package.package.contains("/") {
-                DownloadManager.shared.add(package: package, queue: .installations)
-                DownloadManager.shared.reloadData(recheckPackages: true)
+                
+                if !package.commercial {
+                    DownloadManager.shared.add(package: package, queue: .installations)
+                    DownloadManager.shared.reloadData(recheckPackages: true)
+                } else {
+                    self.updatePurchaseStatus(package) { error, provider, purchased in
+                        guard let provider = provider else {
+                            return self.presentAlert(paymentError: .invalidResponse,
+                                                     title: String(localizationKey: "Purchase_Auth_Complete_Fail.Title",
+                                                                   type: .error))
+                        }
+                        if let error = error {
+                            return self.presentAlert(paymentError: error,
+                                                     title: String(localizationKey: "Purchase_Auth_Complete_Fail.Title",
+                                                                   type: .error))
+                        }
+                        if purchased {
+                            DownloadManager.shared.add(package: package, queue: .installations)
+                            DownloadManager.shared.reloadData(recheckPackages: true)
+                        } else {
+                            if provider.isAuthenticated {
+                                self.initatePurchase(provider: provider, package: package)
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.authenticate(provider: provider, package: package)
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         install.backgroundColor = .systemGreen
         return install
+    }
+    
+    private func legacyGet(_ package: Package) -> Bool {
+        let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String]
+        let isPurchased = existingPurchased?.contains(package.package) ?? false
+        if isPurchased {
+            DownloadManager.shared.add(package: package, queue: .installations)
+            DownloadManager.shared.reloadData(recheckPackages: true)
+            return true
+        }
+        return false
+    }
+    
+    private func updatePurchaseStatus(_ package: Package, _ completion: ((PaymentError?, PaymentProvider?, Bool) -> Void)?) {
+        guard let repo = package.sourceRepo else {
+            return self.presentAlert(paymentError: .noPaymentProvider, title: String(localizationKey: "Purchase_Auth_Complete_Fail.Title",
+                                                                                     type: .error))
+        }
+        PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
+            guard let provider = provider else {
+                if let completion = completion { completion(.noPaymentProvider, nil, false) }
+                return
+            }
+            if error != nil { if self.legacyGet(package) { if let completion = completion { completion(nil, provider, true) } } }
+            provider.getPackageInfo(forIdentifier: package.package) { error, info in
+                guard let info = info else {
+                    if let completion = completion { completion(error, provider, false) }
+                    return
+                }
+                if error != nil {
+                    if self.legacyGet(package) {
+                        if let completion = completion { completion(nil, provider, true) }
+                    }
+                    return
+                }
+                if info.purchased {
+                    DownloadManager.shared.add(package: package, queue: .installations)
+                    DownloadManager.shared.reloadData(recheckPackages: true)
+                    if let completion = completion {
+                        completion(nil, provider, true)
+                    }
+                } else {
+                    if let completion = completion {
+                        completion(nil, provider, false)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func initatePurchase(provider: PaymentProvider, package: Package) {
+        provider.initiatePurchase(forPackageIdentifier: package.package) { error, status, actionURL in
+            if status == .cancel { return }
+            guard !(error?.shouldInvalidate ?? false) else {
+                return self.authenticate(provider: provider, package: package)
+            }
+            if error != nil || status == .failed {
+                self.presentAlert(paymentError: error,
+                                  title: String(localizationKey: "Purchase_Initiate_Fail.Title",
+                                                type: .error))
+            }
+            guard let actionURL = actionURL,
+                status != .immediateSuccess else {
+                    return self.updatePurchaseStatus(package, nil)
+            }
+            DispatchQueue.main.async {
+                PaymentAuthenticator.shared.handlePayment(actionURL: actionURL, provider: provider, window: self.window) { error, success in
+                    if error != nil {
+                        let title = String(localizationKey: "Purchase_Complete_Fail.Title", type: .error)
+                        return self.presentAlert(paymentError: error, title: title)
+                    }
+                    if success {
+                        self.updatePurchaseStatus(package, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func authenticate(provider: PaymentProvider, package: Package) {
+        PaymentAuthenticator.shared.authenticate(provider: provider, window: self.window) { error, success in
+            if error != nil {
+                return self.presentAlert(paymentError: error, title: String(localizationKey: "Purchase_Auth_Complete_Fail.Title",
+                                                                            type: .error))
+            }
+            if success {
+                self.updatePurchaseStatus(package, nil)
+            }
+        }
+    }
+    
+    private func presentAlert(paymentError: PaymentError?, title: String) {
+        DispatchQueue.main.async {
+            UIApplication.shared.windows.last?.rootViewController?.present(PaymentError.alert(for: paymentError,
+                                                                                              title: title),
+                                                                                              animated: true,
+                                                                                              completion: nil)
+        }
+    }
+    
+    private func hapticResponse() {
+        if #available(iOS 13, *) {
+            let generator = UIImpactFeedbackGenerator(style: .soft)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
     }
 }
