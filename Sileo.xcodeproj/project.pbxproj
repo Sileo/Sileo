@@ -40,6 +40,50 @@
 		E15857C12603C32800E1C391 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15857BF2603C32800E1C391 /* UIView+FromNib.swift */; };
 		E166F51F2606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */; };
 		E166F5202606AF8500663FA1 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */; };
+		E166F53E2607CFCF00663FA1 /* AltIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F53D2607CFCF00663FA1 /* AltIconTableViewController.swift */; };
+		E166F53F2607CFCF00663FA1 /* AltIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F53D2607CFCF00663FA1 /* AltIconTableViewController.swift */; };
+		E166F54C2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5482607D3E300663FA1 /* BlueLemonade~ipad@2x.png */; };
+		E166F54D2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5482607D3E300663FA1 /* BlueLemonade~ipad@2x.png */; };
+		E166F54E2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5492607D3E300663FA1 /* BlueLemonade@2x.png */; };
+		E166F54F2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5492607D3E300663FA1 /* BlueLemonade@2x.png */; };
+		E166F5502607D3E300663FA1 /* BlueLemonade@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F54A2607D3E300663FA1 /* BlueLemonade@3x.png */; };
+		E166F5512607D3E300663FA1 /* BlueLemonade@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F54A2607D3E300663FA1 /* BlueLemonade@3x.png */; };
+		E166F5522607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F54B2607D3E300663FA1 /* BlueLemonade~ipad@3x.png */; };
+		E166F5532607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F54B2607D3E300663FA1 /* BlueLemonade~ipad@3x.png */; };
+		E166F55A2607D51200663FA1 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5562607D51000663FA1 /* CoolBreeze@2x.png */; };
+		E166F55B2607D51200663FA1 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5562607D51000663FA1 /* CoolBreeze@2x.png */; };
+		E166F55C2607D51200663FA1 /* CoolBreeze~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5572607D51100663FA1 /* CoolBreeze~ipad@3x.png */; };
+		E166F55D2607D51200663FA1 /* CoolBreeze~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5572607D51100663FA1 /* CoolBreeze~ipad@3x.png */; };
+		E166F55E2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5582607D51100663FA1 /* CoolBreeze~ipad@2x.png */; };
+		E166F55F2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5582607D51100663FA1 /* CoolBreeze~ipad@2x.png */; };
+		E166F5602607D51200663FA1 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5592607D51200663FA1 /* CoolBreeze@3x.png */; };
+		E166F5612607D51200663FA1 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5592607D51200663FA1 /* CoolBreeze@3x.png */; };
+		E166F5682607D56C00663FA1 /* MangoCrazy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5642607D56B00663FA1 /* MangoCrazy@3x.png */; };
+		E166F5692607D56C00663FA1 /* MangoCrazy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5642607D56B00663FA1 /* MangoCrazy@3x.png */; };
+		E166F56A2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5652607D56B00663FA1 /* MangoCrazy~ipad@3x.png */; };
+		E166F56B2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5652607D56B00663FA1 /* MangoCrazy~ipad@3x.png */; };
+		E166F56C2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5662607D56B00663FA1 /* MangoCrazy@2x.png */; };
+		E166F56D2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5662607D56B00663FA1 /* MangoCrazy@2x.png */; };
+		E166F56E2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5672607D56B00663FA1 /* MangoCrazy~ipad@2x.png */; };
+		E166F56F2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5672607D56B00663FA1 /* MangoCrazy~ipad@2x.png */; };
+		E166F5762607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5722607D5DA00663FA1 /* SugarFree~ipad@3x.png */; };
+		E166F5772607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5722607D5DA00663FA1 /* SugarFree~ipad@3x.png */; };
+		E166F5782607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5732607D5DA00663FA1 /* SugarFree~ipad@2x.png */; };
+		E166F5792607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5732607D5DA00663FA1 /* SugarFree~ipad@2x.png */; };
+		E166F57A2607D5DA00663FA1 /* SugarFree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5742607D5DA00663FA1 /* SugarFree@2x.png */; };
+		E166F57B2607D5DA00663FA1 /* SugarFree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5742607D5DA00663FA1 /* SugarFree@2x.png */; };
+		E166F57C2607D5DA00663FA1 /* SugarFree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5752607D5DA00663FA1 /* SugarFree@3x.png */; };
+		E166F57D2607D5DA00663FA1 /* SugarFree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5752607D5DA00663FA1 /* SugarFree@3x.png */; };
+		E166F5842607D61B00663FA1 /* Taurine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5802607D61B00663FA1 /* Taurine@2x.png */; };
+		E166F5852607D61B00663FA1 /* Taurine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5802607D61B00663FA1 /* Taurine@2x.png */; };
+		E166F5862607D61B00663FA1 /* Taurine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5812607D61B00663FA1 /* Taurine@3x.png */; };
+		E166F5872607D61B00663FA1 /* Taurine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5812607D61B00663FA1 /* Taurine@3x.png */; };
+		E166F5882607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5822607D61B00663FA1 /* Taurine~ipad@2x.png */; };
+		E166F5892607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5822607D61B00663FA1 /* Taurine~ipad@2x.png */; };
+		E166F58A2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */; };
+		E166F58B2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */; };
+		E166F58F2607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */; };
+		E166F5902607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
@@ -543,6 +587,28 @@
 		E15857E52603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Categories.strings; sourceTree = "<group>"; };
 		E15857E62603C5CA00E1C391 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Errors.strings; sourceTree = "<group>"; };
 		E166F51E2606AF8400663FA1 /* UserDefaults+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Optional.swift"; sourceTree = "<group>"; };
+		E166F53D2607CFCF00663FA1 /* AltIconTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltIconTableViewController.swift; sourceTree = "<group>"; };
+		E166F5482607D3E300663FA1 /* BlueLemonade~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F5492607D3E300663FA1 /* BlueLemonade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade@2x.png"; sourceTree = "<group>"; };
+		E166F54A2607D3E300663FA1 /* BlueLemonade@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade@3x.png"; sourceTree = "<group>"; };
+		E166F54B2607D3E300663FA1 /* BlueLemonade~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F5562607D51000663FA1 /* CoolBreeze@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@2x.png"; sourceTree = "<group>"; };
+		E166F5572607D51100663FA1 /* CoolBreeze~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F5582607D51100663FA1 /* CoolBreeze~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F5592607D51200663FA1 /* CoolBreeze@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@3x.png"; sourceTree = "<group>"; };
+		E166F5642607D56B00663FA1 /* MangoCrazy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy@3x.png"; sourceTree = "<group>"; };
+		E166F5652607D56B00663FA1 /* MangoCrazy~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F5662607D56B00663FA1 /* MangoCrazy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy@2x.png"; sourceTree = "<group>"; };
+		E166F5672607D56B00663FA1 /* MangoCrazy~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F5722607D5DA00663FA1 /* SugarFree~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F5732607D5DA00663FA1 /* SugarFree~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F5742607D5DA00663FA1 /* SugarFree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree@2x.png"; sourceTree = "<group>"; };
+		E166F5752607D5DA00663FA1 /* SugarFree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree@3x.png"; sourceTree = "<group>"; };
+		E166F5802607D61B00663FA1 /* Taurine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine@2x.png"; sourceTree = "<group>"; };
+		E166F5812607D61B00663FA1 /* Taurine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine@3x.png"; sourceTree = "<group>"; };
+		E166F5822607D61B00663FA1 /* Taurine~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltIconTableViewCell.swift; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -970,6 +1036,82 @@
 			path = "Database Manager";
 			sourceTree = "<group>";
 		};
+		E166F53C2607CF4900663FA1 /* Alt Icons */ = {
+			isa = PBXGroup;
+			children = (
+				E166F53D2607CFCF00663FA1 /* AltIconTableViewController.swift */,
+				E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */,
+			);
+			path = "Alt Icons";
+			sourceTree = "<group>";
+		};
+		E166F5422607D17F00663FA1 /* AltIcons */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5472607D1E500663FA1 /* Taurine */,
+				E166F5462607D1C800663FA1 /* Sugar Free */,
+				E166F5452607D1B300663FA1 /* Mango Crazy */,
+				E166F5442607D1A900663FA1 /* Cool Breeze */,
+				E166F5432607D19C00663FA1 /* Blue Lemonade */,
+			);
+			path = AltIcons;
+			sourceTree = "<group>";
+		};
+		E166F5432607D19C00663FA1 /* Blue Lemonade */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5492607D3E300663FA1 /* BlueLemonade@2x.png */,
+				E166F54A2607D3E300663FA1 /* BlueLemonade@3x.png */,
+				E166F5482607D3E300663FA1 /* BlueLemonade~ipad@2x.png */,
+				E166F54B2607D3E300663FA1 /* BlueLemonade~ipad@3x.png */,
+			);
+			path = "Blue Lemonade";
+			sourceTree = "<group>";
+		};
+		E166F5442607D1A900663FA1 /* Cool Breeze */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5562607D51000663FA1 /* CoolBreeze@2x.png */,
+				E166F5592607D51200663FA1 /* CoolBreeze@3x.png */,
+				E166F5582607D51100663FA1 /* CoolBreeze~ipad@2x.png */,
+				E166F5572607D51100663FA1 /* CoolBreeze~ipad@3x.png */,
+			);
+			path = "Cool Breeze";
+			sourceTree = "<group>";
+		};
+		E166F5452607D1B300663FA1 /* Mango Crazy */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5662607D56B00663FA1 /* MangoCrazy@2x.png */,
+				E166F5642607D56B00663FA1 /* MangoCrazy@3x.png */,
+				E166F5672607D56B00663FA1 /* MangoCrazy~ipad@2x.png */,
+				E166F5652607D56B00663FA1 /* MangoCrazy~ipad@3x.png */,
+			);
+			path = "Mango Crazy";
+			sourceTree = "<group>";
+		};
+		E166F5462607D1C800663FA1 /* Sugar Free */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5742607D5DA00663FA1 /* SugarFree@2x.png */,
+				E166F5752607D5DA00663FA1 /* SugarFree@3x.png */,
+				E166F5732607D5DA00663FA1 /* SugarFree~ipad@2x.png */,
+				E166F5722607D5DA00663FA1 /* SugarFree~ipad@3x.png */,
+			);
+			path = "Sugar Free";
+			sourceTree = "<group>";
+		};
+		E166F5472607D1E500663FA1 /* Taurine */ = {
+			isa = PBXGroup;
+			children = (
+				E166F5802607D61B00663FA1 /* Taurine@2x.png */,
+				E166F5812607D61B00663FA1 /* Taurine@3x.png */,
+				E166F5822607D61B00663FA1 /* Taurine~ipad@2x.png */,
+				E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */,
+			);
+			path = Taurine;
+			sourceTree = "<group>";
+		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,6 +1366,7 @@
 				C373925721D60B2600E6F704 /* Localizable.stringsdict */,
 				C373924721D5F80300E6F704 /* Categories.strings */,
 				C373924521D5F80300E6F704 /* Errors.strings */,
+				E166F5422607D17F00663FA1 /* AltIcons */,
 				F102D452212B6AC2007CAF22 /* Deps */,
 				F1B3960420E5AFCE00AF3D04 /* Contrib */,
 				F1B99EF720DBE56100374C27 /* Test Data */,
@@ -1381,6 +1524,7 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E166F53C2607CF4900663FA1 /* Alt Icons */,
 				1761F821227B565E00E03DC3 /* Licenses */,
 				C315A7BC217D99C200341243 /* Base */,
 				C315A7BE217D9A0600341243 /* Root */,
@@ -2065,16 +2209,25 @@
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
 				F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */,
+				E166F5892607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */,
+				E166F5872607D61B00663FA1 /* Taurine@3x.png in Resources */,
+				E166F57D2607D5DA00663FA1 /* SugarFree@3x.png in Resources */,
 				F139D13E22EA9209007F5C0D /* DepictionSubpageViewController.xib in Resources */,
 				F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */,
 				F139D13722EA9209007F5C0D /* Errors.strings in Resources */,
+				E166F5772607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */,
 				F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */,
+				E166F54F2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */,
+				E166F55F2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */,
+				E166F5532607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */,
 				F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */,
 				F139D12C22EA9209007F5C0D /* LNPopupControllerAssets.xcassets in Resources */,
 				F139D13A22EA9209007F5C0D /* LaunchScreen.storyboard in Resources */,
+				E166F57B2607D5DA00663FA1 /* SugarFree@2x.png in Resources */,
 				F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */,
+				E166F55B2607D51200663FA1 /* CoolBreeze@2x.png in Resources */,
 				F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */,
 				F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */,
 				F11E22E22500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
@@ -2082,13 +2235,24 @@
 				F139D13822EA9209007F5C0D /* NewsArticleCollectionViewCell.xib in Resources */,
 				F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */,
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
+				E166F56D2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
+				E166F56B2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */,
+				E166F5692607D56C00663FA1 /* MangoCrazy@3x.png in Resources */,
+				E166F56F2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
+				E166F5852607D61B00663FA1 /* Taurine@2x.png in Resources */,
+				E166F55D2607D51200663FA1 /* CoolBreeze~ipad@3x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
+				E166F54D2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */,
+				E166F5612607D51200663FA1 /* CoolBreeze@3x.png in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
+				E166F5792607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */,
 				F183CFC42318F48600D3AF3B /* RepoScraper in Resources */,
+				E166F5512607D3E300663FA1 /* BlueLemonade@3x.png in Resources */,
+				E166F58B2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */,
 				F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2099,10 +2263,16 @@
 			files = (
 				F149E0BD20B6040B005CA30B /* Assets.xcassets in Resources */,
 				C373924A21D5F80300E6F704 /* Categories.strings in Resources */,
+				E166F57C2607D5DA00663FA1 /* SugarFree@3x.png in Resources */,
 				F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */,
+				E166F5862607D61B00663FA1 /* Taurine@3x.png in Resources */,
+				E166F5602607D51200663FA1 /* CoolBreeze@3x.png in Resources */,
+				E166F57A2607D5DA00663FA1 /* SugarFree@2x.png in Resources */,
 				F11E22E12500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
 				F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */,
 				F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */,
+				E166F5882607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */,
+				E166F55E2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */,
 				F178CD8921323E3800F927FA /* DownloadsTableViewController.xib in Resources */,
 				C373924921D5F80300E6F704 /* Errors.strings in Resources */,
 				F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */,
@@ -2110,22 +2280,36 @@
 				F1034020213746B600B9180B /* InstallViewController.xib in Resources */,
 				F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */,
 				564BEF7622BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets in Resources */,
+				E166F5522607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */,
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
+				E166F55A2607D51200663FA1 /* CoolBreeze@2x.png in Resources */,
+				E166F56A2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
+				E166F5842607D61B00663FA1 /* Taurine@2x.png in Resources */,
 				C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */,
+				E166F56E2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */,
+				E166F54C2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */,
 				F149E0BB20B6040B005CA30B /* Main.storyboard in Resources */,
 				C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */,
 				F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
 				CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */,
+				E166F5502607D3E300663FA1 /* BlueLemonade@3x.png in Resources */,
 				F11CD90F20DBF777000C62C3 /* PackageCollectionViewCell.xib in Resources */,
 				C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */,
 				F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */,
+				E166F5782607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */,
+				E166F56C2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */,
+				E166F5682607D56C00663FA1 /* MangoCrazy@3x.png in Resources */,
 				F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */,
 				F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */,
+				E166F54E2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */,
+				E166F58A2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */,
+				E166F5762607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */,
 				F183CFC32318F48600D3AF3B /* RepoScraper in Resources */,
+				E166F55C2607D51200663FA1 /* CoolBreeze~ipad@3x.png in Resources */,
 				F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2321,6 +2505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E166F53F2607CFCF00663FA1 /* AltIconTableViewController.swift in Sources */,
 				E15857C12603C32800E1C391 /* UIView+FromNib.swift in Sources */,
 				F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */,
 				F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
@@ -2446,6 +2631,7 @@
 				F1AB912822ED081E0054341B /* PackageIconView.swift in Sources */,
 				F139D0DD22EA9209007F5C0D /* PackageListHeader.swift in Sources */,
 				F139D10D22EA9209007F5C0D /* PackageListManager.swift in Sources */,
+				E166F5902607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */,
 				F1D82F7823094E1C00EECCAE /* PackageListViewController.swift in Sources */,
 				F14F7D5A240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B82384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
@@ -2489,6 +2675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E166F53E2607CFCF00663FA1 /* AltIconTableViewController.swift in Sources */,
 				E15857C02603C32800E1C391 /* UIView+FromNib.swift in Sources */,
 				F1DD3CCD231118A500D86A52 /* APTWrapper.swift in Sources */,
 				F183CFB02318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
@@ -2614,6 +2801,7 @@
 				F14F7D59240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F1CA758D244CF813000BA15C /* String+Error.swift in Sources */,
+				E166F58F2607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				F147E67622F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262923DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
@@ -3076,7 +3264,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -3139,7 +3327,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

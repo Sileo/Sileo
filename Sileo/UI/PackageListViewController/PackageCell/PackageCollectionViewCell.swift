@@ -204,41 +204,58 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     
     private func uninstallAction(_ package: Package) -> SwipeAction {
         let uninstall = SwipeAction(style: .destructive, title: String(localizationKey: "Package_Uninstall_Action")) { _, _ in
+            let queueFound = DownloadManager.shared.find(package: package)
+            if queueFound != .none {
+                DownloadManager.shared.remove(package: package.package)
+            }
             DownloadManager.shared.add(package: package, queue: .uninstallations)
             DownloadManager.shared.reloadData(recheckPackages: true)
             self.hapticResponse()
             self.hideSwipe(animated: true)
         }
+        uninstall.image = UIImage(systemNameOrNil: "trash.circle")
         return uninstall
     }
     
     private func upgradeAction(_ package: Package) -> SwipeAction {
         let update = SwipeAction(style: .default, title: String(localizationKey: "Package_Upgrade_Action")) { _, _ in
+            let queueFound = DownloadManager.shared.find(package: package)
+            if queueFound != .none {
+                DownloadManager.shared.remove(package: package.package)
+            }
             DownloadManager.shared.add(package: package, queue: .upgrades)
             DownloadManager.shared.reloadData(recheckPackages: true)
             self.hapticResponse()
             self.hideSwipe(animated: true)
         }
         update.backgroundColor = .systemBlue
+        update.image = UIImage(systemNameOrNil: "icloud.and.arrow.down")
         return update
     }
     
     private func reinstallAction(_ package: Package) -> SwipeAction {
         let reinstall = SwipeAction(style: .default, title: String(localizationKey: "Package_Reinstall_Action")) { _, _ in
+            let queueFound = DownloadManager.shared.find(package: package)
+            if queueFound != .none {
+                DownloadManager.shared.remove(package: package.package)
+            }
             DownloadManager.shared.add(package: package, queue: .installations)
             DownloadManager.shared.reloadData(recheckPackages: true)
             self.hapticResponse()
             self.hideSwipe(animated: true)
         }
+        reinstall.image = UIImage(systemNameOrNil: "arrow.clockwise.circle")
         reinstall.backgroundColor = .systemOrange
         return reinstall
     }
 
     private func getAction(_ package: Package) -> SwipeAction {
         let install = SwipeAction(style: .default, title: String(localizationKey: "Package_Get_Action")) { _, _ in
-            
+            let queueFound = DownloadManager.shared.find(package: package)
+            if queueFound != .none {
+                DownloadManager.shared.remove(package: package.package)
+            }
             if package.sourceRepo != nil && !package.package.contains("/") {
-                
                 if !package.commercial {
                     DownloadManager.shared.add(package: package, queue: .installations)
                     DownloadManager.shared.reloadData(recheckPackages: true)
@@ -271,6 +288,11 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             }
             self.hapticResponse()
             self.hideSwipe(animated: true)
+        }
+        if package.commercial {
+            install.image = UIImage(systemNameOrNil: "dollarsign.circle")
+        } else {
+            install.image = UIImage(systemNameOrNil: "square.and.arrow.down")
         }
         install.backgroundColor = .systemGreen
         return install
