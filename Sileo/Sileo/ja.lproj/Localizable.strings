@@ -15,7 +15,7 @@
 "__LocalizationCredit.URL" = "https://www.twitter.com/eveevekun";
 
 // Common Prompts
-"About" = "について";
+"About" = "詳細";
 "Close" = "閉じる";
 "Double tap to open." = "ダブルタップして開く";
 "Untitled_Repo" = "無名のリポジトリ";
@@ -45,7 +45,7 @@
 "Package_Uninstall_Action" = "アンインストール";
 "Package_Modify_Action" = "変更";
 "Package_Get_Action" = "入手";
-"Package_Queue_Action" = "実行";
+"Package_Queue_Action" = "キュー";
 "Package_Cancel_Action" = "キャンセル";
 
 "Package_Share_Action" = "パッケージを共有...";
@@ -85,30 +85,30 @@
 "Package_Installed_Files_Page" = "インストール済みファイル";
 
 "All_Packages.Title" = "全てのパッケージ";
-"All_Packages.Cell_Subtitle" = "リポジトリからすべてのパッケージを表示";
+"All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
 
 "All_Categories" = "全てのカテゴリー";
 
 "Repos" = "リポジトリ";
 
 "Add_Source.Title" = "リポジトリを追加";
-"Add_Source.Body" = "リポジトリ URL を入力する";
+"Add_Source.Body" = "リポジトリの URL を入力";
 "Add_Source.Button.Add" = "追加";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動で入力";
 
 "Untitled_Form" = "無題のフォーム";
-"Form_Submitted.Default_Title" = "フォームを送信";
-"Form_Submitted.Default_Body" = "フォームをの送信に成功しました。";
+"Form_Submitted.Default_Title" = "送信したフォーム";
+"Form_Submitted.Default_Body" = "フォームの送信に成功しました。";
 
-"Web_Depiction_Deprecated_Warning" = "詳細説明ページのデータが非推奨の形式です。アップデートをするよう、リポジトリの管理者に連絡してください。";
+"Web_Depiction_Deprecated_Warning" = "詳細ページのデータが非推奨の形式です。リポジトリの管理者に連絡してください。";
 
 "Package_Details_Tab" = "詳細";
 "Package_Changelog_Tab" = "更新履歴";
-"Package_No_Description_Available" = "このパッケージには詳細情報が記載されていません。";
+"Package_No_Description_Available" = "このパッケージでは詳細の表示ができません。";
 "Package_Changelogs_Unavailable" = "このパッケージでは更新履歴を表示できません";
 
-"Installed_Package_Header" = "インストール済みのパッケージ";
+"Installed_Package_Header" = "インストール済み";
 "Version" = "バージョン";
 "Show_Package_Contents_Button" = "パッケージの内容を表示";
 
@@ -117,7 +117,7 @@
 "Settings_Payment_Provider_Heading" = "決済サービスプロバイダー";
 "Settings_Translations_Heading" = "翻訳";
 
-"Settings_Payment_Provider.Purchases_Heading" = "購入済みパッケージ";
+"Settings_Payment_Provider.Purchases_Heading" = "購入済み";
 "Settings_Payment_Provider.No_Purchases" = "購入したパッケージはありません。";
 
 "Settings" = "設定";
@@ -126,8 +126,8 @@
 "Theme" = "テーマ";
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
-"Auto_Complete_Queue" = "キューをオートコンプリート";
-"Enable_Analytics" = "アナリティクスの有効化";
+"Auto_Complete_Queue" = "オートコンプリートキュー";
+"Enable_Analytics" = "統計収集の有効化";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -139,7 +139,7 @@
 "Payment_Provider_Signed_In_With_Name" = "%@ としてサインイン中"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "サインアウト";
 "Payment_Provider_Sign_Out_Confirm.Title" = "%@ からサインアウト"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "次回サインインするまで、購入したパッケージをダウンロードできなくなります。";
+"Payment_Provider_Sign_Out_Confirm.Body" = "次回のサインインまで、購入したパッケージがダウンロード出来なくなります。";
 
 "Show_Install_Details" = "詳細を表示";
 "Hide_Install_Details" = "詳細を非表示";

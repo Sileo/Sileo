@@ -37,7 +37,7 @@
 		<key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
 		<dict>
 			<key>NSStringLocalizedFormatKey</key>
-			<string>クリップボードで見つかった %#@urls@ を追加しますか</string>
+			<string>クリップボードから %#@urls@ を追加しますか</string>
 			<key>urls</key>
 			<dict>
 				<key>NSStringFormatSpecTypeKey</key>
@@ -61,7 +61,7 @@
 				<key>NSStringFormatValueTypeKey</key>
 				<string>d</string>
 				<key>zero</key>
-				<string>No Packages</string>
+				<string>パッケージ無し</string>
 				<key>one</key>
 				<string>%d パッケージ</string>
 				<key>other</key>
