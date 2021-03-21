@@ -40,6 +40,10 @@ class TabBarController: UITabBarController {
     }
     
     func presentPopup() {
+        presentPopup(completion: nil)
+    }
+    
+    func presentPopup(completion: (() -> Void)?) {
         guard let downloadsController = downloadsController else {
             return
         }
@@ -63,12 +67,16 @@ class TabBarController: UITabBarController {
         self.popupBar.tabBarHeight = self.tabBar.frame.height
         self.popupBar.progressViewStyle = .bottom
         self.popupInteractionStyle = .drag
-        self.presentPopupBar(withContentViewController: downloadsController, animated: true, completion: nil)
+        self.presentPopupBar(withContentViewController: downloadsController, animated: true, completion: completion)
         
         self.updateSileoColors()
     }
     
     func dismissPopup() {
+        dismissPopup(completion: nil)
+    }
+    
+    func dismissPopup(completion: (() -> Void)?) {
         guard popupIsPresented else {
             return
         }
@@ -78,7 +86,7 @@ class TabBarController: UITabBarController {
             return
         }
         popupIsPresented = false
-        self.dismissPopupBar(animated: true, completion: nil)
+        self.dismissPopupBar(animated: true, completion: completion)
     }
     
     func presentPopupController() {
@@ -100,39 +108,43 @@ class TabBarController: UITabBarController {
     }
     
     func updatePopup() {
+        updatePopup(completion: nil)
+    }
+    
+    func updatePopup(completion: (() -> Void)?) {
         let manager = DownloadManager.shared
         if manager.lockedForInstallation {
             downloadsController?.popupItem.title = String(localizationKey: "Installing_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.readyPackages())
             downloadsController?.popupItem.progress = Float(manager.totalProgress)
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.downloadingPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Downloading_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.downloadingPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.queuedPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.queuedPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.readyPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Ready_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.readyPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.uninstallingPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Removal_Queued_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.uninstallingPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
                 downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
                 downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
-                self.presentPopup()
+                self.presentPopup(completion: completion)
             } else {
-                self.dismissPopup()
+                self.dismissPopup(completion: completion)
             }
         }
     }
