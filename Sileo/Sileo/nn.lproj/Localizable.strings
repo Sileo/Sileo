@@ -2,25 +2,25 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-27. Translated to Norwegian Bokmål by: WorldlyDev (2020-04-21).
+  Created by AppleBetas on 2018-12-27. Translated to Norwegian Nynorsk by: WorldlyDev (2021-03-22).
   Copyright © 2018 CoolStar. All rights reserved.
 
- NORWEGIAN BOKMÅL LOCALISATIONS
+ NORWEGIAN NYNORSK LOCALISATIONS
 */
 
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Sileo oversatt til Norsk Bokmål av WorldlyDev";
+"__LocalizationCredit.Title" = "Sileo omsett til Norsk Nynorsk av WorldlyDev";
 "__LocalizationCredit.URL" = "https://twitter.com/worldlydev"; // (optional)
 
 // Common Prompts
 "About" = "Om";
 "Close" = "Lukk";
-"Double tap to open." = "Dobbelttrykk for å åpne.";
-"Untitled_Repo" = "Navnløs kilde";
+"Double tap to open." = "Dobbelttrykk for å opna.";
+"Untitled_Repo" = "Navnløs kjelde";
 "OK" = "Ok";
 "Done" = "Ferdig";
 "Done_Editing" = "Ferdig";
-"More_Info" = "Mer info";
+"More_Info" = "Meir info";
 "Loading" = "Laster…";
 "Share" = "Del";
 "Delete" = "Slett";
@@ -28,7 +28,7 @@
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installerer";
-"Downloading_Package_Status" = "Laster ned";
+"Downloading_Package_Status" = "Lastar ned";
 "Queued_Package_Status" = "Lagt til i køen";
 "Ready_Status" = "Klar";
 "Removal_Queued_Package_Status" = "Lagt til i køen for fjerning";
@@ -47,12 +47,12 @@
 "Package_Cancel_Action" = "Kanseller";
 
 "Package_Share_Action" = "Del pakke…";
-"Package_Developer_Find_Action" = "Mer fra denne utvikleren";
+"Package_Developer_Find_Action" = "Meir frå denne utviklaren";
 "Package_Support_Action" = "Støtte";
-"Package_Hold_Enable_Action" = "Ignorer fremtidige oppdateringer";
-"Package_Hold_Disable_Action" = "Slutt å ignorere oppdateringer";
-"Package_Wishlist_Add" = "Legg til i ønskelisten";
-"Package_Wishlist_Remove" = "Fjern fra ønskelisten";
+"Package_Hold_Enable_Action" = "Ignorer framtidige oppdateringar";
+"Package_Hold_Disable_Action" = "Slutt å ignorera oppdateringar";
+"Package_Wishlist_Add" = "Legg til i ønskelista";
+"Package_Wishlist_Remove" = "Fjern frå ønskelista";
 "Wishlist" = "Ønskeliste";
 
 // Headings for sections in the queue/status popup.
@@ -64,12 +64,12 @@
 "Installed_Heading" = "Installert";
 "Updates_Heading" = "Oppdateringer";
 "Upgrade_All_Button" = "Oppdater alle";
-"Package_Search.Placeholder" = "Søk etter pakker";
+"Package_Search.Placeholder" = "Søk etter pakkar";
 "Sort_Name" = "Navn";
 "Sort_Date" = "Dato";
 "Sort_By" = "Sorter etter:";
 
-"Package_Unavailable" = "Pakke utilgjengelig";
+"Package_Unavailable" = "Pakke utilgjengeleg";
 "Package_By_Author" = "%@ av %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "av %@"; // %@ = author name
 "Packages_By_Author" = "Pakker av %@"; // %@ = author name
@@ -79,36 +79,36 @@
 "Sources_Page" = "Kilder";
 "Packages_Page" = "Pakker";
 "Search_Page" = "Søk";
-"Refreshing_Sources_Page" = "Oppdaterer kilder";
+"Refreshing_Sources_Page" = "Oppdaterer kjelder";
 "Package_Installed_Files_Page" = "Installerte filer";
 
-"All_Packages.Title" = "Alle pakker";
-"All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
+"All_Packages.Title" = "Alle pakkar";
+"All_Packages.Cell_Subtitle" = "Sjå alle pakka frå kjeldene dine";
 
-"All_Categories" = "Alle kategorier";
+"All_Categories" = "Alle kategoriar";
 
 "Repos" = "Kilder";
 
-"Add_Source.Title" = "Legg til kilde";
+"Add_Source.Title" = "Legg til kjelde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
-"Add_Source.Button.Add" = "Legg til kilde";
+"Add_Source.Button.Add" = "Legg til kjelde";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Legg til manuelt";
 
 "Untitled_Form" = "Navnløs skjema";
 "Form_Submitted.Default_Title" = "Innsendt skejma";
-"Form_Submitted.Default_Body" = "Innsending av skjemaet var vellykket.";
+"Form_Submitted.Default_Body" = "Innsending av skjemaet var vellykka.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View-avbildninger er avviklede. Ta kontakt med kildevedlikeholderen om oppdatering til native-avbildninger.";
+"Web_Depiction_Deprecated_Warning" = "Web View-avbildninger er avvikla. Ta kontakt med kildevedlikeholderen om oppdatering til native-avbildninger.";
 
 "Package_Details_Tab" = "Detaljer";
 "Package_Changelog_Tab" = "Endringslogg";
-"Package_No_Description_Available" = "Ingen beskrivelse er tilgjengelig for denne pakken.";
-"Package_Changelogs_Unavailable" = "Endringsloggen er ikke tilgjengelig for denne pakken.";
+"Package_No_Description_Available" = "Ingen skildring er tilgjengeleg for denne pakken.";
+"Package_Changelogs_Unavailable" = "Endringsloggen er ikkje tilgjengeleg for denne pakken";
 
 "Installed_Package_Header" = "Installert pakke";
 "Version" = "Versjon";
-"Show_Package_Contents_Button" = "Vis pakkeinnhold";
+"Show_Package_Contents_Button" = "Vis pakkeinnhald";
 
 "Licenses_Page_Title" = "Lisenser";
 
@@ -124,7 +124,7 @@
 "Theme" = "Tema";
 "Tint_Color" = "Fargetone";
 "Reset_Tint_Color" = "Nullstill fargetone";
-"Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
+"Auto_Complete_Queue" = "Automatisk gjennomføring av handlingar i køen";
 "Enable_Analytics" = "Aktiver analysedata";
 
 "Sileo_Light" = "Sileo lys";
@@ -137,30 +137,30 @@
 "Payment_Provider_Signed_In_With_Name" = "Innlogget som %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Logg ut";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Logg ut av %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Du vil ikke lenger kunne laste ned kjøpte pakker før du logger deg på igjen.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Du vil ikkje lenger kunna lasta ned kjøpte pakkar før du loggar deg på igjen.";
 
-"Show_Install_Details" = "Vis detaljer";
-"Hide_Install_Details" = "Skjul detaljer";
+"Show_Install_Details" = "Vis detaljar";
+"Hide_Install_Details" = "Skjul detaljar";
 
 "After_Install_Relaunch" = "Start Sileo på nytt";
 "After_Install_Respring" = "Start SpringBoard på nytt";
-"After_Install_Reboot" = "Omstart enheten";
+"After_Install_Reboot" = "Omstart eininga";
 
-"Dangerous_Repo.Title" = "Farlig kilde";
-"Dangerous_Repo.Body" = "Du forsøker å legge til en kilde som er kjent for å være skadelig blant annet for piratkopiering, ulovlig innhold eller skadelig programvare.\n\nKilder merket som skadelig distribuerer ofte programvare med uforventede effekter, enten i form av piratkopierte betalte pakker eller andre ondsinnede pakker. Dette kan ha varige effekter på enheten din og personvernet ditt, og kan påvirke evnen din til en fremtidig jailbreak. Vi anbefaler derfor at du bruker ekstrem varsomhet for å unngå skadelig programvare.";
-"Dangerous_Repo.Continue" = "Jeg aksepterer risikoen, fortsett";
-"Dangerous_Repo.Cancel" = "Unngå farlig kilde";
-"Dangerous_Repo.Last_Chance.Title" = "Legg til farlig kilde?";
-"Dangerous_Repo.Last_Chance.Body" = "Farlige kilder kan ha ødeleggende effekter på evnen til å bruke enheten din eller en fremtidig jailbreak. Vi anbefaler på det sterkeste at du ikke legger til kilden for din egen sikkerhet.";
+"Dangerous_Repo.Title" = "Farlig kjelde";
+"Dangerous_Repo.Body" = "Du prøver å legga til ei kjelde som er kjent for å vera skadeleg mellom anna for piratkopiering, ulovleg innhald eller skadeleg programvare.\n\nKjelder merkte som skadeleg distribuerer ofte programvare med uforventede effektar, enten i form av piratkopierte betalte pakkar eller andre ondsinna pakkar. Dette kan ha varige effektar på eininga di og personvernet ditt, og kan påverka evna di til ein framtidig jailbreak. Vi tilrår derfor at du bruker ekstrem varsemd for å unngå skadeleg programvare.";
+"Dangerous_Repo.Continue" = "Eg aksepterer risikoen, hald fram";
+"Dangerous_Repo.Cancel" = "Unngå farleg kjelde";
+"Dangerous_Repo.Last_Chance.Title" = "Legg til farleg kjelde?";
+"Dangerous_Repo.Last_Chance.Body" = "Farlige kjelder kan ha ødeleggande effektar på evna til å bruka eininga di eller ein framtidig jailbreak. Vi tilrår på det sterkaste at du ikkje legg til kjelda for di eiga sikkerheit.";
 "Dangerous_Repo.Last_Chance.Continue" = "Fortsett";
 "Dangerous_Repo.Last_Chance.Cancel" = "Kanseller";
 
 // All export-based strings
 "Export" = "Eksporter";
-"Export_Packages" = "Vil du eksportere pakkelisten din? Dette vil kopiere navnene til alle pakkene dine og deres versjoner til utklippstavlen.";
-"Export_Sources" = "Vil du eksportere kildelisten din? Dette vil kopiere alle kildeadresser til utklippstavlen.";
-"Export_Yes" = "Ja, kopier.";
+"Export_Packages" = "Vil du eksportera pakkelista di? Dette vil kopiera namna til alle pakka dine og versjonane deira til utklippstavla.";
+"Export_Sources" = "Vil du eksportera kjeldelista di? Dette vil kopiera alle kjeldeadresser til utklippstavla.";
+"Export_Yes" = "Ja, kopiar.";
 "Export_No" = "Nei, kanseller.";
 
 // Depcitions
-"View_Depiction" = "Vis beskrivelse";
+"View_Depiction" = "Vis skildring";
