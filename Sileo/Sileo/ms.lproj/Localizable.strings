@@ -14,13 +14,13 @@
 //"__LocalizationCredit.URL" = "https://www.twitter.com/vanill4s4ndw1ch"; // (optional)
 
 // Common Prompts
-"About" = "Tentang";
+"About" = "Perihal";
 "Close" = "Tutup";
 "Double tap to open." = "Tekan dua kali untuk buka.";
 "Untitled_Repo" = "Repo Tanpa Tajuk";
 "OK" = "OK";
 "Done" = "Selesai";
-"Done_Editing" = "Selesai Disunting";
+"Done_Editing" = "Selesai";
 "More_Info" = "Lebih Info";
 "Loading" = "Memuatkan…";
 "Share" = "Kongsi";
@@ -30,7 +30,7 @@
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Memasang";
 "Downloading_Package_Status" = "Memuat turun";
-"Queued_Package_Status" = "Diaturkan";
+"Queued_Package_Status" = "Diatur";
 "Ready_Status" = "Sedia";
 "Removal_Queued_Package_Status" = "Diaturkan untuk pembuangan";
 "Download_Starting" = "Memulakan…";
@@ -47,40 +47,40 @@
 "Package_Queue_Action" = "Atur";
 "Package_Cancel_Action" = "Batal";
 
-"Package_Share_Action" = "Kongsi pakej ini…";
-"Package_Developer_Find_Action" = "Lebih daripada pemaju ini";
+"Package_Share_Action" = "Kongsi pakej…";
+"Package_Developer_Find_Action" = "Lebih dari pemaju ini";
 "Package_Support_Action" = "Pertolongan";
 "Package_Hold_Enable_Action" = "Abaikan Pengemaskinian Baharu";
 "Package_Hold_Disable_Action" = "Berhenti Mengabaikan Pengemaskinian Baharu";
 "Package_Wishlist_Add" = "Tambahkan ke Senarai Harapan";
-"Package_Wishlist_Remove" = "Buang daripada Senarai Harapan";
+"Package_Wishlist_Remove" = "Keluarkan daripada Senarai Harapan";
 "Wishlist" = "Senarai Harapan";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Pasang";
 "Queued_Uninstall_Heading" = "Nyahpasang";
 "Queued_Update_Heading" = "Kemas Kini";
-"Download_Errors_Heading" = "Ralat";
+"Download_Errors_Heading" = "Ralat-ralat";
 
 "Installed_Heading" = "Dipasang";
 "Updates_Heading" = "Pengemaskinian";
 "Upgrade_All_Button" = "Kemas Kini Semua";
-"Package_Search.Placeholder" = "Cari untuk pakej-pakej";
+"Package_Search.Placeholder" = "Cari pakej-pakej";
 "Sort_Name" = "Nama";
 "Sort_Date" = "Tarikh";
-"Sort_By" = "Disusun mengikut:";
+"Sort_By" = "Susun mengikut:";
 
-"Package_Unavailable" = "Pakej Tiada";
+"Package_Unavailable" = "Tiada Pakej";
 "Package_By_Author" = "%@ oleh %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "oleh %@"; // %@ = author name
-"Packages_By_Author" = "Pakej-pakej oleh %@"; // %@ = author name
+"Packages_By_Author" = "Pakej daripada %@"; // %@ = author name
 
 "Featured_Page" = "Diketengahkan";
 "News_Page" = "Baharu";
-"Sources_Page" = "Sumber-sumber";
-"Packages_Page" = "Pakej-pakej";
+"Sources_Page" = "Sumber";
+"Packages_Page" = "Pakej";
 "Search_Page" = "Cari";
-"Refreshing_Sources_Page" = "Mengemaskini Sumber-sumber";
+"Refreshing_Sources_Page" = "Mengemaskini Sumber";
 "Package_Installed_Files_Page" = "Fail Dipasang";
 
 "All_Packages.Title" = "Semua Pakej";
@@ -100,12 +100,11 @@
 "Form_Submitted.Default_Title" = "Borang Dihantar";
 "Form_Submitted.Default_Body" = "Borang berjaya dihantar";
 
-"Web_Depiction_Deprecated_Warning" = "Penggambaran "Web View" adalah usang. Sila hubungi penyelenggara repo tentang menaik taraf kepada penggambaran asli.";
-// Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.
+"Web_Depiction_Deprecated_Warning" = "Penggambaran Web View adalah usang. Sila hubungi penyelenggara repo tentang menaik taraf kepada penggambaran asli.";
 
-"Package_Details_Tab" = "Tentang";
-"Package_Changelog_Tab" = "Log Penukaran;
-"Package_No_Description_Available" = "Tiada perihalan untuk pakej ini.";
+"Package_Details_Tab" = "Butiran";
+"Package_Changelog_Tab" = "Log Penukaran";
+"Package_No_Description_Available" = "Tiada perihal untuk pakej ini.";
 "Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
 
 "Installed_Package_Header" = "Pakej Dipasang";
@@ -134,28 +133,28 @@
 "Sileo_Adaptive" = "Sileo Adaptif";
 "System" = "Sistem";
 
-"Cydia_Sign_In" = "Log masuk kedalam Cydia Store";
+"Cydia_Sign_In" = "Log masuk ke dalam Cydia Store";
 "Payment_Provider_Signed_In" = "Dilog masuk";
 "Payment_Provider_Signed_In_With_Name" = "Dilog masuk sebagai %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Log Keluar";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Log keluar daripada %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Anda tidak akan dapat memuat turun pakej yang telah dibeli sehingga anda log masuk semula.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Anda tidak akan dapat memuat turun pakej-pakej yang telah dibeli sehingga anda log masuk semula.";
 
-"Show_Install_Details" = "Tunjuk Perincian";
-"Hide_Install_Details" = "Sorok Perincian";
+"Show_Install_Details" = "Tunjuk Butiran";
+"Hide_Install_Details" = "Sorok Butiran";
 
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";
 "After_Install_Reboot" = "Mula-semulakan Peranti";
 
 "Dangerous_Repo.Title" = "Repo Berbahaya";
-"Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan sebagai pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadang-kadang mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";
+"Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan seperti pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadangkala mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";
 "Dangerous_Repo.Continue" = "Saya memahami risiko, teruskan";
-"Dangerous_Repo.Cancel" = "Bawa saya semula kepada keselamatan";
+"Dangerous_Repo.Cancel" = "Bawa semula kepada keselamatan";
 "Dangerous_Repo.Last_Chance.Title" = "Tambah repo berbahaya?";
-"Dangerous_Repo.Last_Chance.Body" = "Repositori berbahaya boleh menyebabkan kesan buruk kepada kebolehan anda untuk menggunakan peranti anda atau menjailbreak. Kami sangat mengesyorkan untuk anda kembali semula untuk keselamatan anda. Anda pasti anda mahu menambahkan %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Repositori berbahaya boleh menyebabkan kesan buruk kepada kebolehan anda untuk menggunakan peranti anda atau menjailbreak. Kami sangat mengesyorkan anda untuk kembali semula untuk keselamatan anda. Anda pasti anda mahu menambahkan %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Teruskan";
-"Dangerous_Repo.Last_Chance.Cancel" = "Kembali Semula";
+"Dangerous_Repo.Last_Chance.Cancel" = "Kembali";
 
 // All export-based strings
 "Export" = "Eksport";

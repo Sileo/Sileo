@@ -12,8 +12,8 @@
 "Unknown" = "Ralat yang tidak diketahui telah berlaku.";
 "Error_Indicator" = "Ralat: %@";
 
-"No_Package.Title" = "Tidak boleh jumpa pakej %@ di dalam repositori yang anda telah pasang.";
-"No_Package.Body" = "Jika ia baharu, tunggu untuk Sileo selesai berkemas-kini, kemudian cuba sekali lagi. Lihat atas talian untuk pertolongan.";
+"No_Package.Title" = "Tidak boleh jumpa pakej %@ di dalam repositori-repositori yang anda telah pasang.";
+"No_Package.Body" = "Jika ia baharu, tunggu untuk Sileo selesai berkemas-kini, kemudian cuba lagi. Lihat atas talian untuk pertolongan.";
 
 "Invalid_URL.Title" = "URL tidak sah";
 
@@ -22,15 +22,15 @@
 "Download_Hash_Mismatch" = "Dijangkakan hash %@ tetapi mendapat %@.";
 "Untrusted_Package" = "Pakej %@ tidak dipercayai dan tidak dapat disahkan";
 
-"Insecure_Paid_Download" = "URL muat turun pakej dibayar disahkan perlu selamat (HTTPS).";
+"Insecure_Paid_Download" = "URL muat turun pakej disahkan dibayar perlu selamat (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "Penyedia pembayaran menghantar respons tidak sah.";
-"No_Payment_Provider" = "Repo ini tidak sokong pembayaran Sileo. Jika ini pakej Cydia Store yang anda telah beli, anda boleh memautkan akaun untuk memuat turun.";
+"Invalid_Payment_Provider_Response" = "Penyedia pembayaran telah menghantar respons tidak sah.";
+"No_Payment_Provider" = "Repo ini tidak menyokong pembayaran Sileo. Jika ini pakej Cydia Store yang anda telah membeli, anda boleh memautkan akaun untuk memuat turun.";
 
-"Package_Unavailable" = "Pakej ini tidak dapat dijumpai dalam sumber-sumber anda. Sila memastikan bahawa ada repo %@.";
+"Package_Unavailable" = "Pakej ini tidak dapat dijumpai di dalam sumber-sumber anda. Sila memastikan bahawa anda ada repo %@.";
 
 "Installation_Error.Title" = "Ralat Memasang";
-"Installation_Error.Body" = "Sileo tidak dapat memperoleh keizinan root. Sila memasang semula Sileo melalui SSH.";
+"Installation_Error.Body" = "Sileo tidak dapat memperoleh keizinan root. Sila pasang semula Sileo melalui SSH.";
 
 "FixingDpkg.Title" = "Dpkg Dikacau";
 "FixingDpkg.Body" = "Dpkg telah dikacau. Sila tunggu semasa kami mencuba untuk membaiki isu ini.";
@@ -40,7 +40,7 @@
 
 "Sileo_Update_Required.Title" = "Pengemaskinian Sileo diperlukan";
 "Featured_Requires_Sileo_Update" = "Pengemaskinian Sileo diperlukan untuk melihat tab diketengahkan. Tab diketengahkan mungkin akan ditunjukkan secara tidak betul.";
-"Depiction_Requires_Sileo_Update" = "Pengemaskinian Sileo diperlukan untuk melihatkan muka surat ini. Muka surat ini mungkin akan ditunjukkan secara tidak betul.";
+"Depiction_Requires_Sileo_Update" = "Pengemaskinian Sileo diperlukan untuk melihat muka surat ini. Muka surat ini mungkin akan ditunjukkan secara tidak betul.";
 
 "Form_Error.Title" = "Borang Tidak Dapat Dimuatkan";
 "Form_Load_Error" = "Borang tidak dapat dimuatkan daripada server.";
