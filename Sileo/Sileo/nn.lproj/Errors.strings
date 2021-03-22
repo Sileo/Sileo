@@ -1,4 +1,4 @@
-/*
+/
   Errors.strings
   Sileo
 
@@ -6,54 +6,54 @@
   Copyright © 2018 CoolStar. All rights reserved.
 
  NORWEGIAN NYNORSK LOCALISATIONS
- */
+ /
 
-"Unknown" = "En ukjent feil oppstod.";
+"Unknown" = "Ein ukjend feil oppstod.";
 "Error_Indicator" = "Feil: %@";
 
-"No_Package.Title" = "Kunne ikke finne pakken %@ i kildene du har lagt til.";
-"No_Package.Body" = "Hvis den er ny, vennligst vent til Sileo er ferdig med å oppdatere, og prøv igjen. Sjekk på nett for mer hjelp.";
+"No_Package.Title" = "Kunne ikkje finna pakken %@ i kjeldene du har lagt til.";
+"No_Package.Body" = "Viss han er ny, ver vennleg og vant til Sileo er ferdig med å oppdatera, og prøv igjen. Sjekk på nett for meir hjelp.";
 
 "Invalid_URL.Title" = "Ugyldig URL";
 
-"Download_Size_Mismatch" = "Forventet størrelse %@, fikk %@ istedenfor.";
+"Download_Size_Mismatch" = "Forventet storleik %@, fekk %@ i staden for.";
 "Download_Failing_Status_Code" = "Feilet med status %ld";
-"Download_Hash_Mismatch" = "Forventet nøkkel %@, fikk %@ istedenfor.";
-"Untrusted_Package" = "Pakke %@ er ikke verifisert og kan ikke bekreftes.";
+"Download_Hash_Mismatch" = "Forventet nøkkel %@, fekk %@ i staden for.";
+"Untrusted_Package" = "Pakke %@ er ikkje verifisert og kan ikkje stadfestast.";
 
-"Insecure_Paid_Download" = "Betalingsautoriserte-nedlastingsadresser for pakker må være sikre (HTTPS).";
+"Insecure_Paid_Download" = "Betalingsautoriserte-nedlastingsadresser for pakkar må vera sikre (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "Betalingsleverandøren ga et ugyldig svar.";
-"No_Payment_Provider" = "Denne kilden støtter ikke Sileo-kjøp. Hvis dette er en Cydia Store-pakke som du allerede har kjøpt, kan du logge inn på kontoen din for å laste den ned.";
+"Invalid_Payment_Provider_Response" = "Betalingsleverandøren gav eit ugyldig svar.";
+"No_Payment_Provider" = "Denne kjelda støttar ikkje Sileo-kjøp. Viss dette er ein Cydia Store-pakke som du allereie har kjøpt, kan du logga inn på kontoen din for å lasta han ned.";
 
-"Package_Unavailable" = "Denne pakken er ikke tilgjengelig fra dine kilder. Kontroller at kilden %@ er tilgjengelig.";
+"Package_Unavailable" = "Denne pakken er ikkje tilgjengeleg frå kjeldene dine. Kontroller at kjelda %@ er tilgjengeleg.";
 
 "Installation_Error.Title" = "Installasjonsfeil";
-"Installation_Error.Body" = "Sileo klarte ikke å skaffe rotrettigheter. Vennligst installer Sileo på nytt ved å bruke SSH.";
+"Installation_Error.Body" = "Sileo klarte ikkje å skaffa rotrettigheter. Ver vennleg og installer Sileo på nytt ved å bruka SSH.";
 
-"FixingDpkg.Title" = "Dpkg avbrutt";
-"FixingDpkg.Body" = "Dpkg ble avbrutt. Vennligst vent mens vi prøver å løse problemet.";
+"FixingDpkg.Title" = "Dpkg avbrote";
+"FixingDpkg.Body" = "Dpkg vart avbroten. Ver vennleg og vent medan vi prøver å løysa problemet.";
 
 "Invalid_Data" = "Ugyldig Data";
-"Try_Later" = "Vennligst prøv igjen senere.";
+"Try_Later" = "Vennligst prøv igjen seinare.";
 
-"Sileo_Update_Required.Title" = "Sileo oppdatering kreves";
-"Featured_Requires_Sileo_Update" = "En Sileo oppdatering er nødvendig for å se fanen med utvalgte pakker. Fanen som nå vises, kan gjengis feil.";
-"Depiction_Requires_Sileo_Update" = "En Sileo oppdatering er nødvendig for å se denne siden. Siden kan gjengis feil.";
+"Sileo_Update_Required.Title" = "Sileo oppdatering blir kravd";
+"Featured_Requires_Sileo_Update" = "Ein Sileo oppdatering er nødvendig for å sjå fana med utvalde pakkar. Fana som no blir vist, kan attgivast feil.";
+"Depiction_Requires_Sileo_Update" = "Ein Sileo oppdatering er nødvendig for å sjå denne sida. Sidan kan attgivast feil.";
 
-"Form_Error.Title" = "Kunne ikke laste inn skjemaet";
-"Form_Load_Error" = "Skjemaet kunne ikke lastes inn fra serveren.";
-"Invalid_Form_Data" = "Serveren ga ugyldig skjemadata.";
-"Form_Submit_Failure" = "Det oppstod en feil under forsøk på å sende inn skjemaet: %@";
-"Form_Submit_Error.Title" = "Kunne ikke sende inn skjema";
-"Form_Action_Host_Mismatch" = "URL-verten for skjemahandlingene samsvarer ikke med skjemaets opprinnelsesvert.";
+"Form_Error.Title" = "Kunne ikkje lasta inn skjemaet";
+"Form_Load_Error" = "Skjemaet kunne ikkje lastast inn frå serveren.";
+"Invalid_Form_Data" = "Serveren gav ugyldig skjemadata.";
+"Form_Submit_Failure" = "Det oppstod ein feil under forsøk på å senda inn skjemaet: %@";
+"Form_Submit_Error.Title" = "Kunne ikkje senda inn skjema";
+"Form_Action_Host_Mismatch" = "URL-verten for skjemahandlingane samsvarer ikkje med opphavsverten til skjemaet.";
 
-"Email_Unavailable.Title" = "Kan ikke sende e-post";
-"Email_Unavailable.Body" = "e-posttjenester er ikke tilgjengelige.";
+"Email_Unavailable.Title" = "Kan ikkje senda e-post";
+"Email_Unavailable.Body" = "e-posttenester er ikkje tilgjengelege.";
 
-"Settings_Payment_Provider.Profile.Title" = "Kunne ikke laste inn profil";
+"Settings_Payment_Provider.Profile.Title" = "Kunne ikkje lasta inn profil";
 
-"Provider_Auth_Fail.Title" = "Kunne ikke autentisere leverandøren";
-"Purchase_Initiate_Fail.Title" = "Kunne ikke starte kjøp";
-"Purchase_Complete_Fail.Title" = "Kunne ikke fullføre kjøpet";
-"Purchase_Auth_Complete_Fail.Title" = "Kunne ikke fullføre autentiseringen";
+"Provider_Auth_Fail.Title" = "Kunne ikkje autentisera leverandøren";
+"Purchase_Initiate_Fail.Title" = "Kunne ikkje starta kjøp";
+"Purchase_Complete_Fail.Title" = "Kunne ikkje fullføra kjøpet";
+"Purchase_Auth_Complete_Fail.Title" = "Kunne ikkje fullføra autentiseringa";
