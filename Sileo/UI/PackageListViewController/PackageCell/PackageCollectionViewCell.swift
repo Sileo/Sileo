@@ -199,6 +199,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             self.hapticResponse()
             self.hideSwipe(animated: true)
         }
+        cancel.image = UIImage(systemNameOrNil: "x.circle")
         return cancel
     }
     
