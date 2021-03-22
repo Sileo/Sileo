@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
 	<key>CFBundleIcons~ipad</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
@@ -49,6 +58,60 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Taurine~ipad</string>
+				</array>
+			</dict>
+			<key>CotonCandy</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>CottonCandy~ipad</string>
+				</array>
+			</dict>
+			<key>Sus</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Sus~ipad</string>
+				</array>
+			</dict>
+			<key>StrawberrySunet</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>StrawberrySunset~ipad</string>
+				</array>
+			</dict>
+			<key>OceanicBlue</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>OceanicBlue~ipad</string>
+				</array>
+			</dict>
+			<key>Chimera</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Chimera~ipad</string>
+				</array>
+			</dict>
+			<key>Procursus</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Procursus~ipad</string>
 				</array>
 			</dict>
 		</dict>
@@ -107,6 +170,60 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Taurine</string>
+				</array>
+			</dict>
+			<key>CottonCandy</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>CottonCandy</string>
+				</array>
+			</dict>
+			<key>Sus</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Sus</string>
+				</array>
+			</dict>
+			<key>StrawberrySunset</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>StrawberrySunset</string>
+				</array>
+			</dict>
+			<key>OceanicBlue</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>OceanicBlue</string>
+				</array>
+			</dict>
+			<key>Chimera</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Chimera</string>
+				</array>
+			</dict>
+			<key>Procursus</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Procursus</string>
 				</array>
 			</dict>
 		</dict>

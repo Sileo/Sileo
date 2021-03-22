@@ -28,8 +28,8 @@ class AltIconTableViewCell: UITableViewCell {
         self.contentView.addSubview(label)
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
-        iconView.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        iconView.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        iconView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         iconView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 17.5).isActive = true
         iconView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         iconView.layer.masksToBounds = true

@@ -84,6 +84,54 @@
 		E166F58B2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */; };
 		E166F58F2607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */; };
 		E166F5902607D9F000663FA1 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */; };
+		E166F61026092E3B00663FA1 /* CottonCandy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60C26092E3A00663FA1 /* CottonCandy@3x.png */; };
+		E166F61126092E3B00663FA1 /* CottonCandy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60C26092E3A00663FA1 /* CottonCandy@3x.png */; };
+		E166F61226092E3B00663FA1 /* CottonCandy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60D26092E3B00663FA1 /* CottonCandy~ipad@2x.png */; };
+		E166F61326092E3B00663FA1 /* CottonCandy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60D26092E3B00663FA1 /* CottonCandy~ipad@2x.png */; };
+		E166F61426092E3B00663FA1 /* CottonCandy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60E26092E3B00663FA1 /* CottonCandy@2x.png */; };
+		E166F61526092E3B00663FA1 /* CottonCandy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60E26092E3B00663FA1 /* CottonCandy@2x.png */; };
+		E166F61626092E3B00663FA1 /* CottonCandy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60F26092E3B00663FA1 /* CottonCandy~ipad@3x.png */; };
+		E166F61726092E3B00663FA1 /* CottonCandy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F60F26092E3B00663FA1 /* CottonCandy~ipad@3x.png */; };
+		E166F61F2609310F00663FA1 /* Sus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61B2609310F00663FA1 /* Sus~ipad@2x.png */; };
+		E166F6202609310F00663FA1 /* Sus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61B2609310F00663FA1 /* Sus~ipad@2x.png */; };
+		E166F6212609310F00663FA1 /* Sus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61C2609310F00663FA1 /* Sus~ipad@3x.png */; };
+		E166F6222609310F00663FA1 /* Sus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61C2609310F00663FA1 /* Sus~ipad@3x.png */; };
+		E166F6232609310F00663FA1 /* Sus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61D2609310F00663FA1 /* Sus@3x.png */; };
+		E166F6242609310F00663FA1 /* Sus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61D2609310F00663FA1 /* Sus@3x.png */; };
+		E166F6252609310F00663FA1 /* Sus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61E2609310F00663FA1 /* Sus@2x.png */; };
+		E166F6262609310F00663FA1 /* Sus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F61E2609310F00663FA1 /* Sus@2x.png */; };
+		E166F62E2609333800663FA1 /* StrawberrySunset~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62A2609333700663FA1 /* StrawberrySunset~ipad@3x.png */; };
+		E166F62F2609333800663FA1 /* StrawberrySunset~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62A2609333700663FA1 /* StrawberrySunset~ipad@3x.png */; };
+		E166F6302609333800663FA1 /* StrawberrySunset~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62B2609333700663FA1 /* StrawberrySunset~ipad@2x.png */; };
+		E166F6312609333800663FA1 /* StrawberrySunset~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62B2609333700663FA1 /* StrawberrySunset~ipad@2x.png */; };
+		E166F6322609333800663FA1 /* StrawberrySunset@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62C2609333800663FA1 /* StrawberrySunset@3x.png */; };
+		E166F6332609333800663FA1 /* StrawberrySunset@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62C2609333800663FA1 /* StrawberrySunset@3x.png */; };
+		E166F6342609333800663FA1 /* StrawberrySunset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62D2609333800663FA1 /* StrawberrySunset@2x.png */; };
+		E166F6352609333800663FA1 /* StrawberrySunset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F62D2609333800663FA1 /* StrawberrySunset@2x.png */; };
+		E166F63D260935FB00663FA1 /* OceanicBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F639260935FA00663FA1 /* OceanicBlue@3x.png */; };
+		E166F63E260935FB00663FA1 /* OceanicBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F639260935FA00663FA1 /* OceanicBlue@3x.png */; };
+		E166F63F260935FB00663FA1 /* OceanicBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63A260935FA00663FA1 /* OceanicBlue@2x.png */; };
+		E166F640260935FB00663FA1 /* OceanicBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63A260935FA00663FA1 /* OceanicBlue@2x.png */; };
+		E166F641260935FB00663FA1 /* OceanicBlue~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63B260935FA00663FA1 /* OceanicBlue~ipad@2x.png */; };
+		E166F642260935FB00663FA1 /* OceanicBlue~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63B260935FA00663FA1 /* OceanicBlue~ipad@2x.png */; };
+		E166F643260935FB00663FA1 /* OceanicBlue~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63C260935FB00663FA1 /* OceanicBlue~ipad@3x.png */; };
+		E166F644260935FB00663FA1 /* OceanicBlue~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F63C260935FB00663FA1 /* OceanicBlue~ipad@3x.png */; };
+		E166F64C2609375F00663FA1 /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6482609375F00663FA1 /* Chimera~ipad@2x.png */; };
+		E166F64D2609375F00663FA1 /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6482609375F00663FA1 /* Chimera~ipad@2x.png */; };
+		E166F64E2609375F00663FA1 /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6492609375F00663FA1 /* Chimera@2x.png */; };
+		E166F64F2609375F00663FA1 /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6492609375F00663FA1 /* Chimera@2x.png */; };
+		E166F6502609375F00663FA1 /* Chimera~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F64A2609375F00663FA1 /* Chimera~ipad@3x.png */; };
+		E166F6512609375F00663FA1 /* Chimera~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F64A2609375F00663FA1 /* Chimera~ipad@3x.png */; };
+		E166F6522609375F00663FA1 /* Chimera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F64B2609375F00663FA1 /* Chimera@3x.png */; };
+		E166F6532609375F00663FA1 /* Chimera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F64B2609375F00663FA1 /* Chimera@3x.png */; };
+		E166F65B2609399000663FA1 /* Procursus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6572609399000663FA1 /* Procursus@3x.png */; };
+		E166F65C2609399000663FA1 /* Procursus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6572609399000663FA1 /* Procursus@3x.png */; };
+		E166F65D2609399000663FA1 /* Procursus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6582609399000663FA1 /* Procursus@2x.png */; };
+		E166F65E2609399000663FA1 /* Procursus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6582609399000663FA1 /* Procursus@2x.png */; };
+		E166F65F2609399000663FA1 /* Procursus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6592609399000663FA1 /* Procursus~ipad@3x.png */; };
+		E166F6602609399000663FA1 /* Procursus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F6592609399000663FA1 /* Procursus~ipad@3x.png */; };
+		E166F6612609399000663FA1 /* Procursus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F65A2609399000663FA1 /* Procursus~ipad@2x.png */; };
+		E166F6622609399000663FA1 /* Procursus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E166F65A2609399000663FA1 /* Procursus~ipad@2x.png */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
@@ -609,6 +657,30 @@
 		E166F5822607D61B00663FA1 /* Taurine~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@2x.png"; sourceTree = "<group>"; };
 		E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@3x.png"; sourceTree = "<group>"; };
 		E166F58E2607D9F000663FA1 /* AltIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltIconTableViewCell.swift; sourceTree = "<group>"; };
+		E166F60C26092E3A00663FA1 /* CottonCandy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy@3x.png"; sourceTree = "<group>"; };
+		E166F60D26092E3B00663FA1 /* CottonCandy~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F60E26092E3B00663FA1 /* CottonCandy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy@2x.png"; sourceTree = "<group>"; };
+		E166F60F26092E3B00663FA1 /* CottonCandy~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F61B2609310F00663FA1 /* Sus~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F61C2609310F00663FA1 /* Sus~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F61D2609310F00663FA1 /* Sus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus@3x.png"; sourceTree = "<group>"; };
+		E166F61E2609310F00663FA1 /* Sus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus@2x.png"; sourceTree = "<group>"; };
+		E166F62A2609333700663FA1 /* StrawberrySunset~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F62B2609333700663FA1 /* StrawberrySunset~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F62C2609333800663FA1 /* StrawberrySunset@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset@3x.png"; sourceTree = "<group>"; };
+		E166F62D2609333800663FA1 /* StrawberrySunset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset@2x.png"; sourceTree = "<group>"; };
+		E166F639260935FA00663FA1 /* OceanicBlue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue@3x.png"; sourceTree = "<group>"; };
+		E166F63A260935FA00663FA1 /* OceanicBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue@2x.png"; sourceTree = "<group>"; };
+		E166F63B260935FA00663FA1 /* OceanicBlue~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F63C260935FB00663FA1 /* OceanicBlue~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F6482609375F00663FA1 /* Chimera~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera~ipad@2x.png"; sourceTree = "<group>"; };
+		E166F6492609375F00663FA1 /* Chimera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@2x.png"; sourceTree = "<group>"; };
+		E166F64A2609375F00663FA1 /* Chimera~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F64B2609375F00663FA1 /* Chimera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@3x.png"; sourceTree = "<group>"; };
+		E166F6572609399000663FA1 /* Procursus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus@3x.png"; sourceTree = "<group>"; };
+		E166F6582609399000663FA1 /* Procursus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus@2x.png"; sourceTree = "<group>"; };
+		E166F6592609399000663FA1 /* Procursus~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus~ipad@3x.png"; sourceTree = "<group>"; };
+		E166F65A2609399000663FA1 /* Procursus~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus~ipad@2x.png"; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -1048,6 +1120,12 @@
 		E166F5422607D17F00663FA1 /* AltIcons */ = {
 			isa = PBXGroup;
 			children = (
+				E166F6562609395300663FA1 /* Procursus */,
+				E166F6472609374A00663FA1 /* Chimera */,
+				E166F638260935DA00663FA1 /* Oceanic Blue */,
+				E166F6292609332B00663FA1 /* Strawberry Sunset */,
+				E166F61A260930EB00663FA1 /* Sus */,
+				E166F60B26092E3100663FA1 /* Cotton Candy  */,
 				E166F5472607D1E500663FA1 /* Taurine */,
 				E166F5462607D1C800663FA1 /* Sugar Free */,
 				E166F5452607D1B300663FA1 /* Mango Crazy */,
@@ -1110,6 +1188,72 @@
 				E166F5832607D61B00663FA1 /* Taurine~ipad@3x.png */,
 			);
 			path = Taurine;
+			sourceTree = "<group>";
+		};
+		E166F60B26092E3100663FA1 /* Cotton Candy  */ = {
+			isa = PBXGroup;
+			children = (
+				E166F60E26092E3B00663FA1 /* CottonCandy@2x.png */,
+				E166F60C26092E3A00663FA1 /* CottonCandy@3x.png */,
+				E166F60D26092E3B00663FA1 /* CottonCandy~ipad@2x.png */,
+				E166F60F26092E3B00663FA1 /* CottonCandy~ipad@3x.png */,
+			);
+			path = "Cotton Candy ";
+			sourceTree = "<group>";
+		};
+		E166F61A260930EB00663FA1 /* Sus */ = {
+			isa = PBXGroup;
+			children = (
+				E166F61E2609310F00663FA1 /* Sus@2x.png */,
+				E166F61D2609310F00663FA1 /* Sus@3x.png */,
+				E166F61B2609310F00663FA1 /* Sus~ipad@2x.png */,
+				E166F61C2609310F00663FA1 /* Sus~ipad@3x.png */,
+			);
+			path = Sus;
+			sourceTree = "<group>";
+		};
+		E166F6292609332B00663FA1 /* Strawberry Sunset */ = {
+			isa = PBXGroup;
+			children = (
+				E166F62D2609333800663FA1 /* StrawberrySunset@2x.png */,
+				E166F62C2609333800663FA1 /* StrawberrySunset@3x.png */,
+				E166F62B2609333700663FA1 /* StrawberrySunset~ipad@2x.png */,
+				E166F62A2609333700663FA1 /* StrawberrySunset~ipad@3x.png */,
+			);
+			path = "Strawberry Sunset";
+			sourceTree = "<group>";
+		};
+		E166F638260935DA00663FA1 /* Oceanic Blue */ = {
+			isa = PBXGroup;
+			children = (
+				E166F63A260935FA00663FA1 /* OceanicBlue@2x.png */,
+				E166F639260935FA00663FA1 /* OceanicBlue@3x.png */,
+				E166F63B260935FA00663FA1 /* OceanicBlue~ipad@2x.png */,
+				E166F63C260935FB00663FA1 /* OceanicBlue~ipad@3x.png */,
+			);
+			path = "Oceanic Blue";
+			sourceTree = "<group>";
+		};
+		E166F6472609374A00663FA1 /* Chimera */ = {
+			isa = PBXGroup;
+			children = (
+				E166F6492609375F00663FA1 /* Chimera@2x.png */,
+				E166F64B2609375F00663FA1 /* Chimera@3x.png */,
+				E166F6482609375F00663FA1 /* Chimera~ipad@2x.png */,
+				E166F64A2609375F00663FA1 /* Chimera~ipad@3x.png */,
+			);
+			path = Chimera;
+			sourceTree = "<group>";
+		};
+		E166F6562609395300663FA1 /* Procursus */ = {
+			isa = PBXGroup;
+			children = (
+				E166F6582609399000663FA1 /* Procursus@2x.png */,
+				E166F6572609399000663FA1 /* Procursus@3x.png */,
+				E166F65A2609399000663FA1 /* Procursus~ipad@2x.png */,
+				E166F6592609399000663FA1 /* Procursus~ipad@3x.png */,
+			);
+			path = Procursus;
 			sourceTree = "<group>";
 		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
@@ -2207,26 +2351,40 @@
 			files = (
 				F139D13B22EA9209007F5C0D /* Assets.xcassets in Resources */,
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
+				E166F6222609310F00663FA1 /* Sus~ipad@3x.png in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
+				E166F640260935FB00663FA1 /* OceanicBlue@2x.png in Resources */,
 				F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */,
+				E166F6512609375F00663FA1 /* Chimera~ipad@3x.png in Resources */,
 				E166F5892607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */,
+				E166F61326092E3B00663FA1 /* CottonCandy~ipad@2x.png in Resources */,
 				E166F5872607D61B00663FA1 /* Taurine@3x.png in Resources */,
 				E166F57D2607D5DA00663FA1 /* SugarFree@3x.png in Resources */,
+				E166F642260935FB00663FA1 /* OceanicBlue~ipad@2x.png in Resources */,
 				F139D13E22EA9209007F5C0D /* DepictionSubpageViewController.xib in Resources */,
 				F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */,
+				E166F6312609333800663FA1 /* StrawberrySunset~ipad@2x.png in Resources */,
 				F139D13722EA9209007F5C0D /* Errors.strings in Resources */,
 				E166F5772607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */,
+				E166F62F2609333800663FA1 /* StrawberrySunset~ipad@3x.png in Resources */,
+				E166F61726092E3B00663FA1 /* CottonCandy~ipad@3x.png in Resources */,
+				E166F63E260935FB00663FA1 /* OceanicBlue@3x.png in Resources */,
 				F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */,
+				E166F6602609399000663FA1 /* Procursus~ipad@3x.png in Resources */,
+				E166F64F2609375F00663FA1 /* Chimera@2x.png in Resources */,
 				E166F54F2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */,
+				E166F6352609333800663FA1 /* StrawberrySunset@2x.png in Resources */,
 				E166F55F2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */,
 				E166F5532607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */,
+				E166F6202609310F00663FA1 /* Sus~ipad@2x.png in Resources */,
 				F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */,
 				F139D12C22EA9209007F5C0D /* LNPopupControllerAssets.xcassets in Resources */,
 				F139D13A22EA9209007F5C0D /* LaunchScreen.storyboard in Resources */,
 				E166F57B2607D5DA00663FA1 /* SugarFree@2x.png in Resources */,
 				F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */,
+				E166F65C2609399000663FA1 /* Procursus@3x.png in Resources */,
 				E166F55B2607D51200663FA1 /* CoolBreeze@2x.png in Resources */,
 				F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */,
 				F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */,
@@ -2234,25 +2392,35 @@
 				F139D14322EA9209007F5C0D /* Main.storyboard in Resources */,
 				F139D13822EA9209007F5C0D /* NewsArticleCollectionViewCell.xib in Resources */,
 				F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */,
+				E166F6532609375F00663FA1 /* Chimera@3x.png in Resources */,
+				E166F64D2609375F00663FA1 /* Chimera~ipad@2x.png in Resources */,
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
 				E166F56D2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */,
+				E166F6242609310F00663FA1 /* Sus@3x.png in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
 				E166F56B2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */,
+				E166F6622609399000663FA1 /* Procursus~ipad@2x.png in Resources */,
 				E166F5692607D56C00663FA1 /* MangoCrazy@3x.png in Resources */,
 				E166F56F2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
+				E166F61526092E3B00663FA1 /* CottonCandy@2x.png in Resources */,
+				E166F6332609333800663FA1 /* StrawberrySunset@3x.png in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
 				E166F5852607D61B00663FA1 /* Taurine@2x.png in Resources */,
 				E166F55D2607D51200663FA1 /* CoolBreeze~ipad@3x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
+				E166F61126092E3B00663FA1 /* CottonCandy@3x.png in Resources */,
+				E166F65E2609399000663FA1 /* Procursus@2x.png in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
 				E166F54D2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */,
 				E166F5612607D51200663FA1 /* CoolBreeze@3x.png in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
+				E166F6262609310F00663FA1 /* Sus@2x.png in Resources */,
 				E166F5792607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */,
 				F183CFC42318F48600D3AF3B /* RepoScraper in Resources */,
 				E166F5512607D3E300663FA1 /* BlueLemonade@3x.png in Resources */,
 				E166F58B2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */,
+				E166F644260935FB00663FA1 /* OceanicBlue~ipad@3x.png in Resources */,
 				F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2262,36 +2430,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				F149E0BD20B6040B005CA30B /* Assets.xcassets in Resources */,
+				E166F61426092E3B00663FA1 /* CottonCandy@2x.png in Resources */,
 				C373924A21D5F80300E6F704 /* Categories.strings in Resources */,
 				E166F57C2607D5DA00663FA1 /* SugarFree@3x.png in Resources */,
 				F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */,
+				E166F641260935FB00663FA1 /* OceanicBlue~ipad@2x.png in Resources */,
 				E166F5862607D61B00663FA1 /* Taurine@3x.png in Resources */,
 				E166F5602607D51200663FA1 /* CoolBreeze@3x.png in Resources */,
+				E166F65F2609399000663FA1 /* Procursus~ipad@3x.png in Resources */,
 				E166F57A2607D5DA00663FA1 /* SugarFree@2x.png in Resources */,
+				E166F62E2609333800663FA1 /* StrawberrySunset~ipad@3x.png in Resources */,
 				F11E22E12500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
+				E166F64C2609375F00663FA1 /* Chimera~ipad@2x.png in Resources */,
+				E166F64E2609375F00663FA1 /* Chimera@2x.png in Resources */,
 				F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */,
+				E166F6232609310F00663FA1 /* Sus@3x.png in Resources */,
 				F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */,
 				E166F5882607D61B00663FA1 /* Taurine~ipad@2x.png in Resources */,
 				E166F55E2607D51200663FA1 /* CoolBreeze~ipad@2x.png in Resources */,
+				E166F61626092E3B00663FA1 /* CottonCandy~ipad@3x.png in Resources */,
 				F178CD8921323E3800F927FA /* DownloadsTableViewController.xib in Resources */,
+				E166F63D260935FB00663FA1 /* OceanicBlue@3x.png in Resources */,
+				E166F6342609333800663FA1 /* StrawberrySunset@2x.png in Resources */,
 				C373924921D5F80300E6F704 /* Errors.strings in Resources */,
 				F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */,
 				1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */,
 				F1034020213746B600B9180B /* InstallViewController.xib in Resources */,
 				F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */,
+				E166F65D2609399000663FA1 /* Procursus@2x.png in Resources */,
 				564BEF7622BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets in Resources */,
+				E166F6612609399000663FA1 /* Procursus~ipad@2x.png in Resources */,
+				E166F65B2609399000663FA1 /* Procursus@3x.png in Resources */,
 				E166F5522607D3E300663FA1 /* BlueLemonade~ipad@3x.png in Resources */,
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
+				E166F61F2609310F00663FA1 /* Sus~ipad@2x.png in Resources */,
 				E166F55A2607D51200663FA1 /* CoolBreeze@2x.png in Resources */,
 				E166F56A2607D56C00663FA1 /* MangoCrazy~ipad@3x.png in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
+				E166F6212609310F00663FA1 /* Sus~ipad@3x.png in Resources */,
+				E166F6322609333800663FA1 /* StrawberrySunset@3x.png in Resources */,
 				E166F5842607D61B00663FA1 /* Taurine@2x.png in Resources */,
+				E166F6302609333800663FA1 /* StrawberrySunset~ipad@2x.png in Resources */,
+				E166F643260935FB00663FA1 /* OceanicBlue~ipad@3x.png in Resources */,
 				C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */,
 				E166F56E2607D56C00663FA1 /* MangoCrazy~ipad@2x.png in Resources */,
 				E166F54C2607D3E300663FA1 /* BlueLemonade~ipad@2x.png in Resources */,
 				F149E0BB20B6040B005CA30B /* Main.storyboard in Resources */,
 				C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */,
+				E166F63F260935FB00663FA1 /* OceanicBlue@2x.png in Resources */,
 				F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
@@ -2299,13 +2486,18 @@
 				E166F5502607D3E300663FA1 /* BlueLemonade@3x.png in Resources */,
 				F11CD90F20DBF777000C62C3 /* PackageCollectionViewCell.xib in Resources */,
 				C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */,
+				E166F6522609375F00663FA1 /* Chimera@3x.png in Resources */,
+				E166F61226092E3B00663FA1 /* CottonCandy~ipad@2x.png in Resources */,
+				E166F6252609310F00663FA1 /* Sus@2x.png in Resources */,
 				F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */,
+				E166F61026092E3B00663FA1 /* CottonCandy@3x.png in Resources */,
 				E166F5782607D5DA00663FA1 /* SugarFree~ipad@2x.png in Resources */,
 				E166F56C2607D56C00663FA1 /* MangoCrazy@2x.png in Resources */,
 				E166F5682607D56C00663FA1 /* MangoCrazy@3x.png in Resources */,
 				F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */,
 				F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */,
 				E166F54E2607D3E300663FA1 /* BlueLemonade@2x.png in Resources */,
+				E166F6502609375F00663FA1 /* Chimera~ipad@3x.png in Resources */,
 				E166F58A2607D61B00663FA1 /* Taurine~ipad@3x.png in Resources */,
 				E166F5762607D5DA00663FA1 /* SugarFree~ipad@3x.png in Resources */,
 				F183CFC32318F48600D3AF3B /* RepoScraper in Resources */,
@@ -2357,7 +2549,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sileo/Pods-Sileo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Resources/DownView.bundle",
+				"${PODS_ROOT}/Down/Sources/Down/Resources/DownView.bundle",
 				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -2379,7 +2571,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Resources/DownView.bundle",
+				"${PODS_ROOT}/Down/Sources/Down/Resources/DownView.bundle",
 				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
