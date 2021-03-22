@@ -127,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/substrated") {
             appVer += "-substrate"
         } else if FileManager.default.fileExists(atPath: "/usr/libexec/substituted") {
-            appVer += "-hackyA12"
+            appVer += "-unc0ver"
         }
         #endif
         
