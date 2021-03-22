@@ -61,15 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                     DispatchQueue.main.async {
                         // swiftlint:disable line_length
                         let alertController = UIAlertController(title: String(localizationKey: "Background App Refresh"),
-                                                                message: String(localizationKey: "For the best experience, it is recommended to enable background app refresh so you can get a faster experience, as well as notifications for when your tweaks have updates available!"),
+                                                                message: String(localizationKey: "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!"),
                                                                 preferredStyle: .alert)
                         // swiftlint:enable line_length
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default) { _ in
-                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                        })
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel) { _ in
+                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
                             UserDefaults.standard.set(true, forKey: "updatesPrompt")
                             UserDefaults.standard.synchronize()
+                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        })
+                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
                             self.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         })
                         self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
