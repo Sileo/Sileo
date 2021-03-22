@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         SileoThemeManager.shared.updateUserInterface()
-        
+    
         // Override point for customization after application launch.
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
@@ -93,7 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         self.updateTintColor()
-        
         // Force all view controllers to load now
         for controller in tabBarController.viewControllers ?? [] {
             _ = controller.view
@@ -102,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
 
-        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true)  { return }
+        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) { return }
         var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         appVer += "-demo"
@@ -136,6 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             .withLogLevel(FlurryLogLevelAll)
             .withCrashReporting(true).withSessionContinueSeconds(10)
         Flurry.startSession("TSNTB888V4FZTR8F6RHK", with: builder)
+        
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -319,16 +319,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         if shortcutItem.type.hasSuffix(".UpgradeAll") {
             tabBarController.selectedViewController = packageListVC
             PackageListManager.shared.markUpgradeAll(self)
-        }
-        else if shortcutItem.type.hasSuffix(".AddSource") {
+        } else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.addSource(nil)
-        }
-        else if shortcutItem.type.hasSuffix(".Refresh") {
+        } else if shortcutItem.type.hasSuffix(".Refresh") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.refreshSources(control: nil, forceUpdate: true, forceReload: true)
-        }
-        else if shortcutItem.type.hasSuffix(".Packages") {
+        } else if shortcutItem.type.hasSuffix(".Packages") {
             tabBarController.selectedViewController = tabBarController.viewControllers?[3]
         }
     }

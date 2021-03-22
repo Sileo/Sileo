@@ -24,10 +24,16 @@ class AltIconTableViewController: UITableViewController {
     let icons = [
         AltIcon(displayName: "Stock", key: nil, image: altImage("AppIcon60x60")),
         AltIcon(displayName: "Taurine", key: "Taurine", image: altImage("Taurine")),
+        AltIcon(displayName: "Chimera", key: "Chimera", image: altImage("Chimera")),
+        AltIcon(displayName: "Procursus", key: "Procursus", image: altImage("Procursus")),
         AltIcon(displayName: "Sugar Free", key: "SugarFree", image: altImage("SugarFree")),
         AltIcon(displayName: "Mango Crazy", key: "MangoCrazy", image: altImage("MangoCrazy")),
         AltIcon(displayName: "Cool Breeze", key: "CoolBreeze", image: altImage("CoolBreeze")),
-        AltIcon(displayName: "Blue Lemonade", key: "BlueLemonade", image: altImage("BlueLemonade"))
+        AltIcon(displayName: "Blue Lemonade", key: "BlueLemonade", image: altImage("BlueLemonade")),
+        AltIcon(displayName: "Cotton Candy", key: "CottonCandy", image: altImage("CottonCandy")),
+        AltIcon(displayName: "Strawberry Sunset", key: "StrawberrySunset", image: altImage("StrawberrySunset")),
+        AltIcon(displayName: "Oceanic Blue", key: "OceanicBlue", image: altImage("OceanicBlue")),
+        AltIcon(displayName: "Sus", key: "Sus", image: altImage("Sus"))
     ]
     
     @objc func updateSileoColors() {
@@ -44,7 +50,7 @@ class AltIconTableViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
-        self.tableView.rowHeight = 90
+        self.tableView.rowHeight = 75
                 
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
