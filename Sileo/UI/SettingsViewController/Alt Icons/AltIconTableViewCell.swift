@@ -31,10 +31,9 @@ class AltIconTableViewCell: UITableViewCell {
         iconView.widthAnchor.constraint(equalToConstant: 75).isActive = true
         iconView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         iconView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 17.5).isActive = true
-        iconView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 7.5).isActive = true
-        iconView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -7.5).isActive = true
+        iconView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         iconView.layer.masksToBounds = true
-        iconView.layer.cornerRadius = 12.5
+        iconView.layer.cornerRadius = 15
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true

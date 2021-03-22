@@ -38,14 +38,13 @@ class AltIconTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.topItem?.title = String(localizationKey: "Alternate_Icon_Title")
-        print(String(localizationKey: "Alternate_Icon_Title"))
-        
+        navigationItem.title = String(localizationKey: "Alternate_Icon_Title")
         self.tableView.separatorColor = .sileoSeparatorColor
         self.tableView.backgroundColor = .sileoBackgroundColor
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        self.tableView.rowHeight = 90
                 
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
