@@ -1,0 +1,21 @@
+/* 
+  Categories.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28. Translated to Norwegian Nynorsk by: WorldlyDev (2021-03-22).
+  Copyright © 2018 CoolStar. All rights reserved.
+
+ NORWEGIAN NYNORSK LOCALISATIONS
+*/
+
+"No_Category" = "(Ingen kategori)";
+"Tweaks" = "Tweaks";
+"Themes" = "Tema";
+"Utilities" = "Verktøy";
+"Applications" = "Applikasjonar";
+"Addons" = "Utvidingar";
+"Games" = "Spel";
+"Developer" = "Utviklar";
+"Data_Storage" = "Data lagring";
+"Terminal_Support" = "Terminalstøtte"; 
+"Text_Editors" = "Tekstredigeringsverktøy";
