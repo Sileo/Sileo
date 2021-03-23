@@ -3234,7 +3234,7 @@
 					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
-				INFOPLIST_FILE = "Sileo Demo-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sileo Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
 				LIBRARY_SEARCH_PATHS = (
@@ -3294,7 +3294,7 @@
 					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
-				INFOPLIST_FILE = "Sileo Demo-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sileo Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
 				LIBRARY_SEARCH_PATHS = (
