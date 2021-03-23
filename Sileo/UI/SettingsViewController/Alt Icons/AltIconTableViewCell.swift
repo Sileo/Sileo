@@ -2,7 +2,7 @@
 //  AltIconTableViewCell.swift
 //  Sileo
 //
-//  Created by Andromeda on 21/03/2021.
+//  Created by Amy on 21/03/2021.
 //  Copyright © 2021 CoolStar. All rights reserved.
 //
 
