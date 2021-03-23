@@ -1,5 +1,4 @@
 # Sileo
-![Alt text](https://travis-ci.com/M4cs/SileoApp.svg?token=p6px51XnVtZqgGKqga2s&branch=master)
 
 An APT package manager for jailbroken iOS 12 and newer!
 
