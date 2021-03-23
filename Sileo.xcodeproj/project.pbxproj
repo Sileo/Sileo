@@ -600,6 +600,7 @@
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		49BAC20726098ACD00F47DA4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		552A53BFF7E6067C54E471A9 /* Pods-Sileo Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.release.xcconfig"; sourceTree = "<group>"; };
 		564BEF7522BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = LNPopupControllerAssets.xcassets; path = Deps/LNPopupController/LNPopupController/LNPopupControllerAssets.xcassets; sourceTree = "<group>"; };
 		56A59899214657A700677FCA /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
@@ -1483,6 +1484,7 @@
 				F149E0CB20B6040B005CA30B /* SileoTests */,
 				F149E0D620B6040B005CA30B /* SileoUITests */,
 				F149E0AE20B6040B005CA30B /* Products */,
+				49BAC20726098ACD00F47DA4 /* Config.xcconfig */,
 				33F3CD3020E059ED00B3A1D2 /* Frameworks */,
 				F13A390F22D003B600716B84 /* Sileo Demo-Info.plist */,
 				B58BDBFDEF35914C4F85AA66 /* Pods */,
@@ -3334,6 +3336,7 @@
 		};
 		F149E0DA20B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -3393,6 +3396,7 @@
 		};
 		F149E0DB20B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
