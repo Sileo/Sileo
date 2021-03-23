@@ -1,10 +1,12 @@
 .DS_Store
 
+Config.xcconfig
+Pods/
+
 xcuserdata/
 .vscode/
 .idea/
 
-Pods/
 build/
 .theos/
 giveMeRoot/bin/
@@ -12,4 +14,3 @@ giveMeRoot/bin/
 packages/
 *.deb
 *.ipa
-Config.xcconfig
