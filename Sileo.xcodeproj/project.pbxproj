@@ -2264,7 +2264,7 @@
 		F149E0A520B6040B005CA30B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = CoolStar;
 				TargetAttributes = {
 					F139D08F22EA9209007F5C0D = {
