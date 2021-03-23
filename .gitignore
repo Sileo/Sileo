@@ -12,3 +12,4 @@ giveMeRoot/bin/
 packages/
 *.deb
 *.ipa
+Config.xcconfig

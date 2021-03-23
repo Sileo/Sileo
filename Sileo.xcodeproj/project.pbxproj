@@ -84,6 +84,10 @@
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
+		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
+		E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
@@ -626,6 +630,8 @@
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
 		D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
+		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
+		E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBB72601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBB82601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -1212,6 +1218,15 @@
 			path = "Database Manager";
 			sourceTree = "<group>";
 		};
+		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
+				E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */,
+			);
+			path = "Canister Resolver";
+			sourceTree = "<group>";
+		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,6 +1794,7 @@
 		F1B99EE720DB671B00374C27 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
 				F1D1140720DEE40C00C8F051 /* APT Wrapper */,
 				49618DD4260515A40046C094 /* Backend API Wrapper */,
 				F162CCAE20E82DFB00226F10 /* Control File Parser */,
@@ -2696,6 +2712,7 @@
 				F1053220244AD85E0042201C /* dpkgversion.swift in Sources */,
 				F139D0DA22EA9209007F5C0D /* FeaturedPackageView.swift in Sources */,
 				F139D0C022EA9209007F5C0D /* FeaturedSeparatorView.swift in Sources */,
+				E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */,
 				F139D09B22EA9209007F5C0D /* FeaturedStackView.swift in Sources */,
 				F1D82F7D230959D400EECCAE /* FeaturedViewController.swift in Sources */,
@@ -2721,6 +2738,7 @@
 				F139D10B22EA9209007F5C0D /* Locks.swift in Sources */,
 				F1705FEC24CA1465001596A0 /* TabBarController.swift in Sources */,
 				FB40262123DE2B9C002D97FE /* SettingsNavigationController.swift in Sources */,
+				E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */,
 				F139D0EF22EA9209007F5C0D /* Package.swift in Sources */,
 				F147E67A22F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				FB6F3D3224AA635F00E941F8 /* PaymentError.swift in Sources */,
@@ -2876,7 +2894,9 @@
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
+				E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */,
 				F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
+				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F13AEE7922F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				F13AEE7322F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
 				F1705FEE24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
