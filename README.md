@@ -20,13 +20,17 @@ To get started with Sileo development, follow these setup steps:
 
 1. Clone this repository
     ```
-    git clone --recursive https://github.com/Sileo/Sileo.git ./Sileo
+    git clone https://github.com/Sileo/Sileo.git ./Sileo
     ```
 2. cd into the project directory
     ```
     cd ./Sileo
     ```
-3. Install dependencies using CocoaPods
+3. Install submodules
+    ```
+    git submodule update --init --recursive
+    ```
+4. Install dependencies using CocoaPods
     ```
     pod install
     ```
@@ -34,13 +38,13 @@ To get started with Sileo development, follow these setup steps:
     If you do not have CocoaPods installed, you may install it with `sudo gem install cocoapods`
     
     Apple Silicon systems may need to run this step under Rosetta. 
-4. Open `Config.xcconfig` and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
-5. Tell Git to stop tracking `Config.xcconfig`
+5. Open `Config.xcconfig` and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
+6. Tell Git to stop tracking `Config.xcconfig`
     ```
     git update-index --skip-worktree ./Config.xcconfig
     ```
     
     The file `Config.xcconfig` is intended to be modified only on your local machine and never committed to the Git repo. This allows developer-specific settings (like `DEVELOPMENT_TEAM`) to be kept separate from shared settings, which avoids headaches with conflicts when pulling. 
-6. Lastly, open `Sileo.xcworkspace` and have at it! (not `Sileo.xcodeproj`)
+7. Lastly, open `Sileo.xcworkspace` and have at it! (not `Sileo.xcodeproj`)
 
 If you have any questions, ask in the Sileo Discord. Happy coding!
