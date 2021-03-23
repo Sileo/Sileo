@@ -21,7 +21,7 @@ $(OUTDIR):
 
 $(OUTDIR)/$(TARGET): giveMeRoot.c | $(OUTDIR)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(LDID) -SEnt.plist $@
+	$(LDID) -SEntitlements.plist $@
 
 clean:
 	rm -f $(OUTDIR)/$(TARGET)
