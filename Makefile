@@ -47,8 +47,8 @@ internal-stage::
 	mkdir -p $(THEOS_STAGING_DIR)/Applications/
 	cp -a $(SILEO_APP_DIR) $(THEOS_STAGING_DIR)/Applications/
 	cp giveMeRoot/bin/giveMeRoot $(THEOS_STAGING_DIR)/Applications/Sileo.app/
-	$(TARGET_CODESIGN) -Sent.plist $(THEOS_STAGING_DIR)/Applications/Sileo.app/
-	$(TARGET_CODESIGN) -SgiveMeRoot/Ent.plist $(THEOS_STAGING_DIR)/Applications/Sileo.app/giveMeRoot
+	$(TARGET_CODESIGN) -SSileo/Entitlements.plist $(THEOS_STAGING_DIR)/Applications/Sileo.app/
+	$(TARGET_CODESIGN) -SgiveMeRoot/Entitlements.plist $(THEOS_STAGING_DIR)/Applications/Sileo.app/giveMeRoot
 	chmod 4755 $(THEOS_STAGING_DIR)/Applications/Sileo.app/giveMeRoot
 
 internal-clean::
