@@ -8,15 +8,15 @@
 
 import Foundation
 
-internal typealias rdc = (_ success: Bool, _ dict: [String : Any]?) -> ()
+internal typealias AmyCompletion = (_ success: Bool, _ dict: [String : Any]?) -> Void
 
 final class AmyNetworkResolver {
-    class internal func request(url: String?, method: String, completion: @escaping rdc) {
+    class internal func request(url: String?, method: String, completion: @escaping AmyCompletion) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
         var request = URLRequest(url: url)
         request.httpMethod = method
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+        let task = URLSession.shared.dataTask(with: request) { data, _, error -> Void in
             if let data = data {
                 do {
                     let dict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] ?? [String : Any]()
