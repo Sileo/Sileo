@@ -1,0 +1,171 @@
+PODS:
+  - Alamofire (5.4.1)
+  - Alderis (1.1.2)
+  - AUPickerCell (1.0.2.0)
+  - BitByteData (1.4.3)
+  - Cosmos (19.0.3)
+  - Down (0.10.0)
+  - Flurry-iOS-SDK/FlurrySDK (11.2.0.rc1)
+  - Google-Mobile-Ads-SDK (8.2.0.1):
+    - GoogleAppMeasurement (~> 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleAppMeasurement (7.8.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30907.0)
+  - GoogleUserMessagingPlatform (2.0.0)
+  - GoogleUtilities/AppDelegateSwizzler (7.3.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (7.3.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (7.3.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (7.3.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (7.3.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (7.3.1)"
+  - GoogleUtilities/Reachability (7.3.1):
+    - GoogleUtilities/Logger
+  - KeychainAccess (4.2.2)
+  - LNZTreeView (1.1.2)
+  - nanopb (2.30907.0):
+    - nanopb/decode (= 2.30907.0)
+    - nanopb/encode (= 2.30907.0)
+  - nanopb/decode (2.30907.0)
+  - nanopb/encode (2.30907.0)
+  - PromisesObjC (1.2.12)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - SWCompression (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/BZip2 (= 4.5.7)
+    - SWCompression/Deflate (= 4.5.7)
+    - SWCompression/GZip (= 4.5.7)
+    - SWCompression/LZMA (= 4.5.7)
+    - SWCompression/LZMA2 (= 4.5.7)
+    - SWCompression/SevenZip (= 4.5.7)
+    - SWCompression/TAR (= 4.5.7)
+    - SWCompression/XZ (= 4.5.7)
+    - SWCompression/ZIP (= 4.5.7)
+    - SWCompression/Zlib (= 4.5.7)
+  - SWCompression/BZip2 (4.5.7):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/Deflate (4.5.7):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/GZip (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/LZMA (4.5.7):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/LZMA2 (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA
+  - SWCompression/SevenZip (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/TAR (4.5.7):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/XZ (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/ZIP (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/Zlib (4.5.7):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SwiftSoup (2.3.2)
+  - SwiftTryCatch (0.0.1)
+  - SwipeCellKit (2.7.1)
+  - XLForm (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0)
+  - Alderis (~> 1.1.2)
+  - AUPickerCell
+  - Cosmos (~> 19.0)
+  - Down
+  - Flurry-iOS-SDK/FlurrySDK (from `https://github.com/flurry/flurry-ios-sdk.git`, tag `11.2.0.rc1`)
+  - Google-Mobile-Ads-SDK
+  - KeychainAccess
+  - LNZTreeView
+  - SDWebImage (~> 5.0)
+  - SQLite.swift (~> 0.12.0)
+  - SWCompression (~> 4.5)
+  - SwiftSoup
+  - SwiftTryCatch
+  - SwipeCellKit
+  - XLForm (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Alderis
+    - AUPickerCell
+    - BitByteData
+    - Cosmos
+    - Down
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUserMessagingPlatform
+    - GoogleUtilities
+    - KeychainAccess
+    - LNZTreeView
+    - nanopb
+    - PromisesObjC
+    - SDWebImage
+    - SQLite.swift
+    - SWCompression
+    - SwiftSoup
+    - SwiftTryCatch
+    - SwipeCellKit
+    - XLForm
+
+EXTERNAL SOURCES:
+  Flurry-iOS-SDK:
+    :git: https://github.com/flurry/flurry-ios-sdk.git
+    :tag: 11.2.0.rc1
+
+CHECKOUT OPTIONS:
+  Flurry-iOS-SDK:
+    :git: https://github.com/flurry/flurry-ios-sdk.git
+    :tag: 11.2.0.rc1
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Alderis: 226746f04e677de7a7a43316475162a6a217794a
+  AUPickerCell: b6f788d62f449014204776ff6fdc841aebbc352f
+  BitByteData: 36729e2125ec321935754f9feb1f4b297e00b501
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  Down: 01f155f9d7e99673c667efd2218709c3b9a8bc13
+  Flurry-iOS-SDK: 11a46b2a29df8f44b9dad1b0a8b7a7f49d17919e
+  Google-Mobile-Ads-SDK: b48fb7dc45b2e442a217dd96875586fda7d5e553
+  GoogleAppMeasurement: 50a254ee92c1b94fbe2abea7e3da35e4c6dedce0
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
+  GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  LNZTreeView: f04b4a96e5780f5071f8c08b0f6f6554775e46f4
+  nanopb: 59221d7f958fb711001e6a449489542d92ae113e
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  SWCompression: 10cc083b8734bca7d4bf0cf6a638a51fb14e8905
+  SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
+  SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+  XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
+
+PODFILE CHECKSUM: e4b635f9355fecc613f743dbeee4ac1e061a2232
+
+COCOAPODS: 1.10.1
