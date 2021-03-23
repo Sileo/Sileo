@@ -9,13 +9,14 @@
 import Foundation
 import os
 
-class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class PackageListViewController: SileoViewController, UIGestureRecognizerDelegate {
     @IBOutlet var collectionView: UICollectionView?
     @IBOutlet var downloadsButton: UIBarButtonItem?
     
     @IBInspectable var showSearchField: Bool = false
     @IBInspectable var showUpdates: Bool = false
     @IBInspectable var showWishlist: Bool = false
+    @IBInspectable var showProvisional: Bool = false
     
     @IBInspectable public var packagesLoadIdentifier: String = ""
     public var repoContext: Repo?
@@ -23,6 +24,7 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
     private var packages: [Package] = []
     private var availableUpdates: [Package] = []
     private var searchCache: [String: [Package]] = [:]
+    private var provisionalPackages: [ProvisionalPackage] = []
     
     private var displaySettings = false
     
@@ -124,6 +126,7 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
         
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.placeholder = String(localizationKey: "Package_Search.Placeholder")
+        searchController?.searchBar.delegate = self
         searchController?.searchResultsUpdater = self
         searchController?.obscuresBackgroundDuringPresentation = false
         searchController?.hidesNavigationBarDuringPresentation = true
@@ -262,9 +265,6 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
         }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    }
-    
     @objc func reloadUpdates() {
         if showUpdates {
             DispatchQueue.global(qos: .default).async {
@@ -383,15 +383,17 @@ class PackageListViewController: SileoViewController, UISearchBarDelegate, UIGes
 extension PackageListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         refreshEnabled = true
-        if showUpdates {
-            return 2
-        }
-        return 1
+        var count = 1
+        if showUpdates { count += 1 }
+        if showProvisional { count += 1 }
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if showUpdates && section == 0 {
             return availableUpdates.count
+        } else if section == 2 || (section == 1 && showProvisional) {
+            return provisionalPackages.count
         }
         return packages.count
     }
@@ -402,6 +404,8 @@ extension PackageListViewController: UICollectionViewDataSource {
         if let packageCell = cell as? PackageCollectionViewCell {
             if showUpdates && indexPath.section == 0 {
                 packageCell.targetPackage = availableUpdates[indexPath.row]
+            } else if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) {
+                packageCell.provisionalTarget = provisionalPackages[indexPath.row]
             } else {
                 packageCell.targetPackage = packages[indexPath.row]
             }
@@ -445,6 +449,39 @@ extension PackageListViewController: UICollectionViewDataSource {
                 }
                 return headerView
             }
+        } else if showProvisional {
+            if (indexPath.section == 0 && packages.isEmpty) || (indexPath.section == 1 && provisionalPackages.isEmpty) {
+                if kind == UICollectionView.elementKindSectionHeader {
+                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                     withReuseIdentifier: "PackageListHeaderBlank",
+                                                                                     for: indexPath)
+                    return headerView
+                }
+            }
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: "PackageListHeader",
+                                                                                   for: indexPath) as? PackageListHeader else {
+                                                                                    return UICollectionReusableView()
+            }
+            headerView.actionText = nil
+            headerView.separatorView?.isHidden = false
+            headerView.sortButton?.isHidden = true
+            headerView.upgradeButton?.isHidden = true
+            
+            if indexPath.section == 0 && !packages.isEmpty {
+                headerView.label?.text = "Installed Repos"
+                return headerView
+            } else if indexPath.section == 1 && !provisionalPackages.isEmpty {
+                headerView.label?.text = "External Repos"
+                return headerView
+            } else {
+                if kind == UICollectionView.elementKindSectionHeader {
+                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                     withReuseIdentifier: "PackageListHeaderBlank",
+                                                                                     for: indexPath)
+                    return headerView
+                }
+            }
         } else {
             if kind == UICollectionView.elementKindSectionHeader {
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -460,7 +497,7 @@ extension PackageListViewController: UICollectionViewDataSource {
 extension PackageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+        if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) { return }
         let packageViewController = self.controller(indexPath: indexPath)
         self.navigationController?.pushViewController(packageViewController, animated: true)
     }
@@ -478,6 +515,11 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
             }
             if section == 1 && displaySettings {
                 return CGSize(width: collectionView.bounds.width, height: 109)
+            }
+            return CGSize(width: collectionView.bounds.width, height: 65)
+        } else if showProvisional {
+            if (section == 0 && packages.isEmpty) || (section == 1 && provisionalPackages.isEmpty) {
+                return .zero
             }
             return CGSize(width: collectionView.bounds.width, height: 65)
         } else {
@@ -539,6 +581,26 @@ extension PackageListViewController {
     }
 }
 
+extension PackageListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text,
+              !text.isEmpty,
+              showProvisional else { return }
+        CanisterResolver.shared.fetch(text) { _, _ in
+            DispatchQueue.main.async { self.updateSearchResults(for: self.searchController ?? UISearchController()) }
+        }
+    }
+    
+    private func updateProvisional() {
+        let text = (searchController?.searchBar.text ?? "").lowercased()
+        if text.isEmpty { return self.provisionalPackages.removeAll() }
+        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
+            ((package.name?.lowercased().contains(text) ?? false) || (package.author?.lowercased().contains(text) ?? false) ||
+                (package.repo?.lowercased().contains(text) ?? false)) && !packages.contains(where: { $0.name == package.name })
+        }
+    }
+}
+
 extension PackageListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -593,6 +655,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             self.updatingCount -= 1
             self.mutexLock.signal()
             DispatchQueue.main.async {
+                self.updateProvisional()
                 self.mutexLock.wait()
                 if self.updatingCount == 0 && self.refreshEnabled {
                     UIView.performWithoutAnimation {

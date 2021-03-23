@@ -50,6 +50,26 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         }
     }
     
+    public var provisionalTarget: ProvisionalPackage? {
+        didSet {
+            if let provisionalTarget = provisionalTarget {
+                titleLabel?.text = provisionalTarget.name ?? ""
+                authorLabel?.text = provisionalTarget.author ?? ""
+                descriptionLabel?.text = provisionalTarget.description
+            
+                self.imageView?.sd_setImage(with: URL(string: provisionalTarget.icon ?? ""), placeholderImage: UIImage(named: "Tweak Icon"))
+            
+                titleLabel?.textColor = .sileoLabel
+            }
+            unreadView?.isHidden = true
+            
+            self.accessibilityLabel = String(format: String(localizationKey: "Package_By_Author"),
+                                             self.titleLabel?.text ?? "", self.authorLabel?.text ?? "")
+            
+            self.refreshState()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
