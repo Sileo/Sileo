@@ -11,7 +11,7 @@ import Foundation
 internal typealias AmyCompletion = (_ success: Bool, _ dict: [String : Any]?) -> Void
 
 final class AmyNetworkResolver {
-    class internal func request(url: String?, method: String, completion: @escaping AmyCompletion) {
+    class internal func request(url: String?, method: String, _ completion: @escaping AmyCompletion) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
         var request = URLRequest(url: url)
