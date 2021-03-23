@@ -1,7 +1,5 @@
 .DS_Store
 
-Config.xcconfig
-
 xcuserdata/
 .vscode/
 .idea/
