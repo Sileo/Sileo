@@ -67,12 +67,12 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeSearch</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>UpgradeAll</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Search</string>
+			<string>Upgrade All</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Search</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).UpgradeAll</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
@@ -96,7 +96,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Packages</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Installed</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Packages</string>
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
