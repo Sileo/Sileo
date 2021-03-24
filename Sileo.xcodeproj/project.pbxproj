@@ -47,6 +47,11 @@
 		493B240726098169007D605F /* Procursus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FB26098169007D605F /* Procursus~ipad@3x.png */; };
 		493B240826098169007D605F /* Procursus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FC26098169007D605F /* Procursus@2x.png */; };
 		49618DD6260515A40046C094 /* BackendAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49618DD5260515A40046C094 /* BackendAPIWrapper.swift */; };
+		496992DE260BAAE500E3C35D /* BackendAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49618DD5260515A40046C094 /* BackendAPIWrapper.swift */; };
+		496992DF260BAAE500E3C35D /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C22607C06500D09BE7 /* UIView+FromNib.swift */; };
+		496992E0260BAAE500E3C35D /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */; };
+		496992E1260BAAE500E3C35D /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
+		496992E2260BAAE500E3C35D /* AltIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */; };
 		499162C32607C06500D09BE7 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */; };
 		499162C42607C06500D09BE7 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C22607C06500D09BE7 /* UIView+FromNib.swift */; };
 		49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
@@ -2620,6 +2625,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496992DE260BAAE500E3C35D /* BackendAPIWrapper.swift in Sources */,
+				496992DF260BAAE500E3C35D /* UIView+FromNib.swift in Sources */,
+				496992E0260BAAE500E3C35D /* UserDefaults+Optional.swift in Sources */,
+				496992E1260BAAE500E3C35D /* AltIconTableViewCell.swift in Sources */,
+				496992E2260BAAE500E3C35D /* AltIconTableViewController.swift in Sources */,
 				F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */,
 				F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
 				F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */,
