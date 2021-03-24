@@ -277,8 +277,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -292,13 +290,6 @@
 	<string>Sileo uses Face ID to quickly authenticate purchases.</string>
 	<key>SBAppUsesLocalNotifications</key>
 	<true/>
-	<key>SKAdNetworkItems</key>
-	<array>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>cstr6suwn9.skadnetwork</string>
-		</dict>
-	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
