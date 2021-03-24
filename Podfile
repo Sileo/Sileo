@@ -16,7 +16,6 @@ def sileo_pods
 	pod 'XLForm', '~> 4.0', :modular_headers => true
 	pod 'KeychainAccess'
 	pod 'SwiftSoup'
-	pod 'Google-Mobile-Ads-SDK'
 	pod 'SWCompression', '~> 4.5'
 	pod 'Flurry-iOS-SDK/FlurrySDK', :git => 'https://github.com/flurry/flurry-ios-sdk.git', :tag => '11.2.0.rc1'
 	pod 'Down'

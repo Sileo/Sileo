@@ -6,6 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
+/*
 import Foundation
 import GoogleMobileAds
 import AdSupport
@@ -105,3 +106,4 @@ class DepictionAdmobView: DepictionBaseView, GADBannerViewDelegate {
 
     }
 }
+*/

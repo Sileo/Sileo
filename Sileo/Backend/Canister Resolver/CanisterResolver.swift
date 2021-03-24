@@ -13,13 +13,13 @@ final class CanisterResolver {
     public static let shared = CanisterResolver()
     public var packages = [ProvisionalPackage]()
     
-    public func fetch(_ query: String, fetch: @escaping (_ packages: [ProvisionalPackage]?, _ error: String?) -> Void) {
+    public func fetch(_ query: String, fetch: @escaping () -> Void) {
         let url = "https://api.canister.me/v1/lookup/packages?query=\(query)&fields=id,name,description,icon,repository,author"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
             guard success,
                   let dict = dict,
                   dict["message"] as? String == "Successful",
-                  let data = dict["data"] as? [[String: Any]] else { return fetch(nil, "Invalid Network Connection") }
+                  let data = dict["data"] as? [[String: Any]] else { return fetch() }
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
@@ -32,7 +32,7 @@ final class CanisterResolver {
                     self.packages.append(package)
                 }
             }
-            return fetch(nil, nil)
+            return fetch()
         }
     }
     

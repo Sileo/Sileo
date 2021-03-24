@@ -141,11 +141,11 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
     }
     
     @objc func refreshState() {
-        stateBadgeView?.isHidden = false
         guard let targetPackage = targetPackage else {
+            stateBadgeView?.isHidden = true
             return
         }
-        
+        stateBadgeView?.isHidden = false
         let queueState = DownloadManager.shared.find(package: targetPackage)
         let isInstalled = PackageListManager.shared.installedPackage(identifier: targetPackage.package) != nil
         switch queueState {

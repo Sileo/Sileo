@@ -586,7 +586,7 @@ extension PackageListViewController: UISearchBarDelegate {
         guard let text = searchBar.text,
               !text.isEmpty,
               showProvisional else { return }
-        CanisterResolver.shared.fetch(text) { _, _ in
+        CanisterResolver.shared.fetch(text) { 
             DispatchQueue.main.async { self.updateSearchResults(for: self.searchController ?? UISearchController()) }
         }
     }
@@ -613,6 +613,10 @@ extension PackageListViewController: UISearchResultsUpdating {
                 if !packages.isEmpty {
                     packages = []
                     collectionView?.reloadSections(IndexSet(integer: 0))
+                }
+                if !provisionalPackages.isEmpty {
+                    provisionalPackages = []
+                    collectionView?.reloadSections(IndexSet(integer: 1))
                 }
                 return
             }
