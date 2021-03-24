@@ -189,7 +189,7 @@ class InstallViewController: SileoViewController {
         switch returnButtonAction {
         case .back:
             if refreshSileo {
-                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal);
+                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal)
                 completeLaterButton?.setTitle(String(localizationKey: "After_Install_Relaunch_Later"), for: .normal)
                 break }
             completeButton?.setTitle(String(localizationKey: "Done"), for: .normal)
@@ -204,7 +204,7 @@ class InstallViewController: SileoViewController {
             completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
         case .uicache:
             if refreshSileo {
-                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal);
+                completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal)
                 completeLaterButton?.setTitle(String(localizationKey: "After_Install_Relaunch_Later"), for: .normal)
             } else {
                 completeButton?.setTitle(String(localizationKey: "Done"), for: .normal)
@@ -253,7 +253,6 @@ class InstallViewController: SileoViewController {
             }
         }
     }
-    
     
     @IBAction func showDetails(_ sender: Any?) {
         guard let detailsView = self.detailsView else {

@@ -197,7 +197,7 @@ class BackendAPIWrapper: NSObject {
     }
     
     @objc class func reloadQueue(completion: (() -> Void)?) {
-        self.reloadQueue(recheckPackages: true, completion:completion)
+        self.reloadQueue(recheckPackages: true, completion: completion)
     }
     
     @objc class func reloadQueue(recheckPackages: ObjCBool, completion: (() -> Void)?) {
@@ -373,14 +373,14 @@ class BackendAPIWrapper: NSObject {
     @objc class func repoIsAdded(URL url: NSString) -> ObjCBool {
         let set = CharacterSet(charactersIn: "/")
         let url2 = url.trimmingCharacters(in: set)
-        let repo = RepoManager.shared.repoList.first{ $0.rawURL.trimmingCharacters(in: set) == url2 }
+        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == url2 }
         return ObjCBool(repo != nil)
     }
     
     @objc class func repoNameForAddedRepo(URL url: NSString) -> NSString? {
         let set = CharacterSet(charactersIn: "/")
         let url2 = url.trimmingCharacters(in: set)
-        let repo = RepoManager.shared.repoList.first{ $0.rawURL.trimmingCharacters(in: set) == url2 }
+        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == url2 }
         return repo?.displayName as NSString?
     }
     
@@ -388,7 +388,7 @@ class BackendAPIWrapper: NSObject {
         let existingSources = RepoManager.shared.repoList
         let set = CharacterSet(charactersIn: "/")
         let normalizedSpecified = url.trimmingCharacters(in: set)
-        let normalizedExisting = existingSources.first{ $0.rawURL.trimmingCharacters(in: set) == normalizedSpecified }
+        let normalizedExisting = existingSources.first { $0.rawURL.trimmingCharacters(in: set) == normalizedSpecified }
         
         if let repo = normalizedExisting, let dict = repo.packagesDict {
             let keys = dict.keys.map({ $0 })
