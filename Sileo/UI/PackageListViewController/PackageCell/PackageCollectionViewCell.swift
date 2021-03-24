@@ -182,6 +182,9 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         if let installedPackage = PackageListManager.shared.installedPackage(identifier: package.package) {
             let repo = RepoManager.shared.repoList.first(where: { $0.rawEntry == package.sourceFile })
             // Check we have a repo for the package
+            if queueFound != .uninstallations {
+                actions.append(uninstallAction(package))
+            }
             if package.filename != nil && repo != nil {
                 // Check if can be updated
                 if DpkgWrapper.isVersion(package.version, greaterThan: installedPackage.version) {
@@ -194,9 +197,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                         actions.append(reinstallAction(package))
                     }
                 }
-            }
-            if queueFound != .uninstallations {
-                actions.append(uninstallAction(package))
             }
         } else {
             if queueFound != .installations {
