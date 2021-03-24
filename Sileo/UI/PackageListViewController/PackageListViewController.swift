@@ -301,11 +301,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
-    @objc func toggleSettings(_: Any?) {
-        self.displaySettings = !self.displaySettings
-        collectionView?.reloadSections(IndexSet(integer: 1))
-    }
-    
     @objc func sortPopup(sender: UIView?) {
         let alertController = UIAlertController(title: String(localizationKey: "Sort_By"), message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: String(localizationKey: "Sort_Name"), style: .default, handler: { _ in
@@ -328,11 +323,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         alertController.modalPresentationStyle = .popover
         alertController.popoverPresentationController?.sourceView = sender
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc func changeSettings(_ settings: UISegmentedControl) {
-        UserDefaults.standard.set(settings.selectedSegmentIndex, forKey: "userType")
-        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
     }
     
     @objc func showWishlist(_: Any?) {
