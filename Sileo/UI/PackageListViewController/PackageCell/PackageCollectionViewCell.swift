@@ -34,7 +34,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let targetPackage = targetPackage {
                 titleLabel?.text = targetPackage.name
-                authorLabel?.text = ControlFileParser.authorName(string: targetPackage.author ?? "")
+                authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
                 descriptionLabel?.text = targetPackage.packageDescription
             
                 self.imageView?.sd_setImage(with: URL(string: targetPackage.icon ?? ""), placeholderImage: UIImage(named: "Tweak Icon"))
@@ -54,7 +54,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let provisionalTarget = provisionalTarget {
                 titleLabel?.text = provisionalTarget.name ?? ""
-                authorLabel?.text = provisionalTarget.author ?? ""
+                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "")"
                 descriptionLabel?.text = provisionalTarget.description
             
                 self.imageView?.sd_setImage(with: URL(string: provisionalTarget.icon ?? ""), placeholderImage: UIImage(named: "Tweak Icon"))
@@ -167,6 +167,15 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         // Different actions depending on where we are headed
         // Also making sure that the set package actually exists
+        if let provisionalPackage = provisionalTarget {
+            guard let repo = provisionalPackage.repo,
+                  let url = URL(string: repo),
+                  orientation == .right else { return nil }
+            if !RepoManager.shared.hasRepo(with: url) {
+                return [addRepo(url)]
+            }
+            return nil
+        }
         guard let package = targetPackage,
               UserDefaults.standard.optionalBool("SwipeActions", fallback: true)  else { return nil }
         var actions = [SwipeAction]()
@@ -210,6 +219,23 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         var options = SwipeOptions()
         options.expansionStyle = .selection
         return options
+    }
+    
+    private func addRepo(_ url: URL) -> SwipeAction {
+        let addRepo = SwipeAction(style: .default, title: String(localizationKey: "Add_Source.Title")) { _, _ in
+            if let tabBarController = self.window?.rootViewController as? UITabBarController,
+                let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+                  let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+                  tabBarController.selectedViewController = sourcesSVC
+                  if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                    sourcesVC.presentAddSourceEntryField(url: url)
+                  }
+            }
+            self.hapticResponse()
+            self.hideSwipe(animated: true)
+        }
+        addRepo.backgroundColor = .systemPink
+        return addRepo
     }
     
     private func cancelAction(_ package: Package) -> SwipeAction {

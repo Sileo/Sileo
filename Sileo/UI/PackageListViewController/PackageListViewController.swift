@@ -404,10 +404,13 @@ extension PackageListViewController: UICollectionViewDataSource {
         if let packageCell = cell as? PackageCollectionViewCell {
             if showUpdates && indexPath.section == 0 {
                 packageCell.targetPackage = availableUpdates[indexPath.row]
+                packageCell.provisionalTarget = nil
             } else if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) {
                 packageCell.provisionalTarget = provisionalPackages[indexPath.row]
+                packageCell.targetPackage = nil
             } else {
                 packageCell.targetPackage = packages[indexPath.row]
+                packageCell.provisionalTarget = nil
             }
         }
         return cell
@@ -596,8 +599,12 @@ extension PackageListViewController: UISearchBarDelegate {
         if text.isEmpty { return self.provisionalPackages.removeAll() }
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
             ((package.name?.lowercased().contains(text) ?? false) || (package.author?.lowercased().contains(text) ?? false) ||
-                (package.repo?.lowercased().contains(text) ?? false)) && !packages.contains(where: { $0.name == package.name })
+                (package.description?.lowercased().contains(text) ?? false) ||
+                (package.identifier?.lowercased().contains(text) ?? false)) &&
+                (!packages.contains(where: { $0.packageID == package.identifier }) ||
+                DpkgWrapper.isVersion(package.version ?? "", greaterThan: packages.first(where: { $0.packageID == package.identifier })?.version ?? ""))
         }
+        
     }
 }
 
