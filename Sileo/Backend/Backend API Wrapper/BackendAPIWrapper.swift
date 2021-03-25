@@ -146,6 +146,10 @@ class BackendAPIWrapper: NSObject {
         }
     }
     
+    @objc class func upgradeAllPackages(completion: (() -> Void)?) {
+        PackageListManager.shared.upgradeAll(completion: completion)
+    }
+    
     @objc class func manipulateQueue(addOrRemove: ObjCBool, identifiers: NSArray, action: BackendAPIWrapperAction, newestOrInstalled: ObjCBool) {
         let addOrRemove2 = addOrRemove.boolValue
         guard let identifiers2 = identifiers as? [String], let action2 = DownloadManagerQueue(rawValue: action.rawValue) else {

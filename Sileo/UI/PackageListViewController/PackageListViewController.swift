@@ -350,6 +350,10 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         self.navigationController?.pushViewController(wishlistController, animated: true)
     }
     
+    @objc func upgradeAllClicked(_ sender: Any?) {
+        PackageListManager.shared.upgradeAll()
+    }
+    
     @objc func sortPopup(sender: UIView?) {
         let alertController = UIAlertController(title: String(localizationKey: "Sort_By"), message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: String(localizationKey: "Sort_Name"), style: .default, handler: { _ in
@@ -429,7 +433,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                     headerView.actionText = String(localizationKey: "Upgrade_All_Button")
                     headerView.sortButton?.isHidden = true
                     headerView.separatorView?.isHidden = true
-                    headerView.upgradeButton?.addTarget(PackageListManager.shared, action: #selector(PackageListManager.markUpgradeAll(_:)), for: .touchUpInside)
+                    headerView.upgradeButton?.addTarget(self, action: #selector(self.markUpgradeAll(_:)), for: .touchUpInside)
                 } else {
                     headerView.label?.text = String(localizationKey: "Installed_Heading")
                     headerView.actionText = nil
