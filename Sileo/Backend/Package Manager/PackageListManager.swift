@@ -490,9 +490,9 @@ final class PackageListManager {
         
         if sortPackages {
             packageListFinal.sort { obj1, obj2 -> Bool in
-                if let pkg1 = obj1.name {
-                    if let pkg2 = obj2.name {
-                        if let searchQuery = searchName {
+                if let pkg1 = obj1.name?.lowercased() {
+                    if let pkg2 = obj2.name?.lowercased() {
+                        if let searchQuery = searchName?.lowercased() {
                             if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
                                 return true
                             } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {

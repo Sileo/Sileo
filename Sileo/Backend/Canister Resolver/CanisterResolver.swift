@@ -14,7 +14,7 @@ final class CanisterResolver {
     public var packages = [ProvisionalPackage]()
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
-        let url = "https://api.canister.me/v1/lookup/packages?query=\(query)&fields=id,name,description,icon,repository,author"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version&search_fields=identifier,name,author,maintainer"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
             guard success,
                   let dict = dict,
@@ -27,7 +27,15 @@ final class CanisterResolver {
                 package.identifier = entry["identifier"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
-                package.author = entry["author"] as? String
+                if var author = entry["author"] as? String,
+                   let range = author.range(of: "<") {
+                    author.removeSubrange(range.lowerBound..<author.endIndex)
+                    if author.last == " " { author = String(author.dropLast()) }
+                    package.author = author
+                } else {
+                    package.author = entry["author"] as? String
+                }
+                package.version = entry["version"] as? String
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) {
                     self.packages.append(package)
                 }
@@ -35,7 +43,6 @@ final class CanisterResolver {
             return fetch()
         }
     }
-    
 }
 
 struct ProvisionalPackage {
@@ -45,4 +52,5 @@ struct ProvisionalPackage {
     var icon: String?
     var description: String?
     var author: String?
+    var version: String?
 }
