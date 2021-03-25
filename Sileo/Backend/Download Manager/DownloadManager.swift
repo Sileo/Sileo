@@ -594,8 +594,9 @@ final class DownloadManager {
             
             DispatchQueue.main.async {
                 self.queueLock.wait()
+                let emptyLock = self.queueLockCount == 0
                 
-                if self.queueLockCount == 0 {
+                if emptyLock {
                     self.viewController.reloadData()
                     TabBarController.singleton?.updatePopup(completion: completion)
                     
@@ -603,6 +604,10 @@ final class DownloadManager {
                 }
                 
                 self.queueLock.signal()
+                
+                if !emptyLock, let completion = completion {
+                    completion()
+                }
             }
         }
     }

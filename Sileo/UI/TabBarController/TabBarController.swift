@@ -61,10 +61,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func presentPopup(completion: (() -> Void)?) {
-        guard let downloadsController = downloadsController else {
-            return
-        }
-        if popupIsPresented {
+        guard let downloadsController = downloadsController,
+              !popupIsPresented
+        else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
         
@@ -96,6 +98,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func dismissPopup(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
         
@@ -114,6 +119,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func presentPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
         
@@ -131,6 +139,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func dismissPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
         
