@@ -208,8 +208,15 @@ class BackendAPIWrapper: NSObject {
         DownloadManager.shared.reloadData(recheckPackages: recheckPackages.boolValue, completion: completion)
     }
     
-    @objc class func emptyQueue() {
-        DownloadManager.shared.removeAllItems()
+    @objc class func confirmQueue() {
+        DownloadManager.shared.startUnqueuedDownloads()
+        self.reloadQueue(recheckPackages: false, completion: nil)
+    }
+    
+    @objc class func clearQueue() {
+        DownloadManager.shared.cancelUnqueuedDownloads()
+        self.dismissQueueController(completion: nil)
+        self.reloadQueue(recheckPackages: true, completion: nil)
     }
     
     @objc class func presentQueueBar(completion: (() -> Void)?) {
