@@ -235,6 +235,10 @@ class BackendAPIWrapper: NSObject {
         TabBarController.singleton?.dismissPopupController(completion: completion)
     }
     
+    @objc class func queueControllerCurrentState() -> LNPopupPresentationState {
+        return TabBarController.singleton?.popupPresentationState ?? LNPopupPresentationState.hidden
+    }
+    
     @objc class func availablePackageIdentifiers() -> NSArray? {
         guard let packages = PackageListManager.shared.allPackages else {
             return nil
