@@ -51,46 +51,23 @@ final class RepoManager {
             }
         }
         #else
-        spawnAsRoot(command: "rm -rf /var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*")
+        spawnAsRoot(args: ["/usr/bin/rm", "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
         #endif
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let jailbreakRepoURL: String
-        let jailbreakRepoSuites: String
-        let jailbreakRepoComponents: [String]
-        let jailbreakRepoRawEntry: String
-        let jailbreakRepoEntryFile: String
-        if kCFCoreFoundationVersionNumber >= 1600 {
-            jailbreakRepoURL = "https://apt.procurs.us/"
-            jailbreakRepoSuites = "iphoneos-arm64/1600"
-            jailbreakRepoComponents = ["main"]
-            jailbreakRepoRawEntry = """
-            Types: deb
-            URIs: https://apt.procurs.us/
-            Suites: iphoneos-arm64/1600
-            Components: main
-            """
-            jailbreakRepoEntryFile = "/etc/apt/sources.list.d/procursus.sources"
-        } else {
-            jailbreakRepoURL = "https://repo.chimera.sh/"
-            jailbreakRepoSuites = "./"
-            jailbreakRepoComponents = []
-            jailbreakRepoRawEntry = """
-            Types: deb
-            URIs: https://repo.chimera.sh/
-            Suites: ./
-            Components:
-            """
-            jailbreakRepoEntryFile = "/etc/apt/sources.list.d/chimera.sources"
-        }
-
         repoListLock.wait()
         let jailbreakRepo = Repo()
-        jailbreakRepo.rawURL = jailbreakRepoURL
-        jailbreakRepo.suite = jailbreakRepoSuites
-        jailbreakRepo.components = jailbreakRepoComponents
-        jailbreakRepo.rawEntry = jailbreakRepoRawEntry
-        jailbreakRepo.entryFile = jailbreakRepoEntryFile
+        jailbreakRepo.rawURL = "https://apt.procurs.us/"
+        jailbreakRepo.suite = "iphoneos-arm64/1500"
+        /* TODO: Change the above suite to use a rounded down CFVersion. */
+        jailbreakRepo.components = ["main"]
+        jailbreakRepo.rawEntry = """
+        Types: deb
+        URIs: https://apt.procurs.us/
+        Suites: iphoneos-arm64/1500
+        Components: main
+        """
+        jailbreakRepo.entryFile = "/etc/apt/sources.list.d/procursus.sources"
         repoList.append(jailbreakRepo)
         repoListLock.signal()
 
@@ -120,13 +97,7 @@ final class RepoManager {
             writeListToFile()
         }
         #else
-        var sourcesDir: URL!
-        if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
-            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
-            sourcesDir = URL(string: "/etc/apt/sources.list.d") } else {
-                sourcesDir = URL(string: "/etc/apt/sileo.list.d")
-        }
+        var sourcesDir: URL! = URL(string: "/etc/apt/sources.list.d")
         for file in sourcesDir.implicitContents {
             if file.pathExtension == "list" {
                 parseListFile(at: file)
@@ -895,7 +866,8 @@ final class RepoManager {
         } catch {
             return
         }
-        spawnAsRoot(command: "cp -f '\(tempPath.path)' '\(sileoList)' && chmod 0644 '\(sileoList)'")
+        spawnAsRoot(args: ["/usr/bin/cp", "-f", "'\(tempPath.path)'", "'\(sileoList)'"])
+        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "'\(sileoList)'"])
         #endif
         repoListLock.signal()
     }

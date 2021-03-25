@@ -56,8 +56,9 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        let theCmd = "mkdir -p /var/lib/apt/sileolists && chown -R mobile:mobile /var/lib/apt/sileolists && chmod -R 0755 /var/lib/apt/sileolists"
-        spawnAsRoot(command: theCmd)
+        spawnAsRoot(args: ["/usr/bin/mkdir", "-p", "/var/lib/apt/sileolists"])
+        spawnAsRoot(args: ["/usr/bin/chown", "-R", "mobile:mobile", "/var/lib/apt/sileolists"])
+        spawnAsRoot(args: ["/usr/bin/chmod", "-R", "0755", "/var/lib/apt/sileolists"])
         #endif
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
@@ -69,7 +70,7 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        spawnAsRoot(command: "cp /var/lib/apt/lists/*Release /var/lib/apt/sileolists/")
+        spawnAsRoot(args: ["/usr/bin/cp", "/var/lib/apt/lists/*Release", "/var/lib/apt/sileolists/"])
         #endif
         
         for package in install {

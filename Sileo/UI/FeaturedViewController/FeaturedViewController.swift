@@ -40,7 +40,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
-            let (status, output, _) = spawnAsRoot(command: "whoami")
+            let (status, output, _) = spawnAsRoot(args: ["/usr/bin/whoami"])
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
@@ -69,7 +69,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                 }
                 
                 DispatchQueue.global(qos: .default).async {
-                    let (status, output, errorOutput) = spawnAsRoot(command: "dpkg --configure -a")
+                    let (status, output, errorOutput) = spawnAsRoot(args: ["/usr/bin/dpkg", "--configure", "-a"])
                     
                     PackageListManager.shared.purgeCache()
                     PackageListManager.shared.waitForReady()

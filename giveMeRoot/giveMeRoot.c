@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    const char *shell = "/usr/bin/sh"
-    char *args[] = {(char *)shell, "-c", argv[1], NULL};
-    execv(shell, args);
+    printf("%s\n", argv[1]);
+    
+    execv(argv[1], &argv[1]);
     
     return EX_UNAVAILABLE;
 }
