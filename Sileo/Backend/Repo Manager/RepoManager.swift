@@ -65,12 +65,12 @@ final class RepoManager {
         
         repoListLock.wait()
         let jailbreakRepo = Repo()
-        jailbreakRepo.rawURL = "https://apt.procurs.us/"
+        jailbreakRepo.rawURL = "https://apt.procurs.us"
         jailbreakRepo.suite = "iphoneos-arm64/\(cfMajorVersion)"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
-        URIs: https://apt.procurs.us/
+        URIs: https://apt.procurs.us
         Suites: iphoneos-arm64/\(cfMajorVersion)
         Components: main
         """
@@ -82,19 +82,19 @@ final class RepoManager {
             parseSourcesFile(at: sourcesURL)
         } else {
             addRepos(with: [
-                "https://repo.chariz.com/",
-                "https://repo.dynastic.co/",
-                "https://repo.packix.com/",
-                "https://repounclutter.coolstar.org/"
+                "https://repo.chariz.com",
+                "https://repo.dynastic.co",
+                "https://repo.packix.com",
+                "https://repounclutter.coolstar.org"
             ].compactMap(URL.init(string:)))
 
             let bigBoss = Repo()
-            bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia/"
+            bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia"
             bigBoss.suite = "stable"
             bigBoss.components = ["main"]
             bigBoss.rawEntry = """
             Types: deb
-            URIs: http://apt.thebigboss.org/repofiles/cydia/
+            URIs: http://apt.thebigboss.org/repofiles/cydia
             Suites: stable
             Components: main
             """
