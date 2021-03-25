@@ -83,19 +83,17 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         if showWishlist {
             #if targetEnvironment(simulator)
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Test Queue",
-                                                                    style: .plain,
-                                                                    target: self,
-                                                                    action: #selector(PackageListViewController.addTestQueue(_ :)))
+            
+            let testQueueBtn = UIBarButtonItem(title: "Test Queue", style: .plain, target: self, action: #selector(self.addTestQueue(_:)))
+            self.navigationItem.leftBarButtonItem = testQueueBtn
+            
             #endif
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Export"),
-                                                                    style: .plain,
-                                                                    target: self,
-                                                                    action: #selector(PackageListViewController.exportButtonClicked(_:)))
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Wishlist"),
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(PackageListViewController.showWishlist(_ :)))
+            
+            let exportBtn = UIBarButtonItem(title: String(localizationKey: "Export"), style: .plain, target: self, action: #selector(self.exportButtonClicked(_:)))
+            self.navigationItem.leftBarButtonItem = exportBtn
+            
+            let wishlistBtn = UIBarButtonItem(title: String(localizationKey: "Wishlist"), style: .plain, target: self, action: #selector(self.showWishlist(_:)))
+            self.navigationItem.rightBarButtonItem = wishlistBtn
         }
         
         if packagesLoadIdentifier.contains("--wishlist") {
@@ -197,7 +195,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     #if targetEnvironment(simulator)
-    @objc func addTestQueue(_: Any?) {
+    @objc func addTestQueue(_ : Any?) {
         let testQueue = ["applist", "apt", "apt-key", "apt-lib", "base",
                          "bash", "berkeleydb", "bzip2", "ca.menushka.onenotify",
                          "co.dynastic.tsssaver", "com.ahmad.badgemenot", "com.ahmadnagy.mint4",
@@ -237,14 +235,17 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                          "org.thebigboss.palert", "p7zip", "pincrush", "preferenceloader", "profile.d",
                          "sed", "shell-cmds", "system-cmds", "tar", "uikittools", "unrar", "unzip",
                          "ws.hbang.common", "ws.hbang.newterm2", "xyz.royalapps.jellyfish", "xyz.xninja.systeminfo", "zip"]
+        
         for packageID in testQueue {
-            if let package = PackageListManager.shared.newestPackage(identifier: packageID),
-            package.filename != nil {
-                DownloadManager.shared.add(package: package, queue: .installations)
-            } else {
-                os_log("Warning: %@ not availalbe, skipping.", packageID)
+            guard let package = PackageListManager.shared.newestPackage(identifier: packageID),
+                  package.filename != nil
+            else {
+                continue
             }
+            
+            DownloadManager.shared.add(package: package, queue: .installations)
         }
+        
         DownloadManager.shared.reloadData(recheckPackages: true)
     }
     #endif
@@ -433,7 +434,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                     } else {
                         headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
                     }
-                    headerView.sortButton?.addTarget(self, action: #selector(PackageListViewController.sortPopup(sender:)), for: .touchUpInside)
+                    headerView.sortButton?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
                     
                     headerView.separatorView?.isHidden = false
                 }
