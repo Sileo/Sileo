@@ -48,10 +48,8 @@ int main(int argc, char *argv[]) {
         printf("root\n");
         return 0;
     }
-    
-    const char *zsh = "/bin/zsh";
-    const char *bash = "/bin/bash";
-    const char *shell = (access(zsh, X_OK) == 0) ? zsh : bash;
+
+    const char *shell = "/usr/bin/sh"
     char *args[] = {(char *)shell, "-c", argv[1], NULL};
     execv(shell, args);
     
