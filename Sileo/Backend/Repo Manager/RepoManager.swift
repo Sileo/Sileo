@@ -117,16 +117,22 @@ final class RepoManager {
     
     func addRepos(with urls: [URL]) {
         for url in urls {
-            guard !hasRepo(with: url),
-                  url.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-                  url.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
+            let charSet = CharacterSet(charactersIn: "/")
+            let trimmed = url.absoluteString.trimmingCharacters(in: charSet)
+            guard let normalized = URL(string: trimmed) else {
+                continue
+            }
+            
+            guard !hasRepo(with: normalized),
+                  normalized.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+                  normalized.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
             else {
                 continue
             }
             
             repoListLock.wait()
             let repo = Repo()
-            repo.rawURL = url.absoluteString
+            repo.rawURL = normalized.absoluteString
             repo.suite = "./"
             repo.rawEntry = """
             Types: deb
@@ -158,8 +164,9 @@ final class RepoManager {
     }
     
     func repo(with url: URL) -> Repo? {
-        let urlStr = url.absoluteString
-        return repoList.first { $0.repoURL == urlStr }
+        let charSet = CharacterSet(charactersIn: "/")
+        let normalized = url.absoluteString.trimmingCharacters(in: charSet)
+        return repoList.first(where: { $0.rawURL.trimmingCharacters(in: charSet) == normalized })
     }
     
     func repo(withSourceFile sourceFile: String) -> Repo? {
@@ -167,17 +174,8 @@ final class RepoManager {
     }
     
     func hasRepo(with url: URL) -> Bool {
-        var standardRepo = [String]()
-        for repo in repoList {
-            var url = repo.rawURL
-            if url.last != "/" { url.append("/") }
-            standardRepo.append(url)
-        }
-        var standardAdd = url.absoluteString
-        if standardAdd.last != "/" {
-            standardAdd.append("/")
-        }
-        return standardRepo.contains(standardAdd)
+        let repo = self.repo(with: url)
+        return repo != nil
     }
     
     private func parseRepoEntry(_ repoEntry: String, at url: URL, withTypes types: [String], uris: [String], suites: [String], components: [String]?) {
