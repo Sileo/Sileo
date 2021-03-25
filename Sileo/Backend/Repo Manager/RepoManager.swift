@@ -866,8 +866,8 @@ final class RepoManager {
         } catch {
             return
         }
-        spawnAsRoot(args: ["/usr/bin/cp", "-f", "'\(tempPath.path)'", "'\(sileoList)'"])
-        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "'\(sileoList)'"])
+        spawnAsRoot(args: ["/usr/bin/cp", "-f", "\(tempPath.path)", "\(sileoList)"])
+        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(sileoList)"])
         #endif
         repoListLock.signal()
     }
