@@ -602,17 +602,24 @@ final class PackageListManager {
         }
     }
     
-    @objc public func markUpgradeAll(_ sender: Any) {
-        let availableUpdates = self.availableUpdates()
-        for packageTuple in availableUpdates {
-            let package = packageTuple.0
-            guard let installedPackage = packageTuple.1 else {
+    public func upgradeAll() {
+        self.upgradeAll(completion: nil)
+    }
+    
+    public func upgradeAll(completion: (() -> Void)?) {
+        let packagePairs = self.availableUpdates()
+        let downloadMan = DownloadManager.shared
+        
+        for packagePair in packagePairs {
+            let newestPkg = packagePair.0
+            
+            if let installedPkg = packagePair.1, installedPkg == newestPkg {
                 continue
             }
-            if installedPackage.wantInfo == .install || installedPackage.wantInfo == .unknown {
-                DownloadManager.shared.add(package: package, queue: .upgrades)
-            }
+            
+            downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        DownloadManager.shared.reloadData(recheckPackages: true)
+        
+        downloadMan.reloadData(recheckPackages: true, completion: completion)
     }
 }
