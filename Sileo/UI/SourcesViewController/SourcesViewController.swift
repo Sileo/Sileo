@@ -129,7 +129,7 @@ class SourcesViewController: SileoTableViewController {
                                                                         target: self,
                                                                         action: #selector(self.toggleEditing(_:)))
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Export"),
-                                                                         style: .done,
+                                                                         style: .plain,
                                                                          target: self,
                                                                          action: #selector(self.exportSources(_:)))
             } else {
