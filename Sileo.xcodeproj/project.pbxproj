@@ -1226,8 +1226,8 @@
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
 			isa = PBXGroup;
 			children = (
-				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
 				E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */,
+				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
 			);
 			path = "Canister Resolver";
 			sourceTree = "<group>";
@@ -1799,9 +1799,9 @@
 		F1B99EE720DB671B00374C27 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
 				F1D1140720DEE40C00C8F051 /* APT Wrapper */,
 				49618DD4260515A40046C094 /* Backend API Wrapper */,
+				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
 				F162CCAE20E82DFB00226F10 /* Control File Parser */,
 				CFBC7FD9221D88ED0066D501 /* Database Manager */,
 				F1FFE5D823D5142F00916364 /* Dependency Resolver */,
