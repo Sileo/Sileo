@@ -55,16 +55,23 @@ final class RepoManager {
         #endif
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
+        let cfVersionRaw = kCFCoreFoundationVersionNumber
+        let cfVersionRawFloored = floor(cfVersionRaw)
+        let cfVersionDivided = cfVersionRawFloored / 100
+        let cfVersionDividedFloored = floor(cfVersionDivided)
+        let cfVersionMultiplied = cfVersionDividedFloored * 100
+        let cfVersionInt = Int(cfVersionMultiplied)
+        let cfMajorVersion = String(format: "%d", cfVersionInt)
+        
         repoListLock.wait()
         let jailbreakRepo = Repo()
         jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/1500"
-        /* TODO: Change the above suite to use a rounded down CFVersion. */
+        jailbreakRepo.suite = "iphoneos-arm64/\(cfMajorVersion)"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
         URIs: https://apt.procurs.us/
-        Suites: iphoneos-arm64/1500
+        Suites: iphoneos-arm64/\(cfMajorVersion)
         Components: main
         """
         jailbreakRepo.entryFile = "/etc/apt/sources.list.d/procursus.sources"
