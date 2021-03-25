@@ -82,15 +82,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         super.viewDidLoad()
         
         if showWishlist {
-            #if targetEnvironment(simulator)
+            let exportBtn = UIBarButtonItem(title: String(localizationKey: "Export"), style: .plain, target: self, action: #selector(self.exportButtonClicked(_:)))
+            
+            #if targetEnvironment(simulator) || TARGET_SANDBOX
             
             let testQueueBtn = UIBarButtonItem(title: "Test Queue", style: .plain, target: self, action: #selector(self.addTestQueue(_:)))
-            self.navigationItem.leftBarButtonItem = testQueueBtn
+            self.navigationItem.leftBarButtonItems = [exportBtn, testQueueBtn]
+            
+            #else
+            
+            self.navigationItem.leftBarButtonItem = exportBtn
             
             #endif
-            
-            let exportBtn = UIBarButtonItem(title: String(localizationKey: "Export"), style: .plain, target: self, action: #selector(self.exportButtonClicked(_:)))
-            self.navigationItem.leftBarButtonItem = exportBtn
             
             let wishlistBtn = UIBarButtonItem(title: String(localizationKey: "Wishlist"), style: .plain, target: self, action: #selector(self.showWishlist(_:)))
             self.navigationItem.rightBarButtonItem = wishlistBtn
@@ -194,7 +197,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
-    #if targetEnvironment(simulator)
+    #if targetEnvironment(simulator) || TARGET_SANDBOX
     @objc func addTestQueue(_ : Any?) {
         let testQueue = ["applist", "apt", "apt-key", "apt-lib", "base",
                          "bash", "berkeleydb", "bzip2", "ca.menushka.onenotify",
