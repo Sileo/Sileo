@@ -228,9 +228,11 @@ class APTWrapper {
     
     public class func verifySignature(key: String, data: String, error: inout String) -> Bool {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        error = "GnuPG not available in iOS Simulator"
+        
+        error = "GnuPG not available in sandboxed environment"
         return false
-        #endif
+        
+        #else
         
         let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/apt-key", "verify", "-q", "--status-fd", "1", key, data])
         
@@ -273,6 +275,8 @@ class APTWrapper {
             }
         }
         return keyIsGood && keyIsTrusted
+        
+        #endif
     }
     
     public class func performOperations(installs: [DownloadPackage],
