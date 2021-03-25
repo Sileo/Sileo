@@ -212,20 +212,20 @@ class BackendAPIWrapper: NSObject {
         DownloadManager.shared.removeAllItems()
     }
     
-    @objc class func presentQueueBar() {
-        TabBarController.singleton?.presentPopup()
+    @objc class func presentQueueBar(completion: (() -> Void)?) {
+        TabBarController.singleton?.presentPopup(completion: completion)
     }
     
-    @objc class func dismissQueueBar() {
-        TabBarController.singleton?.dismissPopup()
+    @objc class func dismissQueueBar(completion: (() -> Void)?) {
+        TabBarController.singleton?.dismissPopup(completion: completion)
     }
     
-    @objc class func presentQueueController() {
-        TabBarController.singleton?.presentPopupController()
+    @objc class func presentQueueController(completion: (() -> Void)?) {
+        TabBarController.singleton?.presentPopupController(completion: completion)
     }
     
-    @objc class func dismissQueueController() {
-        TabBarController.singleton?.dismissPopupController()
+    @objc class func dismissQueueController(completion: (() -> Void)?) {
+        TabBarController.singleton?.dismissPopupController(completion: completion)
     }
     
     @objc class func availablePackageIdentifiers() -> NSArray? {

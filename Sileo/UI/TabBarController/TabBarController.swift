@@ -107,21 +107,37 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func presentPopupController() {
-        guard popupIsPresented else {
-            return
-        }
-        popupLock.wait()
-        defer { popupLock.signal() }
-        self.openPopup(animated: true, completion: nil)
+        self.presentPopupController(completion: nil)
     }
     
     func dismissPopupController() {
-        guard popupIsPresented else {
+        self.dismissPopupController(completion: nil)
+    }
+    
+    func presentPopupController(completion: (() -> Void)?) {
+        if popupIsPresented {
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        self.closePopup(animated: true, completion: nil)
+        defer {
+            popupLock.signal()
+        }
+        
+        self.openPopup(animated: true, completion: completion)
+    }
+    
+    func dismissPopupController(completion: (() -> Void)?) {
+        if popupIsPresented {
+            return
+        }
+        
+        popupLock.wait()
+        defer {
+            popupLock.signal()
+        }
+        
+        self.closePopup(animated: true, completion: completion)
     }
     
     func updatePopup() {
