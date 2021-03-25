@@ -433,7 +433,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                     headerView.actionText = String(localizationKey: "Upgrade_All_Button")
                     headerView.sortButton?.isHidden = true
                     headerView.separatorView?.isHidden = true
-                    headerView.upgradeButton?.addTarget(self, action: #selector(self.markUpgradeAll(_:)), for: .touchUpInside)
+                    headerView.upgradeButton?.addTarget(self, action: #selector(self.upgradeAllClicked(_:)), for: .touchUpInside)
                 } else {
                     headerView.label?.text = String(localizationKey: "Installed_Heading")
                     headerView.actionText = nil

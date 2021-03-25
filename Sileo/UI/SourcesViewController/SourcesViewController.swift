@@ -19,11 +19,11 @@ class SourcesViewController: SileoTableViewController {
         
         weak var weakSelf: SourcesViewController? = self
         NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(SourcesViewController.checkForUpdatesInBackground),
+                                               selector: #selector(self.checkForUpdatesInBackground),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(SourcesViewController.reloadRepo(_:)),
+                                               selector: #selector(self.reloadRepo(_:)),
                                                name: RepoManager.progressNotification,
                                                object: nil)
     }
@@ -67,7 +67,7 @@ class SourcesViewController: SileoTableViewController {
         
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(updateSileoColors),
+                                               selector: #selector(self.updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         
@@ -123,19 +123,19 @@ class SourcesViewController: SileoTableViewController {
         UIView.animate(withDuration: animated ? 0.2 : 0.0) {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                      target: self,
-                                                                     action: #selector(SourcesViewController.addSource(_:)))
+                                                                     action: #selector(self.addSource(_:)))
             if editing {
                 self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                                         target: self,
-                                                                        action: #selector(SourcesViewController.toggleEditing(_:)))
+                                                                        action: #selector(self.toggleEditing(_:)))
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Export"),
                                                                          style: .done,
                                                                          target: self,
-                                                                         action: #selector(SourcesViewController.exportSources(_:)))
+                                                                         action: #selector(self.exportSources(_:)))
             } else {
                 self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
                                                                         target: self,
-                                                                        action: #selector(SourcesViewController.toggleEditing(_:)))
+                                                                        action: #selector(self.toggleEditing(_:)))
             }
         }
     }
