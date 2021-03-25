@@ -153,7 +153,7 @@ class DpkgWrapper {
         Name: Bourne-Again SHell
         """
         #else
-        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "'\(packageURL.path)'"])
+        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "\(packageURL.path)"])
         return outputString
         #endif
     }

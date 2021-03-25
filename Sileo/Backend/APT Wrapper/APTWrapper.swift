@@ -347,7 +347,7 @@ class APTWrapper {
             let argv: [UnsafeMutablePointer<CChar>?] = arguments.map { $0.withCString(strdup) }
             defer { for case let arg? in argv { free(arg) } }
             
-            let environment = ["SILEO=\"6 1\"", "CYDIA=\"6 1\""]
+            let environment = ["SILEO=6 1", "CYDIA=6 1"]
             let env: [UnsafeMutablePointer<CChar>?] = environment.map { $0.withCString(strdup) }
             defer { for case let key? in env { free(key) } }
             
@@ -551,7 +551,7 @@ class APTWrapper {
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
-                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "'\(appPath.path)'"])
+                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
                     }
                 }
             }

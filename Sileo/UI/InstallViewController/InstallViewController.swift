@@ -214,7 +214,7 @@ class InstallViewController: SileoViewController {
     
     @IBAction func completeButtonTapped(_ sender: Any?) {
         if self.returnButtonAction == .back || self.returnButtonAction == .uicache {
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "'\(Bundle.main.bundlePath)'"]); return }
+            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); return }
             self.navigationController?.popViewController(animated: true)
             DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.purgeCache()
@@ -231,7 +231,7 @@ class InstallViewController: SileoViewController {
         } else if self.returnButtonAction == .reopen {
             exit(0)
         } else if self.returnButtonAction == .restart || self.returnButtonAction == .reload {
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "'\(Bundle.main.bundlePath)'"]); }
+            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); }
             spawnAsRoot(args: ["/usr/bin/sbreload"])
         } else if self.returnButtonAction == .reboot {
             spawnAsRoot(args: ["/usr/bin/sync"])
