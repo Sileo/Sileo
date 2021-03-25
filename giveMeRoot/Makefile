@@ -17,11 +17,11 @@ else
 endif
 
 $(OUTDIR):
-	mkdir -p $(OUTDIR)
+	@mkdir -p $(OUTDIR)
 
 $(OUTDIR)/$(TARGET): giveMeRoot.c | $(OUTDIR)
-	$(CC) -o $@ $^ $(CFLAGS)
-	$(LDID) -SEntitlements.plist $@
+	@$(CC) -o $@ $^ $(CFLAGS)
+	@$(LDID) -SEntitlements.plist $@
 
 clean:
-	rm -f $(OUTDIR)/$(TARGET)
+	@rm -rf ./$(OUTDIR)

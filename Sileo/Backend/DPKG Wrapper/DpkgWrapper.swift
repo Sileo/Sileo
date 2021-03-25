@@ -131,8 +131,8 @@ class DpkgWrapper {
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
         let ignoreCommand = ignoreUpdates ? "hold" : "install"
-        let command = "/bin/echo \"\(package) \(ignoreCommand)\" | /usr/bin/dpkg --set-selections"
-        spawnAsRoot(command: command)
+        let command = ["/usr/bin/echo", "'\(package) \(ignoreCommand)'", "|", "/usr/bin/dpkg", "--set-selections"]
+        spawnAsRoot(args: command)
     }
     
     public class func rawFields(packageURL: URL) throws -> String {
@@ -153,7 +153,7 @@ class DpkgWrapper {
         Name: Bourne-Again SHell
         """
         #else
-        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", packageURL.path])
+        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "\(packageURL.path)"])
         return outputString
         #endif
     }
