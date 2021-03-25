@@ -48,8 +48,6 @@ int main(int argc, char *argv[]) {
         printf("root\n");
         return 0;
     }
-
-    printf("%s\n", argv[1]);
     
     execv(argv[1], &argv[1]);
     
