@@ -67,11 +67,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         if popupIsPresented {
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        if popupIsPresented {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = true
         self.popupContentView.popupCloseButtonAutomaticallyUnobstructsTopBars = false
         self.popupBar.toolbar.tag = WHITE_BLUR_TAG
@@ -97,11 +98,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard popupIsPresented else {
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        guard popupIsPresented else {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = false
         self.dismissPopupBar(animated: true, completion: completion)
     }
@@ -110,12 +112,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.presentPopupController(completion: nil)
     }
     
-    func dismissPopupController() {
-        self.dismissPopupController(completion: nil)
-    }
-    
     func presentPopupController(completion: (() -> Void)?) {
-        if popupIsPresented {
+        guard popupIsPresented else {
             return
         }
         
@@ -127,8 +125,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.openPopup(animated: true, completion: completion)
     }
     
+    func dismissPopupController() {
+        self.dismissPopupController(completion: nil)
+    }
+    
     func dismissPopupController(completion: (() -> Void)?) {
-        if popupIsPresented {
+        guard popupIsPresented else {
             return
         }
         
