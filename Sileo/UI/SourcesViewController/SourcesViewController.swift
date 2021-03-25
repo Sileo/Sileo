@@ -10,6 +10,7 @@ import Foundation
 
 class SourcesViewController: SileoTableViewController {
     private var sortedRepoList: [Repo] = []
+    var isRefreshing: Bool = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -78,7 +79,9 @@ class SourcesViewController: SileoTableViewController {
         
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         
-        self.refreshSources(forceUpdate: false, forceReload: false)
+        if !isRefreshing {
+            self.refreshSources(forceUpdate: false, forceReload: false)
+        }
     }
     
     @objc func updateSileoColors() {
@@ -146,6 +149,7 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func refreshSources(useRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
+        self.isRefreshing = true
         
         if useRefreshControl {
             if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
@@ -174,6 +178,7 @@ class SourcesViewController: SileoTableViewController {
             indicatorView.removeFromSuperview()
             indicatorView.stopAnimating()
             item?.badgeValue = nil
+            self.isRefreshing = false
             
             if let completion = completion {
                 completion(didFindErrors, errorOutput)
