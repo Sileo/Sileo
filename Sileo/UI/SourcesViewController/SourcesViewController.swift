@@ -78,7 +78,7 @@ class SourcesViewController: SileoTableViewController {
         
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         
-        self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+        self.refreshSources(forceUpdate: false, forceReload: false)
     }
     
     @objc func updateSileoColors() {
@@ -137,44 +137,61 @@ class SourcesViewController: SileoTableViewController {
         }
     }
     
-    func refreshSources(control: UIRefreshControl?, forceUpdate: Bool, forceReload: Bool) {
-        let repoManager = RepoManager.shared
+    @IBAction func refreshSources(_ sender: UIRefreshControl?) {
+        self.refreshSources(forceUpdate: true, forceReload: true)
+    }
+    
+    func refreshSources(forceUpdate: Bool, forceReload: Bool) {
+        self.refreshSources(useRefreshControl: false, errorScreen: true, forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, completion: nil)
+    }
+    
+    func refreshSources(useRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
+        
+        if useRefreshControl {
+            if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
+                refreshControl.sizeToFit()
+                let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
+                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
+                refreshControl.beginRefreshing()
+            }
+        }
         
         let item = self.splitViewController?.tabBarItem
         item?.badgeValue = ""
         
-        let badge = item?.view()?.value(forKey: "_badge") as? UIView
-        
         guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
             fatalError("OK iOS...")
         }
-        
         let indicatorView = UIActivityIndicatorView(style: style)
         indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
         indicatorView.startAnimating()
+        
+        let badge = item?.view()?.value(forKey: "_badge") as? UIView
         badge?.addSubview(indicatorView)
         
-        repoManager.update(force: forceUpdate, forceReload: forceReload, isBackground: false) { errorsFound, errorOutput in
+        RepoManager.shared.update(force: forceUpdate, forceReload: forceReload, isBackground: isBackground, completion: { didFindErrors, errorOutput in
             self.refreshControl?.endRefreshing()
             indicatorView.removeFromSuperview()
             indicatorView.stopAnimating()
-            self.splitViewController?.tabBarItem.badgeValue = nil
+            item?.badgeValue = nil
             
-            if errorsFound {
-                DispatchQueue.main.async {
-                    let errorVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
-                    errorVC.attributedString = errorOutput
-                    let navController = UINavigationController(rootViewController: errorVC)
-                    navController.navigationBar.barStyle = .blackTranslucent
-                    navController.modalPresentationStyle = .formSheet
-                    self.present(navController, animated: true, completion: nil)
-                }
+            if let completion = completion {
+                completion(didFindErrors, errorOutput)
             }
-        }
+            
+            if didFindErrors, errorScreen {
+                self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
+            }
+        })
     }
     
-    @IBAction func refreshSources(_ sender: UIRefreshControl?) {
-        self.refreshSources(control: sender, forceUpdate: true, forceReload: true)
+    func showRefreshErrorViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
+        let errorVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
+        errorVC.attributedString = errorOutput
+        let navController = UINavigationController(rootViewController: errorVC)
+        navController.navigationBar.barStyle = .blackTranslucent
+        navController.modalPresentationStyle = .formSheet
+        self.present(navController, animated: true, completion: completion)
     }
     
     func reSortList() {
@@ -330,7 +347,7 @@ class SourcesViewController: SileoTableViewController {
         let flaggedSourceController = FlaggedSourceWarningViewController(nibName: "FlaggedSourceWarningViewController", bundle: nil)
         flaggedSourceController.shouldAddAnywayCallback = {
             self.handleSourceAdd(urls: [url], bypassFlagCheck: true)
-            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+            self.refreshSources(forceUpdate: false, forceReload: false)
         }
         flaggedSourceController.url = url
         flaggedSourceController.modalPresentationStyle = .formSheet
@@ -349,19 +366,19 @@ class SourcesViewController: SileoTableViewController {
                             
                             RepoManager.shared.addRepos(with: [url])
                             self.reloadData()
-                            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                            self.refreshSources(forceUpdate: false, forceReload: false)
                         }
                     }
                 } catch {
                     RepoManager.shared.addRepos(with: [url])
                     self.reloadData()
-                    self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                    self.refreshSources(forceUpdate: false, forceReload: false)
                 }
             }
         } else {
             RepoManager.shared.addRepos(with: urls)
             self.reloadData()
-            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+            self.refreshSources(forceUpdate: false, forceReload: false)
         }
     }
 }
@@ -493,7 +510,7 @@ extension SourcesViewController { // UITableViewDelegate
             self.reSortList()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            self.refreshSources(control: nil, forceUpdate: false, forceReload: true)
+            self.refreshSources(forceUpdate: false, forceReload: true)
         }
     }
     
