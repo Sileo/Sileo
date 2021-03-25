@@ -592,11 +592,12 @@ extension PackageListViewController: UISearchBarDelegate {
         let text = (searchController?.searchBar.text ?? "").lowercased()
         if text.isEmpty { return self.provisionalPackages.removeAll() }
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
-            ((package.name?.lowercased().contains(text) ?? false) || (package.author?.lowercased().contains(text) ?? false) ||
-                (package.description?.lowercased().contains(text) ?? false) ||
-                (package.identifier?.lowercased().contains(text) ?? false)) &&
-                (!packages.contains(where: { $0.packageID == package.identifier }) ||
-                DpkgWrapper.isVersion(package.version ?? "", greaterThan: packages.first(where: { $0.packageID == package.identifier })?.version ?? ""))
+            ((package.name?.lowercased().contains(text) ?? false) ||
+            (package.author?.lowercased().contains(text) ?? false) ||
+            (package.description?.lowercased().contains(text) ?? false) ||
+            (package.identifier?.lowercased().contains(text) ?? false)) &&
+            (!packages.contains(where: { $0.packageID == package.identifier }) ||
+            DpkgWrapper.isVersion(package.version ?? "", greaterThan: packages.first(where: { $0.packageID == package.identifier })?.version ?? ""))
         }
         
     }

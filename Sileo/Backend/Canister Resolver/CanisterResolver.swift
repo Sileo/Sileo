@@ -14,7 +14,7 @@ final class CanisterResolver {
     public var packages = [ProvisionalPackage]()
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version&search_fields=identifier,name,author,maintainer"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
             guard success,
                   let dict = dict,
