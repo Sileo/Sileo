@@ -173,26 +173,6 @@ class SourcesViewController: SileoTableViewController {
         }
     }
     
-    @objc func exportSources(_ sender: Any?) {
-        let sourceList = UIAlertController(title: String(localizationKey: "Export"),
-                                           message: String(localizationKey: "Export_Sources"),
-                                           preferredStyle: .alert)
-        
-        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_No"),
-                                           style: .cancel,
-                                           handler: { _ in
-                                            self.dismiss(animated: true, completion: nil)
-        }))
-        
-        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_Yes"),
-                                           style: .default,
-                                           handler: { _ in
-                                            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
-        }))
-        
-        self.present(sourceList, animated: true, completion: nil)
-    }
-    
     @IBAction func refreshSources(_ sender: UIRefreshControl?) {
         self.refreshSources(control: sender, forceUpdate: true, forceReload: true)
     }
@@ -226,10 +206,31 @@ class SourcesViewController: SileoTableViewController {
         self.tableView.reloadData()
     }
     
+    @objc func exportSources(_ sender: Any?) {
+        let sourceList = UIAlertController(title: String(localizationKey: "Export"),
+                                           message: String(localizationKey: "Export_Sources"),
+                                           preferredStyle: .alert)
+        
+        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_No"),
+                                           style: .cancel,
+                                           handler: { _ in
+                                            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_Yes"),
+                                           style: .default,
+                                           handler: { _ in
+                                            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+        }))
+        
+        self.present(sourceList, animated: true, completion: nil)
+    }
+    
     public func presentAddSourceEntryField(url: URL?) {
-        let addSourceController = UIAlertController(title: String(localizationKey: "Add_Source.Title"),
-                                                    message: String(localizationKey: "Add_Source.Body"),
-                                                    preferredStyle: .alert)
+        let title = String(localizationKey: "Add_Source.Title")
+        let msg = String(localizationKey: "Add_Source.Body")
+        let addSourceController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
         addSourceController.addTextField { textField in
             textField.placeholder = "https://coolstar.org/publicrepo"
             if let urlString = url?.absoluteString {
@@ -240,6 +241,7 @@ class SourcesViewController: SileoTableViewController {
             }
             textField.keyboardType = .URL
         }
+        
         addSourceController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"),
                                                     style: .cancel,
                                                     handler: { _ in
@@ -255,6 +257,7 @@ class SourcesViewController: SileoTableViewController {
                                                             self.handleSourceAdd(urls: [url], bypassFlagCheck: false)
                                                         }
         }))
+        
         self.present(addSourceController, animated: true, completion: nil)
     }
     
@@ -307,7 +310,7 @@ class SourcesViewController: SileoTableViewController {
         let apiURL = URL(string: "https://flagged-repo-api.getsileo.app/flagged")!
         let requestDict = ["url": url.absoluteString]
         let requestJSON = try JSONSerialization.data(withJSONObject: requestDict, options: [])
-
+        
         var request = URLRequest(url: apiURL)
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -331,11 +334,10 @@ class SourcesViewController: SileoTableViewController {
         }
         flaggedSourceController.url = url
         flaggedSourceController.modalPresentationStyle = .formSheet
-
-         present(flaggedSourceController, animated: true)
+        present(flaggedSourceController, animated: true)
     }
-
-     func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
+    
+    func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
         if !bypassFlagCheck {
             for url in urls {
                 do {
@@ -344,27 +346,22 @@ class SourcesViewController: SileoTableViewController {
                             if isFlagged {
                                 return self.showFlaggedSourceWarningController(url: url)
                             }
-
-                             RepoManager.shared.addRepos(with: [url])
+                            
+                            RepoManager.shared.addRepos(with: [url])
                             self.reloadData()
-
-                             self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
                         }
                     }
                 } catch {
-                    print("Failed to check if source is flagged.")
-
-                     RepoManager.shared.addRepos(with: [url])
+                    RepoManager.shared.addRepos(with: [url])
                     self.reloadData()
-
-                     self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+                    self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
                 }
             }
         } else {
             RepoManager.shared.addRepos(with: urls)
             self.reloadData()
-
-             self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
+            self.refreshSources(control: nil, forceUpdate: false, forceReload: false)
         }
     }
 }
@@ -492,6 +489,7 @@ extension SourcesViewController { // UITableViewDelegate
         if editingStyle == .delete && self.canEditRow(indexPath: indexPath) {
             let repoManager = RepoManager.shared
             repoManager.remove(repo: sortedRepoList[indexPath.row])
+            
             self.reSortList()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
