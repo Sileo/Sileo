@@ -112,18 +112,18 @@ import Foundation
     return (Int(status), stdoutStr, stderrStr)
 }
 
-@discardableResult func spawnAsRoot(command: String) -> (Int, String, String) {
+@discardableResult func spawnAsRoot(args: [String]) -> (Int, String, String) {
     guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
         return (-1, "", "")
     }
-    return spawn(command: giveMeRootPath, args: ["giveMeRoot", command])
+    return spawn(command: giveMeRootPath, args: ["giveMeRoot"] + args)
 }
 
 func deleteFileAsRoot(_ url: URL) {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.removeItem(at: url)
     #else
-    spawnAsRoot(command: "rm '\(url.path)' || true")
+    spawnAsRoot(args: ["/usr/bin/rm", "-f", "\(url.path)"])
     #endif
 }
 
@@ -133,7 +133,9 @@ func copyFileAsRoot(from: URL, to: URL) {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.copyItem(at: from, to: to)
     #else
-    spawnAsRoot(command: "cp '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
+    spawnAsRoot(args: ["/usr/bin/cp", "\(from.path)", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
     #endif
 }
 
@@ -144,9 +146,9 @@ func cloneFileAsRoot(from: URL, to: URL) {
     try? FileManager.default.copyItem(at: from, to: to)
     #else
     if FileManager.default.fileExists(atPath: "/usr/bin/bsdcp") {
-        spawnAsRoot(command: "bsdcp -c '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
-    } else {
-        spawnAsRoot(command: "cp -c '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
+        spawnAsRoot(args: ["/usr/bin/bsdcp", "-c", "\(from.path)", "\(to.path)"])
+        spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
+        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
     }
     #endif
 }
@@ -157,6 +159,8 @@ func moveFileAsRoot(from: URL, to: URL) {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.moveItem(at: from, to: to)
     #else
-    spawnAsRoot(command: "mv '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
+    spawnAsRoot(args: ["/usr/bin/mv", "\(from.path)", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
     #endif
 }

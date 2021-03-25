@@ -68,7 +68,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         self.navigationController?.navigationBar._hidesShadow = false
         
-        guard let visibleCells = collectionView?.visibleCells else { return }
+        guard let visibleCells = collectionView?.visibleCells else {
+            return
+        }
         for cell in visibleCells {
             if let packageCell = cell as? PackageCollectionViewCell {
                 packageCell.hideSwipe(animated: false)
@@ -265,6 +267,17 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
+    @objc func reloadData() {
+        self.searchCache = [:]
+        if showUpdates {
+            self.reloadUpdates()
+        } else {
+            if let searchController = self.searchController {
+                self.updateSearchResults(for: searchController)
+            }
+        }
+    }
+    
     @objc func reloadUpdates() {
         if showUpdates {
             DispatchQueue.global(qos: .default).async {
@@ -290,20 +303,47 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
-    @objc func reloadData() {
-        self.searchCache = [:]
-        if showUpdates {
-            self.reloadUpdates()
-        } else {
-            if let searchController = self.searchController {
-                self.updateSearchResults(for: searchController)
-            }
-        }
+    @objc func exportButtonClicked(_ button: UIButton?) {
+        let alert = UIAlertController(title: String(localizationKey: "Export"),
+                                      message: String(localizationKey: "Export_Packages"),
+                                      preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
+            self.copyPackages()
+        })
+        
+        let cancelAction = UIAlertAction(title: String(localizationKey: "Export_No"), style: .cancel, handler: { _ in
+        })
+        
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
     
-    @objc func toggleSettings(_: Any?) {
-        self.displaySettings = !self.displaySettings
-        collectionView?.reloadSections(IndexSet(integer: 1))
+    func copyPackages() {
+        var bodyFromArray = ""
+        let packages = self.packages
+        for package in packages {
+            guard let packageName = package.name else {
+                continue
+            }
+            let packageVersion = package.version
+            
+            bodyFromArray += "\(packageName): \(packageVersion)\n"
+        }
+        if let subRange = Range<String.Index>(NSRange(location: bodyFromArray.count - 1, length: 1),
+                                              in: bodyFromArray) {
+            bodyFromArray.removeSubrange(subRange)
+        }
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = bodyFromArray
+    }
+    
+    @objc func showWishlist(_ sender: Any?) {
+        let wishlistController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
+        wishlistController.title = String(localizationKey: "Wishlist")
+        wishlistController.packagesLoadIdentifier = "--wishlist"
+        self.navigationController?.pushViewController(wishlistController, animated: true)
     }
     
     @objc func sortPopup(sender: UIView?) {
@@ -328,55 +368,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         alertController.modalPresentationStyle = .popover
         alertController.popoverPresentationController?.sourceView = sender
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc func changeSettings(_ settings: UISegmentedControl) {
-        UserDefaults.standard.set(settings.selectedSegmentIndex, forKey: "userType")
-        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-    }
-    
-    @objc func showWishlist(_: Any?) {
-        let wishlistController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
-        wishlistController.title = String(localizationKey: "Wishlist")
-        wishlistController.packagesLoadIdentifier = "--wishlist"
-        self.navigationController?.pushViewController(wishlistController, animated: true)
-    }
-    
-    @objc func exportButtonClicked(_ button: UIButton?) {
-        let alert = UIAlertController(title: String(localizationKey: "Export"),
-                                      message: String(localizationKey: "Export_Packages"),
-                                      preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
-            self.copyPackages()
-        })
-        
-        let cancelAction = UIAlertAction(title: String(localizationKey: "Export_No"), style: .cancel, handler: { _ in
-        })
-        
-        alert.addAction(defaultAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
-    }
-    
-    func copyPackages() {
-        print("It's high tide.")
-        var bodyFromArray = ""
-        let packages = self.packages
-        for package in packages {
-            guard let packageName = package.name else {
-                    continue
-            }
-            let packageVersion = package.version
-            
-            bodyFromArray += "\(packageName): \(packageVersion)\n"
-        }
-        if let subRange = Range<String.Index>(NSRange(location: bodyFromArray.count - 1, length: 1),
-                                              in: bodyFromArray) {
-            bodyFromArray.removeSubrange(subRange)
-        }
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = bodyFromArray
     }
 }
 
@@ -424,17 +415,17 @@ extension PackageListViewController: UICollectionViewDataSource {
             if kind == UICollectionView.elementKindSectionHeader {
                 guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                        withReuseIdentifier: "PackageListHeader",
-                                                                                       for: indexPath) as? PackageListHeader else {
-                                                                                        return UICollectionReusableView()
+                                                                                       for: indexPath) as? PackageListHeader
+                else {
+                    return UICollectionReusableView()
                 }
+                
                 if indexPath.section == 0 {
                     headerView.label?.text = String(localizationKey: "Updates_Heading")
                     headerView.actionText = String(localizationKey: "Upgrade_All_Button")
                     headerView.sortButton?.isHidden = true
                     headerView.separatorView?.isHidden = true
-                    headerView.upgradeButton?.addTarget(PackageListManager.shared,
-                                                        action: #selector(PackageListManager.markUpgradeAll(_:)),
-                                                        for: .touchUpInside)
+                    headerView.upgradeButton?.addTarget(PackageListManager.shared, action: #selector(PackageListManager.markUpgradeAll(_:)), for: .touchUpInside)
                 } else {
                     headerView.label?.text = String(localizationKey: "Installed_Heading")
                     headerView.actionText = nil
@@ -445,10 +436,9 @@ extension PackageListViewController: UICollectionViewDataSource {
                     } else {
                         headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
                     }
+                    headerView.sortButton?.addTarget(self, action: #selector(PackageListViewController.sortPopup(sender:)), for: .touchUpInside)
                     
                     headerView.separatorView?.isHidden = false
-                    
-                    headerView.sortButton?.addTarget(self, action: #selector(PackageListViewController.sortPopup(sender:)), for: .touchUpInside)
                 }
                 return headerView
             }
@@ -463,8 +453,9 @@ extension PackageListViewController: UICollectionViewDataSource {
             }
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: "PackageListHeader",
-                                                                                   for: indexPath) as? PackageListHeader else {
-                                                                                    return UICollectionReusableView()
+                                                                                   for: indexPath) as? PackageListHeader
+            else {
+                return UICollectionReusableView()
             }
             headerView.actionText = nil
             headerView.separatorView?.isHidden = false
@@ -588,7 +579,10 @@ extension PackageListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text,
               !text.isEmpty,
-              showProvisional else { return }
+              showProvisional
+        else {
+            return
+        }
         CanisterResolver.shared.fetch(text) { 
             DispatchQueue.main.async { self.updateSearchResults(for: self.searchController ?? UISearchController()) }
         }

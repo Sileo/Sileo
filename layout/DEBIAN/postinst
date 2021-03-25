@@ -10,55 +10,55 @@ if ! [ -s $sourcesDir/sileo.sources ]; then
         echo -e "" > $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: https://repounclutter.coolstar.org/" $sourcesDir/sileo.sources ;
+if ! grep -Fxq "URIs: https://repounclutter.coolstar.org" $sourcesDir/sileo.sources ;
 then
         echo "Installed ModMyTTD+ Repo"
         sed -i.bak '1s;^;Types: deb\
-URIs: https://repounclutter.coolstar.org/\
+URIs: https://repounclutter.coolstar.org\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
+if ! grep -Fxq "URIs: https://repo.chariz.com" $sourcesDir/sileo.sources ;
 then
         echo "Installed Chariz Repo"
         sed -i.bak '1s;^;Types: deb\
-URIs: https://repo.chariz.com/\
+URIs: https://repo.chariz.com\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: https://repo.dynastic.co/" $sourcesDir/sileo.sources ;
+if ! grep -Fxq "URIs: https://repo.dynastic.co" $sourcesDir/sileo.sources ;
 then
         echo "Installed Dynastic Repo"
         sed -i.bak '1s;^;Types: deb\
-URIs: https://repo.dynastic.co/\
+URIs: https://repo.dynastic.co\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
+if ! grep -Fxq "URIs: https://repo.packix.com" $sourcesDir/sileo.sources ;
 then
         echo "Installed Packix Repo"
         sed -i.bak '1s;^;Types: deb\
-URIs: https://repo.packix.com/\
+URIs: https://repo.packix.com\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia" $sourcesDir/sileo.sources ;
 then
         echo "Installed BigBoss Repo"
         sed -i.bak '1s;^;Types: deb\
-URIs: http://apt.thebigboss.org/repofiles/cydia/\
+URIs: http://apt.thebigboss.org/repofiles/cydia\
 Suites: stable\
 Components: main\
 \
@@ -73,7 +73,6 @@ echo "Package: *" > /etc/apt/preferences.d/chimera
 echo "Pin: release o=Chimera Repo" >> /etc/apt/preferences.d/chimera
 echo "Pin-Priority: 1000" >> /etc/apt/preferences.d/chimera
 
-# Kill bingner repo with fire
 rm -f /etc/apt/preferences.d/checkra1n 2> /dev/null || true
 ln -s /dev/null /etc/apt/preferences.d/checkra1n
 

@@ -100,8 +100,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 _ = navController.viewControllers[0].view
             }
         }
-
-        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) { return }
+        
+        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) {
+            return
+        }
         var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         appVer += "-demo"
@@ -135,7 +137,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             .withLogLevel(FlurryLogLevelAll)
             .withCrashReporting(true).withSessionContinueSeconds(10)
         Flurry.startSession("TSNTB888V4FZTR8F6RHK", with: builder)
-        
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
