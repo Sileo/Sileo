@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/Cydia.app"])
             spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/SafeMode.app"])
         }
-            
+        
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         SileoThemeManager.shared.updateUserInterface()
-    
+        
         // Override point for customization after application launch.
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             } else {
                 cacheNeedsUpdating = true
             }
-        
+            
             if cacheNeedsUpdating {
                 SDImageCache.shared.clearDisk(onCompletion: nil)
                 try? "".write(to: cacheClearFile, atomically: true, encoding: .utf8)
