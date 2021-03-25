@@ -224,23 +224,23 @@ class SourcesViewController: SileoTableViewController {
     }
     
     @objc func exportSources(_ sender: Any?) {
-        let sourceList = UIAlertController(title: String(localizationKey: "Export"),
-                                           message: String(localizationKey: "Export_Sources"),
-                                           preferredStyle: .alert)
+        let titleString = String(localizationKey: "Export")
+        let msgString = String(localizationKey: "Export_Sources")
+        let alert = UIAlertController(title: titleString, message: msgString, preferredStyle: .alert)
         
-        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_No"),
-                                           style: .cancel,
-                                           handler: { _ in
-                                            self.dismiss(animated: true, completion: nil)
-        }))
+        let yesString = String(localizationKey: "Export_Yes")
+        let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
+            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+        })
+        alert.addAction(yesAction)
         
-        sourceList.addAction(UIAlertAction(title: String(localizationKey: "Export_Yes"),
-                                           style: .default,
-                                           handler: { _ in
-                                            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
-        }))
+        let noString = String(localizationKey: "Export_No")
+        let noAction = UIAlertAction(title: noString, style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(noAction)
         
-        self.present(sourceList, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     public func presentAddSourceEntryField(url: URL?) {
