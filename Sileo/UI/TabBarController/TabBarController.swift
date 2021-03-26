@@ -61,17 +61,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func presentPopup(completion: (() -> Void)?) {
-        guard let downloadsController = downloadsController else {
+        guard let downloadsController = downloadsController,
+              !popupIsPresented
+        else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
-        if popupIsPresented {
-            return
-        }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        if popupIsPresented {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = true
         self.popupContentView.popupCloseButtonAutomaticallyUnobstructsTopBars = false
         self.popupBar.toolbar.tag = WHITE_BLUR_TAG
@@ -95,33 +98,59 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func dismissPopup(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        guard popupIsPresented else {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = false
         self.dismissPopupBar(animated: true, completion: completion)
     }
     
     func presentPopupController() {
+        self.presentPopupController(completion: nil)
+    }
+    
+    func presentPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        self.openPopup(animated: true, completion: nil)
+        defer {
+            popupLock.signal()
+        }
+        
+        self.openPopup(animated: true, completion: completion)
     }
     
     func dismissPopupController() {
+        self.dismissPopupController(completion: nil)
+    }
+    
+    func dismissPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        self.closePopup(animated: true, completion: nil)
+        defer {
+            popupLock.signal()
+        }
+        
+        self.closePopup(animated: true, completion: completion)
     }
     
     func updatePopup() {
