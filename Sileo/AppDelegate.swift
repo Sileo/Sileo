@@ -322,6 +322,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             tabBarController.selectedViewController = packageListNVC
             PackageListManager.shared.upgradeAll(completion: {
                 TabBarController.singleton?.presentPopupController()
+                
+                let autoConfirm = UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false)
+                if autoConfirm {
+                    let downloadMan = DownloadManager.shared
+                    downloadMan.startUnqueuedDownloads()
+                    downloadMan.reloadData(recheckPackages: false)
+                }
             })
         } else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
