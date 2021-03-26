@@ -639,17 +639,13 @@ final class DownloadManager {
         let downloadPackage = DownloadPackage(package: package)
         if installations.contains(downloadPackage) {
             return .installations
-        }
-        else if uninstallations.contains(downloadPackage) {
+        } else if uninstallations.contains(downloadPackage) {
             return .uninstallations
-        }
-        else if upgrades.contains(downloadPackage) {
+        } else if upgrades.contains(downloadPackage) {
             return .upgrades
-        }
-        else if installdeps.contains(downloadPackage) {
+        } else if installdeps.contains(downloadPackage) {
             return .installdeps
-        }
-        else if uninstalldeps.contains(downloadPackage) {
+        } else if uninstalldeps.contains(downloadPackage) {
             return .uninstalldeps
         }
         return .none
