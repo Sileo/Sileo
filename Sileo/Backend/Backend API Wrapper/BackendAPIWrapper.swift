@@ -115,13 +115,11 @@ class BackendAPIWrapper: NSObject {
                 if pkgToReinstall == nil {
                     if skipIfAttemptFailed2 {
                         continue
-                    }
-                    else {
+                    } else {
                         pkgToReinstall = packageMan.newestPackage(identifier: identifier)
                     }
                 }
-            }
-            else {
+            } else {
                 pkgToReinstall = packageMan.newestPackage(identifier: identifier)
             }
             
@@ -165,8 +163,7 @@ class BackendAPIWrapper: NSObject {
             if let pkg = pkg {
                 if addOrRemove2 {
                     downloadMan.remove(package: pkg, queue: action2)
-                }
-                else {
+                } else {
                     downloadMan.add(package: pkg, queue: action2)
                 }
             }
@@ -181,12 +178,12 @@ class BackendAPIWrapper: NSObject {
         
         var pkgs: [DownloadPackage]
         switch action2 {
-            case .upgrades:        pkgs = downloadMan.upgrades
-            case .installations:   pkgs = downloadMan.installations
-            case .uninstallations: pkgs = downloadMan.uninstallations
-            case .installdeps:     pkgs = downloadMan.installdeps
-            case .uninstalldeps:   pkgs = downloadMan.uninstalldeps
-            default: return nil
+        case .upgrades:        pkgs = downloadMan.upgrades
+        case .installations:   pkgs = downloadMan.installations
+        case .uninstallations: pkgs = downloadMan.uninstallations
+        case .installdeps:     pkgs = downloadMan.installdeps
+        case .uninstalldeps:   pkgs = downloadMan.uninstalldeps
+        default: return nil
         }
         
         let packageIdentifiers = NSMutableArray()
