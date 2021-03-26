@@ -115,13 +115,11 @@ class BackendAPIWrapper: NSObject {
                 if pkgToReinstall == nil {
                     if skipIfAttemptFailed2 {
                         continue
-                    }
-                    else {
+                    } else {
                         pkgToReinstall = packageMan.newestPackage(identifier: identifier)
                     }
                 }
-            }
-            else {
+            } else {
                 pkgToReinstall = packageMan.newestPackage(identifier: identifier)
             }
             
@@ -146,6 +144,10 @@ class BackendAPIWrapper: NSObject {
         }
     }
     
+    @objc class func upgradeAllPackages(completion: (() -> Void)?) {
+        PackageListManager.shared.upgradeAll(completion: completion)
+    }
+    
     @objc class func manipulateQueue(addOrRemove: ObjCBool, identifiers: NSArray, action: BackendAPIWrapperAction, newestOrInstalled: ObjCBool) {
         let addOrRemove2 = addOrRemove.boolValue
         guard let identifiers2 = identifiers as? [String], let action2 = DownloadManagerQueue(rawValue: action.rawValue) else {
@@ -161,8 +163,7 @@ class BackendAPIWrapper: NSObject {
             if let pkg = pkg {
                 if addOrRemove2 {
                     downloadMan.remove(package: pkg, queue: action2)
-                }
-                else {
+                } else {
                     downloadMan.add(package: pkg, queue: action2)
                 }
             }
@@ -177,12 +178,12 @@ class BackendAPIWrapper: NSObject {
         
         var pkgs: [DownloadPackage]
         switch action2 {
-            case .upgrades:        pkgs = downloadMan.upgrades
-            case .installations:   pkgs = downloadMan.installations
-            case .uninstallations: pkgs = downloadMan.uninstallations
-            case .installdeps:     pkgs = downloadMan.installdeps
-            case .uninstalldeps:   pkgs = downloadMan.uninstalldeps
-            default: return nil
+        case .upgrades:        pkgs = downloadMan.upgrades
+        case .installations:   pkgs = downloadMan.installations
+        case .uninstallations: pkgs = downloadMan.uninstallations
+        case .installdeps:     pkgs = downloadMan.installdeps
+        case .uninstalldeps:   pkgs = downloadMan.uninstalldeps
+        default: return nil
         }
         
         let packageIdentifiers = NSMutableArray()
@@ -204,24 +205,35 @@ class BackendAPIWrapper: NSObject {
         DownloadManager.shared.reloadData(recheckPackages: recheckPackages.boolValue, completion: completion)
     }
     
-    @objc class func emptyQueue() {
-        DownloadManager.shared.removeAllItems()
+    @objc class func confirmQueue() {
+        DownloadManager.shared.startUnqueuedDownloads()
+        self.reloadQueue(recheckPackages: false, completion: nil)
     }
     
-    @objc class func presentQueueBar() {
-        TabBarController.singleton?.presentPopup()
+    @objc class func clearQueue() {
+        DownloadManager.shared.cancelUnqueuedDownloads()
+        self.dismissQueueController(completion: nil)
+        self.reloadQueue(recheckPackages: true, completion: nil)
     }
     
-    @objc class func dismissQueueBar() {
-        TabBarController.singleton?.dismissPopup()
+    @objc class func presentQueueBar(completion: (() -> Void)?) {
+        TabBarController.singleton?.presentPopup(completion: completion)
     }
     
-    @objc class func presentQueueController() {
-        TabBarController.singleton?.presentPopupController()
+    @objc class func dismissQueueBar(completion: (() -> Void)?) {
+        TabBarController.singleton?.dismissPopup(completion: completion)
     }
     
-    @objc class func dismissQueueController() {
-        TabBarController.singleton?.dismissPopupController()
+    @objc class func presentQueueController(completion: (() -> Void)?) {
+        TabBarController.singleton?.presentPopupController(completion: completion)
+    }
+    
+    @objc class func dismissQueueController(completion: (() -> Void)?) {
+        TabBarController.singleton?.dismissPopupController(completion: completion)
+    }
+    
+    @objc class func queueControllerCurrentState() -> LNPopupPresentationState {
+        return TabBarController.singleton?.popupPresentationState ?? LNPopupPresentationState.hidden
     }
     
     @objc class func availablePackageIdentifiers() -> NSArray? {
@@ -325,7 +337,7 @@ class BackendAPIWrapper: NSObject {
         
         if !toAdd.isEmpty {
             repoMan.addRepos(with: toAdd)
-            self.refreshRepos(forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
+            self.refreshRepos(useRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()
         }
     }
@@ -345,23 +357,38 @@ class BackendAPIWrapper: NSObject {
         
         if !toRemove.isEmpty {
             repoMan.remove(repos: toRemove)
-            self.refreshRepos(forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
+            self.refreshRepos(useRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()
         }
     }
     
     @objc class func refreshRepos(completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        self.refreshRepos(forceUpdate: true, forceReload: true, isBackground: false, completion: completion)
+        self.refreshRepos(useRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: completion)
     }
     
-    @objc class func refreshRepos(forceUpdate: ObjCBool, forceReload: ObjCBool, isBackground: ObjCBool, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        let completionTrampoline = { (didFindErrors: Bool, errorOutput: NSAttributedString) in
+    @objc class func refreshRepos(useRefreshControl: ObjCBool, errorScreen: ObjCBool, forceUpdate: ObjCBool, forceReload: ObjCBool, isBackground: ObjCBool, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
+        let control = useRefreshControl.boolValue
+        let error = errorScreen.boolValue
+        let update = forceUpdate.boolValue
+        let reload = forceReload.boolValue
+        let background = isBackground.boolValue
+        
+        guard let sourcesVC = self.sourcesViewController() else {
+            return
+        }
+        
+        sourcesVC.refreshSources(useRefreshControl: control, errorScreen: error, forceUpdate: update, forceReload: reload, isBackground: background, completion: { didFindErrors, errorOutput in
             if let completion = completion {
                 let didFindErrors2 = ObjCBool(didFindErrors)
                 completion(didFindErrors2, errorOutput)
             }
+        })
+    }
+    
+    @objc class func showRefreshErrorViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
+        if let sourcesVC = self.sourcesViewController() {
+            sourcesVC.showRefreshErrorViewController(errorOutput: errorOutput, completion: completion)
         }
-        RepoManager.shared.update(force: forceUpdate.boolValue, forceReload: forceReload.boolValue, isBackground: isBackground.boolValue, completion: completionTrampoline)
     }
     
     @objc class func addedRepoURLs() -> NSArray? {

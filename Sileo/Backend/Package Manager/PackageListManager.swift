@@ -548,20 +548,23 @@ final class PackageListManager {
             package.package = identifier
             package.packageFileURL = url
             return package
+        } else {
+            guard let allPackages = allPackages else {
+                return nil
+            }
+            
+            let lowerIdentifier = identifier.lowercased()
+            return allPackages.first(where: { $0.packageID == lowerIdentifier })
         }
-        let lowerIdentifier = identifier.lowercased()
-        for package in allPackages ?? [] where package.package == lowerIdentifier {
-            return package
-        }
-        return nil
     }
     
     public func installedPackage(identifier: String) -> Package? {
-        let lowerIdentifier = identifier.lowercased()
-        for package in installedPackages ?? [] where package.package == lowerIdentifier {
-            return package
+        guard let installedPackages = installedPackages else {
+            return nil
         }
-        return nil
+        
+        let lowerIdentifier = identifier.lowercased()
+        return installedPackages.first(where: { $0.packageID == lowerIdentifier })
     }
     
     public func package(url: URL) -> Package? {
@@ -602,17 +605,44 @@ final class PackageListManager {
         }
     }
     
-    @objc public func markUpgradeAll(_ sender: Any) {
-        let availableUpdates = self.availableUpdates()
-        for packageTuple in availableUpdates {
-            let package = packageTuple.0
-            guard let installedPackage = packageTuple.1 else {
+    public func package(identifier: String, version: String) -> Package? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
+    }
+    
+    public func package(identifiersAndVersions: [(String, String)]) -> [Package]? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        
+        let filtered = allPackages.filter({
+            let pkg = $0
+            return identifiersAndVersions.contains(where: { $0.0 == pkg.packageID && $0.1 == pkg.version })
+        })
+        
+        return filtered.isEmpty ? nil : filtered
+    }
+    
+    public func upgradeAll() {
+        self.upgradeAll(completion: nil)
+    }
+    
+    public func upgradeAll(completion: (() -> Void)?) {
+        let packagePairs = self.availableUpdates()
+        let downloadMan = DownloadManager.shared
+        
+        for packagePair in packagePairs {
+            let newestPkg = packagePair.0
+            
+            if let installedPkg = packagePair.1, installedPkg == newestPkg {
                 continue
             }
-            if installedPackage.wantInfo == .install || installedPackage.wantInfo == .unknown {
-                DownloadManager.shared.add(package: package, queue: .upgrades)
-            }
+            
+            downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        DownloadManager.shared.reloadData(recheckPackages: true)
+        
+        downloadMan.reloadData(recheckPackages: true, completion: completion)
     }
 }

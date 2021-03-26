@@ -104,10 +104,10 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 7
+            return 8
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
-                return 7
+                return 8
             }
             return 1
         case 3: // About section
@@ -189,10 +189,15 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                    cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
+                    return cell
+                case 6:
+                    let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 6:
+                case 7:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
@@ -236,10 +241,15 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                    cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
+                    return cell
+                case 6:
+                    let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 6:
+                case 7:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true

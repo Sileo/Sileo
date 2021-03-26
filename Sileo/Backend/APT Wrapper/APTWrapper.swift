@@ -301,7 +301,7 @@ class APTWrapper {
             arguments.append(packagesStr)
         }
         for package in removals {
-            var packageStr = package.package.package + "-"
+            let packageStr = package.package.package + "-"
             arguments.append(packageStr)
         }
         
@@ -321,10 +321,11 @@ class APTWrapper {
             pipe(&pipesileo)
             
             guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipestatusfd[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipesileo[0], F_SETFL, O_NONBLOCK) != -1 else {
-                    fatalError("Unable to set attributes on pipe")
+                  fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1,
+                  fcntl(pipestatusfd[0], F_SETFL, O_NONBLOCK) != -1,
+                  fcntl(pipesileo[0], F_SETFL, O_NONBLOCK) != -1
+            else {
+                fatalError("Unable to set attributes on pipe")
             }
             
             var fileActions: posix_spawn_file_actions_t?
@@ -345,11 +346,19 @@ class APTWrapper {
             arguments.insert("giveMeRoot", at: 0)
             
             let argv: [UnsafeMutablePointer<CChar>?] = arguments.map { $0.withCString(strdup) }
-            defer { for case let arg? in argv { free(arg) } }
+            defer {
+                for case let arg? in argv {
+                    free(arg)
+                }
+            }
             
             let environment = ["SILEO=6 1", "CYDIA=6 1"]
             let env: [UnsafeMutablePointer<CChar>?] = environment.map { $0.withCString(strdup) }
-            defer { for case let key? in env { free(key) } }
+            defer {
+                for case let key? in env {
+                    free(key)
+                }
+            }
             
             var pid: pid_t = 0
             
