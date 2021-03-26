@@ -131,7 +131,7 @@ class DpkgWrapper {
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
         let ignoreCommand = ignoreUpdates ? "hold" : "install"
-        let command = ["/usr/bin/echo", "'\(package) \(ignoreCommand)'", "|", "/usr/bin/dpkg", "--set-selections"]
+        let command = ["/usr/bin/echo", "\(package) \(ignoreCommand)", "|", "/usr/bin/dpkg", "--set-selections"]
         spawnAsRoot(args: command)
     }
     
