@@ -27,7 +27,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
             if let toSet = toSet,
                provisionalCache {
                 self.provisionalCache = false
-                self.handleButtonPress(toSet)
+                self.handleButtonPress(toSet, false)
             }
         }
     }
@@ -283,12 +283,14 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         }
     }
     
-    private func handleButtonPress(_ package: Package) {
-        if package.isProvisional ?? false {
-            guard let source = package.source,
-                  let url = URL(string: source) else { return }
-            self.addRepo(url)
-            return
+    private func handleButtonPress(_ package: Package, _ check: Bool = true) {
+        if check {
+            if package.isProvisional ?? false {
+                guard let source = package.source,
+                      let url = URL(string: source) else { return }
+                self.addRepo(url)
+                return
+            }
         }
         self.hapticResponse()
         let downloadManager = DownloadManager.shared
