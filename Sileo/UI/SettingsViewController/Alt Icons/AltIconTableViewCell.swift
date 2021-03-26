@@ -10,13 +10,15 @@ import UIKit
 
 class AltIconTableViewCell: UITableViewCell {
     
-    private var label = UILabel()
+    private var iconName = UILabel()
     private var iconView = UIImageView()
+    private var author = UILabel()
     var altIcon: AltIcon? {
         didSet {
             if let altIcon = altIcon {
-                self.label.text = altIcon.displayName
+                self.iconName.text = altIcon.displayName
                 self.iconView.image = altIcon.image
+                self.author.text = altIcon.author
             }
         }
     }
@@ -25,7 +27,8 @@ class AltIconTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.addSubview(iconView)
-        self.contentView.addSubview(label)
+        self.contentView.addSubview(iconName)
+        self.contentView.addSubview(author)
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -35,11 +38,18 @@ class AltIconTableViewCell: UITableViewCell {
         iconView.layer.masksToBounds = true
         iconView.layer.cornerRadius = 15
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: 7.5).isActive = true
-        label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 7.5).isActive = true
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        iconName.translatesAutoresizingMaskIntoConstraints = false
+        iconName.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -7.5).isActive = true
+        iconName.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: 7.5).isActive = true
+        iconName.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 7.5).isActive = true
+        iconName.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        author.translatesAutoresizingMaskIntoConstraints = false
+        author.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 10).isActive = true
+        author.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: 7.5).isActive = true
+        author.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 7.5).isActive = true
+        author.font = UIFont.systemFont(ofSize: 13, weight: .light)
+
     }
     
     required init?(coder: NSCoder) {

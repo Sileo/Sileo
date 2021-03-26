@@ -126,6 +126,15 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>OG</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>OG</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
@@ -236,6 +245,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Taurine~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>OG</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>OG~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>

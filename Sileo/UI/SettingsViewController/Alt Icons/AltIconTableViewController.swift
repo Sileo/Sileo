@@ -10,6 +10,7 @@ import UIKit
 
 struct AltIcon {
     var displayName: String
+    var author: String
     var key: String?
     var image: UIImage
 }
@@ -22,18 +23,19 @@ class AltIconTableViewController: UITableViewController {
     }
     
     let icons = [
-        AltIcon(displayName: "Stock", key: nil, image: altImage("AppIcon60x60")),
-        AltIcon(displayName: "Taurine", key: "Taurine", image: altImage("Taurine")),
-        AltIcon(displayName: "Chimera", key: "Chimera", image: altImage("Chimera")),
-        AltIcon(displayName: "Procursus", key: "Procursus", image: altImage("Procursus")),
-        AltIcon(displayName: "Sugar Free", key: "SugarFree", image: altImage("SugarFree")),
-        AltIcon(displayName: "Mango Crazy", key: "MangoCrazy", image: altImage("MangoCrazy")),
-        AltIcon(displayName: "Cool Breeze", key: "CoolBreeze", image: altImage("CoolBreeze")),
-        AltIcon(displayName: "Blue Lemonade", key: "BlueLemonade", image: altImage("BlueLemonade")),
-        AltIcon(displayName: "Cotton Candy", key: "CottonCandy", image: altImage("CottonCandy")),
-        AltIcon(displayName: "Strawberry Sunset", key: "StrawberrySunset", image: altImage("StrawberrySunset")),
-        AltIcon(displayName: "Oceanic Blue", key: "OceanicBlue", image: altImage("OceanicBlue")),
-        AltIcon(displayName: "Sus", key: "Sus", image: altImage("Sus"))
+        AltIcon(displayName: "Stock", author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
+        AltIcon(displayName: "OG", author: "Dennis Bednarz", key: "OG", image: altImage("OG")),
+        AltIcon(displayName: "Taurine", author: "Alpha_Stream", key: "Taurine", image: altImage("Taurine")),
+        AltIcon(displayName: "Chimera", author: "Korfi", key: "Chimera", image: altImage("Chimera")),
+        AltIcon(displayName: "Procursus", author: "Korfi", key: "Procursus", image: altImage("Procursus")),
+        AltIcon(displayName: "Sugar Free", author: "Alpha_Stream", key: "SugarFree", image: altImage("SugarFree")),
+        AltIcon(displayName: "Mango Crazy", author: "Alpha_Stream", key: "MangoCrazy", image: altImage("MangoCrazy")),
+        AltIcon(displayName: "Cool Breeze", author: "Alpha_Stream", key: "CoolBreeze", image: altImage("CoolBreeze")),
+        AltIcon(displayName: "Blue Lemonade", author: "Alpha_Stream ", key: "BlueLemonade", image: altImage("BlueLemonade")),
+        AltIcon(displayName: "Cotton Candy", author: "emiyl0", key: "CottonCandy", image: altImage("CottonCandy")),
+        AltIcon(displayName: "Strawberry Sunset", author: "Korfi", key: "StrawberrySunset", image: altImage("StrawberrySunset")),
+        AltIcon(displayName: "Oceanic Blue", author: "Korfi", key: "OceanicBlue", image: altImage("OceanicBlue")),
+        AltIcon(displayName: "Sus", author: "emiyl0", key: "Sus", image: altImage("Sus"))
     ]
     
     @objc func updateSileoColors() {
