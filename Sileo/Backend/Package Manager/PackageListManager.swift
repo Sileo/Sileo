@@ -548,20 +548,23 @@ final class PackageListManager {
             package.package = identifier
             package.packageFileURL = url
             return package
+        } else {
+            guard let allPackages = allPackages else {
+                return nil
+            }
+            
+            let lowerIdentifier = identifier.lowercased()
+            return allPackages.first(where: { $0.packageID == lowerIdentifier })
         }
-        let lowerIdentifier = identifier.lowercased()
-        for package in allPackages ?? [] where package.package == lowerIdentifier {
-            return package
-        }
-        return nil
     }
     
     public func installedPackage(identifier: String) -> Package? {
-        let lowerIdentifier = identifier.lowercased()
-        for package in installedPackages ?? [] where package.package == lowerIdentifier {
-            return package
+        guard let installedPackages = installedPackages else {
+            return nil
         }
-        return nil
+        
+        let lowerIdentifier = identifier.lowercased()
+        return installedPackages.first(where: { $0.packageID == lowerIdentifier })
     }
     
     public func package(url: URL) -> Package? {
@@ -600,6 +603,26 @@ final class PackageListManager {
             }
             return packages
         }
+    }
+    
+    public func package(identifier: String, version: String) -> Package? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
+    }
+    
+    public func package(identifiersAndVersions: [(String, String)]) -> [Package]? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        
+        let filtered = allPackages.filter({
+            let pkg = $0
+            return identifiersAndVersions.contains(where: { $0.0 == pkg.packageID && $0.1 == pkg.version })
+        })
+        
+        return filtered.isEmpty ? nil : filtered
     }
     
     public func upgradeAll() {
