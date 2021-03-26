@@ -164,7 +164,7 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
                     cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
                     cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = nil
+                    cell.backgroundColor = .clear
                     cell.leftLabel.textColor = .tintColor
                     cell.rightLabel.textColor = .tintColor
                     return cell
@@ -216,7 +216,7 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
                     cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
                     cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = nil
+                    cell.backgroundColor = .clear
                     cell.leftLabel.textColor = .tintColor
                     cell.rightLabel.textColor = .tintColor
                     return cell

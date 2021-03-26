@@ -22,6 +22,8 @@ final class Package: Hashable, Equatable {
     public var depiction: String?
     public var icon: String?
     public var sourceFile: String?
+    public var source: String?
+    public var isProvisional: Bool?
     public var sourceFileURL: URL?
     public var rawControl: [String: String] = [:]
     public var rawData: Data?
