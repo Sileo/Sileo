@@ -79,20 +79,28 @@ final class DownloadManager {
         viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
     }
     
-    public func downloadingPackages() -> Int {
-        var downloadsCount = 0
-        for keyValue in downloads where keyValue.value.progress < 1 {
-            downloadsCount += 1
-        }
-        return downloadsCount
+    public func installingPackages() -> Int {
+        upgrades.count + installations.count + installdeps.count
+    }
+    
+    public func uninstallingPackages() -> Int {
+        uninstallations.count + uninstalldeps.count
+    }
+    
+    public func proposingPackagesCount() -> Int {
+        return self.installingPackages() + self.uninstallingPackages()
     }
     
     public func queuedPackages() -> Int {
         queued.count + queuedRemovals.count
     }
     
-    public func installingPackages() -> Int {
-        upgrades.count + installations.count + installdeps.count
+    public func downloadingPackages() -> Int {
+        var downloadsCount = 0
+        for keyValue in downloads where keyValue.value.progress < 1 {
+            downloadsCount += 1
+        }
+        return downloadsCount
     }
     
     public func readyPackages() -> Int {
@@ -107,13 +115,11 @@ final class DownloadManager {
         return readyCount
     }
     
-    public func uninstallingPackages() -> Int {
-        uninstallations.count + uninstalldeps.count
-    }
-    
     private func addDownloadItemsIfNotPresent() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let allRawDownloads = upgrades + installations + installdeps
         var allPackageIDs: [String] = []
@@ -312,7 +318,9 @@ final class DownloadManager {
         var downloadCount: [String: Int] = [:]
         
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let allRawDownloads = upgrades + installations + installdeps
         
@@ -404,7 +412,6 @@ final class DownloadManager {
     
     private func verify(download: Download, fileURL: URL) throws -> Bool {
         let package = download.package
-        
         let packageControl = package.rawControl
         
         if !package.package.contains("/") {
@@ -537,7 +544,9 @@ final class DownloadManager {
     
     private func addBrokenPackages() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         guard let statusPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) else {
             return
@@ -563,7 +572,9 @@ final class DownloadManager {
     
     public func removeAllItems() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         upgrades.removeAll()
         installdeps.removeAll()
@@ -575,7 +586,6 @@ final class DownloadManager {
         errors.removeAll()
         
         self.addBrokenPackages()
-        
         self.addDownloadItemsIfNotPresent()
     }
     
@@ -614,7 +624,9 @@ final class DownloadManager {
     
     public func remove(package: String) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         installations.removeAll { $0.package.package == package }
         upgrades.removeAll { $0.package.package == package }
@@ -628,16 +640,16 @@ final class DownloadManager {
         if installations.contains(downloadPackage) {
             return .installations
         }
-        if uninstallations.contains(downloadPackage) {
+        else if uninstallations.contains(downloadPackage) {
             return .uninstallations
         }
-        if upgrades.contains(downloadPackage) {
+        else if upgrades.contains(downloadPackage) {
             return .upgrades
         }
-        if installdeps.contains(downloadPackage) {
+        else if installdeps.contains(downloadPackage) {
             return .installdeps
         }
-        if uninstalldeps.contains(downloadPackage) {
+        else if uninstalldeps.contains(downloadPackage) {
             return .uninstalldeps
         }
         return .none
@@ -645,7 +657,9 @@ final class DownloadManager {
     
     public func add(package: Package, queue: DownloadManagerQueue) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let downloadPackage = DownloadPackage(package: package)
         switch queue {
@@ -681,7 +695,9 @@ final class DownloadManager {
     
     public func remove(downloadPackage: DownloadPackage, queue: DownloadManagerQueue) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         switch queue {
         case .none:
