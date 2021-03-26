@@ -254,7 +254,7 @@ class SourcesViewController: SileoTableViewController {
         let addSourceController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
         addSourceController.addTextField { textField in
-            textField.placeholder = "https://coolstar.org/publicrepo"
+            textField.placeholder = "https://coolstar.org/publicrepo/"
             if let urlString = url?.absoluteString {
                 let parsedURL = urlString.replacingOccurrences(of: "sileo://source/", with: "")
                 textField.text = parsedURL
