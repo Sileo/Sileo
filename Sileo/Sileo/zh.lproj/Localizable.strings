@@ -112,6 +112,7 @@
 "Show_Package_Contents_Button" = "显示软件包内容";
 
 "Licenses_Page_Title" = "法律资讯";
+"Alternate_Icon_Title" = "自定义图标";
 
 "Settings_Payment_Provider_Heading" = "付款服务提供商";
 "Settings_Translations_Heading" = "翻译";
@@ -126,6 +127,7 @@
 "Tint_Color" = "自定义颜色";
 "Reset_Tint_Color" = "重置颜色";
 "Auto_Complete_Queue" = "自动完成队列";
+"Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Enable_Analytics" = "启用分析";
 "Swipe_Actions" = "滑动动作";
 
@@ -147,6 +149,10 @@
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";
 "After_Install_Reboot" = "重启设备";
+"After_Install_Relaunch_Later" = "稍后重启 Sileo";
+"After_Install_Respring_Later" = "稍后重启 SpringBoard";
+"After_Install_Reboot_Later" = "稍后重启设备";
+
 
 "Dangerous_Repo.Title" = "危险源";
 "Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为,违法内容,病毒而被标记的源.\n\n被标记的软件源可能经常发布许多转载的软件包(包括许多免费和收费的软件包).这些软件包可能会影响到您的隐私和设备,有时可能会影响到越狱环境.我们建议您提高谨慎以远离有害软件包.";
