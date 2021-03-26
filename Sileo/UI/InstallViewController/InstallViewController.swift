@@ -76,6 +76,7 @@ class InstallViewController: SileoViewController {
                 self.progressView?.alpha = 0
                 self.completeButton?.alpha = 1
                 self.completeLaterButton?.alpha = 1
+                self.refreshSileo = true
             }
         }
         #else
@@ -214,7 +215,7 @@ class InstallViewController: SileoViewController {
     
     @IBAction func completeButtonTapped(_ sender: Any?) {
         if self.returnButtonAction == .back || self.returnButtonAction == .uicache {
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); return }
+            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
             self.navigationController?.popViewController(animated: true)
             DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.purgeCache()

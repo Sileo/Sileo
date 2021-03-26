@@ -566,7 +566,6 @@ class APTWrapper {
             }
             
             spawnAsRoot(args: ["/usr/bin/apt-get", "clean"])
-            
             completionCallback(Int(status), finish, refreshSileo)
         }
     }
