@@ -95,6 +95,14 @@
 		E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
+		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
+		E1BB50DE260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
+		E1BB50DF260E913A00F870B8 /* OG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DA260E913A00F870B8 /* OG@2x.png */; };
+		E1BB50E0260E913A00F870B8 /* OG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DA260E913A00F870B8 /* OG@2x.png */; };
+		E1BB50E1260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
+		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
+		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
@@ -646,6 +654,10 @@
 		E1B3FBBC2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Categories.strings"; sourceTree = "<group>"; };
 		E1B3FBBD2601256600F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Errors.strings"; sourceTree = "<group>"; };
 		E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@3x.png"; sourceTree = "<group>"; };
+		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
+		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
+		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
 		E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1049,6 +1061,7 @@
 		49CE7CB42607F9A400A20711 /* AltIcons */ = {
 			isa = PBXGroup;
 			children = (
+				E1BB50D8260E912000F870B8 /* OG */,
 				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
 				493B23CD26098104007D605F /* Chimera */,
 				49CE7CC92607F9A400A20711 /* Cool Breeze */,
@@ -1230,6 +1243,17 @@
 				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
 			);
 			path = "Canister Resolver";
+			sourceTree = "<group>";
+		};
+		E1BB50D8260E912000F870B8 /* OG */ = {
+			isa = PBXGroup;
+			children = (
+				E1BB50DA260E913A00F870B8 /* OG@2x.png */,
+				E1BB50DC260E913A00F870B8 /* OG@3x.png */,
+				E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */,
+				E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */,
+			);
+			path = OG;
 			sourceTree = "<group>";
 		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
@@ -2323,6 +2347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BB50E0260E913A00F870B8 /* OG@2x.png in Resources */,
 				F139D13B22EA9209007F5C0D /* Assets.xcassets in Resources */,
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
@@ -2346,10 +2371,13 @@
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
+				E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
 				F183CFC42318F48600D3AF3B /* RepoScraper in Resources */,
+				E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */,
+				E1BB50DE260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
 				F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2373,6 +2401,7 @@
 				493B240826098169007D605F /* Procursus@2x.png in Resources */,
 				493B23EA26098132007D605F /* OceanicBlue~ipad@2x.png in Resources */,
 				F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */,
+				E1BB50DF260E913A00F870B8 /* OG@2x.png in Resources */,
 				493B23FE26098169007D605F /* Sus@2x.png in Resources */,
 				1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */,
 				493B240626098169007D605F /* Procursus~ipad@2x.png in Resources */,
@@ -2382,6 +2411,7 @@
 				49CE7CD72607F9A400A20711 /* SugarFree~ipad@2x.png in Resources */,
 				493B240726098169007D605F /* Procursus~ipad@3x.png in Resources */,
 				493B23FD26098169007D605F /* Sus@3x.png in Resources */,
+				E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */,
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
@@ -2422,8 +2452,10 @@
 				49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */,
 				49CE7CD82607F9A400A20711 /* SugarFree@3x.png in Resources */,
 				493B23DF26098116007D605F /* CottonCandy~ipad@3x.png in Resources */,
+				E1BB50E1260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
 				49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */,
 				49CE7CD02607F9A400A20711 /* BlueLemonade@2x.png in Resources */,
+				E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
 				F183CFC32318F48600D3AF3B /* RepoScraper in Resources */,
 				49CE7CD62607F9A400A20711 /* SugarFree~ipad@3x.png in Resources */,
 				F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */,
