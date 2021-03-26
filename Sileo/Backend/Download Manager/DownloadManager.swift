@@ -87,8 +87,8 @@ final class DownloadManager {
         uninstallations.count + uninstalldeps.count
     }
     
-    public func proposingPackagesCount() -> Int {
-        return self.installingPackages() + self.uninstallingPackages()
+    public func operationCount() -> Int {
+        return upgrades.count + installations.count + uninstallations.count + installdeps.count + uninstalldeps.count
     }
     
     public func queuedPackages() -> Int {
