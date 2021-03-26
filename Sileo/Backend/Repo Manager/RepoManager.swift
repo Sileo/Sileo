@@ -65,12 +65,12 @@ final class RepoManager {
         
         repoListLock.wait()
         let jailbreakRepo = Repo()
-        jailbreakRepo.rawURL = "https://apt.procurs.us"
+        jailbreakRepo.rawURL = "https://apt.procurs.us/"
         jailbreakRepo.suite = "iphoneos-arm64/\(cfMajorVersion)"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
-        URIs: https://apt.procurs.us
+        URIs: https://apt.procurs.us/
         Suites: iphoneos-arm64/\(cfMajorVersion)
         Components: main
         """
@@ -82,19 +82,19 @@ final class RepoManager {
             parseSourcesFile(at: sourcesURL)
         } else {
             addRepos(with: [
-                "https://repo.chariz.com",
-                "https://repo.dynastic.co",
-                "https://repo.packix.com",
-                "https://repounclutter.coolstar.org"
+                "https://repo.chariz.com/",
+                "https://repo.dynastic.co/",
+                "https://repo.packix.com/",
+                "https://repounclutter.coolstar.org/"
             ].compactMap(URL.init(string:)))
             
             let bigBoss = Repo()
-            bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia"
+            bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia/"
             bigBoss.suite = "stable"
             bigBoss.components = ["main"]
             bigBoss.rawEntry = """
             Types: deb
-            URIs: http://apt.thebigboss.org/repofiles/cydia
+            URIs: http://apt.thebigboss.org/repofiles/cydia/
             Suites: stable
             Components: main
             """
@@ -117,22 +117,24 @@ final class RepoManager {
     
     func addRepos(with urls: [URL]) {
         for url in urls {
-            let charSet = CharacterSet(charactersIn: "/")
-            let trimmed = url.absoluteString.trimmingCharacters(in: charSet)
-            guard let normalized = URL(string: trimmed) else {
+            var normalizedStr = url.absoluteString
+            if normalizedStr.last != "/" {
+                normalizedStr.append("/")
+            }
+            guard let normalizedURL = URL(string: normalizedStr) else {
                 continue
             }
             
-            guard !hasRepo(with: normalized),
-                  normalized.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-                  normalized.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
+            guard !hasRepo(with: normalizedURL),
+                  normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+                  normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
             else {
                 continue
             }
             
             repoListLock.wait()
             let repo = Repo()
-            repo.rawURL = normalized.absoluteString
+            repo.rawURL = normalizedStr
             repo.suite = "./"
             repo.rawEntry = """
             Types: deb
@@ -164,9 +166,17 @@ final class RepoManager {
     }
     
     func repo(with url: URL) -> Repo? {
-        let charSet = CharacterSet(charactersIn: "/")
-        let normalized = url.absoluteString.trimmingCharacters(in: charSet)
-        return repoList.first(where: { $0.rawURL.trimmingCharacters(in: charSet) == normalized })
+        var normalizedStr = url.absoluteString
+        if normalizedStr.last != "/" {
+            normalizedStr.append("/")
+        }
+        return repoList.first(where: {
+            var repoNormalizedStr = $0.rawURL
+            if repoNormalizedStr.last != "/" {
+                repoNormalizedStr.append("/")
+            }
+            return repoNormalizedStr == normalizedStr
+        })
     }
     
     func repo(withSourceFile sourceFile: String) -> Repo? {
