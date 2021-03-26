@@ -13,6 +13,14 @@ final class CanisterResolver {
     public static let shared = CanisterResolver()
     public var packages = [ProvisionalPackage]()
     
+    let filteredRepos = [
+        "apt.elucubratus.com",
+        "test.apt.bingner.com",
+        "apt.bingner.com",
+        "apt.procurs.us",
+        "apt.saurik.com"
+    ]
+    
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version&search_fields=identifier,name,author,maintainer"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
@@ -24,6 +32,7 @@ final class CanisterResolver {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
                 package.repo = entry["repository"] as? String
+                if self.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
                 package.identifier = entry["identifier"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
@@ -36,7 +45,7 @@ final class CanisterResolver {
                     package.author = entry["author"] as? String
                 }
                 package.version = entry["version"] as? String
-                if !self.packages.contains(where: { $0.identifier == package.identifier }) {
+                if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
                     self.packages.append(package)
                 }
             }

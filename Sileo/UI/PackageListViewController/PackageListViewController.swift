@@ -491,7 +491,7 @@ extension PackageListViewController: UICollectionViewDataSource {
 extension PackageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) { return }
+        if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) { return print(provisionalPackages[indexPath.row]) }
         let packageViewController = self.controller(indexPath: indexPath)
         self.navigationController?.pushViewController(packageViewController, animated: true)
     }
@@ -591,15 +591,21 @@ extension PackageListViewController: UISearchBarDelegate {
     private func updateProvisional() {
         let text = (searchController?.searchBar.text ?? "").lowercased()
         if text.isEmpty { return self.provisionalPackages.removeAll() }
+        let all = PackageListManager.shared.allPackages ?? []
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
-            ((package.name?.lowercased().contains(text) ?? false) ||
-            (package.author?.lowercased().contains(text) ?? false) ||
-            (package.description?.lowercased().contains(text) ?? false) ||
-            (package.identifier?.lowercased().contains(text) ?? false)) &&
-            (!packages.contains(where: { $0.packageID == package.identifier }) ||
-            DpkgWrapper.isVersion(package.version ?? "", greaterThan: packages.first(where: { $0.packageID == package.identifier })?.version ?? ""))
+            let search = (package.name?.lowercased().contains(text) ?? false) ||
+                (package.identifier?.lowercased().contains(text) ?? false) ||
+                (package.description?.lowercased().contains(text) ?? false) ||
+                (package.author?.lowercased().contains(text) ?? false)
+            if !search { return false }
+            let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
+            let localRepo = all.contains(where: { package.identifier == $0.packageID })
+            if localRepo {
+                return newer
+            } else {
+                return true
+            }
         }
-        
     }
 }
 
