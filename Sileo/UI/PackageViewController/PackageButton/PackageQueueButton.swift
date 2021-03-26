@@ -16,11 +16,23 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
     public var viewControllerForPresentation: UIViewController?
     public var package: Package? {
         didSet {
+            if package?.isProvisional ?? false {
+                self.provisionalCache = true
+                return self.updateButton(title: String(localizationKey: "Add_Source.Title"))
+            }
             self.updatePurchaseStatus()
             self.updateInfo()
         }
+        willSet(toSet) {
+            if let toSet = toSet,
+               provisionalCache {
+                self.provisionalCache = false
+                self.handleButtonPress(toSet)
+            }
+        }
     }
     
+    private var provisionalCache = false
     private var _paymentInfo: PaymentPackageInfo?
     public var paymentInfo: PaymentPackageInfo? {
         get {
@@ -260,9 +272,23 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         return actionItems
     }
     
-    @objc func buttonTapped(_ sender: Any?) {
-        guard let package = self.package else {
-                return
+    private func addRepo(_ url: URL) {
+        if let tabBarController = self.window?.rootViewController as? UITabBarController,
+            let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+              let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+              tabBarController.selectedViewController = sourcesSVC
+              if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                sourcesVC.presentAddSourceEntryField(url: url)
+              }
+        }
+    }
+    
+    private func handleButtonPress(_ package: Package) {
+        if package.isProvisional ?? false {
+            guard let source = package.source,
+                  let url = URL(string: source) else { return }
+            self.addRepo(url)
+            return
         }
         self.hapticResponse()
         let downloadManager = DownloadManager.shared
@@ -339,6 +365,13 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 downloadManager.reloadData(recheckPackages: true)
             }
         }
+    }
+    
+    @objc func buttonTapped(_ sender: Any?) {
+        guard let package = self.package else {
+            return
+        }
+        self.handleButtonPress(package)
     }
     
     private func initatePurchase(provider: PaymentProvider) {

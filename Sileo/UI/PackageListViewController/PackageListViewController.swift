@@ -271,6 +271,13 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
+    func controller(provisional: ProvisionalPackage) -> PackageViewController? {
+        guard let package = CanisterResolver.package(provisional) else { return nil }
+        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
+        packageViewController.package = package
+        return packageViewController
+    }
+    
     @objc func reloadData() {
         self.searchCache = [:]
         if showUpdates {
@@ -499,9 +506,14 @@ extension PackageListViewController: UICollectionViewDataSource {
 extension PackageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) { return print(provisionalPackages[indexPath.row]) }
-        let packageViewController = self.controller(indexPath: indexPath)
-        self.navigationController?.pushViewController(packageViewController, animated: true)
+        if indexPath.section == 1 && showProvisional {
+            let pro = provisionalPackages[indexPath.row]
+            guard let pvc = self.controller(provisional: pro) else { return }
+            self.navigationController?.pushViewController(pvc, animated: true)
+        } else {
+            let packageViewController = self.controller(indexPath: indexPath)
+            self.navigationController?.pushViewController(packageViewController, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -608,11 +620,8 @@ extension PackageListViewController: UISearchBarDelegate {
             if !search { return false }
             let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
             let localRepo = all.contains(where: { package.identifier == $0.packageID })
-            if localRepo {
-                return newer
-            } else {
-                return true
-            }
+            if localRepo { return newer }
+            return true
         }
     }
 }

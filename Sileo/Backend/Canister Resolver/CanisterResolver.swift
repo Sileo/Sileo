@@ -22,7 +22,7 @@ final class CanisterResolver {
     ]
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version&search_fields=identifier,name,author,maintainer"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version,depiction.native,depiction.web,&search_fields=identifier,name,author,maintainer"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
             guard success,
                   let dict = dict,
@@ -36,6 +36,8 @@ final class CanisterResolver {
                 package.identifier = entry["identifier"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
+                package.depiction = entry["sileo_depiction"] as? String
+                package.legacyDepiction = entry["depiction"] as? String
                 if var author = entry["author"] as? String,
                    let range = author.range(of: "<") {
                     author.removeSubrange(range.lowerBound..<author.endIndex)
@@ -52,6 +54,21 @@ final class CanisterResolver {
             return fetch()
         }
     }
+    
+    public class func package(_ provisional: ProvisionalPackage) -> Package? {
+        guard let identifier = provisional.identifier,
+              let version = provisional.version else { return nil }
+        let package = Package(package: identifier, version: version)
+        package.name = provisional.name
+        package.source = provisional.repo
+        package.icon = provisional.icon
+        package.packageDescription = provisional.description
+        package.author = provisional.author
+        package.depiction = provisional.depiction
+        package.legacyDepiction = provisional.legacyDepiction
+        package.isProvisional = true
+        return package
+    }
 }
 
 struct ProvisionalPackage {
@@ -62,4 +79,6 @@ struct ProvisionalPackage {
     var description: String?
     var author: String?
     var version: String?
+    var legacyDepiction: String?
+    var depiction: String?
 }

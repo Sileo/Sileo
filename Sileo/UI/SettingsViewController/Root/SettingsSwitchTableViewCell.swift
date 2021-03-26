@@ -26,7 +26,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = .none
+        self.backgroundColor = .clear
         self.selectionStyle = .none
         self.textLabel?.textColor = .tintColor
         self.addSubview(control)
@@ -47,5 +47,6 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     @objc private func updateSileoColors() {
         textLabel?.textColor = .tintColor
+        control.onTintColor = .tintColor
     }
 }
