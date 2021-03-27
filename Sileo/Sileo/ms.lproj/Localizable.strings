@@ -1,0 +1,167 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Translated by vx from Base on 19th March 2021
+  Copyright © 2021 CoolStar. All rights reserved.
+ 
+ MALAY TRANSLATIONS
+*/
+
+// Credit Information (optional, uncomment to specify)
+//"__LocalizationCredit.Title" = "Terjemahan Bahasa Malaysia oleh vx";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/vanill4s4ndw1ch"; // (optional)
+
+// Common Prompts
+"About" = "Perihal";
+"Close" = "Tutup";
+"Double tap to open." = "Tekan dua kali untuk buka.";
+"Untitled_Repo" = "Repo Tanpa Tajuk";
+"OK" = "OK";
+"Done" = "Selesai";
+"Done_Editing" = "Selesai";
+"More_Info" = "Lebih Info";
+"Loading" = "Memuatkan…";
+"Share" = "Kongsi";
+"Delete" = "Padam";
+"Cancel" = "Batal";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Memasang";
+"Downloading_Package_Status" = "Memuat turun";
+"Queued_Package_Status" = "Diatur";
+"Ready_Status" = "Sedia";
+"Removal_Queued_Package_Status" = "Diaturkan untuk pembuangan";
+"Download_Starting" = "Memulakan…";
+"Download_Progress" = "%@ daripada %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Sahkan";
+"Queue_Clear_Button" = "Kosongkan Aturan";
+
+"Package_Upgrade_Action" = "Kemas Kini";
+"Package_Reinstall_Action" = "Pasang Semula";
+"Package_Uninstall_Action" = "Nyahpasang";
+"Package_Modify_Action" = "Ubah Suai";
+"Package_Get_Action" = "Dapatkan";
+"Package_Queue_Action" = "Atur";
+"Package_Cancel_Action" = "Batal";
+
+"Package_Share_Action" = "Kongsi pakej…";
+"Package_Developer_Find_Action" = "Lebih dari pemaju ini";
+"Package_Support_Action" = "Pertolongan";
+"Package_Hold_Enable_Action" = "Abaikan Pengemaskinian Baharu";
+"Package_Hold_Disable_Action" = "Berhenti Mengabaikan Pengemaskinian Baharu";
+"Package_Wishlist_Add" = "Tambahkan ke Senarai Harapan";
+"Package_Wishlist_Remove" = "Keluarkan daripada Senarai Harapan";
+"Wishlist" = "Senarai Harapan";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Pasang";
+"Queued_Uninstall_Heading" = "Nyahpasang";
+"Queued_Update_Heading" = "Kemas Kini";
+"Download_Errors_Heading" = "Ralat-ralat";
+
+"Installed_Heading" = "Dipasang";
+"Updates_Heading" = "Pengemaskinian";
+"Upgrade_All_Button" = "Kemas Kini Semua";
+"Package_Search.Placeholder" = "Cari pakej-pakej";
+"Sort_Name" = "Nama";
+"Sort_Date" = "Tarikh";
+"Sort_By" = "Susun mengikut:";
+
+"Package_Unavailable" = "Tiada Pakej";
+"Package_By_Author" = "%@ oleh %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "oleh %@"; // %@ = author name
+"Packages_By_Author" = "Pakej daripada %@"; // %@ = author name
+
+"Featured_Page" = "Diketengahkan";
+"News_Page" = "Baharu";
+"Sources_Page" = "Sumber";
+"Packages_Page" = "Pakej";
+"Search_Page" = "Cari";
+"Refreshing_Sources_Page" = "Mengemaskini Sumber";
+"Package_Installed_Files_Page" = "Fail Dipasang";
+
+"All_Packages.Title" = "Semua Pakej";
+"All_Packages.Cell_Subtitle" = "Lihat semua pakej daripada sumber-sumber anda";
+
+"All_Categories" = "Semua Kategori";
+
+"Repos" = "Repositori";
+
+"Add_Source.Title" = "Tambah Sumber";
+"Add_Source.Body" = "Tambah URL APT";
+"Add_Source.Button.Add" = "Tambah Sumber";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Tambah secara manual";
+
+"Untitled_Form" = "Borang Tanpa Tajuk";
+"Form_Submitted.Default_Title" = "Borang Dihantar";
+"Form_Submitted.Default_Body" = "Borang berjaya dihantar";
+
+"Web_Depiction_Deprecated_Warning" = "Penggambaran Web View adalah usang. Sila hubungi penyelenggara repo tentang menaik taraf kepada penggambaran asli.";
+
+"Package_Details_Tab" = "Butiran";
+"Package_Changelog_Tab" = "Log Penukaran";
+"Package_No_Description_Available" = "Tiada perihal untuk pakej ini.";
+"Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
+
+"Installed_Package_Header" = "Pakej Dipasang";
+"Version" = "Versi";
+"Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
+
+"Licenses_Page_Title" = "Lesen-lesen";
+
+"Settings_Payment_Provider_Heading" = "Penyedia Pembayaran";
+"Settings_Translations_Heading" = "Terjemahan";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Pembelian";
+"Settings_Payment_Provider.No_Purchases" = "Tiada pembelian";
+
+"Settings" = "Seting";
+"Settings_Page_Title" = "Seting";
+"Dark_Mode_Toggle" = "Mod Gelap";
+"Theme" = "Tema";
+"Tint_Color" = "Warna Rona";
+"Reset_Tint_Color" = "Tetapkan Semula Warna Rona";
+"Auto_Complete_Queue" = "Auto-Selesaikan Aturan";
+"Enable_Analytics" = "Aktifkan Analisis";
+
+"Sileo_Light" = "Sileo Cerah";
+"Sileo_Dark" = "Sileo Gelap";
+"Sileo_Adaptive" = "Sileo Adaptif";
+"System" = "Sistem";
+
+"Cydia_Sign_In" = "Log masuk ke dalam Cydia Store";
+"Payment_Provider_Signed_In" = "Dilog masuk";
+"Payment_Provider_Signed_In_With_Name" = "Dilog masuk sebagai %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Log Keluar";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Log keluar daripada %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Anda tidak akan dapat memuat turun pakej-pakej yang telah dibeli sehingga anda log masuk semula.";
+
+"Show_Install_Details" = "Tunjuk Butiran";
+"Hide_Install_Details" = "Sorok Butiran";
+
+"After_Install_Relaunch" = "Mula-semulakan Sileo";
+"After_Install_Respring" = "Mula-semulakan SpringBoard";
+"After_Install_Reboot" = "Mula-semulakan Peranti";
+
+"Dangerous_Repo.Title" = "Repo Berbahaya";
+"Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan seperti pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadangkala mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";
+"Dangerous_Repo.Continue" = "Saya memahami risiko, teruskan";
+"Dangerous_Repo.Cancel" = "Bawa semula kepada keselamatan";
+"Dangerous_Repo.Last_Chance.Title" = "Tambah repo berbahaya?";
+"Dangerous_Repo.Last_Chance.Body" = "Repositori berbahaya boleh menyebabkan kesan buruk kepada kebolehan anda untuk menggunakan peranti anda atau menjailbreak. Kami sangat mengesyorkan anda untuk kembali semula untuk keselamatan anda. Anda pasti anda mahu menambahkan %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Teruskan";
+"Dangerous_Repo.Last_Chance.Cancel" = "Kembali";
+
+// All export-based strings
+"Export" = "Eksport";
+"Export_Packages" = "Adakah anda mahu mengeksport senarai pakej-pakej anda? Ini akan menyalin semua nama pakej dan versi-versinya ke papan keratan anda.";
+"Export_Sources" = "Adakah anda mahu mengeksport senarai sumber-sumber anda? Ini akan menyalin semua URL sumber-sumber ke papan keratan anda.";
+"Export_Yes" = "Ya, salin.";
+"Export_No" = "Tidak, batal.";
+
+// Depcitions
+"View_Depiction" = "Lihat Penggambaran";
