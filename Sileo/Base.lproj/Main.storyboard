@@ -147,6 +147,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showUpdates" value="YES"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizableTitle" value="Packages_Page"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showWishlist" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="loadProvisional" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjk-k8-M7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,7 +162,7 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showSearchField" value="YES"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizableTitle" value="Search_Page"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="showProvisional" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="loadProvisional" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0Y-r6-bsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
