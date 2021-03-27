@@ -35,8 +35,6 @@ enum PackageTags {
     PackageTagsNone = 0,
     PackageTagsCommercial = 1,
     PackageTagsSileo = 2,
-    PackageTagsDeveloper = 4,
-    PackageTagsHacker = 8
 };
 
 static const char * regularMultilineKeys[] = {"description"};
@@ -106,13 +104,6 @@ void controlFileSetSwiftValue(char *key, char *value, void (^callback)(const cha
         if (tagExists(rawTags, "role::sileo", rawTagLen, true) || tagExists(rawTags, "role::cydia", rawTagLen, true)){
             tagsEnum |= PackageTagsSileo;
         }
-        if (tagExists(rawTags, "role::developer", rawTagLen, true)){
-            tagsEnum |= PackageTagsDeveloper;
-        }
-        if (tagExists(rawTags, "role::hacker", rawTagLen, true)){
-            tagsEnum |= PackageTagsHacker;
-        }
-        
         tagCallback(tagsEnum);
     }
     chk_free(key);
