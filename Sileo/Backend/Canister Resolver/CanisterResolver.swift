@@ -74,12 +74,14 @@ final class CanisterResolver {
         var buffer = 0
         for (index, package) in cachedQueue.enumerated() {
             if let pkg = plm.package(identifier: package.packageID, version: package.version) ?? plm.newestPackage(identifier: package.packageID) {
-                DownloadManager.shared.add(package: pkg, queue: .installations)
+                let queueFound = DownloadManager.shared.find(package: pkg)
+                if queueFound == .none {
+                    DownloadManager.shared.add(package: pkg, queue: .installations)
+                }
                 cachedQueue.remove(at: index - buffer)
                 buffer += 1
             }
         }
-        print(cachedQueue)
     }
     
     public class func package(_ provisional: ProvisionalPackage) -> Package? {
