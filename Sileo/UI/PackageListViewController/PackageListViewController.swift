@@ -263,21 +263,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         return packageViewController
     }
     
-    func controller(indexPath: IndexPath) -> PackageViewController {
-        if showUpdates && indexPath.section == 0 {
+    func controller(indexPath: IndexPath) -> PackageViewController? {
+        if showProvisional && indexPath.section == 1 {
+            let pro = provisionalPackages[indexPath.row]
+            guard let package = CanisterResolver.package(pro) else { return nil }
+            return controller(package: package)
+        } else if showUpdates && indexPath.section == 0 {
             return controller(package: availableUpdates[indexPath.row])
         } else {
             return controller(package: packages[indexPath.row])
         }
     }
-    
-    func controller(provisional: ProvisionalPackage) -> PackageViewController? {
-        guard let package = CanisterResolver.package(provisional) else { return nil }
-        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = package
-        return packageViewController
-    }
-    
+
     @objc func reloadData() {
         self.searchCache = [:]
         if showUpdates {
@@ -506,18 +503,8 @@ extension PackageListViewController: UICollectionViewDataSource {
 extension PackageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section == 1 && showProvisional {
-            let pro = provisionalPackages[indexPath.row]
-            guard let pvc = self.controller(provisional: pro) else { return }
-            self.navigationController?.pushViewController(pvc, animated: true)
-        } else {
-            let packageViewController = self.controller(indexPath: indexPath)
-            self.navigationController?.pushViewController(packageViewController, animated: true)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
+        guard let pvc = self.controller(indexPath: indexPath) else { return }
+        self.navigationController?.pushViewController(pvc, animated: true)
     }
 }
 
@@ -558,12 +545,11 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
 
 extension PackageListViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView?.indexPathForItem(at: location) else {
+        guard let indexPath = collectionView?.indexPathForItem(at: location),
+              let pvc = self.controller(indexPath: indexPath) else {
             return nil
         }
-        
-        let packageViewController = self.controller(indexPath: indexPath)
-        return packageViewController
+        return pvc
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
@@ -574,12 +560,12 @@ extension PackageListViewController: UIViewControllerPreviewingDelegate {
 @available(iOS 13.0, *)
 extension PackageListViewController {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let packageViewController = self.controller(indexPath: indexPath)
-        let menuItems = packageViewController.actions()
+        guard let pvc = self.controller(indexPath: indexPath) else { return nil }
+        let menuItems = pvc.actions()
 
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: {
-                                            packageViewController
+                                            pvc
                                           },
                                           actionProvider: { _ in
                                             UIMenu(title: "", options: .displayInline, children: menuItems)

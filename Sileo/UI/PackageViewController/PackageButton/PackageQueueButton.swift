@@ -187,6 +187,17 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         guard let package = self.package else {
                 return []
         }
+        if package.isProvisional ?? false {
+            guard let source = package.source,
+                  let url = URL(string: source) else { return [] }
+            let action = CSActionItem(title: String(localizationKey: "Add_Source.Title"),
+                                      image: UIImage(systemNameOrNil: "square.and.arrow.down"),
+                                      style: .default) {
+                self.hapticResponse()
+                self.addRepo(url)
+            }
+            return [action]
+        }
         var actionItems: [CSActionItem] = []
 
         let downloadManager = DownloadManager.shared

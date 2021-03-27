@@ -532,9 +532,7 @@ final class PackageListManager {
         if categorySearch != nil {
             packageListFinal.removeAll { self.humanReadableCategory($0.section).lowercased() != categorySearch?.lowercased() }
         }
-        if let searchQuery = searchName {
-            packageListFinal.removeAll { !($0.name?.lowercased().contains(searchQuery.lowercased()) ?? true) }
-        }
+  
         if let searchEmail = authorEmail {
             packageListFinal.removeAll {
                 guard let lowercaseAuthor = $0.author?.lowercased() else {
@@ -546,6 +544,30 @@ final class PackageListManager {
         if let searchIdentifiers = packageIdentifiers {
             packageListFinal.removeAll {
                 !searchIdentifiers.contains($0.package)
+            }
+        }
+        
+        if let searchQuery = searchName {
+            let search = searchQuery.lowercased()
+            packageListFinal.removeAll { package in
+                var shouldRemove = true
+                if package.package.lowercased().contains(search) { shouldRemove = false }
+                if let name = package.name?.lowercased() {
+                    if !name.isEmpty {
+                        if name.contains(search) { shouldRemove = false }
+                    }
+                }
+                if let description = package.packageDescription?.lowercased() {
+                    if !description.isEmpty {
+                        if description.contains(search) { shouldRemove = false }
+                    }
+                }
+                if let author = package.author?.lowercased() {
+                    if !author.isEmpty {
+                        if author.contains(search) { shouldRemove = false }
+                    }
+                }
+                return shouldRemove
             }
         }
         
