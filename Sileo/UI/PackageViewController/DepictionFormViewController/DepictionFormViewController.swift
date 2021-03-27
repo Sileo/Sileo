@@ -226,10 +226,8 @@ class DepictionFormViewController: XLFormViewController {
                 self.tableView.isUserInteractionEnabled = true
                 self.navigationItem.rightBarButtonItem = self.submitBarButtonItem
                 
-                print("Response: \(response)")
                 switch response.result {
                 case .success(let data):
-                    print("Data: \(data)")
                     guard let responseObject = data as? [String: Any],
                         let success = responseObject["success"] as? Bool else {
                             self.presentErrorDialog(message: "An error occurred while submitting the form.", mustCancel: true)

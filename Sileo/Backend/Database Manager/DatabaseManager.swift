@@ -35,8 +35,6 @@ class DatabaseManager {
         let databaseURL = sileoURL.appendingPathComponent("sileo.sqlite3")
         knownPackagesURL = sileoURL.appendingPathComponent("knownPackages.json")
         
-        print("Database URL: \(databaseURL)")
-        
         guard let database = try? Connection(databaseURL.path) else {
             fatalError("Database Connection failed")
         }
