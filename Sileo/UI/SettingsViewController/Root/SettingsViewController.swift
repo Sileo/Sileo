@@ -104,10 +104,10 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 8
+            return 9
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
-                return 8
+                return 9
             }
             return 1
         case 3: // About section
@@ -203,6 +203,12 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
                     return cell
+                case 8:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.fallback = true
+                    cell.defaultKey = "ShowProvisional"
+                    return cell
                 default:
                     return UITableViewCell()
                 }
@@ -254,6 +260,12 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
+                    return cell
+                case 8:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.fallback = true
+                    cell.defaultKey = "ShowProvisional"
                     return cell
                 default:
                     return UITableViewCell()

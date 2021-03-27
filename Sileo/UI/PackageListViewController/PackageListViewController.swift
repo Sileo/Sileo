@@ -20,6 +20,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     @IBInspectable public var packagesLoadIdentifier: String = ""
     public var repoContext: Repo?
+    public var loadProvisional: Bool = false
     
     private var packages: [Package] = []
     private var availableUpdates: [Package] = []
@@ -80,6 +81,14 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if loadProvisional {
+            showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
+            _ = NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
+                self.showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
+                self.collectionView?.reloadData()
+            }
+        }
         
         if showWishlist {
             let exportBtn = UIBarButtonItem(title: String(localizationKey: "Export"), style: .plain, target: self, action: #selector(self.exportButtonClicked(_:)))
@@ -264,7 +273,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     func controller(indexPath: IndexPath) -> PackageViewController? {
-        if showProvisional && indexPath.section == 1 {
+        if showProvisional && loadProvisional && indexPath.section == 1 {
             let pro = provisionalPackages[indexPath.row]
             guard let package = CanisterResolver.package(pro) else { return nil }
             return controller(package: package)
@@ -388,14 +397,14 @@ extension PackageListViewController: UICollectionViewDataSource {
         refreshEnabled = true
         var count = 1
         if showUpdates { count += 1 }
-        if showProvisional { count += 1 }
+        if showProvisional && loadProvisional { count += 1 }
         return count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if showUpdates && section == 0 {
             return availableUpdates.count
-        } else if section == 2 || (section == 1 && showProvisional) {
+        } else if section == 2 || (section == 1 && showProvisional && loadProvisional) {
             return provisionalPackages.count
         }
         return packages.count
@@ -408,7 +417,7 @@ extension PackageListViewController: UICollectionViewDataSource {
             if showUpdates && indexPath.section == 0 {
                 packageCell.targetPackage = availableUpdates[indexPath.row]
                 packageCell.provisionalTarget = nil
-            } else if indexPath.section == 2 || (indexPath.section == 1 && showProvisional) {
+            } else if indexPath.section == 2 || (indexPath.section == 1 && showProvisional && loadProvisional) {
                 packageCell.provisionalTarget = provisionalPackages[indexPath.row]
                 packageCell.targetPackage = nil
             } else {
@@ -454,7 +463,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                 }
                 return headerView
             }
-        } else if showProvisional {
+        } else if showProvisional && loadProvisional {
             if (indexPath.section == 0 && packages.isEmpty) || (indexPath.section == 1 && provisionalPackages.isEmpty) {
                 if kind == UICollectionView.elementKindSectionHeader {
                     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -518,7 +527,7 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: collectionView.bounds.width, height: 109)
             }
             return CGSize(width: collectionView.bounds.width, height: 65)
-        } else if showProvisional {
+        } else if showProvisional && loadProvisional {
             if (section == 0 && packages.isEmpty) || (section == 1 && provisionalPackages.isEmpty) {
                 return .zero
             }
@@ -585,7 +594,8 @@ extension PackageListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text,
               !text.isEmpty,
-              showProvisional
+              showProvisional,
+              loadProvisional
         else {
             return
         }
@@ -595,6 +605,7 @@ extension PackageListViewController: UISearchBarDelegate {
     }
     
     private func updateProvisional() {
+        if !showProvisional { return }
         let text = (searchController?.searchBar.text ?? "").lowercased()
         if text.isEmpty { return self.provisionalPackages.removeAll() }
         let all = PackageListManager.shared.allPackages ?? []

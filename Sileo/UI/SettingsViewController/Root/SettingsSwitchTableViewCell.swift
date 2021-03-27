@@ -42,7 +42,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     }
     
     @objc private func didChange(sender: UISwitch!) {
-        if let key = defaultKey { UserDefaults.standard.setValue(sender.isOn, forKey: key) }
+        if let key = defaultKey { UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil) }
     }
     
     @objc private func updateSileoColors() {
