@@ -255,12 +255,7 @@ final class PackageListManager {
                     let id = tuple.0
                     let version = tuple.1
                     
-                    var pkg = self.package(identifier: id, version: version)
-                    if pkg == nil {
-                        pkg = self.newestPackage(identifier: id)
-                    }
-                    
-                    if let pkg = pkg {
+                    if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
                         downloadMan.add(package: pkg, queue: .upgrades)
                     }
                 }
@@ -269,12 +264,7 @@ final class PackageListManager {
                     let id = tuple.0
                     let version = tuple.1
                     
-                    var pkg = self.package(identifier: id, version: version)
-                    if pkg == nil {
-                        pkg = self.newestPackage(identifier: id)
-                    }
-                    
-                    if let pkg = pkg {
+                    if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
                         downloadMan.add(package: pkg, queue: .installations)
                     }
                 }

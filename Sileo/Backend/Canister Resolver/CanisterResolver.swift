@@ -10,8 +10,10 @@ import Foundation
 
 final class CanisterResolver {
     
+    static let RepoRefresh = Notification.Name("SileoRepoDidFinishUpdating")
     public static let shared = CanisterResolver()
     public var packages = [ProvisionalPackage]()
+    private var cachedQueue = [Package]()
     
     let filteredRepos = [
         "apt.elucubratus.com",
@@ -20,6 +22,13 @@ final class CanisterResolver {
         "apt.procurs.us",
         "apt.saurik.com"
     ]
+    
+    init() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CanisterResolver.queueCache),
+                                               name: CanisterResolver.RepoRefresh,
+                                               object: nil)
+    }
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version,depiction.native,depiction.web,&search_fields=identifier,name,author,maintainer"
@@ -53,6 +62,24 @@ final class CanisterResolver {
             }
             return fetch()
         }
+    }
+    
+    public func queuePackage(_ package: Package) {
+        cachedQueue.removeAll { $0.packageID == package.packageID }
+        cachedQueue.append(package)
+    }
+    
+    @objc private func queueCache() {
+        let plm = PackageListManager.shared
+        var buffer = 0
+        for (index, package) in cachedQueue.enumerated() {
+            if let pkg = plm.package(identifier: package.packageID, version: package.version) ?? plm.newestPackage(identifier: package.packageID) {
+                DownloadManager.shared.add(package: pkg, queue: .installations)
+                cachedQueue.remove(at: index - buffer)
+                buffer += 1
+            }
+        }
+        print(cachedQueue)
     }
     
     public class func package(_ provisional: ProvisionalPackage) -> Package? {

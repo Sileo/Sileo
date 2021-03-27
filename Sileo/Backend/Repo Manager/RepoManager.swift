@@ -855,6 +855,7 @@ final class RepoManager {
                         NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                     }
                     backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
+                    NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
                     completion(errorsFound, errorOutput)
                 }
             }

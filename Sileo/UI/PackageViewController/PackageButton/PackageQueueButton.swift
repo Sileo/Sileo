@@ -17,22 +17,13 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
     public var package: Package? {
         didSet {
             if package?.isProvisional ?? false {
-                self.provisionalCache = true
                 return self.updateButton(title: String(localizationKey: "Add_Source.Title"))
             }
             self.updatePurchaseStatus()
             self.updateInfo()
         }
-        willSet(toSet) {
-            if let toSet = toSet,
-               provisionalCache {
-                self.provisionalCache = false
-                self.handleButtonPress(toSet, false)
-            }
-        }
     }
-    
-    private var provisionalCache = false
+
     private var _paymentInfo: PaymentPackageInfo?
     public var paymentInfo: PaymentPackageInfo? {
         get {
@@ -195,6 +186,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                                       style: .default) {
                 self.hapticResponse()
                 self.addRepo(url)
+                CanisterResolver.shared.queuePackage(package)
             }
             return [action]
         }
@@ -300,6 +292,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 guard let source = package.source,
                       let url = URL(string: source) else { return }
                 self.addRepo(url)
+                CanisterResolver.shared.queuePackage(package)
                 return
             }
         }
