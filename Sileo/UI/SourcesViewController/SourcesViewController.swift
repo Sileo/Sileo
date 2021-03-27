@@ -343,7 +343,6 @@ class SourcesViewController: SileoTableViewController {
                 let isBanned = String(data: data, encoding: .utf8)
                 return completion(isBanned == "true")
             }
-            print("Failed to check for flagged repo with error: \(error?.localizedDescription ?? "")")
             return completion(false)
         }.resume()
     }
