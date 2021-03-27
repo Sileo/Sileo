@@ -557,6 +557,11 @@ final class PackageListManager {
                         if author.contains(search) { shouldRemove = false }
                     }
                 }
+                if let maintainer = package.maintainer?.lowercased() {
+                    if !maintainer.isEmpty {
+                        if maintainer.contains(search) { shouldRemove = false }
+                    }
+                }
                 return shouldRemove
             }
         }
