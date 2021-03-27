@@ -172,7 +172,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                   let url = URL(string: repo),
                   orientation == .right else { return nil }
             if !RepoManager.shared.hasRepo(with: url) {
-                return [addRepo(url)]
+                return [addRepo(provisionalPackage)]
             }
             return nil
         }
@@ -221,15 +221,20 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         return options
     }
     
-    private func addRepo(_ url: URL) -> SwipeAction {
+    private func addRepo(_ package: ProvisionalPackage) -> SwipeAction {
         let addRepo = SwipeAction(style: .default, title: String(localizationKey: "Add_Source.Title")) { _, _ in
-            if let tabBarController = self.window?.rootViewController as? UITabBarController,
-                let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-                  let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
-                  tabBarController.selectedViewController = sourcesSVC
-                  if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                    sourcesVC.presentAddSourceEntryField(url: url)
-                  }
+            if let repo = package.repo,
+               let url = URL(string: repo),
+               let tabBarController = self.window?.rootViewController as? UITabBarController,
+               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+                    tabBarController.selectedViewController = sourcesSVC
+                    if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                            sourcesVC.presentAddSourceEntryField(url: url)
+                        }
+            }
+            if let package = CanisterResolver.package(package) {
+                CanisterResolver.shared.queuePackage(package)
             }
             self.hapticResponse()
             self.hideSwipe(animated: true)
