@@ -1,0 +1,60 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ BASE (English) LOCALISATIONS
+ TRANSLATED FROM BASE TO MALAY BY VX ON 19MAR 2021
+ */
+
+"Unknown" = "Ralat yang tidak diketahui telah berlaku.";
+"Error_Indicator" = "Ralat: %@";
+
+"No_Package.Title" = "Tidak boleh jumpa pakej %@ di dalam repositori-repositori yang anda telah pasang.";
+"No_Package.Body" = "Jika ia baharu, tunggu untuk Sileo selesai berkemas-kini, kemudian cuba lagi. Lihat atas talian untuk pertolongan.";
+
+"Invalid_URL.Title" = "URL tidak sah";
+
+"Download_Size_Mismatch" = "Saiz yang dijangkakan adalah %@ tetapi telah mendapat %@.";
+"Download_Failing_Status_Code" = "Tidak berjaya dengan status %ld";
+"Download_Hash_Mismatch" = "Dijangkakan hash %@ tetapi mendapat %@.";
+"Untrusted_Package" = "Pakej %@ tidak dipercayai dan tidak dapat disahkan";
+
+"Insecure_Paid_Download" = "URL muat turun pakej disahkan dibayar perlu selamat (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Penyedia pembayaran telah menghantar respons tidak sah.";
+"No_Payment_Provider" = "Repo ini tidak menyokong pembayaran Sileo. Jika ini pakej Cydia Store yang anda telah membeli, anda boleh memautkan akaun untuk memuat turun.";
+
+"Package_Unavailable" = "Pakej ini tidak dapat dijumpai di dalam sumber-sumber anda. Sila memastikan bahawa anda ada repo %@.";
+
+"Installation_Error.Title" = "Ralat Memasang";
+"Installation_Error.Body" = "Sileo tidak dapat memperoleh keizinan root. Sila pasang semula Sileo melalui SSH.";
+
+"FixingDpkg.Title" = "Dpkg Dikacau";
+"FixingDpkg.Body" = "Dpkg telah dikacau. Sila tunggu semasa kami mencuba untuk membaiki isu ini.";
+
+"Invalid_Data" = "Data Tidak Sah";
+"Try_Later" = "Sila cuba semula lagi nanti.";
+
+"Sileo_Update_Required.Title" = "Pengemaskinian Sileo diperlukan";
+"Featured_Requires_Sileo_Update" = "Pengemaskinian Sileo diperlukan untuk melihat tab diketengahkan. Tab diketengahkan mungkin akan ditunjukkan secara tidak betul.";
+"Depiction_Requires_Sileo_Update" = "Pengemaskinian Sileo diperlukan untuk melihat muka surat ini. Muka surat ini mungkin akan ditunjukkan secara tidak betul.";
+
+"Form_Error.Title" = "Borang Tidak Dapat Dimuatkan";
+"Form_Load_Error" = "Borang tidak dapat dimuatkan daripada server.";
+"Invalid_Form_Data" = "Server telah memberikan data borang tidak sah.";
+"Form_Submit_Failure" = "Ralat telah berlaku apabila menghantar borang: %@";
+"Form_Submit_Error.Title" = "Tidak Dapat Menghantar Borang";
+"Form_Action_Host_Mismatch" = "Tindakan URL host borang tidak sama dengan host asal borang.";
+
+"Email_Unavailable.Title" = "Tidak Dapat Menghantar E-mel";
+"Email_Unavailable.Body" = "Tiada perkhidmatan mel.";
+
+"Settings_Payment_Provider.Profile.Title" = "Tidak Dapat Memuat Profil";
+
+"Provider_Auth_Fail.Title" = "Tidak Dapat Mengesahkan Penyedia";
+"Purchase_Initiate_Fail.Title" = "Tidak Dapat Memulakan Pembelian";
+"Purchase_Complete_Fail.Title" = "Tidak Dapat Menyiapkan Pembelian";
+"Purchase_Auth_Complete_Fail.Title" = "Tidak Dapat Menyiapkan Pengesahan";
