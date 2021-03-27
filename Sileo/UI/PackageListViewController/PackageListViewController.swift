@@ -16,11 +16,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     @IBInspectable var showSearchField: Bool = false
     @IBInspectable var showUpdates: Bool = false
     @IBInspectable var showWishlist: Bool = false
-    @IBInspectable var showProvisional: Bool = false
-    
+    @IBInspectable public var loadProvisional: Bool = false
+     
     @IBInspectable public var packagesLoadIdentifier: String = ""
     public var repoContext: Repo?
-    public var loadProvisional: Bool = false
+    private var showProvisional: Bool = false
     
     private var packages: [Package] = []
     private var availableUpdates: [Package] = []
