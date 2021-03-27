@@ -12,8 +12,6 @@ struct PackageTags: OptionSet {
     static let none = PackageTags([])
     static let commercial = PackageTags(rawValue: 1)
     static let sileo = PackageTags(rawValue: 2)
-    static let developer = PackageTags(rawValue: 4)
-    static let hacker = PackageTags(rawValue: 8)
 }
 
 final class ControlFileParser {
