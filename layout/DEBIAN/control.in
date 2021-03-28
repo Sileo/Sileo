@@ -1,6 +1,6 @@
-Package: org.coolstar.sileo
-Name: Sileo
-Version: 2.1
+Package: @@PACKAGE_ID@@
+Name: @@PACKAGE_NAME@@
+Version: @@MARKETING_VERSION@@
 Author: Sileo Team <getsileoapp@gmail.com>
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Description: An APT package manager for jailbroken iOS 12 and newer!
