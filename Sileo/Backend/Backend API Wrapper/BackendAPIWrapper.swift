@@ -337,7 +337,7 @@ class BackendAPIWrapper: NSObject {
         
         if !toAdd.isEmpty {
             repoMan.addRepos(with: toAdd)
-            self.refreshRepos(useRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
+            self.refreshRepos(adjustRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()
         }
     }
@@ -357,17 +357,17 @@ class BackendAPIWrapper: NSObject {
         
         if !toRemove.isEmpty {
             repoMan.remove(repos: toRemove)
-            self.refreshRepos(useRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
+            self.refreshRepos(adjustRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
             self.sourcesViewController()?.reloadData()
         }
     }
     
     @objc class func refreshRepos(completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        self.refreshRepos(useRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: completion)
+        self.refreshRepos(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: completion)
     }
     
-    @objc class func refreshRepos(useRefreshControl: ObjCBool, errorScreen: ObjCBool, forceUpdate: ObjCBool, forceReload: ObjCBool, isBackground: ObjCBool, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        let control = useRefreshControl.boolValue
+    @objc class func refreshRepos(adjustRefreshControl: ObjCBool, errorScreen: ObjCBool, forceUpdate: ObjCBool, forceReload: ObjCBool, isBackground: ObjCBool, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
+        let control = adjustRefreshControl.boolValue
         let error = errorScreen.boolValue
         let update = forceUpdate.boolValue
         let reload = forceReload.boolValue
@@ -377,7 +377,7 @@ class BackendAPIWrapper: NSObject {
             return
         }
         
-        sourcesVC.refreshSources(useRefreshControl: control, errorScreen: error, forceUpdate: update, forceReload: reload, isBackground: background, completion: { didFindErrors, errorOutput in
+        sourcesVC.refreshSources(adjustRefreshControl: control, errorScreen: error, forceUpdate: update, forceReload: reload, isBackground: background, completion: { didFindErrors, errorOutput in
             if let completion = completion {
                 let didFindErrors2 = ObjCBool(didFindErrors)
                 completion(didFindErrors2, errorOutput)

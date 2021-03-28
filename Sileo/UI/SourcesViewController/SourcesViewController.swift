@@ -34,21 +34,19 @@ class SourcesViewController: SileoTableViewController {
         }
         
         let repo = sortedRepoList[indexPath.row]
-        if repo.entryFile.hasSuffix("/sileo.sources") {
-            return true
-        }
-        return false
+        return repo.entryFile.hasSuffix("/sileo.sources")
     }
     
     func controller(indexPath: IndexPath) -> CategoryViewController {
         let categoryVC = CategoryViewController(style: .plain)
-        
         categoryVC.title = String(localizationKey: "All_Packages.Title")
+        
         if indexPath.section == 1 {
             let repo = sortedRepoList[indexPath.row]
             categoryVC.repoContext = repo
             categoryVC.title = repo.repoName
         }
+        
         return categoryVC
     }
     
@@ -62,7 +60,6 @@ class SourcesViewController: SileoTableViewController {
         super.viewDidLoad()
         
         self.title = String(localizationKey: "Sources_Page")
-        
         self.tableView.backgroundColor = .sileoBackgroundColor
         
         weak var weakSelf = self
@@ -76,7 +73,6 @@ class SourcesViewController: SileoTableViewController {
         self.setEditing(false, animated: false)
         
         self.registerForPreviewing(with: self, sourceView: self.tableView)
-        
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         
         if !isRefreshing {
@@ -95,21 +91,17 @@ class SourcesViewController: SileoTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateSileoColors()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.navigationController?.navigationBar._hidesShadow = true
-        
         self.tableView.backgroundColor = .sileoBackgroundColor
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
         self.navigationController?.navigationBar._hidesShadow = false
     }
     
@@ -121,21 +113,15 @@ class SourcesViewController: SileoTableViewController {
         super.setEditing(editing, animated: animated)
         
         UIView.animate(withDuration: animated ? 0.2 : 0.0) {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                                     target: self,
-                                                                     action: #selector(self.addSource(_:)))
+            let nav = self.navigationItem
+            nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
+            
             if editing {
-                self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                                        target: self,
-                                                                        action: #selector(self.toggleEditing(_:)))
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Export"),
-                                                                         style: .plain,
-                                                                         target: self,
-                                                                         action: #selector(self.exportSources(_:)))
+                let exportTitle = String(localizationKey: "Export")
+                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
+                nav.rightBarButtonItem = UIBarButtonItem(title: exportTitle, style: .plain, target: self, action: #selector(self.exportSources(_:)))
             } else {
-                self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
-                                                                        target: self,
-                                                                        action: #selector(self.toggleEditing(_:)))
+                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.toggleEditing(_:)))
             }
         }
     }
@@ -145,13 +131,13 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func refreshSources(forceUpdate: Bool, forceReload: Bool) {
-        self.refreshSources(useRefreshControl: false, errorScreen: true, forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, completion: nil)
+        self.refreshSources(adjustRefreshControl: false, errorScreen: true, forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, completion: nil)
     }
     
-    func refreshSources(useRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
+    func refreshSources(adjustRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
         self.isRefreshing = true
         
-        if useRefreshControl {
+        if adjustRefreshControl {
             if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
                 refreshControl.sizeToFit()
                 let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
@@ -402,10 +388,7 @@ extension SourcesViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 {
-            return String(localizationKey: "Repos")
-        }
-        return nil
+        return (section == 1) ? String(localizationKey: "Repos") : nil
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -449,10 +432,7 @@ extension SourcesViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 2
-        }
-        return 0.01
+        return (section == 0) ? 2 : 0.01
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

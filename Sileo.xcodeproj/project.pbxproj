@@ -188,7 +188,7 @@
 		F139D11422EA9209007F5C0D /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62E22E53EF900CBD045 /* RepoManager.swift */; };
 		F139D11522EA9209007F5C0D /* DepictionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9C222D1847F0021BD89 /* DepictionButtonView.swift */; };
 		F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A122D146A90021BD89 /* DepictionHeaderView.swift */; };
-		F139D11B22EA9209007F5C0D /* rootMeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */; };
+		F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
 		F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		F139D12522EA9209007F5C0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
@@ -283,7 +283,7 @@
 		F170606024CF50C7001596A0 /* SileoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170605E24CF50C7001596A0 /* SileoNavigationController.swift */; };
 		F170606224CF54E0001596A0 /* SileoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170606124CF54E0001596A0 /* SileoTableViewController.swift */; };
 		F170606324CF54E0001596A0 /* SileoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170606124CF54E0001596A0 /* SileoTableViewController.swift */; };
-		F170DD7D22CFE79800196FDA /* rootMeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */; };
+		F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
 		F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		F172581C24EB88E3000F2FAF /* PackageStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581B24EB88E3000F2FAF /* PackageStub.swift */; };
@@ -757,7 +757,7 @@
 		F170605B24CF4DFD001596A0 /* SileoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoViewController.swift; sourceTree = "<group>"; };
 		F170605E24CF50C7001596A0 /* SileoNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoNavigationController.swift; sourceTree = "<group>"; };
 		F170606124CF54E0001596A0 /* SileoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableViewController.swift; sourceTree = "<group>"; };
-		F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rootMeWrapper.swift; sourceTree = "<group>"; };
+		F170DD7C22CFE79800196FDA /* RootWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWrapper.swift; sourceTree = "<group>"; };
 		F172581824EB848E000F2FAF /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		F172581B24EB88E3000F2FAF /* PackageStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageStub.swift; sourceTree = "<group>"; };
 		F172581E24EB8C12000F2FAF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -1379,12 +1379,12 @@
 			path = DepictionTableTextView;
 			sourceTree = "<group>";
 		};
-		F1144EFF20FC67F3001FF36C /* rootMeWrapper */ = {
+		F1144EFF20FC67F3001FF36C /* Root Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */,
+				F170DD7C22CFE79800196FDA /* RootWrapper.swift */,
 			);
-			path = rootMeWrapper;
+			path = "Root Wrapper";
 			sourceTree = "<group>";
 		};
 		F11CD90A20DBF74A000C62C3 /* PackageCell */ = {
@@ -1836,9 +1836,9 @@
 				F162CCAF20E82E0100226F10 /* Package Manager */,
 				F162CCB220E981A800226F10 /* Payment Manager */,
 				F162CCAD20E82DF500226F10 /* Repo Manager */,
-				F1144EFF20FC67F3001FF36C /* rootMeWrapper */,
+				F1144EFF20FC67F3001FF36C /* Root Wrapper */,
 				F162CCB020E82E0800226F10 /* URL Manager */,
-				F1E287B22225DE1000603B3E /* WishList Manager */,
+				F1E287B22225DE1000603B3E /* Wish List Manager */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -2116,12 +2116,12 @@
 			path = HTMLDepictionScraper;
 			sourceTree = "<group>";
 		};
-		F1E287B22225DE1000603B3E /* WishList Manager */ = {
+		F1E287B22225DE1000603B3E /* Wish List Manager */ = {
 			isa = PBXGroup;
 			children = (
 				F102D1E222CD514C00A4C9BA /* WishListManager.swift */,
 			);
-			path = "WishList Manager";
+			path = "Wish List Manager";
 			sourceTree = "<group>";
 		};
 		F1EE916021E95084006078B8 /* DepictionMinVersionForceView */ = {
@@ -2822,7 +2822,7 @@
 				F139D0DC22EA9209007F5C0D /* ZKSwizzle.m in Sources */,
 				FBBD003B240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB42318EA6800D3AF3B /* main.swift in Sources */,
-				F139D11B22EA9209007F5C0D /* rootMeWrapper.swift in Sources */,
+				F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2995,7 +2995,7 @@
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB32318EA6800D3AF3B /* main.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
-				F170DD7D22CFE79800196FDA /* rootMeWrapper.swift in Sources */,
+				F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
