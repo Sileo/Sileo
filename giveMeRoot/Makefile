@@ -1,9 +1,9 @@
 TARGET  = giveMeRoot
 OUTDIR ?= bin
 
-CC      = xcrun -sdk iphoneos cc -arch arm64
-LDID    = ldid
-CFLAGS  = -Wall
+CC             ?= xcrun -sdk iphoneos cc -arch arm64
+TAGET_CODESIGN ?= ldid
+CFLAGS         ?= -Wall
 
 .PHONY: all clean
 
@@ -21,7 +21,7 @@ $(OUTDIR):
 
 $(OUTDIR)/$(TARGET): giveMeRoot.c | $(OUTDIR)
 	@$(CC) -o $@ $^ $(CFLAGS)
-	@$(LDID) -SEntitlements.plist $@
+	@$(TAGET_CODESIGN) -SEntitlements.plist $@
 
 clean:
 	@rm -rf ./$(OUTDIR)
