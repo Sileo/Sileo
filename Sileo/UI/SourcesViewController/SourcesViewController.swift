@@ -139,10 +139,9 @@ class SourcesViewController: SileoTableViewController {
         
         if adjustRefreshControl {
             if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
-                refreshControl.sizeToFit()
-                let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
-                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
                 refreshControl.beginRefreshing()
+                let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
+                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)   
             }
         }
         
