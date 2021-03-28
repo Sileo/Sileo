@@ -11,9 +11,9 @@ jobs:
         uses: actions/checkout@master
         with:
           submodules: true
-      - name: Install ldid and xz
+      - name: Install ldid and dpkg
         run: |
-          brew install ldid xz
+          brew install ldid dpkg
       - name: Setup Theos
         uses: actions/checkout@master
         with:
