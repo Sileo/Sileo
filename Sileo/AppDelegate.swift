@@ -336,7 +336,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             sourcesVC.addSource(nil)
         } else if shortcutItem.type.hasSuffix(".Refresh") {
             tabBarController.selectedViewController = sourcesSVC
-            sourcesVC.refreshSources(useRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: nil)
+            sourcesVC.refreshSources(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: nil)
         } else if shortcutItem.type.hasSuffix(".Packages") {
             tabBarController.selectedViewController = packageListNVC
         }
