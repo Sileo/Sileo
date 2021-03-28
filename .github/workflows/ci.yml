@@ -14,19 +14,6 @@ jobs:
       - name: Install ldid and dpkg
         run: |
           brew install ldid dpkg
-      - name: Setup Theos
-        uses: actions/checkout@master
-        with:
-          repository: theos/theos
-          path: theos
-          submodules: recursive
-      - name: Download SDKs
-        run: |
-          curl -LO https://github.com/SamHep0803/iOS-13-Patched-SDK/archive/master.zip
-          TMP=$(mktemp -d)
-          unzip master.zip -d $TMP
-          mv $TMP/iOS-13-Patched-SDK-master/*.sdk theos/sdks
-          rm -r master.zip $TMP
       - name: Restore CocoaPods cache
         uses: actions/cache@v2
         id: cache
@@ -41,7 +28,7 @@ jobs:
       - name: Build Sileo
         id: build
         run: |
-         make clean package FINALPACKAGE=1
+         make clean package
          echo "::set-output name=package::$(ls -t packages | head -n1)"
       - name: Upload To Repo
         env: # 
