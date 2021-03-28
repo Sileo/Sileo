@@ -59,20 +59,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             if !updatesPrompt {
                 if UIApplication.shared.backgroundRefreshStatus == .denied {
                     DispatchQueue.main.async {
-                        // swiftlint:disable line_length
-                        let alertController = UIAlertController(title: String(localizationKey: "Background App Refresh"),
-                                                                message: String(localizationKey: "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!"),
-                                                                preferredStyle: .alert)
-                        // swiftlint:enable line_length
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
+                        let title = String(localizationKey: "Background_App_Refresh")
+                        let msg = String(localizationKey: "Background_App_Refresh_Message")
+                        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
                             UserDefaults.standard.set(true, forKey: "updatesPrompt")
-                            UserDefaults.standard.synchronize()
-                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                            alert.dismiss(animated: true, completion: nil)
                         })
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
-                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        
+                        alert.addAction(UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
+                            alert.dismiss(animated: true, completion: nil)
                         })
-                        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                        
+                        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     }
                 }
             }
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             
         }
         
-        _ = NotificationCenter.default.addObserver(forName: SileoThemeManager.sileoChangedThemeNotification, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: SileoThemeManager.sileoChangedThemeNotification, object: nil, queue: nil) { _ in
             self.updateTintColor()
             for window in UIApplication.shared.windows {
                 for view in window.subviews {
@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         self.updateTintColor()
+        
         // Force all view controllers to load now
         for controller in tabBarController.viewControllers ?? [] {
             _ = controller.view
