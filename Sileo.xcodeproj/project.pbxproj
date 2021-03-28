@@ -2614,7 +2614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]\nthen\n    export PATH=\"$PATH:$HOME/bin\"\n\n    make -C $SRCROOT/giveMeRoot clean all \"OUTDIR=$DERIVED_FILE_DIR\"\n    cp \"$DERIVED_FILE_DIR/giveMeRoot\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/giveMeRoot\"\nelse\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
+			shellScript = "if [ \"${PLATFORM_NAME}\" == *\"simulator\" ]\nthen\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
 		};
 		F139D12922EA9209007F5C0D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
