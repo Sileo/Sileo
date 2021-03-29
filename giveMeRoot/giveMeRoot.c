@@ -13,15 +13,14 @@ int main(int argc, char *argv[]) {
     const char *sileoBetaPath = "/Applications/Sileo-Beta.app/Sileo";
     
     struct stat statBuffer;
-    int status = lstat(sileoPath, &statBuffer);
-    if (status == -1) {
+    if (lstat(sileoPath, &statBuffer) == -1 && lstat(sileoBetaPath, &statBuffer) == -1) {
         fprintf(stderr, "Cease your resistance!\n");
         return EX_NOPERM;
     }
     
     pid_t parentPID = getppid();
     char parentPath[PROC_PIDPATHINFO_MAXSIZE] = {0};
-    status = proc_pidpath(parentPID, parentPath, sizeof(parentPath));
+    int status = proc_pidpath(parentPID, parentPath, sizeof(parentPath));
     if (status <= 0) {
         fprintf(stderr, "Ice wall, coming up\n");
         return EX_NOPERM;
