@@ -52,7 +52,7 @@ export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
 SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
 SILEO_ID   = org.coolstar.sileo
