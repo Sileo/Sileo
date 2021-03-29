@@ -63,6 +63,7 @@ final class PackageListManager {
     
     public func availableUpdates() -> [(Package, Package?)] {
         self.waitForReady()
+        
         var updatesAvailable: [(Package, Package?)] = []
         for package in installedPackages ?? [] {
             guard let latestPackage = self.newestPackage(identifier: package.packageID) else {
@@ -114,8 +115,9 @@ final class PackageListManager {
     
     private func loadAllPackages() {
         databaseLock.wait()
-        
-        defer { databaseLock.signal() }
+        defer {
+            databaseLock.signal()
+        }
         
         if isLoaded {
             return
@@ -290,6 +292,7 @@ final class PackageListManager {
         guard let packageVersion = dictionary["version"] else {
             return nil
         }
+        
         let package = Package(package: packageID, version: packageVersion)
         package.name = dictionary["name"]
         if package.name == nil {
@@ -333,8 +336,7 @@ final class PackageListManager {
     }
     
     public func packagesList(loadIdentifier: String, repoContext: Repo?) -> [Package]? {
-        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true,
-                          overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
+        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true, overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
     }
     
     public func packagesList(loadIdentifier: String, repoContext: Repo?, sortPackages: Bool, lookupTable: [String: [Package]]) -> [Package]? {

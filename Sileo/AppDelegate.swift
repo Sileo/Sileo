@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         _ = DownloadManager.shared
         SileoThemeManager.shared.updateUserInterface()
         
-        // Override point for customization after application launch.
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
         }
@@ -63,14 +62,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                         let msg = String(localizationKey: "Background_App_Refresh_Message")
                         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
                         
-                        alert.addAction(UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
+                        let ackAction = UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
                             UserDefaults.standard.set(true, forKey: "updatesPrompt")
                             alert.dismiss(animated: true, completion: nil)
-                        })
+                        }
+                        alert.addAction(ackAction)
                         
-                        alert.addAction(UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
+                        let dismissAction = UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
                             alert.dismiss(animated: true, completion: nil)
-                        })
+                        }
+                        alert.addAction(dismissAction)
                         
                         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     }

@@ -141,7 +141,7 @@ class SourcesViewController: SileoTableViewController {
             if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
                 refreshControl.beginRefreshing()
                 let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
-                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)   
+                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
             }
         }
         
@@ -165,12 +165,12 @@ class SourcesViewController: SileoTableViewController {
             item?.badgeValue = nil
             self.isRefreshing = false
             
-            if let completion = completion {
-                completion(didFindErrors, errorOutput)
-            }
-            
             if didFindErrors, errorScreen {
                 self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
+            }
+            
+            if let completion = completion {
+                completion(didFindErrors, errorOutput)
             }
         })
     }
@@ -193,7 +193,9 @@ class SourcesViewController: SileoTableViewController {
     @objc func reloadRepo(_ notification: NSNotification) {
         if let repo = notification.object as? Repo {
             guard let idx = sortedRepoList.firstIndex(of: repo),
-            let cell = self.tableView.cellForRow(at: IndexPath(row: idx, section: 1)) as? SourcesTableViewCell else { return }
+            let cell = self.tableView.cellForRow(at: IndexPath(row: idx, section: 1)) as? SourcesTableViewCell else {
+                return
+            }
             let cellRepo = cell.repo
             cell.repo = cellRepo
             cell.layoutSubviews()
@@ -236,9 +238,9 @@ class SourcesViewController: SileoTableViewController {
     public func presentAddSourceEntryField(url: URL?) {
         let title = String(localizationKey: "Add_Source.Title")
         let msg = String(localizationKey: "Add_Source.Body")
-        let addSourceController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
-        addSourceController.addTextField { textField in
+        alert.addTextField { textField in
             textField.placeholder = "https://coolstar.org/publicrepo/"
             if let urlString = url?.absoluteString {
                 let parsedURL = urlString.replacingOccurrences(of: "sileo://source/", with: "")
@@ -249,57 +251,56 @@ class SourcesViewController: SileoTableViewController {
             textField.keyboardType = .URL
         }
         
-        addSourceController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"),
-                                                    style: .cancel,
-                                                    handler: { _ in
-                                                        self.dismiss(animated: true, completion: nil)
-        }))
-        addSourceController.addAction(UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"),
-                                                    style: .default,
-                                                    handler: { _ in
-                                                        self.dismiss(animated: true, completion: nil)
-                                                        
-                                                        if let repoURL = addSourceController.textFields?[0].text,
-                                                            let url = URL(string: repoURL) {
-                                                            self.handleSourceAdd(urls: [url], bypassFlagCheck: false)
-                                                        }
-        }))
+        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+            if let repoURL = alert.textFields?[0].text,
+                let url = URL(string: repoURL) {
+                self.handleSourceAdd(urls: [url], bypassFlagCheck: false)
+            }
+        })
+        alert.addAction(addAction)
         
-        self.present(addSourceController, animated: true, completion: nil)
+        let cancelAcction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(cancelAcction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func presentAddClipBoardPrompt(sources: [URL]) {
-        var message = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Body_Intro"), sources.count)
-        message.append(contentsOf: "\n\n")
-        let urlsJoined = sources.compactMap { url -> String in
-            url.absoluteString
-        }.joined(separator: "\n")
-        message.append(contentsOf: urlsJoined)
-        
         let count = sources.count
         
         let titleText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Title"), count, count)
-        let addButtonText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Add"), count, count)
+        let addText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Add"), count, count)
+        let manualText = String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Manual")
         
-        let autoPasteboardSourceController = UIAlertController(title: titleText,
-                                                               message: message, preferredStyle: .alert)
-        autoPasteboardSourceController.addAction(UIAlertAction(title: addButtonText,
-                                                               style: .default,
-                                                               handler: { _ in
-                                                                self.handleSourceAdd(urls: sources, bypassFlagCheck: false)
-                                                                self.dismiss(animated: true, completion: nil)
-        }))
-        autoPasteboardSourceController.addAction(UIAlertAction(title: String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Manual"),
-                                                               style: .default, handler: { _ in
-                                                                self.presentAddSourceEntryField(url: nil)
-        }))
-        autoPasteboardSourceController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"),
-                                                               style: .cancel,
-                                                               handler: { _ in
-                                                                self.dismiss(animated: true, completion: nil)
-        }))
+        var msg = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Body_Intro"), sources.count)
+        msg.append(contentsOf: "\n\n")
+        let urlsJoined = sources.compactMap { url -> String in
+            url.absoluteString
+        }.joined(separator: "\n")
+        msg.append(contentsOf: urlsJoined)
         
-        self.present(autoPasteboardSourceController, animated: true, completion: nil)
+        let alert = UIAlertController(title: titleText, message: msg, preferredStyle: .alert)
+        
+        let addAction = UIAlertAction(title: addText, style: .default, handler: { _ in
+            self.handleSourceAdd(urls: sources, bypassFlagCheck: false)
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(addAction)
+        
+        let manualAction = UIAlertAction(title: manualText, style: .default, handler: { _ in
+            self.presentAddSourceEntryField(url: nil)
+        })
+        alert.addAction(manualAction)
+        
+        let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func addSource(_ sender: Any?) {
