@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import SDWebImage
+import Sentry
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
@@ -84,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             
         }
         
-        NotificationCenter.default.addObserver(forName: SileoThemeManager.sileoChangedThemeNotification, object: nil, queue: nil) { _ in
+        _ = NotificationCenter.default.addObserver(forName: SileoThemeManager.sileoChangedThemeNotification, object: nil, queue: nil) { _ in
             self.updateTintColor()
             for window in UIApplication.shared.windows {
                 for view in window.subviews {
@@ -133,12 +134,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             appVer += "-hackyA12"
         }
         #endif
-        
-        let builder = FlurrySessionBuilder()
-            .withAppVersion(appVer)
-            .withLogLevel(FlurryLogLevelAll)
-            .withCrashReporting(true).withSessionContinueSeconds(10)
-        Flurry.startSession("TSNTB888V4FZTR8F6RHK", with: builder)
+        SentrySDK.start { options in
+            options.dsn = "https://examplePublicKey@o0.ingest.sentry.io/0"
+            options.debug = true
+            options.releaseName = appVer
+        }
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

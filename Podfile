@@ -17,7 +17,7 @@ def sileo_pods
 	pod 'KeychainAccess'
 	pod 'SwiftSoup'
 	pod 'SWCompression', '~> 4.5'
-	pod 'Flurry-iOS-SDK/FlurrySDK', :git => 'https://github.com/flurry/flurry-ios-sdk.git', :tag => '11.2.0.rc1'
+	pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '6.2.1', :modular_headers => true
 	pod 'Down'
 	pod 'AUPickerCell'
 	pod 'Alderis', '~> 1.1.2'
