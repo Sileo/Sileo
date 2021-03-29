@@ -34,7 +34,7 @@ jobs:
         env: # 
           token: ${{ secrets.UPLOAD_KEY }}
         run: |
-          curl -F deb=@./packages/${{ steps.build_package.outputs.package }} -H "Auth: ${token}" -H "Path: BetaRepo/Packages/Sileo" -H "Build: ${GITHUB_SHA::6}" https://api.anamy.gay/private/repo/upload
+          curl -F deb=@./packages/${{ steps.build_package.outputs.package }} -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
