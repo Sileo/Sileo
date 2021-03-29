@@ -5,12 +5,14 @@ PODS:
   - BitByteData (1.4.3)
   - Cosmos (19.0.3)
   - Down (0.10.0)
-  - Flurry-iOS-SDK/FlurrySDK (11.2.0.rc1)
   - KeychainAccess (4.2.2)
   - LNZTreeView (1.1.2)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
+  - Sentry (6.2.1):
+    - Sentry/Core (= 6.2.1)
+  - Sentry/Core (6.2.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -63,10 +65,10 @@ DEPENDENCIES:
   - AUPickerCell
   - Cosmos (~> 19.0)
   - Down
-  - Flurry-iOS-SDK/FlurrySDK (from `https://github.com/flurry/flurry-ios-sdk.git`, tag `11.2.0.rc1`)
   - KeychainAccess
   - LNZTreeView
   - SDWebImage (~> 5.0)
+  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `6.2.1`)
   - SQLite.swift (~> 0.12.0)
   - SWCompression (~> 4.5)
   - SwiftSoup
@@ -93,14 +95,14 @@ SPEC REPOS:
     - XLForm
 
 EXTERNAL SOURCES:
-  Flurry-iOS-SDK:
-    :git: https://github.com/flurry/flurry-ios-sdk.git
-    :tag: 11.2.0.rc1
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 6.2.1
 
 CHECKOUT OPTIONS:
-  Flurry-iOS-SDK:
-    :git: https://github.com/flurry/flurry-ios-sdk.git
-    :tag: 11.2.0.rc1
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 6.2.1
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -109,10 +111,10 @@ SPEC CHECKSUMS:
   BitByteData: 36729e2125ec321935754f9feb1f4b297e00b501
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   Down: 01f155f9d7e99673c667efd2218709c3b9a8bc13
-  Flurry-iOS-SDK: 11a46b2a29df8f44b9dad1b0a8b7a7f49d17919e
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   LNZTreeView: f04b4a96e5780f5071f8c08b0f6f6554775e46f4
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  Sentry: 9b922b396b0e0bca8516a10e36b0ea3ebea5faf7
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SWCompression: 10cc083b8734bca7d4bf0cf6a638a51fb14e8905
   SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
@@ -120,6 +122,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   XLForm: a439f9512078ed538e8335c8b06d3f3286bbfd37
 
-PODFILE CHECKSUM: c7513ee9c87a763e2791815eeeb047dd9be2c080
+PODFILE CHECKSUM: 357a0f3a4957a6e5d70012088755d9f0c4b35c83
 
 COCOAPODS: 1.10.1
