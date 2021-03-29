@@ -47,13 +47,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateSileoColors()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.navigationController?.navigationBar._hidesShadow = true
         
         guard #available(iOS 13, *) else {
@@ -66,7 +64,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.navigationBar._hidesShadow = false
         
         guard let visibleCells = collectionView?.visibleCells else {
@@ -84,7 +81,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         if loadProvisional {
             showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
-            _ = NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
+            NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
                 self.showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
                 self.collectionView?.reloadData()
             }
@@ -275,7 +272,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     func controller(indexPath: IndexPath) -> PackageViewController? {
         if showProvisional && loadProvisional && indexPath.section == 1 {
             let pro = provisionalPackages[indexPath.row]
-            guard let package = CanisterResolver.package(pro) else { return nil }
+            guard let package = CanisterResolver.package(pro) else {
+                return nil
+            }
             return controller(package: package)
         } else if showUpdates && indexPath.section == 0 {
             return controller(package: availableUpdates[indexPath.row])
@@ -321,20 +320,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     @objc func exportButtonClicked(_ button: UIButton?) {
-        let alert = UIAlertController(title: String(localizationKey: "Export"),
-                                      message: String(localizationKey: "Export_Packages"),
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(title: String(localizationKey: "Export"), message: String(localizationKey: "Export_Packages"), preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
             self.copyPackages()
         })
+        alert.addAction(defaultAction)
         
         let cancelAction = UIAlertAction(title: String(localizationKey: "Export_No"), style: .cancel, handler: { _ in
         })
-        
-        alert.addAction(defaultAction)
         alert.addAction(cancelAction)
-        present(alert, animated: true)
+        
+        self.present(alert, animated: true)
     }
     
     func copyPackages() {
@@ -348,10 +345,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             
             bodyFromArray += "\(packageName): \(packageVersion)\n"
         }
-        if let subRange = Range<String.Index>(NSRange(location: bodyFromArray.count - 1, length: 1),
-                                              in: bodyFromArray) {
+        
+        if let subRange = Range<String.Index>(NSRange(location: bodyFromArray.count - 1, length: 1), in: bodyFromArray) {
             bodyFromArray.removeSubrange(subRange)
         }
+        
         let pasteboard = UIPasteboard.general
         pasteboard.string = bodyFromArray
     }
@@ -368,27 +366,34 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     @objc func sortPopup(sender: UIView?) {
-        let alertController = UIAlertController(title: String(localizationKey: "Sort_By"), message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: String(localizationKey: "Sort_Name"), style: .default, handler: { _ in
+        let alert = UIAlertController(title: String(localizationKey: "Sort_By"), message: nil, preferredStyle: .actionSheet)
+        alert.modalPresentationStyle = .popover
+        alert.popoverPresentationController?.sourceView = sender
+        
+        let nameAction = UIAlertAction(title: String(localizationKey: "Sort_Name"), style: .default, handler: { _ in
             UserDefaults.standard.set(false, forKey: "sortInstalledByDate")
             if let searchController = self.searchController {
                 self.updateSearchResults(for: searchController)
             }
             self.dismiss(animated: true, completion: nil)
-        }))
-        alertController.addAction(UIAlertAction(title: String(localizationKey: "Sort_Date"), style: .default, handler: { _ in
+        })
+        alert.addAction(nameAction)
+        
+        let dateAction = UIAlertAction(title: String(localizationKey: "Sort_Date"), style: .default, handler: { _ in
             UserDefaults.standard.set(true, forKey: "sortInstalledByDate")
             if let searchController = self.searchController {
                 self.updateSearchResults(for: searchController)
             }
             self.dismiss(animated: true, completion: nil)
-        }))
-        alertController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
+        })
+        alert.addAction(dateAction)
+        
+        let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
             self.dismiss(animated: true, completion: nil)
-        }))
-        alertController.modalPresentationStyle = .popover
-        alertController.popoverPresentationController?.sourceView = sender
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -397,7 +402,9 @@ extension PackageListViewController: UICollectionViewDataSource {
         refreshEnabled = true
         var count = 1
         if showUpdates { count += 1 }
-        if showProvisional && loadProvisional { count += 1 }
+        if showProvisional && loadProvisional {
+            count += 1
+        }
         return count
     }
     
@@ -555,7 +562,8 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
 extension PackageListViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = collectionView?.indexPathForItem(at: location),
-              let pvc = self.controller(indexPath: indexPath) else {
+              let pvc = self.controller(indexPath: indexPath)
+        else {
             return nil
         }
         return pvc
@@ -569,16 +577,18 @@ extension PackageListViewController: UIViewControllerPreviewingDelegate {
 @available(iOS 13.0, *)
 extension PackageListViewController {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        guard let pvc = self.controller(indexPath: indexPath) else { return nil }
+        guard let pvc = self.controller(indexPath: indexPath) else {
+            return nil
+        }
+        
         let menuItems = pvc.actions()
-
-        return UIContextMenuConfiguration(identifier: nil,
-                                          previewProvider: {
-                                            pvc
-                                          },
-                                          actionProvider: { _ in
-                                            UIMenu(title: "", options: .displayInline, children: menuItems)
-                                          })
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            pvc
+        }, actionProvider: { _ in
+            UIMenu(title: "", options: .displayInline, children: menuItems)
+        })
+        
+        return config
     }
     
     func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
@@ -600,24 +610,40 @@ extension PackageListViewController: UISearchBarDelegate {
             return
         }
         CanisterResolver.shared.fetch(text) { 
-            DispatchQueue.main.async { self.updateSearchResults(for: self.searchController ?? UISearchController()) }
+            DispatchQueue.main.async {
+                self.updateSearchResults(for: self.searchController ?? UISearchController())
+            }
         }
     }
     
     private func updateProvisional() {
-        if !showProvisional { return }
+        if !showProvisional {
+            return
+        }
+        
         let text = (searchController?.searchBar.text ?? "").lowercased()
-        if text.isEmpty { return self.provisionalPackages.removeAll() }
+        if text.isEmpty {
+            self.provisionalPackages.removeAll()
+            return
+        }
+        
         let all = PackageListManager.shared.allPackages ?? []
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
             let search = (package.name?.lowercased().contains(text) ?? false) ||
                 (package.identifier?.lowercased().contains(text) ?? false) ||
                 (package.description?.lowercased().contains(text) ?? false) ||
                 (package.author?.lowercased().contains(text) ?? false)
-            if !search { return false }
+            if !search {
+                return false
+            }
+            
             let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
+            
             let localRepo = all.contains(where: { package.identifier == $0.packageID })
-            if localRepo { return newer }
+            if localRepo {
+                return newer
+            }
+            
             return true
         }
     }
@@ -627,10 +653,12 @@ extension PackageListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         var packagesLoadIdentifier = self.packagesLoadIdentifier
+        
         if searchBar.text?.isEmpty ?? true {
             let emptyResults = self.searchCache[""]
             self.searchCache = [:]
             self.searchCache[""] = emptyResults
+            
             if showSearchField {
                 if !packages.isEmpty {
                     packages = []
@@ -649,40 +677,50 @@ extension PackageListViewController: UISearchResultsUpdating {
                 packagesLoadIdentifier = "search:\(searchBar.text ?? "")"
             }
         }
+        
         let query = searchBar.text ?? ""
         DispatchQueue.global(qos: .default).async {
             self.mutexLock.wait()
             self.updatingCount += 1
+            
             let packageManager = PackageListManager.shared
             var packages: [Package] = []
             if let cachedPackages = self.searchCache[query] {
                 packages = cachedPackages
             } else {
-                packages = packageManager.packagesList(loadIdentifier: packagesLoadIdentifier, repoContext: self.repoContext, sortPackages: true,
-                                                       lookupTable: self.searchCache ) ?? [Package]()
-                
+                packages = packageManager.packagesList(loadIdentifier: packagesLoadIdentifier,
+                                                       repoContext: self.repoContext,
+                                                       sortPackages: true,
+                                                       lookupTable: self.searchCache) ?? [Package]()
             }
+            
             self.mutexLock.signal()
             self.mutexLock.wait()
+            
             if packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
                 packages = packages.sorted(by: { package1, package2 -> Bool in
                     let packageURL1 = PackageListManager.shared.dpkgDir.appendingPathComponent("info/\(package1.package).list")
                     let packageURL2 = PackageListManager.shared.dpkgDir.appendingPathComponent("info/\(package2.package).list")
                     let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
                     let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
+                    
                     if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
                         let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
                         return date2.compare(date1) == .orderedAscending
                     }
+                    
                     return true
                 })
             }
+            
             self.packages = packages
             self.updatingCount -= 1
             self.mutexLock.signal()
+            
             DispatchQueue.main.async {
                 self.updateProvisional()
                 self.mutexLock.wait()
+                
                 if self.updatingCount == 0 && self.refreshEnabled {
                     UIView.performWithoutAnimation {
                         if self.showUpdates {
@@ -692,6 +730,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                         }
                     }
                 }
+                
                 self.mutexLock.signal()
             }
         }
