@@ -189,25 +189,25 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.fallback = true
+                    cell.defaultKey = "ShowProvisional"
+                    return cell
+                case 6:
+                    let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                     cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
                     return cell
-                case 6:
+                case 7:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 7:
+                case 8:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
-                    return cell
-                case 8:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowProvisional"
                     return cell
                 default:
                     return UITableViewCell()
@@ -247,25 +247,25 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.fallback = true
+                    cell.defaultKey = "ShowProvisional"
+                    return cell
+                case 6:
+                    let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                     cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
                     return cell
-                case 6:
+                case 7:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
-                case 7:
+                case 8:
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
-                    return cell
-                case 8:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowProvisional"
                     return cell
                 default:
                     return UITableViewCell()
