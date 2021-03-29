@@ -52,11 +52,13 @@ export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
 SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
 SILEO_ID   = org.coolstar.sileo
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)
 endif
 
 SILEOTMP = $(TMPDIR)/sileo
@@ -65,10 +67,8 @@ SILEO_APP_DIR = $(SILEOTMP)/install/$(PREFIX)/Applications/Sileo.app
 
 ifneq ($(DEBUG),0)
 BUILD_CONFIG  := Debug
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+debug
 else
 BUILD_CONFIG  := Release
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)
 endif
 
 ifeq ($(shell dpkg-deb --help | grep "zstd" && echo 1),1)
