@@ -315,22 +315,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
               let sourcesSVC = controllers[2] as? SourcesSplitViewController,
               let sourcesNVC = sourcesSVC.viewControllers[0] as? SileoNavigationController,
               let sourcesVC = sourcesNVC.viewControllers[0] as? SourcesViewController,
-              let packageListNVC = controllers[3] as? SileoNavigationController
+              let packageListNVC = controllers[3] as? SileoNavigationController,
+              let packageListVC = packageListNVC.viewControllers[0] as? PackageListViewController
         else {
             return
         }
         
         if shortcutItem.type.hasSuffix(".UpgradeAll") {
             tabBarController.selectedViewController = packageListNVC
-            PackageListManager.shared.upgradeAll(completion: {
-                TabBarController.singleton?.presentPopupController()
-                
-                let autoConfirm = UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false)
-                if autoConfirm {
-                    let downloadMan = DownloadManager.shared
-                    downloadMan.startUnqueuedDownloads()
-                    downloadMan.reloadData(recheckPackages: false)
-                }
+            
+            let title = String(localizationKey: "Sileo")
+            let msg = String(localizationKey: "Upgrade_All_Shortcut_Processing_Message")
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            packageListVC.present(alert, animated: true, completion: nil)
+            
+            sourcesVC.refreshSources(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: { _, _ in
+                PackageListManager.shared.upgradeAll(completion: {
+                    let autoConfirm = UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false)
+                    if autoConfirm {
+                        let downloadMan = DownloadManager.shared
+                        downloadMan.startUnqueuedDownloads()
+                        downloadMan.reloadData(recheckPackages: false)
+                    }
+                    
+                    tabBarController.presentPopupController()
+                    alert.dismiss(animated: true, completion: nil)
+                })
             })
         } else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
