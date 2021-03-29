@@ -319,20 +319,20 @@
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).UpgradeAll</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeAdd</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Add Source</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddSource</string>
-		</dict>
-		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Refresh</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Refresh</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Refresh</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Add Source</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).AddSource</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>

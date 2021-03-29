@@ -342,12 +342,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                     alert.dismiss(animated: true, completion: nil)
                 })
             })
-        } else if shortcutItem.type.hasSuffix(".AddSource") {
-            tabBarController.selectedViewController = sourcesSVC
-            sourcesVC.addSource(nil)
         } else if shortcutItem.type.hasSuffix(".Refresh") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.refreshSources(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: nil)
+        } else if shortcutItem.type.hasSuffix(".AddSource") {
+            tabBarController.selectedViewController = sourcesSVC
+            sourcesVC.addSource(nil)
         } else if shortcutItem.type.hasSuffix(".Packages") {
             tabBarController.selectedViewController = packageListNVC
         }
