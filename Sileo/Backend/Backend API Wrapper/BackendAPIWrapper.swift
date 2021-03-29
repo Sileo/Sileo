@@ -438,13 +438,43 @@ class BackendAPIWrapper: NSObject {
         return nil
     }
     
+    @objc class func featuredViewController() -> FeaturedViewController? {
+        if let tabBarController = TabBarController.singleton,
+           let tabBarVCs = tabBarController.viewControllers,
+           let navVC = tabBarVCs[0] as? SileoNavigationController,
+           let theVC = navVC.viewControllers[0] as? FeaturedViewController {
+            return theVC
+        }
+        return nil
+    }
+    
+    @objc class func newsViewController() -> NewsViewController? {
+        if let tabBarController = TabBarController.singleton,
+           let tabBarVCs = tabBarController.viewControllers,
+           let navVC = tabBarVCs[1] as? SileoNavigationController,
+           let theVC = navVC.viewControllers[0] as? NewsViewController {
+            return theVC
+        }
+        return nil
+    }
+    
     @objc class func sourcesViewController() -> SourcesViewController? {
         if let tabBarController = TabBarController.singleton,
            let tabBarVCs = tabBarController.viewControllers,
            let splitVC = tabBarVCs[2] as? UISplitViewController,
            let navVC = splitVC.viewControllers[0] as? SileoNavigationController,
-           let sourcesVC = navVC.viewControllers[0] as? SourcesViewController {
-            return sourcesVC
+           let theVC = navVC.viewControllers[0] as? SourcesViewController {
+            return theVC
+        }
+        return nil
+    }
+    
+    @objc class func packageListViewController() -> PackageListViewController? {
+        if let tabBarController = TabBarController.singleton,
+           let tabBarVCs = tabBarController.viewControllers,
+           let navVC = tabBarVCs[3] as? SileoNavigationController,
+           let theVC = navVC.viewControllers[0] as? PackageListViewController {
+            return theVC
         }
         return nil
     }
