@@ -20,7 +20,8 @@ final class CanisterResolver {
         "test.apt.bingner.com",
         "apt.bingner.com",
         "apt.procurs.us",
-        "apt.saurik.com"
+        "apt.saurik.com",
+        "repo.theodyssey.dev"
     ]
     
     init() {
