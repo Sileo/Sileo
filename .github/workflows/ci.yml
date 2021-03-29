@@ -28,7 +28,7 @@ jobs:
       - name: Build Sileo
         id: build
         run: |
-         make clean package
+         make clean package BETA=1 DEBUG=0
          echo "::set-output name=package::$(ls -t packages | head -n1)"
       - name: Upload To Repo
         env: # 
