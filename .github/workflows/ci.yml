@@ -26,15 +26,14 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: pod install
       - name: Build Sileo
-        id: build
         run: |
          make clean package BETA=1 DEBUG=0
-         echo "::set-output name=package::$(ls -t packages | head -n1)"
       - name: Upload To Repo
         env: # 
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
-          curl -F deb=@./packages/${{ steps.build_package.outputs.package }} -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+          package=$(ls -t packages | head -n1)
+          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
@@ -44,3 +43,4 @@ jobs:
           submodules: true
       - name: Run SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
+yes
