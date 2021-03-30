@@ -32,7 +32,7 @@ jobs:
          echo "::set-output name=package::$(ls -t packages | head -n1)"
       - name: Upload To Repo
         env: # 
-          token: ${{ secrets.UPLOAD_KEY }}
+          token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           curl -F deb=@./packages/${{ steps.build_package.outputs.package }} -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
   lint:
