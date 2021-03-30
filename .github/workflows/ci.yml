@@ -43,4 +43,3 @@ jobs:
           submodules: true
       - name: Run SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
-yes
