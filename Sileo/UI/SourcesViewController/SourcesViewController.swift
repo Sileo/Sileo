@@ -345,8 +345,7 @@ class SourcesViewController: SileoTableViewController {
                     }
                 }
             }
-        }
-        else {
+        } else {
             let newSources = UIPasteboard.general.newSources()
             if newSources.isEmpty {
                 self.presentAddSourceEntryField(url: nil)
