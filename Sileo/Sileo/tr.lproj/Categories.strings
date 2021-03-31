@@ -2,20 +2,20 @@
   Categories.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28. Translated to Turkish by: CanerKaraca (2021-03-18).
+  Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
-
- TURKISH LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(Kategori Yok)";
-"Tweaks" = "Tweakler";
-"Themes" = "Temalar";
-"Utilities" = "Araçlar";
-"Applications" = "Uygulamalar";
-"Addons" = "Eklentiler";
-"Games" = "Oyunlar";
-"Developer" = "Geliştirici";
-"Data_Storage" = "Veri Depolama";
-"Terminal_Support" = "Terminal Desteği";
-"Text_Editors" = "Metin Düzenleyiciler";
+"No_Category" = "(No Category)";
+"Tweaks" = "Tweaks";
+"Themes" = "Themes";
+"Utilities" = "Utilities";
+"Applications" = "Applications";
+"Addons" = "Addons";
+"Games" = "Games";
+"Developer" = "Developer";
+"Data_Storage" = "Data Storage";
+"Terminal_Support" = "Terminal Support";
+"Text_Editors" = "Text Editors";
