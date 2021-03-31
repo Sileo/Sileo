@@ -2,19 +2,20 @@
   Categories.strings
   Sileo
 
-  Created by TheRealClarity on 2021-03-16.
+  Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
  
+ BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(Nenhuma Categoria)";
+"No_Category" = "(No Category)";
 "Tweaks" = "Tweaks";
-"Themes" = "Temas";
-"Utilities" = "Utilidades";
-"Applications" = "Aplicações";
+"Themes" = "Themes";
+"Utilities" = "Utilities";
+"Applications" = "Applications";
 "Addons" = "Addons";
-"Games" = "Jogos";
-"Developer" = "Desenvolvedor";
-"Data_Storage" = "Armazenamento de Dados";
-"Terminal_Support" = "Suporte para Terminal"; 
-"Text_Editors" = "Editores de Texto";
+"Games" = "Games";
+"Developer" = "Developer";
+"Data_Storage" = "Data Storage";
+"Terminal_Support" = "Terminal Support";
+"Text_Editors" = "Text Editors";
