@@ -8,14 +8,14 @@
  BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(بدون تصنيف)";
+"Tweaks" = "الأدوات";
+"Themes" = "الموضوعات";
+"Utilities" = "الخدمات";
+"Applications" = "التطبيقات";
+"Addons" = "الإضافات";
+"Games" = "الألعاب";
+"Developer" = "التطوير";
+"Data_Storage" = "تخزين البيانات";
+"Terminal_Support" = "دعم الوحدة الطرفية";
+"Text_Editors" = "محررين النصوص";
