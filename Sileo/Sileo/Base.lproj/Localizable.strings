@@ -26,6 +26,7 @@
 "Delete" = "Delete";
 "Cancel" = "Cancel";
 "Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -88,6 +89,8 @@
 "Search_Page" = "Search";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "All Packages";
 "All_Packages.Cell_Subtitle" = "See all packages from your sources";
