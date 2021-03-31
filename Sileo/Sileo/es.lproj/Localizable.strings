@@ -14,17 +14,17 @@
 
 
 "About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"Close" = "Cerrar";
+"Double tap to open." = "Tocar dos veces para abrir.";
+"Untitled_Repo" = "Repo Sin Título";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
+"Done" = "Listo";
+"Done_Editing" = "Listo";
+"More_Info" = "Más Información";
+"Loading" = "Cargando…";
+"Share" = "Compartir";
+"Delete" = "Eliminar";
+"Cancel" = "Cancelar";
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 
@@ -34,100 +34,100 @@
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Instalando";
+"Downloading_Package_Status" = "Descargando";
+"Queued_Package_Status" = "En cola";
+"Ready_Status" = "Listo";
+"Removal_Queued_Package_Status" = "En cola para eliminación";
+"Download_Starting" = "Iniciando…";
+"Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Confirm_Button" = "Confirmar";
+"Queue_Clear_Button" = "Borrar Cola";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
+"Package_Upgrade_Action" = "Actualizar";
+"Package_Reinstall_Action" = "Reinstalar";
+"Package_Uninstall_Action" = "Desinstalar";
+"Package_Modify_Action" = "Modificar";
+"Package_Get_Action" = "Obtener";
+"Package_Queue_Action" = "Añadir a la cola";
+"Package_Cancel_Action" = "Cancelar";
 "Package_Paid" = "Paid";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Compartir Paquete…";
+"Package_Developer_Find_Action" = "Más del Desarrollador";
+"Package_Support_Action" = "Soporte";
+"Package_Hold_Enable_Action" = "Ignorar Actualizaciónes Futuras";
+"Package_Hold_Disable_Action" = "Dejar de Ignorar Actualizaciónes";
+"Package_Wishlist_Add" = "Añadir a la Lista de Deseos";
+"Package_Wishlist_Remove" = "Eliminar de la Lista de Deseos";
+"Wishlist" = "Lista de Deseos";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "Instalar";
+"Queued_Uninstall_Heading" = "Desinstalar";
+"Queued_Update_Heading" = "Actualizar";
+"Download_Errors_Heading" = "Errores";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Instalado";
+"Updates_Heading" = "Actualizaciones";
+"Upgrade_All_Button" = "Actualizar Todo";
+"Package_Search.Placeholder" = "Buscar Paquetes";
+"Sort_Name" = "Nombre";
+"Sort_Date" = "Fecha";
+"Sort_By" = "Ordenar por:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "Paquete no disponible";
+"Package_By_Author" = "%@ por %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "por %@"; // %@ = author name
+"Packages_By_Author" = "Paquetes por %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
+"Featured_Page" = "Destacados";
+"News_Page" = "Noticias";
+"Sources_Page" = "Fuentes";
+"Packages_Page" = "Paquetes";
+"Search_Page" = "Buscar";
+"Refreshing_Sources_Page" = "Refrescando Fuentes";
+"Package_Installed_Files_Page" = "Archivos Instalados";
 "Refresh" = "Refresh";
 "Remove" = "Remove";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Todos los Paquetes";
+"All_Packages.Cell_Subtitle" = "Ver todos los paquetes de sus fuentes";
 
-"All_Categories" = "All Categories";
+"All_Categories" = "Todas las categorías";
 
-"Repos" = "Repositories";
+"Repos" = "Repositorios";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "Añadir Fuente";
+"Add_Source.Body" = "Añadir URL APT";
+"Add_Source.Button.Add" = "Añadir Fuente";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Añadir Manualmente";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Formulario Sín Título";
+"Form_Submitted.Default_Title" = "Formulario Enviada";
+"Form_Submitted.Default_Body" = "El formulario fue enviado con éxito.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Las representaciónes Web View están deprecadas. Por favor contacte al administrador del repositorio acerca de actualizar a representaciónes nativas.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Detalles";
+"Package_Changelog_Tab" = "Lista de Cambios";
+"Package_No_Description_Available" = "Este paquete no tiene descripción.";
+"Package_Changelogs_Unavailable" = "Este paquete no tiene lista de cambios.";
 
-"Installed_Package_Header" = "Installed Package";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Paquete Instalado";
+"Version" = "Versión";
+"Show_Package_Contents_Button" = "Mostrar Contenido del Paquete";
 
 "Licenses_Page_Title" = "Licenses";
 "Alternate_Icon_Title" = "Alternate Icons";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Proveedores de Pago";
+"Settings_Translations_Heading" = "Traducciones";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Compras";
+"Settings_Payment_Provider.No_Purchases" = "Sin Compras";
 
 "Settings" = "Settings";
 "Settings_Page_Title" = "Settings";
@@ -146,31 +146,31 @@
 "Sileo_Adaptive" = "Sileo Adaptive";
 "System" = "System";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Iniciar Sesión en Cydia Store";
+"Payment_Provider_Signed_In" = "Autenticado";
+"Payment_Provider_Signed_In_With_Name" = "Autenticado como %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Cerrar Sesión";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Cerrar la sesión de %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Ya no podrá descargar sus paquetes comprados hasta que vuelva a iniciar sesión.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "Mostrar Detalles";
+"Hide_Install_Details" = "Ocultar Detalles";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch" = "Reiniciar Sileo";
+"After_Install_Respring" = "Reiniciar SpringBoard";
+"After_Install_Reboot" = "Reiniciar Dispositivo";
 "After_Install_Relaunch_Later" = "Restart Sileo Later";
 "After_Install_Respring_Later" = "Restart SpringBoard Later";
 "After_Install_Reboot_Later" = "Reboot Device Later";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "Repositorio Riesgoso";
+"Dangerous_Repo.Body" = "Está intentando añadir un repositorio previamente identificado como nocivo por razones como piratería, contenido ilícito, ó malware.\n\nRepositorios identificados como nocivos suelen distribuir software con efectos inesperados, ya sea en la forma de paquetes de paga sin costo, u otros paquetes maliciosos. Esto puede tener repercusiones negativas en su dispositivo y su privacidad, incluso algunas veces afectando su capacidad para hacer jailbreak en el futuro. Recomendamos que tenga extremada precaución para evitar instalar software malicioso.";
+"Dangerous_Repo.Continue" = "Acepto los riesgos, continuar";
+"Dangerous_Repo.Cancel" = "Regresar a la seguridad";
+"Dangerous_Repo.Last_Chance.Title" = "Añadir Repo Riesgosa?";
+"Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad. %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continuar";
+"Dangerous_Repo.Last_Chance.Cancel" = "Regresar";
 
 // All export-based strings
 "Export" = "Export";
