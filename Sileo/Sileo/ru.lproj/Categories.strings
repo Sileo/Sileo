@@ -8,14 +8,14 @@
  BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(Без категории)";
+"Tweaks" = "Твики";
+"Themes" = "Темы";
+"Utilities" = "Утилиты";
+"Applications" = "Приложения";
+"Addons" = "Аддоны";
+"Games" = "Игры";
+"Developer" = "Разработчик";
+"Data_Storage" = "Хранилище данных";
+"Terminal_Support" = "Поддержка терминала";
+"Text_Editors" = "Текстовые редакторы";
