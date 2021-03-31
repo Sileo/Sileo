@@ -2,167 +2,182 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28.
-  Original translation by Yuji Shimabukuro on 2019-10-28
-  Updated by eve0415 on 2021-03-19
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
-
- JAPANESE LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "日本語翻訳 by eve0415";
-"__LocalizationCredit.URL" = "https://www.twitter.com/eveevekun";
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
-"About" = "詳細";
-"Close" = "閉じる";
-"Double tap to open." = "ダブルタップして開く";
-"Untitled_Repo" = "無名のリポジトリ";
+
+
+"About" = "About";
+"Close" = "Close";
+"Double tap to open." = "Double tap to open.";
+"Untitled_Repo" = "Untitled Repo";
 "OK" = "OK";
-"Done" = "完了";
-"Done_Editing" = "完了";
-"More_Info" = "詳細";
-"Loading" = "読み込み中...";
-"Share" = "共有";
-"Delete" = "削除";
-"Cancel" = "キャンセル";
+"Done" = "Done";
+"Done_Editing" = "Done";
+"More_Info" = "More Info";
+"Loading" = "Loading…";
+"Share" = "Share";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "インストール中";
-"Downloading_Package_Status" = "ダウンロード中";
-"Queued_Package_Status" = "キューされています";
-"Ready_Status" = "準備完了";
-"Removal_Queued_Package_Status" = "削除するためにキューされています";
-"Download_Starting" = "開始中…";
-"Download_Progress" = "%@ \/ %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Installing";
+"Downloading_Package_Status" = "Downloading";
+"Queued_Package_Status" = "Queued";
+"Ready_Status" = "Ready";
+"Removal_Queued_Package_Status" = "Queued for Removal";
+"Download_Starting" = "Starting…";
+"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "実行";
-"Queue_Clear_Button" = "キューをクリア";
+"Queue_Confirm_Button" = "Confirm";
+"Queue_Clear_Button" = "Clear Queue";
 
-"Package_Upgrade_Action" = "アップデート";
-"Package_Reinstall_Action" = "再インストール";
-"Package_Uninstall_Action" = "アンインストール";
-"Package_Modify_Action" = "変更";
-"Package_Get_Action" = "入手";
-"Package_Queue_Action" = "キュー";
-"Package_Cancel_Action" = "キャンセル";
+"Package_Upgrade_Action" = "Upgrade";
+"Package_Reinstall_Action" = "Reinstall";
+"Package_Uninstall_Action" = "Uninstall";
+"Package_Modify_Action" = "Modify";
+"Package_Get_Action" = "Get";
+"Package_Queue_Action" = "Queue";
+"Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
 
-"Package_Share_Action" = "パッケージを共有...";
-"Package_Developer_Find_Action" = "この開発者のパッケージ一覧";
-"Package_Support_Action" = "サポート";
-"Package_Hold_Enable_Action" = "アップデートを非表示";
-"Package_Hold_Disable_Action" = "アップデートを表示";
-"Package_Wishlist_Add" = "ほしいものリストに追加";
-"Package_Wishlist_Remove" = "ほしいものリストから削除";
-"Wishlist" = "ほしいものリスト";
+"Package_Share_Action" = "Share Package…";
+"Package_Developer_Find_Action" = "More by this Developer";
+"Package_Support_Action" = "Support";
+"Package_Hold_Enable_Action" = "Ignore Future Updates";
+"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Wishlist_Add" = "Add to Wishlist";
+"Package_Wishlist_Remove" = "Remove from Wishlist";
+"Wishlist" = "Wishlist";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "インストール";
-"Queued_Uninstall_Heading" = "アンインストール";
-"Queued_Update_Heading" = "アップデート";
-"Download_Errors_Heading" = "エラー";
+"Queued_Install_Heading" = "Install";
+"Queued_Uninstall_Heading" = "Uninstall";
+"Queued_Update_Heading" = "Update";
+"Download_Errors_Heading" = "Errors";
 
-"Installed_Heading" = "インストール済み";
-"Updates_Heading" = "アップデート";
-"Upgrade_All_Button" = "全てをアップデート";
-"Package_Search.Placeholder" = "パッケージを検索";
-"Sort_Name" = "名前";
-"Sort_Date" = "更新日時";
-"Sort_By" = "並べ替え:";
+"Installed_Heading" = "Installed";
+"Updates_Heading" = "Updates";
+"Upgrade_All_Button" = "Upgrade All";
+"Package_Search.Placeholder" = "Search for Packages";
+"Sort_Name" = "Name";
+"Sort_Date" = "Date";
+"Sort_By" = "Sort by:";
 
-"Package_Unavailable" = "パッケージを利用できません";
+"Package_Unavailable" = "Package Unavailable";
 "Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "%@ のパッケージ"; // %@ = author name
+"Packages_By_Author" = "Packages by %@"; // %@ = author name
 
-"Featured_Page" = "おすすめ";
-"News_Page" = "ニュース";
-"Sources_Page" = "リポジトリ";
-"Packages_Page" = "パッケージ";
-"Search_Page" = "検索";
-"Refreshing_Sources_Page" = "リポジトリを更新中";
-"Package_Installed_Files_Page" = "インストール済みファイル";
+"Featured_Page" = "Featured";
+"News_Page" = "New";
+"Sources_Page" = "Sources";
+"Packages_Page" = "Packages";
+"Search_Page" = "Search";
+"Refreshing_Sources_Page" = "Refreshing Sources";
+"Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
-"All_Packages.Title" = "全てのパッケージ";
-"All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
+"All_Packages.Title" = "All Packages";
+"All_Packages.Cell_Subtitle" = "See all packages from your sources";
 
-"All_Categories" = "全てのカテゴリー";
+"All_Categories" = "All Categories";
 
-"Repos" = "リポジトリ";
+"Repos" = "Repositories";
 
-"Add_Source.Title" = "リポジトリを追加";
-"Add_Source.Body" = "リポジトリの URL を入力";
-"Add_Source.Button.Add" = "追加";
+"Add_Source.Title" = "Add Source";
+"Add_Source.Body" = "Add APT URL";
+"Add_Source.Button.Add" = "Add Source";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "手動で入力";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
-"Untitled_Form" = "無題のフォーム";
-"Form_Submitted.Default_Title" = "送信したフォーム";
-"Form_Submitted.Default_Body" = "フォームの送信に成功しました。";
+"Untitled_Form" = "Untitled Form";
+"Form_Submitted.Default_Title" = "Submitted Form";
+"Form_Submitted.Default_Body" = "The form was submitted successfully.";
 
-"Web_Depiction_Deprecated_Warning" = "詳細ページのデータが非推奨の形式です。リポジトリの管理者に連絡してください。";
+"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
-"Package_Details_Tab" = "詳細";
-"Package_Changelog_Tab" = "更新履歴";
-"Package_No_Description_Available" = "このパッケージでは詳細の表示ができません。";
-"Package_Changelogs_Unavailable" = "このパッケージでは更新履歴を表示できません";
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Changelog";
+"Package_No_Description_Available" = "No description is available for this package.";
+"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
-"Installed_Package_Header" = "インストール済み";
-"Version" = "バージョン";
-"Show_Package_Contents_Button" = "パッケージの内容を表示";
+"Installed_Package_Header" = "Installed Package";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Show Package Contents";
 
-"Licenses_Page_Title" = "ライセンス";
+"Licenses_Page_Title" = "Licenses";
+"Alternate_Icon_Title" = "Alternate Icons";
 
-"Settings_Payment_Provider_Heading" = "決済サービスプロバイダー";
-"Settings_Translations_Heading" = "翻訳";
+"Settings_Payment_Provider_Heading" = "Payment Providers";
+"Settings_Translations_Heading" = "Translations";
 
-"Settings_Payment_Provider.Purchases_Heading" = "購入済み";
-"Settings_Payment_Provider.No_Purchases" = "購入したパッケージはありません。";
+"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.No_Purchases" = "No purchases";
 
-"Settings" = "設定";
-"Settings_Page_Title" = "設定";
-"Dark_Mode_Toggle" = "ダークモード";
-"Theme" = "テーマ";
-"Tint_Color" = "色合い";
-"Reset_Tint_Color" = "色合いをリセット";
-"Auto_Complete_Queue" = "オートコンプリートキュー";
-"Enable_Analytics" = "統計収集の有効化";
+"Settings" = "Settings";
+"Settings_Page_Title" = "Settings";
+"Dark_Mode_Toggle" = "Dark Mode";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Enable_Analytics" = "Enable Analytics";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
-"Sileo_Light" = "ライト";
-"Sileo_Dark" = "ダーク";
-"Sileo_Adaptive" = "自動";
-"System" = "システム";
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
 
-"Cydia_Sign_In" = "Cydia Store へサインイン";
-"Payment_Provider_Signed_In" = "サインイン";
-"Payment_Provider_Signed_In_With_Name" = "%@ としてサインイン中"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "サインアウト";
-"Payment_Provider_Sign_Out_Confirm.Title" = "%@ からサインアウト"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "次回のサインインまで、購入したパッケージがダウンロード出来なくなります。";
+"Cydia_Sign_In" = "Sign in to Cydia Store";
+"Payment_Provider_Signed_In" = "Signed in";
+"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Sign out";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
 
-"Show_Install_Details" = "詳細を表示";
-"Hide_Install_Details" = "詳細を非表示";
+"Show_Install_Details" = "Show Details";
+"Hide_Install_Details" = "Hide Details";
 
-"After_Install_Relaunch" = "Sileo を再起動";
-"After_Install_Respring" = "SpringBoard を再起動";
-"After_Install_Reboot" = "再起動";
+"After_Install_Relaunch" = "Restart Sileo";
+"After_Install_Respring" = "Restart SpringBoard";
+"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
-"Dangerous_Repo.Title" = "危険なリポジトリ";
-"Dangerous_Repo.Body" = "著作権の侵害・違法なコンテンツ・マルウェア等の理由で有害であると認識されているリポジトリを追加しようとされています。\n\n有害なリポジトリでは、本来有償のソフトウェアを無償として配布したり、予期しない影響を与えるソフトウェアを配布している場合があります。一度、悪意のあるソフトウェアをインストールしてしまうと、デバイスとプライバシーに永続的な影響を与える可能性があり、Jailbreak 状態の維持にも影響を与えることがあります。有害なソフトウェアを回避するために細心の注意を払うことを強く推奨します。";
-"Dangerous_Repo.Continue" = "私はリスクを受け入れ、追加します";
-"Dangerous_Repo.Cancel" = "安全性を確保する";
-"Dangerous_Repo.Last_Chance.Title" = "有害なリポジトリを追加しますか？";
-"Dangerous_Repo.Last_Chance.Body" = "危険なリポジトリの追加によって、お使いのデバイスを破損させる恐れがあります。安全性を確保するためにも、登録しないことを強く推奨します。";
-"Dangerous_Repo.Last_Chance.Continue" = "続ける";
-"Dangerous_Repo.Last_Chance.Cancel" = "戻る";
+"Dangerous_Repo.Title" = "Dangerous Repo";
+"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
+"Dangerous_Repo.Continue" = "I accept the risks, continue";
+"Dangerous_Repo.Cancel" = "Take me back to safety";
+"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continue";
+"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
 
 // All export-based strings
-"Export" = "エクスポート";
-"Export_Packages" = "パッケージリストをエクスポートしますか？ これにより、すべてのパッケージ名とそのバージョンがクリップボードにコピーされます。";
-"Export_Sources" = "リポジトリリストをエクスポートしますか？ これにより、すべてのリポジトリ URL がクリップボードにコピーされます。";
-"Export_Yes" = "はい";
-"Export_No" = "キャンセル";
+"Export" = "Export";
+"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
+"Export_Yes" = "Yes, copy.";
+"Export_No" = "No, cancel.";
 
 // Depcitions
-"View_Depiction" = "詳細を見る";
+"View_Depiction" = "View Depiction";
