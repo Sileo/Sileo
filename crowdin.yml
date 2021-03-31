@@ -1,5 +1,5 @@
 commit_message: '[Localization] Update %language% translations'
 append_commit_message: false
 files:
-  - source: /Sileo/Sileo/Base.lproj/*.strings
+  - source: /Sileo/Sileo/Base.lproj/*
     translation: /Sileo/Sileo/%osx_code%/%original_file_name%
