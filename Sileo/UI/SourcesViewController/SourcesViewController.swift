@@ -313,26 +313,7 @@ class SourcesViewController: SileoTableViewController {
             self.presentAddClipBoardPrompt(sources: newSources)
         }
     }
-    
-    func isSourceFlagged(_ url: URL, completion: @escaping (Bool) -> Void) throws {
-        let apiURL = URL(string: "https://flagged-repo-api.getsileo.app/flagged")!
-        let requestDict = ["url": url.absoluteString]
-        let requestJSON = try JSONSerialization.data(withJSONObject: requestDict, options: [])
-        
-        var request = URLRequest(url: apiURL)
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = requestJSON
-        
-        URLSession.shared.dataTask(with: request) { (data: Data?, _, error: Error?) in
-            if let data = data, error == nil {
-                let isBanned = String(data: data, encoding: .utf8)
-                return completion(isBanned == "true")
-            }
-            return completion(false)
-        }.resume()
-    }
-    
+
     func showFlaggedSourceWarningController(url: URL) {
         let flaggedSourceController = FlaggedSourceWarningViewController(nibName: "FlaggedSourceWarningViewController", bundle: nil)
         flaggedSourceController.shouldAddAnywayCallback = {
@@ -347,22 +328,15 @@ class SourcesViewController: SileoTableViewController {
     func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
         if !bypassFlagCheck {
             for url in urls {
-                do {
-                    try isSourceFlagged(url) { isFlagged in
-                        DispatchQueue.main.async {
-                            if isFlagged {
-                                return self.showFlaggedSourceWarningController(url: url)
-                            }
-                            
-                            RepoManager.shared.addRepos(with: [url])
-                            self.reloadData()
-                            self.refreshSources(forceUpdate: false, forceReload: false)
+                CanisterResolver.shared.piracy(url) { isFlagged in
+                    DispatchQueue.main.async {
+                        if isFlagged {
+                            return self.showFlaggedSourceWarningController(url: url)
                         }
+                        RepoManager.shared.addRepos(with: [url])
+                        self.reloadData()
+                        self.refreshSources(forceUpdate: false, forceReload: false)
                     }
-                } catch {
-                    RepoManager.shared.addRepos(with: [url])
-                    self.reloadData()
-                    self.refreshSources(forceUpdate: false, forceReload: false)
                 }
             }
         } else {
@@ -486,22 +460,37 @@ extension SourcesViewController { // UITableViewDelegate
         self.canEditRow(indexPath: indexPath)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && self.canEditRow(indexPath: indexPath) {
-            let repoManager = RepoManager.shared
-            repoManager.remove(repo: sortedRepoList[indexPath.row])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categoryVC = self.controller(indexPath: indexPath)
+        let navController = SileoNavigationController(rootViewController: categoryVC)
+        self.splitViewController?.showDetailViewController(navController, sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // We don't want to be able to delete the top section so we just return early here
+        if indexPath.section == 0 { return nil }
+        // We're using this a bunch, best just keep it here
+        let repoManager = RepoManager.shared
+        let refresh = UIContextualAction(style: .normal, title: "Refresh") { _, _, completionHandler in
+            completionHandler(true)
+        }
+        refresh.image = UIImage(systemNameOrNil: "arrow.clockwise.circle")
+        refresh.backgroundColor = .systemGreen
+        if !self.canEditRow(indexPath: indexPath) {
+            return UISwipeActionsConfiguration(actions: [refresh])
+        }
+        let remove = UIContextualAction(style: .destructive, title: "Remove") { _, _, completionHandler in
+            repoManager.remove(repo: self.sortedRepoList[indexPath.row])
             
             self.reSortList()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             self.refreshSources(forceUpdate: false, forceReload: true)
+            completionHandler(true)
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryVC = self.controller(indexPath: indexPath)
-        let navController = SileoNavigationController(rootViewController: categoryVC)
-        self.splitViewController?.showDetailViewController(navController, sender: self)
+        remove.image = UIImage(systemNameOrNil: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [remove, refresh])
     }
 }
 
