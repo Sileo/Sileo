@@ -4,139 +4,180 @@
 
   Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
-  Modified by PeterDev on 2019-05-03.
  
- Korean LOCALISATIONS
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "PeterDev의 한국어 번역";
-"__LocalizationCredit.URL" = "https://twitter.com/iospeterdev"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
-"Close" = "닫기";
-"Double tap to open." = "두번 탭해서 열기.";
-"Untitled_Repo" = "제목 없는 리포";
-"OK" = "승인";
-"Done" = "확인";
-"Done_Editing" = "확인";
-"More_Info" = "더보기";
-"Loading" = "로딩…";
-"Share" = "공유";
-"Delete" = "지우기";
-"Cancel" = "취소";
+
+
+"About" = "About";
+"Close" = "Close";
+"Double tap to open." = "Double tap to open.";
+"Untitled_Repo" = "Untitled Repo";
+"OK" = "OK";
+"Done" = "Done";
+"Done_Editing" = "Done";
+"More_Info" = "More Info";
+"Loading" = "Loading…";
+"Share" = "Share";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "설치 중";
-"Downloading_Package_Status" = "다운로드 중";
-"Queued_Package_Status" = "대기열에 추가됨";
-"Ready_Status" = "준비";
-"Removal_Queued_Package_Status" = "삭제 대기열에 추가됨";
-"Download_Starting" = "시작 중…";
-"Download_Progress" = "%@ 중 %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Installing";
+"Downloading_Package_Status" = "Downloading";
+"Queued_Package_Status" = "Queued";
+"Ready_Status" = "Ready";
+"Removal_Queued_Package_Status" = "Queued for Removal";
+"Download_Starting" = "Starting…";
+"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "확인";
-"Queue_Clear_Button" = "대기열 비우기";
+"Queue_Confirm_Button" = "Confirm";
+"Queue_Clear_Button" = "Clear Queue";
 
-"Package_Upgrade_Action" = "업데이트";
-"Package_Reinstall_Action" = "재설치";
-"Package_Uninstall_Action" = "삭제";
-"Package_Modify_Action" = "편집";
-"Package_Get_Action" = "받기";
-"Package_Queue_Action" = "대기열";
-"Package_Cancel_Action" = "취소";
+"Package_Upgrade_Action" = "Upgrade";
+"Package_Reinstall_Action" = "Reinstall";
+"Package_Uninstall_Action" = "Uninstall";
+"Package_Modify_Action" = "Modify";
+"Package_Get_Action" = "Get";
+"Package_Queue_Action" = "Queue";
+"Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
 
-"Package_Share_Action" = "패키지 공유…";
-"Package_Developer_Find_Action" = "이 개발자 더보기";
-"Package_Support_Action" = "지원";
-"Package_Hold_Enable_Action" = "업데이트 무시";
-"Package_Hold_Disable_Action" = "업데이트 무시 취소";
-"Package_Wishlist_Add" = "위시리스트에 추가";
-"Package_Wishlist_Remove" = "위시리스트에서 삭제";
-"Wishlist" = "위시리스트";
+"Package_Share_Action" = "Share Package…";
+"Package_Developer_Find_Action" = "More by this Developer";
+"Package_Support_Action" = "Support";
+"Package_Hold_Enable_Action" = "Ignore Future Updates";
+"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Wishlist_Add" = "Add to Wishlist";
+"Package_Wishlist_Remove" = "Remove from Wishlist";
+"Wishlist" = "Wishlist";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "설치";
-"Queued_Uninstall_Heading" = "삭제";
-"Queued_Update_Heading" = "업데이트";
-"Download_Errors_Heading" = "에러";
+"Queued_Install_Heading" = "Install";
+"Queued_Uninstall_Heading" = "Uninstall";
+"Queued_Update_Heading" = "Update";
+"Download_Errors_Heading" = "Errors";
 
-"Installed_Heading" = "설치됨";
-"Updates_Heading" = "업데이트";
-"Upgrade_All_Button" = "모두 업데이트";
-"Package_Search.Placeholder" = "패키지 검색";
-"Sort_Name" = "이름";
-"Sort_Date" = "날자";
-"Sort_By" = "분류:";
+"Installed_Heading" = "Installed";
+"Updates_Heading" = "Updates";
+"Upgrade_All_Button" = "Upgrade All";
+"Package_Search.Placeholder" = "Search for Packages";
+"Sort_Name" = "Name";
+"Sort_Date" = "Date";
+"Sort_By" = "Sort by:";
 
-"Package_Unavailable" = "패키지를 사용할 수 없음";
-"Package_By_Author" = "%@ 개발자: %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "개발자: %@"; // %@ = author name
-"Packages_By_Author" = "%@의 패키지"; // %@ = author name
+"Package_Unavailable" = "Package Unavailable";
+"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "by %@"; // %@ = author name
+"Packages_By_Author" = "Packages by %@"; // %@ = author name
 
-"Featured_Page" = "추천";
-"News_Page" = "뉴스";
-"Sources_Page" = "소스";
-"Packages_Page" = "패키지";
-"Search_Page" = "검색";
-"Refreshing_Sources_Page" = "소스 새로고침 중";
-"Package_Installed_Files_Page" = "파일 설치됨";
+"Featured_Page" = "Featured";
+"News_Page" = "New";
+"Sources_Page" = "Sources";
+"Packages_Page" = "Packages";
+"Search_Page" = "Search";
+"Refreshing_Sources_Page" = "Refreshing Sources";
+"Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
-"All_Packages.Title" = "모든 패키지";
-"All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
+"All_Packages.Title" = "All Packages";
+"All_Packages.Cell_Subtitle" = "See all packages from your sources";
 
-"All_Categories" = "모든 카테고리";
+"All_Categories" = "All Categories";
 
-"Repos" = "리포";
+"Repos" = "Repositories";
 
-"Add_Source.Title" = "소스 추가";
-"Add_Source.Body" = "APT 주소 추가";
-"Add_Source.Button.Add" = "소스 추가";
+"Add_Source.Title" = "Add Source";
+"Add_Source.Body" = "Add APT URL";
+"Add_Source.Button.Add" = "Add Source";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "직접 입력";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
-"Untitled_Form" = "제목 없는 양식";
-"Form_Submitted.Default_Title" = "전송된 양식";
-"Form_Submitted.Default_Body" = "양식이 성공적으로 전송되었습니다.";
+"Untitled_Form" = "Untitled Form";
+"Form_Submitted.Default_Title" = "Submitted Form";
+"Form_Submitted.Default_Body" = "The form was submitted successfully.";
 
-"Web_Depiction_Deprecated_Warning" = "웹 뷰 설명창은 지원이 종료되었습니다. 리포 관리자에게 네이티브 설명창을 지원하도록 연락해주세요.";
+"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
-"Package_Details_Tab" = "자세히";
-"Package_Changelog_Tab" = "변경";
-"Package_No_Description_Available" = "이 패키지에 대한 설명이 없습니다.";
-"Package_Changelogs_Unavailable" = "이 패키지에 대한 변경점이 없습니다.";
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Changelog";
+"Package_No_Description_Available" = "No description is available for this package.";
+"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
-"Installed_Package_Header" = "설치된 패키지";
-"Version" = "버전";
-"Show_Package_Contents_Button" = "패키지 콘텐츠 보기";
+"Installed_Package_Header" = "Installed Package";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Show Package Contents";
 
-"Settings_Payment_Provider_Heading" = "결제 제공";
-"Settings_Translations_Heading" = "번역";
+"Licenses_Page_Title" = "Licenses";
+"Alternate_Icon_Title" = "Alternate Icons";
 
-"Settings_Payment_Provider.Purchases_Heading" = "구입";
-"Settings_Payment_Provider.No_Purchases" = "구입 안함";
+"Settings_Payment_Provider_Heading" = "Payment Providers";
+"Settings_Translations_Heading" = "Translations";
 
-"Cydia_Sign_In" = "Cydia Store에 로그인";
-"Payment_Provider_Signed_In" = "로그인 됨";
-"Payment_Provider_Signed_In_With_Name" = "%@로 로그인됨"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "로그아웃";
-"Payment_Provider_Sign_Out_Confirm.Title" = "%@에서 로그아웃"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "다시 로그인할 때 까지 구입한 패키지를 설치할 수 없습니다.";
+"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.No_Purchases" = "No purchases";
 
-"Show_Install_Details" = "자세히";
-"Hide_Install_Details" = "간략히";
+"Settings" = "Settings";
+"Settings_Page_Title" = "Settings";
+"Dark_Mode_Toggle" = "Dark Mode";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Enable_Analytics" = "Enable Analytics";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
-"After_Install_Relaunch" = "Sileo 재시작";
-"After_Install_Respring" = "SpringBoard 재시작";
-"After_Install_Reboot" = "기기 재시작";
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
 
-"Dangerous_Repo.Title" = "위험한 리포";
-"Dangerous_Repo.Body" = "불법 복제, 불법 콘텐츠 또는 악성 소프트웨어와 같은 유해한 것으로 알려진 저장소를 추가하려고 시도했습니다.\n\n유해한 것으로 표시된 리포는 유료 패키지를 무료로 제공하거나 기타 악성 패키지이든 간에 예기치 않은 영향으로 소프트웨어를 배포하는 경우가 있습니다. 이로 인해 기기 및 개인 정보 보호에 지속적인 영향을 미칠 수 있으며 때로는 탈옥을 시도하는데 영향을 미칠 수 있습니다. 유해한 소프트웨어를 피하기 위해 각별한 주의를 기울이는 것을 추천드립니다.";
-"Dangerous_Repo.Continue" = "위험을 감수하고 계속 진행";
-"Dangerous_Repo.Cancel" = "안전한 상태로 돌아가기";
-"Dangerous_Repo.Last_Chance.Title" = "위험한 리포를 추가할까요?";
-"Dangerous_Repo.Last_Chance.Body" = "위험한 리포는 기기를 사용하거나 탈옥을 시도하는데 영향을 미칠 수 있습니다. 안전항 상태로 돌아가는 것을 강력히 추천드립니다. %@";
-"Dangerous_Repo.Last_Chance.Continue" = "계속";
-"Dangerous_Repo.Last_Chance.Cancel" = "돌아가기";
+"Cydia_Sign_In" = "Sign in to Cydia Store";
+"Payment_Provider_Signed_In" = "Signed in";
+"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Sign out";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
 
+"Show_Install_Details" = "Show Details";
+"Hide_Install_Details" = "Hide Details";
 
+"After_Install_Relaunch" = "Restart Sileo";
+"After_Install_Respring" = "Restart SpringBoard";
+"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
+
+"Dangerous_Repo.Title" = "Dangerous Repo";
+"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
+"Dangerous_Repo.Continue" = "I accept the risks, continue";
+"Dangerous_Repo.Cancel" = "Take me back to safety";
+"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continue";
+"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+
+// All export-based strings
+"Export" = "Export";
+"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
+"Export_Yes" = "Yes, copy.";
+"Export_No" = "No, cancel.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";
