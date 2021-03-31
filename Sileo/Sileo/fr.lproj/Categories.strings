@@ -8,14 +8,14 @@
  BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(Aucune Catégorie)";
+"No_Category" = "(No Category)";
 "Tweaks" = "Tweaks";
-"Themes" = "Thèmes";
-"Utilities" = "Outils";
+"Themes" = "Themes";
+"Utilities" = "Utilities";
 "Applications" = "Applications";
-"Addons" = "Ajouts";
-"Games" = "Jeux";
-"Developer" = "Dévelopeur";
-"Data_Storage" = "Hébergement de Données";
-"Terminal_Support" = "Support de Terminal";
-"Text_Editors" = "Éditeurs de Texte";
+"Addons" = "Addons";
+"Games" = "Games";
+"Developer" = "Developer";
+"Data_Storage" = "Data Storage";
+"Terminal_Support" = "Terminal Support";
+"Text_Editors" = "Text Editors";
