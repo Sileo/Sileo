@@ -23,6 +23,10 @@ jobs:
         run: |
           package=$(ls -t packages | head -n1)
           curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+      - name: Upload To GitHub Artifacts
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          path: ./packages/*.deb
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
