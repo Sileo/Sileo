@@ -332,7 +332,6 @@ extension SettingsViewController { // UITableViewDataSource
                         colorPickerViewController.modalPresentationStyle = .fullScreen
                     }
                 }
-                
                 self.navigationController?.present(colorPickerViewController, animated: true)
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
@@ -355,7 +354,6 @@ extension SettingsViewController { // UITableViewDataSource
                         }
                     }
                     self.navigationController?.present(colorPickerViewController, animated: true)
-                    
                 } else if indexPath.row == 2 { // Tint color reset
                     SileoThemeManager.shared.resetTintColor()
                 } else if indexPath.row == 3 {

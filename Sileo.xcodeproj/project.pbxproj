@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A54C6CBB23B0C153BE092A7 /* libPods-SileoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */; };
 		1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		172B2ECF22F0896E000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED022F08B21000155B9 /* SourceLicense.swift */; };
@@ -20,7 +19,6 @@
 		172B2EDB22F0A358000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
-		2C303E136BDF0840EA33EF2C /* libPods-Sileo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
 		493B23D226098104007D605F /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CE26098104007D605F /* Chimera@2x.png */; };
 		493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; };
@@ -89,6 +87,18 @@
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
+		E13638C02614F49500698D55 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E13638BF2614F49500698D55 /* SDWebImage */; };
+		E13638C52614F4D000698D55 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C42614F4D000698D55 /* Alamofire */; };
+		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
+		E13638CF2614F57100698D55 /* XLForm in Frameworks */ = {isa = PBXBuildFile; productRef = E13638CE2614F57100698D55 /* XLForm */; };
+		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
+		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
+		E13638DE2614F5D300698D55 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E13638DD2614F5D300698D55 /* SWCompression */; };
+		E13638E32614F61F00698D55 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E22614F61F00698D55 /* Sentry */; };
+		E13638E82614F66400698D55 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E72614F66400698D55 /* Down */; };
+		E13638ED2614F69A00698D55 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E13638EC2614F69A00698D55 /* Alderis */; };
+		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
+		E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F62614F6E300698D55 /* SwipeCellKit */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
@@ -103,7 +113,9 @@
 		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
-		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
+		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
+		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
+		E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D0C261500C700E56882 /* SwiftTryCatch */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
@@ -459,7 +471,6 @@
 		FBD910D024E06ABE00767541 /* SettingsColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */; };
 		FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
 		FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
-		FC03BA9B2115A3EA07E7D58F /* libPods-Sileo Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D54D882388524470898530 /* libPods-Sileo Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -552,8 +563,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.debug.xcconfig"; path = "Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlaggedSourceWarningViewController.xib; sourceTree = "<group>"; };
 		172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocalizedHelpers.swift"; sourceTree = "<group>"; };
 		172B2ED022F08B21000155B9 /* SourceLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLicense.swift; sourceTree = "<group>"; };
@@ -561,7 +570,6 @@
 		172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
 		172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedSourceWarningViewController.swift; sourceTree = "<group>"; };
 		1761F826227B5ADD00E03DC3 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
-		23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.release.xcconfig"; path = "Target Support Files/Pods-SileoTests/Pods-SileoTests.release.xcconfig"; sourceTree = "<group>"; };
 		2582D4A6D64D2411952A9434 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		36A4571F24CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		36A4572024CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -624,15 +632,10 @@
 		56A5989A214657A700677FCA /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
 		56A5989C214657BB00677FCA /* WhiteBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlur.m; sourceTree = "<group>"; };
 		56A5989E2146584800677FCA /* WhiteBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBlur.h; sourceTree = "<group>"; };
-		5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SileoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B02930E2F51CAF70A74DF6F /* Pods-SileoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.release.xcconfig"; sourceTree = "<group>"; };
 		76B93DAC96CA9C7278D2994A /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F850ACF2DB14A39CC87CBE7 /* Pods-Sileo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.release.xcconfig"; sourceTree = "<group>"; };
-		918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sileo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		962C0D7C76E57C9BEBFBE5E8 /* Pods-Sileo Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
-		B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.release.xcconfig"; path = "Target Support Files/Pods-Sileo/Pods-Sileo.release.xcconfig"; sourceTree = "<group>"; };
-		B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SileoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C305468521D6900C003E73FC /* PackageListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeader.xib; sourceTree = "<group>"; };
 		C373923521D5E46900E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C373924621D5F80300E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Errors.strings; sourceTree = "<group>"; };
@@ -658,9 +661,7 @@
 		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
 		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
-		E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
@@ -864,8 +865,6 @@
 		F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionLayerView.swift; sourceTree = "<group>"; };
 		F1FF7A6624FAF0310088F88B /* FeaturedLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLayerView.swift; sourceTree = "<group>"; };
 		F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
-		F8D54D882388524470898530 /* libPods-Sileo Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sileo Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.release.xcconfig"; path = "Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.release.xcconfig"; sourceTree = "<group>"; };
 		FB208DC224D709B7000297FB /* SileoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTheme.swift; sourceTree = "<group>"; };
 		FB208DC424D70A91000297FB /* SileoThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoThemeManager.swift; sourceTree = "<group>"; };
 		FB40261F23DE2B9C002D97FE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -899,7 +898,6 @@
 			files = (
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
-				FC03BA9B2115A3EA07E7D58F /* libPods-Sileo Demo.a in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -908,10 +906,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
+				E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */,
 				CFBC7FD2221D7FE10066D501 /* LNPopupController.framework in Frameworks */,
+				E13638E82614F66400698D55 /* Down in Frameworks */,
+				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
-				2C303E136BDF0840EA33EF2C /* libPods-Sileo.a in Frameworks */,
+				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
+				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
+				E13638C52614F4D000698D55 /* Alamofire in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
+				E13638CF2614F57100698D55 /* XLForm in Frameworks */,
+				E13638DE2614F5D300698D55 /* SWCompression in Frameworks */,
+				E13638C02614F49500698D55 /* SDWebImage in Frameworks */,
+				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
+				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
+				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
+				E13638E32614F61F00698D55 /* Sentry in Frameworks */,
+				E13638ED2614F69A00698D55 /* Alderis in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,7 +931,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A54C6CBB23B0C153BE092A7 /* libPods-SileoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,7 +938,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,10 +968,6 @@
 			isa = PBXGroup;
 			children = (
 				F18383F420FBFFB700450EED /* libiconv.tbd */,
-				918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */,
-				F8D54D882388524470898530 /* libPods-Sileo Demo.a */,
-				B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */,
-				5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */,
 				461FC22720ED7A48001EA199 /* Security.framework */,
 			);
 			name = Frameworks;
@@ -1179,21 +1185,6 @@
 			);
 			name = Pods;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		B58BDBFDEF35914C4F85AA66 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */,
-				B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */,
-				1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */,
-				FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */,
-				0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */,
-				23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */,
-				EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */,
-				E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		C315A7BC217D99C200341243 /* Base */ = {
@@ -1484,7 +1475,6 @@
 				49BAC20726098ACD00F47DA4 /* Config.xcconfig */,
 				33F3CD3020E059ED00B3A1D2 /* Frameworks */,
 				F102D452212B6AC2007CAF22 /* Deps */,
-				B58BDBFDEF35914C4F85AA66 /* Pods */,
 				F149E0AE20B6040B005CA30B /* Products */,
 			);
 			indentWidth = 4;
@@ -2174,13 +2164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F139D14922EA9209007F5C0D /* Build configuration list for PBXNativeTarget "Sileo Demo" */;
 			buildPhases = (
-				9AC7B698F7F62694E53A96F8 /* [CP] Check Pods Manifest.lock */,
 				F139D09722EA9209007F5C0D /* Sources */,
 				F139D11F22EA9209007F5C0D /* Frameworks */,
 				F139D12922EA9209007F5C0D /* ShellScript */,
 				F139D12B22EA9209007F5C0D /* Resources */,
 				F139D14822EA9209007F5C0D /* Embed Frameworks */,
-				503AF82A51114E19D8584EB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2198,13 +2186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DC20B6040B005CA30B /* Build configuration list for PBXNativeTarget "Sileo" */;
 			buildPhases = (
-				D2B05584EE619E9B386D2BD6 /* [CP] Check Pods Manifest.lock */,
 				F149E0A920B6040B005CA30B /* Sources */,
 				F149E0AA20B6040B005CA30B /* Frameworks */,
-				F1CA042822DA824A00CED7A9 /* ShellScript */,
+				F1CA042822DA824A00CED7A9 /* Run Script */,
 				F1144EFE20FC636C001FF36C /* ShellScript */,
 				F149E0AB20B6040B005CA30B /* Resources */,
-				2D739B577F55C57B50C7E106 /* [CP] Copy Pods Resources */,
 				CFBC7FD6221D7FE10066D501 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -2215,6 +2201,23 @@
 				CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */,
 			);
 			name = Sileo;
+			packageProductDependencies = (
+				E13638BF2614F49500698D55 /* SDWebImage */,
+				E13638C42614F4D000698D55 /* Alamofire */,
+				E13638C92614F53400698D55 /* Cosmos */,
+				E13638CE2614F57100698D55 /* XLForm */,
+				E13638D32614F59000698D55 /* KeychainAccess */,
+				E13638D82614F5AA00698D55 /* SwiftSoup */,
+				E13638DD2614F5D300698D55 /* SWCompression */,
+				E13638E22614F61F00698D55 /* Sentry */,
+				E13638E72614F66400698D55 /* Down */,
+				E13638EC2614F69A00698D55 /* Alderis */,
+				E13638F12614F6C000698D55 /* SQLite */,
+				E13638F62614F6E300698D55 /* SwipeCellKit */,
+				E1EA1CFE2615008100E56882 /* LNZTreeView */,
+				E1EA1D05261500A100E56882 /* AUPickerCell */,
+				E1EA1D0C261500C700E56882 /* SwiftTryCatch */,
+			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
 			productType = "com.apple.product-type.application";
@@ -2314,6 +2317,23 @@
 				"pt-BR",
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
+			packageReferences = (
+				E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */,
+				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */,
+				E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */,
+				E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */,
+				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
+				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
+				E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */,
+			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -2501,50 +2521,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D739B577F55C57B50C7E106 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sileo/Pods-Sileo-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Sources/Down/Resources/DownView.bundle",
-				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Alderis.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DownView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLForm.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sileo/Pods-Sileo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		503AF82A51114E19D8584EB8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Sources/Down/Resources/DownView.bundle",
-				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Alderis.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DownView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLForm.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5A57A1197E6A89A53A75FEED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2557,46 +2533,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SileoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AC7B698F7F62694E53A96F8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sileo Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2B05584EE619E9B386D2BD6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sileo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2633,7 +2569,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
 		};
-		F1CA042822DA824A00CED7A9 /* ShellScript */ = {
+		F1CA042822DA824A00CED7A9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2642,6 +2578,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3166,7 +3103,6 @@
 /* Begin XCBuildConfiguration section */
 		F139D14A22EA9209007F5C0D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3189,7 +3125,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3230,7 +3170,6 @@
 		};
 		F139D14B22EA9209007F5C0D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3248,7 +3187,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3403,7 +3346,6 @@
 		};
 		F149E0DD20B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3426,7 +3368,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3467,7 +3413,6 @@
 		};
 		F149E0DE20B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3485,7 +3430,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3525,14 +3474,17 @@
 		};
 		F149E0E020B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3544,14 +3496,17 @@
 		};
 		F149E0E120B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -3562,12 +3517,15 @@
 		};
 		F149E0E320B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3577,12 +3535,15 @@
 		};
 		F149E0E420B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3639,6 +3600,207 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.4;
+			};
+		};
+		E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+		E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+		E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/XLForm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
+		E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+		E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+		E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.8;
+			};
+		};
+		E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.1;
+			};
+		};
+		E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+		E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hbang/Alderis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
+		E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
+		E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CharlieWhile13/LNZTreeView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CharlieWhile13/AUPickerCell";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CharlieWhile13/SwiftTryCatch";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E13638BF2614F49500698D55 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		E13638C42614F4D000698D55 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E13638C92614F53400698D55 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		E13638CE2614F57100698D55 /* XLForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */;
+			productName = XLForm;
+		};
+		E13638D32614F59000698D55 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		E13638D82614F5AA00698D55 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		E13638DD2614F5D300698D55 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E13638E22614F61F00698D55 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+		E13638E72614F66400698D55 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E13638EC2614F69A00698D55 /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E13638F12614F6C000698D55 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		E13638F62614F6E300698D55 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
+			productName = LNZTreeView;
+		};
+		E1EA1D05261500A100E56882 /* AUPickerCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
+			productName = AUPickerCell;
+		};
+		E1EA1D0C261500C700E56882 /* SwiftTryCatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
+			productName = SwiftTryCatch;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F149E0A520B6040B005CA30B /* Project object */;
 }

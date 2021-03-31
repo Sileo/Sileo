@@ -1,0 +1,151 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
+          "version": "5.4.1"
+        }
+      },
+      {
+        "package": "Alderis",
+        "repositoryURL": "https://github.com/hbang/Alderis.git",
+        "state": {
+          "branch": null,
+          "revision": "267170a77ffa2993846d16bba1785716596cb970",
+          "version": "1.1.2"
+        }
+      },
+      {
+        "package": "AUPickerCell",
+        "repositoryURL": "https://github.com/CharlieWhile13/AUPickerCell",
+        "state": {
+          "branch": "master",
+          "revision": "2832a424ae8c583f18ffee68c57896bdcef334a4",
+          "version": null
+        }
+      },
+      {
+        "package": "BitByteData",
+        "repositoryURL": "https://github.com/tsolomko/BitByteData",
+        "state": {
+          "branch": null,
+          "revision": "3ee55b113ae52d5c1f4cbec0ed4eae613dcd7eff",
+          "version": "1.4.3"
+        }
+      },
+      {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "Down",
+        "repositoryURL": "https://github.com/johnxnguyen/Down.git",
+        "state": {
+          "branch": null,
+          "revision": "0bcd20dc56ad7fd47bbb99a1d2302a8bfa43b6d0",
+          "version": "0.10.0"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
+        }
+      },
+      {
+        "package": "LNZTreeView",
+        "repositoryURL": "https://github.com/CharlieWhile13/LNZTreeView",
+        "state": {
+          "branch": "master",
+          "revision": "7de0df7a3f5cc6d16b4229fcf6d9a916a08d34e3",
+          "version": null
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "a6b6e44eadf0d39250c10a7cc0e3b91d0bdb0e94",
+          "version": "5.10.4"
+        }
+      },
+      {
+        "package": "Sentry",
+        "repositoryURL": "https://github.com/getsentry/sentry-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "946cbb6daccedf40d652a12138f78e96f660e1ad",
+          "version": "6.2.1"
+        }
+      },
+      {
+        "package": "SQLite.swift",
+        "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "0a9893ec030501a3956bee572d6b4fdd3ae158a1",
+          "version": "0.12.2"
+        }
+      },
+      {
+        "package": "SWCompression",
+        "repositoryURL": "https://github.com/tsolomko/SWCompression.git",
+        "state": {
+          "branch": null,
+          "revision": "48ecebcadeecb81a41d66af547a5d7fcc1d8d5cb",
+          "version": "4.5.8"
+        }
+      },
+      {
+        "package": "SwiftSoup",
+        "repositoryURL": "https://github.com/scinfu/SwiftSoup.git",
+        "state": {
+          "branch": null,
+          "revision": "774dc9c7213085db8aa59595e27c1cd22e428904",
+          "version": "2.3.2"
+        }
+      },
+      {
+        "package": "SwiftTryCatch",
+        "repositoryURL": "https://github.com/CharlieWhile13/SwiftTryCatch",
+        "state": {
+          "branch": "master",
+          "revision": "9ba56c5f43932c638310f422a68da761acf386ea",
+          "version": null
+        }
+      },
+      {
+        "package": "SwipeCellKit",
+        "repositoryURL": "https://github.com/SwipeCellKit/SwipeCellKit.git",
+        "state": {
+          "branch": null,
+          "revision": "7219cad3098637176ace311510d11467dbfb9bb0",
+          "version": "2.7.1"
+        }
+      },
+      {
+        "package": "XLForm",
+        "repositoryURL": "https://github.com/xmartlabs/XLForm.git",
+        "state": {
+          "branch": null,
+          "revision": "870afc56602fd518e33d0b271371a2d5acd410ea",
+          "version": "4.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
