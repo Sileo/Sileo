@@ -3,167 +3,181 @@
   Sileo
 
   Created by AppleBetas on 2018-12-27.
-  Updated by : CorentiOS
   Copyright © 2018 CoolStar. All rights reserved.
-  
  
- BASE (Français) LOCALISATIONS
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Traduction française par Cimmerian Iter, Justin Proulx et Dadoum";
-"__LocalizationCredit.URL" = "https://twitter.com/cimmerian_iter"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
-"About" = "À propos";
-"Close" = "Fermer";
-"Double tap to open." = "Touchez deux fois pour ouvrir.";
-"Untitled_Repo" = "Source sans titre";
+
+
+"About" = "About";
+"Close" = "Close";
+"Double tap to open." = "Double tap to open.";
+"Untitled_Repo" = "Untitled Repo";
 "OK" = "OK";
-"Done" = "Terminé";
-"Done_Editing" = "Terminé";
-"More_Info" = "Plus d'informations";
-"Loading" = "Chargement en cours…";
-"Share" = "Partager";
-"Delete" = "Supprimer";
-"Cancel" = "Annuler";
+"Done" = "Done";
+"Done_Editing" = "Done";
+"More_Info" = "More Info";
+"Loading" = "Loading…";
+"Share" = "Share";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installation";
-"Downloading_Package_Status" = "Téléchargement";
-"Queued_Package_Status" = "En Attente";
-"Ready_Status" = "Prêt";
-"Removal_Queued_Package_Status" = "En file d'attente pour la suppression";
-"Download_Starting" = "Le téléchargement commence…";
-"Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Installing";
+"Downloading_Package_Status" = "Downloading";
+"Queued_Package_Status" = "Queued";
+"Ready_Status" = "Ready";
+"Removal_Queued_Package_Status" = "Queued for Removal";
+"Download_Starting" = "Starting…";
+"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirmer";
-"Queue_Clear_Button" = "Supprimer la file d'attente";
+"Queue_Confirm_Button" = "Confirm";
+"Queue_Clear_Button" = "Clear Queue";
 
-"Package_Upgrade_Action" = "Mettre à jour";
-"Package_Reinstall_Action" = "Réinstaller";
-"Package_Uninstall_Action" = "Supprimer";
-"Package_Modify_Action" = "Modifier";
-"Package_Get_Action" = "Obtenir";
-"Package_Queue_Action" = "En Attente";
-"Package_Cancel_Action" = "Annuler";
-"Package_Paid" = "Payé";
+"Package_Upgrade_Action" = "Upgrade";
+"Package_Reinstall_Action" = "Reinstall";
+"Package_Uninstall_Action" = "Uninstall";
+"Package_Modify_Action" = "Modify";
+"Package_Get_Action" = "Get";
+"Package_Queue_Action" = "Queue";
+"Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
 
-"Package_Share_Action" = "Partager le paquet…";
-"Package_Developer_Find_Action" = "Plus par ce développeur";
+"Package_Share_Action" = "Share Package…";
+"Package_Developer_Find_Action" = "More by this Developer";
 "Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignorer les mises à jour futures";
-"Package_Hold_Disable_Action" = "Arrêter d'ignorer les mises à jour.";
-"Package_Wishlist_Add" = "Ajouter à la liste de souhaits";
-"Package_Wishlist_Remove" = "Supprimer de la liste souhaits";
-"Wishlist" = "Liste de souhaits";
+"Package_Hold_Enable_Action" = "Ignore Future Updates";
+"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Wishlist_Add" = "Add to Wishlist";
+"Package_Wishlist_Remove" = "Remove from Wishlist";
+"Wishlist" = "Wishlist";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Installer";
-"Queued_Uninstall_Heading" = "Supprimer";
-"Queued_Update_Heading" = "Mettre à jour";
-"Download_Errors_Heading" = "Erreurs";
+"Queued_Install_Heading" = "Install";
+"Queued_Uninstall_Heading" = "Uninstall";
+"Queued_Update_Heading" = "Update";
+"Download_Errors_Heading" = "Errors";
 
-"Installed_Heading" = "Installé";
-"Updates_Heading" = "Mises à jour";
-"Upgrade_All_Button" = "Mettre tout à jour";
-"Package_Search.Placeholder" = "Chercher un paquet";
-"Sort_Name" = "Nom";
+"Installed_Heading" = "Installed";
+"Updates_Heading" = "Updates";
+"Upgrade_All_Button" = "Upgrade All";
+"Package_Search.Placeholder" = "Search for Packages";
+"Sort_Name" = "Name";
 "Sort_Date" = "Date";
-"Sort_By" = "Trier par:";
+"Sort_By" = "Sort by:";
 
-"Package_Unavailable" = "Paquet indisponible";
-"Package_By_Author" = "%@ par %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "par %@"; // %@ = author name
-"Packages_By_Author" = "Paquets par %@"; // %@ = author name
+"Package_Unavailable" = "Package Unavailable";
+"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "by %@"; // %@ = author name
+"Packages_By_Author" = "Packages by %@"; // %@ = author name
 
-"Featured_Page" = "À l'affiche";
-"News_Page" = "Nouveautés";
+"Featured_Page" = "Featured";
+"News_Page" = "New";
 "Sources_Page" = "Sources";
-"Packages_Page" = "Paquets";
-"Search_Page" = "Rechercher";
-"Refreshing_Sources_Page" = "Mise à jour de sources";
-"Package_Installed_Files_Page" = "Fichiers installés";
+"Packages_Page" = "Packages";
+"Search_Page" = "Search";
+"Refreshing_Sources_Page" = "Refreshing Sources";
+"Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
-"All_Packages.Title" = "Tous les paquets";
-"All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
+"All_Packages.Title" = "All Packages";
+"All_Packages.Cell_Subtitle" = "See all packages from your sources";
 
-"All_Categories" = "Toutes les catégories";
+"All_Categories" = "All Categories";
 
-"Repos" = "Sources";
+"Repos" = "Repositories";
 
-"Add_Source.Title" = "Ajouter la source";
-"Add_Source.Body" = "Ajouter l'adresse APT";
-"Add_Source.Button.Add" = "Ajouter la source";
+"Add_Source.Title" = "Add Source";
+"Add_Source.Body" = "Add APT URL";
+"Add_Source.Button.Add" = "Add Source";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Entrer manuellement";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
-"Untitled_Form" = "Formulaire sans titre";
-"Form_Submitted.Default_Title" = "Formulaire soumis";
-"Form_Submitted.Default_Body" = "Le formulaire a été soumis avec succès";
+"Untitled_Form" = "Untitled Form";
+"Form_Submitted.Default_Title" = "Submitted Form";
+"Form_Submitted.Default_Body" = "The form was submitted successfully.";
 
-"Web_Depiction_Deprecated_Warning" = "Les représentations utilisant les Web View sont obsolètes. Le gérant de la source doit se mettre à jour en utilisant les représentations natives.";
+"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
-"Package_Details_Tab" = "Détails";
-"Package_Changelog_Tab" = "Changements";
-"Package_No_Description_Available" = "Aucune description n'est disponible pour ce paquet.";
-"Package_Changelogs_Unavailable" = "Pas de journal de changement disponible";
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Changelog";
+"Package_No_Description_Available" = "No description is available for this package.";
+"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
-"Installed_Package_Header" = "Paquet installé";
+"Installed_Package_Header" = "Installed Package";
 "Version" = "Version";
-"Show_Package_Contents_Button" = "Afficher les contenus du paquet";
+"Show_Package_Contents_Button" = "Show Package Contents";
 
-"Licenses_Page_Title" = "Licences";
+"Licenses_Page_Title" = "Licenses";
+"Alternate_Icon_Title" = "Alternate Icons";
 
-"Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
-"Settings_Translations_Heading" = "Traductions";
+"Settings_Payment_Provider_Heading" = "Payment Providers";
+"Settings_Translations_Heading" = "Translations";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Achats";
-"Settings_Payment_Provider.No_Purchases" = "Aucun achat";
+"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.No_Purchases" = "No purchases";
 
-"Settings" = "Paramètres";
-"Settings_Page_Title" = "Paramètres";
-"Dark_Mode_Toggle" = "Mode Sombre";
-"Theme" = "Thème";
-"Tint_Color" = "Couleur d'accentuation";
-"Reset_Tint_Color" = "Restaurer la couleur d'accentuation";
-"Auto_Complete_Queue" = "File d'attente à saisie automatique";
-"Enable_Analytics" = "Activer les données analytiques";
+"Settings" = "Settings";
+"Settings_Page_Title" = "Settings";
+"Dark_Mode_Toggle" = "Dark Mode";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Enable_Analytics" = "Enable Analytics";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
 "Sileo_Adaptive" = "Sileo Adaptive";
 "System" = "System";
 
+"Cydia_Sign_In" = "Sign in to Cydia Store";
+"Payment_Provider_Signed_In" = "Signed in";
+"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Sign out";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
 
-"Cydia_Sign_In" = "Se connecter au Cydia Store";
-"Payment_Provider_Signed_In" = "Connecté";
-"Payment_Provider_Signed_In_With_Name" = "Utilisateur connecté: %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Déconnexion";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Déconnecter de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Vous ne pourrez plus télécharger les paquets que vous avez achetés jusqu'à ce que vous vous reconnectiez.";
+"Show_Install_Details" = "Show Details";
+"Hide_Install_Details" = "Hide Details";
 
-"Show_Install_Details" = "Afficher les détails";
-"Hide_Install_Details" = "Masquer les détails";
+"After_Install_Relaunch" = "Restart Sileo";
+"After_Install_Respring" = "Restart SpringBoard";
+"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
-"After_Install_Relaunch" = "Relancer Sileo";
-"After_Install_Respring" = "Relancer le Springboard";
-"After_Install_Reboot" = "Redémarrer l'appareil";
-
-"Dangerous_Repo.Title" = "Source dangereuse";
-"Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue pour être dangereuse (hébergeant des paquets piratés, du contenu illégal ou des virus).\n\nLes sources indiquées comme dangereuses distribuent souvent des paquets ayant des effets inattendus, soit sous forme de paquets payants rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effets permanents sur votre appareil et votre vie privée, et peuvent même altérer le fonctionnement d'un jailbreak. Nous vous recommandons d'agir avec prudence afin d'éviter des logiciels dangereux.";
-"Dangerous_Repo.Continue" = "J'accepte les risques, continuer";
-"Dangerous_Repo.Cancel" = "Revenir en lieu sûr";
-"Dangerous_Repo.Last_Chance.Title" = "Ajouter la source dangereuse ?";
-"Dangerous_Repo.Last_Chance.Body" = "Les sources dangereuses peuvent avoir des effets dévastateurs sur votre appareil et votre jailbreak. Nous vous recommandons fortement de revenir en lieu sûr pour votre propre sécurité. %@";
-"Dangerous_Repo.Last_Chance.Continue" = "Continuer";
-"Dangerous_Repo.Last_Chance.Cancel" = "Retourner";
+"Dangerous_Repo.Title" = "Dangerous Repo";
+"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
+"Dangerous_Repo.Continue" = "I accept the risks, continue";
+"Dangerous_Repo.Cancel" = "Take me back to safety";
+"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continue";
+"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
 
 // All export-based strings
-"Export" = "Exporter";
-"Export_Packages" = "Voulez-vous exporter votre liste de paquets ? Cela copiera le nom de tous les paquets et leurs versions dans le presse-papier.";
-"Export_Sources" = "Voulez-vous exporter votre liste de sources ? Cela copiera toutes les URL des sources dans le presse-papier.";
-"Export_Yes" = "Oui, copier.";
-"Export_No" = "Non, annuler.";
+"Export" = "Export";
+"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
+"Export_Yes" = "Yes, copy.";
+"Export_No" = "No, cancel.";
 
-"View_Depiction" = "Voir la description";
+// Depcitions
+"View_Depiction" = "View Depiction";
