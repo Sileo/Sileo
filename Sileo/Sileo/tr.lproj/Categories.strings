@@ -8,14 +8,14 @@
  BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(Kategori Yok)";
+"Tweaks" = "Tweakler";
+"Themes" = "Temalar";
+"Utilities" = "Araçlar";
+"Applications" = "Uygulamalar";
+"Addons" = "Eklentiler";
+"Games" = "Oyunlar";
+"Developer" = "Geliştirici";
+"Data_Storage" = "Veri Depolama";
+"Terminal_Support" = "Terminal Desteği";
+"Text_Editors" = "Metin Düzenleyiciler";
