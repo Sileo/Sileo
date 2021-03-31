@@ -13,18 +13,18 @@
 // Common Prompts
 
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
-"OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
+"About" = "关于";
+"Close" = "关闭";
+"Double tap to open." = "双击以打开.";
+"Untitled_Repo" = "未命名的源";
+"OK" = "确定";
+"Done" = "完成";
+"Done_Editing" = "完成";
+"More_Info" = "更多讯息";
+"Loading" = "载入中…";
+"Share" = "分享";
+"Delete" = "删除";
+"Cancel" = "取消";
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 
@@ -34,150 +34,150 @@
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "正在安装";
+"Downloading_Package_Status" = "下载中";
+"Queued_Package_Status" = "队列";
+"Ready_Status" = "准备";
+"Removal_Queued_Package_Status" = "移除队列中";
+"Download_Starting" = "开始中…";
+"Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Confirm_Button" = "确认";
+"Queue_Clear_Button" = "清除队列";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "更新";
+"Package_Reinstall_Action" = "重新安装";
+"Package_Uninstall_Action" = "移除";
+"Package_Modify_Action" = "更改";
+"Package_Get_Action" = "获取";
+"Package_Queue_Action" = "队列";
+"Package_Cancel_Action" = "取消";
+"Package_Paid" = "付费";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "分享软件包…";
+"Package_Developer_Find_Action" = "更多这位开发者的作品";
+"Package_Support_Action" = "支持";
+"Package_Hold_Enable_Action" = "忽略未来的更新";
+"Package_Hold_Disable_Action" = "取消忽略更新";
+"Package_Wishlist_Add" = "添加到愿望单";
+"Package_Wishlist_Remove" = "从愿望单移除";
+"Wishlist" = "愿望单";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "安装";
+"Queued_Uninstall_Heading" = "移除";
+"Queued_Update_Heading" = "更新";
+"Download_Errors_Heading" = "错误";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "已安装";
+"Updates_Heading" = "更新";
+"Upgrade_All_Button" = "全部更新";
+"Package_Search.Placeholder" = "搜索软件包";
+"Sort_Name" = "名称";
+"Sort_Date" = "日期";
+"Sort_By" = "排序方式:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "软件包不可用";
+"Package_By_Author" = "%@ 由 %@ 开发"; // first %@ = package name, second %@ = author name
+"By_Author" = "由 %@ 开发"; // %@ = author name
+"Packages_By_Author" = "%@ 的软件包"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
+"Featured_Page" = "精选";
+"News_Page" = "新内容";
+"Sources_Page" = "软件源";
+"Packages_Page" = "软件包";
+"Search_Page" = "搜索";
+"Refreshing_Sources_Page" = "正在刷新软件源";
+"Package_Installed_Files_Page" = "已经安装的文件";
 "Refresh" = "Refresh";
 "Remove" = "Remove";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "所有软件包";
+"All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
 
-"All_Categories" = "All Categories";
+"All_Categories" = "所有分类";
 
-"Repos" = "Repositories";
+"Repos" = "软件源";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "添加源";
+"Add_Source.Body" = "新增软件源地址";
+"Add_Source.Button.Add" = "添加源";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "未命名的表单";
+"Form_Submitted.Default_Title" = "已提交的表格";
+"Form_Submitted.Default_Body" = "表格提交成功.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Web视图已经被弃用. 请联系软件源维护者以获得从旧视图升级的讯息.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "详情";
+"Package_Changelog_Tab" = "更新记录";
+"Package_No_Description_Available" = "没有针对这个软件包的描述.";
+"Package_Changelogs_Unavailable" = "无法查看此软件包的更新记录.";
 
-"Installed_Package_Header" = "Installed Package";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "已安装的软件包";
+"Version" = "版本";
+"Show_Package_Contents_Button" = "显示软件包内容";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "法律资讯";
+"Alternate_Icon_Title" = "自定义图标";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "付款服务提供商";
+"Settings_Translations_Heading" = "翻译";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "购买";
+"Settings_Payment_Provider.No_Purchases" = "没有购买";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
+"Settings" = "设置";
+"Settings_Page_Title" = "设置";
+"Dark_Mode_Toggle" = "深色模式";
+"Theme" = "主题";
+"Tint_Color" = "自定义颜色";
+"Reset_Tint_Color" = "重置颜色";
+"Auto_Complete_Queue" = "自动完成队列";
+"Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
+"Enable_Analytics" = "启用分析";
+"Swipe_Actions" = "滑动动作";
 "Show_Provisional" = "Show Packages from Canister";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Light" = "Sileo浅色模式";
+"Sileo_Dark" = "Sileo深色模式";
+"Sileo_Adaptive" = "Sileo自适配";
+"System" = "跟随系统";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "登陆 Cydia Store";
+"Payment_Provider_Signed_In" = "登陆";
+"Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登陆"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "退出";
+"Payment_Provider_Sign_Out_Confirm.Title" = "退出 %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登陆前,您将不能下载已经购买的软件包.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "显示详情";
+"Hide_Install_Details" = "隐藏详情";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch" = "重启 Sileo";
+"After_Install_Respring" = "重启 SpringBoard";
+"After_Install_Reboot" = "重启设备";
+"After_Install_Relaunch_Later" = "稍后重启 Sileo";
+"After_Install_Respring_Later" = "稍后重启 SpringBoard";
+"After_Install_Reboot_Later" = "稍后重启设备";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "危险源";
+"Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为,违法内容,病毒而被标记的源.\n\n被标记的软件源可能经常发布许多转载的软件包(包括许多免费和收费的软件包).这些软件包可能会影响到您的隐私和设备,有时可能会影响到越狱环境.我们建议您提高谨慎以远离有害软件包.";
+"Dangerous_Repo.Continue" = "我接受风险,继续.";
+"Dangerous_Repo.Cancel" = "带我回到安全地带";
+"Dangerous_Repo.Last_Chance.Title" = "添加危险源？";
+"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备/越狱环境造成破坏性的影响.我们建议您为了设备的安全而取消操作. %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "继续";
+"Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "导出";
+"Export_Packages" = "请问需要导出软件包列表吗? 这将会复制所有软件包名称和版本到您的剪贴板.";
+"Export_Sources" = "请问需要导出您的源地址吗? 这将复制所有源地址到您的剪贴板.";
+"Export_Yes" = "好的, 导出.";
+"Export_No" = "不, 取消.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "查看介绍";
