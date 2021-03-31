@@ -177,7 +177,7 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
-			<key>CotonCandy</key>
+			<key>CottonCandy</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
@@ -213,7 +213,7 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
-			<key>StrawberrySunet</key>
+			<key>StrawberrySunset</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
