@@ -81,7 +81,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         if loadProvisional {
             showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
-            NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
+            _ = NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
                 self.showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
                 self.collectionView?.reloadData()
             }
@@ -185,6 +185,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                                                    lookupTable: self.searchCache) ?? []
                 self.packages = pkgs
                 self.searchCache[""] = pkgs
+                if let controller = self.searchController {
+                    DispatchQueue.main.async { self.updateSearchResults(for: controller) }
+                }
             }
             if self.showUpdates {
                 self.availableUpdates = packageMan.availableUpdates().map({ $0.0 })
@@ -696,7 +699,6 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             self.mutexLock.signal()
             self.mutexLock.wait()
-            
             if packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
                 packages = packages.sorted(by: { package1, package2 -> Bool in
                     let packageURL1 = PackageListManager.shared.dpkgDir.appendingPathComponent("info/\(package1.package).list")
