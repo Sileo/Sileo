@@ -83,7 +83,7 @@ giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 
 $(SILEO_APP_DIR):
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -workspace 'Sileo.xcworkspace' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
 		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
 		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) \
 		DSTROOT=$(SILEOTMP)/install $(XCPRETTY)
