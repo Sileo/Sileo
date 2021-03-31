@@ -60,7 +60,7 @@ class DepictionFormViewController: XLFormViewController {
                     SwiftTryCatch.try({
                         self.populateSections(form: form, rawForm: rawForm)
                     }, catch: { error in
-                        os_log("Couldn't load remote form: %@", type: .error, error?.reason ?? "")
+                        os_log("Couldn't load remote form: %@", type: .error, error.reason ?? "")
                         self.presentErrorDialog(message: String(localizationKey: "Unknown"), mustCancel: true)
                         errored = true
                     }, finally: {
@@ -132,7 +132,7 @@ class DepictionFormViewController: XLFormViewController {
         SwiftTryCatch.try({
             cell = super.tableView(tableView, cellForRowAt: indexPath)
         }, catch: { error in
-            os_log("Couldn't load remote form: %@", type: .error, error?.reason ?? "")
+            os_log("Couldn't load remote form: %@", type: .error, error.reason ?? "")
             self.presentErrorDialog(message: String(), mustCancel: true)
             self.form = nil
             self.tableView.reloadData()
