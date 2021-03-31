@@ -507,7 +507,7 @@ extension SourcesViewController { // UITableViewDelegate
         if !self.canEditRow(indexPath: indexPath) {
             return UISwipeActionsConfiguration(actions: [refresh])
         }
-        let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Refresh")) { _, _, completionHandler in
+        let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _, completionHandler in
             repoManager.remove(repo: self.sortedRepoList[indexPath.row])
             
             self.reSortList()
