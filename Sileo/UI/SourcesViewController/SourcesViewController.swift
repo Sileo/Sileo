@@ -175,6 +175,33 @@ class SourcesViewController: SileoTableViewController {
         })
     }
     
+    func updateSingleRepo(_ repo: Repo) {
+        self.isRefreshing = true
+        
+        let item = self.splitViewController?.tabBarItem
+        item?.badgeValue = ""
+        let badge = item?.view()?.value(forKey: "_badge") as? UIView
+        guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
+            fatalError("OK iOS...")
+        }
+        let indicatorView = UIActivityIndicatorView(style: style)
+        indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
+        indicatorView.startAnimating()
+        badge?.addSubview(indicatorView)
+        
+        RepoManager.shared.update(force: true, forceReload: true, isBackground: false, repos: [repo], completion: { didFindErrors, errorOutput in
+            self.refreshControl?.endRefreshing()
+            indicatorView.removeFromSuperview()
+            indicatorView.stopAnimating()
+            item?.badgeValue = nil
+            self.isRefreshing = false
+            
+            if didFindErrors {
+                self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
+            }
+        })
+    }
+    
     func showRefreshErrorViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
         let errorVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
         errorVC.attributedString = errorOutput
@@ -472,15 +499,15 @@ extension SourcesViewController { // UITableViewDelegate
         if indexPath.section == 0 { return nil }
         // We're using this a bunch, best just keep it here
         let repoManager = RepoManager.shared
-        let refresh = UIContextualAction(style: .normal, title: "Refresh") { _, _, completionHandler in
+        let refresh = UIContextualAction(style: .normal, title: String(localizationKey: "Refresh")) { _, _, completionHandler in
+            self.updateSingleRepo(self.sortedRepoList[indexPath.row])
             completionHandler(true)
         }
-        refresh.image = UIImage(systemNameOrNil: "arrow.clockwise.circle")
         refresh.backgroundColor = .systemGreen
         if !self.canEditRow(indexPath: indexPath) {
             return UISwipeActionsConfiguration(actions: [refresh])
         }
-        let remove = UIContextualAction(style: .destructive, title: "Remove") { _, _, completionHandler in
+        let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Refresh")) { _, _, completionHandler in
             repoManager.remove(repo: self.sortedRepoList[indexPath.row])
             
             self.reSortList()
@@ -489,7 +516,6 @@ extension SourcesViewController { // UITableViewDelegate
             self.refreshSources(forceUpdate: false, forceReload: true)
             completionHandler(true)
         }
-        remove.image = UIImage(systemNameOrNil: "trash.fill")
         return UISwipeActionsConfiguration(actions: [remove, refresh])
     }
 }

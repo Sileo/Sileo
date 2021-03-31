@@ -463,6 +463,7 @@ final class RepoManager {
         force: Bool,
         forceReload: Bool,
         isBackground: Bool,
+        repos: [Repo],
         completion: @escaping (Bool, NSAttributedString) -> Void
     ) {
         var reposUpdated = 0
@@ -477,8 +478,7 @@ final class RepoManager {
         
         var errorsFound = false
         let errorOutput = NSMutableAttributedString()
-        
-        var repos = repoList
+        var repos = repos
         let lock = NSLock()
         
         for threadID in 0..<(ProcessInfo.processInfo.processorCount * 2) {
@@ -862,11 +862,11 @@ final class RepoManager {
         }
     }
     
-    func update(force: Bool, forceReload: Bool, isBackground: Bool, completion: @escaping (Bool, NSAttributedString) -> Void) {
+    func update(force: Bool, forceReload: Bool, isBackground: Bool, repos: [Repo] = RepoManager.shared.repoList, completion: @escaping (Bool, NSAttributedString) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             PackageListManager.shared.waitForReady()
             DispatchQueue.main.async {
-                self._update(force: force, forceReload: forceReload, isBackground: isBackground, completion: completion)
+                self._update(force: force, forceReload: forceReload, isBackground: isBackground, repos: repos, completion: completion)
             }
         }
     }

@@ -68,7 +68,6 @@ final class CanisterResolver {
     public func piracy(_ url: URL, response: @escaping (_ piracy: Bool) -> Void) {
         let url = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
-            
             guard success,
                   let dict = dict else { return response(false) }
             return response(dict["data"] as? String ?? "" == "pirated")
