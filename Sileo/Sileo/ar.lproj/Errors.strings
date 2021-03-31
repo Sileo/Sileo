@@ -8,52 +8,52 @@
  BASE (English) LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "حدث خطأ غير معروف.";
+"Error_Indicator" = "خطأ: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "تعذر العثور على حزمة %@ في المستودعات المثبتة لديك حاليًا.";
+"No_Package.Body" = "إذا كانت الحزمة جديدة، فانتظر حتى ينتهي Sileo من تحديث المستودعات، ثم حاول مرة أخرى. تحقق عبر الإنترنت للمزيد من المساعدة.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "عنوان URL غير صالح";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "الحجم المتوقع هو %@، ولكن تم الحصول على حجم %@ بدلًا من ذلك.";
+"Download_Failing_Status_Code" = "فشل بالحالة %ld";
+"Download_Hash_Mismatch" = "التجزئة المتوقعة هي %@، لكن تم الحصول على %@ بدلًا من ذلك.";
+"Untrusted_Package" = "حزمة %@ غير موثوق بها ولا يمكن التحقق منها";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "عناوين URL مصادقة الدفع لتنزيل الحزمة يجب أن تكون آمنة (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "قدم مزود الدفع استجابة غير صالحة.";
+"No_Payment_Provider" = "لا يدعم هذا المستودع مشتريات Sileo. إذا كانت هذه حزمة متجر Cydia كنت قد اشتريتها بالفعل، فيمكنك ربط حسابك لتنزيلها.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "هذه الحزمة غير متاحة من مصادرك المثبتة. يرجى التحقق من أن مستودع %@ ما زال متاحًا.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "خطأ في التثبيت";
+"Installation_Error.Body" = "لم يتمكن Sileo من الحصول على أذونات الجذر. يرجى إعادة تثبيت Sileo باستخدام SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "تمت مقاطعة Dpkg";
+"FixingDpkg.Body" = "لقد تمت مقاطعة Dpkg. يرجى الإنتظار بينما نحاول إصلاح الخلل.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "بيانات غير صالحة";
+"Try_Later" = "يرجى المحاولة مرة أخرى لاحقًا.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "يتطلب تحديث Sileo";
+"Featured_Requires_Sileo_Update" = "يتطلب تحديث Sileo لعرض تبويب مميز. قد يتم تقديم تبويب مميز بشكل غير صحيح.";
+"Depiction_Requires_Sileo_Update" = "يتطلب تحديث Sileo لعرض هذه الصفحة. قد يتم تقديم الصفحة بشكل غير صحيح.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Error.Title" = "تعذر تحميل النموذج";
+"Form_Load_Error" = "لا يمكن تحميل النموذج من الخادم.";
+"Invalid_Form_Data" = "الخادم قدم بيانات نموذج غير صالحة.";
+"Form_Submit_Failure" = "حدث خطأ أثناء محاولة إرسال النموذج: %@";
+"Form_Submit_Error.Title" = "تعذر إرسال النموذج";
+"Form_Action_Host_Mismatch" = "مضيف عنوان URL إجراء النموذج غير متطابق مع مضيف النموذج الأصلي.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "لا يمكن إرسال البريد الإلكتروني";
+"Email_Unavailable.Body" = "خدمات البريد غير متاحة.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "تعذر تحميل ملف التعريف";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "تعذرت مصادقة المزود";
+"Purchase_Initiate_Fail.Title" = "تعذر بدء الشراء";
+"Purchase_Complete_Fail.Title" = "تعذر إكمال الشراء";
+"Purchase_Auth_Complete_Fail.Title" = "تعذر إكمال المصادقة";
