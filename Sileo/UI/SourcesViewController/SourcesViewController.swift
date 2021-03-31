@@ -333,11 +333,26 @@ class SourcesViewController: SileoTableViewController {
     @objc func addSource(_ sender: Any?) {
         // If URL(s) are copied, we ask the user if they want to add those.
         // Otherwise, we present the entry field dialog for the user to type a URL.
-        let newSources = UIPasteboard.general.newSources()
-        if newSources.isEmpty {
-            self.presentAddSourceEntryField(url: nil)
-        } else {
-            self.presentAddClipBoardPrompt(sources: newSources)
+        if #available(iOS 14.0, *) {
+            UIPasteboard.general.detectPatterns(for: [.probableWebURL]) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let pattern) where pattern.contains(.probableWebURL):
+                        let newSources = UIPasteboard.general.newSources()
+                        self.presentAddClipBoardPrompt(sources: newSources)
+                    case .success, .failure:
+                        self.presentAddSourceEntryField(url: nil)
+                    }
+                }
+            }
+        }
+        else {
+            let newSources = UIPasteboard.general.newSources()
+            if newSources.isEmpty {
+                self.presentAddSourceEntryField(url: nil)
+            } else {
+                self.presentAddClipBoardPrompt(sources: newSources)
+            }
         }
     }
 
