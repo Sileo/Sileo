@@ -8,14 +8,14 @@
  BASE (English) LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(無分類)";
+"Tweaks" = "插件";
+"Themes" = "主題";
+"Utilities" = "工具";
+"Applications" = "應用程式";
+"Addons" = "附加";
+"Games" = "遊戲";
+"Developer" = "開發者";
+"Data_Storage" = "數據儲存";
+"Terminal_Support" = "終端機支援";
+"Text_Editors" = "文本編輯";
