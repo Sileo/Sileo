@@ -20,7 +20,7 @@ final class AmyNetworkResolver {
             if let data = data {
                 do {
                     let dict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] ?? [String: Any]()
-                    completion(true, dict)
+                    return completion(true, dict)
                 } catch {}
             }
             return completion(false, nil)
