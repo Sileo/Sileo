@@ -7,12 +7,8 @@
  
  LOCALISATIONS
 */
-// Credit Information (optional, uncomment to specify)
-
-"__LocalizationCredit.Title" = "English translation by AppleBetas";
-"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
+
 "About" = "حول";
 "Close" = "إغلاق";
 "Double tap to open." = "انقر مرتين للفتح.";
@@ -26,10 +22,10 @@
 "Delete" = "حذف";
 "Cancel" = "إلغاء";
 "Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Remove" = "إزالة";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh" = "تحديث التطبيق في الخلفية";
 "Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 

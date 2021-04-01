@@ -7,17 +7,13 @@
  
  LOCALISATIONS
 */
-// Credit Information (optional, uncomment to specify)
-
-"__LocalizationCredit.Title" = "English translation by AppleBetas";
-"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
+
 "About" = "Über";
 "Close" = "Schließen";
 "Double tap to open." = "Doppelt tippen zum öffnen.";
 "Untitled_Repo" = "Unbenannte Quelle";
-"OK" = "OK";
+"OK" = "Ok";
 "Done" = "Fertig";
 "Done_Editing" = "Fertig";
 "More_Info" = "Mehr infos";
@@ -25,13 +21,13 @@
 "Share" = "Teilen";
 "Delete" = "Löschen";
 "Cancel" = "Abbrechen";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Würdigung";
+"Remove" = "Entfernen";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "App-Hintergrundaktualisierung";
+"Background_App_Refresh_Message" = "Für das beste und schnellste Erlebnis wird empfohlen, die App-Hintergrundaktualisierung zu aktivieren. Sie können auch Benachrichtigungen erhalten, wenn Ihre Tweaks aktualisiert wurden!";
+"Upgrade_All_Shortcut_Processing_Message" = "Aktualisiere alle Quellen und Pakete...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installiere";
@@ -52,13 +48,13 @@
 "Package_Get_Action" = "Installieren";
 "Package_Queue_Action" = "Warteschlange";
 "Package_Cancel_Action" = "Abbrechen";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Kostenpflichtig";
 
 "Package_Share_Action" = "Paket teilen…";
 "Package_Developer_Find_Action" = "Mehr von diesem Entwickler";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Support_Action" = "Unterstützung";
+"Package_Hold_Enable_Action" = "Ignorieren zukünftige Aktualisierungen";
+"Package_Hold_Disable_Action" = "Hör auf, Updates zu ignorieren";
 "Package_Wishlist_Add" = "Zur Wunschliste hinzufügen";
 "Package_Wishlist_Remove" = "Von Wunschliste entfernen";
 "Wishlist" = "Wunschliste";
@@ -89,8 +85,8 @@
 "Search_Page" = "Suche";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Aktualisiere";
+"Remove" = "Entfernen";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
@@ -121,7 +117,7 @@
 "Show_Package_Contents_Button" = "Paketinhalte anzeigen";
 
 "Licenses_Page_Title" = "Lizenzen anzeigen";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Alternative Icons";
 
 "Settings_Payment_Provider_Heading" = "Zahlungsanbieter";
 "Settings_Translations_Heading" = "Übersetzungen";
@@ -132,14 +128,14 @@
 "Settings" = "Einstellungen";
 "Settings_Page_Title" = "Einstellungen";
 "Dark_Mode_Toggle" = "Dunkelmodus";
-"Theme" = "Theme";
+"Theme" = "Design";
 "Tint_Color" = "Primärfarbe";
 "Reset_Tint_Color" = "Primärfarbe zurücksetzen";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Automatische Bestätigung beim Aktualisieren aller Kurzbefehle";
+"Enable_Analytics" = "Analyse aktivieren";
+"Swipe_Actions" = "Wischgesten";
+"Show_Provisional" = "Pakete von Kanister anzeigen";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
@@ -159,9 +155,9 @@
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
 "After_Install_Reboot" = "Gerät neustarten";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Sileo später neustarten";
+"After_Install_Respring_Later" = "SpringBoard später neustarten";
+"After_Install_Reboot_Later" = "Gerät später neustarten";
 
 "Dangerous_Repo.Title" = "Gefährliche Quelle";
 "Dangerous_Repo.Body" = "Du versuchst eine Quelle hinzuzufügen, die unter anderem wegen Verteilung von Softwarepiraterie, Illegalen Inhalten und Schadsoftware aufgefallen ist.\n\nQuellen, die als Gefährlich markiert sind verteilen oftmals Software, die verändert wurde um zum Beispiel Sicherungsmechanismen zu entfernen. Diese Software kann unter Umständen permanenten Schaden auf dem Gerät anrichten und durch mitlesen von Passwörtern die Privatsphäre gefährden. Wir empfehlen diese Aktion nur mit äußerster Vorsicht durchzuführen.";

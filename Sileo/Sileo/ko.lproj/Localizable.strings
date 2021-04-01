@@ -7,12 +7,8 @@
  
  LOCALISATIONS
 */
-// Credit Information (optional, uncomment to specify)
-
-"__LocalizationCredit.Title" = "English translation by AppleBetas";
-"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
+
 "About" = "About";
 "Close" = "닫기";
 "Double tap to open." = "두번 탭해서 열기.";
@@ -29,8 +25,8 @@
 "Remove" = "Remove";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Background_App_Refresh" = "백그라운드 앱 새로 고침";
+"Background_App_Refresh_Message" = "쾌적한 환경을 위해 백그라운드 앱 새로고침을 활성화하는 것이 좋습니다. 또한 트윅이 업데이트될 때 알림을 받을 수 있습니다!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.

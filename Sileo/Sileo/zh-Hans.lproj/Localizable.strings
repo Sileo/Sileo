@@ -7,12 +7,8 @@
  
  LOCALISATIONS
 */
-// Credit Information (optional, uncomment to specify)
-
-"__LocalizationCredit.Title" = "由Deon翻译";
-"__LocalizationCredit.URL" = "https://www.twitter.com/BJH1234_Deon"; // (optional)
-
 // Common Prompts
+
 "About" = "关于";
 "Close" = "关闭";
 "Double tap to open." = "双击以打开.";
