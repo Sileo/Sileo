@@ -27,14 +27,14 @@
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
 "Background_App_Refresh_Message" = "For de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
-"Upgrade_All_Shortcut_Processing_Message" = "Alle bronnen verversen en alle packages upgraden...";
+"Upgrade_All_Shortcut_Processing_Message" = "Alle bronnen verversen en alle pakketten upgraden...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installeren";
 "Downloading_Package_Status" = "Downloaden";
-"Queued_Package_Status" = "Wachtrij";
+"Queued_Package_Status" = "In de wachtrij";
 "Ready_Status" = "Klaar";
-"Removal_Queued_Package_Status" = "Wachtrij voor verwijdering";
+"Removal_Queued_Package_Status" = "In de wachtrij voor verwijdering";
 "Download_Starting" = "Starten…";
 "Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
@@ -43,14 +43,14 @@
 
 "Package_Upgrade_Action" = "Upgrade";
 "Package_Reinstall_Action" = "Herinstalleer";
-"Package_Uninstall_Action" = "Deinstalleer";
+"Package_Uninstall_Action" = "Deïnstalleer";
 "Package_Modify_Action" = "Bewerk";
 "Package_Get_Action" = "Verkrijg";
 "Package_Queue_Action" = "Wachtrij";
 "Package_Cancel_Action" = "Annuleer";
 "Package_Paid" = "Betaald";
 
-"Package_Share_Action" = "Deel Package…";
+"Package_Share_Action" = "Deel Pakket…";
 "Package_Developer_Find_Action" = "Meer van deze Ontwikkelaar";
 "Package_Support_Action" = "Ondersteuning";
 "Package_Hold_Enable_Action" = "Negeer Toekomstige Updates";
@@ -61,34 +61,34 @@
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installeren";
-"Queued_Uninstall_Heading" = "Deinstalleer";
+"Queued_Uninstall_Heading" = "Deïnstalleer";
 "Queued_Update_Heading" = "Update";
 "Download_Errors_Heading" = "Foutmeldingen";
 
 "Installed_Heading" = "Geïnstalleerd";
 "Updates_Heading" = "Updates";
 "Upgrade_All_Button" = "Upgrade Alles";
-"Package_Search.Placeholder" = "Zoek naar Packages";
+"Package_Search.Placeholder" = "Zoek naar Pakketten";
 "Sort_Name" = "Naam";
 "Sort_Date" = "Datum";
 "Sort_By" = "Sorteer op:";
 
-"Package_Unavailable" = "Package Niet Beschikbaar";
+"Package_Unavailable" = "Pakket Niet Beschikbaar";
 "Package_By_Author" = "%@ van %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "van %@"; // %@ = author name
-"Packages_By_Author" = "Packages van %@"; // %@ = author name
+"Packages_By_Author" = "Pakketten van %@"; // %@ = author name
 
 "Featured_Page" = "Uitgelicht";
 "News_Page" = "Nieuw";
 "Sources_Page" = "Bronnen";
-"Packages_Page" = "Packages";
+"Packages_Page" = "Pakketten";
 "Search_Page" = "Zoek";
 "Refreshing_Sources_Page" = "Bronnen Verversen";
 "Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
 "Refresh" = "Ververs";
 "Remove" = "Verwijder";
 
-"All_Packages.Title" = "Alle Packages";
+"All_Packages.Title" = "Alle Pakketten";
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
 
 "All_Categories" = "Alle Categorieën";
@@ -105,37 +105,37 @@
 "Form_Submitted.Default_Title" = "Verzonden Formulier";
 "Form_Submitted.Default_Body" = "Het formulier is met succes verzonden.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Web View afbeeldingen zijn verouderd. Neem contact op met de repo onderhouder over het updaten naar ingebouwde afbeeldingen.";
 
 "Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "Er is geen beschrijving beschikbaar voor deze package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Changelog_Tab" = "Aanpassingen";
+"Package_No_Description_Available" = "Er is geen beschrijving beschikbaar voor dit pakket.";
+"Package_Changelogs_Unavailable" = "Aanpassingen zijn niet beschikbaar voor dit pakket.";
 
-"Installed_Package_Header" = "Installed Package";
+"Installed_Package_Header" = "Geïnstalleerd pakket";
 "Version" = "Versie";
-"Show_Package_Contents_Button" = "Toon Package Inhoud";
+"Show_Package_Contents_Button" = "Toon Pakket Inhoud";
 
 "Licenses_Page_Title" = "Licenties";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Alternatieve Iconen";
 
 "Settings_Payment_Provider_Heading" = "Betaling Providers";
 "Settings_Translations_Heading" = "Vertalingen";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Betalingen";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Aankopen";
+"Settings_Payment_Provider.No_Purchases" = "Geen aankopen";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
+"Settings" = "Instellingen";
+"Settings_Page_Title" = "Instellingen";
 "Dark_Mode_Toggle" = "Donkere Modus";
 "Theme" = "Thema";
 "Tint_Color" = "Tint Kleur";
 "Reset_Tint_Color" = "Reset Tint Kleur";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Auto_Complete_Queue" = "Wachtrij Automatisch Voltooien";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
+"Enable_Analytics" = "Schakel Analytics in";
+"Swipe_Actions" = "Sleep Acties";
+"Show_Provisional" = "Toon Pakketten van Kanister";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
@@ -147,7 +147,7 @@
 "Payment_Provider_Signed_In_With_Name" = "Ingelogd als %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Log uit";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Log uit bij %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Je kan niet langer je gekochte packages downloaden totdat je inlogt.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Je kan gekochte pakketten niet meer downloaden totdat je weer inlogt.";
 
 "Show_Install_Details" = "Toon Details";
 "Hide_Install_Details" = "Verberg Details";
@@ -170,10 +170,10 @@
 
 // All export-based strings
 "Export" = "Exporteer";
-"Export_Packages" = "Wil je je package lijst exporteren? Dit kopieert alle package namen en hun versie naar jouw klembord.";
+"Export_Packages" = "Wil je je pakketten lijst exporteren? Dit kopieert alle pakket namen en hun versies naar jouw klembord.";
 "Export_Sources" = "Wil je je bronnenlijst exporteren? Dit kopieert de URL van elke bron naar jouw klembord.";
 "Export_Yes" = "Ja, kopieer.";
 "Export_No" = "Nee, annuleer.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Zie Afbeelding";
