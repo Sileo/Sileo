@@ -1,4 +1,12 @@
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - amy
+  pull_request:
+    branches:
+      - main
+      - amy
 name: Run CI
 jobs:
   make:
