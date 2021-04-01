@@ -41,7 +41,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>other</key>
-        <string>URLs</string>
+        <string>URL</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
