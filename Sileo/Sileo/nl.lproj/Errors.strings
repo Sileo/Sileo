@@ -8,52 +8,52 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "Er is een onbekende fout opgetreden.";
+"Error_Indicator" = "Fout: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "Kon de package %@ niet vinden in de geïnstalleerde repositories.";
+"No_Package.Body" = "Wacht op Sileo om het te laten updaten als het nieuw is, en probeer het daarna nog een keer. Kijk online voor meer hulp.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Ongeldige URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "Verwachtte grootte %@, maar kreeg in plaats daarvan %@.";
+"Download_Failing_Status_Code" = "Mislukt met status %ld";
+"Download_Hash_Mismatch" = "Verwachtte hash %@, maar kreeg in plaats daarvan %@.";
+"Untrusted_Package" = "Package %@ is onbetrouwbaar en kan niet worden geverifieerd";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Betalings-geautoriseerd pakket download URLs moeten beveiligd zijn (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "De betalingsprovider heeft een ongeldige reactie opgegeven.";
+"No_Payment_Provider" = "Deze repository ondersteunt geen Sileo aankopen. Als dit een Cydia Store package is dat je al gekocht hebt, kan je je account linken om het te downloaden.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Deze package is niet verkrijgbaar via de geïnstalleerde bronnen. Check of de %@ repository beschikbaar is.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "Installatie fout";
+"Installation_Error.Body" = "Sileo kon root rechten niet bemachtigen. Installeer Sileo opnieuw via SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg Onderbroken";
+"FixingDpkg.Body" = "Dpkg was onderbroken. Even geduld terwijl we het probleem proberen op te lossen.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Ongeldige Data";
+"Try_Later" = "Probeer het later opnieuw.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Sileo Update Vereist";
+"Featured_Requires_Sileo_Update" = "Een Sileo update is vereist om de het uitgelicht tabblad te bekijken. Het uitgelicht tablad kan verkeerd gerenderd worden.";
+"Depiction_Requires_Sileo_Update" = "Een Sileo update is vereist om deze pagina te bekijken. De pagina kan verkeerd gerenderd worden.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Error.Title" = "Kon Formulier Niet Laden";
+"Form_Load_Error" = "Het formulier kon niet opgehaald worden van de server.";
+"Invalid_Form_Data" = "De server heeft ongeldige formulier data gegeven.";
+"Form_Submit_Failure" = "Een fout is opgetreden tijdens het verzenden van het formulier: %@";
+"Form_Submit_Error.Title" = "Kon Formulier Niet Verzenden";
+"Form_Action_Host_Mismatch" = "De action URL van het formulier komt niet overeen met de origin host van het formulier.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "Kon Email Niet Verzenden";
+"Email_Unavailable.Body" = "Mail diensten zijn niet beschikbaar.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "Kon Profiel Niet Laden";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "Kon De Provider Niet Authenticeren";
+"Purchase_Initiate_Fail.Title" = "Kon Betaling Niet Starten";
+"Purchase_Complete_Fail.Title" = "Kon Betaling Niet Afmaken";
+"Purchase_Auth_Complete_Fail.Title" = "Kon Authenticatie Niet Voltooien";
