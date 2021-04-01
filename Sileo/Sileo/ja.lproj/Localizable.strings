@@ -21,13 +21,13 @@
 "Share" = "共有";
 "Delete" = "削除";
 "Cancel" = "キャンセル";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "承認";
+"Remove" = "削除";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Appのバックグラウンド更新";
+"Background_App_Refresh_Message" = "最適で最速な体験を得るには、Appのバックグラウンド更新を有効にすることをお勧めします。tweakがアップデート可能になったときに通知を受け取ることができます。";
+"Upgrade_All_Shortcut_Processing_Message" = "リポジトリの更新とパッケージのアップデートを行なっています...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "インストール中";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "入手";
 "Package_Queue_Action" = "キュー";
 "Package_Cancel_Action" = "キャンセル";
-"Package_Paid" = "Paid";
+"Package_Paid" = "有料";
 
 "Package_Share_Action" = "パッケージを共有...";
 "Package_Developer_Find_Action" = "この開発者のパッケージ一覧";
@@ -74,8 +74,8 @@
 "Sort_By" = "並べ替え:";
 
 "Package_Unavailable" = "パッケージを利用できません";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
+"Package_By_Author" = "%@ 開発者: %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "開発者: %@"; // %@ = author name
 "Packages_By_Author" = "%@ のパッケージ"; // %@ = author name
 
 "Featured_Page" = "おすすめ";
@@ -85,8 +85,8 @@
 "Search_Page" = "検索";
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "更新";
+"Remove" = "削除";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -117,7 +117,7 @@
 "Show_Package_Contents_Button" = "パッケージの内容を表示";
 
 "Licenses_Page_Title" = "ライセンス";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "代替アイコン";
 
 "Settings_Payment_Provider_Heading" = "決済サービスプロバイダー";
 "Settings_Translations_Heading" = "翻訳";
@@ -132,10 +132,10 @@
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
 "Auto_Complete_Queue" = "オートコンプリートキュー";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "すべてのショートカットのアップデートを自動的に確認";
 "Enable_Analytics" = "統計収集の有効化";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Swipe_Actions" = "スワイプアクション";
+"Show_Provisional" = "Canister のパッケージを表示";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Sileo を再起動";
 "After_Install_Respring" = "SpringBoard を再起動";
 "After_Install_Reboot" = "再起動";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "後でSileo を再起動";
+"After_Install_Respring_Later" = "後でSpringBoard を再起動";
+"After_Install_Reboot_Later" = "後でデバイスを再起動";
 
 "Dangerous_Repo.Title" = "危険なリポジトリ";
 "Dangerous_Repo.Body" = "著作権の侵害・違法なコンテンツ・マルウェア等の理由で有害であると認識されているリポジトリを追加しようとされています。\n\n有害なリポジトリでは、本来有償のソフトウェアを無償として配布したり、予期しない影響を与えるソフトウェアを配布している場合があります。一度、悪意のあるソフトウェアをインストールしてしまうと、デバイスとプライバシーに永続的な影響を与える可能性があり、Jailbreak 状態の維持にも影響を与えることがあります。有害なソフトウェアを回避するために細心の注意を払うことを強く推奨します。";
