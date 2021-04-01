@@ -13,7 +13,7 @@
 "Close" = "Cerrar";
 "Double tap to open." = "Tocar dos veces para abrir.";
 "Untitled_Repo" = "Repo Sin Título";
-"OK" = "OK";
+"OK" = "Ok";
 "Done" = "Listo";
 "Done_Editing" = "Listo";
 "More_Info" = "Más Información";
@@ -25,7 +25,7 @@
 "Remove" = "Eliminar";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh" = "Actualizar en segundo plano";
 "Background_App_Refresh_Message" = "Para la mejor y más rápida experiencia, es recomendado que la aplicación pueda correr en segundo plano. También obtendrás notificaciones cuando tus tweaks se actualizan!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refrescando tus fuentes y actualizando tus paquetes...";
 
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "Obtener";
 "Package_Queue_Action" = "Añadir a la cola";
 "Package_Cancel_Action" = "Cancelar";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Pago";
 
 "Package_Share_Action" = "Compartir Paquete…";
 "Package_Developer_Find_Action" = "Más del Desarrollador";
@@ -85,8 +85,8 @@
 "Search_Page" = "Buscar";
 "Refreshing_Sources_Page" = "Refrescando Fuentes";
 "Package_Installed_Files_Page" = "Archivos Instalados";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Actualizar";
+"Remove" = "Eliminar";
 
 "All_Packages.Title" = "Todos los Paquetes";
 "All_Packages.Cell_Subtitle" = "Ver todos los paquetes de sus fuentes";
@@ -116,8 +116,8 @@
 "Version" = "Versión";
 "Show_Package_Contents_Button" = "Mostrar Contenido del Paquete";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "Licencias";
+"Alternate_Icon_Title" = "Íconos alternativos";
 
 "Settings_Payment_Provider_Heading" = "Proveedores de Pago";
 "Settings_Translations_Heading" = "Traducciones";
@@ -125,22 +125,22 @@
 "Settings_Payment_Provider.Purchases_Heading" = "Compras";
 "Settings_Payment_Provider.No_Purchases" = "Sin Compras";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Settings" = "Ajustes";
+"Settings_Page_Title" = "Ajustes";
+"Dark_Mode_Toggle" = "Modo oscuro";
+"Theme" = "Tema";
+"Tint_Color" = "Color de realce";
+"Reset_Tint_Color" = "Restablecer color de realce";
+"Auto_Complete_Queue" = "Auto completar cola";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmar automáticamente \"Actualizar todo\"";
+"Enable_Analytics" = "Activar datos de análisis";
+"Swipe_Actions" = "Acciones de deslizamiento";
+"Show_Provisional" = "Mostrar paquetes de Canister";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Light" = "Sileo Claro";
+"Sileo_Dark" = "Sileo Oscuro";
+"Sileo_Adaptive" = "Sileo Adaptativo";
+"System" = "Sistema";
 
 "Cydia_Sign_In" = "Iniciar Sesión en Cydia Store";
 "Payment_Provider_Signed_In" = "Autenticado";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
 "After_Install_Reboot" = "Reiniciar Dispositivo";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Reiniciar Sileo después";
+"After_Install_Respring_Later" = "Reiniciar SpringBoard después";
+"After_Install_Reboot_Later" = "Reiniciar dispositivo después";
 
 "Dangerous_Repo.Title" = "Repositorio Riesgoso";
 "Dangerous_Repo.Body" = "Está intentando añadir un repositorio previamente identificado como nocivo por razones como piratería, contenido ilícito, ó malware.\n\nRepositorios identificados como nocivos suelen distribuir software con efectos inesperados, ya sea en la forma de paquetes de paga sin costo, u otros paquetes maliciosos. Esto puede tener repercusiones negativas en su dispositivo y su privacidad, incluso algunas veces afectando su capacidad para hacer jailbreak en el futuro. Recomendamos que tenga extremada precaución para evitar instalar software malicioso.";
@@ -169,11 +169,11 @@
 "Dangerous_Repo.Last_Chance.Cancel" = "Regresar";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "Exportar";
+"Export_Packages" = "¿Quieres exportar tu lista de paquetes? Esto copiará todos los nombres y versiones de paquetes a tu portapapeles.";
+"Export_Sources" = "¿Quieres exportar tu lista de fuentes? Esto copiará todas sus URLs al portapapeles.";
+"Export_Yes" = "Sí, copiar.";
+"Export_No" = "No, cancelar.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Ver descripción";
