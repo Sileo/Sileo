@@ -1,12 +1,12 @@
-/* 
-  Categories.strings
+/*
+  Errors.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28. Translated to Turkish by: CanerKaraca (2021-03-18).
+  Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
-
- TURKISH LOCALISATIONS
-*/
+ 
+ BASE (English) LOCALISATIONS
+ */
 
 "Unknown" = "Bilinmeyen bir hata oluştu.";
 "Error_Indicator" = "Hata: %@";

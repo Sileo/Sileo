@@ -2,19 +2,17 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28.
-  Original translation by Yuji Shimabukuro on 2019-10-28
-  Updated by eve0415 on 2021-03-19
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
-
- JAPANESE LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "日本語翻訳 by eve0415";
-"__LocalizationCredit.URL" = "https://www.twitter.com/eveevekun";
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
+
+
 "About" = "詳細";
 "Close" = "閉じる";
 "Double tap to open." = "ダブルタップして開く";
@@ -27,6 +25,13 @@
 "Share" = "共有";
 "Delete" = "削除";
 "Cancel" = "キャンセル";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "インストール中";
@@ -35,7 +40,7 @@
 "Ready_Status" = "準備完了";
 "Removal_Queued_Package_Status" = "削除するためにキューされています";
 "Download_Starting" = "開始中…";
-"Download_Progress" = "%@ \/ %@"; // first %@ = amount downloaded, second %@ = total to download
+"Download_Progress" = "%@ \\/ %@"; // first %@ = amount downloaded, second %@ = total to download
 
 "Queue_Confirm_Button" = "実行";
 "Queue_Clear_Button" = "キューをクリア";
@@ -47,6 +52,7 @@
 "Package_Get_Action" = "入手";
 "Package_Queue_Action" = "キュー";
 "Package_Cancel_Action" = "キャンセル";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "パッケージを共有...";
 "Package_Developer_Find_Action" = "この開発者のパッケージ一覧";
@@ -83,6 +89,8 @@
 "Search_Page" = "検索";
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -113,6 +121,7 @@
 "Show_Package_Contents_Button" = "パッケージの内容を表示";
 
 "Licenses_Page_Title" = "ライセンス";
+"Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "決済サービスプロバイダー";
 "Settings_Translations_Heading" = "翻訳";
@@ -127,7 +136,10 @@
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
 "Auto_Complete_Queue" = "オートコンプリートキュー";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "統計収集の有効化";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -147,13 +159,16 @@
 "After_Install_Relaunch" = "Sileo を再起動";
 "After_Install_Respring" = "SpringBoard を再起動";
 "After_Install_Reboot" = "再起動";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "危険なリポジトリ";
 "Dangerous_Repo.Body" = "著作権の侵害・違法なコンテンツ・マルウェア等の理由で有害であると認識されているリポジトリを追加しようとされています。\n\n有害なリポジトリでは、本来有償のソフトウェアを無償として配布したり、予期しない影響を与えるソフトウェアを配布している場合があります。一度、悪意のあるソフトウェアをインストールしてしまうと、デバイスとプライバシーに永続的な影響を与える可能性があり、Jailbreak 状態の維持にも影響を与えることがあります。有害なソフトウェアを回避するために細心の注意を払うことを強く推奨します。";
 "Dangerous_Repo.Continue" = "私はリスクを受け入れ、追加します";
 "Dangerous_Repo.Cancel" = "安全性を確保する";
 "Dangerous_Repo.Last_Chance.Title" = "有害なリポジトリを追加しますか？";
-"Dangerous_Repo.Last_Chance.Body" = "危険なリポジトリの追加によって、お使いのデバイスを破損させる恐れがあります。安全性を確保するためにも、登録しないことを強く推奨します。";
+"Dangerous_Repo.Last_Chance.Body" = "危険なリポジトリの追加によって、お使いのデバイスを破損させる恐れがあります。安全性を確保するためにも、登録しないことを強く推奨します。"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "続ける";
 "Dangerous_Repo.Last_Chance.Cancel" = "戻る";
 

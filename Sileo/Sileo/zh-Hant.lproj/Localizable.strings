@@ -2,17 +2,17 @@
   Localizable.strings
   Sileo
 
-  Created by Hayden Seay on 2020-07-24.
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- Chinese Traditional LOCALISATIONS
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "由Deon翻譯";
-"__LocalizationCredit.URL" = "https://www.twitter.com/BJH1234_Deon"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
+
+
 "About" = "關於";
 "Close" = "關閉";
 "Double tap to open." = "雙擊以打開.";
@@ -25,6 +25,13 @@
 "Share" = "分享";
 "Delete" = "刪除";
 "Cancel" = "取消";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "正在安裝";
@@ -82,6 +89,8 @@
 "Search_Page" = "搜尋";
 "Refreshing_Sources_Page" = "正在刷新軟體來源";
 "Package_Installed_Files_Page" = "已經安裝的文件";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "所有軟體包";
 "All_Packages.Cell_Subtitle" = "查看已經添加的軟體來源的所有軟體包";
@@ -130,6 +139,7 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "觸覺回饋觸控全部更新自動確認";
 "Enable_Analytics" = "啟用分析";
 "Swipe_Actions" = "滑動動作";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Sileo淺色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -158,7 +168,7 @@
 "Dangerous_Repo.Continue" = "我接受風險,繼續.";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
 "Dangerous_Repo.Last_Chance.Title" = "添加危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的軟體來源可能會對設備/越獄環境造成破壞性的影響.我們建議您為了設備的安全而取消操作. %@";
+"Dangerous_Repo.Last_Chance.Body" = "危險的軟體來源可能會對設備/越獄環境造成破壞性的影響.我們建議您為了設備的安全而取消操作. %@"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 

@@ -3,17 +3,16 @@
   Sileo
 
   Created by AppleBetas on 2018-12-27.
-  Translated by vx from Base on 19th March 2021
-  Copyright © 2021 CoolStar. All rights reserved.
+  Copyright © 2018 CoolStar. All rights reserved.
  
- MALAY TRANSLATIONS
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-//"__LocalizationCredit.Title" = "Terjemahan Bahasa Malaysia oleh vx";
-//"__LocalizationCredit.URL" = "https://www.twitter.com/vanill4s4ndw1ch"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
+
+
 "About" = "Perihal";
 "Close" = "Tutup";
 "Double tap to open." = "Tekan dua kali untuk buka.";
@@ -26,6 +25,13 @@
 "Share" = "Kongsi";
 "Delete" = "Padam";
 "Cancel" = "Batal";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Memasang";
@@ -46,6 +52,7 @@
 "Package_Get_Action" = "Dapatkan";
 "Package_Queue_Action" = "Atur";
 "Package_Cancel_Action" = "Batal";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "Kongsi pakej…";
 "Package_Developer_Find_Action" = "Lebih dari pemaju ini";
@@ -82,6 +89,8 @@
 "Search_Page" = "Cari";
 "Refreshing_Sources_Page" = "Mengemaskini Sumber";
 "Package_Installed_Files_Page" = "Fail Dipasang";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Semua Pakej";
 "All_Packages.Cell_Subtitle" = "Lihat semua pakej daripada sumber-sumber anda";
@@ -112,6 +121,7 @@
 "Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
 
 "Licenses_Page_Title" = "Lesen-lesen";
+"Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "Penyedia Pembayaran";
 "Settings_Translations_Heading" = "Terjemahan";
@@ -126,7 +136,10 @@
 "Tint_Color" = "Warna Rona";
 "Reset_Tint_Color" = "Tetapkan Semula Warna Rona";
 "Auto_Complete_Queue" = "Auto-Selesaikan Aturan";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "Aktifkan Analisis";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Sileo Cerah";
 "Sileo_Dark" = "Sileo Gelap";
@@ -146,6 +159,9 @@
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";
 "After_Install_Reboot" = "Mula-semulakan Peranti";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "Repo Berbahaya";
 "Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan seperti pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadangkala mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";

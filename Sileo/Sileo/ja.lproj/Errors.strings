@@ -1,14 +1,12 @@
-/* 
+/*
   Errors.strings
   Sileo
 
   Created by AppleBetas on 2018-12-28.
-  Original translation by Yuji Shimabukuro on 2019-10-28
-  Updated by eve0415 on 2021-03-19
   Copyright © 2018 CoolStar. All rights reserved.
-
- JAPANESE LOCALISATIONS
-*/
+ 
+ BASE (English) LOCALISATIONS
+ */
 
 "Unknown" = "不明なエラーが発生しました。";
 "Error_Indicator" = "エラー: %@";

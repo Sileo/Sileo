@@ -1,9 +1,11 @@
-/*
+/* 
   Categories.strings
   Sileo
 
-  Created by Emy on 2021-03-16.
-  German LOCALISATIONS
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ BASE (English) LOCALISATIONS
 */
 
 "No_Category" = "(Keine Kategorie)";

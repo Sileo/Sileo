@@ -1,18 +1,18 @@
-/*
+/* 
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-27. Translated to Russian by gkeep on 2020-04-21.
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
-
-  RUSSIAN LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Перевод на русский от gkeep";
-"__LocalizationCredit.URL" = "https://gkeep.xyz"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
+
+
 "About" = "О программе";
 "Close" = "Закрыть";
 "Double tap to open." = "Нажмите два раза, чтоьы открыть.";
@@ -25,6 +25,13 @@
 "Share" = "Поделиться";
 "Delete" = "Удалить";
 "Cancel" = "Отмена";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Установка";
@@ -45,6 +52,7 @@
 "Package_Get_Action" = "Загрузить";
 "Package_Queue_Action" = "Очередь";
 "Package_Cancel_Action" = "Отменить";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "Поделиться пакетом…";
 "Package_Developer_Find_Action" = "Больше от этого разработчика";
@@ -81,6 +89,8 @@
 "Search_Page" = "Поиск";
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -111,6 +121,7 @@
 "Show_Package_Contents_Button" = "Показать содержимое пакета";
 
 "Licenses_Page_Title" = "Лицензии";
+"Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "Поставщики платежа";
 "Settings_Translations_Heading" = "Переводы";
@@ -125,7 +136,10 @@
 "Tint_Color" = "Цвет оттенка";
 "Reset_Tint_Color" = "Сбросить цвет оттенка";
 "Auto_Complete_Queue" = "Автоматически завершать очередь";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "Включить аналитику";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
@@ -145,13 +159,16 @@
 "After_Install_Relaunch" = "Перезапустить Sileo";
 "After_Install_Respring" = "Перезапустить SpringBoard";
 "After_Install_Reboot" = "Перезагрузить девайс";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "Опасный репозиторий";
 "Dangerous_Repo.Body" = "Вы пытаетесь добавить репозиторий, известный за такое вредное содержимое, как пиратство, нелегальный контент или вредоносные программы.\n\nРепозитории, отмеченные как опасные, часто разпространяют П.О. с неожиданными эффектами, в форме платных пакетов бесплатно или других вредоносных пакетов. Это может повлечь длительные последствия для вашего устройства и конфиденциальности, иногда затрагивающие возможность jailbreak. Мы рекомендуем вам проявлять крайнюю осторожность, чтобы избежать вредносного П.О.";
 "Dangerous_Repo.Continue" = "Я принимаю риски, продолжить";
 "Dangerous_Repo.Cancel" = "Верните меня в безопасность";
 "Dangerous_Repo.Last_Chance.Title" = "Добавить вредоносный репозиторий?";
-"Dangerous_Repo.Last_Chance.Body" = "Опасные репозитории могут иметь разрушительные последствия для вашей способности использовать ваше устройство или jailbreak. Мы настоятельно рекомендуем вам вернуться для вашей же безопасности.";
+"Dangerous_Repo.Last_Chance.Body" = "Опасные репозитории могут иметь разрушительные последствия для вашей способности использовать ваше устройство или jailbreak. Мы настоятельно рекомендуем вам вернуться для вашей же безопасности."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Продолжить";
 "Dangerous_Repo.Last_Chance.Cancel" = "Вернуться";
 

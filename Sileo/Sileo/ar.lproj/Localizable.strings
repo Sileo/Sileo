@@ -2,17 +2,17 @@
   Localizable.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28. Translated to Arabic by: iA7myd (2020-04-21). Updated by: yazanoo16 (2021-03-18).
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
-
- ARABIC LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
-
 // Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "ترجمه إلى العربية iA7myd.";
-"__LocalizationCredit.URL" = "https://github.com/iA7myd"; // (optional)
-
+//"__LocalizationCredit.Title" = "English translation by AppleBetas";
+//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 // Common Prompts
+
+
 "About" = "حول";
 "Close" = "إغلاق";
 "Double tap to open." = "انقر مرتين للفتح.";
@@ -25,6 +25,13 @@
 "Share" = "مشاركة";
 "Delete" = "حذف";
 "Cancel" = "إلغاء";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "جارِ التثبيت";
@@ -33,7 +40,7 @@
 "Ready_Status" = "جاهز";
 "Removal_Queued_Package_Status" = "تم وضعه في قائمة الإنتظار للإزالة";
 "Download_Starting" = "جارِ البدء...";
-"Download_Progress" = "%@ من %@";
+"Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
@@ -45,6 +52,7 @@
 "Package_Get_Action" = "جلب";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "مشاركة الحزمة...";
 "Package_Developer_Find_Action" = "المزيد بواسطة هذا المطور";
@@ -70,9 +78,9 @@
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
-"Package_By_Author" = "%@ بواسطة %@";
-"By_Author" = "بواسطة %@";
-"Packages_By_Author" = "حزم بواسطة %@";
+"Package_By_Author" = "%@ بواسطة %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "بواسطة %@"; // %@ = author name
+"Packages_By_Author" = "حزم بواسطة %@"; // %@ = author name
 
 "Featured_Page" = "مميز";
 "News_Page" = "جديد";
@@ -81,6 +89,8 @@
 "Search_Page" = "بحث";
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -111,6 +121,7 @@
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
 "Licenses_Page_Title" = "التراخيص";
+"Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "مزودي الدفع";
 "Settings_Translations_Heading" = "الترجمات";
@@ -125,7 +136,10 @@
 "Tint_Color" = "لون الصبغة";
 "Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "تفعيل الإحصائيات";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
@@ -134,9 +148,9 @@
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
-"Payment_Provider_Signed_In_With_Name" = "تم تسجيل الدخول كـ %@";
+"Payment_Provider_Signed_In_With_Name" = "تم تسجيل الدخول كـ %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "تسجيل الخروج";
-"Payment_Provider_Sign_Out_Confirm.Title" = "تسجيل الخروج من %@";
+"Payment_Provider_Sign_Out_Confirm.Title" = "تسجيل الخروج من %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "لن تصبح قادرًا على تنزيل حزمك المشتراة حتى تسجل الدخول مرة أخرى.";
 
 "Show_Install_Details" = "عرض التفاصيل";
@@ -145,13 +159,16 @@
 "After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";
 "After_Install_Reboot" = "إعادة تشغيل الجهاز";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
 "Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
 "Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
-"Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك.";
+"Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
 "Dangerous_Repo.Last_Chance.Cancel" = "العودة";
 

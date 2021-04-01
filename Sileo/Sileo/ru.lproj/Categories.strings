@@ -1,11 +1,11 @@
-/*
+/* 
   Categories.strings
   Sileo
 
-  Created by AppleBetas on 2018-12-28. Translated to Russian by gkeep on 2020-04-21.
+  Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
-
-  RUSSIAN LOCALISATIONS
+ 
+ BASE (English) LOCALISATIONS
 */
 
 "No_Category" = "(Без категории)";
