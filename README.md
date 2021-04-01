@@ -23,9 +23,9 @@ To get started with Sileo development, follow these setup steps:
     git clone --recursive https://github.com/Sileo/Sileo.git ./Sileo
     cd ./Sileo
     ```
-2. Setup the Confiig file
     * Open `Config.xcconfig` and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
     * Tell Git to stop tracking modifications to `Config.xcconfig`
+2. Setup the Config file
         ```
         git update-index --skip-worktree ./Config.xcconfig
         ```
