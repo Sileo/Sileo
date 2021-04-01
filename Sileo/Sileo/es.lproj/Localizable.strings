@@ -9,7 +9,7 @@
 */
 // Common Prompts
 
-"About" = "About";
+"About" = "Acerca de";
 "Close" = "Cerrar";
 "Double tap to open." = "Tocar dos veces para abrir.";
 "Untitled_Repo" = "Repo Sin Título";
@@ -21,13 +21,13 @@
 "Share" = "Compartir";
 "Delete" = "Eliminar";
 "Cancel" = "Cancelar";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Comprendo";
+"Remove" = "Eliminar";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh_Message" = "Para la mejor y más rápida experiencia, es recomendado que la aplicación pueda correr en segundo plano. También obtendrás notificaciones cuando tus tweaks se actualizan!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refrescando tus fuentes y actualizando tus paquetes...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Instalando";
