@@ -26,8 +26,8 @@
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh_Message" = "للحصول على أسرع وأفضل تجربة، يوصى بتفعيل تحديث التطبيق في الخلفية. يمكنك أيضًا تلقي الإشعارات عندما تصدر تحديثات لأدواتك!";
+"Upgrade_All_Shortcut_Processing_Message" = "جارِ تحديث كل المصادر وترقية كل الحزم...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "جارِ التثبيت";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "جلب";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
-"Package_Paid" = "Paid";
+"Package_Paid" = "مدفوع";
 
 "Package_Share_Action" = "مشاركة الحزمة...";
 "Package_Developer_Find_Action" = "المزيد بواسطة هذا المطور";
@@ -85,8 +85,8 @@
 "Search_Page" = "بحث";
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "تحديث";
+"Remove" = "إزالة";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -117,7 +117,7 @@
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
 "Licenses_Page_Title" = "التراخيص";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "الأيقونات البديلة";
 
 "Settings_Payment_Provider_Heading" = "مزودي الدفع";
 "Settings_Translations_Heading" = "الترجمات";
@@ -134,7 +134,7 @@
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "تفعيل الإحصائيات";
-"Swipe_Actions" = "Swipe Actions";
+"Swipe_Actions" = "أجراءات السحب";
 "Show_Provisional" = "Show Packages from Canister";
 
 "Sileo_Light" = "Sileo فاتح";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";
 "After_Install_Reboot" = "إعادة تشغيل الجهاز";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "إعادة تشغيل Sileo لاحقًا";
+"After_Install_Respring_Later" = "إعادة تشغيل واجهة النظام لاحقًا";
+"After_Install_Reboot_Later" = "إعادة تشغيل الجهاز لاحقًا";
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
