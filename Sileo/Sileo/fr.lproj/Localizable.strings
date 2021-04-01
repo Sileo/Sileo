@@ -22,7 +22,7 @@
 "Delete" = "Supprimer";
 "Cancel" = "Annuler";
 "Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Remove" = "Supprimer";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -85,8 +85,8 @@
 "Search_Page" = "Rechercher";
 "Refreshing_Sources_Page" = "Mise à jour de sources";
 "Package_Installed_Files_Page" = "Fichiers installés";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Rafraîchir";
+"Remove" = "Supprimer";
 
 "All_Packages.Title" = "Tous les paquets";
 "All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
@@ -117,7 +117,7 @@
 "Show_Package_Contents_Button" = "Dévoiler les contenus du paquet";
 
 "Licenses_Page_Title" = "Licences";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Icônes Alternatives";
 
 "Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
 "Settings_Translations_Heading" = "Traductions";
@@ -135,12 +135,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "Activer les données analytiques";
 "Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Show_Provisional" = "Montre les paquets de Canister";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
 "Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"System" = "Système";
 
 "Cydia_Sign_In" = "Se connecter au Cydia Store.";
 "Payment_Provider_Signed_In" = "Connecté";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Recommencer Sileo";
 "After_Install_Respring" = "Recommencer SpringBoard";
 "After_Install_Reboot" = "Recommencer l'appareil";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Redémarrer Sileo plus tard";
+"After_Install_Respring_Later" = "Redémarrer le SpringBoard plus tard";
+"After_Install_Reboot_Later" = "Redémarrer l'appareil plus tard";
 
 "Dangerous_Repo.Title" = "Source dangereuse";
 "Dangerous_Repo.Body" = "Vous essayez d'installer une source qui est connue être dangereuse pour des raisons qui peuvent inclure la piratie, l'hébergement de contenu illégale ou des virus.\n\nLes sources indiqués être dangereuses distribuent souvent des paquets ayant des effets inattendues, soit en forme de paquets payés rendus gratuits, ou d'autres paquets malicieux. Ceux-ci peuvent avoir des effects permanents sur votre appareil, et peuvent même réduire votre capacité pour installer un jailbreak. Nous recommendons que vous agissez avec prudence pour éviter des logiciels dangereux.";
