@@ -12,7 +12,7 @@
 "About" = "حول";
 "Close" = "إغلاق";
 "Double tap to open." = "انقر مرتين للفتح.";
-"Untitled_Repo" = "مستودع بدون عنوان";
+"Untitled_Repo" = "مصدر بدون عنوان";
 "OK" = "حسنًا";
 "Done" = "تم";
 "Done_Editing" = "تم";
@@ -21,7 +21,7 @@
 "Share" = "مشاركة";
 "Delete" = "حذف";
 "Cancel" = "إلغاء";
-"Acknowledge" = "Acknowledge";
+"Acknowledge" = "أُقر";
 "Remove" = "إزالة";
 
 // Popup messages
@@ -45,7 +45,7 @@
 "Package_Reinstall_Action" = "إعادة التثبيت";
 "Package_Uninstall_Action" = "إلغاء التثبيت";
 "Package_Modify_Action" = "تعديل";
-"Package_Get_Action" = "جلب";
+"Package_Get_Action" = "تثبيت";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
 "Package_Paid" = "مدفوع";
@@ -132,10 +132,10 @@
 "Tint_Color" = "لون الصبغة";
 "Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Enable_Analytics" = "تفعيل الإحصائيات";
 "Swipe_Actions" = "أجراءات السحب";
-"Show_Provisional" = "Show Packages from Canister";
+"Show_Provisional" = "إظهار الحزم من مصادر غير مضافة";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
