@@ -21,7 +21,7 @@
       },
       {
         "package": "AUPickerCell",
-        "repositoryURL": "https://github.com/CharlieWhile13/AUPickerCell",
+        "repositoryURL": "https://github.com/elihwyma/AUPickerCell",
         "state": {
           "branch": "master",
           "revision": "2832a424ae8c583f18ffee68c57896bdcef334a4",
@@ -66,7 +66,7 @@
       },
       {
         "package": "LNZTreeView",
-        "repositoryURL": "https://github.com/CharlieWhile13/LNZTreeView",
+        "repositoryURL": "https://github.com/elihwyma/LNZTreeView",
         "state": {
           "branch": "master",
           "revision": "7de0df7a3f5cc6d16b4229fcf6d9a916a08d34e3",
@@ -120,7 +120,7 @@
       },
       {
         "package": "SwiftTryCatch",
-        "repositoryURL": "https://github.com/CharlieWhile13/SwiftTryCatch",
+        "repositoryURL": "https://github.com/elihwyma/SwiftTryCatch",
         "state": {
           "branch": "master",
           "revision": "9ba56c5f43932c638310f422a68da761acf386ea",

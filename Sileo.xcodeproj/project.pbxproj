@@ -3602,7 +3602,7 @@
 		};
 		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CharlieWhile13/LNZTreeView";
+			repositoryURL = "https://github.com/elihwyma/LNZTreeView";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -3610,7 +3610,7 @@
 		};
 		E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CharlieWhile13/AUPickerCell";
+			repositoryURL = "https://github.com/elihwyma/AUPickerCell";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -3618,7 +3618,7 @@
 		};
 		E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CharlieWhile13/SwiftTryCatch";
+			repositoryURL = "https://github.com/elihwyma/SwiftTryCatch";
 			requirement = {
 				branch = master;
 				kind = branch;
