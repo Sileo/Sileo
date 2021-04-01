@@ -21,13 +21,13 @@
 "Share" = "Paylaş";
 "Delete" = "Sil";
 "Cancel" = "İptal";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Onayla";
+"Remove" = "Kaldır";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Arka Planda Uygulama Yenile";
+"Background_App_Refresh_Message" = "En iyi ve en hızlı deneyim için, arka planda uygulama yenilemeyi etkinleştirmeniz önerilir. Paketleriniz güncellendiğinde de bildirim alabilirsiniz!";
+"Upgrade_All_Shortcut_Processing_Message" = "Tüm kaynaklar yenileniyor ve tüm paketler güncelleniyor...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Kuruluyor";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "Kur";
 "Package_Queue_Action" = "Sırada";
 "Package_Cancel_Action" = "İptal";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Satın Al";
 
 "Package_Share_Action" = "Paketi Paylaş…";
 "Package_Developer_Find_Action" = "Bu geliştiriciden daha fazla.";
@@ -85,8 +85,8 @@
 "Search_Page" = "Arama";
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Yenile";
+"Remove" = "Kaldır";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
@@ -117,7 +117,7 @@
 "Show_Package_Contents_Button" = "Paket İçeriğini Göster";
 
 "Licenses_Page_Title" = "Lisanslar";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Alternatif Simgeler";
 
 "Settings_Payment_Provider_Heading" = "Ödeme Sağlayıcılar";
 "Settings_Translations_Heading" = "Çeviriler";
@@ -132,10 +132,10 @@
 "Tint_Color" = "Renk Tonu";
 "Reset_Tint_Color" = "Rengi Sıfırla";
 "Auto_Complete_Queue" = "Sırayı Otomatik Tamamla";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Otomatik Hepsini Güncelleme Kestirmesi";
 "Enable_Analytics" = "Analizleri Etkinleştir";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Swipe_Actions" = "Kaydırma İşlemleri";
+"Show_Provisional" = "Canister'dan Paketleri Göster";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";
 "After_Install_Reboot" = "Cihazı Yeniden Başlat";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Sileo'yu Daha Sonra Yeniden Başlat";
+"After_Install_Respring_Later" = "SpringBoard’ı Daha Sonra Yeniden Başlat";
+"After_Install_Reboot_Later" = "Cihazı Daha Sonra Yeniden Başlat";
 
 "Dangerous_Repo.Title" = "Tehlikeli Kaynak";
 "Dangerous_Repo.Body" = "Korsanlık, yasa dışı içerik veya kötü amaçlı yazılım gibi nedenlerle zararlı olduğu bilinen bir kaynak eklemeye çalışıyorsunuz.\n\nZararlı olarak işaretlenen kaynaklar, genelde beklenmedik etkisi olan paketler içerir. Bunlar bedelsiz olarak sunulan ücretli paketler ya da zararlı içerikli paketler olarak sunulabilir. Bunun cihazınız ve mahremiyetiniz üzerinde kalıcı etkileri olabilir, hatta bazen jailbreak kaybetmenize neden olabilir. Zararlı yazılımlardan kaçınmak için çok dikkatli olmanızı öneririz.";
