@@ -85,7 +85,7 @@
 "Search_Page" = "Suche";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
-"Refresh" = "Aktualisiere";
+"Refresh" = "Aktualisieren";
 "Remove" = "Entfernen";
 
 "All_Packages.Title" = "Alle Pakete";
@@ -135,7 +135,7 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatische Bestätigung beim Aktualisieren aller Kurzbefehle";
 "Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
-"Show_Provisional" = "Pakete von Kanister anzeigen";
+"Show_Provisional" = "Pakete von Canister anzeigen";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
