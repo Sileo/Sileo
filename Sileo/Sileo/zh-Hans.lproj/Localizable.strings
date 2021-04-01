@@ -25,13 +25,13 @@
 "Share" = "分享";
 "Delete" = "删除";
 "Cancel" = "取消";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "收到";
+"Remove" = "移除";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "后台App刷新";
+"Background_App_Refresh_Message" = "为了获得最佳和最快的体验，建议启用后台App刷新， 您可以收到插件更新通知！";
+"Upgrade_All_Shortcut_Processing_Message" = "刷新所有软件源并更新所有软件包...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "正在安装";
@@ -89,8 +89,8 @@
 "Search_Page" = "搜索";
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Package_Installed_Files_Page" = "已经安装的文件";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "刷新";
+"Remove" = "移除";
 
 "All_Packages.Title" = "所有软件包";
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
@@ -139,7 +139,7 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Enable_Analytics" = "启用分析";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "Show Packages from Canister";
+"Show_Provisional" = "搜索增强";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
