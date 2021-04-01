@@ -126,7 +126,7 @@ class InstallViewController: SileoViewController {
                 self.progressView?.alpha = 0
                 self.updateCompleteButton()
                 self.completeButton?.alpha = 1
-                if (finish != .back || refresh) && finish != .uicache {
+                if !(finish == .back && !refresh) {
                     self.completeLaterButton?.alpha = 1
                 }
                 if UserDefaults.standard.bool(forKey: "AutoComplete") {
@@ -232,8 +232,8 @@ class InstallViewController: SileoViewController {
         } else if self.returnButtonAction == .reopen {
             exit(0)
         } else if self.returnButtonAction == .restart || self.returnButtonAction == .reload {
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); }
             spawnAsRoot(args: ["/usr/bin/sbreload"])
+            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); }
         } else if self.returnButtonAction == .reboot {
             spawnAsRoot(args: ["/usr/bin/sync"])
             spawnAsRoot(args: ["/usr/bin/ldrestart"])
