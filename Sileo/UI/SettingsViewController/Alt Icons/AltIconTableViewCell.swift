@@ -29,6 +29,9 @@ class AltIconTableViewCell: UITableViewCell {
         self.contentView.addSubview(iconView)
         self.contentView.addSubview(iconName)
         self.contentView.addSubview(author)
+        self.backgroundColor = .none
+        self.iconName.textColor = .sileoLabel
+        self.author.textColor = .sileoLabel
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -49,7 +52,16 @@ class AltIconTableViewCell: UITableViewCell {
         author.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: 7.5).isActive = true
         author.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 7.5).isActive = true
         author.font = UIFont.systemFont(ofSize: 13, weight: .light)
-
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateSileoColors),
+                                               name: SileoThemeManager.sileoChangedThemeNotification,
+                                               object: nil)
+    }
+    
+    @objc private func updateSileoColors() {
+        self.iconName.textColor = .sileoLabel
+        self.author.textColor = .sileoLabel
     }
     
     required init?(coder: NSCoder) {
