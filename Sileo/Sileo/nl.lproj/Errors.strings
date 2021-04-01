@@ -38,8 +38,8 @@
 "Try_Later" = "Probeer het later opnieuw.";
 
 "Sileo_Update_Required.Title" = "Sileo Update Vereist";
-"Featured_Requires_Sileo_Update" = "Een Sileo update is vereist om de het uitgelicht tabblad te bekijken. Het uitgelicht tablad kan verkeerd gerenderd worden.";
-"Depiction_Requires_Sileo_Update" = "Een Sileo update is vereist om deze pagina te bekijken. De pagina kan verkeerd gerenderd worden.";
+"Featured_Requires_Sileo_Update" = "Een Sileo update is vereist om de het uitgelicht tablad te bekijken. Het uitgelicht tablad kan verkeerd gerenderd worden.";
+"Depiction_Requires_Sileo_Update" = "Een Sileo update is vereist om deze pagina te bekijken. De pagina kan verkeerd afgebeeld worden.";
 
 "Form_Error.Title" = "Kon Formulier Niet Laden";
 "Form_Load_Error" = "Het formulier kon niet opgehaald worden van de server.";

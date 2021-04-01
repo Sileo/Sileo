@@ -63,7 +63,7 @@
         <key>one</key>
         <string>%d Package</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d Pakketten</string>
       </dict>
     </dict>
   </dict>

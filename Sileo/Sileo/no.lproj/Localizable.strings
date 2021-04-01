@@ -21,13 +21,13 @@
 "Share" = "Del";
 "Delete" = "Slett";
 "Cancel" = "Kanseller";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Bekreft";
+"Remove" = "Fjern";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Bakgrunnsoppdatering";
+"Background_App_Refresh_Message" = "For den beste og raskeste opplevelsen, er det anbefalt å skru på bakgrunnsoppdatering. Du kan også få varslinger når justeringene dine er oppdatert!";
+"Upgrade_All_Shortcut_Processing_Message" = "Oppdaterer alle kilder og oppgraderer alle pakker...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installerer";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "Hent";
 "Package_Queue_Action" = "Kø";
 "Package_Cancel_Action" = "Kanseller";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Betalt";
 
 "Package_Share_Action" = "Del pakke…";
 "Package_Developer_Find_Action" = "Mer fra denne utvikleren";
@@ -85,8 +85,8 @@
 "Search_Page" = "Søk";
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Oppdater";
+"Remove" = "Fjern";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -117,7 +117,7 @@
 "Show_Package_Contents_Button" = "Vis pakkeinnhold";
 
 "Licenses_Page_Title" = "Lisenser";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Andre ikoner";
 
 "Settings_Payment_Provider_Heading" = "Betalingsleverandører";
 "Settings_Translations_Heading" = "Oversettelser";
@@ -132,10 +132,10 @@
 "Tint_Color" = "Fargetone";
 "Reset_Tint_Color" = "Nullstill fargetone";
 "Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Automatisk Bekreft Oppgrader Alle Snarvei";
 "Enable_Analytics" = "Aktiver analysedata";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Swipe_Actions" = "Sveipe-handlinger";
+"Show_Provisional" = "Vis pakker fra Canister";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Start Sileo på nytt";
 "After_Install_Respring" = "Start SpringBoard på nytt";
 "After_Install_Reboot" = "Omstart enheten";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Start Sileo på nytt senere";
+"After_Install_Respring_Later" = "Start SpringBoard senere";
+"After_Install_Reboot_Later" = "Start enheten på nytt senere";
 
 "Dangerous_Repo.Title" = "Farlig kilde";
 "Dangerous_Repo.Body" = "Du forsøker å legge til en kilde som er kjent for å være skadelig blant annet for piratkopiering, ulovlig innhold eller skadelig programvare.\n\nKilder merket som skadelig distribuerer ofte programvare med uforventede effekter, enten i form av piratkopierte betalte pakker eller andre ondsinnede pakker. Dette kan ha varige effekter på enheten din og personvernet ditt, og kan påvirke evnen din til en fremtidig jailbreak. Vi anbefaler derfor at du bruker ekstrem varsomhet for å unngå skadelig programvare.";

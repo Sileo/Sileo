@@ -21,7 +21,7 @@
 "Share" = "Teilen";
 "Delete" = "Löschen";
 "Cancel" = "Abbrechen";
-"Acknowledge" = "Würdigung";
+"Acknowledge" = "Verstanden";
 "Remove" = "Entfernen";
 
 // Popup messages
@@ -48,12 +48,12 @@
 "Package_Get_Action" = "Installieren";
 "Package_Queue_Action" = "Warteschlange";
 "Package_Cancel_Action" = "Abbrechen";
-"Package_Paid" = "Kostenpflichtig";
+"Package_Paid" = "Bezahlt";
 
 "Package_Share_Action" = "Paket teilen…";
 "Package_Developer_Find_Action" = "Mehr von diesem Entwickler";
 "Package_Support_Action" = "Unterstützung";
-"Package_Hold_Enable_Action" = "Ignorieren zukünftige Aktualisierungen";
+"Package_Hold_Enable_Action" = "Zukünftige Updates ignorieren";
 "Package_Hold_Disable_Action" = "Hör auf, Updates zu ignorieren";
 "Package_Wishlist_Add" = "Zur Wunschliste hinzufügen";
 "Package_Wishlist_Remove" = "Von Wunschliste entfernen";
@@ -133,7 +133,7 @@
 "Reset_Tint_Color" = "Primärfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatische Bestätigung beim Aktualisieren aller Kurzbefehle";
-"Enable_Analytics" = "Analyse aktivieren";
+"Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Kanister anzeigen";
 
@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
 "After_Install_Reboot" = "Gerät neustarten";
-"After_Install_Relaunch_Later" = "Sileo später neustarten";
-"After_Install_Respring_Later" = "SpringBoard später neustarten";
-"After_Install_Reboot_Later" = "Gerät später neustarten";
+"After_Install_Relaunch_Later" = "Sileo später neu starten";
+"After_Install_Respring_Later" = "SpringBoard später neu starten";
+"After_Install_Reboot_Later" = "Gerät später neu starten";
 
 "Dangerous_Repo.Title" = "Gefährliche Quelle";
 "Dangerous_Repo.Body" = "Du versuchst eine Quelle hinzuzufügen, die unter anderem wegen Verteilung von Softwarepiraterie, Illegalen Inhalten und Schadsoftware aufgefallen ist.\n\nQuellen, die als Gefährlich markiert sind verteilen oftmals Software, die verändert wurde um zum Beispiel Sicherungsmechanismen zu entfernen. Diese Software kann unter Umständen permanenten Schaden auf dem Gerät anrichten und durch mitlesen von Passwörtern die Privatsphäre gefährden. Wir empfehlen diese Aktion nur mit äußerster Vorsicht durchzuführen.";
