@@ -34,6 +34,10 @@ To get started with Sileo development, follow these setup steps:
 
 If you have any questions, ask in the Sileo Discord. Happy coding!
 
+## Localization
+
+If you would like to translate Sileo to your native language, or fix a pre-existing translation, simply request Crowdin access at https://crowdin.com/project/sileo.
+
 #
 
 Sileo Team 2018-2021
