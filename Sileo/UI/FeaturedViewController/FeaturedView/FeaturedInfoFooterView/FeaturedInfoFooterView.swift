@@ -44,7 +44,7 @@ class FeaturedInfoFooterView: FeaturedBaseView {
     
     static var package: Package? {
         Bundle.main.bundleIdentifier == "org.coolstar.SileoStore" ? PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo") :
-            PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo-beta")
+            PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileobeta")
     }
     
     required public init?(coder aDecoder: NSCoder) {
