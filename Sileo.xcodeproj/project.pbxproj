@@ -82,7 +82,6 @@
 		C373924A21D5F80300E6F704 /* Categories.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924721D5F80300E6F704 /* Categories.strings */; };
 		C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C373925721D60B2600E6F704 /* Localizable.stringsdict */; };
 		C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */; };
-		CFBC7FD2221D7FE10066D501 /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
@@ -113,6 +112,7 @@
 		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
 		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
 		E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D0C261500C700E56882 /* SwiftTryCatch */; };
@@ -474,20 +474,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
 		CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
@@ -540,16 +526,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFBC7FD6221D7FE10066D501 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F139D14822EA9209007F5C0D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,7 +546,6 @@
 		172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
 		172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedSourceWarningViewController.swift; sourceTree = "<group>"; };
 		1761F826227B5ADD00E03DC3 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
-		2582D4A6D64D2411952A9434 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		36A4571F24CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		36A4572024CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -627,15 +602,10 @@
 		49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@3x.png"; sourceTree = "<group>"; };
 		49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@2x.png"; sourceTree = "<group>"; };
 		49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze~ipad@2x.png"; sourceTree = "<group>"; };
-		552A53BFF7E6067C54E471A9 /* Pods-Sileo Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.release.xcconfig"; sourceTree = "<group>"; };
 		56A59899214657A700677FCA /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
 		56A5989A214657A700677FCA /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
 		56A5989C214657BB00677FCA /* WhiteBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlur.m; sourceTree = "<group>"; };
 		56A5989E2146584800677FCA /* WhiteBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBlur.h; sourceTree = "<group>"; };
-		5B02930E2F51CAF70A74DF6F /* Pods-SileoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.release.xcconfig"; sourceTree = "<group>"; };
-		76B93DAC96CA9C7278D2994A /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8F850ACF2DB14A39CC87CBE7 /* Pods-Sileo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.release.xcconfig"; sourceTree = "<group>"; };
-		962C0D7C76E57C9BEBFBE5E8 /* Pods-Sileo Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		C305468521D6900C003E73FC /* PackageListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeader.xib; sourceTree = "<group>"; };
 		C373923521D5E46900E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C373924621D5F80300E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Errors.strings; sourceTree = "<group>"; };
@@ -645,7 +615,6 @@
 		CFBC7FDE222041290066D501 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
-		D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E1B3FBB62601255900F2E07F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Sileo/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -661,7 +630,6 @@
 		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
 		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
-		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
@@ -908,10 +876,10 @@
 			files = (
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
 				E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */,
-				CFBC7FD2221D7FE10066D501 /* LNPopupController.framework in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
+				E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */,
 				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				E13638C52614F4D000698D55 /* Alamofire in Frameworks */,
@@ -1169,22 +1137,6 @@
 				F1330EA82324F76C00971073 /* UIColor-ThemeColors.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		9552B68B82FD51D452FA5537 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */,
-				8F850ACF2DB14A39CC87CBE7 /* Pods-Sileo.release.xcconfig */,
-				962C0D7C76E57C9BEBFBE5E8 /* Pods-Sileo Demo.debug.xcconfig */,
-				552A53BFF7E6067C54E471A9 /* Pods-Sileo Demo.release.xcconfig */,
-				E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */,
-				5B02930E2F51CAF70A74DF6F /* Pods-SileoTests.release.xcconfig */,
-				76B93DAC96CA9C7278D2994A /* Pods-SileoUITests.debug.xcconfig */,
-				2582D4A6D64D2411952A9434 /* Pods-SileoUITests.release.xcconfig */,
-			);
-			name = Pods;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		C315A7BC217D99C200341243 /* Base */ = {
@@ -1532,7 +1484,6 @@
 			children = (
 				F149E0D920B6040B005CA30B /* Info.plist */,
 				F149E0D720B6040B005CA30B /* SileoUITests.m */,
-				9552B68B82FD51D452FA5537 /* Pods */,
 			);
 			path = SileoUITests;
 			sourceTree = "<group>";
@@ -2191,13 +2142,10 @@
 				F1CA042822DA824A00CED7A9 /* Run Script */,
 				F1144EFE20FC636C001FF36C /* ShellScript */,
 				F149E0AB20B6040B005CA30B /* Resources */,
-				CFBC7FD6221D7FE10066D501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */,
-				CFBC7FD1221D7F310066D501 /* PBXTargetDependency */,
 				CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */,
 			);
 			name = Sileo;
@@ -2226,7 +2174,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DF20B6040B005CA30B /* Build configuration list for PBXNativeTarget "SileoTests" */;
 			buildPhases = (
-				5A57A1197E6A89A53A75FEED /* [CP] Check Pods Manifest.lock */,
 				F149E0C420B6040B005CA30B /* Sources */,
 				F149E0C520B6040B005CA30B /* Frameworks */,
 				F149E0C620B6040B005CA30B /* Resources */,
@@ -2245,7 +2192,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0E220B6040B005CA30B /* Build configuration list for PBXNativeTarget "SileoUITests" */;
 			buildPhases = (
-				02E3CE4664A0B04BC8963F3C /* [CP] Check Pods Manifest.lock */,
 				F149E0CF20B6040B005CA30B /* Sources */,
 				F149E0D020B6040B005CA30B /* Frameworks */,
 				F149E0D120B6040B005CA30B /* Resources */,
@@ -2503,42 +2449,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02E3CE4664A0B04BC8963F3C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SileoUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5A57A1197E6A89A53A75FEED /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SileoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2955,16 +2865,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */;
-		};
-		CFBC7FD1221D7F310066D501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */;
-		};
 		CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LNPopupController;
@@ -3399,6 +3299,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
@@ -3461,6 +3362,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
