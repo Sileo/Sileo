@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(Ingen Kategori)";
+"Tweaks" = "Anpassningar";
+"Themes" = "Teman";
+"Utilities" = "Verktyg";
+"Applications" = "Appar";
+"Addons" = "Tillägg";
+"Games" = "Spel";
+"Developer" = "Utvecklare";
+"Data_Storage" = "Data Utrymme";
+"Terminal_Support" = "Terminalstöd";
+"Text_Editors" = "Textredigerare";

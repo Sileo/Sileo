@@ -8,22 +8,22 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "Ett okänt fel inträffade.";
+"Error_Indicator" = "Fel: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "Kunde ej hitta paketet %@ i den källa som du har installerat.";
+"No_Package.Body" = "Om det är nytt, vänta tills Sileo har uppdaterats, sedan försök igen. Kolla online för mer hjälp.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Ogiltig URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "Förväntad storlek %@, fick %@ istället.";
+"Download_Failing_Status_Code" = "Misslyckades med status %ld";
+"Download_Hash_Mismatch" = "Förväntad hash %@, fick %@ istället.";
+"Untrusted_Package" = "Paketet %@ är otillförlitligt och kan inte bli verifierad";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Betalnings-leverantörers paket URLer måste vara säkra (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
+"Invalid_Payment_Provider_Response" = "Betalningsleverantören skickade en ogiltig respons.";
 "No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
 
 "Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
