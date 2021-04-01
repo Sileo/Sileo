@@ -8,10 +8,6 @@
  LOCALISATIONS
 */
 
-// Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "English translation by AppleBetas";
-"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
 "About" = "About";
 "Close" = "Close";
