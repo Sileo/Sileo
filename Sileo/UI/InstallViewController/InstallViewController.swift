@@ -71,6 +71,9 @@ class InstallViewController: SileoViewController {
                 usleep(useconds_t(50 * USEC_PER_SEC/1000))
             }
             DispatchQueue.main.async {
+                let rawUpdates = PackageListManager.shared.availableUpdates()
+                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
                 self.setProgress(1, animated: true)
                 self.activityIndicatorView?.stopAnimating()
                 self.progressView?.alpha = 0
@@ -119,6 +122,9 @@ class InstallViewController: SileoViewController {
             }
         }, completionCallback: { _, finish, refresh in
             DispatchQueue.main.async {
+                let rawUpdates = PackageListManager.shared.availableUpdates()
+                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
                 self.returnButtonAction = finish
                 self.refreshSileo = refresh
                 self.setProgress(1, animated: true)
