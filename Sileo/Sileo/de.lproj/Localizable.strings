@@ -155,9 +155,9 @@
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
 "After_Install_Reboot" = "Gerät neustarten";
-"After_Install_Relaunch_Later" = "Sileo später neustarten";
-"After_Install_Respring_Later" = "SpringBoard später neustarten";
-"After_Install_Reboot_Later" = "Gerät später neustarten";
+"After_Install_Relaunch_Later" = "Sileo später neu starten";
+"After_Install_Respring_Later" = "SpringBoard später neu starten";
+"After_Install_Reboot_Later" = "Gerät später neu starten";
 
 "Dangerous_Repo.Title" = "Gefährliche Quelle";
 "Dangerous_Repo.Body" = "Du versuchst eine Quelle hinzuzufügen, die unter anderem wegen Verteilung von Softwarepiraterie, Illegalen Inhalten und Schadsoftware aufgefallen ist.\n\nQuellen, die als Gefährlich markiert sind verteilen oftmals Software, die verändert wurde um zum Beispiel Sicherungsmechanismen zu entfernen. Diese Software kann unter Umständen permanenten Schaden auf dem Gerät anrichten und durch mitlesen von Passwörtern die Privatsphäre gefährden. Wir empfehlen diese Aktion nur mit äußerster Vorsicht durchzuführen.";
