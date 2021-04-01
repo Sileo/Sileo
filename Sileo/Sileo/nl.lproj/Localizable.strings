@@ -7,177 +7,173 @@
  
  LOCALISATIONS
 */
-// Credit Information (optional, uncomment to specify)
-
-"__LocalizationCredit.Title" = "English translation by AppleBetas";
-"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+
+"About" = "Over";
+"Close" = "Sluit";
+"Double tap to open." = "Tik twee keer om te openen.";
+"Untitled_Repo" = "Naamloze Repo";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Done" = "Klaar";
+"Done_Editing" = "Klaar";
+"More_Info" = "Meer Informatie";
+"Loading" = "Laden…";
+"Share" = "Deel";
+"Delete" = "Verwijder";
+"Cancel" = "Annuleer";
+"Acknowledge" = "Bevestig";
+"Remove" = "Verwijder";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Achtergrond App Ververs";
+"Background_App_Refresh_Message" = "For de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
+"Upgrade_All_Shortcut_Processing_Message" = "Alle bronnen verversen en alle packages upgraden...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Installeren";
+"Downloading_Package_Status" = "Downloaden";
+"Queued_Package_Status" = "Wachtrij";
+"Ready_Status" = "Klaar";
+"Removal_Queued_Package_Status" = "Wachtrij voor verwijdering";
+"Download_Starting" = "Starten…";
+"Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Confirm_Button" = "Bevestig";
+"Queue_Clear_Button" = "Leeg Wachtrij";
 
 "Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Reinstall_Action" = "Herinstalleer";
+"Package_Uninstall_Action" = "Deinstalleer";
+"Package_Modify_Action" = "Bewerk";
+"Package_Get_Action" = "Verkrijg";
+"Package_Queue_Action" = "Wachtrij";
+"Package_Cancel_Action" = "Annuleer";
+"Package_Paid" = "Betaald";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Deel Package…";
+"Package_Developer_Find_Action" = "Meer van deze Ontwikkelaar";
+"Package_Support_Action" = "Ondersteuning";
+"Package_Hold_Enable_Action" = "Negeer Toekomstige Updates";
+"Package_Hold_Disable_Action" = "Stop Negeren Updates";
+"Package_Wishlist_Add" = "Toevoegen aan Verlanglijst";
+"Package_Wishlist_Remove" = "Verwijderen van Verlanglijst";
+"Wishlist" = "Verlanglijst";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
+"Queued_Install_Heading" = "Installeren";
+"Queued_Uninstall_Heading" = "Deinstalleer";
 "Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Download_Errors_Heading" = "Foutmeldingen";
 
-"Installed_Heading" = "Installed";
+"Installed_Heading" = "Geïnstalleerd";
 "Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_By" = "Sort by:";
+"Upgrade_All_Button" = "Upgrade Alles";
+"Package_Search.Placeholder" = "Zoek naar Packages";
+"Sort_Name" = "Naam";
+"Sort_Date" = "Datum";
+"Sort_By" = "Sorteer op:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "Package Niet Beschikbaar";
+"Package_By_Author" = "%@ van %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "van %@"; // %@ = author name
+"Packages_By_Author" = "Packages van %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
+"Featured_Page" = "Uitgelicht";
+"News_Page" = "Nieuw";
+"Sources_Page" = "Bronnen";
 "Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Search_Page" = "Zoek";
+"Refreshing_Sources_Page" = "Bronnen Verversen";
+"Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
+"Refresh" = "Ververs";
+"Remove" = "Verwijder";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Alle Packages";
+"All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
 
-"All_Categories" = "All Categories";
+"All_Categories" = "Alle Categorieën";
 
 "Repos" = "Repositories";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "Voeg Bron Toe";
+"Add_Source.Body" = "Voeg APT URL toe";
+"Add_Source.Button.Add" = "Voeg Bron Toe";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Naamloos Formulier";
+"Form_Submitted.Default_Title" = "Verzonden Formulier";
+"Form_Submitted.Default_Body" = "Het formulier is met succes verzonden.";
 
 "Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
 "Package_Details_Tab" = "Details";
 "Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
+"Package_No_Description_Available" = "Er is geen beschrijving beschikbaar voor deze package.";
 "Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
 "Installed_Package_Header" = "Installed Package";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Version" = "Versie";
+"Show_Package_Contents_Button" = "Toon Package Inhoud";
 
-"Licenses_Page_Title" = "Licenses";
+"Licenses_Page_Title" = "Licenties";
 "Alternate_Icon_Title" = "Alternate Icons";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Betaling Providers";
+"Settings_Translations_Heading" = "Vertalingen";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Betalingen";
 "Settings_Payment_Provider.No_Purchases" = "No purchases";
 
 "Settings" = "Settings";
 "Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
+"Dark_Mode_Toggle" = "Donkere Modus";
+"Theme" = "Thema";
+"Tint_Color" = "Tint Kleur";
+"Reset_Tint_Color" = "Reset Tint Kleur";
 "Auto_Complete_Queue" = "Auto Complete Queue";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "Enable Analytics";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages from Canister";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Light" = "Sileo Licht";
+"Sileo_Dark" = "Sileo Donker";
+"Sileo_Adaptive" = "Sileo Adaptief";
+"System" = "Systeem";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Inloggen bij Cydia Store";
+"Payment_Provider_Signed_In" = "Ingelogd";
+"Payment_Provider_Signed_In_With_Name" = "Ingelogd als %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Log uit";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Log uit bij %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Je kan niet langer je gekochte packages downloaden totdat je inlogt.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "Toon Details";
+"Hide_Install_Details" = "Verberg Details";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch" = "Herstart Sileo";
+"After_Install_Respring" = "Herstart SpringBoard";
+"After_Install_Reboot" = "Herstart Apparaat";
+"After_Install_Relaunch_Later" = "Herstart Sileo Later";
+"After_Install_Respring_Later" = "Herstart Springboard Later";
+"After_Install_Reboot_Later" = "Herstart Apparaat Later";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "Gevaarlijke Repo";
+"Dangerous_Repo.Body" = "Je probeert een repository toe te voegen die bekend staat als gevaarlijk voor redenen als piracy, illegale inhoud of malware.\n\nRepositories die gemarkeerd zijn als schadelijk verspreiden vaak software met onverwachte gevolgen, als betaalde software of andere schadelijke packages. Dit kan blijvende gevolgen hebben op jouw apparaat en privacy, en kan soms effect hebben op jouw mogelijkheid om te jailbreaken. Wij raden je aan dat je met uiterste voorzichtigheid handelt om schadelijke software te vermijden.";
+"Dangerous_Repo.Continue" = "Ik accepteer de risico's, ga verder";
+"Dangerous_Repo.Cancel" = "Breng me terug naar veiligheid";
+"Dangerous_Repo.Last_Chance.Title" = "Voeg Schadelijke Repo Toe?";
+"Dangerous_Repo.Last_Chance.Body" = "Gevaarlijke repositories kunnen verwoestende gevolgen hebben op gebruik van jouw apparaat of jailbreaks. We raden je sterk aan dat je terug gaat voor je eigen veiligheid. Weet je zeker dat je %@ toe wilt voegen?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Ga verder";
+"Dangerous_Repo.Last_Chance.Cancel" = "Ga terug";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "Exporteer";
+"Export_Packages" = "Wil je je package lijst exporteren? Dit kopieert alle package namen en hun versie naar jouw klembord.";
+"Export_Sources" = "Wil je je bronnenlijst exporteren? Dit kopieert de URL van elke bron naar jouw klembord.";
+"Export_Yes" = "Ja, kopieer.";
+"Export_No" = "Nee, annuleer.";
 
 // Depcitions
 "View_Depiction" = "View Depiction";
