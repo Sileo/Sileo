@@ -1104,7 +1104,7 @@
 			path = "Alt Icons";
 			sourceTree = "<group>";
 		};
-		49CE7CB42607F9A400A20711 /* AltIcons */ = {
+		49CE7CB42607F9A400A20711 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
 				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
@@ -1120,7 +1120,7 @@
 				493B23EE26098169007D605F /* Sus */,
 				49CE7CC42607F9A400A20711 /* Taurine */,
 			);
-			path = AltIcons;
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		49CE7CB52607F9A400A20711 /* Blue Lemonade */ = {
@@ -1530,7 +1530,7 @@
 				F149E0B920B6040B005CA30B /* Main.storyboard */,
 				F149E0BE20B6040B005CA30B /* LaunchScreen.storyboard */,
 				F149E0BC20B6040B005CA30B /* Assets.xcassets */,
-				49CE7CB42607F9A400A20711 /* AltIcons */,
+				49CE7CB42607F9A400A20711 /* Icons */,
 				172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */,
 				C373924721D5F80300E6F704 /* Categories.strings */,
 				C373924521D5F80300E6F704 /* Errors.strings */,
