@@ -49,12 +49,14 @@ STRIP = xcrun strip
 
 ifneq ($(BETA),0)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
+export DISPLAY_NAME = "Sileo-Beta"
 SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
+export DISPLAY_NAME = "Sileo"
 SILEO_ID   = org.coolstar.sileo
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
@@ -85,7 +87,7 @@ $(SILEO_APP_DIR):
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
 		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
-		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) \
+		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
 		DSTROOT=$(SILEOTMP)/install $(XCPRETTY)
 	@rm -f $(SILEO_APP_DIR)/Frameworks/libswift*.dylib
 	@function process_exec { \
@@ -115,6 +117,10 @@ stage: all
 		-e 's/@@DEB_ARCH@@/$(DEB_ARCH)/' \
 		-e 's/@@DEB_DEPENDS@@/$(DEB_DEPENDS)/' $(SILEO_STAGE_DIR)/DEBIAN/control.in > $(SILEO_STAGE_DIR)/DEBIAN/control
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
+	@sed -e s/@@SILEO_APP@@/$(SILEO_APP)/ \
+		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
+	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
+	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 
 package: stage
 	@mkdir -p ./packages
