@@ -296,8 +296,9 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func presentAddClipBoardPrompt(sources: [URL]) {
+        if sources.isEmpty { return }
         let count = sources.count
-        
+
         let titleText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Title"), count, count)
         let addText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Add"), count, count)
         let manualText = String(localizationKey: "Auto_Add_Pasteboard_Sources.Button.Manual")
