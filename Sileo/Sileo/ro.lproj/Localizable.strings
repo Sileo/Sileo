@@ -9,71 +9,71 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"About" = "Despre";
+"Close" = "Închideți";
+"Double tap to open." = "Apăsați dublu a deschide";
+"Untitled_Repo" = "Repo fără titlu";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Done" = "Gata";
+"Done_Editing" = "Gata";
+"More_Info" = "Mai multe";
+"Loading" = "Încârcare…";
+"Share" = "Partajați";
+"Delete" = "Ștergeți";
+"Cancel" = "Anulați";
+"Acknowledge" = "Confirmați";
+"Remove" = "Ștergeți";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Reîmprospătare în fundal";
+"Background_App_Refresh_Message" = "Pentru experiența cea mai bună și repede, recomandăm să activați reîmprospătare în fundal pentru Sileo. Puteți să primiți notificări când tweakurile voastre au actualizări disponibile!";
+"Upgrade_All_Shortcut_Processing_Message" = "Reîmprospătare de toate surselor și actualizare de toate pachetelor...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Instalare";
+"Downloading_Package_Status" = "Descărcare";
+"Queued_Package_Status" = "În rând";
+"Ready_Status" = "Pregâtit";
+"Removal_Queued_Package_Status" = "În rând pentru ștergere";
+"Download_Starting" = "Începere…";
+"Download_Progress" = "%@ din %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Confirm_Button" = "Confirmați";
+"Queue_Clear_Button" = "Ștergeți coada";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "Actualizați";
+"Package_Reinstall_Action" = "Reinstalați";
+"Package_Uninstall_Action" = "Dezinstalați";
+"Package_Modify_Action" = "Modificați";
+"Package_Get_Action" = "Obțineți";
+"Package_Queue_Action" = "Adăugați în rând";
+"Package_Cancel_Action" = "Anulați";
+"Package_Paid" = "Plătit";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Partajați pachetul…";
+"Package_Developer_Find_Action" = "Mai multe pachete de acest dezvoltator";
+"Package_Support_Action" = "Ajutor";
+"Package_Hold_Enable_Action" = "Dezactivați actualizări";
+"Package_Hold_Disable_Action" = "Reactivați actualizări";
+"Package_Wishlist_Add" = "Adăugați pe Lista de dorințe";
+"Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
+"Wishlist" = "Lista de dorințe";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "De instalat";
+"Queued_Uninstall_Heading" = "De dezinstalat";
+"Queued_Update_Heading" = "De actualiza";
+"Download_Errors_Heading" = "Erori";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Instalat";
+"Updates_Heading" = "Actualizări";
+"Upgrade_All_Button" = "Actualizare complet";
+"Package_Search.Placeholder" = "Căutați pachete";
+"Sort_Name" = "Nume";
+"Sort_Date" = "Dată";
+"Sort_By" = "Sortează după:";
 
-"Package_Unavailable" = "Package Unavailable";
+"Package_Unavailable" = "Pachet nedisponibil";
 "Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "by %@"; // %@ = author name
 "Packages_By_Author" = "Packages by %@"; // %@ = author name
@@ -139,38 +139,38 @@
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
+"Sileo_Adaptive" = "Sileo Adaptiv";
+"System" = "Culoare sistem";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Conectați-vă la Cydia Store";
+"Payment_Provider_Signed_In" = "Cont conectat";
+"Payment_Provider_Signed_In_With_Name" = "Conectat ca %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Deconectați-vă";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Deconectați-vă de la %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Pachete cumpărate nu sunt disponibile fâră cont conectat.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "Arătați Detalie";
+"Hide_Install_Details" = "Ascundeți Detalie";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch" = "Reporniți Sileo";
+"After_Install_Respring" = "Reporniți SpringBoard";
+"After_Install_Reboot" = "Reporniți aparatul";
+"After_Install_Relaunch_Later" = "Reporniți Sileo mai tărziu";
+"After_Install_Respring_Later" = "Reporniți SpringBoard mai tărziu";
+"After_Install_Reboot_Later" = "Reporniți aparatul mai tărziu";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "Repo Periculos";
+"Dangerous_Repo.Body" = "Voi încercați să adăugați unei repozitoriu cunoscut ca o sursă periculoasă datoritei piraterie, conținut ilegal, sau malware.\n\nRepozitorii marcate ca periculoase distribuie programe cu efecte neanticipate în formă de pachete plătite oferite pe gratis sau alte pachete rele sau ilegale. Aceste au șansa de a strica aparatul vostru sau a fura detaliile voastre private. Noi recomandăm să aveți mare grija folosind aceste surse.";
+"Dangerous_Repo.Continue" = "Sunt de acord cu riscurile, înainte";
+"Dangerous_Repo.Cancel" = "Înapoi la siguranță";
+"Dangerous_Repo.Last_Chance.Title" = "Adăugați repo periculos?";
+"Dangerous_Repo.Last_Chance.Body" = "Repozitorii periculoase pot avea un efect foarte negativ asupra șansa voastră de a folosi aparatul sau jailbreak. Noi vă recomandăm strigent să mergeți înapoi la siguranță. Sigur doriți să adăugați %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Înainte";
+"Dangerous_Repo.Last_Chance.Cancel" = "Înapoi";
 
 // All export-based strings
 "Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Packages" = "Doriți să faceți export de lista voastră de pachete? Această opțiune v-a face copie de lista de pachete și versiunile lor în clipboard.";
 "Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
 "Export_Yes" = "Yes, copy.";
 "Export_No" = "No, cancel.";
