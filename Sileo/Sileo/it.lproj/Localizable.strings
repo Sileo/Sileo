@@ -5,14 +5,14 @@
   Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- BASE (English) LOCALISATIONS
+ LOCALISATIONS
 */
 // Credit Information (optional, uncomment to specify)
-//"__LocalizationCredit.Title" = "English translation by AppleBetas";
-//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
+
+"__LocalizationCredit.Title" = "English translation by AppleBetas";
+"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
+
 // Common Prompts
-
-
 "About" = "About";
 "Close" = "Chiudi";
 "Double tap to open." = "Doppio tap per aprire";
