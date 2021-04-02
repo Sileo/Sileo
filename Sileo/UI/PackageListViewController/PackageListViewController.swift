@@ -193,13 +193,13 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             }
             if self.showUpdates {
                 let updates = packageMan.availableUpdates()
-                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map( { $0.0 })
-                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map( { $0.0 })
+                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
+                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
             }
             
             DispatchQueue.main.async {
-                if !availableUpdates.isEmpty {
-                    self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", updatesNotIgnored.count)
+                if !self.availableUpdates.isEmpty {
+                    self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", self.availableUpdates.count)
                 } else {
                     self.navigationController?.tabBarItem.badgeValue = nil
                 }
@@ -304,18 +304,15 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         if showUpdates {
             DispatchQueue.global(qos: .default).async {
                 let updates = PackageListManager.shared.availableUpdates()
-                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map( { $0.0 })
-                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map( { $0.0 })
+                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
+                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
                 DispatchQueue.main.async {
-                    if !availableUpdates.isEmpty {
-                        self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", updatesNotIgnored.count)
-                        UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                    if !self.availableUpdates.isEmpty {
+                        self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", self.availableUpdates.count)
+                        UIApplication.shared.applicationIconBadgeNumber = self.availableUpdates.count
                     } else {
                         self.navigationController?.tabBarItem.badgeValue = nil
                         UIApplication.shared.applicationIconBadgeNumber = 0
-                    }
-                    if self.refreshEnabled {
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
                     }
                     if let searchController = self.searchController {
                         self.updateSearchResults(for: searchController)
@@ -406,10 +403,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
 extension PackageListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         refreshEnabled = true
-        var count = 1
+        var count = 0
+        if !packages.isEmpty { count += 1 }
         if showUpdates {
-            if !availableUpdates.isEmpty { count += 1}
-            if !ignoredUpdates.isEmpty { count += 1}
+            if !availableUpdates.isEmpty { count += 1 }
+            if !ignoredUpdates.isEmpty { count += 1 }
         }
         if showProvisional && loadProvisional {
             count += 1
@@ -417,103 +415,101 @@ extension PackageListViewController: UICollectionViewDataSource {
         return count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if showUpdates && section == 0 {
-            return availableUpdates.count
-        } else if section == 2 || (section == 1 && showProvisional && loadProvisional) {
-            return provisionalPackages.count
+    private func findWhatFuckingSectionThisIs(_ section: Int) -> PackageListSection {
+        if showUpdates {
+            if !availableUpdates.isEmpty && section == 0 {
+                return .updates
+            } else if availableUpdates.isEmpty && !ignoredUpdates.isEmpty && section == 0 {
+                return .ignoredUpdates
+            } else if section == 1 && !availableUpdates.isEmpty && !ignoredUpdates.isEmpty {
+                return .ignoredUpdates
+            }
         }
-        return packages.count
+        if showProvisional && loadProvisional {
+            if section == 1 {
+                return .canister
+            } else if section == 0 && !packages.isEmpty {
+                return .packages
+            } else if section == 0 && packages.isEmpty {
+                return .canister
+            }
+        }
+        return .packages
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch findWhatFuckingSectionThisIs(section) {
+        case .canister: return provisionalPackages.count
+        case .ignoredUpdates: return ignoredUpdates.count
+        case .packages: return packages.count
+        case .updates: return availableUpdates.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellIdentifier = "PackageListViewCellIdentifier"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        if let packageCell = cell as? PackageCollectionViewCell {
-            if showUpdates && indexPath.section == 0 {
-                packageCell.targetPackage = availableUpdates[indexPath.row]
-                packageCell.provisionalTarget = nil
-            } else if indexPath.section == 2 || (indexPath.section == 1 && showProvisional && loadProvisional) {
-                packageCell.provisionalTarget = provisionalPackages[indexPath.row]
-                packageCell.targetPackage = nil
-            } else {
-                packageCell.targetPackage = packages[indexPath.row]
-                packageCell.provisionalTarget = nil
-            }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? PackageCollectionViewCell else {
+            fatalError("This is what we call a pro gamer move, where we fatalError because of something horrendous")
+        }
+        switch findWhatFuckingSectionThisIs(indexPath.section) {
+        case .canister: cell.provisionalTarget = provisionalPackages[indexPath.row]; cell.targetPackage = nil
+        case .ignoredUpdates: cell.targetPackage = ignoredUpdates[indexPath.row]; cell.provisionalTarget = nil
+        case .packages: cell.targetPackage = packages[indexPath.row]; cell.provisionalTarget = nil
+        case .updates: cell.targetPackage = availableUpdates[indexPath.row]; cell.provisionalTarget = nil
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if showUpdates {
-            if indexPath.section == 0 && availableUpdates.isEmpty {
-                return UICollectionReusableView()
-            }
-            if kind == UICollectionView.elementKindSectionHeader {
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                       withReuseIdentifier: "PackageListHeader",
-                                                                                       for: indexPath) as? PackageListHeader
-                else {
-                    return UICollectionReusableView()
-                }
-                
-                if indexPath.section == 0 {
-                    headerView.label?.text = String(localizationKey: "Updates_Heading")
-                    headerView.actionText = String(localizationKey: "Upgrade_All_Button")
-                    headerView.sortButton?.isHidden = true
-                    headerView.separatorView?.isHidden = true
-                    headerView.upgradeButton?.addTarget(self, action: #selector(self.upgradeAllClicked(_:)), for: .touchUpInside)
-                } else {
-                    headerView.label?.text = String(localizationKey: "Installed_Heading")
-                    headerView.actionText = nil
-                    headerView.sortButton?.isHidden = false
-                    
-                    if UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
-                        headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
-                    } else {
-                        headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
-                    }
-                    headerView.sortButton?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
-                    
-                    headerView.separatorView?.isHidden = false
-                }
-                return headerView
-            }
-        } else if showProvisional && loadProvisional {
-            if (indexPath.section == 0 && packages.isEmpty) || (indexPath.section == 1 && provisionalPackages.isEmpty) {
-                if kind == UICollectionView.elementKindSectionHeader {
-                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                     withReuseIdentifier: "PackageListHeaderBlank",
-                                                                                     for: indexPath)
-                    return headerView
-                }
-            }
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                   withReuseIdentifier: "PackageListHeader",
-                                                                                   for: indexPath) as? PackageListHeader
-            else {
-                return UICollectionReusableView()
-            }
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                               withReuseIdentifier: "PackageListHeader",
+                                                                               for: indexPath) as? PackageListHeader
+        else {
+            return UICollectionReusableView()
+        }
+        switch findWhatFuckingSectionThisIs(indexPath.section) {
+        case .canister:
             headerView.actionText = nil
             headerView.separatorView?.isHidden = false
             headerView.sortButton?.isHidden = true
             headerView.upgradeButton?.isHidden = true
-            
-            if indexPath.section == 0 && !packages.isEmpty {
-                headerView.label?.text = "Installed Repos"
+            headerView.label?.text = String(localizationKey: "External_Repo")
+            return headerView
+        case .ignoredUpdates:
+            headerView.actionText = nil
+            headerView.separatorView?.isHidden = false
+            headerView.sortButton?.isHidden = true
+            headerView.upgradeButton?.isHidden = true
+            headerView.label?.text = String(localizationKey: "Ignored Updates")
+            return headerView
+        case .updates:
+            headerView.label?.text = String(localizationKey: "Updates_Heading")
+            headerView.actionText = String(localizationKey: "Upgrade_All_Button")
+            headerView.sortButton?.isHidden = true
+            headerView.separatorView?.isHidden = true
+            headerView.upgradeButton?.addTarget(self, action: #selector(self.upgradeAllClicked(_:)), for: .touchUpInside)
+            return headerView
+        case .packages:
+            if showUpdates {
+                headerView.label?.text = String(localizationKey: "Installed_Heading")
+                headerView.actionText = nil
+                headerView.sortButton?.isHidden = false
+                if UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
+                    headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
+                } else {
+                    headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
+                }
+                headerView.sortButton?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
+                headerView.separatorView?.isHidden = false
                 return headerView
-            } else if indexPath.section == 1 && !provisionalPackages.isEmpty {
+            } else if showProvisional && loadProvisional {
+                headerView.actionText = nil
+                headerView.separatorView?.isHidden = false
+                headerView.sortButton?.isHidden = true
+                headerView.upgradeButton?.isHidden = true
                 headerView.label?.text = "External Repos"
                 return headerView
-            } else {
-                if kind == UICollectionView.elementKindSectionHeader {
-                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                     withReuseIdentifier: "PackageListHeaderBlank",
-                                                                                     for: indexPath)
-                    return headerView
-                }
             }
-        } else {
             if kind == UICollectionView.elementKindSectionHeader {
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                  withReuseIdentifier: "PackageListHeaderBlank",
@@ -535,21 +531,10 @@ extension PackageListViewController: UICollectionViewDelegate {
 
 extension PackageListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if showUpdates {
-            if section == 0 && availableUpdates.isEmpty {
-                return .zero
-            }
-            if section == 1 && displaySettings {
-                return CGSize(width: collectionView.bounds.width, height: 109)
-            }
-            return CGSize(width: collectionView.bounds.width, height: 65)
-        } else if showProvisional && loadProvisional {
-            if (section == 0 && packages.isEmpty) || (section == 1 && provisionalPackages.isEmpty) {
-                return .zero
-            }
-            return CGSize(width: collectionView.bounds.width, height: 65)
-        } else {
-            return CGSize(width: collectionView.bounds.width, height: 9)
+        switch findWhatFuckingSectionThisIs(section) {
+        case .ignoredUpdates, .updates, .canister: return CGSize(width: collectionView.bounds.width, height: 65)
+        case .packages:
+            return (showUpdates && displaySettings) ? CGSize(width: collectionView.bounds.width, height: 109) : CGSize(width: collectionView.bounds.width, height: 65)
         }
     }
     
@@ -749,4 +734,11 @@ extension PackageListViewController: UISearchResultsUpdating {
             }
         }
     }
+}
+
+enum PackageListSection {
+    case updates
+    case ignoredUpdates
+    case packages
+    case canister
 }
