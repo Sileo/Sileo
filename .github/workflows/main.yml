@@ -3,7 +3,7 @@ on:
     branches:
       - main
       - amy
-name: Run CI
+name: Build
 jobs:
   make:
     name: Build and Upload Sileo

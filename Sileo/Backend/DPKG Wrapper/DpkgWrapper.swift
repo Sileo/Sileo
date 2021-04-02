@@ -130,8 +130,8 @@ class DpkgWrapper {
     }
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
-        let ignoreCommand = ignoreUpdates ? "hold" : "install"
-        let command = ["/usr/bin/echo", "\(package) \(ignoreCommand)", "|", "/usr/bin/dpkg", "--set-selections"]
+        let ignoreCommand = ignoreUpdates ? "hold" : "unhold"
+        let command = ["/usr/bin/apt-mark", "\(ignoreCommand)", "\(package)"]
         spawnAsRoot(args: command)
     }
     
