@@ -3,7 +3,7 @@ Name: @@PACKAGE_NAME@@
 Version: @@MARKETING_VERSION@@
 Author: Sileo Team <getsileoapp@gmail.com>
 Maintainer: CoolStar <coolstarorganization@gmail.com>
-Description: A modern APT package manager frontend.
+Description: A modern APT package manager frontend
 Architecture: @@DEB_ARCH@@
 Depends: @@DEB_DEPENDS@@
 Section: Packaging

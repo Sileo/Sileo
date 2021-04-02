@@ -1,42 +1,37 @@
 # Sileo
 
-An APT package manager for jailbroken iOS 12 and newer!
+A modern APT package manager frontend
 
-## Details
+## Info
 
-Sileo focuses on speed, features, and a modern feel to the package manager experience surrounding jailbroken iOS. It is made with love by people from all over our beautiful Earth!
+Sileo focuses on speed, features, and a modern feel to the package manager experience surrounding jailbroken iOS. It is made with love by people from all corners of our beautiful Earth!
 
-We have an [official Twitter](https://twitter.com/getsileo) that regularly posts updates, community polls, teasers, and more! If you need support regarding Sileo, refer to the `Support` section of this article instead of contacting our official Twitter. 
+We have an [official Twitter](https://twitter.com/getsileo) that regularly posts community polls, updates, teasers, and more! 
 
 ## Support
 
-If you need support regarding Sileo, contact [Sileo Support on Twitter](https://twitter.com/SileoSupport) or ask for help in the [Sileo Discord](https://discord.com/invite/Udn4kQg). 
+For support regarding Sileo, contact [Sileo Support on Twitter](https://twitter.com/SileoSupport) or ask in the [Sileo Discord server](https://discord.com/invite/Udn4kQg). 
 
 ## Contributing
 
-If you wish to contribute, make a pull request with your changes and it will be reviewed by our team. Do not contact team members personally when seeking to push your changes. 
+For localization contributions, simply [request Crowdin access](https://crowdin.com/project/sileo). Language translation will be handled over there. 
 
-To get started with Sileo development, follow these setup steps: 
+For technical contributions, make a pull request with your changes and our team will review it. Avoid personally contacting team members when seeking to contribute. To begin development, follow these setup steps: 
 
-1. Clone the repository
+1. Clone this repository
     ```
     git clone --recursive https://github.com/Sileo/Sileo.git ./Sileo
     cd ./Sileo
     ```
-2. Setup the Confiig file
-    * Open `Config.xcconfig` and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
-    * Tell Git to stop tracking modifications to `Config.xcconfig`
+2. Setup the `Config.xcconfig` file
+    * Open that file and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
+    * Remove that file from source control
         ```
         git update-index --skip-worktree ./Config.xcconfig
-        ```
-    * `Config.xcconfig` should be modified only on your computer and never committed. This keeps developer-specific settings separate from shared settings, which avoids headaches with pull conflicts. 
+        ``` 
 3. Open `Sileo.xcodeproj` and have at it!
 
-If you have any questions, ask in the Sileo Discord. Happy coding!
-
-## Localization
-
-If you would like to translate Sileo to your native language, or fix a pre-existing translation, simply request Crowdin access at https://crowdin.com/project/sileo.
+If you have any questions, ask in the Sileo Discord server. Happy coding!
 
 #
 
