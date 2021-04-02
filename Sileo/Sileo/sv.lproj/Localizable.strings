@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Se alla paket från dina källor";
 
 "All_Categories" = "Alla Kategorier";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Källor";
 
