@@ -32,6 +32,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     private let mutexLock = DispatchSemaphore(value: 1)
     private var updatingCount = 0
     private var refreshEnabled = false
+    private var canisterHeartbeat: Timer?
     
     @IBInspectable var localizableTitle: String = ""
     
@@ -656,7 +657,8 @@ extension PackageListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         var packagesLoadIdentifier = self.packagesLoadIdentifier
-        
+        self.canisterHeartbeat?.invalidate()
+    
         if searchBar.text?.isEmpty ?? true {
             let emptyResults = self.searchCache[""]
             self.searchCache = [:]
@@ -678,6 +680,15 @@ extension PackageListViewController: UISearchResultsUpdating {
                 packagesLoadIdentifier += ",search:\(searchBar.text ?? "")"
             } else {
                 packagesLoadIdentifier = "search:\(searchBar.text ?? "")"
+            }
+            
+            canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                CanisterResolver.shared.fetch(searchBar.text ?? "") {
+                    DispatchQueue.main.async {
+                        self.updateProvisional()
+                        self.collectionView?.reloadData()
+                    }
+                }
             }
         }
         

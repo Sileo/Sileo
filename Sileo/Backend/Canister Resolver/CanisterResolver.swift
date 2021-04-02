@@ -32,6 +32,7 @@ final class CanisterResolver {
     }
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
+        if query.count <= 3 { return fetch() }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version,depiction.native,depiction.web,&search_fields=identifier,name,author,maintainer"
         AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
             guard success,
@@ -60,6 +61,7 @@ final class CanisterResolver {
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
                     self.packages.append(package)
                 }
+                NSLog("\(package)")
             }
             return fetch()
         }
