@@ -541,6 +541,8 @@ extension PackageListViewController {
 extension PackageListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.provisionalPackages.removeAll()
+        self.packages.removeAll()
         self.collectionView?.reloadData()
     }
     

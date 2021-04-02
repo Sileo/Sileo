@@ -61,7 +61,6 @@ final class CanisterResolver {
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
                     self.packages.append(package)
                 }
-                NSLog("\(package)")
             }
             return fetch()
         }
