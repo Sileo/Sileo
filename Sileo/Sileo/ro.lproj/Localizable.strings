@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
 
 "All_Categories" = "Toate categoriile";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repozitoriile";
 
