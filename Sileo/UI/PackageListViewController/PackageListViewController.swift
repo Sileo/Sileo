@@ -153,7 +153,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         sbTextField?.font = UIFont.systemFont(ofSize: 13)
         
         let tapRecognizer = UITapGestureRecognizer(target: searchController?.searchBar, action: #selector(UISearchBar.resignFirstResponder))
-        tapRecognizer.cancelsTouchesInView = true
+        tapRecognizer.cancelsTouchesInView = false
         tapRecognizer.delegate = self
         
         if let collectionView = collectionView {
@@ -354,7 +354,7 @@ extension PackageListViewController: UICollectionViewDataSource {
             if !ignoredUpdates.isEmpty { count += 1 }
         }
         if showProvisional && loadProvisional {
-            count += 1
+            if !provisionalPackages.isEmpty { count += 1 }
         }
         return count
     }
@@ -451,7 +451,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                 headerView.separatorView?.isHidden = false
                 headerView.sortButton?.isHidden = true
                 headerView.upgradeButton?.isHidden = true
-                headerView.label?.text = "External Repos"
+                headerView.label?.text = String(localizationKey: "Internal_Repo")
                 return headerView
             }
             if kind == UICollectionView.elementKindSectionHeader {
@@ -539,6 +539,11 @@ extension PackageListViewController {
 }
 
 extension PackageListViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.collectionView?.reloadData()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text,
               !text.isEmpty,
