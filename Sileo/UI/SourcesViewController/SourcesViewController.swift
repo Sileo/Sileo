@@ -10,7 +10,7 @@ import Foundation
 
 class SourcesViewController: SileoTableViewController {
     private var sortedRepoList: [Repo] = []
-    var isRefreshing: Bool = false
+    var updatingRepoList: [Repo] = []
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -75,7 +75,7 @@ class SourcesViewController: SileoTableViewController {
         self.registerForPreviewing(with: self, sourceView: self.tableView)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         
-        if !isRefreshing {
+        if updatingRepoList.isEmpty {
             self.refreshSources(forceUpdate: false, forceReload: false)
         }
     }
@@ -134,17 +134,35 @@ class SourcesViewController: SileoTableViewController {
         self.refreshSources(adjustRefreshControl: false, errorScreen: true, forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, completion: nil)
     }
     
-    func refreshSources(adjustRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
-        self.isRefreshing = true
-        
-        if adjustRefreshControl {
-            if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
-                refreshControl.beginRefreshing()
-                let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
-                tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
+    private func addToQueue(_ repo: Repo) {
+        if !updatingRepoList.contains(where: { $0.rawURL == repo.rawURL }) {
+            updatingRepoList.append(repo)
+        }
+    }
+    
+    private func removeFromQueue(_ repo: Repo) {
+        if let index = updatingRepoList.firstIndex(where: { $0.rawURL == repo.rawURL }) {
+            updatingRepoList.remove(at: index)
+        }
+    }
+    
+    private func killIndicator() {
+        let item = self.splitViewController?.tabBarItem
+        item?.badgeValue = ""
+        let badge = item?.view()?.value(forKey: "_badge") as? UIView ?? UIView()
+        self.refreshControl?.endRefreshing()
+        let indicators = badge.subviews.filter{ $0 is UIActivityIndicatorView }
+        for indicator in indicators {
+            if let indicator = indicator as? UIActivityIndicatorView {
+                indicator.removeFromSuperview()
+                indicator.stopAnimating()
             }
         }
-        
+        item?.badgeValue = nil
+    }
+    
+    func refreshSources(adjustRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
+    
         let item = self.splitViewController?.tabBarItem
         item?.badgeValue = ""
         
@@ -152,18 +170,31 @@ class SourcesViewController: SileoTableViewController {
             fatalError("OK iOS...")
         }
         let indicatorView = UIActivityIndicatorView(style: style)
-        indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
-        indicatorView.startAnimating()
-        
         let badge = item?.view()?.value(forKey: "_badge") as? UIView
-        badge?.addSubview(indicatorView)
+        
+        if updatingRepoList.isEmpty {
+            indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
+            indicatorView.startAnimating()
+            badge?.addSubview(indicatorView)
+            
+            if adjustRefreshControl {
+                if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
+                    refreshControl.beginRefreshing()
+                    let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
+                    tableView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
+                }
+            }
+        }
+        
+        for repo in sortedRepoList {
+            addToQueue(repo)
+        }
         
         RepoManager.shared.update(force: forceUpdate, forceReload: forceReload, isBackground: isBackground, completion: { didFindErrors, errorOutput in
-            self.refreshControl?.endRefreshing()
-            indicatorView.removeFromSuperview()
-            indicatorView.stopAnimating()
-            item?.badgeValue = nil
-            self.isRefreshing = false
+            for repo in self.sortedRepoList {
+                self.removeFromQueue(repo)
+            }
+            self.killIndicator()
             
             if didFindErrors, errorScreen {
                 self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
@@ -176,26 +207,27 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func updateSingleRepo(_ repo: Repo) {
-        self.isRefreshing = true
-        
+
         let item = self.splitViewController?.tabBarItem
         item?.badgeValue = ""
-        let badge = item?.view()?.value(forKey: "_badge") as? UIView
-        guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
-            fatalError("OK iOS...")
+        
+        if updatingRepoList.isEmpty {
+            let badge = item?.view()?.value(forKey: "_badge") as? UIView
+            guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
+                fatalError("OK iOS...")
+            }
+            let indicatorView = UIActivityIndicatorView(style: style)
+            indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
+            indicatorView.startAnimating()
+            badge?.addSubview(indicatorView)
         }
-        let indicatorView = UIActivityIndicatorView(style: style)
-        indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
-        indicatorView.startAnimating()
-        badge?.addSubview(indicatorView)
         
         RepoManager.shared.update(force: true, forceReload: true, isBackground: false, repos: [repo], completion: { didFindErrors, errorOutput in
-            self.refreshControl?.endRefreshing()
-            indicatorView.removeFromSuperview()
-            indicatorView.stopAnimating()
-            item?.badgeValue = nil
-            self.isRefreshing = false
-            
+            self.removeFromQueue(repo)
+            if self.updatingRepoList.isEmpty {
+                self.killIndicator()
+            }
+
             if didFindErrors {
                 self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
             }
