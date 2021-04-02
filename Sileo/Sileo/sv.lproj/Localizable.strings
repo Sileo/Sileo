@@ -139,6 +139,7 @@
 "Enable_Analytics" = "Aktivera Analyser";
 "Swipe_Actions" = "Svepåtgärder";
 "Show_Provisional" = "Visa Paket från Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
