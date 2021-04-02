@@ -438,6 +438,10 @@ class BackendAPIWrapper: NSObject {
         return nil
     }
     
+    @objc class func tabBarController() -> TabBarController? {
+        return TabBarController.singleton
+    }
+    
     @objc class func featuredViewController() -> FeaturedViewController? {
         if let tabBarController = TabBarController.singleton,
            let tabBarVCs = tabBarController.viewControllers,
