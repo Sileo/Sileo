@@ -139,6 +139,7 @@
 "Enable_Analytics" = "분석 허용";
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지 표시";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";
