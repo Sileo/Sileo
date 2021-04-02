@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
 
 "All_Categories" = "全てのカテゴリー";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "リポジトリ";
 
