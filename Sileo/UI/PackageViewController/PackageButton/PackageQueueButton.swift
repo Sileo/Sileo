@@ -201,7 +201,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 for repoEntry in RepoManager.shared.repoList where
                     repoEntry.rawEntry == package.sourceFile {
                     repo = repoEntry
-                 }
+                }
                 if package.filename != nil && repo != nil {
                     if DpkgWrapper.isVersion(package.version, greaterThan: installedPackage.version) {
                         let action = CSActionItem(title: String(localizationKey: "Package_Upgrade_Action"),
