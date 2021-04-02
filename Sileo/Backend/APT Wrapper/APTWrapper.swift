@@ -84,7 +84,7 @@ class APTWrapper {
     
     // APT syntax: a- = remove a; b = install b
     public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) -> [String: [[String: Any]]] {
-        var arguments = ["-sqf", "--allow-remove-essential",
+        var arguments = ["-sqf", "--allow-remove-essential", "--allow-change-held-packages",
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
                          "-oApt::Get::HideAutoRemove=true", "-oquiet::NoProgress=true",
                          "-oquiet::NoStatistic=true", "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
@@ -288,8 +288,8 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         
-        var arguments = ["/usr/bin/apt-get", "install", "--reinstall", "--allow-unauthenticated",
-                         "--allow-downgrades", "--no-download", "--allow-remove-essential",
+        var arguments = ["/usr/bin/apt-get", "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
+                        "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
                          "-o", "APT::Sandbox::User=root"]
