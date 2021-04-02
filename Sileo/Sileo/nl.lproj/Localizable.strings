@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
 
 "All_Categories" = "Alle Categorieën";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositories";
 

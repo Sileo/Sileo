@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Automatically Add %#@sources@</string>
+      <string>Adăugați automatic %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -13,17 +13,17 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Sursă</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Surse</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Surse</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>Adăugați %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -31,17 +31,17 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Sursă</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Surse</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Surse</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>Adăugați aceste %#@urls@ găsite în clipboard:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -51,9 +51,9 @@
         <key>one</key>
         <string>URL</string>
         <key>few</key>
-        <string>URLs</string>
+        <string>URL-uri</string>
         <key>other</key>
-        <string>URLs</string>
+        <string>URL-uri</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
@@ -67,11 +67,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d Pachet</string>
         <key>few</key>
-        <string>%d Packages</string>
+        <string>%d Pachete</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d Pachete</string>
       </dict>
     </dict>
   </dict>

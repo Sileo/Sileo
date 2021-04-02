@@ -21,7 +21,7 @@
 "Share" = "مشاركة";
 "Delete" = "حذف";
 "Cancel" = "إلغاء";
-"Acknowledge" = "أُقر";
+"Acknowledge" = "إقرار";
 "Remove" = "إزالة";
 
 // Popup messages
@@ -45,7 +45,7 @@
 "Package_Reinstall_Action" = "إعادة التثبيت";
 "Package_Uninstall_Action" = "إلغاء التثبيت";
 "Package_Modify_Action" = "تعديل";
-"Package_Get_Action" = "تثبيت";
+"Package_Get_Action" = "جلب";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
 "Package_Paid" = "مدفوع";
@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
 
 "All_Categories" = "كل التصنيفات";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "المستودعات";
 
@@ -134,7 +137,7 @@
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Enable_Analytics" = "تفعيل الإحصائيات";
-"Swipe_Actions" = "أجراءات السحب";
+"Swipe_Actions" = "إجراءات السحب";
 "Show_Provisional" = "إظهار الحزم من مصادر غير مضافة";
 
 "Sileo_Light" = "Sileo فاتح";
