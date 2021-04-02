@@ -139,6 +139,7 @@
 "Enable_Analytics" = "Analizleri Etkinleştir";
 "Swipe_Actions" = "Kaydırma İşlemleri";
 "Show_Provisional" = "Canister'dan Paketleri Göster";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
