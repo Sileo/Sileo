@@ -89,19 +89,15 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             }
         }
         
+        if showUpdates {
+            _ = NotificationCenter.default.addObserver(forName: Notification.Name("ShowIgnoredUpdates"), object: nil, queue: nil) { _ in
+                self.reloadUpdates()
+            }
+        }
+
         if showWishlist {
             let exportBtn = UIBarButtonItem(title: String(localizationKey: "Export"), style: .plain, target: self, action: #selector(self.exportButtonClicked(_:)))
-            
-            #if targetEnvironment(simulator) || TARGET_SANDBOX
-            
-            let testQueueBtn = UIBarButtonItem(title: "Test Queue", style: .plain, target: self, action: #selector(self.addTestQueue(_:)))
-            self.navigationItem.leftBarButtonItems = [exportBtn, testQueueBtn]
-            
-            #else
-            
             self.navigationItem.leftBarButtonItem = exportBtn
-            
-            #endif
             
             let wishlistBtn = UIBarButtonItem(title: String(localizationKey: "Wishlist"), style: .plain, target: self, action: #selector(self.showWishlist(_:)))
             self.navigationItem.rightBarButtonItem = wishlistBtn
@@ -194,7 +190,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             if self.showUpdates {
                 let updates = packageMan.availableUpdates()
                 self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
+                if UserDefaults.standard.optionalBool("ShowIgnoredUpdates", fallback: true) {
+                    self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
+                }
             }
             
             DispatchQueue.main.async {
@@ -208,63 +206,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             }
         }
     }
-    
-    #if targetEnvironment(simulator) || TARGET_SANDBOX
-    @objc func addTestQueue(_ : Any?) {
-        let testQueue = ["applist", "apt", "apt-key", "apt-lib", "base",
-                         "bash", "berkeleydb", "bzip2", "ca.menushka.onenotify",
-                         "co.dynastic.tsssaver", "com.ahmad.badgemenot", "com.ahmadnagy.mint4",
-                         "com.anemonetheming.anemone3", "com.anemonetheming.anemone3-extsb",
-                         "com.atwiiks.betterccxi", "com.atwiiks.betterccxiweather", "com.cc.haptickeys",
-                         "com.chpwn.iconsupport", "com.cokepokes.fucklargetitles", "com.cpdigitaldarkroom.barmoji",
-                         "com.cpdigitaldarkroom.cuttlefish", "com.creaturecoding.libcspreferences",
-                         "com.creaturecoding.shuffle", "com.creaturesurvive.libcscolorpicker", "com.donbytyqi.tinybanners",
-                         "com.easy-z.npf", "com.ex.libsubstitute", "com.exile90.icleanerpro", "com.foxfort.amazonite",
-                         "com.foxfort.darkgmaps", "com.foxfort.darksounds", "com.foxfort.foxforttools",
-                         "com.foxfort.libfoxfortsplash", "com.foxfort.libfoxfortutils", "com.fpt.saw",
-                         "com.gabehern.goji", "com.gilshahar7.pearlretry", "com.golddavid.colorbadges-new",
-                         "com.golddavid.colorbanners2-new", "com.ikilledappl3.colormyyccmodules",
-                         "com.imkpatil.nooldernotificationstext", "com.ioscreatix.sugarcane", "com.ioscreatix.weathervane",
-                         "com.irepo.boxy3", "com.julioverne.goodwifi", "com.junesiphone.sileonobanner",
-                         "com.karimo299.leavemealone", "com.laughingquoll.cowbell", "com.laughingquoll.modulus",
-                         "com.laughingquoll.noctis12", "com.laughingquoll.prefixui", "com.level3tjg.noartshadow",
-                         "com.linusyang.localeutf8", "com.macciti.amury", "com.matchstic.reprovision",
-                         "com.midnightchips.ldrun", "com.modmyi.libswift4", "com.muirey03.13hud",
-                         "com.muirey03.powermodule", "com.muirey03.workffs", "com.muirey03.zenith",
-                         "com.niceios.nicebarx", "com.opa334.ccsupport", "com.quackdev.crayolax",
-                         "com.r0wdrunner.cleantabs", "com.r333d.cylinder", "com.revulate.groovetube",
-                         "com.revulate.harmony", "com.rpetrich.rocketbootstrap", "com.satvikb.selectionplus",
-                         "com.shiftcmdk.pencilchargingindicator", "com.smokin1337.fugap",
-                         "com.spark.libsparkapplist", "com.spark.lowbatterybanner", "com.spark.noccbar",
-                         "com.spark.nolowpowerautolock", "com.spark.nomoresmallapps", "com.spark.notchless",
-                         "com.thetimeloop.bohemic", "com.tigisoftware.filza", "com.tonyk7.0vigilate",
-                         "com.udevs.dictmojix", "com.wh0ba.ytminibarx", "com.yadkin.twitternoads",
-                         "com.yourepo.cloudftl.fudock", "com.yourepo.kingmehu.perfecttimexs",
-                         "coreutils", "coreutils-bin", "cydia", "darwintools", "debianutils",
-                         "diffutils", "dpkg", "findutils", "firmware", "firmware-sbin", "flex3beta",
-                         "gnupg", "grep", "gzip", "jp.ashikase.libpackageinfo", "jp.ashikase.techsupport",
-                         "jp.soh.fullmusic11paid", "libressl", "live.calicocat.pagebar", "lzma",
-                         "me.alfhaily.cercube", "me.nepeta.libcolorpicker", "me.nepeta.libnepeta",
-                         "me.nepeta.notifica", "me.nepeta.unsub", "mobilesubstrate", "ncurses",
-                         "rc", "openssh", "org.coolstar.sileo", "org.coolstar.tweakinject", "org.swift.libswift",
-                         "org.thebigboss.palert", "p7zip", "pincrush", "preferenceloader", "profile.d",
-                         "sed", "shell-cmds", "system-cmds", "tar", "uikittools", "unrar", "unzip",
-                         "ws.hbang.common", "ws.hbang.newterm2", "xyz.royalapps.jellyfish", "xyz.xninja.systeminfo", "zip"]
-        
-        for packageID in testQueue {
-            guard let package = PackageListManager.shared.newestPackage(identifier: packageID),
-                  package.filename != nil
-            else {
-                continue
-            }
-            
-            DownloadManager.shared.add(package: package, queue: .installations)
-        }
-        
-        DownloadManager.shared.reloadData(recheckPackages: true)
-    }
-    #endif
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         searchController?.searchBar.isFirstResponder ?? false
     }
@@ -303,7 +245,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             DispatchQueue.global(qos: .default).async {
                 let updates = PackageListManager.shared.availableUpdates()
                 self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
+                if UserDefaults.standard.optionalBool("ShowIgnoredUpdates", fallback: true) {
+                    self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
+                } else {
+                    self.ignoredUpdates.removeAll()
+                }
                 DispatchQueue.main.async {
                     if !self.availableUpdates.isEmpty {
                         self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", self.availableUpdates.count)
