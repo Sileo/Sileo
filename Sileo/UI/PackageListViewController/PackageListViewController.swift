@@ -24,6 +24,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     private var packages: [Package] = []
     private var availableUpdates: [Package] = []
+    private var ignoredUpdates: [Package] = []
     private var searchCache: [String: [Package]] = [:]
     private var provisionalPackages: [ProvisionalPackage] = []
     
@@ -191,12 +192,13 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                 }
             }
             if self.showUpdates {
-                self.availableUpdates = packageMan.availableUpdates().map({ $0.0 })
+                let updates = packageMan.availableUpdates()
+                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map( { $0.0 })
+                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map( { $0.0 })
             }
             
-            let updatesNotIgnored = self.availableUpdates.filter({ $0.wantInfo != .hold })
             DispatchQueue.main.async {
-                if !updatesNotIgnored.isEmpty {
+                if !availableUpdates.isEmpty {
                     self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", updatesNotIgnored.count)
                 } else {
                     self.navigationController?.tabBarItem.badgeValue = nil
@@ -301,11 +303,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     @objc func reloadUpdates() {
         if showUpdates {
             DispatchQueue.global(qos: .default).async {
-                let rawUpdates = PackageListManager.shared.availableUpdates()
-                self.availableUpdates = rawUpdates.map({ $0.0 })
-                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                let updates = PackageListManager.shared.availableUpdates()
+                self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map( { $0.0 })
+                self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map( { $0.0 })
                 DispatchQueue.main.async {
-                    if !updatesNotIgnored.isEmpty {
+                    if !availableUpdates.isEmpty {
                         self.navigationController?.tabBarItem.badgeValue = String(format: "%ld", updatesNotIgnored.count)
                         UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
                     } else {
@@ -405,7 +407,10 @@ extension PackageListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         refreshEnabled = true
         var count = 1
-        if showUpdates { count += 1 }
+        if showUpdates {
+            if !availableUpdates.isEmpty { count += 1}
+            if !ignoredUpdates.isEmpty { count += 1}
+        }
         if showProvisional && loadProvisional {
             count += 1
         }
@@ -736,11 +741,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                 
                 if self.updatingCount == 0 && self.refreshEnabled {
                     UIView.performWithoutAnimation {
-                        if self.showUpdates {
-                            self.collectionView?.reloadSections(IndexSet(integer: 1))
-                        } else {
-                            self.collectionView?.reloadData()
-                        }
+                        self.collectionView?.reloadData()
                     }
                 }
                 
