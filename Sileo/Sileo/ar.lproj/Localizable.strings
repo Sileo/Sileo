@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
 
 "All_Categories" = "كل التصنيفات";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "المستودعات";
 
