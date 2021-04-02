@@ -139,6 +139,7 @@
 "Enable_Analytics" = "統計収集の有効化";
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canister のパッケージを表示";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
