@@ -17,11 +17,11 @@
         <key>one</key>
         <string>مصدر</string>
         <key>two</key>
-        <string>مصدر</string>
+        <string>مصدران</string>
         <key>few</key>
-        <string>مصدر</string>
+        <string>مصادر</string>
         <key>many</key>
-        <string>مصدر</string>
+        <string>مصادر</string>
         <key>other</key>
         <string>مصدر</string>
       </dict>
@@ -41,11 +41,11 @@
         <key>one</key>
         <string>مصدر</string>
         <key>two</key>
-        <string>مصدر</string>
+        <string>مصدران</string>
         <key>few</key>
-        <string>مصدر</string>
+        <string>مصادر</string>
         <key>many</key>
-        <string>مصدر</string>
+        <string>مصادر</string>
         <key>other</key>
         <string>مصدر</string>
       </dict>
