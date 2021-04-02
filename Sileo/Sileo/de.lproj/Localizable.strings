@@ -139,6 +139,7 @@
 "Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
