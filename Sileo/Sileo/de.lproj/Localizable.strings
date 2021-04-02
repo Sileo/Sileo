@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
 
 "All_Categories" = "Alle Kategorien";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Quellen";
 
