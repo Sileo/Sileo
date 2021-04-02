@@ -10,17 +10,6 @@ if ! [ -s $sourcesDir/sileo.sources ]; then
         echo -e "" > $sourcesDir/sileo.sources
 fi
 
-if ! grep -Fxq "URIs: https://repounclutter.coolstar.org/" $sourcesDir/sileo.sources ;
-then
-        echo "Installed ModMyTTD+ Repo"
-        sed -i.bak '1s;^;Types: deb\
-URIs: https://repounclutter.coolstar.org/\
-Suites: ./\
-Components:\
-\
-;' $sourcesDir/sileo.sources
-fi
-
 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Chariz Repo"

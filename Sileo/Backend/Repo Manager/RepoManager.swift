@@ -80,14 +80,7 @@ final class RepoManager {
         
         if sourcesURL.exists {
             parseSourcesFile(at: sourcesURL)
-        } else {
-            addRepos(with: [
-                "https://repo.chariz.com/",
-                "https://repo.dynastic.co/",
-                "https://repo.packix.com/",
-                "https://repounclutter.coolstar.org/"
-            ].compactMap(URL.init(string:)))
-            
+        } else {            
             let bigBoss = Repo()
             bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia/"
             bigBoss.suite = "stable"
