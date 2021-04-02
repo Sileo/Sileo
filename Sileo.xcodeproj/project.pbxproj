@@ -102,6 +102,21 @@
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
 		E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
+		E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533D2617437C00BB8A69 /* SDWebImage */; };
+		E19A53402617438100BB8A69 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533F2617438100BB8A69 /* Alamofire */; };
+		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
+		E19A53442617438C00BB8A69 /* XLForm in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53432617438C00BB8A69 /* XLForm */; };
+		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
+		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
+		E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53492617439B00BB8A69 /* SWCompression */; };
+		E19A534C261743A000BB8A69 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534B261743A000BB8A69 /* Sentry */; };
+		E19A534E261743A300BB8A69 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534D261743A300BB8A69 /* Down */; };
+		E19A5350261743A900BB8A69 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534F261743A900BB8A69 /* Alderis */; };
+		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
+		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
+		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
+		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
+		E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5359261743C600BB8A69 /* SwiftTryCatch */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -936,9 +951,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
+				E19A53442617438C00BB8A69 /* XLForm in Frameworks */,
+				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
+				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
+				E19A53402617438100BB8A69 /* Alamofire in Frameworks */,
+				E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */,
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
+				E19A534C261743A000BB8A69 /* Sentry in Frameworks */,
+				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
+				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
+				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
+				E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */,
+				E19A534E261743A300BB8A69 /* Down in Frameworks */,
+				E19A5350261743A900BB8A69 /* Alderis in Frameworks */,
+				E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
+				E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2201,6 +2231,23 @@
 				F139D09422EA9209007F5C0D /* PBXTargetDependency */,
 			);
 			name = "Sileo Demo";
+			packageProductDependencies = (
+				E19A533D2617437C00BB8A69 /* SDWebImage */,
+				E19A533F2617438100BB8A69 /* Alamofire */,
+				E19A53412617438700BB8A69 /* Cosmos */,
+				E19A53432617438C00BB8A69 /* XLForm */,
+				E19A53452617439300BB8A69 /* KeychainAccess */,
+				E19A53472617439700BB8A69 /* SwiftSoup */,
+				E19A53492617439B00BB8A69 /* SWCompression */,
+				E19A534B261743A000BB8A69 /* Sentry */,
+				E19A534D261743A300BB8A69 /* Down */,
+				E19A534F261743A900BB8A69 /* Alderis */,
+				E19A5351261743B300BB8A69 /* SwipeCellKit */,
+				E19A5353261743BA00BB8A69 /* SQLite */,
+				E19A5355261743BD00BB8A69 /* LNZTreeView */,
+				E19A5357261743C200BB8A69 /* AUPickerCell */,
+				E19A5359261743C600BB8A69 /* SwiftTryCatch */,
+			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -3848,6 +3895,81 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
+		};
+		E19A533D2617437C00BB8A69 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		E19A533F2617438100BB8A69 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E19A53412617438700BB8A69 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		E19A53432617438C00BB8A69 /* XLForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */;
+			productName = XLForm;
+		};
+		E19A53452617439300BB8A69 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		E19A53472617439700BB8A69 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		E19A53492617439B00BB8A69 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E19A534B261743A000BB8A69 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+		E19A534D261743A300BB8A69 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E19A534F261743A900BB8A69 /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E19A5351261743B300BB8A69 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+		E19A5353261743BA00BB8A69 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		E19A5355261743BD00BB8A69 /* LNZTreeView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
+			productName = LNZTreeView;
+		};
+		E19A5357261743C200BB8A69 /* AUPickerCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
+			productName = AUPickerCell;
+		};
+		E19A5359261743C600BB8A69 /* SwiftTryCatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
+			productName = SwiftTryCatch;
 		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;

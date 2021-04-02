@@ -9,8 +9,15 @@
 import Foundation
 
 class DownloadConfirmButton: UIButton {
+    
+    @IBInspectable var pleaseJustLetMeBeClearThankYouLoveYouBye: Bool = false
+    
     override var isHighlighted: Bool {
         didSet {
+            if pleaseJustLetMeBeClearThankYouLoveYouBye {
+                self.backgroundColor = .clear
+                return
+            }
             if isHighlighted {
                 var tintHue: CGFloat = 0, tintSat: CGFloat = 0, tintBrightness: CGFloat = 0
                 self.tintColor.getHue(&tintHue, saturation: &tintSat, brightness: &tintBrightness, alpha: nil)

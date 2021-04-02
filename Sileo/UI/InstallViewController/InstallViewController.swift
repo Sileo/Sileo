@@ -70,17 +70,26 @@ class InstallViewController: SileoViewController {
                 }
                 usleep(useconds_t(50 * USEC_PER_SEC/1000))
             }
-            DispatchQueue.main.async {
-                let rawUpdates = PackageListManager.shared.availableUpdates()
-                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
-                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
-                self.setProgress(1, animated: true)
-                self.activityIndicatorView?.stopAnimating()
-                self.progressView?.alpha = 0
-                self.completeButton?.alpha = 1
-                self.completeLaterButton?.alpha = 1
-                self.refreshSileo = true
+            DispatchQueue.global(qos: .userInitiated).async {
+                PackageListManager.shared.purgeCache()
+                PackageListManager.shared.waitForReady()
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                    
+                    let rawUpdates = PackageListManager.shared.availableUpdates()
+                    let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                    UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                    self.setProgress(1, animated: true)
+                    self.activityIndicatorView?.stopAnimating()
+                    self.progressView?.alpha = 0
+                    self.returnButtonAction = .back
+                    self.updateCompleteButton()
+                    self.completeButton?.alpha = 1
+                    self.completeLaterButton?.alpha = 1
+                    self.refreshSileo = true
+                }
             }
+            
         }
         #else
         let downloadManager = DownloadManager.shared
@@ -121,24 +130,31 @@ class InstallViewController: SileoViewController {
                 self.detailsTextView?.scrollRangeToVisible(NSRange(location: detailsAttributedString.string.count - 1, length: 1))
             }
         }, completionCallback: { _, finish, refresh in
-            DispatchQueue.main.async {
-                let rawUpdates = PackageListManager.shared.availableUpdates()
-                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
-                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
-                self.returnButtonAction = finish
-                self.refreshSileo = refresh
-                self.setProgress(1, animated: true)
-                self.activityIndicatorView?.stopAnimating()
-                self.progressView?.alpha = 0
-                self.updateCompleteButton()
-                self.completeButton?.alpha = 1
-                if !(finish == .back && !refresh) {
-                    self.completeLaterButton?.alpha = 1
-                }
-                if UserDefaults.standard.bool(forKey: "AutoComplete") {
-                    self.completeButtonTapped(nil)
+            DispatchQueue.global(qos: .userInitiated).async {
+                PackageListManager.shared.purgeCache()
+                PackageListManager.shared.waitForReady()
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                    
+                    let rawUpdates = PackageListManager.shared.availableUpdates()
+                    let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                    UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                    self.returnButtonAction = finish
+                    self.refreshSileo = refresh
+                    self.setProgress(1, animated: true)
+                    self.activityIndicatorView?.stopAnimating()
+                    self.progressView?.alpha = 0
+                    self.updateCompleteButton()
+                    self.completeButton?.alpha = 1
+                    if !(finish == .back && !refresh) {
+                        self.completeLaterButton?.alpha = 1
+                    }
+                    if UserDefaults.standard.bool(forKey: "AutoComplete") {
+                        self.completeButtonTapped(nil)
+                    }
                 }
             }
+            
         })
         #endif
     }
@@ -223,18 +239,10 @@ class InstallViewController: SileoViewController {
         if self.returnButtonAction == .back || self.returnButtonAction == .uicache {
             if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
             self.navigationController?.popViewController(animated: true)
-            DispatchQueue.global(qos: .userInitiated).async {
-                PackageListManager.shared.purgeCache()
-                PackageListManager.shared.waitForReady()
-                DispatchQueue.main.async {
-                    DownloadManager.shared.lockedForInstallation = false
-                    DownloadManager.shared.removeAllItems()
-                    
-                    NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                    DownloadManager.shared.reloadData(recheckPackages: true)
-                    TabBarController.singleton?.dismissPopupController()
-                }
-            }
+            DownloadManager.shared.lockedForInstallation = false
+            DownloadManager.shared.removeAllItems()
+            DownloadManager.shared.reloadData(recheckPackages: true)
+            TabBarController.singleton?.dismissPopupController()
         } else if self.returnButtonAction == .reopen {
             exit(0)
         } else if self.returnButtonAction == .restart || self.returnButtonAction == .reload {
@@ -248,18 +256,10 @@ class InstallViewController: SileoViewController {
     
     @IBAction func completeLaterButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-        DispatchQueue.global(qos: .userInitiated).async {
-            PackageListManager.shared.purgeCache()
-            PackageListManager.shared.waitForReady()
-            DispatchQueue.main.async {
-                DownloadManager.shared.lockedForInstallation = false
-                DownloadManager.shared.removeAllItems()
-                
-                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                DownloadManager.shared.reloadData(recheckPackages: true)
-                TabBarController.singleton?.dismissPopupController()
-            }
-        }
+        DownloadManager.shared.lockedForInstallation = false
+        DownloadManager.shared.removeAllItems()
+        DownloadManager.shared.reloadData(recheckPackages: true)
+        TabBarController.singleton?.dismissPopupController()
     }
     
     @IBAction func showDetails(_ sender: Any?) {
@@ -316,9 +316,10 @@ class InstallViewController: SileoViewController {
         
         completeButton?.tintColor = UINavigationBar.appearance().tintColor
         completeButton?.isHighlighted = completeButton?.isHighlighted ?? false
-        completeLaterButton?.tintColor = .systemGray
+        completeLaterButton?.tintColor = .clear
         completeLaterButton?.isHighlighted = completeLaterButton?.isHighlighted ?? false
-        
+        completeLaterButton?.setTitleColor(UINavigationBar.appearance().tintColor, for: .normal)
+ 
         hideDetailsButton?.tintColor = UINavigationBar.appearance().tintColor
         hideDetailsButton?.isHighlighted = hideDetailsButton?.isHighlighted ?? false
     }
