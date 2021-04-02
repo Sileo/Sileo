@@ -74,71 +74,71 @@
 "Sort_By" = "Sortează după:";
 
 "Package_Unavailable" = "Pachet nedisponibil";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_By_Author" = "%@ de %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "de %@"; // %@ = author name
+"Packages_By_Author" = "Pachete de %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "Recomandate";
+"News_Page" = "Noi";
+"Sources_Page" = "Surse";
+"Packages_Page" = "Pachete";
+"Search_Page" = "Căutare";
+"Refreshing_Sources_Page" = "Reîmprospătare de surse";
+"Package_Installed_Files_Page" = "Fișiere instalate";
+"Refresh" = "Reîmprospătați";
+"Remove" = "Ștergeți";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Toate pachete";
+"All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
 
-"All_Categories" = "All Categories";
+"All_Categories" = "Toate categoriile";
 
-"Repos" = "Repositories";
+"Repos" = "Repozitoriile";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "Adăgați sursă";
+"Add_Source.Body" = "Adăugați URL APT";
+"Add_Source.Button.Add" = "Adăugați sursă";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Formular fără titlu";
+"Form_Submitted.Default_Title" = "Formular trimis";
+"Form_Submitted.Default_Body" = "Trimiterea formularului a reușit.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Descrieri Web View sunt depreciate. Vă rugăm să abonați menținătorii repozitoriilor despre descrieri native pentru Sileo.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Detalii";
+"Package_Changelog_Tab" = "Schimbări";
+"Package_No_Description_Available" = "Descriere nedisponibil pentru acest pachet.";
+"Package_Changelogs_Unavailable" = "Schimbări nedisponibile pentru acest pachet.";
 
-"Installed_Package_Header" = "Installed Package";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Pachet instalat";
+"Version" = "Versiune";
+"Show_Package_Contents_Button" = "Priviți conținutul acest pachet";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "Permise";
+"Alternate_Icon_Title" = "Iconuri alternative";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Furnizori de plăți";
+"Settings_Translations_Heading" = "Traduceri";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Cumpărături";
+"Settings_Payment_Provider.No_Purchases" = "Nu aveți cumpărături";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Settings" = "Setări";
+"Settings_Page_Title" = "Setări";
+"Dark_Mode_Toggle" = "Mod închis";
+"Theme" = "Temă";
+"Tint_Color" = "Culoarea tentei";
+"Reset_Tint_Color" = "Restabiliți culoarea tentei";
+"Auto_Complete_Queue" = "Completați coade automatic";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmare automatică de actualizare completă";
+"Enable_Analytics" = "Activați date analitice";
+"Swipe_Actions" = "Acțiuni glisare";
+"Show_Provisional" = "Arătați pachete de la Canister";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
+"Sileo_Light" = "Sileo deschis";
+"Sileo_Dark" = "Sileo închis";
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "Culoare sistem";
 
@@ -171,9 +171,9 @@
 // All export-based strings
 "Export" = "Export";
 "Export_Packages" = "Doriți să faceți export de lista voastră de pachete? Această opțiune v-a face copie de lista de pachete și versiunile lor în clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export_Sources" = "Doriți să faceți export de lista voastră de surse? Această opțiune v-a face copie de lista de URL-uri surselor în clipboard.";
+"Export_Yes" = "Copiați.";
+"Export_No" = "Anulați.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Deschideți descrierea";
