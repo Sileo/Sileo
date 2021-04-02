@@ -276,16 +276,14 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     func controller(indexPath: IndexPath) -> PackageViewController? {
-        if showProvisional && loadProvisional && indexPath.section == 1 {
+        switch findWhatFuckingSectionThisIs(indexPath.section) {
+        case .canister:
             let pro = provisionalPackages[indexPath.row]
-            guard let package = CanisterResolver.package(pro) else {
-                return nil
-            }
+            guard let package = CanisterResolver.package(pro) else { return nil }
             return controller(package: package)
-        } else if showUpdates && indexPath.section == 0 {
-            return controller(package: availableUpdates[indexPath.row])
-        } else {
-            return controller(package: packages[indexPath.row])
+        case .ignoredUpdates: return controller(package: ignoredUpdates[indexPath.row])
+        case .packages: return controller(package: packages[indexPath.row])
+        case .updates: return controller(package: availableUpdates[indexPath.row])
         }
     }
 
