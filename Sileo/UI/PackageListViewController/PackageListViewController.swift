@@ -475,6 +475,7 @@ extension PackageListViewController: UICollectionViewDelegate {
 
 extension PackageListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if !showProvisional && !loadProvisional && !showUpdates { return .zero }
         switch findWhatFuckingSectionThisIs(section) {
         case .ignoredUpdates, .updates, .canister: return CGSize(width: collectionView.bounds.width, height: 65)
         case .packages:
@@ -588,7 +589,6 @@ extension PackageListViewController: UISearchBarDelegate {
             if localRepo {
                 return newer
             }
-            
             return true
         }
     }
@@ -608,11 +608,11 @@ extension PackageListViewController: UISearchResultsUpdating {
             if showSearchField {
                 if !packages.isEmpty {
                     packages = []
-                    collectionView?.reloadSections(IndexSet(integer: 0))
+                    collectionView?.reloadData()
                 }
                 if !provisionalPackages.isEmpty {
                     provisionalPackages = []
-                    collectionView?.reloadSections(IndexSet(integer: 1))
+                    collectionView?.reloadData()
                 }
                 return
             }
