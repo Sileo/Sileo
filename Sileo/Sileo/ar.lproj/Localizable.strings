@@ -139,6 +139,7 @@
 "Enable_Analytics" = "تفعيل الإحصائيات";
 "Swipe_Actions" = "إجراءات السحب";
 "Show_Provisional" = "إظهار الحزم من مصادر غير مضافة";
+"Show_Ignored_Updates" = "Show Ignored Updates";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
