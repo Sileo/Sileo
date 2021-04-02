@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Vedi tutti i pacchetti delle tue fonti";
 
 "All_Categories" = "Tutte le Categorie";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Fonti";
 

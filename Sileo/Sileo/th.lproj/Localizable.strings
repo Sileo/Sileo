@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "ดูแพ็คเกจทั้งหมดจากแหล่งทั้งหมดของคุณ";
 
 "All_Categories" = "หมวดหมู่ทั้งหมด";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "แหล่งจัดเก็บข้อมูล";
 

@@ -92,6 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
 
 "All_Categories" = "Все категории";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Репозитории";
 
