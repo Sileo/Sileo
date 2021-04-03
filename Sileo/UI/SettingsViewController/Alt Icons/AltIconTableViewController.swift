@@ -17,7 +17,9 @@ struct AltIcon {
 
 class AltIconTableViewController: UITableViewController {
     
-    private class func altImage(_ name: String) -> UIImage {
+    public static let IconUpdate = Notification.Name("AlternateIconUpdate")
+    
+    public class func altImage(_ name: String) -> UIImage {
         let path = Bundle.main.bundleURL.appendingPathComponent(name + "@2x.png")
         return UIImage(contentsOfFile: path.path) ?? UIImage()
     }
@@ -84,6 +86,7 @@ class AltIconTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
         UIApplication.shared.setAlternateIconName(altIcon.key) { _ in }
+        NotificationCenter.default.post(name: AltIconTableViewController.IconUpdate, object: nil)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)
     }
 
