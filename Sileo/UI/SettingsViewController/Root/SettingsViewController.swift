@@ -220,6 +220,7 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.textLabel?.text = String(localizationKey: "Developer_Mode")
                     cell.fallback = false
                     cell.defaultKey = "DeveloperMode"
+                    cell.viewControllerForPresentation = self
                     return cell
                 default:
                     return UITableViewCell()
@@ -289,6 +290,7 @@ extension SettingsViewController { // UITableViewDataSource
                     let cell = SettingsSwitchTableViewCell()
                     cell.textLabel?.text = String(localizationKey: "Developer_Mode")
                     cell.fallback = false
+                    cell.viewControllerForPresentation = self
                     cell.defaultKey = "DeveloperMode"
                     return cell
                 default:

@@ -11,6 +11,7 @@ import UIKit
 class SettingsSwitchTableViewCell: UITableViewCell {
     
     private var control: UISwitch = UISwitch()
+    var viewControllerForPresentation: UIViewController?
     var fallback = false
     
     var defaultKey: String? {
@@ -42,7 +43,16 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     }
     
     @objc private func didChange(sender: UISwitch!) {
-        if let key = defaultKey { UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil) }
+        if let key = defaultKey {
+            UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil)
+            if !sender.isOn { return }
+            if key == "DeveloperMode",
+               let view = viewControllerForPresentation {
+                let alert = UIAlertController(title: String(localizationKey: "Pog_Developer"), message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
+                view.present(alert, animated: true)
+            }
+        }
     }
     
     @objc private func updateSileoColors() {
