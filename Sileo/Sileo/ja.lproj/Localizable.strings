@@ -140,6 +140,8 @@
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canister のパッケージを表示";
 "Show_Ignored_Updates" = "無視したアップデートを表示";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
