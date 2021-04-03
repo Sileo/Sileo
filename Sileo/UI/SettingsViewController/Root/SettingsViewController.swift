@@ -338,13 +338,11 @@ extension SettingsViewController { // UITableViewDataSource
                 colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     if #available(iOS 13.0, *) {
-                        colorPickerViewController.modalPresentationStyle = .popover
                         colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                    } else {
-                        colorPickerViewController.modalPresentationStyle = .fullScreen
                     }
                 }
-                self.navigationController?.present(colorPickerViewController, animated: true)
+                colorPickerViewController.modalPresentationStyle = .overFullScreen
+                self.parent?.present(colorPickerViewController, animated: true, completion: nil)
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
             } else if indexPath.row == 3 {
@@ -359,13 +357,11 @@ extension SettingsViewController { // UITableViewDataSource
                     colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
                     if UIDevice.current.userInterfaceIdiom == .pad {
                         if #available(iOS 13.0, *) {
-                            colorPickerViewController.modalPresentationStyle = .popover
                             colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                        } else {
-                            colorPickerViewController.modalPresentationStyle = .fullScreen
                         }
                     }
-                    self.navigationController?.present(colorPickerViewController, animated: true)
+                    colorPickerViewController.modalPresentationStyle = .overFullScreen
+                    self.parent?.present(colorPickerViewController, animated: true, completion: nil)
                 } else if indexPath.row == 2 { // Tint color reset
                     SileoThemeManager.shared.resetTintColor()
                 } else if indexPath.row == 3 {
