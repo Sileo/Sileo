@@ -136,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         #endif
         SentrySDK.start { options in
             options.dsn = "https://examplePublicKey@o0.ingest.sentry.io/0"
-            options.debug = true
+            options.debug = false
             options.releaseName = appVer
         }
     }

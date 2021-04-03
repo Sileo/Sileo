@@ -83,8 +83,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.updateSileoColors()
         
         self.popupBar.toolbar.setBackgroundImage(nil, forToolbarPosition: .any, barMetrics: .default)
-        self.popupBar.isInlineWithTabBar = UIDevice.current.userInterfaceIdiom == .pad
         self.popupBar.tabBarHeight = self.tabBar.frame.height
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.popupBar.isInlineWithTabBar = true
+            self.popupBar.tabBarHeight += 1
+        }
         self.popupBar.progressViewStyle = .bottom
         self.popupInteractionStyle = .drag
         self.presentPopupBar(withContentViewController: downloadsController, animated: true, completion: completion)
