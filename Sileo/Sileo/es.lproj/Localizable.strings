@@ -140,6 +140,8 @@
 "Swipe_Actions" = "Acciones de deslizamiento";
 "Show_Provisional" = "Mostrar paquetes de Canister";
 "Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Oscuro";
