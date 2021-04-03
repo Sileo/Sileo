@@ -94,7 +94,7 @@
 "All_Categories" = "Alle Categorieën";
 "Internal_Repo" = "Interne Repo's";
 "External_Repo" = "Externe Repo's";
-"Ignored Updates" = "Negeerde Updates";
+"Ignored Updates" = "Genegeerde Updates";
 
 "Repos" = "Repositories";
 
@@ -139,7 +139,7 @@
 "Enable_Analytics" = "Schakel Analytics in";
 "Swipe_Actions" = "Sleep Acties";
 "Show_Provisional" = "Toon Pakketten van Kanister";
-"Show_Ignored_Updates" = "Toon Negeerde Updates";
+"Show_Ignored_Updates" = "Toon Genegeerde Updates";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
