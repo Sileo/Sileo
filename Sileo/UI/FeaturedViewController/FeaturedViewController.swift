@@ -196,8 +196,12 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.addSubview(profileButton)
+            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+                profileButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 16).isActive = true
+            } else {
+                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true
+            }
             NSLayoutConstraint.activate([
-                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16),
                 profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12),
                 profileButton.heightAnchor.constraint(equalToConstant: 40),
                 profileButton.widthAnchor.constraint(equalToConstant: 40)
