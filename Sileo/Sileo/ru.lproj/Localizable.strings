@@ -140,6 +140,8 @@
 "Swipe_Actions" = "Смахнуть";
 "Show_Provisional" = "Показать предварительный пакет";
 "Show_Ignored_Updates" = "Показать игнорируемые обновления";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
