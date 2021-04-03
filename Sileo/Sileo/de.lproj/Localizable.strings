@@ -140,6 +140,8 @@
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
 "Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
