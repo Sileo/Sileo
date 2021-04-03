@@ -104,10 +104,10 @@ extension SettingsViewController { // UITableViewDataSource
             if showTranslationCreditSection() {
                 return 1
             }
-            return 10
+            return 11
         case 2: // Settings section OR About section
             if showTranslationCreditSection() {
-                return 10
+                return 11
             }
             return 1
         case 3: // About section
@@ -215,6 +215,12 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
                     return cell
+                case 10:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Developer_Mode")
+                    cell.fallback = false
+                    cell.defaultKey = "DeveloperMode"
+                    return cell
                 default:
                     return UITableViewCell()
                 }
@@ -278,6 +284,12 @@ extension SettingsViewController { // UITableViewDataSource
                     cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
+                    return cell
+                case 10:
+                    let cell = SettingsSwitchTableViewCell()
+                    cell.textLabel?.text = String(localizationKey: "Developer_Mode")
+                    cell.fallback = false
+                    cell.defaultKey = "DeveloperMode"
                     return cell
                 default:
                     return UITableViewCell()
