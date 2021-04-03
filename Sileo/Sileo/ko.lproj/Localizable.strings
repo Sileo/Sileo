@@ -140,6 +140,8 @@
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지 표시";
 "Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";
