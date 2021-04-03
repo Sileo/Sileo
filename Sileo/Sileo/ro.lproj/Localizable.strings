@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
 
 "All_Categories" = "Toate categoriile";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Repozitorii Interne";
+"External_Repo" = "Repozitorii Externe";
+"Ignored Updates" = "Actualizări Dezactivate";
 
 "Repos" = "Repozitoriile";
 
@@ -139,7 +139,7 @@
 "Enable_Analytics" = "Activați date analitice";
 "Swipe_Actions" = "Acțiuni glisare";
 "Show_Provisional" = "Arătați pachete de la Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
+"Show_Ignored_Updates" = "Arătați Actualizări Dezactivate";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
