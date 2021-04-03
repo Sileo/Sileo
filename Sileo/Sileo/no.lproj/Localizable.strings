@@ -140,6 +140,8 @@
 "Swipe_Actions" = "Sveipe-handlinger";
 "Show_Provisional" = "Vis pakker fra Canister";
 "Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
