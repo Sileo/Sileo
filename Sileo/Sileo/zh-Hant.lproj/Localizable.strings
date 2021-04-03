@@ -94,7 +94,7 @@
 "All_Categories" = "所有分類";
 "Internal_Repo" = "內部來源";
 "External_Repo" = "外部來源";
-"Ignored Updates" = "忽略的更新";
+"Ignored Updates" = "已忽略更新";
 
 "Repos" = "軟體來源";
 
@@ -139,7 +139,7 @@
 "Enable_Analytics" = "啟用分析";
 "Swipe_Actions" = "滑動動作";
 "Show_Provisional" = "搜尋增強";
-"Show_Ignored_Updates" = "顯示忽略的更新";
+"Show_Ignored_Updates" = "顯示已忽略更新";
 
 "Sileo_Light" = "Sileo淺色模式";
 "Sileo_Dark" = "Sileo深色模式";
