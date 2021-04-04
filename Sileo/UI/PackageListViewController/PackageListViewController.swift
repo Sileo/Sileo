@@ -224,7 +224,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             guard let package = CanisterResolver.package(pro) else { return nil }
             return controller(package: package)
         case .ignoredUpdates: return controller(package: ignoredUpdates[indexPath.row])
-        case .packages: return controller(package: packages[indexPath.row])
+        case .packages, .reallyBoringList: return controller(package: packages[indexPath.row])
         case .updates: return controller(package: availableUpdates[indexPath.row])
         }
     }
@@ -368,8 +368,10 @@ extension PackageListViewController: UICollectionViewDataSource {
             } else if section == 1 && !availableUpdates.isEmpty && !ignoredUpdates.isEmpty {
                 return .ignoredUpdates
             }
+            return .packages
         }
-        if showProvisional && loadProvisional {
+        if loadProvisional {
+            if !showProvisional { return .reallyBoringList }
             if section == 1 {
                 return .canister
             } else if section == 0 && !packages.isEmpty {
@@ -378,14 +380,14 @@ extension PackageListViewController: UICollectionViewDataSource {
                 return .canister
             }
         }
-        return .packages
+        return .reallyBoringList
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch findWhatFuckingSectionThisIs(section) {
         case .canister: return provisionalPackages.count
         case .ignoredUpdates: return ignoredUpdates.count
-        case .packages: return packages.count
+        case .packages, .reallyBoringList: return packages.count
         case .updates: return availableUpdates.count
         }
     }
@@ -398,13 +400,22 @@ extension PackageListViewController: UICollectionViewDataSource {
         switch findWhatFuckingSectionThisIs(indexPath.section) {
         case .canister: cell.provisionalTarget = provisionalPackages[indexPath.row]; cell.targetPackage = nil
         case .ignoredUpdates: cell.targetPackage = ignoredUpdates[indexPath.row]; cell.provisionalTarget = nil
-        case .packages: cell.targetPackage = packages[indexPath.row]; cell.provisionalTarget = nil
+        case .packages, .reallyBoringList: cell.targetPackage = packages[indexPath.row]; cell.provisionalTarget = nil
         case .updates: cell.targetPackage = availableUpdates[indexPath.row]; cell.provisionalTarget = nil
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let section = findWhatFuckingSectionThisIs(indexPath.section)
+        if section == .reallyBoringList {
+            if kind == UICollectionView.elementKindSectionHeader {
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                 withReuseIdentifier: "PackageListHeaderBlank",
+                                                                                 for: indexPath)
+                return headerView
+            }
+        }
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                withReuseIdentifier: "PackageListHeader",
                                                                                for: indexPath) as? PackageListHeader
@@ -454,12 +465,7 @@ extension PackageListViewController: UICollectionViewDataSource {
                 headerView.label?.text = String(localizationKey: "Internal_Repo")
                 return headerView
             }
-            if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                 withReuseIdentifier: "PackageListHeaderBlank",
-                                                                                 for: indexPath)
-                return headerView
-            }
+        case .reallyBoringList: fatalError("Literally impossible to be here")
         }
         return UICollectionReusableView()
     }
@@ -475,8 +481,8 @@ extension PackageListViewController: UICollectionViewDelegate {
 
 extension PackageListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if !showProvisional && !loadProvisional && !showUpdates { return .zero }
         switch findWhatFuckingSectionThisIs(section) {
+        case .reallyBoringList: return .zero
         case .ignoredUpdates, .updates, .canister: return CGSize(width: collectionView.bounds.width, height: 65)
         case .packages:
             return (showUpdates && displaySettings) ? CGSize(width: collectionView.bounds.width, height: 109) : CGSize(width: collectionView.bounds.width, height: 65)
@@ -692,4 +698,5 @@ enum PackageListSection {
     case ignoredUpdates
     case packages
     case canister
+    case reallyBoringList
 }
