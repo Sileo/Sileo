@@ -94,7 +94,7 @@
 "All_Categories" = "모든 카테고리";
 "Internal_Repo" = "내부 저장소";
 "External_Repo" = "외부 저장소";
-"Ignored Updates" = "업데이트 무시";
+"Ignored Updates" = "무시된 업데이트";
 
 "Repos" = "리포";
 
@@ -140,8 +140,8 @@
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지 표시";
 "Show_Ignored_Updates" = "무시된 업데이트 표시";
-"Developer_Mode" = "개발자모드";
-"Pog_Developer" = "당신도 이젠 개발자입니다!";
+"Developer_Mode" = "개발자 모드";
+"Pog_Developer" = "당신은 이제 개발자입니다!";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";
