@@ -54,7 +54,7 @@
 "Package_Developer_Find_Action" = "Mehr von diesem Entwickler";
 "Package_Support_Action" = "Support";
 "Package_Hold_Enable_Action" = "Zukünftige Updates ignorieren";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Hold_Disable_Action" = "Updates nicht mehr ignorieren";
 "Package_Wishlist_Add" = "Zur Wunschliste hinzufügen";
 "Package_Wishlist_Remove" = "Von Wunschliste entfernen";
 "Wishlist" = "Wunschliste";
@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
 
 "All_Categories" = "Alle Kategorien";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Lokale Quellen";
+"External_Repo" = "Entfernte Quellen";
+"Ignored Updates" = "Ignorierte Updates";
 
 "Repos" = "Quellen";
 
@@ -135,10 +135,13 @@
 "Tint_Color" = "Primärfarbe";
 "Reset_Tint_Color" = "Primärfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
 "Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
+"Show_Ignored_Updates" = "Zeige ignorierte Updates";
+"Developer_Mode" = "Entwicklermodus";
+"Pog_Developer" = "Du bist jetzt ein Entwickler!";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";

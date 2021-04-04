@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
 
 "All_Categories" = "全てのカテゴリー";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "内部リポジトリ";
+"External_Repo" = "外部リポジトリ";
+"Ignored Updates" = "アップデートを無視";
 
 "Repos" = "リポジトリ";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "統計収集の有効化";
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canister のパッケージを表示";
+"Show_Ignored_Updates" = "無視したアップデートを表示";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";

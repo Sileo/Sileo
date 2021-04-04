@@ -139,6 +139,9 @@
 "Enable_Analytics" = "Activer les données analytiques";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Montre les paquets de Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";

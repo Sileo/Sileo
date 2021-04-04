@@ -21,13 +21,13 @@
 "Share" = "Поделиться";
 "Delete" = "Удалить";
 "Cancel" = "Отмена";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Я понял";
+"Remove" = "Удалить";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Обновление фоновых приложений";
+"Background_App_Refresh_Message" = "Для быстрой и оптимальной работы рекомендуется включить фоновое обновление приложения. Вы также сможете получать уведомления, когда ваши твики обновляться!";
+"Upgrade_All_Shortcut_Processing_Message" = "Обновление всех источников и пакетов...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Установка";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "Загрузить";
 "Package_Queue_Action" = "Очередь";
 "Package_Cancel_Action" = "Отменить";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Оплаченный";
 
 "Package_Share_Action" = "Поделиться пакетом…";
 "Package_Developer_Find_Action" = "Больше от этого разработчика";
@@ -85,16 +85,16 @@
 "Search_Page" = "Поиск";
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Обновить";
+"Remove" = "Удалить";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
 
 "All_Categories" = "Все категории";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Внутренние репозитории";
+"External_Repo" = "Внешние репозитории";
+"Ignored Updates" = "Игнорируемые обновления";
 
 "Repos" = "Репозитории";
 
@@ -120,7 +120,7 @@
 "Show_Package_Contents_Button" = "Показать содержимое пакета";
 
 "Licenses_Page_Title" = "Лицензии";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Альтернативные иконки";
 
 "Settings_Payment_Provider_Heading" = "Поставщики платежа";
 "Settings_Translations_Heading" = "Переводы";
@@ -135,10 +135,13 @@
 "Tint_Color" = "Цвет оттенка";
 "Reset_Tint_Color" = "Сбросить цвет оттенка";
 "Auto_Complete_Queue" = "Автоматически завершать очередь";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Автоматическое подтверждение обновления всех ярлыков";
 "Enable_Analytics" = "Включить аналитику";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Swipe_Actions" = "Смахнуть";
+"Show_Provisional" = "Показать предварительный пакет";
+"Show_Ignored_Updates" = "Показать игнорируемые обновления";
+"Developer_Mode" = "Режим разработчика";
+"Pog_Developer" = "Теперь ты разработчик!";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
@@ -158,9 +161,9 @@
 "After_Install_Relaunch" = "Перезапустить Sileo";
 "After_Install_Respring" = "Перезапустить SpringBoard";
 "After_Install_Reboot" = "Перезагрузить девайс";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Перезапустить Sileo позже";
+"After_Install_Respring_Later" = "Перезапустить SpringBoard позже";
+"After_Install_Reboot_Later" = "Перезагрузить устройство позже";
 
 "Dangerous_Repo.Title" = "Опасный репозиторий";
 "Dangerous_Repo.Body" = "Вы пытаетесь добавить репозиторий, известный за такое вредное содержимое, как пиратство, нелегальный контент или вредоносные программы.\n\nРепозитории, отмеченные как опасные, часто разпространяют П.О. с неожиданными эффектами, в форме платных пакетов бесплатно или других вредоносных пакетов. Это может повлечь длительные последствия для вашего устройства и конфиденциальности, иногда затрагивающие возможность jailbreak. Мы рекомендуем вам проявлять крайнюю осторожность, чтобы избежать вредносного П.О.";

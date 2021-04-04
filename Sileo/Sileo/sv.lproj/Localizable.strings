@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Se alla paket från dina källor";
 
 "All_Categories" = "Alla Kategorier";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Inre Källor";
+"External_Repo" = "Externa Källor";
+"Ignored Updates" = "Ignorerade Uppdateringar";
 
 "Repos" = "Källor";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "Aktivera Analyser";
 "Swipe_Actions" = "Svepåtgärder";
 "Show_Provisional" = "Visa Paket från Canister";
+"Show_Ignored_Updates" = "Visa Ignorerade Uppdateringar";
+"Developer_Mode" = "Utvecklar Läge";
+"Pog_Developer" = "Du är nu en utvecklare!";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
