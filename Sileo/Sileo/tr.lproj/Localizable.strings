@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
 
 "All_Categories" = "Tüm Kategoriler";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Dahili Kaynaklar";
+"External_Repo" = "Harici Kaynaklar";
+"Ignored Updates" = "Yoksayılan Güncellemeler";
 
 "Repos" = "Kaynaklar";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "Analizleri Etkinleştir";
 "Swipe_Actions" = "Kaydırma İşlemleri";
 "Show_Provisional" = "Canister'dan Paketleri Göster";
+"Show_Ignored_Updates" = "Yoksayılan Güncellemeleri Göster";
+"Developer_Mode" = "Geliştirici Modu";
+"Pog_Developer" = "Artık bir geliştiricisiniz!";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";

@@ -26,7 +26,7 @@
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
-"Background_App_Refresh_Message" = "For de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
+"Background_App_Refresh_Message" = "Voor de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
 "Upgrade_All_Shortcut_Processing_Message" = "Alle bronnen verversen en alle pakketten upgraden...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -34,7 +34,7 @@
 "Downloading_Package_Status" = "Downloaden";
 "Queued_Package_Status" = "Wachtrij";
 "Ready_Status" = "Klaar";
-"Removal_Queued_Package_Status" = "Wachtrij voor verwijdering";
+"Removal_Queued_Package_Status" = "In Wacht voor Verwijdering";
 "Download_Starting" = "Starten…";
 "Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
 
 "All_Categories" = "Alle Categorieën";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Interne Repo's";
+"External_Repo" = "Externe Repo's";
+"Ignored Updates" = "Genegeerde Updates";
 
 "Repos" = "Repositories";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "Schakel Analytics in";
 "Swipe_Actions" = "Sleep Acties";
 "Show_Provisional" = "Toon Pakketten van Kanister";
+"Show_Ignored_Updates" = "Toon Genegeerde Updates";
+"Developer_Mode" = "Ontwikkelaar Modus";
+"Pog_Developer" = "Je bent nu een ontwikkelaar!";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";

@@ -26,7 +26,7 @@
 
 // Popup messages
 "Background_App_Refresh" = "백그라운드 앱 새로 고침";
-"Background_App_Refresh_Message" = "쾌적한 환경을 위해 백그라운드 앱 새로고침을 활성화하는 것이 좋습니다. 또한 트윅이 업데이트될 때 알림을 받을 수 있습니다!";
+"Background_App_Refresh_Message" = "쾌적한 환경을 위해 백그라운드 앱 새로고침을 활성화하는 것이 좋습니다. 또 활성화 한다면 트윅이 업데이트될 때 알림을 받을 수 있습니다!";
 "Upgrade_All_Shortcut_Processing_Message" = "모든 소스와 패키지를 새로고침 및 업그레이드하는 중...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -70,7 +70,7 @@
 "Upgrade_All_Button" = "모두 업데이트";
 "Package_Search.Placeholder" = "패키지 검색";
 "Sort_Name" = "이름";
-"Sort_Date" = "날자";
+"Sort_Date" = "날짜";
 "Sort_By" = "분류:";
 
 "Package_Unavailable" = "패키지를 사용할 수 없음";
@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
 
 "All_Categories" = "모든 카테고리";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "내부 저장소";
+"External_Repo" = "외부 저장소";
+"Ignored Updates" = "무시된 업데이트";
 
 "Repos" = "리포";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "분석 허용";
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지 표시";
+"Show_Ignored_Updates" = "무시된 업데이트 표시";
+"Developer_Mode" = "개발자 모드";
+"Pog_Developer" = "당신은 이제 개발자입니다!";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";

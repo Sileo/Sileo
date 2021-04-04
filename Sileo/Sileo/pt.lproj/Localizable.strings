@@ -139,6 +139,9 @@
 "Enable_Analytics" = "Permitir recolha de dados analíticos";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages from Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";

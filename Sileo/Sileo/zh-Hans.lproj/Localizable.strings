@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
 
 "All_Categories" = "所有分类";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "内部源";
+"External_Repo" = "外部源";
+"Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
 
@@ -139,6 +139,9 @@
 "Enable_Analytics" = "启用分析";
 "Swipe_Actions" = "滑动动作";
 "Show_Provisional" = "搜索增强";
+"Show_Ignored_Updates" = "显示忽略的更新";
+"Developer_Mode" = "开发者模式";
+"Pog_Developer" = "您现在是开发者！";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
