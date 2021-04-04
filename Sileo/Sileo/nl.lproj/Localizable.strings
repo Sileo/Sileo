@@ -26,7 +26,7 @@
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
-"Background_App_Refresh_Message" = "For de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
+"Background_App_Refresh_Message" = "Voor de beste en snelste ervaring, is het aangeraden om achtergrond app verversen aan te zetten. Hierdoor krijg je ook meldingen wanneer je tweaks geüpdatet zijn!";
 "Upgrade_All_Shortcut_Processing_Message" = "Alle bronnen verversen en alle pakketten upgraden...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
