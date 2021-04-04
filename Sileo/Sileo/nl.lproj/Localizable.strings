@@ -34,7 +34,7 @@
 "Downloading_Package_Status" = "Downloaden";
 "Queued_Package_Status" = "Wachtrij";
 "Ready_Status" = "Klaar";
-"Removal_Queued_Package_Status" = "Wachtrij voor verwijdering";
+"Removal_Queued_Package_Status" = "In Wacht voor Verwijdering";
 "Download_Starting" = "Starten…";
 "Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
