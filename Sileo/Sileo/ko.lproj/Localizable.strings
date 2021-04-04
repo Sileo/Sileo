@@ -26,7 +26,7 @@
 
 // Popup messages
 "Background_App_Refresh" = "백그라운드 앱 새로 고침";
-"Background_App_Refresh_Message" = "쾌적한 환경을 위해 백그라운드 앱 새로고침을 활성화하는 것이 좋습니다. 또한 트윅이 업데이트될 때 알림을 받을 수 있습니다!";
+"Background_App_Refresh_Message" = "쾌적한 환경을 위해 백그라운드 앱 새로고침을 활성화하는 것이 좋습니다. 또 활성화 한다면 트윅이 업데이트될 때 알림을 받을 수 있습니다!";
 "Upgrade_All_Shortcut_Processing_Message" = "모든 소스와 패키지를 새로고침 및 업그레이드하는 중...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
