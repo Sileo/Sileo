@@ -41,6 +41,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     @objc func updateSileoColors() {
         self.statusBarStyle = .default
+        if let textField = searchController?.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.textColor = .sileoLabel
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
