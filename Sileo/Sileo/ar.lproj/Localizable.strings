@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
 
 "All_Categories" = "كل التصنيفات";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "المستودعات المحلية";
+"External_Repo" = "المستودعات الخارجية";
+"Ignored Updates" = "التحديثات المُتجاهلة";
 
 "Repos" = "المستودعات";
 
@@ -139,9 +139,9 @@
 "Enable_Analytics" = "تفعيل الإحصائيات";
 "Swipe_Actions" = "إجراءات السحب";
 "Show_Provisional" = "إظهار الحزم من مصادر غير مضافة";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
+"Show_Ignored_Updates" = "إظهار التحديثات المُتجاهلة";
+"Developer_Mode" = "وضع المطور";
+"Pog_Developer" = "أنت الآن مطور!";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
