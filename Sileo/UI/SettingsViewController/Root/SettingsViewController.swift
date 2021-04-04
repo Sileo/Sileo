@@ -183,41 +183,41 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 4:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Swipe_Actions")
+                    cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
                     cell.fallback = true
                     cell.defaultKey = "SwipeActions"
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
                     cell.fallback = true
                     cell.defaultKey = "ShowProvisional"
                     return cell
                 case 6:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Ignored_Updates")
+                    cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
                     cell.fallback = true
                     cell.defaultKey = "ShowIgnoredUpdates"
                     return cell
                 case 7:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                    cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                     cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
                     return cell
                 case 8:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
+                    cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
                 case 9:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
+                    cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
                     return cell
                 case 10:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Developer_Mode")
+                    cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                     cell.fallback = false
                     cell.defaultKey = "DeveloperMode"
                     cell.viewControllerForPresentation = self
@@ -254,41 +254,41 @@ extension SettingsViewController { // UITableViewDataSource
                     return cell
                 case 4:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Swipe_Actions")
+                    cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
                     cell.fallback = true
                     cell.defaultKey = "SwipeActions"
                     return cell
                 case 5:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Provisional")
+                    cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
                     cell.fallback = true
                     cell.defaultKey = "ShowProvisional"
                     return cell
                 case 6:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Show_Ignored_Updates")
+                    cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
                     cell.fallback = true
                     cell.defaultKey = "ShowIgnoredUpdates"
                     return cell
                 case 7:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                    cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                     cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
                     return cell
                 case 8:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Auto_Complete_Queue")
+                    cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                     cell.defaultKey = "AutoComplete"
                     return cell
                 case 9:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Enable_Analytics")
+                    cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
                     cell.fallback = true
                     cell.defaultKey = "EnableAnalytics"
                     return cell
                 case 10:
                     let cell = SettingsSwitchTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Developer_Mode")
+                    cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                     cell.fallback = false
                     cell.viewControllerForPresentation = self
                     cell.defaultKey = "DeveloperMode"

@@ -71,11 +71,11 @@ class DownloadsTableViewController: SileoViewController {
     
     public func loadData() {
         let manager = DownloadManager.shared
-        upgrades = manager.upgrades
-        installations = manager.installations
-        uninstallations = manager.uninstallations
-        installdeps = manager.installdeps
-        uninstalldeps = manager.uninstalldeps
+        upgrades = manager.upgrades.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installations = manager.installations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstallations = manager.uninstallations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installdeps = manager.installdeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstalldeps = manager.uninstalldeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
         errors = manager.errors
     }
     

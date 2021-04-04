@@ -11,6 +11,7 @@ import UIKit
 class SettingsSwitchTableViewCell: UITableViewCell {
     
     private var control: UISwitch = UISwitch()
+    public var amyPogLabel: UILabel = UILabel()
     var viewControllerForPresentation: UIViewController?
     var fallback = false
     
@@ -29,13 +30,26 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         
         self.backgroundColor = .clear
         self.selectionStyle = .none
-        self.textLabel?.textColor = .tintColor
-        self.addSubview(control)
-        control.translatesAutoresizingMaskIntoConstraints = false
+        amyPogLabel.textColor = .tintColor
         control.onTintColor = .tintColor
+        amyPogLabel.adjustsFontSizeToFitWidth = true
+        self.addSubview(amyPogLabel)
+        self.addSubview(control)
+        
+        amyPogLabel.translatesAutoresizingMaskIntoConstraints = false
+        control.translatesAutoresizingMaskIntoConstraints = false
+        
         control.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        control.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
         control.addTarget(self, action: #selector(self.didChange(sender:)), for: .valueChanged)
+        
+        amyPogLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        amyPogLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+        control.leadingAnchor.constraint(equalTo: amyPogLabel.trailingAnchor, constant: 5).isActive = true
+        control.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
+        amyPogLabel.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
+        amyPogLabel.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
+        amyPogLabel.setContentCompressionResistancePriority(UILayoutPriority(749), for: .horizontal)
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
@@ -56,7 +70,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     }
     
     @objc private func updateSileoColors() {
-        textLabel?.textColor = .tintColor
+        amyPogLabel.textColor = .tintColor
         control.onTintColor = .tintColor
     }
 }
