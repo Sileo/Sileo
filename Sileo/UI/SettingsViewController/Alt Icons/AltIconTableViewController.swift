@@ -34,7 +34,7 @@ class AltIconTableViewController: UITableViewController {
         AltIcon(displayName: "Mango Crazy", author: "Alpha_Stream", key: "MangoCrazy", image: altImage("MangoCrazy")),
         AltIcon(displayName: "Cool Breeze", author: "Alpha_Stream", key: "CoolBreeze", image: altImage("CoolBreeze")),
         AltIcon(displayName: "Blue Lemonade", author: "Alpha_Stream ", key: "BlueLemonade", image: altImage("BlueLemonade")),
-        AltIcon(displayName: "Cotton Candy", author: "emiyl0", key: "CottonCandy", image: altImage("CottonCandy")),
+        AltIcon(displayName: "Cotton Candy", author: "23 Aaron", key: "CottonCandy", image: altImage("CottonCandy")),
         AltIcon(displayName: "Strawberry Sunset", author: "Korfi", key: "StrawberrySunset", image: altImage("StrawberrySunset")),
         AltIcon(displayName: "Oceanic Blue", author: "Korfi", key: "OceanicBlue", image: altImage("OceanicBlue")),
         AltIcon(displayName: "Sus", author: "emiyl0", key: "Sus", image: altImage("Sus"))
