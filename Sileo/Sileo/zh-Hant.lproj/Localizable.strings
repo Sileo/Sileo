@@ -68,7 +68,7 @@
 "Installed_Heading" = "已安裝";
 "Updates_Heading" = "更新";
 "Upgrade_All_Button" = "全部更新";
-"Package_Search.Placeholder" = "搜尋軟體包";
+"Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
 "Sort_By" = "排序";
@@ -134,32 +134,32 @@
 "Theme" = "主題";
 "Tint_Color" = "自定義顏色";
 "Reset_Tint_Color" = "重置顏色";
-"Auto_Complete_Queue" = "自動完成隊列";
-"Auto_Confirm_Upgrade_All_Shortcut" = "觸覺回饋觸控全部更新自動確認";
+"Auto_Complete_Queue" = "自動完成佇列";
+"Auto_Confirm_Upgrade_All_Shortcut" = "自動確認更新所有捷徑";
 "Enable_Analytics" = "啟用分析";
 "Swipe_Actions" = "滑動動作";
-"Show_Provisional" = "搜尋增強";
+"Show_Provisional" = "顯示 Canister 的套件";
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
 "Pog_Developer" = "您現在是開發者！";
 
-"Sileo_Light" = "Sileo淺色模式";
-"Sileo_Dark" = "Sileo深色模式";
-"Sileo_Adaptive" = "Sileo自適配";
+"Sileo_Light" = "Sileo 淺色模式";
+"Sileo_Dark" = "Sileo 深色模式";
+"Sileo_Adaptive" = "Sileo 自適應";
 "System" = "跟隨系統";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
 "Payment_Provider_Signed_In" = "登入";
-"Payment_Provider_Signed_In_With_Name" = "已作為 %@ 登入"; // %@ = user's name
+"Payment_Provider_Signed_In_With_Name" = "已登入為 %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前,您將不能下載已經購買的軟體包.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前，您將無法下載已購買的套件。";
 
-"Show_Install_Details" = "顯示詳情";
-"Hide_Install_Details" = "隱藏詳情";
+"Show_Install_Details" = "顯示詳細資料";
+"Hide_Install_Details" = "隱藏詳細資料";
 
-"After_Install_Relaunch" = "重啟 Sileo";
-"After_Install_Respring" = "重啟 SpringBoard";
+"After_Install_Relaunch" = "重新啟動 Sileo";
+"After_Install_Respring" = "重新啟動主畫面";
 "After_Install_Reboot" = "重啟設備";
 "After_Install_Relaunch_Later" = "稍後重啟 Sileo";
 "After_Install_Respring_Later" = "稍後重啟 SpringBoard";
