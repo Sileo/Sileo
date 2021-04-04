@@ -17,9 +17,9 @@
 "Invalid_URL.Title" = "無效的網址";
 
 "Download_Size_Mismatch" = "預期大小為 %@，實際大小為 %@。";
-"Download_Failing_Status_Code" = "失敗,錯誤碼 %ld";
+"Download_Failing_Status_Code" = "失敗（狀態碼：%ld）。";
 "Download_Hash_Mismatch" = "預期雜湊為 %@，實際雜湊為 %@。";
-"Untrusted_Package" = "軟體包 %@ 無法被驗證並且不可信任";
+"Untrusted_Package" = "套件 %@ 不可信任並無法被驗證";
 
 "Insecure_Paid_Download" = "下載付款授權套件的來源必須為加密網址（HTTPS）。";
 
