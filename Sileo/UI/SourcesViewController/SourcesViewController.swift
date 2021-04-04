@@ -74,10 +74,6 @@ class SourcesViewController: SileoTableViewController {
         
         self.registerForPreviewing(with: self, sourceView: self.tableView)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
-        
-        if updatingRepoList.isEmpty {
-            self.refreshSources(forceUpdate: false, forceReload: false)
-        }
     }
     
     @objc func updateSileoColors() {
@@ -151,7 +147,7 @@ class SourcesViewController: SileoTableViewController {
         item?.badgeValue = ""
         let badge = item?.view()?.value(forKey: "_badge") as? UIView ?? UIView()
         self.refreshControl?.endRefreshing()
-        let indicators = badge.subviews.filter{ $0 is UIActivityIndicatorView }
+        let indicators = badge.subviews.filter { $0 is UIActivityIndicatorView }
         for indicator in indicators {
             if let indicator = indicator as? UIActivityIndicatorView {
                 indicator.removeFromSuperview()
