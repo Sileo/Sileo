@@ -141,7 +141,7 @@
 "Show_Provisional" = "顯示 Canister 的套件";
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
-"Pog_Developer" = "您現在是開發者！";
+"Pog_Developer" = "您現在已成為開發者！";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
@@ -149,7 +149,7 @@
 "System" = "跟隨系統";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
-"Payment_Provider_Signed_In" = "登入";
+"Payment_Provider_Signed_In" = "已登入";
 "Payment_Provider_Signed_In_With_Name" = "已登入為 %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
