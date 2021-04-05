@@ -160,26 +160,26 @@
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
-"After_Install_Reboot" = "重啟設備";
-"After_Install_Relaunch_Later" = "稍後重啟 Sileo";
-"After_Install_Respring_Later" = "稍後重啟 SpringBoard";
-"After_Install_Reboot_Later" = "稍後重啟設備";
+"After_Install_Reboot" = "重新啟動裝置";
+"After_Install_Relaunch_Later" = "稍後重新啟動 Sileo";
+"After_Install_Respring_Later" = "稍後重新啟動主畫面";
+"After_Install_Reboot_Later" = "稍後重新啟動裝置";
 
 "Dangerous_Repo.Title" = "危險來源";
-"Dangerous_Repo.Body" = "您正在添加一個可能因為含有盜版行為,違法內容,病毒而被標記的來源.\n\n被標記的軟體來源可能經常發佈許多轉載的軟體包(包括許多免費和收費的軟體包).這些軟體包可能會影響到您的隱私和設備,有時可能會影響到越獄環境.我們建議您提高謹慎以遠離有害軟體包.";
-"Dangerous_Repo.Continue" = "我接受風險,繼續.";
+"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的套件）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
+"Dangerous_Repo.Continue" = "我接受風險並繼續";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
-"Dangerous_Repo.Last_Chance.Title" = "添加危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的軟體來源可能會對設備/越獄環境造成破壞性的影響.我們建議您為了設備的安全而取消操作. %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Title" = "新增危險來源？";
+"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全並返回。您確認要新增 %@ 嗎？"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
-"Export" = "導出";
-"Export_Packages" = "請問需要導出軟體包列表嗎? 這將會複製所有軟體包名稱和版本到您的剪貼板.";
-"Export_Sources" = "請問需要導出您的來源地址嗎? 這將複製所有來源地址到您的剪貼板.";
-"Export_Yes" = "好的, 導出.";
-"Export_No" = "不, 取消.";
+"Export" = "匯出";
+"Export_Packages" = "您想匯出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
+"Export_Sources" = "您想匯出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
+"Export_Yes" = "確認";
+"Export_No" = "取消";
 
 // Depcitions
-"View_Depiction" = "查看介紹";
+"View_Depiction" = "查看敘述";
