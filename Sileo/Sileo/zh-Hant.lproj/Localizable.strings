@@ -68,7 +68,7 @@
 "Installed_Heading" = "已安裝";
 "Updates_Heading" = "更新";
 "Upgrade_All_Button" = "全部更新";
-"Package_Search.Placeholder" = "搜尋軟體包";
+"Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
 "Sort_By" = "排序";
@@ -134,52 +134,52 @@
 "Theme" = "主題";
 "Tint_Color" = "自定義顏色";
 "Reset_Tint_Color" = "重置顏色";
-"Auto_Complete_Queue" = "自動完成隊列";
-"Auto_Confirm_Upgrade_All_Shortcut" = "觸覺回饋觸控全部更新自動確認";
+"Auto_Complete_Queue" = "自動完成佇列";
+"Auto_Confirm_Upgrade_All_Shortcut" = "自動確認更新所有捷徑";
 "Enable_Analytics" = "啟用分析";
 "Swipe_Actions" = "滑動動作";
-"Show_Provisional" = "搜尋增強";
+"Show_Provisional" = "顯示 Canister 的套件";
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
 "Pog_Developer" = "您現在是開發者！";
 
-"Sileo_Light" = "Sileo淺色模式";
-"Sileo_Dark" = "Sileo深色模式";
-"Sileo_Adaptive" = "Sileo自適配";
+"Sileo_Light" = "Sileo 淺色模式";
+"Sileo_Dark" = "Sileo 深色模式";
+"Sileo_Adaptive" = "Sileo 自適應";
 "System" = "跟隨系統";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
 "Payment_Provider_Signed_In" = "登入";
-"Payment_Provider_Signed_In_With_Name" = "已作為 %@ 登入"; // %@ = user's name
+"Payment_Provider_Signed_In_With_Name" = "已登入為 %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前,您將不能下載已經購買的軟體包.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前，您將無法下載已購買的套件。";
 
-"Show_Install_Details" = "顯示詳情";
-"Hide_Install_Details" = "隱藏詳情";
+"Show_Install_Details" = "顯示詳細資料";
+"Hide_Install_Details" = "隱藏詳細資料";
 
-"After_Install_Relaunch" = "重啟 Sileo";
-"After_Install_Respring" = "重啟 SpringBoard";
-"After_Install_Reboot" = "重啟設備";
-"After_Install_Relaunch_Later" = "稍後重啟 Sileo";
-"After_Install_Respring_Later" = "稍後重啟 SpringBoard";
-"After_Install_Reboot_Later" = "稍後重啟設備";
+"After_Install_Relaunch" = "重新啟動 Sileo";
+"After_Install_Respring" = "重新啟動主畫面";
+"After_Install_Reboot" = "重新啟動裝置";
+"After_Install_Relaunch_Later" = "稍後重新啟動 Sileo";
+"After_Install_Respring_Later" = "稍後重新啟動主畫面";
+"After_Install_Reboot_Later" = "稍後重新啟動裝置";
 
 "Dangerous_Repo.Title" = "危險來源";
-"Dangerous_Repo.Body" = "您正在添加一個可能因為含有盜版行為,違法內容,病毒而被標記的來源.\n\n被標記的軟體來源可能經常發佈許多轉載的軟體包(包括許多免費和收費的軟體包).這些軟體包可能會影響到您的隱私和設備,有時可能會影響到越獄環境.我們建議您提高謹慎以遠離有害軟體包.";
-"Dangerous_Repo.Continue" = "我接受風險,繼續.";
+"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的套件）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
+"Dangerous_Repo.Continue" = "我接受風險並繼續";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
-"Dangerous_Repo.Last_Chance.Title" = "添加危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的軟體來源可能會對設備/越獄環境造成破壞性的影響.我們建議您為了設備的安全而取消操作. %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Title" = "新增危險來源？";
+"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全並返回。您確認要新增 %@ 嗎？"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
-"Export" = "導出";
-"Export_Packages" = "請問需要導出軟體包列表嗎? 這將會複製所有軟體包名稱和版本到您的剪貼板.";
-"Export_Sources" = "請問需要導出您的來源地址嗎? 這將複製所有來源地址到您的剪貼板.";
-"Export_Yes" = "好的, 導出.";
-"Export_No" = "不, 取消.";
+"Export" = "匯出";
+"Export_Packages" = "您想匯出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
+"Export_Sources" = "您想匯出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
+"Export_Yes" = "確認";
+"Export_No" = "取消";
 
 // Depcitions
-"View_Depiction" = "查看介紹";
+"View_Depiction" = "查看敘述";
