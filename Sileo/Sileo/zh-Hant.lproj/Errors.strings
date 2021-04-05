@@ -26,10 +26,10 @@
 "Invalid_Payment_Provider_Response" = "付款服務提供者發出了無效的回應。";
 "No_Payment_Provider" = "此套件來源不支援 Sileo 付款。如果您曾在 Cydia Store 中購買過此套件，請連結到 Cydia Store 帳號以下載套件。";
 
-"Package_Unavailable" = "無法從已安裝的來源取得此套件。請檢查 %@ 套件來源是否可用。";
+"Package_Unavailable" = "無法從已安裝的來源取得此套件。請檢查套件來源 %@ 是否可用。";
 
 "Installation_Error.Title" = "安裝錯誤";
-"Installation_Error.Body" = "Sileo 無法取得 Root 權限。請使用 SSH 重新安裝 Sileo。";
+"Installation_Error.Body" = "Sileo 無法取得 Root 權限。請透過 SSH 重新安裝 Sileo。";
 
 "FixingDpkg.Title" = "Dpkg 被中斷";
 "FixingDpkg.Body" = "Dpkg 被中斷。我們正在嘗試修復問題，請稍候。";
