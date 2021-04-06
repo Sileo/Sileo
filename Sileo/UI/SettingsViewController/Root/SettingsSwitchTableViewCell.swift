@@ -33,8 +33,8 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         amyPogLabel.textColor = .tintColor
         control.onTintColor = .tintColor
         amyPogLabel.adjustsFontSizeToFitWidth = true
-        self.addSubview(amyPogLabel)
-        self.addSubview(control)
+        self.contentView.addSubview(control)
+        self.contentView.addSubview(amyPogLabel)
         
         amyPogLabel.translatesAutoresizingMaskIntoConstraints = false
         control.translatesAutoresizingMaskIntoConstraints = false
