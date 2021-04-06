@@ -142,6 +142,7 @@
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";
 "Developer_Mode" = "Entwicklermodus";
 "Pog_Developer" = "Du bist jetzt ein Entwickler!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
