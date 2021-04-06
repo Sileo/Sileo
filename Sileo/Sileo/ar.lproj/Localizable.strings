@@ -142,6 +142,7 @@
 "Show_Ignored_Updates" = "إظهار التحديثات المُتجاهلة";
 "Developer_Mode" = "وضع المطور";
 "Pog_Developer" = "أنت الآن مطور!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
