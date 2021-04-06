@@ -246,8 +246,7 @@ class InstallViewController: SileoViewController {
         } else if self.returnButtonAction == .reopen {
             exit(0)
         } else if self.returnButtonAction == .restart || self.returnButtonAction == .reload {
-            spawnAsRoot(args: ["/usr/bin/sbreload"])
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); }
+            spawnAsRoot(args: ["/usr/bin/sbreload \(!refreshSileo ? "" : "&& uicache -p \(Bundle.main.bundlePath)")"])
         } else if self.returnButtonAction == .reboot {
             spawnAsRoot(args: ["/usr/bin/sync"])
             spawnAsRoot(args: ["/usr/bin/ldrestart"])

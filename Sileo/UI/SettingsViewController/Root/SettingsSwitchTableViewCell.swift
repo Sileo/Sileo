@@ -58,13 +58,21 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     @objc private func didChange(sender: UISwitch!) {
         if let key = defaultKey {
-            UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil)
-            if !sender.isOn { return }
-            if key == "DeveloperMode",
-               let view = viewControllerForPresentation {
-                let alert = UIAlertController(title: String(localizationKey: "Pog_Developer"), message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
+            if key == "DeveloperMode" && sender.isOn {
+                guard let view = viewControllerForPresentation else { return }
+                let alert = UIAlertController(title: String(localizationKey: "Developer_Mode"), message: String(localizationKey: "Developer_Mode_Explain"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel) { _ in
+                    sender.isOn = false
+                })
+                alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default) { _ in
+                    UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil)
+                    let alert = UIAlertController(title: String(localizationKey: "Pog_Developer"), message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
+                    view.present(alert, animated: true)
+                })
                 view.present(alert, animated: true)
+            } else {
+                UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil)
             }
         }
     }
