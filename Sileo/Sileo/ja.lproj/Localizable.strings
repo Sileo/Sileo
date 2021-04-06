@@ -142,6 +142,7 @@
 "Show_Ignored_Updates" = "無視したアップデートを表示";
 "Developer_Mode" = "Developer Mode";
 "Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
