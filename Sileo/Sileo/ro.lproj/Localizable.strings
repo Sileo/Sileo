@@ -142,6 +142,7 @@
 "Show_Ignored_Updates" = "Arătați Actualizări Dezactivate";
 "Developer_Mode" = "Mod Dezvoltator";
 "Pog_Developer" = "Ați devenit dezvoltator!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
