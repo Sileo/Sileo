@@ -142,6 +142,7 @@
 "Show_Ignored_Updates" = "Yoksayılan Güncellemeleri Göster";
 "Developer_Mode" = "Geliştirici Modu";
 "Pog_Developer" = "Artık bir geliştiricisiniz!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
