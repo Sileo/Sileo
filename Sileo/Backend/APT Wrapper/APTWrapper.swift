@@ -554,13 +554,14 @@ class APTWrapper {
                 
                 let diff = newApps.merging(oldApps) { current, _ in current }
                 
-                for appName in diff.keys {
-                    let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
-                    NSLog("[Sileo] App Path = \(appPath.path)")
-                    if appPath.path == Bundle.main.bundlePath {
-                        refreshSileo = true
-                    } else {
-                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                DispatchQueue.global(qos: .default).async {
+                    for appName in diff.keys {
+                        let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
+                        if appPath.path == Bundle.main.bundlePath {
+                            refreshSileo = true
+                        } else {
+                            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                        }
                     }
                 }
             }
