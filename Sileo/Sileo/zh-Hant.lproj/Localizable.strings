@@ -142,7 +142,7 @@
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
 "Pog_Developer" = "您現在已成為開發者！";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Developer_Mode_Explain" = "開發者模式會停止購買應用程式介面的HTTPS請求";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
