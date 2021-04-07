@@ -142,7 +142,7 @@
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";
-"Developer_Mode_Explain" = "开发者模式会关闭付款应用程序编程接口的HTTPS请求。";
+"Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
