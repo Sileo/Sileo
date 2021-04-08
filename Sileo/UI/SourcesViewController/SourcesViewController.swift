@@ -324,7 +324,10 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func presentAddClipBoardPrompt(sources: [URL]) {
-        if sources.isEmpty { return }
+        if sources.isEmpty {
+            // I'm not quite sure how this happens, but it does sooooo
+            return self.presentAddSourceEntryField(url: nil)
+        }
         let count = sources.count
 
         let titleText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Title"), count, count)

@@ -553,19 +553,17 @@ class APTWrapper {
                 }
                 
                 let diff = newApps.merging(oldApps) { current, _ in current }
-                
-                DispatchQueue.global(qos: .default).async {
-                    for appName in diff.keys {
-                        let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
-                        if appPath.path == Bundle.main.bundlePath {
-                            refreshSileo = true
-                        } else {
+                for appName in diff.keys {
+                    let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
+                    if appPath.path == Bundle.main.bundlePath {
+                        refreshSileo = true
+                    } else {
+                        DispatchQueue.global(qos: .default).async {
                             spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
                         }
                     }
                 }
             }
-            
             spawnAsRoot(args: ["/usr/bin/apt-get", "clean"])
             completionCallback(Int(status), finish, refreshSileo)
         }

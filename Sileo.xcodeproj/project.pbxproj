@@ -93,7 +93,6 @@
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
 		E13638DE2614F5D300698D55 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E13638DD2614F5D300698D55 /* SWCompression */; };
-		E13638E32614F61F00698D55 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E22614F61F00698D55 /* Sentry */; };
 		E13638E82614F66400698D55 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E72614F66400698D55 /* Down */; };
 		E13638ED2614F69A00698D55 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E13638EC2614F69A00698D55 /* Alderis */; };
 		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
@@ -109,7 +108,6 @@
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
 		E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53492617439B00BB8A69 /* SWCompression */; };
-		E19A534C261743A000BB8A69 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534B261743A000BB8A69 /* Sentry */; };
 		E19A534E261743A300BB8A69 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534D261743A300BB8A69 /* Down */; };
 		E19A5350261743A900BB8A69 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534F261743A900BB8A69 /* Alderis */; };
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
@@ -958,7 +956,6 @@
 				E19A53402617438100BB8A69 /* Alamofire in Frameworks */,
 				E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */,
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
-				E19A534C261743A000BB8A69 /* Sentry in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
@@ -992,7 +989,6 @@
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
 				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
-				E13638E32614F61F00698D55 /* Sentry in Frameworks */,
 				E13638ED2614F69A00698D55 /* Alderis in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2239,7 +2235,6 @@
 				E19A53452617439300BB8A69 /* KeychainAccess */,
 				E19A53472617439700BB8A69 /* SwiftSoup */,
 				E19A53492617439B00BB8A69 /* SWCompression */,
-				E19A534B261743A000BB8A69 /* Sentry */,
 				E19A534D261743A300BB8A69 /* Down */,
 				E19A534F261743A900BB8A69 /* Alderis */,
 				E19A5351261743B300BB8A69 /* SwipeCellKit */,
@@ -2276,7 +2271,6 @@
 				E13638D32614F59000698D55 /* KeychainAccess */,
 				E13638D82614F5AA00698D55 /* SwiftSoup */,
 				E13638DD2614F5D300698D55 /* SWCompression */,
-				E13638E22614F61F00698D55 /* Sentry */,
 				E13638E72614F66400698D55 /* Down */,
 				E13638EC2614F69A00698D55 /* Alderis */,
 				E13638F12614F6C000698D55 /* SQLite */,
@@ -2408,7 +2402,6 @@
 				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */,
-				E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */,
 				E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
@@ -3769,14 +3762,6 @@
 				minimumVersion = 4.5.8;
 			};
 		};
-		E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.1;
-			};
-		};
 		E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnxnguyen/Down.git";
@@ -3871,11 +3856,6 @@
 			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
 		};
-		E13638E22614F61F00698D55 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		E13638E72614F66400698D55 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
@@ -3930,11 +3910,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
-		};
-		E19A534B261743A000BB8A69 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638E12614F61F00698D55 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		E19A534D261743A300BB8A69 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;

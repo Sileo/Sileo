@@ -135,10 +135,10 @@ class InstallViewController: SileoViewController {
                 PackageListManager.shared.waitForReady()
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                    
                     let rawUpdates = PackageListManager.shared.availableUpdates()
                     let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
                     UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                    
                     self.returnButtonAction = finish
                     self.refreshSileo = refresh
                     self.setProgress(1, animated: true)
@@ -146,7 +146,7 @@ class InstallViewController: SileoViewController {
                     self.progressView?.alpha = 0
                     self.updateCompleteButton()
                     self.completeButton?.alpha = 1
-                    if refresh || finish != .back {
+                    if !(!refresh && finish == .back) {
                         self.completeLaterButton?.alpha = 1
                     }
                     if UserDefaults.standard.bool(forKey: "AutoComplete") {
@@ -236,18 +236,22 @@ class InstallViewController: SileoViewController {
     }
     
     @IBAction func completeButtonTapped(_ sender: Any?) {
-        if self.returnButtonAction == .back || self.returnButtonAction == .uicache {
+        switch self.returnButtonAction {
+        case .back, .uicache:
             if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
             self.navigationController?.popViewController(animated: true)
             DownloadManager.shared.lockedForInstallation = false
             DownloadManager.shared.removeAllItems()
             DownloadManager.shared.reloadData(recheckPackages: true)
             TabBarController.singleton?.dismissPopupController()
-        } else if self.returnButtonAction == .reopen {
+        case .reopen:
             exit(0)
-        } else if self.returnButtonAction == .restart || self.returnButtonAction == .reload {
-            spawnAsRoot(args: ["/usr/bin/sbreload \(!refreshSileo ? "" : "&& uicache -p \(Bundle.main.bundlePath)")"])
-        } else if self.returnButtonAction == .reboot {
+        case .restart, .reload:
+            let args: [String]
+            if refreshSileo { args = ["/usr/bin/sbreload", "&&", "/usr/bin/uicache", "-p", "\(Bundle.main.bundlePath)"] } else {
+                args = ["/usr/bin/sbreload"] }
+            spawnAsRoot(args: args)
+        case .reboot:
             spawnAsRoot(args: ["/usr/bin/sync"])
             spawnAsRoot(args: ["/usr/bin/ldrestart"])
         }

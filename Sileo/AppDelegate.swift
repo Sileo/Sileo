@@ -9,7 +9,6 @@
 import Foundation
 import UserNotifications
 import SDWebImage
-import Sentry
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
@@ -110,42 +109,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
            let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
            let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
                 sourcesVC.refreshSources(forceUpdate: false, forceReload: false)
-        }
-        
-        if !UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) {
-            return
-        }
-        var appVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Error"
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        appVer += "-demo"
-        #else
-        if FileManager.default.fileExists(atPath: "/odyssey/jailbreakd") {
-            appVer += "-odyssey"
-        } else if FileManager.default.fileExists(atPath: "/chimera/jailbreakd") {
-            appVer += "-chimera"
-        } else if FileManager.default.fileExists(atPath: "/electra/jailbreakd") {
-            appVer += "-electra"
-        } else if FileManager.default.fileExists(atPath: "/taurine/jailbreakd") {
-            appVer += "-taurine"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") &&
-            FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer += "-odysseyra1n"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") {
-            appVer += "-libhooker"
-        } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer += "-procursus"
-        } else if FileManager.default.fileExists(atPath: "/var/checkra1n.dmg") {
-            appVer += "-checkrain"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/substrated") {
-            appVer += "-substrate"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/substituted") {
-            appVer += "-hackyA12"
-        }
-        #endif
-        SentrySDK.start { options in
-            options.dsn = "https://examplePublicKey@o0.ingest.sentry.io/0"
-            options.debug = false
-            options.releaseName = appVer
         }
     }
     

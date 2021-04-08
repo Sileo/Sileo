@@ -11,11 +11,20 @@ import Foundation
 internal typealias AmyCompletion = (_ success: Bool, _ dict: [String: Any]?) -> Void
 
 final class AmyNetworkResolver {
-    class internal func request(url: String?, method: String, _ completion: @escaping AmyCompletion) {
+    class internal func request(url: String?, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping AmyCompletion) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
-        var request = URLRequest(url: url)
+        AmyNetworkResolver.request(url: url, method: method, headers: headers) { success, dict -> Void in
+            return completion(success, dict)
+        }
+    }
+    
+    class internal func request(url: URL, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping AmyCompletion) {
+        var request = URLRequest(url: url, timeoutInterval: 30)
         request.httpMethod = method
+        for (key, value) in headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
         let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
             if let data = data {
                 do {

@@ -101,34 +101,40 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         #endif
     }
     
+    private var userAgent: String {
+        let cfVersion = String(format: "%.3f", kCFCoreFoundationVersionNumber)
+        let bundleName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] ?? ""
+        let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? ""
+        let osType = UIDevice.current.kernOSType
+        let osRelease = UIDevice.current.kernOSRelease
+        return "\(bundleName)/\(bundleVersion)/FeaturedPage CoreFoundation/\(cfVersion) \(osType)/\(osRelease)"
+    }
+    
     @objc func reloadData() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
-            
-            guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
-                return
-            }
-            if let jsonData = try? Data(contentsOf: jsonURL, options: []) {
-                if let rawDepiction = try? JSONSerialization.jsonObject(with: jsonData, options: []) {
-                    if let depiction = rawDepiction as? [String: Any] {
-                        DispatchQueue.main.async {
-                            if let minVersion = depiction["minVersion"] as? String,
-                                minVersion.compare(StoreVersion) == .orderedDescending {
-                                self.versionTooLow()
-                            }
-                            
-                            self.featuredView?.removeFromSuperview()
-                            if let featuredView = FeaturedBaseView.view(dictionary: depiction,
-                                                                        viewController: self,
-                                                                        tintColor: nil, isActionable: false) as? FeaturedBaseView {
-                                featuredView.delegate = self
-                                self.scrollView?.addSubview(featuredView)
-                                self.featuredView = featuredView
-                            }
-                            self.viewDidLayoutSubviews()
-                        }
-                    }
+        let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
+            return
+        }
+        let agent = UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) ? self.userAgent : "Opted-Out"
+        let headers: [String: String] = ["User-Agent": agent]
+        AmyNetworkResolver.request(url: jsonURL, headers: headers) { success, dict in
+            guard success,
+                  let dict = dict else { return }
+            DispatchQueue.main.async {
+                if let minVersion = dict["minVersion"] as? String,
+                    minVersion.compare(StoreVersion) == .orderedDescending {
+                    self.versionTooLow()
                 }
+                
+                self.featuredView?.removeFromSuperview()
+                if let featuredView = FeaturedBaseView.view(dictionary: dict,
+                                                            viewController: self,
+                                                            tintColor: nil, isActionable: false) as? FeaturedBaseView {
+                    featuredView.delegate = self
+                    self.scrollView?.addSubview(featuredView)
+                    self.featuredView = featuredView
+                }
+                self.viewDidLayoutSubviews()
             }
         }
     }
