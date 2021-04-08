@@ -153,7 +153,7 @@ func cloneFileAsRoot(from: URL, to: URL) {
     #endif
 }
 
-func symlinkAsRoot(from: URL, to: URL) {
+func hardLinkAsRoot(from: URL, to: URL) {
     deleteFileAsRoot(to)
     
     #if targetEnvironment(simulator) || TARGET_SANDBOX

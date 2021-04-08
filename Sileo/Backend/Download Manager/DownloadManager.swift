@@ -379,7 +379,7 @@ final class DownloadManager {
         
         if !FileManager.default.fileExists(atPath: destFileName) {
             if package.package.contains("/") {
-                symlinkAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
+                hardLinkAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
                 DownloadManager.shared.cachedFiles.append(URL(fileURLWithPath: package.package))
                 return FileManager.default.fileExists(atPath: destFileName)
             }
@@ -454,7 +454,7 @@ final class DownloadManager {
         let destFileName = "/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
-        symlinkAsRoot(from: fileURL, to: destURL)
+        hardLinkAsRoot(from: fileURL, to: destURL)
         DownloadManager.shared.cachedFiles.append(fileURL)
         #endif
         return true
