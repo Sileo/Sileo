@@ -143,11 +143,13 @@
 "Developer_Mode" = "Mod Dezvoltator";
 "Pog_Developer" = "Ați devenit dezvoltator!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Automatically Refresh Sources";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "Culoare sistem";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "Conectați-vă la Cydia Store";
 "Payment_Provider_Signed_In" = "Cont conectat";
