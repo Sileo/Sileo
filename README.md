@@ -33,7 +33,7 @@ For technical contributions, make a pull request with your changes and our team 
 3. Open `Sileo.xcodeproj` and have at it!
 
 If you have any questions, ask in the Sileo Discord server. Happy coding!
-
+ 
 #
 
 Sileo Team 2018-2021
