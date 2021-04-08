@@ -247,6 +247,9 @@ class InstallViewController: SileoViewController {
         case .reopen:
             exit(0)
         case .restart, .reload:
+            if refreshSileo {
+                spawnAsRoot(args: ["/usr/bin/uicache", "-rp", "\(Bundle.main.bundlePath)"])
+            } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
             let args: [String]
             if refreshSileo { args = ["/usr/bin/sbreload", "&&", "/usr/bin/uicache", "-p", "\(Bundle.main.bundlePath)"] } else {
                 args = ["/usr/bin/sbreload"] }

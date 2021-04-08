@@ -153,6 +153,18 @@ func cloneFileAsRoot(from: URL, to: URL) {
     #endif
 }
 
+func symlinkAsRoot(from: URL, to: URL) {
+    deleteFileAsRoot(to)
+    
+    #if targetEnvironment(simulator) || TARGET_SANDBOX
+    try? FileManager.default.createSymbolicLink(at: to, withDestinationURL: from)
+    #else
+    spawnAsRoot(args: ["/usr/bin/ls", "\(from.path)", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
+    spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
+    #endif
+}
+
 func moveFileAsRoot(from: URL, to: URL) {
     deleteFileAsRoot(to)
     

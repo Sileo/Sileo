@@ -378,7 +378,7 @@ final class DownloadManager {
         
         if !FileManager.default.fileExists(atPath: destFileName) {
             if package.package.contains("/") {
-                cloneFileAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
+                symlinkAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
                 return FileManager.default.fileExists(atPath: destFileName)
             }
             
