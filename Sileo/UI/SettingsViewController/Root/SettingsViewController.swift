@@ -347,16 +347,7 @@ extension SettingsViewController { // UITableViewDataSource
                 }
                 UIApplication.shared.open(url, options: [:])
             } else if indexPath.row == 1 { // Tint color selector
-                let colorPickerViewController = ColorPickerViewController()
-                colorPickerViewController.delegate = self
-                colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    if #available(iOS 13.0, *) {
-                        colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                    }
-                }
-                colorPickerViewController.modalPresentationStyle = .overFullScreen
-                self.parent?.present(colorPickerViewController, animated: true, completion: nil)
+                self.presentAlderis()
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
             } else if indexPath.row == 3 {
@@ -366,16 +357,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 2: // Settings section OR About section
             if self.showTranslationCreditSection() {
                 if indexPath.row == 1 { // Tint color selector
-                    let colorPickerViewController = ColorPickerViewController()
-                    colorPickerViewController.delegate = self
-                    colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        if #available(iOS 13.0, *) {
-                            colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                        }
-                    }
-                    colorPickerViewController.modalPresentationStyle = .overFullScreen
-                    self.parent?.present(colorPickerViewController, animated: true, completion: nil)
+                    self.presentAlderis()
                 } else if indexPath.row == 2 { // Tint color reset
                     SileoThemeManager.shared.resetTintColor()
                 } else if indexPath.row == 3 {
@@ -415,6 +397,28 @@ extension SettingsViewController { // UITableViewDataSource
             return String(localizationKey: "About")
         default:
             return nil
+        }
+    }
+    
+    private func presentAlderis() {
+        if #available(iOS 13, *) {
+            let colorPickerViewController = ColorPickerViewController()
+            colorPickerViewController.delegate = self
+            colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                // Ignore this warning, it's only temporary
+                if #available(iOS 13.0, *) {
+                    colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
+                }
+            }
+            colorPickerViewController.modalPresentationStyle = .overFullScreen
+            self.parent?.present(colorPickerViewController, animated: true, completion: nil)
+        } else {
+            let uiac = UIAlertController(title: "Crash Prevention",
+                                         message: "Alderis has a known bug on iOS 12 which will cause it to crash. To protect you from this it has been disabled in Sileo on iOS 12",
+                                         preferredStyle: .alert)
+            uiac.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
+            self.parent?.present(uiac, animated: true, completion: nil)
         }
     }
     
