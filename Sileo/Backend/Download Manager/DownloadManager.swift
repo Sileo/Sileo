@@ -67,6 +67,7 @@ final class DownloadManager {
     var queuedRemovals: [String] = []
     var confirmedRemovals: [String] = []
     var downloads: [String: Download] = [:]
+    var cachedFiles: [URL] = []
     
     private var queueLockCount = 0
     private var queueLock = DispatchSemaphore(value: 1)
@@ -379,6 +380,7 @@ final class DownloadManager {
         if !FileManager.default.fileExists(atPath: destFileName) {
             if package.package.contains("/") {
                 symlinkAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
+                DownloadManager.shared.cachedFiles.append(URL(fileURLWithPath: package.package))
                 return FileManager.default.fileExists(atPath: destFileName)
             }
             
@@ -452,7 +454,8 @@ final class DownloadManager {
         let destFileName = "/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
-        moveFileAsRoot(from: fileURL, to: destURL)
+        symlinkAsRoot(from: fileURL, to: destURL)
+        DownloadManager.shared.cachedFiles.append(fileURL)
         #endif
         return true
     }

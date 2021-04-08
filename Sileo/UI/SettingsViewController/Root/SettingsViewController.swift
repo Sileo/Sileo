@@ -10,9 +10,6 @@ import Foundation
 import AUPickerCell
 import Alderis
 
-let kLocalizationCreditTitleKey = "__LocalizationCredit.Title"
-let kLocalizationCreditURLKey = "__LocalizationCredit.URL"
-
 class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
@@ -60,15 +57,7 @@ class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
         super.updateSileoColors()
         tableView.reloadData()
     }
-    
-    func showTranslationCreditSection() -> Bool {
-        !(kLocalizationCreditTitleKey == String(localizationKey: kLocalizationCreditTitleKey))
-    }
-    
-    func hasTranslationCreditLink() -> Bool {
-        !(kLocalizationCreditTitleKey == String(localizationKey: kLocalizationCreditURLKey))
-    }
-    
+
     func loadProviders() {
         PaymentManager.shared.getAllPaymentProviders { providers in
             self.hasLoadedOnce = true
@@ -93,7 +82,7 @@ class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
 
 extension SettingsViewController { // UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        3 + (showTranslationCreditSection() ? 1 : 0)
+        3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,16 +90,8 @@ extension SettingsViewController { // UITableViewDataSource
         case 0: // Payment Providers section
             return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1) + 1
         case 1: // Translation Credit Section OR Settings section
-            if showTranslationCreditSection() {
-                return 1
-            }
             return 11
-        case 2: // Settings section OR About section
-            if showTranslationCreditSection() {
-                return 11
-            }
-            return 1
-        case 3: // About section
+        case 2: // About section
             return 1
         default:
             return 0
@@ -148,161 +129,75 @@ extension SettingsViewController { // UITableViewDataSource
             cell?.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell ?? UITableViewCell()
         case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                let style = UITableViewCell.CellStyle.default
-                let cell: UITableViewCell = self.reusableCell(withStyle: style, reuseIdentifier: "TranslationCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: kLocalizationCreditTitleKey)
-                let none = UITableViewCell.AccessoryType.none
-                cell.accessoryType = self.hasTranslationCreditLink() ? UITableViewCell.AccessoryType.disclosureIndicator : none
-                cell.selectionStyle = self.hasTranslationCreditLink() ? UITableViewCell.SelectionStyle.default : UITableViewCell.SelectionStyle.none
+            switch indexPath.row {
+            case 0:
+                let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
+                cell.delegate = self
+                cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
+                cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
+                cell.leftLabel.text = String(localizationKey: "Theme")
+                cell.backgroundColor = .clear
+                cell.leftLabel.textColor = .tintColor
+                cell.rightLabel.textColor = .tintColor
                 return cell
-            } else {
-                switch indexPath.row {
-                case 0:
-                    let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                    cell.delegate = self
-                    cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                    cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                    cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = .clear
-                    cell.leftLabel.textColor = .tintColor
-                    cell.rightLabel.textColor = .tintColor
-                    return cell
-                case 1:
-                    let cell = SettingsColorTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Tint_Color")
-                    return cell
-                case 2:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
-                    cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
-                    return cell
-                case 3:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
-                    cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
-                    cell.accessoryType = .disclosureIndicator
-                    return cell
-                case 4:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
-                    cell.fallback = true
-                    cell.defaultKey = "SwipeActions"
-                    return cell
-                case 5:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowProvisional"
-                    return cell
-                case 6:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowIgnoredUpdates"
-                    return cell
-                case 7:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
-                    cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-                    return cell
-                case 8:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
-                    cell.defaultKey = "AutoComplete"
-                    return cell
-                case 9:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
-                    cell.fallback = true
-                    cell.defaultKey = "EnableAnalytics"
-                    return cell
-                case 10:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
-                    cell.fallback = false
-                    cell.defaultKey = "DeveloperMode"
-                    cell.viewControllerForPresentation = self
-                    return cell
-                default:
-                    return UITableViewCell()
-                }
-            }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                switch indexPath.row {
-                case 0:
-                    let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                    cell.delegate = self
-                    cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                    cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                    cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = .clear
-                    cell.leftLabel.textColor = .tintColor
-                    cell.rightLabel.textColor = .tintColor
-                    return cell
-                case 1:
-                    let cell = SettingsColorTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Tint_Color")
-                    return cell
-                case 2:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
-                    cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
-                    return cell
-                case 3:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
-                    cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
-                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-                    return cell
-                case 4:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
-                    cell.fallback = true
-                    cell.defaultKey = "SwipeActions"
-                    return cell
-                case 5:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowProvisional"
-                    return cell
-                case 6:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
-                    cell.fallback = true
-                    cell.defaultKey = "ShowIgnoredUpdates"
-                    return cell
-                case 7:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
-                    cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-                    return cell
-                case 8:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
-                    cell.defaultKey = "AutoComplete"
-                    return cell
-                case 9:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
-                    cell.fallback = true
-                    cell.defaultKey = "EnableAnalytics"
-                    return cell
-                case 10:
-                    let cell = SettingsSwitchTableViewCell()
-                    cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
-                    cell.fallback = false
-                    cell.viewControllerForPresentation = self
-                    cell.defaultKey = "DeveloperMode"
-                    return cell
-                default:
-                    return UITableViewCell()
-                }
-            } else {
-                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
-                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            case 1:
+                let cell = SettingsColorTableViewCell()
+                cell.textLabel?.text = String(localizationKey: "Tint_Color")
                 return cell
+            case 2:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
+                return cell
+            case 3:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
+                cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            case 4:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
+                cell.fallback = true
+                cell.defaultKey = "SwipeActions"
+                return cell
+            case 5:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
+                cell.fallback = true
+                cell.defaultKey = "ShowProvisional"
+                return cell
+            case 6:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
+                cell.fallback = true
+                cell.defaultKey = "ShowIgnoredUpdates"
+                return cell
+            case 7:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
+                return cell
+            case 8:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
+                cell.defaultKey = "AutoComplete"
+                return cell
+            case 9:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
+                cell.fallback = true
+                cell.defaultKey = "EnableAnalytics"
+                return cell
+            case 10:
+                let cell = SettingsSwitchTableViewCell()
+                cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
+                cell.fallback = false
+                cell.defaultKey = "DeveloperMode"
+                cell.viewControllerForPresentation = self
+                return cell
+            default:
+                return UITableViewCell()
             }
-        case 3: // About section
+        case 2: // About section
             let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
             cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
@@ -340,13 +235,8 @@ extension SettingsViewController { // UITableViewDataSource
                 let navController: UINavigationController = UINavigationController(rootViewController: cydiaAccountViewController)
                 self.present(navController, animated: true)
             }
-        case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                guard let url = URL(string: String(localizationKey: kLocalizationCreditURLKey)) else {
-                    return
-                }
-                UIApplication.shared.open(url, options: [:])
-            } else if indexPath.row == 1 { // Tint color selector
+        case 1:
+            if indexPath.row == 1 { // Tint color selector
                 self.presentAlderis()
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
@@ -354,21 +244,7 @@ extension SettingsViewController { // UITableViewDataSource
                 let altVC = AltIconTableViewController()
                 self.navigationController?.pushViewController(altVC, animated: true)
             }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                if indexPath.row == 1 { // Tint color selector
-                    self.presentAlderis()
-                } else if indexPath.row == 2 { // Tint color reset
-                    SileoThemeManager.shared.resetTintColor()
-                } else if indexPath.row == 3 {
-                    let altVC = AltIconTableViewController()
-                    self.navigationController?.pushViewController(altVC, animated: true)
-                }
-            } else {
-                let licensesViewController: LicensesTableViewController = LicensesTableViewController()
-                self.navigationController?.pushViewController(licensesViewController, animated: true)
-            }
-        case 3: // About section
+        case 2: // About section
             let licensesViewController: LicensesTableViewController = LicensesTableViewController()
             self.navigationController?.pushViewController(licensesViewController, animated: true)
         default:
@@ -382,18 +258,8 @@ extension SettingsViewController { // UITableViewDataSource
         case 0: // Payment Providers section
             return String(localizationKey: "Settings_Payment_Provider_Heading")
         case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                    return String(localizationKey: "Settings_Translations_Heading")
-            } else {
-                return String(localizationKey: "Settings")
-            }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                return String(localizationKey: "Settings")
-            } else {
-                return String(localizationKey: "About")
-            }
-        case 3: // About section
+            return String(localizationKey: "Settings")
+        case 2: // About section
             return String(localizationKey: "About")
         default:
             return nil

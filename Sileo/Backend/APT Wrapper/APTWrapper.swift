@@ -565,6 +565,9 @@ class APTWrapper {
                 }
             }
             spawnAsRoot(args: ["/usr/bin/apt-get", "clean"])
+            for file in DownloadManager.shared.cachedFiles {
+                deleteFileAsRoot(file)
+            }
             completionCallback(Int(status), finish, refreshSileo)
         }
     }
