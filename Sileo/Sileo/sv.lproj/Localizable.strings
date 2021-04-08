@@ -143,11 +143,13 @@
 "Developer_Mode" = "Utvecklar Läge";
 "Pog_Developer" = "Du är nu en utvecklare!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Automatically Refresh Sources";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "System";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "Logga in på Cydia Store";
 "Payment_Provider_Signed_In" = "Inloggad";
