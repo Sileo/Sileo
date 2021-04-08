@@ -82,16 +82,18 @@ class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
 
 extension SettingsViewController { // UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // Payment Providers section
             return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1) + 1
-        case 1: // Translation Credit Section OR Settings section
-            return 11
-        case 2: // About section
+        case 1: // Themes
+            return 4
+        case 2:
+            return 7
+        case 3: // About section
             return 1
         default:
             return 0
@@ -153,51 +155,48 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
                 cell.accessoryType = .disclosureIndicator
                 return cell
-            case 4:
-                let cell = SettingsSwitchTableViewCell()
+            default:
+                fatalError("You fucked up")
+            }
+        case 2:
+            let cell = SettingsSwitchTableViewCell()
+            switch indexPath.row {
+            case 0:
                 cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
                 cell.fallback = true
                 cell.defaultKey = "SwipeActions"
-                return cell
-            case 5:
-                let cell = SettingsSwitchTableViewCell()
+            case 1:
                 cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
                 cell.fallback = true
                 cell.defaultKey = "ShowProvisional"
-                return cell
-            case 6:
-                let cell = SettingsSwitchTableViewCell()
+            case 2:
                 cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
                 cell.fallback = true
                 cell.defaultKey = "ShowIgnoredUpdates"
-                return cell
-            case 7:
-                let cell = SettingsSwitchTableViewCell()
-                cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
-                cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-                return cell
-            case 8:
-                let cell = SettingsSwitchTableViewCell()
+            case 3:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                 cell.defaultKey = "AutoComplete"
-                return cell
-            case 9:
-                let cell = SettingsSwitchTableViewCell()
+            case 4:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Refresh_Sources")
+                cell.fallback = true
+                cell.defaultKey = "AutoRefreshSources"
+            case 5:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
+            case 6:
                 cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
                 cell.fallback = true
                 cell.defaultKey = "EnableAnalytics"
-                return cell
-            case 10:
-                let cell = SettingsSwitchTableViewCell()
+            case 7:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
-                return cell
             default:
-                return UITableViewCell()
+                fatalError("You fucked up")
             }
-        case 2: // About section
+            return cell
+        case 3: // About section
             let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
             cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
@@ -205,6 +204,7 @@ extension SettingsViewController { // UITableViewDataSource
         default:
             return UITableViewCell()
         }
+        fatalError("This should be impossible to call")
     }
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -244,7 +244,7 @@ extension SettingsViewController { // UITableViewDataSource
                 let altVC = AltIconTableViewController()
                 self.navigationController?.pushViewController(altVC, animated: true)
             }
-        case 2: // About section
+        case 3: // About section
             let licensesViewController: LicensesTableViewController = LicensesTableViewController()
             self.navigationController?.pushViewController(licensesViewController, animated: true)
         default:
@@ -257,9 +257,11 @@ extension SettingsViewController { // UITableViewDataSource
         switch section {
         case 0: // Payment Providers section
             return String(localizationKey: "Settings_Payment_Provider_Heading")
-        case 1: // Translation Credit Section OR Settings section
+        case 1:
+            return String(localizationKey: "Theme_Settings")
+        case 2: // Translation Credit Section OR Settings section
             return String(localizationKey: "Settings")
-        case 2: // About section
+        case 3: // About section
             return String(localizationKey: "About")
         default:
             return nil

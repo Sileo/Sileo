@@ -103,12 +103,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
-        // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
-        if let tabBarController = self.window?.rootViewController as? UITabBarController,
-           let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-           let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
-           let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                sourcesVC.refreshSources(forceUpdate: false, forceReload: false)
+        if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
+            // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
+            if let tabBarController = self.window?.rootViewController as? UITabBarController,
+               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+               let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                    sourcesVC.refreshSources(forceUpdate: false, forceReload: false)
+            }
         }
     }
     

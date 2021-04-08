@@ -43,7 +43,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         control.addTarget(self, action: #selector(self.didChange(sender:)), for: .valueChanged)
         
         amyPogLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        amyPogLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+        amyPogLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         control.leadingAnchor.constraint(equalTo: amyPogLabel.trailingAnchor, constant: 5).isActive = true
         control.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
         amyPogLabel.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
