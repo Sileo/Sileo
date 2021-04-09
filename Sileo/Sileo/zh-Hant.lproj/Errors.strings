@@ -17,7 +17,7 @@
 "Invalid_URL.Title" = "無效的網址";
 
 "Download_Size_Mismatch" = "預期大小為 %@，實際大小為 %@。";
-"Download_Failing_Status_Code" = "失敗（狀態碼：%ld）。";
+"Download_Failing_Status_Code" = "失敗（狀態碼：%ld）";
 "Download_Hash_Mismatch" = "預期雜湊為 %@，實際雜湊為 %@。";
 "Untrusted_Package" = "套件 %@ 不可信任並無法被驗證";
 
