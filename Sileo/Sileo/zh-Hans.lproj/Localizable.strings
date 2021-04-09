@@ -143,13 +143,13 @@
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";
 "Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Auto_Refresh_Sources" = "自动刷新软件源";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
 "Sileo_Adaptive" = "Sileo自适配";
 "System" = "跟随系统";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "主题设置";
 
 "Cydia_Sign_In" = "登陆 Cydia Store";
 "Payment_Provider_Signed_In" = "登陆";
