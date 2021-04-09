@@ -29,7 +29,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Sources</string>
         <key>other</key>
         <string>Sources</string>
       </dict>
