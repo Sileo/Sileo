@@ -13,7 +13,7 @@
 "Close" = "Fermer";
 "Double tap to open." = "Touchez deux fois pour ouvrir.";
 "Untitled_Repo" = "Source sans-titre";
-"OK" = "OK";
+"OK" = "Ok";
 "Done" = "Terminé";
 "Done_Editing" = "Terminé";
 "More_Info" = "Plus d'information";
@@ -21,13 +21,13 @@
 "Share" = "Partager";
 "Delete" = "Supprimer";
 "Cancel" = "Annuler";
-"Acknowledge" = "Acknowledge";
+"Acknowledge" = "J'ai compris";
 "Remove" = "Supprimer";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Actualiser (arrière-plan)";
+"Background_App_Refresh_Message" = "Pour une meilleure expérience, plus rapide, il est recommandé d'activer l'actualisation en arrière-plan. Vous pouvez aussi obtenir des notifications lorsque des tweaks reçoivent une mise à jour !";
+"Upgrade_All_Shortcut_Processing_Message" = "Rafraichir les sources et mettre à jours tous les paquets...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installation";
@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
 
 "All_Categories" = "Toutes les catégories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Repos interne";
+"External_Repo" = "Repos externe";
+"Ignored Updates" = "Mises à jour ignorée";
 
 "Repos" = "Sources";
 
@@ -135,18 +135,21 @@
 "Tint_Color" = "Couleur d'accentuation";
 "Reset_Tint_Color" = "Restaurer la couleur d'accentuation";
 "Auto_Complete_Queue" = "File d'attente à saisie automatique";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmation automatique lors de la mise à jour de tous les paquets";
 "Enable_Analytics" = "Activer les données analytiques";
-"Swipe_Actions" = "Swipe Actions";
+"Swipe_Actions" = "Actions de balayage";
 "Show_Provisional" = "Montre les paquets de Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
+"Show_Ignored_Updates" = "Montrer les mises à jour ignorée";
+"Developer_Mode" = "Mode développeur";
+"Pog_Developer" = "Vous êtes maintenant un développeur!";
+"Developer_Mode_Explain" = "Le mode développeur désactive la nécessité du HTTPS pour l'API du payement.";
+"Auto_Refresh_Sources" = "Rafraichir automatiquement les sources";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
+"Sileo_Light" = "Sileo clair";
+"Sileo_Dark" = "Sileo sombre";
+"Sileo_Adaptive" = "Sileo adaptif";
 "System" = "Système";
+"Theme_Settings" = "Paramètre du thème";
 
 "Cydia_Sign_In" = "Se connecter au Cydia Store.";
 "Payment_Provider_Signed_In" = "Connecté";

@@ -142,11 +142,14 @@
 "Show_Ignored_Updates" = "Show Ignored Updates";
 "Developer_Mode" = "Developer Mode";
 "Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Automatically Refresh Sources";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
 "Sileo_Adaptive" = "Sileo Adaptive";
 "System" = "System";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "ลงชื่อเข้าใช้ Cydia Store";
 "Payment_Provider_Signed_In" = "ลงชื่อเข้าใช้";

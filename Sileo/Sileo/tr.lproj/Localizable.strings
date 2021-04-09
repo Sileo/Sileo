@@ -142,11 +142,14 @@
 "Show_Ignored_Updates" = "Yoksayılan Güncellemeleri Göster";
 "Developer_Mode" = "Geliştirici Modu";
 "Pog_Developer" = "Artık bir geliştiricisiniz!";
+"Developer_Mode_Explain" = "Geliştirici Modu, Ödeme API'sinin HTTPS gereksinimini devre dışı bırakır.";
+"Auto_Refresh_Sources" = "Automatically Refresh Sources";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
 "Sileo_Adaptive" = "Adaptif Sileo";
 "System" = "Sistem";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "Cydia Store’a Giriş Yap";
 "Payment_Provider_Signed_In" = "Giriş Yapıldı";
