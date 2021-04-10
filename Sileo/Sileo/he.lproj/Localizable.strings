@@ -21,17 +21,17 @@
 "Share" = "שיתוף";
 "Delete" = "מחק";
 "Cancel" = "ביטול";
-"Acknowledge" = "קבל";
-"Remove" = "מחיקה";
+"Acknowledge" = "אני מקבל";
+"Remove" = "הסרה";
 
 // Popup messages
-"Background_App_Refresh" = "רענון אפליקציה ברקע";
-"Background_App_Refresh_Message" = "על מנת לספק את חווית השימוש הטובה ביותר, זה מומלץ לאפשר רענון אפליקציה ברקע. בנוסף, ניתן לקבל התראות כאשר ישנם עדכונים זמינים לטוויקים שלך!";
+"Background_App_Refresh" = "רענון יישום ברקע";
+"Background_App_Refresh_Message" = "על מנת לספק את חווית השימוש הטובה ביותר, מומלץ לאפשר רענון יישום ברקע. בנוסף, ניתן לקבל התראות כאשר ישנם עדכונים זמינים לטוויקים שלך!";
 "Upgrade_All_Shortcut_Processing_Message" = "מרענן את כל המקורות ומעדכן את כל החבילות...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "מתקין";
-"Downloading_Package_Status" = "ההורדה מתבצעת";
+"Downloading_Package_Status" = "מוריד";
 "Queued_Package_Status" = "בהמתנה";
 "Ready_Status" = "מוכן";
 "Removal_Queued_Package_Status" = "בתור למחיקה";
@@ -41,17 +41,17 @@
 "Queue_Confirm_Button" = "אשר";
 "Queue_Clear_Button" = "נקה את התור";
 
-"Package_Upgrade_Action" = "עדכן";
+"Package_Upgrade_Action" = "שדרג";
 "Package_Reinstall_Action" = "התקן מחדש";
 "Package_Uninstall_Action" = "הסרה";
 "Package_Modify_Action" = "שנה";
 "Package_Get_Action" = "קבל";
 "Package_Queue_Action" = "תור";
-"Package_Cancel_Action" = "ביטול";
+"Package_Cancel_Action" = "בטל";
 "Package_Paid" = "בתשלום";
 
 "Package_Share_Action" = "שתף חבילה…";
-"Package_Developer_Find_Action" = "עוד חבילות ממפתח זה";
+"Package_Developer_Find_Action" = "עוד מאותו מפתח";
 "Package_Support_Action" = "תמיכה";
 "Package_Hold_Enable_Action" = "התעלם משדרוגים עתידיים";
 "Package_Hold_Disable_Action" = "בטל התעלמות משדרוגים";
@@ -61,7 +61,7 @@
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "התקן";
-"Queued_Uninstall_Heading" = "הסר";
+"Queued_Uninstall_Heading" = "הסרה";
 "Queued_Update_Heading" = "עדכן";
 "Download_Errors_Heading" = "שגיאות";
 
@@ -113,32 +113,32 @@
 "Package_Details_Tab" = "פרטים";
 "Package_Changelog_Tab" = "שינויים אחרונים";
 "Package_No_Description_Available" = "אין תיאור זמין עבור החבילה הזו.";
-"Package_Changelogs_Unavailable" = "לוג השינויים האחרונים איננו זמין עבור חבילה זו.";
+"Package_Changelogs_Unavailable" = "לוג השינויים האחרונים אינו זמין עבור חבילה זו.";
 
 "Installed_Package_Header" = "חבילות מותקנות";
 "Version" = "גירסא";
 "Show_Package_Contents_Button" = "הראה תוכן חבילה";
 
-"Licenses_Page_Title" = "רשיונות";
+"Licenses_Page_Title" = "רישיונות";
 "Alternate_Icon_Title" = "סמלים אלטרנטיביים";
 
 "Settings_Payment_Provider_Heading" = "שיטות תשלום";
 "Settings_Translations_Heading" = "תרגומים";
 
 "Settings_Payment_Provider.Purchases_Heading" = "רכישות";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.No_Purchases" = "אין רכישות";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
+"Settings" = "הגדרות";
+"Settings_Page_Title" = "הגדרות";
+"Dark_Mode_Toggle" = "דארק מוד";
+"Theme" = "ערכת נושא";
+"Tint_Color" = "גוון";
+"Reset_Tint_Color" = "אפס גוון";
 "Auto_Complete_Queue" = "השלמה אוטומטית של התור";
 "Auto_Confirm_Upgrade_All_Shortcut" = "אישור אוטומטי ל\"עדכן הכל\"";
 "Enable_Analytics" = "אפשר ניתוח נתונים";
 "Swipe_Actions" = "פעולות בהחלקה";
-"Show_Provisional" = "הראה חבילות מCanister";
+"Show_Provisional" = "הראה חבילות מ-Canister";
 "Show_Ignored_Updates" = "הראה שדרוגים בהתעלמות";
 "Developer_Mode" = "מצב מפתח";
 "Pog_Developer" = "אתה כעת מפתח!";
@@ -153,25 +153,25 @@
 
 "Cydia_Sign_In" = "התחבר לחנות הסידיה";
 "Payment_Provider_Signed_In" = "מחובר";
-"Payment_Provider_Signed_In_With_Name" = "התחבר בתור %@"; // %@ = user's name
+"Payment_Provider_Signed_In_With_Name" = "התחבר כ- %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "התנתק";
-"Payment_Provider_Sign_Out_Confirm.Title" = "התנתק מ%@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Title" = "התנתק מ-%@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "לא תוכל להוריד את החבילות שרכשת עד שתתחבר שוב.";
 
-"Show_Install_Details" = "הראה פרטים";
+"Show_Install_Details" = "הצג פרטים";
 "Hide_Install_Details" = "החבא פרטים";
 
 "After_Install_Relaunch" = "הפעל מחדש את סילאו";
 "After_Install_Respring" = "רענן את SpringBoard";
-"After_Install_Reboot" = "אתחל את המכשיר מחדש";
+"After_Install_Reboot" = "אתחל את המכשיר";
 "After_Install_Relaunch_Later" = "הפעל מחדש את סילאו מאוחר יותר";
 "After_Install_Respring_Later" = "רענן את SpringBoard מאוחר יותר";
-"After_Install_Reboot_Later" = "אתחל מחדש את המכשיר מאוחר יותר";
+"After_Install_Reboot_Later" = "אתחל את המכשיר מאוחר יותר";
 
 "Dangerous_Repo.Title" = "סורס מסוכן";
 "Dangerous_Repo.Body" = "זוהה ניסיון להוסיף מקור שנודע כמסוכן העלול להכיל תכנים פיראטיים או תכנים לא חוקיים וכן גם נוזקות.\n\n מקורות שסומנו כזדוניים בדרך כלל מפיצים חבילות וטוויקים שעלולים להוביל לתוצאות לא צפויות, בין אם בתצורה של חבילה בתשלום, בחינם או אף חבילות זדוניות. הוספה של מקור זה עלולה לפגוע בפרטיות המכשיר שלך וכן גם ביציבות הפריצה שלך. אנו ממליצים לנקוט אמצעי זהירות מחמירים ביותר על מנת להימנע מחבילות מזיקות אלה.";
 "Dangerous_Repo.Continue" = "אני מקבל את הסיכונים, המשך";
-"Dangerous_Repo.Cancel" = "קח אותי למקום בטוח";
+"Dangerous_Repo.Cancel" = "קח אותי בחזרה למקום בטוח";
 "Dangerous_Repo.Last_Chance.Title" = "להוסיף את המקור המזיק?";
 "Dangerous_Repo.Last_Chance.Body" = "מקורות מסוכנים עלולים להוביל להשפעות הרסניות על אופן השימוש במכשיר או בפריצה שלך. אנו ממליצים מאוד שתנהג בבטחה. האם אתה בטוח שברצונך להוסיף את %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "המשך";
@@ -179,8 +179,8 @@
 
 // All export-based strings
 "Export" = "יצוא";
-"Export_Packages" = "האם ברצונך לייצא את רשימת החבילות שלך? רשימת שמות החבילות שלך והגירסאות שלהן יועתקו.";
-"Export_Sources" = "האם ברצונך לייצא את רשימת המקורות שלך? כלל כתובות ה URL של המקורות שלך יועתקו.";
+"Export_Packages" = "האם ברצונך לייצא את רשימת החבילות שלך? רשימת שמות החבילות שלך והגירסאות שלהן יועתקו לקליפבורד שלך.";
+"Export_Sources" = "האם ברצונך לייצא את רשימת המקורות שלך? כלל כתובות ה URL של המקורות שלך יועתקו לקליפבורד שלך.";
 "Export_Yes" = "כן, העתק.";
 "Export_No" = "לא, בטל.";
 
