@@ -139,33 +139,33 @@
 "Enable_Analytics" = "אפשר ניתוח נתונים";
 "Swipe_Actions" = "פעולות בהחלקה";
 "Show_Provisional" = "הראה חבילות מCanister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Show_Ignored_Updates" = "הראה שדרוגים בהתעלמות";
+"Developer_Mode" = "מצב מפתח";
+"Pog_Developer" = "אתה כעת מפתח!";
+"Developer_Mode_Explain" = "מצב מפתח מבטל את הדרישה ל HTTPS של ממשק התשלום.";
+"Auto_Refresh_Sources" = "רענן מקורות באופן אוטומטי";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Sileo_Light" = "סילאו לייט";
+"Sileo_Dark" = "סילאו דארק";
+"Sileo_Adaptive" = "סילאו מותאם";
+"System" = "מערכת";
+"Theme_Settings" = "הגדרות ערכות נושא";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "התחבר לחנות הסידיה";
+"Payment_Provider_Signed_In" = "מחובר";
+"Payment_Provider_Signed_In_With_Name" = "התחבר בתור %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "התנתק";
+"Payment_Provider_Sign_Out_Confirm.Title" = "התנתק מ%@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "לא תוכל להוריד את החבילות שרכשת עד שתתחבר שוב.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "הראה פרטים";
+"Hide_Install_Details" = "החבא פרטים";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Relaunch" = "הפעל מחדש את סילאו";
+"After_Install_Respring" = "רענן את SpringBoard";
+"After_Install_Reboot" = "אתחל את המכשיר מחדש";
+"After_Install_Relaunch_Later" = "הפעל מחדש את סילאו מאוחר יותר";
+"After_Install_Respring_Later" = "רענן את SpringBoard מאוחר יותר";
 "After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "Dangerous Repo";
