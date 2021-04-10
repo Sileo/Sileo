@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+ */
+
+"Unknown" = "אירעה שגיאה לא ידועה.";
+"Error_Indicator" = "שגיאה %@";
+
+"No_Package.Title" = "לא ניתן למצוא את החבילה %@ במקורות שמותקנים אצלך כרגע.";
+"No_Package.Body" = "אם זה חדש, המתן שסילאו יסיים להתעדכן, ואז נסה שנית. חפש ברשת לעוד מידע ועזרה אם יש צורך.";
+
+"Invalid_URL.Title" = "כתובת לא חוקית";
+
+"Download_Size_Mismatch" = "הגודל שציפינו לו היה %@ אך התקבל הגודל %@ במקום.";
+"Download_Failing_Status_Code" = "כשלון. סטטוס השגיאה: %ld";
+"Download_Hash_Mismatch" = "ההאש שציפינו לו היה %@ אבל התקבל %@ במקום.";
+"Untrusted_Package" = "החבילה %@ לא מהימנה ולכן לא ניתן לאשר אותה";
+
+"Insecure_Paid_Download" = "חבילות בתשלום שניתנות להורדה דרך קישורים מחייבות את הקישורים להיות מאובטחים (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "ספק התשלום החזיר תשובה לא חוקית.";
+"No_Payment_Provider" = "המקור הזה לא תומך בתשלומים דרך סילאו. אם זו חבילה מסידיה שכבר רכשת בעבר, תוכל לקשר את החשבון שלך למקור על מנת שתוכל להוריד אותה.";
+
+"Package_Unavailable" = "החבילה לא זמינה מהמקורות שקיימים אצלך. אנא וודא שהמקור %@ זמין אצלך.";
+
+"Installation_Error.Title" = "שגיאה בהתקנה";
+"Installation_Error.Body" = "סילאו לא הצליח להשיג הרשאות רוט. אנא התקן מחדש את סילאו בעזרת SSH.";
+
+"FixingDpkg.Title" = "מערכת ניהול החבילות (dpkg) נתקלה בשגיאה";
+"FixingDpkg.Body" = "מערכת ניהול החבילות (dpkg) נתקלה בשגיאה. אנא המתן בזמן שאנחנו מנסים לסדר את התקלה.";
+
+"Invalid_Data" = "מידע לא תקין";
+"Try_Later" = "אנא נסה שנית מאוחר יותר.";
+
+"Sileo_Update_Required.Title" = "נדרש עדכון לסילאו";
+"Featured_Requires_Sileo_Update" = "נדרש עדכון לסילאו על מנת שיהיה ניתן לראות את לשונית המומלצים, מכיוון שעלולות להופיע בעיות בתצוגה של לשונית זו.";
+"Depiction_Requires_Sileo_Update" = "נדרש עדכון לסילאו על מנת להציג דף זה מכיוון שעלולות להופיע בעיות בתצוגה שלו.";
+
+"Form_Error.Title" = "לא היה ניתן לטעון את הטופס";
+"Form_Load_Error" = "לא היה ניתן לטעון את הטופס מהשרת.";
+"Invalid_Form_Data" = "השרת סיפק מידע לא תקין.";
+"Form_Submit_Failure" = "אירעה שגיאה מהלך שליחת הטופס: %@";
+"Form_Submit_Error.Title" = "לא ניתן לשלוח את הטופס";
+"Form_Action_Host_Mismatch" = "הקישור לפקודות הטופס של המארח לא תואמים לטופס המקור.";
+
+"Email_Unavailable.Title" = "לא ניתן לשלוח אימייל";
+"Email_Unavailable.Body" = "שירותי המייל לא זמינים.";
+
+"Settings_Payment_Provider.Profile.Title" = "לא ניתן לטעון את הפרופיל";
+
+"Provider_Auth_Fail.Title" = "לא ניתן לאמת את הספק";
+"Purchase_Initiate_Fail.Title" = "לא ניתן לבצע רכישה";
+"Purchase_Complete_Fail.Title" = "לא ניתן להשלים את פעולת הרכישה";
+"Purchase_Auth_Complete_Fail.Title" = "לא ניתן להשלים את פעולת האימות";

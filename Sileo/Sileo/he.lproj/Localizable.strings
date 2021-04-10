@@ -1,0 +1,188 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "אודות";
+"Close" = "סגור";
+"Double tap to open." = "לחץ פעמיים לפתיחה.";
+"Untitled_Repo" = "מקור ללא כותרת";
+"OK" = "אוקיי";
+"Done" = "בוצע";
+"Done_Editing" = "בוצע";
+"More_Info" = "מידע נוסף";
+"Loading" = "טוען…";
+"Share" = "שיתוף";
+"Delete" = "מחק";
+"Cancel" = "ביטול";
+"Acknowledge" = "אני מקבל";
+"Remove" = "הסרה";
+
+// Popup messages
+"Background_App_Refresh" = "רענון יישום ברקע";
+"Background_App_Refresh_Message" = "על מנת לספק את חווית השימוש הטובה ביותר, מומלץ לאפשר רענון יישום ברקע. בנוסף, ניתן לקבל התראות כאשר ישנם עדכונים זמינים לטוויקים שלך!";
+"Upgrade_All_Shortcut_Processing_Message" = "מרענן את כל המקורות ומעדכן את כל החבילות...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "מתקין";
+"Downloading_Package_Status" = "מוריד";
+"Queued_Package_Status" = "בהמתנה";
+"Ready_Status" = "מוכן";
+"Removal_Queued_Package_Status" = "בתור למחיקה";
+"Download_Starting" = "מתחיל…";
+"Download_Progress" = "%@ מתוך %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "אשר";
+"Queue_Clear_Button" = "נקה את התור";
+
+"Package_Upgrade_Action" = "שדרג";
+"Package_Reinstall_Action" = "התקן מחדש";
+"Package_Uninstall_Action" = "הסרה";
+"Package_Modify_Action" = "שנה";
+"Package_Get_Action" = "קבל";
+"Package_Queue_Action" = "תור";
+"Package_Cancel_Action" = "בטל";
+"Package_Paid" = "בתשלום";
+
+"Package_Share_Action" = "שתף חבילה…";
+"Package_Developer_Find_Action" = "עוד מאותו מפתח";
+"Package_Support_Action" = "תמיכה";
+"Package_Hold_Enable_Action" = "התעלם משדרוגים עתידיים";
+"Package_Hold_Disable_Action" = "בטל התעלמות משדרוגים";
+"Package_Wishlist_Add" = "הוסף לרשימת המעקב";
+"Package_Wishlist_Remove" = "הסר מרשימת המעקב";
+"Wishlist" = "רשימת מעקב";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "התקן";
+"Queued_Uninstall_Heading" = "הסרה";
+"Queued_Update_Heading" = "עדכן";
+"Download_Errors_Heading" = "שגיאות";
+
+"Installed_Heading" = "הותקן";
+"Updates_Heading" = "עדכונים";
+"Upgrade_All_Button" = "עדכן הכל";
+"Package_Search.Placeholder" = "חפש חבילה";
+"Sort_Name" = "שם";
+"Sort_Date" = "תאריך";
+"Sort_By" = "סדר לפי:";
+
+"Package_Unavailable" = "חבילה אינה זמינה";
+"Package_By_Author" = "%@ מאת %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "מאת %@"; // %@ = author name
+"Packages_By_Author" = "חבילות מאת %@"; // %@ = author name
+
+"Featured_Page" = "מומלצים";
+"News_Page" = "חדש";
+"Sources_Page" = "מקורות";
+"Packages_Page" = "חבילות";
+"Search_Page" = "חיפוש";
+"Refreshing_Sources_Page" = "מרענן מקורות";
+"Package_Installed_Files_Page" = "קבצים מותקנים";
+"Refresh" = "רענן";
+"Remove" = "מחיקה";
+
+"All_Packages.Title" = "כל החבילות";
+"All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
+
+"All_Categories" = "כל הקטגוריות";
+"Internal_Repo" = "מקורות פנימיים";
+"External_Repo" = "מקורות חיצוניים";
+"Ignored Updates" = "שדרוגים בהתעלמות";
+
+"Repos" = "מאגרים";
+
+"Add_Source.Title" = "הוסף מקור";
+"Add_Source.Body" = "הוסף APT URL";
+"Add_Source.Button.Add" = "הוסף מקור";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "הכנס ידנית";
+
+"Untitled_Form" = "טופס ללא כותרת";
+"Form_Submitted.Default_Title" = "הטופס נשלח";
+"Form_Submitted.Default_Body" = "הטופס נשלח בהצלחה.";
+
+"Web_Depiction_Deprecated_Warning" = "תיאורי תצוגת האינטרנט כבר אינם בשימוש. אנא פנה אל מנהל המקור בכדי שיעדכן תצוגות אלו.";
+
+"Package_Details_Tab" = "פרטים";
+"Package_Changelog_Tab" = "שינויים אחרונים";
+"Package_No_Description_Available" = "אין תיאור זמין עבור החבילה הזו.";
+"Package_Changelogs_Unavailable" = "לוג השינויים האחרונים אינו זמין עבור חבילה זו.";
+
+"Installed_Package_Header" = "חבילות מותקנות";
+"Version" = "גירסא";
+"Show_Package_Contents_Button" = "הראה תוכן חבילה";
+
+"Licenses_Page_Title" = "רישיונות";
+"Alternate_Icon_Title" = "סמלים אלטרנטיביים";
+
+"Settings_Payment_Provider_Heading" = "שיטות תשלום";
+"Settings_Translations_Heading" = "תרגומים";
+
+"Settings_Payment_Provider.Purchases_Heading" = "רכישות";
+"Settings_Payment_Provider.No_Purchases" = "אין רכישות";
+
+"Settings" = "הגדרות";
+"Settings_Page_Title" = "הגדרות";
+"Dark_Mode_Toggle" = "דארק מוד";
+"Theme" = "ערכת נושא";
+"Tint_Color" = "גוון";
+"Reset_Tint_Color" = "אפס גוון";
+"Auto_Complete_Queue" = "השלמה אוטומטית של התור";
+"Auto_Confirm_Upgrade_All_Shortcut" = "אישור אוטומטי ל\"עדכן הכל\"";
+"Enable_Analytics" = "אפשר ניתוח נתונים";
+"Swipe_Actions" = "פעולות בהחלקה";
+"Show_Provisional" = "הראה חבילות מ-Canister";
+"Show_Ignored_Updates" = "הראה שדרוגים בהתעלמות";
+"Developer_Mode" = "מצב מפתח";
+"Pog_Developer" = "אתה כעת מפתח!";
+"Developer_Mode_Explain" = "מצב מפתח מבטל את הדרישה ל HTTPS של ממשק התשלום.";
+"Auto_Refresh_Sources" = "רענן מקורות באופן אוטומטי";
+
+"Sileo_Light" = "סילאו לייט";
+"Sileo_Dark" = "סילאו דארק";
+"Sileo_Adaptive" = "סילאו מותאם";
+"System" = "מערכת";
+"Theme_Settings" = "הגדרות ערכות נושא";
+
+"Cydia_Sign_In" = "התחבר לחנות הסידיה";
+"Payment_Provider_Signed_In" = "מחובר";
+"Payment_Provider_Signed_In_With_Name" = "התחבר כ- %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "התנתק";
+"Payment_Provider_Sign_Out_Confirm.Title" = "התנתק מ-%@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "לא תוכל להוריד את החבילות שרכשת עד שתתחבר שוב.";
+
+"Show_Install_Details" = "הצג פרטים";
+"Hide_Install_Details" = "החבא פרטים";
+
+"After_Install_Relaunch" = "הפעל מחדש את סילאו";
+"After_Install_Respring" = "רענן את SpringBoard";
+"After_Install_Reboot" = "אתחל את המכשיר";
+"After_Install_Relaunch_Later" = "הפעל מחדש את סילאו מאוחר יותר";
+"After_Install_Respring_Later" = "רענן את SpringBoard מאוחר יותר";
+"After_Install_Reboot_Later" = "אתחל את המכשיר מאוחר יותר";
+
+"Dangerous_Repo.Title" = "סורס מסוכן";
+"Dangerous_Repo.Body" = "זוהה ניסיון להוסיף מקור שנודע כמסוכן העלול להכיל תכנים פיראטיים או תכנים לא חוקיים וכן גם נוזקות.\n\n מקורות שסומנו כזדוניים בדרך כלל מפיצים חבילות וטוויקים שעלולים להוביל לתוצאות לא צפויות, בין אם בתצורה של חבילה בתשלום, בחינם או אף חבילות זדוניות. הוספה של מקור זה עלולה לפגוע בפרטיות המכשיר שלך וכן גם ביציבות הפריצה שלך. אנו ממליצים לנקוט אמצעי זהירות מחמירים ביותר על מנת להימנע מחבילות מזיקות אלה.";
+"Dangerous_Repo.Continue" = "אני מקבל את הסיכונים, המשך";
+"Dangerous_Repo.Cancel" = "קח אותי בחזרה למקום בטוח";
+"Dangerous_Repo.Last_Chance.Title" = "להוסיף את המקור המזיק?";
+"Dangerous_Repo.Last_Chance.Body" = "מקורות מסוכנים עלולים להוביל להשפעות הרסניות על אופן השימוש במכשיר או בפריצה שלך. אנו ממליצים מאוד שתנהג בבטחה. האם אתה בטוח שברצונך להוסיף את %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "המשך";
+"Dangerous_Repo.Last_Chance.Cancel" = "חזור";
+
+// All export-based strings
+"Export" = "יצוא";
+"Export_Packages" = "האם ברצונך לייצא את רשימת החבילות שלך? רשימת שמות החבילות שלך והגירסאות שלהן יועתקו לקליפבורד שלך.";
+"Export_Sources" = "האם ברצונך לייצא את רשימת המקורות שלך? כלל כתובות ה URL של המקורות שלך יועתקו לקליפבורד שלך.";
+"Export_Yes" = "כן, העתק.";
+"Export_No" = "לא, בטל.";
+
+// Depcitions
+"View_Depiction" = "הצג תיאור";

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Auto_Add_Pasteboard_Sources.Title</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>הוסף אוטומטית %#@sources@</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>מקור</string>
+        <key>two</key>
+        <string>מקורות</string>
+        <key>many</key>
+        <string>מקורות</string>
+        <key>other</key>
+        <string>סורסים</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>הוסף %lu %#@sources@</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>מקור</string>
+        <key>two</key>
+        <string>מקורות</string>
+        <key>many</key>
+        <string>מקורות</string>
+        <key>other</key>
+        <string>סורסים</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>הוסף מקורות %#@urls@ שהעתקת:</string>
+      <key>urls</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>קישור</string>
+        <key>two</key>
+        <string>קישורים</string>
+        <key>many</key>
+        <string>קישורים</string>
+        <key>other</key>
+        <string>לינקים</string>
+      </dict>
+    </dict>
+    <key>Package_Queue_Count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@packages@</string>
+      <key>packages</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>one</key>
+        <string>%d חבילה</string>
+        <key>two</key>
+        <string>%d חבילות</string>
+        <key>many</key>
+        <string>%d חבילות</string>
+        <key>other</key>
+        <string>%d חבילות</string>
+      </dict>
+    </dict>
+  </dict>
+</plist>
