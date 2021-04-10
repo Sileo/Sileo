@@ -9,66 +9,66 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
-"OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"About" = "אודות";
+"Close" = "סגור";
+"Double tap to open." = "לחץ פעמיים לפתיחה.";
+"Untitled_Repo" = "מקור ללא כותרת";
+"OK" = "אוקיי";
+"Done" = "בוצע";
+"Done_Editing" = "בוצע";
+"More_Info" = "מידע נוסף";
+"Loading" = "טוען…";
+"Share" = "שיתוף";
+"Delete" = "מחק";
+"Cancel" = "ביטול";
+"Acknowledge" = "קבל";
+"Remove" = "מחיקה";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "רענון אפליקציה ברקע";
+"Background_App_Refresh_Message" = "על מנת לספק את חווית השימוש הטובה ביותר, זה מומלץ לאפשר רענון אפליקציה ברקע. בנוסף, ניתן לקבל התראות כאשר ישנם עדכונים זמינים לטוויקים שלך!";
+"Upgrade_All_Shortcut_Processing_Message" = "מרענן את כל המקורות ומעדכן את כל החבילות...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "מתקין";
+"Downloading_Package_Status" = "ההורדה מתבצעת";
+"Queued_Package_Status" = "בהמתנה";
+"Ready_Status" = "מוכן";
+"Removal_Queued_Package_Status" = "בתור למחיקה";
+"Download_Starting" = "מתחיל…";
+"Download_Progress" = "%@ מתוך %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Confirm_Button" = "אשר";
+"Queue_Clear_Button" = "נקה את התור";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "עדכן";
+"Package_Reinstall_Action" = "התקן מחדש";
+"Package_Uninstall_Action" = "הסרה";
+"Package_Modify_Action" = "שנה";
+"Package_Get_Action" = "קבל";
+"Package_Queue_Action" = "תור";
+"Package_Cancel_Action" = "ביטול";
+"Package_Paid" = "בתשלום";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "שתף חבילה…";
+"Package_Developer_Find_Action" = "עוד חבילות ממפתח זה";
+"Package_Support_Action" = "תמיכה";
+"Package_Hold_Enable_Action" = "התעלם משדרוגים עתידיים";
+"Package_Hold_Disable_Action" = "בטל התעלמות משדרוגים";
+"Package_Wishlist_Add" = "הוסף לרשימת המעקב";
+"Package_Wishlist_Remove" = "הסר מרשימת המעקב";
+"Wishlist" = "רשימת מעקב";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "התקן";
+"Queued_Uninstall_Heading" = "הסר";
+"Queued_Update_Heading" = "עדכן";
+"Download_Errors_Heading" = "שגיאות";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
+"Installed_Heading" = "הותקן";
+"Updates_Heading" = "עדכונים";
+"Upgrade_All_Button" = "עדכן הכל";
+"Package_Search.Placeholder" = "חפש חבילה";
 "Sort_Name" = "Name";
 "Sort_Date" = "Date";
 "Sort_By" = "Sort by:";
@@ -134,11 +134,11 @@
 "Theme" = "Theme";
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Enable_Analytics" = "Enable Analytics";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Auto_Complete_Queue" = "השלמה אוטומטית של התור";
+"Auto_Confirm_Upgrade_All_Shortcut" = "אישור אוטומטי ל\"עדכן הכל\"";
+"Enable_Analytics" = "אפשר ניתוח נתונים";
+"Swipe_Actions" = "פעולות בהחלקה";
+"Show_Provisional" = "הראה חבילות מCanister";
 "Show_Ignored_Updates" = "Show Ignored Updates";
 "Developer_Mode" = "Developer Mode";
 "Pog_Developer" = "You are now a developer!";
