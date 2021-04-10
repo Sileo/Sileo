@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
+"No_Category" = "(ללא קטגוריה)";
+"Tweaks" = "טוויקים";
+"Themes" = "ערכות נושא";
+"Utilities" = "כלי עזר";
+"Applications" = "אפליקציות";
+"Addons" = "תוספים";
+"Games" = "משחקים";
+"Developer" = "פיתוח";
+"Data_Storage" = "אחסון נתונים";
 "Terminal_Support" = "Terminal Support";
 "Text_Editors" = "Text Editors";
