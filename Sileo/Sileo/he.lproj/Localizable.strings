@@ -69,63 +69,63 @@
 "Updates_Heading" = "עדכונים";
 "Upgrade_All_Button" = "עדכן הכל";
 "Package_Search.Placeholder" = "חפש חבילה";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_By" = "Sort by:";
+"Sort_Name" = "שם";
+"Sort_Date" = "תאריך";
+"Sort_By" = "סדר לפי:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "חבילה אינה זמינה";
+"Package_By_Author" = "%@ מאת %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "מאת %@"; // %@ = author name
+"Packages_By_Author" = "חבילות מאת %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "מומלצים";
+"News_Page" = "חדש";
+"Sources_Page" = "מקורות";
+"Packages_Page" = "חבילות";
+"Search_Page" = "חיפוש";
+"Refreshing_Sources_Page" = "מרענן מקורות";
+"Package_Installed_Files_Page" = "קבצים מותקנים";
+"Refresh" = "רענן";
+"Remove" = "מחיקה";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "כל החבילות";
+"All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "כל הקטגוריות";
+"Internal_Repo" = "מקורות פנימיים";
+"External_Repo" = "מקורות חיצוניים";
+"Ignored Updates" = "שדרוגים בהתעלמות";
 
-"Repos" = "Repositories";
+"Repos" = "מאגרים";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "הוסף מקור";
+"Add_Source.Body" = "הוסף APT URL";
+"Add_Source.Button.Add" = "הוסף מקור";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "הכנס ידנית";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "טופס ללא כותרת";
+"Form_Submitted.Default_Title" = "הטופס נשלח";
+"Form_Submitted.Default_Body" = "הטופס נשלח בהצלחה.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "תיאורי תצוגת האינטרנט כבר אינם בשימוש. אנא פנה אל מנהל המקור בכדי שיעדכן תצוגות אלו.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "פרטים";
+"Package_Changelog_Tab" = "שינויים אחרונים";
+"Package_No_Description_Available" = "אין תיאור זמין עבור החבילה הזו.";
+"Package_Changelogs_Unavailable" = "לוג השינויים האחרונים איננו זמין עבור חבילה זו.";
 
-"Installed_Package_Header" = "Installed Package";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "חבילות מותקנות";
+"Version" = "גירסא";
+"Show_Package_Contents_Button" = "הראה תוכן חבילה";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "רשיונות";
+"Alternate_Icon_Title" = "סמלים אלטרנטיביים";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "שיטות תשלום";
+"Settings_Translations_Heading" = "תרגומים";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "רכישות";
 "Settings_Payment_Provider.No_Purchases" = "No purchases";
 
 "Settings" = "Settings";
@@ -166,23 +166,23 @@
 "After_Install_Reboot" = "אתחל את המכשיר מחדש";
 "After_Install_Relaunch_Later" = "הפעל מחדש את סילאו מאוחר יותר";
 "After_Install_Respring_Later" = "רענן את SpringBoard מאוחר יותר";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Reboot_Later" = "אתחל מחדש את המכשיר מאוחר יותר";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "סורס מסוכן";
+"Dangerous_Repo.Body" = "זוהה ניסיון להוסיף מקור שנודע כמסוכן העלול להכיל תכנים פיראטיים או תכנים לא חוקיים וכן גם נוזקות.\n\n מקורות שסומנו כזדוניים בדרך כלל מפיצים חבילות וטוויקים שעלולים להוביל לתוצאות לא צפויות, בין אם בתצורה של חבילה בתשלום, בחינם או אף חבילות זדוניות. הוספה של מקור זה עלולה לפגוע בפרטיות המכשיר שלך וכן גם ביציבות הפריצה שלך. אנו ממליצים לנקוט אמצעי זהירות מחמירים ביותר על מנת להימנע מחבילות מזיקות אלה.";
+"Dangerous_Repo.Continue" = "אני מקבל את הסיכונים, המשך";
+"Dangerous_Repo.Cancel" = "קח אותי למקום בטוח";
+"Dangerous_Repo.Last_Chance.Title" = "להוסיף את המקור המזיק?";
+"Dangerous_Repo.Last_Chance.Body" = "מקורות מסוכנים עלולים להוביל להשפעות הרסניות על אופן השימוש במכשיר או בפריצה שלך. אנו ממליצים מאוד שתנהג בבטחה. האם אתה בטוח שברצונך להוסיף את %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "המשך";
+"Dangerous_Repo.Last_Chance.Cancel" = "חזור";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "יצוא";
+"Export_Packages" = "האם ברצונך לייצא את רשימת החבילות שלך? רשימת שמות החבילות שלך והגירסאות שלהן יועתקו.";
+"Export_Sources" = "האם ברצונך לייצא את רשימת המקורות שלך? כלל כתובות ה URL של המקורות שלך יועתקו.";
+"Export_Yes" = "כן, העתק.";
+"Export_No" = "לא, בטל.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "הצג תיאור";
