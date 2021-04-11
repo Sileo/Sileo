@@ -19,12 +19,12 @@
 "Download_Size_Mismatch" = "Beklenen boyut %@, %@ ile uyuşmuyor.";
 "Download_Failing_Status_Code" = "%ld durumuyla başarısız oldu";
 "Download_Hash_Mismatch" = "Beklenen %@, %@ ile uyuşmuyor.";
-"Untrusted_Package" = "%@ paketi güvenilmez veya doğrulanamıyor";
+"Untrusted_Package" = "%@ paketi güvenilir değil ve doğrulanamıyor";
 
 "Insecure_Paid_Download" = "Ödeme onaylı paket indirme URL'leri güvenli olmalıdır (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Ödeme sağlayıcısı geçersiz bir yanıt verdi.";
-"No_Payment_Provider" = "Bu kaynak Sileo alımlarını desteklememektedir. Bu, daha önce satın almış olduğunuz bir Cydia Store paketi ise, indirmek için hesabınızı bağlayabilirsiniz.";
+"No_Payment_Provider" = "Bu kaynak Sileo ödemelerini desteklememektedir. Bu, daha önce satın almış olduğunuz bir Cydia Store paketi ise, indirmek için hesabınızı bağlayabilirsiniz.";
 
 "Package_Unavailable" = "Bu paket ekli kaynaklarınızda mevcut değil. Lütfen %@ kaynağının mevcut olduğundan emin olmak için kontrol edin.";
 
@@ -35,7 +35,7 @@
 "FixingDpkg.Body" = "Dpkg yarıda kesildi. Sorunu gidermeye çalışırken lütfen bekleyin.";
 
 "Invalid_Data" = "Geçersiz Veri";
-"Try_Later" = "Daha sonra tekrar deneyin.";
+"Try_Later" = "Lütfen daha sonra tekrar deneyin.";
 
 "Sileo_Update_Required.Title" = "Sileo Güncellemesi Gerekli";
 "Featured_Requires_Sileo_Update" = "Öne çıkan sekmeyi görüntülemek için bir Sileo güncellemesi gerekir. Öne çıkan sekme yanlış oluşturulmuş olabilir.";
