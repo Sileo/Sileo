@@ -67,7 +67,7 @@
 
 "Installed_Heading" = "Установлено";
 "Updates_Heading" = "Обновления";
-"Upgrade_All_Button" = "Обновиить все";
+"Upgrade_All_Button" = "Обновить все";
 "Package_Search.Placeholder" = "Поиск в пакетах";
 "Sort_Name" = "Имя";
 "Sort_Date" = "Дата";
@@ -143,13 +143,13 @@
 "Developer_Mode" = "Режим разработчика";
 "Pog_Developer" = "Теперь ты разработчик!";
 "Developer_Mode_Explain" = "Режим разработчика отключает требование HTTPS для платежного API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Auto_Refresh_Sources" = "Автоматически обновлять источники";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
 "Sileo_Adaptive" = "Адаптивный Sileo";
 "System" = "Система";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Настройки темы";
 
 "Cydia_Sign_In" = "Войти в Cydia Store";
 "Payment_Provider_Signed_In" = "Выполнен вход";
