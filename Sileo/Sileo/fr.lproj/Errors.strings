@@ -8,7 +8,7 @@
  LOCALISATIONS
  */
 
-"Unknown" = "Il y a eu un erreur inconnu.";
+"Unknown" = "Il y a eu une erreur inconnu.";
 "Error_Indicator" = "Erreur: %@";
 
 "No_Package.Title" = "Incapable de trouver %@ dans les sources actuellement installés";
@@ -44,7 +44,7 @@
 "Form_Error.Title" = "Incapable de charger le formulaire";
 "Form_Load_Error" = "Le formulaire n'a pas pu être rendu par le serveur.";
 "Invalid_Form_Data" = "Le serveur a rendu des données invalides.";
-"Form_Submit_Failure" = "Un erreur s'est produit en essayant de soumettre le formulaire: %@";
+"Form_Submit_Failure" = "Une erreur s'est produit en essayant de soumettre le formulaire: %@";
 "Form_Submit_Error.Title" = "Incapable de soumettre le formulaire";
 "Form_Action_Host_Mismatch" = "L'URL hôte de l'action du formulaire ne correspond pas à celle de ce même formulaire.";
 
