@@ -8,17 +8,17 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
+"Unknown" = "Đã xảy ra lỗi không xác định.";
 "Error_Indicator" = "Lỗi: %@";
 
 "No_Package.Title" = "Không thể tìm thấy gói %@ trong kho lưu trữ bạn đã cài đặt.";
 "No_Package.Body" = "Nếu là phiên bản mới, hãy đợi Sileo cập nhật xong rồi thử lại. Kiểm tra trực tuyến để được trợ giúp thêm.";
 
-"Invalid_URL.Title" = "Liên Kết Không Hợp Lệ";
+"Invalid_URL.Title" = "Liên kết không hợp lệ";
 
 "Download_Size_Mismatch" = "Kích thước mong muốn %@, thay vào đó là %@.";
 "Download_Failing_Status_Code" = "Không thành công với trạng thái %ld";
-"Download_Hash_Mismatch" = "Dự Kiến %@, thay vào đó là %@.";
+"Download_Hash_Mismatch" = "Kích thước mong muốn %@, thay vào đó là %@.";
 "Untrusted_Package" = "Gói %@ không đáng tin cậy và không thể xác minh";
 
 "Insecure_Paid_Download" = "Liên kết tải xuống gói được ủy quyền thanh toán phải an toàn (HTTPS).";
