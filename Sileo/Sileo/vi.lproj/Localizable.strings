@@ -9,7 +9,7 @@
 */
 // Common Prompts
 
-"About" = "Giới thiệu";
+"About" = "Xem Thêm";
 "Close" = "Đóng";
 "Double tap to open." = "Đúp 2 lần để mở.";
 "Untitled_Repo" = "Untitled Repo";
@@ -45,7 +45,7 @@
 "Package_Reinstall_Action" = "Cài đặt lại";
 "Package_Uninstall_Action" = "Gỡ cài đặt";
 "Package_Modify_Action" = "Sửa đổi";
-"Package_Get_Action" = "Nhận";
+"Package_Get_Action" = "Được";
 "Package_Queue_Action" = "Danh sách đợi";
 "Package_Cancel_Action" = "Huỷ";
 "Package_Paid" = "Đã thanh toán";
@@ -71,18 +71,18 @@
 "Package_Search.Placeholder" = "Tìm kiếm các Gói";
 "Sort_Name" = "Tên";
 "Sort_Date" = "Ngày";
-"Sort_By" = "Sắp xếp theo:";
+"Sort_By" = "Sắp xếp bởi:";
 
 "Package_Unavailable" = "Gói không khả dụng";
 "Package_By_Author" = "%@ bởi %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "bởi %@"; // %@ = author name
 "Packages_By_Author" = "Các gói bởi %@"; // %@ = author name
 
-"Featured_Page" = "Nổi bật";
+"Featured_Page" = "Đặc sắc";
 "News_Page" = "Mới";
 "Sources_Page" = "Nguồn";
 "Packages_Page" = "Gói";
-"Search_Page" = "Tìm kiếm";
+"Search_Page" = "Tìm Kiếm";
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
@@ -94,7 +94,7 @@
 "All_Categories" = "Tất cả danh mục";
 "Internal_Repo" = "Repos nội bộ";
 "External_Repo" = "Repos Ngoài";
-"Ignored Updates" = "Bỏ qua cập nhật";
+"Ignored Updates" = "Bỏ qua Cập nhật";
 
 "Repos" = "Kho lưu trữ";
 
@@ -108,24 +108,24 @@
 "Form_Submitted.Default_Title" = "Đã gửi biểu mẫu";
 "Form_Submitted.Default_Body" = "Biểu mẫu đã được gửi thành công.";
 
-"Web_Depiction_Deprecated_Warning" = "Mô tả chế độ xem web không được dùng nữa. Vui lòng liên hệ với người bảo trì kho lưu trữ về việc cập nhật lên mô tả gốc.";
+"Web_Depiction_Deprecated_Warning" = "Mô tả Chế độ xem web không được dùng nữa. Vui lòng liên hệ với người bảo trì kho lưu trữ về việc cập nhật lên mô tả gốc.";
 
 "Package_Details_Tab" = "Chi tiết";
-"Package_Changelog_Tab" = "Các thay đổi";
+"Package_Changelog_Tab" = "Thay đổi nhật ký";
 "Package_No_Description_Available" = "Không có mô tả có sẵn cho gói này.";
 "Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
 
 "Installed_Package_Header" = "Gói đã cài đặt";
 "Version" = "Phiên bản";
-"Show_Package_Contents_Button" = "Hiển thị nội dung gói";
+"Show_Package_Contents_Button" = "Xem Nội dung đóng gói";
 
 "Licenses_Page_Title" = "Giấy phép";
 "Alternate_Icon_Title" = "Các biểu tượng thay thế";
 
-"Settings_Payment_Provider_Heading" = "Thông tin thanh toán";
+"Settings_Payment_Provider_Heading" = "Nhà cung cấp thanh toán";
 "Settings_Translations_Heading" = "Bản dịch";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Đã mua";
+"Settings_Payment_Provider.Purchases_Heading" = "Mua hàng";
 "Settings_Payment_Provider.No_Purchases" = "Không có lịch sử mua hàng";
 
 "Settings" = "Cài đặt";
@@ -138,7 +138,7 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Tự động xác nhận nâng cấp tất cả lối tắt";
 "Enable_Analytics" = "Bật phân tích";
 "Swipe_Actions" = "Thao tác vuốt";
-"Show_Provisional" = "Hiển thị các gói hàng từ Canister";
+"Show_Provisional" = "Hiển thị các Gói hàng từ Canister";
 "Show_Ignored_Updates" = "Hiển thị các bản cập nhật bị bỏ qua";
 "Developer_Mode" = "Chế độ Nhà phát triển";
 "Pog_Developer" = "Bạn bây giờ là một nhà phát triển!";
@@ -153,7 +153,7 @@
 
 "Cydia_Sign_In" = "Đăng nhập vào Cydia Store";
 "Payment_Provider_Signed_In" = "Đã đăng nhập";
-"Payment_Provider_Signed_In_With_Name" = "Đăng ký với %@"; // %@ = user's name
+"Payment_Provider_Signed_In_With_Name" = "Đăng ký với tư cách là %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Đăng xuất";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Đăng xuất %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Bạn sẽ không thể tải xuống các gói đã mua của mình nữa cho đến khi bạn đăng nhập lại.";
@@ -162,8 +162,8 @@
 "Hide_Install_Details" = "Ẩn chi tiết";
 
 "After_Install_Relaunch" = "Khởi động lại Sileo";
-"After_Install_Respring" = "Khởi động lại SpringBoard";
-"After_Install_Reboot" = "Khởi động lại thiết bị";
+"After_Install_Respring" = "Khởi Động Lại SpringBoard";
+"After_Install_Reboot" = "Khởi động lại Thiết bị";
 "After_Install_Relaunch_Later" = "Khởi động lại Sileo sau";
 "After_Install_Respring_Later" = "Khởi động lại SpringBoard sau";
 "After_Install_Reboot_Later" = "Khởi động lại thiết bị sau";
@@ -171,9 +171,9 @@
 "Dangerous_Repo.Title" = "Repo Nguy Hiểm";
 "Dangerous_Repo.Body" = "Bạn đang cố gắng thêm một kho lưu trữ được biết là có hại vì các lý do như vi phạm bản quyền, nội dung bất hợp pháp hoặc phần mềm độc hại. \n\n Các kho lưu trữ được đánh dấu là có hại thường phân phối phần mềm với các tác dụng không mong muốn, cho dù ở dạng gói trả phí miễn phí hay dạng khác các gói độc hại. Điều này có thể ảnh hưởng lâu dài đến thiết bị và quyền riêng tư của bạn, thậm chí đôi khi ảnh hưởng đến khả năng bẻ khóa của bạn. Chúng tôi khuyên bạn nên hết sức thận trọng để tránh phần mềm có hại.";
 "Dangerous_Repo.Continue" = "Tôi chấp nhận rủi ro, tiếp tục";
-"Dangerous_Repo.Cancel" = "Đưa tôi trở lại an toàn";
+"Dangerous_Repo.Cancel" = "Đưa tôi về nơi an toàn";
 "Dangerous_Repo.Last_Chance.Title" = "Thêm Repo có hại?";
-"Dangerous_Repo.Last_Chance.Body" = "Kho lưu trữ nguy hiểm có thể có tác động tàn phá đến khả năng sử dụng thiết bị hoặc bẻ khóa của bạn. Chúng tôi thực sự khuyên bạn nên quay lại vì sự an toàn của chính mình. Bạn có chắc chắn muốn thêm %@ không?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Kho lưu trữ nguy hiểm có thể có tác động tàn phá đến khả năng sử dụng thiết bị hoặc bẻ khóa của bạn. Chúng tôi thực sự khuyên bạn nên quay lại vì sự an toàn của chính mình. Bạn có chắc chắn muốn thêm%@ không?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Tiếp tục";
 "Dangerous_Repo.Last_Chance.Cancel" = "Quay lại";
 
