@@ -9,7 +9,7 @@
 */
 // Common Prompts
 
-"About" = "Xem Thêm";
+"About" = "Giới thiệu";
 "Close" = "Đóng";
 "Double tap to open." = "Đúp 2 lần để mở.";
 "Untitled_Repo" = "Untitled Repo";
@@ -45,7 +45,7 @@
 "Package_Reinstall_Action" = "Cài đặt lại";
 "Package_Uninstall_Action" = "Gỡ cài đặt";
 "Package_Modify_Action" = "Sửa đổi";
-"Package_Get_Action" = "Được";
+"Package_Get_Action" = "Nhận";
 "Package_Queue_Action" = "Danh sách đợi";
 "Package_Cancel_Action" = "Huỷ";
 "Package_Paid" = "Đã thanh toán";
@@ -71,18 +71,18 @@
 "Package_Search.Placeholder" = "Tìm kiếm các Gói";
 "Sort_Name" = "Tên";
 "Sort_Date" = "Ngày";
-"Sort_By" = "Sắp xếp bởi:";
+"Sort_By" = "Sắp xếp theo:";
 
 "Package_Unavailable" = "Gói không khả dụng";
 "Package_By_Author" = "%@ bởi %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "bởi %@"; // %@ = author name
 "Packages_By_Author" = "Các gói bởi %@"; // %@ = author name
 
-"Featured_Page" = "Đặc sắc";
+"Featured_Page" = "Nổi bật";
 "News_Page" = "Mới";
 "Sources_Page" = "Nguồn";
 "Packages_Page" = "Gói";
-"Search_Page" = "Tìm Kiếm";
+"Search_Page" = "Tìm kiếm";
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
@@ -94,7 +94,7 @@
 "All_Categories" = "Tất cả danh mục";
 "Internal_Repo" = "Repos nội bộ";
 "External_Repo" = "Repos Ngoài";
-"Ignored Updates" = "Bỏ qua Cập nhật";
+"Ignored Updates" = "Bỏ qua cập nhật";
 
 "Repos" = "Kho lưu trữ";
 
@@ -104,14 +104,14 @@
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Nhập thủ công";
 
-"Untitled_Form" = "Biểu mẫu không có tiêu đề";
+"Untitled_Form" = "Không có tiêu đề";
 "Form_Submitted.Default_Title" = "Đã gửi biểu mẫu";
 "Form_Submitted.Default_Body" = "Biểu mẫu đã được gửi thành công.";
 
-"Web_Depiction_Deprecated_Warning" = "Mô tả Chế độ xem web không được dùng nữa. Vui lòng liên hệ với người bảo trì kho lưu trữ về việc cập nhật lên mô tả gốc.";
+"Web_Depiction_Deprecated_Warning" = "Mô tả chế độ xem web không được dùng nữa. Vui lòng liên hệ với người bảo trì kho lưu trữ về việc cập nhật lên mô tả gốc.";
 
 "Package_Details_Tab" = "Chi tiết";
-"Package_Changelog_Tab" = "Thay đổi nhật ký";
+"Package_Changelog_Tab" = "Các thay đổi";
 "Package_No_Description_Available" = "Không có mô tả có sẵn cho gói này.";
 "Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
 
