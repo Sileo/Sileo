@@ -11,7 +11,7 @@
 "Unknown" = "Đã xảy ra lỗi không xác định.";
 "Error_Indicator" = "Lỗi: %@";
 
-"No_Package.Title" = "Không thể tìm thấy gói %@ trong kho lưu trữ bạn đã cài đặt.";
+"No_Package.Title" = "Không thể tìm thấy gói %@ trong kho lưu trữ đã cài đặt.";
 "No_Package.Body" = "Nếu là phiên bản mới, hãy đợi Sileo cập nhật xong rồi thử lại. Kiểm tra trực tuyến để được trợ giúp thêm.";
 
 "Invalid_URL.Title" = "Liên kết không hợp lệ";
