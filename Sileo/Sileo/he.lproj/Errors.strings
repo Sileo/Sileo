@@ -17,7 +17,7 @@
 "Invalid_URL.Title" = "כתובת לא חוקית";
 
 "Download_Size_Mismatch" = "הגודל שציפינו לו היה %@ אך התקבל הגודל %@ במקום.";
-"Download_Failing_Status_Code" = "כשלון. סטטוס השגיאה: %ld";
+"Download_Failing_Status_Code" = "נכשל, סטטוס השגיאה: %ld";
 "Download_Hash_Mismatch" = "ההאש שציפינו לו היה %@ אבל התקבל %@ במקום.";
 "Untrusted_Package" = "החבילה %@ לא מהימנה ולכן לא ניתן לאשר אותה";
 
