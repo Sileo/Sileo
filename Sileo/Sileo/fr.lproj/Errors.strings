@@ -21,9 +21,9 @@
 "Download_Hash_Mismatch" = "Hachage attendu était %@, reçu %@ au lieu.";
 "Untrusted_Package" = "Le paquet %@ ne peut pas être vérifié.";
 
-"Insecure_Paid_Download" = "L'addresse de téléchargement pour un paquet ayant authorisé les paiements doit être sécurisé (HTTPS).";
+"Insecure_Paid_Download" = "Les adresses de téléchargement pour les paquets payants doivent être sécurisées (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "Le fournisseur de service de paiement a rendu une réponse non-valide.";
+"Invalid_Payment_Provider_Response" = "Le fournisseur de paiement a délivré une réponse invalide.";
 "No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez attacher votre compte pour le télécharger.";
 
 "Package_Unavailable" = "Ce paquet n'est pas disponible dans vos sources installés. Veuillez vérifier que la source %@ est disponible.";
