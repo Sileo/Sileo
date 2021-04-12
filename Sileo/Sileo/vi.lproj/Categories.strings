@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
+"No_Category" = "Không có phân loại";
+"Tweaks" = "Tinh chỉnh";
+"Themes" = "Chủ đề";
+"Utilities" = "Tiện ích";
+"Applications" = "Các ứng dụng";
 "Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"Games" = "Trò chơi";
+"Developer" = "Nhà phát triển";
+"Data_Storage" = "Lưu trữ dữ liệu";
+"Terminal_Support" = "Hỗ trợ thiết bị đầu cuối";
+"Text_Editors" = "Chỉnh sửa văn bản";
