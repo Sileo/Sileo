@@ -25,7 +25,7 @@
 "Remove" = "Remover";
 
 // Popup messages
-"Background_App_Refresh" = "Atualização de aplicativo em segundo plano";
+"Background_App_Refresh" = "Atualização do aplicativo em segundo plano";
 "Background_App_Refresh_Message" = "Para obter a melhor e mais rápida experiência, é recomendável habilitar a atualização do aplicativo em segundo plano. Você também pode receber notificações quando seus tweaks forem atualizados!";
 "Upgrade_All_Shortcut_Processing_Message" = "Atualizando todas as fontes e pacotes...";
 
@@ -165,7 +165,7 @@
 "After_Install_Respring" = "Reiniciar SpringBoard";
 "After_Install_Reboot" = "Reiniciar Dispositivo";
 "After_Install_Relaunch_Later" = "Reiniciar Sileo depois";
-"After_Install_Respring_Later" = "Reiniciar o SpringBoard depois";
+"After_Install_Respring_Later" = "Reiniciar SpringBoard depois";
 "After_Install_Reboot_Later" = "Reiniciar dispositivo depois";
 
 "Dangerous_Repo.Title" = "Repo Perigosa";
