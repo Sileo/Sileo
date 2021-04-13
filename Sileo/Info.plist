@@ -289,7 +289,6 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>sileo</string>
-				<string>cydia</string>
 			</array>
 		</dict>
 	</array>
