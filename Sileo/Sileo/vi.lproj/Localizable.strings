@@ -45,7 +45,7 @@
 "Package_Reinstall_Action" = "Cài đặt lại";
 "Package_Uninstall_Action" = "Gỡ cài đặt";
 "Package_Modify_Action" = "Sửa đổi";
-"Package_Get_Action" = "Được";
+"Package_Get_Action" = "Nhận";
 "Package_Queue_Action" = "Danh sách đợi";
 "Package_Cancel_Action" = "Huỷ";
 "Package_Paid" = "Đã thanh toán";
