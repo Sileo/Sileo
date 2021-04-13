@@ -21,13 +21,13 @@
 "Share" = "Partilhar";
 "Delete" = "Apagar";
 "Cancel" = "Cancelar";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Reconhecer";
+"Remove" = "Remover";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Atualização do aplicativo em segundo plano";
+"Background_App_Refresh_Message" = "Para obter a melhor e mais rápida experiência, é recomendável habilitar a atualização do aplicativo em segundo plano. Você também pode receber notificações quando seus tweaks forem atualizados!";
+"Upgrade_All_Shortcut_Processing_Message" = "Atualizando todas as fontes e pacotes...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "A instalar";
@@ -48,7 +48,7 @@
 "Package_Get_Action" = "Obter";
 "Package_Queue_Action" = "Fila";
 "Package_Cancel_Action" = "Cancelar";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Pago";
 
 "Package_Share_Action" = "Partilhar pacote…";
 "Package_Developer_Find_Action" = "Mais por este desenvolvedor";
@@ -85,16 +85,16 @@
 "Search_Page" = "Procura";
 "Refreshing_Sources_Page" = "A atualizar Fontes";
 "Package_Installed_Files_Page" = "Ficheiros instalados";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Atualizar";
+"Remove" = "Remover";
 
 "All_Packages.Title" = "Todos os pacotes";
 "All_Packages.Cell_Subtitle" = "Ver todos os pacotes das suas fontes";
 
 "All_Categories" = "Todas as categorias";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Repos Internas";
+"External_Repo" = "Repos externas";
+"Ignored Updates" = "Atualizações Ignoradas";
 
 "Repos" = "Repositorios";
 
@@ -120,7 +120,7 @@
 "Show_Package_Contents_Button" = "Mostrar conteúdo do pacote";
 
 "Licenses_Page_Title" = "Licenças";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Ícones Alternativos";
 
 "Settings_Payment_Provider_Heading" = "Fornecedores de Pagamento";
 "Settings_Translations_Heading" = "Traduções";
@@ -135,21 +135,21 @@
 "Tint_Color" = "Tom das cores";
 "Reset_Tint_Color" = "Repor tom das cores";
 "Auto_Complete_Queue" = "Completar fila automaticamente";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmação automática de atualização de todos os atalhos";
 "Enable_Analytics" = "Permitir recolha de dados analíticos";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Swipe_Actions" = "Ações ao deslizar";
+"Show_Provisional" = "Mostrar pacotes do Canister";
+"Show_Ignored_Updates" = "Mostrar atualizações ignoradas";
+"Developer_Mode" = "Modo de desenvolvedor";
+"Pog_Developer" = "Agora você é um desenvolvedor!";
+"Developer_Mode_Explain" = "O modo de desenvolvedor desativa o requisito HTTPS da API de pagamento.";
+"Auto_Refresh_Sources" = "Atualizar fontes automaticamente";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
 "Sileo_Adaptive" = "Sileo Adaptativo";
 "System" = "Sistema";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Configurações de tema";
 
 "Cydia_Sign_In" = "Entrar na loja da Cydia";
 "Payment_Provider_Signed_In" = "Sessão iniciada";
@@ -164,9 +164,9 @@
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
 "After_Install_Reboot" = "Reiniciar Dispositivo";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Reiniciar Sileo depois";
+"After_Install_Respring_Later" = "Reiniciar SpringBoard depois";
+"After_Install_Reboot_Later" = "Reiniciar dispositivo depois";
 
 "Dangerous_Repo.Title" = "Repo Perigosa";
 "Dangerous_Repo.Body" = "Está a tentar adicionar um repositório que é conhecido por ser nocivo por razões como pirataria, conteúdo ilegal, ou malware.\n\nRepositorios marcados como nocivos muitas vezes distribuem software com efeitos inesperados, seja sob a forma de pacotes pagos gratuitamente ou outros pacotes maliciosos. Isto pode ter efeitos duradouros no seu dispositivo e privacidade, chegando ao ponto de algumas vezes afetar a sua habilidade de fazer jailbreak. É recomendado ter extremo cuidado para evitar software malicioso.";
