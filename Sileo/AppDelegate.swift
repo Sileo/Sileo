@@ -246,29 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
-        if url.scheme == "cydia" && url.absoluteString.count >= 55 {
-            let fullURL = url.absoluteString
-            let itemsSource = fullURL.components(separatedBy: "source=")
-            if itemsSource.count < 2 {
-                return false
-            }
-            
-            guard let parsedURLStr = itemsSource[1].removingPercentEncoding else {
-                return false
-            }
-            
-            let parsedURL = URL(string: parsedURLStr)
-            if !url.absoluteString.contains("package=") {
-                if let tabBarController = self.window?.rootViewController as? UITabBarController,
-                    let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-                      let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
-                      tabBarController.selectedViewController = sourcesSVC
-                      if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                        sourcesVC.presentAddSourceEntryField(url: parsedURL)
-                      }
-                }
-            }
-        } else if url.host == "source" && url.scheme == "sileo" {
+        if url.host == "source" && url.scheme == "sileo" {
             guard let tabBarController = self.window?.rootViewController as? UITabBarController,
                 let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
                 let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
