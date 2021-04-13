@@ -72,24 +72,6 @@ class URLManager {
             } else if url.host == nil {
                 return nil
             }
-        } else if url.scheme == "cydia" {
-            if url.absoluteString.contains("package=") {
-                let preFullURL = url.absoluteString
-                let itemsPackage = preFullURL.components(separatedBy: "package=")
-                if let package = PackageListManager.shared.newestPackage(identifier: itemsPackage[1]) {
-                    let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
-                    packageVC.package = package
-                    return isExternalOpen ? UINavigationController(rootViewController: packageVC) : packageVC
-                } else {
-                    presentModally = true
-                    let alertController = UIAlertController(title: String(format: String(localizationKey: "No_Package.Title",
-                                                                                         type: .error), itemsPackage[1]),
-                                                            message: String(localizationKey: "No_Package.Body", type: .error),
-                                                            preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
-                    return alertController
-                }
-            }
         }
         presentModally = true
         let alertController = UIAlertController(title: String(localizationKey: "Invalid_URL.Title", type: .error),
