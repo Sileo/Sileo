@@ -17,43 +17,43 @@
 "Invalid_URL.Title" = "Érvénytelen URL";
 
 "Download_Size_Mismatch" = "Várt méret: %@, kapott méret: %@.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Failing_Status_Code" = "Sikertelen letöltés (Hibakód: %ld)";
+"Download_Hash_Mismatch" = "Várt hash: %@, kapott hash: %@.";
+"Untrusted_Package" = "A(z) %@ csomag nem megbízható, nem lehet ellenőrizni";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "A fizetős csomagok letöltési linkjeinek biztonságosnak kell lenniük (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "A fizetési szolgáltató érvénytelen választ adott.";
+"No_Payment_Provider" = "Ez a csomagtár nem támogat Sileo-n keresztüli vásárlásokat. Ha ez egy Cydia Store csomag, amit már megvettél, összekapcsolhatod a fiókod a letöltéséhez.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Ez a csomag nem elérhető a telepített forrásaidból. Ellenőrizd, hogy a(z) %@ csomagtár elérhető-e.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "Telepítési hiba";
+"Installation_Error.Body" = "A Sileo nem tudott root jogosultságot szerezni. Kérlek telepítsd újra a Sileo-t SSH-n keresztül.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg megszakítva";
+"FixingDpkg.Body" = "A dpkg meg lett szakítva. Kérlek várj, amíg megpróbáljuk javítani a problémát.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Érvénytelen adat";
+"Try_Later" = "Kérlek próbáld újra később.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Sileo-frissítés szükséges";
+"Featured_Requires_Sileo_Update" = "A Sileo-t frissíteni kell a kiemelt fül megtekintéséhez, különben hibásan jelenhet meg.";
+"Depiction_Requires_Sileo_Update" = "A Sileo-t frissíteni kell az oldal megtekintéséhez, különben hibásan jelenhet meg.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Error.Title" = "Űrlap betöltése sikertelen";
+"Form_Load_Error" = "Nem sikerült betölteni a szerverről az űrlapot.";
+"Invalid_Form_Data" = "A szerver érvénytelen űrlapadatokat adott vissza.";
+"Form_Submit_Failure" = "Hiba történt az űrlap beküldése közben: %@";
+"Form_Submit_Error.Title" = "Űrlap beküldése sikertelen";
+"Form_Action_Host_Mismatch" = "A form action URL hosztja nem egyezik az űrlap origin hosztjával.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "Email küldése sikertelen";
+"Email_Unavailable.Body" = "Az email-szolgáltatások nem elérhetőek.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "Profil betöltése sikertelen";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "Szolgáltató hitelesítése sikertelen";
+"Purchase_Initiate_Fail.Title" = "Vásárlás kezdeményezése sikertelen";
+"Purchase_Complete_Fail.Title" = "Vásárlás befejezése sikertelen";
+"Purchase_Auth_Complete_Fail.Title" = "Hitelesítés befejezése sikertelen";
