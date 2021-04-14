@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bekräfta Automatiskt Uppgradera Allt Genväg";
 "Enable_Analytics" = "Aktivera Analyser";
 "Swipe_Actions" = "Svepåtgärder";
-"Show_Provisional" = "Visa Paket från Canister";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Visa Ignorerade Uppdateringar";
 "Developer_Mode" = "Utvecklar Läge";
 "Pog_Developer" = "Du är nu en utvecklare!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
