@@ -92,9 +92,9 @@
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
 
 "All_Categories" = "Alle kategorier";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Interne kilder";
+"External_Repo" = "Eksterne kilder";
+"Ignored Updates" = "Ignorerte oppdateringer";
 
 "Repos" = "Kilder";
 
@@ -139,17 +139,17 @@
 "Enable_Analytics" = "Aktiver analysedata";
 "Swipe_Actions" = "Sveipe-handlinger";
 "Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"Show_Ignored_Updates" = "Vis ignorerte oppdateringer";
+"Developer_Mode" = "Utviklermodus";
+"Pog_Developer" = "Du er nå en utvikler!";
+"Developer_Mode_Explain" = "Utviklermodus deaktiverer HTTPS-kravet til betalings-APIet.";
+"Auto_Refresh_Sources" = "Automatisk oppdatering av kilder";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
 "Sileo_Adaptive" = "Sileo adaptiv";
 "System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Temainnstillinger";
 
 "Cydia_Sign_In" = "Logg på Cydia Store";
 "Payment_Provider_Signed_In" = "Innlogget";
