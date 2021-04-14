@@ -138,7 +138,7 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisk Bekreft Oppgrader Alle Snarvei";
 "Enable_Analytics" = "Aktiver analysedata";
 "Swipe_Actions" = "Sveipe-handlinger";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Vis pakker fra Canister";
 "Show_Ignored_Updates" = "Vis ignorerte oppdateringer";
 "Developer_Mode" = "Utviklermodus";
 "Pog_Developer" = "Du er nå en utvikler!";
