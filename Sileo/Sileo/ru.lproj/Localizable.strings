@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Автоматическое подтверждение обновления всех ярлыков";
 "Enable_Analytics" = "Включить аналитику";
 "Swipe_Actions" = "Смахнуть";
-"Show_Provisional" = "Показать предварительный пакет";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Показать игнорируемые обновления";
 "Developer_Mode" = "Режим разработчика";
 "Pog_Developer" = "Теперь ты разработчик!";
 "Developer_Mode_Explain" = "Режим разработчика отключает требование HTTPS для платежного API.";
-"Auto_Refresh_Sources" = "Автоматически обновлять источники";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
