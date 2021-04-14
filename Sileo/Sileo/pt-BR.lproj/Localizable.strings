@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmação automática de atualização de todos os atalhos";
 "Enable_Analytics" = "Permitir recolha de dados analíticos";
 "Swipe_Actions" = "Ações ao deslizar";
-"Show_Provisional" = "Mostrar pacotes do Canister";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Mostrar atualizações ignoradas";
 "Developer_Mode" = "Modo de desenvolvedor";
 "Pog_Developer" = "Agora você é um desenvolvedor!";
 "Developer_Mode_Explain" = "O modo de desenvolvedor desativa o requisito HTTPS da API de pagamento.";
-"Auto_Refresh_Sources" = "Atualizar fontes automaticamente";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
