@@ -156,7 +156,7 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.accessoryType = .disclosureIndicator
                 return cell
             default:
-                fatalError("You fucked up")
+                fatalError("You done goofed")
             }
         case 2:
             let cell = SettingsSwitchTableViewCell()
@@ -174,12 +174,12 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = true
                 cell.defaultKey = "ShowIgnoredUpdates"
             case 3:
-                cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
-                cell.defaultKey = "AutoComplete"
-            case 4:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Refresh_Sources")
                 cell.fallback = true
                 cell.defaultKey = "AutoRefreshSources"
+            case 4:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
+                cell.defaultKey = "AutoComplete"
             case 5:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
@@ -193,7 +193,7 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
             default:
-                fatalError("You fucked up")
+                fatalError("You done goofed")
             }
             return cell
         case 3: // About section
