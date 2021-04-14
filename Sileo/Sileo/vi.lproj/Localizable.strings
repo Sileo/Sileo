@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Tự động xác nhận nâng cấp tất cả lối tắt";
 "Enable_Analytics" = "Bật phân tích";
 "Swipe_Actions" = "Thao tác vuốt";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Hiển thị các Gói hàng từ Canister";
 "Show_Ignored_Updates" = "Hiển thị các bản cập nhật bị bỏ qua";
 "Developer_Mode" = "Chế độ Nhà phát triển";
 "Pog_Developer" = "Bạn bây giờ là một nhà phát triển!";
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"Auto_Refresh_Sources" = "Tự động làm mới nguồn";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
