@@ -204,7 +204,6 @@ extension SettingsViewController { // UITableViewDataSource
         default:
             return UITableViewCell()
         }
-        fatalError("This should be impossible to call")
     }
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -275,7 +274,7 @@ extension SettingsViewController { // UITableViewDataSource
             colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
             if UIDevice.current.userInterfaceIdiom == .pad {
                 // Ignore this warning, it's only temporary
-                if #available(iOS 13.0, *) {
+                if #available(iOS 13, *) {
                     colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
                 }
             }
