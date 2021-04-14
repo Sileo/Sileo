@@ -8,15 +8,15 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "Ismeretlen hiba történt.";
+"Error_Indicator" = "Hiba: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "Nem található a(z) %@ csomag a jelenleg telepített csomagtárolókban.";
+"No_Package.Body" = "Ha új, várd meg, amíg a Sileo befejezi a frissítést, és próbáld újra. Az interneten keress további segítséget.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Érvénytelen URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
+"Download_Size_Mismatch" = "Várt méret: %@, kapott méret: %@.";
 "Download_Failing_Status_Code" = "Failed with status %ld";
 "Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
 "Untrusted_Package" = "Package %@ is untrusted and can not be verified";
