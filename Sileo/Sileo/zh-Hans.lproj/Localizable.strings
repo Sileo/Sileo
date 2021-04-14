@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Enable_Analytics" = "启用分析";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "搜索增强";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";
 "Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
-"Auto_Refresh_Sources" = "自动刷新软件源";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
