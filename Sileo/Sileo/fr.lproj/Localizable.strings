@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmation automatique lors de la mise à jour de tous les paquets";
 "Enable_Analytics" = "Activer les données analytiques";
 "Swipe_Actions" = "Actions de balayage";
-"Show_Provisional" = "Afficher les paquets trouvés sur Canister";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Montrer les mises à jour ignorée";
 "Developer_Mode" = "Mode développeur";
 "Pog_Developer" = "Vous êtes maintenant un développeur!";
 "Developer_Mode_Explain" = "Le mode développeur désactive la nécessité de l’HTTPS pour l'API de payement.";
-"Auto_Refresh_Sources" = "Rafraîchir les sources automatiquement";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Clair";
 "Sileo_Dark" = "Sombre";
