@@ -7,36 +7,36 @@ cr="\n"
 # Elucubratus Patches Begin
 if [ -s $sourcesDir/cydia.list ] && grep -Fxq "deb https://apt.bingner.com/ ./" $sourcesDir/cydia.list;
 then
-        sourcesDir="/etc/apt/sileo.list.d"
-        if ! [ -s $sourcesDir ];
-        then
-                mkdir -p $sourcesDir
-        fi
+		sourcesDir="/etc/apt/sileo.list.d"
+		if ! [ -s $sourcesDir ];
+		then
+				mkdir -p $sourcesDir
+		fi
 
-        if ! [ -s $sourcesDir/elucubratus.sources ];
-        then
-                echo "Installed Bingner/Elucubratus Repo"
-                echo -e "" > $sourcesDir/elucubratus.sources
-                sed -i.bak '1s;^;Types: deb\
+		if ! [ -s $sourcesDir/elucubratus.sources ];
+		then
+				echo "Installed Bingner/Elucubratus Repo"
+				echo -e "" > $sourcesDir/elucubratus.sources
+				sed -i.bak '1s;^;Types: deb\
 URIs: https://apt.bingner.com/\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/elucubratus.sources
-        fi
+		fi
 fi
 
 touch $sourcesDir/sileo.sources
 # Elucubratus Patches End
 
 if ! [ -s $sourcesDir/sileo.sources ]; then
-        echo -e "" > $sourcesDir/sileo.sources
+		echo -e "" > $sourcesDir/sileo.sources
 fi
 
 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
 then
-        echo "Installed Chariz Repo"
-        sed -i.bak '1s;^;Types: deb\
+		echo "Installed Chariz Repo"
+		sed -i.bak '1s;^;Types: deb\
 URIs: https://repo.chariz.com/\
 Suites: ./\
 Components:\
@@ -46,8 +46,8 @@ fi
 
 if ! grep -Fxq "URIs: https://repo.dynastic.co/" $sourcesDir/sileo.sources ;
 then
-        echo "Installed Dynastic Repo"
-        sed -i.bak '1s;^;Types: deb\
+		echo "Installed Dynastic Repo"
+		sed -i.bak '1s;^;Types: deb\
 URIs: https://repo.dynastic.co/\
 Suites: ./\
 Components:\
@@ -57,8 +57,8 @@ fi
 
 if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
 then
-        echo "Installed Packix Repo"
-        sed -i.bak '1s;^;Types: deb\
+		echo "Installed Packix Repo"
+		sed -i.bak '1s;^;Types: deb\
 URIs: https://repo.packix.com/\
 Suites: ./\
 Components:\
@@ -68,8 +68,8 @@ fi
 
 if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
 then
-        echo "Installed BigBoss Repo"
-        sed -i.bak '1s;^;Types: deb\
+		echo "Installed BigBoss Repo"
+		sed -i.bak '1s;^;Types: deb\
 URIs: http://apt.thebigboss.org/repofiles/cydia/\
 Suites: stable\
 Components: main\
@@ -92,21 +92,34 @@ rm -f $sourcesDir/sileo.sources.bak 2> /dev/null || true
 rm -f $sourcesDir/sileo-base.sources.bak 2> /dev/null || true
 
 function finish() {
-        f="${1}"
+		f="${1}"
 
-        # No control fd: bail out
-        [[ -z "${f}" || -z "${SILEO}" ]] && return
-        sileo=(${SILEO})
+		# No control fd: bail out
+		[[ -z "${f}" || -z "${SILEO}" ]] && return
+		sileo=(${SILEO})
 
-        # Sileo control fd version < 1: bail out
-        [[ ${sileo[1]} -ge 1 ]] || return
+		# Sileo control fd version < 1: bail out
+		[[ ${sileo[1]} -ge 1 ]] || return
 
-        echo "finish:${f}" >&${sileo[0]}
+		echo "finish:${f}" >&${sileo[0]}
 }
 
-finish uicache
+if [[ "$1" == triggered ]];
+then
+	if [[ -z "${SILEO}" ]];
+	then
+		echo "Not running in Sileo. Trigger UICache"
+		uicache -p /Applications/@@SILEO_APP@@
+		exit 0
+	fi
 
-if [[ -z ${SILEO} ]]; then echo "Not running in Sileo. Trigger UICache"; fi
-if [[ -z ${SILEO} ]]; then uicache -p /Applications/@@SILEO_APP@@; fi
-
-exit 0
+	if [[ "$2" == "/Applications" ]];
+	then
+		finish uicache
+	elif [[ "$2" == "/Library/MobileSubstrate/DynamicLibraries" && -n "${SILEO}" ]];
+	then
+		finish restart
+	fi
+	
+	exit 0
+fi
