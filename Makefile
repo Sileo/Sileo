@@ -12,7 +12,7 @@ TARGET_CODESIGN = $(shell which ldid)
 ARCH            = arm64
 PLATFORM        = iphoneos
 DEB_ARCH        = iphoneos-arm
-DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
+DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.31), dpkg (>= 1.19), apt (>= 1.8)
 PREFIX          =
 else ifeq ($(SILEO_PLATFORM),darwin-arm64)
 # These trues are temporary
@@ -53,7 +53,7 @@ export DISPLAY_NAME = "Sileo-Beta"
 SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)-tale+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
 export DISPLAY_NAME = "Sileo"
