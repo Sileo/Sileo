@@ -2,9 +2,32 @@
 sourcesDir="/etc/apt/sources.list.d"
 
 rm /etc/apt/sources.list.d/sileo.list 2> /dev/null || true
-touch $sourcesDir/sileo.sources
-
 cr="\n"
+
+# Elucubratus Patches Begin
+if [ -s $sourcesDir/cydia.list ] && grep -Fxq "deb https://apt.bingner.com/ ./" $sourcesDir/cydia.list;
+then
+        sourcesDir="/etc/apt/sileo.list.d"
+        if ! [ -s $sourcesDir ];
+        then
+                mkdir -p $sourcesDir
+        fi
+
+        if ! [ -s $sourcesDir/elucubratus.sources ];
+        then
+                echo "Installed Bingner/Elucubratus Repo"
+                echo -e "" > $sourcesDir/elucubratus.sources
+                sed -i.bak '1s;^;Types: deb\
+URIs: https://apt.bingner.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/elucubratus.sources
+        fi
+fi
+
+touch $sourcesDir/sileo.sources
+# Elucubratus Patches End
 
 if ! [ -s $sourcesDir/sileo.sources ]; then
         echo -e "" > $sourcesDir/sileo.sources

@@ -74,7 +74,7 @@ final class RepoManager {
         Suites: iphoneos-arm64/\(cfMajorVersion)
         Components: main
         """
-        jailbreakRepo.entryFile = "/etc/apt/sources.list.d/procursus.sources"
+        jailbreakRepo.entryFile = "/etc/apt/sileo.list.d/procursus.sources"
         repoList.append(jailbreakRepo)
         repoListLock.signal()
         
@@ -91,13 +91,13 @@ final class RepoManager {
             Suites: stable
             Components: main
             """
-            bigBoss.entryFile = "/etc/apt/sources.list.d/sileo.sources"
+            bigBoss.entryFile = "/etc/apt/sileo.list.d/sileo.sources"
             repoList.append(bigBoss)
             
             writeListToFile()
         }
         #else
-        let directory = URL(fileURLWithPath: "/etc/apt/sources.list.d")
+        let directory = URL(fileURLWithPath: "/etc/apt/sileo.list.d")
         for item in directory.implicitContents {
             if item.pathExtension == "list" {
                 parseListFile(at: item)
@@ -119,7 +119,6 @@ final class RepoManager {
             }
             
             guard !hasRepo(with: normalizedURL),
-                  normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
                   normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
             else {
                 continue
@@ -135,7 +134,7 @@ final class RepoManager {
             Suites: ./
             Components:
             """
-            repo.entryFile = "/etc/apt/sources.list.d/sileo.sources"
+            repo.entryFile = "/etc/apt/sileo.list.d/sileo.sources"
             
             repoList.append(repo)
             repoListLock.signal()
@@ -187,8 +186,7 @@ final class RepoManager {
         }
         
         for repoURL in uris {
-            guard !repoURL.localizedCaseInsensitiveContains("apt.bingner.com"),
-                  !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
+            guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
                   !hasRepo(with: URL(string: repoURL)!)
             else {
                 continue
@@ -903,10 +901,10 @@ final class RepoManager {
         #else
         
         var sileoList = ""
-        if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
-           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
-            sileoList = "/etc/apt/sources.list.d/sileo.sources"
+        if FileManager.default.fileExists(atPath: "/etc/apt/sileo.list.d/procursus.sources") ||
+           FileManager.default.fileExists(atPath: "/etc/apt/sileo.list.d/chimera.sources") ||
+           FileManager.default.fileExists(atPath: "/etc/apt/sileo.list.d/electra.list") {
+            sileoList = "/etc/apt/sileo.list.d/sileo.sources"
         } else {
             sileoList = "/etc/apt/sileo.list.d/sileo.sources"
         }
