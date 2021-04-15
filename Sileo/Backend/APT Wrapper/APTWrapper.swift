@@ -89,7 +89,8 @@ class APTWrapper {
                          "-oApt::Get::HideAutoRemove=true", "-oquiet::NoProgress=true",
                          "-oquiet::NoStatistic=true", "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-oAPT::Get::Show-User-Simulation-Note=False",
-                         "-oAPT::Format::for-sileo=true", "install", "--reinstall"]
+                         "-oAPT::Format::for-sileo=true", "-oAPT::Format::JSON=true",
+                         "install", "--reinstall"]
         for package in installs {
             if package.package.package.contains("/") {
                 arguments.append(package.package.package)
@@ -134,11 +135,16 @@ class APTWrapper {
         var packageErrors: [[String: Any]] = []
         
         let aptLines = aptOutput.components(separatedBy: "\n")
+        var completeJsonParsingMode = false
+        var completeJson = [String]()
+        
         for aptLine in aptLines {
-            if aptLine == "The following packages have unmet dependencies:" {
-                break
-            }
-            if aptLine.hasPrefix("{") && aptLine.hasSuffix("}") {
+            if aptLine == "{" {
+                completeJsonParsingMode = true
+                completeJson.append(aptLine)
+            } else if completeJsonParsingMode {
+                completeJson.append(aptLine)
+            } else if aptLine.hasPrefix("{") && aptLine.hasSuffix("}") {
                 guard let aptOp = try? JSONSerialization.jsonObject(with: aptLine.data(using: .utf8) ?? Data(),
                                                                     options: []) as? [String: String] else {
                     continue
@@ -160,6 +166,56 @@ class APTWrapper {
                 }
             }
         }
+
+        if completeJsonParsingMode {
+            let joined = completeJson.joined(separator: "\n")
+            guard let json = try? JSONSerialization.jsonObject(with: joined.data(using: .utf8)!, options: []) as? [String: Any] else {
+                return [:]
+            }
+
+            if let operations = json["operations"] as? [[String: String]] {
+                for operation in operations {
+                    if let type = operation["Type"],
+                       let packageId = operation["Package"] {
+                        if type == "Inst",
+                           let version = operation["CandidateVersion"] {
+                            packageInstalls.append([
+                                "package": packageId,
+                                "version": version
+                            ])
+                        } else if type == "Remv" || type == "Purg",
+                                  let version = operation["CurrentVersion"] {
+                            packageRemovals.append([
+                                "package": packageId,
+                                "version": version
+                            ])
+                        }
+                    }
+                }
+            }
+            
+            if let dependencyOutput = json["brokenPackages"] as? [String: [[[String: String]]]] {
+                for (packageId, dependencyCandidateLists) in dependencyOutput {
+                    guard let package = PackageListManager.shared.newestPackage(identifier: packageId) else {
+                        continue
+                    }
+
+                    for dependencyCandidateList in dependencyCandidateLists {
+                        for dependency in dependencyCandidateList {
+                            if let dependencyType = dependency["Type"],
+                               let dependencyPackage = dependency["Package"] {
+                                packageErrors.append([
+                                    "package": package,
+                                    "key": dependencyType,
+                                    "otherPkg": dependencyPackage
+                                ])
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         packageOperations["Inst"] = packageInstalls
         packageOperations["Remv"] = packageRemovals
         
@@ -174,28 +230,25 @@ class APTWrapper {
                     continue
                 }
             } else {
-                if aptErrorLine.isEmpty {
-                    continue
-                } else {
-                    if aptErrorLine.hasPrefix("{") && aptErrorLine.hasSuffix("}") {
-                        guard let dependencyOutput = try? JSONSerialization.jsonObject(with: aptErrorLine.data(using: .utf8) ?? Data(),
-                                                                                       options: []) as? [String: [[[String: String]]]] else {
+                if aptErrorLine.hasPrefix("{") && aptErrorLine.hasSuffix("}") {
+                    guard let dependencyOutput = try? JSONSerialization.jsonObject(with: aptErrorLine.data(using: .utf8) ?? Data(), options: []) as? [String: [[[String: String]]]] else {
+                        continue
+                    }
+                    
+                    for (packageId, dependencyCandidateLists) in dependencyOutput {
+                        guard let package = PackageListManager.shared.newestPackage(identifier: packageId) else {
                             continue
                         }
-                        for (packageID, dependencyCandidateLists) in dependencyOutput {
-                            guard let package = PackageListManager.shared.newestPackage(identifier: packageID) else {
-                                continue
-                            }
-                            for dependencyCandidateList in dependencyCandidateLists {
-                                for dependency in dependencyCandidateList {
-                                    if let dependencyType = dependency["Type"],
-                                        let dependencyPackage = dependency["Package"] {
-                                        packageErrors.append([
-                                            "package": package,
-                                            "key": dependencyType,
-                                            "otherPkg": dependencyPackage
-                                        ])
-                                    }
+                        
+                        for dependencyCandidateList in dependencyCandidateLists {
+                            for dependency in dependencyCandidateList {
+                                if let dependencyType = dependency["Type"],
+                                   let dependencyPackage = dependency["Package"] {
+                                    packageErrors.append([
+                                        "package": package,
+                                        "key": dependencyType,
+                                        "otherPkg": dependencyPackage
+                                    ])
                                 }
                             }
                         }
