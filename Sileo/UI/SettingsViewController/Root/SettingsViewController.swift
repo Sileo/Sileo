@@ -92,7 +92,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 7
+            return 8
         case 3: // About section
             return 1
         default:
