@@ -128,6 +128,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                                                    name: PackageListManager.prefsNotification,
                                                    object: nil)
         }
+        if loadProvisional {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
+                                                   name: CanisterResolver.refreshList,
+                                                   object: nil)
+        }
         
         // A value of exactly 17.0 (the default) causes the text to auto-shrink
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [

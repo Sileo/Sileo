@@ -83,6 +83,7 @@ final class CanisterResolver {
     @objc private func queueCache() {
         let plm = PackageListManager.shared
         var buffer = 0
+        var refreshLists = false
         for (index, package) in cachedQueue.enumerated() {
             if let pkg = plm.package(identifier: package.packageID, version: package.version) ?? plm.newestPackage(identifier: package.packageID) {
                 let queueFound = DownloadManager.shared.find(package: pkg)
@@ -91,7 +92,12 @@ final class CanisterResolver {
                 }
                 cachedQueue.remove(at: index - buffer)
                 buffer += 1
+                self.packages.removeAll(where: { $0.identifier == package.packageID })
+                refreshLists = true
             }
+        }
+        if refreshLists {
+            NotificationCenter.default.post(name: CanisterResolver.refreshList, object: nil)
         }
     }
     
@@ -109,6 +115,8 @@ final class CanisterResolver {
         package.isProvisional = true
         return package
     }
+    
+    static let refreshList = Notification.Name("Canister.RefreshList")
 }
 
 struct ProvisionalPackage {
