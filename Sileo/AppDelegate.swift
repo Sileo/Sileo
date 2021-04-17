@@ -117,12 +117,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         PackageListManager.shared.waitForReady()
         
-        let currentUpdates = PackageListManager.shared.availableUpdates().map({ $0.0 })
+        let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
         guard let currentPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
             return
         }
         RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
-            let newUpdates = PackageListManager.shared.availableUpdates().map({ $0.0 })
+            let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
             guard let newPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
                 return
             }
