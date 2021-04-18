@@ -327,7 +327,6 @@ final class PackageListManager {
         package.size = dictionary["size"]
         
         package.rawControl = dictionary
-        package.allVersionsInternal.list.append(package)
         return package
     }
     
@@ -481,6 +480,7 @@ final class PackageListManager {
                     package.sourceFile = repoContext?.rawEntry
                     package.sourceFileURL = packagesFile
                     package.rawData = packageData
+                    package.addOld([package])
                     
                     if isStatusFile {
                         var wantInfo: pkgwant = .install
@@ -510,7 +510,7 @@ final class PackageListManager {
                             if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
                                 tempDictionary[packageID] = package
                             }
-                            otherPkg.allVersionsInternal.list.append(contentsOf: package.allVersionsInternal.list)
+                            otherPkg.addOld(package.allVersions)
                             package.allVersionsInternal = otherPkg.allVersionsInternal
                         } else {
                             tempDictionary[packageID] = package

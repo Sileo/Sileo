@@ -236,6 +236,8 @@ class InstallViewController: SileoViewController {
     }
     
     @IBAction func completeButtonTapped(_ sender: Any?) {
+        self.completeButton?.isEnabled = false
+        self.completeLaterButton?.isEnabled = false
         switch self.returnButtonAction {
         case .back, .uicache:
             if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
@@ -261,6 +263,8 @@ class InstallViewController: SileoViewController {
     }
     
     @IBAction func completeLaterButtonTapped(_ sender: Any) {
+        self.completeButton?.isEnabled = false
+        self.completeLaterButton?.isEnabled = false
         self.navigationController?.popViewController(animated: true)
         DownloadManager.shared.lockedForInstallation = false
         DownloadManager.shared.removeAllItems()

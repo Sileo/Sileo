@@ -31,9 +31,16 @@ final class Package: Hashable, Equatable {
     public var commercial: Bool = false
     public var tags: PackageTags = .none
     
-    public var allVersionsInternal: PackageVersionList = PackageVersionList()
+    public var allVersionsInternal = [PackageOld]()
+    public func addOld(_ packages: [Package]) {
+        for package in packages {
+            let packageOld = PackageOld(package: package)
+            allVersionsInternal.removeAll(where: { packageOld == $0 })
+            allVersionsInternal.append(packageOld)
+        }
+    }
     public var allVersions: [Package] {
-        allVersionsInternal.list
+        return allVersionsInternal.map({ $0.packageNew })
     }
     
     public var fromStatusFile: Bool = false
@@ -76,5 +83,65 @@ final class Package: Hashable, Equatable {
 }
 
 func == (lhs: Package, rhs: Package) -> Bool {
+    lhs.package == rhs.package && lhs.version == rhs.version
+}
+
+final class PackageOld: Hashable, Equatable {
+ 
+    public var sourceFile: String?
+    public var package: String
+    public var packageID: String
+    public var name: String?
+    public var version: String
+    public var rawControl: [String: String] = [:]
+    public var rawData: Data?
+    public var sourceFileURL: URL?
+    public var source: String?
+    public var commercial: Bool = false
+    public var filename: String?
+    public var size: String?
+    public var packageFileURL: URL?
+    public var architecture: String?
+    
+    init(package: Package) {
+        self.sourceFile = package.sourceFile
+        self.package = package.package
+        self.packageID = package.packageID
+        self.name = package.name
+        self.version = package.version
+        self.rawControl = package.rawControl
+        self.rawData = package.rawData
+        self.sourceFileURL = package.sourceFileURL
+        self.source = package.source
+        self.commercial = package.commercial
+        self.filename = package.filename
+        self.size = package.size
+        self.packageFileURL = package.packageFileURL
+        self.architecture = package.architecture
+    }
+    
+    public var packageNew: Package {
+        let package = Package(package: self.package, version: self.version)
+        package.sourceFile = self.sourceFile
+        package.name = self.name
+        package.rawControl = self.rawControl
+        package.rawData = self.rawData
+        package.sourceFileURL = self.sourceFileURL
+        package.source = self.source
+        package.commercial = self.commercial
+        package.filename = self.filename
+        package.size = self.size
+        package.packageFileURL = self.packageFileURL
+        package.architecture = self.architecture
+        return package
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(package)
+        hasher.combine(version)
+    }
+}
+
+func == (lhs: PackageOld, rhs: PackageOld) -> Bool {
     lhs.package == rhs.package && lhs.version == rhs.version
 }
