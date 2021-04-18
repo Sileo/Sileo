@@ -17,7 +17,7 @@ jobs:
           submodules: true
       - name: Install ldid and dpkg
         run: |
-          brew install ldid dpkg
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install ldid dpkg
       - name: Build Sileo
         run: |
          make clean package BETA=1 DEBUG=0
