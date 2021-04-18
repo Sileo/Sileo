@@ -255,6 +255,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             self.hideSwipe(animated: true)
         }
         addRepo.backgroundColor = .systemPink
+        addRepo.image = UIImage(systemNameOrNil: "plus.app")
         return addRepo
     }
     

@@ -38,6 +38,7 @@ class InstallViewController: SileoViewController {
     
     var returnButtonAction: APTWrapper.FINISH = .back
     var refreshSileo = false
+    var hasErrored = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +113,7 @@ class InstallViewController: SileoViewController {
             var textColor = Dusk.foregroundColor
             if pipe == STDERR_FILENO {
                 textColor = Dusk.errorColor
+                self.hasErrored = true
             }
             if pipe == APTWrapper.debugFD {
                 textColor = Dusk.debugColor
@@ -149,7 +151,7 @@ class InstallViewController: SileoViewController {
                     if !(!refresh && finish == .back) {
                         self.completeLaterButton?.alpha = 1
                     }
-                    if UserDefaults.standard.bool(forKey: "AutoComplete") {
+                    if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
                         self.completeButtonTapped(nil)
                     }
                 }
