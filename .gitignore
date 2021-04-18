@@ -1,16 +1,13 @@
 .DS_Store
 
-Config.xcconfig
-Pods/
+/Config.xcconfig
 
-xcuserdata/
-.vscode/
-.idea/
+/Sileo.xcodeproj/xcuserdata/
+/Sileo.xcodeproj/project.xcworkspace/xcuserdata/
+/build/
+/.vscode/
+/.idea/
+/.theos/
 
-build/
-.theos/
-giveMeRoot/bin/
-
-packages/
-*.deb
-*.ipa
+/giveMeRoot/bin/
+/packages/
