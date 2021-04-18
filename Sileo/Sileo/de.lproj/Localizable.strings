@@ -138,18 +138,18 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
 "Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
-"Show_Provisional" = "Pakete von Canister anzeigen";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";
 "Developer_Mode" = "Entwicklermodus";
 "Pog_Developer" = "Du bist jetzt ein Entwickler!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatisch Paketquellen aktualisieren";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
 "Sileo_Adaptive" = "Sileo Angepasst";
 "System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Design Einstellungen";
 
 "Cydia_Sign_In" = "In den Cydia Store einloggen";
 "Payment_Provider_Signed_In" = "Eingeloggt";

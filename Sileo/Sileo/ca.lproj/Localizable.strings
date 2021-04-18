@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Enable_Analytics" = "Enable Analytics";
 "Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages from Canister";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Show Ignored Updates";
 "Developer_Mode" = "Developer Mode";
 "Pog_Developer" = "You are now a developer!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";

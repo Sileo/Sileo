@@ -138,18 +138,18 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "すべてのアップデートを自動的に実行する3D touch ショートカット";
 "Enable_Analytics" = "統計収集の有効化";
 "Swipe_Actions" = "スワイプアクション";
-"Show_Provisional" = "Canister のパッケージを表示";
+"Show_Provisional" = "Canisterからのパッケージを表示";
 "Show_Ignored_Updates" = "無視したアップデートを表示";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Developer_Mode" = "開発者モード";
+"Pog_Developer" = "開発者モードに切り替わりました！";
+"Developer_Mode_Explain" = "開発者モードは、支払い時のAPIのHTTPS要件を無効にします。";
+"Auto_Refresh_Sources" = "リポジトリを自動で更新";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
 "Sileo_Adaptive" = "自動";
 "System" = "システム";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "テーマの設定";
 
 "Cydia_Sign_In" = "Cydia Store へサインイン";
 "Payment_Provider_Signed_In" = "サインイン";

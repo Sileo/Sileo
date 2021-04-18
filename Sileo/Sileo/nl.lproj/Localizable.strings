@@ -138,12 +138,12 @@
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
 "Enable_Analytics" = "Schakel Analytics in";
 "Swipe_Actions" = "Sleep Acties";
-"Show_Provisional" = "Toon Pakketten van Kanister";
+"Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Toon Genegeerde Updates";
 "Developer_Mode" = "Ontwikkelaar Modus";
 "Pog_Developer" = "Je bent nu een ontwikkelaar!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Automatically Refresh Sources";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
