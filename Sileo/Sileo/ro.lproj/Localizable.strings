@@ -143,7 +143,7 @@
 "Developer_Mode" = "Mod Dezvoltator";
 "Pog_Developer" = "Ați devenit dezvoltator!";
 "Developer_Mode_Explain" = "Modul dezvoltator dezactivează nevoia de HTTPS pentru API-ul de plătire.";
-"Auto_Refresh_Sources" = "Reîmprospătare surselor automatic";
+"Auto_Refresh_Sources" = "Reîmprospătare pachete automat";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";

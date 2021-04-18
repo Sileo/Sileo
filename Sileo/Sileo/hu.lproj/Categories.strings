@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(Nincs kategória)";
+"Tweaks" = "Tweakek";
+"Themes" = "Témák";
+"Utilities" = "Segédprogramok";
+"Applications" = "Alkalmazások";
+"Addons" = "Bővítmények";
+"Games" = "Játékok";
+"Developer" = "Fejlesztő";
+"Data_Storage" = "Adattárolás";
+"Terminal_Support" = "Terminál-támogatás";
+"Text_Editors" = "Szövegszerkesztők";
