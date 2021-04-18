@@ -30,6 +30,8 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _ = NewsResolver.shared
+        
         self.title = String(localizationKey: "News_Page")
         
         dateFormatter.dateStyle = DateFormatter.Style.long
@@ -207,40 +209,51 @@ extension NewsViewController { // Get Data
             }
         }
     }
+    
+    private func currentSection(_ section: Int) -> NewsSection {
+        if NewsResolver.shared.showNews {
+            switch section {
+            case 0: return .news
+            case 1: return .placeholder
+            default: return .packages
+            }
+        }
+        switch section {
+        case 0: return .placeholder
+        default: return .packages
+        }
+    }
 }
 
 extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection View Data Source
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sortedSections.count + 2
+        sortedSections.count + (NewsResolver.shared.showNews ? 2 : 1)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        switch currentSection(section) {
+        case .news: return 1
+        case .placeholder: return sortedSections.isEmpty ? 1 : 0
+        case .packages:
+            updateLock.wait()
+            let itemsCount = sections[sortedSections[section - (NewsResolver.shared.showNews ? 2 : 1)]]?.count ?? 0
+            updateLock.signal()
+            return itemsCount
         }
-        if section == 1 {
-            return sortedSections.isEmpty ? 1 : 0
-        }
-        updateLock.wait()
-        let itemsCount = sections[sortedSections[section - 2]]?.count ?? 0
-        updateLock.signal()
-        return itemsCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
-            let headerView = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsArticlesHeader", for: indexPath)
-            return headerView
-        } else if indexPath.section == 1 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "NewsPlaceholderCell", for: indexPath)
-        } else {
+        switch currentSection(indexPath.section) {
+        case .news: return collectionView.dequeueReusableCell(withReuseIdentifier: "NewsArticlesHeader", for: indexPath)
+        case .placeholder: return collectionView.dequeueReusableCell(withReuseIdentifier: "NewsPlaceholderCell", for: indexPath)
+        case .packages:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PackageCollectionViewCell",
                                                           for: indexPath) as? PackageCollectionViewCell
             if cell != nil {
                 var package: Package?
-                if sortedSections.count >= indexPath.section - 2 {
+                if sortedSections.count >= indexPath.section - (NewsResolver.shared.showNews ? 2 : 1) {
                     updateLock.wait()
-                    let sortedSection = sortedSections[indexPath.section - 2]
+                    let sortedSection = sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]
                     if sections[sortedSection]?.count ?? 0 > indexPath.row {
                         package = sections[sortedSection]?[indexPath.row]
                     }
@@ -259,7 +272,7 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                              withReuseIdentifier: "NewsDateHeader",
                                                                              for: indexPath) as? PackageListHeader ?? PackageListHeader()
-            let date = NSDate(timeIntervalSince1970: TimeInterval(sortedSections[indexPath.section - 2]))
+            let date = NSDate(timeIntervalSince1970: TimeInterval(sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]))
             headerView.label?.text = dateFormatter.string(from: date as Date).uppercased(with: Locale.current)
             return headerView
         }
@@ -267,20 +280,19 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section <= 1 {
-            return CGSize.zero
+        switch currentSection(section) {
+        case .news, .placeholder: return CGSize.zero
+        case .packages: return CGSize(width: collectionView.bounds.size.width, height: 54)
         }
-        return CGSize(width: collectionView.bounds.size.width, height: 54)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width = collectionView.bounds.size.width
         var height: CGFloat = 73
-        if indexPath.section == 0 {
-            height = 180
-        } else if indexPath.section == 1 {
-            height = 300
-        } else {
+        switch currentSection(indexPath.section) {
+        case .news: height = 180
+        case .placeholder: height = 300
+        case .packages:
             if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad || UIApplication.shared.statusBarOrientation.isLandscape {
                 width = min(width, 330)
             }
@@ -290,30 +302,26 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section <= 1 {
-            return
-        }
+        if currentSection(indexPath.section) != .packages { return }
         let viewController = self.controller(indexPath: indexPath)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let headerView = cell as? NewsArticlesHeader
-            if let viewController = headerView?.viewController {
-                self.addChild(viewController)
-                viewController.didMove(toParent: self)
-            }
+        if currentSection(indexPath.section) != .news { return }
+        let headerView = cell as? NewsArticlesHeader
+        if let viewController = headerView?.viewController {
+            self.addChild(viewController)
+            viewController.didMove(toParent: self)
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let headerView = cell as? NewsArticlesHeader
-            if let viewController = headerView?.viewController {
-                viewController.removeFromParent()
-                viewController.didMove(toParent: nil)
-            }
+        if currentSection(indexPath.section) != .news { return }
+        let headerView = cell as? NewsArticlesHeader
+        if let viewController = headerView?.viewController {
+            viewController.removeFromParent()
+            viewController.didMove(toParent: nil)
         }
     }
 }
@@ -333,16 +341,14 @@ extension NewsViewController { // Scroll View Delegate
 extension NewsViewController { // 3D Touch
     func controller(indexPath: IndexPath) -> PackageViewController {
         let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = sections[sortedSections[indexPath.section - 2]]?[indexPath.row]
+        packageViewController.package = sections[sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]]?[indexPath.row]
         return packageViewController
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let indexPath = collectionView?.indexPathForItem(at: location)
-        if (indexPath?.section ?? 0) <= 1 {
-            return nil
-        }
-        let packageViewController = self.controller(indexPath: indexPath!)
+        guard let indexPath = collectionView?.indexPathForItem(at: location) else { return nil }
+        if currentSection(indexPath.section) != .packages { return nil }
+        let packageViewController = self.controller(indexPath: indexPath)
         return packageViewController
     }
 
@@ -354,9 +360,7 @@ extension NewsViewController { // 3D Touch
 @available(iOS 13.0, *)
 extension NewsViewController {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if indexPath.section <= 1 {
-            return nil
-        }
+        if currentSection(indexPath.section) != .packages { return nil }
         let packageViewController = self.controller(indexPath: indexPath)
         let menuItems = packageViewController.actions()
 
@@ -376,4 +380,10 @@ extension NewsViewController {
             }
         }
     }
+}
+
+fileprivate enum NewsSection {
+    case placeholder
+    case news
+    case packages
 }

@@ -22,7 +22,7 @@ class NewsArticle {
     public var firstSeenDate: Date?
     public var userReadDate: Date?
     
-    init?(dict: [String: Any]) {
+    init?(dict: [String: String?]) {
         NewsArticle.iso8601DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         guard let title = dict["title"] as? String,

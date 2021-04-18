@@ -78,6 +78,7 @@ class SourcesViewController: SileoTableViewController {
     
     @objc func updateSileoColors() {
         self.tableView.backgroundColor = UIColor.sileoBackgroundColor
+        self.tableView.separatorColor = .sileoSeparatorColor
         self.statusBarStyle = .default
     }
     
