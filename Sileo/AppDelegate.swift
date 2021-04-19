@@ -61,18 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                         let title = String(localizationKey: "Background_App_Refresh")
                         let msg = String(localizationKey: "Background_App_Refresh_Message")
                         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-                        
-                        let ackAction = UIAlertAction(title: String(localizationKey: "Acknowledge"), style: .default) { _ in
-                            UserDefaults.standard.set(true, forKey: "updatesPrompt")
-                            alert.dismiss(animated: true, completion: nil)
-                        }
-                        alert.addAction(ackAction)
-                        
                         let dismissAction = UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
                             alert.dismiss(animated: true, completion: nil)
                         }
                         alert.addAction(dismissAction)
-                        
+                        UserDefaults.standard.set(true, forKey: "updatesPrompt")
                         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     }
                 }
