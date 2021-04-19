@@ -388,28 +388,28 @@ class SourcesViewController: SileoTableViewController {
         }
     }
 
-    func showFlaggedSourceWarningController(url: URL) {
+    func showFlaggedSourceWarningController(urls: [URL]) {
         let flaggedSourceController = FlaggedSourceWarningViewController(nibName: "FlaggedSourceWarningViewController", bundle: nil)
         flaggedSourceController.shouldAddAnywayCallback = {
-            self.handleSourceAdd(urls: [url], bypassFlagCheck: true)
+            self.handleSourceAdd(urls: urls, bypassFlagCheck: true)
             self.refreshSources(forceUpdate: false, forceReload: false)
         }
-        flaggedSourceController.url = url
+        flaggedSourceController.urls = urls
         flaggedSourceController.modalPresentationStyle = .formSheet
         present(flaggedSourceController, animated: true)
     }
     
     func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
         if !bypassFlagCheck {
-            for url in urls {
-                CanisterResolver.shared.piracy(url) { isFlagged in
-                    DispatchQueue.main.async {
-                        if isFlagged {
-                            return self.showFlaggedSourceWarningController(url: url)
-                        }
-                        RepoManager.shared.addRepos(with: [url])
+            CanisterResolver.piracy(urls) { safe, piracy in
+                DispatchQueue.main.async {
+                    if !safe.isEmpty {
+                        RepoManager.shared.addRepos(with: safe)
                         self.reloadData()
                         self.refreshSources(forceUpdate: false, forceReload: false)
+                    }
+                    if !piracy.isEmpty {
+                        self.showFlaggedSourceWarningController(urls: piracy)
                     }
                 }
             }

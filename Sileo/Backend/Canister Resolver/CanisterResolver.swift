@@ -66,12 +66,30 @@ final class CanisterResolver {
         }
     }
     
-    public func piracy(_ url: URL, response: @escaping (_ piracy: Bool) -> Void) {
-        let url = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
-        AmyNetworkResolver.request(url: url, method: "GET") { success, dict in
+    class public func piracy(_ urls: [URL], response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
+        var url = "https://api.canister.me/v1/community/repositories/check?query=["
+        for (index, url2) in urls.enumerated() {
+            let suffix = (index == urls.count - 1) ? "]" : ","
+            url += (url2.absoluteString  + suffix)
+        }
+        AmyNetworkResolver.request(url: url) { success, dict in
             guard success,
-                  let dict = dict else { return response(false) }
-            return response(dict["data"] as? String ?? "" == "pirated")
+                let dict = dict,
+                (dict["success"] as? Bool ?? false),
+                let data = dict["data"] as? [[String: String]] else { return response(urls, [URL]()) }
+            var safe = [URL]()
+            var piracy = [URL]()
+            for repo in data {
+                guard let source = repo["repository"],
+                      let sourceURL = URL(string: source),
+                      let status = repo["result"] else { continue }
+                if status == "pirated" {
+                    piracy.append(sourceURL)
+                } else {
+                    safe.append(sourceURL)
+                }
+            }
+            return response(safe, piracy)
         }
     }
     
