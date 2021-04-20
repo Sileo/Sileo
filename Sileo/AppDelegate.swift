@@ -60,13 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                     DispatchQueue.main.async {
                         let title = String(localizationKey: "Background_App_Refresh")
                         let msg = String(localizationKey: "Background_App_Refresh_Message")
+                        
                         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-                        let dismissAction = UIAlertAction(title: String(localizationKey: "Dismiss"), style: .cancel) { _ in
+                        let okAction = UIAlertAction(title: String(localizationKey: "OK"), style: .cancel) { _ in
                             alert.dismiss(animated: true, completion: nil)
                         }
-                        alert.addAction(dismissAction)
-                        UserDefaults.standard.set(true, forKey: "updatesPrompt")
+                        alert.addAction(okAction)
                         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                        
+                        UserDefaults.standard.set(true, forKey: "updatesPrompt")
                     }
                 }
             }
