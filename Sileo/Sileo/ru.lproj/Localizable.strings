@@ -143,7 +143,7 @@
 "Developer_Mode" = "Режим разработчика";
 "Pog_Developer" = "Теперь ты разработчик!";
 "Developer_Mode_Explain" = "Режим разработчика отключает требование HTTPS для платежного API.";
-"Auto_Refresh_Sources" = "Автообновление источников";
+"Auto_Refresh_Sources" = "Авто обновление источников";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
