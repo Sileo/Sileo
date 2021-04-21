@@ -145,6 +145,36 @@ final class AmyNetworkResolver {
         task.resume()
         return nil
     }
+    
+    internal func saveCache(_ url: URL, data: Data) {
+        let encoded = url.absoluteString.toBase64
+        let path = cacheDirectory.appendingPathComponent("\(encoded).png")
+        do {
+            try data.write(to: path)
+        } catch {
+            print("Error saving to \(path.absoluteString) with error: \(error.localizedDescription)")
+        }
+    }
+    
+    internal func imageCache(_ url: URL, scale: CGFloat? = nil) -> (Bool, UIImage?) {
+        let encoded = url.absoluteString.toBase64
+        let path = cacheDirectory.appendingPathComponent("\(encoded).png")
+        if let data = try? Data(contentsOf: path) {
+            if let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                if let attr = try? FileManager.default.attributesOfItem(atPath: path.path),
+                   let date = attr[FileAttributeKey.modificationDate] as? Date {
+                    var yes = DateComponents()
+                    yes.day = -1
+                    let yesterday = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
+                    if date > yesterday {
+                        return (false, image)
+                    }
+                }
+                return (true, image)
+            }
+        }
+        return (true, nil)
+    }
 }
 
 extension String {

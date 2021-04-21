@@ -343,12 +343,23 @@ final class RepoManager {
                         let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
                         if let iconURL = URL(string: repo.repoURL)?
                             .appendingPathComponent(filename)
-                            .appendingPathExtension("png"),
-                            let iconData = try? Data(contentsOf: iconURL) {
-                            DispatchQueue.main.async {
-                                repo.repoIcon = UIImage(data: iconData, scale: CGFloat(i))
+                            .appendingPathExtension("png") {
+                            let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                            if let image = cache.1 {
+                                DispatchQueue.main.async {
+                                    repo.repoIcon = image
+                                }
+                                if !cache.0 {
+                                    break
+                                }
                             }
-                            break
+                            if let iconData = try? Data(contentsOf: iconURL) {
+                                DispatchQueue.main.async {
+                                    repo.repoIcon = UIImage(data: iconData, scale: CGFloat(i))
+                                    AmyNetworkResolver.shared.saveCache(iconURL, data: iconData)
+                                }
+                                break
+                            }
                         }
                     }
                     if repo.repoIcon == nil {
