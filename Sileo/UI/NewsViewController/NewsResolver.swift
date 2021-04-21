@@ -20,7 +20,7 @@ class NewsResolver {
     
     public func getArticles() {
         if !articles.isEmpty { return }
-        AmyNetworkResolver.request(url: "https://getsileo.app/api/new.json") { success, dict in
+        AmyNetworkResolver.dict(url: "https://getsileo.app/api/new.json") { success, dict in
             guard success,
                   let dict = dict,
                   let articles = dict["articles"] as? [[String: String?]] else {

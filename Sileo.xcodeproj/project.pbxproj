@@ -99,8 +99,6 @@
 		E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F62614F6E300698D55 /* SwipeCellKit */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
-		E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
-		E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533D2617437C00BB8A69 /* SDWebImage */; };
@@ -128,6 +126,8 @@
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
+		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
+		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
 		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
 		E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D0C261500C700E56882 /* SwiftTryCatch */; };
@@ -715,7 +715,6 @@
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
-		E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -726,6 +725,7 @@
 		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
 		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
+		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
@@ -1283,7 +1283,7 @@
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
 			isa = PBXGroup;
 			children = (
-				E166F6FF260A702B00663FA1 /* AmyNetworkResolver.swift */,
+				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
 				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
 			);
 			path = "Canister Resolver";
@@ -2758,11 +2758,11 @@
 				F13AEE7422F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
 				F1705FEF24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
 				172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */,
+				E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */,
 				172B2ED922F0A353000155B9 /* LicensesTableViewController.swift in Sources */,
 				F139D10B22EA9209007F5C0D /* Locks.swift in Sources */,
 				F1705FEC24CA1465001596A0 /* TabBarController.swift in Sources */,
 				FB40262123DE2B9C002D97FE /* SettingsNavigationController.swift in Sources */,
-				E166F701260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */,
 				F139D0EF22EA9209007F5C0D /* Package.swift in Sources */,
 				F147E67A22F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				FB6F3D3224AA635F00E941F8 /* PaymentError.swift in Sources */,
@@ -2919,7 +2919,6 @@
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
-				E166F700260A702B00663FA1 /* AmyNetworkResolver.swift in Sources */,
 				F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
 				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F13AEE7922F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
@@ -2933,6 +2932,7 @@
 				F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */,
 				F147E67922F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				F1AB912722ED081E0054341B /* PackageIconView.swift in Sources */,
+				E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */,
 				49618DD6260515A40046C094 /* BackendAPIWrapper.swift in Sources */,
 				F1DB3BCC22D57BD9008FCFA1 /* PackageListHeader.swift in Sources */,
 				F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */,

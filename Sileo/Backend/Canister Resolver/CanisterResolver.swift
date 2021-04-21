@@ -34,7 +34,7 @@ final class CanisterResolver {
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         if query.count <= 3 { return fetch() }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version,depiction.native,depiction.web,&search_fields=identifier,name,author,maintainer"
-        AmyNetworkResolver.request(url: url) { success, dict in
+        AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
                   dict["message"] as? String == "Successful",
@@ -72,7 +72,7 @@ final class CanisterResolver {
             let suffix = (index == urls.count - 1) ? "]" : ","
             url += (url2.absoluteString  + suffix)
         }
-        AmyNetworkResolver.request(url: url) { success, dict in
+        AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                 let dict = dict,
                 (dict["success"] as? Bool ?? false),

@@ -117,7 +117,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
         let agent = UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) ? self.userAgent : "Opted-Out"
         let headers: [String: String] = ["User-Agent": agent]
-        AmyNetworkResolver.request(url: jsonURL, headers: headers) { success, dict in
+        AmyNetworkResolver.dict(url: jsonURL, headers: headers) { success, dict in
             guard success,
                   let dict = dict else { return }
             DispatchQueue.main.async {
