@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import XLForm
 import os.log
+import SwiftTryCatch
 
 enum DepictionFormError: Error {
     case hostOriginException
@@ -56,12 +57,17 @@ class DepictionFormViewController: XLFormViewController {
                     
                     let form = XLFormDescriptor(title: self.title)
                     var errored = false
-                    do {
+                    SwiftTryCatch.try({
                         self.populateSections(form: form, rawForm: rawForm)
-                    } catch {
-                        os_log("Couldn't load remote form: %@", error.localizedDescription)
+                    }, catch: { error in
+                        os_log("Couldn't load remote form: %@", type: .error, error.reason ?? "")
                         self.presentErrorDialog(message: String(localizationKey: "Unknown"), mustCancel: true)
                         errored = true
+                    }, finally: {
+                        
+                    })
+                        
+                    if errored {
                         return
                     }
                     self.form = form
@@ -123,14 +129,16 @@ class DepictionFormViewController: XLFormViewController {
         // This is a really ugly way to hijack and handle errors thrown by XLForm during loading due to invalid data.
         // Because XLForm sets the properties on cell loading, rather than when we assign them, we have to override the cell loading method and try-catch it.
         var cell = UITableViewCell()
-        do {
+        SwiftTryCatch.try({
             cell = super.tableView(tableView, cellForRowAt: indexPath)
-        } catch {
-            os_log("Couldn't load remote form: %@", error.localizedDescription)
+        }, catch: { error in
+            os_log("Couldn't load remote form: %@", type: .error, error.reason ?? "")
             self.presentErrorDialog(message: String(), mustCancel: true)
             self.form = nil
             self.tableView.reloadData()
-        }
+        }, finally: {
+            
+        })
         return cell
     }
     
@@ -172,11 +180,12 @@ class DepictionFormViewController: XLFormViewController {
             
             let row = XLFormRowDescriptor(tag: tag, rowType: rowType, title: title)
             if let value = rawRow["value"] {
-                do {
+                SwiftTryCatch.try({
                     row.value = value
-                } catch {
-                    os_log("row error %", error.localizedDescription)
-                }
+                }, catch: { _ in
+                }, finally: {
+                    
+                })
             }
             
             if let cellConfigs = rawRow["cellConfigs"] as? [String: Any] {

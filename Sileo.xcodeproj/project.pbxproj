@@ -116,6 +116,7 @@
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
+		E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5359261743C600BB8A69 /* SwiftTryCatch */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -129,6 +130,7 @@
 		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
 		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
+		E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D0C261500C700E56882 /* SwiftTryCatch */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
@@ -961,6 +963,7 @@
 				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
+				E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */,
 				E19A534E261743A300BB8A69 /* Down in Frameworks */,
 				E19A5350261743A900BB8A69 /* Alderis in Frameworks */,
 				E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */,
@@ -974,6 +977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
+				E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
@@ -2241,6 +2245,7 @@
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19A5357261743C200BB8A69 /* AUPickerCell */,
+				E19A5359261743C600BB8A69 /* SwiftTryCatch */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -2276,6 +2281,7 @@
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E1EA1D05261500A100E56882 /* AUPickerCell */,
+				E1EA1D0C261500C700E56882 /* SwiftTryCatch */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -2406,6 +2412,7 @@
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
+				E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -3809,6 +3816,14 @@
 				kind = branch;
 			};
 		};
+		E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/SwiftTryCatch";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3932,6 +3947,11 @@
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
 		};
+		E19A5359261743C600BB8A69 /* SwiftTryCatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
+			productName = SwiftTryCatch;
+		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
@@ -3941,6 +3961,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
+		};
+		E1EA1D0C261500C700E56882 /* SwiftTryCatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
+			productName = SwiftTryCatch;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
