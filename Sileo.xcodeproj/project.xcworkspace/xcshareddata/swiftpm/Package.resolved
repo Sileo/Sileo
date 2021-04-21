@@ -110,15 +110,6 @@
         }
       },
       {
-        "package": "SwiftTryCatch",
-        "repositoryURL": "https://github.com/elihwyma/SwiftTryCatch",
-        "state": {
-          "branch": "master",
-          "revision": "9ba56c5f43932c638310f422a68da761acf386ea",
-          "version": null
-        }
-      },
-      {
         "package": "SwipeCellKit",
         "repositoryURL": "https://github.com/SwipeCellKit/SwipeCellKit.git",
         "state": {
