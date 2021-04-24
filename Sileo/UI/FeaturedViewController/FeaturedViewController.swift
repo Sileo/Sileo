@@ -26,6 +26,10 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(updatePicture),
+                                               name: Notification.Name("iCloudProfile"),
+                                               object: nil)
         
         self.reloadData()
         UIView.animate(withDuration: 0.7, animations: {
@@ -188,9 +192,20 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
     }
     
+    @objc private func updatePicture() {
+        if let button = self.profileButton {
+            self.profileButton = setPicture(button)
+        }
+    }
+    
     func setPicture(_ button: UIButton) -> UIButton {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        if !UserDefaults.standard.optionalBool("iCloudProfile", fallback: true) {
+            button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.tintColor = .tintColor
+            return button
+        }
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
         let scale = Int(UIScreen.main.scale)
         let filename = scale == 1 ? "AppleAccountIcon": "AppleAccountIcon@\(scale)x"
