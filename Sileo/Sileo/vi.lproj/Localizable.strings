@@ -144,6 +144,7 @@
 "Pog_Developer" = "Bạn bây giờ là một nhà phát triển!";
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
 "Auto_Refresh_Sources" = "Tự động làm mới nguồn";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
