@@ -188,13 +188,34 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
     }
     
+    func setPicture(_ button: UIButton) -> UIButton {
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+        let scale = Int(UIScreen.main.scale)
+        let filename = scale == 1 ? "AppleAccountIcon": "AppleAccountIcon@\(scale)x"
+        if let url = URL(string: "/var/mobile/Library/Caches/com.apple.Preferences/")?
+            .appendingPathComponent(filename)
+            .appendingPathExtension("png") {
+            let toPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("png")
+            spawn(command: "/usr/bin/cp", args: ["/usr/bin/cp", "\(url.path)", "\(toPath.path)"])
+            if let data = try? Data(contentsOf: toPath),
+               let accountImage = UIImage(data: data) {
+                button.setImage(accountImage, for: .normal)
+                return button
+            }
+        }
+        #endif
+        button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .tintColor
+        return button
+    }
+    
     func setupProfileButton() {
-        let profileButton = UIButton()
-        profileButton.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let profileButton = setPicture(UIButton())
+        
         profileButton.addTarget(self, action: #selector(FeaturedViewController.showProfile(_:)), for: .touchUpInside)
         profileButton.accessibilityIgnoresInvertColors = true
-        
-        profileButton.tintColor = .tintColor
         
         profileButton.layer.cornerRadius = 20
         profileButton.clipsToBounds = true
@@ -208,9 +229,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                 profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true
             }
             NSLayoutConstraint.activate([
-                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12),
-                profileButton.heightAnchor.constraint(equalToConstant: 40),
-                profileButton.widthAnchor.constraint(equalToConstant: 40)
+                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12)
             ])
         }
         self.profileButton = profileButton
