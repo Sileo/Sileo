@@ -144,6 +144,7 @@
 "Pog_Developer" = "Du er nå en utvikler!";
 "Developer_Mode_Explain" = "Utviklermodus deaktiverer HTTPS-kravet til betalings-APIet.";
 "Auto_Refresh_Sources" = "Automatisk oppdatering av kilder";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
