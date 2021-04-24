@@ -144,6 +144,7 @@
 "Pog_Developer" = "Artık bir geliştiricisiniz!";
 "Developer_Mode_Explain" = "Geliştirici Modu, Ödeme API'sinin HTTPS gereksinimini devre dışı bırakır.";
 "Auto_Refresh_Sources" = "Kaynakları Otomatik Güncelle";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
