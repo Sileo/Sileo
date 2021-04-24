@@ -144,6 +144,7 @@
 "Pog_Developer" = "開発者モードに切り替わりました！";
 "Developer_Mode_Explain" = "開発者モードは、支払い時のAPIのHTTPS要件を無効にします。";
 "Auto_Refresh_Sources" = "リポジトリを自動で更新";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
