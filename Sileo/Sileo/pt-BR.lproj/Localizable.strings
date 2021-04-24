@@ -144,6 +144,7 @@
 "Pog_Developer" = "Agora você é um desenvolvedor!";
 "Developer_Mode_Explain" = "O modo de desenvolvedor desativa o requisito HTTPS da API de pagamento.";
 "Auto_Refresh_Sources" = "Atualizar fontes automaticamente";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
