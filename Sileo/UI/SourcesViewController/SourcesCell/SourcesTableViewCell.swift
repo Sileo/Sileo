@@ -14,8 +14,8 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
             if let repo = repo {
                 self.title = repo.isLoaded ? repo.displayName : nil
                 self.subtitle = repo.displayURL
-                self.icon = repo.repoIcon
                 self.progress = repo.totalProgress
+                self.image(repo)
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
@@ -38,5 +38,28 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.repo = nil
+    }
+    
+    private func image(_ repo: Repo) {
+        // Quite frankly the backend here sucks ass, so if you open the sources page too quick after launching the image will not be set
+        // This will pull it from local cache in the event that we're too quick. If doesn't exist in Cache, show the default icon
+        if let icon = repo.repoIcon {
+            self.icon = icon
+            return
+        }
+        let scale = Int(UIScreen.main.scale)
+        for i in (1...scale).reversed() {
+            let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
+            if let iconURL = URL(string: repo.repoURL)?
+                .appendingPathComponent(filename)
+                .appendingPathExtension("png") {
+                let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                if let image = cache.1 {
+                    self.icon = image
+                    return
+                }
+            }
+        }
+        self.icon = UIImage(named: "Repo Icon")
     }
 }
