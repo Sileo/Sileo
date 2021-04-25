@@ -112,7 +112,7 @@
 
 "Package_Details_Tab" = "详情";
 "Package_Changelog_Tab" = "更新日志";
-"Package_No_Description_Available" = "没有针对这个软件包的描述.";
+"Package_No_Description_Available" = "没有针对这个软件包的描述。";
 "Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
