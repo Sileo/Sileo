@@ -13,6 +13,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
     var featuredView: FeaturedBaseView?
+    var cachedData: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,6 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                                                name: Notification.Name("iCloudProfile"),
                                                object: nil)
         
-        self.reloadData()
         UIView.animate(withDuration: 0.7, animations: {
             self.activityIndicatorView?.alpha = 0
         }, completion: { _ in
@@ -115,6 +115,9 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     }
     
     @objc func reloadData() {
+        if UIApplication.shared.applicationState == .background {
+            return
+        }
         let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
         guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
             return
@@ -124,6 +127,12 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         AmyNetworkResolver.dict(url: jsonURL, headers: headers) { success, dict in
             guard success,
                   let dict = dict else { return }
+            if let cachedData = self.cachedData {
+                if NSDictionary(dictionary: cachedData).isEqual(to: dict) {
+                    return
+                }
+            }
+            self.cachedData = dict
             DispatchQueue.main.async {
                 if let minVersion = dict["minVersion"] as? String,
                     minVersion.compare(StoreVersion) == .orderedDescending {
@@ -165,6 +174,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.reloadData()
         updateSileoColors()
     }
     
