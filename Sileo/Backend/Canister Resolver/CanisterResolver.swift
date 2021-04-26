@@ -66,27 +66,54 @@ final class CanisterResolver {
         }
     }
     
+    class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
+        let url2 = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
+        AmyNetworkResolver.dict(url: url2) { success, dict in
+            guard success,
+                  let dict = dict,
+                  (dict["message"] as? String) == "Successful",
+                  let data = dict["data"] as? [String: String],
+                  let repoURI = data["repositoryURI"],
+                  let url3 = URL(string: repoURI) else {
+                return response([url], [URL]())
+            }
+            let safe = data["status"] == "safe"
+            if !safe {
+                return response([URL](), [url3])
+            }
+            return response([url3], [URL]())
+        }
+    }
+    
     class public func piracy(_ urls: [URL], response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
-        var url = "https://api.canister.me/v1/community/repositories/check?query=["
+        if urls.count == 1 {
+            CanisterResolver.piracy(urls[0]) { safe, piracy in
+                return response(safe, piracy)
+            }
+        }
+        var url = "https://api.canister.me/v1/community/repositories/check?queries="
         for (index, url2) in urls.enumerated() {
-            let suffix = (index == urls.count - 1) ? "]" : ","
+            let suffix = (index == urls.count - 1) ? "" : ","
             url += (url2.absoluteString  + suffix)
         }
         AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
-                let dict = dict,
-                (dict["success"] as? Bool ?? false),
-                let data = dict["data"] as? [[String: String]] else { return response(urls, [URL]()) }
+                  let dict = dict,
+                  (dict["message"] as? String) == "Successful",
+                  let data = dict["data"] as? [[String: String]] else {
+                return response(urls, [URL]())
+            }
             var safe = [URL]()
             var piracy = [URL]()
             for repo in data {
-                guard let source = repo["repository"],
-                      let sourceURL = URL(string: source),
-                      let status = repo["result"] else { continue }
-                if status == "pirated" {
-                    piracy.append(sourceURL)
+                guard let repoURI = repo["repositoryURI"],
+                      let url3 = URL(string: repoURI) else {
+                    continue
+                }
+                if repo["status"] == "safe" {
+                    safe.append(url3)
                 } else {
-                    safe.append(sourceURL)
+                    piracy.append(url3)
                 }
             }
             return response(safe, piracy)

@@ -87,7 +87,7 @@ final class AmyNetworkResolver {
         }
         let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
             if let data = data {
-                completion(true, data)
+                return completion(true, data)
             }
             return completion(false, nil)
         }
