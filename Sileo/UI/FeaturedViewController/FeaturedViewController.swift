@@ -127,10 +127,9 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         AmyNetworkResolver.dict(url: jsonURL, headers: headers) { success, dict in
             guard success,
                   let dict = dict else { return }
-            if let cachedData = self.cachedData {
-                if NSDictionary(dictionary: cachedData).isEqual(to: dict) {
-                    return
-                }
+            if let cachedData = self.cachedData,
+               NSDictionary(dictionary: cachedData).isEqual(to: dict) {
+                return
             }
             self.cachedData = dict
             DispatchQueue.main.async {
