@@ -89,7 +89,6 @@
 		E13638C02614F49500698D55 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E13638BF2614F49500698D55 /* SDWebImage */; };
 		E13638C52614F4D000698D55 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C42614F4D000698D55 /* Alamofire */; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
-		E13638CF2614F57100698D55 /* XLForm in Frameworks */ = {isa = PBXBuildFile; productRef = E13638CE2614F57100698D55 /* XLForm */; };
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
 		E13638DE2614F5D300698D55 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E13638DD2614F5D300698D55 /* SWCompression */; };
@@ -104,7 +103,6 @@
 		E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533D2617437C00BB8A69 /* SDWebImage */; };
 		E19A53402617438100BB8A69 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533F2617438100BB8A69 /* Alamofire */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
-		E19A53442617438C00BB8A69 /* XLForm in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53432617438C00BB8A69 /* XLForm */; };
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
 		E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53492617439B00BB8A69 /* SWCompression */; };
@@ -114,7 +112,6 @@
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
-		E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5359261743C600BB8A69 /* SwiftTryCatch */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -130,7 +127,6 @@
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
 		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
-		E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D0C261500C700E56882 /* SwiftTryCatch */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
@@ -223,7 +219,6 @@
 		F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1974938213695660065E630 /* PackageListHeaderBlank.xib */; };
 		F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C305468521D6900C003E73FC /* PackageListHeader.xib */; };
 		F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */; };
-		F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */; };
 		F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */; };
@@ -361,7 +356,6 @@
 		F1AB913422ED133D0054341B /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */; };
 		F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B99F0520DBE64700374C27 /* PackageListViewController.xib */; };
-		F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */; };
 		F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */; };
 		F1C5D98922D133D00021BD89 /* DepictionRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98822D133D00021BD89 /* DepictionRatingView.swift */; };
 		F1C5D98C22D137820021BD89 /* DepictionReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98B22D137820021BD89 /* DepictionReviewView.swift */; };
@@ -429,8 +423,6 @@
 		F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
 		F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
 		F1DD3D1E2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
-		F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */; };
-		F1E4485924E9A6E5002470AE /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */; };
 		F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */; };
 		F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
 		F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
@@ -852,7 +844,6 @@
 		F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewCell.swift; sourceTree = "<group>"; };
 		F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesErrorsViewController.xib; sourceTree = "<group>"; };
 		F1B99F0520DBE64700374C27 /* PackageListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageListViewController.xib; sourceTree = "<group>"; };
-		F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepictionFormViewController.xib; sourceTree = "<group>"; };
 		F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionBaseView.swift; sourceTree = "<group>"; };
 		F1C5D98822D133D00021BD89 /* DepictionRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionRatingView.swift; sourceTree = "<group>"; };
 		F1C5D98B22D137820021BD89 /* DepictionReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionReviewView.swift; sourceTree = "<group>"; };
@@ -911,7 +902,6 @@
 		F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
 		F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDepictionScraper.swift; sourceTree = "<group>"; };
 		F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLScraperJSInterface.swift; sourceTree = "<group>"; };
-		F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
 		F1EC3E5422767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F1EC3E5522767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = Sileo/it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		F1EC3E5622767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Categories.strings; sourceTree = "<group>"; };
@@ -953,7 +943,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
-				E19A53442617438C00BB8A69 /* XLForm in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
 				E19A53402617438100BB8A69 /* Alamofire in Frameworks */,
@@ -963,7 +952,6 @@
 				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
-				E19A535A261743C600BB8A69 /* SwiftTryCatch in Frameworks */,
 				E19A534E261743A300BB8A69 /* Down in Frameworks */,
 				E19A5350261743A900BB8A69 /* Alderis in Frameworks */,
 				E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */,
@@ -977,7 +965,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
-				E1EA1D0D261500C700E56882 /* SwiftTryCatch in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
@@ -986,7 +973,6 @@
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				E13638C52614F4D000698D55 /* Alamofire in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
-				E13638CF2614F57100698D55 /* XLForm in Frameworks */,
 				E13638DE2614F5D300698D55 /* SWCompression in Frameworks */,
 				E13638C02614F49500698D55 /* SDWebImage in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
@@ -1950,15 +1936,6 @@
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		F1C0E2AC216EDF040082F23F /* DepictionFormViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */,
-				F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */,
-			);
-			path = DepictionFormViewController;
-			sourceTree = "<group>";
-		};
 		F1C19B9521168B320036D865 /* DepictionButtonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1998,7 +1975,6 @@
 		F1D113F520DC5EA100C8F051 /* PackageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F1C0E2AC216EDF040082F23F /* DepictionFormViewController */,
 				F1CB2EF3214650C000641808 /* DepictionSubpageViewController */,
 				F100C2FC210D5E1E00A9B7D8 /* DepictionView */,
 				F1DD3D182316EFF700D86A52 /* HTMLDepictionScraper */,
@@ -2235,7 +2211,6 @@
 				E19A533D2617437C00BB8A69 /* SDWebImage */,
 				E19A533F2617438100BB8A69 /* Alamofire */,
 				E19A53412617438700BB8A69 /* Cosmos */,
-				E19A53432617438C00BB8A69 /* XLForm */,
 				E19A53452617439300BB8A69 /* KeychainAccess */,
 				E19A53472617439700BB8A69 /* SwiftSoup */,
 				E19A53492617439B00BB8A69 /* SWCompression */,
@@ -2245,7 +2220,6 @@
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19A5357261743C200BB8A69 /* AUPickerCell */,
-				E19A5359261743C600BB8A69 /* SwiftTryCatch */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -2271,7 +2245,6 @@
 				E13638BF2614F49500698D55 /* SDWebImage */,
 				E13638C42614F4D000698D55 /* Alamofire */,
 				E13638C92614F53400698D55 /* Cosmos */,
-				E13638CE2614F57100698D55 /* XLForm */,
 				E13638D32614F59000698D55 /* KeychainAccess */,
 				E13638D82614F5AA00698D55 /* SwiftSoup */,
 				E13638DD2614F5D300698D55 /* SWCompression */,
@@ -2281,7 +2254,6 @@
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E1EA1D05261500A100E56882 /* AUPickerCell */,
-				E1EA1D0C261500C700E56882 /* SwiftTryCatch */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -2402,7 +2374,6 @@
 				E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
-				E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */,
 				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */,
@@ -2412,7 +2383,6 @@
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
-				E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -2451,7 +2421,6 @@
 				F139D13B22EA9209007F5C0D /* Assets.xcassets in Resources */,
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
-				F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */,
 				F139D13E22EA9209007F5C0D /* DepictionSubpageViewController.xib in Resources */,
 				F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */,
 				F139D13722EA9209007F5C0D /* Errors.strings in Resources */,
@@ -2493,7 +2462,6 @@
 				F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */,
 				493B23FF26098169007D605F /* Sus~ipad@3x.png in Resources */,
 				F11E22E12500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
-				F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */,
 				F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */,
 				F178CD8921323E3800F927FA /* DownloadsTableViewController.xib in Resources */,
 				C373924921D5F80300E6F704 /* Errors.strings in Resources */,
@@ -2753,7 +2721,6 @@
 				F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */,
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
-				F1E4485924E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
 				FB6F3D3524AA68C700E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F13AEE7422F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
 				F1705FEF24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
@@ -2919,7 +2886,6 @@
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
-				F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
 				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F13AEE7922F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				F13AEE7322F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
@@ -3736,14 +3702,6 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xmartlabs/XLForm.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.0;
-			};
-		};
 		E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -3816,14 +3774,6 @@
 				kind = branch;
 			};
 		};
-		E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elihwyma/SwiftTryCatch";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3841,11 +3791,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
-		};
-		E13638CE2614F57100698D55 /* XLForm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */;
-			productName = XLForm;
 		};
 		E13638D32614F59000698D55 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3897,11 +3842,6 @@
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
 		};
-		E19A53432617438C00BB8A69 /* XLForm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638CD2614F57100698D55 /* XCRemoteSwiftPackageReference "XLForm" */;
-			productName = XLForm;
-		};
 		E19A53452617439300BB8A69 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
@@ -3947,11 +3887,6 @@
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
 		};
-		E19A5359261743C600BB8A69 /* SwiftTryCatch */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
-			productName = SwiftTryCatch;
-		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
@@ -3961,11 +3896,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
-		};
-		E1EA1D0C261500C700E56882 /* SwiftTryCatch */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1EA1D0B261500C700E56882 /* XCRemoteSwiftPackageReference "SwiftTryCatch" */;
-			productName = SwiftTryCatch;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

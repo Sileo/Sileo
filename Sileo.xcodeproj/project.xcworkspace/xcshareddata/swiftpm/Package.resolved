@@ -78,7 +78,7 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
         "state": {
           "branch": null,
-          "revision": "d1c75d839709b3f91c82ecf7d3c7665272090456",
+          "revision": "9ffc546b8f68c3251ca09cfa95bbd20084b6321e",
           "version": "5.11.0"
         }
       },
@@ -110,30 +110,12 @@
         }
       },
       {
-        "package": "SwiftTryCatch",
-        "repositoryURL": "https://github.com/elihwyma/SwiftTryCatch",
-        "state": {
-          "branch": "master",
-          "revision": "9ba56c5f43932c638310f422a68da761acf386ea",
-          "version": null
-        }
-      },
-      {
         "package": "SwipeCellKit",
         "repositoryURL": "https://github.com/SwipeCellKit/SwipeCellKit.git",
         "state": {
           "branch": null,
           "revision": "7219cad3098637176ace311510d11467dbfb9bb0",
           "version": "2.7.1"
-        }
-      },
-      {
-        "package": "XLForm",
-        "repositoryURL": "https://github.com/xmartlabs/XLForm.git",
-        "state": {
-          "branch": null,
-          "revision": "870afc56602fd518e33d0b271371a2d5acd410ea",
-          "version": "4.3.0"
         }
       }
     ]

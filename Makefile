@@ -106,7 +106,8 @@ all:: $(SILEO_APP_DIR) giveMeRoot/bin/giveMeRoot
 stage: all
 	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
 	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
-	@cp -a $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
+	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
+	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/
 	@$(TARGET_CODESIGN) -SSileo/Entitlements.plist $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/
 	@$(TARGET_CODESIGN) -SgiveMeRoot/Entitlements.plist $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/giveMeRoot
