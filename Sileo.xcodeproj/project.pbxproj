@@ -87,7 +87,6 @@
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
 		E13638C02614F49500698D55 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E13638BF2614F49500698D55 /* SDWebImage */; };
-		E13638C52614F4D000698D55 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C42614F4D000698D55 /* Alamofire */; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
@@ -101,7 +100,6 @@
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533D2617437C00BB8A69 /* SDWebImage */; };
-		E19A53402617438100BB8A69 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533F2617438100BB8A69 /* Alamofire */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
@@ -945,7 +943,6 @@
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
-				E19A53402617438100BB8A69 /* Alamofire in Frameworks */,
 				E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */,
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
@@ -971,7 +968,6 @@
 				E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */,
 				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
-				E13638C52614F4D000698D55 /* Alamofire in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E13638DE2614F5D300698D55 /* SWCompression in Frameworks */,
 				E13638C02614F49500698D55 /* SDWebImage in Frameworks */,
@@ -2209,7 +2205,6 @@
 			name = "Sileo Demo";
 			packageProductDependencies = (
 				E19A533D2617437C00BB8A69 /* SDWebImage */,
-				E19A533F2617438100BB8A69 /* Alamofire */,
 				E19A53412617438700BB8A69 /* Cosmos */,
 				E19A53452617439300BB8A69 /* KeychainAccess */,
 				E19A53472617439700BB8A69 /* SwiftSoup */,
@@ -2243,7 +2238,6 @@
 			name = Sileo;
 			packageProductDependencies = (
 				E13638BF2614F49500698D55 /* SDWebImage */,
-				E13638C42614F4D000698D55 /* Alamofire */,
 				E13638C92614F53400698D55 /* Cosmos */,
 				E13638D32614F59000698D55 /* KeychainAccess */,
 				E13638D82614F5AA00698D55 /* SwiftSoup */,
@@ -2372,7 +2366,6 @@
 			mainGroup = F149E0A420B6040B005CA30B;
 			packageReferences = (
 				E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
@@ -3686,14 +3679,6 @@
 				minimumVersion = 5.10.4;
 			};
 		};
-		E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.1;
-			};
-		};
 		E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -3782,11 +3767,6 @@
 			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		E13638C42614F4D000698D55 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		E13638C92614F53400698D55 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
@@ -3831,11 +3811,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
-		};
-		E19A533F2617438100BB8A69 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638C32614F4D000698D55 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		E19A53412617438700BB8A69 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;

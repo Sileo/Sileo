@@ -8,7 +8,7 @@
 
 import Foundation
 import SWCompression
-import Alamofire
+//import Alamofire
 
 final class RepoManager {
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
@@ -382,40 +382,37 @@ final class RepoManager {
     @discardableResult
     func queue(
         from url: URL?,
-        progress: ((CGFloat, Int64, Int64) -> Void)?,
+        progress: ((AmyDownloadParser.Progress) -> Void)?,
         success: @escaping (URL) -> Void,
         failure: @escaping (Int) -> Void
-    ) -> DownloadRequest? {
+    ) -> AmyDownloadParser? {
         guard let url = url else {
             failure(520)
             return nil
         }
         
-        let request = URLManager.urlRequest(url)        
-        let downloadTask = AF.download(request)
-            .downloadProgress { progressData in
-                progress?(CGFloat(progressData.fractionCompleted), progressData.completedUnitCount, progressData.totalUnitCount)
+        let request = URLManager.urlRequest(url)
+        let task = AmyDownloadParser(request: request)
+        task.progressCallback = { responseProgress in
+            progress?(responseProgress)
+        }
+        task.errorCallback = { status, _, url in
+            if let url = url {
+                try? FileManager.default.removeItem(at: url)
             }
-            .response { response in
-                guard let httpResponse = response.response else {
-                    failure(522)
-                    return
-                }
-                if httpResponse.statusCode == 200, response.error == nil,
-                    let fileURL = response.fileURL {
-                    success(fileURL)
-                } else {
-                    response.fileURL.map { try? FileManager.default.removeItem(at: $0) }
-                    failure(httpResponse.statusCode)
-                }
-            }
-        return downloadTask
+            failure(status)
+        }
+        task.didFinishCallback = { _, url in
+            success(url)
+        }
+        task.make()
+        return task
     }
     
     func fetch(
         from url: URL,
         withExtensionsUntilSuccess extensions: [String],
-        progress: ((CGFloat, Int64, Int64) -> Void)?,
+        progress: ((AmyDownloadParser.Progress) -> Void)?,
         success: @escaping (URL, URL) -> Void,
         failure: @escaping (Int) -> Void
     ) {
@@ -547,8 +544,8 @@ final class RepoManager {
                     let releaseURL = URL(string: repo.repoURL)!.appendingPathComponent("Release")
                     let releaseTask = self.queue(
                         from: releaseURL,
-                        progress: { progress, _, _ in
-                            repo.releaseProgress = progress
+                        progress: { progress in
+                            repo.releaseProgress = CGFloat(progress.fractionCompleted)
                             self.postProgressNotification(repo)
                         },
                         success: { fileURL in
@@ -626,8 +623,8 @@ final class RepoManager {
                     packages.map { url in self.fetch(
                         from: url,
                         withExtensionsUntilSuccess: extensions,
-                        progress: { progress, _, _ in
-                            repo.packagesProgress = progress
+                        progress: { progress in
+                            repo.packagesProgress = CGFloat(progress.fractionCompleted)
                             self.postProgressNotification(repo)
                         },
                         success: { succeededURL, fileURL in
@@ -664,8 +661,8 @@ final class RepoManager {
                     let releaseGPGURL = URL(string: repo.repoURL)!.appendingPathComponent("Release.gpg")
                     let releaseGPGTask = self.queue(
                         from: releaseGPGURL,
-                        progress: { progress, _, _ in
-                            repo.releaseGPGProgress = progress
+                        progress: { progress in
+                            repo.releaseGPGProgress = CGFloat(progress.fractionCompleted)
                             self.postProgressNotification(repo)
                         },
                         success: { fileURL in

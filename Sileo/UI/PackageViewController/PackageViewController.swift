@@ -64,7 +64,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     private var isUpdatingPurchaseStatus = false
 
     private func isValidRootClass(className: String, host: String) -> Bool {
-        host == "repotest.shuga.co" || host == "repo.chariz.com" || host == "repo.dynastic.co" || className == "DepictionTabView" || host == "coolstar.moe"
+        host == "repotest.shuga.co" || host == "repo.chariz.com" || host == "chariz.com" || host == "repo.dynastic.co" || className == "DepictionTabView" || host == "coolstar.moe"
     }
     
     private func parseNativeDepiction(_ data: Data, host: String, failureCallback: (() -> Void)?) {

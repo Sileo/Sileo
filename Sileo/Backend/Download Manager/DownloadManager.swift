@@ -240,10 +240,10 @@ final class DownloadManager {
                         
                         let downloadURL = url ?? URL(string: filename)
                         download.task = RepoManager.shared.queue(from: downloadURL,
-                                                                 progress: { progress, completedUnitCount, totalUnitCount in
-                                                                    download.progress = progress
-                                                                    download.totalBytesWritten = completedUnitCount
-                                                                    download.totalBytesExpectedToWrite = totalUnitCount
+                                                                 progress: { progress in
+                                                                    download.progress = CGFloat(progress.fractionCompleted)
+                                                                    download.totalBytesWritten = progress.total
+                                                                    download.totalBytesExpectedToWrite = progress.expected
                                                                     DispatchQueue.main.async {
                                                                         self.viewController.reloadDownload(package: package)
                                                                     }
@@ -328,7 +328,7 @@ final class DownloadManager {
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
             if let download = downloads[package.package],
-               let host = download.task?.request?.url?.host {
+               let host = download.task?.url?.host {
                 let hostCount = downloadCount[host] ?? 0
                 if download.queued && !download.completed {
                     if hostCount < 2 {

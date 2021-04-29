@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import Alamofire
 
 final class Download {
     var package: Package
-    var task: DownloadRequest?
+    var task: AmyDownloadParser?
     var backgroundTask: UIBackgroundTaskIdentifier?
     var progress = CGFloat(0)
     var failureReason: String?
