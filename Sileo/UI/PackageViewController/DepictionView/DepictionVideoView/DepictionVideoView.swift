@@ -39,42 +39,14 @@ class DepictionVideoView: DepictionBaseView {
         self.height = height
         alignment = (dictionary["alignment"] as? Int) ?? 0
 
-        guard let packageViewController = viewController as? PackageViewController,
-        let package = packageViewController.package else {
-            return nil
-        }
-
-        guard let depictionURL = URL(string: package.depiction ?? "") else {
-            return nil
-        }
-
-        guard let depictionHost = depictionURL.host else {
-            return nil
-        }
-
-        var repoAllowed = false
-        if depictionHost == "repo.chariz.com" {
-            repoAllowed = true
-        }
-        if depictionHost == "repo.dynastic.co" {
-            repoAllowed = true
-        }
-
         guard let videoURL = URL(string: urlStr) else {
             return nil
         }
 
-        autoPlayEnabled = false
-        showPlaybackControls = true
-        loopEnabled = false
+        autoPlayEnabled = (dictionary["autoplay"] as? Bool) ?? false
+        showPlaybackControls = (dictionary["showPlaybackControls"] as? Bool) ?? true
+        loopEnabled = (dictionary["loop"] as? Bool) ?? false
 
-        if repoAllowed {
-            autoPlayEnabled = (dictionary["autoplay"] as? Bool) ?? false
-            if autoPlayEnabled {
-                showPlaybackControls = (dictionary["showPlaybackControls"] as? Bool) ?? false
-                loopEnabled = (dictionary["loop"] as? Bool) ?? false
-            }
-        }
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
 
