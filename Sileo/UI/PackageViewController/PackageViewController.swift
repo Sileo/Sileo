@@ -62,16 +62,10 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     private var currentNavBarOpacity = CGFloat(0)
 
     private var isUpdatingPurchaseStatus = false
-
-    private func isValidRootClass(className: String, host: String) -> Bool {
-        host == "repotest.shuga.co" || host == "repo.chariz.com" || host == "chariz.com" || host == "repo.dynastic.co" || className == "DepictionTabView" || host == "coolstar.moe"
-    }
     
     private func parseNativeDepiction(_ data: Data, host: String, failureCallback: (() -> Void)?) {
         guard let rawJSON = try? JSONSerialization.jsonObject(with: data, options: []),
-              let rawDepict = rawJSON as? [String: Any],
-              let className = rawDepict["class"] as? String,
-              isValidRootClass(className: className, host: host)
+              let rawDepict = rawJSON as? [String: Any]
         else {
             failureCallback?()
             return
