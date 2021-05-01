@@ -60,7 +60,7 @@ final class AmyNetworkResolver {
     }
     
     class public func dict(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
-        AmyNetworkResolver.request(url: url, method: method, headers: headers) { success, data in
+        AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json) { success, data in
             guard success,
                   let data = data else { return completion(false, nil) }
             do {
@@ -92,7 +92,7 @@ final class AmyNetworkResolver {
     }
     
     class public func array(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
-        AmyNetworkResolver.request(url: url, method: method, headers: headers) { success, data in
+        AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json) { success, data in
             guard success,
                   let data = data else { return completion(false, nil) }
             do {
