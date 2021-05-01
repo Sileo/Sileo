@@ -120,6 +120,10 @@
 		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
+		E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
+		E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
+		E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
 		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
@@ -715,6 +719,8 @@
 		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
 		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
+		E1C90256263C75B100569D1E /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
+		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
 		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -1282,9 +1288,19 @@
 			path = OG;
 			sourceTree = "<group>";
 		};
+		E1C90249263C74C400569D1E /* DepictionFormViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1C90256263C75B100569D1E /* DepictionFormViewController.swift */,
+				E1C9025C263C852100569D1E /* DepictionFormTextView.swift */,
+			);
+			path = DepictionFormViewController;
+			sourceTree = "<group>";
+		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
 			isa = PBXGroup;
 			children = (
+				E1C90249263C74C400569D1E /* DepictionFormViewController */,
 				F15FDC8121E9381A00DAF0A4 /* DepictionAdmobView */,
 				F147532221451C42004A122A /* DepictionAutoStackView */,
 				F100C303210D5F6300A9B7D8 /* DepictionBaseView */,
@@ -2696,6 +2712,7 @@
 				F139D0A122EA9209007F5C0D /* FeaturedInfoFooterView.swift in Sources */,
 				F1053220244AD85E0042201C /* dpkgversion.swift in Sources */,
 				F139D0DA22EA9209007F5C0D /* FeaturedPackageView.swift in Sources */,
+				E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */,
 				F139D0C022EA9209007F5C0D /* FeaturedSeparatorView.swift in Sources */,
 				E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */,
@@ -2716,6 +2733,7 @@
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				FB6F3D3524AA68C700E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F13AEE7422F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
+				E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F1705FEF24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
 				172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */,
 				E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */,
@@ -2869,6 +2887,7 @@
 				F1C5D9D222D189650021BD89 /* FeaturedStackView.swift in Sources */,
 				F1D82F7C230959D400EECCAE /* FeaturedViewController.swift in Sources */,
 				F1D6A62422E53E7000CBD045 /* FileManager+Utilities.swift in Sources */,
+				E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */,
 				F13AEE7C22F76DE6004BAA05 /* FileNode.swift in Sources */,
 				F170605C24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
 				172B2ED722F09E8F000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
@@ -2889,6 +2908,7 @@
 				F1705FEB24CA1465001596A0 /* TabBarController.swift in Sources */,
 				FB40262023DE2B9C002D97FE /* SettingsNavigationController.swift in Sources */,
 				F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */,
+				E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F147E67922F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				F1AB912722ED081E0054341B /* PackageIconView.swift in Sources */,
 				E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */,

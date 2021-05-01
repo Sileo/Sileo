@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-        
+  
         if let cacheClearFile = try? FileManager.default.url(for: .cachesDirectory,
                                                              in: .userDomainMask,
                                                              appropriateFor: nil,

@@ -39,15 +39,27 @@ final class AmyNetworkResolver {
         }
     }
     
-    class public func dict(url: String?, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
+    class public func dict(request: URLRequest, _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
+        AmyNetworkResolver.request(request) { success, data -> Void in
+            guard success,
+                  let data = data else { return completion(false, nil) }
+            do {
+                let dict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] ?? [String: Any]()
+                return completion(true, dict)
+            } catch {}
+            return completion(false, nil)
+        }
+    }
+    
+    class public func dict(url: String?, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
-        AmyNetworkResolver.dict(url: url, method: method, headers: headers) { success, dict -> Void in
+        AmyNetworkResolver.dict(url: url, method: method, headers: headers, json: json) { success, dict -> Void in
             return completion(success, dict)
         }
     }
     
-    class public func dict(url: URL, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
+    class public func dict(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ dict: [String: Any]?) -> Void)) {
         AmyNetworkResolver.request(url: url, method: method, headers: headers) { success, data in
             guard success,
                   let data = data else { return completion(false, nil) }
@@ -59,15 +71,27 @@ final class AmyNetworkResolver {
         }
     }
     
-    class public func array(url: String?, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
+    class public func array(request: URLRequest, _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
+        AmyNetworkResolver.request(request) { success, data in
+            guard success,
+                  let data = data else { return completion(false, nil) }
+            do {
+                let array = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] ?? [[String: Any]]()
+                return completion(true, array)
+            } catch {}
+            return completion(false, nil)
+        }
+    }
+    
+    class public func array(url: String?, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
-        AmyNetworkResolver.array(url: url, method: method, headers: headers) { success, array -> Void in
+        AmyNetworkResolver.array(url: url, method: method, headers: headers, json: json) { success, array -> Void in
             return completion(success, array)
         }
     }
     
-    class public func array(url: URL, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
+    class public func array(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ array: [[String: Any]]?) -> Void)) {
         AmyNetworkResolver.request(url: url, method: method, headers: headers) { success, data in
             guard success,
                   let data = data else { return completion(false, nil) }
@@ -79,12 +103,26 @@ final class AmyNetworkResolver {
         }
     }
     
-    class private func request(url: URL, method: String = "GET", headers: [String: String] = [:], _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
+    class private func request(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
         var request = URLRequest(url: url, timeoutInterval: 30)
         request.httpMethod = method
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
+        if !json.isEmpty,
+           let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
+            request.httpBody = jsonData
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
+            if let data = data {
+                return completion(true, data)
+            }
+            return completion(false, nil)
+        }
+        task.resume()
+    }
+    
+    class private func request(_ request: URLRequest, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
         let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
             if let data = data {
                 return completion(true, data)

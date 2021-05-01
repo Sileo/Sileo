@@ -47,7 +47,6 @@ class DepictionVideoView: DepictionBaseView {
         showPlaybackControls = (dictionary["showPlaybackControls"] as? Bool) ?? true
         loopEnabled = (dictionary["loop"] as? Bool) ?? false
 
-
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
 
         let cornerRadius = (dictionary["cornerRadius"] as? CGFloat) ?? 0
