@@ -13,9 +13,9 @@ final class AmyNetworkResolver {
     static let shared = AmyNetworkResolver()
     
     var cacheDirectory: URL {
-        FileManager.default.documentDirectory.appendingPathComponent("Cache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     }
-    
+
     init() {
         if !cacheDirectory.dirExists {
             do {
