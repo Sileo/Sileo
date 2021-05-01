@@ -473,6 +473,9 @@ final class PackageListManager {
                     if packageID.hasPrefix("cy+") {
                         continue
                     }
+                    if packageID == "firmware" {
+                        continue
+                    }
                     
                     guard let package = self.package(packageEnum: rawPackageEnum) else {
                         continue
