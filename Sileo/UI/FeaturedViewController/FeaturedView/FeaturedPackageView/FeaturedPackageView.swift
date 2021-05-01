@@ -6,7 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import SDWebImage
+import UIKit
 
 class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     let imageView: PackageIconView
@@ -22,6 +22,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     var separatorHeightConstraint: NSLayoutConstraint?
     
     var isUpdatingPurchaseStatus: Bool = false
+    var icon: String?
     
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let package = dictionary["package"] as? String else {
@@ -30,6 +31,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         guard let packageIcon = dictionary["packageIcon"] as? String else {
             return nil
         }
+        self.icon = packageIcon
         guard let packageName = dictionary["packageName"] as? String else {
             return nil
         }
@@ -58,7 +60,16 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         imageView.image = UIImage(named: "Tweak Icon")
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         if !packageIcon.isEmpty {
-            imageView.sd_setImage(with: URL(string: packageIcon))
+            imageView.image = AmyNetworkResolver.shared.image(packageIcon) { refresh, image in
+                if refresh,
+                   let image = image,
+                   self.icon == packageIcon {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+                   
+            } ?? UIImage(named: "Tweak Icon")
         }
         
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)

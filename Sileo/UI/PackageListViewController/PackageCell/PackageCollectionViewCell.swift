@@ -36,9 +36,18 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 titleLabel?.text = targetPackage.name
                 authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
                 descriptionLabel?.text = targetPackage.packageDescription
-            
-                self.imageView?.sd_setImage(with: URL(string: targetPackage.icon ?? ""), placeholderImage: UIImage(named: "Tweak Icon"))
-            
+                
+                let url = targetPackage.icon ?? ""
+                self.imageView?.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+                    if refresh,
+                       let image = image,
+                       url == self.targetPackage?.icon {
+                        DispatchQueue.main.async {
+                            self.imageView?.image = image
+                        }
+                    }
+                } ?? UIImage(named: "Tweak Icon")
+                        
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
             }
             unreadView?.isHidden = true
@@ -57,7 +66,16 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "")"
                 descriptionLabel?.text = provisionalTarget.description
             
-                self.imageView?.sd_setImage(with: URL(string: provisionalTarget.icon ?? ""), placeholderImage: UIImage(named: "Tweak Icon"))
+                let url = provisionalTarget.icon ?? ""
+                self.imageView?.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+                    if refresh,
+                       let image = image,
+                       url == self.provisionalTarget?.icon {
+                        DispatchQueue.main.async {
+                            self.imageView?.image = image
+                        }
+                    }
+                } ?? UIImage(named: "Tweak Icon")
             
                 titleLabel?.textColor = .sileoLabel
             }

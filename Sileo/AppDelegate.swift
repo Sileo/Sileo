@@ -8,7 +8,6 @@
 
 import Foundation
 import UserNotifications
-import SDWebImage
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
@@ -21,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
+        // Will delete anything cached older than 7 days
+        _ = AmyNetworkResolver.shared
         SileoThemeManager.shared.updateUserInterface()
         
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
@@ -29,30 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-  		
-        if let cacheClearFile = try? FileManager.default.url(for: .cachesDirectory,
-                                                             in: .userDomainMask,
-                                                             appropriateFor: nil,
-                                                             create: true).appendingPathComponent(".sileoCacheCleared") {
-            var cacheNeedsUpdating = false
-            if FileManager.default.fileExists(atPath: cacheClearFile.path) {
-                let attributes = try? FileManager.default.attributesOfItem(atPath: cacheClearFile.path)
-                if let modifiedDate = attributes?[FileAttributeKey.modificationDate] as? Date {
-                    if Date().timeIntervalSince(modifiedDate) > 3 * 24 * 3600 {
-                        cacheNeedsUpdating = true
-                        try? FileManager.default.removeItem(at: cacheClearFile)
-                    }
-                }
-            } else {
-                cacheNeedsUpdating = true
-            }
-            
-            if cacheNeedsUpdating {
-                SDImageCache.shared.clearDisk(onCompletion: nil)
-                try? "".write(to: cacheClearFile, atomically: true, encoding: .utf8)
-            }
-        }
-        
+  
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             let updatesPrompt = UserDefaults.standard.bool(forKey: "updatesPrompt")
             if !updatesPrompt {

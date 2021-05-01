@@ -64,8 +64,18 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
         titleLabel?.textColor = tintColor
         unreadView?.backgroundColor = tintColor
         
-        if self.article != nil && self.article?.imageURL != nil {            
-            imageView?.sd_setImage(with: article?.imageURL)
+        if self.article != nil && self.article?.imageURL != nil {
+            if let url = article?.imageURL {
+                imageView?.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+                    if refresh,
+                          let image = image,
+                          url == self.article?.imageURL {
+                        DispatchQueue.main.async {
+                            self.imageView?.image = image
+                        }
+                    }
+                }
+            }
             cardView?.isHidden = false
             
             var text = article?.type ?? "Editorial"

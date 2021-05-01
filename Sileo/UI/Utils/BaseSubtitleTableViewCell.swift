@@ -6,8 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import Foundation
-import SDWebImage
+import UIKit
 
 open class BaseSubtitleTableViewCell: UITableViewCell {
     let iconView: PackageIconView
@@ -93,19 +92,20 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     }
     
     func loadIcon(url: URL?, placeholderIcon: UIImage?) {
-        icon = placeholderIcon
         iconURL = nil
         
         guard let url = url else {
             return
         }
-        SDWebImageManager.shared.loadImage(with: url, options: [], progress: nil) { image, _, _, _, finished, _ in
-            DispatchQueue.main.async {
-                if finished && url == self.iconURL && image != nil {
+        self.icon = AmyNetworkResolver.shared.image(url) { refresh, image in
+            if refresh,
+               let image = image,
+               url == self.iconURL {
+                DispatchQueue.main.async {
                     self.icon = image
                 }
             }
-        }
+        } ?? placeholderIcon
     }
     
     public var progress: CGFloat = 0 {

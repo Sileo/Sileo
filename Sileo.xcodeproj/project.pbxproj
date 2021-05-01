@@ -86,7 +86,6 @@
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
-		E13638C02614F49500698D55 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E13638BF2614F49500698D55 /* SDWebImage */; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
@@ -99,7 +98,6 @@
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
-		E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E19A533D2617437C00BB8A69 /* SDWebImage */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
@@ -124,6 +122,10 @@
 		E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
 		E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
 		E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
+		E1C90267263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
+		E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
+		E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
+		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
@@ -721,6 +723,8 @@
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
 		E1C90256263C75B100569D1E /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
 		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
+		E1C90266263D79C600569D1E /* AmyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyGifManager.swift; sourceTree = "<group>"; };
+		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
 		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -957,7 +961,6 @@
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E19A534E261743A300BB8A69 /* Down in Frameworks */,
 				E19A5350261743A900BB8A69 /* Alderis in Frameworks */,
-				E19A533E2617437C00BB8A69 /* SDWebImage in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 				E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */,
 			);
@@ -976,7 +979,6 @@
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E13638DE2614F5D300698D55 /* SWCompression in Frameworks */,
-				E13638C02614F49500698D55 /* SDWebImage in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
 				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
@@ -1271,7 +1273,6 @@
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
 			isa = PBXGroup;
 			children = (
-				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
 				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
 			);
 			path = "Canister Resolver";
@@ -1295,6 +1296,16 @@
 				E1C9025C263C852100569D1E /* DepictionFormTextView.swift */,
 			);
 			path = DepictionFormViewController;
+			sourceTree = "<group>";
+		};
+		E1C90265263D794C00569D1E /* AmyCommon */ = {
+			isa = PBXGroup;
+			children = (
+				E1C90266263D79C600569D1E /* AmyGifManager.swift */,
+				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
+				E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */,
+			);
+			path = AmyCommon;
 			sourceTree = "<group>";
 		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
@@ -1863,6 +1874,7 @@
 		F1B99EE720DB671B00374C27 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				E1C90265263D794C00569D1E /* AmyCommon */,
 				F1D1140720DEE40C00C8F051 /* APT Wrapper */,
 				49618DD4260515A40046C094 /* Backend API Wrapper */,
 				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
@@ -2220,7 +2232,6 @@
 			);
 			name = "Sileo Demo";
 			packageProductDependencies = (
-				E19A533D2617437C00BB8A69 /* SDWebImage */,
 				E19A53412617438700BB8A69 /* Cosmos */,
 				E19A53452617439300BB8A69 /* KeychainAccess */,
 				E19A53472617439700BB8A69 /* SwiftSoup */,
@@ -2253,7 +2264,6 @@
 			);
 			name = Sileo;
 			packageProductDependencies = (
-				E13638BF2614F49500698D55 /* SDWebImage */,
 				E13638C92614F53400698D55 /* Cosmos */,
 				E13638D32614F59000698D55 /* KeychainAccess */,
 				E13638D82614F5AA00698D55 /* SwiftSoup */,
@@ -2381,7 +2391,6 @@
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
 			packageReferences = (
-				E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
@@ -2630,6 +2639,7 @@
 				F147E67D22F02EAB0048F868 /* CSGradientView.swift in Sources */,
 				F147E68422F206C40048F868 /* CategoryViewController.swift in Sources */,
 				FB6F3D2F24AA526200E941F8 /* PaymentManager.swift in Sources */,
+				E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1330EB52325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
 				FB6F3D2B24A9277B00E941F8 /* PaymentProvider.swift in Sources */,
@@ -2674,6 +2684,7 @@
 				F139D09822EA9209007F5C0D /* DepictionSpacerView.swift in Sources */,
 				F139D0BC22EA9209007F5C0D /* DepictionStackView.swift in Sources */,
 				E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
+				E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				F139D11222EA9209007F5C0D /* DepictionSubheaderView.swift in Sources */,
 				F147E68722F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
 				F139D0B522EA9209007F5C0D /* DepictionTabControl.swift in Sources */,
@@ -2805,6 +2816,7 @@
 				F1330EAE23250CC200971073 /* SileoRootView.swift in Sources */,
 				F19FB39D22BF50D3008E986B /* ControlFileParser.swift in Sources */,
 				FB40263923DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
+				E1C90267263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1705FFE24CB7040001596A0 /* PackageButton.swift in Sources */,
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
 				F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */,
@@ -2849,6 +2861,7 @@
 				F1C5D99822D141FF0021BD89 /* DepictionTabView.swift in Sources */,
 				F1C5D9BA22D16B7F0021BD89 /* DepictionTableButtonView.swift in Sources */,
 				F1C5D9B722D1696C0021BD89 /* DepictionTableTextView.swift in Sources */,
+				E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				FB6F3D2A24A9273300E941F8 /* PaymentProvider.swift in Sources */,
 				F170600124CCC7E6001596A0 /* PackageQueueButton.swift in Sources */,
 				F1C5D9ED22D1ABDC0021BD89 /* DepictionVideoView.swift in Sources */,
@@ -3691,14 +3704,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.4;
-			};
-		};
 		E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -3782,11 +3787,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E13638BF2614F49500698D55 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
 		E13638C92614F53400698D55 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
@@ -3826,11 +3826,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
-		};
-		E19A533D2617437C00BB8A69 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638BE2614F49500698D55 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
 		};
 		E19A53412617438700BB8A69 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;

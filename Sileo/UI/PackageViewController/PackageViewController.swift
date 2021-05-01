@@ -88,7 +88,14 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             newDepictView.delegate = self
             
             if let imageURL = rawDepict["headerImage"] as? String {
-                self.depictionBackgroundView.sd_setImage(with: URL(string: imageURL))
+                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL) { refresh, image in
+                    if refresh,
+                       let image = image {
+                        DispatchQueue.main.async {
+                            self.depictionBackgroundView.image = image
+                        }
+                    }
+                }
             }
             
             newDepictView.alpha = 0.1
@@ -231,9 +238,18 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let iconURL = URL(string: rawIcon)
-            packageIconView.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "Tweak Icon"))
-            packageNavBarIconView?.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "Tweak Icon"))
+            let image = AmyNetworkResolver.shared.image(rawIcon) { refresh, image in
+                if refresh,
+                      let image = image,
+                      self.package?.icon == rawIcon {
+                    DispatchQueue.main.async {
+                        self.packageIconView.image = image
+                        self.packageNavBarIconView?.image = image
+                    }
+                }
+            } ?? UIImage(named: "Tweak Icon")
+            packageIconView.image = image
+            packageNavBarIconView?.image = image
         }
 
         var rawDescription: [[String: Any]] = [

@@ -6,8 +6,7 @@
 //  Copyright © 2020 CoolStar. All rights reserved.
 //
 
-import Foundation
-import SDWebImage
+import UIKit
 
 class PaymentProviderTableViewCell: UITableViewCell {
     private var titleLabel: UILabel = UILabel()
@@ -62,11 +61,18 @@ class PaymentProviderTableViewCell: UITableViewCell {
                     self.setImage(nil)
                     let url = info["icon"] as? String ?? ""
                     if !url.isEmpty {
-                        let options = SDWebImageOptions(rawValue: 0)
-                        self.iconView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(), options: options) { image, _, _, _ in
-                            DispatchQueue.main.async {
-                                self.setImage(image)
+                        if let image = AmyNetworkResolver.shared.image(url, { refresh, image in
+                            if refresh,
+                               let image = image,
+                               url == self.provider?.info?["icon"] as? String {
+                                DispatchQueue.main.async {
+                                    self.setImage(image)
+                                }
                             }
+                        }) {
+                            self.setImage(image)
+                        } else {
+                            self.setImage(nil)
                         }
                     }
                     if self.isAuthenticated {

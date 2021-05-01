@@ -65,15 +65,6 @@
         }
       },
       {
-        "package": "SDWebImage",
-        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
-        "state": {
-          "branch": null,
-          "revision": "9ffc546b8f68c3251ca09cfa95bbd20084b6321e",
-          "version": "5.11.0"
-        }
-      },
-      {
         "package": "SQLite.swift",
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {

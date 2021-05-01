@@ -102,12 +102,30 @@ class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
                 let screenshotView = UIButton(frame: .zero)
                 if (viewController as? DepictionScreenshotsViewController) != nil && screenshot["fullSizeURL"] as? String != nil {
                     if let fullSizeURL = screenshot["fullSizeURL"] as? String {
-                        screenshotView.sd_setBackgroundImage(with: URL(string: fullSizeURL), for: .normal) { _, _, _, _ in
+                        if let image = AmyNetworkResolver.shared.image(fullSizeURL, { refresh, image in
+                            if refresh,
+                               let image = image {
+                                DispatchQueue.main.async {
+                                    screenshotView.setBackgroundImage(image, for: .normal)
+                                    self.layoutSubviews()
+                                }
+                            }
+                        }) {
+                            screenshotView.setBackgroundImage(image, for: .normal)
                             self.layoutSubviews()
                         }
                     }
                 } else {
-                    screenshotView.sd_setBackgroundImage(with: url, for: .normal) { _, _, _, _ in
+                    if let image = AmyNetworkResolver.shared.image(url, { refresh, image in
+                        if refresh,
+                           let image = image {
+                            DispatchQueue.main.async {
+                                screenshotView.setBackgroundImage(image, for: .normal)
+                                self.layoutSubviews()
+                            }
+                        }
+                    }) {
+                        screenshotView.setBackgroundImage(image, for: .normal)
                         self.layoutSubviews()
                     }
                 }
