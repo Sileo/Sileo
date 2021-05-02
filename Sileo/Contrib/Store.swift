@@ -9,7 +9,7 @@
 import Foundation
 
 // swiftlint:disable all
-let StoreEndpoint = "https://github.com/23Aaron/featuredpage/"
+let StoreEndpoint = "https://raw.githubusercontent.com/23Aaron/featuredpage/gh-pages/"
 let StoreVersion = "0.7.1"
 
 func StoreURL(_ relativePath: String) -> URL? {
