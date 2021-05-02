@@ -13,11 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        DispatchQueue.global(qos: .background).async {
-            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/Cydia.app"])
-            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/SafeMode.app"])
-        }
-        
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
