@@ -2,7 +2,8 @@
 //  GifManager.swift
 //  NitrolessiOS
 //
-//  Created by A W on 16/02/2021.
+//  Created by Amy While on 16/02/2021.
+//  Copyright © 2021 Amy While. All rights reserved.
 //
 
 import UIKit

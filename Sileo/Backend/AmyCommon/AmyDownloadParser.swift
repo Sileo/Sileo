@@ -2,8 +2,8 @@
 //  AmyDownloadParser.swift
 //  Sileo
 //
-//  Created by Andromeda on 01/05/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Created by Amy on 01/05/2021.
+//  Copyright © 2021 Amy While. All rights reserved.
 //
 
 import Foundation
