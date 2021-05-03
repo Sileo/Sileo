@@ -85,6 +85,7 @@
 		CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
+		E1152F39264051BB008C7D5D /* SileoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1152F38264051BB008C7D5D /* SileoTests.swift */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
@@ -327,7 +328,6 @@
 		F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
-		F18FD5A522DBBC28002DA8CB /* SileoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18FD5A422DBBC28002DA8CB /* SileoTests.swift */; };
 		F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19265D22106E00600B31E13 /* CydiaAccountViewController.xib */; };
 		F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19265D62106E63700B31E13 /* CydiaAccountUIWebView.m */; };
 		F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1974938213695660065E630 /* PackageListHeaderBlank.xib */; };
@@ -710,6 +710,7 @@
 		CFBC7FDE222041290066D501 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
+		E1152F38264051BB008C7D5D /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -829,7 +830,6 @@
 		F183CFC22318F48600D3AF3B /* RepoScraper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RepoScraper; sourceTree = "<group>"; };
 		F183CFC6231A563500D3AF3B /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		F18B58472581A7E90064CD71 /* CSActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSActionItem.swift; sourceTree = "<group>"; };
-		F18FD5A422DBBC28002DA8CB /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
 		F19265D22106E00600B31E13 /* CydiaAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CydiaAccountViewController.xib; sourceTree = "<group>"; };
 		F19265D52106E63700B31E13 /* CydiaAccountUIWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CydiaAccountUIWebView.h; sourceTree = "<group>"; };
 		F19265D62106E63700B31E13 /* CydiaAccountUIWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CydiaAccountUIWebView.m; sourceTree = "<group>"; };
@@ -1584,7 +1584,7 @@
 			isa = PBXGroup;
 			children = (
 				F149E0CE20B6040B005CA30B /* Info.plist */,
-				F18FD5A422DBBC28002DA8CB /* SileoTests.swift */,
+				E1152F38264051BB008C7D5D /* SileoTests.swift */,
 			);
 			path = SileoTests;
 			sourceTree = "<group>";
@@ -2978,7 +2978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F18FD5A522DBBC28002DA8CB /* SileoTests.swift in Sources */,
+				E1152F39264051BB008C7D5D /* SileoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3520,6 +3520,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",

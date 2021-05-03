@@ -196,7 +196,6 @@ final class DownloadManager {
         }
         
         let allRawDownloads = upgrades + installations + installdeps
-        
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
             queued.removeValue(forKey: package.package)

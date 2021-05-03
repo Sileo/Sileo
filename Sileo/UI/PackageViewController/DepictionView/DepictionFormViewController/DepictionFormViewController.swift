@@ -2,8 +2,8 @@
 //  DepictionFormViewController.swift
 //  Sileo
 //
-//  Created by Andromeda on 30/04/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Created by Amy on 30/04/2021.
+//  Copyright © 2021 Amy While. All rights reserved.
 //
 
 import UIKit

@@ -71,6 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
+        #if targetEnvironment(simulator)
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            return
+        }
+        #endif
+        
         if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
             // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
             if let tabBarController = self.window?.rootViewController as? UITabBarController,

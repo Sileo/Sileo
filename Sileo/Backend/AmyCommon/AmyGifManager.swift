@@ -20,7 +20,7 @@ class AmyGifManager {
             if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
                 images.append(UIImage(cgImage: image))
             }
-        }
+        }	
         let calculatedDuration = Double(imageCount) * delayTime
         return AmyGif(image: images, duration: calculatedDuration)
     }

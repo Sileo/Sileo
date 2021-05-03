@@ -105,7 +105,6 @@ class DownloadsTableViewController: SileoViewController {
             manager.errors.isEmpty {
             if !manager.lockedForInstallation {
                 manager.lockedForInstallation = true
-                
                 let installController = InstallViewController(nibName: "InstallViewController", bundle: nil)
                 manager.totalProgress = 0
                 self.navigationController?.pushViewController(installController, animated: true)

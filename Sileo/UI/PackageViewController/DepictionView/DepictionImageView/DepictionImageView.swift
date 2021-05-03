@@ -21,7 +21,6 @@ class DepictionImageView: DepictionBaseView {
         guard let url = dictionary["URL"] as? String else {
             return nil
         }
-        NSLog("[Sileo] Image = \(url)")
         let width = (dictionary["width"] as? CGFloat) ?? CGFloat(0)
         let height = (dictionary["height"] as? CGFloat) ?? CGFloat(0)
         guard width != 0 || height != 0 else {

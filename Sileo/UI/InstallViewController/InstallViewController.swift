@@ -88,6 +88,9 @@ class InstallViewController: SileoViewController {
                     self.completeButton?.alpha = 1
                     self.completeLaterButton?.alpha = 1
                     self.refreshSileo = true
+                    if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+                        NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
+                    }
                 }
             }
             

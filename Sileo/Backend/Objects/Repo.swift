@@ -30,6 +30,15 @@ final class Repo: Equatable {
     var packagesProvides: [Package]?
     var packagesDict: [String: Package]?
     
+    var releaseDict: [String: String]? {
+        let releaseFile = RepoManager.shared.cacheFile(named: "Release", for: self)
+        if let info = try? String(contentsOf: releaseFile),
+           let release = try? ControlFileParser.dictionary(controlFile: info, isReleaseFile: true).0 {
+            return release
+        }
+        return nil
+    }
+    
     var totalProgress: CGFloat {
         let startProgress: CGFloat = startedRefresh ? 0.1 : 0.0
         return (((releaseProgress + packagesProgress + releaseGPGProgress)/3.0) * 0.9) + startProgress
