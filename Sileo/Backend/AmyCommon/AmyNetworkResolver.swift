@@ -13,7 +13,7 @@ final class AmyNetworkResolver {
     static let shared = AmyNetworkResolver()
     
     var cacheDirectory: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache")
     }
 
     init() {
