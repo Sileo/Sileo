@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 23/03/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Copyright © 2021 Amy While. All rights reserved.
 //
 
 import Foundation
@@ -33,21 +33,21 @@ final class CanisterResolver {
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         if query.count <= 3 { return fetch() }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&fields=identifier,name,description,icon,repository,author,version,depiction.native,depiction.web,&search_fields=identifier,name,author,maintainer"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=id,name,author,maintainer&responseFields=id,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
         AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
-                  dict["message"] as? String == "Successful",
+                  dict["status"] as? String == "Successful",
                   let data = dict["data"] as? [[String: Any]] else { return fetch() }
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
-                package.repo = entry["repository"] as? String
+                package.repo = entry["repositoryURI"] as? String
                 if self.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
-                package.identifier = entry["identifier"] as? String
+                package.identifier = entry["id"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
-                package.depiction = entry["sileo_depiction"] as? String
+                package.depiction = entry["nativeDepiction"] as? String
                 package.legacyDepiction = entry["depiction"] as? String
                 if var author = entry["author"] as? String,
                    let range = author.range(of: "<") {
@@ -57,7 +57,7 @@ final class CanisterResolver {
                 } else {
                     package.author = entry["author"] as? String
                 }
-                package.version = entry["version"] as? String
+                package.version = entry["latestVersion"] as? String
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
                     self.packages.append(package)
                 }
@@ -71,7 +71,7 @@ final class CanisterResolver {
         AmyNetworkResolver.dict(url: url2) { success, dict in
             guard success,
                   let dict = dict,
-                  (dict["message"] as? String) == "Successful",
+                  (dict["status"] as? String) == "Successful",
                   let data = dict["data"] as? [String: String],
                   let repoURI = data["repositoryURI"],
                   let url3 = URL(string: repoURI) else {
@@ -88,8 +88,9 @@ final class CanisterResolver {
     class public func piracy(_ urls: [URL], response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
         if urls.count == 1 {
             CanisterResolver.piracy(urls[0]) { safe, piracy in
-                return response(safe, piracy)
+                response(safe, piracy)
             }
+            return
         }
         var url = "https://api.canister.me/v1/community/repositories/check?queries="
         for (index, url2) in urls.enumerated() {
@@ -99,7 +100,7 @@ final class CanisterResolver {
         AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
-                  (dict["message"] as? String) == "Successful",
+                  (dict["status"] as? String) == "Successful",
                   let data = dict["data"] as? [[String: String]] else {
                 return response(urls, [URL]())
             }
