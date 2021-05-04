@@ -144,6 +144,7 @@
 "Pog_Developer" = "Mostantól már fejlesztő vagy!";
 "Developer_Mode_Explain" = "A fejlesztői mód kikapcsolja a fizetési API HTTPS követelményét.";
 "Auto_Refresh_Sources" = "Források automatikus frissítése";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
 
 "Sileo_Light" = "Sileo Világos";
 "Sileo_Dark" = "Sileo Sötét";
