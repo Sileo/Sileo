@@ -12,11 +12,11 @@
 "About" = "关于";
 "Close" = "关闭";
 "Double tap to open." = "双击以打开.";
-"Untitled_Repo" = "未命名的源";
+"Untitled_Repo" = "未命名的软件源";
 "OK" = "确定";
 "Done" = "完成";
 "Done_Editing" = "完成";
-"More_Info" = "更多讯息";
+"More_Info" = "更多信息";
 "Loading" = "载入中…";
 "Share" = "分享";
 "Delete" = "删除";
@@ -43,7 +43,7 @@
 
 "Package_Upgrade_Action" = "更新";
 "Package_Reinstall_Action" = "重新安装";
-"Package_Uninstall_Action" = "移除";
+"Package_Uninstall_Action" = "卸载";
 "Package_Modify_Action" = "更改";
 "Package_Get_Action" = "获取";
 "Package_Queue_Action" = "队列";
@@ -55,9 +55,9 @@
 "Package_Support_Action" = "支持";
 "Package_Hold_Enable_Action" = "忽略未来的更新";
 "Package_Hold_Disable_Action" = "取消忽略更新";
-"Package_Wishlist_Add" = "添加到愿望单";
-"Package_Wishlist_Remove" = "从愿望单移除";
-"Wishlist" = "愿望单";
+"Package_Wishlist_Add" = "添加到愿望清单";
+"Package_Wishlist_Remove" = "从愿望清单中删除";
+"Wishlist" = "愿望清单";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安装";
@@ -79,12 +79,12 @@
 "Packages_By_Author" = "%@ 的软件包"; // %@ = author name
 
 "Featured_Page" = "精选";
-"News_Page" = "新内容";
+"News_Page" = "新闻";
 "Sources_Page" = "软件源";
 "Packages_Page" = "软件包";
 "Search_Page" = "搜索";
 "Refreshing_Sources_Page" = "正在刷新软件源";
-"Package_Installed_Files_Page" = "已经安装的文件";
+"Package_Installed_Files_Page" = "已安装的文件";
 "Refresh" = "刷新";
 "Remove" = "移除";
 
@@ -92,28 +92,28 @@
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
 
 "All_Categories" = "所有分类";
-"Internal_Repo" = "内部源";
-"External_Repo" = "外部源";
+"Internal_Repo" = "内部软件源";
+"External_Repo" = "外部软件源";
 "Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
 
-"Add_Source.Title" = "添加源";
+"Add_Source.Title" = "添加软件源";
 "Add_Source.Body" = "新增软件源地址";
-"Add_Source.Button.Add" = "添加源";
+"Add_Source.Button.Add" = "添加软件源";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
 
-"Untitled_Form" = "未命名的表单";
+"Untitled_Form" = "未命名的表格";
 "Form_Submitted.Default_Title" = "已提交的表格";
 "Form_Submitted.Default_Body" = "表格提交成功.";
 
-"Web_Depiction_Deprecated_Warning" = "Web视图已经被弃用. 请联系软件源维护者以获得从旧视图升级的讯息.";
+"Web_Depiction_Deprecated_Warning" = "Web 描述视图已经被弃用。请联系软件源维护者，了解有关从旧视图升级的信息。";
 
 "Package_Details_Tab" = "详情";
-"Package_Changelog_Tab" = "更新记录";
-"Package_No_Description_Available" = "没有针对这个软件包的描述.";
-"Package_Changelogs_Unavailable" = "无法查看此软件包的更新记录.";
+"Package_Changelog_Tab" = "更新日志";
+"Package_No_Description_Available" = "没有针对这个软件包的描述。";
+"Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
 "Version" = "版本";
@@ -144,6 +144,7 @@
 "Pog_Developer" = "您现在是开发者！";
 "Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
 "Auto_Refresh_Sources" = "自动刷新软件源";
+"iCloud_Profile" = "在精选显示 iCloud 照片";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -156,7 +157,7 @@
 "Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登陆"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "退出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "退出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登陆前,您将不能下载已经购买的软件包.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登陆前，您将不能下载已经购买的软件包。";
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
@@ -168,21 +169,21 @@
 "After_Install_Respring_Later" = "稍后重启 SpringBoard";
 "After_Install_Reboot_Later" = "稍后重启设备";
 
-"Dangerous_Repo.Title" = "危险源";
-"Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为,违法内容,病毒而被标记的源.\n\n被标记的软件源可能经常发布许多转载的软件包(包括许多免费和收费的软件包).这些软件包可能会影响到您的隐私和设备,有时可能会影响到越狱环境.我们建议您提高谨慎以远离有害软件包.";
-"Dangerous_Repo.Continue" = "我接受风险,继续.";
+"Dangerous_Repo.Title" = "危险的软件源";
+"Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为，违法内容，病毒而被标记的软件源。\n\n被标记的软件源可能经常发布许多转载的软件包（包括许多免费和收费的软件包）。这些软件包可能会影响到您的隐私和设备，有时可能会影响到越狱环境。我们建议您提高谨慎以远离有害软件包。";
+"Dangerous_Repo.Continue" = "我接受风险，继续。";
 "Dangerous_Repo.Cancel" = "带我回到安全地带";
-"Dangerous_Repo.Last_Chance.Title" = "添加危险源？";
+"Dangerous_Repo.Last_Chance.Title" = "添加危险的软件源？";
 "Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备/越狱环境造成破坏性的影响.我们建议您为了设备的安全而取消操作. %@"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "继续";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
 "Export" = "导出";
-"Export_Packages" = "请问需要导出软件包列表吗? 这将会复制所有软件包名称和版本到您的剪贴板.";
-"Export_Sources" = "请问需要导出您的源地址吗? 这将复制所有源地址到您的剪贴板.";
-"Export_Yes" = "好的, 导出.";
-"Export_No" = "不, 取消.";
+"Export_Packages" = "请问需要导出软件包列表吗？这将会复制所有软件包名称和版本到您的剪贴板。";
+"Export_Sources" = "请问需要导出您的软件源地址吗？ 这将复制所有软件源地址到您的剪贴板。";
+"Export_Yes" = "好的，导出。";
+"Export_No" = "不，取消。";
 
 // Depcitions
 "View_Depiction" = "查看介绍";
