@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/johnxnguyen/Down.git",
         "state": {
           "branch": null,
-          "revision": "0bcd20dc56ad7fd47bbb99a1d2302a8bfa43b6d0",
-          "version": "0.10.0"
+          "revision": "f34b166be1f1db4aa8f573067e901d72f2a6be57",
+          "version": "0.11.0"
         }
       },
       {
@@ -75,11 +75,11 @@
       },
       {
         "package": "SWCompression",
-        "repositoryURL": "https://github.com/tsolomko/SWCompression.git",
+        "repositoryURL": "https://github.com/tsolomko/SWCompression",
         "state": {
           "branch": null,
-          "revision": "48ecebcadeecb81a41d66af547a5d7fcc1d8d5cb",
-          "version": "4.5.8"
+          "revision": "61fa0e4f665a03059d4d5ef03bcc22f80cd0f777",
+          "version": "4.5.9"
         }
       },
       {

@@ -90,7 +90,6 @@
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
 		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
-		E13638DE2614F5D300698D55 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E13638DD2614F5D300698D55 /* SWCompression */; };
 		E13638E82614F66400698D55 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E72614F66400698D55 /* Down */; };
 		E13638ED2614F69A00698D55 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E13638EC2614F69A00698D55 /* Alderis */; };
 		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
@@ -102,13 +101,14 @@
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
-		E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53492617439B00BB8A69 /* SWCompression */; };
 		E19A534E261743A300BB8A69 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534D261743A300BB8A69 /* Down */; };
 		E19A5350261743A900BB8A69 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534F261743A900BB8A69 /* Alderis */; };
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
+		E1A7DBCA2641E670006BAF49 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1A7DBC92641E670006BAF49 /* SWCompression */; };
+		E1A7DBCF2641E688006BAF49 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1A7DBCE2641E688006BAF49 /* SWCompression */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -950,10 +950,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A7DBCF2641E688006BAF49 /* SWCompression in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
-				E19A534A2617439B00BB8A69 /* SWCompression in Frameworks */,
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
@@ -970,6 +970,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A7DBCA2641E670006BAF49 /* SWCompression in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
@@ -978,7 +979,6 @@
 				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
-				E13638DE2614F5D300698D55 /* SWCompression in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
 				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
@@ -2235,13 +2235,13 @@
 				E19A53412617438700BB8A69 /* Cosmos */,
 				E19A53452617439300BB8A69 /* KeychainAccess */,
 				E19A53472617439700BB8A69 /* SwiftSoup */,
-				E19A53492617439B00BB8A69 /* SWCompression */,
 				E19A534D261743A300BB8A69 /* Down */,
 				E19A534F261743A900BB8A69 /* Alderis */,
 				E19A5351261743B300BB8A69 /* SwipeCellKit */,
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19A5357261743C200BB8A69 /* AUPickerCell */,
+				E1A7DBCE2641E688006BAF49 /* SWCompression */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -2267,13 +2267,13 @@
 				E13638C92614F53400698D55 /* Cosmos */,
 				E13638D32614F59000698D55 /* KeychainAccess */,
 				E13638D82614F5AA00698D55 /* SwiftSoup */,
-				E13638DD2614F5D300698D55 /* SWCompression */,
 				E13638E72614F66400698D55 /* Down */,
 				E13638EC2614F69A00698D55 /* Alderis */,
 				E13638F12614F6C000698D55 /* SQLite */,
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E1EA1D05261500A100E56882 /* AUPickerCell */,
+				E1A7DBC92641E670006BAF49 /* SWCompression */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -2394,13 +2394,13 @@
 				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */,
 				E13638EB2614F69A00698D55 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
+				E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -3729,14 +3729,6 @@
 				minimumVersion = 2.3.2;
 			};
 		};
-		E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.8;
-			};
-		};
 		E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnxnguyen/Down.git";
@@ -3767,6 +3759,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.7.1;
+			};
+		};
+		E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.9;
 			};
 		};
 		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {
@@ -3803,11 +3803,6 @@
 			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		E13638DD2614F5D300698D55 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
 		E13638E72614F66400698D55 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
@@ -3843,11 +3838,6 @@
 			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		E19A53492617439B00BB8A69 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638DC2614F5D300698D55 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
 		E19A534D261743A300BB8A69 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
@@ -3877,6 +3867,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
+		};
+		E1A7DBC92641E670006BAF49 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E1A7DBCE2641E688006BAF49 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
 		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;
