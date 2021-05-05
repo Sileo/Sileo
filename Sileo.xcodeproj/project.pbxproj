@@ -713,6 +713,7 @@
 		E1152F38264051BB008C7D5D /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
+		E1ADDD1C2643145B00E94655 /* Sileo Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sileo Demo.entitlements"; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		E1B3FBBC2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Categories.strings"; sourceTree = "<group>"; };
@@ -1035,6 +1036,7 @@
 		493B23BE260979AF007D605F /* Sileo Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E1ADDD1C2643145B00E94655 /* Sileo Demo.entitlements */,
 				493B23BF260979DD007D605F /* Info.plist */,
 			);
 			path = "Sileo Demo";
@@ -3206,6 +3208,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Sileo Demo/Sileo Demo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3256,6 +3259,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3273,6 +3277,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Sileo Demo/Sileo Demo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
@@ -3318,6 +3323,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

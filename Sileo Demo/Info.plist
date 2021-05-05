@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Sileo Demo</string>
+	<string>Sileo but Signed</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

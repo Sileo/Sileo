@@ -17,7 +17,9 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     public var progressCallback: ((_ progress: Progress) -> Void)?
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
-    public var url: URL?
+    public var url: URL? {
+        request.url
+    }
     
     struct Progress {
         var period: Int64 = 0
@@ -35,12 +37,10 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
             request.setValue(value, forHTTPHeaderField: key)
         }
         self.request = request
-        self.url = url
     }
     
     init(request: URLRequest) {
         self.request = request
-        self.url = request.url
     }
     
     public func cancel() {

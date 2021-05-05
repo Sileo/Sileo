@@ -299,6 +299,8 @@ final class DownloadManager {
                             download.backgroundTask = nil
                             self.startMoreDownloads()
                         })
+                        self.downloads[package.package] = download
+                        self.startMoreDownloads()
                     }
                 }
                 downloads[package.package] = download
@@ -325,25 +327,26 @@ final class DownloadManager {
         
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
-            if let download = downloads[package.package],
-               let host = download.task?.url?.host {
-                let hostCount = downloadCount[host] ?? 0
-                if download.queued && !download.completed {
-                    if hostCount < 2 {
-                        download.queued = false
-                        download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-                            download.task?.cancel()
-                            if let backgroundTaskIdentifier = download.backgroundTask {
-                                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
-                            }
-                            download.backgroundTask = nil
-                        })
-                        
-                        download.task?.resume()
-                        downloadCount[host] = hostCount + 1
-                    }
-                } else if !download.queued && !download.completed {
-                    downloadCount[host] = hostCount + 1
+            if let download = downloads[package.package] {
+                if download.task == nil { download.task?.make() }
+                if let host = download.task?.url?.host {
+                     let hostCount = downloadCount[host] ?? 0
+                     if download.queued && !download.completed {
+                         if hostCount < 2 {
+                             download.queued = false
+                             download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+                                 download.task?.cancel()
+                                 if let backgroundTaskIdentifier = download.backgroundTask {
+                                     UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+                                 }
+                                 download.backgroundTask = nil
+                             })
+                             download.task?.resume()
+                             downloadCount[host] = hostCount + 1
+                         }
+                     } else if !download.queued && !download.completed {
+                         downloadCount[host] = hostCount + 1
+                     }
                 }
             }
         }
