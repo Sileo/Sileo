@@ -25,12 +25,16 @@ final class PackageListManager {
     
     public static let shared = PackageListManager()
     
-    public func waitForReady() {
+    public func waitForReady(_ completion: (() -> Void)? = nil) {
         databaseLock.wait()
         databaseLock.signal()
         if !isLoaded {
-            self.loadAllPackages()
+            self.loadAllPackages {
+                completion?()
+            }
+            return
         }
+        completion?()
     }
     
     public func waitForChangesDatabaseReady() {
@@ -113,7 +117,7 @@ final class PackageListManager {
                                      greaterThan: package2.version)
     }
     
-    private func loadAllPackages() {
+    private func loadAllPackages(_ completion: (() -> Void)? = nil) {
         databaseLock.wait()
         defer {
             databaseLock.signal()
@@ -277,6 +281,7 @@ final class PackageListManager {
                 
                 downloadMan.reloadData(recheckPackages: true)
             }
+            completion?()
         }
     }
     
