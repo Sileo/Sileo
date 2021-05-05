@@ -112,6 +112,7 @@ final class AmyNetworkResolver {
         if !json.isEmpty,
            let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
             request.httpBody = jsonData
+            request.setValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
         }
         let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
             if let data = data {

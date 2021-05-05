@@ -301,7 +301,6 @@ final class DownloadManager {
                         })
                     }
                 }
-                
                 downloads[package.package] = download
             }
         }
