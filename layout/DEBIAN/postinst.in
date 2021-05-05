@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sourcesDir="/etc/apt/sources.list.d"
 
 rm /etc/apt/sources.list.d/sileo.list 2> /dev/null || true
@@ -53,7 +53,7 @@ Components: main\
 \
 ;' $sourcesDir/sileo.sources
 fi
- 
+
 echo "Package: *" > /etc/apt/preferences.d/odyssey
 echo "Pin: release n=odyssey-ios" >> /etc/apt/preferences.d/odyssey
 echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/odyssey
@@ -62,22 +62,21 @@ echo "Package: *" > /etc/apt/preferences.d/chimera
 echo "Pin: release o=Chimera Repo" >> /etc/apt/preferences.d/chimera
 echo "Pin-Priority: 1000" >> /etc/apt/preferences.d/chimera
 
-function finish() {
+finish() {
         f="${1}"
 
         # No control fd: bail out
-        [[ -z "${f}" || -z "${SILEO}" ]] && return
-        sileo=(${SILEO})
+        [ -z "${f}" ] || [ -z "${SILEO}" ] && return
 
         # Sileo control fd version < 1: bail out
-        [[ ${sileo[1]} -ge 1 ]] || return
+        [ "$(echo $SILEO | cut -d\  -f2)" -ge 1 ] || return
 
-        echo "finish:${f}" >&${sileo[0]}
+        echo "finish:${f}" >&$(echo $SILEO | cut -d\  -f1)
 }
 
 finish uicache
 
-if [[ -z ${SILEO} ]]; then echo "Not running in Sileo. Trigger UICache"; fi
-if [[ -z ${SILEO} ]]; then uicache -p /Applications/@@SILEO_APP@@; fi
+if [ -z "${SILEO}" ]; then echo "Not running in Sileo. Trigger UICache"; fi
+if [ -z "${SILEO}" ]; then uicache -p /Applications/@@SILEO_APP@@; fi
 
 exit 0
