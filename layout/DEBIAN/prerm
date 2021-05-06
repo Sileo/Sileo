@@ -1,19 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-rm -f /etc/apt/sources.list.d/sileo-base.sources 2> /dev/null || true
-rm -f /etc/apt/sileo.list.d/sileo-base.sources 2> /dev/null || true
+finish() {
+        f="${1}"
 
-function finish() {
-	f="${1}"
+        # No control fd: bail out
+        [ -z "${f}" ] || [ -z "${SILEO}" ] && return
 
-	# No control fd: bail out
-	[[ -z "${f}" || -z "${SILEO}" ]] && return
-	sileo=(${SILEO})
+        # Sileo control fd version < 1: bail out
+        [ "$(echo $SILEO | cut -d\  -f2)" -ge 1 ] || return
 
-	# Sileo control fd version < 1: bail out
-	[[ ${sileo[1]} -ge 1 ]] || return
-
-	echo "finish:${f}" >&${sileo[0]}
+        echo "finish:${f}" >&$(echo $SILEO | cut -d\  -f1)
 }
 
 finish uicache

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sourcesDir="/etc/apt/sources.list.d"
 
 rm /etc/apt/sources.list.d/sileo.list 2> /dev/null || true
@@ -13,7 +13,7 @@ fi
 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Chariz Repo"
-        sed -i.bak '1s;^;Types: deb\
+        sed -i '1s;^;Types: deb\
 URIs: https://repo.chariz.com/\
 Suites: ./\
 Components:\
@@ -24,7 +24,7 @@ fi
 if ! grep -Fxq "URIs: https://repo.dynastic.co/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Dynastic Repo"
-        sed -i.bak '1s;^;Types: deb\
+        sed -i '1s;^;Types: deb\
 URIs: https://repo.dynastic.co/\
 Suites: ./\
 Components:\
@@ -35,7 +35,7 @@ fi
 if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Packix Repo"
-        sed -i.bak '1s;^;Types: deb\
+        sed -i '1s;^;Types: deb\
 URIs: https://repo.packix.com/\
 Suites: ./\
 Components:\
@@ -46,14 +46,14 @@ fi
 if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
 then
         echo "Installed BigBoss Repo"
-        sed -i.bak '1s;^;Types: deb\
+        sed -i '1s;^;Types: deb\
 URIs: http://apt.thebigboss.org/repofiles/cydia/\
 Suites: stable\
 Components: main\
 \
 ;' $sourcesDir/sileo.sources
 fi
- 
+
 echo "Package: *" > /etc/apt/preferences.d/odyssey
 echo "Pin: release n=odyssey-ios" >> /etc/apt/preferences.d/odyssey
 echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/odyssey
@@ -62,28 +62,21 @@ echo "Package: *" > /etc/apt/preferences.d/chimera
 echo "Pin: release o=Chimera Repo" >> /etc/apt/preferences.d/chimera
 echo "Pin-Priority: 1000" >> /etc/apt/preferences.d/chimera
 
-rm -f /etc/apt/preferences.d/checkra1n 2> /dev/null || true
-ln -s /dev/null /etc/apt/preferences.d/checkra1n
-
-rm -f $sourcesDir/sileo.sources.bak 2> /dev/null || true
-rm -f $sourcesDir/sileo-base.sources.bak 2> /dev/null || true
-
-function finish() {
+finish() {
         f="${1}"
 
         # No control fd: bail out
-        [[ -z "${f}" || -z "${SILEO}" ]] && return
-        sileo=(${SILEO})
+        [ -z "${f}" ] || [ -z "${SILEO}" ] && return
 
         # Sileo control fd version < 1: bail out
-        [[ ${sileo[1]} -ge 1 ]] || return
+        [ "$(echo $SILEO | cut -d\  -f2)" -ge 1 ] || return
 
-        echo "finish:${f}" >&${sileo[0]}
+        echo "finish:${f}" >&$(echo $SILEO | cut -d\  -f1)
 }
 
 finish uicache
 
-if [[ -z ${SILEO} ]]; then echo "Not running in Sileo. Trigger UICache"; fi
-if [[ -z ${SILEO} ]]; then uicache -p /Applications/@@SILEO_APP@@; fi
+if [ -z "${SILEO}" ]; then echo "Not running in Sileo. Trigger UICache"; fi
+if [ -z "${SILEO}" ]; then uicache -p /Applications/@@SILEO_APP@@; fi
 
 exit 0

@@ -2,7 +2,7 @@ Package: @@PACKAGE_ID@@
 Name: @@PACKAGE_NAME@@
 Version: @@MARKETING_VERSION@@
 Author: Sileo Team <getsileoapp@gmail.com>
-Maintainer: CoolStar <coolstarorganization@gmail.com>
+Maintainer: Hayden Seay <me@diatr.us>
 Description: A modern APT package manager frontend
 Architecture: @@DEB_ARCH@@
 Depends: @@DEB_DEPENDS@@
