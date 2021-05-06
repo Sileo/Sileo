@@ -17,6 +17,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     public var progressCallback: ((_ progress: Progress) -> Void)?
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
+    public var waitingCallback: ((_ message: String) -> Void)?
     public var url: URL? {
         request.url
     }
@@ -54,30 +55,38 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     public func make() {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: queue)
-        let task = session.downloadTask(with: request) { url, response, error in
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
-                self.errorCallback?(522, error, url)
-                return
-            }
-            guard statusCode == 200,
-                  error == nil,
-                  let complete = url else {
-                self.errorCallback?(statusCode, error, url)
-                return
-            }
-            self.didFinishCallback?(statusCode, complete)
-            return
-        }
+        let task = session.downloadTask(with: request)
         self.task = task
     }
     
-    // Required but unused delegate method
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {}
+    // The Download Finished Succesfully
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        if let response = downloadTask.response,
+           let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            self.didFinishCallback?(statusCode, location)
+            return
+        }
+        self.didFinishCallback?(200, location)
+    }
     
+    // The Download has made Progress
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         self.progress.period = bytesWritten
         self.progress.total = totalBytesWritten
         self.progress.expected = totalBytesExpectedToWrite
         self.progressCallback?(progress)
+    }
+    
+    // Checking for errors in the download
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error {
+            let statusCode = (task.response as? HTTPURLResponse)?.statusCode ?? 522
+            self.errorCallback?(statusCode, error, nil)
+        }
+    }
+    
+    // Tell the caller that the download is waiting for network
+    func urlSession(_ session: URLSession, taskIsWaitingForConnectivity task: URLSessionTask) {
+        self.waitingCallback?("Waiting For Connection")
     }
 }

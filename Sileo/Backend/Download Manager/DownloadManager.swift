@@ -240,6 +240,7 @@ final class DownloadManager {
                         let downloadURL = url ?? URL(string: filename)
                         download.task = RepoManager.shared.queue(from: downloadURL,
                                                                  progress: { progress in
+                                                                    download.message = nil
                                                                     download.progress = CGFloat(progress.fractionCompleted)
                                                                     download.totalBytesWritten = progress.total
                                                                     download.totalBytesExpectedToWrite = progress.expected
@@ -251,6 +252,7 @@ final class DownloadManager {
                             let fileSize = attributes?[FileAttributeKey.size] as? Int
                             let fileSizeStr = String(format: "%ld", fileSize ?? 0)
                             download.completed = true
+                            download.message = nil
                             if !package.package.contains("/") && (fileSizeStr != package.size) {
                                 download.failureReason = String(format: String(localizationKey: "Download_Size_Mismatch", type: .error),
                                                                 package.size ?? "nil", fileSizeStr)
@@ -285,6 +287,7 @@ final class DownloadManager {
                             download.backgroundTask = nil
                             self.startMoreDownloads()
                         }, failure: { statusCode in
+                            download.message = nil
                             download.success = false
                             download.completed = true
                             download.failureReason = String(format: String(localizationKey: "Download_Failing_Status_Code", type: .error), statusCode)
@@ -298,6 +301,11 @@ final class DownloadManager {
                             }
                             download.backgroundTask = nil
                             self.startMoreDownloads()
+                        }, waiting: { message in
+                            download.message = message
+                            DispatchQueue.main.async {
+                                self.viewController.reloadDownload(package: package)
+                            }
                         })
                         self.downloads[package.package] = download
                         self.startMoreDownloads()
@@ -328,7 +336,6 @@ final class DownloadManager {
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
             if let download = downloads[package.package] {
-                if download.task == nil { download.task?.make() }
                 if let host = download.task?.url?.host {
                      let hostCount = downloadCount[host] ?? 0
                      if download.queued && !download.completed {

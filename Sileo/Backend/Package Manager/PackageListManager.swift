@@ -221,6 +221,7 @@ final class PackageListManager {
         }
         
         isLoaded = true
+        completion?()
         
         DispatchQueue.global(qos: .userInitiated).async {
             DependencyResolverAccelerator.shared.preflightInstalled()
@@ -281,7 +282,6 @@ final class PackageListManager {
                 
                 downloadMan.reloadData(recheckPackages: true)
             }
-            completion?()
         }
     }
     

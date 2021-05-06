@@ -27,6 +27,8 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
             self.progress = download.progress
             if download.success {
                 self.subtitle = String(localizationKey: "Ready_Status")
+            } else if let message = download.message {
+                self.subtitle = message
             } else if let failureReason = download.failureReason,
                 !failureReason.isEmpty {
                 self.subtitle = String(format: String(localizationKey: "Error_Indicator", type: .error), failureReason)

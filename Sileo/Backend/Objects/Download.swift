@@ -19,6 +19,7 @@ final class Download {
     var success = false
     var queued = true
     var completed = false
+    var message: String?
     
     init(package: Package) {
         self.package = package

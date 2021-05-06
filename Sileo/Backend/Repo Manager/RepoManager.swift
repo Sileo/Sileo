@@ -383,7 +383,8 @@ final class RepoManager {
         from url: URL?,
         progress: ((AmyDownloadParser.Progress) -> Void)?,
         success: @escaping (URL) -> Void,
-        failure: @escaping (Int) -> Void
+        failure: @escaping (Int) -> Void,
+        waiting: ((String) -> Void)? = nil
     ) -> AmyDownloadParser? {
         guard let url = url else {
             failure(520)
@@ -403,6 +404,9 @@ final class RepoManager {
         }
         task.didFinishCallback = { _, url in
             success(url)
+        }
+        task.waitingCallback = { message in
+            waiting?(message)
         }
         task.make()
         return task
