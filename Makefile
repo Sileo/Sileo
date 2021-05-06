@@ -4,6 +4,8 @@ V             ?= 0
 DEBUG         ?= 0
 # Beta build or not?
 BETA          ?= 0
+# Build Nightly or not?
+NIGHTLY       ?= 0
 
 # Platform to build for.
 SILEO_PLATFORM ?= iphoneos-arm64
@@ -50,13 +52,23 @@ STRIP = xcrun strip
 ifneq ($(BETA),0)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
 export DISPLAY_NAME = "Sileo-Beta"
+ICON = https:\/\/getsileo.app\/img\/icon.png
 SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
+else ifneq ($(NIGHTLY),0)
+export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
+export DISPLAY_NAME = "Sileo-Nightly"
+ICON = https:\/\/beta.anamy.gay\/static\/SileoNightly.png
+SILEO_ID   = org.coolstar.sileonightly
+SILEO_NAME = Sileo (Nightly Channel)
+SILEO_APP  = Sileo-Nightly.app
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
 export DISPLAY_NAME = "Sileo"
+ICON = https:\/\/getsileo.app\/img\/icon.png
 SILEO_ID   = org.coolstar.sileo
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
@@ -116,6 +128,7 @@ stage: all
 		-e 's/@@PACKAGE_ID@@/$(SILEO_ID)/' \
 		-e 's/@@PACKAGE_NAME@@/$(SILEO_NAME)/' \
 		-e 's/@@DEB_ARCH@@/$(DEB_ARCH)/' \
+		-e 's/@@ICON@@/$(ICON)/' \
 		-e 's/@@DEB_DEPENDS@@/$(DEB_DEPENDS)/' $(SILEO_STAGE_DIR)/DEBIAN/control.in > $(SILEO_STAGE_DIR)/DEBIAN/control
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
 	@sed -e s/@@SILEO_APP@@/$(SILEO_APP)/ \

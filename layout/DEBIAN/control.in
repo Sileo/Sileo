@@ -7,5 +7,5 @@ Description: A modern APT package manager frontend
 Architecture: @@DEB_ARCH@@
 Depends: @@DEB_DEPENDS@@
 Section: Packaging
-Icon: https://getsileo.app/img/icon.png
+Icon: @@ICON@@
 SileoDepiction: https://featuredpage.getsileo.app/depiction.json
