@@ -118,32 +118,4 @@ class SileoTests: XCTestCase {
             XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
         }
     }
-    
-    func testDInstallOne() throws {
-        guard let allPackages = PackageListManager.shared.allPackages,
-              !allPackages.isEmpty else {
-            XCTAssert(false, "All Packages is Empty")
-            throw "All Packages is Empty"
-        }
-        let bundlesToInstall = [
-            "org.coolstar.libhooker"
-        ]
-        for bundle in bundlesToInstall {
-            guard let package = allPackages.first(where: { $0.package == bundle }) else {
-                XCTAssert(false, "Could not find package: \(bundle)")
-                throw "Could not find package: \(bundle)"
-            }
-            DownloadManager.shared.add(package: package, queue: .installations)
-        }
-        let promise = expectation(description: "Package Downloads and Install")
-        DownloadManager.shared.viewController.confirmQueued(nil)
-        self.observer = NotificationCenter.default.addObserver(forName: NSNotification.Name("SileoTests.CompleteInstall"), object: nil, queue: nil) { _ in
-            promise.fulfill()
-            return
-        }
-        waitForExpectations(timeout: 30) { _ in
-            let errors = DownloadManager.shared.errors
-            XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
-        }
-    }
 }

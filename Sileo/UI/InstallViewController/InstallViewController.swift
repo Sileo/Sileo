@@ -152,7 +152,7 @@ class InstallViewController: SileoViewController {
                         self.progressView?.alpha = 0
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
-                        if !(!refresh && finish == .back) {
+                        if !(!refresh && finish == .back && finish == .uicache) {
                             self.completeLaterButton?.alpha = 1
                         }
                         if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {

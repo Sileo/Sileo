@@ -93,7 +93,7 @@ endif
 
 giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 	$(MAKE) -C giveMeRoot \
-		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)"
+		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)" 
 
 $(SILEO_APP_DIR):
 	@set -o pipefail; \

@@ -185,9 +185,10 @@ class DepictionFormViewController: SileoTableViewController {
                     return
                 }
                 guard dict["success"] as? Bool ?? false else {
-                    let error = dict["error"] as? String ?? String(localizationKey: "Unknown")
-                    self.presentErrorDialog(message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), error),
-                                            mustCancel: true)
+                    let title = dict["title"] as? String
+                    let message = dict["message"] as? String ?? String(localizationKey: "Unknown")
+                    self.presentErrorDialog(title: title, message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), message),
+                                            mustCancel: true, retry: true)
                     return
                 }
                 let title = dict["title"] as? String
@@ -211,9 +212,14 @@ class DepictionFormViewController: SileoTableViewController {
         }
     }
     
-    private func presentErrorDialog(message: String, mustCancel: Bool) {
-        let alert = UIAlertController(title: String(localizationKey: "Form_Error.Title", type: .error),
+    private func presentErrorDialog(title: String? = nil, message: String, mustCancel: Bool, retry: Bool = false) {
+        let alert = UIAlertController(title: (title != nil ? title! : String(localizationKey: "Form_Error.Title", type: .error)),
                                       message: message, preferredStyle: .alert)
+        if mustCancel && retry {
+            alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in
+                self.submit(nil)
+            })
+        }
         alert.addAction(UIAlertAction(title: String(localizationKey: mustCancel ? "Cancel" : "OK"),
                                       style: .cancel, handler: { _ in
                                         if mustCancel {

@@ -9,11 +9,16 @@
 int proc_pidpath(pid_t pid, void *buffer, uint32_t buffersize);
 
 int main(int argc, char *argv[]) {
+    #ifdef NIGHTLY
+    const char *sileoPath = "/Applications/Sileo-Nightly.app/Sileo";
+    #elif BETA
+    const char *sileoPath = "/Applications/Sileo-Beta.app/Sileo";
+    #else
     const char *sileoPath = "/Applications/Sileo.app/Sileo";
-    const char *sileoBetaPath = "/Applications/Sileo-Beta.app/Sileo";
-    
+    #endif
+
     struct stat statBuffer;
-    if (lstat(sileoPath, &statBuffer) == -1 && lstat(sileoBetaPath, &statBuffer) == -1) {
+    if (lstat(sileoPath, &statBuffer) == -1) {
         fprintf(stderr, "Cease your resistance!\n");
         return EX_NOPERM;
     }
@@ -26,7 +31,7 @@ int main(int argc, char *argv[]) {
         return EX_NOPERM;
     }
     
-    if (strcmp(parentPath, sileoPath) != 0 && strcmp(parentPath, sileoBetaPath) != 0) {
+    if (strcmp(parentPath, sileoPath) != 0) {
         fprintf(stderr, "Stpuidity is not a right\n");
         return EX_NOPERM;
     }
