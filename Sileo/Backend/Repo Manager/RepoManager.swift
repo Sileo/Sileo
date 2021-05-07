@@ -361,9 +361,6 @@ final class RepoManager {
                             }
                         }
                     }
-                    if repo.repoIcon == nil {
-                        repo.repoIcon = UIImage(named: "Repo Icon")
-                    }
                     metadataUpdateGroup.leave()
                 }
             }
@@ -743,9 +740,10 @@ final class RepoManager {
                         errorsFound = true
                     }
                     
+                    let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
                     if let packagesData = try? Data(contentsOf: packagesFile.url) {
-                        let (shouldSkip, hash) = self.ignorePackages(repo: repo.repoURL, data: packagesData, type: succeededExtension)
+                        let (shouldSkip, hash) = self.ignorePackages(repo: repo.repoURL, data: packagesData, type: succeededExtension, path: packagesFileDst)
                         skipPackages = shouldSkip
                         if !skipPackages {
                             do {
@@ -804,7 +802,6 @@ final class RepoManager {
                         }
                     }
                     
-                    let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
                         if !skipPackages {
                             moveFileAsRoot(from: packagesFile.url, to: packagesFileDst)
@@ -888,10 +885,13 @@ final class RepoManager {
         }
     }
     
-    private func ignorePackages(repo: String, data: Data?, type: String) -> (Bool, String?) {
+    private func ignorePackages(repo: String, data: Data?, type: String, path: URL) -> (Bool, String?) {
         guard let data = data,
               let repo = URL(string: repo) else { return (false, nil) }
         let hash = data.hash(ofType: .sha256)
+        if !FileManager.default.fileExists(atPath: path.path) {
+            return (false, hash)
+        }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
         let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
         let cachedData = try? Data(contentsOf: jsonPath)
