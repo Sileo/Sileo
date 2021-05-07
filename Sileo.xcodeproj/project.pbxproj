@@ -94,6 +94,14 @@
 		E13638ED2614F69A00698D55 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E13638EC2614F69A00698D55 /* Alderis */; };
 		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
 		E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F62614F6E300698D55 /* SwipeCellKit */; };
+		E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */; };
+		E13BD77A2645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */; };
+		E13BD77B2645E1AA006A5EF2 /* Nightly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */; };
+		E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */; };
+		E13BD77D2645E1AA006A5EF2 /* Nightly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */; };
+		E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */; };
+		E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
+		E13BD7802645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -711,6 +719,10 @@
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
 		E1152F38264051BB008C7D5D /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
+		E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@2x.png"; sourceTree = "<group>"; };
+		E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@3x.png"; sourceTree = "<group>"; };
+		E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@2x.png"; sourceTree = "<group>"; };
+		E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@3x.png"; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Sileo Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sileo Demo.entitlements"; sourceTree = "<group>"; };
@@ -1128,6 +1140,7 @@
 		49CE7CB42607F9A400A20711 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E13BD7742645E114006A5EF2 /* Nightly */,
 				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
 				493B23CD26098104007D605F /* Chimera */,
 				49CE7CC92607F9A400A20711 /* Cool Breeze */,
@@ -1270,6 +1283,17 @@
 				F172581E24EB8C12000F2FAF /* DatabaseManager.swift */,
 			);
 			path = "Database Manager";
+			sourceTree = "<group>";
+		};
+		E13BD7742645E114006A5EF2 /* Nightly */ = {
+			isa = PBXGroup;
+			children = (
+				E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */,
+				E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */,
+				E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */,
+				E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */,
+			);
+			path = Nightly;
 			sourceTree = "<group>";
 		};
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
@@ -2440,6 +2464,7 @@
 				E1BB50E0260E913A00F870B8 /* OG@2x.png in Resources */,
 				F139D13B22EA9209007F5C0D /* Assets.xcassets in Resources */,
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
+				E13BD7802645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
 				F139D13E22EA9209007F5C0D /* DepictionSubpageViewController.xib in Resources */,
 				F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */,
@@ -2447,7 +2472,9 @@
 				F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */,
+				E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */,
 				F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */,
+				E13BD77A2645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
 				F139D13A22EA9209007F5C0D /* LaunchScreen.storyboard in Resources */,
 				F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */,
 				F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */,
@@ -2458,6 +2485,7 @@
 				F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */,
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
+				E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
 				E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
@@ -2503,6 +2531,7 @@
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
+				E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
 				493B23D426098104007D605F /* Chimera~ipad@3x.png in Resources */,
 				49CE7CDC2607F9A400A20711 /* Taurine~ipad@3x.png in Resources */,
 				C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */,
@@ -2518,8 +2547,10 @@
 				49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */,
 				493B240026098169007D605F /* Sus~ipad@2x.png in Resources */,
 				493B23E926098132007D605F /* OceanicBlue~ipad@3x.png in Resources */,
+				E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
 				49CE7CD52607F9A400A20711 /* MangoCrazy~ipad@2x.png in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
+				E13BD77D2645E1AA006A5EF2 /* Nightly@2x.png in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
 				493B23DE26098116007D605F /* CottonCandy~ipad@2x.png in Resources */,
 				49CE7CD92607F9A400A20711 /* SugarFree@2x.png in Resources */,
@@ -2535,6 +2566,7 @@
 				493B240326098169007D605F /* StrawberrySunset~ipad@2x.png in Resources */,
 				F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */,
 				493B23D226098104007D605F /* Chimera@2x.png in Resources */,
+				E13BD77B2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
 				493B23E026098116007D605F /* CottonCandy@2x.png in Resources */,
 				49CE7CD22607F9A400A20711 /* MangoCrazy@3x.png in Resources */,
 				49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */,

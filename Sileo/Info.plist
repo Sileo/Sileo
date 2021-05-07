@@ -27,6 +27,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>Nightly</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Nightly</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -150,6 +159,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>Nightly</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Nightly~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

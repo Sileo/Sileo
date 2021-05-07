@@ -651,7 +651,6 @@ final class RepoManager {
                             defer {
                                 semaphore.signal()
                             }
-                            
                             log("\(url) returned status \(status)", type: .error)
                             errorsFound = true
                             repo.packagesProgress = 1
@@ -659,7 +658,6 @@ final class RepoManager {
                         }
                     ) 
                     }
-                    
                     let releaseGPGFileDst = self.cacheFile(named: "Release.gpg", for: repo)
                     let releaseGPGURL = URL(string: repo.repoURL)!.appendingPathComponent("Release.gpg")
                     let releaseGPGTask = self.queue(
@@ -705,7 +703,6 @@ final class RepoManager {
                     }
                     releaseTask?.cancel()
                     releaseGPGTask?.cancel()
-                    
                     guard let releaseFile = optReleaseFile else {
                         log("Could not find release file for \(repo.repoURL)", type: .error)
                         errorsFound = true
@@ -797,11 +794,11 @@ final class RepoManager {
                     }
                     
                     let releaseFileDst = self.cacheFile(named: "Release", for: repo)
-                    copyFileAsRoot(from: releaseFile.url, to: releaseFileDst)
+                    moveFileAsRoot(from: releaseFile.url, to: releaseFileDst)
                     
                     if let releaseGPGFileURL = releaseGPGFileURL {
                         if isReleaseGPGValid {
-                            copyFileAsRoot(from: releaseGPGFileURL, to: releaseGPGFileDst)
+                            moveFileAsRoot(from: releaseGPGFileURL, to: releaseGPGFileDst)
                         } else {
                             deleteFileAsRoot(releaseGPGFileDst)
                         }
@@ -810,7 +807,7 @@ final class RepoManager {
                     let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
                         if !skipPackages {
-                            copyFileAsRoot(from: packagesFile.url, to: packagesFileDst)
+                            moveFileAsRoot(from: packagesFile.url, to: packagesFileDst)
                         }
                     } else if releaseFileContainsHashes && !isPackagesFileValid {
                         deleteFileAsRoot(packagesFileDst)

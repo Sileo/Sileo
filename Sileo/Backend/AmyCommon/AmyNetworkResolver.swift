@@ -15,6 +15,10 @@ final class AmyNetworkResolver {
     var cacheDirectory: URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache")
     }
+    
+    var downloadCache: URL {
+        cacheDirectory.appendingPathExtension("DownloadCache")
+    }
 
     init() {
         if !cacheDirectory.dirExists {
@@ -25,16 +29,46 @@ final class AmyNetworkResolver {
             }
             
         }
-        guard let contents = try? FileManager.default.contentsOfDirectory(atPath: cacheDirectory.path),
-              !contents.isEmpty else { return }
-        var yes = DateComponents()
-        yes.day = -7
-        let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
-        for cached in contents {
-            guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
-                  let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
-            if weekOld > date {
-                try? FileManager.default.removeItem(atPath: cached)
+        if !downloadCache.dirExists {
+            do {
+                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                print("Failed to create cache directory \(error.localizedDescription)")
+            }
+            
+        }
+        if let contents = try? FileManager.default.contentsOfDirectory(atPath: cacheDirectory.path),
+           !contents.isEmpty {
+            var yes = DateComponents()
+            yes.day = -7
+            let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
+            for cached in contents {
+                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
+                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
+                if weekOld > date {
+                    try? FileManager.default.removeItem(atPath: cached)
+                }
+            }
+        }
+        
+        if !downloadCache.dirExists {
+            do {
+                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                print("Failed to create cache directory \(error.localizedDescription)")
+            }
+        }
+        if let contents = try? FileManager.default.contentsOfDirectory(atPath: downloadCache.path),
+           !contents.isEmpty {
+            var yes = DateComponents()
+            yes.hour = -1
+            let hourOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
+            for cached in contents {
+                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
+                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
+                if hourOld > date {
+                    try? FileManager.default.removeItem(atPath: cached)
+                }
             }
         }
     }

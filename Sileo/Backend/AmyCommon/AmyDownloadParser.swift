@@ -61,12 +61,24 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     
     // The Download Finished Succesfully
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        let filename = location.lastPathComponent,
+            destination = AmyNetworkResolver.shared.downloadCache.appendingPathComponent(filename)
+        do {
+            try FileManager.default.moveItem(at: location, to: destination)
+        } catch {
+            self.errorCallback?(522, error, destination)
+        }
+
         if let response = downloadTask.response,
            let statusCode = (response as? HTTPURLResponse)?.statusCode {
-            self.didFinishCallback?(statusCode, location)
+            if statusCode == 200 {
+                self.didFinishCallback?(statusCode, destination)
+            } else {
+                self.errorCallback?(statusCode, nil, destination)
+            }
             return
         }
-        self.didFinishCallback?(200, location)
+        self.errorCallback?(522, nil, destination)
     }
     
     // The Download has made Progress

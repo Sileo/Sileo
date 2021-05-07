@@ -24,7 +24,7 @@ class AltIconTableViewController: UITableViewController {
         return UIImage(contentsOfFile: path.path) ?? UIImage()
     }
     
-    let icons = [
+    var icons = [
         AltIcon(displayName: "Stock", author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
         AltIcon(displayName: "OG", author: "Dennis Bednarz", key: "OG", image: altImage("OG")),
         AltIcon(displayName: "Taurine", author: "Alpha_Stream", key: "Taurine", image: altImage("Taurine")),
@@ -47,6 +47,10 @@ class AltIconTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Bundle.main.bundleIdentifier == "org.coolstar.SileoNightly" {
+            icons.insert(AltIcon(displayName: "Nightly", author: "Alpha_Stream", key: "Nightly", image: AltIconTableViewController.altImage("Nightly")), at: 1)
+        }
 
         navigationItem.title = String(localizationKey: "Alternate_Icon_Title")
         self.tableView.separatorColor = .sileoSeparatorColor
