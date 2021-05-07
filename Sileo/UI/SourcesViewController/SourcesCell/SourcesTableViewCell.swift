@@ -12,7 +12,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     public var repo: Repo? = nil {
         didSet {
             if let repo = repo {
-                self.title = repo.isLoaded ? repo.displayName : nil
+                self.title = repo.displayName
                 self.subtitle = repo.displayURL
                 self.progress = repo.totalProgress
                 self.image(repo)

@@ -64,6 +64,9 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
         let filename = location.lastPathComponent,
             destination = AmyNetworkResolver.shared.downloadCache.appendingPathComponent(filename)
         do {
+            if FileManager.default.fileExists(atPath: destination.path) {
+                try FileManager.default.removeItem(at: destination)
+            }
             try FileManager.default.moveItem(at: location, to: destination)
         } catch {
             self.errorCallback?(522, error, destination)

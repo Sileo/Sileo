@@ -143,7 +143,6 @@
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
-		F102D1F622CEE00700A4C9BA /* PackageVersionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */; };
 		F1034020213746B600B9180B /* InstallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103401E213746B600B9180B /* InstallViewController.xib */; };
 		F10531FB244A3B4D0042201C /* CydiaScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10531FA244A3B4D0042201C /* CydiaScraper.swift */; };
 		F10531FC244A3B4D0042201C /* CydiaScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10531FA244A3B4D0042201C /* CydiaScraper.swift */; };
@@ -174,7 +173,6 @@
 		F139D09B22EA9209007F5C0D /* FeaturedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D122D189650021BD89 /* FeaturedStackView.swift */; };
 		F139D0A122EA9209007F5C0D /* FeaturedInfoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D722D18B410021BD89 /* FeaturedInfoFooterView.swift */; };
 		F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9CB22D188A50021BD89 /* FeaturedSpacerView.swift */; };
-		F139D0AF22EA9209007F5C0D /* PackageVersionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */; };
 		F139D0B022EA9209007F5C0D /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62222E53E7000CBD045 /* Hash.swift */; };
 		F139D0B122EA9209007F5C0D /* DepictionScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9BC22D1708E0021BD89 /* DepictionScreenshotsView.swift */; };
 		F139D0B322EA9209007F5C0D /* FeaturedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D422D189AF0021BD89 /* FeaturedHeaderView.swift */; };
@@ -743,7 +741,6 @@
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
-		F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageVersionList.swift; sourceTree = "<group>"; };
 		F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LNPopupController.xcodeproj; path = Deps/LNPopupController/LNPopupController/LNPopupController.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F103401E213746B600B9180B /* InstallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallViewController.xib; sourceTree = "<group>"; };
 		F10531FA244A3B4D0042201C /* CydiaScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CydiaScraper.swift; sourceTree = "<group>"; };
@@ -1928,7 +1925,6 @@
 				F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */,
 				F102D1E422CD7DE300A4C9BA /* Package.swift */,
 				F172581B24EB88E3000F2FAF /* PackageStub.swift */,
-				F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */,
 				F1D6A63222E54C6700CBD045 /* Repo.swift */,
 			);
 			path = Objects;
@@ -2799,7 +2795,6 @@
 				F1CA758E244CF813000BA15C /* String+Error.swift in Sources */,
 				F147E67722F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262A23DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
-				F139D0AF22EA9209007F5C0D /* PackageVersionList.swift in Sources */,
 				F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68122F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
 				F1330EAA2324F76C00971073 /* UIColor-ThemeColors.swift in Sources */,
@@ -2970,7 +2965,6 @@
 				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
 				F147E67622F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262923DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
-				F102D1F622CEE00700A4C9BA /* PackageVersionList.swift in Sources */,
 				F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68022F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
 				F1330EA92324F76C00971073 /* UIColor-ThemeColors.swift in Sources */,
