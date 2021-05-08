@@ -74,6 +74,9 @@ class SourcesViewController: SileoTableViewController {
         
         self.registerForPreviewing(with: self, sourceView: self.tableView)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
+        #if targetEnvironment(simulator)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
+        #endif
     }
     
     @objc func updateSileoColors() {
@@ -113,6 +116,7 @@ class SourcesViewController: SileoTableViewController {
             let nav = self.navigationItem
             nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
             
+            #if !targetEnvironment(simulator)
             if editing {
                 let exportTitle = String(localizationKey: "Export")
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
@@ -120,6 +124,11 @@ class SourcesViewController: SileoTableViewController {
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.toggleEditing(_:)))
             }
+            #else
+            if editing {
+                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
+            }
+            #endif
         }
     }
     
