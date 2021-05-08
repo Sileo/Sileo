@@ -23,6 +23,7 @@
 "Cancel" = "Annuler";
 "Acknowledge" = "J'ai compris";
 "Remove" = "Supprimer";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Actualiser (arrière-plan)";
@@ -144,6 +145,9 @@
 "Developer_Mode_Explain" = "Le mode développeur désactive la nécessité de l’HTTPS pour l'API de payement.";
 "Auto_Refresh_Sources" = "Rafraîchir les sources automatiquement";
 "iCloud_Profile" = "Utiliser la photo de profile du compte iCloud";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Clair";
 "Sileo_Dark" = "Sombre";

@@ -23,6 +23,7 @@
 "Cancel" = "ביטול";
 "Acknowledge" = "אני מקבל";
 "Remove" = "הסרה";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "רענון יישום ברקע";
@@ -144,6 +145,9 @@
 "Developer_Mode_Explain" = "מצב מפתח מבטל את הדרישה ל HTTPS של ממשק התשלום.";
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "סילאו לייט";
 "Sileo_Dark" = "סילאו דארק";
