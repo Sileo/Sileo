@@ -16,6 +16,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = repo.displayURL
                 self.progress = repo.totalProgress
                 self.image(repo)
+                installedLabel.text = "\(repo.installedPackages.count)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
@@ -24,11 +25,19 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
             }
         }
     }
+    private var installedLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.accessoryView = UIImageView(image: UIImage(named: "Chevron"))
+        accessoryView = UIImageView(image: UIImage(named: "Chevron"))
+        
+        contentView.addSubview(installedLabel)
+        installedLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.trailingAnchor.constraint(equalTo: installedLabel.trailingAnchor, constant: 7.5).isActive = true
+        installedLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        installedLabel.font = UIFont.systemFont(ofSize: 12)
+        installedLabel.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
     }
     
     required public init?(coder aDecoder: NSCoder) {

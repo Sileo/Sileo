@@ -2260,6 +2260,7 @@
 				F139D12922EA9209007F5C0D /* ShellScript */,
 				F139D12B22EA9209007F5C0D /* Resources */,
 				F139D14822EA9209007F5C0D /* Embed Frameworks */,
+				E13BD79826473390006A5EF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2615,6 +2616,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E13BD79826473390006A5EF2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\ncp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\n";
+		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

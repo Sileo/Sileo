@@ -95,6 +95,10 @@ final class Repo: Equatable {
     var isFlat: Bool {
         suite.hasSuffix("/") || components.isEmpty
     }
+    
+    var installedPackages: [Package] {
+        PackageListManager.shared.installedPackages?.filter({ self.packages?.contains($0) as? Bool ?? false }) ?? []
+    }
 }
 
 func == (lhs: Repo, rhs: Repo) -> Bool {

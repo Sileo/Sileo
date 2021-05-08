@@ -61,7 +61,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
         self.task = task
     }
     
-    // The Download Finished Succesfully
+    // The Download Finished
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let filename = location.lastPathComponent,
             destination = AmyNetworkResolver.shared.downloadCache.appendingPathComponent(filename)
