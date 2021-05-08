@@ -17,7 +17,7 @@ final class AmyNetworkResolver {
     }
     
     var downloadCache: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").appendingPathExtension("DownloadCache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").appendingPathComponent("DownloadCache")
     }
     
     public func clearCache() {
