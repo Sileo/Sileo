@@ -92,9 +92,9 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 9
+            return 8
         case 3: // About section
-            return 1
+            return 3
         default:
             return 0
         }
@@ -188,10 +188,6 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
             case 7:
-                cell.amyPogLabel.text = String(localizationKey: "Enable_Analytics")
-                cell.fallback = true
-                cell.defaultKey = "EnableAnalytics"
-            case 8:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
@@ -201,10 +197,26 @@ extension SettingsViewController { // UITableViewDataSource
             }
             return cell
         case 3: // About section
-            let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-            cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            return cell
+            switch indexPath.row {
+            case 0:
+                let cell = self.reusableCell(withStyle: .value1, reuseIdentifier: "CacheSizeIdenitifer")
+                cell.textLabel?.text = String(localizationKey: "Cache_Size")
+                cell.detailTextLabel?.text = FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)
+                return cell
+            case 1:
+                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Sileo_Team")
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                return cell
+            case 2:
+                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                return cell
+            default:
+                fatalError("You done goofed")
+            }
+            
         default:
             return UITableViewCell()
         }
@@ -248,8 +260,17 @@ extension SettingsViewController { // UITableViewDataSource
                 self.navigationController?.pushViewController(altVC, animated: true)
             }
         case 3: // About section
-            let licensesViewController: LicensesTableViewController = LicensesTableViewController()
-            self.navigationController?.pushViewController(licensesViewController, animated: true)
+            switch indexPath.row {
+            case 0:
+                self.cacheClear()
+            case 1:
+                let teamViewController: SileoTeamViewController = SileoTeamViewController()
+                self.navigationController?.pushViewController(teamViewController, animated: true)
+            case 2:
+                let licensesViewController: LicensesTableViewController = LicensesTableViewController()
+                self.navigationController?.pushViewController(licensesViewController, animated: true)
+            default: break
+            }
         default:
             break
         }
@@ -269,6 +290,17 @@ extension SettingsViewController { // UITableViewDataSource
         default:
             return nil
         }
+    }
+    
+    private func cacheClear() {
+        let alert = UIAlertController(title: String(localizationKey: "Clear_Cache"),
+                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .destructive) { _ in
+            AmyNetworkResolver.shared.clearCache()
+        })
+        alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel))
+        self.present(alert, animated: true)
     }
     
     private func presentAlderis() {

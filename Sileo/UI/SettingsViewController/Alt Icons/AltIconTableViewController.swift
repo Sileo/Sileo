@@ -44,6 +44,11 @@ class AltIconTableViewController: UITableViewController {
         self.tableView.separatorColor = .sileoSeparatorColor
         self.tableView.backgroundColor = .sileoBackgroundColor
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateSileoColors()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

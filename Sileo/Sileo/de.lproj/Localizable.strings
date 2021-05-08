@@ -136,7 +136,6 @@
 "Reset_Tint_Color" = "Primärfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
-"Enable_Analytics" = "Nutzungsstatistiken teilen";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";

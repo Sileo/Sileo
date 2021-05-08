@@ -102,6 +102,10 @@
 		E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */; };
 		E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
 		E13BD7802645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
+		E13BD7892646C706006A5EF2 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */; };
+		E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */; };
+		E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
+		E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -721,6 +725,8 @@
 		E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@3x.png"; sourceTree = "<group>"; };
 		E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@2x.png"; sourceTree = "<group>"; };
 		E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@3x.png"; sourceTree = "<group>"; };
+		E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
+		E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTeamViewController.swift; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Sileo Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sileo Demo.entitlements"; sourceTree = "<group>"; };
@@ -1293,6 +1299,15 @@
 			path = Nightly;
 			sourceTree = "<group>";
 		};
+		E13BD7872646C692006A5EF2 /* Sileo Team */ = {
+			isa = PBXGroup;
+			children = (
+				E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */,
+				E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */,
+			);
+			path = "Sileo Team";
+			sourceTree = "<group>";
+		};
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
 			isa = PBXGroup;
 			children = (
@@ -1741,6 +1756,7 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E13BD7872646C692006A5EF2 /* Sileo Team */,
 				49CE7CAD2607F97C00A20711 /* Alt Icons */,
 				C315A7BC217D99C200341243 /* Base */,
 				1761F821227B565E00E03DC3 /* Licenses */,
@@ -2690,6 +2706,7 @@
 				FB40263423DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
 				F1705FF224CA1657001596A0 /* UIDevice+Private.swift in Sources */,
 				F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */,
+				E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
 				FBD910D024E06ABE00767541 /* SettingsColorTableViewCell.swift in Sources */,
 				FB208DC624D70D5B000297FB /* SileoThemeManager.swift in Sources */,
 				F139D10122EA9209007F5C0D /* DepictionImageView.swift in Sources */,
@@ -2769,6 +2786,7 @@
 				F10531FF244A3F6E0042201C /* CydiaAccountViewController.swift in Sources */,
 				F139D0B022EA9209007F5C0D /* Hash.swift in Sources */,
 				FBBD003D240C31B4008E11B2 /* NewsViewController.swift in Sources */,
+				E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
 				F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */,
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
@@ -2866,6 +2884,7 @@
 				F1C5D9AB22D1583D0021BD89 /* DepictionImageView.swift in Sources */,
 				F1C5D9B422D160B50021BD89 /* DepictionLabelView.swift in Sources */,
 				F1C5D9A822D151A50021BD89 /* DepictionMarkdownViewSlow.swift in Sources */,
+				E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
 				FB40263023DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */,
 				F172581F24EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
@@ -2945,6 +2964,7 @@
 				F13AEE7322F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
 				F1705FEE24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
 				172B2ED322F08D31000155B9 /* LicenseViewController.swift in Sources */,
+				E13BD7892646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
 				172B2ED522F08F8E000155B9 /* LicensesTableViewController.swift in Sources */,
 				F1D6A62822E53E7000CBD045 /* Locks.swift in Sources */,
 				F1705FEB24CA1465001596A0 /* TabBarController.swift in Sources */,

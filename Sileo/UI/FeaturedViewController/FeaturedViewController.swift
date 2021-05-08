@@ -122,9 +122,9 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
             return
         }
-        let agent = UserDefaults.standard.optionalBool("EnableAnalytics", fallback: true) ? self.userAgent : "Opted-Out"
+        let agent = self.userAgent 
         let headers: [String: String] = ["User-Agent": agent]
-        AmyNetworkResolver.dict(url: jsonURL, headers: headers) { success, dict in
+        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { success, dict in
             guard success,
                   let dict = dict else { return }
             if let cachedData = self.cachedData,
@@ -143,6 +143,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                                                             viewController: self,
                                                             tintColor: nil, isActionable: false) as? FeaturedBaseView {
                     featuredView.delegate = self
+                    self.featuredView?.removeFromSuperview()
                     self.scrollView?.addSubview(featuredView)
                     self.featuredView = featuredView
                 }

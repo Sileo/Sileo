@@ -136,7 +136,6 @@
 "Reset_Tint_Color" = "배경색상 초기화";
 "Auto_Complete_Queue" = "대기열 자동완성";
 "Auto_Confirm_Upgrade_All_Shortcut" = "모든 바로가기 업데이트 자동확인";
-"Enable_Analytics" = "분석 허용";
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지를 확인하기";
 "Show_Ignored_Updates" = "무시된 업데이트 표시";
