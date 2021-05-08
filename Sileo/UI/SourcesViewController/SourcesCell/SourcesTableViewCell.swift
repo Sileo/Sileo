@@ -22,6 +22,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
                 self.icon = UIImage(named: "All Packages")
                 self.progress = 0
+                installedLabel.text = "\(PackageListManager.shared.installedPackages?.count ?? 0)"
             }
         }
     }
