@@ -23,6 +23,7 @@
 "Cancel" = "İptal";
 "Acknowledge" = "Onayla";
 "Remove" = "Kaldır";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Arka Planda Uygulama Yenile";
@@ -144,6 +145,9 @@
 "Developer_Mode_Explain" = "Geliştirici Modu, Ödeme API'sinin HTTPS gereksinimini devre dışı bırakır.";
 "Auto_Refresh_Sources" = "Kaynakları Otomatik Güncelle";
 "iCloud_Profile" = "Öne Çıkanlar'da iCloud Profil Fotoğrafını Göster";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";

@@ -23,6 +23,7 @@
 "Cancel" = "取消";
 "Acknowledge" = "明白";
 "Remove" = "移除";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "背景 App 重新整理";
@@ -144,6 +145,9 @@
 "Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 需求。";
 "Auto_Refresh_Sources" = "自動重新整理來源";
 "iCloud_Profile" = "在精選顯示 iCloud 照片";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";

@@ -23,6 +23,7 @@
 "Cancel" = "Mégse";
 "Acknowledge" = "Megértettem";
 "Remove" = "Eltávolítás";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Alk.frissítés a háttérben";
@@ -144,6 +145,9 @@
 "Developer_Mode_Explain" = "A fejlesztői mód kikapcsolja a fizetési API HTTPS követelményét.";
 "Auto_Refresh_Sources" = "Források automatikus frissítése";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo Világos";
 "Sileo_Dark" = "Sileo Sötét";
