@@ -23,6 +23,7 @@
 "Cancel" = "Avbryt";
 "Acknowledge" = "Medge";
 "Remove" = "Radera";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrund App Uppdatering";
@@ -136,7 +137,6 @@
 "Reset_Tint_Color" = "Återställ Färgton";
 "Auto_Complete_Queue" = "Autoslutför Kö";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bekräfta Automatiskt Uppgradera Allt Genväg";
-"Enable_Analytics" = "Aktivera Analyser";
 "Swipe_Actions" = "Svepåtgärder";
 "Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Visa Ignorerade Uppdateringar";
@@ -145,6 +145,9 @@
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
