@@ -23,6 +23,7 @@
 "Cancel" = "Anulați";
 "Acknowledge" = "Confirmați";
 "Remove" = "Ștergeți";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Reîmprospătare în fundal";
@@ -136,7 +137,6 @@
 "Reset_Tint_Color" = "Restabiliți culoarea tentei";
 "Auto_Complete_Queue" = "Completați coade automatic";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmare automatică de actualizare completă";
-"Enable_Analytics" = "Activați date analitice";
 "Swipe_Actions" = "Acțiuni glisare";
 "Show_Provisional" = "Arătați pachete de la Canister";
 "Show_Ignored_Updates" = "Arătați Actualizări Dezactivate";
@@ -145,6 +145,9 @@
 "Developer_Mode_Explain" = "Modul dezvoltator dezactivează nevoia de HTTPS pentru API-ul de plătire.";
 "Auto_Refresh_Sources" = "Reîmprospătare pachete automat";
 "iCloud_Profile" = "Folosiți poza iCloud pe pagina de recomandate";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
