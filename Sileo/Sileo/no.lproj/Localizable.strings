@@ -23,6 +23,7 @@
 "Cancel" = "Kanseller";
 "Acknowledge" = "Bekreft";
 "Remove" = "Fjern";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrunnsoppdatering";
@@ -136,7 +137,6 @@
 "Reset_Tint_Color" = "Nullstill fargetone";
 "Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisk Bekreft Oppgrader Alle Snarvei";
-"Enable_Analytics" = "Aktiver analysedata";
 "Swipe_Actions" = "Sveipe-handlinger";
 "Show_Provisional" = "Vis pakker fra Canister";
 "Show_Ignored_Updates" = "Vis ignorerte oppdateringer";
@@ -145,6 +145,9 @@
 "Developer_Mode_Explain" = "Utviklermodus deaktiverer HTTPS-kravet til betalings-APIet.";
 "Auto_Refresh_Sources" = "Automatisk oppdatering av kilder";
 "iCloud_Profile" = "Vis iCloud profilbilde på utvalgte";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
