@@ -23,6 +23,7 @@
 "Cancel" = "Annuleer";
 "Acknowledge" = "Bevestig";
 "Remove" = "Verwijder";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
@@ -136,7 +137,6 @@
 "Reset_Tint_Color" = "Reset Tint Kleur";
 "Auto_Complete_Queue" = "Wachtrij Automatisch Voltooien";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
-"Enable_Analytics" = "Schakel Analytics in";
 "Swipe_Actions" = "Sleep Acties";
 "Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Toon Genegeerde Updates";
@@ -145,6 +145,9 @@
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
