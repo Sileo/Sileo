@@ -298,6 +298,7 @@ extension SettingsViewController { // UITableViewDataSource
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .destructive) { _ in
             AmyNetworkResolver.shared.clearCache()
+            self.tableView.reloadData()
         })
         alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel))
         self.present(alert, animated: true)

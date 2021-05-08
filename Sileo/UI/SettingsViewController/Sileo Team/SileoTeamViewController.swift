@@ -45,7 +45,7 @@ class SileoTeamViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        guard let jsonURL = StoreURL("sileoteam.json") else {
+        guard let jsonURL = StoreURL("sileo-team.json") else {
             return
         }
         AmyNetworkResolver.array(url: jsonURL, cache: true) { success, array in
