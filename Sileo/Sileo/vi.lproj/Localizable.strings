@@ -23,6 +23,7 @@
 "Cancel" = "Huỷ";
 "Acknowledge" = "Chấp Nhận";
 "Remove" = "Xoá";
+"Sileo_Team" = "Sileo Team";
 
 // Popup messages
 "Background_App_Refresh" = "Làm mới ứng dụng nền";
@@ -136,7 +137,6 @@
 "Reset_Tint_Color" = "Đặt lại màu sắc";
 "Auto_Complete_Queue" = "Tự động hoàn thành danh sách chờ";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Tự động xác nhận nâng cấp tất cả lối tắt";
-"Enable_Analytics" = "Bật phân tích";
 "Swipe_Actions" = "Thao tác vuốt";
 "Show_Provisional" = "Hiển thị các Gói hàng từ Canister";
 "Show_Ignored_Updates" = "Hiển thị các bản cập nhật bị bỏ qua";
@@ -145,6 +145,9 @@
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
 "Auto_Refresh_Sources" = "Tự động làm mới nguồn";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
