@@ -29,6 +29,7 @@ final class Repo: Equatable {
     var packages: [Package]?
     var packagesProvides: [Package]?
     var packagesDict: [String: Package]?
+    var installedCount = 0
     
     var releaseDict: [String: String]? {
         let releaseFile = RepoManager.shared.cacheFile(named: "Release", for: self)
@@ -94,10 +95,6 @@ final class Repo: Equatable {
     
     var isFlat: Bool {
         suite.hasSuffix("/") || components.isEmpty
-    }
-    
-    var installedPackages: [Package] {
-        PackageListManager.shared.installedPackages?.filter({ self.packages?.contains($0) as? Bool ?? false }) ?? []
     }
 }
 

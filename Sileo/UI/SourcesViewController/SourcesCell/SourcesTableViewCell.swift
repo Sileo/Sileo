@@ -16,7 +16,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = repo.displayURL
                 self.progress = repo.totalProgress
                 self.image(repo)
-                installedLabel.text = "\(repo.installedPackages.count)"
+                installedLabel.text = "\(repo.installedCount)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")

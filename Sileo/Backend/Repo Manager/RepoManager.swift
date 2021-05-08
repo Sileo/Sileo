@@ -454,7 +454,7 @@ final class RepoManager {
         return Date().timeIntervalSince(modifiedDate) > 3 * 3600
     }
     
-    private func postProgressNotification(_ repo: Repo?) {
+    public func postProgressNotification(_ repo: Repo?) {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: RepoManager.progressNotification, object: repo)
         }

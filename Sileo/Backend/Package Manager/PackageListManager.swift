@@ -50,6 +50,7 @@ final class PackageListManager {
         installedPackages = self.packagesList(loadIdentifier: "--installed", repoContext: nil)
         for repo in RepoManager.shared.repoList {
             repo.packages = nil
+            repo.installedCount = 0
             repo.packagesProvides = nil
             repo.packagesDict = nil
             repo.isLoaded = false
@@ -614,9 +615,14 @@ final class PackageListManager {
         if useCache {
             if loadIdentifier.isEmpty {
                 if repoContext != nil && repoContext?.packages == nil {
+                    let installed = installedPackages ?? self.packagesList(loadIdentifier: "--installed", repoContext: nil) ?? []
                     repoContext?.packages = packageListFinal
+                    repoContext?.installedCount = installed.filter({ packageListFinal.contains($0) }).count
                     repoContext?.packagesProvides = packageListFinal.filter { $0.rawControl["provides"] != nil }
                     repoContext?.packagesDict = tempDictionary
+                    if let repoContext = repoContext {
+                        RepoManager.shared.postProgressNotification(repoContext)
+                    }
                 }
             } else if loadIdentifier == "--installed" {
                 installedPackages = packageListFinal
