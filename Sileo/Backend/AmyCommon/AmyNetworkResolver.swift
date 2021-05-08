@@ -234,7 +234,7 @@ final class AmyNetworkResolver {
                 }
             }
         }
-        AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json, cache: cache) { success, data in
+        AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json) { success, data in
             guard success,
                   let data = data else { return completion(false, nil) }
             if cache {
@@ -251,7 +251,73 @@ final class AmyNetworkResolver {
         }
     }
     
-    class private func request(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
+    class public func data(request: URLRequest, cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
+        var pastData: Data?
+        if cache {
+            if let url = request.url {
+                let encoded = url.absoluteString.toBase64
+                let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
+                if let data = try? Data(contentsOf: path) {
+                    if skipNetwork(path) {
+                        return completion(true, data)
+                    } else {
+                        pastData = data
+                        completion(true, data)
+                    }
+                }
+            }
+        }
+        AmyNetworkResolver.request(request) { success, data in
+            guard success,
+                  let data = data else { return completion(false, nil) }
+            if cache {
+                if let url = request.url {
+                    let encoded = url.absoluteString.toBase64
+                    let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
+                    try? data.write(to: path)
+                }
+            }
+            if pastData == data { return }
+            completion(true, data)
+        }
+    }
+    
+    class public func data(url: String?, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
+        guard let surl = url,
+              let url = URL(string: surl) else { return completion(false, nil) }
+        AmyNetworkResolver.data(url: url, method: method, headers: headers, json: json, cache: cache) { success, data -> Void in
+            return completion(success, data)
+        }
+    }
+    
+    class public func data(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
+        var pastData: Data?
+        if cache {
+            let encoded = url.absoluteString.toBase64
+            let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
+            if let data = try? Data(contentsOf: path) {
+                if skipNetwork(path) {
+                    return completion(true, data)
+                } else {
+                    pastData = data
+                    completion(true, data)
+                }
+            }
+        }
+        AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json) { success, data in
+            guard success,
+                  let data = data else { return completion(false, nil) }
+            if cache {
+                let encoded = url.absoluteString.toBase64
+                let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
+                try? data.write(to: path)
+            }
+            if pastData == data { return }
+            completion(true, data)
+        }
+    }
+    
+    class private func request(url: URL, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
         var request = URLRequest(url: url, timeoutInterval: 30)
         request.httpMethod = method
         for (key, value) in headers {
@@ -289,6 +355,10 @@ final class AmyNetworkResolver {
     }
     
     internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
+        if String(url.absoluteString.prefix(7)) == "file://" {
+            completion(false, nil)
+            return nil
+        }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
@@ -329,6 +399,9 @@ final class AmyNetworkResolver {
     }
     
     internal func saveCache(_ url: URL, data: Data) {
+        if String(url.absoluteString.prefix(7)) == "file://" {
+            return
+        }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         do {
@@ -339,6 +412,9 @@ final class AmyNetworkResolver {
     }
     
     internal func imageCache(_ url: URL, scale: CGFloat? = nil) -> (Bool, UIImage?) {
+        if String(url.absoluteString.prefix(7)) == "file://" {
+            return (true, nil)
+        }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if let data = try? Data(contentsOf: path) {

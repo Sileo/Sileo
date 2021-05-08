@@ -14,6 +14,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     private var task: URLSessionDownloadTask?
     private let queue = OperationQueue()
     private var progress = Progress()
+    private var killed = false
     public var progressCallback: ((_ progress: Progress) -> Void)?
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
@@ -45,6 +46,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     }
     
     public func cancel() {
+        killed = true
         task?.cancel()
     }
     
@@ -81,7 +83,9 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
             }
             return
         }
-        self.errorCallback?(522, nil, destination)
+        if !killed {
+            self.errorCallback?(522, nil, destination)
+        }
     }
     
     // The Download has made Progress

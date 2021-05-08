@@ -743,7 +743,7 @@ final class RepoManager {
                     let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
                     if let packagesData = try? Data(contentsOf: packagesFile.url) {
-                        let (shouldSkip, hash) = self.ignorePackages(repo: repo.repoURL, data: packagesData, type: succeededExtension, path: packagesFileDst)
+                        let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst)
                         skipPackages = shouldSkip
                         if !skipPackages {
                             do {
@@ -885,9 +885,10 @@ final class RepoManager {
         }
     }
     
-    private func ignorePackages(repo: String, data: Data?, type: String, path: URL) -> (Bool, String?) {
+    private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL) -> (Bool, String?) {
         guard let data = data,
-              let repo = URL(string: repo) else { return (false, nil) }
+              !(repo.packages?.isEmpty ?? true),
+              let repo = URL(string: repo.repoURL) else { return (false, nil) }
         let hash = data.hash(ofType: .sha256)
         if !FileManager.default.fileExists(atPath: path.path) {
             return (false, hash)
