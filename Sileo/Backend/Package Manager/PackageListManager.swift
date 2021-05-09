@@ -68,7 +68,7 @@ final class PackageListManager {
     
     public func availableUpdates() -> [(Package, Package?)] {
         self.waitForReady()
-        
+        	
         var updatesAvailable: [(Package, Package?)] = []
         for package in installedPackages ?? [] {
             guard let latestPackage = self.newestPackage(identifier: package.packageID) else {
@@ -125,6 +125,7 @@ final class PackageListManager {
         }
         
         if isLoaded {
+            completion?()
             return
         }
         
