@@ -27,6 +27,7 @@ final class AmyNetworkResolver {
         if downloadCache.dirExists {
             try? FileManager.default.removeItem(at: downloadCache)
         }
+        setupCache()
     }
     
     public func setupCache() {
