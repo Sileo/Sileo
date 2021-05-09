@@ -8,25 +8,31 @@
 
 import Foundation
 
+fileprivate enum NewsSection {
+    case placeholder
+    case news
+    case packages
+}
+
 class NewsViewController: SileoViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerPreviewingDelegate {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
-
+    
     var gradientView: NewsGradientBackgroundView?
-
+    
     var sortedSections: [Int64] = []
     var sections: [Int64: [Package]] = [:]
     var loadedPackages: Int = 0
-
+    
     var dateFormatter: DateFormatter = DateFormatter()
     var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
     var updateLock = DispatchSemaphore(value: 1)
     var isLoading: Bool = false
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -363,7 +369,7 @@ extension NewsViewController {
         if currentSection(indexPath.section) != .packages { return nil }
         let packageViewController = self.controller(indexPath: indexPath)
         let menuItems = packageViewController.actions()
-
+        
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: {
                                             packageViewController
@@ -380,10 +386,4 @@ extension NewsViewController {
             }
         }
     }
-}
-
-fileprivate enum NewsSection {
-    case placeholder
-    case news
-    case packages
 }

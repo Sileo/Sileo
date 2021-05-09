@@ -11,25 +11,28 @@ import Foundation
 @testable import Sileo
 
 class SileoTests: XCTestCase {
-    
     var observer: NSObjectProtocol?
     
     override func tearDown() {
         super.tearDown()
-        
         DispatchQueue.main.async {
-            let repos = RepoManager.shared.repoList
+            let repoMan = RepoManager.shared
+            
+            let repos = repoMan.repoList
             for repo in repos {
-                RepoManager.shared.remove(repo: repo)
+                repoMan.remove(repo: repo)
             }
+            
             NotificationCenter.default.removeObserver(self.observer as Any)
         }
     }
-
+    
     func testARepoRefresh() throws {
-        let repos = RepoManager.shared.repoList
+        let repoMan = RepoManager.shared
+        
+        let repos = repoMan.repoList
         for repo in repos {
-            RepoManager.shared.remove(repo: repo)
+            repoMan.remove(repo: repo)
         }
         
         let reposToAdd = [
@@ -54,17 +57,20 @@ class SileoTests: XCTestCase {
             URL(string: "https://sparkdev.me")!,
             URL(string: "https://apt.tale.me")!
         ]
-        RepoManager.shared.addRepos(with: reposToAdd)
+        repoMan.addRepos(with: reposToAdd)
         
         let promise = expectation(description: "Repo Refresh")
         var fulfilled = false
-        RepoManager.shared.update(force: true, forceReload: true, isBackground: false, completion: { didFindErrors, errorOutput in
+        
+        repoMan.update(force: true, forceReload: true, isBackground: false, completion: { didFindErrors, errorOutput in
             DispatchQueue.main.async {
-                let repos = RepoManager.shared.repoList
+                let repos = repoMan.repoList
+                
                 var shouldFinish = true
                 for repo in repos where !repo.isLoaded || repo.startedRefresh || repo.totalProgress != 0 {
                     shouldFinish = false
                 }
+                
                 if didFindErrors {
                     XCTAssertFalse(didFindErrors, errorOutput.string)
                 }
@@ -74,16 +80,20 @@ class SileoTests: XCTestCase {
                 }
             }
         })
+        
         waitForExpectations(timeout: 30)
     }
     
-    // TODO: - Setup https://beta.anamy.gay with a sandbox test package with the test UDID authorised
+    // TODO: - Setup https://beta.anamy.gay to have a sandbox package with the sandbox UDID authorized
     func testBAddQueue() throws {
         guard let allPackages = PackageListManager.shared.allPackages,
-              !allPackages.isEmpty else {
+              !allPackages.isEmpty
+        else {
             XCTAssert(false, "All Packages is Empty")
             throw "All Packages is Empty"
         }
+        
+        let downloadMan = DownloadManager.shared
         let bundlesToInstall = [
             "org.coolstar.libhooker",
             "org.swift.libswift",
@@ -102,19 +112,23 @@ class SileoTests: XCTestCase {
                 XCTAssert(false, "Could not find package: \(bundle)")
                 throw "Could not find package: \(bundle)"
             }
-            DownloadManager.shared.add(package: package, queue: .installations)
+            downloadMan.add(package: package, queue: .installations)
         }
     }
     
     func testCQueueInstall() throws {
         let promise = expectation(description: "Package Downloads and Install")
-        DownloadManager.shared.viewController.confirmQueued(nil)
+        let downloadMan = DownloadManager.shared
+        
+        downloadMan.viewController.confirmQueued(nil)
+        
         self.observer = NotificationCenter.default.addObserver(forName: NSNotification.Name("SileoTests.CompleteInstall"), object: nil, queue: nil) { _ in
             promise.fulfill()
             return
         }
+        
         waitForExpectations(timeout: 30) { _ in
-            let errors = DownloadManager.shared.errors
+            let errors = downloadMan.errors
             XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
         }
     }

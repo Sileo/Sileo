@@ -82,6 +82,10 @@ final class Repo: Equatable {
         }
     }
     
+    var isFlat: Bool {
+        suite.hasSuffix("/") || components.isEmpty
+    }
+    
     func packagesURL(arch: String?) -> URL? {
         guard var packagesDir = primaryComponentURL else {
             return nil
@@ -91,10 +95,6 @@ final class Repo: Equatable {
             packagesDir = packagesDir.appendingPathComponent("binary-".appending(arch))
         }
         return packagesDir.appendingPathComponent("Packages")
-    }
-    
-    var isFlat: Bool {
-        suite.hasSuffix("/") || components.isEmpty
     }
 }
 
