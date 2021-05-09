@@ -307,6 +307,7 @@ final class DownloadManager {
                                 self.viewController.reloadDownload(package: package)
                             }
                         })
+                        download.task?.shouldResume = true
                         self.downloads[package.package] = download
                         self.startMoreDownloads()
                     }
@@ -348,8 +349,9 @@ final class DownloadManager {
                                  }
                                  download.backgroundTask = nil
                              })
-                             download.task?.resume()
-                             downloadCount[host] = hostCount + 1
+                            download.failureReason = nil
+                            download.task?.resume()
+                            downloadCount[host] = hostCount + 1
                          }
                      } else if !download.queued && !download.completed {
                          downloadCount[host] = hostCount + 1

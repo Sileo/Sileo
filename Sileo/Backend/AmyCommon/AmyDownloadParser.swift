@@ -10,18 +10,22 @@ import Foundation
 
 final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     
+    static let config = URLSessionConfiguration.default
+    
     private var request: URLRequest
     private var task: URLSessionDownloadTask?
     private let queue = OperationQueue()
     private var progress = Progress()
     private var killed = false
+    
     public var progressCallback: ((_ progress: Progress) -> Void)?
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
     public var waitingCallback: ((_ message: String) -> Void)?
-    public var url: URL? {
-        request.url
-    }
+    
+    public var url: URL? { request.url }
+    public var resumeData: Data?
+    public var shouldResume = false
     
     struct Progress {
         var period: Int64 = 0
@@ -54,9 +58,17 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
         task?.resume()
     }
     
+    public func retry() -> Bool {
+        guard shouldResume,
+              let resumeData = self.resumeData else { return false }
+        let session = URLSession(configuration: AmyDownloadParser.config, delegate: self, delegateQueue: queue)
+        let task = session.downloadTask(withResumeData: resumeData)
+        self.task = task
+        return true
+    }
+    
     public func make() {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: queue)
+        let session = URLSession(configuration: AmyDownloadParser.config, delegate: self, delegateQueue: queue)
         let task = session.downloadTask(with: request)
         self.task = task
     }
@@ -100,6 +112,12 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error {
             if (error as NSError).code == NSURLErrorCancelled { return }
+            if shouldResume {
+                let userInfo = (error as NSError).userInfo
+                if let resumeData = userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
+                    self.resumeData = resumeData
+                }
+            }
             let statusCode = (task.response as? HTTPURLResponse)?.statusCode ?? 522
             self.errorCallback?(statusCode, error, nil)
         }
@@ -108,5 +126,13 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     // Tell the caller that the download is waiting for network
     func urlSession(_ session: URLSession, taskIsWaitingForConnectivity task: URLSessionTask) {
         self.waitingCallback?("Waiting For Connection")
+    }
+    
+    // The Download started again with some progress
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+        self.progress.period = 0
+        self.progress.total = fileOffset
+        self.progress.expected = expectedTotalBytes
+        self.progressCallback?(progress)
     }
 }

@@ -23,6 +23,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     }
     
     public func updateDownload() {
+        retryButton.isHidden = true
         if let download = download {
             self.progress = download.progress
             if download.success {
@@ -31,6 +32,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = message
             } else if let failureReason = download.failureReason,
                 !failureReason.isEmpty {
+                retryButton.isHidden = false
                 self.subtitle = String(format: String(localizationKey: "Error_Indicator", type: .error), failureReason)
             } else if download.queued {
                 self.subtitle = String(localizationKey: "Queued_Package_Status")
@@ -64,17 +66,48 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         }
     }
     
+    public let retryButton = UIButton()
+    
+    @objc public func retryDownload() {
+        let downloadMan = DownloadManager.shared
+        guard let package = package,
+              let download = downloadMan.downloads[package.package.package],
+              !download.success,
+              download.completed,
+              !download.queued,
+              let task = download.task else { return }
+        download.completed = false
+        download.queued = true
+        if task.shouldResume && task.resumeData != nil {
+            if !task.retry() {
+                task.make()
+            }
+        } else {
+            task.make()
+        }
+        download.task = task
+        downloadMan.downloads[package.package.package] = download
+        downloadMan.startMoreDownloads()
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
+        self.contentView.addSubview(retryButton)
+        retryButton.translatesAutoresizingMaskIntoConstraints = false
+        retryButton.heightAnchor.constraint(equalToConstant: 17.5).isActive = true
+        retryButton.widthAnchor.constraint(equalToConstant: 17.5).isActive = true
+        retryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: retryButton.trailingAnchor, constant: 15).isActive = true
+        
+        retryButton.setImage(UIImage(named: "Refresh")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        retryButton.tintColor = .tintColor
+        retryButton.addTarget(self, action: #selector(retryDownload), for: .touchUpInside)
+        retryButton.isHidden = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
     }
 }
