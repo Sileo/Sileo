@@ -77,6 +77,6 @@ file_length:
     error: 1500
     ignore_comment_only_lines: true
 cyclomatic_complexity:
-    warning: 40
-    error: 50
+    warning: 50
+    error: 60
 reporter: "xcode"

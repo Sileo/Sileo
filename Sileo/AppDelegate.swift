@@ -254,7 +254,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             packageListVC.present(alert, animated: true, completion: nil)
             
-            sourcesVC.refreshSources(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: { _, _ in
+            sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: { _, _ in
                 PackageListManager.shared.upgradeAll(completion: {
                     let autoConfirm = UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false)
                     if autoConfirm {
@@ -269,7 +269,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             })
         } else if shortcutItem.type.hasSuffix(".Refresh") {
             tabBarController.selectedViewController = sourcesSVC
-            sourcesVC.refreshSources(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: nil)
+            sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: nil)
         } else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.addSource(nil)

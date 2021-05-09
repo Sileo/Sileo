@@ -137,7 +137,7 @@ class SourcesViewController: SileoTableViewController {
     }
     
     func refreshSources(forceUpdate: Bool, forceReload: Bool) {
-        self.refreshSources(adjustRefreshControl: false, errorScreen: true, forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, completion: nil)
+        self.refreshSources(forceUpdate: forceUpdate, forceReload: forceReload, isBackground: false, useRefreshControl: false, useErrorScreen: true, completion: nil)
     }
     
     private func addToQueue(_ repo: Repo) {
@@ -167,11 +167,9 @@ class SourcesViewController: SileoTableViewController {
         item?.badgeValue = nil
     }
     
-    func refreshSources(adjustRefreshControl: Bool, errorScreen: Bool, forceUpdate: Bool, forceReload: Bool, isBackground: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
-    
+    func refreshSources(forceUpdate: Bool, forceReload: Bool, isBackground: Bool, useRefreshControl: Bool, useErrorScreen: Bool, completion: ((Bool, NSAttributedString) -> Void)?) {
         let item = self.splitViewController?.tabBarItem
         item?.badgeValue = ""
-        
         guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
             fatalError("OK iOS...")
         }
@@ -183,7 +181,7 @@ class SourcesViewController: SileoTableViewController {
             indicatorView.startAnimating()
             badge?.addSubview(indicatorView)
             
-            if adjustRefreshControl {
+            if useRefreshControl {
                 if let tableView = self.tableView, let refreshControl = tableView.refreshControl, !refreshControl.isRefreshing {
                     refreshControl.beginRefreshing()
                     let yVal = -1 * (refreshControl.frame.maxY + tableView.adjustedContentInset.top)
@@ -202,7 +200,7 @@ class SourcesViewController: SileoTableViewController {
             }
             self.killIndicator()
             
-            if didFindErrors, errorScreen {
+            if didFindErrors, useErrorScreen {
                 self.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
             }
             

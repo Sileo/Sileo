@@ -6,8 +6,6 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import Foundation
-
 final class Package: Hashable, Equatable {
     public var package: String
     public var packageID: String
@@ -32,13 +30,6 @@ final class Package: Hashable, Equatable {
     public var tags: PackageTags = .none
     
     public var allVersionsInternal = [PackageOld]()
-    public func addOld(_ packages: [Package]) {
-        for package in packages {
-            let packageOld = PackageOld(package: package)
-            allVersionsInternal.removeAll(where: { packageOld == $0 })
-            allVersionsInternal.append(packageOld)
-        }
-    }
     public var allVersions: [Package] {
         return allVersionsInternal.map({ $0.packageNew })
     }
@@ -50,14 +41,8 @@ final class Package: Hashable, Equatable {
     
     public var filename: String?
     public var size: String?
-    
     public var packageFileURL: URL?
-    
     public var userReadDate: Date?
-    
-    public func hasIcon() -> Bool {
-        icon?.isEmpty == false
-    }
     
     var sourceRepo: Repo? {
         guard let sourceFileSafe = sourceFile else {
@@ -70,15 +55,27 @@ final class Package: Hashable, Equatable {
         String(format: "%@|-|%@", package, version)
     }
     
+    init(package: String, version: String) {
+        self.package = package
+        self.packageID = package
+        self.version = version
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(package)
         hasher.combine(version)
     }
     
-    init(package: String, version: String) {
-        self.package = package
-        self.packageID = package
-        self.version = version
+    public func hasIcon() -> Bool {
+        icon?.isEmpty == false
+    }
+    
+    public func addOld(_ packages: [Package]) {
+        for package in packages {
+            let packageOld = PackageOld(package: package)
+            allVersionsInternal.removeAll(where: { packageOld == $0 })
+            allVersionsInternal.append(packageOld)
+        }
     }
 }
 
@@ -87,7 +84,6 @@ func == (lhs: Package, rhs: Package) -> Bool {
 }
 
 final class PackageOld: Hashable, Equatable {
- 
     public var sourceFile: String?
     public var package: String
     public var packageID: String

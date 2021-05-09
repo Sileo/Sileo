@@ -84,7 +84,7 @@ class SileoTests: XCTestCase {
         waitForExpectations(timeout: 30)
     }
     
-    // TODO: - Setup https://beta.anamy.gay to have a sandbox package with the sandbox UDID authorized
+    // TODO - setup https://beta.anamy.gay to have a sandbox package with the sandbox UDID authorized
     func testBAddQueue() throws {
         guard let allPackages = PackageListManager.shared.allPackages,
               !allPackages.isEmpty

@@ -1,7 +1,7 @@
 import Foundation
 
-class BackendAPIWrapper: NSObject {
-    @objc enum BackendAPIWrapperAction: NSInteger {
+@objc class BackendWrapper: NSObject {
+    @objc enum BackendWrapperAction: NSInteger {
         case upgrade
         case install
         case uninstall
@@ -148,7 +148,7 @@ class BackendAPIWrapper: NSObject {
         PackageListManager.shared.upgradeAll(completion: completion)
     }
     
-    @objc class func manipulateQueue(addOrRemove: ObjCBool, identifiers: NSArray, action: BackendAPIWrapperAction, newestOrInstalled: ObjCBool) {
+    @objc class func manipulateQueue(addOrRemove: ObjCBool, identifiers: NSArray, action: BackendWrapperAction, newestOrInstalled: ObjCBool) {
         let addOrRemove2 = addOrRemove.boolValue
         guard let identifiers2 = identifiers as? [String], let action2 = DownloadManagerQueue(rawValue: action.rawValue) else {
             return
@@ -170,7 +170,7 @@ class BackendAPIWrapper: NSObject {
         }
     }
     
-    @objc class func queuedPackageIdentifiers(action: BackendAPIWrapperAction) -> NSArray? {
+    @objc class func queuedPackageIdentifiers(action: BackendWrapperAction) -> NSArray? {
         guard let action2 = DownloadManagerQueue(rawValue: action.rawValue) else {
             return nil
         }
@@ -323,6 +323,10 @@ class BackendAPIWrapper: NSObject {
     }
     
     @objc class func addRepos(URLs: NSArray, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
+        self.addRepos(URLs: URLs, singleCompletion: nil, allCompletion: completion)
+    }
+    
+    @objc class func addRepos(URLs: NSArray, singleCompletion: ((ObjCBool, NSAttributedString) -> Void)?, allCompletion: ((ObjCBool, NSAttributedString) -> Void)?) {
         guard let URLs2 = URLs as? [String] else {
             return
         }
@@ -337,12 +341,18 @@ class BackendAPIWrapper: NSObject {
         
         if !toAdd.isEmpty {
             repoMan.addRepos(with: toAdd)
-            self.refreshRepos(adjustRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: false, isBackground: false, completion: completion)
+            self.refreshRepos(forceUpdate: false, forceReload: false,
+                              useRefreshControl: false, useErrorScreen: true,
+                              singleCompletion: singleCompletion, allCompletion: allCompletion)
             self.sourcesViewController()?.reloadData()
         }
     }
     
     @objc class func removeRepos(URLs: NSArray, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
+        self.removeRepos(URLs: URLs, singleCompletion: nil, allCompletion: completion)
+    }
+    
+    @objc class func removeRepos(URLs: NSArray, singleCompletion: ((ObjCBool, NSAttributedString) -> Void)?, allCompletion: ((ObjCBool, NSAttributedString) -> Void)?) {
         guard let URLs2 = URLs as? [String] else {
             return
         }
@@ -357,85 +367,131 @@ class BackendAPIWrapper: NSObject {
         
         if !toRemove.isEmpty {
             repoMan.remove(repos: toRemove)
-            self.refreshRepos(adjustRefreshControl: false, errorScreen: true, forceUpdate: false, forceReload: true, isBackground: false, completion: completion)
+            self.refreshRepos(forceUpdate: false, forceReload: true,
+                              useRefreshControl: false, useErrorScreen: true,
+                              singleCompletion: singleCompletion, allCompletion: allCompletion)
             self.sourcesViewController()?.reloadData()
         }
     }
     
     @objc class func refreshRepos(completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        self.refreshRepos(adjustRefreshControl: true, errorScreen: true, forceUpdate: true, forceReload: true, isBackground: false, completion: completion)
+        self.refreshRepos(forceUpdate: true, forceReload: true,
+                          useRefreshControl: true, useErrorScreen: true,
+                          singleCompletion: nil, allCompletion: completion)
     }
     
-    @objc class func refreshRepos(adjustRefreshControl: ObjCBool, errorScreen: ObjCBool, forceUpdate: ObjCBool, forceReload: ObjCBool, isBackground: ObjCBool, completion: ((ObjCBool, NSAttributedString) -> Void)?) {
-        let control = adjustRefreshControl.boolValue
-        let error = errorScreen.boolValue
-        let update = forceUpdate.boolValue
-        let reload = forceReload.boolValue
-        let background = isBackground.boolValue
-        
+    @objc class func refreshRepos(singleCompletion: ((ObjCBool, NSAttributedString) -> Void)?, allCompletion: ((ObjCBool, NSAttributedString) -> Void)?) {
+        self.refreshRepos(forceUpdate: true, forceReload: true,
+                          useRefreshControl: true, useErrorScreen: true,
+                          singleCompletion: singleCompletion, allCompletion: allCompletion)
+    }
+    
+    @objc class func refreshRepos(forceUpdate: ObjCBool, forceReload: ObjCBool,
+                                  useRefreshControl: ObjCBool, useErrorScreen: ObjCBool,
+                                  singleCompletion: ((ObjCBool, NSAttributedString) -> Void)?, allCompletion: ((ObjCBool, NSAttributedString) -> Void)?) {
         guard let sourcesVC = self.sourcesViewController() else {
             return
         }
+        let repos = RepoManager.shared.repoList
         
-        sourcesVC.refreshSources(adjustRefreshControl: control, errorScreen: error, forceUpdate: update, forceReload: reload, isBackground: background, completion: { didFindErrors, errorOutput in
-            if let completion = completion {
-                let didFindErrors2 = ObjCBool(didFindErrors)
-                completion(didFindErrors2, errorOutput)
+        sourcesVC.refreshSources(forceUpdate: forceUpdate.boolValue, forceReload: forceReload.boolValue, isBackground: false,
+                                 useRefreshControl: useRefreshControl.boolValue, useErrorScreen: useErrorScreen.boolValue,
+                                 completion: { didFindErrors, errorOutput in
+            let didFindErrors2 = ObjCBool(didFindErrors)
+            
+            if let singleCompletion = singleCompletion {
+                singleCompletion(didFindErrors2, errorOutput)
+            }
+            
+            if let allCompletion = allCompletion {
+                var didFinishRefreshingAll = true
+                for repo in repos where !repo.isLoaded || repo.startedRefresh || repo.totalProgress != 0 {
+                    didFinishRefreshingAll = false
+                }
+                
+                if didFinishRefreshingAll {
+                    allCompletion(didFindErrors2, errorOutput)
+                }
             }
         })
     }
     
-    @objc class func showRefreshErrorViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
-        if let sourcesVC = self.sourcesViewController() {
-            sourcesVC.showRefreshErrorViewController(errorOutput: errorOutput, completion: completion)
-        }
+    // Every method below this comment has been thoroughly tested, so the next step is to test everything above
+    
+    @objc class func presentSourcesErrorsViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
+        let theVC = self.sourcesViewController()
+        theVC?.showRefreshErrorViewController(errorOutput: errorOutput, completion: completion)
     }
     
-    @objc class func addedRepoURLs() -> NSArray? {
+    @objc class func dismissSourcesErrorsViewController(completion: (() -> Void)?) {
+        let theVC = self.sourcesErrorsViewController()
+        theVC?.dismiss(animated: true, completion: completion)
+    }
+    
+    @objc class func addedRepoURLs(sortedByName: ObjCBool) -> NSArray? {
+        let sorted = sortedByName.boolValue
         let set = CharacterSet(charactersIn: "/")
-        let urls = RepoManager.shared.repoList.map({ $0.rawURL.trimmingCharacters(in: set) })
+        
+        var repos = RepoManager.shared.repoList
+        if sorted {
+            repos = repos.sorted(by: { $0.displayName.caseInsensitiveCompare($1.displayName) == .orderedAscending })
+        }
+        let urls = repos.map({ $0.rawURL.trimmingCharacters(in: set) })
+        
         return urls as NSArray
     }
     
     @objc class func repoIsAdded(URL url: NSString) -> ObjCBool {
         let set = CharacterSet(charactersIn: "/")
-        let url2 = url.trimmingCharacters(in: set)
-        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == url2 }
-        return ObjCBool(repo != nil)
+        let normalized = url.trimmingCharacters(in: set)
+        
+        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == normalized }
+        let isAdded = repo != nil
+        
+        return ObjCBool(isAdded)
     }
     
     @objc class func repoNameForAddedRepo(URL url: NSString) -> NSString? {
         let set = CharacterSet(charactersIn: "/")
-        let url2 = url.trimmingCharacters(in: set)
-        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == url2 }
-        return repo?.displayName as NSString?
+        let normalized = url.trimmingCharacters(in: set)
+        
+        let repo = RepoManager.shared.repoList.first { $0.rawURL.trimmingCharacters(in: set) == normalized }
+        let name = repo?.displayName
+        
+        return name as NSString?
     }
     
     @objc class func packageIdentifiersInRepo(URL url: NSString) -> NSArray? {
-        let existingSources = RepoManager.shared.repoList
         let set = CharacterSet(charactersIn: "/")
-        let normalizedSpecified = url.trimmingCharacters(in: set)
-        let normalizedExisting = existingSources.first { $0.rawURL.trimmingCharacters(in: set) == normalizedSpecified }
+        let normalized = url.trimmingCharacters(in: set)
         
-        if let repo = normalizedExisting, let dict = repo.packagesDict {
-            let keys = dict.keys.map({ $0 })
-            return keys as NSArray
-        }
-        return nil
+        let repo = RepoManager.shared.repoList.first(where: { $0.rawURL.trimmingCharacters(in: set) == normalized })
+        let dict = repo?.packagesDict
+        let identifiers = dict?.keys.map({ $0 })
+        
+        return identifiers as NSArray?
     }
     
     @objc class func repoForPackage(identifier: NSString, newestOrInstalled: ObjCBool) -> NSString? {
-        let identifier2 = identifier as String
-        let newestOrInstalled2 = newestOrInstalled.boolValue
-        let packageMan = PackageListManager.shared
+        /*
+         Bug:
+         
+         If `identifier` is a package identifier that's currently installed and `newestOrInstalled` is `YES`,
+         then this method currently returns `nil` when it should actually return the package's repo URL.
+         
+         I have no idea why it does this and it needs to be fixed in the future
+         */
         
-        let pkg = newestOrInstalled2 ? packageMan.installedPackage(identifier: identifier2) : packageMan.newestPackage(identifier: identifier2)
-        if let repo = pkg?.sourceRepo {
-            let url = repo.rawURL
-            let normalized = url.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-            return normalized as NSString
-        }
-        return nil
+        let ident = identifier as String
+        let mode = newestOrInstalled.boolValue
+        
+        let packageMan = PackageListManager.shared
+        let pkg = mode ? packageMan.installedPackage(identifier: ident) : packageMan.newestPackage(identifier: ident)
+        let repo = pkg?.sourceRepo
+        let url = repo?.rawURL
+        let normalizedURL = url?.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        
+        return normalizedURL as NSString?
     }
     
     @objc class func tabBarController() -> TabBarController? {
@@ -483,6 +539,25 @@ class BackendAPIWrapper: NSObject {
         return nil
     }
     
+    @objc class func searchViewController() -> PackageListViewController? {
+        if let tabBarController = TabBarController.singleton,
+           let tabBarVCs = tabBarController.viewControllers,
+           let navVC = tabBarVCs[4] as? SileoNavigationController,
+           let theVC = navVC.viewControllers[0] as? PackageListViewController {
+            return theVC
+        }
+        return nil
+    }
+    
+    @objc class func sourcesErrorsViewController() -> SourcesErrorsViewController? {
+        if let tabBarController = TabBarController.singleton,
+           let navVC = tabBarController.presentedViewController as? UINavigationController,
+           let theVC = navVC.viewControllers[0] as? SourcesErrorsViewController {
+            return theVC
+        }
+        return nil
+    }
+    
     @objc class func rawSharedPackageListManager() -> UnsafeRawPointer {
         let man = PackageListManager.shared
         return UnsafeRawPointer(Unmanaged.passUnretained(man).toOpaque())
@@ -512,8 +587,10 @@ class BackendAPIWrapper: NSObject {
         return UnsafeRawPointer(Unmanaged.passUnretained(pkg).toOpaque())
     }
     
-    @objc class func rawRepo(URL url: NSString) -> UnsafeRawPointer? {
-        guard let urlObject = URL(string: url as String), let repo = RepoManager.shared.repo(with: urlObject) else {
+    @objc class func rawAddedRepo(URL url: NSString) -> UnsafeRawPointer? {
+        guard let urlObject = URL(string: url as String),
+              let repo = RepoManager.shared.repo(with: urlObject)
+        else {
             return nil
         }
         return UnsafeRawPointer(Unmanaged.passUnretained(repo).toOpaque())
