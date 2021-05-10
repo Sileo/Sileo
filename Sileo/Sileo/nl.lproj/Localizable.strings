@@ -138,22 +138,22 @@
 "Auto_Complete_Queue" = "Wachtrij Automatisch Voltooien";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
 "Swipe_Actions" = "Sleep Acties";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Toon Pakketten Van Canister";
 "Show_Ignored_Updates" = "Toon Genegeerde Updates";
 "Developer_Mode" = "Ontwikkelaar Modus";
 "Pog_Developer" = "Je bent nu een ontwikkelaar!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Developer_Mode_Explain" = "Ontwikkelaars Modus schakelt de HTTPS vereiste uit van de Betalings API.";
+"Auto_Refresh_Sources" = "Ververs Bronnen Automatisch";
+"iCloud_Profile" = "Toon iCloud Profielfoto in Uitgelicht";
+"Cache_Size" = "Cache Grootte";
+"Clear_Cache" = "Verwijder Netwerk Cache";
+"Clear_Cache_Message" = "Wil je de netwerk cache verwijderen? Dit zal %@ vrijmaken";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
 "Sileo_Adaptive" = "Sileo Adaptief";
 "System" = "Systeem";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Thema Instellingen";
 
 "Cydia_Sign_In" = "Inloggen bij Cydia Store";
 "Payment_Provider_Signed_In" = "Ingelogd";
