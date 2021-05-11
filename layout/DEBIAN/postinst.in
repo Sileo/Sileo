@@ -57,11 +57,15 @@ finish() {
 
 	# No control fd: bail out
 	[ -z "${f}" ] || [ -z "${SILEO}" ] && return
+	
+	read -r fd ver <<-EOF                    
+			${SILEO}                                    
+			EOF
 
 	# Sileo control fd version < 1: bail out
-	[ "$(echo $SILEO | cut -d\  -f2)" -ge 1 ] || return
+	[ "${ver}" -ge 1 ] || return
 
-	echo "finish:${f}" >&$(echo $SILEO | cut -d\  -f1)
+	echo "finish:${f}" >&"${fd}"
 }
 
 finish uicache
