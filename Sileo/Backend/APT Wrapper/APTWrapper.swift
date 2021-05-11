@@ -88,7 +88,7 @@ class APTWrapper {
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
                          "-oApt::Get::HideAutoRemove=true", "-oquiet::NoProgress=true",
                          "-oquiet::NoStatistic=true", "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
-                         "-oAPT::Get::Show-User-Simulation-Note=False",
+                         "-oAcquire::AllowUnsizedPackages=true", "-oAPT::Get::Show-User-Simulation-Note=False",
                          "-oAPT::Format::for-sileo=true", "install", "--reinstall"]
         for package in installs {
             if package.package.package.contains("/") {
@@ -292,7 +292,7 @@ class APTWrapper {
                         "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
-                         "-o", "APT::Sandbox::User=root"]
+                         "-o", "Acquire::AllowUnsizedPackages=true", "-o", "APT::Sandbox::User=root"]
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version
             if package.package.package.contains("/") {
