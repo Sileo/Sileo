@@ -57,7 +57,7 @@ finish() {
 
 	# No control fd: bail out
 	[ -z "${f}" ] || [ -z "${SILEO}" ] && return
-	
+
 	read -r fd ver <<-EOF                    
 			${SILEO}                                    
 			EOF
