@@ -23,7 +23,7 @@
 "Cancel" = "キャンセル";
 "Acknowledge" = "承認";
 "Remove" = "削除";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Sileoチーム";
 
 // Popup messages
 "Background_App_Refresh" = "Appのバックグラウンド更新";
@@ -145,8 +145,8 @@
 "Developer_Mode_Explain" = "開発者モードは、支払い時のAPIのHTTPS要件を無効にします。";
 "Auto_Refresh_Sources" = "リポジトリを自動で更新";
 "iCloud_Profile" = "おすすめにiCloud写真を表示";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
+"Cache_Size" = "キャッシュサイズ";
+"Clear_Cache" = "ネットワークのキャッシュをクリア";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "ライト";
