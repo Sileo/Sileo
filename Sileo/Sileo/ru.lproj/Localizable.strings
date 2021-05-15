@@ -23,7 +23,7 @@
 "Cancel" = "Отмена";
 "Acknowledge" = "Я понял";
 "Remove" = "Удалить";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Команда Sileo";
 
 // Popup messages
 "Background_App_Refresh" = "Обновление фоновых приложений";
@@ -145,9 +145,9 @@
 "Developer_Mode_Explain" = "Режим разработчика отключает требование HTTPS для платежного API.";
 "Auto_Refresh_Sources" = "Авто обновление источников";
 "iCloud_Profile" = "Показать изображение iCloud в избранном";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Cache_Size" = "Размер кеша";
+"Clear_Cache" = "Очистить сетевой кэш";
+"Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это бесплатно %@";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";

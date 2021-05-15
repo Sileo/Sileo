@@ -144,7 +144,7 @@
 "Pog_Developer" = "您现在是开发者！";
 "Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
 "Auto_Refresh_Sources" = "自动刷新软件源";
-"iCloud_Profile" = "在精选显示 iCloud 照片";
+"iCloud_Profile" = "在精选显示 iCloud 头像";
 "Cache_Size" = "缓存";
 "Clear_Cache" = "清除网络缓存";
 "Clear_Cache_Message" = "您想清除网络缓存吗？这将节省 %@";
