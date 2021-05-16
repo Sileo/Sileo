@@ -138,7 +138,7 @@
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Pakete von Canister anzeigen";
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";
 "Developer_Mode" = "Entwicklermodus";
 "Pog_Developer" = "Du bist jetzt ein Entwickler!";
