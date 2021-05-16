@@ -38,12 +38,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 descriptionLabel?.text = targetPackage.packageDescription
                 
                 let url = targetPackage.icon ?? ""
-                self.imageView?.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+                self.imageView?.image = AmyNetworkResolver.shared.image(url, size: imageView?.frame.size) { [weak self] refresh, image in
                     if refresh,
+                       let strong = self,
                        let image = image,
-                       url == self.targetPackage?.icon {
+                       url == strong.targetPackage?.icon {
                         DispatchQueue.main.async {
-                            self.imageView?.image = image
+                            strong.imageView?.image = image
                         }
                     }
                 } ?? UIImage(named: "Tweak Icon")
@@ -67,12 +68,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 descriptionLabel?.text = provisionalTarget.description
             
                 let url = provisionalTarget.icon ?? ""
-                self.imageView?.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+                self.imageView?.image = AmyNetworkResolver.shared.image(url, size: imageView?.frame.size) { [weak self] refresh, image in
                     if refresh,
+                       let strong = self,
                        let image = image,
-                       url == self.provisionalTarget?.icon {
+                       url == strong.provisionalTarget?.icon {
                         DispatchQueue.main.async {
-                            self.imageView?.image = image
+                            strong.imageView?.image = image
                         }
                     }
                 } ?? UIImage(named: "Tweak Icon")

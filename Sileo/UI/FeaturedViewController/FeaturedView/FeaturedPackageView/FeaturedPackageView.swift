@@ -60,12 +60,13 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         imageView.image = UIImage(named: "Tweak Icon")
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         if !packageIcon.isEmpty {
-            imageView.image = AmyNetworkResolver.shared.image(packageIcon) { refresh, image in
+            imageView.image = AmyNetworkResolver.shared.image(packageIcon, size: imageView.frame.size) { [weak self] refresh, image in
                 if refresh,
+                   let strong = self,
                    let image = image,
-                   self.icon == packageIcon {
+                   strong.icon == packageIcon {
                     DispatchQueue.main.async {
-                        self.imageView.image = image
+                        strong.imageView.image = image
                     }
                 }
                    

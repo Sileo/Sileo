@@ -20,6 +20,8 @@ final class AmyNetworkResolver {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").appendingPathComponent("DownloadCache")
     }
     
+    var memoryCache = [String: UIImage]()
+    
     public func clearCache() {
         if cacheDirectory.dirExists {
             try? FileManager.default.removeItem(at: cacheDirectory)
@@ -348,28 +350,37 @@ final class AmyNetworkResolver {
         task.resume()
     }
     
-    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
+    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
         guard let url = URL(string: url) else { completion(false, nil); return nil }
-        return self.image(url, method: method, headers: headers, cache: cache, scale: scale) { refresh, image in
+        return self.image(url, method: method, headers: headers, cache: cache, scale: scale, size: size) { refresh, image in
             completion(refresh, image)
         }
     }
     
-    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
+    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
         if String(url.absoluteString.prefix(7)) == "file://" {
             completion(false, nil)
             return nil
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
+        if cache,
+           let memory = memoryCache[encoded] {
+            completion(false, nil)
+            return memory
+        }
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if path.exists {
             if let data = try? Data(contentsOf: path) {
-                if let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                    if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
+                        image = downscaled
+                    }
                     if cache {
+                        memoryCache[encoded] = image
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
-                            completion(false, image)
+                            completion(false, nil)
                         }
                     }
                     return image
@@ -381,19 +392,24 @@ final class AmyNetworkResolver {
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
-        let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ -> Void in
             if let data = data,
-               let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+               var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
+                    image = downscaled
+                }
                 completion(pastData != data, image)
                 if cache {
+                    self?.memoryCache[encoded] = image
                     do {
                         try data.write(to: path, options: .atomic)
                     } catch {
                         print("Error saving to \(path.absoluteString) with error: \(error.localizedDescription)")
                     }
                 }
+            } else {
+                completion(false, nil)
             }
-            completion(false, nil)
         }
         task.resume()
         return nil
@@ -412,14 +428,17 @@ final class AmyNetworkResolver {
         }
     }
     
-    internal func imageCache(_ url: URL, scale: CGFloat? = nil) -> (Bool, UIImage?) {
+    internal func imageCache(_ url: URL, scale: CGFloat? = nil, size: CGSize? = nil) -> (Bool, UIImage?) {
         if String(url.absoluteString.prefix(7)) == "file://" {
             return (true, nil)
         }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if let data = try? Data(contentsOf: path) {
-            if let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+            if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
+                    image = downscaled
+                }
                 return (!AmyNetworkResolver.skipNetwork(path), image)
             }
         }

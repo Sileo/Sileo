@@ -24,12 +24,13 @@ class GithubSocialCell: UITableViewCell {
     
     private func pullImage() {
         guard let url = social?.url else { return }
-        self.profilePicture.image = AmyNetworkResolver.shared.image(url) { refresh, image in
+        self.profilePicture.image = AmyNetworkResolver.shared.image(url, size: profilePicture.frame.size) { [weak self] refresh, image in
             if refresh,
+               let strong = self,
                let image = image,
-               self.social?.url == url {
+               strong.social?.url == url {
                 DispatchQueue.main.async {
-                    self.profilePicture.image = image
+                    strong.profilePicture.image = image
                 }
             }
         }

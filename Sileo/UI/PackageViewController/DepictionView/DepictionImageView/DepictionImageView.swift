@@ -37,19 +37,20 @@ class DepictionImageView: DepictionBaseView {
         imageView = UIImageView(frame: .zero)
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        if let image = AmyNetworkResolver.shared.image(url, { refresh, image in
+        if let image = AmyNetworkResolver.shared.image(url, { [weak self] refresh, image in
             if refresh,
+               let strong = self,
                let image = image {
                 DispatchQueue.main.async {
-                    self.imageView?.image = image
+                    strong.imageView?.image = image
                     let size = image.size
-                    if self.width == 0 {
-                        self.width = self.height * (size.width/size.height)
+                    if strong.width == 0 {
+                        strong.width = strong.height * (size.width/size.height)
                     }
-                    if self.height == 0 {
-                        self.height = self.width * (size.height/size.width)
+                    if strong.height == 0 {
+                        strong.height = strong.width * (size.height/size.width)
                     }
-                    self.delegate?.subviewHeightChanged()
+                    strong.delegate?.subviewHeightChanged()
                 }
             }
         }) {

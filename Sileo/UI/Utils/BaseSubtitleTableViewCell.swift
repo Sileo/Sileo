@@ -97,12 +97,13 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
         guard let url = url else {
             return
         }
-        self.icon = AmyNetworkResolver.shared.image(url) { refresh, image in
+        self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
             if refresh,
+               let strong = self,
                let image = image,
-               url == self.iconURL {
+               url == strong.iconURL {
                 DispatchQueue.main.async {
-                    self.icon = image
+                    strong.icon = image
                 }
             }
         } ?? placeholderIcon

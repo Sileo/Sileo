@@ -61,12 +61,13 @@ class PaymentProviderTableViewCell: UITableViewCell {
                     self.setImage(nil)
                     let url = info["icon"] as? String ?? ""
                     if !url.isEmpty {
-                        if let image = AmyNetworkResolver.shared.image(url, { refresh, image in
+                        if let image = AmyNetworkResolver.shared.image(url, size: self.imageView?.frame.size, { [weak self] refresh, image in
                             if refresh,
+                               let strong = self,
                                let image = image,
-                               url == self.provider?.info?["icon"] as? String {
+                               url == strong.provider?.info?["icon"] as? String {
                                 DispatchQueue.main.async {
-                                    self.setImage(image)
+                                    strong.setImage(image)
                                 }
                             }
                         }) {

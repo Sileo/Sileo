@@ -88,11 +88,12 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             newDepictView.delegate = self
             
             if let imageURL = rawDepict["headerImage"] as? String {
-                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL) { refresh, image in
+                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
                     if refresh,
+                       let strong = self,
                        let image = image {
                         DispatchQueue.main.async {
-                            self.depictionBackgroundView.image = image
+                            strong.depictionBackgroundView.image = image
                         }
                     }
                 }
@@ -238,14 +239,15 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let image = AmyNetworkResolver.shared.image(rawIcon) { refresh, image in
+            let image = AmyNetworkResolver.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
                 if refresh,
-                      let image = image,
-                      self.package?.icon == rawIcon {
-                    DispatchQueue.main.async {
-                        self.packageIconView.image = image
-                        self.packageNavBarIconView?.image = image
-                    }
+                    let strong = self,
+                    let image = image,
+                    strong.package?.icon == rawIcon {
+                        DispatchQueue.main.async {
+                            strong.packageIconView.image = image
+                            strong.packageNavBarIconView?.image = image
+                        }
                 }
             } ?? UIImage(named: "Tweak Icon")
             packageIconView.image = image
