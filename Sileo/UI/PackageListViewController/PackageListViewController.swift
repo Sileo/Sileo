@@ -44,6 +44,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         if let textField = searchController?.searchBar.value(forKey: "searchField") as? UITextField {
             textField.textColor = .sileoLabel
         }
+        if #available(iOS 13, *) {
+            overrideUserInterfaceStyle = UIColor.isDarkModeEnabled ? .dark : .light
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
