@@ -75,18 +75,25 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
               let download = downloadMan.downloads[package.package.package],
               !download.success,
               download.completed,
-              !download.queued,
-              let task = download.task else { return }
+              !download.queued else { return }
         download.completed = false
         download.queued = true
-        if task.shouldResume && task.resumeData != nil {
-            if !task.retry() {
+        guard let task = download.task else {
+            downloadMan.startMoreDownloads()
+            return
+        }
+        if task.hasRetried {
+            download.task = nil
+        } else {
+            if task.shouldResume && task.resumeData != nil {
+                if !task.retry() {
+                    task.make()
+                }
+            } else {
                 task.make()
             }
-        } else {
-            task.make()
+            download.task = task
         }
-        download.task = task
         downloadMan.downloads[package.package.package] = download
         downloadMan.startMoreDownloads()
     }

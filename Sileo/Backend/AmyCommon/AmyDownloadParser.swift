@@ -26,6 +26,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     public var url: URL? { request.url }
     public var resumeData: Data?
     public var shouldResume = false
+    public var hasRetried = false
     
     struct Progress {
         var period: Int64 = 0
@@ -64,6 +65,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
         let session = URLSession(configuration: AmyDownloadParser.config, delegate: self, delegateQueue: queue)
         let task = session.downloadTask(withResumeData: resumeData)
         self.task = task
+        hasRetried = true
         return true
     }
     
