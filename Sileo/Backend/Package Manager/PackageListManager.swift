@@ -51,6 +51,7 @@ final class PackageListManager {
         for repo in RepoManager.shared.repoList {
             repo.packages = nil
             repo.installedCount = 0
+            repo.installed = nil
             repo.packagesProvides = nil
             repo.packagesDict = nil
             repo.isLoaded = false
@@ -80,14 +81,6 @@ final class PackageListManager {
                 }
             }
         }
-        
-        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        if self.installedPackage(identifier: "apt") == nil {
-            if let newPackage = self.newestPackage(identifier: "apt") {
-                updatesAvailable.append((newPackage, nil))
-            }
-        }
-        #endif
         return updatesAvailable
     }
     
@@ -152,7 +145,6 @@ final class PackageListManager {
             }
         }
         updateGroup.wait()
-        
         var allPackagesTempDictionary: [String: Package] = [:]
         allPackages = []
         
@@ -215,15 +207,14 @@ final class PackageListManager {
                 DatabaseManager.shared.savePackages(newGuids)
                 allPackagesTempDictionary.removeAll()
                 self.changesDatabaseLock.signal()
-                
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
+                    completion?()
                 }
             }
         }
         
         isLoaded = true
-        completion?()
         
         DispatchQueue.global(qos: .userInitiated).async {
             DependencyResolverAccelerator.shared.preflightInstalled()
