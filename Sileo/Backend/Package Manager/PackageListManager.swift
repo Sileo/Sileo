@@ -51,7 +51,6 @@ final class PackageListManager {
         for repo in RepoManager.shared.repoList {
             repo.packages = nil
             repo.installedCount = 0
-            repo.installed = nil
             repo.packagesProvides = nil
             repo.packagesDict = nil
             repo.isLoaded = false
