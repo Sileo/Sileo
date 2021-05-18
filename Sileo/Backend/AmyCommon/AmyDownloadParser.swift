@@ -88,7 +88,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
 
         if let response = downloadTask.response,
            let statusCode = (response as? HTTPURLResponse)?.statusCode {
-            if statusCode == 200 {
+            if statusCode == 200 || statusCode == 206 { // 206 means partial data, APT handles it fine
                 self.didFinishCallback?(statusCode, destination)
             } else {
                 self.errorCallback?(statusCode, nil, destination)
