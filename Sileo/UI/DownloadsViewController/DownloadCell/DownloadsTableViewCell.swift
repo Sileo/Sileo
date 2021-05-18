@@ -69,6 +69,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     public let retryButton = UIButton()
     
     @objc public func retryDownload() {
+        retryButton.isHidden = true
         let downloadMan = DownloadManager.shared
         guard let package = package,
               let download = downloadMan.downloads[package.package.package],
