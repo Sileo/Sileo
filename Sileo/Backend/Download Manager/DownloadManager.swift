@@ -668,27 +668,28 @@ final class DownloadManager {
         }
         
         let downloadPackage = DownloadPackage(package: package)
+        let package = downloadPackage.package.package
         switch queue {
         case .none:
             return
         case .installations:
-            if !installations.contains(downloadPackage) {
+            if !installations.map({ $0.package.package }).contains(package) {
                 installations.append(downloadPackage)
             }
         case .uninstallations:
-            if !uninstallations.contains(downloadPackage) {
+            if !uninstallations.map({ $0.package.package }).contains(package) {
                 uninstallations.append(downloadPackage)
             }
         case .upgrades:
-            if !upgrades.contains(downloadPackage) {
+            if !upgrades.map({ $0.package.package }).contains(package) {
                 upgrades.append(downloadPackage)
             }
         case .installdeps:
-            if !installdeps.contains(downloadPackage) {
+            if !installdeps.map({ $0.package.package }).contains(package) {
                 installdeps.append(downloadPackage)
             }
         case .uninstalldeps:
-            if !uninstalldeps.contains(downloadPackage) {
+            if !uninstalldeps.map({ $0.package.package }).contains(package) {
                 uninstalldeps.append(downloadPackage)
             }
         }

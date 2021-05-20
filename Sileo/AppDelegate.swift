@@ -256,8 +256,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             
             sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: { _, _ in
                 PackageListManager.shared.upgradeAll(completion: {
-                    let autoConfirm = UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false)
-                    if autoConfirm {
+                    if UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false) {
                         let downloadMan = DownloadManager.shared
                         downloadMan.startUnqueuedDownloads()
                         downloadMan.reloadData(recheckPackages: false)
