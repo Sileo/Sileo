@@ -211,26 +211,6 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     func setPicture(_ button: UIButton) -> UIButton {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        if !UserDefaults.standard.optionalBool("iCloudProfile", fallback: true) {
-            button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.tintColor = .tintColor
-            return button
-        }
-        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        let scale = Int(UIScreen.main.scale)
-        let filename = scale == 1 ? "AppleAccountIcon": "AppleAccountIcon@\(scale)x"
-        if let url = URL(string: "/var/mobile/Library/Caches/com.apple.Preferences/")?
-            .appendingPathComponent(filename)
-            .appendingPathExtension("png") {
-            let toPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("png")
-            spawn(command: "/usr/bin/cp", args: ["/usr/bin/cp", "\(url.path)", "\(toPath.path)"])
-            if let data = try? Data(contentsOf: toPath),
-               let accountImage = UIImage(data: data) {
-                button.setImage(accountImage, for: .normal)
-                return button
-            }
-        }
-        #endif
         button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .tintColor
         return button
