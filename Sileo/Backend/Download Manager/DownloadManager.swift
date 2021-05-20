@@ -286,7 +286,7 @@ final class DownloadManager {
                             }
                             download.backgroundTask = nil
                             self.startMoreDownloads()
-                        }, failure: { statusCode in
+                        }, failure: { statusCode, _ in
                             download.message = nil
                             download.success = false
                             download.completed = true

@@ -380,11 +380,11 @@ final class RepoManager {
         from url: URL?,
         progress: ((AmyDownloadParser.Progress) -> Void)?,
         success: @escaping (URL) -> Void,
-        failure: @escaping (Int) -> Void,
+        failure: @escaping (Int, Error?) -> Void,
         waiting: ((String) -> Void)? = nil
     ) -> AmyDownloadParser? {
         guard let url = url else {
-            failure(520)
+            failure(520, nil)
             return nil
         }
         
@@ -393,11 +393,11 @@ final class RepoManager {
         task.progressCallback = { responseProgress in
             progress?(responseProgress)
         }
-        task.errorCallback = { status, _, url in
+        task.errorCallback = { status, error, url in
             if let url = url {
                 try? FileManager.default.removeItem(at: url)
             }
-            failure(status)
+            failure(status, error)
         }
         task.didFinishCallback = { _, url in
             success(url)
@@ -414,10 +414,10 @@ final class RepoManager {
         withExtensionsUntilSuccess extensions: [String],
         progress: ((AmyDownloadParser.Progress) -> Void)?,
         success: @escaping (URL, URL) -> Void,
-        failure: @escaping (Int) -> Void
+        failure: @escaping (Int, Error?) -> Void
     ) {
         guard !extensions.isEmpty else {
-            failure(404)
+            failure(404, nil)
             return
         }
         let fullURL: URL
@@ -432,9 +432,9 @@ final class RepoManager {
             success: {
                 success(fullURL, $0)
             },
-            failure: { status in
+            failure: { status, error in
                 let newExtensions = Array(extensions.dropFirst())
-                guard !newExtensions.isEmpty else { return failure(status) }
+                guard !newExtensions.isEmpty else { return failure(status, error) }
                 self.fetch(from: url, withExtensionsUntilSuccess: newExtensions, progress: progress, success: success, failure: failure)
             }
         )?.resume()
@@ -589,12 +589,12 @@ final class RepoManager {
                             repo.releaseProgress = 1
                             self.postProgressNotification(repo)
                         },
-                        failure: { status in
+                        failure: { status, error in
                             defer {
                                 semaphore.signal()
                             }
                             
-                            log("\(releaseURL) returned status \(status)", type: .error)
+                            log("\(releaseURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                             errorsFound = true
                             repo.releaseProgress = 1
                             self.postProgressNotification(repo)
@@ -644,11 +644,11 @@ final class RepoManager {
                             repo.packagesProgress = 1
                             self.postProgressNotification(repo)
                         },
-                        failure: { status in
+                        failure: { status, error in
                             defer {
                                 semaphore.signal()
                             }
-                            log("\(url) returned status \(status)", type: .error)
+                            log("\(url) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                             errorsFound = true
                             repo.packagesProgress = 1
                             self.postProgressNotification(repo)
@@ -672,13 +672,13 @@ final class RepoManager {
                             repo.releaseGPGProgress = 1
                             self.postProgressNotification(repo)
                         },
-                        failure: { status in
+                        failure: { status, error in
                             defer {
                                 semaphore.signal()
                             }
                             
                             if FileManager.default.fileExists(atPath: releaseGPGFileDst.path) {
-                                log("\(releaseGPGURL) returned status \(status)", type: .error)
+                                log("\(releaseGPGURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                                 errorsFound = true
                             }
                             repo.releaseGPGProgress = 1

@@ -206,6 +206,48 @@ final class PackageListManager {
                 DatabaseManager.shared.savePackages(newGuids)
                 allPackagesTempDictionary.removeAll()
                 self.changesDatabaseLock.signal()
+                DependencyResolverAccelerator.shared.preflightInstalled()
+                
+                let downloadMan = DownloadManager.shared
+                if downloadMan.operationCount() > 0 {
+                    let savedUpgrades: [(String, String)] = downloadMan.upgrades.map({
+                        let pkg = $0.package
+                        return (pkg.packageID, pkg.version)
+                    })
+                    let savedInstalls: [(String, String)] = downloadMan.installations.map({
+                        let pkg = $0.package
+                        return (pkg.packageID, pkg.version)
+                    })
+                    
+                    downloadMan.upgrades.removeAll()
+                    downloadMan.installations.removeAll()
+                    downloadMan.installdeps.removeAll()
+                    downloadMan.uninstalldeps.removeAll()
+                    
+                    for tuple in savedUpgrades {
+                        let id = tuple.0
+                        let version = tuple.1
+                        
+                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
+                            if downloadMan.find(package: pkg) == .none {
+                                downloadMan.add(package: pkg, queue: .upgrades)
+                            }
+                        }
+                    }
+                    
+                    for tuple in savedInstalls {
+                        let id = tuple.0
+                        let version = tuple.1
+                        
+                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
+                            if downloadMan.find(package: pkg) == .none {
+                                downloadMan.add(package: pkg, queue: .installations)
+                            }
+                        }
+                    }
+                    
+                    downloadMan.reloadData(recheckPackages: true)
+                }
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
                     completion?()
@@ -214,67 +256,6 @@ final class PackageListManager {
         }
         
         isLoaded = true
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            DependencyResolverAccelerator.shared.preflightInstalled()
-            
-            let downloadMan = DownloadManager.shared
-            if downloadMan.operationCount() > 0 {
-                /*
-                 requests for upgrades/installs/reinstalls may be affected by a source refresh,
-                 so handle that like this: save their package identifiers and versions, clear
-                 the queue, and then re-add. if the specified version can no longer be found,
-                 default to the latest version. if the package can no longer be found at all,
-                 skip re-adding it
-                 
-                 uninstallations are unaffected by source refreshes, so do not touch the queue's
-                 uninstallations at all
-                 
-                 available dependencies may also change with a source refresh, so clear all
-                 queued dependencies and then re-calculate
-                 
-                 this style of approach is also more efficient
-                 */
-                
-                let savedUpgrades: [(String, String)] = downloadMan.upgrades.map({
-                    let pkg = $0.package
-                    return (pkg.packageID, pkg.version)
-                })
-                let savedInstalls: [(String, String)] = downloadMan.installations.map({
-                    let pkg = $0.package
-                    return (pkg.packageID, pkg.version)
-                })
-                
-                downloadMan.upgrades.removeAll()
-                downloadMan.installations.removeAll()
-                downloadMan.installdeps.removeAll()
-                downloadMan.uninstalldeps.removeAll()
-                
-                for tuple in savedUpgrades {
-                    let id = tuple.0
-                    let version = tuple.1
-                    
-                    if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
-                        if downloadMan.find(package: pkg) == .none {
-                            downloadMan.add(package: pkg, queue: .upgrades)
-                        }
-                    }
-                }
-                
-                for tuple in savedInstalls {
-                    let id = tuple.0
-                    let version = tuple.1
-                    
-                    if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
-                        if downloadMan.find(package: pkg) == .none {
-                            downloadMan.add(package: pkg, queue: .installations)
-                        }
-                    }
-                }
-                
-                downloadMan.reloadData(recheckPackages: true)
-            }
-        }
     }
     
     public func humanReadableCategory(_ rawCategory: String?) -> String {
