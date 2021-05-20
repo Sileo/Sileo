@@ -26,7 +26,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
             }
         }
     }
-    private var installedLabel = UILabel()
+    public var installedLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

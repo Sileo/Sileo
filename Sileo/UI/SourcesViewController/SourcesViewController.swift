@@ -262,6 +262,11 @@ class SourcesViewController: SileoTableViewController {
             let cellRepo = cell.repo
             cell.repo = cellRepo
             cell.layoutSubviews()
+        } else if let count = notification.object as? Int {
+            DispatchQueue.main.async {
+                guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SourcesTableViewCell else { return }
+                cell.installedLabel.text = "\(count)"
+            }
         } else {
             for cell in tableView.visibleCells {
                 if let sourcesCell = cell as? SourcesTableViewCell {

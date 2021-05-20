@@ -14,7 +14,11 @@ final class PackageListManager {
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
     static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
-    private(set) var installedPackages: [Package]?
+    private(set) var installedPackages: [Package]? {
+        didSet {
+            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages?.count ?? 0)
+        }
+    }
     private(set) var allPackages: [Package]?
     
     private var databaseLock = DispatchSemaphore(value: 1)
