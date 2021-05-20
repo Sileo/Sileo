@@ -579,18 +579,27 @@ extension PackageListViewController: UISearchBarDelegate {
         }
     }
     
-    private func updateProvisional() {
+    private enum UpdateType {
+        case insert
+        case delete
+        case refresh
+        case nothing
+    }
+    
+    @discardableResult private func updateProvisional() -> UpdateType {
         if !showProvisional {
-            return
+            return .nothing
         }
         
         let text = (searchController?.searchBar.text ?? "").lowercased()
         if text.isEmpty {
+            let isEmpty = provisionalPackages.isEmpty
             self.provisionalPackages.removeAll()
-            return
+            return isEmpty ? .nothing : .delete
         }
         
         let all = PackageListManager.shared.allPackages ?? []
+        let oldEmpty = provisionalPackages.isEmpty
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
             let search = (package.name?.lowercased().contains(text) ?? false) ||
                 (package.identifier?.lowercased().contains(text) ?? false) ||
@@ -608,11 +617,30 @@ extension PackageListViewController: UISearchBarDelegate {
             }
             return true
         }
+        if oldEmpty && provisionalPackages.isEmpty {
+            return .nothing
+        } else if !oldEmpty && provisionalPackages.isEmpty {
+            return .delete
+        } else if oldEmpty && !provisionalPackages.isEmpty {
+            return .insert
+        } else {
+            return .refresh
+        }
     }
 }
 
 extension PackageListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        
+        func handleResponse(_ response: UpdateType) {
+            switch response {
+            case .nothing: return
+            case .refresh: collectionView?.reloadSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
+            case .delete: collectionView?.deleteSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
+            case .insert: collectionView?.insertSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
+            }
+        }
+        
         let searchBar = searchController.searchBar
         var packagesLoadIdentifier = self.packagesLoadIdentifier
         self.canisterHeartbeat?.invalidate()
@@ -625,11 +653,11 @@ extension PackageListViewController: UISearchResultsUpdating {
             if showSearchField {
                 if !packages.isEmpty {
                     packages = []
-                    collectionView?.reloadData()
+                    collectionView?.deleteSections(IndexSet(integer: 0))
                 }
                 if !provisionalPackages.isEmpty {
                     provisionalPackages = []
-                    collectionView?.reloadData()
+                    collectionView?.deleteSections(IndexSet(integer: 0))
                 }
                 return
             }
@@ -640,11 +668,11 @@ extension PackageListViewController: UISearchResultsUpdating {
                 packagesLoadIdentifier = "search:\(searchBar.text ?? "")"
             }
             
-            canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 CanisterResolver.shared.fetch(searchBar.text ?? "") {
                     DispatchQueue.main.async {
-                        self.updateProvisional()
-                        self.collectionView?.reloadData()
+                        let response = self?.updateProvisional() ?? .nothing
+                        handleResponse(response)
                     }
                 }
             }
