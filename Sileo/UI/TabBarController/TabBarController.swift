@@ -54,6 +54,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
         }
+        if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
+            if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
+               let packageList = navController.viewControllers[0] as? PackageListViewController {
+                packageList.collectionView?.setContentOffset(CGPoint.zero, animated: true)
+            }
+        }
     }
     
     func presentPopup() {
