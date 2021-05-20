@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Alderis",
-        "repositoryURL": "https://github.com/hbang/Alderis.git",
+        "repositoryURL": "https://github.com/elihwyma/Alderis",
         "state": {
-          "branch": null,
-          "revision": "267170a77ffa2993846d16bba1785716596cb970",
-          "version": "1.1.2"
+          "branch": "master",
+          "revision": "42c24e5cee43989952698374811a786c69f3c443",
+          "version": null
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/tsolomko/BitByteData",
         "state": {
           "branch": null,
-          "revision": "3ee55b113ae52d5c1f4cbec0ed4eae613dcd7eff",
-          "version": "1.4.3"
+          "revision": "0969ebfb79ccbee05384249e818067a984337dc2",
+          "version": "1.4.4"
         }
       },
       {

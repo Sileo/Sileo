@@ -14,7 +14,7 @@ TARGET_CODESIGN = $(shell which ldid)
 ARCH            = arm64
 PLATFORM        = iphoneos
 DEB_ARCH        = iphoneos-arm
-DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
+DEB_DEPENDS     = firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
 PREFIX          =
 else ifeq ($(SILEO_PLATFORM),darwin-arm64)
 # These trues are temporary
