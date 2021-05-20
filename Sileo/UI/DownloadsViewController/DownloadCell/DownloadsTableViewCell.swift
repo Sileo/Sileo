@@ -12,7 +12,18 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     public var package: DownloadPackage? = nil {
         didSet {
             self.title = package?.package.name
-            self.loadIcon(url: URL(string: package?.package.icon ?? ""), placeholderIcon: UIImage(named: "Tweak Icon"))
+            if let url = package?.package.icon {
+                self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
+                    if refresh,
+                       let strong = self,
+                       let image = image,
+                       url == strong.package?.package.icon {
+                        DispatchQueue.main.async {
+                            strong.icon = image
+                        }
+                    }
+                } ?? UIImage(named: "Tweak Icon")
+            }
         }
     }
     

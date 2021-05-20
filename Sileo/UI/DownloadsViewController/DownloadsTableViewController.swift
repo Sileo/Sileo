@@ -244,7 +244,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
         let cellIdentifier = "DownloadsTableViewCellIdentifier"
         let cell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DownloadsTableViewCell) ??
             DownloadsTableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        
+        cell.icon = UIImage(named: "Tweak Icon")
         if indexPath.section == 3 {
             // Error listing
             let error = errors[indexPath.row]
@@ -279,7 +279,6 @@ extension DownloadsTableViewController: UITableViewDataSource {
                 cell.download = DownloadManager.shared.download(package: cell.package?.package.package ?? "")
             }
         }
-        cell.icon = UIImage(named: "Tweak Icon")
         return cell
     }
 }

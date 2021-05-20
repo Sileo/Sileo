@@ -16,7 +16,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         iconView = PackageIconView(frame: CGRect(x: 16, y: 8, width: 40, height: 40))
         progressView = SourceProgressIndicatorView(frame: .zero)
-        
+    
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.addSubview(iconView)
