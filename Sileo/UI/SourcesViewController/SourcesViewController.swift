@@ -83,9 +83,6 @@ class SourcesViewController: SileoTableViewController {
         self.tableView.backgroundColor = UIColor.sileoBackgroundColor
         self.tableView.separatorColor = .sileoSeparatorColor
         self.statusBarStyle = .default
-        if #available(iOS 13, *) {
-            overrideUserInterfaceStyle = UIColor.isDarkModeEnabled ? .dark : .light
-        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -45,7 +45,6 @@ final class GifController: UIImage {
           kCGImageSourceCreateThumbnailWithTransform: true,
           kCGImageSourceThumbnailMaxPixelSize: maxDimentionInPixels] as CFDictionary
         guard let downScaledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampledOptions) else { return nil }
-        let downsampled = UIImage(cgImage: downScaledImage)
-        return downsampled
+        return UIImage(cgImage: downScaledImage)
     }
 }
