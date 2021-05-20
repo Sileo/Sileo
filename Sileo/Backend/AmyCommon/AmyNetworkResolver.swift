@@ -483,3 +483,6 @@ extension URL {
         return values.totalFileAllocatedSize ?? values.fileAllocatedSize ?? 0
     }
 }
+
+// swiftlint:disable type_name
+public class Amy: Any {}

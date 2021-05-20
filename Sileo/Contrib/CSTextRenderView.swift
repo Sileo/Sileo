@@ -140,11 +140,9 @@ class CSTextRenderView: UIView {
         if touches.count > 1 {
             return
         }
-        
         guard let touch = touches.first else {
             return
         }
-        
         let loc = touch.location(in: self)
         if !activeLinkRect.contains(loc) {
             self.touchesCancelled(touches, with: event)
@@ -153,8 +151,8 @@ class CSTextRenderView: UIView {
             textView?.overlayView.isHidden = true
             textView?.overlayView.frame = .zero
             
-            let url = activeLink["url"] as? URL
-            _ = textView?.process(action: url?.absoluteString ?? "")
+            let url = activeLink["url"] as? String
+            _ = textView?.process(action: url ?? "")
             
             linkActive = false
             activeLink = [:]
