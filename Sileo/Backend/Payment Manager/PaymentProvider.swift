@@ -45,7 +45,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     func loadCache() {
         OperationQueue.main.addOperation {
             do {
-                let jsonData = try Data(contentsOf: URL(fileURLWithPath: self.cachePath))
+                let jsonData = try Data(contentsOf: self.cache)
                 let cacheInfo = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: AnyObject]
                 self.info = cacheInfo?["info"] as? [String: AnyObject]
                 self.info = cacheInfo?["userInfo"] as? [String: AnyObject]
@@ -57,14 +57,14 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
         let cacheInfo: [String: Any] = ["info": info ?? NSNull(), "userInfo": storedUserInfo ?? NSNull()]
         do {
             let data = try JSONSerialization.data(withJSONObject: cacheInfo, options: [])
-            try data.write(to: URL(fileURLWithPath: cachePath))
-        } catch { }
+            try data.write(to: cache)
+        } catch {}
     }
     
-    var cachePath: String {
+    var cache: URL {
         let encodedURL = baseURL.absoluteString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.alphanumerics)
-        let filename = String(format: "payment_provider_%@.json", encodedURL ?? "default")
-        return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0].appending(filename)
+        let filename = String(format: "payment_provider_%@", encodedURL ?? "default")
+        return AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("json")
     }
     
     var isAuthenticated: Bool {
@@ -214,8 +214,10 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     }
     
     static func triggerListUpdateNotification() {
-        NotificationCenter.default.post(name: Notification.Name(PaymentProvider.listUpdateNotificationName), object: nil)
-        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name(PaymentProvider.listUpdateNotificationName), object: nil)
+            NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+        }
     }
     
     func downloadURL(for package: Package, from repo: Repo, completionHandler: @escaping (String?, URL?) -> Void) -> Bool {
@@ -310,7 +312,6 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
             
             // Decode JSON
             do {
-                //let jsonData = try JSONDecoder().decode([String: AnyObject].self, from: data!)
                 guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else {
                     return completion(PaymentError(message: nil), nil)
                 }

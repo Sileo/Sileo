@@ -19,7 +19,7 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.textAlignment = .center
         self.addSubview(label)
         
-        let sileoPackage = PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo")
+        let sileoPackage = FeaturedInfoFooterView.package
         let sileoVersion = sileoPackage?.version ?? "Unknown"
         
         let platform = UIDevice.current.platform
@@ -34,11 +34,19 @@ class FeaturedInfoFooterView: FeaturedBaseView {
                 PackageListManager.shared.waitForReady()
             
                 DispatchQueue.main.async {
-                    let sileoPackage2 = PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo")
+                    let sileoPackage2 = FeaturedInfoFooterView.package
                     let sileoVersion2 = sileoPackage2?.version ?? "Unknown"
                     self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)"
                 }
             }
+        }
+    }
+    
+    static var package: Package? {
+        switch Bundle.main.bundleIdentifier {
+        case "org.coolstar.SileoBeta": return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileobeta")
+        case "org.coolstar.SileoNightly": return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileonightly")
+        default: return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo")
         }
     }
     

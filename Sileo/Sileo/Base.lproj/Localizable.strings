@@ -5,12 +5,8 @@
   Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- BASE (English) LOCALISATIONS
+ LOCALISATIONS
 */
-
-// Credit Information (optional, uncomment to specify)
-//"__LocalizationCredit.Title" = "English translation by AppleBetas";
-//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
 
 // Common Prompts
 "About" = "About";
@@ -25,6 +21,14 @@
 "Share" = "Share";
 "Delete" = "Delete";
 "Cancel" = "Cancel";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installing";
@@ -45,6 +49,7 @@
 "Package_Get_Action" = "Get";
 "Package_Queue_Action" = "Queue";
 "Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
 
 "Package_Share_Action" = "Share Package…";
 "Package_Developer_Find_Action" = "More by this Developer";
@@ -81,11 +86,16 @@
 "Search_Page" = "Search";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "All Packages";
 "All_Packages.Cell_Subtitle" = "See all packages from your sources";
 
 "All_Categories" = "All Categories";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositories";
 
@@ -111,6 +121,7 @@
 "Show_Package_Contents_Button" = "Show Package Contents";
 
 "Licenses_Page_Title" = "Licenses";
+"Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "Payment Providers";
 "Settings_Translations_Heading" = "Translations";
@@ -124,11 +135,25 @@
 "Theme" = "Theme";
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
 "Sileo_Adaptive" = "Sileo Adaptive";
 "System" = "System";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "Sign in to Cydia Store";
 "Payment_Provider_Signed_In" = "Signed in";
@@ -137,16 +162,15 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
 
-"Package_Filter_User" = "User";
-"Package_Filter_PowerUser" = "Power User";
-"Package_Filter_Dev" = "Developer";
-
 "Show_Install_Details" = "Show Details";
 "Hide_Install_Details" = "Hide Details";
 
 "After_Install_Relaunch" = "Restart Sileo";
 "After_Install_Respring" = "Restart SpringBoard";
 "After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
 
 "Dangerous_Repo.Title" = "Dangerous Repo";
 "Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
@@ -163,3 +187,6 @@
 "Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
 "Export_Yes" = "Yes, copy.";
 "Export_No" = "No, cancel.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";

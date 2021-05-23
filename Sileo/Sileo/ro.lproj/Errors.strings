@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+ */
+
+"Unknown" = "Eror necunoscut.";
+"Error_Indicator" = "Eror: %@";
+
+"No_Package.Title" = "Pachetul %@ nu a fost găsit în sursele voastre instalate.";
+"No_Package.Body" = "Dacă pachetul este nou, așteptați pentru actualizarea Sileo și încercați din nou. Căutați online pentru mai mult ajutor.";
+
+"Invalid_URL.Title" = "URL invalid";
+
+"Download_Size_Mismatch" = "Mărimea anticipată %@, dar mărimea primită este %@.";
+"Download_Failing_Status_Code" = "Eșuat cu status %ld";
+"Download_Hash_Mismatch" = "Hash anticipat %@, dar hash-ul primit este %@.";
+"Untrusted_Package" = "Pachetul %@ nu e încrezut și nu poate fi verificat";
+
+"Insecure_Paid_Download" = "URL-ul unui pachet plătit trebuie să fie asigurat (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Răspuns invalid de la furnizor de plăți.";
+"No_Payment_Provider" = "Cumpărături Sileo nu sunt disponibile pe acest repo. Dacă acest pachet este un pachet Cydia Store care l-ați cumpărat, conectați-vă de a descărca.";
+
+"Package_Unavailable" = "Acest pachet nu e disponibil din sursele voastre. Vă rugăm să verificați că %@ repo e disponibil.";
+
+"Installation_Error.Title" = "Eroare în instalare";
+"Installation_Error.Body" = "Sileo nu a reușit să primească permisii de root. Vă rugăm să reinstalați Sileo folosind SSH.";
+
+"FixingDpkg.Title" = "Dpkg întrerupt";
+"FixingDpkg.Body" = "Dpkg a fost întrerupt. Vă rugăm să așteptați până noi încercâm să rezolvăm problema.";
+
+"Invalid_Data" = "Date invalide";
+"Try_Later" = "Vă rugăm să încercați mai târziu.";
+
+"Sileo_Update_Required.Title" = "Actualizare Sileo Necesară";
+"Featured_Requires_Sileo_Update" = "Actualizare Sileo e necesară de a deschide fila recomandate. Desenul filei poate avea greșeli fără actualizare.";
+"Depiction_Requires_Sileo_Update" = "Actualizare Sileo e necesară de a deschide această pagină. Desenul paginei poate avea greșeli fără actualizare.";
+
+"Form_Error.Title" = "Descărcare Formularul a Eșuat";
+"Form_Load_Error" = "Formularul nu a putut să fie descărcat de la Server.";
+"Invalid_Form_Data" = "Serverul a trimis date invalide de formular.";
+"Form_Submit_Failure" = "O greșeală s-o întâmplat la trimiterea formularul: %@";
+"Form_Submit_Error.Title" = "Trimiterea Formularului a Eșuat";
+"Form_Action_Host_Mismatch" = "Host URL-ul al acțiunile formularului e diferit de host-ul original formularului.";
+
+"Email_Unavailable.Title" = "Trimitere Email Nedisponibil";
+"Email_Unavailable.Body" = "Servicile email nu sunt disponibile.";
+
+"Settings_Payment_Provider.Profile.Title" = "Încărcarea Profilului a Eșuat";
+
+"Provider_Auth_Fail.Title" = "Auntentificarea furnizorului a eșuat";
+"Purchase_Initiate_Fail.Title" = "Inițializarea cumpărăturii a eșuat";
+"Purchase_Complete_Fail.Title" = "Completarea cumpărăturii a eșuat";
+"Purchase_Auth_Complete_Fail.Title" = "Completarea autentificării a eșuat";

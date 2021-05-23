@@ -67,6 +67,7 @@ final class DownloadManager {
     var queuedRemovals: [String] = []
     var confirmedRemovals: [String] = []
     var downloads: [String: Download] = [:]
+    var cachedFiles: [URL] = []
     
     private var queueLockCount = 0
     private var queueLock = DispatchSemaphore(value: 1)
@@ -79,20 +80,28 @@ final class DownloadManager {
         viewController = DownloadsTableViewController(nibName: "DownloadsTableViewController", bundle: nil)
     }
     
-    public func downloadingPackages() -> Int {
-        var downloadsCount = 0
-        for keyValue in downloads where keyValue.value.progress < 1 {
-            downloadsCount += 1
-        }
-        return downloadsCount
+    public func installingPackages() -> Int {
+        upgrades.count + installations.count + installdeps.count
+    }
+    
+    public func uninstallingPackages() -> Int {
+        uninstallations.count + uninstalldeps.count
+    }
+    
+    public func operationCount() -> Int {
+        upgrades.count + installations.count + uninstallations.count + installdeps.count + uninstalldeps.count
     }
     
     public func queuedPackages() -> Int {
         queued.count + queuedRemovals.count
     }
     
-    public func installingPackages() -> Int {
-        upgrades.count + installations.count + installdeps.count
+    public func downloadingPackages() -> Int {
+        var downloadsCount = 0
+        for keyValue in downloads where keyValue.value.progress < 1 {
+            downloadsCount += 1
+        }
+        return downloadsCount
     }
     
     public func readyPackages() -> Int {
@@ -107,13 +116,11 @@ final class DownloadManager {
         return readyCount
     }
     
-    public func uninstallingPackages() -> Int {
-        uninstallations.count + uninstalldeps.count
-    }
-    
     private func addDownloadItemsIfNotPresent() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let allRawDownloads = upgrades + installations + installdeps
         var allPackageIDs: [String] = []
@@ -189,7 +196,6 @@ final class DownloadManager {
         }
         
         let allRawDownloads = upgrades + installations + installdeps
-        
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
             queued.removeValue(forKey: package.package)
@@ -233,10 +239,11 @@ final class DownloadManager {
                         
                         let downloadURL = url ?? URL(string: filename)
                         download.task = RepoManager.shared.queue(from: downloadURL,
-                                                                 progress: { progress, completedUnitCount, totalUnitCount in
-                                                                    download.progress = progress
-                                                                    download.totalBytesWritten = completedUnitCount
-                                                                    download.totalBytesExpectedToWrite = totalUnitCount
+                                                                 progress: { progress in
+                                                                    download.message = nil
+                                                                    download.progress = CGFloat(progress.fractionCompleted)
+                                                                    download.totalBytesWritten = progress.total
+                                                                    download.totalBytesExpectedToWrite = progress.expected
                                                                     DispatchQueue.main.async {
                                                                         self.viewController.reloadDownload(package: package)
                                                                     }
@@ -245,6 +252,7 @@ final class DownloadManager {
                             let fileSize = attributes?[FileAttributeKey.size] as? Int
                             let fileSizeStr = String(format: "%ld", fileSize ?? 0)
                             download.completed = true
+                            download.message = nil
                             if !package.package.contains("/") && (fileSizeStr != package.size) {
                                 download.failureReason = String(format: String(localizationKey: "Download_Size_Mismatch", type: .error),
                                                                 package.size ?? "nil", fileSizeStr)
@@ -278,7 +286,8 @@ final class DownloadManager {
                             }
                             download.backgroundTask = nil
                             self.startMoreDownloads()
-                        }, failure: { statusCode in
+                        }, failure: { statusCode, _ in
+                            download.message = nil
                             download.success = false
                             download.completed = true
                             download.failureReason = String(format: String(localizationKey: "Download_Failing_Status_Code", type: .error), statusCode)
@@ -292,10 +301,17 @@ final class DownloadManager {
                             }
                             download.backgroundTask = nil
                             self.startMoreDownloads()
+                        }, waiting: { message in
+                            download.message = message
+                            DispatchQueue.main.async {
+                                self.viewController.reloadDownload(package: package)
+                            }
                         })
+                        download.task?.shouldResume = true
+                        self.downloads[package.package] = download
+                        self.startMoreDownloads()
                     }
                 }
-                
                 downloads[package.package] = download
             }
         }
@@ -312,31 +328,34 @@ final class DownloadManager {
         var downloadCount: [String: Int] = [:]
         
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let allRawDownloads = upgrades + installations + installdeps
         
         for dlPackage in allRawDownloads {
             let package = dlPackage.package
-            if let download = downloads[package.package],
-               let host = download.task?.request?.url?.host {
-                let hostCount = downloadCount[host] ?? 0
-                if download.queued && !download.completed {
-                    if hostCount < 2 {
-                        download.queued = false
-                        download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-                            download.task?.cancel()
-                            if let backgroundTaskIdentifier = download.backgroundTask {
-                                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
-                            }
-                            download.backgroundTask = nil
-                        })
-                        
-                        download.task?.resume()
-                        downloadCount[host] = hostCount + 1
-                    }
-                } else if !download.queued && !download.completed {
-                    downloadCount[host] = hostCount + 1
+            if let download = downloads[package.package] {
+                if let host = download.task?.url?.host {
+                     let hostCount = downloadCount[host] ?? 0
+                     if download.queued && !download.completed {
+                         if hostCount < 2 {
+                             download.queued = false
+                             download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+                                 download.task?.cancel()
+                                 if let backgroundTaskIdentifier = download.backgroundTask {
+                                     UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+                                 }
+                                 download.backgroundTask = nil
+                             })
+                            download.failureReason = nil
+                            download.task?.resume()
+                            downloadCount[host] = hostCount + 1
+                         }
+                     } else if !download.queued && !download.completed {
+                         downloadCount[host] = hostCount + 1
+                     }
                 }
             }
         }
@@ -370,7 +389,8 @@ final class DownloadManager {
         
         if !FileManager.default.fileExists(atPath: destFileName) {
             if package.package.contains("/") {
-                cloneFileAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
+                hardLinkAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
+                DownloadManager.shared.cachedFiles.append(URL(fileURLWithPath: package.package))
                 return FileManager.default.fileExists(atPath: destFileName)
             }
             
@@ -404,7 +424,6 @@ final class DownloadManager {
     
     private func verify(download: Download, fileURL: URL) throws -> Bool {
         let package = download.package
-        
         let packageControl = package.rawControl
         
         if !package.package.contains("/") {
@@ -445,7 +464,8 @@ final class DownloadManager {
         let destFileName = "/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
-        moveFileAsRoot(from: fileURL, to: destURL)
+        hardLinkAsRoot(from: fileURL, to: destURL)
+        DownloadManager.shared.cachedFiles.append(fileURL)
         #endif
         return true
     }
@@ -537,7 +557,9 @@ final class DownloadManager {
     
     private func addBrokenPackages() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         guard let statusPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) else {
             return
@@ -563,7 +585,9 @@ final class DownloadManager {
     
     public func removeAllItems() {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         upgrades.removeAll()
         installdeps.removeAll()
@@ -575,11 +599,14 @@ final class DownloadManager {
         errors.removeAll()
         
         self.addBrokenPackages()
-        
         self.addDownloadItemsIfNotPresent()
     }
     
     public func reloadData(recheckPackages: Bool) {
+        reloadData(recheckPackages: recheckPackages, completion: nil)
+    }
+    
+    public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
         DispatchQueue.global(qos: .default).async {
             if !self.lockedForInstallation && recheckPackages {
                 self.recheckTotalOps()
@@ -590,22 +617,26 @@ final class DownloadManager {
             
             DispatchQueue.main.async {
                 self.queueLock.wait()
-                
-                if self.queueLockCount == 0 {
+                let emptyLock = self.queueLockCount == 0
+                if emptyLock {
                     self.viewController.reloadData()
-                    TabBarController.singleton?.updatePopup()
-                    
+                    TabBarController.singleton?.updatePopup(completion: completion)
                     NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
                 }
-                
                 self.queueLock.signal()
+                
+                if !emptyLock, let completion = completion {
+                    completion()
+                }
             }
         }
     }
     
     public func remove(package: String) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         installations.removeAll { $0.package.package == package }
         upgrades.removeAll { $0.package.package == package }
@@ -618,17 +649,13 @@ final class DownloadManager {
         let downloadPackage = DownloadPackage(package: package)
         if installations.contains(downloadPackage) {
             return .installations
-        }
-        if uninstallations.contains(downloadPackage) {
+        } else if uninstallations.contains(downloadPackage) {
             return .uninstallations
-        }
-        if upgrades.contains(downloadPackage) {
+        } else if upgrades.contains(downloadPackage) {
             return .upgrades
-        }
-        if installdeps.contains(downloadPackage) {
+        } else if installdeps.contains(downloadPackage) {
             return .installdeps
-        }
-        if uninstalldeps.contains(downloadPackage) {
+        } else if uninstalldeps.contains(downloadPackage) {
             return .uninstalldeps
         }
         return .none
@@ -636,30 +663,33 @@ final class DownloadManager {
     
     public func add(package: Package, queue: DownloadManagerQueue) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         let downloadPackage = DownloadPackage(package: package)
+        let package = downloadPackage.package.package
         switch queue {
         case .none:
             return
         case .installations:
-            if !installations.contains(downloadPackage) {
+            if !installations.map({ $0.package.package }).contains(package) {
                 installations.append(downloadPackage)
             }
         case .uninstallations:
-            if !uninstallations.contains(downloadPackage) {
+            if !uninstallations.map({ $0.package.package }).contains(package) {
                 uninstallations.append(downloadPackage)
             }
         case .upgrades:
-            if !upgrades.contains(downloadPackage) {
+            if !upgrades.map({ $0.package.package }).contains(package) {
                 upgrades.append(downloadPackage)
             }
         case .installdeps:
-            if !installdeps.contains(downloadPackage) {
+            if !installdeps.map({ $0.package.package }).contains(package) {
                 installdeps.append(downloadPackage)
             }
         case .uninstalldeps:
-            if !uninstalldeps.contains(downloadPackage) {
+            if !uninstalldeps.map({ $0.package.package }).contains(package) {
                 uninstalldeps.append(downloadPackage)
             }
         }
@@ -672,7 +702,9 @@ final class DownloadManager {
     
     public func remove(downloadPackage: DownloadPackage, queue: DownloadManagerQueue) {
         self.lockQueue()
-        defer { self.unlockQueue() }
+        defer {
+            self.unlockQueue()
+        }
         
         switch queue {
         case .none:

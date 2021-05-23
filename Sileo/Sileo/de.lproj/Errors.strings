@@ -1,35 +1,59 @@
-"Download_Size_Mismatch" = "Erwartete Größe %@, wurde stattdessen %@.";
-"Settings_Payment_Provider.Profile.Title" = "Profil konnte nicht geladen werden";
-"Depiction_Requires_Sileo_Update" = "Zum Anzeigen dieser Seite ist ein Sileo-Update erforderlich. Die Seite wird möglicherweise falsch dargestellt.";
-"Invalid_Form_Data" = "Der Server hat ungültige Formulardaten bereitgestellt.";
-"Insecure_Paid_Download" = "URLs zum Herunterladen von Zahlungspaketen müssen sicher sein (HTTPS).";
-"Purchase_Auth_Complete_Fail.Title" = "Authentifizierung konnte nicht abgeschlossen werden";
-"Email_Unavailable.Body" = "Mail-Dienste sind nicht verfügbar.";
-"Form_Load_Error" = "Das Formular konnte nicht vom Server geladen werden.";
-"Invalid_Payment_Provider_Response" = "Der Zahlungsanbieter hat eine ungültige Antwort ausgegeben.";
-"Download_Failing_Status_Code" = "Fehlgeschlagen mit Status %ld";
-"No_Package.Body" = "Wenn es neu ist, warten Sie, bis Sileo die Aktualisierung abgeschlossen hat und versuchen Sie es erneut. Suchen Sie online nach Hilfe.";
-"Form_Submit_Failure" = "Beim Senden des Formulars ist ein Fehler aufgetreten: %@";
-"Installation_Error.Title" = "Installationsfehler";
-"FixingDpkg.Body" = "Dpkg wurde unterbrochen. Bitte warten Sie, während wir versuchen, das Problem zu beheben.";
-"Email_Unavailable.Title" = "Email kann nicht gesendet werden";
-"No_Payment_Provider" = "Dieses Quelle unterstützt keine Sileo-Käufe. Wenn dies ein bereits erworbenes Cydia Store-Paket ist, können Sie Ihr Konto verknüpfen, um es herunterzuladen.";
-"Try_Later" = "Bitte versuchen Sie es später erneut.";
-"Sileo_Update_Required.Title" = "Sileo-Update erforderlich";
-"Form_Submit_Error.Title" = "Formular konnte nicht gesendet werden";
-"Untrusted_Package" = "Paket %@ ist nicht vertrauenswürdig und kann nicht überprüft werden";
-"Purchase_Complete_Fail.Title" = "Kauf konnte nicht abgeschlossen werden";
-"Form_Error.Title" = "Formular konnte nicht geladen werden";
-"Download_Hash_Mismatch" = "Erwartetes Hash %@, wurde stattdessen %@.";
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+ */
+
 "Unknown" = "Ein unbekannter Fehler ist aufgetreten.";
-"Package_Unavailable" = "Dieses Paket ist nicht in den installierten Quellen verfügbar. Bitte vergewissern Sie sich, dass die %@ Quelle verfügbar ist.";
-"FixingDpkg.Title" = "Dpkg unterbrochen";
-"Purchase_Initiate_Fail.Title" = "Kauf konnte nicht initiiert werden";
-"No_Package.Title" = "Das Paket %@ wurde in den derzeit installierten Quellen nicht gefunden.";
-"Invalid_Data" = "Ungültige Daten";
-"Provider_Auth_Fail.Title" = "Provider konnte nicht authentifiziert werden";
 "Error_Indicator" = "Fehler: %@";
-"Installation_Error.Body" = "Sileo konnte keine Root-Berechtigungen erwerben. Bitte installieren Sie Sileo erneut mit SSH.";
-"Invalid_URL.Title" = "Ungültige URL";
-"Form_Action_Host_Mismatch" = "Der URL-Host der Formularaktion stimmt nicht mit dem Ursprungshost des Formulars überein.";
-"Featured_Requires_Sileo_Update" = "Ein Sileo-Update ist erforderlich, um die Registerkarte Highlights anzuzeigen. Die gekennzeichnete Registerkarte wird möglicherweise falsch dargestellt. ";
+
+"No_Package.Title" = "Das Paket %@ wurde in den aktuell installierten Quellen nicht gefunden.";
+"No_Package.Body" = "Sollte es sich um ein neues Paket handeln, warte bis Sileo fertig geladen hat und versuche es erneut. Sollten trotzdem Fehler auftreten suche im Internet nach weiterer Hilfe.";
+
+"Invalid_URL.Title" = "Fehlerhafte URL";
+
+"Download_Size_Mismatch" = "Erwartete Dateigröße %@, tatsächliche Dateigröße %@.";
+"Download_Failing_Status_Code" = "Fehlerstatus: %ld";
+"Download_Hash_Mismatch" = "Erwarteter Hash %@, tatsächlicher Hash %@.";
+"Untrusted_Package" = "Das Paket %@ ist nicht vertrauenswürdig und kann nicht überprüft werden";
+
+"Insecure_Paid_Download" = "Der Paketdownload Link muss sicher sein (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Der Zahlungsanbieter hat eine ungültige Antwort gesendet.";
+"No_Payment_Provider" = "Diese Quelle unterstützt keine Sileo-Käufe. Wenn du dieses Paket bereits im Cydia Store gekauft hast kannst du dein Cydia Store Konto verbinden um es herunterzuladen.";
+
+"Package_Unavailable" = "Dieses Paket ist nicht in den installierten Quellen verfügbar. Bitte sieh nach, ob die %@ Quelle verfügbar ist.";
+
+"Installation_Error.Title" = "Installationsfehler";
+"Installation_Error.Body" = "Sileo konnte keine Admin Berechtigungen erlangen. Bitte installiere Sileo neu mittels SSH.";
+
+"FixingDpkg.Title" = "DPKG unterbrochen";
+"FixingDpkg.Body" = "DPKG wurde unterbrochen. Bitte warte, während Sileo versucht das Problem zu beheben.";
+
+"Invalid_Data" = "Ungültige Daten";
+"Try_Later" = "Bitte versuche es später erneut.";
+
+"Sileo_Update_Required.Title" = "Sileo aktualisierung erforderlich";
+"Featured_Requires_Sileo_Update" = "Sileo muss aktualisiert werden um die Highlights Seite anzuzeigen. Die Highlights Seite wird möglicherweise nicht korrekt angezeigt.";
+"Depiction_Requires_Sileo_Update" = "Sileo muss aktualisiert werden um diese Seite anzuzeigen. Die Seite wird möglicherweise nicht korrekt angezeigt.";
+
+"Form_Error.Title" = "Formular konnte nicht geladen werden.";
+"Form_Load_Error" = "Das Formular konnte nicht vom Server geladen werden.";
+"Invalid_Form_Data" = "Der Server hat ungültige Daten bereitgestellt.";
+"Form_Submit_Failure" = "Ein Fehler ist aufgetreten, während das Formular gesendet wurde: %@";
+"Form_Submit_Error.Title" = "Das Formular konnte nicht gesendet werden.";
+"Form_Action_Host_Mismatch" = "Der Empfangsserver des Formulars ist nicht der Server, von dem das Formular ursprünglich kommt.";
+
+"Email_Unavailable.Title" = "Email konnte nicht versendet werden";
+"Email_Unavailable.Body" = "Der Email Dienst ist nicht verfügbar.";
+
+"Settings_Payment_Provider.Profile.Title" = "Profil konnte nicht geladen werden.";
+
+"Provider_Auth_Fail.Title" = "Provider konnte nicht authentifiziert werden";
+"Purchase_Initiate_Fail.Title" = "Kauf konnte nicht gestartet werden";
+"Purchase_Complete_Fail.Title" = "Kauf konnte nicht abgeschlossen werden";
+"Purchase_Auth_Complete_Fail.Title" = "Authentifizierung konnte nicht durchgeführt werden";

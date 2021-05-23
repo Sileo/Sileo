@@ -6,8 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import Foundation
-import SDWebImage
+import UIKit
 
 open class BaseSubtitleTableViewCell: UITableViewCell {
     let iconView: PackageIconView
@@ -17,7 +16,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         iconView = PackageIconView(frame: CGRect(x: 16, y: 8, width: 40, height: 40))
         progressView = SourceProgressIndicatorView(frame: .zero)
-        
+    
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.addSubview(iconView)
@@ -93,19 +92,21 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     }
     
     func loadIcon(url: URL?, placeholderIcon: UIImage?) {
-        icon = placeholderIcon
         iconURL = nil
         
         guard let url = url else {
             return
         }
-        SDWebImageManager.shared.loadImage(with: url, options: [], progress: nil) { image, _, _, _, finished, _ in
-            DispatchQueue.main.async {
-                if finished && url == self.iconURL && image != nil {
-                    self.icon = image
+        self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
+            if refresh,
+               let strong = self,
+               let image = image,
+               url == strong.iconURL {
+                DispatchQueue.main.async {
+                    strong.icon = image
                 }
             }
-        }
+        } ?? placeholderIcon
     }
     
     public var progress: CGFloat = 0 {

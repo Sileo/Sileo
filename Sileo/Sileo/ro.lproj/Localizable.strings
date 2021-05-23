@@ -1,0 +1,192 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "Despre";
+"Close" = "Închideți";
+"Double tap to open." = "Apăsați dublu a deschide";
+"Untitled_Repo" = "Repo fără titlu";
+"OK" = "OK";
+"Done" = "Gata";
+"Done_Editing" = "Gata";
+"More_Info" = "Mai multe";
+"Loading" = "Încârcare…";
+"Share" = "Partajați";
+"Delete" = "Ștergeți";
+"Cancel" = "Anulați";
+"Acknowledge" = "Confirmați";
+"Remove" = "Ștergeți";
+"Sileo_Team" = "Echipa Sileo";
+
+// Popup messages
+"Background_App_Refresh" = "Reîmprospătare în fundal";
+"Background_App_Refresh_Message" = "Pentru experiența cea mai bună și repede, recomandăm să activați reîmprospătare în fundal pentru Sileo. Puteți să primiți notificări când tweakurile voastre au actualizări disponibile!";
+"Upgrade_All_Shortcut_Processing_Message" = "Reîmprospătare de toate surselor și actualizare de toate pachetelor...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Instalare";
+"Downloading_Package_Status" = "Descărcare";
+"Queued_Package_Status" = "În rând";
+"Ready_Status" = "Pregâtit";
+"Removal_Queued_Package_Status" = "În rând pentru ștergere";
+"Download_Starting" = "Începere…";
+"Download_Progress" = "%@ din %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Confirmați";
+"Queue_Clear_Button" = "Ștergeți coada";
+
+"Package_Upgrade_Action" = "Actualizați";
+"Package_Reinstall_Action" = "Reinstalați";
+"Package_Uninstall_Action" = "Dezinstalați";
+"Package_Modify_Action" = "Modificați";
+"Package_Get_Action" = "Obțineți";
+"Package_Queue_Action" = "Adăugați în rând";
+"Package_Cancel_Action" = "Anulați";
+"Package_Paid" = "Plătit";
+
+"Package_Share_Action" = "Partajați pachetul…";
+"Package_Developer_Find_Action" = "Mai multe pachete de acest dezvoltator";
+"Package_Support_Action" = "Ajutor";
+"Package_Hold_Enable_Action" = "Dezactivați actualizări";
+"Package_Hold_Disable_Action" = "Reactivați actualizări";
+"Package_Wishlist_Add" = "Adăugați pe Lista de dorințe";
+"Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
+"Wishlist" = "Lista de dorințe";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "De instalat";
+"Queued_Uninstall_Heading" = "De dezinstalat";
+"Queued_Update_Heading" = "De actualiza";
+"Download_Errors_Heading" = "Erori";
+
+"Installed_Heading" = "Instalat";
+"Updates_Heading" = "Actualizări";
+"Upgrade_All_Button" = "Actualizare complet";
+"Package_Search.Placeholder" = "Căutați pachete";
+"Sort_Name" = "Nume";
+"Sort_Date" = "Dată";
+"Sort_By" = "Sortează după:";
+
+"Package_Unavailable" = "Pachet nedisponibil";
+"Package_By_Author" = "%@ de %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "de %@"; // %@ = author name
+"Packages_By_Author" = "Pachete de %@"; // %@ = author name
+
+"Featured_Page" = "Recomandate";
+"News_Page" = "Noi";
+"Sources_Page" = "Surse";
+"Packages_Page" = "Pachete";
+"Search_Page" = "Căutare";
+"Refreshing_Sources_Page" = "Reîmprospătare de surse";
+"Package_Installed_Files_Page" = "Fișiere instalate";
+"Refresh" = "Reîmprospătați";
+"Remove" = "Ștergeți";
+
+"All_Packages.Title" = "Toate pachete";
+"All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
+
+"All_Categories" = "Toate categoriile";
+"Internal_Repo" = "Repozitorii Interne";
+"External_Repo" = "Repozitorii Externe";
+"Ignored Updates" = "Actualizări Dezactivate";
+
+"Repos" = "Repozitoriile";
+
+"Add_Source.Title" = "Adăgați sursă";
+"Add_Source.Body" = "Adăugați URL APT";
+"Add_Source.Button.Add" = "Adăugați sursă";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
+
+"Untitled_Form" = "Formular fără titlu";
+"Form_Submitted.Default_Title" = "Formular trimis";
+"Form_Submitted.Default_Body" = "Trimiterea formularului a reușit.";
+
+"Web_Depiction_Deprecated_Warning" = "Descrieri Web View sunt depreciate. Vă rugăm să abonați menținătorii repozitoriilor despre descrieri native pentru Sileo.";
+
+"Package_Details_Tab" = "Detalii";
+"Package_Changelog_Tab" = "Schimbări";
+"Package_No_Description_Available" = "Descriere nedisponibil pentru acest pachet.";
+"Package_Changelogs_Unavailable" = "Schimbări nedisponibile pentru acest pachet.";
+
+"Installed_Package_Header" = "Pachet instalat";
+"Version" = "Versiune";
+"Show_Package_Contents_Button" = "Priviți conținutul acest pachet";
+
+"Licenses_Page_Title" = "Permise";
+"Alternate_Icon_Title" = "Iconuri alternative";
+
+"Settings_Payment_Provider_Heading" = "Furnizori de plăți";
+"Settings_Translations_Heading" = "Traduceri";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Cumpărături";
+"Settings_Payment_Provider.No_Purchases" = "Nu aveți cumpărături";
+
+"Settings" = "Setări";
+"Settings_Page_Title" = "Setări";
+"Dark_Mode_Toggle" = "Mod închis";
+"Theme" = "Temă";
+"Tint_Color" = "Culoarea tentei";
+"Reset_Tint_Color" = "Restabiliți culoarea tentei";
+"Auto_Complete_Queue" = "Completați coade automatic";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmare automatică de actualizare completă";
+"Swipe_Actions" = "Acțiuni glisare";
+"Show_Provisional" = "Arătați pachete de la Canister";
+"Show_Ignored_Updates" = "Arătați Actualizări Dezactivate";
+"Developer_Mode" = "Mod Dezvoltator";
+"Pog_Developer" = "Ați devenit dezvoltator!";
+"Developer_Mode_Explain" = "Modul dezvoltator dezactivează nevoia de HTTPS pentru API-ul de plătire.";
+"Auto_Refresh_Sources" = "Reîmprospătare pachete automat";
+"iCloud_Profile" = "Folosiți poza iCloud pe pagina de recomandate";
+"Cache_Size" = "Mărimea cache-ului";
+"Clear_Cache" = "Ștergeți cache-ul network";
+"Clear_Cache_Message" = "Doriți să ștergeți cache-ul network? Va elibera %@ din stocare";
+
+"Sileo_Light" = "Sileo deschis";
+"Sileo_Dark" = "Sileo închis";
+"Sileo_Adaptive" = "Sileo Adaptiv";
+"System" = "Culoare sistem";
+"Theme_Settings" = "Setări temei";
+
+"Cydia_Sign_In" = "Conectați-vă la Cydia Store";
+"Payment_Provider_Signed_In" = "Cont conectat";
+"Payment_Provider_Signed_In_With_Name" = "Conectat ca %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Deconectați-vă";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Deconectați-vă de la %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Pachete cumpărate nu sunt disponibile fâră cont conectat.";
+
+"Show_Install_Details" = "Arătați Detalie";
+"Hide_Install_Details" = "Ascundeți Detalie";
+
+"After_Install_Relaunch" = "Reporniți Sileo";
+"After_Install_Respring" = "Reporniți SpringBoard";
+"After_Install_Reboot" = "Reporniți aparatul";
+"After_Install_Relaunch_Later" = "Reporniți Sileo mai tărziu";
+"After_Install_Respring_Later" = "Reporniți SpringBoard mai tărziu";
+"After_Install_Reboot_Later" = "Reporniți aparatul mai tărziu";
+
+"Dangerous_Repo.Title" = "Repo Periculos";
+"Dangerous_Repo.Body" = "Voi încercați să adăugați unei repozitoriu cunoscut ca o sursă periculoasă datoritei piraterie, conținut ilegal, sau malware.\n\nRepozitorii marcate ca periculoase distribuie programe cu efecte neanticipate în formă de pachete plătite oferite pe gratis sau alte pachete rele sau ilegale. Aceste au șansa de a strica aparatul vostru sau a fura detaliile voastre private. Noi recomandăm să aveți mare grija folosind aceste surse.";
+"Dangerous_Repo.Continue" = "Sunt de acord cu riscurile, înainte";
+"Dangerous_Repo.Cancel" = "Înapoi la siguranță";
+"Dangerous_Repo.Last_Chance.Title" = "Adăugați repo periculos?";
+"Dangerous_Repo.Last_Chance.Body" = "Repozitorii periculoase pot avea un efect foarte negativ asupra șansa voastră de a folosi aparatul sau jailbreak. Noi vă recomandăm strigent să mergeți înapoi la siguranță. Sigur doriți să adăugați %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Înainte";
+"Dangerous_Repo.Last_Chance.Cancel" = "Înapoi";
+
+// All export-based strings
+"Export" = "Export";
+"Export_Packages" = "Doriți să faceți export de lista voastră de pachete? Această opțiune v-a face copie de lista de pachete și versiunile lor în clipboard.";
+"Export_Sources" = "Doriți să faceți export de lista voastră de surse? Această opțiune v-a face copie de lista de URL-uri surselor în clipboard.";
+"Export_Yes" = "Copiați.";
+"Export_No" = "Anulați.";
+
+// Depcitions
+"View_Depiction" = "Deschideți descrierea";

@@ -5,14 +5,11 @@
   Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- BASE (English) LOCALISATIONS
+ LOCALISATIONS
 */
-
-// Credit Information (optional, uncomment to specify)
-//"__LocalizationCredit.Title" = "English translation by AppleBetas";
-//"__LocalizationCredit.URL" = "https://www.twitter.com/AppleBetasDev"; // (optional)
-
 // Common Prompts
+
+"About" = "Info";
 "Close" = "Chiudi";
 "Double tap to open." = "Doppio tap per aprire";
 "Untitled_Repo" = "Sorgente senza titolo";
@@ -24,6 +21,14 @@
 "Share" = "Condividi";
 "Delete" = "Cancella";
 "Cancel" = "Annulla";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Rimuovi";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Aggiorna app in background";
+"Background_App_Refresh_Message" = "Per l'esperienza migliore e più veloce, è consigliato attivare l'aggiornamento delle app in background. Puoi anche ricevere notifiche quando i tuoi tweak vengono aggiornati!";
+"Upgrade_All_Shortcut_Processing_Message" = "Aggiorno tutte le sorgenti e i pacchetti...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installando";
@@ -32,7 +37,7 @@
 "Ready_Status" = "Pronto";
 "Removal_Queued_Package_Status" = "In coda per la rimozione";
 "Download_Starting" = "Avvio…";
-"Download_Progress" = "%@ di %@"; // prima %@ = quantità scaricata, second %@ = total to download
+"Download_Progress" = "%@ di %@"; // first %@ = amount downloaded, second %@ = total to download
 
 "Queue_Confirm_Button" = "Conferma";
 "Queue_Clear_Button" = "Pulisci Coda";
@@ -44,6 +49,7 @@
 "Package_Get_Action" = "Ottieni";
 "Package_Queue_Action" = "Coda";
 "Package_Cancel_Action" = "Annulla";
+"Package_Paid" = "A pagamento";
 
 "Package_Share_Action" = "Condividi Pacchetto…";
 "Package_Developer_Find_Action" = "Altro da questo Sviluppatore...";
@@ -80,11 +86,16 @@
 "Search_Page" = "Cerca";
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
+"Refresh" = "Aggiorna";
+"Remove" = "Rimuovi";
 
 "All_Packages.Title" = "Tutti i Pacchetti";
 "All_Packages.Cell_Subtitle" = "Vedi tutti i pacchetti delle tue fonti";
 
 "All_Categories" = "Tutte le Categorie";
+"Internal_Repo" = "Sorgenti Interne";
+"External_Repo" = "Sorgenti Esterne";
+"Ignored Updates" = "Aggiornamenti Ignorati";
 
 "Repos" = "Fonti";
 
@@ -106,14 +117,43 @@
 "Package_Changelogs_Unavailable" = "I Changelog non sono disponibili per questo pacchetto.";
 
 "Installed_Package_Header" = "Pacchetto Installato";
-"Version" = "Version";
+"Version" = "Versione";
 "Show_Package_Contents_Button" = "Mostra il Contenuto del Pacchetto";
+
+"Licenses_Page_Title" = "Licenze";
+"Alternate_Icon_Title" = "Icone Alternative";
 
 "Settings_Payment_Provider_Heading" = "Fornitori di Pagamento";
 "Settings_Translations_Heading" = "Traduzioni";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Acquisti";
 "Settings_Payment_Provider.No_Purchases" = "Nessun Acquisto";
+
+"Settings" = "Impostazioni";
+"Settings_Page_Title" = "Impostazioni";
+"Dark_Mode_Toggle" = "Modalità Scura";
+"Theme" = "Tema";
+"Tint_Color" = "Colore Testo";
+"Reset_Tint_Color" = "Ripristina Colore Testo";
+"Auto_Complete_Queue" = "Termina coda automaticamente";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Swipe_Actions" = "Azioni Scorrimento";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Mostra Aggiornamenti Ignorati";
+"Developer_Mode" = "Modalità Sviluppatore";
+"Pog_Developer" = "Ora sei uno sviluppatore!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+
+"Sileo_Light" = "Sileo Chiaro";
+"Sileo_Dark" = "Sileo Scuro";
+"Sileo_Adaptive" = "Sileo Automatico";
+"System" = "Sistema";
+"Theme_Settings" = "Impostazioni Tema";
 
 "Cydia_Sign_In" = "Accedi al Cydia Store";
 "Payment_Provider_Signed_In" = "Accesso effettuato";
@@ -122,24 +162,31 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Esci da %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Non sarai più in grado di scaricare i pacchetti acquistati finché non effettui di nuovo l'accesso.";
 
-"Package_Filter_User" = "Utente";
-"Package_Filter_PowerUser" = "Utente Avanzato";
-"Package_Filter_Dev" = "Sviluppatore";
-
 "Show_Install_Details" = "Mostra Dettagli";
 "Hide_Install_Details" = "Nascondi Dettagli";
 
 "After_Install_Relaunch" = "Riavvia Sileo";
 "After_Install_Respring" = "Riavvia la SpringBoard";
 "After_Install_Reboot" = "Riavvia il Dispositivo";
+"After_Install_Relaunch_Later" = "Riavvia Sileo più tardi";
+"After_Install_Respring_Later" = "Riavvia la SpringBoard più tardi";
+"After_Install_Reboot_Later" = "Riavvia il Dispositivo più tardi";
 
 "Dangerous_Repo.Title" = "Utente Pericolosa";
 "Dangerous_Repo.Body" = "Stai tentando di aggiungere una sorgente che è nota per essere dannosa per motivi come pirateria, contenuti illegali o malware. \n\nLe Sorgenti contrassegnate come dannosi spesso distribuiscono software con effetti inaspettati, sia sotto forma di pacchetti a pagamento messi a disposizione gratuitamente o altri pacchetti dannosi. Ciò può avere effetti duraturi sul dispositivo e sulla privacy, può anche compromettere la capacità di fare il jailbreak. Si consiglia di prestare la massima attenzione evitando software dannosi.";
 "Dangerous_Repo.Continue" = "Accetto i rischi, continua";
 "Dangerous_Repo.Cancel" = "Riportami al Sicuro";
 "Dangerous_Repo.Last_Chance.Title" = "Aggiungere la sorgente dannosa?";
-"Dangerous_Repo.Last_Chance.Body" = "Le Sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza. %@";
+"Dangerous_Repo.Last_Chance.Body" = "Le Sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza. %@"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Continua";
 "Dangerous_Repo.Last_Chance.Cancel" = "Torna Indietro";
 
+// All export-based strings
+"Export" = "Esporta";
+"Export_Packages" = "Vuoi esportare la lista dei tuoi pacchetti? Ciò copierà tutti i nomi dei pacchetti e le loro versioni negli appunti.";
+"Export_Sources" = "Vuoi esportare la lista delle tue sorgenti? Ciò copierà tutti gli URL delle sorgenti negli appunti.";
+"Export_Yes" = "Sì, copia.";
+"Export_No" = "No, annulla.";
 
+// Depcitions
+"View_Depiction" = "Mostra dettagli";

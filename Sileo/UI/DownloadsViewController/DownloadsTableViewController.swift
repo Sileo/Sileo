@@ -71,11 +71,11 @@ class DownloadsTableViewController: SileoViewController {
     
     public func loadData() {
         let manager = DownloadManager.shared
-        upgrades = manager.upgrades
-        installations = manager.installations
-        uninstallations = manager.uninstallations
-        installdeps = manager.installdeps
-        uninstalldeps = manager.uninstalldeps
+        upgrades = manager.upgrades.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installations = manager.installations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstallations = manager.uninstallations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installdeps = manager.installdeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstalldeps = manager.uninstalldeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
         errors = manager.errors
     }
     
@@ -105,7 +105,6 @@ class DownloadsTableViewController: SileoViewController {
             manager.errors.isEmpty {
             if !manager.lockedForInstallation {
                 manager.lockedForInstallation = true
-                
                 let installController = InstallViewController(nibName: "InstallViewController", bundle: nil)
                 manager.totalProgress = 0
                 self.navigationController?.pushViewController(installController, animated: true)
@@ -230,8 +229,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        //Do not delete this, it's so the tableview doesn't display separator lines beyond the last populated row.
-        return UIView()
+        UIView() // do not show extraneous tableview separators
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -246,7 +244,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
         let cellIdentifier = "DownloadsTableViewCellIdentifier"
         let cell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DownloadsTableViewCell) ??
             DownloadsTableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        
+        cell.icon = UIImage(named: "Tweak Icon")
         if indexPath.section == 3 {
             // Error listing
             let error = errors[indexPath.row]
@@ -281,7 +279,6 @@ extension DownloadsTableViewController: UITableViewDataSource {
                 cell.download = DownloadManager.shared.download(package: cell.package?.package.package ?? "")
             }
         }
-        cell.icon = UIImage(named: "Tweak Icon")
         return cell
     }
 }

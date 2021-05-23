@@ -8,71 +8,40 @@
 
 import Foundation
 import UserNotifications
-import SDWebImage
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        DispatchQueue.global(qos: .background).async {
-            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/Cydia.app"])
-            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "/Applications/SafeMode.app"])
-        }
-
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
+        // Will delete anything cached older than 7 days
+        _ = AmyNetworkResolver.shared
         SileoThemeManager.shared.updateUserInterface()
         
-        // Override point for customization after application launch.
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
         }
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-        
-        if let cacheClearFile = try? FileManager.default.url(for: .cachesDirectory,
-                                                             in: .userDomainMask,
-                                                             appropriateFor: nil,
-                                                             create: true).appendingPathComponent(".sileoCacheCleared") {
-            var cacheNeedsUpdating = false
-            if FileManager.default.fileExists(atPath: cacheClearFile.path) {
-                let attributes = try? FileManager.default.attributesOfItem(atPath: cacheClearFile.path)
-                if let modifiedDate = attributes?[FileAttributeKey.modificationDate] as? Date {
-                    if Date().timeIntervalSince(modifiedDate) > 3 * 24 * 3600 {
-                        cacheNeedsUpdating = true
-                        try? FileManager.default.removeItem(at: cacheClearFile)
-                    }
-                }
-            } else {
-                cacheNeedsUpdating = true
-            }
-        
-            if cacheNeedsUpdating {
-                SDImageCache.shared.clearDisk(onCompletion: nil)
-                try? "".write(to: cacheClearFile, atomically: true, encoding: .utf8)
-            }
-        }
-        
+  
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             let updatesPrompt = UserDefaults.standard.bool(forKey: "updatesPrompt")
             if !updatesPrompt {
                 if UIApplication.shared.backgroundRefreshStatus == .denied {
                     DispatchQueue.main.async {
-                        // swiftlint:disable line_length
-                        let alertController = UIAlertController(title: String(localizationKey: "Background App Refresh"),
-                                                                message: String(localizationKey: "For the best experience, it is recommended to enable background app refresh so you can get a faster experience, as well as notifications for when your tweaks have updates available!"),
-                                                                preferredStyle: .alert)
-                        // swiftlint:enable line_length
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default) { _ in
-                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                        })
-                        alertController.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel) { _ in
-                            UserDefaults.standard.set(true, forKey: "updatesPrompt")
-                            UserDefaults.standard.synchronize()
-                            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                        })
-                        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                        let title = String(localizationKey: "Background_App_Refresh")
+                        let msg = String(localizationKey: "Background_App_Refresh_Message")
+                        
+                        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: String(localizationKey: "OK"), style: .cancel) { _ in
+                            alert.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(okAction)
+                        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                        
+                        UserDefaults.standard.set(true, forKey: "updatesPrompt")
                     }
                 }
             }
@@ -94,8 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         self.updateTintColor()
         
-        //Force all view controllers to load now
-        
+        // Force all view controllers to load now
         for controller in tabBarController.viewControllers ?? [] {
             _ = controller.view
             if let navController = controller as? UINavigationController {
@@ -103,49 +71,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let appVer = "2.0.0b5-demo"
-        #else
-        var appVer = "2.0.0b5"
-        
-        if FileManager.default.fileExists(atPath: "/odyssey/jailbreakd") {
-            appVer = "2.0.0b5-odyssey"
-        } else if FileManager.default.fileExists(atPath: "/chimera/jailbreakd") {
-            appVer = "2.0.0b5-chimera"
-        } else if FileManager.default.fileExists(atPath: "/electra/jailbreakd") {
-            appVer = "2.0.0b5-electra"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") &&
-            FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer = "2.0.0b5-odysseyra1n"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/libhooker/pspawn_payload.dylib") {
-            appVer = "2.0.0b5-libhooker"
-        } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") {
-            appVer = "2.0.0b5-procursus"
-        } else if FileManager.default.fileExists(atPath: "/var/checkra1n.dmg") {
-            appVer = "2.0.0b5-checkrain"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/substrated") {
-            appVer = "2.0.0b5-substrate"
-        } else if FileManager.default.fileExists(atPath: "/usr/libexec/substituted") {
-            appVer = "2.0.0b5-hackyA12"
+        #if targetEnvironment(simulator)
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            return
         }
         #endif
         
-        let builder = FlurrySessionBuilder()
-            .withAppVersion(appVer)
-            .withLogLevel(FlurryLogLevelAll)
-            .withCrashReporting(true).withSessionContinueSeconds(10)
-        Flurry.startSession("TSNTB888V4FZTR8F6RHK", with: builder)
+        if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
+            // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
+            if let tabBarController = self.window?.rootViewController as? UITabBarController,
+               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+               let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                    sourcesVC.refreshSources(forceUpdate: false, forceReload: false)
+            }
+        }
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         PackageListManager.shared.waitForReady()
         
-        let currentUpdates = PackageListManager.shared.availableUpdates().map({ $0.0 })
+        let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
         guard let currentPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
             return
         }
         RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
-            let newUpdates = PackageListManager.shared.availableUpdates().map({ $0.0 })
+            let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
             guard let newPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
                 return
             }
@@ -269,29 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             }
         }
         
-        if url.scheme == "cydia" && url.absoluteString.count >= 55 {
-            let fullURL = url.absoluteString
-            let itemsSource = fullURL.components(separatedBy: "source=")
-            if itemsSource.count < 2 {
-                return false
-            }
-            
-            guard let parsedURLStr = itemsSource[1].removingPercentEncoding else {
-                return false
-            }
-            
-            let parsedURL = URL(string: parsedURLStr)
-            if !url.absoluteString.contains("package=") {
-                if let tabBarController = self.window?.rootViewController as? UITabBarController,
-                    let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-                      let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
-                      tabBarController.selectedViewController = sourcesSVC
-                      if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                        sourcesVC.presentAddSourceEntryField(url: parsedURL)
-                      }
-                }
-            }
-        } else if url.host == "source" && url.scheme == "sileo" {
+        if url.host == "source" && url.scheme == "sileo" {
             guard let tabBarController = self.window?.rootViewController as? UITabBarController,
                 let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
                 let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
@@ -306,29 +235,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+        guard let tabBarController = TabBarController.singleton,
+              let controllers = tabBarController.viewControllers,
+              let sourcesSVC = controllers[2] as? SourcesSplitViewController,
+              let sourcesNVC = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+              let sourcesVC = sourcesNVC.viewControllers[0] as? SourcesViewController,
+              let packageListNVC = controllers[3] as? SileoNavigationController,
+              let packageListVC = packageListNVC.viewControllers[0] as? PackageListViewController
+        else {
             return
         }
-        if shortcutItem.type.hasSuffix("Search") {
-            tabBarController.selectedViewController = tabBarController.viewControllers?.last
-        }
-        if shortcutItem.type.hasSuffix("Installed") {
-            tabBarController.selectedViewController = tabBarController.viewControllers?[3]
-        }
         
-        guard let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-              let sourcesNavVc = sourcesSVC.viewControllers[0] as? SileoNavigationController,
-                let sourcesVC = sourcesNavVc.viewControllers[0] as? SourcesViewController else {
-                return
-        }
-        
-        if shortcutItem.type.hasSuffix("AddSource") {
+        if shortcutItem.type.hasSuffix(".UpgradeAll") {
+            tabBarController.selectedViewController = packageListNVC
+            
+            let title = String(localizationKey: "Sileo")
+            let msg = String(localizationKey: "Upgrade_All_Shortcut_Processing_Message")
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            packageListVC.present(alert, animated: true, completion: nil)
+            
+            sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: { _, _ in
+                PackageListManager.shared.upgradeAll(completion: {
+                    if UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false) {
+                        let downloadMan = DownloadManager.shared
+                        downloadMan.startUnqueuedDownloads()
+                        downloadMan.reloadData(recheckPackages: false)
+                    }
+                    
+                    tabBarController.presentPopupController()
+                    alert.dismiss(animated: true, completion: nil)
+                })
+            })
+        } else if shortcutItem.type.hasSuffix(".Refresh") {
+            tabBarController.selectedViewController = sourcesSVC
+            sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: nil)
+        } else if shortcutItem.type.hasSuffix(".AddSource") {
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.addSource(nil)
-        }
-        if shortcutItem.type.hasSuffix("Refresh") {
-            tabBarController.selectedViewController = sourcesSVC
-            sourcesVC.refreshSources(control: nil, forceUpdate: true, forceReload: true)
+        } else if shortcutItem.type.hasSuffix(".Packages") {
+            tabBarController.selectedViewController = packageListNVC
         }
     }
     

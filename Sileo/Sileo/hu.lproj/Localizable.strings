@@ -1,0 +1,192 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "Névjegy";
+"Close" = "Bezárás";
+"Double tap to open." = "Érintsd meg kétszer a megnyitáshoz.";
+"Untitled_Repo" = "Névtelen csomagtár";
+"OK" = "OK";
+"Done" = "Kész";
+"Done_Editing" = "Kész";
+"More_Info" = "További információ";
+"Loading" = "Betöltés…";
+"Share" = "Megosztás";
+"Delete" = "Törlés";
+"Cancel" = "Mégse";
+"Acknowledge" = "Megértettem";
+"Remove" = "Eltávolítás";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Alk.frissítés a háttérben";
+"Background_App_Refresh_Message" = "A legjobb és leggyorsabb élmény érdekében ajánlott bekapcsolni az alkalmazásfrissítést a háttérben. Értesítéseket is kaphatsz, amikor a tweakeid frissülnek!";
+"Upgrade_All_Shortcut_Processing_Message" = "Források újratöltése és csomagok frissítése...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Telepítés alatt";
+"Downloading_Package_Status" = "Letöltés alatt";
+"Queued_Package_Status" = "Sorban áll";
+"Ready_Status" = "Készen áll";
+"Removal_Queued_Package_Status" = "Sorban áll az eltávolításhoz";
+"Download_Starting" = "Indítás…";
+"Download_Progress" = "%@ / %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Megerősítés";
+"Queue_Clear_Button" = "Várakozási sor törlése";
+
+"Package_Upgrade_Action" = "Frissítés";
+"Package_Reinstall_Action" = "Újratelepítés";
+"Package_Uninstall_Action" = "Eltávolítás";
+"Package_Modify_Action" = "Módosítás";
+"Package_Get_Action" = "Telepítés";
+"Package_Queue_Action" = "Sorban áll";
+"Package_Cancel_Action" = "Mégse";
+"Package_Paid" = "Fizetős";
+
+"Package_Share_Action" = "Csomag megosztása…";
+"Package_Developer_Find_Action" = "A fejlesztő további alkalmazásai";
+"Package_Support_Action" = "Támogatás";
+"Package_Hold_Enable_Action" = "Jövőbeni frissítések figyelmen kívül hagyása";
+"Package_Hold_Disable_Action" = "Frissítések újraengedélyezése";
+"Package_Wishlist_Add" = "Hozzáadás a kívánságlistához";
+"Package_Wishlist_Remove" = "Eltávolítás a kívánságlistáról";
+"Wishlist" = "Kívánságlásta";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Telepítés";
+"Queued_Uninstall_Heading" = "Eltávolítás";
+"Queued_Update_Heading" = "Frissítés";
+"Download_Errors_Heading" = "Hibák";
+
+"Installed_Heading" = "Telepítve";
+"Updates_Heading" = "Frissítések";
+"Upgrade_All_Button" = "Összes frissítése";
+"Package_Search.Placeholder" = "Csomagok keresése";
+"Sort_Name" = "Név";
+"Sort_Date" = "Dátum";
+"Sort_By" = "Rendezés:";
+
+"Package_Unavailable" = "Csomag nem elérhető";
+"Package_By_Author" = "%@ (%@ által)"; // first %@ = package name, second %@ = author name
+"By_Author" = "%@ által"; // %@ = author name
+"Packages_By_Author" = "%@ csomagjai"; // %@ = author name
+
+"Featured_Page" = "Kiemelt";
+"News_Page" = "Új";
+"Sources_Page" = "Források";
+"Packages_Page" = "Csomagok";
+"Search_Page" = "Keresés";
+"Refreshing_Sources_Page" = "Források újratöltése";
+"Package_Installed_Files_Page" = "Telepített fájlok";
+"Refresh" = "Újratöltés";
+"Remove" = "Eltávolítás";
+
+"All_Packages.Title" = "Összes csomag";
+"All_Packages.Cell_Subtitle" = "Nézd meg a forrásaidban lévő összes csomagot";
+
+"All_Categories" = "Összes kategória";
+"Internal_Repo" = "Belső csomagtárak";
+"External_Repo" = "Külső csomagtárak";
+"Ignored Updates" = "Figyelmen kívül hagyott frissítések";
+
+"Repos" = "Csomagtárolók";
+
+"Add_Source.Title" = "Forrás hozzáadása";
+"Add_Source.Body" = "APT URL hozzáadása";
+"Add_Source.Button.Add" = "Forrás hozzáadása";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Kézi megadás";
+
+"Untitled_Form" = "Névtelen űrlap";
+"Form_Submitted.Default_Title" = "Űrlap beküldve";
+"Form_Submitted.Default_Body" = "Az űrlap sikeresen be lett küldve.";
+
+"Web_Depiction_Deprecated_Warning" = "A Web View ábrázolások elavultak. Kérlek vedd fel a kapcsolatot a csomagtár fenntartójával, hogy frissítsék natív ábrázolásokra.";
+
+"Package_Details_Tab" = "Részletek";
+"Package_Changelog_Tab" = "Változások";
+"Package_No_Description_Available" = "Nem érhető el leírás ehhez a csomaghoz.";
+"Package_Changelogs_Unavailable" = "Nem érhető el változási napló ehhez a csomaghoz.";
+
+"Installed_Package_Header" = "Telepített csomag";
+"Version" = "Verzió";
+"Show_Package_Contents_Button" = "Csomag tartalmának megjelenítése";
+
+"Licenses_Page_Title" = "Licencek";
+"Alternate_Icon_Title" = "Alternatív ikonok";
+
+"Settings_Payment_Provider_Heading" = "Fizetési szolgáltatók";
+"Settings_Translations_Heading" = "Fordítások";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Vásárlások";
+"Settings_Payment_Provider.No_Purchases" = "Nincsenek vásárlások";
+
+"Settings" = "Beállítások";
+"Settings_Page_Title" = "Beállítások";
+"Dark_Mode_Toggle" = "Sötét mód";
+"Theme" = "Téma";
+"Tint_Color" = "Tónus";
+"Reset_Tint_Color" = "Tónus visszaállítása";
+"Auto_Complete_Queue" = "Várakozási sor automatikus befejezése";
+"Auto_Confirm_Upgrade_All_Shortcut" = "\"Összes frissítése\" automatikus megerősítése";
+"Swipe_Actions" = "Csúsztató műveletek";
+"Show_Provisional" = "Canister csomagok megjelenítése";
+"Show_Ignored_Updates" = "Figyelmen kívül hagyott frissítések megjelenítése";
+"Developer_Mode" = "Fejlesztői mód";
+"Pog_Developer" = "Mostantól már fejlesztő vagy!";
+"Developer_Mode_Explain" = "A fejlesztői mód kikapcsolja a fizetési API HTTPS követelményét.";
+"Auto_Refresh_Sources" = "Források automatikus frissítése";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+
+"Sileo_Light" = "Sileo Világos";
+"Sileo_Dark" = "Sileo Sötét";
+"Sileo_Adaptive" = "Sileo Adaptív";
+"System" = "Rendszer";
+"Theme_Settings" = "Témabeállítások";
+
+"Cydia_Sign_In" = "Bejelentkezés a Cydia Store-ba";
+"Payment_Provider_Signed_In" = "Belépve";
+"Payment_Provider_Signed_In_With_Name" = "Belépve, mint %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Kijelentkezés";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Kijelentkezés %@-ból"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Nem fogod tudni letölteni a megvásárolt csomagjaidat, amíg újra be nem lépsz.";
+
+"Show_Install_Details" = "Részletek megjelenítése";
+"Hide_Install_Details" = "Részletek elrejtése";
+
+"After_Install_Relaunch" = "Sleo újraindítása";
+"After_Install_Respring" = "SpringBoard újraindítása";
+"After_Install_Reboot" = "Eszköz újraindítása";
+"After_Install_Relaunch_Later" = "Sileo újraindítása később";
+"After_Install_Respring_Later" = "SpringBoard újraindítása később";
+"After_Install_Reboot_Later" = "Eszköz újraindítása később";
+
+"Dangerous_Repo.Title" = "Veszélyes csomagtár";
+"Dangerous_Repo.Body" = "Olyan csomagtárolót próbálsz hozzáadni, amely köztudottan veszélyes (pl. kalózkodás, illegális tartalom vagy vírusok miatt).\n\nA veszélyesnek jelölt csomagtárolók gyakran terjesztenek olyan szoftvert, amelyeknek nem várt hatásai vannak – akár fizetős csomagokat ingyen, vagy egyéb rosszindulató csomagokat. Ennek tartós hatása lehet az eszközödre és az adataid védelmére, és néha akár a jailbreak-képességedet is befolyásolhatja. Javasoljuk, hogy rendkívül óvatos légy, hogy elkerüld a káros szoftvereket.";
+"Dangerous_Repo.Continue" = "Vállalom a kockázatot, tovább";
+"Dangerous_Repo.Cancel" = "Vissza a biztonságba";
+"Dangerous_Repo.Last_Chance.Title" = "Hozzáadod a veszélyes csomagtárat?";
+"Dangerous_Repo.Last_Chance.Body" = "A veszélyes csomagtárolóknak pusztító hatása lehet az eszközöd vagy a jailbreaked használhatóságára. Erősen javasoljuk, hogy lépj vissza a saját biztonságod érdekében. Biztosan hozzá akarod adni a(z) %@-t?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Folytatás";
+"Dangerous_Repo.Last_Chance.Cancel" = "Vissza";
+
+// All export-based strings
+"Export" = "Exportálás";
+"Export_Packages" = "Szeretnéd exportálni a csomaglistádat? Ez ki fogja másolni az összes csomag nevét és verzióját a vágólapodra.";
+"Export_Sources" = "Szeretnéd exportálni a forráslistádat? Ez ki fogja másolni az összes forrás URL-jét a vágólapodra.";
+"Export_Yes" = "Igen, másolás.";
+"Export_No" = "Nem, mégse.";
+
+// Depcitions
+"View_Depiction" = "Leírás megtekintése";

@@ -16,11 +16,14 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
     public var viewControllerForPresentation: UIViewController?
     public var package: Package? {
         didSet {
+            if package?.isProvisional ?? false {
+                return self.updateButton(title: String(localizationKey: "Add_Source.Title"))
+            }
             self.updatePurchaseStatus()
             self.updateInfo()
         }
     }
-    
+
     private var _paymentInfo: PaymentPackageInfo?
     public var paymentInfo: PaymentPackageInfo? {
         get {
@@ -49,7 +52,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         
         shouldCheckPurchaseStatus = true
         
-        self.updateButton(title: "Get")
+        self.updateButton(title: String(localizationKey: "Package_Get_Action"))
         self.addTarget(self, action: #selector(PackageQueueButton.buttonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),
@@ -103,7 +106,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                     let downloadManager = DownloadManager.shared
                     let queueFound = downloadManager.find(package: package)
                     if queueFound != .none {
-                        // but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
+                        // but it's a already queued! user changed their mind about installing this new package => nuke it from the queue
                         downloadManager.remove(package: package, queue: queueFound)
                     }
 
@@ -175,6 +178,18 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         guard let package = self.package else {
                 return []
         }
+        if package.isProvisional ?? false {
+            guard let source = package.source,
+                  let url = URL(string: source) else { return [] }
+            let action = CSActionItem(title: String(localizationKey: "Add_Source.Title"),
+                                      image: UIImage(systemNameOrNil: "square.and.arrow.down"),
+                                      style: .default) {
+                self.hapticResponse()
+                self.addRepo(url)
+                CanisterResolver.shared.queuePackage(package)
+            }
+            return [action]
+        }
         var actionItems: [CSActionItem] = []
 
         let downloadManager = DownloadManager.shared
@@ -186,7 +201,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 for repoEntry in RepoManager.shared.repoList where
                     repoEntry.rawEntry == package.sourceFile {
                     repo = repoEntry
-                 }
+                }
                 if package.filename != nil && repo != nil {
                     if DpkgWrapper.isVersion(package.version, greaterThan: installedPackage.version) {
                         let action = CSActionItem(title: String(localizationKey: "Package_Upgrade_Action"),
@@ -195,7 +210,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                             if queueFound != .none {
                                 downloadManager.remove(package: package, queue: queueFound)
                             }
-
+                            self.hapticResponse()
                             downloadManager.add(package: package, queue: .upgrades)
                             downloadManager.reloadData(recheckPackages: true)
                         }
@@ -207,7 +222,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                             if queueFound != .none {
                                 downloadManager.remove(package: package, queue: queueFound)
                             }
-
+                            self.hapticResponse()
                             downloadManager.add(package: package, queue: .installations)
                             downloadManager.reloadData(recheckPackages: true)
                         }
@@ -218,6 +233,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
             let action = CSActionItem(title: String(localizationKey: "Package_Uninstall_Action"),
                                       image: UIImage(systemNameOrNil: "trash.circle"),
                                       style: .destructive) {
+                self.hapticResponse()
                 downloadManager.add(package: package, queue: .uninstallations)
                 downloadManager.reloadData(recheckPackages: true)
             }
@@ -230,6 +246,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 let action = CSActionItem(title: buttonText,
                                           image: UIImage(systemNameOrNil: "dollarsign.circle"),
                                           style: .default) {
+                    self.hapticResponse()
                     PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
                         guard let provider = provider,
                             error == nil else {
@@ -247,7 +264,8 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 let action = CSActionItem(title: String(localizationKey: "Package_Get_Action"),
                                           image: UIImage(systemNameOrNil: "square.and.arrow.down"),
                                           style: .default) {
-                    //here's new packages not yet queued & FREE
+                    // here's new packages not yet queued & FREE
+                    self.hapticResponse()
                     downloadManager.add(package: package, queue: .installations)
                     downloadManager.reloadData(recheckPackages: true)
                 }
@@ -257,19 +275,36 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         return actionItems
     }
     
-    @objc func buttonTapped(_ sender: Any?) {
-        guard let package = self.package else {
-                return
+    private func addRepo(_ url: URL) {
+        if let tabBarController = self.window?.rootViewController as? UITabBarController,
+            let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+              let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+              tabBarController.selectedViewController = sourcesSVC
+              if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                sourcesVC.presentAddSourceEntryField(url: url)
+              }
         }
+    }
+    
+    private func handleButtonPress(_ package: Package, _ check: Bool = true) {
+        if check {
+            if package.isProvisional ?? false {
+                guard let source = package.source,
+                      let url = URL(string: source) else { return }
+                self.addRepo(url)
+                CanisterResolver.shared.queuePackage(package)
+                return
+            }
+        }
+        self.hapticResponse()
         let downloadManager = DownloadManager.shared
-
         let queueFound = downloadManager.find(package: package)
         if queueFound != .none {
-            //but it's a already queued! user changed his mind about installing this new package => nuke it from the queue
+            // but it's a already queued! user changed their mind about installing this new package => nuke it from the queue
             TabBarController.singleton?.presentPopupController()
             downloadManager.reloadData(recheckPackages: true)
         } else if let installedPackage = installedPackage {
-            //road clear to modify an installed package, now we gotta decide what modification
+            // road clear to modify an installed package, now we gotta decide what modification
             let downloadPopup: UIAlertController! = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             if !package.commercial || (paymentInfo?.available ?? false) {
                 var repo: Repo?
@@ -316,7 +351,7 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                 }
             })
         } else {
-            //here's new packages not yet queued
+            // here's new packages not yet queued
             if let repo = package.sourceRepo,
                 package.commercial && !purchased && !package.package.contains("/") {
                 PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
@@ -338,6 +373,13 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
         }
     }
     
+    @objc func buttonTapped(_ sender: Any?) {
+        guard let package = self.package else {
+            return
+        }
+        self.handleButtonPress(package)
+    }
+    
     private func initatePurchase(provider: PaymentProvider) {
         guard let package = package else {
             return
@@ -357,16 +399,14 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                     return self.updatePurchaseStatus()
             }
             DispatchQueue.main.async {
-                PaymentAuthenticator.shared.handlePayment(actionURL: actionURL,
-                                                          provider: provider, window: self.window) { error, success in
-                                                            if error != nil {
-                                                                return self.presentAlert(paymentError: error,
-                                                                                         title: String(localizationKey: "Purchase_Complete_Fail.Title", type: .error))
-                                                            }
-                                                            if success {
-                                                                self.updatePurchaseStatus()
-                                                            }
-                                                                        
+                PaymentAuthenticator.shared.handlePayment(actionURL: actionURL, provider: provider, window: self.window) { error, success in
+                    if error != nil {
+                        let title = String(localizationKey: "Purchase_Complete_Fail.Title", type: .error)
+                        return self.presentAlert(paymentError: error, title: title)
+                    }
+                    if success {
+                        self.updatePurchaseStatus()
+                    }
                 }
             }
         }
@@ -389,6 +429,16 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
             self.viewControllerForPresentation?.present(PaymentError.alert(for: paymentError, title: title),
                                                         animated: true,
                                                         completion: nil)
+        }
+    }
+    
+    private func hapticResponse() {
+        if #available(iOS 13, *) {
+            let generator = UIImpactFeedbackGenerator(style: .soft)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
         }
     }
 }

@@ -24,9 +24,9 @@ class DepictionMinVersionForceView: DepictionBaseView {
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
 
-        self.containedView = DepictionBaseView.view(dictionary: view, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        if let containedView = self.containedView {
-            self.addSubview(containedView)
+        if let baseView = DepictionBaseView.view(dictionary: view, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+            self.containedView = baseView
+            self.addSubview(baseView)
         }
     }
 

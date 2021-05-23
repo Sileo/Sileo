@@ -14,8 +14,7 @@ enum pkgwant {
     hold,
     deinstall,
     purge,
-    /** Not allowed except as special sentinel value in some places. */
-    sentinel
+    sentinel // Not allowed except as special sentinel value in some places
 }
 
 enum pkgeflag {
@@ -99,7 +98,6 @@ class DpkgWrapper {
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
         guard let dpkgCmp = try? compareVersions(version, greaterThan) else {
             return false
-            //FIXME: Handle exception properly
         }
         
         if dpkgCmp > 0 {
@@ -132,9 +130,9 @@ class DpkgWrapper {
     }
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
-        let ignoreCommand = ignoreUpdates ? "hold" : "install"
-        let command = "/bin/echo \"\(package) \(ignoreCommand)\" | /usr/bin/dpkg --set-selections"
-        spawnAsRoot(command: command)
+        let ignoreCommand = ignoreUpdates ? "hold" : "unhold"
+        let command = ["/usr/bin/apt-mark", "\(ignoreCommand)", "\(package)"]
+        spawnAsRoot(args: command)
     }
     
     public class func rawFields(packageURL: URL) throws -> String {
@@ -155,7 +153,7 @@ class DpkgWrapper {
         Name: Bourne-Again SHell
         """
         #else
-        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", packageURL.path])
+        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "\(packageURL.path)"])
         return outputString
         #endif
     }

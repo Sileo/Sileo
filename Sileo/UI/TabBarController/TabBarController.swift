@@ -9,15 +9,17 @@
 import Foundation
 import LNPopupController
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
     static var singleton: TabBarController?
     private var downloadsController: UINavigationController?
     private var popupIsPresented = false
     private var popupLock = DispatchSemaphore(value: 1)
+    private var shouldSelectIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
         TabBarController.singleton = self
         
         downloadsController = UINavigationController(rootViewController: DownloadManager.shared.viewController)
@@ -39,18 +41,46 @@ class TabBarController: UITabBarController {
         self.updatePopup()
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        shouldSelectIndex = tabBarController.selectedIndex
+        return true
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if shouldSelectIndex == tabBarController.selectedIndex {
+            if let splitViewController = viewController as? UISplitViewController {
+                if let navController = splitViewController.viewControllers[0] as? UINavigationController {
+                    navController.popToRootViewController(animated: true)
+                }
+            }
+        }
+        if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
+            if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
+               let packageList = navController.viewControllers[0] as? PackageListViewController {
+                packageList.collectionView?.setContentOffset(CGPoint.zero, animated: true)
+            }
+        }
+    }
+    
     func presentPopup() {
-        guard let downloadsController = downloadsController else {
+        presentPopup(completion: nil)
+    }
+    
+    func presentPopup(completion: (() -> Void)?) {
+        guard let downloadsController = downloadsController,
+              !popupIsPresented
+        else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
-        if popupIsPresented {
-            return
-        }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        if popupIsPresented {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = true
         self.popupContentView.popupCloseButtonAutomaticallyUnobstructsTopBars = false
         self.popupBar.toolbar.tag = WHITE_BLUR_TAG
@@ -59,80 +89,117 @@ class TabBarController: UITabBarController {
         self.updateSileoColors()
         
         self.popupBar.toolbar.setBackgroundImage(nil, forToolbarPosition: .any, barMetrics: .default)
-        self.popupBar.isInlineWithTabBar = UIDevice.current.userInterfaceIdiom == .pad
         self.popupBar.tabBarHeight = self.tabBar.frame.height
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.popupBar.isInlineWithTabBar = true
+            self.popupBar.tabBarHeight += 1
+        }
         self.popupBar.progressViewStyle = .bottom
         self.popupInteractionStyle = .drag
-        self.presentPopupBar(withContentViewController: downloadsController, animated: true, completion: nil)
+        self.presentPopupBar(withContentViewController: downloadsController, animated: true, completion: completion)
         
         self.updateSileoColors()
     }
     
     func dismissPopup() {
+        dismissPopup(completion: nil)
+    }
+    
+    func dismissPopup(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        guard popupIsPresented else {
-            return
+        defer {
+            popupLock.signal()
         }
+        
         popupIsPresented = false
-        self.dismissPopupBar(animated: true, completion: nil)
+        self.dismissPopupBar(animated: true, completion: completion)
     }
     
     func presentPopupController() {
+        self.presentPopupController(completion: nil)
+    }
+    
+    func presentPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        self.openPopup(animated: true, completion: nil)
+        defer {
+            popupLock.signal()
+        }
+        
+        self.openPopup(animated: true, completion: completion)
     }
     
     func dismissPopupController() {
+        self.dismissPopupController(completion: nil)
+    }
+    
+    func dismissPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
+            if let completion = completion {
+                completion()
+            }
             return
         }
+        
         popupLock.wait()
-        defer { popupLock.signal() }
-        self.closePopup(animated: true, completion: nil)
+        defer {
+            popupLock.signal()
+        }
+        
+        self.closePopup(animated: true, completion: completion)
     }
     
     func updatePopup() {
+        updatePopup(completion: nil)
+    }
+    
+    func updatePopup(completion: (() -> Void)?) {
         let manager = DownloadManager.shared
         if manager.lockedForInstallation {
             downloadsController?.popupItem.title = String(localizationKey: "Installing_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.readyPackages())
             downloadsController?.popupItem.progress = Float(manager.totalProgress)
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.downloadingPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Downloading_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.downloadingPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.queuedPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.queuedPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.readyPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Ready_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.readyPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else if manager.uninstallingPackages() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Removal_Queued_Package_Status")
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.uninstallingPackages())
             downloadsController?.popupItem.progress = 0
-            self.presentPopup()
+            self.presentPopup(completion: completion)
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
                 downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
                 downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
-                self.presentPopup()
+                self.presentPopup(completion: completion)
             } else {
-                self.dismissPopup()
+                self.dismissPopup(completion: completion)
             }
         }
     }

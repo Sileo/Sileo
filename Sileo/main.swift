@@ -8,11 +8,4 @@
 
 import Foundation
 
-#if targetEnvironment(simulator) || TARGET_SANDBOX
-#warning("Building for Sandboxed target. Many featuers will not be available")
-#endif
-
-UIApplicationMain(CommandLine.argc,
-                  CommandLine.unsafeArgv,
-                  nil,
-                  NSStringFromClass(AppDelegate.self))
+UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(AppDelegate.self))

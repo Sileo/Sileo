@@ -12,8 +12,6 @@ struct PackageTags: OptionSet {
     static let none = PackageTags([])
     static let commercial = PackageTags(rawValue: 1)
     static let sileo = PackageTags(rawValue: 2)
-    static let developer = PackageTags(rawValue: 4)
-    static let hacker = PackageTags(rawValue: 8)
 }
 
 final class ControlFileParser {
@@ -23,7 +21,7 @@ final class ControlFileParser {
         case expectedSeparator
     }
     
-    //static let dispatchLock = DispatchSemaphore(value: 1)
+    // static let dispatchLock = DispatchSemaphore(value: 1)
 
     class func dictionary(controlFile: String, isReleaseFile: Bool) throws -> ([String: String], PackageTags) {
         guard let controlData = controlFile.data(using: .utf8) else {
@@ -35,7 +33,7 @@ final class ControlFileParser {
     class func dictionary(controlData: Data, isReleaseFile: Bool) throws -> ([String: String], PackageTags) {
         var dictionary: [String: String] = Dictionary(minimumCapacity: 20)
         var tags: PackageTags = .none
-        //self.dispatchLock.wait()
+        // self.dispatchLock.wait()
         
         let controlDataArr = [UInt8](controlData)
         parseControlFile(controlDataArr, controlData.count, isReleaseFile, { rawKey, rawVal in
@@ -45,7 +43,7 @@ final class ControlFileParser {
         }, { rawTags in
             tags = PackageTags(rawValue: Int(rawTags))
         })
-        //self.dispatchLock.signal()
+        // self.dispatchLock.signal()
         return (dictionary, tags)
     }
     

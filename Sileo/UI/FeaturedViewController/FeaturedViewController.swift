@@ -13,6 +13,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
     var featuredView: FeaturedBaseView?
+    var cachedData: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,11 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(updatePicture),
+                                               name: Notification.Name("iCloudProfile"),
+                                               object: nil)
         
-        self.reloadData()
         UIView.animate(withDuration: 0.7, animations: {
             self.activityIndicatorView?.alpha = 0
         }, completion: { _ in
@@ -40,7 +44,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
-            let (status, output, _) = spawnAsRoot(command: "whoami")
+            let (status, output, _) = spawnAsRoot(args: ["/usr/bin/whoami"])
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
@@ -69,7 +73,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                 }
                 
                 DispatchQueue.global(qos: .default).async {
-                    let (status, output, errorOutput) = spawnAsRoot(command: "dpkg --configure -a")
+                    let (status, output, errorOutput) = spawnAsRoot(args: ["/usr/bin/dpkg", "--configure", "-a"])
                     
                     PackageListManager.shared.purgeCache()
                     PackageListManager.shared.waitForReady()
@@ -77,16 +81,15 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {
                             if status != 0 {
-                                let errorsVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
-                                let mutableAttributedString = NSMutableAttributedString(string: output,
-                                                                                        attributes: [
-                                                                                            NSAttributedString.Key.foregroundColor: Dusk.foregroundColor
-                                                                                        ])
+                                let errorAttrs = [NSAttributedString.Key.foregroundColor: Dusk.errorColor]
+                                let errorString = NSMutableAttributedString(string: errorOutput, attributes: errorAttrs)
                                 
-                                let errorString = NSMutableAttributedString(string: errorOutput,
-                                                                            attributes: [NSAttributedString.Key.foregroundColor: Dusk.errorColor])
+                                let stringAttrs = [NSAttributedString.Key.foregroundColor: Dusk.foregroundColor]
+                                let mutableAttributedString = NSMutableAttributedString(string: output, attributes: stringAttrs)
                                 mutableAttributedString.append(NSAttributedString(string: "\n"))
                                 mutableAttributedString.append(errorString)
+                                
+                                let errorsVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
                                 errorsVC.attributedString = mutableAttributedString
                                 
                                 let navController = UINavigationController(rootViewController: errorsVC)
@@ -102,34 +105,49 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         #endif
     }
     
+    private var userAgent: String {
+        let cfVersion = String(format: "%.3f", kCFCoreFoundationVersionNumber)
+        let bundleName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] ?? ""
+        let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? ""
+        let osType = UIDevice.current.kernOSType
+        let osRelease = UIDevice.current.kernOSRelease
+        return "\(bundleName)/\(bundleVersion)/FeaturedPage CoreFoundation/\(cfVersion) \(osType)/\(osRelease)"
+    }
+    
     @objc func reloadData() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
-            
-            guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
+        if UIApplication.shared.applicationState == .background {
+            return
+        }
+        let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
+            return
+        }
+        let agent = self.userAgent 
+        let headers: [String: String] = ["User-Agent": agent]
+        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { success, dict in
+            guard success,
+                  let dict = dict else { return }
+            if let cachedData = self.cachedData,
+               NSDictionary(dictionary: cachedData).isEqual(to: dict) {
                 return
             }
-            if let jsonData = try? Data(contentsOf: jsonURL, options: []) {
-                if let rawDepiction = try? JSONSerialization.jsonObject(with: jsonData, options: []) {
-                    if let depiction = rawDepiction as? [String: Any] {
-                        DispatchQueue.main.async {
-                            if let minVersion = depiction["minVersion"] as? String,
-                                minVersion.compare(StoreVersion) == .orderedDescending {
-                                self.versionTooLow()
-                            }
-                            
-                            self.featuredView?.removeFromSuperview()
-                            if let featuredView = FeaturedBaseView.view(dictionary: depiction,
-                                                                        viewController: self,
-                                                                        tintColor: nil, isActionable: false) as? FeaturedBaseView {
-                                featuredView.delegate = self
-                                self.scrollView?.addSubview(featuredView)
-                                self.featuredView = featuredView
-                            }
-                            self.viewDidLayoutSubviews()
-                        }
-                    }
+            self.cachedData = dict
+            DispatchQueue.main.async {
+                if let minVersion = dict["minVersion"] as? String,
+                    minVersion.compare(StoreVersion) == .orderedDescending {
+                    self.versionTooLow()
                 }
+                
+                self.featuredView?.removeFromSuperview()
+                if let featuredView = FeaturedBaseView.view(dictionary: dict,
+                                                            viewController: self,
+                                                            tintColor: nil, isActionable: false) as? FeaturedBaseView {
+                    featuredView.delegate = self
+                    self.featuredView?.removeFromSuperview()
+                    self.scrollView?.addSubview(featuredView)
+                    self.featuredView = featuredView
+                }
+                self.viewDidLayoutSubviews()
             }
         }
     }
@@ -156,6 +174,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.reloadData()
         updateSileoColors()
     }
     
@@ -183,13 +202,25 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
     }
     
+    @objc private func updatePicture() {
+        if let button = self.profileButton {
+            self.profileButton = setPicture(button)
+        }
+    }
+    
+    func setPicture(_ button: UIButton) -> UIButton {
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .tintColor
+        return button
+    }
+    
     func setupProfileButton() {
-        let profileButton = UIButton()
-        profileButton.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let profileButton = setPicture(UIButton())
+        
         profileButton.addTarget(self, action: #selector(FeaturedViewController.showProfile(_:)), for: .touchUpInside)
         profileButton.accessibilityIgnoresInvertColors = true
-        
-        profileButton.tintColor = .tintColor
         
         profileButton.layer.cornerRadius = 20
         profileButton.clipsToBounds = true
@@ -197,11 +228,13 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.addSubview(profileButton)
+            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+                profileButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 16).isActive = true
+            } else {
+                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true
+            }
             NSLayoutConstraint.activate([
-                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16),
-                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12),
-                profileButton.heightAnchor.constraint(equalToConstant: 40),
-                profileButton.widthAnchor.constraint(equalToConstant: 40)
+                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12)
             ])
         }
         self.profileButton = profileButton

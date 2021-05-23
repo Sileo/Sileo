@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A54C6CBB23B0C153BE092A7 /* libPods-SileoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */; };
 		1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		172B2ECF22F0896E000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED022F08B21000155B9 /* SourceLicense.swift */; };
@@ -20,9 +19,61 @@
 		172B2EDB22F0A358000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
-		2C303E136BDF0840EA33EF2C /* libPods-Sileo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
-		564BEF7622BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564BEF7522BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets */; };
+		493B23D226098104007D605F /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CE26098104007D605F /* Chimera@2x.png */; };
+		493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; };
+		493B23D426098104007D605F /* Chimera~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23D026098104007D605F /* Chimera~ipad@3x.png */; };
+		493B23D526098104007D605F /* Chimera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23D126098104007D605F /* Chimera@3x.png */; };
+		493B23DD26098116007D605F /* CottonCandy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23D926098116007D605F /* CottonCandy@3x.png */; };
+		493B23DE26098116007D605F /* CottonCandy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23DA26098116007D605F /* CottonCandy~ipad@2x.png */; };
+		493B23DF26098116007D605F /* CottonCandy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23DB26098116007D605F /* CottonCandy~ipad@3x.png */; };
+		493B23E026098116007D605F /* CottonCandy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23DC26098116007D605F /* CottonCandy@2x.png */; };
+		493B23E826098132007D605F /* OceanicBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23E426098132007D605F /* OceanicBlue@3x.png */; };
+		493B23E926098132007D605F /* OceanicBlue~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23E526098132007D605F /* OceanicBlue~ipad@3x.png */; };
+		493B23EA26098132007D605F /* OceanicBlue~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23E626098132007D605F /* OceanicBlue~ipad@2x.png */; };
+		493B23EB26098132007D605F /* OceanicBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23E726098132007D605F /* OceanicBlue@2x.png */; };
+		493B23FD26098169007D605F /* Sus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23EF26098169007D605F /* Sus@3x.png */; };
+		493B23FE26098169007D605F /* Sus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F026098169007D605F /* Sus@2x.png */; };
+		493B23FF26098169007D605F /* Sus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F126098169007D605F /* Sus~ipad@3x.png */; };
+		493B240026098169007D605F /* Sus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F226098169007D605F /* Sus~ipad@2x.png */; };
+		493B240126098169007D605F /* StrawberrySunset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F426098169007D605F /* StrawberrySunset@2x.png */; };
+		493B240226098169007D605F /* StrawberrySunset@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F526098169007D605F /* StrawberrySunset@3x.png */; };
+		493B240326098169007D605F /* StrawberrySunset~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F626098169007D605F /* StrawberrySunset~ipad@2x.png */; };
+		493B240426098169007D605F /* StrawberrySunset~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F726098169007D605F /* StrawberrySunset~ipad@3x.png */; };
+		493B240526098169007D605F /* Procursus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F926098169007D605F /* Procursus@3x.png */; };
+		493B240626098169007D605F /* Procursus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FA26098169007D605F /* Procursus~ipad@2x.png */; };
+		493B240726098169007D605F /* Procursus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FB26098169007D605F /* Procursus~ipad@3x.png */; };
+		493B240826098169007D605F /* Procursus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FC26098169007D605F /* Procursus@2x.png */; };
+		49618DD6260515A40046C094 /* BackendWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49618DD5260515A40046C094 /* BackendWrapper.swift */; };
+		496992DE260BAAE500E3C35D /* BackendWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49618DD5260515A40046C094 /* BackendWrapper.swift */; };
+		496992DF260BAAE500E3C35D /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C22607C06500D09BE7 /* UIView+FromNib.swift */; };
+		496992E0260BAAE500E3C35D /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */; };
+		496992E1260BAAE500E3C35D /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
+		496992E2260BAAE500E3C35D /* AltIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */; };
+		499162C32607C06500D09BE7 /* UserDefaults+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */; };
+		499162C42607C06500D09BE7 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499162C22607C06500D09BE7 /* UIView+FromNib.swift */; };
+		49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
+		49CE7CB12607F97C00A20711 /* AltIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */; };
+		49CE7CCE2607F9A400A20711 /* BlueLemonade~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */; };
+		49CE7CCF2607F9A400A20711 /* BlueLemonade~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB72607F9A400A20711 /* BlueLemonade~ipad@3x.png */; };
+		49CE7CD02607F9A400A20711 /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */; };
+		49CE7CD12607F9A400A20711 /* BlueLemonade@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB92607F9A400A20711 /* BlueLemonade@3x.png */; };
+		49CE7CD22607F9A400A20711 /* MangoCrazy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBB2607F9A400A20711 /* MangoCrazy@3x.png */; };
+		49CE7CD32607F9A400A20711 /* MangoCrazy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBC2607F9A400A20711 /* MangoCrazy@2x.png */; };
+		49CE7CD42607F9A400A20711 /* MangoCrazy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBD2607F9A400A20711 /* MangoCrazy~ipad@3x.png */; };
+		49CE7CD52607F9A400A20711 /* MangoCrazy~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBE2607F9A400A20711 /* MangoCrazy~ipad@2x.png */; };
+		49CE7CD62607F9A400A20711 /* SugarFree~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC02607F9A400A20711 /* SugarFree~ipad@3x.png */; };
+		49CE7CD72607F9A400A20711 /* SugarFree~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC12607F9A400A20711 /* SugarFree~ipad@2x.png */; };
+		49CE7CD82607F9A400A20711 /* SugarFree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC22607F9A400A20711 /* SugarFree@3x.png */; };
+		49CE7CD92607F9A400A20711 /* SugarFree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC32607F9A400A20711 /* SugarFree@2x.png */; };
+		49CE7CDA2607F9A400A20711 /* Taurine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC52607F9A400A20711 /* Taurine@3x.png */; };
+		49CE7CDB2607F9A400A20711 /* Taurine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC62607F9A400A20711 /* Taurine@2x.png */; };
+		49CE7CDC2607F9A400A20711 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC72607F9A400A20711 /* Taurine~ipad@3x.png */; };
+		49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC82607F9A400A20711 /* Taurine~ipad@2x.png */; };
+		49CE7CDE2607F9A400A20711 /* CoolBreeze~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCA2607F9A400A20711 /* CoolBreeze~ipad@3x.png */; };
+		49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */; };
+		49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
+		49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989C214657BB00677FCA /* WhiteBlur.m */; };
 		C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C305468521D6900C003E73FC /* PackageListHeader.xib */; };
@@ -31,16 +82,71 @@
 		C373924A21D5F80300E6F704 /* Categories.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924721D5F80300E6F704 /* Categories.strings */; };
 		C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C373925721D60B2600E6F704 /* Localizable.stringsdict */; };
 		C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */; };
-		CFBC7FD2221D7FE10066D501 /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
+		E1152F39264051BB008C7D5D /* SileoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1152F38264051BB008C7D5D /* SileoTests.swift */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
-		EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */; };
+		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
+		E13638D42614F59000698D55 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D32614F59000698D55 /* KeychainAccess */; };
+		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
+		E13638E82614F66400698D55 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E13638E72614F66400698D55 /* Down */; };
+		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
+		E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F62614F6E300698D55 /* SwipeCellKit */; };
+		E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */; };
+		E13BD77A2645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */; };
+		E13BD77B2645E1AA006A5EF2 /* Nightly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */; };
+		E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */; };
+		E13BD77D2645E1AA006A5EF2 /* Nightly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */; };
+		E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */; };
+		E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
+		E13BD7802645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */; };
+		E13BD7892646C706006A5EF2 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */; };
+		E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */; };
+		E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
+		E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
+		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
+		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
+		E194222A265AEF7C0039EFEF /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1942229265AEF7C0039EFEF /* SWCompression */; };
+		E194222F265AEF850039EFEF /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E194222E265AEF850039EFEF /* SWCompression */; };
+		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
+		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
+		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
+		E19A534E261743A300BB8A69 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E19A534D261743A300BB8A69 /* Down */; };
+		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
+		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
+		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
+		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
+		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
+		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
+		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
+		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
+		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
+		E1BB50DE260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
+		E1BB50DF260E913A00F870B8 /* OG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DA260E913A00F870B8 /* OG@2x.png */; };
+		E1BB50E0260E913A00F870B8 /* OG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DA260E913A00F870B8 /* OG@2x.png */; };
+		E1BB50E1260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
+		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
+		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
+		E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
+		E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
+		E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
+		E1C90267263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
+		E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
+		E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
+		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
+		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
+		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
+		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
+		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
+		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
-		F102D1F622CEE00700A4C9BA /* PackageVersionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */; };
 		F1034020213746B600B9180B /* InstallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103401E213746B600B9180B /* InstallViewController.xib */; };
 		F10531FB244A3B4D0042201C /* CydiaScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10531FA244A3B4D0042201C /* CydiaScraper.swift */; };
 		F10531FC244A3B4D0042201C /* CydiaScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10531FA244A3B4D0042201C /* CydiaScraper.swift */; };
@@ -71,7 +177,6 @@
 		F139D09B22EA9209007F5C0D /* FeaturedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D122D189650021BD89 /* FeaturedStackView.swift */; };
 		F139D0A122EA9209007F5C0D /* FeaturedInfoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D722D18B410021BD89 /* FeaturedInfoFooterView.swift */; };
 		F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9CB22D188A50021BD89 /* FeaturedSpacerView.swift */; };
-		F139D0AF22EA9209007F5C0D /* PackageVersionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */; };
 		F139D0B022EA9209007F5C0D /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62222E53E7000CBD045 /* Hash.swift */; };
 		F139D0B122EA9209007F5C0D /* DepictionScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9BC22D1708E0021BD89 /* DepictionScreenshotsView.swift */; };
 		F139D0B322EA9209007F5C0D /* FeaturedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9D422D189AF0021BD89 /* FeaturedHeaderView.swift */; };
@@ -121,16 +226,14 @@
 		F139D11422EA9209007F5C0D /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62E22E53EF900CBD045 /* RepoManager.swift */; };
 		F139D11522EA9209007F5C0D /* DepictionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9C222D1847F0021BD89 /* DepictionButtonView.swift */; };
 		F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A122D146A90021BD89 /* DepictionHeaderView.swift */; };
-		F139D11B22EA9209007F5C0D /* rootMeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */; };
+		F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
 		F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		F139D12522EA9209007F5C0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
-		F139D12C22EA9209007F5C0D /* LNPopupControllerAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564BEF7522BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets */; };
 		F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
 		F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1974938213695660065E630 /* PackageListHeaderBlank.xib */; };
 		F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C305468521D6900C003E73FC /* PackageListHeader.xib */; };
 		F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */; };
-		F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */; };
 		F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */; };
@@ -217,7 +320,7 @@
 		F170606024CF50C7001596A0 /* SileoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170605E24CF50C7001596A0 /* SileoNavigationController.swift */; };
 		F170606224CF54E0001596A0 /* SileoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170606124CF54E0001596A0 /* SileoTableViewController.swift */; };
 		F170606324CF54E0001596A0 /* SileoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170606124CF54E0001596A0 /* SileoTableViewController.swift */; };
-		F170DD7D22CFE79800196FDA /* rootMeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */; };
+		F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
 		F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		F172581C24EB88E3000F2FAF /* PackageStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581B24EB88E3000F2FAF /* PackageStub.swift */; };
@@ -235,7 +338,6 @@
 		F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
-		F18FD5A522DBBC28002DA8CB /* SileoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18FD5A422DBBC28002DA8CB /* SileoTests.swift */; };
 		F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19265D22106E00600B31E13 /* CydiaAccountViewController.xib */; };
 		F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19265D62106E63700B31E13 /* CydiaAccountUIWebView.m */; };
 		F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1974938213695660065E630 /* PackageListHeaderBlank.xib */; };
@@ -268,7 +370,6 @@
 		F1AB913422ED133D0054341B /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */; };
 		F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B99F0520DBE64700374C27 /* PackageListViewController.xib */; };
-		F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */; };
 		F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */; };
 		F1C5D98922D133D00021BD89 /* DepictionRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98822D133D00021BD89 /* DepictionRatingView.swift */; };
 		F1C5D98C22D137820021BD89 /* DepictionReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98B22D137820021BD89 /* DepictionReviewView.swift */; };
@@ -336,8 +437,6 @@
 		F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
 		F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
 		F1DD3D1E2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
-		F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */; };
-		F1E4485924E9A6E5002470AE /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */; };
 		F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */; };
 		F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
 		F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
@@ -393,24 +492,9 @@
 		FBD910D024E06ABE00767541 /* SettingsColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */; };
 		FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
 		FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
-		FC03BA9B2115A3EA07E7D58F /* libPods-Sileo Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D54D882388524470898530 /* libPods-Sileo Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
 		CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
@@ -463,16 +547,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFBC7FD6221D7FE10066D501 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F139D14822EA9209007F5C0D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,8 +560,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.debug.xcconfig"; path = "Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlaggedSourceWarningViewController.xib; sourceTree = "<group>"; };
 		172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocalizedHelpers.swift"; sourceTree = "<group>"; };
 		172B2ED022F08B21000155B9 /* SourceLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLicense.swift; sourceTree = "<group>"; };
@@ -495,28 +567,159 @@
 		172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
 		172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedSourceWarningViewController.swift; sourceTree = "<group>"; };
 		1761F826227B5ADD00E03DC3 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
-		23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.release.xcconfig"; path = "Target Support Files/Pods-SileoTests/Pods-SileoTests.release.xcconfig"; sourceTree = "<group>"; };
-		2582D4A6D64D2411952A9434 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1B2E137026162CB1005C380C /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = Sileo/af.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E137126162CB1005C380C /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = Sileo/af.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E137226162CB1005C380C /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = Sileo/af.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E137326162CB1005C380C /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = af; path = Sileo/af.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E137426162CF4005C380C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E137526162CF4005C380C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E137626162CF4005C380C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = Sileo/ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E137726162CF4005C380C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ar; path = Sileo/ar.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E137826162D35005C380C /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = Sileo/ca.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E137926162D35005C380C /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = Sileo/ca.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E137A26162D35005C380C /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = Sileo/ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E137B26162D36005C380C /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ca; path = Sileo/ca.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E137C26162D6D005C380C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = Sileo/cs.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E137D26162D6D005C380C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = Sileo/cs.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E137E26162D6D005C380C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = Sileo/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E137F26162D6E005C380C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = cs; path = Sileo/cs.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E138026162DF1005C380C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = Sileo/da.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E138126162DF1005C380C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = Sileo/da.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E138226162DF1005C380C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = Sileo/da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E138326162DF1005C380C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = da; path = Sileo/da.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E138426162E2C005C380C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Sileo/zh-Hans.lproj/Categories.strings"; sourceTree = "<group>"; };
+		1B2E138526162E2C005C380C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Sileo/zh-Hans.lproj/Errors.strings"; sourceTree = "<group>"; };
+		1B2E138626162E2C005C380C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Sileo/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1B2E138726162E2C005C380C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "Sileo/zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		1B2E138826162EDE005C380C /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Sileo/pt.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E138926162EDE005C380C /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Sileo/pt.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E138A26162EDE005C380C /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Sileo/pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E138B26162EDE005C380C /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = pt; path = Sileo/pt.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E138C26162EFF005C380C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Sileo/nl.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E138D26162EFF005C380C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Sileo/nl.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E138E26162EFF005C380C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Sileo/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E138F26162EFF005C380C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = Sileo/nl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E139026162FB2005C380C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = Sileo/el.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E139126162FB3005C380C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = Sileo/el.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E139226162FB3005C380C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = Sileo/el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E139326162FB3005C380C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = el; path = Sileo/el.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E139426162FD2005C380C /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = Sileo/ms.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E139526162FD2005C380C /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = Sileo/ms.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E139626162FD3005C380C /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = Sileo/ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E139726162FD3005C380C /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ms; path = Sileo/ms.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13982616300F005C380C /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = Sileo/fi.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13992616300F005C380C /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = Sileo/fi.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E139A26163010005C380C /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = Sileo/fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E139B26163010005C380C /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fi; path = Sileo/fi.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E139C26163070005C380C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = Sileo/he.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E139D26163070005C380C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = Sileo/he.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E139E26163070005C380C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = Sileo/he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E139F26163071005C380C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = he; path = Sileo/he.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13A02616308E005C380C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = Sileo/hu.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13A12616308E005C380C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = Sileo/hu.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13A22616308E005C380C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = Sileo/hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13A32616308E005C380C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = hu; path = Sileo/hu.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13A426163198005C380C /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13A526163198005C380C /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13A626163198005C380C /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = Sileo/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13A726163198005C380C /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nb; path = Sileo/nb.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13A82616320B005C380C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Sileo/pl.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13A92616320B005C380C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Sileo/pl.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13AA2616320B005C380C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Sileo/pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13AB2616320C005C380C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = pl; path = Sileo/pl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13AC2616323D005C380C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Sileo/ru.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13AD2616323D005C380C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Sileo/ru.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13AE2616323D005C380C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Sileo/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13AF2616323D005C380C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = Sileo/ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13B026163266005C380C /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13B126163266005C380C /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13B226163267005C380C /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Sileo/ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13B326163267005C380C /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ro; path = Sileo/ro.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13B42616329C005C380C /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = Sileo/sr.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13B52616329C005C380C /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = Sileo/sr.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13B62616329C005C380C /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = Sileo/sr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13B72616329C005C380C /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = sr; path = Sileo/sr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13B8261632A7005C380C /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13B9261632A8005C380C /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13BA261632A8005C380C /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Sileo/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13BB261632A8005C380C /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = sv; path = Sileo/sv.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13BC261632F9005C380C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = Sileo/uk.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13BD261632F9005C380C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = Sileo/uk.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13BE261632F9005C380C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = Sileo/uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13BF261632FA005C380C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = uk; path = Sileo/uk.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1B2E13C026163312005C380C /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = Sileo/vi.lproj/Categories.strings; sourceTree = "<group>"; };
+		1B2E13C126163313005C380C /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = Sileo/vi.lproj/Errors.strings; sourceTree = "<group>"; };
+		1B2E13C226163313005C380C /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = Sileo/vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B2E13C326163313005C380C /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = vi; path = Sileo/vi.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		36A4571F24CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		36A4572024CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		552A53BFF7E6067C54E471A9 /* Pods-Sileo Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.release.xcconfig"; sourceTree = "<group>"; };
-		564BEF7522BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = LNPopupControllerAssets.xcassets; path = Deps/LNPopupController/LNPopupController/LNPopupControllerAssets.xcassets; sourceTree = "<group>"; };
+		493B23BF260979DD007D605F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		493B23CE26098104007D605F /* Chimera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@2x.png"; sourceTree = "<group>"; };
+		493B23CF26098104007D605F /* Chimera~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23D026098104007D605F /* Chimera~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23D126098104007D605F /* Chimera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@3x.png"; sourceTree = "<group>"; };
+		493B23D926098116007D605F /* CottonCandy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy@3x.png"; sourceTree = "<group>"; };
+		493B23DA26098116007D605F /* CottonCandy~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23DB26098116007D605F /* CottonCandy~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23DC26098116007D605F /* CottonCandy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CottonCandy@2x.png"; sourceTree = "<group>"; };
+		493B23E426098132007D605F /* OceanicBlue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue@3x.png"; sourceTree = "<group>"; };
+		493B23E526098132007D605F /* OceanicBlue~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23E626098132007D605F /* OceanicBlue~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23E726098132007D605F /* OceanicBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OceanicBlue@2x.png"; sourceTree = "<group>"; };
+		493B23EF26098169007D605F /* Sus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus@3x.png"; sourceTree = "<group>"; };
+		493B23F026098169007D605F /* Sus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus@2x.png"; sourceTree = "<group>"; };
+		493B23F126098169007D605F /* Sus~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23F226098169007D605F /* Sus~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sus~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23F426098169007D605F /* StrawberrySunset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset@2x.png"; sourceTree = "<group>"; };
+		493B23F526098169007D605F /* StrawberrySunset@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset@3x.png"; sourceTree = "<group>"; };
+		493B23F626098169007D605F /* StrawberrySunset~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23F726098169007D605F /* StrawberrySunset~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberrySunset~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23F926098169007D605F /* Procursus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus@3x.png"; sourceTree = "<group>"; };
+		493B23FA26098169007D605F /* Procursus~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus~ipad@2x.png"; sourceTree = "<group>"; };
+		493B23FB26098169007D605F /* Procursus~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus~ipad@3x.png"; sourceTree = "<group>"; };
+		493B23FC26098169007D605F /* Procursus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Procursus@2x.png"; sourceTree = "<group>"; };
+		49618DD5260515A40046C094 /* BackendWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendWrapper.swift; sourceTree = "<group>"; };
+		4975C4EA264772CA00D344B0 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		4975C4EE264774F900D344B0 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		4975C4F02647750D00D344B0 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		4975C4F12647750D00D344B0 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		4975C4F22647750D00D344B0 /* giveMeRoot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = giveMeRoot.c; sourceTree = "<group>"; };
+		4975C4FE2647758E00D344B0 /* control.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = control.in; sourceTree = "<group>"; };
+		4975C4FF2647758E00D344B0 /* prerm */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = prerm; sourceTree = "<group>"; };
+		4975C5002647758E00D344B0 /* triggers */ = {isa = PBXFileReference; lastKnownFileType = text; path = triggers; sourceTree = "<group>"; };
+		4975C5012647758E00D344B0 /* postinst.in */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinst.in; sourceTree = "<group>"; };
+		499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Optional.swift"; sourceTree = "<group>"; };
+		499162C22607C06500D09BE7 /* UIView+FromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FromNib.swift"; sourceTree = "<group>"; };
+		49BAC20726098ACD00F47DA4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltIconTableViewCell.swift; sourceTree = "<group>"; };
+		49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltIconTableViewController.swift; sourceTree = "<group>"; };
+		49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade~ipad@2x.png"; sourceTree = "<group>"; };
+		49CE7CB72607F9A400A20711 /* BlueLemonade~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade~ipad@3x.png"; sourceTree = "<group>"; };
+		49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade@2x.png"; sourceTree = "<group>"; };
+		49CE7CB92607F9A400A20711 /* BlueLemonade@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade@3x.png"; sourceTree = "<group>"; };
+		49CE7CBB2607F9A400A20711 /* MangoCrazy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy@3x.png"; sourceTree = "<group>"; };
+		49CE7CBC2607F9A400A20711 /* MangoCrazy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy@2x.png"; sourceTree = "<group>"; };
+		49CE7CBD2607F9A400A20711 /* MangoCrazy~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy~ipad@3x.png"; sourceTree = "<group>"; };
+		49CE7CBE2607F9A400A20711 /* MangoCrazy~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MangoCrazy~ipad@2x.png"; sourceTree = "<group>"; };
+		49CE7CC02607F9A400A20711 /* SugarFree~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree~ipad@3x.png"; sourceTree = "<group>"; };
+		49CE7CC12607F9A400A20711 /* SugarFree~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree~ipad@2x.png"; sourceTree = "<group>"; };
+		49CE7CC22607F9A400A20711 /* SugarFree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree@3x.png"; sourceTree = "<group>"; };
+		49CE7CC32607F9A400A20711 /* SugarFree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SugarFree@2x.png"; sourceTree = "<group>"; };
+		49CE7CC52607F9A400A20711 /* Taurine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine@3x.png"; sourceTree = "<group>"; };
+		49CE7CC62607F9A400A20711 /* Taurine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine@2x.png"; sourceTree = "<group>"; };
+		49CE7CC72607F9A400A20711 /* Taurine~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@3x.png"; sourceTree = "<group>"; };
+		49CE7CC82607F9A400A20711 /* Taurine~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taurine~ipad@2x.png"; sourceTree = "<group>"; };
+		49CE7CCA2607F9A400A20711 /* CoolBreeze~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze~ipad@3x.png"; sourceTree = "<group>"; };
+		49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@3x.png"; sourceTree = "<group>"; };
+		49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze@2x.png"; sourceTree = "<group>"; };
+		49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoolBreeze~ipad@2x.png"; sourceTree = "<group>"; };
 		56A59899214657A700677FCA /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
 		56A5989A214657A700677FCA /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
 		56A5989C214657BB00677FCA /* WhiteBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlur.m; sourceTree = "<group>"; };
 		56A5989E2146584800677FCA /* WhiteBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBlur.h; sourceTree = "<group>"; };
-		5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SileoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B02930E2F51CAF70A74DF6F /* Pods-SileoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.release.xcconfig"; sourceTree = "<group>"; };
-		76B93DAC96CA9C7278D2994A /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8F850ACF2DB14A39CC87CBE7 /* Pods-Sileo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.release.xcconfig"; sourceTree = "<group>"; };
-		918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sileo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		962C0D7C76E57C9BEBFBE5E8 /* Pods-Sileo Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
-		B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.release.xcconfig"; path = "Target Support Files/Pods-Sileo/Pods-Sileo.release.xcconfig"; sourceTree = "<group>"; };
-		B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SileoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C305468521D6900C003E73FC /* PackageListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeader.xib; sourceTree = "<group>"; };
 		C373923521D5E46900E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C373924621D5F80300E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Errors.strings; sourceTree = "<group>"; };
@@ -526,14 +729,33 @@
 		CFBC7FDE222041290066D501 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
-		D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sileo/Pods-Sileo.debug.xcconfig"; sourceTree = "<group>"; };
-		E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.release.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SileoTests/Pods-SileoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SileoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SileoUITests/Pods-SileoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1152F38264051BB008C7D5D /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
+		E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@2x.png"; sourceTree = "<group>"; };
+		E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@3x.png"; sourceTree = "<group>"; };
+		E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly@2x.png"; sourceTree = "<group>"; };
+		E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@3x.png"; sourceTree = "<group>"; };
+		E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
+		E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTeamViewController.swift; sourceTree = "<group>"; };
+		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
+		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
+		E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		E1B3FBBC2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Categories.strings"; sourceTree = "<group>"; };
+		E1B3FBBD2601256600F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Errors.strings"; sourceTree = "<group>"; };
+		E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@3x.png"; sourceTree = "<group>"; };
+		E1BB50DA260E913A00F870B8 /* OG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@2x.png"; sourceTree = "<group>"; };
+		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
+		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
+		E1C90256263C75B100569D1E /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
+		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
+		E1C90266263D79C600569D1E /* AmyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyGifManager.swift; sourceTree = "<group>"; };
+		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
+		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
-		F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageVersionList.swift; sourceTree = "<group>"; };
 		F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LNPopupController.xcodeproj; path = Deps/LNPopupController/LNPopupController/LNPopupController.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F103401E213746B600B9180B /* InstallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallViewController.xib; sourceTree = "<group>"; };
 		F10531FA244A3B4D0042201C /* CydiaScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CydiaScraper.swift; sourceTree = "<group>"; };
@@ -553,7 +775,6 @@
 		F1330EB02325644700971073 /* SileoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoContentView.swift; sourceTree = "<group>"; };
 		F1330EB32325673100971073 /* SileoLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoLabelView.swift; sourceTree = "<group>"; };
 		F139D14C22EA9209007F5C0D /* Sileo Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sileo Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F13A390F22D003B600716B84 /* Sileo Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Sileo Demo-Info.plist"; path = "/Users/coolstar/XCode/Sileo/Sileo Demo-Info.plist"; sourceTree = "<absolute>"; };
 		F13AD30E23F9306F0035986E /* sileo-apt.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sileo-apt.conf"; sourceTree = "<group>"; };
 		F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
 		F13AEE5522F5613C004BAA05 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
@@ -582,10 +803,6 @@
 		F149E0D920B6040B005CA30B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14F7D58240A766D00062310 /* CSTextRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextRenderView.swift; sourceTree = "<group>"; };
 		F14F7D5B240A7E7800062310 /* CSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextView.swift; sourceTree = "<group>"; };
-		F1545B6322796E2500D0E4D4 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = Sileo/zh.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F1545B6422796E2500D0E4D4 /* zh */ = {isa = PBXFileReference; explicitFileType = file.bplist; name = zh; path = Sileo/zh.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		F1545B6522796E2500D0E4D4 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = Sileo/zh.lproj/Categories.strings; sourceTree = "<group>"; };
-		F1545B6622796E2600D0E4D4 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = Sileo/zh.lproj/Errors.strings; sourceTree = "<group>"; };
 		F15B268622765E5900B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Sileo/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F15B268722765E5900B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = Sileo/es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		F15B268822765E5A00B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Sileo/es.lproj/Categories.strings; sourceTree = "<group>"; };
@@ -627,22 +844,17 @@
 		F170605B24CF4DFD001596A0 /* SileoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoViewController.swift; sourceTree = "<group>"; };
 		F170605E24CF50C7001596A0 /* SileoNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoNavigationController.swift; sourceTree = "<group>"; };
 		F170606124CF54E0001596A0 /* SileoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableViewController.swift; sourceTree = "<group>"; };
-		F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rootMeWrapper.swift; sourceTree = "<group>"; };
+		F170DD7C22CFE79800196FDA /* RootWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWrapper.swift; sourceTree = "<group>"; };
 		F172581824EB848E000F2FAF /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		F172581B24EB88E3000F2FAF /* PackageStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageStub.swift; sourceTree = "<group>"; };
 		F172581E24EB8C12000F2FAF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadsTableViewController.xib; sourceTree = "<group>"; };
-		F17AAA94227ABFAF00E5C604 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Sileo/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		F17AAA95227ABFAF00E5C604 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "fr-CA"; path = "Sileo/fr-CA.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
-		F17AAA96227ABFAF00E5C604 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Sileo/fr-CA.lproj/Categories.strings"; sourceTree = "<group>"; };
-		F17AAA97227ABFAF00E5C604 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Sileo/fr-CA.lproj/Errors.strings"; sourceTree = "<group>"; };
 		F18383F420FBFFB700450EED /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F183CFB22318EA6800D3AF3B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F183CFC22318F48600D3AF3B /* RepoScraper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RepoScraper; sourceTree = "<group>"; };
 		F183CFC6231A563500D3AF3B /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		F18B58472581A7E90064CD71 /* CSActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSActionItem.swift; sourceTree = "<group>"; };
-		F18FD5A422DBBC28002DA8CB /* SileoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTests.swift; sourceTree = "<group>"; };
 		F19265D22106E00600B31E13 /* CydiaAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CydiaAccountViewController.xib; sourceTree = "<group>"; };
 		F19265D52106E63700B31E13 /* CydiaAccountUIWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CydiaAccountUIWebView.h; sourceTree = "<group>"; };
 		F19265D62106E63700B31E13 /* CydiaAccountUIWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CydiaAccountUIWebView.m; sourceTree = "<group>"; };
@@ -665,7 +877,6 @@
 		F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewCell.swift; sourceTree = "<group>"; };
 		F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesErrorsViewController.xib; sourceTree = "<group>"; };
 		F1B99F0520DBE64700374C27 /* PackageListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageListViewController.xib; sourceTree = "<group>"; };
-		F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepictionFormViewController.xib; sourceTree = "<group>"; };
 		F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionBaseView.swift; sourceTree = "<group>"; };
 		F1C5D98822D133D00021BD89 /* DepictionRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionRatingView.swift; sourceTree = "<group>"; };
 		F1C5D98B22D137820021BD89 /* DepictionReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionReviewView.swift; sourceTree = "<group>"; };
@@ -724,7 +935,6 @@
 		F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
 		F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDepictionScraper.swift; sourceTree = "<group>"; };
 		F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLScraperJSInterface.swift; sourceTree = "<group>"; };
-		F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
 		F1EC3E5422767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F1EC3E5522767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = Sileo/it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		F1EC3E5622767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Categories.strings; sourceTree = "<group>"; };
@@ -734,8 +944,6 @@
 		F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionLayerView.swift; sourceTree = "<group>"; };
 		F1FF7A6624FAF0310088F88B /* FeaturedLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLayerView.swift; sourceTree = "<group>"; };
 		F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
-		F8D54D882388524470898530 /* libPods-Sileo Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sileo Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sileo Demo.release.xcconfig"; path = "Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo.release.xcconfig"; sourceTree = "<group>"; };
 		FB208DC224D709B7000297FB /* SileoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTheme.swift; sourceTree = "<group>"; };
 		FB208DC424D70A91000297FB /* SileoThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoThemeManager.swift; sourceTree = "<group>"; };
 		FB40261F23DE2B9C002D97FE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -767,10 +975,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E194222F265AEF850039EFEF /* SWCompression in Frameworks */,
+				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
+				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
+				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
 				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
+				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
+				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
-				FC03BA9B2115A3EA07E7D58F /* libPods-Sileo Demo.a in Frameworks */,
+				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
+				E1A8B6362656DF15009C43EA /* Alderis in Frameworks */,
+				E19A534E261743A300BB8A69 /* Down in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
+				E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,10 +995,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFBC7FD2221D7FE10066D501 /* LNPopupController.framework in Frameworks */,
+				E194222A265AEF7C0039EFEF /* SWCompression in Frameworks */,
+				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
+				E13638E82614F66400698D55 /* Down in Frameworks */,
+				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
-				2C303E136BDF0840EA33EF2C /* libPods-Sileo.a in Frameworks */,
+				E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */,
+				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
+				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
+				E1A8B6312656DF04009C43EA /* Alderis in Frameworks */,
+				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
+				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
+				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +1015,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A54C6CBB23B0C153BE092A7 /* libPods-SileoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,7 +1022,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5681A4F9A09E64E1E843F4 /* libPods-SileoUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,10 +1040,10 @@
 		1761F821227B565E00E03DC3 /* Licenses */ = {
 			isa = PBXGroup;
 			children = (
-				172B2ED022F08B21000155B9 /* SourceLicense.swift */,
+				1761F826227B5ADD00E03DC3 /* Licenses.plist */,
 				172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */,
 				172B2ED222F08D31000155B9 /* LicenseViewController.swift */,
-				1761F826227B5ADD00E03DC3 /* Licenses.plist */,
+				172B2ED022F08B21000155B9 /* SourceLicense.swift */,
 			);
 			path = Licenses;
 			sourceTree = "<group>";
@@ -829,21 +1053,222 @@
 			children = (
 				F18383F420FBFFB700450EED /* libiconv.tbd */,
 				461FC22720ED7A48001EA199 /* Security.framework */,
-				918D4E2F7002457BF5D74A30 /* libPods-Sileo.a */,
-				B994BA87EB38D0F20A7C82A5 /* libPods-SileoTests.a */,
-				5956E611ADDFB359B3FC80F5 /* libPods-SileoUITests.a */,
-				F8D54D882388524470898530 /* libPods-Sileo Demo.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		493B23BE260979AF007D605F /* Sileo Demo */ = {
+			isa = PBXGroup;
+			children = (
+				493B23BF260979DD007D605F /* Info.plist */,
+				E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */,
+			);
+			path = "Sileo Demo";
+			sourceTree = "<group>";
+		};
+		493B23CD26098104007D605F /* Chimera */ = {
+			isa = PBXGroup;
+			children = (
+				493B23CE26098104007D605F /* Chimera@2x.png */,
+				493B23D126098104007D605F /* Chimera@3x.png */,
+				493B23CF26098104007D605F /* Chimera~ipad@2x.png */,
+				493B23D026098104007D605F /* Chimera~ipad@3x.png */,
+			);
+			path = Chimera;
+			sourceTree = "<group>";
+		};
+		493B23D826098116007D605F /* Cotton Candy  */ = {
+			isa = PBXGroup;
+			children = (
+				493B23DC26098116007D605F /* CottonCandy@2x.png */,
+				493B23D926098116007D605F /* CottonCandy@3x.png */,
+				493B23DA26098116007D605F /* CottonCandy~ipad@2x.png */,
+				493B23DB26098116007D605F /* CottonCandy~ipad@3x.png */,
+			);
+			path = "Cotton Candy ";
+			sourceTree = "<group>";
+		};
+		493B23E326098132007D605F /* Oceanic Blue */ = {
+			isa = PBXGroup;
+			children = (
+				493B23E726098132007D605F /* OceanicBlue@2x.png */,
+				493B23E426098132007D605F /* OceanicBlue@3x.png */,
+				493B23E626098132007D605F /* OceanicBlue~ipad@2x.png */,
+				493B23E526098132007D605F /* OceanicBlue~ipad@3x.png */,
+			);
+			path = "Oceanic Blue";
+			sourceTree = "<group>";
+		};
+		493B23EE26098169007D605F /* Sus */ = {
+			isa = PBXGroup;
+			children = (
+				493B23F026098169007D605F /* Sus@2x.png */,
+				493B23EF26098169007D605F /* Sus@3x.png */,
+				493B23F226098169007D605F /* Sus~ipad@2x.png */,
+				493B23F126098169007D605F /* Sus~ipad@3x.png */,
+			);
+			path = Sus;
+			sourceTree = "<group>";
+		};
+		493B23F326098169007D605F /* Strawberry Sunset */ = {
+			isa = PBXGroup;
+			children = (
+				493B23F426098169007D605F /* StrawberrySunset@2x.png */,
+				493B23F526098169007D605F /* StrawberrySunset@3x.png */,
+				493B23F626098169007D605F /* StrawberrySunset~ipad@2x.png */,
+				493B23F726098169007D605F /* StrawberrySunset~ipad@3x.png */,
+			);
+			path = "Strawberry Sunset";
+			sourceTree = "<group>";
+		};
+		493B23F826098169007D605F /* Procursus */ = {
+			isa = PBXGroup;
+			children = (
+				493B23FC26098169007D605F /* Procursus@2x.png */,
+				493B23F926098169007D605F /* Procursus@3x.png */,
+				493B23FA26098169007D605F /* Procursus~ipad@2x.png */,
+				493B23FB26098169007D605F /* Procursus~ipad@3x.png */,
+			);
+			path = Procursus;
+			sourceTree = "<group>";
+		};
+		49618DD4260515A40046C094 /* Backend Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				49618DD5260515A40046C094 /* BackendWrapper.swift */,
+			);
+			path = "Backend Wrapper";
+			sourceTree = "<group>";
+		};
+		4975C4EF2647750D00D344B0 /* giveMeRoot */ = {
+			isa = PBXGroup;
+			children = (
+				4975C4F02647750D00D344B0 /* Makefile */,
+				4975C4F12647750D00D344B0 /* Entitlements.plist */,
+				4975C4F22647750D00D344B0 /* giveMeRoot.c */,
+			);
+			path = giveMeRoot;
+			sourceTree = SOURCE_ROOT;
+		};
+		4975C4FB2647758600D344B0 /* Make */ = {
+			isa = PBXGroup;
+			children = (
+				4975C4EE264774F900D344B0 /* Makefile */,
+				4975C4FC2647758E00D344B0 /* layout */,
+			);
+			name = Make;
+			sourceTree = "<group>";
+		};
+		4975C4FC2647758E00D344B0 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				4975C4FD2647758E00D344B0 /* DEBIAN */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		4975C4FD2647758E00D344B0 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				4975C4FE2647758E00D344B0 /* control.in */,
+				4975C4FF2647758E00D344B0 /* prerm */,
+				4975C5002647758E00D344B0 /* triggers */,
+				4975C5012647758E00D344B0 /* postinst.in */,
+			);
+			path = DEBIAN;
+			sourceTree = "<group>";
+		};
+		49CE7CAD2607F97C00A20711 /* Alt Icons */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */,
+				49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */,
+			);
+			path = "Alt Icons";
+			sourceTree = "<group>";
+		};
+		49CE7CB42607F9A400A20711 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				E13BD7742645E114006A5EF2 /* Nightly */,
+				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
+				493B23CD26098104007D605F /* Chimera */,
+				49CE7CC92607F9A400A20711 /* Cool Breeze */,
+				493B23D826098116007D605F /* Cotton Candy  */,
+				49CE7CBA2607F9A400A20711 /* Mango Crazy */,
+				493B23E326098132007D605F /* Oceanic Blue */,
+				E1BB50D8260E912000F870B8 /* OG */,
+				493B23F826098169007D605F /* Procursus */,
+				493B23F326098169007D605F /* Strawberry Sunset */,
+				49CE7CBF2607F9A400A20711 /* Sugar Free */,
+				493B23EE26098169007D605F /* Sus */,
+				49CE7CC42607F9A400A20711 /* Taurine */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		49CE7CB52607F9A400A20711 /* Blue Lemonade */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */,
+				49CE7CB92607F9A400A20711 /* BlueLemonade@3x.png */,
+				49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */,
+				49CE7CB72607F9A400A20711 /* BlueLemonade~ipad@3x.png */,
+			);
+			path = "Blue Lemonade";
+			sourceTree = "<group>";
+		};
+		49CE7CBA2607F9A400A20711 /* Mango Crazy */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CBC2607F9A400A20711 /* MangoCrazy@2x.png */,
+				49CE7CBB2607F9A400A20711 /* MangoCrazy@3x.png */,
+				49CE7CBE2607F9A400A20711 /* MangoCrazy~ipad@2x.png */,
+				49CE7CBD2607F9A400A20711 /* MangoCrazy~ipad@3x.png */,
+			);
+			path = "Mango Crazy";
+			sourceTree = "<group>";
+		};
+		49CE7CBF2607F9A400A20711 /* Sugar Free */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CC32607F9A400A20711 /* SugarFree@2x.png */,
+				49CE7CC22607F9A400A20711 /* SugarFree@3x.png */,
+				49CE7CC12607F9A400A20711 /* SugarFree~ipad@2x.png */,
+				49CE7CC02607F9A400A20711 /* SugarFree~ipad@3x.png */,
+			);
+			path = "Sugar Free";
+			sourceTree = "<group>";
+		};
+		49CE7CC42607F9A400A20711 /* Taurine */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CC62607F9A400A20711 /* Taurine@2x.png */,
+				49CE7CC52607F9A400A20711 /* Taurine@3x.png */,
+				49CE7CC82607F9A400A20711 /* Taurine~ipad@2x.png */,
+				49CE7CC72607F9A400A20711 /* Taurine~ipad@3x.png */,
+			);
+			path = Taurine;
+			sourceTree = "<group>";
+		};
+		49CE7CC92607F9A400A20711 /* Cool Breeze */ = {
+			isa = PBXGroup;
+			children = (
+				49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */,
+				49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */,
+				49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */,
+				49CE7CCA2607F9A400A20711 /* CoolBreeze~ipad@3x.png */,
+			);
+			path = "Cool Breeze";
 			sourceTree = "<group>";
 		};
 		56A598982146578B00677FCA /* WhiteBlur */ = {
 			isa = PBXGroup;
 			children = (
-				56A59899214657A700677FCA /* ZKSwizzle.h */,
-				56A5989A214657A700677FCA /* ZKSwizzle.m */,
 				56A5989E2146584800677FCA /* WhiteBlur.h */,
 				56A5989C214657BB00677FCA /* WhiteBlur.m */,
+				56A59899214657A700677FCA /* ZKSwizzle.h */,
+				56A5989A214657A700677FCA /* ZKSwizzle.m */,
 			);
 			path = WhiteBlur;
 			sourceTree = "<group>";
@@ -851,63 +1276,32 @@
 		6A5C432C20DF1E92001F32A3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F1330EA82324F76C00971073 /* UIColor-ThemeColors.swift */,
-				F1330EAD23250CC200971073 /* SileoRootView.swift */,
+				F1AB912C22ED0D220054341B /* BaseSubtitleTableViewCell.swift */,
+				F1AB912622ED081E0054341B /* PackageIconView.swift */,
 				F1330EB02325644700971073 /* SileoContentView.swift */,
+				F1330EB32325673100971073 /* SileoLabelView.swift */,
+				F170605E24CF50C7001596A0 /* SileoNavigationController.swift */,
+				F1330EAD23250CC200971073 /* SileoRootView.swift */,
 				F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */,
 				F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */,
-				F1330EB32325673100971073 /* SileoLabelView.swift */,
-				F1AB912C22ED0D220054341B /* BaseSubtitleTableViewCell.swift */,
 				F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */,
-				F1AB912922ED09AE0054341B /* SourceProgressIndicatorView.swift */,
-				F1AB912622ED081E0054341B /* PackageIconView.swift */,
-				F170605B24CF4DFD001596A0 /* SileoViewController.swift */,
-				F170605E24CF50C7001596A0 /* SileoNavigationController.swift */,
 				F170606124CF54E0001596A0 /* SileoTableViewController.swift */,
 				FB208DC224D709B7000297FB /* SileoTheme.swift */,
 				FB208DC424D70A91000297FB /* SileoThemeManager.swift */,
+				F170605B24CF4DFD001596A0 /* SileoViewController.swift */,
+				F1AB912922ED09AE0054341B /* SourceProgressIndicatorView.swift */,
+				F1330EA82324F76C00971073 /* UIColor-ThemeColors.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		9552B68B82FD51D452FA5537 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E92D73CA615BB21AA77AF155 /* Pods-SileoTests.debug.xcconfig */,
-				5B02930E2F51CAF70A74DF6F /* Pods-SileoTests.release.xcconfig */,
-				76B93DAC96CA9C7278D2994A /* Pods-SileoUITests.debug.xcconfig */,
-				2582D4A6D64D2411952A9434 /* Pods-SileoUITests.release.xcconfig */,
-				D54181E76F8773A4114A528E /* Pods-Sileo.debug.xcconfig */,
-				8F850ACF2DB14A39CC87CBE7 /* Pods-Sileo.release.xcconfig */,
-				962C0D7C76E57C9BEBFBE5E8 /* Pods-Sileo Demo.debug.xcconfig */,
-				552A53BFF7E6067C54E471A9 /* Pods-Sileo Demo.release.xcconfig */,
-			);
-			name = Pods;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		B58BDBFDEF35914C4F85AA66 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */,
-				B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */,
-				1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */,
-				FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */,
-				0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */,
-				23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */,
-				EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */,
-				E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		C315A7BC217D99C200341243 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				FB40262F23DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift */,
 				FB40263823DF40CB002D97FE /* BaseSettingsViewController.swift */,
 				FB40263223DF30FF002D97FE /* SettingsHeaderContainerView.swift */,
 				FB40263523DF404E002D97FE /* SettingsHeaderViewDisplayable.swift */,
+				FB40262F23DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -915,8 +1309,8 @@
 		C315A7BD217D99E900341243 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				FB40263B23DF478B002D97FE /* PaymentProfileViewController.swift */,
 				FB40264523E0FCAE002D97FE /* PaymentProfileHeaderView.swift */,
+				FB40263B23DF478B002D97FE /* PaymentProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -924,10 +1318,11 @@
 		C315A7BE217D9A0600341243 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
-				FB40262823DE87F8002D97FE /* SettingsIconHeaderView.swift */,
 				FB40262B23DE8A60002D97FE /* PaymentProviderTableViewCell.swift */,
 				FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */,
+				FB40262823DE87F8002D97FE /* SettingsIconHeaderView.swift */,
+				E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */,
+				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -940,30 +1335,89 @@
 			path = "Database Manager";
 			sourceTree = "<group>";
 		};
+		E13BD7742645E114006A5EF2 /* Nightly */ = {
+			isa = PBXGroup;
+			children = (
+				E13BD7772645E1AA006A5EF2 /* Nightly@2x.png */,
+				E13BD7762645E1AA006A5EF2 /* Nightly@3x.png */,
+				E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */,
+				E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */,
+			);
+			path = Nightly;
+			sourceTree = "<group>";
+		};
+		E13BD7872646C692006A5EF2 /* Sileo Team */ = {
+			isa = PBXGroup;
+			children = (
+				E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */,
+				E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */,
+			);
+			path = "Sileo Team";
+			sourceTree = "<group>";
+		};
+		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */,
+			);
+			path = "Canister Resolver";
+			sourceTree = "<group>";
+		};
+		E1BB50D8260E912000F870B8 /* OG */ = {
+			isa = PBXGroup;
+			children = (
+				E1BB50DA260E913A00F870B8 /* OG@2x.png */,
+				E1BB50DC260E913A00F870B8 /* OG@3x.png */,
+				E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */,
+				E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */,
+			);
+			path = OG;
+			sourceTree = "<group>";
+		};
+		E1C90249263C74C400569D1E /* DepictionFormViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1C90256263C75B100569D1E /* DepictionFormViewController.swift */,
+				E1C9025C263C852100569D1E /* DepictionFormTextView.swift */,
+			);
+			path = DepictionFormViewController;
+			sourceTree = "<group>";
+		};
+		E1C90265263D794C00569D1E /* AmyCommon */ = {
+			isa = PBXGroup;
+			children = (
+				E1C90266263D79C600569D1E /* AmyGifManager.swift */,
+				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
+				E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */,
+			);
+			path = AmyCommon;
+			sourceTree = "<group>";
+		};
 		F100C2FC210D5E1E00A9B7D8 /* DepictionView */ = {
 			isa = PBXGroup;
 			children = (
-				F1EE916021E95084006078B8 /* DepictionMinVersionForceView */,
+				E1C90249263C74C400569D1E /* DepictionFormViewController */,
 				F15FDC8121E9381A00DAF0A4 /* DepictionAdmobView */,
 				F147532221451C42004A122A /* DepictionAutoStackView */,
+				F100C303210D5F6300A9B7D8 /* DepictionBaseView */,
+				F1C19B9521168B320036D865 /* DepictionButtonView */,
+				F11EAF33210E64FA00F3D39E /* DepictionHeaderView */,
+				F157567F211B79FD007385D3 /* DepictionImageView */,
+				F16B1A352283875A00AADAFC /* DepictionLabelView */,
+				F1FF7A6124FAEE450088F88B /* DepictionLayerView */,
+				F100C318210D9C8200A9B7D8 /* DepictionMarkdownView */,
+				F1EE916021E95084006078B8 /* DepictionMinVersionForceView */,
+				F177A0F52117A71B00168E33 /* DepictionReviewView */,
+				F100C30C210D752F00A9B7D8 /* DepictionScreenshotsView */,
+				F100C314210D957200A9B7D8 /* DepictionSeparatorView */,
+				F177A1022117B70400168E33 /* DepictionSpacerView */,
+				F100C310210D936A00A9B7D8 /* DepictionStackView */,
+				F177A0FB2117AD8300168E33 /* DepictionSubheaderView */,
+				F17F29E52140C2E700155BC2 /* DepictionTableButtonView */,
+				F10BD1D12114FFEB003678B8 /* DepictionTableTextView */,
+				F100C304210D609F00A9B7D8 /* DepictionTabView */,
 				F147531B214517AE004A122A /* DepictionVideoView */,
 				F1575683211B7DE0007385D3 /* DepictionWebView */,
-				F157567F211B79FD007385D3 /* DepictionImageView */,
-				F1C19B9521168B320036D865 /* DepictionButtonView */,
-				F177A0F52117A71B00168E33 /* DepictionReviewView */,
-				F100C303210D5F6300A9B7D8 /* DepictionBaseView */,
-				F1FF7A6124FAEE450088F88B /* DepictionLayerView */,
-				F100C310210D936A00A9B7D8 /* DepictionStackView */,
-				F100C314210D957200A9B7D8 /* DepictionSeparatorView */,
-				F100C304210D609F00A9B7D8 /* DepictionTabView */,
-				F100C318210D9C8200A9B7D8 /* DepictionMarkdownView */,
-				F11EAF33210E64FA00F3D39E /* DepictionHeaderView */,
-				F177A0FB2117AD8300168E33 /* DepictionSubheaderView */,
-				F16B1A352283875A00AADAFC /* DepictionLabelView */,
-				F10BD1D12114FFEB003678B8 /* DepictionTableTextView */,
-				F17F29E52140C2E700155BC2 /* DepictionTableButtonView */,
-				F100C30C210D752F00A9B7D8 /* DepictionScreenshotsView */,
-				F177A1022117B70400168E33 /* DepictionSpacerView */,
 			);
 			path = DepictionView;
 			sourceTree = "<group>";
@@ -1021,10 +1475,10 @@
 		F100C318210D9C8200A9B7D8 /* DepictionMarkdownView */ = {
 			isa = PBXGroup;
 			children = (
-				F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */,
-				F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */,
 				F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */,
 				F1A116B92384D57D00B6F408 /* DepictionFontCollection.swift */,
+				F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */,
+				F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */,
 			);
 			path = DepictionMarkdownView;
 			sourceTree = "<group>";
@@ -1035,8 +1489,7 @@
 				F1C8C4E9221235D30032D074 /* DFContinuousForceTouchGestureRecognizer */,
 				F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */,
 			);
-			name = Deps;
-			path = ../Deps;
+			path = Deps;
 			sourceTree = "<group>";
 		};
 		F102D454212B6ACC007CAF22 /* Products */ = {
@@ -1050,8 +1503,8 @@
 		F103401B2137459A00B9180B /* InstallViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F103401E213746B600B9180B /* InstallViewController.xib */,
 				F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */,
+				F103401E213746B600B9180B /* InstallViewController.xib */,
 			);
 			path = InstallViewController;
 			sourceTree = "<group>";
@@ -1064,12 +1517,12 @@
 			path = DepictionTableTextView;
 			sourceTree = "<group>";
 		};
-		F1144EFF20FC67F3001FF36C /* rootMeWrapper */ = {
+		F1144EFF20FC67F3001FF36C /* Root Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				F170DD7C22CFE79800196FDA /* rootMeWrapper.swift */,
+				F170DD7C22CFE79800196FDA /* RootWrapper.swift */,
 			);
-			path = rootMeWrapper;
+			path = "Root Wrapper";
 			sourceTree = "<group>";
 		};
 		F11CD90A20DBF74A000C62C3 /* PackageCell */ = {
@@ -1162,14 +1615,16 @@
 		F149E0A420B6040B005CA30B = {
 			isa = PBXGroup;
 			children = (
-				564BEF7522BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets */,
 				F149E0AF20B6040B005CA30B /* Sileo */,
+				493B23BE260979AF007D605F /* Sileo Demo */,
 				F149E0CB20B6040B005CA30B /* SileoTests */,
 				F149E0D620B6040B005CA30B /* SileoUITests */,
-				F149E0AE20B6040B005CA30B /* Products */,
+				4975C4EF2647750D00D344B0 /* giveMeRoot */,
+				4975C4FB2647758600D344B0 /* Make */,
+				49BAC20726098ACD00F47DA4 /* Config.xcconfig */,
 				33F3CD3020E059ED00B3A1D2 /* Frameworks */,
-				F13A390F22D003B600716B84 /* Sileo Demo-Info.plist */,
-				B58BDBFDEF35914C4F85AA66 /* Pods */,
+				F102D452212B6AC2007CAF22 /* Deps */,
+				F149E0AE20B6040B005CA30B /* Products */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -1180,9 +1635,9 @@
 			isa = PBXGroup;
 			children = (
 				F149E0AD20B6040B005CA30B /* Sileo.app */,
+				F139D14C22EA9209007F5C0D /* Sileo Demo.app */,
 				F149E0C820B6040B005CA30B /* SileoTests.xctest */,
 				F149E0D320B6040B005CA30B /* SileoUITests.xctest */,
-				F139D14C22EA9209007F5C0D /* Sileo Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1190,24 +1645,25 @@
 		F149E0AF20B6040B005CA30B /* Sileo */ = {
 			isa = PBXGroup;
 			children = (
-				C373923421D5E46900E6F704 /* Localizable.strings */,
-				C373925721D60B2600E6F704 /* Localizable.stringsdict */,
+				F183CFB22318EA6800D3AF3B /* main.swift */,
+				F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */,
+				F1B99EE720DB671B00374C27 /* Backend */,
+				F1B3960420E5AFCE00AF3D04 /* Contrib */,
+				F1B99EE620DB671300374C27 /* UI */,
+				F19FB39B22BF50D3008E986B /* Sileo-Bridging-Header.h */,
+				F149E0C120B6040B005CA30B /* Info.plist */,
+				4975C4EA264772CA00D344B0 /* Entitlements.entitlements */,
+				F149E0B920B6040B005CA30B /* Main.storyboard */,
+				F149E0BE20B6040B005CA30B /* LaunchScreen.storyboard */,
+				F149E0BC20B6040B005CA30B /* Assets.xcassets */,
+				49CE7CB42607F9A400A20711 /* Icons */,
+				172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */,
 				C373924721D5F80300E6F704 /* Categories.strings */,
 				C373924521D5F80300E6F704 /* Errors.strings */,
-				F102D452212B6AC2007CAF22 /* Deps */,
-				F1B3960420E5AFCE00AF3D04 /* Contrib */,
-				F1B99EF720DBE56100374C27 /* Test Data */,
-				F1B99EE720DB671B00374C27 /* Backend */,
-				F1B99EE620DB671300374C27 /* UI */,
-				F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */,
-				F149E0B920B6040B005CA30B /* Main.storyboard */,
-				F149E0BC20B6040B005CA30B /* Assets.xcassets */,
-				F149E0BE20B6040B005CA30B /* LaunchScreen.storyboard */,
-				F149E0C120B6040B005CA30B /* Info.plist */,
-				F183CFB22318EA6800D3AF3B /* main.swift */,
-				F19FB39B22BF50D3008E986B /* Sileo-Bridging-Header.h */,
-				172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */,
+				C373923421D5E46900E6F704 /* Localizable.strings */,
+				C373925721D60B2600E6F704 /* Localizable.stringsdict */,
 				F13AD30E23F9306F0035986E /* sileo-apt.conf */,
+				F1B99EF720DBE56100374C27 /* Test Data */,
 			);
 			path = Sileo;
 			sourceTree = "<group>";
@@ -1215,8 +1671,8 @@
 		F149E0CB20B6040B005CA30B /* SileoTests */ = {
 			isa = PBXGroup;
 			children = (
-				F18FD5A422DBBC28002DA8CB /* SileoTests.swift */,
 				F149E0CE20B6040B005CA30B /* Info.plist */,
+				E1152F38264051BB008C7D5D /* SileoTests.swift */,
 			);
 			path = SileoTests;
 			sourceTree = "<group>";
@@ -1224,9 +1680,8 @@
 		F149E0D620B6040B005CA30B /* SileoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9552B68B82FD51D452FA5537 /* Pods */,
-				F149E0D720B6040B005CA30B /* SileoUITests.m */,
 				F149E0D920B6040B005CA30B /* Info.plist */,
+				F149E0D720B6040B005CA30B /* SileoUITests.m */,
 			);
 			path = SileoUITests;
 			sourceTree = "<group>";
@@ -1309,11 +1764,11 @@
 		F162CCB220E981A800226F10 /* Payment Manager */ = {
 			isa = PBXGroup;
 			children = (
-				FB6F3D2D24AA501000E941F8 /* PaymentManager.swift */,
-				FB6F3D2924A9273300E941F8 /* PaymentProvider.swift */,
-				FB6F3D3324AA68A900E941F8 /* PaymentPackageInfo.swift */,
-				FB6F3D3024AA634E00E941F8 /* PaymentError.swift */,
 				FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */,
+				FB6F3D3024AA634E00E941F8 /* PaymentError.swift */,
+				FB6F3D2D24AA501000E941F8 /* PaymentManager.swift */,
+				FB6F3D3324AA68A900E941F8 /* PaymentPackageInfo.swift */,
+				FB6F3D2924A9273300E941F8 /* PaymentProvider.swift */,
 			);
 			path = "Payment Manager";
 			sourceTree = "<group>";
@@ -1342,8 +1797,8 @@
 				172E3CEB21D3B376007A2AE9 /* FlaggedSourceWarningViewController */,
 				F1B4B578216197C0004F160E /* SourcesErrorsViewController */,
 				F1B99EF620DB7F9B00374C27 /* SourcesCell */,
-				F1A23FAB23383E6A00C71D8E /* SourcesViewController.swift */,
 				F12652D525A165340094E446 /* SourcesSplitViewController.swift */,
+				F1A23FAB23383E6A00C71D8E /* SourcesViewController.swift */,
 			);
 			path = SourcesViewController;
 			sourceTree = "<group>";
@@ -1351,12 +1806,14 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1761F821227B565E00E03DC3 /* Licenses */,
+				E13BD7872646C692006A5EF2 /* Sileo Team */,
+				49CE7CAD2607F97C00A20711 /* Alt Icons */,
 				C315A7BC217D99C200341243 /* Base */,
-				C315A7BE217D9A0600341243 /* Root */,
+				1761F821227B565E00E03DC3 /* Licenses */,
 				C315A7BD217D99E900341243 /* Profile */,
-				FB40261F23DE2B9C002D97FE /* SettingsNavigationController.swift */,
+				C315A7BE217D9A0600341243 /* Root */,
 				FB40262223DE3279002D97FE /* CollectionViewTableViewCell.swift */,
+				FB40261F23DE2B9C002D97FE /* SettingsNavigationController.swift */,
 			);
 			path = SettingsViewController;
 			sourceTree = "<group>";
@@ -1421,8 +1878,8 @@
 		F19265CF2106DFEB00B31E13 /* CydiaAccountViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F1AD84A621CDB53E0080656A /* CydiaScraper */,
 				F19265D82106E68A00B31E13 /* CydiaAccountUIWebView */,
+				F1AD84A621CDB53E0080656A /* CydiaScraper */,
 				F10531FD244A3F6E0042201C /* CydiaAccountViewController.swift */,
 				F19265D22106E00600B31E13 /* CydiaAccountViewController.xib */,
 			);
@@ -1458,16 +1915,18 @@
 			isa = PBXGroup;
 			children = (
 				F13E7036214E411A00A5A2F4 /* DPKG inline */,
-				F1705FF324CA16DD001596A0 /* Store.swift */,
+				F18B58472581A7E90064CD71 /* CSActionItem.swift */,
 				F147E67B22F02EAB0048F868 /* CSGradientView.swift */,
-				F14F7D5B240A7E7800062310 /* CSTextView.swift */,
 				F14F7D58240A766D00062310 /* CSTextRenderView.swift */,
+				F14F7D5B240A7E7800062310 /* CSTextView.swift */,
+				F107EB61230D195A002B8C20 /* Dusk.swift */,
+				F13AEE6222F69C47004BAA05 /* EditableTableView.swift */,
+				F1705FF324CA16DD001596A0 /* Store.swift */,
+				F1CA758C244CF813000BA15C /* String+Error.swift */,
 				F120234021470F69005EAFAC /* UIColor+HTMLColors.h */,
 				F120233F21470F69005EAFAC /* UIColor+HTMLColors.m */,
-				F13AEE6222F69C47004BAA05 /* EditableTableView.swift */,
-				F107EB61230D195A002B8C20 /* Dusk.swift */,
-				F1CA758C244CF813000BA15C /* String+Error.swift */,
-				F18B58472581A7E90064CD71 /* CSActionItem.swift */,
+				499162C22607C06500D09BE7 /* UIView+FromNib.swift */,
+				499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */,
 			);
 			path = Contrib;
 			sourceTree = "<group>";
@@ -1484,19 +1943,19 @@
 		F1B99EE620DB671300374C27 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				56A598982146578B00677FCA /* WhiteBlur */,
-				F19265CF2106DFEB00B31E13 /* CydiaAccountViewController */,
-				6A5C432C20DF1E92001F32A3 /* Utils */,
-				F1C072E4212CD617009F2E19 /* TabBarController */,
-				F16C967220B7649E001408E9 /* FeaturedViewController */,
-				F1D3494121191DF700CADF87 /* NewsViewController */,
-				F16C967320B764A7001408E9 /* SourcesViewController */,
-				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
-				F103401B2137459A00B9180B /* InstallViewController */,
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
+				F19265CF2106DFEB00B31E13 /* CydiaAccountViewController */,
+				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
+				F16C967220B7649E001408E9 /* FeaturedViewController */,
+				F103401B2137459A00B9180B /* InstallViewController */,
+				F1D3494121191DF700CADF87 /* NewsViewController */,
 				F1B99F0220DBE5C700374C27 /* PackageListViewController */,
 				F1D113F520DC5EA100C8F051 /* PackageViewController */,
 				F17772DE20EC5221004C3CA5 /* SettingsViewController */,
+				F16C967320B764A7001408E9 /* SourcesViewController */,
+				F1C072E4212CD617009F2E19 /* TabBarController */,
+				6A5C432C20DF1E92001F32A3 /* Utils */,
+				56A598982146578B00677FCA /* WhiteBlur */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1504,20 +1963,23 @@
 		F1B99EE720DB671B00374C27 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				F1144EFF20FC67F3001FF36C /* rootMeWrapper */,
+				E1C90265263D794C00569D1E /* AmyCommon */,
 				F1D1140720DEE40C00C8F051 /* APT Wrapper */,
+				49618DD4260515A40046C094 /* Backend Wrapper */,
+				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
+				F162CCAE20E82DFB00226F10 /* Control File Parser */,
+				CFBC7FD9221D88ED0066D501 /* Database Manager */,
+				F1FFE5D823D5142F00916364 /* Dependency Resolver */,
+				F162CCB120E82E1100226F10 /* Download Manager */,
 				F1D113F120DC52B000C8F051 /* DPKG Wrapper */,
 				F1B99EEF20DB749300374C27 /* Extensions */,
 				F1B99EE820DB672400374C27 /* Objects */,
-				F1FFE5D823D5142F00916364 /* Dependency Resolver */,
 				F162CCAF20E82E0100226F10 /* Package Manager */,
-				F162CCAD20E82DF500226F10 /* Repo Manager */,
-				F162CCAE20E82DFB00226F10 /* Control File Parser */,
-				F162CCB020E82E0800226F10 /* URL Manager */,
-				F162CCB120E82E1100226F10 /* Download Manager */,
 				F162CCB220E981A800226F10 /* Payment Manager */,
-				F1E287B22225DE1000603B3E /* WishList Manager */,
-				CFBC7FD9221D88ED0066D501 /* Database Manager */,
+				F162CCAD20E82DF500226F10 /* Repo Manager */,
+				F1144EFF20FC67F3001FF36C /* Root Wrapper */,
+				F162CCB020E82E0800226F10 /* URL Manager */,
+				F1E287B22225DE1000603B3E /* Wish List Manager */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1525,12 +1987,11 @@
 		F1B99EE820DB672400374C27 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				F1D6A63222E54C6700CBD045 /* Repo.swift */,
+				F13AEE5A22F62B9D004BAA05 /* Download.swift */,
+				F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */,
 				F102D1E422CD7DE300A4C9BA /* Package.swift */,
 				F172581B24EB88E3000F2FAF /* PackageStub.swift */,
-				F102D1F522CEE00700A4C9BA /* PackageVersionList.swift */,
-				F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */,
-				F13AEE5A22F62B9D004BAA05 /* Download.swift */,
+				F1D6A63222E54C6700CBD045 /* Repo.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1538,14 +1999,14 @@
 		F1B99EEF20DB749300374C27 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
-				F16115D3244D8ABF003BF1E6 /* URL+Secure.swift */,
-				F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */,
 				F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */,
 				F1D6A62222E53E7000CBD045 /* Hash.swift */,
 				F1D6A62122E53E6F00CBD045 /* Locks.swift */,
 				F1D6A62022E53E6F00CBD045 /* String+Hash.swift */,
 				F1D6A62322E53E7000CBD045 /* String+Utilities.swift */,
+				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
+				F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */,
+				F16115D3244D8ABF003BF1E6 /* URL+Secure.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1561,8 +2022,8 @@
 		F1B99EF720DBE56100374C27 /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
-				F11CD90820DBF153000C62C3 /* status */,
 				F1FCE023213A0B7300D4697A /* dpkg.list */,
+				F11CD90820DBF153000C62C3 /* status */,
 			);
 			path = "Test Data";
 			sourceTree = "<group>";
@@ -1572,8 +2033,8 @@
 			children = (
 				F139F11B20EEF7D90004E17B /* ListHeader */,
 				F11CD90A20DBF74A000C62C3 /* PackageCell */,
-				F1B99F0520DBE64700374C27 /* PackageListViewController.xib */,
 				F1D82F1723050FED00EECCAE /* PackageListViewController.swift */,
+				F1B99F0520DBE64700374C27 /* PackageListViewController.xib */,
 			);
 			path = PackageListViewController;
 			sourceTree = "<group>";
@@ -1585,15 +2046,6 @@
 				F1705FEA24CA1465001596A0 /* TabBarController.swift */,
 			);
 			path = TabBarController;
-			sourceTree = "<group>";
-		};
-		F1C0E2AC216EDF040082F23F /* DepictionFormViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F1C0E2AF216EDF270082F23F /* DepictionFormViewController.xib */,
-				F1E4485724E9A6E5002470AE /* DepictionFormViewController.swift */,
-			);
-			path = DepictionFormViewController;
 			sourceTree = "<group>";
 		};
 		F1C19B9521168B320036D865 /* DepictionButtonView */ = {
@@ -1635,11 +2087,10 @@
 		F1D113F520DC5EA100C8F051 /* PackageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F1DD3D182316EFF700D86A52 /* HTMLDepictionScraper */,
-				F1C0E2AC216EDF040082F23F /* DepictionFormViewController */,
 				F1CB2EF3214650C000641808 /* DepictionSubpageViewController */,
-				F1FCE026213A0BCD00D4697A /* InstalledContentsViewController */,
 				F100C2FC210D5E1E00A9B7D8 /* DepictionView */,
+				F1DD3D182316EFF700D86A52 /* HTMLDepictionScraper */,
+				F1FCE026213A0BCD00D4697A /* InstalledContentsViewController */,
 				F1D113FF20DD7A9300C8F051 /* PackageButton */,
 				F183CFC6231A563500D3AF3B /* PackageViewController.swift */,
 				F1D113F820DC608900C8F051 /* PackageViewController.xib */,
@@ -1667,10 +2118,10 @@
 		F1D1141D20DF7A7300C8F051 /* DownloadsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F197493421368D8E0065E630 /* DownloadConfirmButton */,
 				F19265CB2106B40300B31E13 /* DownloadCell */,
-				F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */,
+				F197493421368D8E0065E630 /* DownloadConfirmButton */,
 				F13AEE5D22F63122004BAA05 /* DownloadsTableViewController.swift */,
+				F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */,
 			);
 			path = DownloadsViewController;
 			sourceTree = "<group>";
@@ -1678,17 +2129,17 @@
 		F1D349112118CC2100CADF87 /* FeaturedView */ = {
 			isa = PBXGroup;
 			children = (
-				F15DF40221D05ABA00DBBFB6 /* FeaturedInfoFooterView */,
 				F1D3493D21190FD400CADF87 /* FeaturedAutoStackView */,
-				F1D349352119021800CADF87 /* FeaturedPackageView */,
 				F1D349232118D17C00CADF87 /* FeaturedBannersView */,
-				F1D349192118CD0600CADF87 /* FeaturedStackView */,
-				F1D349182118CCAC00CADF87 /* FeaturedSpacerView */,
-				F1D349172118CCA600CADF87 /* FeaturedSeparatorView */,
 				F1D349122118CC2900CADF87 /* FeaturedBaseView */,
-				F1D349312118FF8600CADF87 /* FeaturedHeaderView */,
 				F120234221472B48005EAFAC /* FeaturedButtonView */,
+				F1D349312118FF8600CADF87 /* FeaturedHeaderView */,
+				F15DF40221D05ABA00DBBFB6 /* FeaturedInfoFooterView */,
 				F1FF7A6524FAF0190088F88B /* FeaturedLayerView */,
+				F1D349352119021800CADF87 /* FeaturedPackageView */,
+				F1D349172118CCA600CADF87 /* FeaturedSeparatorView */,
+				F1D349182118CCAC00CADF87 /* FeaturedSpacerView */,
+				F1D349192118CD0600CADF87 /* FeaturedStackView */,
 			);
 			path = FeaturedView;
 			sourceTree = "<group>";
@@ -1770,17 +2221,18 @@
 			isa = PBXGroup;
 			children = (
 				F172581824EB848E000F2FAF /* NewsArticle.swift */,
-				FBBD0035240C31B3008E11B2 /* NewsViewController.swift */,
-				CFBC7FDE222041290066D501 /* NewsViewController.xib */,
-				F11E22DD2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift */,
-				F11E22DE2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib */,
 				FBBD0034240C31B3008E11B2 /* NewsArticleCollectionViewCell.swift */,
 				C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */,
-				CFE8CB13227433700066D501 /* NewsDateHeader.xib */,
+				FBBD0033240C31B3008E11B2 /* NewsArticlesHeader.swift */,
 				FBBD0037240C31B3008E11B2 /* NewsArticlesViewController.swift */,
 				CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */,
-				FBBD0033240C31B3008E11B2 /* NewsArticlesHeader.swift */,
+				CFE8CB13227433700066D501 /* NewsDateHeader.xib */,
 				FBBD0036240C31B3008E11B2 /* NewsGradientBackgroundView.swift */,
+				F11E22DD2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift */,
+				F11E22DE2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib */,
+				FBBD0035240C31B3008E11B2 /* NewsViewController.swift */,
+				CFBC7FDE222041290066D501 /* NewsViewController.xib */,
+				E18CD2D0262C8E7500FF499C /* NewsResolver.swift */,
 			);
 			path = NewsViewController;
 			sourceTree = "<group>";
@@ -1795,12 +2247,12 @@
 			path = HTMLDepictionScraper;
 			sourceTree = "<group>";
 		};
-		F1E287B22225DE1000603B3E /* WishList Manager */ = {
+		F1E287B22225DE1000603B3E /* Wish List Manager */ = {
 			isa = PBXGroup;
 			children = (
 				F102D1E222CD514C00A4C9BA /* WishListManager.swift */,
 			);
-			path = "WishList Manager";
+			path = "Wish List Manager";
 			sourceTree = "<group>";
 		};
 		F1EE916021E95084006078B8 /* DepictionMinVersionForceView */ = {
@@ -1814,10 +2266,10 @@
 		F1FCE026213A0BCD00D4697A /* InstalledContentsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F13AEE7B22F76DE6004BAA05 /* FileNode.swift */,
+				F13AEE7822F76CDE004BAA05 /* InstalledContentsTableViewCell.swift */,
 				F13AEE7222F76B63004BAA05 /* InstalledContentsViewController.swift */,
 				F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */,
-				F13AEE7822F76CDE004BAA05 /* InstalledContentsTableViewCell.swift */,
-				F13AEE7B22F76DE6004BAA05 /* FileNode.swift */,
 			);
 			path = InstalledContentsViewController;
 			sourceTree = "<group>";
@@ -1853,13 +2305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F139D14922EA9209007F5C0D /* Build configuration list for PBXNativeTarget "Sileo Demo" */;
 			buildPhases = (
-				9AC7B698F7F62694E53A96F8 /* [CP] Check Pods Manifest.lock */,
 				F139D09722EA9209007F5C0D /* Sources */,
 				F139D11F22EA9209007F5C0D /* Frameworks */,
 				F139D12922EA9209007F5C0D /* ShellScript */,
 				F139D12B22EA9209007F5C0D /* Resources */,
 				F139D14822EA9209007F5C0D /* Embed Frameworks */,
-				503AF82A51114E19D8584EB8 /* [CP] Copy Pods Resources */,
+				E13BD79826473390006A5EF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1869,6 +2320,18 @@
 				F139D09422EA9209007F5C0D /* PBXTargetDependency */,
 			);
 			name = "Sileo Demo";
+			packageProductDependencies = (
+				E19A53412617438700BB8A69 /* Cosmos */,
+				E19A53452617439300BB8A69 /* KeychainAccess */,
+				E19A53472617439700BB8A69 /* SwiftSoup */,
+				E19A534D261743A300BB8A69 /* Down */,
+				E19A5351261743B300BB8A69 /* SwipeCellKit */,
+				E19A5353261743BA00BB8A69 /* SQLite */,
+				E19A5355261743BD00BB8A69 /* LNZTreeView */,
+				E19A5357261743C200BB8A69 /* AUPickerCell */,
+				E1A8B6352656DF15009C43EA /* Alderis */,
+				E194222E265AEF850039EFEF /* SWCompression */,
+			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -1877,23 +2340,30 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DC20B6040B005CA30B /* Build configuration list for PBXNativeTarget "Sileo" */;
 			buildPhases = (
-				D2B05584EE619E9B386D2BD6 /* [CP] Check Pods Manifest.lock */,
 				F149E0A920B6040B005CA30B /* Sources */,
 				F149E0AA20B6040B005CA30B /* Frameworks */,
-				F1CA042822DA824A00CED7A9 /* ShellScript */,
+				F1CA042822DA824A00CED7A9 /* Run Script */,
 				F1144EFE20FC636C001FF36C /* ShellScript */,
 				F149E0AB20B6040B005CA30B /* Resources */,
-				2D739B577F55C57B50C7E106 /* [CP] Copy Pods Resources */,
-				CFBC7FD6221D7FE10066D501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */,
-				CFBC7FD1221D7F310066D501 /* PBXTargetDependency */,
 				CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */,
 			);
 			name = Sileo;
+			packageProductDependencies = (
+				E13638C92614F53400698D55 /* Cosmos */,
+				E13638D32614F59000698D55 /* KeychainAccess */,
+				E13638D82614F5AA00698D55 /* SwiftSoup */,
+				E13638E72614F66400698D55 /* Down */,
+				E13638F12614F6C000698D55 /* SQLite */,
+				E13638F62614F6E300698D55 /* SwipeCellKit */,
+				E1EA1CFE2615008100E56882 /* LNZTreeView */,
+				E1EA1D05261500A100E56882 /* AUPickerCell */,
+				E1A8B6302656DF04009C43EA /* Alderis */,
+				E1942229265AEF7C0039EFEF /* SWCompression */,
+			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
 			productType = "com.apple.product-type.application";
@@ -1902,7 +2372,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DF20B6040B005CA30B /* Build configuration list for PBXNativeTarget "SileoTests" */;
 			buildPhases = (
-				5A57A1197E6A89A53A75FEED /* [CP] Check Pods Manifest.lock */,
 				F149E0C420B6040B005CA30B /* Sources */,
 				F149E0C520B6040B005CA30B /* Frameworks */,
 				F149E0C620B6040B005CA30B /* Resources */,
@@ -1921,7 +2390,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0E220B6040B005CA30B /* Build configuration list for PBXNativeTarget "SileoUITests" */;
 			buildPhases = (
-				02E3CE4664A0B04BC8963F3C /* [CP] Check Pods Manifest.lock */,
 				F149E0CF20B6040B005CA30B /* Sources */,
 				F149E0D020B6040B005CA30B /* Frameworks */,
 				F149E0D120B6040B005CA30B /* Resources */,
@@ -1942,7 +2410,7 @@
 		F149E0A520B6040B005CA30B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = CoolStar;
 				TargetAttributes = {
 					F139D08F22EA9209007F5C0D = {
@@ -1981,16 +2449,48 @@
 				es,
 				fr,
 				it,
-				zh,
-				"fr-CA",
 				de,
 				ja,
 				ko,
 				tr,
 				th,
 				"zh-Hant",
+				"pt-BR",
+				af,
+				ar,
+				ca,
+				cs,
+				da,
+				"zh-Hans",
+				pt,
+				nl,
+				el,
+				ms,
+				fi,
+				he,
+				hu,
+				nb,
+				pl,
+				ru,
+				ro,
+				sr,
+				sv,
+				uk,
+				vi,
 			);
 			mainGroup = F149E0A420B6040B005CA30B;
+			packageReferences = (
+				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */,
+				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
+				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
+				E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */,
+				E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */,
+			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -2024,18 +2524,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BB50E0260E913A00F870B8 /* OG@2x.png in Resources */,
 				F139D13B22EA9209007F5C0D /* Assets.xcassets in Resources */,
 				F139D14122EA9209007F5C0D /* Categories.strings in Resources */,
+				E13BD7802645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
 				F139D13C22EA9209007F5C0D /* CydiaAccountViewController.xib in Resources */,
-				F139D13122EA9209007F5C0D /* DepictionFormViewController.xib in Resources */,
 				F139D13E22EA9209007F5C0D /* DepictionSubpageViewController.xib in Resources */,
 				F139D13022EA9209007F5C0D /* DownloadsTableViewController.xib in Resources */,
 				F139D13722EA9209007F5C0D /* Errors.strings in Resources */,
 				F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */,
+				E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */,
 				F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */,
-				F139D12C22EA9209007F5C0D /* LNPopupControllerAssets.xcassets in Resources */,
+				E13BD77A2645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
 				F139D13A22EA9209007F5C0D /* LaunchScreen.storyboard in Resources */,
 				F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */,
 				F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */,
@@ -2046,12 +2548,16 @@
 				F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */,
 				F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */,
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
+				E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
+				E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
 				F183CFC42318F48600D3AF3B /* RepoScraper in Resources */,
+				E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */,
+				E1BB50DE260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
 				F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2060,36 +2566,86 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493B23D526098104007D605F /* Chimera@3x.png in Resources */,
 				F149E0BD20B6040B005CA30B /* Assets.xcassets in Resources */,
 				C373924A21D5F80300E6F704 /* Categories.strings in Resources */,
+				493B240126098169007D605F /* StrawberrySunset@2x.png in Resources */,
 				F19265D42106E00600B31E13 /* CydiaAccountViewController.xib in Resources */,
+				493B23FF26098169007D605F /* Sus~ipad@3x.png in Resources */,
 				F11E22E12500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
-				F1C0E2B1216EDF270082F23F /* DepictionFormViewController.xib in Resources */,
 				F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */,
 				F178CD8921323E3800F927FA /* DownloadsTableViewController.xib in Resources */,
 				C373924921D5F80300E6F704 /* Errors.strings in Resources */,
+				49CE7CDE2607F9A400A20711 /* CoolBreeze~ipad@3x.png in Resources */,
+				493B240826098169007D605F /* Procursus@2x.png in Resources */,
+				493B23EA26098132007D605F /* OceanicBlue~ipad@2x.png in Resources */,
 				F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */,
+				E1BB50DF260E913A00F870B8 /* OG@2x.png in Resources */,
+				493B23FE26098169007D605F /* Sus@2x.png in Resources */,
 				1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */,
+				493B240626098169007D605F /* Procursus~ipad@2x.png in Resources */,
+				49CE7CD32607F9A400A20711 /* MangoCrazy@2x.png in Resources */,
 				F1034020213746B600B9180B /* InstallViewController.xib in Resources */,
 				F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */,
-				564BEF7622BFBDD4005FAB07 /* LNPopupControllerAssets.xcassets in Resources */,
+				49CE7CD72607F9A400A20711 /* SugarFree~ipad@2x.png in Resources */,
+				493B240726098169007D605F /* Procursus~ipad@3x.png in Resources */,
+				493B23FD26098169007D605F /* Sus@3x.png in Resources */,
+				E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */,
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
+				E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
+				493B23D426098104007D605F /* Chimera~ipad@3x.png in Resources */,
+				49CE7CDC2607F9A400A20711 /* Taurine~ipad@3x.png in Resources */,
 				C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */,
+				49CE7CDB2607F9A400A20711 /* Taurine@2x.png in Resources */,
+				49CE7CCF2607F9A400A20711 /* BlueLemonade~ipad@3x.png in Resources */,
+				493B23DD26098116007D605F /* CottonCandy@3x.png in Resources */,
 				F149E0BB20B6040B005CA30B /* Main.storyboard in Resources */,
 				C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */,
+				493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */,
 				F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */,
+				493B240526098169007D605F /* Procursus@3x.png in Resources */,
+				493B240226098169007D605F /* StrawberrySunset@3x.png in Resources */,
+				49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */,
+				493B240026098169007D605F /* Sus~ipad@2x.png in Resources */,
+				493B23E926098132007D605F /* OceanicBlue~ipad@3x.png in Resources */,
+				E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
+				49CE7CD52607F9A400A20711 /* MangoCrazy~ipad@2x.png in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
+				E13BD77D2645E1AA006A5EF2 /* Nightly@2x.png in Resources */,
 				CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */,
+				493B23DE26098116007D605F /* CottonCandy~ipad@2x.png in Resources */,
+				49CE7CD92607F9A400A20711 /* SugarFree@2x.png in Resources */,
 				CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */,
 				F11CD90F20DBF777000C62C3 /* PackageCollectionViewCell.xib in Resources */,
+				49CE7CD12607F9A400A20711 /* BlueLemonade@3x.png in Resources */,
 				C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */,
 				F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */,
+				493B23E826098132007D605F /* OceanicBlue@3x.png in Resources */,
 				F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */,
+				493B23EB26098132007D605F /* OceanicBlue@2x.png in Resources */,
+				49CE7CCE2607F9A400A20711 /* BlueLemonade~ipad@2x.png in Resources */,
+				493B240326098169007D605F /* StrawberrySunset~ipad@2x.png in Resources */,
 				F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */,
+				493B23D226098104007D605F /* Chimera@2x.png in Resources */,
+				E13BD77B2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
+				493B23E026098116007D605F /* CottonCandy@2x.png in Resources */,
+				49CE7CD22607F9A400A20711 /* MangoCrazy@3x.png in Resources */,
+				49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */,
+				49CE7CD82607F9A400A20711 /* SugarFree@3x.png in Resources */,
+				493B23DF26098116007D605F /* CottonCandy~ipad@3x.png in Resources */,
+				E1BB50E1260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
+				49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */,
+				49CE7CD02607F9A400A20711 /* BlueLemonade@2x.png in Resources */,
+				E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
 				F183CFC32318F48600D3AF3B /* RepoScraper in Resources */,
+				49CE7CD62607F9A400A20711 /* SugarFree~ipad@3x.png in Resources */,
 				F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */,
+				493B240426098169007D605F /* StrawberrySunset~ipad@3x.png in Resources */,
+				49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */,
+				49CE7CDA2607F9A400A20711 /* Taurine@3x.png in Resources */,
+				49CE7CD42607F9A400A20711 /* MangoCrazy~ipad@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2110,87 +2666,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02E3CE4664A0B04BC8963F3C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SileoUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D739B577F55C57B50C7E106 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sileo/Pods-Sileo-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Resources/DownView.bundle",
-				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Alderis.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DownView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLForm.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sileo/Pods-Sileo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		503AF82A51114E19D8584EB8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Alderis/Alderis.bundle",
-				"${PODS_ROOT}/Down/Resources/DownView.bundle",
-				"${PODS_ROOT}/XLForm/XLForm/XLForm.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Alderis.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DownView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLForm.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sileo Demo/Pods-Sileo Demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5A57A1197E6A89A53A75FEED /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SileoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AC7B698F7F62694E53A96F8 /* [CP] Check Pods Manifest.lock */ = {
+		E13BD79826473390006A5EF2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2198,37 +2674,14 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sileo Demo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2B05584EE619E9B386D2BD6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sileo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\ncp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\n";
 		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2241,7 +2694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]\nthen\n    export PATH=\"$PATH:$HOME/bin\"\n\n    make -C $SRCROOT/giveMeRoot clean all \"OUTDIR=$DERIVED_FILE_DIR\"\n    cp \"$DERIVED_FILE_DIR/giveMeRoot\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/giveMeRoot\"\nelse\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
+			shellScript = "if [ \"${PLATFORM_NAME}\" == *\"simulator\" ]\nthen\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
 		};
 		F139D12922EA9209007F5C0D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2258,9 +2711,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, run `brew install swiftlint`\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
 		};
-		F1CA042822DA824A00CED7A9 /* ShellScript */ = {
+		F1CA042822DA824A00CED7A9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2269,13 +2722,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2284,15 +2738,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496992DE260BAAE500E3C35D /* BackendWrapper.swift in Sources */,
+				496992DF260BAAE500E3C35D /* UIView+FromNib.swift in Sources */,
+				496992E0260BAAE500E3C35D /* UserDefaults+Optional.swift in Sources */,
+				496992E1260BAAE500E3C35D /* AltIconTableViewCell.swift in Sources */,
+				496992E2260BAAE500E3C35D /* AltIconTableViewController.swift in Sources */,
 				F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */,
 				F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
 				F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */,
+				E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */,
 				F16115CF244D827A003BF1E6 /* DepictionButton.swift in Sources */,
 				F1AB912E22ED0D220054341B /* BaseSubtitleTableViewCell.swift in Sources */,
 				FB40264723E0FCAE002D97FE /* PaymentProfileHeaderView.swift in Sources */,
 				F147E67D22F02EAB0048F868 /* CSGradientView.swift in Sources */,
 				F147E68422F206C40048F868 /* CategoryViewController.swift in Sources */,
 				FB6F3D2F24AA526200E941F8 /* PaymentManager.swift in Sources */,
+				E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1330EB52325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
 				FB6F3D2B24A9277B00E941F8 /* PaymentProvider.swift in Sources */,
@@ -2313,6 +2774,7 @@
 				FB40263423DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
 				F1705FF224CA1657001596A0 /* UIDevice+Private.swift in Sources */,
 				F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */,
+				E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
 				FBD910D024E06ABE00767541 /* SettingsColorTableViewCell.swift in Sources */,
 				FB208DC624D70D5B000297FB /* SileoThemeManager.swift in Sources */,
 				F139D10122EA9209007F5C0D /* DepictionImageView.swift in Sources */,
@@ -2336,6 +2798,8 @@
 				F1C85B452325707A0064D3A2 /* SileoTableViewCell.swift in Sources */,
 				F139D09822EA9209007F5C0D /* DepictionSpacerView.swift in Sources */,
 				F139D0BC22EA9209007F5C0D /* DepictionStackView.swift in Sources */,
+				E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
+				E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				F139D11222EA9209007F5C0D /* DepictionSubheaderView.swift in Sources */,
 				F147E68722F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
 				F139D0B522EA9209007F5C0D /* DepictionTabControl.swift in Sources */,
@@ -2374,7 +2838,9 @@
 				F139D0A122EA9209007F5C0D /* FeaturedInfoFooterView.swift in Sources */,
 				F1053220244AD85E0042201C /* dpkgversion.swift in Sources */,
 				F139D0DA22EA9209007F5C0D /* FeaturedPackageView.swift in Sources */,
+				E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */,
 				F139D0C022EA9209007F5C0D /* FeaturedSeparatorView.swift in Sources */,
+				E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */,
 				F139D09B22EA9209007F5C0D /* FeaturedStackView.swift in Sources */,
 				F1D82F7D230959D400EECCAE /* FeaturedViewController.swift in Sources */,
@@ -2388,14 +2854,16 @@
 				F10531FF244A3F6E0042201C /* CydiaAccountViewController.swift in Sources */,
 				F139D0B022EA9209007F5C0D /* Hash.swift in Sources */,
 				FBBD003D240C31B4008E11B2 /* NewsViewController.swift in Sources */,
+				E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
 				F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */,
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
-				F1E4485924E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
 				FB6F3D3524AA68C700E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F13AEE7422F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
+				E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F1705FEF24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
 				172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */,
+				E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */,
 				172B2ED922F0A353000155B9 /* LicensesTableViewController.swift in Sources */,
 				F139D10B22EA9209007F5C0D /* Locks.swift in Sources */,
 				F1705FEC24CA1465001596A0 /* TabBarController.swift in Sources */,
@@ -2413,7 +2881,6 @@
 				F1CA758E244CF813000BA15C /* String+Error.swift in Sources */,
 				F147E67722F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262A23DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
-				F139D0AF22EA9209007F5C0D /* PackageVersionList.swift in Sources */,
 				F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68122F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
 				F1330EAA2324F76C00971073 /* UIColor-ThemeColors.swift in Sources */,
@@ -2441,7 +2908,7 @@
 				F139D0DC22EA9209007F5C0D /* ZKSwizzle.m in Sources */,
 				FBBD003B240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB42318EA6800D3AF3B /* main.swift in Sources */,
-				F139D11B22EA9209007F5C0D /* rootMeWrapper.swift in Sources */,
+				F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2457,12 +2924,14 @@
 				FB40264623E0FCAE002D97FE /* PaymentProfileHeaderView.swift in Sources */,
 				FB6F3D3124AA634E00E941F8 /* PaymentError.swift in Sources */,
 				F147E67C22F02EAB0048F868 /* CSGradientView.swift in Sources */,
+				E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */,
 				F147E68322F206C40048F868 /* CategoryViewController.swift in Sources */,
 				F1330EB42325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
 				F1330EAE23250CC200971073 /* SileoRootView.swift in Sources */,
 				F19FB39D22BF50D3008E986B /* ControlFileParser.swift in Sources */,
 				FB40263923DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
+				E1C90267263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1705FFE24CB7040001596A0 /* PackageButton.swift in Sources */,
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
 				F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */,
@@ -2472,6 +2941,7 @@
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,
 				F10531FB244A3B4D0042201C /* CydiaScraper.swift in Sources */,
+				499162C32607C06500D09BE7 /* UserDefaults+Optional.swift in Sources */,
 				F1C5D9C322D1847F0021BD89 /* DepictionButtonView.swift in Sources */,
 				FB40263323DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
 				F1705FE824CA1146001596A0 /* URLManager.swift in Sources */,
@@ -2482,6 +2952,7 @@
 				F1C5D9AB22D1583D0021BD89 /* DepictionImageView.swift in Sources */,
 				F1C5D9B422D160B50021BD89 /* DepictionLabelView.swift in Sources */,
 				F1C5D9A822D151A50021BD89 /* DepictionMarkdownViewSlow.swift in Sources */,
+				E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
 				FB40263023DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */,
 				F172581F24EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
@@ -2501,10 +2972,12 @@
 				F1C5D98F22D13AA90021BD89 /* DepictionStackView.swift in Sources */,
 				F1C5D9A522D148540021BD89 /* DepictionSubheaderView.swift in Sources */,
 				F147E68622F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
+				E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
 				F1C5D99522D13F480021BD89 /* DepictionTabControl.swift in Sources */,
 				F1C5D99822D141FF0021BD89 /* DepictionTabView.swift in Sources */,
 				F1C5D9BA22D16B7F0021BD89 /* DepictionTableButtonView.swift in Sources */,
 				F1C5D9B722D1696C0021BD89 /* DepictionTableTextView.swift in Sources */,
+				E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				FB6F3D2A24A9273300E941F8 /* PaymentProvider.swift in Sources */,
 				F170600124CCC7E6001596A0 /* PackageQueueButton.swift in Sources */,
 				F1C5D9ED22D1ABDC0021BD89 /* DepictionVideoView.swift in Sources */,
@@ -2543,6 +3016,7 @@
 				F1C5D9D222D189650021BD89 /* FeaturedStackView.swift in Sources */,
 				F1D82F7C230959D400EECCAE /* FeaturedViewController.swift in Sources */,
 				F1D6A62422E53E7000CBD045 /* FileManager+Utilities.swift in Sources */,
+				E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */,
 				F13AEE7C22F76DE6004BAA05 /* FileNode.swift in Sources */,
 				F170605C24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
 				172B2ED722F09E8F000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
@@ -2553,18 +3027,22 @@
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
-				F1E4485824E9A6E5002470AE /* DepictionFormViewController.swift in Sources */,
+				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F13AEE7922F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				F13AEE7322F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
 				F1705FEE24CA15A2001596A0 /* DownloadOverrideProviding.swift in Sources */,
 				172B2ED322F08D31000155B9 /* LicenseViewController.swift in Sources */,
+				E13BD7892646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
 				172B2ED522F08F8E000155B9 /* LicensesTableViewController.swift in Sources */,
 				F1D6A62822E53E7000CBD045 /* Locks.swift in Sources */,
 				F1705FEB24CA1465001596A0 /* TabBarController.swift in Sources */,
 				FB40262023DE2B9C002D97FE /* SettingsNavigationController.swift in Sources */,
 				F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */,
+				E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F147E67922F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				F1AB912722ED081E0054341B /* PackageIconView.swift in Sources */,
+				E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */,
+				49618DD6260515A40046C094 /* BackendWrapper.swift in Sources */,
 				F1DB3BCC22D57BD9008FCFA1 /* PackageListHeader.swift in Sources */,
 				F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */,
 				F1D82F1823050FED00EECCAE /* PackageListViewController.swift in Sources */,
@@ -2572,20 +3050,22 @@
 				F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F1CA758D244CF813000BA15C /* String+Error.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
+				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
 				F147E67622F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262923DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
-				F102D1F622CEE00700A4C9BA /* PackageVersionList.swift in Sources */,
 				F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68022F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
 				F1330EA92324F76C00971073 /* UIColor-ThemeColors.swift in Sources */,
 				FB40262323DE3279002D97FE /* CollectionViewTableViewCell.swift in Sources */,
 				F1705FF424CA16DD001596A0 /* Store.swift in Sources */,
 				FB208DC324D709B7000297FB /* SileoTheme.swift in Sources */,
+				49CE7CB12607F97C00A20711 /* AltIconTableViewController.swift in Sources */,
 				F1053218244AD2C30042201C /* verrevcmp.swift in Sources */,
 				F11E22DF2500345400CC58D1 /* NewsPlaceholderCollectionViewCell.swift in Sources */,
 				F16115D4244D8ABF003BF1E6 /* URL+Secure.swift in Sources */,
 				F1D6A63322E54C6700CBD045 /* Repo.swift in Sources */,
 				F1FF7A6724FAF0310088F88B /* FeaturedLayerView.swift in Sources */,
+				499162C42607C06500D09BE7 /* UIView+FromNib.swift in Sources */,
 				F1D6A62F22E53EF900CBD045 /* RepoManager.swift in Sources */,
 				F1DB3BCF22D58200008FCFA1 /* SourceErrorsViewController.swift in Sources */,
 				172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */,
@@ -2606,7 +3086,7 @@
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB32318EA6800D3AF3B /* main.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
-				F170DD7D22CFE79800196FDA /* rootMeWrapper.swift in Sources */,
+				F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2614,7 +3094,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F18FD5A522DBBC28002DA8CB /* SileoTests.swift in Sources */,
+				E1152F39264051BB008C7D5D /* SileoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2629,16 +3109,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C30E7BF7216EA3AE00C38AE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = C30E7BF6216EA3AE00C38AE8 /* PBXContainerItemProxy */;
-		};
-		CFBC7FD1221D7F310066D501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = CFBC7FD0221D7F310066D501 /* PBXContainerItemProxy */;
-		};
 		CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LNPopupController;
@@ -2679,14 +3149,34 @@
 				F15B268622765E5900B57E06 /* es */,
 				F15B268A2276604900B57E06 /* fr */,
 				F1EC3E5422767B0D00BEC825 /* it */,
-				F1545B6322796E2500D0E4D4 /* zh */,
-				F17AAA94227ABFAF00E5C604 /* fr-CA */,
 				F15E9E332282D2F40044344F /* de */,
 				F15E9E372282D4210044344F /* ja */,
 				F15E9E3B2282D4A90044344F /* ko */,
 				F15E9E3F2282D54B0044344F /* tr */,
 				F15E9E432282D5F40044344F /* th */,
 				36A4571F24CAA74600390334 /* zh-Hant */,
+				E1B3FBBA2601256500F2E07F /* pt-BR */,
+				1B2E137226162CB1005C380C /* af */,
+				1B2E137626162CF4005C380C /* ar */,
+				1B2E137A26162D35005C380C /* ca */,
+				1B2E137E26162D6D005C380C /* cs */,
+				1B2E138226162DF1005C380C /* da */,
+				1B2E138626162E2C005C380C /* zh-Hans */,
+				1B2E138A26162EDE005C380C /* pt */,
+				1B2E138E26162EFF005C380C /* nl */,
+				1B2E139226162FB3005C380C /* el */,
+				1B2E139626162FD3005C380C /* ms */,
+				1B2E139A26163010005C380C /* fi */,
+				1B2E139E26163070005C380C /* he */,
+				1B2E13A22616308E005C380C /* hu */,
+				1B2E13A626163198005C380C /* nb */,
+				1B2E13AA2616320B005C380C /* pl */,
+				1B2E13AE2616323D005C380C /* ru */,
+				1B2E13B226163267005C380C /* ro */,
+				1B2E13B62616329C005C380C /* sr */,
+				1B2E13BA261632A8005C380C /* sv */,
+				1B2E13BE261632F9005C380C /* uk */,
+				1B2E13C226163313005C380C /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2698,14 +3188,34 @@
 				F15B268922765E5A00B57E06 /* es */,
 				F15B268D2276604A00B57E06 /* fr */,
 				F1EC3E5722767B0E00BEC825 /* it */,
-				F1545B6622796E2600D0E4D4 /* zh */,
-				F17AAA97227ABFAF00E5C604 /* fr-CA */,
 				F15E9E362282D2F40044344F /* de */,
 				F15E9E3A2282D4220044344F /* ja */,
 				F15E9E3E2282D4A90044344F /* ko */,
 				F15E9E422282D54C0044344F /* tr */,
 				F15E9E462282D5F40044344F /* th */,
 				36A4572224CAA74600390334 /* zh-Hant */,
+				E1B3FBBD2601256600F2E07F /* pt-BR */,
+				1B2E137126162CB1005C380C /* af */,
+				1B2E137526162CF4005C380C /* ar */,
+				1B2E137926162D35005C380C /* ca */,
+				1B2E137D26162D6D005C380C /* cs */,
+				1B2E138126162DF1005C380C /* da */,
+				1B2E138526162E2C005C380C /* zh-Hans */,
+				1B2E138926162EDE005C380C /* pt */,
+				1B2E138D26162EFF005C380C /* nl */,
+				1B2E139126162FB3005C380C /* el */,
+				1B2E139526162FD2005C380C /* ms */,
+				1B2E13992616300F005C380C /* fi */,
+				1B2E139D26163070005C380C /* he */,
+				1B2E13A12616308E005C380C /* hu */,
+				1B2E13A526163198005C380C /* nb */,
+				1B2E13A92616320B005C380C /* pl */,
+				1B2E13AD2616323D005C380C /* ru */,
+				1B2E13B126163266005C380C /* ro */,
+				1B2E13B52616329C005C380C /* sr */,
+				1B2E13B9261632A8005C380C /* sv */,
+				1B2E13BD261632F9005C380C /* uk */,
+				1B2E13C126163313005C380C /* vi */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -2717,14 +3227,34 @@
 				F15B268822765E5A00B57E06 /* es */,
 				F15B268C2276604900B57E06 /* fr */,
 				F1EC3E5622767B0D00BEC825 /* it */,
-				F1545B6522796E2500D0E4D4 /* zh */,
-				F17AAA96227ABFAF00E5C604 /* fr-CA */,
 				F15E9E352282D2F40044344F /* de */,
 				F15E9E392282D4220044344F /* ja */,
 				F15E9E3D2282D4A90044344F /* ko */,
 				F15E9E412282D54C0044344F /* tr */,
 				F15E9E452282D5F40044344F /* th */,
 				36A4572124CAA74600390334 /* zh-Hant */,
+				E1B3FBBC2601256500F2E07F /* pt-BR */,
+				1B2E137026162CB1005C380C /* af */,
+				1B2E137426162CF4005C380C /* ar */,
+				1B2E137826162D35005C380C /* ca */,
+				1B2E137C26162D6D005C380C /* cs */,
+				1B2E138026162DF1005C380C /* da */,
+				1B2E138426162E2C005C380C /* zh-Hans */,
+				1B2E138826162EDE005C380C /* pt */,
+				1B2E138C26162EFF005C380C /* nl */,
+				1B2E139026162FB2005C380C /* el */,
+				1B2E139426162FD2005C380C /* ms */,
+				1B2E13982616300F005C380C /* fi */,
+				1B2E139C26163070005C380C /* he */,
+				1B2E13A02616308E005C380C /* hu */,
+				1B2E13A426163198005C380C /* nb */,
+				1B2E13A82616320B005C380C /* pl */,
+				1B2E13AC2616323D005C380C /* ru */,
+				1B2E13B026163266005C380C /* ro */,
+				1B2E13B42616329C005C380C /* sr */,
+				1B2E13B8261632A7005C380C /* sv */,
+				1B2E13BC261632F9005C380C /* uk */,
+				1B2E13C026163312005C380C /* vi */,
 			);
 			name = Categories.strings;
 			sourceTree = "<group>";
@@ -2736,14 +3266,34 @@
 				F15B268722765E5900B57E06 /* es */,
 				F15B268B2276604900B57E06 /* fr */,
 				F1EC3E5522767B0D00BEC825 /* it */,
-				F1545B6422796E2500D0E4D4 /* zh */,
-				F17AAA95227ABFAF00E5C604 /* fr-CA */,
 				F15E9E342282D2F40044344F /* de */,
 				F15E9E382282D4220044344F /* ja */,
 				F15E9E3C2282D4A90044344F /* ko */,
 				F15E9E402282D54C0044344F /* tr */,
 				F15E9E442282D5F40044344F /* th */,
 				36A4572024CAA74600390334 /* zh-Hant */,
+				E1B3FBBB2601256500F2E07F /* pt-BR */,
+				1B2E137326162CB1005C380C /* af */,
+				1B2E137726162CF4005C380C /* ar */,
+				1B2E137B26162D36005C380C /* ca */,
+				1B2E137F26162D6E005C380C /* cs */,
+				1B2E138326162DF1005C380C /* da */,
+				1B2E138726162E2C005C380C /* zh-Hans */,
+				1B2E138B26162EDE005C380C /* pt */,
+				1B2E138F26162EFF005C380C /* nl */,
+				1B2E139326162FB3005C380C /* el */,
+				1B2E139726162FD3005C380C /* ms */,
+				1B2E139B26163010005C380C /* fi */,
+				1B2E139F26163071005C380C /* he */,
+				1B2E13A32616308E005C380C /* hu */,
+				1B2E13A726163198005C380C /* nb */,
+				1B2E13AB2616320C005C380C /* pl */,
+				1B2E13AF2616323D005C380C /* ru */,
+				1B2E13B326163267005C380C /* ro */,
+				1B2E13B72616329C005C380C /* sr */,
+				1B2E13BB261632A8005C380C /* sv */,
+				1B2E13BF261632FA005C380C /* uk */,
+				1B2E13C326163313005C380C /* vi */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -2769,14 +3319,13 @@
 /* Begin XCBuildConfiguration section */
 		F139D14A22EA9209007F5C0D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1546CE4D34FD87CCC54164DE /* Pods-Sileo Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7T4TYRQ8MT;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -2791,34 +3340,25 @@
 					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
-				INFOPLIST_FILE = "Sileo Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0b9;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = (
+					"-flto",
 					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/HCSStarRatingView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/MMMarkdown\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/RATreeView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-flto",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
@@ -2834,13 +3374,12 @@
 		};
 		F139D14B22EA9209007F5C0D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FACE6B550508D9BA39986742 /* Pods-Sileo Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7T4TYRQ8MT;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2851,34 +3390,25 @@
 					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
-				INFOPLIST_FILE = "Sileo Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0b9;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = (
+					"-flto",
 					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/HCSStarRatingView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/MMMarkdown\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/RATreeView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-flto",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
@@ -2893,6 +3423,7 @@
 		};
 		F149E0DA20B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -2952,6 +3483,7 @@
 		};
 		F149E0DB20B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -3006,14 +3538,12 @@
 		};
 		F149E0DD20B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A37B2E1BFC2EDB87A0534A23 /* Pods-Sileo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -3029,13 +3559,17 @@
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3057,10 +3591,12 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -3070,14 +3606,13 @@
 		};
 		F149E0DE20B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7EC64EEC60AF07BEC697D2B /* Pods-Sileo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
@@ -3088,13 +3623,17 @@
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /usr/lib/libswift/stable";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3116,10 +3655,12 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3128,15 +3669,17 @@
 		};
 		F149E0E020B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F188EBBAD9C8BC188BF0448 /* Pods-SileoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCM49M8P5K;
 				INFOPLIST_FILE = SileoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3148,15 +3691,17 @@
 		};
 		F149E0E120B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23AF36DCE24808B7AB19793A /* Pods-SileoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCM49M8P5K;
 				INFOPLIST_FILE = SileoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -3167,13 +3712,15 @@
 		};
 		F149E0E320B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EECEE22370A2CBADA8548FBF /* Pods-SileoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCM49M8P5K;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3183,13 +3730,15 @@
 		};
 		F149E0E420B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E790B6ED939BCE9216A3AEB6 /* Pods-SileoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCM49M8P5K;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3246,6 +3795,192 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+		E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+		E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+		E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+		E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
+		E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.10;
+			};
+		};
+		E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/Alderis";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/LNZTreeView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/AUPickerCell";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E13638C92614F53400698D55 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		E13638D32614F59000698D55 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		E13638D82614F5AA00698D55 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		E13638E72614F66400698D55 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E13638F12614F6C000698D55 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		E13638F62614F6E300698D55 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+		E1942229265AEF7C0039EFEF /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E194222E265AEF850039EFEF /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E19A53412617438700BB8A69 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		E19A53452617439300BB8A69 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D22614F59000698D55 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		E19A53472617439700BB8A69 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		E19A534D261743A300BB8A69 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638E62614F66400698D55 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E19A5351261743B300BB8A69 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+		E19A5353261743BA00BB8A69 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		E19A5355261743BD00BB8A69 /* LNZTreeView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
+			productName = LNZTreeView;
+		};
+		E19A5357261743C200BB8A69 /* AUPickerCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
+			productName = AUPickerCell;
+		};
+		E1A8B6302656DF04009C43EA /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E1A8B6352656DF15009C43EA /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
+			productName = LNZTreeView;
+		};
+		E1EA1D05261500A100E56882 /* AUPickerCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
+			productName = AUPickerCell;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F149E0A520B6040B005CA30B /* Project object */;
 }

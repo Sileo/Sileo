@@ -82,13 +82,13 @@ class APTWrapper {
         return dictionary
     }
     
-    //APT syntax: a- = remove a; b = install b
+    // APT syntax: a- = remove a; b = install b
     public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) -> [String: [[String: Any]]] {
-        var arguments = ["-sqf", "--allow-remove-essential",
+        var arguments = ["-sqf", "--allow-remove-essential", "--allow-change-held-packages",
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
                          "-oApt::Get::HideAutoRemove=true", "-oquiet::NoProgress=true",
                          "-oquiet::NoStatistic=true", "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
-                         "-oAPT::Get::Show-User-Simulation-Note=False",
+                         "-oAcquire::AllowUnsizedPackages=true", "-oAPT::Get::Show-User-Simulation-Note=False",
                          "-oAPT::Format::for-sileo=true", "install", "--reinstall"]
         for package in installs {
             if package.package.package.contains("/") {
@@ -101,7 +101,6 @@ class APTWrapper {
             arguments.append(package.package.package + "-")
         }
         
-        var status: Int = 0
         var aptOutput = ""
         var aptErrorOutput = ""
         
@@ -125,7 +124,7 @@ class APTWrapper {
         if installs.isEmpty && removals.isEmpty {
             aptOutput = ""
         } else {
-            (status, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
+            (_, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
         }
         #endif
         
@@ -229,9 +228,11 @@ class APTWrapper {
     
     public class func verifySignature(key: String, data: String, error: inout String) -> Bool {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        error = "GnuPG not available in iOS Simulator"
+        
+        error = "GnuPG not available in sandboxed environment"
         return false
-        #endif
+        
+        #else
         
         let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/apt-key", "verify", "-q", "--status-fd", "1", key, data])
         
@@ -274,6 +275,8 @@ class APTWrapper {
             }
         }
         return keyIsGood && keyIsTrusted
+        
+        #endif
     }
     
     public class func performOperations(installs: [DownloadPackage],
@@ -285,27 +288,22 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         
-        #warning("TODO: remove --allow-unauthenticated")
-        var arguments = ["apt-get", "install", "--reinstall", "--allow-unauthenticated",
-                         "--allow-downgrades", "--no-download", "--allow-remove-essential",
+        var arguments = ["/usr/bin/apt-get", "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
+                        "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
-                         "-o", "APT::Sandbox::User=root"]
+                         "-o", "Acquire::AllowUnsizedPackages=true", "-o", "APT::Sandbox::User=root"]
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version
             if package.package.package.contains("/") {
                 packagesStr = package.package.package
             }
-            packagesStr = "\"\(packagesStr)\""
             arguments.append(packagesStr)
         }
         for package in removals {
-            var packageStr = package.package.package + "-"
-            packageStr = "\"\(packageStr)\""
+            let packageStr = package.package.package + "-"
             arguments.append(packageStr)
         }
-        
-        let command = "CYDIA=\"6 1\" SILEO=\"6 1\" " + arguments.joined(separator: " ")
         
         DispatchQueue.global(qos: .default).async {
             var oldApps = APTWrapper.dictionaryOfScannedApps()
@@ -323,10 +321,11 @@ class APTWrapper {
             pipe(&pipesileo)
             
             guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipestatusfd[0], F_SETFL, O_NONBLOCK) != -1,
-                fcntl(pipesileo[0], F_SETFL, O_NONBLOCK) != -1 else {
-                    fatalError("Unable to set attributes on pipe")
+                  fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1,
+                  fcntl(pipestatusfd[0], F_SETFL, O_NONBLOCK) != -1,
+                  fcntl(pipesileo[0], F_SETFL, O_NONBLOCK) != -1
+            else {
+                fatalError("Unable to set attributes on pipe")
             }
             
             var fileActions: posix_spawn_file_actions_t?
@@ -344,14 +343,26 @@ class APTWrapper {
             posix_spawn_file_actions_addclose(&fileActions, pipestatusfd[1])
             posix_spawn_file_actions_addclose(&fileActions, pipesileo[1])
             
-            let args = ["giveMeRoot", command]
+            arguments.insert("giveMeRoot", at: 0)
             
-            let argv: [UnsafeMutablePointer<CChar>?] = args.map { $0.withCString(strdup) }
-            defer { for case let arg? in argv { free(arg) } }
+            let argv: [UnsafeMutablePointer<CChar>?] = arguments.map { $0.withCString(strdup) }
+            defer {
+                for case let arg? in argv {
+                    free(arg)
+                }
+            }
+            
+            let environment = ["SILEO=6 1", "CYDIA=6 1"]
+            let env: [UnsafeMutablePointer<CChar>?] = environment.map { $0.withCString(strdup) }
+            defer {
+                for case let key? in env {
+                    free(key)
+                }
+            }
             
             var pid: pid_t = 0
             
-            let retVal = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], environ)
+            let retVal = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
             if retVal < 0 {
                 return
             }
@@ -542,20 +553,21 @@ class APTWrapper {
                 }
                 
                 let diff = newApps.merging(oldApps) { current, _ in current }
-                
                 for appName in diff.keys {
                     let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
-                    NSLog("[Sileo] App Path = \(appPath.path)")
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
-                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", appPath.path])
+                        DispatchQueue.global(qos: .default).async {
+                            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                        }
                     }
                 }
             }
-            
-            spawnAsRoot(command: "/usr/bin/apt-get clean")
-            
+            spawnAsRoot(args: ["/usr/bin/apt-get", "clean"])
+            for file in DownloadManager.shared.cachedFiles {
+                deleteFileAsRoot(file)
+            }
             completionCallback(Int(status), finish, refreshSileo)
         }
     }

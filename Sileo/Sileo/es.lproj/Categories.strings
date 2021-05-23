@@ -2,18 +2,18 @@
   Categories.strings
   Sileo
 
-  Created by OfficialHoSay on 2019-04-28.
+  Created by AppleBetas on 2018-12-28.
   Copyright © 2018 CoolStar. All rights reserved.
  
- SPANISH LOCALISATIONS
+ LOCALISATIONS
 */
 
 "No_Category" = "(Sin Categoría)";
-"Tweaks" = "Tweaks";
+"Tweaks" = "Paquetes";
 "Themes" = "Temas";
 "Utilities" = "Utilidades";
 "Applications" = "Aplicaciones";
-"Addons" = "Addons";
+"Addons" = "Complementos";
 "Games" = "Juegos";
 "Developer" = "Desarrollador";
 "Data_Storage" = "Almacenamiento de Datos";

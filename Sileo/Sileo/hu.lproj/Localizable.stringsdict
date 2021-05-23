@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Auto_Add_Pasteboard_Sources.Title</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@sources@ automatikus hozzáadása</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>Forrás</string>
+        <key>other</key>
+        <string>Források</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%lu %#@sources@ hozzáadása</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>forrás</string>
+        <key>other</key>
+        <string>forrás</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>A vágólapon talált %#@urls@ hozzáadása:</string>
+      <key>urls</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>one</key>
+        <string>URL</string>
+        <key>other</key>
+        <string>URL-ek</string>
+      </dict>
+    </dict>
+    <key>Package_Queue_Count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@packages@</string>
+      <key>packages</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>one</key>
+        <string>%d csomag</string>
+        <key>other</key>
+        <string>%d csomag</string>
+      </dict>
+    </dict>
+  </dict>
+</plist>

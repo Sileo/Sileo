@@ -16,7 +16,7 @@ class SettingsColorTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = nil
+        backgroundColor = .clear
         
         let colorPreview = UIView(frame: CGRect(x: 0, y: 0, width: 29, height: 29))
         colorPreview.backgroundColor = .tintColor

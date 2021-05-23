@@ -29,6 +29,16 @@ final class Repo: Equatable {
     var packages: [Package]?
     var packagesProvides: [Package]?
     var packagesDict: [String: Package]?
+    var installedCount = 0
+    
+    var releaseDict: [String: String]? {
+        let releaseFile = RepoManager.shared.cacheFile(named: "Release", for: self)
+        if let info = try? String(contentsOf: releaseFile),
+           let release = try? ControlFileParser.dictionary(controlFile: info, isReleaseFile: true).0 {
+            return release
+        }
+        return nil
+    }
     
     var totalProgress: CGFloat {
         let startProgress: CGFloat = startedRefresh ? 0.1 : 0.0
@@ -72,6 +82,10 @@ final class Repo: Equatable {
         }
     }
     
+    var isFlat: Bool {
+        suite.hasSuffix("/") || components.isEmpty
+    }
+    
     func packagesURL(arch: String?) -> URL? {
         guard var packagesDir = primaryComponentURL else {
             return nil
@@ -81,10 +95,6 @@ final class Repo: Equatable {
             packagesDir = packagesDir.appendingPathComponent("binary-".appending(arch))
         }
         return packagesDir.appendingPathComponent("Packages")
-    }
-    
-    var isFlat: Bool {
-        suite.hasSuffix("/") || components.isEmpty
     }
 }
 

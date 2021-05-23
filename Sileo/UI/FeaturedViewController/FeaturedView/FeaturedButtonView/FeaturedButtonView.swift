@@ -26,33 +26,36 @@ class FeaturedButtonView: FeaturedBaseView {
         }
         
         yPadding = (dictionary["yPadding"] as? CGFloat) ?? 0
-        
         button = FeaturedButton(type: .custom)
         
         self.action = action
         backupAction = (dictionary["backupAction"] as? String) ?? ""
-        
         openExternal = (dictionary["openExternal"] as? Bool) ?? false
-        
         isLink = (dictionary["isLink"] as? Bool) ?? false
         
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
         
-        if let rawView = dictionary["view"] as? [String: Any],
-            let view = FeaturedBaseView.view(dictionary: rawView, viewController: viewController, tintColor: isLink ? tintColor : .white, isActionable: true) {
-            view.isUserInteractionEnabled = false
-            button.addSubview(view)
-            self.subView = view
+        var depictView: DepictionBaseView?
+        if let dict = dictionary["view"] as? [String: Any] {
+            let color = isLink ? tintColor : .white
+            depictView = FeaturedBaseView.view(dictionary: dict, viewController: viewController, tintColor: color, isActionable: true)
+        }
+        
+        if let depictView = depictView {
+            self.subView = depictView
+            depictView.isUserInteractionEnabled = false
+            
+            button.addSubview(depictView)
         } else if let text = dictionary["text"] as? String {
             button.setTitle(text, for: .normal)
         }
+        
+        button.isLink = isLink
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         if !isLink {
             button.layer.cornerRadius = 10
         }
         button.addTarget(self, action: #selector(FeaturedButtonView.buttonTapped), for: .touchUpInside)
-        
-        button.isLink = isLink
         self.addSubview(button)
     }
     

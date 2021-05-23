@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+ */
+
+"Unknown" = "Произошла ошибка.";
+"Error_Indicator" = "Ошибка: %@";
+
+"No_Package.Title" = "Не удалось найти пакет %@ в добавленных репозиториях.";
+"No_Package.Body" = "Если он новый, дождитесь конца обновления Sileo, затем попробуйте снова. Посмотрите онлайн для получения дополнительной помощи.";
+
+"Invalid_URL.Title" = "Неверный URL";
+
+"Download_Size_Mismatch" = "Ожидался размер %@, вместо, получен %@.";
+"Download_Failing_Status_Code" = "Ошиька сос статусом %ld";
+"Download_Hash_Mismatch" = "Ожидался хэш %@, вместо, получен %@.";
+"Untrusted_Package" = "Пакет %@ ненадежный и не может быть проверен";
+
+"Insecure_Paid_Download" = "URL скачивания оплаченных авторизированных пакетов должны быть защищенными (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "Поставщик платежа вернул неверный ответ.";
+"No_Payment_Provider" = "Этот репозиторий не поддерживает покупки Sileo. Если это купленный пакет из Cydia Store, вы можете подключить свой аккаунт.";
+
+"Package_Unavailable" = "Этот пакет недоступен в ваших добавленных репозиториях. Пожалуйста, проверьте, что репозиторий %@ доступен.";
+
+"Installation_Error.Title" = "Ошибка при установке";
+"Installation_Error.Body" = "Sileo не удалось получить root-права. Пожалуйста, переустановите Sileo с помощью SSH.";
+
+"FixingDpkg.Title" = "Dpkg прерван";
+"FixingDpkg.Body" = "Dpkg был прерван. Пожалуйста, подождите, пока мы пытаемся устранить ошибку.";
+
+"Invalid_Data" = "Неверные данные";
+"Try_Later" = "Пожалуйста, попробуйте позже.";
+
+"Sileo_Update_Required.Title" = "Требуется обновление Sileo";
+"Featured_Requires_Sileo_Update" = "Требуется обновление Sileo для вкладки избранного. Вкладка избранного может быть неправильно отображена.";
+"Depiction_Requires_Sileo_Update" = "Требуется обновление Sileo для этой страницы. Эта страница может быть неправильно отображена.";
+
+"Form_Error.Title" = "Не удалось загрузить форму";
+"Form_Load_Error" = "Не удалось загрузить форму с сервера.";
+"Invalid_Form_Data" = "Сервер предоставил неверную форму данных.";
+"Form_Submit_Failure" = "Произошла ошибка при попытке отправить форму: %@";
+"Form_Submit_Error.Title" = "Не получилось отправить форму";
+"Form_Action_Host_Mismatch" = "URL формы действия хоста не совпадает с оригинальным хостом формы.";
+
+"Email_Unavailable.Title" = "Не удалось отправить email";
+"Email_Unavailable.Body" = "Сервисы почты недоступны.";
+
+"Settings_Payment_Provider.Profile.Title" = "Не удалось загрузить профиль";
+
+"Provider_Auth_Fail.Title" = "Не удалось аутентифицировать поставщика";
+"Purchase_Initiate_Fail.Title" = "Не удалось инициировать покупку";
+"Purchase_Complete_Fail.Title" = "Не удалось завершить покупку";
+"Purchase_Auth_Complete_Fail.Title" = "Не удалось завершить аутентифицирование";

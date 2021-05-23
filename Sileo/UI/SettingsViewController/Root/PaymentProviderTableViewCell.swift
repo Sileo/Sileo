@@ -6,8 +6,7 @@
 //  Copyright © 2020 CoolStar. All rights reserved.
 //
 
-import Foundation
-import SDWebImage
+import UIKit
 
 class PaymentProviderTableViewCell: UITableViewCell {
     private var titleLabel: UILabel = UILabel()
@@ -62,10 +61,19 @@ class PaymentProviderTableViewCell: UITableViewCell {
                     self.setImage(nil)
                     let url = info["icon"] as? String ?? ""
                     if !url.isEmpty {
-                        self.iconView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(), options: SDWebImageOptions(rawValue: 0)) { image, _, _, _ in
-                            DispatchQueue.main.async {
-                                self.setImage(image)
+                        if let image = AmyNetworkResolver.shared.image(url, size: self.imageView?.frame.size, { [weak self] refresh, image in
+                            if refresh,
+                               let strong = self,
+                               let image = image,
+                               url == strong.provider?.info?["icon"] as? String {
+                                DispatchQueue.main.async {
+                                    strong.setImage(image)
+                                }
                             }
+                        }) {
+                            self.setImage(image)
+                        } else {
+                            self.setImage(nil)
                         }
                     }
                     if self.isAuthenticated {
@@ -74,7 +82,8 @@ class PaymentProviderTableViewCell: UITableViewCell {
                                 if let userInfo = userInfo as [String: Any]? {
                                     if let user = userInfo["user"] as? [String: String],
                                         let username = user["name"] {
-                                        self.subtitleLabel.text = String(format: String(localizationKey: "Payment_Provider_Signed_In_With_Name"), username)
+                                        let string = String(localizationKey: "Payment_Provider_Signed_In_With_Name")
+                                        self.subtitleLabel.text = String(format: string, username)
                                     }
                                 }
                             }

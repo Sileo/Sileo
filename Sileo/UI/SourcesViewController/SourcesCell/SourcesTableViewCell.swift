@@ -12,23 +12,33 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     public var repo: Repo? = nil {
         didSet {
             if let repo = repo {
-                self.title = repo.isLoaded ? repo.displayName : nil
+                self.title = repo.displayName
                 self.subtitle = repo.displayURL
-                self.icon = repo.repoIcon
                 self.progress = repo.totalProgress
+                self.image(repo)
+                installedLabel.text = "\(repo.installedCount)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
                 self.icon = UIImage(named: "All Packages")
                 self.progress = 0
+                installedLabel.text = "\(PackageListManager.shared.installedPackages?.count ?? 0)"
             }
         }
     }
+    public var installedLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.accessoryView = UIImageView(image: UIImage(named: "Chevron"))
+        accessoryView = UIImageView(image: UIImage(named: "Chevron"))
+        
+        contentView.addSubview(installedLabel)
+        installedLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.trailingAnchor.constraint(equalTo: installedLabel.trailingAnchor, constant: 7.5).isActive = true
+        installedLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        installedLabel.font = UIFont.systemFont(ofSize: 12)
+        installedLabel.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -38,5 +48,32 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.repo = nil
+    }
+    
+    private func image(_ repo: Repo) {
+        // Quite frankly the backend here sucks ass, so if you open the sources page too quick after launching the image will not be set
+        // This will pull it from local cache in the event that we're too quick. If doesn't exist in Cache, show the default icon
+        if repo.url?.host == "apt.thebigboss.org" {
+            self.icon = UIImage(named: "BigBoss")
+            return
+        }
+        if let icon = repo.repoIcon {
+            self.icon = icon
+            return
+        }
+        let scale = Int(UIScreen.main.scale)
+        for i in (1...scale).reversed() {
+            let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
+            if let iconURL = URL(string: repo.repoURL)?
+                .appendingPathComponent(filename)
+                .appendingPathExtension("png") {
+                let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                if let image = cache.1 {
+                    self.icon = image
+                    return
+                }
+            }
+        }
+        self.icon = UIImage(named: "Repo Icon")
     }
 }

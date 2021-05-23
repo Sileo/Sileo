@@ -6,13 +6,12 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import Foundation
-import SDWebImage
+import UIKit
 
 class DepictionImageView: DepictionBaseView {
     let alignment: Int
 
-    let imageView: SDAnimatedImageView?
+    let imageView: UIImageView?
 
     var width: CGFloat
     var height: CGFloat
@@ -35,14 +34,28 @@ class DepictionImageView: DepictionBaseView {
         alignment = (dictionary["alignment"] as? Int) ?? 0
         xPadding = (dictionary["xPadding"] as? CGFloat) ?? CGFloat(0)
 
-        imageView = SDAnimatedImageView(frame: .zero)
+        imageView = UIImageView(frame: .zero)
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-
-        imageView?.sd_setImage(with: URL(string: url)) { image, _, _, _ in
-            guard let size = image?.size else {
-                return
+        if let image = AmyNetworkResolver.shared.image(url, { [weak self] refresh, image in
+            if refresh,
+               let strong = self,
+               let image = image {
+                DispatchQueue.main.async {
+                    strong.imageView?.image = image
+                    let size = image.size
+                    if strong.width == 0 {
+                        strong.width = strong.height * (size.width/size.height)
+                    }
+                    if strong.height == 0 {
+                        strong.height = strong.width * (size.height/size.width)
+                    }
+                    strong.delegate?.subviewHeightChanged()
+                }
             }
+        }) {
+            imageView?.image = image
+            let size = image.size
             if self.width == 0 {
                 self.width = self.height * (size.width/size.height)
             }
@@ -51,6 +64,7 @@ class DepictionImageView: DepictionBaseView {
             }
             self.delegate?.subviewHeightChanged()
         }
+
         imageView?.layer.cornerRadius = cornerRadius
         imageView?.contentMode = .scaleAspectFill
         imageView?.clipsToBounds = true

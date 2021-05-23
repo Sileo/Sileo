@@ -62,51 +62,54 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     private var currentNavBarOpacity = CGFloat(0)
 
     private var isUpdatingPurchaseStatus = false
-
-    private func isValidRootClass(className: String, host: String) -> Bool {
-        host == "repotest.shuga.co" || host == "repo.chariz.com" || host == "repo.dynastic.co" || className == "DepictionTabView" || host == "coolstar.moe"
-    }
     
     private func parseNativeDepiction(_ data: Data, host: String, failureCallback: (() -> Void)?) {
         guard let rawJSON = try? JSONSerialization.jsonObject(with: data, options: []),
-            let rawDepiction = rawJSON as? [String: Any],
-            let className = rawDepiction["class"] as? String,
-            isValidRootClass(className: className, host: host) else {
+              let rawDepict = rawJSON as? [String: Any]
+        else {
             failureCallback?()
             return
         }
-        DispatchQueue.main.async {
-            if let rawTintColor = rawDepiction["tintColor"] as? String,
-                let tintColor = UIColor(css: rawTintColor) {
+        DispatchQueue.main.sync {
+            if let rawTintColor = rawDepict["tintColor"] as? String, let tintColor = UIColor(css: rawTintColor) {
                 self.depictionFooterView?.tintColor = tintColor
                 self.downloadButton.tintColor = tintColor
                 self.downloadButton.updateStyle()
                 self.navBarDownloadButton?.tintColor = tintColor
                 self.navBarDownloadButton?.updateStyle()
             }
-
-            guard let depictionView = DepictionBaseView.view(dictionary: rawDepiction, viewController: self, tintColor: nil, isActionable: false) else {
+            
+            let oldDepictView = self.depictionView
+            guard let newDepictView = DepictionBaseView.view(dictionary: rawDepict, viewController: self, tintColor: nil, isActionable: false) else {
                 return
             }
-            self.depictionView?.delegate = nil
-            depictionView.delegate = self
-
-            if let headerImage = rawDepiction["headerImage"] as? String {
-                self.depictionBackgroundView.sd_setImage(with: URL(string: headerImage))
+            
+            oldDepictView?.delegate = nil
+            newDepictView.delegate = self
+            
+            if let imageURL = rawDepict["headerImage"] as? String {
+                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
+                    if refresh,
+                       let strong = self,
+                       let image = image {
+                        DispatchQueue.main.async {
+                            strong.depictionBackgroundView.image = image
+                        }
+                    }
+                }
             }
-
-            let oldDepictionView = self.depictionView
-            self.depictionView = depictionView
-            self.depictionView?.alpha = 0.1
-
-            self.contentView.addSubview(depictionView)
+            
+            newDepictView.alpha = 0.1
+            self.depictionView = newDepictView
+            self.contentView.addSubview(newDepictView)
             self.viewDidLayoutSubviews()
+            
             UIView.animate(withDuration: 0.25, animations: {
-                oldDepictionView?.alpha = 0
-                depictionView.alpha = 1
+                oldDepictView?.alpha = 0
+                newDepictView.alpha = 1
             }, completion: { _ in
-                oldDepictionView?.removeFromSuperview()
-                if let minVersion = rawDepiction["minVersion"] as? String,
+                oldDepictView?.removeFromSuperview()
+                if let minVersion = rawDepict["minVersion"] as? String,
                     minVersion.compare(StoreVersion) == .orderedDescending {
                     self.versionTooLow()
                 }
@@ -236,9 +239,19 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let iconURL = URL(string: rawIcon)
-            packageIconView.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "Tweak Icon"))
-            packageNavBarIconView?.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "Tweak Icon"))
+            let image = AmyNetworkResolver.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
+                if refresh,
+                    let strong = self,
+                    let image = image,
+                    strong.package?.icon == rawIcon {
+                        DispatchQueue.main.async {
+                            strong.packageIconView.image = image
+                            strong.packageNavBarIconView?.image = image
+                        }
+                }
+            } ?? UIImage(named: "Tweak Icon")
+            packageIconView.image = image
+            packageNavBarIconView?.image = image
         }
 
         var rawDescription: [[String: Any]] = [
@@ -251,7 +264,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if package.legacyDepiction != nil && package.depiction == nil {
             rawDescription.append([
                 "class": "DepictionTableButtonView",
-                "title": "View Depiction",
+                "title": String(localizationKey: "View_Depiction"),
                 "action": package.legacyDepiction ?? ""
             ] as [String: Any])
         }
@@ -388,9 +401,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : weakNavController
+        
         allowNavbarUpdates = false
-        let navController = (splitViewController?.isCollapsed ?? false) ? (splitViewController?.viewControllers[0] as? UINavigationController) : weakNavController
         currentNavBarOpacity = navController?.navigationBar._backgroundOpacity ?? 1
+        
         UIView.animate(withDuration: 0.8) {
             navController?.navigationBar.tintColor = UINavigationBar.appearance().tintColor
             navController?.navigationBar._backgroundOpacity = 1
@@ -398,7 +415,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //do header view scaling magic
+        // do header view scaling magic
         let headerBounds = depictionHeaderView.bounds
         var aspectRatio = headerBounds.width / headerBounds.height
         if headerBounds.height == 0 {
@@ -419,12 +436,12 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         depictionBackgroundView.frame = headerBackgroundFrame
         depictionBackgroundShadow.frame = headerBackgroundFrame
 
-        //doing the magic on the nav bar "GET" button and package icon
+        // doing the magic on the nav bar "GET" button and package icon
         let downloadButtonPos = downloadButton.convert(downloadButton.bounds, to: scrollView)
         let container = CGRect(origin: CGPoint(x: scrollView.contentOffset.x,
                                                y: scrollView.contentOffset.y + 106 - UIApplication.shared.statusBarFrame.height),
                                size: scrollView.frame.size)
-        //TLDR: magic starts when scrolling out the lower half of the button so we don't have duplicated button too early
+        // TLDR: magic starts when scrolling out the lower half of the button so we don't have duplicated button too early
         var navBarAlphaOffset = scrollView.contentOffset.y * 1.75 / depictionHeaderImageViewHeight.constant
         if depictionHeaderImageViewHeight.constant == 0 {
             navBarAlphaOffset = 0
@@ -462,8 +479,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             return
         }
         
-        let navController = (splitViewController?.isCollapsed ?? false) ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
-
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
+        
         if navBarAlphaOffset < 1 {
             var tintColor = UINavigationBar.appearance().tintColor
             if let color = self.depictionView?.tintColor {
@@ -504,10 +522,10 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        //for those wondering about the magic numbers and what's going on here:
-        //This is the spring effect on scrolling (aka step to start or step to after header
-        //113 = header imageView height - nav bar height and 56 is simply for setitng the step boundary, aka halfway
-        //if you don't like this, we can implement the variables from above, instead, but imo it's a waste of time
+        // for those wondering about the magic numbers and what's going on here:
+        // This is the spring effect on scrolling (aka step to start or step to after header
+        // 113 = header imageView height - nav bar height and 56 is simply for setitng the step boundary, aka halfway
+        // if you don't like this, we can implement the variables from above, instead, but imo it's a waste of time
         let scrollViewOffset = scrollView.contentOffset.y + UIApplication.shared.statusBarFrame.height
         
         if scrollViewOffset < 66 {
@@ -683,7 +701,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         let isPurchased = existingPurchased?.contains(package.package) ?? false
 
         if isPurchased {
-            let info = PaymentPackageInfo(dictionary: ["price": "Paid",
+            let info = PaymentPackageInfo(dictionary: ["price": String(localizationKey: "Package_Paid"),
                                                        "purchased": true,
                                                        "available": true])
             DispatchQueue.main.async {
@@ -694,7 +712,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 }
             }
         } else {
-            var price = "Paid"
+            var price = String(localizationKey: "Package_Paid")
             if let cydiaAPIURL = URL(string: "https://cydia.saurik.com/api/ibbignerd?query=\(package.package)"),
                 let jsonData = try? Data(contentsOf: cydiaAPIURL),
                 let rawObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),

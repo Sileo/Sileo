@@ -38,7 +38,8 @@ class DepictionAutoStackView: DepictionBaseView {
             guard let preferredWidth = viewDict["preferredWidth"] as? CGFloat else {
                 continue
             }
-            if let view = DepictionBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable) {
+            let view = DepictionBaseView.view(dictionary: viewDict, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
+            if let view = view {
                 self.views.append(view)
                 self.viewWidths.append(preferredWidth)
                 addSubview(view)

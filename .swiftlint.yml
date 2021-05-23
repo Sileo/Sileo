@@ -1,5 +1,6 @@
 disabled_rules:
     - trailing_whitespace
+    - private_over_fileprivate
 opt_in_rules:
     - empty_count
     - empty_string
@@ -9,7 +10,6 @@ opt_in_rules:
     - explicit_init
     - fatal_error_message
     - first_where
-    - implicit_return
     - joined_default_parameter
     - literal_expression_end_indentation
     - overridden_super_call
@@ -26,8 +26,8 @@ excluded:
     - SwiftLint/Common/3rdPartyLib
     - Deps
 line_length:
-    warning: 150
-    error: 200
+    warning: 200
+    error: 250
     ignores_function_declarations: true
     ignores_comments: true
     ignores_urls: true
@@ -60,6 +60,9 @@ identifier_name:
       - ok
       - to
       - id
+large_tuple:
+    warning: 4
+    error: 5
 function_body_length:
     warning: 300
     error: 500
@@ -67,13 +70,13 @@ function_parameter_count:
     warning: 6
     error: 8
 type_body_length:
-    warning: 300
-    error: 700
+    warning: 750
+    error: 1000
 file_length:
-    warning: 1000
+    warning: 1200
     error: 1500
     ignore_comment_only_lines: true
 cyclomatic_complexity:
-    warning: 30
-    error: 50
+    warning: 50
+    error: 60
 reporter: "xcode"

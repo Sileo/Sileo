@@ -1,0 +1,56 @@
+on:
+  push:
+    branches:
+      - main
+      - amy
+name: Build
+jobs:
+  make:
+    name: Build and Upload Sileo
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          submodules: true
+      - name: Install ldid and dpkg
+        run: |
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install ldid dpkg
+      - name: Build Sileo Nightly
+        run: |
+         make clean package NIGHTLY=1 DEBUG=0
+      - name: Build Sileo Beta
+        run: |
+          make clean package BETA=1 DEBUG=0
+      - name: Upload To Repo
+        env: # 
+          token: ${{ secrets.AMY_REPO_SECRET }}
+        run: |
+          package=$(ls -t packages | head -1)
+          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+          package=$(ls -t packages | head -2 | tail -1)
+          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+      - name: Upload To GitHub Artifacts
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          path: ./packages/*.deb
+  lint:
+    name: Lint Sileo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+  test:
+    name: Run Unit Tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          submodules: true
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_12.4.app 
+      - name: Run Tests
+        run: xcodebuild test -scheme Sileo -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}

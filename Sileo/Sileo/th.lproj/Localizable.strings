@@ -1,113 +1,192 @@
-"About"="เกี่ยวกับ";
-"Add_Source.Body"="ป้อน APT URL";
-"Add_Source.Button.Add"="เพิ่ม";
-"Add_Source.Title"="เพิ่มแหล่ง";
-"After_Install_Reboot"="รีเครื่อง";
-"After_Install_Relaunch"="รีสตาร์ท Sileo";
-"After_Install_Respring"="รีสปริง";
-"All_Categories"="หมวดหมู่ทั้งหมด";
-"All_Packages.Cell_Subtitle"="ดูแพ็คเกจทั้งหมดจากแหล่งทั้งหมดของคุณ";
-"All_Packages.Title"="แพ็คเกจทั้งหมด";
-"Auto_Add_Pasteboard_Sources.Button.Manual"="ป้อนด้วยตนเอง";
-"By_Author"="โดย %@";
-"Cancel"="ยกเลิก";
-"Close"="ปิด";
-"Cydia_Sign_In"="ลงชื่อเข้าใช้ Cydia Store";
-"Dangerous_Repo.Body"="คุณกำลังพยายามเพิ่มแหล่งจัดเก็บข้อมูลซึ่งอาจเป็นอันตรายและมีการละเมิดลิขสิทธิ์ มีเนื้อหาที่ผิดกฎหมายหรือมัลแวร์\n\nแหล่งจัดเก็บข้อมูลที่มีเครื่องหมายว่าเป็นอันตราย มักจะกระจายซอฟต์แวร์ที่อาจจะมีผล กระทบที่ไม่อาจคาดคิดได้ ไม่ว่าจะอยู่ในรูปแบบของแพ็คเกจที่ชำระเงินเพื่อใช้งานฟรีหรือแพ็คเกจที่เป็นอันตรายอื่น ๆ ซึ่งอาจส่งผลกระทบต่ออุปกรณ์และความเป็นส่วนตัวของคุณ และบางครั้งก็ส่งผลต่อความสามารถในการเจลเบรก \n\nเราขอแนะนำให้คุณใช้ความระมัดระวังอย่างยิ่งเพื่อหลีกเลี่ยงซอฟต์แวร์ที่เป็นอันตราย";
-"Dangerous_Repo.Cancel"="พาฉันกลับไปที่ความปลอดภัย";
-"Dangerous_Repo.Continue"="ฉันยอมรับความเสี่ยง ดำเนินการต่อ";
-"Dangerous_Repo.Last_Chance.Body"="แหล่งจัดเก็บข้อมูลอันตราย ! อาจมีผลกระทบร้ายแรงต่อความสามารถในการใช้งานอุปกรณ์หรือการเจลเบรกของคุณ \n\nเราขอแนะนำให้คุณกลับไปเพื่อความปลอดภัยของคุณเอง %@";
-"Dangerous_Repo.Last_Chance.Cancel"="ย้อนกลับ";
-"Dangerous_Repo.Last_Chance.Continue"="ดำเนินการต่อ";
-"Dangerous_Repo.Last_Chance.Title"="เพิ่ม repo ที่เป็นอันตรายหรือไม่";
-"Dangerous_Repo.Title"="Repo อันตราย !";
-"Delete"="ลบ";
-"Depends"="ต้องการ";
-"Done"="เสร็จสิ้น";
-"Done_Editing"="เสร็จ";
-"Double tap to open."="แตะสองครั้งเพื่อเปิด";
-"Download_Errors_Heading"="ผิดพลาด";
-"Download_Progress"="%@ จาก %@";
-"Download_Starting"="เริ่มต้น…";
-"Downloading_Package_Status"="กำลังดาวน์โหลด";
-"Featured_Page"="แนะนำ";
-"Form_Submitted.Default_Body"="ส่งแบบฟอร์มสำเร็จแล้ว";
-"Form_Submitted.Default_Title"="ส่งแบบฟอร์ม";
-"Hide_Install_Details"="ซ่อนรายละเอียด";
-"Installed_Heading"="ที่ติดตั้งแล้ว";
-"Installed_Package_Header"="แพ็คเกจที่ติดตั้งแล้ว";
-"Installing_Package_Status"="กำลังติดตั้ง";
-"Licenses_Page_Title"="ใบอนุญาต";
-"Loading"="กำลังโหลด…";
-"More_Info"="ข้อมูลเพิ่มเติม";
-"News_Page"="ใหม่";
-"OK"="ตกลง";
-"Package_By_Author"="%@ โดย %@";
-"Package_Cancel_Action"="ยกเลิก";
-"Package_Changelog_Tab"="Changelog";
-"Package_Changelogs_Unavailable"="รายการเปลี่ยนแปลงไม่พร้อมสำหรับแพ็คเกจนี้";
-"Package_Details_Tab"="Details";
-"Package_Developer_Find_Action"="เพิ่มเติมจากผู้พัฒนานี้";
-"Package_Filter_Dev"="ผู้พัฒนา";
-"Package_Filter_PowerUser"="ผู้เชี่ยวชาญ";
-"Package_Filter_User"="ผู้ใช้";
-"Package_Get_Action"="ติดตั้ง";
-"Package_Hold_Disable_Action"="ยกเลิกซ่อนการอัพเดท";
-"Package_Hold_Enable_Action"="ซ่อนการอัพเดทในอนาคต";
-"Package_Installed_Files_Page"="ไฟล์ที่ติดตั้งแล้ว";
-"Package_Modify_Action"="แก้ไข";
-"Package_No_Description_Available"="คำอธิบายไม่พร้อมสำหรับแพ็คเกจนี้";
-"Package_Queue_Action"="คิว";
-"Package_Reinstall_Action"="ติดตั้งใหม่";
-"Package_Search.Placeholder"="ค้นหาแพ็คเกจ";
-"Package_Share_Action"="แบ่งปันแพ็คเกจ…";
-"Package_Support_Action"="ติดต่อผู้พัฒนา";
-"Package_Unavailable"="แพ็คเกจไม่พร้อมใช้งาน";
-"Package_Unavailable.Placeholder"="แพ็คเกจไม่พร้อมใช้งาน";
-"Package_Unavailable_Action"="แพ็คเกจไม่พร้อมใช้งาน";
-"Package_Unavailable_Heading"="แพ็คเกจไม่พร้อมใช้งาน";
-"Package_Uninstall_Action"="ถอนการติดตั้ง";
-"Package_Upgrade_Action"="อัพเกรด";
-"Package_Wishlist_Add"="เพิ่มไปยังรายการที่ต้องการ";
-"Package_Wishlist_Remove"="ลบออกจากรายการที่ต้องการ";
-"Packages_By_Author"="แพ็คเกจโดย %@";
-"Packages_Page"="แพ็คเกจ";
-"Payment_Provider_Sign_Out"="ออกจากระบบ";
-"Payment_Provider_Sign_Out_Confirm.Body"="คุณจะไม่สามารถดาวน์โหลดแพ็คเกจที่ซื้อไว้ได้ จนกว่าคุณจะกลับมาลงชื่อเข้าใช้อีกครั้ง";
-"Payment_Provider_Sign_Out_Confirm.Title"="ลงชื่อออกจาก %@";
-"Payment_Provider_Signed_In"="ลงชื่อเข้าใช้";
-"Payment_Provider_Signed_In_With_Name"="ลงชื่อเข้าใช้ในชื่อ %@";
-"Queue_Clear_Button"="ล้างคิว";
-"Queue_Confirm_Button"="ยืนยัน";
-"Queued_Install_Heading"="ติดตั้ง";
-"Queued_Package_Status"="อยู่ในคิว";
-"Queued_Uninstall_Heading"="ถอนการติดตั้ง";
-"Queued_Update_Heading"="อัพเดท";
-"Ready_Status"="พร้อม";
-"Refreshing_Sources_Page"="รีเฟรชแหล่ง";
-"Removal_Queued_Package_Status"="จัดคิวสำหรับการลบ";
-"Repos"="แหล่งจัดเก็บข้อมูล";
-"Search_Page"="ค้นหา";
-"Settings_Payment_Provider.No_Purchases"="ไม่มีการซื้อ";
-"Settings_Payment_Provider.Purchases_Heading"="การซื้อ";
-"Settings_Payment_Provider_Heading"="ผู้ให้บริการชำระเงิน";
-"Settings_Translations_Heading"="คำแปล";
-"Share"="แบ่งปัน";
-"Show_Install_Details"="แสดงรายละเอียด";
-"Show_Install_Details_Action"="แสดงรายละเอียด";
-"Show_Install_Details_Status"="แสดงรายละเอียด";
-"Show_Package_Contents_Button"="เนื้อหาระบบไฟล์";
-"Sort_By"="จัดเรียงตาม :";
-"Sort_Date"="วันที่";
-"Sort_Name"="ชื่อ";
-"Sources_Page"="แหล่ง";
-"UNLOCK"="ปลดล๊อค";
-"Untitled_Form"="แบบฟอร์มไม่มีชื่อ";
-"Untitled_Repo"="Repo ไม่มีชื่อ";
-"Updates_Heading"="อัพเดท";
-"Upgrade_All_Button"="อัพเกรดทั้งหมด";
-"Version"="เวอร์ชั่น";
-"Web_Depiction_Deprecated_Warning"="การแสดงมุมมองเว็ปไม่สนับสนุน โปรดติดต่อผู้ดูแล Repo เพื่อปรับปรุงการแสดงผล";
-"Wishlist"="รายการที่ต้องการ";
-"__LocalizationCredit.Title"="aEk (เอกลักษณ์)";
-"__LocalizationCredit.URL"="https:\/\/www.twitter.com\/sPEeDMx";
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "เกี่ยวกับ";
+"Close" = "ปิด";
+"Double tap to open." = "แตะสองครั้งเพื่อเปิด";
+"Untitled_Repo" = "Repo ไม่มีชื่อ";
+"OK" = "ตกลง";
+"Done" = "เสร็จสิ้น";
+"Done_Editing" = "เสร็จ";
+"More_Info" = "ข้อมูลเพิ่มเติม";
+"Loading" = "กำลังโหลด…";
+"Share" = "แบ่งปัน";
+"Delete" = "ลบ";
+"Cancel" = "ยกเลิก";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "กำลังติดตั้ง";
+"Downloading_Package_Status" = "กำลังดาวน์โหลด";
+"Queued_Package_Status" = "อยู่ในคิว";
+"Ready_Status" = "พร้อม";
+"Removal_Queued_Package_Status" = "จัดคิวสำหรับการลบ";
+"Download_Starting" = "เริ่มต้น…";
+"Download_Progress" = "%@ จาก %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "ยืนยัน";
+"Queue_Clear_Button" = "ล้างคิว";
+
+"Package_Upgrade_Action" = "อัพเกรด";
+"Package_Reinstall_Action" = "ติดตั้งใหม่";
+"Package_Uninstall_Action" = "ถอนการติดตั้ง";
+"Package_Modify_Action" = "แก้ไข";
+"Package_Get_Action" = "ติดตั้ง";
+"Package_Queue_Action" = "คิว";
+"Package_Cancel_Action" = "ยกเลิก";
+"Package_Paid" = "Paid";
+
+"Package_Share_Action" = "แบ่งปันแพ็คเกจ…";
+"Package_Developer_Find_Action" = "เพิ่มเติมจากผู้พัฒนานี้";
+"Package_Support_Action" = "ติดต่อผู้พัฒนา";
+"Package_Hold_Enable_Action" = "ซ่อนการอัพเดทในอนาคต";
+"Package_Hold_Disable_Action" = "ยกเลิกซ่อนการอัพเดท";
+"Package_Wishlist_Add" = "เพิ่มไปยังรายการที่ต้องการ";
+"Package_Wishlist_Remove" = "ลบออกจากรายการที่ต้องการ";
+"Wishlist" = "รายการที่ต้องการ";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "ติดตั้ง";
+"Queued_Uninstall_Heading" = "ถอนการติดตั้ง";
+"Queued_Update_Heading" = "อัพเดท";
+"Download_Errors_Heading" = "ผิดพลาด";
+
+"Installed_Heading" = "ที่ติดตั้งแล้ว";
+"Updates_Heading" = "อัพเดท";
+"Upgrade_All_Button" = "อัพเกรดทั้งหมด";
+"Package_Search.Placeholder" = "ค้นหาแพ็คเกจ";
+"Sort_Name" = "ชื่อ";
+"Sort_Date" = "วันที่";
+"Sort_By" = "จัดเรียงตาม :";
+
+"Package_Unavailable" = "แพ็คเกจไม่พร้อมใช้งาน";
+"Package_By_Author" = "%@ โดย %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "โดย %@"; // %@ = author name
+"Packages_By_Author" = "แพ็คเกจโดย %@"; // %@ = author name
+
+"Featured_Page" = "แนะนำ";
+"News_Page" = "ใหม่";
+"Sources_Page" = "แหล่ง";
+"Packages_Page" = "แพ็คเกจ";
+"Search_Page" = "ค้นหา";
+"Refreshing_Sources_Page" = "รีเฟรชแหล่ง";
+"Package_Installed_Files_Page" = "ไฟล์ที่ติดตั้งแล้ว";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
+
+"All_Packages.Title" = "แพ็คเกจทั้งหมด";
+"All_Packages.Cell_Subtitle" = "ดูแพ็คเกจทั้งหมดจากแหล่งทั้งหมดของคุณ";
+
+"All_Categories" = "หมวดหมู่ทั้งหมด";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
+
+"Repos" = "แหล่งจัดเก็บข้อมูล";
+
+"Add_Source.Title" = "เพิ่มแหล่ง";
+"Add_Source.Body" = "ป้อน APT URL";
+"Add_Source.Button.Add" = "เพิ่ม";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "ป้อนด้วยตนเอง";
+
+"Untitled_Form" = "แบบฟอร์มไม่มีชื่อ";
+"Form_Submitted.Default_Title" = "ส่งแบบฟอร์ม";
+"Form_Submitted.Default_Body" = "ส่งแบบฟอร์มสำเร็จแล้ว";
+
+"Web_Depiction_Deprecated_Warning" = "การแสดงมุมมองเว็ปไม่สนับสนุน โปรดติดต่อผู้ดูแล Repo เพื่อปรับปรุงการแสดงผล";
+
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Changelog";
+"Package_No_Description_Available" = "คำอธิบายไม่พร้อมสำหรับแพ็คเกจนี้";
+"Package_Changelogs_Unavailable" = "รายการเปลี่ยนแปลงไม่พร้อมสำหรับแพ็คเกจนี้";
+
+"Installed_Package_Header" = "แพ็คเกจที่ติดตั้งแล้ว";
+"Version" = "เวอร์ชั่น";
+"Show_Package_Contents_Button" = "เนื้อหาระบบไฟล์";
+
+"Licenses_Page_Title" = "ใบอนุญาต";
+"Alternate_Icon_Title" = "Alternate Icons";
+
+"Settings_Payment_Provider_Heading" = "ผู้ให้บริการชำระเงิน";
+"Settings_Translations_Heading" = "คำแปล";
+
+"Settings_Payment_Provider.Purchases_Heading" = "การซื้อ";
+"Settings_Payment_Provider.No_Purchases" = "ไม่มีการซื้อ";
+
+"Settings" = "Settings";
+"Settings_Page_Title" = "Settings";
+"Dark_Mode_Toggle" = "Dark Mode";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
+"Theme_Settings" = "Theme Settings";
+
+"Cydia_Sign_In" = "ลงชื่อเข้าใช้ Cydia Store";
+"Payment_Provider_Signed_In" = "ลงชื่อเข้าใช้";
+"Payment_Provider_Signed_In_With_Name" = "ลงชื่อเข้าใช้ในชื่อ %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "ออกจากระบบ";
+"Payment_Provider_Sign_Out_Confirm.Title" = "ลงชื่อออกจาก %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "คุณจะไม่สามารถดาวน์โหลดแพ็คเกจที่ซื้อไว้ได้ จนกว่าคุณจะกลับมาลงชื่อเข้าใช้อีกครั้ง";
+
+"Show_Install_Details" = "แสดงรายละเอียด";
+"Hide_Install_Details" = "ซ่อนรายละเอียด";
+
+"After_Install_Relaunch" = "รีสตาร์ท Sileo";
+"After_Install_Respring" = "รีสปริง";
+"After_Install_Reboot" = "รีเครื่อง";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
+
+"Dangerous_Repo.Title" = "Repo อันตราย !";
+"Dangerous_Repo.Body" = "คุณกำลังพยายามเพิ่มแหล่งจัดเก็บข้อมูลซึ่งอาจเป็นอันตรายและมีการละเมิดลิขสิทธิ์ มีเนื้อหาที่ผิดกฎหมายหรือมัลแวร์\n\nแหล่งจัดเก็บข้อมูลที่มีเครื่องหมายว่าเป็นอันตราย มักจะกระจายซอฟต์แวร์ที่อาจจะมีผล กระทบที่ไม่อาจคาดคิดได้ ไม่ว่าจะอยู่ในรูปแบบของแพ็คเกจที่ชำระเงินเพื่อใช้งานฟรีหรือแพ็คเกจที่เป็นอันตรายอื่น ๆ ซึ่งอาจส่งผลกระทบต่ออุปกรณ์และความเป็นส่วนตัวของคุณ และบางครั้งก็ส่งผลต่อความสามารถในการเจลเบรก \n\nเราขอแนะนำให้คุณใช้ความระมัดระวังอย่างยิ่งเพื่อหลีกเลี่ยงซอฟต์แวร์ที่เป็นอันตราย";
+"Dangerous_Repo.Continue" = "ฉันยอมรับความเสี่ยง ดำเนินการต่อ";
+"Dangerous_Repo.Cancel" = "พาฉันกลับไปที่ความปลอดภัย";
+"Dangerous_Repo.Last_Chance.Title" = "เพิ่ม repo ที่เป็นอันตรายหรือไม่";
+"Dangerous_Repo.Last_Chance.Body" = "แหล่งจัดเก็บข้อมูลอันตราย ! อาจมีผลกระทบร้ายแรงต่อความสามารถในการใช้งานอุปกรณ์หรือการเจลเบรกของคุณ \n\nเราขอแนะนำให้คุณกลับไปเพื่อความปลอดภัยของคุณเอง %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "ดำเนินการต่อ";
+"Dangerous_Repo.Last_Chance.Cancel" = "ย้อนกลับ";
+
+// All export-based strings
+"Export" = "Export";
+"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
+"Export_Yes" = "Yes, copy.";
+"Export_No" = "No, cancel.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";

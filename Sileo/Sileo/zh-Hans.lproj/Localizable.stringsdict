@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Auto_Add_Pasteboard_Sources.Title</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>添加 %lu %#@sources@</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>other</key>
+        <string>个软件源</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>添加 %lu %#@sources@</string>
+      <key>sources</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>other</key>
+        <string>个软件源</string>
+      </dict>
+    </dict>
+    <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>添加以下从剪贴板中找到的 %#@urls@ :</string>
+      <key>urls</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lu</string>
+        <key>other</key>
+        <string>URL</string>
+      </dict>
+    </dict>
+    <key>Package_Queue_Count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@packages@</string>
+      <key>packages</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>other</key>
+        <string>%d 个软件包</string>
+      </dict>
+    </dict>
+  </dict>
+</plist>

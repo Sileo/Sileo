@@ -14,6 +14,9 @@ extension URL {
     }
     
     func isSecure(prefix: String) -> Bool {
+        if UserDefaults.standard.bool(forKey: "DeveloperMode") {
+            return true
+        }
         #if TARGET_SANDBOX || targetEnvironment(simulator)
         return prefix.isEmpty || self.scheme?.lowercased().hasPrefix(prefix) == true
         #else

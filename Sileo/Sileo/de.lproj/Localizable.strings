@@ -1,102 +1,192 @@
-"Add_Source.Button.Add" = "Quellen hinzufügen";
-"Package_Changelog_Tab" = "Änderungen";
-"Installed_Heading" = "Installiert";
-"Dangerous_Repo.Cancel" = "Zur Sicherheit abbrechen!";
-"Dangerous_Repo.Title" = "Gefährliche Quelle";
-"Payment_Provider_Sign_Out_Confirm.Body" = "Sie können Ihre gekauften Pakete nicht mehr herunterladen, bis Sie sich erneut anmelden.";
-"Queue_Confirm_Button" = "Bestätigen";
-"Show_Package_Contents_Button" = "Paketinhalte anzeigen";
-"Download_Progress" = "%@ von %@";
-"Settings_Payment_Provider.Purchases_Heading" = "Einkäufe";
-"Share" = "Teilen";
-"Package_Developer_Find_Action" = "Mehr vom Entwickler";
-"All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
-"Download_Errors_Heading" = "Fehler";
-"Add_Source.Body" = "Adresse eingeben";
-"Cydia_Sign_In" = "Beim Cydia Store anmelden";
-"More_Info" = "Mehr Infos";
-"Dangerous_Repo.Last_Chance.Continue" = "Weiter";
-"Download_Starting" = "Starte…";
-"Package_Details_Tab" = "Details";
-"Package_Reinstall_Action" = "Neu installieren";
-"Package_Support_Action" = "Support";
-"Packages_Page" = "Pakete";
-"Payment_Provider_Signed_In_With_Name" = "Angemeldet als %@";
-"Package_Get_Action" = "Installieren";
-"All_Packages.Title" = "Alle Pakete";
-"Dangerous_Repo.Last_Chance.Body" = "Gefährliche Quellen können verheerende Auswirkungen auf die Verwendung Ihres Geräts oder den Jailbreak haben. Wir empfehlen Ihnen dringend, zu Ihrer eigenen Sicherheit abzubrechen. %@";
-"By_Author" = "von %@";
-"Refreshing_Sources_Page" = "Aktualisiere Quellen";
-"Search_Page" = "Suchen";
-"After_Install_Respring" = "SpringBoard neu starten";
-"Settings_Translations_Heading" = "Übersetzungen";
-"Sort_Date" = "Datum";
-"Untitled_Form" = "Namenloses Formular";
-"Upgrade_All_Button" = "Alle aktualisieren";
-"Packages_By_Author" = "Pakete von %@";
-"Settings_Payment_Provider_Heading" = "Zahlungsanbieter";
-"Web_Depiction_Deprecated_Warning" = "Web View-Darstellungen sind veraltet. Bitte wenden Sie sich an den Quellen-Betreiber, um Informationen zu nativen Darstellungen zu erhalten.";
-"Queued_Uninstall_Heading" = "Entferne";
-"Form_Submitted.Default_Body" = "Das Formular wurde erfolgreich übermittelt.";
-"Loading" = "Lade…";
-"Package_Hold_Disable_Action" = "Berücksichtige zukünftige Aktualisierungen";
-"Package_Installed_Files_Page" = "Installierte Dateien";
-"Package_No_Description_Available" = "Keine Beschreibung für dieses Paket bekannt.";
-"Queued_Update_Heading" = "Aktualisiere";
-"Wishlist" = "Wunschliste";
-"Hide_Install_Details" = "Verstecke Details";
-"Updates_Heading" = "Aktualisierungen";
-"Dangerous_Repo.Last_Chance.Cancel" = "Zurück";
-"Payment_Provider_Signed_In" = "Angemeldet bei";
-"Dangerous_Repo.Continue" = "Auf eigenes Risiko fortfahren!";
-"Version" = "Version";
-"Add_Source.Title" = "Quelle hinzufügen";
-"Untitled_Repo" = "Namenlose Quelle";
-"Package_Uninstall_Action" = "Entfernen";
-"After_Install_Relaunch" = "Sileo neu starten";
-"OK" = "OK";
-"Package_Filter_PowerUser" = "Experte";
-"Package_Share_Action" = "Teile Pakete…";
-"Sort_Name" = "Name";
-"Done_Editing" = "Fertig";
-"Package_By_Author" = "%@ von %@";
-"Package_Cancel_Action" = "Abbrechen";
-"News_Page" = "Neuigkeiten";
-"Dangerous_Repo.Last_Chance.Title" = "Gefährliche Quelle hinzufügen?";
-"Removal_Queued_Package_Status" = "Bereit zum entfernen";
-"Show_Install_Details" = "Details zeigen";
-"Downloading_Package_Status" = "Lade herunter";
-"Package_Hold_Enable_Action" = "Ignoriere zukünftige Aktualisierungen";
-"Package_Unavailable" = "Paket nicht verfügbar";
-"Delete" = "Löschen";
-"Repos" = "Meine Quellen";
-"After_Install_Reboot" = "Gerät neu starten";
-"Package_Filter_Dev" = "Entwickler";
-"Package_Changelogs_Unavailable" = "Keine Änderungen für dieses Paket bekannt.";
-"Package_Search.Placeholder" = "Pakete durchsuchen";
-"Sources_Page" = "Quellen";
-"Featured_Page" = "Highlights";
-"Package_Filter_User" = "Benutzer";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Abmelden von %@";
-"Package_Upgrade_Action" = "Aktualisieren";
-"Ready_Status" = "Fertig";
-"Form_Submitted.Default_Title" = "Formular übermittelt";
-"Queued_Package_Status" = "In Warteschlange";
-"Dangerous_Repo.Body" = "Sie versuchen, ein Quelle hinzuzufügen, von dem bekannt ist, dass es aus Gründen wie Piraterie, illegalem Inhalt oder Malware schädlich ist.\n\nQuellen, die als schädlich gekennzeichnet sind, verteilen häufig Software mit unerwarteten Auswirkungen, sei es in Form von kostenpflichtigen Paketen oder anderen schädlichen Paketen. Dies kann dauerhafte Auswirkungen auf Ihr Gerät und Ihre Privatsphäre haben, was sich manchmal sogar auf Ihre Fähigkeit, einen Jailbreak anzuwenden, auswirkt.  Wir empfehlen Ihnen äußerste Vorsicht, um schädliche Software zu vermeiden.";
-"Payment_Provider_Sign_Out" = "Abmelden";
-"Done" = "Fertig";
-"Package_Modify_Action" = "Ändern";
-"Package_Queue_Action" = "Warteschlange";
-"Double tap to open." = "Doppelt tippen um zu öffnen.";
-"Installing_Package_Status" = "Installiere";
-"Package_Wishlist_Remove" = "Entferne von Wuschliste";
-"All_Categories" = "Alle Kategorien";
-"Sort_By" = "Sortieren nach:";
-"Queue_Clear_Button" = "Leere Warteschlange";
-"Settings_Payment_Provider.No_Purchases" = "Keine Einkäufe";
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "Über";
 "Close" = "Schließen";
+"Double tap to open." = "Doppelt tippen zum öffnen.";
+"Untitled_Repo" = "Unbenannte Quelle";
+"OK" = "Ok";
+"Done" = "Fertig";
+"Done_Editing" = "Fertig";
+"More_Info" = "Mehr infos";
+"Loading" = "Lade…";
+"Share" = "Teilen";
+"Delete" = "Löschen";
 "Cancel" = "Abbrechen";
-"Package_Wishlist_Add" = "Füge zur Wunschliste hinzu";
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuell eingeben";
-"Installed_Package_Header" = "Installiertes Paket";
+"Acknowledge" = "Verstanden";
+"Remove" = "Entfernen";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "App-Hintergrundaktualisierung";
+"Background_App_Refresh_Message" = "Für das beste und schnellste Erlebnis wird empfohlen, die App-Hintergrundaktualisierung zu aktivieren. Sie können auch Benachrichtigungen erhalten, wenn Ihre Tweaks aktualisiert wurden!";
+"Upgrade_All_Shortcut_Processing_Message" = "Aktualisiere alle Quellen und Pakete...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Installiere";
+"Downloading_Package_Status" = "Lade herunter";
+"Queued_Package_Status" = "In Warteschlange";
+"Ready_Status" = "Bereit";
+"Removal_Queued_Package_Status" = "In Warteschlange zum entfernen";
+"Download_Starting" = "Starte…";
+"Download_Progress" = "%@ von %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Bestätigen";
+"Queue_Clear_Button" = "Warteschlange leeren";
+
+"Package_Upgrade_Action" = "Aktualisieren";
+"Package_Reinstall_Action" = "Neu installieren";
+"Package_Uninstall_Action" = "Entfernen";
+"Package_Modify_Action" = "Ändern";
+"Package_Get_Action" = "Installieren";
+"Package_Queue_Action" = "Warteschlange";
+"Package_Cancel_Action" = "Abbrechen";
+"Package_Paid" = "Bezahlt";
+
+"Package_Share_Action" = "Paket teilen…";
+"Package_Developer_Find_Action" = "Mehr von diesem Entwickler";
+"Package_Support_Action" = "Support";
+"Package_Hold_Enable_Action" = "Zukünftige Updates ignorieren";
+"Package_Hold_Disable_Action" = "Updates nicht mehr ignorieren";
+"Package_Wishlist_Add" = "Zur Wunschliste hinzufügen";
+"Package_Wishlist_Remove" = "Von Wunschliste entfernen";
+"Wishlist" = "Wunschliste";
+
+// Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installiere";
+"Queued_Uninstall_Heading" = "Entferne";
+"Queued_Update_Heading" = "Aktualisiere";
+"Download_Errors_Heading" = "Fehler";
+
+"Installed_Heading" = "Installiert";
+"Updates_Heading" = "Aktualisierungen";
+"Upgrade_All_Button" = "Alle aktualisieren";
+"Package_Search.Placeholder" = "Pakete durchsuchen";
+"Sort_Name" = "Name";
+"Sort_Date" = "Datum";
+"Sort_By" = "Sortieren nach:";
+
+"Package_Unavailable" = "Paket nicht verfügbar";
+"Package_By_Author" = "%@ von %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "von %@"; // %@ = author name
+"Packages_By_Author" = "Pakete von %@"; // %@ = author name
+
+"Featured_Page" = "Highlights";
+"News_Page" = "Neu";
+"Sources_Page" = "Quellen";
+"Packages_Page" = "Pakete";
+"Search_Page" = "Suche";
+"Refreshing_Sources_Page" = "Quellen neu laden";
+"Package_Installed_Files_Page" = "Installierte Dateien";
+"Refresh" = "Aktualisieren";
+"Remove" = "Entfernen";
+
+"All_Packages.Title" = "Alle Pakete";
+"All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
+
+"All_Categories" = "Alle Kategorien";
+"Internal_Repo" = "Lokale Quellen";
+"External_Repo" = "Entfernte Quellen";
+"Ignored Updates" = "Ignorierte Updates";
+
+"Repos" = "Quellen";
+
+"Add_Source.Title" = "Quelle hinzufügen";
+"Add_Source.Body" = "Adresse eingeben";
+"Add_Source.Button.Add" = "Quelle hinzufügen";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuelle Eingabe";
+
+"Untitled_Form" = "Namenloses Formular";
+"Form_Submitted.Default_Title" = "Formular übermittelt";
+"Form_Submitted.Default_Body" = "Das Formular wurde erfolgreich übermittelt.";
+
+"Web_Depiction_Deprecated_Warning" = "Web View-Darstellungen sind veraltet. Bitte wenden Sie sich an den Quellen-Betreiber, um Informationen zu nativen Darstellungen zu erhalten.";
+
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Änderungen";
+"Package_No_Description_Available" = "Dieses Paket hat keine Beschreibung.";
+"Package_Changelogs_Unavailable" = "Es sind keine Änderungen für dieses Paket bekannt.";
+
+"Installed_Package_Header" = "Installiertes Paket";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Paketinhalte anzeigen";
+
+"Licenses_Page_Title" = "Lizenzen anzeigen";
+"Alternate_Icon_Title" = "Alternative Icons";
+
+"Settings_Payment_Provider_Heading" = "Zahlungsanbieter";
+"Settings_Translations_Heading" = "Übersetzungen";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Käufe";
+"Settings_Payment_Provider.No_Purchases" = "Keine Käufe";
+
+"Settings" = "Einstellungen";
+"Settings_Page_Title" = "Einstellungen";
+"Dark_Mode_Toggle" = "Dunkelmodus";
+"Theme" = "Design";
+"Tint_Color" = "Primärfarbe";
+"Reset_Tint_Color" = "Primärfarbe zurücksetzen";
+"Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
+"Swipe_Actions" = "Wischgesten";
+"Show_Provisional" = "Pakete von Canister anzeigen";
+"Show_Ignored_Updates" = "Zeige ignorierte Updates";
+"Developer_Mode" = "Entwicklermodus";
+"Pog_Developer" = "Du bist jetzt ein Entwickler!";
+"Developer_Mode_Explain" = "Der Entwicklermodus deaktiviert die HTTPS-Anforderung der Zahlungs-API.";
+"Auto_Refresh_Sources" = "Quellen automatisch aktualisieren";
+"iCloud_Profile" = "iCloud-Foto in Highlights anzeigen";
+"Cache_Size" = "Zwischenspeicher-Größe";
+"Clear_Cache" = "Netzwerk-Zwischenspeicher leeren";
+"Clear_Cache_Message" = "Willst du den Netzwerk-Zwischenspeicher leeren? Das wird %@ freigeben";
+
+"Sileo_Light" = "Sileo Hell";
+"Sileo_Dark" = "Sileo Dunkel";
+"Sileo_Adaptive" = "Sileo Angepasst";
+"System" = "System";
+"Theme_Settings" = "Design Einstellungen";
+
+"Cydia_Sign_In" = "In den Cydia Store einloggen";
+"Payment_Provider_Signed_In" = "Eingeloggt";
+"Payment_Provider_Signed_In_With_Name" = "Eingeloggt als %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Ausloggen";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Ausloggen aus %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Gekaufte Pakete können nur im eingeloggten Zustand heruntergeladen werden.";
+
+"Show_Install_Details" = "Details anzeigen";
+"Hide_Install_Details" = "Details ausblenden";
+
+"After_Install_Relaunch" = "Sileo neustarten";
+"After_Install_Respring" = "SpringBoard neustarten";
+"After_Install_Reboot" = "Gerät neustarten";
+"After_Install_Relaunch_Later" = "Sileo später neu starten";
+"After_Install_Respring_Later" = "SpringBoard später neu starten";
+"After_Install_Reboot_Later" = "Gerät später neu starten";
+
+"Dangerous_Repo.Title" = "Gefährliche Quelle";
+"Dangerous_Repo.Body" = "Du versuchst eine Quelle hinzuzufügen, die unter anderem wegen Verteilung von Softwarepiraterie, Illegalen Inhalten und Schadsoftware aufgefallen ist.\n\nQuellen, die als Gefährlich markiert sind verteilen oftmals Software, die verändert wurde um zum Beispiel Sicherungsmechanismen zu entfernen. Diese Software kann unter Umständen permanenten Schaden auf dem Gerät anrichten und durch mitlesen von Passwörtern die Privatsphäre gefährden. Wir empfehlen diese Aktion nur mit äußerster Vorsicht durchzuführen.";
+"Dangerous_Repo.Continue" = "Auf eigenes Risiko fortfahren! (unsicher)";
+"Dangerous_Repo.Cancel" = "Zurück";
+"Dangerous_Repo.Last_Chance.Title" = "Gefährliche Quelle hinzufügen?";
+"Dangerous_Repo.Last_Chance.Body" = "Gefährliche Quellen können verheerende Auswirkungen auf dein Gerät oder deinen Jailbreak haben. Wir empfehlen aus Sicherheitsgründen diese Aktion NICHT auszuführen, um dein Gerät oder Jailbreak nicht zu gefährden. Möchtest zu wirklich die Quelle %@ hinzufügen?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Fortfahren";
+"Dangerous_Repo.Last_Chance.Cancel" = "Zurück";
+
+// All export-based strings
+"Export" = "Exportieren";
+"Export_Packages" = "Möchtest du deine Paketliste exportieren? Alle Paketnamen mit den zugehörigen Versionen werden in die Zwischenablage kopiert.";
+"Export_Sources" = "Möchtest du die Liste deiner Quellen exportieren? Alle deine Quelllinks werden in die Zwischenablage kopiert.";
+"Export_Yes" = "Ja, kopieren.";
+"Export_No" = "Nein, abbrechen.";
+
+// Depcitions
+"View_Depiction" = "Paketbeschreibung anzeigen";

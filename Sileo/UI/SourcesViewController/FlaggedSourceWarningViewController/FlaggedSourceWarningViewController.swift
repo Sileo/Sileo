@@ -22,7 +22,7 @@ class FlaggedSourceWarningViewController: SileoViewController {
     
     var shouldAddAnywayCallback: (() -> Void)?
     
-    var url: URL?
+    var urls: [URL] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,11 @@ class FlaggedSourceWarningViewController: SileoViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.15
         paragraphStyle.alignment = .center
-        bodyLabel.attributedText = NSAttributedString(string: String(localizationKey: "Dangerous_Repo.Body"),
+        var bodyString = String(localizationKey: "Dangerous_Repo.Body")
+        for (index, url) in urls.enumerated() {
+            bodyString += "\(index == 0 ? "\n\n" : "\n")\(url.absoluteString)"
+        }
+        bodyLabel.attributedText = NSAttributedString(string: bodyString,
                                                       attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         continueButton.setTitle(String(localizationKey: "Dangerous_Repo.Continue"), for: .normal)
         safetyButton.setTitle(String(localizationKey: "Dangerous_Repo.Cancel"), for: .normal)
@@ -54,37 +58,14 @@ class FlaggedSourceWarningViewController: SileoViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
-    
-    func presentLastChanceAlert() {
-        let urlString = url?.absoluteString ?? "this repo"
-        let lastChanceAlert = UIAlertController(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Title"),
-                                                message: String(format: String(localizationKey: "Dangerous_Repo.Last_Chance.Body"), urlString),
-                                                preferredStyle: .alert)
-        
-        lastChanceAlert.addAction(.init(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Cancel"),
-                                        style: .cancel, handler: { [unowned self] _ in
-                                            self.dismiss(animated: true)
-                                        }))
-        
-        lastChanceAlert.addAction(.init(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Continue"),
-                                        style: .destructive, handler: { [unowned self] _ in
-                                            self.addAnyway()
-                                        }))
-        
-        present(lastChanceAlert, animated: true)
-    }
-    
-    func addAnyway() {
-        shouldAddAnywayCallback?()
-        dismiss(animated: true)
-    }
-    
+
     @IBAction func safetyButtonTapped(sender: Any) {
         dismiss(animated: true)
     }
     
     @IBAction func addAnywayButtonTapped(sender: Any) {
-       presentLastChanceAlert()
+        shouldAddAnywayCallback?()
+        dismiss(animated: true)
     }
     
     func determineScrollHairlineAnimated(animated: Bool) {

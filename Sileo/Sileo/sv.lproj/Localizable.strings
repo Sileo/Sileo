@@ -1,0 +1,192 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "Om";
+"Close" = "Stäng";
+"Double tap to open." = "Dubbel tryck för att öppna.";
+"Untitled_Repo" = "Källa Utan Titel";
+"OK" = "OK";
+"Done" = "Klar";
+"Done_Editing" = "Klar";
+"More_Info" = "Mer Info";
+"Loading" = "Laddar…";
+"Share" = "Dela";
+"Delete" = "Radera";
+"Cancel" = "Avbryt";
+"Acknowledge" = "Medge";
+"Remove" = "Radera";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Bakgrund App Uppdatering";
+"Background_App_Refresh_Message" = "För den bästa och snabbaste upplevelsen, är det rekommenderat att sätta på app bakgrunds uppdateringar. Du kan också få notifikationer när dina anpassningar är uppdaterade!";
+"Upgrade_All_Shortcut_Processing_Message" = "Uppdaterar alla källor och uppdaterar alla paket...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Installerar";
+"Downloading_Package_Status" = "Laddar Ner";
+"Queued_Package_Status" = "Köad";
+"Ready_Status" = "Redo";
+"Removal_Queued_Package_Status" = "Köad för Borttagning";
+"Download_Starting" = "Startar…";
+"Download_Progress" = "%@ av %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Queue_Confirm_Button" = "Bekräfta";
+"Queue_Clear_Button" = "Rensa Kö";
+
+"Package_Upgrade_Action" = "Uppgradera";
+"Package_Reinstall_Action" = "Installera Om";
+"Package_Uninstall_Action" = "Avinstallera";
+"Package_Modify_Action" = "Modifiera";
+"Package_Get_Action" = "Skaffa";
+"Package_Queue_Action" = "Kö";
+"Package_Cancel_Action" = "Avbryt";
+"Package_Paid" = "Betala";
+
+"Package_Share_Action" = "Dela Paket…";
+"Package_Developer_Find_Action" = "Mer av denna Utvecklare";
+"Package_Support_Action" = "Stöd";
+"Package_Hold_Enable_Action" = "Ignorera Framtida Uppdateringar";
+"Package_Hold_Disable_Action" = "Sluta Ignorera Uppdateringar";
+"Package_Wishlist_Add" = "Lägg till i Önskelistan";
+"Package_Wishlist_Remove" = "Radera från Önskelistan";
+"Wishlist" = "Önskelista";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Installera";
+"Queued_Uninstall_Heading" = "Avinstallera";
+"Queued_Update_Heading" = "Uppdatera";
+"Download_Errors_Heading" = "Fel";
+
+"Installed_Heading" = "Installerad";
+"Updates_Heading" = "Uppdateringar";
+"Upgrade_All_Button" = "Uppgradera Allt";
+"Package_Search.Placeholder" = "Sök efter Paket";
+"Sort_Name" = "Namn";
+"Sort_Date" = "Datum";
+"Sort_By" = "Sortera Efter:";
+
+"Package_Unavailable" = "Paket Inte Tillgängligt";
+"Package_By_Author" = "%@ av %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "av %@"; // %@ = author name
+"Packages_By_Author" = "Paket av %@"; // %@ = author name
+
+"Featured_Page" = "Utvalda";
+"News_Page" = "Nytt";
+"Sources_Page" = "Källor";
+"Packages_Page" = "Paket";
+"Search_Page" = "Sök";
+"Refreshing_Sources_Page" = "Uppdaterar Källor";
+"Package_Installed_Files_Page" = "Installerade Filer";
+"Refresh" = "Uppdatera";
+"Remove" = "Radera";
+
+"All_Packages.Title" = "Alla Paket";
+"All_Packages.Cell_Subtitle" = "Se alla paket från dina källor";
+
+"All_Categories" = "Alla Kategorier";
+"Internal_Repo" = "Inre Källor";
+"External_Repo" = "Externa Källor";
+"Ignored Updates" = "Ignorerade Uppdateringar";
+
+"Repos" = "Källor";
+
+"Add_Source.Title" = "Lägg Till Källa";
+"Add_Source.Body" = "Lägg Till APT URL";
+"Add_Source.Button.Add" = "Lägg Till Källa";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Skriv In Manuellt";
+
+"Untitled_Form" = "Form Utan Titel";
+"Form_Submitted.Default_Title" = "Skickad Form";
+"Form_Submitted.Default_Body" = "Formen skickas med framgång.";
+
+"Web_Depiction_Deprecated_Warning" = "Webb skildringar är utan support. Kontakta käll skaparen om att uppdatera till vanliga skildringar.";
+
+"Package_Details_Tab" = "Detailjer";
+"Package_Changelog_Tab" = "Ändringslog";
+"Package_No_Description_Available" = "Ingen beskrivning är tillgänglig för detta paket.";
+"Package_Changelogs_Unavailable" = "Ändringlogen är inte tillgänglig för detta paket.";
+
+"Installed_Package_Header" = "Installerat Paket";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Visa Paket Innehåll";
+
+"Licenses_Page_Title" = "Licenser";
+"Alternate_Icon_Title" = "Ikon Alternativ";
+
+"Settings_Payment_Provider_Heading" = "Betalningsleverantörer";
+"Settings_Translations_Heading" = "Översättningar";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Köp";
+"Settings_Payment_Provider.No_Purchases" = "Inga köp";
+
+"Settings" = "Inställningar";
+"Settings_Page_Title" = "Inställningar";
+"Dark_Mode_Toggle" = "Mörkt Läge";
+"Theme" = "Teman";
+"Tint_Color" = "Färgton";
+"Reset_Tint_Color" = "Återställ Färgton";
+"Auto_Complete_Queue" = "Autoslutför Kö";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Bekräfta Automatiskt Uppgradera Allt Genväg";
+"Swipe_Actions" = "Svepåtgärder";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Visa Ignorerade Uppdateringar";
+"Developer_Mode" = "Utvecklar Läge";
+"Pog_Developer" = "Du är nu en utvecklare!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+
+"Sileo_Light" = "Sileo Ljust";
+"Sileo_Dark" = "Sileo Mörkt";
+"Sileo_Adaptive" = "Sileo Adaptiv";
+"System" = "System";
+"Theme_Settings" = "Theme Settings";
+
+"Cydia_Sign_In" = "Logga in på Cydia Store";
+"Payment_Provider_Signed_In" = "Inloggad";
+"Payment_Provider_Signed_In_With_Name" = "Inloggad som %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Logga ut";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Logga ut från %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Du kommer inte längre kunna ladda ner dina paket tills du har loggat in igen.";
+
+"Show_Install_Details" = "Visa Detaljer";
+"Hide_Install_Details" = "Göm Detaljer";
+
+"After_Install_Relaunch" = "Starta Om Sileo";
+"After_Install_Respring" = "Starta Om SpringBoard";
+"After_Install_Reboot" = "Starta Om Enheten";
+"After_Install_Relaunch_Later" = "Starta Om Sileo Senare";
+"After_Install_Respring_Later" = "Starta om SpringBoard Senare";
+"After_Install_Reboot_Later" = "Starta Om Enheten Senare";
+
+"Dangerous_Repo.Title" = "Farlig Källa";
+"Dangerous_Repo.Body" = "Du försöker lägga till en källa som är känd för att vara farlig, anledningar som piratkopiering, olagligt material eller virus.\n\nKällor märkta som farliga ger oftast ut mjukvara som har dåliga effekter, som betalda paket gratis eller andra virus paket. Detta kan ha väldigt dåliga effekter på din enhet. det kan hindra dig från att jailbreaka. Vi rekommenderar att du är försiktig och undviker farlig mjukvara.";
+"Dangerous_Repo.Continue" = "Jag accepterar riskerna, fortsätt";
+"Dangerous_Repo.Cancel" = "Ta mig tillbaka till säkerhet";
+"Dangerous_Repo.Last_Chance.Title" = "Lägg Till Farlig Källa?";
+"Dangerous_Repo.Last_Chance.Body" = "Farliga källor kan ha väldigt dåliga effekter på din enhet eller jailbreak. Vi rekommenderar starkt att du går tillbaka för din egna säkerhet. Är du säker att du vill lägga till %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Fortsätt";
+"Dangerous_Repo.Last_Chance.Cancel" = "Gå tillbaka";
+
+// All export-based strings
+"Export" = "Exportera";
+"Export_Packages" = "Skulle du vilja exportera din paket lista? Detta kommer att kopiera alla paket namn och deras versioner till ditt urklipp.";
+"Export_Sources" = "Skulle du vilja exportera en lista av alla dina källor? Detta kommer att kopiera alla dina källors URLer till ditt urklipp.";
+"Export_Yes" = "Ja, kopiera.";
+"Export_No" = "Nej, avbryt.";
+
+// Depcitions
+"View_Depiction" = "Visa Skildring";

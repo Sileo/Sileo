@@ -2,58 +2,63 @@
   Localizable.strings
   Sileo
 
-  Created by Hayden Seay on 2020-07-24.
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- Chinese Traditional LOCALISATIONS
+ LOCALISATIONS
 */
-
-// Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "由Deon翻譯";
-"__LocalizationCredit.URL" = "https://www.twitter.com/BJH1234_Deon"; // (optional)
-
 // Common Prompts
+
 "About" = "關於";
 "Close" = "關閉";
-"Double tap to open." = "雙擊以打開.";
-"Untitled_Repo" = "未命名的來源";
-"OK" = "確定";
+"Double tap to open." = "雙擊以開啟。";
+"Untitled_Repo" = "未命名套件來源";
+"OK" = "確認";
 "Done" = "完成";
 "Done_Editing" = "完成";
-"More_Info" = "更多訊息";
-"Loading" = "載入中…";
+"More_Info" = "更多資訊";
+"Loading" = "正在載入...";
 "Share" = "分享";
 "Delete" = "刪除";
 "Cancel" = "取消";
+"Acknowledge" = "明白";
+"Remove" = "移除";
+"Sileo_Team" = "Sileo 團隊";
+
+// Popup messages
+"Background_App_Refresh" = "背景 App 重新整理";
+"Background_App_Refresh_Message" = "為了取得最佳和最快的體驗，建議您啟用背景 App 重新整理。您也可以收到插件更新通知！";
+"Upgrade_All_Shortcut_Processing_Message" = "正在重新整理所有套件來源並更新所有套件...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "正在安裝";
-"Downloading_Package_Status" = "下載中";
-"Queued_Package_Status" = "隊列";
-"Ready_Status" = "準備";
-"Removal_Queued_Package_Status" = "移除隊列中";
-"Download_Starting" = "開始中…";
-"Download_Progress" = "%@ (總共 %@)"; // first %@ = amount downloaded, second %@ = total to download
+"Downloading_Package_Status" = "正在下載";
+"Queued_Package_Status" = "在佇列中";
+"Ready_Status" = "準備就緒";
+"Removal_Queued_Package_Status" = "在移除的佇列中";
+"Download_Starting" = "正在開始...";
+"Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
 "Queue_Confirm_Button" = "確認";
-"Queue_Clear_Button" = "清除隊列";
+"Queue_Clear_Button" = "清除佇列";
 
 "Package_Upgrade_Action" = "更新";
 "Package_Reinstall_Action" = "重新安裝";
 "Package_Uninstall_Action" = "移除";
-"Package_Modify_Action" = "更改";
-"Package_Get_Action" = "獲取";
-"Package_Queue_Action" = "隊列";
+"Package_Modify_Action" = "修改";
+"Package_Get_Action" = "取得";
+"Package_Queue_Action" = "佇列";
 "Package_Cancel_Action" = "取消";
+"Package_Paid" = "付費";
 
-"Package_Share_Action" = "分享軟體包…";
-"Package_Developer_Find_Action" = "更多這位開發者的作品";
+"Package_Share_Action" = "分享套件...";
+"Package_Developer_Find_Action" = "此開發者的更多套件";
 "Package_Support_Action" = "支援";
-"Package_Hold_Enable_Action" = "忽略未來的更新";
-"Package_Hold_Disable_Action" = "取消忽略更新";
-"Package_Wishlist_Add" = "添加到願望單";
-"Package_Wishlist_Remove" = "從願望單移除";
-"Wishlist" = "願望單";
+"Package_Hold_Enable_Action" = "忽略未來更新";
+"Package_Hold_Disable_Action" = "停止忽略更新";
+"Package_Wishlist_Add" = "新增到願望清單";
+"Package_Wishlist_Remove" = "從願望清單中移除";
+"Wishlist" = "願望清單";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安裝";
@@ -64,94 +69,124 @@
 "Installed_Heading" = "已安裝";
 "Updates_Heading" = "更新";
 "Upgrade_All_Button" = "全部更新";
-"Package_Search.Placeholder" = "搜尋軟體包";
+"Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
-"Sort_By" = "排序方式:";
+"Sort_By" = "排序";
 
-"Package_Unavailable" = "軟體包不可用";
+"Package_Unavailable" = "無法取得套件";
 "Package_By_Author" = "%@ 由 %@ 開發"; // first %@ = package name, second %@ = author name
 "By_Author" = "由 %@ 開發"; // %@ = author name
-"Packages_By_Author" = "%@ 的軟體包"; // %@ = author name
+"Packages_By_Author" = "%@ 的套件"; // %@ = author name
 
 "Featured_Page" = "精選";
-"News_Page" = "新內容";
-"Sources_Page" = "軟體來源";
-"Packages_Page" = "軟體包";
+"News_Page" = "新聞";
+"Sources_Page" = "來源";
+"Packages_Page" = "套件";
 "Search_Page" = "搜尋";
-"Refreshing_Sources_Page" = "正在刷新軟體來源";
-"Package_Installed_Files_Page" = "已經安裝的文件";
+"Refreshing_Sources_Page" = "正在重新整理來源";
+"Package_Installed_Files_Page" = "已安裝檔案";
+"Refresh" = "重新整理";
+"Remove" = "移除";
 
-"All_Packages.Title" = "所有軟體包";
-"All_Packages.Cell_Subtitle" = "查看已經添加的軟體來源的所有軟體包";
+"All_Packages.Title" = "所有套件";
+"All_Packages.Cell_Subtitle" = "查看已新增來源的所有套件";
 
 "All_Categories" = "所有分類";
+"Internal_Repo" = "內部來源";
+"External_Repo" = "外部來源";
+"Ignored Updates" = "已忽略更新";
 
-"Repos" = "軟體來源";
+"Repos" = "套件來源";
 
-"Add_Source.Title" = "添加來源";
-"Add_Source.Body" = "新增軟體來源地址";
-"Add_Source.Button.Add" = "添加來源";
+"Add_Source.Title" = "新增來源";
+"Add_Source.Body" = "新增套件來源網址";
+"Add_Source.Button.Add" = "新增來源";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動輸入";
 
-"Untitled_Form" = "未命名的表單";
-"Form_Submitted.Default_Title" = "已提交的表格";
-"Form_Submitted.Default_Body" = "表格提交成功.";
+"Untitled_Form" = "未命名表單";
+"Form_Submitted.Default_Title" = "已提交表格";
+"Form_Submitted.Default_Body" = "成功提交表格。";
 
-"Web_Depiction_Deprecated_Warning" = "Web視圖已經被棄用. 請聯繫軟體來源維護者以獲得從舊視圖升級的訊息.";
+"Web_Depiction_Deprecated_Warning" = "Web View 敘述已經被棄用。請聯絡套件來源維護者以更新至原生敘述。";
 
-"Package_Details_Tab" = "詳情";
+"Package_Details_Tab" = "詳細資料";
 "Package_Changelog_Tab" = "更新記錄";
-"Package_No_Description_Available" = "沒有針對這個軟體包的描述.";
-"Package_Changelogs_Unavailable" = "無法查看此軟體包的更新記錄.";
+"Package_No_Description_Available" = "無法取得此套件的描述。";
+"Package_Changelogs_Unavailable" = "無法取得此套件的更新記錄。";
 
-"Installed_Package_Header" = "已安裝的軟體包";
+"Installed_Package_Header" = "已安裝套件";
 "Version" = "版本";
-"Show_Package_Contents_Button" = "顯示軟體包內容";
+"Show_Package_Contents_Button" = "顯示套件內容";
 
-"Licenses_Page_Title" = "法律資訊";
+"Licenses_Page_Title" = "許可";
+"Alternate_Icon_Title" = "自定義圖示";
 
-"Settings_Payment_Provider_Heading" = "付款服務提供商";
+"Settings_Payment_Provider_Heading" = "付款服務提供者";
 "Settings_Translations_Heading" = "翻譯";
 
-"Settings_Payment_Provider.Purchases_Heading" = "購買";
-"Settings_Payment_Provider.No_Purchases" = "沒有購買";
+"Settings_Payment_Provider.Purchases_Heading" = "已購買套件";
+"Settings_Payment_Provider.No_Purchases" = "沒有已購買的套件";
 
 "Settings" = "設定";
 "Settings_Page_Title" = "設定";
 "Dark_Mode_Toggle" = "深色模式";
+"Theme" = "主題";
+"Tint_Color" = "自定義顏色";
+"Reset_Tint_Color" = "重置顏色";
+"Auto_Complete_Queue" = "自動完成佇列";
+"Auto_Confirm_Upgrade_All_Shortcut" = "自動確認更新所有捷徑";
+"Swipe_Actions" = "滑動動作";
+"Show_Provisional" = "顯示來自 Canister 的套件";
+"Show_Ignored_Updates" = "顯示已忽略更新";
+"Developer_Mode" = "開發者模式";
+"Pog_Developer" = "您現在已成為開發者！";
+"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 需求。";
+"Auto_Refresh_Sources" = "自動重新整理來源";
+"iCloud_Profile" = "在精選顯示 iCloud 個人檔案照片";
+"Cache_Size" = "快取大小";
+"Clear_Cache" = "清除網頁快取";
+"Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
+
+"Sileo_Light" = "Sileo 淺色模式";
+"Sileo_Dark" = "Sileo 深色模式";
+"Sileo_Adaptive" = "Sileo 自適應";
+"System" = "跟隨系統";
+"Theme_Settings" = "主題設定";
 
 "Cydia_Sign_In" = "登入 Cydia Store";
-"Payment_Provider_Signed_In" = "登入";
-"Payment_Provider_Signed_In_With_Name" = "已作為 %@ 登入"; // %@ = user's name
+"Payment_Provider_Signed_In" = "已登入";
+"Payment_Provider_Signed_In_With_Name" = "已登入為 %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前,您將不能下載已經購買的軟體包.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前，您將無法下載已購買的套件。";
 
-"Package_Filter_User" = "用戶";
-"Package_Filter_PowerUser" = "專家";
-"Package_Filter_Dev" = "開發者";
+"Show_Install_Details" = "顯示詳細資料";
+"Hide_Install_Details" = "隱藏詳細資料";
 
-"Show_Install_Details" = "顯示詳情";
-"Hide_Install_Details" = "隱藏詳情";
-
-"After_Install_Relaunch" = "重啟 Sileo";
-"After_Install_Respring" = "重啟 SpringBoard";
-"After_Install_Reboot" = "重啟設備";
+"After_Install_Relaunch" = "重新啟動 Sileo";
+"After_Install_Respring" = "重新啟動主畫面";
+"After_Install_Reboot" = "重新啟動裝置";
+"After_Install_Relaunch_Later" = "稍後重新啟動 Sileo";
+"After_Install_Respring_Later" = "稍後重新啟動主畫面";
+"After_Install_Reboot_Later" = "稍後重新啟動裝置";
 
 "Dangerous_Repo.Title" = "危險來源";
-"Dangerous_Repo.Body" = "您正在添加一個可能因為含有盜版行為,違法內容,病毒而被標記的來源.\n\n被標記的軟體來源可能經常發佈許多轉載的軟體包(包括許多免費和收費的軟體包).這些軟體包可能會影響到您的隱私和設備,有時可能會影響到越獄環境.我們建議您提高謹慎以遠離有害軟體包.";
-"Dangerous_Repo.Continue" = "我接受風險,繼續.";
+"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的套件）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
+"Dangerous_Repo.Continue" = "我接受風險並繼續";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
-"Dangerous_Repo.Last_Chance.Title" = "添加危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的軟體來源可能會對設備/越獄環境造成破壞性的影響.我們建議您為了設備的安全而取消操作. %@";
+"Dangerous_Repo.Last_Chance.Title" = "新增危險來源？";
+"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全並返回。您確認要新增 %@ 嗎？"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
-"Export" = "導出";
-"Export_Packages" = "請問需要導出軟體包列表嗎? 這將會複製所有軟體包名稱和版本到您的剪貼板.";
-"Export_Sources" = "請問需要導出您的來源地址嗎? 這將複製所有來源地址到您的剪貼板.";
-"Export_Yes" = "好的, 導出.";
-"Export_No" = "不, 取消.";
+"Export" = "匯出";
+"Export_Packages" = "您想匯出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
+"Export_Sources" = "您想匯出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
+"Export_Yes" = "確認";
+"Export_No" = "取消";
+
+// Depcitions
+"View_Depiction" = "查看敘述";

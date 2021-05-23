@@ -1,22 +1,36 @@
 # Sileo
-![alt text](https://travis-ci.com/M4cs/SileoApp.svg?token=p6px51XnVtZqgGKqga2s&branch=master)
+[![Build](https://github.com/Sileo/Sileo/actions/workflows/main.yml/badge.svg)](https://github.com/Sileo/Sileo/actions/workflows/main.yml)
 
-A proper APT Package Manager for jailbroken iOS 11 and up.
+A modern APT package manager frontend
 
-## But what is it really?
+## Info
 
-Sileo is the next generation of jailbreaking. With other package managers for jailbroken iOS devices being outdated and not fully functional without patches and modifications, we knew that it was time for a new APT-based package manager to fill the gap.
-
-Sileo is made with love, not just in California, but by people from all over the world.
-
-## Contributing
-
-If you want to contribute to the project, make a pull request with your changes and it will be reviewed by our team. Do not contact individual people personally in order to get your changes through because that will not work. Refer to [Onboarding](https://github.com/Sileo/Sileo/blob/master/Onboarding.md)
-
-## Updates
-
-In case you're looking for updates, we have an [official Twitter page](https://www.twitter.com/getsileo) which is updated regularly with updates, polls asking the community for opinions, teasers of upcoming features and more. Do not try to contact this account as it is not meant to respond to any messages or replies. If you need support regarding Sileo, refer to the "Support" Section of this article.
+Sileo focuses on speed, features, and a modern feel. It is made with love by people from all over the world! We have an [official Twitter](https://twitter.com/getsileo) that regularly posts updates, polls, and more. 
 
 ## Support
 
-In case you need support regarding Sileo or associated components, contact [Sileo Support](https://www.twitter.com/SileoSupport) on Twitter or visit the [Sileo Subreddit](https://www.reddit.com/r/Sileo) and ask the community to help you with your issue.
+For support, contact [Sileo Support on Twitter](https://twitter.com/SileoSupport) or ask in the [Sileo Discord server](https://discord.com/invite/Udn4kQg). 
+
+## Contribute
+
+For localization, [join our Crowdin project](https://crowdin.com/project/sileo) and submit your translations over there. 
+
+For code, make a pull request with your changes and our team will review it. 
+
+To set up development, follow these steps: 
+
+1. Clone this repository
+    ```
+    git clone --recursive https://github.com/Sileo/Sileo.git ./Sileo
+    cd ./Sileo
+    ```
+2. Configure the `Config.xcconfig` file
+    * Open that file and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
+    * Remove that file from source control with `git update-index --skip-worktree ./Config.xcconfig`
+3. Open `Sileo.xcodeproj` and have at it!
+
+If you have any questions, ask in the Sileo Discord server. Happy coding!
+ 
+#
+
+Sileo Team 2018-2021

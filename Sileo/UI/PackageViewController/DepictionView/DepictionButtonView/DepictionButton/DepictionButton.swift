@@ -62,8 +62,8 @@ class DepictionButton: UIButton {
                 subpageController.depictionURL = URL(string: String(action.dropFirst(10)))
                 parentViewController?.navigationController?.pushViewController(subpageController, animated: true)
             } else if url.isSecure(prefix: "form") {
-                if let formController = DepictionFormViewController(nibName: "DepictionFormViewController", bundle: nil) {
-                    formController.formURL = URL(string: String(action.dropFirst(5)))
+                if let formURL = URL(string: String(action.dropFirst(5))) {
+                    let formController = DepictionFormViewController(formURL: formURL)
                     let navController = UINavigationController(rootViewController: formController)
                     navController.modalPresentationStyle = .formSheet
                     parentViewController?.present(navController, animated: true, completion: nil)

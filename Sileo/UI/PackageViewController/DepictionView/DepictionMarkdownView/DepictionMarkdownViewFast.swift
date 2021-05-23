@@ -36,14 +36,14 @@ class DepictionMarkdownView: DepictionBaseView, CSTextViewActionHandler {
         addSubview(textView)
 
         htmlString = markdown
-
+ 
         reloadMarkdown()
         guard attributedString != nil else {
             return nil
         }
 
         textView.translatesAutoresizingMaskIntoConstraints = false
-
+    
         let margins: CGFloat = useMargins ? 16 : 0
         let spacing: CGFloat = useSpacing ? 13 : 0
         let bottomSpacing: CGFloat = useSpacing ? 13 : 0

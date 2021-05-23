@@ -6,7 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
-import SDWebImage
+import UIKit
 
 class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     let imageView: PackageIconView
@@ -22,6 +22,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     var separatorHeightConstraint: NSLayoutConstraint?
     
     var isUpdatingPurchaseStatus: Bool = false
+    var icon: String?
     
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let package = dictionary["package"] as? String else {
@@ -30,6 +31,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         guard let packageIcon = dictionary["packageIcon"] as? String else {
             return nil
         }
+        self.icon = packageIcon
         guard let packageName = dictionary["packageName"] as? String else {
             return nil
         }
@@ -58,7 +60,17 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         imageView.image = UIImage(named: "Tweak Icon")
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         if !packageIcon.isEmpty {
-            imageView.sd_setImage(with: URL(string: packageIcon))
+            imageView.image = AmyNetworkResolver.shared.image(packageIcon, size: imageView.frame.size) { [weak self] refresh, image in
+                if refresh,
+                   let strong = self,
+                   let image = image,
+                   strong.icon == packageIcon {
+                    DispatchQueue.main.async {
+                        strong.imageView.image = image
+                    }
+                }
+                   
+            } ?? UIImage(named: "Tweak Icon")
         }
         
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -182,7 +194,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             packageViewController.package = package
             self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
         } else {
-            let title = String(localizationKey: "Package Unavailable")
+            let title = String(localizationKey: "Package_Unavailable")
             let message = String(format: String(localizationKey: "Package_Unavailable"), repoName)
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: { _ in
@@ -254,7 +266,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         
         PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
             if error != nil {
-                let info = PaymentPackageInfo(price: "Paid", purchased: isPurchased, available: true)
+                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false
                     self.packageButton.paymentInfo = info
@@ -263,7 +275,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             provider?.getPackageInfo(forIdentifier: self.package) { error, info in
                 var info = info
                 if error != nil {
-                    info = PaymentPackageInfo(price: "Paid", purchased: isPurchased, available: true)
+                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
                 }
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false

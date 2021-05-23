@@ -1,0 +1,76 @@
+#!/bin/sh
+sourcesDir="/etc/apt/sources.list.d"
+touch $sourcesDir/sileo.sources
+
+cr="\n"
+
+if ! [ -s "$sourcesDir/sileo.sources" ]; then
+	echo -e "" > $sourcesDir/sileo.sources
+fi
+
+if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
+then
+	echo "Installed Chariz Repo"
+	sed -i '1s;^;Types: deb\
+URIs: https://repo.chariz.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/sileo.sources
+fi
+
+if ! grep -Fxq "URIs: https://repo.dynastic.co/" $sourcesDir/sileo.sources ;
+then
+	echo "Installed Dynastic Repo"
+	sed -i '1s;^;Types: deb\
+URIs: https://repo.dynastic.co/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/sileo.sources
+fi
+
+if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
+then
+	echo "Installed Packix Repo"
+	sed -i '1s;^;Types: deb\
+URIs: https://repo.packix.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/sileo.sources
+fi
+
+if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+then
+	echo "Installed BigBoss Repo"
+	sed -i '1s;^;Types: deb\
+URIs: http://apt.thebigboss.org/repofiles/cydia/\
+Suites: stable\
+Components: main\
+\
+;' $sourcesDir/sileo.sources
+fi
+
+finish() {
+	f="${1}"
+
+	# No control fd: bail out
+	[ -z "${f}" ] || [ -z "${SILEO}" ] && return
+
+	read -r fd ver <<-EOF                    
+			${SILEO}                                    
+			EOF
+
+	# Sileo control fd version < 1: bail out
+	[ "${ver}" -ge 1 ] || return
+
+	echo "finish:${f}" >&"${fd}"
+}
+
+finish uicache
+
+if [ -z "${SILEO}" ]; then echo "Not running in Sileo. Trigger UICache"; fi
+if [ -z "${SILEO}" ]; then uicache -p /Applications/@@SILEO_APP@@; fi
+
+exit 0

@@ -5,6 +5,7 @@
 //  Created by CoolStar on 7/3/19.
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
+
 import Foundation
 import CoreSpotlight
 
@@ -13,7 +14,11 @@ final class PackageListManager {
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
     static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
-    private(set) var installedPackages: [Package]?
+    private(set) var installedPackages: [Package]? {
+        didSet {
+            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages?.count ?? 0)
+        }
+    }
     private(set) var allPackages: [Package]?
     
     private var databaseLock = DispatchSemaphore(value: 1)
@@ -24,12 +29,16 @@ final class PackageListManager {
     
     public static let shared = PackageListManager()
     
-    public func waitForReady() {
+    public func waitForReady(_ completion: (() -> Void)? = nil) {
         databaseLock.wait()
         databaseLock.signal()
         if !isLoaded {
-            self.loadAllPackages()
+            self.loadAllPackages {
+                completion?()
+            }
+            return
         }
+        completion?()
     }
     
     public func waitForChangesDatabaseReady() {
@@ -45,6 +54,7 @@ final class PackageListManager {
         installedPackages = self.packagesList(loadIdentifier: "--installed", repoContext: nil)
         for repo in RepoManager.shared.repoList {
             repo.packages = nil
+            repo.installedCount = 0
             repo.packagesProvides = nil
             repo.packagesDict = nil
             repo.isLoaded = false
@@ -62,6 +72,7 @@ final class PackageListManager {
     
     public func availableUpdates() -> [(Package, Package?)] {
         self.waitForReady()
+        	
         var updatesAvailable: [(Package, Package?)] = []
         for package in installedPackages ?? [] {
             guard let latestPackage = self.newestPackage(identifier: package.packageID) else {
@@ -73,14 +84,6 @@ final class PackageListManager {
                 }
             }
         }
-        
-        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        if self.installedPackage(identifier: "apt") == nil {
-            if let newPackage = self.newestPackage(identifier: "apt") {
-                updatesAvailable.append((newPackage, nil))
-            }
-        }
-        #endif
         return updatesAvailable
     }
     
@@ -111,12 +114,14 @@ final class PackageListManager {
                                      greaterThan: package2.version)
     }
     
-    private func loadAllPackages() {
+    private func loadAllPackages(_ completion: (() -> Void)? = nil) {
         databaseLock.wait()
-        
-        defer { databaseLock.signal() }
+        defer {
+            databaseLock.signal()
+        }
         
         if isLoaded {
+            completion?()
             return
         }
         
@@ -143,7 +148,6 @@ final class PackageListManager {
             }
         }
         updateGroup.wait()
-        
         var allPackagesTempDictionary: [String: Package] = [:]
         allPackages = []
         
@@ -206,20 +210,56 @@ final class PackageListManager {
                 DatabaseManager.shared.savePackages(newGuids)
                 allPackagesTempDictionary.removeAll()
                 self.changesDatabaseLock.signal()
+                DependencyResolverAccelerator.shared.preflightInstalled()
                 
+                let downloadMan = DownloadManager.shared
+                if downloadMan.operationCount() > 0 {
+                    let savedUpgrades: [(String, String)] = downloadMan.upgrades.map({
+                        let pkg = $0.package
+                        return (pkg.packageID, pkg.version)
+                    })
+                    let savedInstalls: [(String, String)] = downloadMan.installations.map({
+                        let pkg = $0.package
+                        return (pkg.packageID, pkg.version)
+                    })
+                    
+                    downloadMan.upgrades.removeAll()
+                    downloadMan.installations.removeAll()
+                    downloadMan.installdeps.removeAll()
+                    downloadMan.uninstalldeps.removeAll()
+                    
+                    for tuple in savedUpgrades {
+                        let id = tuple.0
+                        let version = tuple.1
+                        
+                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
+                            if downloadMan.find(package: pkg) == .none {
+                                downloadMan.add(package: pkg, queue: .upgrades)
+                            }
+                        }
+                    }
+                    
+                    for tuple in savedInstalls {
+                        let id = tuple.0
+                        let version = tuple.1
+                        
+                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
+                            if downloadMan.find(package: pkg) == .none {
+                                downloadMan.add(package: pkg, queue: .installations)
+                            }
+                        }
+                    }
+                    
+                    downloadMan.reloadData(recheckPackages: true)
+                }
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
+                    completion?()
                 }
             }
         }
         
         isLoaded = true
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            DependencyResolverAccelerator.shared.preflightInstalled()
-            DownloadManager.shared.removeAllItems()
-            DownloadManager.shared.reloadData(recheckPackages: true)
-        }
     }
     
     public func humanReadableCategory(_ rawCategory: String?) -> String {
@@ -238,6 +278,7 @@ final class PackageListManager {
         guard let packageVersion = dictionary["version"] else {
             return nil
         }
+        
         let package = Package(package: packageID, version: packageVersion)
         package.name = dictionary["name"]
         if package.name == nil {
@@ -268,7 +309,6 @@ final class PackageListManager {
         package.size = dictionary["size"]
         
         package.rawControl = dictionary
-        package.allVersionsInternal.list.append(package)
         return package
     }
     
@@ -281,8 +321,7 @@ final class PackageListManager {
     }
     
     public func packagesList(loadIdentifier: String, repoContext: Repo?) -> [Package]? {
-        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true,
-                          overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
+        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true, overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
     }
     
     public func packagesList(loadIdentifier: String, repoContext: Repo?, sortPackages: Bool, lookupTable: [String: [Package]]) -> [Package]? {
@@ -379,8 +418,7 @@ final class PackageListManager {
                 if firstSeparator.lowerBound != 0 {
                     let subdata = rawPackagesData.subdata(in: firstSeparator.lowerBound-1..<firstSeparator.lowerBound)
                     let character = subdata.first
-                    if character == 13 { // \r
-                        //Found windows line endings
+                    if character == 13 { // 13 means carriage return (\r, Windows line ending)
                         separator = "\r\n\r\n".data(using: .utf8)!
                     }
                 }
@@ -417,6 +455,9 @@ final class PackageListManager {
                     if packageID.hasPrefix("cy+") {
                         continue
                     }
+                    if packageID == "firmware" {
+                        continue
+                    }
                     
                     guard let package = self.package(packageEnum: rawPackageEnum) else {
                         continue
@@ -424,6 +465,7 @@ final class PackageListManager {
                     package.sourceFile = repoContext?.rawEntry
                     package.sourceFileURL = packagesFile
                     package.rawData = packageData
+                    package.addOld([package])
                     
                     if isStatusFile {
                         var wantInfo: pkgwant = .install
@@ -453,7 +495,7 @@ final class PackageListManager {
                             if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
                                 tempDictionary[packageID] = package
                             }
-                            otherPkg.allVersionsInternal.list.append(contentsOf: package.allVersionsInternal.list)
+                            otherPkg.addOld(package.allVersions)
                             package.allVersionsInternal = otherPkg.allVersionsInternal
                         } else {
                             tempDictionary[packageID] = package
@@ -471,9 +513,7 @@ final class PackageListManager {
         if categorySearch != nil {
             packageListFinal.removeAll { self.humanReadableCategory($0.section).lowercased() != categorySearch?.lowercased() }
         }
-        if let searchQuery = searchName {
-            packageListFinal.removeAll { !($0.name?.lowercased().contains(searchQuery.lowercased()) ?? true) }
-        }
+  
         if let searchEmail = authorEmail {
             packageListFinal.removeAll {
                 guard let lowercaseAuthor = $0.author?.lowercased() else {
@@ -488,11 +528,40 @@ final class PackageListManager {
             }
         }
         
+        if let searchQuery = searchName {
+            let search = searchQuery.lowercased()
+            packageListFinal.removeAll { package in
+                var shouldRemove = true
+                if package.package.lowercased().contains(search) { shouldRemove = false }
+                if let name = package.name?.lowercased() {
+                    if !name.isEmpty {
+                        if name.contains(search) { shouldRemove = false }
+                    }
+                }
+                if let description = package.packageDescription?.lowercased() {
+                    if !description.isEmpty {
+                        if description.contains(search) { shouldRemove = false }
+                    }
+                }
+                if let author = package.author?.lowercased() {
+                    if !author.isEmpty {
+                        if author.contains(search) { shouldRemove = false }
+                    }
+                }
+                if let maintainer = package.maintainer?.lowercased() {
+                    if !maintainer.isEmpty {
+                        if maintainer.contains(search) { shouldRemove = false }
+                    }
+                }
+                return shouldRemove
+            }
+        }
+        
         if sortPackages {
             packageListFinal.sort { obj1, obj2 -> Bool in
-                if let pkg1 = obj1.name {
-                    if let pkg2 = obj2.name {
-                        if let searchQuery = searchName {
+                if let pkg1 = obj1.name?.lowercased() {
+                    if let pkg2 = obj2.name?.lowercased() {
+                        if let searchQuery = searchName?.lowercased() {
                             if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
                                 return true
                             } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {
@@ -522,9 +591,14 @@ final class PackageListManager {
         if useCache {
             if loadIdentifier.isEmpty {
                 if repoContext != nil && repoContext?.packages == nil {
+                    let installed = installedPackages ?? self.packagesList(loadIdentifier: "--installed", repoContext: nil) ?? []
                     repoContext?.packages = packageListFinal
+                    repoContext?.installedCount = installed.filter({ packageListFinal.contains($0) }).count
                     repoContext?.packagesProvides = packageListFinal.filter { $0.rawControl["provides"] != nil }
                     repoContext?.packagesDict = tempDictionary
+                    if let repoContext = repoContext {
+                        RepoManager.shared.postProgressNotification(repoContext)
+                    }
                 }
             } else if loadIdentifier == "--installed" {
                 installedPackages = packageListFinal
@@ -548,20 +622,23 @@ final class PackageListManager {
             package.package = identifier
             package.packageFileURL = url
             return package
+        } else {
+            guard let allPackages = allPackages else {
+                return nil
+            }
+            
+            let lowerIdentifier = identifier.lowercased()
+            return allPackages.first(where: { $0.packageID == lowerIdentifier })
         }
-        let lowerIdentifier = identifier.lowercased()
-        for package in allPackages ?? [] where package.package == lowerIdentifier {
-            return package
-        }
-        return nil
     }
     
     public func installedPackage(identifier: String) -> Package? {
-        let lowerIdentifier = identifier.lowercased()
-        for package in installedPackages ?? [] where package.package == lowerIdentifier {
-            return package
+        guard let installedPackages = installedPackages else {
+            return nil
         }
-        return nil
+        
+        let lowerIdentifier = identifier.lowercased()
+        return installedPackages.first(where: { $0.packageID == lowerIdentifier })
     }
     
     public func package(url: URL) -> Package? {
@@ -602,17 +679,45 @@ final class PackageListManager {
         }
     }
     
-    @objc public func markUpgradeAll(_ sender: Any) {
-        let availableUpdates = self.availableUpdates()
-        for packageTuple in availableUpdates {
-            let package = packageTuple.0
-            guard let installedPackage = packageTuple.1 else {
+    public func package(identifier: String, version: String) -> Package? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
+    }
+    
+    public func package(identifiersAndVersions: [(String, String)]) -> [Package]? {
+        guard let allPackages = allPackages else {
+            return nil
+        }
+        
+        let filtered = allPackages.filter({
+            let pkg = $0
+            return identifiersAndVersions.contains(where: { $0.0 == pkg.packageID && $0.1 == pkg.version })
+        })
+        
+        return filtered.isEmpty ? nil : filtered
+    }
+    
+    public func upgradeAll() {
+        self.upgradeAll(completion: nil)
+    }
+    
+    public func upgradeAll(completion: (() -> Void)?) {
+        let packagePairs = self.availableUpdates()
+        let updatesNotIgnored = packagePairs.filter({ $0.1?.wantInfo != .hold })
+        let downloadMan = DownloadManager.shared
+        
+        for packagePair in updatesNotIgnored {
+            let newestPkg = packagePair.0
+            
+            if let installedPkg = packagePair.1, installedPkg == newestPkg {
                 continue
             }
-            if installedPackage.wantInfo == .install || installedPackage.wantInfo == .unknown {
-                DownloadManager.shared.add(package: package, queue: .upgrades)
-            }
+            
+            downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        DownloadManager.shared.reloadData(recheckPackages: true)
+        
+        downloadMan.reloadData(recheckPackages: true, completion: completion)
     }
 }

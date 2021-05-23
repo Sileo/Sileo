@@ -10,9 +10,6 @@ import Foundation
 import AUPickerCell
 import Alderis
 
-let kLocalizationCreditTitleKey = "__LocalizationCredit.Title"
-let kLocalizationCreditURLKey = "__LocalizationCredit.URL"
-
 class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
@@ -60,15 +57,7 @@ class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
         super.updateSileoColors()
         tableView.reloadData()
     }
-    
-    func showTranslationCreditSection() -> Bool {
-        !(kLocalizationCreditTitleKey == String(localizationKey: kLocalizationCreditTitleKey))
-    }
-    
-    func hasTranslationCreditLink() -> Bool {
-        !(kLocalizationCreditTitleKey == String(localizationKey: kLocalizationCreditURLKey))
-    }
-    
+
     func loadProviders() {
         PaymentManager.shared.getAllPaymentProviders { providers in
             self.hasLoadedOnce = true
@@ -93,25 +82,19 @@ class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
 
 extension SettingsViewController { // UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        3 + (showTranslationCreditSection() ? 1 : 0)
+        4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // Payment Providers section
             return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1) + 1
-        case 1: // Translation Credit Section OR Settings section
-            if showTranslationCreditSection() {
-                return 1
-            }
-            return 3
-        case 2: // Settings section OR About section
-            if showTranslationCreditSection() {
-                return 3
-            }
-            return 1
+        case 1: // Themes
+            return 4
+        case 2:
+            return 7
         case 3: // About section
-            return 1
+            return 3
         default:
             return 0
         }
@@ -148,73 +131,88 @@ extension SettingsViewController { // UITableViewDataSource
             cell?.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell ?? UITableViewCell()
         case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                let style = UITableViewCell.CellStyle.default
-                let cell: UITableViewCell = self.reusableCell(withStyle: style, reuseIdentifier: "TranslationCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: kLocalizationCreditTitleKey)
-                let none = UITableViewCell.AccessoryType.none
-                cell.accessoryType = self.hasTranslationCreditLink() ? UITableViewCell.AccessoryType.disclosureIndicator : none
-                cell.selectionStyle = self.hasTranslationCreditLink() ? UITableViewCell.SelectionStyle.default : UITableViewCell.SelectionStyle.none
+            switch indexPath.row {
+            case 0:
+                let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
+                cell.delegate = self
+                cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
+                cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
+                cell.leftLabel.text = String(localizationKey: "Theme")
+                cell.backgroundColor = .clear
+                cell.leftLabel.textColor = .tintColor
+                cell.rightLabel.textColor = .tintColor
                 return cell
-            } else {
-                switch indexPath.row {
-                case 0:
-                    let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                    cell.delegate = self
-                    cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                    cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                    cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = nil
-                    cell.leftLabel.textColor = .tintColor
-                    cell.rightLabel.textColor = .tintColor
-                    return cell
-                case 1:
-                    let cell = SettingsColorTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Tint_Color")
-                    return cell
-                case 2:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
-                    cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
-                    return cell
-                default:
-                    return UITableViewCell()
-                }
+            case 1:
+                let cell = SettingsColorTableViewCell()
+                cell.textLabel?.text = String(localizationKey: "Tint_Color")
+                return cell
+            case 2:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
+                return cell
+            case 3:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
+                cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            default:
+                fatalError("You done goofed")
             }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                switch indexPath.row {
-                case 0:
-                    let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                    cell.delegate = self
-                    cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                    cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                    cell.leftLabel.text = String(localizationKey: "Theme")
-                    cell.backgroundColor = nil
-                    cell.leftLabel.textColor = .tintColor
-                    cell.rightLabel.textColor = .tintColor
-                    return cell
-                case 1:
-                    let cell = SettingsColorTableViewCell()
-                    cell.textLabel?.text = String(localizationKey: "Tint_Color")
-                    return cell
-                case 2:
-                    let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
-                    cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
-                    return cell
-                default:
-                    return UITableViewCell()
-                }
-            } else {
+        case 2:
+            let cell = SettingsSwitchTableViewCell()
+            switch indexPath.row {
+            case 0:
+                cell.amyPogLabel.text = String(localizationKey: "Swipe_Actions")
+                cell.fallback = true
+                cell.defaultKey = "SwipeActions"
+            case 1:
+                cell.amyPogLabel.text = String(localizationKey: "Show_Provisional")
+                cell.fallback = true
+                cell.defaultKey = "ShowProvisional"
+            case 2:
+                cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
+                cell.fallback = true
+                cell.defaultKey = "ShowIgnoredUpdates"
+            case 3:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Refresh_Sources")
+                cell.fallback = true
+                cell.defaultKey = "AutoRefreshSources"
+            case 4:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
+                cell.defaultKey = "AutoComplete"
+            case 5:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
+                cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
+            case 6:
+                cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
+                cell.fallback = false
+                cell.defaultKey = "DeveloperMode"
+                cell.viewControllerForPresentation = self
+            default:
+                fatalError("You done goofed")
+            }
+            return cell
+        case 3: // About section
+            switch indexPath.row {
+            case 0:
+                let cell = self.reusableCell(withStyle: .value1, reuseIdentifier: "CacheSizeIdenitifer")
+                cell.textLabel?.text = String(localizationKey: "Cache_Size")
+                cell.detailTextLabel?.text = FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)
+                return cell
+            case 1:
+                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Sileo_Team")
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                return cell
+            case 2:
                 let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
                 cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
+            default:
+                fatalError("You done goofed")
             }
-        case 3: // About section
-            let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-            cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            return cell
+            
         default:
             return UITableViewCell()
         }
@@ -244,59 +242,31 @@ extension SettingsViewController { // UITableViewDataSource
             } else if hasLoadedOnce || (indexPath.row - authenticatedProviders.count - unauthenticatedProviders.count) > 0 {
                 tableView.deselectRow(at: indexPath, animated: true)
                 let nibName = "CydiaAccountViewController"
-                let cydiaAccountViewController: CydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
+                let cydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
                 let navController: UINavigationController = UINavigationController(rootViewController: cydiaAccountViewController)
                 self.present(navController, animated: true)
             }
-        case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                guard let url = URL(string: String(localizationKey: kLocalizationCreditURLKey)) else {
-                    return
-                }
-                UIApplication.shared.open(url, options: [:])
-            } else if indexPath.row == 1 { // Tint color selector
-                let colorPickerViewController = ColorPickerViewController()
-                colorPickerViewController.delegate = self
-                colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    if #available(iOS 13.0, *) {
-                        colorPickerViewController.modalPresentationStyle = .popover
-                        colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                    } else {
-                        colorPickerViewController.modalPresentationStyle = .fullScreen
-                    }
-                }
-                
-                self.navigationController?.present(colorPickerViewController, animated: true)
+        case 1:
+            if indexPath.row == 1 { // Tint color selector
+                self.presentAlderis()
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
-            }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                if indexPath.row == 1 { // Tint color selector
-                    let colorPickerViewController = ColorPickerViewController()
-                    colorPickerViewController.delegate = self
-                    colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        if #available(iOS 13.0, *) {
-                            colorPickerViewController.modalPresentationStyle = .popover
-                            colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                        } else {
-                            colorPickerViewController.modalPresentationStyle = .fullScreen
-                        }
-                    }
-                    self.navigationController?.present(colorPickerViewController, animated: true)
-                    
-                } else if indexPath.row == 2 { // Tint color reset
-                    SileoThemeManager.shared.resetTintColor()
-                }
-            } else {
-                let licensesViewController: LicensesTableViewController = LicensesTableViewController()
-                self.navigationController?.pushViewController(licensesViewController, animated: true)
+            } else if indexPath.row == 3 {
+                let altVC = AltIconTableViewController()
+                self.navigationController?.pushViewController(altVC, animated: true)
             }
         case 3: // About section
-            let licensesViewController: LicensesTableViewController = LicensesTableViewController()
-            self.navigationController?.pushViewController(licensesViewController, animated: true)
+            switch indexPath.row {
+            case 0:
+                self.cacheClear()
+            case 1:
+                let teamViewController: SileoTeamViewController = SileoTeamViewController()
+                self.navigationController?.pushViewController(teamViewController, animated: true)
+            case 2:
+                let licensesViewController: LicensesTableViewController = LicensesTableViewController()
+                self.navigationController?.pushViewController(licensesViewController, animated: true)
+            default: break
+            }
         default:
             break
         }
@@ -307,22 +277,48 @@ extension SettingsViewController { // UITableViewDataSource
         switch section {
         case 0: // Payment Providers section
             return String(localizationKey: "Settings_Payment_Provider_Heading")
-        case 1: // Translation Credit Section OR Settings section
-            if self.showTranslationCreditSection() {
-                    return String(localizationKey: "Settings_Translations_Heading")
-            } else {
-                return String(localizationKey: "Settings")
-            }
-        case 2: // Settings section OR About section
-            if self.showTranslationCreditSection() {
-                return String(localizationKey: "Settings")
-            } else {
-                return String(localizationKey: "About")
-            }
+        case 1:
+            return String(localizationKey: "Theme_Settings")
+        case 2: // Translation Credit Section OR Settings section
+            return String(localizationKey: "Settings")
         case 3: // About section
             return String(localizationKey: "About")
         default:
             return nil
+        }
+    }
+    
+    private func cacheClear() {
+        let alert = UIAlertController(title: String(localizationKey: "Clear_Cache"),
+                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .destructive) { _ in
+            AmyNetworkResolver.shared.clearCache()
+            self.tableView.reloadData()
+        })
+        alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
+    private func presentAlderis() {
+        if #available(iOS 13, *) {
+            let colorPickerViewController = ColorPickerViewController()
+            colorPickerViewController.delegate = self
+            colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                // Ignore this warning, it's only temporary
+                if #available(iOS 13, *) {
+                    colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
+                }
+            }
+            colorPickerViewController.modalPresentationStyle = .overFullScreen
+            self.parent?.present(colorPickerViewController, animated: true, completion: nil)
+        } else {
+            let uiac = UIAlertController(title: "Crash Prevention",
+                                         message: "Alderis has a known bug on iOS 12 which will cause it to crash. To protect you from this it has been disabled in Sileo on iOS 12",
+                                         preferredStyle: .alert)
+            uiac.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
+            self.parent?.present(uiac, animated: true, completion: nil)
         }
     }
     

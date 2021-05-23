@@ -2,21 +2,18 @@
   Localizable.strings
   Sileo
 
-  Created by OfficialHoSay on 2019-04-28.
+  Created by AppleBetas on 2018-12-27.
   Copyright © 2018 CoolStar. All rights reserved.
  
- SPANISH LOCALISATIONS
+ LOCALISATIONS
 */
-
-// Credit Information (optional, uncomment to specify)
-"__LocalizationCredit.Title" = "Traducción al Español por OfficialHoSay";
-"__LocalizationCredit.URL" = "https://www.twitter.com/OfficialHoSay"; // (optional)
-
 // Common Prompts
+
+"About" = "Acerca de";
 "Close" = "Cerrar";
 "Double tap to open." = "Tocar dos veces para abrir.";
 "Untitled_Repo" = "Repo Sin Título";
-"OK" = "OK";
+"OK" = "Ok";
 "Done" = "Listo";
 "Done_Editing" = "Listo";
 "More_Info" = "Más Información";
@@ -24,6 +21,14 @@
 "Share" = "Compartir";
 "Delete" = "Eliminar";
 "Cancel" = "Cancelar";
+"Acknowledge" = "Comprendo";
+"Remove" = "Eliminar";
+"Sileo_Team" = "Sileo Team";
+
+// Popup messages
+"Background_App_Refresh" = "Actualizar en segundo plano";
+"Background_App_Refresh_Message" = "Para la mejor y más rápida experiencia, es recomendado que la aplicación pueda correr en segundo plano. También obtendrás notificaciones cuando tus tweaks se actualizan!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refrescando tus fuentes y actualizando tus paquetes...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Instalando";
@@ -44,6 +49,7 @@
 "Package_Get_Action" = "Obtener";
 "Package_Queue_Action" = "Añadir a la cola";
 "Package_Cancel_Action" = "Cancelar";
+"Package_Paid" = "Pago";
 
 "Package_Share_Action" = "Compartir Paquete…";
 "Package_Developer_Find_Action" = "Más del Desarrollador";
@@ -80,11 +86,16 @@
 "Search_Page" = "Buscar";
 "Refreshing_Sources_Page" = "Refrescando Fuentes";
 "Package_Installed_Files_Page" = "Archivos Instalados";
+"Refresh" = "Actualizar";
+"Remove" = "Eliminar";
 
 "All_Packages.Title" = "Todos los Paquetes";
 "All_Packages.Cell_Subtitle" = "Ver todos los paquetes de sus fuentes";
 
 "All_Categories" = "Todas las categorías";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositorios";
 
@@ -109,11 +120,40 @@
 "Version" = "Versión";
 "Show_Package_Contents_Button" = "Mostrar Contenido del Paquete";
 
+"Licenses_Page_Title" = "Licencias";
+"Alternate_Icon_Title" = "Íconos alternativos";
+
 "Settings_Payment_Provider_Heading" = "Proveedores de Pago";
 "Settings_Translations_Heading" = "Traducciones";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Compras";
 "Settings_Payment_Provider.No_Purchases" = "Sin Compras";
+
+"Settings" = "Ajustes";
+"Settings_Page_Title" = "Ajustes";
+"Dark_Mode_Toggle" = "Modo oscuro";
+"Theme" = "Tema";
+"Tint_Color" = "Color de realce";
+"Reset_Tint_Color" = "Restablecer color de realce";
+"Auto_Complete_Queue" = "Auto completar cola";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confirmar automáticamente \"Actualizar todo\"";
+"Swipe_Actions" = "Acciones de deslizamiento";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+
+"Sileo_Light" = "Sileo Claro";
+"Sileo_Dark" = "Sileo Oscuro";
+"Sileo_Adaptive" = "Sileo Adaptativo";
+"System" = "Sistema";
+"Theme_Settings" = "Theme Settings";
 
 "Cydia_Sign_In" = "Iniciar Sesión en Cydia Store";
 "Payment_Provider_Signed_In" = "Autenticado";
@@ -122,24 +162,31 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Cerrar la sesión de %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Ya no podrá descargar sus paquetes comprados hasta que vuelva a iniciar sesión.";
 
-"Package_Filter_User" = "Usuario";
-"Package_Filter_PowerUser" = "Usuario Avanzado";
-"Package_Filter_Dev" = "Desarrollador";
-
 "Show_Install_Details" = "Mostrar Detalles";
 "Hide_Install_Details" = "Ocultar Detalles";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
 "After_Install_Reboot" = "Reiniciar Dispositivo";
+"After_Install_Relaunch_Later" = "Reiniciar Sileo después";
+"After_Install_Respring_Later" = "Reiniciar SpringBoard después";
+"After_Install_Reboot_Later" = "Reiniciar dispositivo después";
 
 "Dangerous_Repo.Title" = "Repositorio Riesgoso";
 "Dangerous_Repo.Body" = "Está intentando añadir un repositorio previamente identificado como nocivo por razones como piratería, contenido ilícito, ó malware.\n\nRepositorios identificados como nocivos suelen distribuir software con efectos inesperados, ya sea en la forma de paquetes de paga sin costo, u otros paquetes maliciosos. Esto puede tener repercusiones negativas en su dispositivo y su privacidad, incluso algunas veces afectando su capacidad para hacer jailbreak en el futuro. Recomendamos que tenga extremada precaución para evitar instalar software malicioso.";
 "Dangerous_Repo.Continue" = "Acepto los riesgos, continuar";
 "Dangerous_Repo.Cancel" = "Regresar a la seguridad";
 "Dangerous_Repo.Last_Chance.Title" = "Añadir Repo Riesgosa?";
-"Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad. %@";
+"Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad. %@"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Continuar";
 "Dangerous_Repo.Last_Chance.Cancel" = "Regresar";
 
+// All export-based strings
+"Export" = "Exportar";
+"Export_Packages" = "¿Quieres exportar tu lista de paquetes? Esto copiará todos los nombres y versiones de paquetes a tu portapapeles.";
+"Export_Sources" = "¿Quieres exportar tu lista de fuentes? Esto copiará todas sus URLs al portapapeles.";
+"Export_Yes" = "Sí, copiar.";
+"Export_No" = "No, cancelar.";
 
+// Depcitions
+"View_Depiction" = "Ver descripción";

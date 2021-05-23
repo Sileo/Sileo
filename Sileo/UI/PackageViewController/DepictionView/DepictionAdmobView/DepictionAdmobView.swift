@@ -6,6 +6,7 @@
 //  Copyright © 2019 CoolStar. All rights reserved.
 //
 
+/*
 import Foundation
 import GoogleMobileAds
 import AdSupport
@@ -104,8 +105,5 @@ class DepictionAdmobView: DepictionBaseView, GADBannerViewDelegate {
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
 
     }
-
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("loading ad failed: ", error)
-    }
 }
+*/
