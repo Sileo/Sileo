@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
 "Refresh" = "Обновить";
-"Remove" = "Remove";
+"Remove" = "Удалить";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -147,7 +147,7 @@
 "iCloud_Profile" = "Показать изображение iCloud в избранном";
 "Cache_Size" = "Размер кеша";
 "Clear_Cache" = "Очистить сетевой кэш";
-"Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это бесплатно %@";
+"Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это освободит %@";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
