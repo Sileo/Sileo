@@ -109,6 +109,8 @@
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
+		E194222A265AEF7C0039EFEF /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1942229265AEF7C0039EFEF /* SWCompression */; };
+		E194222F265AEF850039EFEF /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E194222E265AEF850039EFEF /* SWCompression */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
 		E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53452617439300BB8A69 /* KeychainAccess */; };
 		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
@@ -117,8 +119,6 @@
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
-		E1A7DBCA2641E670006BAF49 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1A7DBC92641E670006BAF49 /* SWCompression */; };
-		E1A7DBCF2641E688006BAF49 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E1A7DBCE2641E688006BAF49 /* SWCompression */; };
 		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
 		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
@@ -975,7 +975,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A7DBCF2641E688006BAF49 /* SWCompression in Frameworks */,
+				E194222F265AEF850039EFEF /* SWCompression in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
@@ -995,7 +995,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A7DBCA2641E670006BAF49 /* SWCompression in Frameworks */,
+				E194222A265AEF7C0039EFEF /* SWCompression in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
@@ -2329,8 +2329,8 @@
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19A5357261743C200BB8A69 /* AUPickerCell */,
-				E1A7DBCE2641E688006BAF49 /* SWCompression */,
 				E1A8B6352656DF15009C43EA /* Alderis */,
+				E194222E265AEF850039EFEF /* SWCompression */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -2361,8 +2361,8 @@
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E1EA1D05261500A100E56882 /* AUPickerCell */,
-				E1A7DBC92641E670006BAF49 /* SWCompression */,
 				E1A8B6302656DF04009C43EA /* Alderis */,
+				E1942229265AEF7C0039EFEF /* SWCompression */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -2488,8 +2488,8 @@
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
-				E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */,
+				E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -3845,12 +3845,12 @@
 				minimumVersion = 2.7.1;
 			};
 		};
-		E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+		E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tsolomko/SWCompression";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.9;
+				minimumVersion = 4.5.10;
 			};
 		};
 		E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */ = {
@@ -3910,6 +3910,16 @@
 			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
 		};
+		E1942229265AEF7C0039EFEF /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		E194222E265AEF850039EFEF /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1942228265AEF7C0039EFEF /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
 		E19A53412617438700BB8A69 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
@@ -3949,16 +3959,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
 			productName = AUPickerCell;
-		};
-		E1A7DBC92641E670006BAF49 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		E1A7DBCE2641E688006BAF49 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1A7DBC82641E670006BAF49 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
 		};
 		E1A8B6302656DF04009C43EA /* Alderis */ = {
 			isa = XCSwiftPackageProductDependency;
