@@ -56,6 +56,10 @@ class InstallViewController: SileoViewController {
         showDetailsButton?.setTitle(String(localizationKey: "Show_Install_Details"), for: .normal)
         hideDetailsButton?.setTitle(String(localizationKey: "Hide_Install_Details"), for: .normal)
         
+        func shouldShow(_ finish: APTWrapper.FINISH) -> Bool {
+            finish == .restart || finish == .reopen || finish == .reload || finish == .reboot
+        }
+        
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         // swiftlint:disable:next line_length
         let testAPTStatus = "pmstatus:dpkg-exec:0.0000:Running dpkg\npmstatus:bash:0.0000:Installing bash (iphoneos-arm)\npmstatus:bash:9.0909:Preparing bash (iphoneos-arm)\npmstatus:bash:18.1818:Unpacking bash (iphoneos-arm)\npmstatus:bash:27.2727:Preparing to configure bash (iphoneos-arm)\npmstatus:dpkg-exec:27.2727:Running dpkg\npmstatus:bash:27.2727:Configuring bash (iphoneos-arm)\npmstatus:bash:36.3636:Configuring bash (iphoneos-arm)\npmstatus:bash:45.4545:Installed bash (iphoneos-arm)\npmstatus:dpkg-exec:45.4545:Running dpkg\npmstatus:mobilesubstrate:45.4545:Installing mobilesubstrate (iphoneos-arm)\npmstatus:mobilesubstrate:54.5455:Preparing mobilesubstrate (iphoneos-arm)\npmstatus:mobilesubstrate:63.6364:Unpacking mobilesubstrate (iphoneos-arm)\npmstatus:mobilesubstrate:72.7273:Preparing to configure mobilesubstrate (iphoneos-arm)\npmstatus:dpkg-exec:72.7273:Running dpkg\npmstatus:mobilesubstrate:72.7273:Configuring mobilesubstrate (iphoneos-arm)\npmstatus:mobilesubstrate:81.8182:Configuring mobilesubstrate (iphoneos-arm)\npmstatus:mobilesubstrate:90.9091:Installed mobilesubstrate (iphoneos-arm)"
@@ -80,13 +84,14 @@ class InstallViewController: SileoViewController {
                         let rawUpdates = PackageListManager.shared.availableUpdates()
                         let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
                         UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                        
                         self.setProgress(1, animated: true)
                         self.activityIndicatorView?.stopAnimating()
                         self.progressView?.alpha = 0
                         self.returnButtonAction = .back
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
-                        self.completeLaterButton?.alpha = 1
+                        self.completeLaterButton?.alpha = shouldShow(.back) ? 1 : 0
                         self.refreshSileo = false
                         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
                             NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
@@ -152,9 +157,7 @@ class InstallViewController: SileoViewController {
                         self.progressView?.alpha = 0
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
-                        if !(!refresh && (finish == .back || finish == .uicache)) {
-                            self.completeLaterButton?.alpha = 1
-                        }
+                        self.completeLaterButton?.alpha = shouldShow(finish) ? 1 : 0
                         if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
                             self.completeButtonTapped(nil)
                         }

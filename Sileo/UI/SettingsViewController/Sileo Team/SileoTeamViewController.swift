@@ -60,6 +60,7 @@ class SileoTeamViewController: UITableViewController {
     @objc func updateSileoColors() {
         self.tableView.separatorColor = .sileoSeparatorColor
         self.tableView.backgroundColor = .sileoBackgroundColor
+        self.tableView.reloadData()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

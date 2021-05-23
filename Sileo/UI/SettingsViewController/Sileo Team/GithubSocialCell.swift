@@ -72,6 +72,9 @@ class GithubSocialCell: UITableViewCell {
         authorLink.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 7.5).isActive = true
         authorLink.font = UIFont.systemFont(ofSize: 13, weight: .light)
         authorLink.adjustsFontSizeToFitWidth = true
+        
+        author.textColor = .sileoLabel
+        authorLink.textColor = .sileoLabel
     }
 
     required init?(coder: NSCoder) {

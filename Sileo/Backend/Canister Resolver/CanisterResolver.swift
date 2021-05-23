@@ -33,7 +33,7 @@ final class CanisterResolver {
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         if query.count <= 3 { return fetch() }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=id,name,author,maintainer&responseFields=id,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=packageId,name,author,maintainer&responseFields=packageId,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
         AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
@@ -44,7 +44,7 @@ final class CanisterResolver {
                 package.name = entry["name"] as? String
                 package.repo = entry["repositoryURI"] as? String
                 if self.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
-                package.identifier = entry["id"] as? String
+                package.identifier = entry["packageId"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
                 package.depiction = entry["nativeDepiction"] as? String
@@ -62,6 +62,7 @@ final class CanisterResolver {
                     self.packages.append(package)
                 }
             }
+            
             return fetch()
         }
     }

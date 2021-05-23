@@ -578,28 +578,19 @@ extension PackageListViewController: UISearchBarDelegate {
             }
         }
     }
-    
-    private enum UpdateType {
-        case insert
-        case delete
-        case refresh
-        case nothing
-    }
-    
-    @discardableResult private func updateProvisional() -> UpdateType {
+
+    private func updateProvisional() {
         if !showProvisional {
-            return .nothing
+            return
         }
         
         let text = (searchController?.searchBar.text ?? "").lowercased()
         if text.isEmpty {
-            let isEmpty = provisionalPackages.isEmpty
             self.provisionalPackages.removeAll()
-            return isEmpty ? .nothing : .delete
+            return
         }
         
         let all = PackageListManager.shared.allPackages ?? []
-        let oldEmpty = provisionalPackages.isEmpty
         self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
             let search = (package.name?.lowercased().contains(text) ?? false) ||
                 (package.identifier?.lowercased().contains(text) ?? false) ||
@@ -609,37 +600,17 @@ extension PackageListViewController: UISearchBarDelegate {
                 return false
             }
             
-            let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
-            
-            let localRepo = all.contains(where: { package.identifier == $0.packageID })
-            if localRepo {
-                return newer
+            if let local = all.first(where: { $0.package == package.identifier }) {
+                return DpkgWrapper.isVersion(package.version ?? "", greaterThan: local.version)
+            } else {
+                return true
             }
-            return true
-        }
-        if oldEmpty && provisionalPackages.isEmpty {
-            return .nothing
-        } else if !oldEmpty && provisionalPackages.isEmpty {
-            return .delete
-        } else if oldEmpty && !provisionalPackages.isEmpty {
-            return .insert
-        } else {
-            return .refresh
         }
     }
 }
 
 extension PackageListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
-        func handleResponse(_ response: UpdateType) {
-            switch response {
-            case .nothing: return
-            case .refresh: collectionView?.reloadSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
-            case .delete: collectionView?.deleteSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
-            case .insert: collectionView?.insertSections(IndexSet(integer: packages.isEmpty ? 0 : 1))
-            }
-        }
         
         let searchBar = searchController.searchBar
         var packagesLoadIdentifier = self.packagesLoadIdentifier
@@ -671,8 +642,8 @@ extension PackageListViewController: UISearchResultsUpdating {
             canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 CanisterResolver.shared.fetch(searchBar.text ?? "") {
                     DispatchQueue.main.async {
-                        let response = self?.updateProvisional() ?? .nothing
-                        handleResponse(response)
+                        self?.updateProvisional()
+                        self?.collectionView?.reloadData()
                     }
                 }
             }
