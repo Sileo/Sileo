@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "소스 새로고침 중";
 "Package_Installed_Files_Page" = "파일 설치됨";
 "Refresh" = "새로고침";
-"Remove" = "삭제";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "모든 패키지";
 "All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
