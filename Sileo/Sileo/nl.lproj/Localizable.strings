@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Bronnen Verversen";
 "Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
 "Refresh" = "Ververs";
-"Remove" = "Verwijder";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle Pakketten";
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
