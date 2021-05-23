@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Mise à jour des sources";
 "Package_Installed_Files_Page" = "Fichiers installés";
 "Refresh" = "Rafraîchir";
-"Remove" = "Supprimer";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tous les paquets";
 "All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
