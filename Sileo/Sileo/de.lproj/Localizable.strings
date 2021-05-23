@@ -138,16 +138,16 @@
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Pakete von Canister anzeigen";
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";
 "Developer_Mode" = "Entwicklermodus";
 "Pog_Developer" = "Du bist jetzt ein Entwickler!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Developer_Mode_Explain" = "Der Entwicklermodus deaktiviert die HTTPS-Anforderung der Zahlungs-API.";
+"Auto_Refresh_Sources" = "Quellen automatisch aktualisieren";
+"iCloud_Profile" = "iCloud-Foto in Highlights anzeigen";
+"Cache_Size" = "Zwischenspeicher-Größe";
+"Clear_Cache" = "Netzwerk-Zwischenspeicher leeren";
+"Clear_Cache_Message" = "Willst du den Netzwerk-Zwischenspeicher leeren? Das wird %@ freigeben";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
