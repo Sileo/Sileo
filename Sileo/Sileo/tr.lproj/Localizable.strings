@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
-"Remove" = "Remove";
+"Remove" = "Kaldır";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
