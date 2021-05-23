@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Xoá";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
