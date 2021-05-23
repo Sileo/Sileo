@@ -151,9 +151,12 @@ class CSTextRenderView: UIView {
             textView?.overlayView.isHidden = true
             textView?.overlayView.frame = .zero
             
-            let url = activeLink["url"] as? String
-            _ = textView?.process(action: url ?? "")
-            
+            if let url = activeLink["url"] as? String {
+                _ = textView?.process(action: url)
+            } else if let url = activeLink["url"] as? URL {
+                _ = textView?.process(action: url.absoluteString)
+            }
+     
             linkActive = false
             activeLink = [:]
             activeLinkRect = .zero
