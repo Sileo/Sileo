@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Reîmprospătare de surse";
 "Package_Installed_Files_Page" = "Fișiere instalate";
 "Refresh" = "Reîmprospătați";
-"Remove" = "Ștergeți";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Toate pachete";
 "All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
