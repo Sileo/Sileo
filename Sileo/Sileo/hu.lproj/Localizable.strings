@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Források újratöltése";
 "Package_Installed_Files_Page" = "Telepített fájlok";
 "Refresh" = "Újratöltés";
-"Remove" = "Eltávolítás";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Összes csomag";
 "All_Packages.Cell_Subtitle" = "Nézd meg a forrásaidban lévő összes csomagot";
