@@ -39,7 +39,7 @@
 
 "Sileo_Update_Required.Title" = "Sileo 需要更新";
 "Featured_Requires_Sileo_Update" = "需要更新 Sileo 以查看精選頁面，否則可能會出現渲染錯誤。";
-"Depiction_Requires_Sileo_Update" = "\"需要更新 Sileo 以查看此頁面，否則可能會出現渲染錯誤。";
+"Depiction_Requires_Sileo_Update" = "需要更新 Sileo 以查看此頁面，否則可能會出現渲染錯誤。";
 
 "Form_Error.Title" = "無法載入表單";
 "Form_Load_Error" = "無法從伺服器載入表單。";
