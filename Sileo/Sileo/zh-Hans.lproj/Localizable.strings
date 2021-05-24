@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Package_Installed_Files_Page" = "已安装的文件";
 "Refresh" = "刷新";
-"Remove" = "Remove";
+"Remove" = "移除";
 
 "All_Packages.Title" = "所有软件包";
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
@@ -138,7 +138,7 @@
 "Auto_Complete_Queue" = "自动完成队列";
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "搜索增强";
+"Show_Provisional" = "搜索增强 （Canister）";
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";
