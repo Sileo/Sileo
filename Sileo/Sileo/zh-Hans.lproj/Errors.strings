@@ -12,7 +12,7 @@
 "Error_Indicator" = "错误: %@";
 
 "No_Package.Title" = "无法在 %@ 个已经安装的软件源中找到这个软件包。";
-"No_Package.Body" = "如果这是刚刚出现的，请等待Sileo完成刷新，详情请查看在线帮助。";
+"No_Package.Body" = "如果这是刚刚出现的，请等待 Sileo 完成刷新，详情请查看在线帮助。";
 
 "Invalid_URL.Title" = "无效 URL";
 
@@ -21,17 +21,17 @@
 "Download_Hash_Mismatch" = "Hash 应为 %@，获得了 %@。";
 "Untrusted_Package" = "软件包 %@ 无法被验证并且不可信任";
 
-"Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过SSL加密 (HTTPS)。";
+"Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过 SSL 加密 (HTTPS)。";
 
 "Invalid_Payment_Provider_Response" = "此付款服务提供商处理了一个错误的请求。";
-"No_Payment_Provider" = "这个软件源不支持通过Sileo付款。如果在Cydia Store中购买过此软件包，请链接到Cydia Store账户以下载此软件包。";
+"No_Payment_Provider" = "这个软件源不支持通过 Sileo 付款。如果在 Cydia Store 中购买过此软件包，请链接到 Cydia Store 账户以下载此软件包。";
 
 "Package_Unavailable" = "这个软件包在已安装的软件源中不可用。请检查以确保软件源 %@ 可用。";
 
 "Installation_Error.Title" = "安装错误";
-"Installation_Error.Body" = "Sileo无法获取Root权限。请通过SSH重新安装Sileo。";
+"Installation_Error.Body" = "Sileo 无法获取 Root 权限。请通过 SSH 重新安装 Sileo。";
 
-"FixingDpkg.Title" = "Dpkg被中断";
+"FixingDpkg.Title" = "Dpkg 被中断";
 "FixingDpkg.Body" = "Dpkg 被中断。请等待我们修复此问题。";
 
 "Invalid_Data" = "无效数据";
@@ -46,7 +46,7 @@
 "Invalid_Form_Data" = "此服务器提供了无效的表单数据。";
 "Form_Submit_Failure" = "在下载此表单时发生了错误： %@";
 "Form_Submit_Error.Title" = "无法提交表单";
-"Form_Action_Host_Mismatch" = "表单操作的URL主机与表单的源主机不匹配。";
+"Form_Action_Host_Mismatch" = "表单操作的 URL 主机与表单的源主机不匹配。";
 
 "Email_Unavailable.Title" = "无法发送邮件";
 "Email_Unavailable.Body" = "邮件服务不可用。";
