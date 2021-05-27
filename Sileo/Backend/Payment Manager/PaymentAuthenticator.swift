@@ -15,6 +15,9 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
     var lastWindow: UIWindow?
     
     func authenticate(provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
+        #if targetEnvironment(macCatalyst)
+        completion?(nil, false)
+        #else
         currentAuthenticationSession = SFAuthenticationSession(url: provider.authenticationURL, callbackURLScheme: "sileo") { url, error in
             if let error = error {
                 if let error = error as? SFAuthenticationError,
@@ -61,9 +64,13 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
         }
         */
         currentAuthenticationSession?.start()
+        #endif
     }
     
     func handlePayment(actionURL url: URL, provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
+        #if targetEnvironment(macCatalyst)
+        completion?(nil, false)
+        #else
         currentAuthenticationSession = SFAuthenticationSession(url: url, callbackURLScheme: "sileo") { url, error in
             if let error = error {
                 if let error = error as? SFAuthenticationError,
@@ -98,6 +105,7 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
         }
         */
         self.currentAuthenticationSession?.start()
+        #endif
     }
     /*
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {

@@ -42,7 +42,7 @@ class DependencyResolverAccelerator {
         }
         return listsURL
         #else
-        return URL(fileURLWithPath: "/var/lib/apt/sileolists")
+        return URL(fileURLWithPath: CommandPath.sileolists)
         #endif
     }
     
@@ -56,9 +56,9 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        spawnAsRoot(args: ["/usr/bin/mkdir", "-p", "/var/lib/apt/sileolists"])
-        spawnAsRoot(args: ["/usr/bin/chown", "-R", "mobile:mobile", "/var/lib/apt/sileolists"])
-        spawnAsRoot(args: ["/usr/bin/chmod", "-R", "0755", "/var/lib/apt/sileolists"])
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
         #endif
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
@@ -70,7 +70,7 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        spawnAsRoot(args: ["/usr/bin/cp", "/var/lib/apt/lists/*Release", "/var/lib/apt/sileolists/"])
+        spawnAsRoot(args: [CommandPath.cp, "\(CommandPath.lists)/*Release", "\(CommandPath.sileolists)/"])
         #endif
         
         for package in install {

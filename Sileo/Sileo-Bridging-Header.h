@@ -6,6 +6,10 @@
 #import "DFContinuousForceTouchGestureRecognizer.h"
 @import LNPopupController;
 
+#if TARGET_OS_MACCATALYST
+#import "LaunchAsRoot.h"
+#endif
+
 @interface LNPopupBar ()
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, assign) UIBarStyle systemBarStyle;

@@ -250,7 +250,7 @@ class InstallViewController: SileoViewController {
         self.completeLaterButton?.isEnabled = false
         switch self.returnButtonAction {
         case .back, .uicache:
-            if self.refreshSileo { spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
+            if self.refreshSileo { spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
             self.navigationController?.popViewController(animated: true)
             DownloadManager.shared.lockedForInstallation = false
             DownloadManager.shared.removeAllItems()
@@ -260,10 +260,10 @@ class InstallViewController: SileoViewController {
             exit(0)
         case .restart, .reload:
             if refreshSileo {
-                spawnAsRoot(args: ["/usr/bin/uicache", "-rp", "\(Bundle.main.bundlePath)"])
+                spawnAsRoot(args: [CommandPath.uicache, "-rp", "\(Bundle.main.bundlePath)"])
             } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
             let args: [String]
-            if refreshSileo { args = ["/usr/bin/sbreload", "&&", "/usr/bin/uicache", "-p", "\(Bundle.main.bundlePath)"] } else {
+            if refreshSileo { args = ["/usr/bin/sbreload", "&&", CommandPath.uicache, "-p", "\(Bundle.main.bundlePath)"] } else {
                 args = ["/usr/bin/sbreload"] }
             spawnAsRoot(args: args)
         case .reboot:

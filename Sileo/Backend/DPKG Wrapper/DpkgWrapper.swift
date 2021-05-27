@@ -87,7 +87,7 @@ class DpkgWrapper {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
-        let (retVal, outputString, _) = spawn(command: "/usr/bin/dpkg", args: ["dpkg", "--print-architecture"])
+        let (retVal, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
         guard retVal == 0 else {
             return defaultArchitectures
         }
@@ -131,7 +131,7 @@ class DpkgWrapper {
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
         let ignoreCommand = ignoreUpdates ? "hold" : "unhold"
-        let command = ["/usr/bin/apt-mark", "\(ignoreCommand)", "\(package)"]
+        let command = [CommandPath.aptmark, "\(ignoreCommand)", "\(package)"]
         spawnAsRoot(args: command)
     }
     
@@ -153,7 +153,7 @@ class DpkgWrapper {
         Name: Bourne-Again SHell
         """
         #else
-        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "\(packageURL.path)"])
+        let (_, outputString, _) = spawn(command: CommandPath.dpkgdeb, args: ["dpkg-deb", "--field", "\(packageURL.path)"])
         return outputString
         #endif
     }

@@ -8,6 +8,7 @@
 
 // This is the only section that gets to use deprecated APIs
 
+#if !targetEnvironment(macCatalyst)
 import Foundation
 
 class CydiaAccountViewController: UIViewController, UIWebViewDelegate {
@@ -100,3 +101,4 @@ class CydiaAccountViewController: UIViewController, UIWebViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+#endif

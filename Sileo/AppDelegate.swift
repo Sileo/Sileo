@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
+        #if targetEnvironment(macCatalyst)
+        _ = MacRootWrapper.shared
+        #endif
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days

@@ -124,7 +124,7 @@ class APTWrapper {
         if installs.isEmpty && removals.isEmpty {
             aptOutput = ""
         } else {
-            (_, aptOutput, aptErrorOutput) = spawn(command: "/usr/bin/apt-get", args: ["apt-get"] + arguments)
+            (_, aptOutput, aptErrorOutput) = spawn(command: CommandPath.aptget, args: ["apt-get"] + arguments)
         }
         #endif
         
@@ -234,7 +234,7 @@ class APTWrapper {
         
         #else
         
-        let (_, output, _) = spawn(command: "/bin/sh", args: ["sh", "/usr/bin/apt-key", "verify", "-q", "--status-fd", "1", key, data])
+        let (_, output, _) = spawn(command: CommandPath.sh, args: ["sh", CommandPath.aptkey, "verify", "-q", "--status-fd", "1", key, data])
         
         let outputLines = output.components(separatedBy: "\n")
         
@@ -288,7 +288,7 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         
-        var arguments = ["/usr/bin/apt-get", "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
+        var arguments = [CommandPath.aptget, "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
                         "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
@@ -564,7 +564,7 @@ class APTWrapper {
                     }
                 }
             }
-            spawnAsRoot(args: ["/usr/bin/apt-get", "clean"])
+            spawnAsRoot(args: [CommandPath.aptget, "clean"])
             for file in DownloadManager.shared.cachedFiles {
                 deleteFileAsRoot(file)
             }

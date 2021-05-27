@@ -50,7 +50,7 @@ final class RepoManager {
             }
         }
         #else
-        spawnAsRoot(args: ["/usr/bin/rm", "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
+        spawnAsRoot(args: [CommandPath.rm, "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
         #endif
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
@@ -963,8 +963,8 @@ final class RepoManager {
             return
         }
         
-        spawnAsRoot(args: ["/usr/bin/cp", "-f", "\(tempPath.path)", "\(sileoList)"])
-        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(sileoList)"])
+        spawnAsRoot(args: [CommandPath.cp, "-f", "\(tempPath.path)", "\(sileoList)"])
+        spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
         
         #endif
         
