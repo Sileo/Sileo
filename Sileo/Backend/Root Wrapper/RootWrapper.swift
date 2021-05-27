@@ -59,7 +59,14 @@ class MacRootWrapper {
     
     var pid: pid_t = 0
     
+    #if targetEnvironment(macCatalyst)
+    let env = [ "PATH=/opt/procursus/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin" ]
+    let proenv: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
+    defer { for case let pro? in proenv { free(pro) } }
+    let retVal = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
+    #else
     let retVal = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
+    #endif
     if retVal < 0 {
         return (-1, "", "")
     }
@@ -313,6 +320,40 @@ public class CommandPath {
     
     static var uicache: String {
         "/usr/bin/uicache"
+    }
+    
+    static var dpkgDir: URL {
+        #if targetEnvironment(macCatalyst)
+        return URL(fileURLWithPath: "/opt/procursus/Library/dpkg")
+        #elseif targetEnvironment(simulator) || TARGET_SANDBOX
+        return Bundle.main.bundleURL
+        #else
+        return URL(fileURLWithPath: "/Library/dpkg")
+        #endif
+    }
+    
+    static var sourcesListD: String {
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus/etc/apt/sources.list.d"
+        #else
+        return "/etc/apt/sources.list.d"
+        #endif
+    }
+    
+    static var RepoIcon: String {
+        #if targetEnvironment(macCatalyst)
+        return "RepoIcon"
+        #else
+        return "CydiaIcon"
+        #endif
+    }
+    
+    static var lazyPrefix: String {
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus"
+        #else
+        return ""
+        #endif
     }
     
 }

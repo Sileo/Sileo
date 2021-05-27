@@ -312,14 +312,6 @@ final class PackageListManager {
         return package
     }
     
-    public var dpkgDir: URL {
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        return Bundle.main.bundleURL
-        #else
-        return URL(fileURLWithPath: "/var/lib/dpkg")
-        #endif
-    }
-    
     public func packagesList(loadIdentifier: String, repoContext: Repo?) -> [Package]? {
         try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true, overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
     }
@@ -340,7 +332,7 @@ final class PackageListManager {
             }
         } else {
             if loadIdentifier.hasPrefix("--installed") {
-                packagesFile = dpkgDir.appendingPathComponent("status").resolvingSymlinksInPath()
+                packagesFile = CommandPath.dpkgDir.appendingPathComponent("status").resolvingSymlinksInPath()
                 if useCache {
                     packagesList = installedPackages
                 }

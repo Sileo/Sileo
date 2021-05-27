@@ -96,7 +96,7 @@ final class RepoManager {
             writeListToFile()
         }
         #else
-        let directory = URL(fileURLWithPath: "/etc/apt/sources.list.d")
+        let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
         for item in directory.implicitContents {
             if item.pathExtension == "list" {
                 parseListFile(at: item)
@@ -134,7 +134,7 @@ final class RepoManager {
             Suites: ./
             Components:
             """
-            repo.entryFile = "/etc/apt/sources.list.d/sileo.sources"
+            repo.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
             
             repoList.append(repo)
             repoListLock.signal()
@@ -272,7 +272,7 @@ final class RepoManager {
         }
         return listsURL
         #else
-        return URL(fileURLWithPath: "/var/lib/apt/lists")
+        return URL(fileURLWithPath: CommandPath.lists)
         #endif
     }
     
@@ -291,13 +291,14 @@ final class RepoManager {
     }
     
     func cacheFile(named name: String, for repo: Repo) -> URL {
+        let arch = DpkgWrapper.getArchitectures().first ?? ""
         let prefix = cachePrefix(for: repo)
         if !repo.isFlat && name == "Packages" {
             return prefix
             .deletingLastPathComponent()
                 .appendingPathComponent(prefix.lastPathComponent +
                     repo.components.joined(separator: "_") + "_"
-                    + "binary-" + "iphoneos-arm" + "_"
+                    + "binary-" + arch + "_"
                     + name)
         }
         return prefix
@@ -312,7 +313,7 @@ final class RepoManager {
             
             if !repo.isLoaded {
                 let releaseFile = cacheFile(named: "Release", for: repo)
-                if let info = try? String(contentsOf: releaseFile),
+                if let info = releaseFile.aptContents,
                     let release = try? ControlFileParser.dictionary(controlFile: info, isReleaseFile: true).0,
                     let repoName = release["origin"] {
                     repo.repoName = repoName
@@ -339,7 +340,7 @@ final class RepoManager {
                     }
                     let scale = Int(UIScreen.main.scale)
                     for i in (1...scale).reversed() {
-                        let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
+                        let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
                         if let iconURL = URL(string: repo.repoURL)?
                             .appendingPathComponent(filename)
                             .appendingPathExtension("png") {
@@ -553,7 +554,7 @@ final class RepoManager {
                                 semaphore.signal()
                             }
                             
-                            guard let releaseContents = try? String(contentsOf: fileURL) else {
+                            guard let releaseContents = fileURL.aptContents else {
                                 log("Could not parse release file from \(releaseURL)", type: .error)
                                 errorsFound = true
                                 return
@@ -718,9 +719,9 @@ final class RepoManager {
                     var isReleaseGPGValid = false
                     if let releaseGPGFileURL = releaseGPGFileURL {
                         var error: String = ""
-                        let validAndTrusted = APTWrapper.verifySignature(key: releaseGPGFileURL.path, data: releaseFile.url.path, error: &error)
+                        let validAndTrusted = APTWrapper.verifySignature(key: releaseGPGFileURL.aptPath, data: releaseFile.url.aptPath, error: &error)
                         if !validAndTrusted || !error.isEmpty {
-                            if FileManager.default.fileExists(atPath: releaseGPGFileDst.path) {
+                            if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) {
                                 log("Invalid GPG signature at \(releaseGPGURL)", type: .error)
                                 errorsFound = true
                             }
@@ -948,12 +949,12 @@ final class RepoManager {
         #else
         
         var sileoList = ""
-        if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
-           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
-            sileoList = "/etc/apt/sources.list.d/sileo.sources"
+        if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
+           FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
+           FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
+            sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
         } else {
-            sileoList = "/etc/apt/sileo.list.d/sileo.sources"
+            sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
         }
         
         let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

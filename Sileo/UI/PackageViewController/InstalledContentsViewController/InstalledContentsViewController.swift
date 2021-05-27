@@ -28,7 +28,7 @@ class InstalledContentsViewController: UIViewController {
             #if targetEnvironment(simulator) || TARGET_SANDBOX
             let dpkgURL = Bundle.main.url(forResource: "dpkg", withExtension: "list") ?? URL(fileURLWithPath: "/")
             #else
-            let dpkgURL = PackageListManager.shared.dpkgDir.appendingPathComponent("info").appendingPathComponent("\(self.packageId).list")
+            let dpkgURL = CommandPath.dpkgDir.appendingPathComponent("info").appendingPathComponent("\(self.packageId).list")
             #endif
             filesList = try String(contentsOf: dpkgURL).components(separatedBy: CharacterSet(charactersIn: "\n"))
         } catch {

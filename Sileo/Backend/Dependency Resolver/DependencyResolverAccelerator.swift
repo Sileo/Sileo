@@ -53,26 +53,14 @@ class DependencyResolverAccelerator {
         PackageListManager.shared.waitForReady()
         dependencyLock.wait()
         partialRepoList = preflightedRepoList
-        
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
-        #endif
-        
+
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
             return
         }
         for filePath in filePaths {
-            try? FileManager.default.removeItem(at: filePath)
+            try? FileManager.default.removeItem(at: filePath.aptUrl)
         }
-        
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: [CommandPath.cp, "\(CommandPath.lists)/*Release", "\(CommandPath.sileolists)/"])
-        #endif
-        
+  
         for package in install {
             getDependenciesInternal2(package: package.package)
         }
@@ -95,7 +83,7 @@ class DependencyResolverAccelerator {
                 }
                 sourcesData.append(packageData)
             }
-            try? sourcesData.write(to: newSourcesFile)
+            try? sourcesData.write(to: newSourcesFile.aptUrl)
         }
         
         partialRepoList.removeAll()
@@ -109,7 +97,7 @@ class DependencyResolverAccelerator {
     }
     
     private func getDependenciesInternal2(package: Package) {
-        guard let sourceFileURL = package.sourceFileURL else {
+        guard let sourceFileURL = package.sourceFileURL?.aptUrl else {
             return
         }
         if partialRepoList[sourceFileURL] == nil {

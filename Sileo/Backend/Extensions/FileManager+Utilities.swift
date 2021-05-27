@@ -18,7 +18,7 @@ extension FileManager {
 extension URL {
 
     var exists: Bool {
-        FileManager.default.fileExists(atPath: path)
+        FileManager.default.fileExists(atPath: aptPath)
     }
 
     var dirExists: Bool {

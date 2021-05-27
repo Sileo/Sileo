@@ -69,7 +69,7 @@ class DpkgWrapper {
                                                            "installed": .installed]
     
     public class func dpkgInterrupted() -> Bool {
-        let updatesDir = PackageListManager.shared.dpkgDir.appendingPathComponent("updates/")
+        let updatesDir = CommandPath.dpkgDir.appendingPathComponent("updates/")
         var interrupted = false
         guard let contents = try? FileManager.default.contentsOfDirectory(atPath: updatesDir.absoluteURL.path) else {
             return interrupted

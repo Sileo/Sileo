@@ -669,8 +669,8 @@ extension PackageListViewController: UISearchResultsUpdating {
             self.mutexLock.wait()
             if packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
                 packages = packages.sorted(by: { package1, package2 -> Bool in
-                    let packageURL1 = PackageListManager.shared.dpkgDir.appendingPathComponent("info/\(package1.package).list")
-                    let packageURL2 = PackageListManager.shared.dpkgDir.appendingPathComponent("info/\(package2.package).list")
+                    let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
+                    let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
                     let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
                     let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
                     
