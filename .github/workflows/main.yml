@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-      - amy
+      - 2.1.x
 name: Build
 jobs:
   make:
