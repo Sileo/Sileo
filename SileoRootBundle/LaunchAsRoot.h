@@ -2,8 +2,8 @@
 //  LaunchAsRoot.h
 //  Sileo
 //
-//  Created by Andromeda on 27/05/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Created by Amy on 27/05/2021.
+//  Copyright © 2021 Amy While. All rights reserved.
 //
 
 #ifndef LaunchAsRoot_h
@@ -14,7 +14,7 @@
 
 @protocol LaunchAsRootProtocol
 -(id)init;
--(NSString *)launchAsRoot:(const char ** [])args;
+-(NSArray *)launchAsRoot:(NSArray *)args launchPath:(NSString *)launchPath;
 @end
 
 @interface LaunchAsRoot: NSObject<LaunchAsRootProtocol>

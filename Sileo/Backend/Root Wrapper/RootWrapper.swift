@@ -16,9 +16,15 @@ class MacRootWrapper {
         self.helper = pluginClass.init()
     }
     
-    public func runAsRoot(args: [String]) -> String {
-        ""
-        //return helper.launch(asRoot: args)
+    public func runAsRoot(args: [String]) -> (Int, String) {
+        guard !args.isEmpty,
+              let launchPath = args.first else { fatalError("What the fuck have you passed me") }
+        var newArgs = args
+        newArgs.removeFirst()
+        let elevate = helper.launch(asRoot: newArgs, launchPath: launchPath)
+        guard let pid = elevate?[0] as? Int,
+              let response = elevate?[1] as? String else { return (-1, "") }
+        return (pid, response)
     }
 }
 #endif
@@ -132,6 +138,7 @@ class MacRootWrapper {
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
+    NSLog("[Sileo] For Command \(command) with args \(args) returning \(status) \(stdoutStr) \(stderrStr)")
     return (Int(status), stdoutStr, stderrStr)
 }
 
@@ -139,10 +146,8 @@ class MacRootWrapper {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     fatalError("Commands should not be run in sandbox")
     #elseif targetEnvironment(macCatalyst)
-    var argv: [UnsafeMutablePointer<CChar>?] = args.map { $0.withCString(strdup) }
-    defer { for case let arg? in argv { free(arg) } }
-    argv = argv + [nil]
-    return (0, "", "")
+    let (pid, output) = MacRootWrapper.shared.runAsRoot(args: args)
+    return (pid, output, "")
     #else
     guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
         return (-1, "", "")
