@@ -362,8 +362,8 @@ class APTWrapper {
             
             var pid: pid_t = 0
             
-            let retVal = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
-            if retVal < 0 {
+            let spawnStatus = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
+            if spawnStatus != 0 {
                 return
             }
             

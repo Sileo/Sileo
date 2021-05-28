@@ -2,29 +2,38 @@ import Foundation
 
 #if targetEnvironment(macCatalyst)
 class MacRootWrapper {
-    
     static let shared = MacRootWrapper()
-    var helper: LaunchAsRootProtocol
+    
+    var wrapperClass: LaunchAsRoot.Type
     
     init() {
-        let bundleFileName = "SileoRootBundle.bundle"
-        let className = "LaunchAsRoot"
-        guard let bundleURL = Bundle.main.builtInPlugInsURL?
-                                    .appendingPathComponent(bundleFileName),
+        guard let bundleURL = Bundle.main.builtInPlugInsURL?.appendingPathComponent("SileoRootWrapper.bundle"),
               let bundle = Bundle(url: bundleURL),
-              let pluginClass = bundle.classNamed(className) as? LaunchAsRootProtocol.Type else { fatalError("oof") }
-        self.helper = pluginClass.init()
+              bundle.load(),
+              let klass = objc_getClass("LaunchAsRoot") as? LaunchAsRoot.Type
+        else {
+            fatalError("Unable to initialize ability to spawn a process as root")
+        }
+        
+        self.wrapperClass = klass
+        _ = klass.shared
     }
     
-    public func runAsRoot(args: [String]) -> (Int, String) {
+    public func spawn(args: [String]) -> (Int, String) {
         guard !args.isEmpty,
-              let launchPath = args.first else { fatalError("What the fuck have you passed me") }
-        var newArgs = args
-        newArgs.removeFirst()
-        let elevate = helper.launch(asRoot: newArgs, launchPath: launchPath)
-        guard let pid = elevate?[0] as? Int,
-              let response = elevate?[1] as? String else { return (-1, "") }
-        return (pid, response)
+              let launchPath = args.first
+        else {
+            fatalError("Found invalid args when spawning a process as root")
+        }
+        
+        var arguments = args
+        arguments.removeFirst()
+        
+        let stdoutString = self.wrapperClass.shared.spawn(withPath: launchPath, args: arguments)
+        
+        let status = stdoutString == nil ? -1 : 0
+        let outputString = stdoutString ?? ""
+        return (status, outputString)
     }
 }
 #endif
@@ -63,11 +72,11 @@ class MacRootWrapper {
     let env = [ "PATH=/opt/procursus/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin" ]
     let proenv: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
     defer { for case let pro? in proenv { free(pro) } }
-    let retVal = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
+    let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
     #else
-    let retVal = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
+    let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
     #endif
-    if retVal < 0 {
+    if spawnStatus != 0 {
         return (-1, "", "")
     }
     
@@ -145,7 +154,7 @@ class MacRootWrapper {
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    NSLog("[Sileo] For Command \(command) with args \(args) returning \(status) \(stdoutStr) \(stderrStr)")
+    
     return (Int(status), stdoutStr, stderrStr)
 }
 
@@ -153,8 +162,8 @@ class MacRootWrapper {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     fatalError("Commands should not be run in sandbox")
     #elseif targetEnvironment(macCatalyst)
-    let (pid, output) = MacRootWrapper.shared.runAsRoot(args: args)
-    return (pid, output, "")
+    let (status, output) = MacRootWrapper.shared.spawn(args: args)
+    return (status, output, "")
     #else
     guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
         return (-1, "", "")
@@ -196,7 +205,6 @@ func moveFileAsRoot(from: URL, to: URL) {
 }
 
 public class CommandPath {
-    
     // swiftlint:disable identifier_name
     static var mv: String {
         #if targetEnvironment(macCatalyst)
@@ -355,5 +363,4 @@ public class CommandPath {
         return ""
         #endif
     }
-    
 }

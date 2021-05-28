@@ -45,6 +45,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
             let (status, output, _) = spawnAsRoot(args: [CommandPath.whoami])
+            print(status, output)
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),

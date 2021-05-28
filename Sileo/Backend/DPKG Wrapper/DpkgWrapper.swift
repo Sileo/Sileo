@@ -87,8 +87,8 @@ class DpkgWrapper {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
-        let (retVal, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
-        guard retVal == 0 else {
+        let (status, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
+        guard status != 0 else {
             return defaultArchitectures
         }
         return outputString.components(separatedBy: CharacterSet(charactersIn: "\n"))

@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <sysexits.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+#import <stdio.h>
+#import <string.h>
+#import <sysexits.h>
+#import <sys/stat.h>
+#import <sys/types.h>
+#import <unistd.h>
 
 #define PROC_PIDPATHINFO_MAXSIZE (1024)
 int proc_pidpath(pid_t pid, void *buffer, uint32_t buffersize);
