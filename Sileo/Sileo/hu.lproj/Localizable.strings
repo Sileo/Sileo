@@ -98,6 +98,7 @@
 "Ignored Updates" = "Figyelmen kívül hagyott frissítések";
 
 "Repos" = "Csomagtárolók";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Forrás hozzáadása";
 "Add_Source.Body" = "APT URL hozzáadása";
