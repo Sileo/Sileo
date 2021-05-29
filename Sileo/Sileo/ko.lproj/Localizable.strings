@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "이 패키지에 대한 변경점이 없습니다.";
 
 "Installed_Package_Header" = "설치된 패키지";
+"Installed_Packages" = "Installed Packages";
 "Version" = "버전";
 "Show_Package_Contents_Button" = "패키지 콘텐츠 보기";
 
