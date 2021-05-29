@@ -29,13 +29,13 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         
-        if sileoVersion == "unknown" {
+        if sileoVersion == "Unknown" {
             DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.waitForReady()
             
                 DispatchQueue.main.async {
                     let sileoPackage2 = FeaturedInfoFooterView.package
-                    let sileoVersion2 = sileoPackage2?.version ?? "Unknown"
+                    let sileoVersion2 = sileoPackage2?.version ?? Bundle.main.infoDictionary!["CFBundleShortVersionString"] ?? "Unknown"
                     self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)"
                 }
             }
