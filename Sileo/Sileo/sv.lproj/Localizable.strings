@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignorerade Uppdateringar";
 
 "Repos" = "Källor";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Lägg Till Källa";
 "Add_Source.Body" = "Lägg Till APT URL";
