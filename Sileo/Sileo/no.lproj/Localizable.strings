@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignorerte oppdateringer";
 
 "Repos" = "Kilder";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Legg til kilde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
