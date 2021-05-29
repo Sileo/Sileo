@@ -98,6 +98,7 @@
 "Ignored Updates" = "Bỏ qua Cập nhật";
 
 "Repos" = "Kho lưu trữ";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Thêm nguồn";
 "Add_Source.Body" = "Thêm liên kết APT";
