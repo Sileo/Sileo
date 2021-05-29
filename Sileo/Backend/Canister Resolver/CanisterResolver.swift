@@ -14,6 +14,7 @@ final class CanisterResolver {
     public static let shared = CanisterResolver()
     public var packages = [ProvisionalPackage]()
     private var cachedQueue = [Package]()
+    private var savedSearch = [String]()
     
     let filteredRepos = [
         "apt.elucubratus.com",
@@ -32,13 +33,15 @@ final class CanisterResolver {
     }
     
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
-        if query.count <= 3 { return fetch() }
+        if query.count <= 3,
+           savedSearch.contains(query) { return }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=packageId,name,author,maintainer&responseFields=packageId,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
         AmyNetworkResolver.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
                   dict["status"] as? String == "Successful",
-                  let data = dict["data"] as? [[String: Any]] else { return fetch() }
+                  let data = dict["data"] as? [[String: Any]] else { return }
+            self.savedSearch.append(query)
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
