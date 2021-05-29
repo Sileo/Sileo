@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Schimbări nedisponibile pentru acest pachet.";
 
 "Installed_Package_Header" = "Pachet instalat";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versiune";
 "Show_Package_Contents_Button" = "Priviți conținutul acest pachet";
 
