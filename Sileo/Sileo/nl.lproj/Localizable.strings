@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Aanpassingen zijn niet beschikbaar voor dit pakket.";
 
 "Installed_Package_Header" = "Geïnstalleerd pakket";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versie";
 "Show_Package_Contents_Button" = "Toon Pakket Inhoud";
 
