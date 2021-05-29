@@ -220,7 +220,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         guard var package = package else {
             return
         }
-
+        
         if package.packageFileURL == nil {
             if let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) {
                 package = newestPackage
@@ -338,38 +338,54 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 ]
             ]
         ] as [String: Any]
+        var views = [[String: Any]]()
         if installedPackage != nil {
-            footerDict = [
-                "class": "DepictionStackView",
-                "views": [
-                    [
-                        "class": "DepictionSeparatorView"
-                    ],
-                    [
-                        "class": "DepictionHeaderView",
-                        "title": String(localizationKey: "Installed_Package_Header")
-                    ],
-                    [
-                        "class": "DepictionTableTextView",
-                        "title": String(localizationKey: "Version"),
-                        "text": installedPackage?.version ?? ""
-                    ],
-                    [
-                        "class": "DepictionTableButtonView",
-                        "title": String(localizationKey: "Show_Package_Contents_Button"),
-                        "action": "showInstalledContents"
-                    ],
-                    [
-                        "class": "DepictionSeparatorView"
-                    ],
-                    [
-                        "class": "DepictionSubheaderView",
-                        "alignment": 1,
-                        "title": "\(package.package) (\(package.version))"
-                    ]
+            views = [
+                [
+                    "class": "DepictionSeparatorView"
+                ],
+                [
+                    "class": "DepictionHeaderView",
+                    "title": String(localizationKey: "Installed_Package_Header")
+                ],
+                [
+                    "class": "DepictionTableTextView",
+                    "title": String(localizationKey: "Version"),
+                    "text": installedPackage?.version ?? ""
+                ],
+                [
+                    "class": "DepictionTableButtonView",
+                    "title": String(localizationKey: "Show_Package_Contents_Button"),
+                    "action": "showInstalledContents"
+                ],
+                [
+                    "class": "DepictionSeparatorView"
+                ],
+                [
+                    "class": "DepictionSubheaderView",
+                    "alignment": 1,
+                    "title": "\(package.package) (\(package.version))"
                 ]
-            ] as [String: Any]
+            ]
         }
+        if let repo = package.sourceRepo {
+            views.insert([
+                "class": "DepictionSeparatorView"
+            ], at: 0)
+            views.insert([
+                "class": "DepictionHeaderView",
+                "title": String(localizationKey: "Repo")
+            ], at: 1)
+            views.insert([
+                "class": "DepictionTableButtonView",
+                "title": repo.displayName,
+                "action": "showRepoContext"
+            ], at: 2)
+        }
+        footerDict = [
+            "class": "DepictionStackView",
+            "views": views
+        ] as [String: Any]
 
         if let depictionFooterView = DepictionBaseView.view(dictionary: footerDict, viewController: self, tintColor: nil, isActionable: false) {
             depictionFooterView.delegate = self
