@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "このパッケージでは更新履歴を表示できません";
 
 "Installed_Package_Header" = "インストール済み";
+"Installed_Packages" = "Installed Packages";
 "Version" = "バージョン";
 "Show_Package_Contents_Button" = "パッケージの内容を表示";
 
