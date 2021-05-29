@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "無法取得此套件的更新記錄。";
 
 "Installed_Package_Header" = "已安裝套件";
+"Installed_Packages" = "Installed Packages";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "顯示套件內容";
 
