@@ -98,6 +98,7 @@
 "Ignored Updates" = "Actualizări Dezactivate";
 
 "Repos" = "Repozitoriile";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Adăgați sursă";
 "Add_Source.Body" = "Adăugați URL APT";
