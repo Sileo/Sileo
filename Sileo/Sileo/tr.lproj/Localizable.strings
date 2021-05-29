@@ -98,6 +98,7 @@
 "Ignored Updates" = "Yoksayılan Güncellemeler";
 
 "Repos" = "Kaynaklar";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Kaynak Ekle";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
