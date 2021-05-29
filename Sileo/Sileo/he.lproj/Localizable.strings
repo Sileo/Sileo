@@ -98,6 +98,7 @@
 "Ignored Updates" = "שדרוגים בהתעלמות";
 
 "Repos" = "מאגרים";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "הוסף מקור";
 "Add_Source.Body" = "הוסף APT URL";
