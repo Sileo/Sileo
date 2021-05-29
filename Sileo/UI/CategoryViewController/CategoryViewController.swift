@@ -76,12 +76,18 @@ class CategoryViewController: SileoTableViewController {
         DispatchQueue.global(qos: .default).async {
             var categories: Set<String> = []
             var categoriesCountCache: [String: Int] = [:]
-            guard let context = self.repoContext,
-                  let url = context.url else { return }
-            let betterContext = RepoManager.shared.repo(with: url) ?? context
-            let packages =  betterContext.packages
-            let installed = betterContext.installed
-  
+            let packages: [Package]?
+            let installed: [Package]?
+            if let context = self.repoContext,
+                  let url = context.url {
+                let betterContext = RepoManager.shared.repo(with: url) ?? context
+                packages =  betterContext.packages
+                installed = betterContext.installed
+            } else {
+                packages = PackageListManager.shared.allPackages
+                installed = nil
+            }
+            
             for package in packages ?? [] {
                 let category = PackageListManager.shared.humanReadableCategory(package.section)
                 if !categories.contains(category) {

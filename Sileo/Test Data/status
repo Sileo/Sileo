@@ -2,13 +2,13 @@ Package: apt
 Status: install ok installed
 Priority: required
 Section: Packaging
-Installed-Size: 2860
+Installed-Size: 2972
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.3.0
+Version: 2.3.5
 Replaces: apt1.8, apt1.4, libapt, libapt-pkg5.0, apt-lib, apt-key
 Provides: apt1.8 (= 1:0), apt-lib (= 1:0), libapt (= 1:0), apt-key (= 1:0)
-Depends: libapt-pkg6.0 (= 2.3.0), gpgv, dpkg (>= 1.19.0), coreutils
+Depends: libapt-pkg6.0 (= 2.3.5), libgnutls30, gpgv, dpkg (>= 1.19.0), coreutils
 Pre-Depends: dpkg (>= 1.14.25-8), system-cmds (>= 854.40.2-2)
 Conflicts: apt7 (<< 1:0), apt1.4 (<< 1:0), apt1.8, libapt-pkg5.0 (<< 1:0), libapt (<< 1:0), apt-key (<< 1:0)
 Description: commandline package manager
@@ -33,346 +33,52 @@ Package: bash
 Status: install ok installed
 Priority: optional
 Section: Terminal_Support
-Installed-Size: 3616
+Installed-Size: 3612
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 5.1.004-1
-Depends: grep, libncursesw6, libreadline8, sed, debianutils (>= 4.11.2)
-Pre-Depends: libreadline8 (>= 8.0), profile.d (>= 0-5), debianutils (>= 4.11.2)
+Version: 5.1.008
+Depends: grep, libiosexec1, libncursesw6, libreadline8, sed, debianutils (>= 4.11.2)
+Pre-Depends: dash (>= 0.5.11.3-1), libreadline8 (>= 8.0), profile.d (>= 0-5), debianutils (>= 4.11.2)
 Description: the best shell ever written by Brian Fox
 Homepage: http://www.gnu.org/software/bash/
-Name: Bourne-Again SHell
+
+Package: bzip2
+Status: install ok installed
+Priority: important
+Section: Archiving
+Installed-Size: 992
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.0.8
+Description: compression that's slightly better than gzip
+Homepage: http://www.bzip.org/
 
 Package: ca-certificates
 Status: install ok installed
 Priority: optional
 Section: Utilities
-Installed-Size: 448
+Installed-Size: 208
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
 Multi-Arch: foreign
-Version: 0.0.3
-Replaces: org.thebigboss.cacerts
-Provides: org.thebigboss.cacerts
-Depends: firmware (>= 2.0)
-Conflicts: org.thebigboss.cacerts, openssl (<< 1.0.2r)
+Version: 0.0.4
 Description: CA certs for curl, wget, git.
-Name: CA Certs
-
-Package: ch.marco-roth.shortlook.plugin.contact-photo.whatsapp
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 152
-Maintainer: Marco Roth
-Architecture: iphoneos-arm
-Version: 1.2.0
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show WhatsApp users' profile pictures in ShortLook when you receive a WhatsApp notification!
-Name: WhatsApp Profile Pictures for ShortLook
-Author: Marco Roth
-
-Package: ch.marcoroth.shortlook.plugin.profile-picture.github
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 152
-Maintainer: Marco Roth
-Architecture: iphoneos-arm
-Version: 1.0.0
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show GitHub Profile Pictures in ShortLook when you receive a GitHub notification!
-Name: GitHub Profile Pictures for ShortLook
-Author: Marco Roth
-
-Package: co.dynastic.ios.lib.flora
-Status: install ok installed
-Section: Development
-Installed-Size: 492
-Maintainer: Ayden Panhuyzen
-Architecture: iphoneos-arm
-Version: 1.0.1
-Depends: mobilesubstrate, preferenceloader, firmware (>= 11.0)
-Description: Common Dynastic utilities.
-Name: libflora
-Tag: role::developer
-Author: Dynastic
-
-Package: co.dynastic.ios.tweak.shortlook
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 5240
-Maintainer: Ayden Panhuyzen
-Architecture: iphoneos-arm
-Version: 1.0.21
-Depends: mobilesubstrate, firmware (>= 11.0), co.dynastic.ios.lib.flora
-Description: ShortLook shows you your notifications at a glance. ShortLook displays on your locked iPhone as you receive a notification using it's beautiful full screen design, allowing for readability from a distance. Made to be as unobtrusive as possible, it dismisses as soon as you tap the screen or Raise to Wake. It's configurable UI and behaviours ensure that ShortLook works how you want it to work.
-Name: ShortLook
-Author: Dynastic
-
-Package: co.dynastic.ios.tweak.shortlook.plugin.contact-photo.discord
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 152
-Maintainer: Dynastic Development
-Architecture: iphoneos-arm
-Version: 1.0.1
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show Discord users' profile pictures in ShortLook when you receive a Discord notification!
-Name: Discord Profile Pictures for ShortLook
-Author: Dynastic Development
-
-Package: co.dynastic.ios.tweak.shortlook.plugin.contact-photo.twitter
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 184
-Maintainer: AppleBetas
-Architecture: iphoneos-arm
-Version: 1.0.2
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show Twitter users' profile pictures in ShortLook when you receive a Twitter notification!
-Name: Twitter Profile Pictures for ShortLook
-Author: Dynastic Development
-
-Package: com.amywhile.signalreborn
-Status: install ok installed
-Section: Application
-Installed-Size: 6680
-Maintainer: Amy While
-Architecture: iphoneos-arm
-Version: 2.1.3
-Replaces: com.charliewhile.signalreborn
-Depends: firmware (>= 12.2) | org.swift.libswift
-Breaks: com.charliewhile.signalreborn
-Conflicts: com.charliewhile.signalreborn
-Description: Visualise your nearby cell towers
-Name: SignalReborn
-Author: Amy While
-
-Package: com.bousrih.darkviola
-Status: install ok installed
-Section: Themes
-Maintainer: bossgfx <bousrih20@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.9.4
-Description: The dark side of Viola!
-Name: Viola Dark
-Author: bossgfx <bousrih20@gmail.com>
-
-Package: com.cokepokes.libnotifications
-Status: install ok installed
-Priority: optional
-Section: Development
-Installed-Size: 910
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Architecture: iphoneos-arm
-Version: 0.3-4
-Depends: firmware (>= 8.0)
-Description: App notification library.
-Name: libnotifications
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libnotificationsDp
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libnotificationsDp
-Sponsor: thebigboss.org <http://thebigboss.org>
-Author: CokePokes <cokepokes@gmail.com>
-Tag: purpose::extension
-dev: cokepokes
-
-Package: com.dgh0st.flexall
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 260
-Maintainer: DGh0st <deeppwnage@yahoo.com>
-Architecture: iphoneos-arm
-Version: 0.0.1-21
-Depends: mobilesubstrate, libflex
-Description: Load FLEX loader dynamically.
-Name: FLEXall
-Author: DGh0st <deeppwnage@yahoo.com>
-
-Package: com.jeffresc.shortlook.plugin.contact-photo.apollo
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 152
-Maintainer: JeffResc
-Architecture: iphoneos-arm
-Version: 1.0.1
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show Apollo users' profile pictures in ShortLook when you receive a Apollo notification!
-Name: Apollo Profile Pictures for ShortLook
-Author: Jeff Rescignano
-
-Package: com.jontelang.snapper2.packix
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 1560
-Maintainer: Jonathan Winger-lang
-Architecture: iphoneos-arm
-Version: 2.5.7
-Depends: mobilesubstrate, firmware (>= 12.1)
-Conflicts: com.jontelang.snapper, com.jontelang.snapper2
-Description: Pin screenshots on the screen.
-Name: Snapper 2
-Author: Jonathan Winger-lang
-
-Package: com.megadev.sentinel
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 736
-Maintainer: MegaDev
-Architecture: iphoneos-arm
-Version: 1.3.1
-Depends: mobilesubstrate, ws.hbang.common, preferenceloader, com.opa334.ccsupport
-Description: Stop losing your jailbreak when your battery dies!
-Name: Sentinel
-Author: MegaDev
-
-Package: com.mrgcgamer.libgcuniversal
-Status: install ok installed
-Section: System
-Installed-Size: 296
-Maintainer: MrGcGamer
-Architecture: iphoneos-arm
-Version: 1.2.0
-Provides: com.mrgcgamer.libgcimagepicker, com.mrgcgamer.libgccolorpicker
-Depends: firmware (>= 14.0) | ws.hbang.alderis, firmware (>= 12.0)
-Description: An awesome library of some sort!!
-Name: LibGcUniversal
-Author: MrGcGamer
-Tag: role::developer
-
-Package: com.muirey03.cr4shed
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 1856
-Maintainer: Muirey03
-Architecture: iphoneos-arm
-Version: 4.2.2
-Depends: mobilesubstrate, com.muirey03.libmryipc, com.cokepokes.libnotifications (>= 0.2-2), cy+cpu.arm64 | cy+cpu.arm64e, firmware (>= 9.0), ws.hbang.common (>= 1.11)
-Description: A modern crash reporter for iOS
-Name: Cr4shed
-Author: Muirey03
-
-Package: com.muirey03.libmryipc
-Status: install ok installed
-Section: Development
-Installed-Size: 481
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Architecture: iphoneos-arm
-Version: 2.0
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 7.0)
-Conflicts: ws.hbang.stopcrashingpls (= 1.0)
-Description: Easy-to-use, RocketBootstrap-less iOS IPC
-Name: libMRYIPC
-Author: Muirey03 <tommy.muir@btinternet.com>
-dev: muirey03
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libmryipcDp
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libmryipcDp
-Tag: role::developer, purpose::library, cydia::obsolete, compatible::ios13
-
-Package: com.neinzedd9.shortlook.plugin.contact-photo.snapchat
-Status: install ok installed
-Section: Tweaks (ShortLook)
-Installed-Size: 104
-Maintainer: Dynastic
-Architecture: iphoneos-arm
-Version: 1.0.4.1
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Description: Show Snapchat users' bitmoji in ShortLook when you receive a Snapchat notification!
-Name: Snapchat Bitmoji for ShortLook
-Author: Dynastic
-
-Package: com.opa334.ccsupport
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 356
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Architecture: iphoneos-arm
-Version: 1.3.1
-Replaces: com.ioscreatix.silo
-Provides: com.ioscreatix.silo
-Depends: firmware (>= 11.0), mobilesubstrate (>= 0.9.5000)
-Conflicts: com.ioscreatix.silo
-Description: Support tweak for CC modules!
-Author: opa334 <opa334@protonmail.com>
-Name: CCSupport
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ccsupportDp
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ccsupportDp
-Sponsor: thebigboss.org <http://thebigboss.org>
-dev: opa334
-Tag: purpose::extension
-
-Package: com.rpetrich.rocketbootstrap
-Status: install ok installed
-Section: Tweaks
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.1.0~libhooker2
-Depends: org.coolstar.libhooker
-Description: Support library allowing tweaks to communicate with sandboxed processes
-Name: RocketBootstrap
-Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
-dev: rpetrich
-Tag: purpose::extension, role::developer
-
-Package: com.spark.snowboard
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 4828
-Maintainer: Spark
-Architecture: iphoneos-arm
-Version: 1.4.12~Beta4
-Replaces: anemoneteam.anemone, com.anemonetheming.anemone, winterboard
-Provides: anemoneteam.anemone, com.anemonetheming.anemone, winterboard
-Depends: mobilesubstrate, preferenceloader
-Conflicts: anemoneteam.anemone, com.anemonetheming.anemone, winterboard
-Description: Snowboard theming engine
-Name: SnowBoard
-Author: Spark & Dennis D. Bednarz
-
-Package: com.spark.snowboard.ui
-Status: install ok installed
-Section: SnowBoard Extensions
-Installed-Size: 444
-Maintainer: Spark
-Architecture: iphoneos-arm
-Version: 1.0.60~Beta3
-Depends: mobilesubstrate, com.spark.snowboard (>> 1.2.22)
-Description: UI Extension for SnowBoard
-Name: SnowBoard UI Extension
-Author: Spark
-
-Package: com.tigisoftware.appdatamanager
-Status: install ok installed
-Priority: optional
-Section: Utilities
-Installed-Size: 9122
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Architecture: iphoneos-arm
-Version: 1.6.0-9
-Depends: firmware (>= 7.0)
-Description: tool to WIPE, BACKUP, RESTORE AppData for installed Apps
-Name: Apps Manager
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=appsmanagerDp
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=appsmanagerDp
-Sponsor: thebigboss.org <http://thebigboss.org>
-Author: TIGI Software <satashi2009@gmail.com>
-Tag: purpose::uikit, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, compatible::ios13
-dev: satashi2009
-Icon: file:///Applications/ADManager.app/AppIcon60x60@2x.png
+Name: CA Certificates
 
 Package: coreutils
 Status: install ok installed
 Priority: standard
 Section: Utilities
-Installed-Size: 14856
+Installed-Size: 14876
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 8.32-9
+Version: 8.32-11
 Replaces: netatalk (<= 2.0.3-6), coreutils-bin, shell-cmds (<< 207.40.1), text-cmds (<< 1:0), file-cmds (<< 272.250.1-1)
-Provides: md5sum, sha1sum, coreutils-bin (= 8.32-9), dirname, kill, mktemp, su
-Depends: bash, profile.d, libintl8 (>= 0.20.0), libcrypt2
+Provides: md5sum, sha1sum, coreutils-bin (= 8.32-11), dirname, kill, mktemp, su
+Depends: sh, profile.d, libintl8 (>= 0.20.0), libgmp10, libcrypt2
 Conflicts: coreutils-bin (<< 1:0), shell-cmds (<< 207.40.1), text-cmds (<< 1:0), file-cmds (<< 272.250.1-1), system-cmds (<< 854.40.2-3)
 Description: core set of Unix shell utilities from GNU
 Homepage: http://www.gnu.org/software/coreutils/
-Name: Core Utilities
 
 Package: cy+cpu.arm64
 Essential: yes
@@ -381,7 +87,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 0
 Description: virtual CPU dependency
 Tag: role::cydia
@@ -393,7 +99,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 0
 Description: virtual CPU dependency
 Tag: role::cydia
@@ -405,7 +111,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 20.2.0
 Description: virtual kernel dependency
 Tag: role::cydia
@@ -417,7 +123,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1770.30
 Description: virtual corefoundation dependency
 Tag: role::cydia
@@ -429,8 +135,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 9.3
+Architecture: all
+Version: 9.4
 Description: virtual model dependency
 Tag: role::cydia
 
@@ -441,7 +147,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 14.3
 Description: virtual operating system dependency
 Tag: role::cydia
@@ -450,13 +156,34 @@ Package: darwintools
 Status: install ok installed
 Priority: required
 Section: Administration
-Installed-Size: 248
+Installed-Size: 140
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.3
-Depends: system-cmds, uikittools (>= 2.0.0)
-Description: sw_vers, firmware(.sh)
+Version: 1.4
+Recommends: uikittools (>= 2.0.0)
+Description: sw_vers, firmware
 Name: Darwin Tools
+
+Package: dash
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Terminal_Support
+Installed-Size: 188
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 0.5.11.3-2
+Provides: sh
+Depends: debianutils (>= 4.11.2), libedit0, libiosexec1
+Pre-Depends: debianutils (>= 4.11.2)
+Description: POSIX-compliant shell
+ The Debian Almquist Shell (dash) is a POSIX-compliant shell derived
+ from ash.
+ .
+ Since it executes scripts faster than bash, and has fewer library
+ dependencies (making it more robust against software or hardware
+ failures), it is used as the default system shell on Debian systems.
+Homepage: http://gondor.apana.org.au/~herbert/dash/
 
 Package: debianutils
 Essential: yes
@@ -476,24 +203,11 @@ Description: Miscellaneous utilities specific to Debian
  add-shell remove-shell run-parts
 Name: Debian Utilities
 
-Package: dev.ayden.ios.lib.sys.aurora
-Status: install ok installed
-Section: Development
-Installed-Size: 144
-Maintainer: Ayden Panhuyzen
-Architecture: iphoneos-arm
-Version: 1.0.3
-Depends: mobilesubstrate, firmware (>= 11.0)
-Description: Specialized out-of-process weather utility library.
-Name: libaurora
-Tag: role::developer
-Author: Ayden Panhuyzen
-
 Package: diffutils
 Status: install ok installed
 Priority: important
 Section: Development
-Installed-Size: 1200
+Installed-Size: 604
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
@@ -508,7 +222,7 @@ Essential: yes
 Status: install ok installed
 Priority: required
 Section: System
-Installed-Size: 2256
+Installed-Size: 1132
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 667.40.1
@@ -520,15 +234,14 @@ Essential: yes
 Status: install ok installed
 Priority: required
 Section: Packaging
-Installed-Size: 3888
+Installed-Size: 1928
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.20.7.1
-Depends: bash, coreutils, diffutils, tar, liblzma5 (>= 5.2.5), libintl8, libzstd1
+Version: 1.20.9-1
+Depends: sh, coreutils, diffutils, tar, liblzma5 (>= 5.2.5), libintl8, libzstd1, libmd0, libiosexec1
 Pre-Depends: tar (>= 1.23), libintl8 (>= 0.20)
 Description: package maintainance tools from Debian
 Homepage: http://wiki.debian.org/Teams/Dpkg
-Name: Debian Packager
 
 Package: essential
 Essential: yes
@@ -549,10 +262,10 @@ Package: file-cmds
 Status: install ok installed
 Priority: important
 Section: Utilities
-Installed-Size: 944
+Installed-Size: 480
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 287.40.2-1
+Version: 287.40.2-2
 Description: chflags, compress, ipcrm, ipcs, pax
 Tag: purpose::console, role::hacker
 
@@ -560,17 +273,16 @@ Package: findutils
 Status: install ok installed
 Priority: important
 Section: Utilities
-Installed-Size: 1704
+Installed-Size: 852
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 4.8.0
+Version: 4.8.0-1
 Replaces: shell-cmds (<< 207.40.1)
-Depends: bash, sed, shell-cmds, libintl8
+Depends: sh, sed, shell-cmds, libintl8
 Conflicts: shell-cmds (<< 207.40.1)
 Description: indexes and searches filesystems
 Homepage: http://www.gnu.org/software/findutils/
-Name: Find Utilities
 
 Package: firmware
 Essential: yes
@@ -579,11 +291,11 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 14.3
 Description: almost impressive Apple frameworks
 Tag: role::cydia
-Name: iOS Firmware
+Name: OS Firmware
 
 Package: firmware-sbin
 Essential: yes
@@ -594,37 +306,23 @@ Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
 Multi-Arch: foreign
-Version: 0-1
+Version: 0-2
 Replaces: system-cmds (<= 433.4-11), diskdev-cmds (<= 421.7-3)
 Pre-Depends: firmware (>= 11.0)
 Description: represents Telesphoreo / iPhoneOS conflicts
 Name: iPhone Firmware (/sbin)
 
-Package: gettext-localizations
-Status: install ok installed
-Priority: important
-Section: Localizations
-Installed-Size: 6256
-Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 2020.10.07
-Replaces: com.linusyang.localeutf8
-Provides: com.linusyang.localeutf8 (= 99.9)
-Depends: libintl8 (>= 0.20.0)
-Conflicts: com.linusyang.localeutf8
-Description: Locale files necessary for command line tool translation.
-
 Package: gpgv
 Status: install ok installed
 Priority: standard
 Section: Security
-Installed-Size: 928
+Installed-Size: 524
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.2.27-1
+Version: 2.3.1-1
 Replaces: gnupg2
-Depends: libgcrypt20, libgpg-error0, libintl8
-Conflicts: gnupg2, gnupg (<< 2.2.27-1)
+Depends: libassuan0, libgcrypt20, libgpg-error0, libintl8, libnpth0
+Conflicts: gnupg2, gnupg (<< 2.3.1-1)
 Description: GNU privacy guard - signature verification tool
  GnuPG is GNU's tool for secure communication and data storage.
  .
@@ -638,7 +336,7 @@ Package: grep
 Status: install ok installed
 Priority: important
 Section: Utilities
-Installed-Size: 632
+Installed-Size: 316
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
@@ -656,7 +354,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -668,7 +366,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -680,7 +378,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -692,7 +390,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -704,7 +402,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -716,7 +414,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -728,7 +426,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 2
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -740,8 +438,32 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.aggregate-device-photo-zoom-factor
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 1000
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.aggregate-device-video-zoom-factor
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 600
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -752,7 +474,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -764,7 +486,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -776,7 +498,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -788,7 +510,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -800,7 +522,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -812,7 +534,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -824,7 +546,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -836,7 +558,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -848,8 +570,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 17179869184
+Architecture: all
+Version: 51539607552
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -860,7 +582,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -872,7 +594,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -884,7 +606,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -896,7 +618,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -908,7 +630,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -920,7 +642,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -932,7 +654,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -944,7 +666,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -956,7 +678,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -968,7 +690,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -980,7 +702,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -992,7 +714,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 3
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1004,7 +726,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1016,7 +738,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1028,7 +750,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1040,8 +762,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 12
+Architecture: all
+Version: 14
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -1052,7 +774,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1064,7 +786,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 16777228
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1076,7 +798,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1088,7 +810,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1100,7 +822,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1112,7 +834,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 999
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1124,7 +846,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1136,7 +858,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1148,7 +870,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 32784
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1160,7 +882,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1172,7 +894,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1184,7 +906,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1196,7 +918,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1208,7 +930,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1220,7 +942,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1232,7 +954,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1244,19 +966,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 2
-Description: virtual GraphicsServices dependency
-Tag: role::cydia
-
-Package: gsc.device-color-map-policy
-Essential: yes
-Status: install ok installed
-Priority: required
-Section: System
-Installed-Size: 0
-Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1268,8 +978,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 2
+Architecture: all
+Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -1280,8 +990,20 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 4
+Architecture: all
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.device-has-aggregate-camera
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -1292,8 +1014,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 4
+Architecture: all
+Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -1304,7 +1026,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1316,7 +1038,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1328,7 +1050,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1340,7 +1062,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1352,7 +1074,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1364,7 +1086,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 3881788
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1376,7 +1098,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1388,7 +1110,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1400,7 +1122,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1412,7 +1134,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1424,7 +1146,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1436,7 +1158,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1448,7 +1170,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1460,7 +1182,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1472,7 +1194,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1484,7 +1206,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1496,7 +1218,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1508,7 +1230,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1520,7 +1242,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1532,7 +1254,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1544,7 +1266,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1556,7 +1278,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1568,7 +1290,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1580,7 +1302,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1592,7 +1314,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1604,7 +1326,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1616,7 +1338,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1628,7 +1350,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1640,7 +1362,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1652,7 +1374,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1664,7 +1386,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1676,7 +1398,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1688,7 +1410,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1700,7 +1422,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1712,7 +1434,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1724,7 +1446,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1736,7 +1458,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1748,7 +1470,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1760,7 +1482,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1772,7 +1494,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1784,7 +1506,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1796,7 +1518,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1808,7 +1530,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1820,7 +1542,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1832,7 +1554,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1844,7 +1566,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1856,7 +1578,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1868,7 +1590,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 10
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1880,7 +1602,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1892,7 +1614,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 10
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1904,7 +1626,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1916,7 +1638,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1928,7 +1650,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1940,7 +1662,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1952,7 +1674,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1964,7 +1686,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1976,7 +1698,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -1988,7 +1710,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2000,7 +1722,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2012,7 +1734,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 100
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2024,7 +1746,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 30
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2036,7 +1758,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 30
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2048,7 +1770,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2060,7 +1782,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2072,7 +1794,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2084,7 +1806,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2096,7 +1818,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2108,7 +1830,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2120,7 +1842,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2132,7 +1854,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2144,7 +1866,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2156,7 +1878,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2168,7 +1890,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2180,7 +1902,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2192,7 +1914,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2204,7 +1926,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2216,7 +1938,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2228,7 +1950,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2240,7 +1962,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2252,7 +1974,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2264,7 +1986,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2276,7 +1998,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2288,7 +2010,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2300,7 +2022,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2312,7 +2034,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2324,7 +2046,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2336,7 +2058,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 2
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2348,7 +2070,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2360,7 +2082,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2372,7 +2094,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2384,7 +2106,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2396,7 +2118,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2408,7 +2130,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2420,7 +2142,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2432,7 +2154,19 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.is-large-format-phone
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2444,7 +2178,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2456,7 +2190,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2468,7 +2202,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2480,7 +2214,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2492,7 +2226,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2504,7 +2238,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2516,7 +2250,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2528,8 +2262,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 8
+Architecture: all
+Version: 9
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -2540,8 +2274,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 1334
+Architecture: all
+Version: 1920
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -2552,7 +2286,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 326
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2564,8 +2298,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 2
+Architecture: all
+Version: 3
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -2576,8 +2310,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 750
+Architecture: all
+Version: 1080
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -2588,7 +2322,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 51
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2600,8 +2334,8 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Version: 2
+Architecture: all
+Version: 3
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
@@ -2612,7 +2346,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2624,7 +2358,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2636,7 +2370,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2648,7 +2382,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 4
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2660,7 +2394,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2672,7 +2406,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2684,7 +2418,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1253
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2696,7 +2430,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2708,7 +2442,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2720,7 +2454,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2732,7 +2466,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 5
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2744,7 +2478,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2756,7 +2490,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2768,7 +2502,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2780,7 +2514,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 196608
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2792,7 +2526,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2804,7 +2538,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2816,7 +2550,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2828,7 +2562,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2840,7 +2574,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2852,7 +2586,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2864,7 +2598,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2876,7 +2610,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2888,7 +2622,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2900,7 +2634,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2912,7 +2646,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2924,7 +2658,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2936,7 +2670,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2948,7 +2682,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2960,7 +2694,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2972,7 +2706,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2984,7 +2718,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 5
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -2996,7 +2730,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3008,7 +2742,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3020,7 +2754,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3032,7 +2766,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3044,7 +2778,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3056,7 +2790,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3068,7 +2802,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3080,7 +2814,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 120
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3092,7 +2826,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 240
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3104,7 +2838,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 3
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3116,7 +2850,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 100
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3128,7 +2862,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 60
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3140,7 +2874,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 60
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3152,7 +2886,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 30
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3164,7 +2898,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 60
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3176,7 +2910,19 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
+Version: 1
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
+Package: gsc.rear-facing-telephoto-camera-capability
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: System
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3188,7 +2934,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3200,7 +2946,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3212,7 +2958,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3224,7 +2970,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3236,7 +2982,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3248,7 +2994,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3260,7 +3006,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3272,7 +3018,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3284,7 +3030,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3296,7 +3042,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3308,7 +3054,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3320,7 +3066,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3332,7 +3078,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3344,7 +3090,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3356,7 +3102,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3368,7 +3114,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3380,7 +3126,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3392,7 +3138,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3404,7 +3150,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3416,7 +3162,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3428,7 +3174,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3440,7 +3186,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3452,7 +3198,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3464,7 +3210,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3476,7 +3222,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 100
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3488,7 +3234,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3500,7 +3246,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3512,7 +3258,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3524,7 +3270,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3536,7 +3282,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3548,7 +3294,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3560,7 +3306,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3572,7 +3318,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3584,7 +3330,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3596,7 +3342,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3608,7 +3354,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3620,7 +3366,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 100
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3632,7 +3378,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3644,7 +3390,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3656,7 +3402,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3668,7 +3414,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 4355
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3680,7 +3426,7 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
@@ -3692,34 +3438,26 @@ Priority: required
 Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 1
 Description: virtual GraphicsServices dependency
 Tag: role::cydia
 
-Package: io.alo.revaui
+Package: gzip
 Status: install ok installed
-Section: Themes
-Maintainer: Alo <bbscydia@gmail.com>
-Architecture: iphoneos-arm
-Version: 3.0
-Description: A fresh new look for your iPhone!
-Name: Reva UI
-Author: Alo <bbscydia@gmail.com>
-Icon: https://worksbybbs.github.io/assets/images/Icons/RevaUI.png
-
-Package: iokittools
-Status: install ok installed
-Priority: important
-Section: Administration
-Installed-Size: 272
+Priority: standard
+Section: Archiving
+Installed-Size: 292
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 91
-Depends: ncurses
-Description: ioalloccount, ioclasscount
-Name: IOKit Tools
-Tag: purpose::console, role::hacker
+Multi-Arch: foreign
+Version: 1.10-2
+Description: GNU compression utilities
+ This package provides the standard GNU file compression utilities, which
+ are also the default compression tools for Debian.  They typically operate
+ on files with names ending in '.gz', but can also decompress files ending
+ in '.Z' created with 'compress'.
+Homepage: http://www.gzip.org/
 
 Package: launchctl
 Essential: yes
@@ -3737,24 +3475,38 @@ Package: libapt-pkg6.0
 Status: install ok installed
 Priority: required
 Section: Libraries
-Installed-Size: 1812
+Installed-Size: 1800
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.3.0
+Version: 2.3.5
 Replaces: apt1.8, apt1.4, libapt, libapt-pkg5.0, apt-lib, apt-key, apt (<< 2.1.10-2)
-Provides: libapt-pkg (= 2.3.0)
-Depends: libgcrypt20, liblz4-1, liblzma5 (>= 5.2.5), libxxhash0, libzstd1
+Provides: libapt-pkg (= 2.3.5)
+Depends: libiosexec1, libgcrypt20, liblz4-1, liblzma5 (>= 5.2.5), libxxhash0, libzstd1
 Conflicts: apt7 (<< 1:0), apt1.4 (<< 1:0), apt1.8 (<< 1:0), libapt-pkg5.0 (<< 1:0), libapt (<< 1:0), apt-key (<< 1:0), apt (<< 2.1.10-2)
 Description: commandline package manager
  This package provides commandline tools for searching and
  managing as well as querying information about packages
  as a low-level access to all features of the libapt-pkg library.
 
+Package: libassuan0
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 120
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.5.5
+Depends: libgpg-error0
+Description: IPC library for the GnuPG components
+ Libassuan is a small library implementing the so-called "Assuan
+ protocol". This protocol is used for IPC between most newer GnuPG
+ components. Both server and client side functions are provided.
+
 Package: libcrypt2
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 488
+Installed-Size: 244
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 4.4.17
@@ -3766,67 +3518,172 @@ Description: libcrypt shared library
  as well as a set of extended interfaces like 'crypt_gensalt'.
 Tag: purpose::library, role::developer
 
-Package: libflex
+Package: libedit0
 Status: install ok installed
-Section: Tweaks
-Installed-Size: 10468
-Maintainer: Tanner Bennett <thepantsthief@me.com>
+Priority: optional
+Section: Libraries
+Installed-Size: 252
+Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 4.4.0
-Pre-Depends: firmware (>= 9.0)
-Description: A library for Flipboard Explorer.
-Name: libFLEX
-Author: Tanner Bennett <thepantsthief@me.com>
-Depiction: https://nscake.github.io/package.html?package=libflex
-SileoDepiction: https://nscake.github.io/depictions/libflex.sileo.json
+Version: 3.1-20210419
+Depends: libncursesw6 (>= 6.0)
+Description: BSD editline and history libraries
+ Command line editor library provides generic line editing,
+ history, and tokenization functions.
+ .
+ It slightly resembles GNU readline.
+
+Package: libffi7
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 136
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 3.3-1
+Replaces: libffi (<< 1:0)
+Provides: libffi (= 3.3-1)
+Conflicts: libffi (<< 1:0)
+Description: Foreign Function Interface library runtime
+ A foreign function interface is the popular name for the interface that
+ allows code written in one language to call code written in another
+ language.
 
 Package: libgcrypt20
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 1760
+Installed-Size: 880
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 1.9.1
+Version: 1.9.3
 Replaces: gcrypt, libgcrypt
-Provides: gcrypt (= 1.9.1), libgcrypt (= 1.9.1)
+Provides: gcrypt (= 1.9.3), libgcrypt (= 1.9.3)
 Depends: libgpg-error0 (>= 1.37)
 Conflicts: gcrypt (<< 1:0), libgcrypt (<< 1:0)
 Description: LGPL cryptographic algorithm library (Libraries)
+
+Package: libgmp10
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 512
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 6.2.1-3
+Description: Multiprecision arithmetic library
+ GNU MP is a programmer's library for arbitrary precision
+ arithmetic (ie, a bignum package).  It can operate on signed
+ integer, rational, and floating point numeric types.
+ .
+ It has a rich set of functions, and the functions have a regular
+ interface.
+Homepage: https://gmplib.org/
+
+Package: libgnutls30
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 1972
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 3.7.1
+Replaces: gnutls (<< 1:0)
+Provides: gnutls (= 1:0)
+Depends: libintl8 (>= 0.20.0), libgmp10, libidn2-0, libunistring2, libnettle8, libhogweed6, libp11-kit0, libtasn1-6
+Conflicts: gnutls (<< 1:0)
+Description: GNU TLS library - main runtime library
+ GnuTLS is a portable library which implements the Transport Layer
+ Security (TLS 1.0, 1.1, 1.2, 1.3) and Datagram
+ Transport Layer Security (DTLS 1.0, 1.2) protocols.
+ .
+ GnuTLS features support for:
+  - certificate path validation, as well as DANE and trust on first use.
+  - the Online Certificate Status Protocol (OCSP).
+  - public key methods, including RSA and Elliptic curves, as well as password
+    and key authentication methods such as SRP and PSK protocols.
+  - all the strong encryption algorithms, including AES and Camellia.
+  - CPU-assisted cryptography with VIA padlock and AES-NI instruction sets.
+  - HSMs and cryptographic tokens, via PKCS #11.
+ .
+ This package contains the main runtime library.
+Homepage: http://www.gnu.org/software/gnutls/
 
 Package: libgpg-error0
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 368
+Installed-Size: 184
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.42
+Depends: libintl8
+Description: GnuPG development runtime library
+ Library that defines common error values, messages, and common
+ runtime functionality for all GnuPG components.  Among these are GPG,
+ GPGSM, GPGME, GPG-Agent, libgcrypt, pinentry, SmartCard Daemon and
+ possibly more in the future.
+ .
+ It will likely be renamed "gpgrt" in the future.
+
+Package: libhogweed6
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 384
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 3.7.2
+Depends: libgmp10, libnettle8 (= 3.7.2)
+Description: low level cryptographic library (public-key cryptos)
+Homepage: http://www.lysator.liu.se/~nisse/nettle/
+
+Package: libidn2-0
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 192
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 1.41-1
-Replaces: libgpg-error
-Provides: libgpg-error (= 1.41-1)
-Conflicts: libgpg-error (<< 1:0)
-Description: GnuPG's error management library (Library)
-Name: GnuPG Errors
+Version: 2.3.0-3
+Replaces: libidn2 (<< 2.3.0-3)
+Provides: libidn2 (= 2.3.0-3)
+Depends: libintl8, libunistring2
+Conflicts: libidn2 (<< 2.3.0-3)
+Description: Internationalized domain names (IDNA2008/TR46) library
+Homepage: https://www.gnu.org/software/libidn/#libidn2
 
 Package: libintl8
 Status: install ok installed
 Section: System
-Installed-Size: 232
+Installed-Size: 116
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 0.21-3
-Conflicts: gettext (<< 0.21-3)
+Version: 0.21-4
 Description: internationalization helper for strings
 Essental: yes
 Homepage: http://www.gnu.org/software/gettext/
+
+Package: libiosexec1
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: Libraries
+Installed-Size: 68
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.0.16
+Description: shim for execve w/ shell script support
+Homepage: http://github.com/ProcursusTeam/libiosexec
 
 Package: liblz4-1
 Status: install ok installed
 Priority: important
 Section: Libraries
-Installed-Size: 352
+Installed-Size: 172
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 1.9.2-2
@@ -3838,10 +3695,10 @@ Package: liblzma5
 Status: install ok installed
 Priority: standard
 Section: Libraries
-Installed-Size: 392
+Installed-Size: 196
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 5.2.5-2
+Version: 5.2.5-3
 Replaces: xz, lzma
 Conflicts: xz (<< 1:0), lzma (<< 3:0)
 Description: XZ-format compression library
@@ -3854,11 +3711,24 @@ Description: XZ-format compression library
  format, use the p7zip package instead.)
 Homepage: https://tukaani.org/xz/
 
+Package: libmd0
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 88
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.0.3
+Description: message digest functions from BSD systems - shared library
+ The libmd library provides various message digest ("hash") functions,
+ as found on various BSDs on a library with the same name and with a
+ compatible API.
+
 Package: libncursesw6
 Status: install ok installed
 Priority: required
 Section: Libraries
-Installed-Size: 1320
+Installed-Size: 660
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 6.2-1
@@ -3867,6 +3737,55 @@ Provides: ncurses (= 6.2-1)
 Depends: ncurses-term (>= 6.2-1)
 Conflicts: ncurses (<< 6.2-1)
 Description: shared libraries for terminal handling (wide character support)
+
+Package: libnettle8
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 408
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 3.7.2
+Description: low level cryptographic library (symmetric and one-way cryptos)
+Homepage: http://www.lysator.liu.se/~nisse/nettle/
+
+Package: libnpth0
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 72
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 1.6-2
+Replaces: npth (<< 1.6-2)
+Provides: npth (= 1.6-2)
+Conflicts: gnupth, npth (<< 1.6-2)
+Description: replacement for GNU Pth using system threads
+Name: New GNU Portable Threads
+
+Package: libp11-kit0
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 1772
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 0.23.21
+Replaces: p11-kit (<< 0.23.21)
+Depends: libintl8, libffi7, ca-certificates
+Conflicts: p11-kit (<< 0.23.21)
+Description: library for loading and coordinating access to PKCS#11 modules - runtime
+ The p11-kit library provides a way to load and enumerate Public-Key
+ Cryptography Standard #11 modules, along with a standard configuration
+ setup for installing PKCS#11 modules so that they're discoverable. It
+ also solves problems with coordinating the use of PKCS#11 by different
+ components or libraries living in the same process.
+ .
+ This package contains the shared library required for applications loading
+ and accessing PKCS#11 modules.
+Homepage: https://p11-glue.github.io/p11-glue/p11-kit.html
 
 Package: libpam-modules
 Status: install ok installed
@@ -3900,7 +3819,7 @@ Package: libpcre1
 Status: install ok installed
 Priority: standard
 Section: Libraries
-Installed-Size: 1144
+Installed-Size: 572
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
@@ -3921,7 +3840,7 @@ Package: libreadline8
 Status: install ok installed
 Priority: required
 Section: Libraries
-Installed-Size: 896
+Installed-Size: 444
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 8.1
@@ -3952,10 +3871,50 @@ Description: Secure Sockets Layer toolkit - shared libraries
 Name: OpenSSL 1.1.x Libraries
 Tag: purpose::library, role::developer
 
+Package: libtasn1-6
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 128
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 4.16.0-2
+Replaces: libtasn1 (<< 1:0)
+Provides: libtasn1 (= 4.16.0-2)
+Conflicts: libtasn1 (<< 1:0)
+Description: Manage ASN.1 structures (runtime)
+ Manage ASN1 (Abstract Syntax Notation One) structures.
+ The main features of this library are:
+   * on-line ASN1 structure management that doesn't require any C code
+     file generation.
+   * off-line ASN1 structure management with C code file generation
+     containing an array.
+   * DER (Distinguish Encoding Rules) encoding
+   * no limits for INTEGER and ENUMERATED values
+ .
+ This package contains runtime libraries.
+Homepage: https://www.gnu.org/software/libtasn1
+
+Package: libunistring2
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 1636
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 0.9.10-2
+Replaces: libunistring (<< 0.9.10-2)
+Provides: libunistring (= 0.9.10-2)
+Conflicts: libunistring (<< 0.9.10-2)
+Description: Unicode string library for C
+Homepage: https://www.gnu.org/software/libunistring/
+
 Package: libxxhash0
 Status: install ok installed
 Section: Libraries
-Installed-Size: 176
+Installed-Size: 88
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 0.8.0
@@ -3970,86 +3929,41 @@ Description: shared library for xxhash
 Package: libzstd1
 Status: install ok installed
 Section: Libraries
-Installed-Size: 796
+Installed-Size: 1088
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.4.9
-Replaces: zstd (<< 1.4.5-2)
+Version: 1.5.0
 Depends: liblz4-1, liblzma5 (>= 5.2.5)
-Conflicts: zstd (<< 1.4.9)
 Description: fast lossless compression algorithm
+ Zstd, short for Zstandard, is a fast lossless compression algorithm, targeting
+ real-time compression scenarios at zlib-level compression ratio.
+ .
+ This package contains the shared library.
 
-Package: love.litten.astolfo
+Package: ncurses-bin
 Status: install ok installed
-Section: Tweaks
-Installed-Size: 1588
-Maintainer: Litten
+Priority: important
+Section: Utilities
+Installed-Size: 632
+Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.1
-Depends: mobilesubstrate, preferenceloader, ws.hbang.common (>= 1.14), firmware (>= 13.0), com.mrgcgamer.libgcuniversal
-Description: Astolfo siri
-Name: Astolfo 👒
-Author: Litten & Nepeta
-Depiction: https://repo.litten.love/depictions/afo/index.html
-SileoDepiction: https://repo.litten.love/depictions/afo/afo.json
-Icon: https://repo.litten.love/depictions/afo/assets/icon.png
-
-Package: love.litten.eneko
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 680
-Maintainer: Litten
-Architecture: iphoneos-arm
-Version: 1.0.2
-Depends: mobilesubstrate, preferenceloader, ws.hbang.common (>= 1.14), firmware (>= 13.0), com.mrgcgamer.libgcuniversal
-Description: Set a video as your wallpaper
-Name: Eneko 🎬
-Author: Litten
-Depiction: https://repo.litten.love/depictions/ene/index.html
-SileoDepiction: https://repo.litten.love/depictions/ene/ene.json
-Icon: https://repo.litten.love/depictions/ene/assets/icon.png
-
-Package: me.alfhaily.cercube
-Status: install ok installed
-Priority: optional
-Section: Tweaks
-Installed-Size: 17080
-Maintainer: Majd Alfhaily <freemanrepo@me.com>
-Architecture: iphoneos-arm
-Version: 5.2.12
-Depends: firmware (>= 9.0), mobilesubstrate, com.rpetrich.rocketbootstrap (>= 1.0.10~beta1)
-Conflicts: me.freemanrepo.cercube, com.unlimapps.ytpp, com.yourepo.goldcydia.cercube3ios789, com.yourepo.mohadu31.cercube3ios789, com.yourepo.canolli.cercube3ios789, com.repo.xarold.com.cercube3, com.hackyouriphone.cercube3, com.biteyourapple.net.cercube3, com.yourepo.arabicydia.cercube2, me.alfhaily.adblockforyoutube, me.alfhaily.cercube.lib, com.pulandres.cercubecrack
-Description: Download YouTube videos and more!
-Name: Cercube for YouTube
-Author: Majd Alfhaily
-Depiction: https://apt.alfhaily.me/depiction/FDXO5R
-SileoDepiction: https://apt.alfhaily.me/depiction/sileo/FDXO5R
-Icon: https://apt.alfhaily.me/cdn/assets/cercube-icon.png
+Version: 6.2-1
+Replaces: ncurses (<< 6.2-1)
+Depends: libncursesw6 (>= 6.2-1)
+Conflicts: ncurses (<< 6.2-1)
+Description: terminal-related programs and man pages
 
 Package: ncurses-term
 Status: install ok installed
 Priority: required
 Section: System
-Installed-Size: 2376
+Installed-Size: 1188
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
 Version: 6.2-1
 Replaces: ncurses (<< 6.2-1)
 Conflicts: ncurses (<< 6.2-1)
 Description: This package contains terminfo data files to support most types of terminals.
-
-Package: net.pane.l.evilscheme
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 872
-Maintainer: Lorenzo Pane
-Architecture: iphoneos-arm
-Version: 0.2.4
-Replaces: com.lpane.browserdefault, com.lpane.googlemapsdefault
-Depends: mobilesubstrate, preferenceloader, firmware (>= 13.0)
-Description: Manage default browser, navigation app, package manager, and more!
-Name: EvilScheme
-Author: Lorenzo Pane
 
 Package: openssh
 Status: install ok installed
@@ -4069,26 +3983,24 @@ Section: Networking
 Installed-Size: 4168
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 8.5p1
+Version: 8.6p1
 Replaces: openssh (<< 1:0)
-Depends: libssl1.1, libcrypt2
+Depends: libssl1.1, libcrypt2, libmd0
 Conflicts: openssh (<< 1:0)
 Description: secure shell (SSH) client, for secure access to remote machines
-Name: OpenSSH Client
 
 Package: openssh-server
 Status: install ok installed
 Priority: important
 Section: Networking
-Installed-Size: 1416
+Installed-Size: 1452
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 8.5p1
+Version: 8.6p1
 Replaces: openssh (<< 1:0)
-Depends: libssl1.1, openssh-client (= 8.5p1), openssh-sftp-server, libcrypt2, libpam2
+Depends: libssl1.1, openssh-client (= 8.6p1), openssh-sftp-server, libcrypt2, libpam2, libmd0
 Conflicts: com.midnightchips.localhostssh, openssh (<< 1:0)
 Description: secure shell (SSH) server, for secure access from remote machines
-Name: OpenSSH Server
 
 Package: openssh-sftp-server
 Status: install ok installed
@@ -4097,31 +4009,18 @@ Section: Networking
 Installed-Size: 164
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 8.5p1
+Version: 8.6p1
 Replaces: openssh (<< 1:0)
-Depends: libssl1.1, openssh-client (= 8.5p1), libcrypt2
+Depends: libssl1.1, openssh-client (= 8.6p1), libcrypt2, libmd0
 Conflicts: openssh (<< 1:0)
 Description: secure shell (SSH) sftp server module, for SFTP access from remote machines
-Name: OpenSSH SFTP Server
-
-Package: org.coolstar.ldid
-Status: install ok installed
-Section: Development
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 2.1.2
-Description: fork of ldid for CoolStar's tweaks (deployed to device because AGPL requires it)
-Name: ldid (CoolStar Standalone Fork)
-Author: CoolStar <coolstarorganization@gmail.com>
-Depiction: http://cydia.saurik.com/info/ldid/
-Tag: purpose::console, role::developer
 
 Package: org.coolstar.libhooker
 Status: install ok installed
 Section: System
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Architecture: iphoneos-arm
-Version: 1.4.9~beta3
+Version: 1.6.0
 Replaces: com.ex.libsubstitute, org.coolstar.tweakinject, mobilesubstrate, libhooker-strap, com.saurik.substrate.safemode
 Provides: com.ex.libsubstitute (= 2.0), org.coolstar.tweakinject (= 1.5.0), mobilesubstrate (= 99.4), libhooker-strap (= 1.1), com.saurik.substrate.safemode (= 2.0)
 Depends: firmware (>= 11.0), cy+cpu.arm64, org.coolstar.safemode
@@ -4130,29 +4029,14 @@ Description: General Purpose Injection and Hooking library for 64-bit devices
 Name: libhooker
 Author: CoolStar <coolstarorganization@gmail.com>
 Icon: https://repo.theodyssey.dev/depictions/icons/libhooker.png
-SileoDepiction: https://repo.theodyssey.dev/depictions/libhooker.json
-
-Package: org.coolstar.libhooker-configurator
-Status: install ok installed
-Priority: required
-Section: Packaging
-Installed-Size: 2028
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.1.0
-Depends: org.coolstar.libhooker (>= 1.4.0), firmware (>= 13.0)
-Description: Configuration Utility for libhooker
-Icon: https://repo.theodyssey.dev/depictions/icons/libhooker.png
-SileoDepiction: https://repo.theodyssey.dev/depictions/json/libhooker-configurator.json
-Name: libhooker Configurator
-Author: CoolStar <coolstarorganization@gmail.com>
+SileoDepiction: https://repo.theodyssey.dev/depictions/json/libhooker.json
 
 Package: org.coolstar.safemode
 Status: install ok installed
 Section: System
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Architecture: iphoneos-arm
-Version: 1.1.2-2
+Version: 1.1.4
 Replaces: org.coolstar.libhooker (<< 1.2.5)
 Depends: firmware (>= 11.0), cy+cpu.arm64
 Description: Safe Mode app for libhooker
@@ -4161,43 +4045,25 @@ Author: CoolStar <coolstarorganization@gmail.com>
 
 Package: org.coolstar.sileo
 Status: install ok installed
-Priority: required
 Section: Packaging
-Installed-Size: 9188
-Maintainer: CoolStar <coolstarorganization@gmail.com>
+Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 2.1
-Depends: firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.19.2-4), apt (>= 2.1.10-1), zsh
-Pre-Depends: debianutils, dpkg (>= 1.18)
-Conflicts: cydia-gui (<< 99.0)
-Description: An APT package manager for jailbroken iOS 12 and newer!
+Depends: firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
+Description: A modern APT package manager frontend
 Name: Sileo
 Author: Sileo Team <getsileoapp@gmail.com>
 Icon: https://getsileo.app/img/icon.png
 SileoDepiction: https://featuredpage.getsileo.app/depiction.json
-
-Package: preferenceloader
-Status: install ok installed
-Section: System
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 3.0.2
-Depends: mobilesubstrate
-Description: load preferences in style
-Name: PreferenceLoader
-Author: Dustin Howett <cydia.pl@relay.howett.net>
-dev: dustinhowett
-Tag: role::hacker, purpose::library
-SileoDepiction: https://repo.theodyssey.dev/depictions/json/preferenceloader.json
 
 Package: procursus-keyring
 Essential: yes
 Status: install ok installed
 Priority: required
 Section: System
-Installed-Size: 16
+Installed-Size: 8
 Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
+Architecture: all
 Version: 2020.05.09
 Description: GnuPG keys for stock *OS repositories.
 Name: Procursus APT Keyring
@@ -4210,7 +4076,7 @@ Section: Administration
 Installed-Size: 12
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 0-6
+Version: 0-7
 Depends: zsh
 Pre-Depends: system-cmds (>= 805.220.1)
 Description: makes packaging for /etc/profile reasonable
@@ -4220,7 +4086,7 @@ Package: sed
 Status: install ok installed
 Priority: important
 Section: Utilities
-Installed-Size: 512
+Installed-Size: 256
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
@@ -4247,7 +4113,7 @@ Description: killall, renice, script, time, which, getopt, what, hexdump, su
 Package: snaputil
 Status: install ok installed
 Section: System
-Installed-Size: 136
+Installed-Size: 68
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 10.15.1
@@ -4265,21 +4131,19 @@ Section: Administration
 Installed-Size: 3540
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.9.6p1-2
-Depends: libintl8, libpam2
+Version: 1.9.6p1-4
+Depends: libintl8, libpam2, libiosexec1
 Description: temporarily assume root priviledges
-Name: Sudo
-Tag: purpose::console, role::hacker
 
 Package: system-cmds
 Essential: yes
 Status: install ok installed
 Priority: required
 Section: Administration
-Installed-Size: 1924
+Installed-Size: 1872
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 854.40.2-8
+Version: 854.40.2-10
 Provides: login, passwd, reboot
 Depends: firmware-sbin, file-cmds, libcrypt2, libpam2
 Recommends: vi
@@ -4302,7 +4166,7 @@ Package: uikittools
 Status: install ok installed
 Priority: optional
 Section: Utilities
-Installed-Size: 1304
+Installed-Size: 652
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Version: 2.0.3
@@ -4313,98 +4177,66 @@ Author: CoolStar <coolstarorganization@gmail.com>
 Name: UIKit Tools
 Sileodepiction: https://coolstar.moe/sileoassets/depictionoverride.php?package=uikittools
 
-Package: unzip
+Package: xz-utils
 Status: install ok installed
-Priority: important
+Priority: standard
 Section: Archiving
-Installed-Size: 1464
+Installed-Size: 244
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 6.0-25
-Description: de-compesses files in zip format
-Tag: purpose::console, role::hacker
-
-Package: ws.hbang.common
-Status: install ok installed
-Section: Development
-Installed-Size: 2012
-Maintainer: HASHBANG Productions <support@hbang.ws>
-Architecture: iphoneos-arm
-Version: 1.16
-Depends: firmware (<< 8.0) | mobilesubstrate (>= 0.9.7000) | com.rpetrich.rocketbootstrap, firmware (<< 8.0) | mobilesubstrate (<< 99) | com.rpetrich.rocketbootstrap
-Description: Support library for tweaks
-Name: Cephei Tweak Support
-Author: HASHBANG Productions <support@hbang.ws>
-Icon: https://chariz.com/cdn/icon/cephei/icon@3x.png
-Depiction: https://chariz.com/get/cephei
-Support: https://hashbang.productions/support/
-Tag: role::developer, compatible_min::ios5.0
-dev: hbang
-
-Package: ws.hbang.newterm2
-Status: install ok installed
-Section: Terminal Support
-Installed-Size: 6664
-Maintainer: HASHBANG Productions <support@hbang.ws>
-Architecture: iphoneos-arm
-Version: 2.5
-Replaces: ws.hbang.newterm, com.lint.ntarrows
-Depends: firmware (>= 10.0), firmware (>= 12.2) | org.swift.libswift, ws.hbang.common (>= 1.16), bash, coreutils, ncurses, system-cmds, gettext-localizations | com.linusyang.localeutf8
-Conflicts: ws.hbang.newterm, com.lint.ntarrows
-Description: A powerful terminal app for iOS
-Name: NewTerm 2
-Author: HASHBANG Productions <support@hbang.ws>
-Icon: https://chariz.com/cdn/icon/newterm/icon@3x.png
-Depiction: https://chariz.com/get/newterm
-Support: https://hashbang.productions/support/
-Tag: compatible_min::ios10.0
-
-Package: xyz.royalapps.jellyfish
-Status: install ok installed
-Section: Tweaks
-Installed-Size: 392
-Maintainer: Justin Proulx
-Architecture: iphoneos-arm
-Version: 1.5.5
-Depends: mobilesubstrate, preferenceloader, dev.ayden.ios.lib.sys.aurora (>= 1.0.2), firmware (>= 11.0)
-Conflicts: applebetas.ios.tweak.time11, com.junesiphone.lockpluspro, com.adriandev.jellyfishcustom, com.bengiannis.manta, hi.my.name.is.ubik.kalm
-Description: Natural, Simple, Beautiful: Redesign your Lock screen with Jellyfish.
-Name: Jellyfish
-Author: Justin Proulx and Ayden Panhuyzen
-
-Package: zip
-Status: install ok installed
-Priority: important
-Section: Archiving
-Installed-Size: 1392
-Maintainer: Hayden Seay <me@diatr.us>
-Architecture: iphoneos-arm
-Multi-Arch: foreign
-Version: 3.0-11
-Description: standard Windows compression tool
-Tag: purpose::console, role::hacker
+Version: 5.2.5-3
+Replaces: xz, lzma
+Provides: xz (= 1:0), lzma (= 3:0)
+Depends: liblzma5 (>= 5.2.5-3), libintl8
+Conflicts: xz (<< 1:0), lzma (<< 3:0)
+Description: XZ-format compression utilities
+ XZ is the successor to the Lempel-Ziv/Markov-chain Algorithm
+ compression format, which provides memory-hungry but powerful
+ compression (often better than bzip2) and fast, easy decompression.
+ .
+ This package provides the command line tools for working with XZ
+ compression, including xz, unxz, xzcat, xzgrep, and so on. They can
+ also handle the older LZMA format, and if invoked via appropriate
+ symlinks will emulate the behavior of the commands in the lzma
+ package.
+ .
+ The XZ format is similar to the older LZMA format but includes some
+ improvements for general use:
+ .
+  * 'file' magic for detecting XZ files;
+  * crc64 data integrity check;
+  * limited random-access reading support;
+  * improved support for multithreading (not used in xz-utils);
+  * support for flushing the encoder.
+Homepage: https://tukaani.org/xz/
+Name: XZ Utils
 
 Package: zsh
 Essential: yes
 Status: install ok installed
 Priority: required
 Section: Terminal_Support
-Installed-Size: 11808
+Installed-Size: 11800
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 5.8-3
-Depends: libncursesw6, libpcre1, debianutils (>= 4.11.2)
+Version: 5.8-5
+Depends: libiosexec1, libncursesw6, libpcre1, debianutils (>= 4.11.2)
 Pre-Depends: debianutils (>= 4.11.2)
 Description: a shell with interactive features
 Name: Z Shell
 
-Package: zsign
+Package: zstd
 Status: install ok installed
-Section: Utilities
-Installed-Size: 264
+Priority: standard
+Section: Archiving
+Installed-Size: 2348
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 0~20210202.b5733ea
-Depends: libssl1.1, unzip, zip
-Description: Maybe is the most quickly codesign alternative for iOS12+ in the world, cross-platform ( Linux & macOS ), more features.
+Version: 1.5.0
+Depends: libzstd1 (>= 1.5.0), liblz4-1, liblzma5 (>= 5.2.5)
+Description: fast lossless compression algorithm -- CLI tool
+ Zstd, short for Zstandard, is a fast lossless compression algorithm, targeting
+ real-time compression scenarios at zlib-level compression ratio.
+ .
+ This package contains the CLI program implementing zstd.
 
