@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositories";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Add Source";
 "Add_Source.Body" = "Add APT URL";
