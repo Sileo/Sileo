@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "לוג השינויים האחרונים אינו זמין עבור חבילה זו.";
 
 "Installed_Package_Header" = "חבילות מותקנות";
+"Installed_Packages" = "Installed Packages";
 "Version" = "גירסא";
 "Show_Package_Contents_Button" = "הראה תוכן חבילה";
 
