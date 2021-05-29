@@ -48,37 +48,31 @@ final class AmyNetworkResolver {
             }
             
         }
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: cacheDirectory.path),
+        if let contents = try? cacheDirectory.contents(),
            !contents.isEmpty {
             var yes = DateComponents()
             yes.hour = -1
             let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
             for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
+                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
                       let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
                 if weekOld > date {
-                    try? FileManager.default.removeItem(atPath: cached)
+                    try? FileManager.default.removeItem(atPath: cached.path)
                 }
             }
         }
-        
-        if !downloadCache.dirExists {
-            do {
-                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
-            } catch {
-                print("Failed to create cache directory \(error.localizedDescription)")
-            }
-        }
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: downloadCache.path),
+        if let contents = try? downloadCache.contents(),
            !contents.isEmpty {
             var yes = DateComponents()
             yes.hour = -1
             let hourOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
             for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
-                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
+                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
+                      let date = attr[FileAttributeKey.modificationDate] as? Date else {
+                    continue
+                }
                 if hourOld > date {
-                    try? FileManager.default.removeItem(atPath: cached)
+                    try? FileManager.default.removeItem(atPath: cached.path)
                 }
             }
         }
