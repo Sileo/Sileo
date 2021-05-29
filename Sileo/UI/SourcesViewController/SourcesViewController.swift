@@ -238,6 +238,40 @@ class SourcesViewController: SileoTableViewController {
         })
     }
     
+    func updateSpecific(_ repos: [Repo]) {
+        let item = self.splitViewController?.tabBarItem
+        item?.badgeValue = ""
+
+        if updatingRepoList.isEmpty {
+            let badge = item?.view()?.value(forKey: "_badge") as? UIView
+            guard let style = UIActivityIndicatorView.Style(rawValue: 5) else {
+                fatalError("OK iOS...")
+            }
+            let indicatorView = UIActivityIndicatorView(style: style)
+            indicatorView.frame = indicatorView.frame.offsetBy(dx: 2, dy: 2)
+            indicatorView.startAnimating()
+            badge?.addSubview(indicatorView)
+        }
+        
+        for repo in repos {
+            addToQueue(repo)
+        }
+        
+        RepoManager.shared.update(force: false, forceReload: false, isBackground: false, repos: repos) { [weak self] didFindErrors, errorOutput in
+            guard let strongSelf = self else { return }
+            for repo in repos {
+                strongSelf.removeFromQueue(repo)
+            }
+            if strongSelf.updatingRepoList.isEmpty {
+                strongSelf.killIndicator()
+            }
+
+            if didFindErrors {
+                strongSelf.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
+            }
+        }
+    }
+    
     func showRefreshErrorViewController(errorOutput: NSAttributedString, completion: (() -> Void)?) {
         let errorVC = SourcesErrorsViewController(nibName: "SourcesErrorsViewController", bundle: nil)
         errorVC.attributedString = errorOutput
@@ -416,7 +450,11 @@ class SourcesViewController: SileoTableViewController {
             CanisterResolver.piracy(urls) { safe, piracy in
                 DispatchQueue.main.async {
                     if !safe.isEmpty {
-                        RepoManager.shared.addRepos(with: safe)
+                        let repos = RepoManager.shared.addRepos(with: safe)
+                        if !repos.isEmpty {
+                            self.reloadData()
+                            self.updateSpecific(repos)
+                        }
                         self.reloadData()
                         self.refreshSources(forceUpdate: false, forceReload: false)
                     }
@@ -426,9 +464,11 @@ class SourcesViewController: SileoTableViewController {
                 }
             }
         } else {
-            RepoManager.shared.addRepos(with: urls)
-            self.reloadData()
-            self.refreshSources(forceUpdate: false, forceReload: false)
+            let repos = RepoManager.shared.addRepos(with: urls)
+            if !repos.isEmpty {
+                self.reloadData()
+                self.updateSpecific(repos)
+            }
         }
     }
 }

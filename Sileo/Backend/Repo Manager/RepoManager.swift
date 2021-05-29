@@ -99,8 +99,8 @@ final class RepoManager {
         #endif
     }
     
-    func addRepos(with urls: [URL]) {
-        
+    @discardableResult func addRepos(with urls: [URL]) -> [Repo] {
+        var repos = [Repo]()
         func handleDistRepo(_ url: URL) -> Bool {
             let host = url.host?.lowercased()
             switch host {
@@ -117,6 +117,7 @@ final class RepoManager {
                 """
                 bigBoss.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
                 repoList.append(bigBoss)
+                repos.append(bigBoss)
                 return true
             case "apt.procurs.us":
                 let jailbreakRepo = Repo()
@@ -131,13 +132,14 @@ final class RepoManager {
                 """
                 jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
                 repoList.append(jailbreakRepo)
+                repos.append(jailbreakRepo)
                 return true
             default: return false
             }
         }
         
         for url in urls {
-            var normalizedStr = url.absoluteString
+            var normalizedStr = url.absoluteString.lowercased()
             if normalizedStr.last != "/" {
                 normalizedStr.append("/")
             }
@@ -165,13 +167,15 @@ final class RepoManager {
                 """
                 repo.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
                 repoList.append(repo)
+                repos.append(repo)
             }
             repoListLock.signal()
         }
         writeListToFile()
+        return repos
     }
     
-    func addRepo(with url: URL) {
+    @discardableResult func addRepo(with url: URL) -> [Repo] {
         addRepos(with: [url])
     }
     
@@ -192,7 +196,7 @@ final class RepoManager {
             normalizedStr.append("/")
         }
         return repoList.first(where: {
-            var repoNormalizedStr = $0.rawURL
+            var repoNormalizedStr = $0.rawURL.lowercased()
             if repoNormalizedStr.last != "/" {
                 repoNormalizedStr.append("/")
             }
