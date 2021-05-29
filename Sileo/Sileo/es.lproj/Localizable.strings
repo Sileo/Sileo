@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Este paquete no tiene lista de cambios.";
 
 "Installed_Package_Header" = "Paquete Instalado";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versión";
 "Show_Package_Contents_Button" = "Mostrar Contenido del Paquete";
 
