@@ -74,7 +74,7 @@ class SourcesViewController: SileoTableViewController {
         
         self.registerForPreviewing(with: self, sourceView: self.tableView)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
-        #if targetEnvironment(simulator)
+        #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
         #endif
     }

@@ -63,7 +63,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
         }
         let scale = Int(UIScreen.main.scale)
         for i in (1...scale).reversed() {
-            let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
+            let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
             if let iconURL = URL(string: repo.repoURL)?
                 .appendingPathComponent(filename)
                 .appendingPathExtension("png") {

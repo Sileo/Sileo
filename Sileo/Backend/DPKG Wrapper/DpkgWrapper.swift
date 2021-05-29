@@ -83,12 +83,18 @@ class DpkgWrapper {
     }
     
     public class func getArchitectures() -> [String] {
+        #if arch(x86_64)
+        let defaultArchitectures = ["darwin-amd64"]
+        #elseif arch(arm64) && os(macOS)
+        let defaultArchitectures = ["darwin-arm64"]
+        #else
         let defaultArchitectures = ["iphoneos-arm"]
+        #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
         let (status, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
-        guard status != 0 else {
+        guard status == 0 else {
             return defaultArchitectures
         }
         return outputString.components(separatedBy: CharacterSet(charactersIn: "\n"))

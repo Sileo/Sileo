@@ -399,7 +399,7 @@ final class PackageListManager {
         if let packagesFileSafe = packagesFile {
             if packagesList == nil {
                 packagesList = []
-                let rawPackagesData = try Data(contentsOf: packagesFileSafe)
+                let rawPackagesData = try Data(contentsOf: packagesFileSafe.aptUrl)
                 
                 var index = 0
                 var separator = "\n\n".data(using: .utf8)!
@@ -455,7 +455,7 @@ final class PackageListManager {
                         continue
                     }
                     package.sourceFile = repoContext?.rawEntry
-                    package.sourceFileURL = packagesFile
+                    package.sourceFileURL = packagesFile?.aptUrl
                     package.rawData = packageData
                     package.addOld([package])
                     

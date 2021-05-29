@@ -678,7 +678,7 @@ final class RepoManager {
                                 semaphore.signal()
                             }
                             
-                            if FileManager.default.fileExists(atPath: releaseGPGFileDst.path) {
+                            if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) {
                                 log("\(releaseGPGURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                                 errorsFound = true
                             }
@@ -786,7 +786,7 @@ final class RepoManager {
                         }
                     }
                     
-                    if FileManager.default.fileExists(atPath: releaseGPGFileDst.path) && !isReleaseGPGValid {
+                    if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) && !isReleaseGPGValid {
                         reposUpdated += 1
                         self.checkUpdatesInBackground(completion: nil)
                         continue
@@ -811,9 +811,9 @@ final class RepoManager {
                         deleteFileAsRoot(packagesFileDst)
                     }
                     
-                    try? FileManager.default.removeItem(at: releaseFile.url)
+                    try? FileManager.default.removeItem(at: releaseFile.url.aptUrl)
                     releaseGPGFileURL.map { try? FileManager.default.removeItem(at: $0) }
-                    try? FileManager.default.removeItem(at: packagesFile.url)
+                    try? FileManager.default.removeItem(at: packagesFile.url.aptUrl)
                     
                     reposUpdated += 1
                     self.checkUpdatesInBackground(completion: nil)
@@ -824,6 +824,7 @@ final class RepoManager {
         }
         
         updateGroup.notify(queue: .main) {
+            #if !targetEnvironment(macCatalyst)
             var files = self.cachePrefix.implicitContents
             
             var expectedFiles: [String] = []
@@ -849,7 +850,7 @@ final class RepoManager {
             
             files.removeAll { expectedFiles.contains($0.lastPathComponent) }
             files.forEach(deleteFileAsRoot)
-            
+            #endif
             self.postProgressNotification(nil)
             
             DispatchQueue.global().async {
