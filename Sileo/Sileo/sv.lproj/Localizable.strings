@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Ändringlogen är inte tillgänglig för detta paket.";
 
 "Installed_Package_Header" = "Installerat Paket";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Visa Paket Innehåll";
 
