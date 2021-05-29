@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignorierte Updates";
 
 "Repos" = "Quellen";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
