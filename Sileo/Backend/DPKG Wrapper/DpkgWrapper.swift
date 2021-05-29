@@ -83,7 +83,7 @@ class DpkgWrapper {
     }
     
     public class func getArchitectures() -> [String] {
-        #if arch(x86_64)
+        #if arch(x86_64) && !targetEnvironment(simulator)
         let defaultArchitectures = ["darwin-amd64"]
         #elseif arch(arm64) && os(macOS)
         let defaultArchitectures = ["darwin-arm64"]

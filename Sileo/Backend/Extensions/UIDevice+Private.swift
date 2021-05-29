@@ -55,4 +55,15 @@ extension UIDevice {
     public var jailbroken: Bool {
         false
     }
+    
+    var cfMajorVersion: String {
+        let cfVersionRaw = kCFCoreFoundationVersionNumber
+        let cfVersionRawFloored = floor(cfVersionRaw)
+        let cfVersionDivided = cfVersionRawFloored / 100
+        let cfVersionDividedFloored = floor(cfVersionDivided)
+        let cfVersionMultiplied = cfVersionDividedFloored * 100
+        let cfVersionInt = Int(cfVersionMultiplied)
+        return String(format: "%d", cfVersionInt)
+    }
+    
 }

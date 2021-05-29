@@ -54,26 +54,18 @@ final class RepoManager {
         #endif
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let cfVersionRaw = kCFCoreFoundationVersionNumber
-        let cfVersionRawFloored = floor(cfVersionRaw)
-        let cfVersionDivided = cfVersionRawFloored / 100
-        let cfVersionDividedFloored = floor(cfVersionDivided)
-        let cfVersionMultiplied = cfVersionDividedFloored * 100
-        let cfVersionInt = Int(cfVersionMultiplied)
-        let cfMajorVersion = String(format: "%d", cfVersionInt)
-        
         repoListLock.wait()
         let jailbreakRepo = Repo()
         jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/\(cfMajorVersion)"
+        jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
         URIs: https://apt.procurs.us/
-        Suites: iphoneos-arm64/\(cfMajorVersion)
+        Suites: iphoneos-arm64/\(UIDevice.current.cfMajorVersion)
         Components: main
         """
-        jailbreakRepo.entryFile = "/etc/apt/sources.list.d/procursus.sources"
+        jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
         repoList.append(jailbreakRepo)
         repoListLock.signal()
         
@@ -90,7 +82,7 @@ final class RepoManager {
             Suites: stable
             Components: main
             """
-            bigBoss.entryFile = "/etc/apt/sources.list.d/sileo.sources"
+            bigBoss.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
             repoList.append(bigBoss)
             
             writeListToFile()
@@ -108,6 +100,42 @@ final class RepoManager {
     }
     
     func addRepos(with urls: [URL]) {
+        
+        func handleDistRepo(_ url: URL) -> Bool {
+            let host = url.host?.lowercased()
+            switch host {
+            case "apt.bigboss.org", "apt.thebigboss.org", "thebigboss.org", "bigboss.org":
+                let bigBoss = Repo()
+                bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia/"
+                bigBoss.suite = "stable"
+                bigBoss.components = ["main"]
+                bigBoss.rawEntry = """
+                Types: deb
+                URIs: http://apt.thebigboss.org/repofiles/cydia/
+                Suites: stable
+                Components: main
+                """
+                bigBoss.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
+                repoList.append(bigBoss)
+                return true
+            case "apt.procurs.us":
+                let jailbreakRepo = Repo()
+                jailbreakRepo.rawURL = "https://apt.procurs.us/"
+                jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
+                jailbreakRepo.components = ["main"]
+                jailbreakRepo.rawEntry = """
+                Types: deb
+                URIs: https://apt.procurs.us/
+                Suites: iphoneos-arm64/\(UIDevice.current.cfMajorVersion)
+                Components: main
+                """
+                jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
+                repoList.append(jailbreakRepo)
+                return true
+            default: return false
+            }
+        }
+        
         for url in urls {
             var normalizedStr = url.absoluteString
             if normalizedStr.last != "/" {
@@ -125,18 +153,19 @@ final class RepoManager {
             }
             
             repoListLock.wait()
-            let repo = Repo()
-            repo.rawURL = normalizedStr
-            repo.suite = "./"
-            repo.rawEntry = """
-            Types: deb
-            URIs: \(repo.repoURL)
-            Suites: ./
-            Components:
-            """
-            repo.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
-            
-            repoList.append(repo)
+            if !handleDistRepo(url) {
+                let repo = Repo()
+                repo.rawURL = normalizedStr
+                repo.suite = "./"
+                repo.rawEntry = """
+                Types: deb
+                URIs: \(repo.repoURL)
+                Suites: ./
+                Components:
+                """
+                repo.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
+                repoList.append(repo)
+            }
             repoListLock.signal()
         }
         writeListToFile()
@@ -176,6 +205,17 @@ final class RepoManager {
     }
     
     func hasRepo(with url: URL) -> Bool {
+        if url.host?.lowercased() == "apt.bigboss.org" ||
+            url.host?.lowercased() == "bigboss.org" ||
+            url.host?.lowercased() == "apt.thebigboss.org" ||
+            url.host?.lowercased() == "thebigboss.org" {
+            let repo = self.repo(with: URL(string: "http://apt.thebigboss.org/repofiles/cydia/")!)
+            return repo != nil
+        }
+        if url.host?.lowercased() == "apt.procurs.us" {
+            let repo = self.repo(with: URL(string: "https://apt.procurs.us/")!)
+            return repo != nil
+        }
         let repo = self.repo(with: url)
         return repo != nil
     }
