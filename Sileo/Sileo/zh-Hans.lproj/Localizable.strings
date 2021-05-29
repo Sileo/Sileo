@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
+"Installed_Packages" = "Installed Packages";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "显示软件包内容";
 
