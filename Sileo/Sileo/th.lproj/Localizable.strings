@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "แหล่งจัดเก็บข้อมูล";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "เพิ่มแหล่ง";
 "Add_Source.Body" = "ป้อน APT URL";
