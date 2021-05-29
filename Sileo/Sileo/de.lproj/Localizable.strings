@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Es sind keine Änderungen für dieses Paket bekannt.";
 
 "Installed_Package_Header" = "Installiertes Paket";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Paketinhalte anzeigen";
 
