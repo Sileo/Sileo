@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Список изменения не доступнен для этого пакета.";
 
 "Installed_Package_Header" = "Установленные пакеты";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Версия";
 "Show_Package_Contents_Button" = "Показать содержимое пакета";
 
