@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
 
 "Installed_Package_Header" = "حزمة مثبتة";
+"Installed_Packages" = "Installed Packages";
 "Version" = "الإصدار";
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
