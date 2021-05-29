@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Nem érhető el változási napló ehhez a csomaghoz.";
 
 "Installed_Package_Header" = "Telepített csomag";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Verzió";
 "Show_Package_Contents_Button" = "Csomag tartalmának megjelenítése";
 
