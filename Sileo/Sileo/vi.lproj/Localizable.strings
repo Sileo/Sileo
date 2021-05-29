@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
 
 "Installed_Package_Header" = "Gói đã cài đặt";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Phiên bản";
 "Show_Package_Contents_Button" = "Xem Nội dung đóng gói";
 
