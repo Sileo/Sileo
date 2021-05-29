@@ -49,6 +49,7 @@ class InstallViewController: SileoViewController {
         completeButton?.layer.cornerRadius = 10
         completeLaterButton?.layer.cornerRadius = 10
         hideDetailsButton?.layer.cornerRadius = 10
+        showDetailsButton?.isHidden = true
         
         detailsAttributedString = NSMutableAttributedString(string: "")
         completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
@@ -91,6 +92,7 @@ class InstallViewController: SileoViewController {
                         self.returnButtonAction = .back
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
+                        self.showDetailsButton?.isHidden = false
                         self.completeLaterButton?.alpha = shouldShow(.back) ? 1 : 0
                         self.refreshSileo = false
                         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
@@ -157,6 +159,7 @@ class InstallViewController: SileoViewController {
                         self.progressView?.alpha = 0
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
+                        self.showDetailsButton?.isHidden = false
                         self.completeLaterButton?.alpha = shouldShow(finish) ? 1 : 0
                         if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
                             self.completeButtonTapped(nil)
