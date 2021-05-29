@@ -98,6 +98,7 @@
 "Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "添加软件源";
 "Add_Source.Body" = "新增软件源地址";
