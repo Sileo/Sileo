@@ -98,6 +98,7 @@
 "Ignored Updates" = "무시된 업데이트";
 
 "Repos" = "리포";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "소스 추가";
 "Add_Source.Body" = "APT 주소 추가";
