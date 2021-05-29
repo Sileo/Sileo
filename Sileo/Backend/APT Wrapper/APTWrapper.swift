@@ -558,9 +558,7 @@ class APTWrapper {
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
-                        DispatchQueue.global(qos: .default).async {
-                            spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
-                        }
+                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
                     }
                 }
             }
