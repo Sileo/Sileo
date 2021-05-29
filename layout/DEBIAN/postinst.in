@@ -24,7 +24,7 @@ case "$1" in
 		cr="\n"
 
 		if ! [ -s "$sourcesDir/sileo.sources" ]; then
-			echo -e "" > $sourcesDir/sileo.sources
+			echo "" > $sourcesDir/sileo.sources
 		fi
 
 		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
