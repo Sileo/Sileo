@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Değişiklikler bu paket için mevcut değil.";
 
 "Installed_Package_Header" = "Kurulu Paket";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Sürüm";
 "Show_Package_Contents_Button" = "Paket İçeriğini Göster";
 
