@@ -16,6 +16,7 @@ class CategoryViewController: SileoTableViewController {
     
     private var featuredBannerData: [String: Any]?
     private var bannersView: FeaturedBannersView?
+    private var showInstalled = false
     
     private var headerStackView: UIStackView?
     private var authenticationBannerView: PaymentAuthenticationBannerView?
@@ -75,8 +76,12 @@ class CategoryViewController: SileoTableViewController {
         DispatchQueue.global(qos: .default).async {
             var categories: Set<String> = []
             var categoriesCountCache: [String: Int] = [:]
-            
-            let packages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: self.repoContext)
+            guard let context = self.repoContext,
+                  let url = context.url else { return }
+            let betterContext = RepoManager.shared.repo(with: url) ?? context
+            let packages =  betterContext.packages
+            let installed = betterContext.installed
+  
             for package in packages ?? [] {
                 let category = PackageListManager.shared.humanReadableCategory(package.section)
                 if !categories.contains(category) {
@@ -87,6 +92,8 @@ class CategoryViewController: SileoTableViewController {
                 categoriesCountCache[loadIdentifier] = count + 1
             }
             categoriesCountCache[""] = packages?.count ?? 0
+            categoriesCountCache["--contextInstalled"] = installed?.count ?? 0
+            self.showInstalled = !(installed?.isEmpty ?? true)
             self.categoriesCountCache = categoriesCountCache
             self.categories = categories.sorted(by: { str1, str2 -> Bool in
                 str1.compare(str2) != .orderedDescending
@@ -184,25 +191,39 @@ class CategoryViewController: SileoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1 + (categories?.count ?? 0)
+        buffer + (categories?.count ?? 0)
     }
     
     func isAllCategories(indexPath: IndexPath) -> Bool {
         indexPath.row == 0
     }
     
+    func isInstalled(indexPath: IndexPath) -> Bool {
+        showInstalled && (indexPath.row == 1)
+    }
+    
     func categoryName(indexPath: IndexPath) -> String {
         if self.isAllCategories(indexPath: indexPath) {
             return String(localizationKey: "All_Categories")
         }
-        return categories?[indexPath.row  - 1] ?? ""
+        if self.isInstalled(indexPath: indexPath) {
+            return String(localizationKey: "Installed_Packages")
+        }
+        return categories?[indexPath.row  - buffer] ?? ""
     }
     
     func loadIdentifier(forCategoryAt indexPath: IndexPath) -> String {
         if self.isAllCategories(indexPath: indexPath) {
             return ""
         }
+        if self.isInstalled(indexPath: indexPath) {
+            return "--contextInstalled"
+        }
         return "category:\(self.categoryName(indexPath: indexPath))"
+    }
+
+    var buffer: Int {
+        showInstalled ? 2 : 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -213,7 +234,7 @@ class CategoryViewController: SileoTableViewController {
         let loadIdentifier = self.loadIdentifier(forCategoryAt: indexPath)
         let packageCount = categoriesCountCache?[loadIdentifier]
         
-        let weight: UIFont.Weight = self.isAllCategories(indexPath: indexPath) ? .semibold : .regular
+        let weight: UIFont.Weight = (self.isAllCategories(indexPath: indexPath) || self.isInstalled(indexPath: indexPath)) ? .semibold : .regular
         if let textLabel = cell.textLabel {
             textLabel.font = UIFont.systemFont(ofSize: textLabel.font.pointSize, weight: weight)
             textLabel.text = categoryName

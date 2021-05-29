@@ -40,14 +40,6 @@ final class AmyNetworkResolver {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
         }
-        if !downloadCache.dirExists {
-            do {
-                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
-            } catch {
-                print("Failed to create cache directory \(error.localizedDescription)")
-            }
-            
-        }
         if let contents = try? cacheDirectory.contents(),
            !contents.isEmpty {
             var yes = DateComponents()
@@ -60,6 +52,14 @@ final class AmyNetworkResolver {
                     try? FileManager.default.removeItem(atPath: cached.path)
                 }
             }
+        }
+        if !downloadCache.dirExists {
+            do {
+                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                print("Failed to create cache directory \(error.localizedDescription)")
+            }
+            
         }
         if let contents = try? downloadCache.contents(),
            !contents.isEmpty {

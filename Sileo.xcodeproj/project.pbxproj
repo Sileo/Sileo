@@ -196,7 +196,6 @@
 		F139D0CC22EA9209007F5C0D /* DpkgWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7051222D0359900F602DA /* DpkgWrapper.swift */; };
 		F139D0CE22EA9209007F5C0D /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62322E53E7000CBD045 /* String+Utilities.swift */; };
 		F139D0D022EA9209007F5C0D /* DepictionMinVersionForceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D99D22D1453A0021BD89 /* DepictionMinVersionForceView.swift */; };
-		F139D0D122EA9209007F5C0D /* DepictionAdmobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9EF22D1AF400021BD89 /* DepictionAdmobView.swift */; };
 		F139D0D222EA9209007F5C0D /* SourceErrorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB3BCE22D58200008FCFA1 /* SourceErrorsViewController.swift */; };
 		F139D0D322EA9209007F5C0D /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A63222E54C6700CBD045 /* Repo.swift */; };
 		F139D0DA22EA9209007F5C0D /* FeaturedPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9DA22D18C570021BD89 /* FeaturedPackageView.swift */; };
@@ -406,7 +405,6 @@
 		F1C5D9E722D1A2B90021BD89 /* FeaturedBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9E622D1A2B90021BD89 /* FeaturedBannerView.swift */; };
 		F1C5D9EA22D1A9270021BD89 /* DepictionWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9E922D1A9270021BD89 /* DepictionWebView.swift */; };
 		F1C5D9ED22D1ABDC0021BD89 /* DepictionVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9EC22D1ABDC0021BD89 /* DepictionVideoView.swift */; };
-		F1C5D9F022D1AF400021BD89 /* DepictionAdmobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9EF22D1AF400021BD89 /* DepictionAdmobView.swift */; };
 		F1C85B442325707A0064D3A2 /* SileoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */; };
 		F1C85B452325707A0064D3A2 /* SileoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */; };
 		F1C85B47232574F70064D3A2 /* SileoSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */; };
@@ -964,7 +962,6 @@
 		F1C5D9E622D1A2B90021BD89 /* FeaturedBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedBannerView.swift; sourceTree = "<group>"; };
 		F1C5D9E922D1A9270021BD89 /* DepictionWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionWebView.swift; sourceTree = "<group>"; };
 		F1C5D9EC22D1ABDC0021BD89 /* DepictionVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionVideoView.swift; sourceTree = "<group>"; };
-		F1C5D9EF22D1AF400021BD89 /* DepictionAdmobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionAdmobView.swift; sourceTree = "<group>"; };
 		F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableViewCell.swift; sourceTree = "<group>"; };
 		F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSelectionView.swift; sourceTree = "<group>"; };
 		F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSeparatorView.swift; sourceTree = "<group>"; };
@@ -1468,7 +1465,6 @@
 			isa = PBXGroup;
 			children = (
 				E1C90249263C74C400569D1E /* DepictionFormViewController */,
-				F15FDC8121E9381A00DAF0A4 /* DepictionAdmobView */,
 				F147532221451C42004A122A /* DepictionAutoStackView */,
 				F100C303210D5F6300A9B7D8 /* DepictionBaseView */,
 				F1C19B9521168B320036D865 /* DepictionButtonView */,
@@ -1782,14 +1778,6 @@
 				F1C5D9D722D18B410021BD89 /* FeaturedInfoFooterView.swift */,
 			);
 			path = FeaturedInfoFooterView;
-			sourceTree = "<group>";
-		};
-		F15FDC8121E9381A00DAF0A4 /* DepictionAdmobView */ = {
-			isa = PBXGroup;
-			children = (
-				F1C5D9EF22D1AF400021BD89 /* DepictionAdmobView.swift */,
-			);
-			path = DepictionAdmobView;
 			sourceTree = "<group>";
 		};
 		F162CCAD20E82DF500226F10 /* Repo Manager */ = {
@@ -2880,7 +2868,6 @@
 				F1A4D8E0231DAFDD00149DDF /* ControlFileParserFast.c in Sources */,
 				F139D0F022EA9209007F5C0D /* CydiaAccountUIWebView.m in Sources */,
 				F139D0F622EA9209007F5C0D /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
-				F139D0D122EA9209007F5C0D /* DepictionAdmobView.swift in Sources */,
 				F1A23FAD23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */,
 				F139D0EC22EA9209007F5C0D /* DepictionBaseView.swift in Sources */,
@@ -3052,7 +3039,6 @@
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
 				F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */,
 				F1C8C4EC221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
-				F1C5D9F022D1AF400021BD89 /* DepictionAdmobView.swift in Sources */,
 				F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,

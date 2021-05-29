@@ -29,7 +29,7 @@ final class Repo: Equatable {
     var packages: [Package]?
     var packagesProvides: [Package]?
     var packagesDict: [String: Package]?
-    var installedCount = 0
+    var installed: [Package]?
     
     var releaseDict: [String: String]? {
         let releaseFile = RepoManager.shared.cacheFile(named: "Release", for: self)
