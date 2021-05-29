@@ -117,6 +117,7 @@
 "Package_Changelogs_Unavailable" = "Endringsloggen er ikke tilgjengelig for denne pakken.";
 
 "Installed_Package_Header" = "Installert pakke";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versjon";
 "Show_Package_Contents_Button" = "Vis pakkeinnhold";
 
