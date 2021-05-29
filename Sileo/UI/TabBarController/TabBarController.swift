@@ -15,6 +15,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     private var popupIsPresented = false
     private var popupLock = DispatchSemaphore(value: 1)
     private var shouldSelectIndex = -1
+    private var fuckedUpSources = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,15 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                let packageList = navController.viewControllers[0] as? PackageListViewController {
                 packageList.collectionView?.setContentOffset(CGPoint.zero, animated: true)
             }
+        }
+        if tabBarController.selectedIndex ==  2 && !fuckedUpSources {
+            if let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNaVC = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+                if sourcesNaVC.presentedViewController == nil {
+                    sourcesNaVC.popToRootViewController(animated: false)
+                }
+            }
+            fuckedUpSources = true
         }
     }
     
