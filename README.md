@@ -24,7 +24,9 @@ To set up development:
     git clone --recursive https://github.com/Sileo/Sileo
     ```
 2. Somehow set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
+    
     There are several different ways to do that: 
+    
     * Using Xcode's Custom Paths: go to Xcode > Preferences > Locations > Custom Paths and add an entry with `Name` as `DEVELOPMENT_TEAM`, `Display Name` as `Development Team`, and `Path` as your Team ID
     * Using `Config.xcconfig`: open that file and set the `DEVELOPMENT_TEAM` key, optionally removing that file from source control with `git update-index --skip-worktree Config.xcconfig`
     * Using Xcode's Build Settings: set the `Development Team` build setting, remembering to never commit that change
