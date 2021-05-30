@@ -734,7 +734,6 @@
 		4975C5012647758E00D344B0 /* postinst.in */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinst.in; sourceTree = "<group>"; };
 		499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Optional.swift"; sourceTree = "<group>"; };
 		499162C22607C06500D09BE7 /* UIView+FromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FromNib.swift"; sourceTree = "<group>"; };
-		49BAC20726098ACD00F47DA4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltIconTableViewCell.swift; sourceTree = "<group>"; };
 		49CE7CAF2607F97C00A20711 /* AltIconTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltIconTableViewController.swift; sourceTree = "<group>"; };
 		49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueLemonade~ipad@2x.png"; sourceTree = "<group>"; };
@@ -1709,7 +1708,6 @@
 				49FB388C2660745F0029CAFF /* SileoRootWrapper */,
 				F149E0CB20B6040B005CA30B /* SileoTests */,
 				F149E0D620B6040B005CA30B /* SileoUITests */,
-				49BAC20726098ACD00F47DA4 /* Config.xcconfig */,
 				4975C4FB2647758600D344B0 /* Make */,
 				4929236F2663362700B5B37A /* Icons */,
 				4929237E2663376600B5B37A /* README.md */,
@@ -3561,7 +3559,6 @@
 		};
 		F149E0DA20B6040B005CA30B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -3622,7 +3619,6 @@
 		};
 		F149E0DB20B6040B005CA30B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49BAC20726098ACD00F47DA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
