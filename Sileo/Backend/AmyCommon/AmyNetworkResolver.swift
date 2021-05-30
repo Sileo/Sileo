@@ -425,6 +425,9 @@ final class AmyNetworkResolver {
         }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
+        if let memory = memoryCache[encoded] {
+            return (!AmyNetworkResolver.skipNetwork(path), memory)
+        }
         if let data = try? Data(contentsOf: path) {
             if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
