@@ -208,6 +208,10 @@ final class RepoManager {
         repoList.first { $0.rawEntry == sourceFile }
     }
     
+    func repoCount() -> Int {
+        return self.repoList.count
+    }
+    
     func hasRepo(with url: URL) -> Bool {
         if url.host?.lowercased() == "apt.bigboss.org" ||
             url.host?.lowercased() == "bigboss.org" ||
