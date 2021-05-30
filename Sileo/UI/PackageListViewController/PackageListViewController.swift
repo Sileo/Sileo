@@ -485,9 +485,7 @@ extension PackageListViewController: UICollectionViewDataSource {
 extension PackageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let pvc = self.controller(indexPath: indexPath) else {
-            return
-        }
+        guard let pvc = self.controller(indexPath: indexPath) else { return }
         self.navigationController?.pushViewController(pvc, animated: true)
     }
 }
@@ -559,6 +557,7 @@ extension PackageListViewController {
 }
 
 extension PackageListViewController: UISearchBarDelegate {
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.provisionalPackages.removeAll()
         self.packages.removeAll()
