@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FeaturedBannerViewPreview: class {
+protocol FeaturedBannerViewPreview: AnyObject {
     func viewController(bannerView: FeaturedBannerView) -> UIViewController?
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     var parentViewController: UIViewController? { get }
