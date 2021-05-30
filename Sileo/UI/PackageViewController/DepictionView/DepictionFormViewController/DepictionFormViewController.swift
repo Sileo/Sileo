@@ -127,13 +127,13 @@ class DepictionFormViewController: SileoTableViewController {
                     strong.form.action = url
                     if let confirmButtonText = dict["confirmButtonText"] as? String {
                         strong.submitBarButtonItem = UIBarButtonItem(title: confirmButtonText,
-                                                                   style: .done,
-                                                                   target: self,
-                                                                   action: #selector(DepictionFormViewController.submit(_:)))
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(DepictionFormViewController.submit(_:)))
                     } else {
                         strong.submitBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                                   target: self,
-                                                                   action: #selector(DepictionFormViewController.submit(_:)))
+                                                                     target: self,
+                                                                     action: #selector(DepictionFormViewController.submit(_:)))
                     }
                     if url.host?.lowercased() != strong.formURL.host?.lowercased() {
                         strong.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)
@@ -189,8 +189,10 @@ class DepictionFormViewController: SileoTableViewController {
                 guard dict["success"] as? Bool ?? false else {
                     let title = dict["title"] as? String
                     let message = dict["message"] as? String ?? String(localizationKey: "Unknown")
-                    strong.presentErrorDialog(title: title, message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), message),
-                                            mustCancel: true, retry: true)
+                    strong.presentErrorDialog(title: title,
+                                              message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), message),
+                                              mustCancel: true,
+                                              retry: true)
                     return
                 }
                 let title = dict["title"] as? String

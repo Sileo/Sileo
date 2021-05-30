@@ -9,17 +9,16 @@
 import UIKit
 
 class SourcesTableViewFooter: UITableViewHeaderFooterView {
-    
-    private let titleView = UILabel(frame: CGRect(x: 15, y: 5.5, width: 320, height: 20))
+    private let label = UILabel(frame: CGRect(x: 15, y: 5.5, width: 320, height: 20))
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundView = UIView()
+        self.backgroundView = UIView()
         
-        titleView.autoresizingMask = .flexibleWidth
-        titleView.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
-        titleView.font = UIFont.systemFont(ofSize: 12)
-        addSubview(titleView)
+        label.autoresizingMask = .flexibleWidth
+        label.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 12)
+        self.addSubview(label)
     }
     
     required init?(coder: NSCoder) {
@@ -27,7 +26,8 @@ class SourcesTableViewFooter: UITableViewHeaderFooterView {
     }
     
     public func setCount(_ count: Int) {
-        titleView.text = "\(count) \(String(localizationKey: "Sources_Page"))"
+        let key = count > 1 ? "Sources_Page" : "Sources_Page_Singular"
+        let suffix = String(localizationKey: key).localizedLowercase
+        label.text = "\(count) \(suffix)"
     }
-    
 }
