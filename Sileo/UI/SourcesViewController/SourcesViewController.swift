@@ -372,9 +372,9 @@ class SourcesViewController: SileoTableViewController {
     
     func presentAddClipBoardPrompt(sources: [URL]) {
         if sources.isEmpty {
-            // I'm not quite sure how this happens, but it does sooooo
             return self.presentAddSourceEntryField(url: nil)
         }
+        
         let count = sources.count
 
         let titleText = String(format: String(localizationKey: "Auto_Add_Pasteboard_Sources.Title"), count, count)
@@ -410,8 +410,6 @@ class SourcesViewController: SileoTableViewController {
     }
     
     @objc func addSource(_ sender: Any?) {
-        // If URL(s) are copied, we ask the user if they want to add those.
-        // Otherwise, we present the entry field dialog for the user to type a URL.
         if #available(iOS 14.0, *) {
             UIPasteboard.general.detectPatterns(for: [.probableWebURL]) { result in
                 DispatchQueue.main.async {
@@ -527,12 +525,21 @@ extension SourcesViewController { // UITableViewDataSource
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        UIView() // do not show extraneous tableview separators
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 1 {
+            let count = RepoManager.shared.repoCount()
+            let suffix = count > 1 ? " sources" : " source"
+            return String(count) + suffix
+        }
+        return nil
     }
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return (section == 0) ? 2 : 0.01
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if section == 1 {
+            let footer = view as? UITableViewHeaderFooterView
+            footer?.textLabel?.textAlignment = NSTextAlignment.center
+            footer?.tintColor = UIColor.clear
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -592,20 +599,23 @@ extension SourcesViewController { // UITableViewDelegate
         self.splitViewController?.showDetailViewController(navController, sender: self)
     }
     
-    override func tableView(_ tableView: UITableView,
-                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // We don't want to be able to delete the top section so we just return early here
-        if indexPath.section == 0 { return nil }
-        // We're using this a bunch, best just keep it here
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 0 {
+            return nil
+        }
+        
         let repoManager = RepoManager.shared
+        
         let refresh = UIContextualAction(style: .normal, title: String(localizationKey: "Refresh")) { _, _, completionHandler in
             self.updateSingleRepo(self.sortedRepoList[indexPath.row])
             completionHandler(true)
         }
         refresh.backgroundColor = .systemGreen
+        
         if !self.canEditRow(indexPath: indexPath) {
             return UISwipeActionsConfiguration(actions: [refresh])
         }
+        
         let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _, completionHandler in
             repoManager.remove(repo: self.sortedRepoList[indexPath.row])
             
@@ -615,6 +625,7 @@ extension SourcesViewController { // UITableViewDelegate
             self.refreshSources(forceUpdate: false, forceReload: true)
             completionHandler(true)
         }
+        
         return UISwipeActionsConfiguration(actions: [remove, refresh])
     }
 }
@@ -624,9 +635,7 @@ extension SourcesViewController: UIViewControllerPreviewingDelegate {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else {
             return nil
         }
-        
-        let categoryVC = self.controller(indexPath: indexPath)
-        return categoryVC
+        return self.controller(indexPath: indexPath)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
