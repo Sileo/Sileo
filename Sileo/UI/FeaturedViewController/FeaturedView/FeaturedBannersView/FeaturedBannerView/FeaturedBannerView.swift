@@ -20,12 +20,13 @@ class FeaturedBannerView: UIButton, UIViewControllerPreviewingDelegate {
     var banner: [String: Any] = [:] {
         didSet {
             if let bannerURL = banner["url"] as? String {
-                bannerImageView?.image = AmyNetworkResolver.shared.image(bannerURL) { refresh, image in
+                bannerImageView?.image = AmyNetworkResolver.shared.image(bannerURL) { [weak self] refresh, image in
                     if refresh,
+                          let strong = self,
                           let image = image,
-                          bannerURL == self.banner["url"] as? String {
+                          bannerURL == strong.banner["url"] as? String {
                         DispatchQueue.main.async {
-                            self.bannerImageView?.image = image
+                            strong.bannerImageView?.image = image
                         }
                     }
                 }

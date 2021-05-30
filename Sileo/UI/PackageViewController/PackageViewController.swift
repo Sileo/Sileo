@@ -328,16 +328,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         }
 
         depictionFooterView?.removeFromSuperview()
-        var footerDict = [
-            "class": "DepictionStackView",
-            "views": [
-                [
-                    "class": "DepictionSubheaderView",
-                    "alignment": 1,
-                    "title": "\(package.package) (\(package.version))"
-                ]
-            ]
-        ] as [String: Any]
+        var footerDict: [String: Any] = [
+            "class": "DepictionStackView"
+        ]
         var views = [[String: Any]]()
         if installedPackage != nil {
             views = [
@@ -360,11 +353,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 ],
                 [
                     "class": "DepictionSeparatorView"
-                ],
-                [
-                    "class": "DepictionSubheaderView",
-                    "alignment": 1,
-                    "title": "\(package.package) (\(package.version))"
                 ]
             ]
         }
@@ -379,9 +367,15 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             views.insert([
                 "class": "DepictionTableButtonView",
                 "title": repo.displayName,
-                "action": "showRepoContext"
+                "action": "showRepoContext",
+                "_repo": repo.url?.absoluteString as Any
             ], at: 2)
         }
+        views.append([
+            "class": "DepictionSubheaderView",
+            "alignment": 1,
+            "title": "\(package.package) (\(package.version))"
+        ])
         footerDict = [
             "class": "DepictionStackView",
             "views": views

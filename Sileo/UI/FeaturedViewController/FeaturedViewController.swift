@@ -125,30 +125,31 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
         let agent = self.userAgent 
         let headers: [String: String] = ["User-Agent": agent]
-        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { success, dict in
+        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { [weak self] success, dict in
             guard success,
+                  let strong = self,
                   let dict = dict else { return }
-            if let cachedData = self.cachedData,
+            if let cachedData = strong.cachedData,
                NSDictionary(dictionary: cachedData).isEqual(to: dict) {
                 return
             }
-            self.cachedData = dict
+            strong.cachedData = dict
             DispatchQueue.main.async {
                 if let minVersion = dict["minVersion"] as? String,
                     minVersion.compare(StoreVersion) == .orderedDescending {
-                    self.versionTooLow()
+                    strong.versionTooLow()
                 }
                 
-                self.featuredView?.removeFromSuperview()
+                strong.featuredView?.removeFromSuperview()
                 if let featuredView = FeaturedBaseView.view(dictionary: dict,
-                                                            viewController: self,
+                                                            viewController: strong,
                                                             tintColor: nil, isActionable: false) as? FeaturedBaseView {
                     featuredView.delegate = self
-                    self.featuredView?.removeFromSuperview()
-                    self.scrollView?.addSubview(featuredView)
-                    self.featuredView = featuredView
+                    strong.featuredView?.removeFromSuperview()
+                    strong.scrollView?.addSubview(featuredView)
+                    strong.featuredView = featuredView
                 }
-                self.viewDidLayoutSubviews()
+                strong.viewDidLayoutSubviews()
             }
         }
     }

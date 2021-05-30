@@ -72,19 +72,6 @@ final class RepoManager {
         if sourcesURL.exists {
             parseSourcesFile(at: sourcesURL)
         } else {            
-            let bigBoss = Repo()
-            bigBoss.rawURL = "http://apt.thebigboss.org/repofiles/cydia/"
-            bigBoss.suite = "stable"
-            bigBoss.components = ["main"]
-            bigBoss.rawEntry = """
-            Types: deb
-            URIs: http://apt.thebigboss.org/repofiles/cydia/
-            Suites: stable
-            Components: main
-            """
-            bigBoss.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
-            repoList.append(bigBoss)
-            
             writeListToFile()
         }
         #else

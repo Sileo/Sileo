@@ -344,23 +344,21 @@ final class AmyNetworkResolver {
         task.resume()
     }
     
-    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
-        guard let url = URL(string: url) else { completion(false, nil); return nil }
+    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: ((_ refresh: Bool, _ image: UIImage?) -> Void)?) -> UIImage? {
+        guard let url = URL(string: url) else { return nil }
         return self.image(url, method: method, headers: headers, cache: cache, scale: scale, size: size) { refresh, image in
-            completion(refresh, image)
+            completion?(refresh, image)
         }
     }
     
-    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
+    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: ((_ refresh: Bool, _ image: UIImage?) -> Void)?) -> UIImage? {
         if String(url.absoluteString.prefix(7)) == "file://" {
-            completion(false, nil)
             return nil
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
         if cache,
            let memory = memoryCache[encoded] {
-            completion(false, nil)
             return memory
         }
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
@@ -374,10 +372,11 @@ final class AmyNetworkResolver {
                         memoryCache[encoded] = image
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
-                            completion(false, nil)
+                            return image
                         }
+                    } else {
+                        return image
                     }
-                    return image
                 }
             }
         }
@@ -392,7 +391,7 @@ final class AmyNetworkResolver {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
                     image = downscaled
                 }
-                completion(pastData != data, image)
+                completion?(pastData != data, image)
                 if cache {
                     self?.memoryCache[encoded] = image
                     do {
@@ -401,8 +400,6 @@ final class AmyNetworkResolver {
                         print("Error saving to \(path.absoluteString) with error: \(error.localizedDescription)")
                     }
                 }
-            } else {
-                completion(false, nil)
             }
         }
         task.resume()

@@ -86,9 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
                let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
                let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                    sourcesVC.refreshSources(forceUpdate: false, forceReload: false)
+                sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: true, useErrorScreen: false, completion: nil)
             }
         }
+ 
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

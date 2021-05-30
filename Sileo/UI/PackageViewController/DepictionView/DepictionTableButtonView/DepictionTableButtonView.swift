@@ -12,6 +12,7 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
     private var selectionView: UIView
     private var titleLabel: UILabel
     private var chevronView: UIImageView
+    private var repoIcon: UIImageView?
 
     private var action: String
     private var backupAction: String
@@ -26,6 +27,7 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
         guard let action = dictionary["action"] as? String else {
             return nil
         }
+
         selectionView = UIView(frame: .zero)
         titleLabel = UILabel(frame: .zero)
         chevronView = UIImageView(image: UIImage(named: "Chevron")?.withRenderingMode(.alwaysTemplate))
@@ -36,14 +38,22 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
         openExternal = (dictionary["openExternal"] as? Bool) ?? false
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-
+        
+        if let repo = dictionary["_repo"] as? String {
+            repoIcon = UIImageView(frame: .zero)
+            repoIcon?.layer.masksToBounds = true
+            repoIcon?.layer.cornerRadius = 7.5
+            loadRepoImage(repo)
+            self.addSubview(repoIcon!)
+        }
+        
         titleLabel.text = title
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.addSubview(titleLabel)
 
         self.addSubview(chevronView)
-
+        
         let tapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(DepictionTableButtonView.buttonTapped))
         tapGestureRecognizer.minimumPressDuration = 0.05
         tapGestureRecognizer.delegate = self
@@ -53,11 +63,34 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
         self.isAccessibilityElement = true
         self.accessibilityLabel = titleLabel.text
     }
-
+    
+    private func loadRepoImage(_ repo: String) {
+        guard let url = URL(string: repo) else { return }
+        NSLog("[Sileo] Cum")
+        if url.host == "apt.thebigboss.org" {
+            self.repoIcon?.image = UIImage(named: "BigBoss")
+            return
+        }
+        let scale = Int(UIScreen.main.scale)
+        for i in (1...scale).reversed() {
+            let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
+            if let iconURL = URL(string: repo)?
+                .appendingPathComponent(filename)
+                .appendingPathExtension("png") {
+                let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                if let image = cache.1 {
+                    repoIcon?.image = image
+                    return
+                }
+            }
+        }
+        repoIcon?.image = UIImage(named: "Repo Icon")
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func depictionHeight(width: CGFloat) -> CGFloat {
         44
     }
@@ -73,7 +106,12 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
         containerFrame.size.width -= 32
 
         selectionView.frame = self.bounds
-        titleLabel.frame = CGRect(x: containerFrame.minX, y: 12, width: containerFrame.width - 20, height: 20.0)
+        if let repoIcon = repoIcon {
+            repoIcon.frame = CGRect(x: containerFrame.minX, y: 4.5, width: 35, height: 35)
+            titleLabel.frame = CGRect(x: containerFrame.minX + 40, y: 12, width: containerFrame.width - 60, height: 20.0)
+        } else {
+            titleLabel.frame = CGRect(x: containerFrame.minX, y: 12, width: containerFrame.width - 20, height: 20.0)
+        }
         chevronView.frame = CGRect(x: containerFrame.maxX - 9, y: 15, width: 7, height: 13)
     }
 

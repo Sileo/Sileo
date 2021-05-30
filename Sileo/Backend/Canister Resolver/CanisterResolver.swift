@@ -36,17 +36,18 @@ final class CanisterResolver {
         if query.count <= 3,
            savedSearch.contains(query) { return }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=packageId,name,author,maintainer&responseFields=packageId,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
-        AmyNetworkResolver.dict(url: url) { success, dict in
+        AmyNetworkResolver.dict(url: url) { [weak self] success, dict in
+            guard let strong = self else { return }
             guard success,
                   let dict = dict,
                   dict["status"] as? String == "Successful",
                   let data = dict["data"] as? [[String: Any]] else { return }
-            self.savedSearch.append(query)
+            strong.savedSearch.append(query)
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
                 package.repo = entry["repositoryURI"] as? String
-                if self.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
+                if strong.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
                 package.identifier = entry["packageId"] as? String
                 package.icon = entry["icon"] as? String
                 package.description = entry["description"] as? String
@@ -61,8 +62,8 @@ final class CanisterResolver {
                     package.author = entry["author"] as? String
                 }
                 package.version = entry["latestVersion"] as? String
-                if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
-                    self.packages.append(package)
+                if !strong.packages.contains(where: { $0.identifier == package.identifier }) && !strong.filteredRepos.contains(package.repo ?? "") {
+                    strong.packages.append(package)
                 }
             }
             
