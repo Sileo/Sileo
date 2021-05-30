@@ -98,7 +98,7 @@
 "Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
-"Repo" = "Repository";
+"Repo" = "软件源";
 
 "Add_Source.Title" = "添加软件源";
 "Add_Source.Body" = "新增软件源地址";
@@ -118,7 +118,7 @@
 "Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "已安装的软件包";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "显示软件包内容";
 
