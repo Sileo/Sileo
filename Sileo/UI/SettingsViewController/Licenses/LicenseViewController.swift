@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Jamie Bishop on 30/07/2019.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation

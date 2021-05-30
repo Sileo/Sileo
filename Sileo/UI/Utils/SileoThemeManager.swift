@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 8/2/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 func dynamicColor(default defaultColor: UIColor, dark: UIColor) -> UIColor {

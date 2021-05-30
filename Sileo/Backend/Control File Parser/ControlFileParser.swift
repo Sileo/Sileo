@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 6/22/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 struct PackageTags: OptionSet {

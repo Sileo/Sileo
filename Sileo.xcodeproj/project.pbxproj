@@ -2496,7 +2496,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1250;
-				ORGANIZATIONNAME = CoolStar;
+				ORGANIZATIONNAME = "Sileo Team";
 				TargetAttributes = {
 					49FB388A2660745F0029CAFF = {
 						CreatedOnToolsVersion = 12.5;

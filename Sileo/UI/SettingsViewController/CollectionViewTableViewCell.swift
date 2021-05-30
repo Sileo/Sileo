@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 1/26/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
