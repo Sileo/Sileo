@@ -35,9 +35,7 @@ class SourcesTableViewFooter: UITableViewHeaderFooterView {
     }
     
     public func setCount(_ count: Int) {
-        let key = count > 1 ? "Sources_Page" : "Sources_Page_Singular"
-        let suffix = String(localizationKey: key).localizedLowercase
-        titleView.text = "\(count) \(suffix)"
+        titleView.text = "\(count) \(String(localizationKey: "Sources_Page"))"
     }
     
 }
