@@ -173,10 +173,14 @@ class CategoryViewController: SileoTableViewController {
         guard let headerStackView = self.tableView.tableHeaderView as? UIStackView else {
             return
         }
-        for subview in headerStackView.arrangedSubviews {
-            if let bannerView = subview as? FeaturedBannersView {
-                let newHeight = bannerView.depictionHeight(width: parentSize.width)
-                subview.frame = CGRect(x: subview.frame.minX, y: subview.frame.minY, width: subview.frame.width, height: newHeight)
+        if headerStackView.arrangedSubviews.isEmpty {
+            headerStackView.frame = CGRect(x: .zero, y: .zero, width: parentSize.width, height: 0)
+        } else {
+            for subview in headerStackView.arrangedSubviews {
+                if let bannerView = subview as? FeaturedBannersView {
+                    let newHeight = bannerView.depictionHeight(width: parentSize.width)
+                    subview.frame = CGRect(x: subview.frame.minX, y: subview.frame.minY, width: subview.frame.width, height: newHeight)
+                }
             }
         }
         self.headerStackView?.layoutIfNeeded()

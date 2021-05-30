@@ -55,7 +55,7 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             }
             
             provider.authenticate(withToken: token!, paymentSecret: secret!)
-            completion?(nil, false)
+            completion?(nil, true)
         }
         /*
         if #available(iOS 13.0, *) {
