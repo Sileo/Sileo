@@ -78,9 +78,7 @@
 		49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
 		49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */; };
 		49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
-		49E9BB12266339210090475B /* LNPopupController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
-		49E9BB142663392C0090475B /* LNPopupController.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3891266074B40029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -505,6 +503,20 @@
 			remoteGlobalIDString = 39DB52E51B5823330061C589;
 			remoteInfo = LNPopupController;
 		};
+		49983AED266357410072CBAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 39DB52E41B5823330061C589;
+			remoteInfo = LNPopupController;
+		};
+		49983AF0266357460072CBAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 39DB52E41B5823330061C589;
+			remoteInfo = LNPopupController;
+		};
 		49FB3892266074B40029CAFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
@@ -536,17 +548,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		49FB3886266073E90029CAFF /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				49E9BB142663392C0090475B /* LNPopupController.framework in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E177780F266005DF0091AFAB /* Embed PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -567,17 +568,6 @@
 				49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */,
 			);
 			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F139D14822EA9209007F5C0D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				49E9BB12266339210090475B /* LNPopupController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -2395,17 +2385,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F139D14922EA9209007F5C0D /* Build configuration list for PBXNativeTarget "Sileo Demo" */;
 			buildPhases = (
+				F139D12922EA9209007F5C0D /* ShellScript */,
 				F139D09722EA9209007F5C0D /* Sources */,
 				F139D11F22EA9209007F5C0D /* Frameworks */,
-				F139D12922EA9209007F5C0D /* ShellScript */,
-				F139D12B22EA9209007F5C0D /* Resources */,
-				F139D14822EA9209007F5C0D /* Embed Frameworks */,
-				E13BD79826473390006A5EF2 /* Run Script */,
 				E177781F266006070091AFAB /* Embed PlugIns */,
+				F139D12B22EA9209007F5C0D /* Resources */,
+				E13BD79826473390006A5EF2 /* Run Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				49983AEE266357410072CBAE /* PBXTargetDependency */,
 				49FB3896266074B90029CAFF /* PBXTargetDependency */,
 			);
 			name = "Sileo Demo";
@@ -2429,17 +2419,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DC20B6040B005CA30B /* Build configuration list for PBXNativeTarget "Sileo" */;
 			buildPhases = (
+				F1CA042822DA824A00CED7A9 /* Run Script */,
 				F149E0A920B6040B005CA30B /* Sources */,
 				F149E0AA20B6040B005CA30B /* Frameworks */,
-				F1CA042822DA824A00CED7A9 /* Run Script */,
-				F1144EFE20FC636C001FF36C /* ShellScript */,
-				F149E0AB20B6040B005CA30B /* Resources */,
 				E177780F266005DF0091AFAB /* Embed PlugIns */,
-				49FB3886266073E90029CAFF /* Embed Libraries */,
+				F149E0AB20B6040B005CA30B /* Resources */,
+				F1144EFE20FC636C001FF36C /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				49983AF1266357460072CBAE /* PBXTargetDependency */,
 				49FB3893266074B40029CAFF /* PBXTargetDependency */,
 			);
 			name = Sileo;
@@ -3218,6 +3208,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		49983AEE266357410072CBAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LNPopupController;
+			targetProxy = 49983AED266357410072CBAE /* PBXContainerItemProxy */;
+		};
+		49983AF1266357460072CBAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LNPopupController;
+			targetProxy = 49983AF0266357460072CBAE /* PBXContainerItemProxy */;
+		};
 		49FB3893266074B40029CAFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = maccatalyst;
