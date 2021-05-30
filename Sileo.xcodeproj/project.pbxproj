@@ -20,6 +20,8 @@
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
+		4929235E266335B800B5B37A /* DFContinuousForceTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4929235D266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.m */; };
+		4929235F266335C100B5B37A /* DFContinuousForceTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4929235D266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.m */; };
 		493B23D226098104007D605F /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CE26098104007D605F /* Chimera@2x.png */; };
 		493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; };
 		493B23D426098104007D605F /* Chimera~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23D026098104007D605F /* Chimera~ipad@3x.png */; };
@@ -75,6 +77,10 @@
 		49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */; };
 		49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
 		49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */; };
+		49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
+		49E9BB12266339210090475B /* LNPopupController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
+		49E9BB142663392C0090475B /* LNPopupController.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3891266074B40029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -142,7 +148,6 @@
 		E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
 		E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
-		E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
@@ -211,7 +216,6 @@
 		F139D0EC22EA9209007F5C0D /* DepictionBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */; };
 		F139D0EF22EA9209007F5C0D /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F139D0F022EA9209007F5C0D /* CydiaAccountUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19265D62106E63700B31E13 /* CydiaAccountUIWebView.m */; };
-		F139D0F622EA9209007F5C0D /* DFContinuousForceTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8C4EA221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m */; };
 		F139D0F922EA9209007F5C0D /* DepictionSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D99122D13E610021BD89 /* DepictionSeparatorView.swift */; };
 		F139D0FB22EA9209007F5C0D /* FeaturedBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9E622D1A2B90021BD89 /* FeaturedBannerView.swift */; };
 		F139D0FD22EA9209007F5C0D /* DepictionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B322D160B50021BD89 /* DepictionLabelView.swift */; };
@@ -229,7 +233,6 @@
 		F139D11522EA9209007F5C0D /* DepictionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9C222D1847F0021BD89 /* DepictionButtonView.swift */; };
 		F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A122D146A90021BD89 /* DepictionHeaderView.swift */; };
 		F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
-		F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102D458212B6ACC007CAF22 /* LNPopupController.framework */; };
 		F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		F139D12522EA9209007F5C0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
 		F139D12D22EA9209007F5C0D /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
@@ -411,7 +414,6 @@
 		F1C85B48232574F70064D3A2 /* SileoSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */; };
 		F1C85B4D2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */; };
 		F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */; };
-		F1C8C4EC221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8C4EA221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m */; };
 		F1CA758D244CF813000BA15C /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
 		F1CA758E244CF813000BA15C /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
 		F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CB2EF92146511100641808 /* DepictionSubpageViewController.xib */; };
@@ -496,6 +498,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		492923592663355A00B5B37A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 39DB52E51B5823330061C589;
+			remoteInfo = LNPopupController;
+		};
 		49FB3892266074B40029CAFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
@@ -509,41 +518,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 49FB388A2660745F0029CAFF;
 			remoteInfo = SileoRootWrapper;
-		};
-		CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		F102D457212B6ACC007CAF22 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 39DB52E51B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		F139D09122EA9209007F5C0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		F139D09322EA9209007F5C0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		F139D09522EA9209007F5C0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
 		};
 		F149E0C920B6040B005CA30B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -568,6 +542,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				49E9BB142663392C0090475B /* LNPopupController.framework in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,6 +575,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				49E9BB12266339210090475B /* LNPopupController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +679,24 @@
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		492923552663355A00B5B37A /* LNPopupController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LNPopupController.xcodeproj; path = Deps/LNPopupController/LNPopupController/LNPopupController.xcodeproj; sourceTree = "<group>"; };
+		4929235C266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFContinuousForceTouchGestureRecognizer.h; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.h; sourceTree = "<group>"; };
+		4929235D266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFContinuousForceTouchGestureRecognizer.m; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.m; sourceTree = "<group>"; };
+		492923702663362700B5B37A /* Sus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sus.png; sourceTree = "<group>"; };
+		492923712663362700B5B37A /* Procursus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Procursus.png; sourceTree = "<group>"; };
+		492923722663362700B5B37A /* Taurine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taurine.png; sourceTree = "<group>"; };
+		492923732663362700B5B37A /* SugarFree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SugarFree.png; sourceTree = "<group>"; };
+		492923742663362700B5B37A /* OceanicBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OceanicBlue.png; sourceTree = "<group>"; };
+		492923752663362700B5B37A /* CottonCandy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CottonCandy.png; sourceTree = "<group>"; };
+		492923762663362700B5B37A /* Stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stock.png; sourceTree = "<group>"; };
+		492923772663362700B5B37A /* CoolBreeze.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoolBreeze.PNG; sourceTree = "<group>"; };
+		492923782663362700B5B37A /* MangoCrazy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MangoCrazy.png; sourceTree = "<group>"; };
+		492923792663362700B5B37A /* Nightly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nightly.png; sourceTree = "<group>"; };
+		4929237A2663362700B5B37A /* Chimera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chimera.png; sourceTree = "<group>"; };
+		4929237B2663362700B5B37A /* BlueLemonade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueLemonade.png; sourceTree = "<group>"; };
+		4929237C2663362700B5B37A /* StrawberrySunset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberrySunset.png; sourceTree = "<group>"; };
+		4929237D2663362700B5B37A /* OG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OG.png; sourceTree = "<group>"; };
+		4929237E2663376600B5B37A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		493B23BF260979DD007D605F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493B23CE26098104007D605F /* Chimera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@2x.png"; sourceTree = "<group>"; };
 		493B23CF26098104007D605F /* Chimera~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera~ipad@2x.png"; sourceTree = "<group>"; };
@@ -809,7 +803,6 @@
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
-		F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LNPopupController.xcodeproj; path = Deps/LNPopupController/LNPopupController/LNPopupController.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F103401E213746B600B9180B /* InstallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallViewController.xib; sourceTree = "<group>"; };
 		F10531FA244A3B4D0042201C /* CydiaScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CydiaScraper.swift; sourceTree = "<group>"; };
 		F10531FD244A3F6E0042201C /* CydiaAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CydiaAccountViewController.swift; sourceTree = "<group>"; };
@@ -965,8 +958,6 @@
 		F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableViewCell.swift; sourceTree = "<group>"; };
 		F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSelectionView.swift; sourceTree = "<group>"; };
 		F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSeparatorView.swift; sourceTree = "<group>"; };
-		F1C8C4EA221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DFContinuousForceTouchGestureRecognizer.m; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.m; sourceTree = SOURCE_ROOT; };
-		F1C8C4EB221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFContinuousForceTouchGestureRecognizer.h; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.h; sourceTree = SOURCE_ROOT; };
 		F1CA758C244CF813000BA15C /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
 		F1CB2EF92146511100641808 /* DepictionSubpageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepictionSubpageViewController.xib; sourceTree = "<group>"; };
 		F1D113F820DC608900C8F051 /* PackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageViewController.xib; sourceTree = "<group>"; };
@@ -1035,9 +1026,9 @@
 			files = (
 				E194222F265AEF850039EFEF /* SWCompression in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
+				49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
-				F139D12022EA9209007F5C0D /* LNPopupController.framework in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				E19A53462617439300BB8A69 /* KeychainAccess in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
@@ -1055,10 +1046,10 @@
 			files = (
 				E194222A265AEF7C0039EFEF /* SWCompression in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
+				49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
-				E1CE857B26154813004FEAEC /* LNPopupController.framework in Frameworks */,
 				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
@@ -1113,6 +1104,53 @@
 				461FC22720ED7A48001EA199 /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4929234E2663353700B5B37A /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				4929235B2663358700B5B37A /* DFContinuousForceTouchGestureRecognizer */,
+				492923552663355A00B5B37A /* LNPopupController.xcodeproj */,
+			);
+			name = Deps;
+			sourceTree = "<group>";
+		};
+		492923562663355A00B5B37A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4929235A2663355A00B5B37A /* LNPopupController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4929235B2663358700B5B37A /* DFContinuousForceTouchGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				4929235C266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.h */,
+				4929235D266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.m */,
+			);
+			name = DFContinuousForceTouchGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		4929236F2663362700B5B37A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4929237B2663362700B5B37A /* BlueLemonade.png */,
+				4929237A2663362700B5B37A /* Chimera.png */,
+				492923772663362700B5B37A /* CoolBreeze.PNG */,
+				492923752663362700B5B37A /* CottonCandy.png */,
+				492923782663362700B5B37A /* MangoCrazy.png */,
+				492923792663362700B5B37A /* Nightly.png */,
+				492923742663362700B5B37A /* OceanicBlue.png */,
+				4929237D2663362700B5B37A /* OG.png */,
+				492923712663362700B5B37A /* Procursus.png */,
+				492923762663362700B5B37A /* Stock.png */,
+				4929237C2663362700B5B37A /* StrawberrySunset.png */,
+				492923732663362700B5B37A /* SugarFree.png */,
+				492923702663362700B5B37A /* Sus.png */,
+				492923722663362700B5B37A /* Taurine.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		493B23BE260979AF007D605F /* Sileo Demo */ = {
@@ -1248,12 +1286,12 @@
 		49CE7CB42607F9A400A20711 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				E13BD7742645E114006A5EF2 /* Nightly */,
 				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
 				493B23CD26098104007D605F /* Chimera */,
 				49CE7CC92607F9A400A20711 /* Cool Breeze */,
 				493B23D826098116007D605F /* Cotton Candy  */,
 				49CE7CBA2607F9A400A20711 /* Mango Crazy */,
+				E13BD7742645E114006A5EF2 /* Nightly */,
 				493B23E326098132007D605F /* Oceanic Blue */,
 				E1BB50D8260E912000F870B8 /* OG */,
 				493B23F826098169007D605F /* Procursus */,
@@ -1550,23 +1588,6 @@
 			path = DepictionMarkdownView;
 			sourceTree = "<group>";
 		};
-		F102D452212B6AC2007CAF22 /* Deps */ = {
-			isa = PBXGroup;
-			children = (
-				F1C8C4E9221235D30032D074 /* DFContinuousForceTouchGestureRecognizer */,
-				F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */,
-			);
-			path = Deps;
-			sourceTree = "<group>";
-		};
-		F102D454212B6ACC007CAF22 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F102D458212B6ACC007CAF22 /* LNPopupController.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F103401B2137459A00B9180B /* InstallViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1688,10 +1709,12 @@
 				49FB388C2660745F0029CAFF /* SileoRootWrapper */,
 				F149E0CB20B6040B005CA30B /* SileoTests */,
 				F149E0D620B6040B005CA30B /* SileoUITests */,
-				4975C4FB2647758600D344B0 /* Make */,
 				49BAC20726098ACD00F47DA4 /* Config.xcconfig */,
+				4975C4FB2647758600D344B0 /* Make */,
+				4929236F2663362700B5B37A /* Icons */,
+				4929237E2663376600B5B37A /* README.md */,
+				4929234E2663353700B5B37A /* Deps */,
 				33F3CD3020E059ED00B3A1D2 /* Frameworks */,
-				F102D452212B6AC2007CAF22 /* Deps */,
 				F149E0AE20B6040B005CA30B /* Products */,
 			);
 			indentWidth = 4;
@@ -2119,16 +2142,6 @@
 			path = DepictionButtonView;
 			sourceTree = "<group>";
 		};
-		F1C8C4E9221235D30032D074 /* DFContinuousForceTouchGestureRecognizer */ = {
-			isa = PBXGroup;
-			children = (
-				F1C8C4EB221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.h */,
-				F1C8C4EA221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m */,
-			);
-			name = DFContinuousForceTouchGestureRecognizer;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		F1CB2EF3214650C000641808 /* DepictionSubpageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2395,9 +2408,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F139D09022EA9209007F5C0D /* PBXTargetDependency */,
-				F139D09222EA9209007F5C0D /* PBXTargetDependency */,
-				F139D09422EA9209007F5C0D /* PBXTargetDependency */,
 				49FB3896266074B90029CAFF /* PBXTargetDependency */,
 			);
 			name = "Sileo Demo";
@@ -2432,7 +2442,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */,
 				49FB3893266074B40029CAFF /* PBXTargetDependency */,
 			);
 			name = Sileo;
@@ -2582,8 +2591,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F102D454212B6ACC007CAF22 /* Products */;
-					ProjectRef = F102D453212B6ACC007CAF22 /* LNPopupController.xcodeproj */;
+					ProductGroup = 492923562663355A00B5B37A /* Products */;
+					ProjectRef = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -2598,11 +2607,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F102D458212B6ACC007CAF22 /* LNPopupController.framework */ = {
+		4929235A2663355A00B5B37A /* LNPopupController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = LNPopupController.framework;
-			remoteRef = F102D457212B6ACC007CAF22 /* PBXContainerItemProxy */;
+			remoteRef = 492923592663355A00B5B37A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2867,7 +2876,6 @@
 				FB40263A23DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
 				F1A4D8E0231DAFDD00149DDF /* ControlFileParserFast.c in Sources */,
 				F139D0F022EA9209007F5C0D /* CydiaAccountUIWebView.m in Sources */,
-				F139D0F622EA9209007F5C0D /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
 				F1A23FAD23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */,
 				F139D0EC22EA9209007F5C0D /* DepictionBaseView.swift in Sources */,
@@ -2885,6 +2893,7 @@
 				F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */,
 				FB40263123DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F172582024EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
+				4929235F266335C100B5B37A /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
 				F139D0D022EA9209007F5C0D /* DepictionMinVersionForceView.swift in Sources */,
 				FB40263723DF404E002D97FE /* SettingsHeaderViewDisplayable.swift in Sources */,
 				F139D10622EA9209007F5C0D /* DepictionRatingView.swift in Sources */,
@@ -3038,7 +3047,6 @@
 				F1705FFE24CB7040001596A0 /* PackageButton.swift in Sources */,
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
 				F19265D72106E63700B31E13 /* CydiaAccountUIWebView.m in Sources */,
-				F1C8C4EC221235EC0032D074 /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
 				F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,
@@ -3062,6 +3070,7 @@
 				F1C5D98922D133D00021BD89 /* DepictionRatingView.swift in Sources */,
 				FB40262C23DE8A60002D97FE /* PaymentProviderTableViewCell.swift in Sources */,
 				F1C5D98C22D137820021BD89 /* DepictionReviewView.swift in Sources */,
+				4929235E266335B800B5B37A /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
 				F1C5D9BD22D1708E0021BD89 /* DepictionScreenshotsView.swift in Sources */,
 				F1C5D9C022D181BE0021BD89 /* DepictionScreenshotsViewController.swift in Sources */,
 				FBBD003E240C31B4008E11B2 /* NewsGradientBackgroundView.swift in Sources */,
@@ -3222,26 +3231,6 @@
 			platformFilter = maccatalyst;
 			target = 49FB388A2660745F0029CAFF /* SileoRootWrapper */;
 			targetProxy = 49FB3895266074B90029CAFF /* PBXContainerItemProxy */;
-		};
-		CFBC7FD5221D7FE10066D501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = CFBC7FD4221D7FE10066D501 /* PBXContainerItemProxy */;
-		};
-		F139D09022EA9209007F5C0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = F139D09122EA9209007F5C0D /* PBXContainerItemProxy */;
-		};
-		F139D09222EA9209007F5C0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = F139D09322EA9209007F5C0D /* PBXContainerItemProxy */;
-		};
-		F139D09422EA9209007F5C0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = F139D09522EA9209007F5C0D /* PBXContainerItemProxy */;
 		};
 		F149E0CA20B6040B005CA30B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3435,7 +3424,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -3455,7 +3443,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -3477,7 +3464,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3532,7 +3518,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3699,7 +3684,6 @@
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Sileo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -3771,7 +3755,6 @@
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Sileo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_TESTABILITY = YES;
@@ -3836,7 +3819,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3858,7 +3840,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3877,7 +3858,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3895,7 +3875,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SileoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
