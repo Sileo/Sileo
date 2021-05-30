@@ -76,6 +76,9 @@ class InstallViewController: SileoViewController {
                 }
                 usleep(useconds_t(50 * USEC_PER_SEC/1000))
             }
+            for file in DownloadManager.shared.cachedFiles {
+                deleteFileAsRoot(file)
+            }
             DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.purgeCache()
                 PackageListManager.shared.waitForReady({
@@ -95,6 +98,7 @@ class InstallViewController: SileoViewController {
                         self.showDetailsButton?.isHidden = false
                         self.completeLaterButton?.alpha = shouldShow(.back) ? 1 : 0
                         self.refreshSileo = false
+                        
                         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
                             NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
                         }

@@ -465,8 +465,8 @@ final class DownloadManager {
         let destURL = URL(fileURLWithPath: destFileName)
         
         hardLinkAsRoot(from: fileURL, to: destURL)
-        DownloadManager.shared.cachedFiles.append(fileURL)
         #endif
+        DownloadManager.shared.cachedFiles.append(fileURL)
         return true
     }
     
