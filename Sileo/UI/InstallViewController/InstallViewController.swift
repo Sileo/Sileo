@@ -164,7 +164,7 @@ class InstallViewController: SileoViewController {
                         self.updateCompleteButton()
                         self.completeButton?.alpha = 1
                         self.showDetailsButton?.isHidden = false
-                        self.completeLaterButton?.alpha = shouldShow(finish) ? 1 : 0
+                        self.completeLaterButton?.alpha = (shouldShow(finish) || refresh) ? 1 : 0
                         if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
                             self.completeButtonTapped(nil)
                         }
