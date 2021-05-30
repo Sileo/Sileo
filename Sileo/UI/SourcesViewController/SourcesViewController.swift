@@ -61,6 +61,7 @@ class SourcesViewController: SileoTableViewController {
         
         self.title = String(localizationKey: "Sources_Page")
         self.tableView.backgroundColor = .sileoBackgroundColor
+        tableView.register(SourcesTableViewFooter.self, forHeaderFooterViewReuseIdentifier: "Sileo.SourcesTableViewFooter")
         
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
@@ -257,7 +258,7 @@ class SourcesViewController: SileoTableViewController {
             addToQueue(repo)
         }
         
-        RepoManager.shared.update(force: false, forceReload: false, isBackground: false, repos: repos) { [weak self] didFindErrors, errorOutput in
+        RepoManager.shared.update(force: false, forceReload: true, isBackground: false, repos: repos) { [weak self] didFindErrors, errorOutput in
             guard let strongSelf = self else { return }
             for repo in repos {
                 strongSelf.removeFromQueue(repo)
@@ -528,11 +529,15 @@ extension SourcesViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        UIView() // do not show extraneous tableview separators
+        guard section == 1 else { return UIView() }
+        
+        let footerView = SourcesTableViewFooter(reuseIdentifier: "Sileo.SourcesTableViewFooter")
+        footerView.setCount(sortedRepoList.count)
+        return footerView
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return (section == 0) ? 2 : 0.01
+        return (section == 0) ? 2 : 30
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -550,6 +555,12 @@ extension SourcesViewController { // UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         55
+    }
+    
+    private func updateFooterCount() {
+        if let footerView = tableView.footerView(forSection: 1) as? SourcesTableViewFooter {
+            footerView.setCount(sortedRepoList.count)
+        }
     }
 }
 
@@ -612,6 +623,7 @@ extension SourcesViewController { // UITableViewDelegate
             self.reSortList()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
+            self.updateFooterCount()
             self.refreshSources(forceUpdate: false, forceReload: true)
             completionHandler(true)
         }
