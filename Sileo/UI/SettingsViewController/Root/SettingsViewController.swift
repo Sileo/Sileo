@@ -92,7 +92,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 7
+            return 8
         case 3: // About section
             return 3
         default:
@@ -188,6 +188,10 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
+            case 7:
+                cell.amyPogLabel.text = "Use Experimental Decompression"
+                cell.fallback = true
+                cell.defaultKey = "ExperimentalDecompression"
             default:
                 fatalError("You done goofed")
             }

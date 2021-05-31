@@ -4,6 +4,8 @@
 #import "WhiteBlur.h"
 #import "ControlFileParserFast.h"
 #import "DFContinuousForceTouchGestureRecognizer.h"
+#import "libzstd.h"
+
 @import LNPopupController;
 
 #if TARGET_OS_MACCATALYST

@@ -66,7 +66,6 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
     
     private func loadRepoImage(_ repo: String) {
         guard let url = URL(string: repo) else { return }
-        NSLog("[Sileo] Cum")
         if url.host == "apt.thebigboss.org" {
             self.repoIcon?.image = UIImage(named: "BigBoss")
             return
