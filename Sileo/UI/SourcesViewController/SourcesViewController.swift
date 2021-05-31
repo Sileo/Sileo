@@ -8,9 +8,12 @@
 
 import Foundation
 
-class SourcesViewController: SileoTableViewController {
+class SourcesViewController: SileoViewController {
     private var sortedRepoList: [Repo] = []
     var updatingRepoList: [Repo] = []
+    
+    private var tableView: SileoTableView?
+    private var refreshControl = UIRefreshControl()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -55,13 +58,23 @@ class SourcesViewController: SileoTableViewController {
         repoManager.checkUpdatesInBackground {
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView = SileoTableView(frame: .zero, style: .plain)
+        view.addSubview(tableView!)
+        tableView?.translatesAutoresizingMaskIntoConstraints = false
+        tableView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView?.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
+        tableView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView?.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshSources(_:)), for: .valueChanged)
+        
         self.title = String(localizationKey: "Sources_Page")
-        self.tableView.backgroundColor = .sileoBackgroundColor
-        tableView.register(SourcesTableViewFooter.self, forHeaderFooterViewReuseIdentifier: "Sileo.SourcesTableViewFooter")
+        tableView?.backgroundColor = .sileoBackgroundColor
+        tableView?.register(SourcesTableViewFooter.self, forHeaderFooterViewReuseIdentifier: "Sileo.SourcesTableViewFooter")
         
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
@@ -69,11 +82,13 @@ class SourcesViewController: SileoTableViewController {
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         
-        self.tableView.separatorInset = UIEdgeInsets(top: 72, left: 0, bottom: 0, right: 0)
-        self.tableView.separatorColor = UIColor(white: 0, alpha: 0.2)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        self.tableView?.separatorInset = UIEdgeInsets(top: 72, left: 0, bottom: 0, right: 0)
+        self.tableView?.separatorColor = UIColor(white: 0, alpha: 0.2)
         self.setEditing(false, animated: false)
         
-        self.registerForPreviewing(with: self, sourceView: self.tableView)
+        self.registerForPreviewing(with: self, sourceView: self.tableView!)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
@@ -81,8 +96,8 @@ class SourcesViewController: SileoTableViewController {
     }
     
     @objc func updateSileoColors() {
-        self.tableView.backgroundColor = UIColor.sileoBackgroundColor
-        self.tableView.separatorColor = .sileoSeparatorColor
+        self.tableView?.backgroundColor = UIColor.sileoBackgroundColor
+        self.tableView?.separatorColor = .sileoSeparatorColor
         self.statusBarStyle = .default
     }
     
@@ -98,7 +113,7 @@ class SourcesViewController: SileoTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.navigationBar._hidesShadow = true
-        self.tableView.backgroundColor = .sileoBackgroundColor
+        self.tableView?.backgroundColor = .sileoBackgroundColor
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -157,7 +172,7 @@ class SourcesViewController: SileoTableViewController {
         let item = self.splitViewController?.tabBarItem
         item?.badgeValue = ""
         let badge = item?.view()?.value(forKey: "_badge") as? UIView ?? UIView()
-        self.refreshControl?.endRefreshing()
+        self.refreshControl.endRefreshing()
         let indicators = badge.subviews.filter { $0 is UIActivityIndicatorView }
         for indicator in indicators {
             if let indicator = indicator as? UIActivityIndicatorView {
@@ -291,7 +306,7 @@ class SourcesViewController: SileoTableViewController {
     @objc func reloadRepo(_ notification: NSNotification) {
         if let repo = notification.object as? Repo {
             guard let idx = sortedRepoList.firstIndex(of: repo),
-            let cell = self.tableView.cellForRow(at: IndexPath(row: idx, section: 1)) as? SourcesTableViewCell else {
+            let cell = self.tableView?.cellForRow(at: IndexPath(row: idx, section: 1)) as? SourcesTableViewCell else {
                 return
             }
             let cellRepo = cell.repo
@@ -299,11 +314,11 @@ class SourcesViewController: SileoTableViewController {
             cell.layoutSubviews()
         } else if let count = notification.object as? Int {
             DispatchQueue.main.async {
-                guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SourcesTableViewCell else { return }
+                guard let cell = self.tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? SourcesTableViewCell else { return }
                 cell.installedLabel.text = "\(count)"
             }
         } else {
-            for cell in tableView.visibleCells {
+            for cell in tableView?.visibleCells ?? [] {
                 if let sourcesCell = cell as? SourcesTableViewCell {
                     let cellRepo = sourcesCell.repo
                     sourcesCell.repo = cellRepo
@@ -315,7 +330,7 @@ class SourcesViewController: SileoTableViewController {
     
     func reloadData() {
         self.reSortList()
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
     
     @objc func exportSources(_ sender: Any?) {
@@ -474,12 +489,12 @@ class SourcesViewController: SileoTableViewController {
     }
 }
 
-extension SourcesViewController { // UITableViewDataSource
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension SourcesViewController: UITableViewDataSource { // UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else {
@@ -488,11 +503,11 @@ extension SourcesViewController { // UITableViewDataSource
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return (section == 1) ? String(localizationKey: "Repos") : nil
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let text = self.tableView(tableView, titleForHeaderInSection: section)
         let headerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 36)))
         
@@ -517,7 +532,7 @@ extension SourcesViewController { // UITableViewDataSource
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
             return 5
@@ -528,7 +543,7 @@ extension SourcesViewController { // UITableViewDataSource
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard section == 1 else { return UIView() }
         
         let footerView = SourcesTableViewFooter(reuseIdentifier: "Sileo.SourcesTableViewFooter")
@@ -536,11 +551,11 @@ extension SourcesViewController { // UITableViewDataSource
         return footerView
     }
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return (section == 0) ? 2 : 30
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "SourcesViewControllerCellidentifier") as? SourcesTableViewCell) ??
             SourcesTableViewCell(style: .subtitle, reuseIdentifier: "SourcesViewControllerCellidentifier")
         
@@ -553,27 +568,27 @@ extension SourcesViewController { // UITableViewDataSource
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         55
     }
     
     private func updateFooterCount() {
-        if let footerView = tableView.footerView(forSection: 1) as? SourcesTableViewFooter {
+        if let footerView = tableView?.footerView(forSection: 1) as? SourcesTableViewFooter {
             footerView.setCount(sortedRepoList.count)
         }
     }
 }
 
-extension SourcesViewController { // UITableViewDelegate
-    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         indexPath.section > 0
     }
     
-    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         action == #selector(UIResponderStandardEditActions.copy(_:))
     }
     
-    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if action != #selector(UIResponderStandardEditActions.copy(_:)) {
             return
         }
@@ -582,29 +597,29 @@ extension SourcesViewController { // UITableViewDelegate
         UIPasteboard.general.url = repo.url
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if !self.canEditRow(indexPath: indexPath) {
             return .none
         }
         return .delete
     }
     
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         self.canEditRow(indexPath: indexPath)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categoryVC = self.controller(indexPath: indexPath)
         let navController = SileoNavigationController(rootViewController: categoryVC)
         self.splitViewController?.showDetailViewController(navController, sender: self)
     }
     
-    override func tableView(_ tableView: UITableView,
-                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // We don't want to be able to delete the top section so we just return early here
         if indexPath.section == 0 { return nil }
         // We're using this a bunch, best just keep it here
@@ -633,7 +648,7 @@ extension SourcesViewController { // UITableViewDelegate
 
 extension SourcesViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = self.tableView.indexPathForRow(at: location) else {
+        guard let indexPath = self.tableView?.indexPathForRow(at: location) else {
             return nil
         }
         

@@ -30,3 +30,7 @@
 @interface UIImage (Private)
 + (UIImage *)kitImageNamed:(NSString *)imageName;
 @end
+
+@interface UITableView (Private)
+-(BOOL)allowsFooterViewsToFloat;
+@end

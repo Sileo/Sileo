@@ -2,7 +2,7 @@
 //  SourcesTableViewFooter.swift
 //  Sileo
 //
-//  Created by Andromeda on 30/05/2021.
+//  Created by Amy on 30/05/2021.
 //  Copyright © 2021 Amy. All rights reserved.
 //
 

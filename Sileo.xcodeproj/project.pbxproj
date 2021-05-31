@@ -146,6 +146,8 @@
 		E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
 		E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
+		E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
+		E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
@@ -789,6 +791,7 @@
 		E1C90266263D79C600569D1E /* AmyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyGifManager.swift; sourceTree = "<group>"; };
 		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
+		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
 		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E1F10B062662E25800DA726E /* status */ = {isa = PBXFileReference; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewFooter.swift; sourceTree = "<group>"; };
@@ -1382,6 +1385,7 @@
 				F1330EAD23250CC200971073 /* SileoRootView.swift */,
 				F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */,
 				F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */,
+				E1D44BB72665093A00A12A77 /* SileoTableView.swift */,
 				F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */,
 				F170606124CF54E0001596A0 /* SileoTableViewController.swift */,
 				FB208DC224D709B7000297FB /* SileoTheme.swift */,
@@ -2849,6 +2853,7 @@
 				496992E1260BAAE500E3C35D /* AltIconTableViewCell.swift in Sources */,
 				496992E2260BAAE500E3C35D /* AltIconTableViewController.swift in Sources */,
 				F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */,
+				E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */,
 				F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
 				F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */,
 				E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */,
@@ -3027,6 +3032,7 @@
 				F16115CE244D827A003BF1E6 /* DepictionButton.swift in Sources */,
 				F1AB912D22ED0D220054341B /* BaseSubtitleTableViewCell.swift in Sources */,
 				FB40264623E0FCAE002D97FE /* PaymentProfileHeaderView.swift in Sources */,
+				E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */,
 				FB6F3D3124AA634E00E941F8 /* PaymentError.swift in Sources */,
 				F147E67C22F02EAB0048F868 /* CSGradientView.swift in Sources */,
 				E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */,
