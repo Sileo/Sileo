@@ -84,6 +84,7 @@
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989C214657BB00677FCA /* WhiteBlur.m */; };
 		A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A0EA2F2665A36E00CD772C /* libzstd.1-mac.tbd */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (Required, ); }; };
+		A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A0EA492665AAC900CD772C /* libzstd.1.tbd */; };
 		C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C305468521D6900C003E73FC /* PackageListHeader.xib */; };
 		C373923621D5E46900E6F704 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373923421D5E46900E6F704 /* Localizable.strings */; };
 		C373924921D5F80300E6F704 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924521D5F80300E6F704 /* Errors.strings */; };
@@ -115,7 +116,6 @@
 		E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
 		E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
 		E14C5E66266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
-		E14C5E6A26659CCA0080BFCE /* libzstd.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5E6826659CCA0080BFCE /* libzstd.1.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -761,6 +761,8 @@
 		56A5989C214657BB00677FCA /* WhiteBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlur.m; sourceTree = "<group>"; };
 		56A5989E2146584800677FCA /* WhiteBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBlur.h; sourceTree = "<group>"; };
 		A8A0EA2F2665A36E00CD772C /* libzstd.1-mac.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libzstd.1-mac.tbd"; sourceTree = "<group>"; };
+		A8A0EA492665AAC900CD772C /* libzstd.1.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libzstd.1.tbd; sourceTree = "<group>"; };
+		A8A0EA4A2665AAC900CD772C /* libzstd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libzstd.h; sourceTree = "<group>"; };
 		C305468521D6900C003E73FC /* PackageListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeader.xib; sourceTree = "<group>"; };
 		C373923521D5E46900E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C373924621D5F80300E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Errors.strings; sourceTree = "<group>"; };
@@ -778,8 +780,6 @@
 		E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
 		E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTeamViewController.swift; sourceTree = "<group>"; };
 		E14C5E64266547D10080BFCE /* ZSTD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZSTD.swift; sourceTree = "<group>"; };
-		E14C5E6826659CCA0080BFCE /* libzstd.1.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libzstd.1.tbd; sourceTree = "<group>"; };
-		E14C5E6926659CCA0080BFCE /* libzstd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libzstd.h; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
@@ -1053,13 +1053,13 @@
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
-				E165796C26654328007695CC /* libzstd.1.tbd in Frameworks */,
 				A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */,
 				E13638D42614F59000698D55 /* KeychainAccess in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E1A8B6312656DF04009C43EA /* Alderis in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
+				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
 				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
 			);
@@ -1479,9 +1479,9 @@
 		E14C5E6726659CCA0080BFCE /* libzstd */ = {
 			isa = PBXGroup;
 			children = (
-				E165796B26654328007695CC /* libzstd.1.tbd */,
+				A8A0EA492665AAC900CD772C /* libzstd.1.tbd */,
+				A8A0EA4A2665AAC900CD772C /* libzstd.h */,
 				A8A0EA2F2665A36E00CD772C /* libzstd.1-mac.tbd */,
-				E165796F26654510007695CC /* libzstd.h */,
 			);
 			name = libzstd;
 			path = Deps/libzstd;
