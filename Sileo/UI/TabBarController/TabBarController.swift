@@ -57,8 +57,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
             if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
-               let packageList = navController.viewControllers[0] as? PackageListViewController {
-                packageList.collectionView?.setContentOffset(CGPoint.zero, animated: true)
+               let packageList = navController.viewControllers[0] as? PackageListViewController,
+               let collectionView = packageList.collectionView {
+                let yVal = -1 * collectionView.adjustedContentInset.top
+                collectionView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
             }
         }
         if tabBarController.selectedIndex ==  2 && !fuckedUpSources {

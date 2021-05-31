@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-  
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             let updatesPrompt = UserDefaults.standard.bool(forKey: "updatesPrompt")
             if !updatesPrompt {

@@ -13,7 +13,7 @@ class SourcesViewController: SileoViewController {
     var updatingRepoList: [Repo] = []
     
     private var tableView: SileoTableView?
-    private var refreshControl = UIRefreshControl()
+    public var refreshControl = UIRefreshControl()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
