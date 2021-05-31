@@ -796,6 +796,9 @@ final class RepoManager {
                                         } else {
                                             throw error ?? "Unknown Error"
                                         }
+                                        if let hash = hash {
+                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                        }
                                         return
                                     }
                                     #endif
