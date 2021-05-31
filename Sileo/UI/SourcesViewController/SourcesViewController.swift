@@ -66,16 +66,16 @@ class SourcesViewController: SileoViewController {
         view.addSubview(tableView!)
         tableView?.translatesAutoresizingMaskIntoConstraints = false
         tableView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView?.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
+        tableView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView?.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshSources(_:)), for: .valueChanged)
         
         self.title = String(localizationKey: "Sources_Page")
-        tableView?.backgroundColor = .sileoBackgroundColor
         tableView?.register(SourcesTableViewFooter.self, forHeaderFooterViewReuseIdentifier: "Sileo.SourcesTableViewFooter")
         
+        updateSileoColors()
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(self.updateSileoColors),
@@ -96,9 +96,10 @@ class SourcesViewController: SileoViewController {
     }
     
     @objc func updateSileoColors() {
-        self.tableView?.backgroundColor = UIColor.sileoBackgroundColor
+        self.tableView?.backgroundColor = .sileoBackgroundColor
         self.tableView?.separatorColor = .sileoSeparatorColor
         self.statusBarStyle = .default
+        view.backgroundColor = .sileoBackgroundColor
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
