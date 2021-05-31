@@ -131,5 +131,10 @@ class SileoThemeManager: NSObject {
                 }
             }
         }
+        if let barButton = NSClassFromString("UICalloutBarButton") as? UIButton.Type {
+            let button = barButton.appearance()
+            button.setTitleColor(UIColor.isDarkModeEnabled ? .black : .white, for: .normal)
+            button.backgroundColor = UIColor.isDarkModeEnabled ? UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00) : UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
+        }
     }
 }

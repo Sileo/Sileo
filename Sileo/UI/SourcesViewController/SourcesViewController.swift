@@ -70,6 +70,7 @@ class SourcesViewController: SileoViewController {
         tableView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView?.refreshControl = refreshControl
+
         refreshControl.addTarget(self, action: #selector(refreshSources(_:)), for: .valueChanged)
         
         self.title = String(localizationKey: "Sources_Page")
@@ -565,7 +566,6 @@ extension SourcesViewController: UITableViewDataSource { // UITableViewDataSourc
         } else {
             cell.repo = sortedRepoList[indexPath.row]
         }
-        
         return cell
     }
     
@@ -586,9 +586,9 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        action == #selector(UIResponderStandardEditActions.copy(_:))
+        action == #selector(UIResponderStandardEditActions.copy(_:)) 
     }
-    
+
     func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if action != #selector(UIResponderStandardEditActions.copy(_:)) {
             return
