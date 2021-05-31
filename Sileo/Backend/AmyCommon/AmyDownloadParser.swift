@@ -113,7 +113,7 @@ final class AmyDownloadParser: NSObject, URLSessionDownloadDelegate {
     // Checking for errors in the download
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error {
-            if (error as NSError).code == NSURLErrorCancelled { return }
+            if (error as NSError).code == NSURLErrorCancelled || (error as NSError).code == NSFileWriteOutOfSpaceError { return }
             if shouldResume {
                 let userInfo = (error as NSError).userInfo
                 if let resumeData = userInfo[NSURLSessionDownloadTaskResumeData] as? Data {

@@ -617,6 +617,10 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
         let categoryVC = self.controller(indexPath: indexPath)
         let navController = SileoNavigationController(rootViewController: categoryVC)
         self.splitViewController?.showDetailViewController(navController, sender: self)
+        
+        if self.splitViewController?.isCollapsed ?? false { // Only deselect the row if the split view contoller is not showing multiple
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView,
