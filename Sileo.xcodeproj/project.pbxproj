@@ -3730,7 +3730,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UUGF4RZ8S8;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3781,7 +3781,7 @@
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.evelyn.SileoStore;
+				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				SDKROOT = iphoneos;
@@ -3803,7 +3803,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Sileo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				DEVELOPMENT_TEAM = UUGF4RZ8S8;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_TESTABILITY = YES;
@@ -3851,7 +3851,7 @@
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.evelyn.SileoStore;
+				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				SDKROOT = iphoneos;
