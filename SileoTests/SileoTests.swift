@@ -8,7 +8,7 @@
 
 import XCTest
 import Foundation
-@testable import Sileo
+@testable import Sileo_Demo
 
 class SileoTests: XCTestCase {
     var observer: NSObjectProtocol?
