@@ -3739,12 +3739,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"$(SRCROOT)/Deps/libzstd\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -3809,12 +3804,7 @@
 				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"$(SRCROOT)/Deps/libzstd\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
