@@ -126,7 +126,7 @@ final class RepoManager {
         }
         
         for url in urls {
-            var normalizedStr = url.absoluteString.lowercased()
+            var normalizedStr = url.absoluteString
             if normalizedStr.last != "/" {
                 normalizedStr.append("/")
             }
@@ -178,7 +178,7 @@ final class RepoManager {
     }
     
     func repo(with url: URL) -> Repo? {
-        var normalizedStr = url.absoluteString
+        var normalizedStr = url.absoluteString.lowercased()
         if normalizedStr.last != "/" {
             normalizedStr.append("/")
         }
@@ -410,7 +410,7 @@ final class RepoManager {
     @discardableResult
     func queue(
         from url: URL?,
-        progress: ((AmyDownloadParser.Progress) -> Void)?,
+        progress: ((Progress) -> Void)?,
         success: @escaping (URL) -> Void,
         failure: @escaping (Int, Error?) -> Void,
         waiting: ((String) -> Void)? = nil
@@ -444,7 +444,7 @@ final class RepoManager {
     func fetch(
         from url: URL,
         withExtensionsUntilSuccess extensions: [String],
-        progress: ((AmyDownloadParser.Progress) -> Void)?,
+        progress: ((Progress) -> Void)?,
         success: @escaping (URL, URL) -> Void,
         failure: @escaping (Int, Error?) -> Void
     ) {
@@ -492,6 +492,7 @@ final class RepoManager {
         }
     }
     
+    // swiftlint:disable function_body_length
     private func _update (
         force: Bool,
         forceReload: Bool,
@@ -651,12 +652,16 @@ final class RepoManager {
                     }
                     
                     var succeededExtension = ""
-                    #if targetEnvironment(simulator) || TARGET_SANDBOX
-                    let extensions = ["xz", "lzma", "bz2", "gz", ""]
-                    #else
-                    var extensions = ["xz", "lzma", "bz2", "gz", ""]
-                    if ZSTD.available && UserDefaults.standard.optionalBool("ExperimentalDecompression", fallback: true) {
-                        extensions.insert("zst", at: 0)
+                    var extensions = ["bz2", "gz", ""]
+                    #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+                    if UserDefaults.standard.optionalBool("ExperimentalDecompression", fallback: true) {
+                        if ZSTD.available {
+                            extensions.insert("zst", at: 0)
+                        }
+                        if XZ.available {
+                            extensions.insert("xz", at: 1)
+                            extensions.insert("lzma", at: 2)
+                        }
                     }
                     #endif
                     packages.map { url in self.fetch(
@@ -788,7 +793,7 @@ final class RepoManager {
                         func loadPackageData() {
                             if !skipPackages {
                                 do {
-                                    #if !targetEnvironment(simulator) || !TARGET_SANDBOX
+                                    #if !targetEnvironment(simulator) && !TARGET_SANDBOX
                                     if succeededExtension == "zst" {
                                         let (error, data) = ZSTD.decompress(path: packagesFile.url.path)
                                         if let data = data {
@@ -796,14 +801,24 @@ final class RepoManager {
                                         } else {
                                             throw error ?? "Unknown Error"
                                         }
+                                        if let hash = hash {
+                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                        }
+                                        return
+                                    } else if succeededExtension == "xz" || succeededExtension == "lzma" {
+                                        let (error, data) = XZ.decompress(path: packagesFile.url.path, type: succeededExtension == "xz" ? .xz : .lzma)
+                                        if let data = data {
+                                            try data.write(to: packagesFile.url, options: .atomic)
+                                        } else {
+                                            throw error ?? "Unknown Error"
+                                        }
+                                        if let hash = hash {
+                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                        }
                                         return
                                     }
                                     #endif
-                                    if succeededExtension == "xz" {
-                                        try XZArchive.unarchive(archive: packagesData).write(to: packagesFile.url, options: .atomic)
-                                    } else if succeededExtension == "lzma" {
-                                        try LZMA.decompress(data: packagesData).write(to: packagesFile.url, options: .atomic)
-                                    } else if succeededExtension == "bz2" {
+                                    if succeededExtension == "bz2" {
                                         try BZip2.decompress(data: packagesData).write(to: packagesFile.url, options: .atomic)
                                     } else if succeededExtension == "gz" {
                                         try GzipArchive.unarchive(archive: packagesData).write(to: packagesFile.url, options: .atomic)

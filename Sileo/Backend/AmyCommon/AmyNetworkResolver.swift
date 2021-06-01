@@ -43,7 +43,7 @@ final class AmyNetworkResolver {
         if let contents = try? cacheDirectory.contents(),
            !contents.isEmpty {
             var yes = DateComponents()
-            yes.hour = -1
+            yes.day = -7
             let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
             for cached in contents {
                 guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),

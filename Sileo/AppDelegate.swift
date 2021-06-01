@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
+class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
@@ -89,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: true, useErrorScreen: false, completion: nil)
             }
         }
- 
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

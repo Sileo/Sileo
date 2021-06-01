@@ -1,4 +1,5 @@
-#import <libzstd.h>
+#import "libzstd.h"
+#import "lzma.h"
 #import <stdint.h>
 
 #import "UIColor+HTMLColors.h"

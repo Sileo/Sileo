@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FeaturedViewController: SileoViewController, UIScrollViewDelegate, FeaturedViewDelegate {
+final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, FeaturedViewDelegate {
     private var profileButton: UIButton?
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
@@ -207,6 +207,17 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     @objc private func updatePicture() {
         if let button = self.profileButton {
             self.profileButton = setPicture(button)
+        }
+    }
+    
+    private func windowCheck() {
+        guard let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController else {
+            fatalError("Invalid Storyboard")
+        }
+        for viewController in tabBarController.viewControllers ?? [] {
+            if nil != viewController as? SileoNavigationController { continue }
+            if nil != viewController as? SourcesSplitViewController { continue }
+            fatalError("Invalid View Controllers")
         }
     }
     

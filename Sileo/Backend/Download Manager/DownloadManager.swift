@@ -307,7 +307,7 @@ final class DownloadManager {
                                 self.viewController.reloadDownload(package: package)
                             }
                         })
-                        download.task?.shouldResume = true
+                        download.task?.setShouldResume(true)
                         self.downloads[package.package] = download
                         self.startMoreDownloads()
                     }
