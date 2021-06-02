@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "BitByteData",
-        "repositoryURL": "https://github.com/tsolomko/BitByteData",
-        "state": {
-          "branch": null,
-          "revision": "0969ebfb79ccbee05384249e818067a984337dc2",
-          "version": "1.4.4"
-        }
-      },
-      {
         "package": "Cosmos",
         "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
         "state": {
@@ -71,15 +62,6 @@
           "branch": null,
           "revision": "0a9893ec030501a3956bee572d6b4fdd3ae158a1",
           "version": "0.12.2"
-        }
-      },
-      {
-        "package": "SWCompression",
-        "repositoryURL": "https://github.com/tsolomko/SWCompression",
-        "state": {
-          "branch": null,
-          "revision": "add1e6111fe411221bfa46bc5db792e35cd72768",
-          "version": "4.5.10"
         }
       },
       {

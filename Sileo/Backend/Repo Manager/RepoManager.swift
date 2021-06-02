@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SWCompression
 
 final class RepoManager {
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
@@ -659,8 +658,12 @@ final class RepoManager {
                             extensions.insert("zst", at: 0)
                         }
                         if XZ.available {
-                            extensions.insert("xz", at: 1)
-                            extensions.insert("lzma", at: 2)
+                            var buffer = 0
+                            if extensions.count == 3 {
+                                buffer = 1
+                            }
+                            extensions.insert("xz", at: 1 - buffer)
+                            extensions.insert("lzma", at: 2 - buffer)
                         }
                     }
                     #endif
@@ -805,23 +808,32 @@ final class RepoManager {
                                             self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
                                         }
                                         return
-                                    } else if succeededExtension == "xz" || succeededExtension == "lzma" {
+                                    }
+                                    
+                                    if succeededExtension == "xz" || succeededExtension == "lzma" {
                                         let (error, data) = XZ.decompress(path: packagesFile.url.path, type: succeededExtension == "xz" ? .xz : .lzma)
                                         if let data = data {
                                             try data.write(to: packagesFile.url, options: .atomic)
                                         } else {
                                             throw error ?? "Unknown Error"
                                         }
-                                        if let hash = hash {
-                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
-                                        }
                                         return
                                     }
                                     #endif
                                     if succeededExtension == "bz2" {
-                                        try BZip2.decompress(data: packagesData).write(to: packagesFile.url, options: .atomic)
+                                        let (error, data) = BZIP.decompress(path: packagesFile.url.path)
+                                        if let data = data {
+                                            try data.write(to: packagesFile.url, options: .atomic)
+                                        } else {
+                                            throw error ?? "Unknown Error"
+                                        }
                                     } else if succeededExtension == "gz" {
-                                        try GzipArchive.unarchive(archive: packagesData).write(to: packagesFile.url, options: .atomic)
+                                        let (error, data) = GZIP.decompress(path: packagesFile.url.path)
+                                        if let data = data {
+                                            try data.write(to: packagesFile.url, options: .atomic)
+                                        } else {
+                                            throw error ?? "Unknown Error"
+                                        }
                                     } else {
                                         try packagesData.write(to: packagesFile.url, options: .atomic)
                                     }

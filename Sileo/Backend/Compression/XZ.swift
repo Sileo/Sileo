@@ -6,7 +6,7 @@
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
-#if !targetEnvironment(simulator) || !TARGET_SANDBOX
+#if !TARGET_SANDBOX && !targetEnvironment(simulator)
 import Foundation
 
 public enum XZType {
