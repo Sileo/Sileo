@@ -667,29 +667,41 @@ final class RepoManager {
                         }
                     }
                     #endif
+                    var breakOff = false
                     packages.map { url in self.fetch(
                         from: url,
                         withExtensionsUntilSuccess: extensions,
                         progress: { progress in
-                            repo.packagesProgress = CGFloat(progress.fractionCompleted)
-                            self.postProgressNotification(repo)
+                            if !breakOff {
+                                repo.packagesProgress = CGFloat(progress.fractionCompleted)
+                                self.postProgressNotification(repo)
+                            }
                         },
                         success: { succeededURL, fileURL in
                             defer {
-                                semaphore.signal()
+                                if !breakOff {
+                                    semaphore.signal()
+                                }
                             }
                             
-                            succeededExtension = succeededURL.pathExtension
-                            
-                            // to calculate the package file name, subtract the base URL from it. Ensure there's no leading /
-                            let repoURL = repo.repoURL
-                            let substringOffset = repoURL.hasSuffix("/") ? 0 : 1
-                            
-                            let fileName = succeededURL.absoluteString.dropFirst(repoURL.count + substringOffset)
-                            optPackagesFile = (fileURL, String(fileName))
-                            
-                            repo.packagesProgress = 1
-                            self.postProgressNotification(repo)
+                            if !breakOff {
+                                succeededExtension = succeededURL.pathExtension
+                                
+                                // to calculate the package file name, subtract the base URL from it. Ensure there's no leading /
+                                let repoURL = repo.repoURL
+                                let substringOffset = repoURL.hasSuffix("/") ? 0 : 1
+                                
+                                let fileName = succeededURL.absoluteString.dropFirst(repoURL.count + substringOffset)
+                                optPackagesFile = (fileURL, String(fileName))
+                                
+                                repo.packagesProgress = 1
+                                self.postProgressNotification(repo)
+                            } else {
+                                repo.packagesProgress = 0
+                                repo.releaseProgress = 0
+                                repo.releaseGPGProgress = 0
+                                self.postProgressNotification(repo)
+                            }
                         },
                         failure: { status, error in
                             defer {
@@ -714,7 +726,6 @@ final class RepoManager {
                             defer {
                                 semaphore.signal()
                             }
-                            
                             releaseGPGFileURL = fileURL
                             repo.releaseGPGProgress = 1
                             self.postProgressNotification(repo)
@@ -737,9 +748,63 @@ final class RepoManager {
                     // if the repo is flat, then we didn't wait for Release earlier so wait now
                     let numReleaseWaits = repo.isFlat ? 2 : 1
                     
-                    if packages != nil {
-                        let timeout = refreshTimeout - Date().timeIntervalSince(startTime)
-                        _ = semaphore.wait(timeout: .now() + timeout) // Packages
+                    func escapeEarly() {
+                        if breakOff { return }
+                        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
+                        guard optPackagesFile == nil,
+                              let releaseFile = optReleaseFile,
+                              let url = URL(string: repo.repoURL),
+                              let cachedData = try? Data(contentsOf: jsonPath),
+                              let cacheDict = (try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers)) as? [String: String] else { return }
+                        var hashDict = [String: String]()
+                        let extensions = ["zst", "xz", "bz2", "gz", ""]
+                        for ext in extensions {
+                            if let hash = cacheDict[url.appendingPathComponent("Packages").appendingPathExtension(ext).absoluteString] {
+                                hashDict[ext] = hash
+                            }
+                        }
+                        if hashDict.isEmpty { return }
+                        let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
+                        guard !supportedHashTypes.isEmpty,
+                              let sha256Types = supportedHashTypes.first(where: { $0.0 == RepoHashType.sha256 }) else {
+                            return
+                        }
+                        let repoHashStrings = sha256Types.1
+                        let files = repoHashStrings.components(separatedBy: "\n")
+                        for file in files {
+                            var seperated = file.components(separatedBy: " ")
+                            seperated.removeAll { $0.isEmpty }
+                            if seperated.count != 3 { continue }
+                            var file = seperated[2]
+                            if file.contains("/") {
+                                let tmp = file.components(separatedBy: "/")
+                                guard let last = tmp.last else { continue }
+                                file = last
+                            }
+                            if file.prefix(8) != "Packages" { continue }
+                            var ext = ""
+                            if file.contains(".") {
+                                let tmp = file.components(separatedBy: ".")
+                                guard let last = tmp.last else { continue }
+                                ext = last
+                            }
+                            guard let key = hashDict[ext] else { continue }
+                            if key == seperated[0] {
+                                breakOff = true
+                                repo.packagesProgress = 1
+                                semaphore.signal()
+                                return
+                            }
+                        }
+                    }
+                    
+                    escapeEarly()
+                    
+                    if !breakOff {
+                        if packages != nil {
+                            let timeout = refreshTimeout - Date().timeIntervalSince(startTime)
+                            _ = semaphore.wait(timeout: .now() + timeout) // Packages
+                        }
                     }
                     for _ in 0..<numReleaseWaits {
                         let timeout = refreshTimeout - Date().timeIntervalSince(startTime)
@@ -749,13 +814,6 @@ final class RepoManager {
                     releaseGPGTask?.cancel()
                     guard let releaseFile = optReleaseFile else {
                         log("Could not find release file for \(repo.repoURL)", type: .error)
-                        errorsFound = true
-                        reposUpdated += 1
-                        self.checkUpdatesInBackground(completion: nil)
-                        continue
-                    }
-                    guard let packagesFile = optPackagesFile else {
-                        log("Could not find packages file for \(repo.repoURL)", type: .error)
                         errorsFound = true
                         reposUpdated += 1
                         self.checkUpdatesInBackground(completion: nil)
@@ -776,94 +834,113 @@ final class RepoManager {
                         }
                     }
                     
-                    let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
-                    let releaseFileContainsHashes = !supportedHashTypes.isEmpty
-                    var isPackagesFileValid = supportedHashTypes.allSatisfy {
-                        self.isHashValid(hashKey: $1, hashType: $0, url: packagesFile.url, fileName: packagesFile.name)
-                    }
-                    
-                    if releaseFileContainsHashes && !isPackagesFileValid {
-                        log("Hash for \(packagesFile.name) from \(repo.repoURL) is invalid!", type: .error)
-                        errorsFound = true
-                    }
-                    
-                    let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
-                    if let packagesData = try? Data(contentsOf: packagesFile.url) {
-                        let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst)
-                        skipPackages = shouldSkip
+                    if !breakOff {
+                        guard let packagesFile = optPackagesFile else {
+                            log("Could not find packages file for \(repo.repoURL)", type: .error)
+                            errorsFound = true
+                            reposUpdated += 1
+                            self.checkUpdatesInBackground(completion: nil)
+                            continue
+                        }
                         
-                        func loadPackageData() {
-                            if !skipPackages {
-                                do {
-                                    #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-                                    if succeededExtension == "zst" {
-                                        let (error, data) = ZSTD.decompress(path: packagesFile.url.path)
-                                        if let data = data {
-                                            try data.write(to: packagesFile.url, options: .atomic)
+                        let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
+                        let releaseFileContainsHashes = !supportedHashTypes.isEmpty
+                        var isPackagesFileValid = supportedHashTypes.allSatisfy {
+                            self.isHashValid(hashKey: $1, hashType: $0, url: packagesFile.url, fileName: packagesFile.name)
+                        }
+                        
+                        if releaseFileContainsHashes && !isPackagesFileValid {
+                            log("Hash for \(packagesFile.name) from \(repo.repoURL) is invalid!", type: .error)
+                            errorsFound = true
+                        }
+                        
+                        let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
+                        if let packagesData = try? Data(contentsOf: packagesFile.url) {
+                            let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst)
+                            skipPackages = shouldSkip
+                            
+                            func loadPackageData() {
+                                if !skipPackages {
+                                    do {
+                                        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+                                        if succeededExtension == "zst" {
+                                            let (error, data) = ZSTD.decompress(path: packagesFile.url.path)
+                                            if let data = data {
+                                                try data.write(to: packagesFile.url, options: .atomic)
+                                            } else {
+                                                throw error ?? "Unknown Error"
+                                            }
+                                            if let hash = hash {
+                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                            }
+                                            return
+                                        }
+                                        
+                                        if succeededExtension == "xz" || succeededExtension == "lzma" {
+                                            let (error, data) = XZ.decompress(path: packagesFile.url.path, type: succeededExtension == "xz" ? .xz : .lzma)
+                                            if let data = data {
+                                                try data.write(to: packagesFile.url, options: .atomic)
+                                            } else {
+                                                throw error ?? "Unknown Error"
+                                            }
+                                            return
+                                        }
+                                        #endif
+                                        if succeededExtension == "bz2" {
+                                            let (error, data) = BZIP.decompress(path: packagesFile.url.path)
+                                            if let data = data {
+                                                try data.write(to: packagesFile.url, options: .atomic)
+                                            } else {
+                                                throw error ?? "Unknown Error"
+                                            }
+                                        } else if succeededExtension == "gz" {
+                                            let (error, data) = GZIP.decompress(path: packagesFile.url.path)
+                                            if let data = data {
+                                                try data.write(to: packagesFile.url, options: .atomic)
+                                            } else {
+                                                throw error ?? "Unknown Error"
+                                            }
                                         } else {
-                                            throw error ?? "Unknown Error"
+                                            try packagesData.write(to: packagesFile.url, options: .atomic)
                                         }
                                         if let hash = hash {
                                             self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
                                         }
-                                        return
+                                    } catch {
+                                        log("Could not decompress packages from \(repo.repoURL) (\(succeededExtension)): \(error.localizedDescription)", type: .error)
+                                        isPackagesFileValid = false
+                                        errorsFound = true
                                     }
-                                    
-                                    if succeededExtension == "xz" || succeededExtension == "lzma" {
-                                        let (error, data) = XZ.decompress(path: packagesFile.url.path, type: succeededExtension == "xz" ? .xz : .lzma)
-                                        if let data = data {
-                                            try data.write(to: packagesFile.url, options: .atomic)
-                                        } else {
-                                            throw error ?? "Unknown Error"
-                                        }
-                                        return
-                                    }
-                                    #endif
-                                    if succeededExtension == "bz2" {
-                                        let (error, data) = BZIP.decompress(path: packagesFile.url.path)
-                                        if let data = data {
-                                            try data.write(to: packagesFile.url, options: .atomic)
-                                        } else {
-                                            throw error ?? "Unknown Error"
-                                        }
-                                    } else if succeededExtension == "gz" {
-                                        let (error, data) = GZIP.decompress(path: packagesFile.url.path)
-                                        if let data = data {
-                                            try data.write(to: packagesFile.url, options: .atomic)
-                                        } else {
-                                            throw error ?? "Unknown Error"
-                                        }
-                                    } else {
-                                        try packagesData.write(to: packagesFile.url, options: .atomic)
-                                    }
-                                    if let hash = hash {
-                                        self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
-                                    }
-                                } catch {
-                                    log("Could not decompress packages from \(repo.repoURL) (\(succeededExtension)): \(error.localizedDescription)", type: .error)
-                                    isPackagesFileValid = false
-                                    errorsFound = true
                                 }
                             }
+                            loadPackageData()
                         }
-                        loadPackageData()
-                    }
-                    
-                    if !skipPackages {
-                        do {
-                            _ = try PackageListManager.shared.packagesList(loadIdentifier: "",
-                                                                           repoContext: repo,
-                                                                           useCache: false,
-                                                                           overridePackagesFile: packagesFile.url,
-                                                                           sortPackages: false,
-                                                                           lookupTable: [:])
-                        } catch {
-                            log("Error parsing Packages from \(repo.repoURL): \(error.localizedDescription)", type: .error)
-                            try? FileManager.default.removeItem(at: packagesFile.url)
-                            isPackagesFileValid = false
-                            errorsFound = true
+                        
+                        if !skipPackages {
+                            do {
+                                _ = try PackageListManager.shared.packagesList(loadIdentifier: "",
+                                                                               repoContext: repo,
+                                                                               useCache: false,
+                                                                               overridePackagesFile: packagesFile.url,
+                                                                               sortPackages: false,
+                                                                               lookupTable: [:])
+                            } catch {
+                                log("Error parsing Packages from \(repo.repoURL): \(error.localizedDescription)", type: .error)
+                                try? FileManager.default.removeItem(at: packagesFile.url)
+                                isPackagesFileValid = false
+                                errorsFound = true
+                            }
                         }
+                        
+                        if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
+                            if !skipPackages {
+                                moveFileAsRoot(from: packagesFile.url, to: packagesFileDst)
+                            }
+                        } else if releaseFileContainsHashes && !isPackagesFileValid {
+                            deleteFileAsRoot(packagesFileDst)
+                        }
+                        try? FileManager.default.removeItem(at: packagesFile.url.aptUrl)
                     }
                     
                     if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) && !isReleaseGPGValid {
@@ -883,17 +960,8 @@ final class RepoManager {
                         }
                     }
                     
-                    if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
-                        if !skipPackages {
-                            moveFileAsRoot(from: packagesFile.url, to: packagesFileDst)
-                        }
-                    } else if releaseFileContainsHashes && !isPackagesFileValid {
-                        deleteFileAsRoot(packagesFileDst)
-                    }
-                    
                     try? FileManager.default.removeItem(at: releaseFile.url.aptUrl)
                     releaseGPGFileURL.map { try? FileManager.default.removeItem(at: $0) }
-                    try? FileManager.default.removeItem(at: packagesFile.url.aptUrl)
                     
                     reposUpdated += 1
                     self.checkUpdatesInBackground(completion: nil)
