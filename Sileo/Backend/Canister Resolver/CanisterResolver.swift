@@ -35,7 +35,7 @@ final class CanisterResolver {
     public func fetch(_ query: String, fetch: @escaping () -> Void) {
         if query.count <= 3,
            savedSearch.contains(query) { return }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=packageId,name,author,maintainer&responseFields=packageId,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction"
         AmyNetworkResolver.dict(url: url) { [weak self] success, dict in
             guard let strong = self else { return }
             guard success,
@@ -46,10 +46,12 @@ final class CanisterResolver {
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
-                package.repo = entry["repositoryURI"] as? String
+                guard let repo = entry["repository"] as? [String: String],
+                      let url = repo["uri"] else { continue }
+                package.repo = url
                 if strong.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
-                package.identifier = entry["packageId"] as? String
-                package.icon = entry["icon"] as? String
+                package.identifier = entry["identifier"] as? String
+                package.icon = entry["packageIcon"] as? String
                 package.description = entry["description"] as? String
                 package.depiction = entry["nativeDepiction"] as? String
                 package.legacyDepiction = entry["depiction"] as? String

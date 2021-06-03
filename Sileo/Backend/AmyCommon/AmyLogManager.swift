@@ -19,5 +19,3 @@ public class AmyLogManager {
     }
     
 }
-
-//AmyLogManager.log
