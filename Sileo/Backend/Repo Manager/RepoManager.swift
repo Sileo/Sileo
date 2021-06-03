@@ -752,6 +752,7 @@ final class RepoManager {
                     
                     func escapeEarly() {
                         if breakOff { return }
+                        if (repo.packages ?? []).isEmpty { return }
                         let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
                         guard optPackagesFile == nil,
                               let releaseFile = optReleaseFile,
