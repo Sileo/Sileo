@@ -872,14 +872,21 @@ final class RepoManager {
                                     do {
                                         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
                                         if succeededExtension == "zst" {
+                                            AmyLogManager.log("[Sileo] Starting ZSTD for \(repo.repoURL)")
                                             let (error, data) = ZSTD.decompress(path: packagesFile.url.path)
+                                            AmyLogManager.log("[Sileo] Finishing ZSTD for \(repo.repoURL)")
                                             if let data = data {
+                                                AmyLogManager.log("[Sileo] Starting data write for \(repo.repoURL)")
                                                 try data.write(to: packagesFile.url, options: .atomic)
+                                                AmyLogManager.log("[Sileo] Finishing data write for \(repo.repoURL)")
                                             } else {
                                                 throw error ?? "Unknown Error"
                                             }
+                                            AmyLogManager.log("[Sileo] Checking hash for \(repo.repoURL)")
                                             if let hash = hash {
+                                                AmyLogManager.log("[Sileo] Sending ignore command for \(repo.repoURL)")
                                                 self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                                AmyLogManager.log("[Sileo] Finished sending ignore for \(repo.repoURL)")
                                             }
                                             return
                                         }
@@ -1035,14 +1042,26 @@ final class RepoManager {
     
     private func ignorePackage(repo: String, type: String, hash: String) {
         guard let repo = URL(string: repo) else { return }
+        AmyLogManager.log("[Sileo] 1 \(repo) \(type) \(hash)")
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
+        AmyLogManager.log("[Sileo] 2")
         let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
-        let cachedData = try? Data(contentsOf: jsonPath)
-        var dict = (try? JSONSerialization.jsonObject(with: cachedData ?? Data(), options: .mutableContainers) as? [String: String]) ?? [String: String]()
+        AmyLogManager.log("[Sileo] 3")
+        var dict = [String: String]()
+        AmyLogManager.log("[Sileo] 4")
+        if let cachedData = try? Data(contentsOf: jsonPath),
+           let tmp = try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers) as? [String: String] {
+            AmyLogManager.log("[Sileo] 5")
+            dict = tmp
+        }
+        AmyLogManager.log("[Sileo] 6")
         dict[repoPath.absoluteString] = hash
+        AmyLogManager.log("[Sileo] 7")
         if let jsonData = try? JSONEncoder().encode(dict) {
+            AmyLogManager.log("[Sileo] 8")
             try? jsonData.write(to: jsonPath)
         }
+        AmyLogManager.log("[Sileo] 9")
     }
     
     private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL) -> (Bool, String?) {

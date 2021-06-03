@@ -162,6 +162,8 @@
 		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
+		E1DC86062669673600B3DC42 /* AmyLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC86052669673600B3DC42 /* AmyLogManager.swift */; };
+		E1DC86072669673600B3DC42 /* AmyLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC86052669673600B3DC42 /* AmyLogManager.swift */; };
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
@@ -834,6 +836,7 @@
 		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
 		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
+		E1DC86052669673600B3DC42 /* AmyLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyLogManager.swift; sourceTree = "<group>"; };
 		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E1F10B062662E25800DA726E /* status */ = {isa = PBXFileReference; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewFooter.swift; sourceTree = "<group>"; };
@@ -1600,6 +1603,7 @@
 				E1C90266263D79C600569D1E /* AmyGifManager.swift */,
 				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
 				E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */,
+				E1DC86052669673600B3DC42 /* AmyLogManager.swift */,
 			);
 			path = AmyCommon;
 			sourceTree = "<group>";
@@ -3031,6 +3035,7 @@
 				F14F7D5D240A7E7800062310 /* CSTextView.swift in Sources */,
 				F1AB912522ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
 				F13AEE5722F5613C004BAA05 /* DownloadManager.swift in Sources */,
+				E1DC86072669673600B3DC42 /* AmyLogManager.swift in Sources */,
 				F1330EB22325644700971073 /* SileoContentView.swift in Sources */,
 				F13AEE6022F64A86004BAA05 /* DownloadPackage.swift in Sources */,
 				F1AB913422ED133D0054341B /* DownloadsTableViewCell.swift in Sources */,
@@ -3214,6 +3219,7 @@
 				F13AEE5322F52F98004BAA05 /* DownloadPackage.swift in Sources */,
 				F1AB913322ED133D0054341B /* DownloadsTableViewCell.swift in Sources */,
 				F16115D1244D87CD003BF1E6 /* FeaturedButton.swift in Sources */,
+				E1DC86062669673600B3DC42 /* AmyLogManager.swift in Sources */,
 				F13AEE5E22F63122004BAA05 /* DownloadsTableViewController.swift in Sources */,
 				F1A7051322D0359900F602DA /* DpkgWrapper.swift in Sources */,
 				F107EB62230D195A002B8C20 /* Dusk.swift in Sources */,

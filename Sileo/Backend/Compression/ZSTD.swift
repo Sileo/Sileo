@@ -18,20 +18,24 @@ final class ZSTD {
     }
     
     class func decompress(path: String) -> (String?, Data?) {
+        AmyLogManager.log("[Sileo] Loading File")
         guard let fin = fopen(path, "rb") else { return (ZSTDError.fileLoad.rawValue, nil) }
         defer {
             fclose(fin)
         }
+        AmyLogManager.log("[Sileo] Loading buffIn")
         let buffInSize = ZSTD_DStreamInSize()
         guard let buffIn = malloc(buffInSize) else { return (ZSTDError.buffIn.rawValue, nil) }
         defer {
             free(buffIn)
         }
+        AmyLogManager.log("[Sileo] Loading buffOut")
         let buffOutSize = ZSTD_DStreamOutSize()
         guard let buffOut = malloc(buffOutSize) else { return (ZSTDError.buffOut.rawValue, nil) }
         defer {
             free(buffOut)
         }
+        AmyLogManager.log("[Sileo] Loading ZSTD_createDCTX")
         guard let dctx = ZSTD_createDCtx() else { return (ZSTDError.context.rawValue, nil) }
         defer {
             ZSTD_freeDCtx(dctx)
@@ -41,12 +45,16 @@ final class ZSTD {
         var isEmpty = true
         let data = NSMutableData()
         while true {
+            AmyLogManager.log("[Sileo] fread \(buffIn) \(1) \(buffInSize) \(fin)")
             read = fread(buffIn, 1, buffInSize, fin)
             if read == 0 { break }
             isEmpty = false
+            AmyLogManager.log("[Sileo] ZSTD_in_buffer \(buffIn) \(read) \(0)")
             var input = ZSTD_inBuffer(src: buffIn, size: read, pos: 0)
             while input.pos < input.size {
+                AmyLogManager.log("[Sileo] outBuffer \(buffOut) \(buffOutSize) \(0)")
                 var output = ZSTD_outBuffer(dst: buffOut, size: buffOutSize, pos: 0)
+                AmyLogManager.log("[Sileo] decompressStream \(dctx) \(output) \(input)")
                 let ret = ZSTD_decompressStream(dctx, &output, &input)
                 if ZSTD_isError(ret) != 0 {
                     if let error = ZSTD_getErrorName(ret) {
@@ -56,6 +64,7 @@ final class ZSTD {
                         return (ZSTDError.unknown.rawValue, nil)
                     }
                 }
+                AmyLogManager.log("[Sileo] Data Append \(buffOut) \(output.pos)")
                 data.append(Data(bytes: buffOut, count: output.pos))
                 lastRet = ret
             }

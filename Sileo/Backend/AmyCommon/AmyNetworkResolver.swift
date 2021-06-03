@@ -59,21 +59,11 @@ final class AmyNetworkResolver {
             } catch {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
-            
         }
         if let contents = try? downloadCache.contents(),
            !contents.isEmpty {
-            var yes = DateComponents()
-            yes.hour = -1
-            let hourOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
             for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
-                      let date = attr[FileAttributeKey.modificationDate] as? Date else {
-                    continue
-                }
-                if hourOld > date {
-                    try? FileManager.default.removeItem(atPath: cached.path)
-                }
+                try? FileManager.default.removeItem(atPath: cached.path)
             }
         }
     }
