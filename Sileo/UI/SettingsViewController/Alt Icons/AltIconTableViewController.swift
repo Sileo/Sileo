@@ -27,6 +27,7 @@ class AltIconTableViewController: UITableViewController {
     var icons = [
         AltIcon(displayName: "Stock", author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
         AltIcon(displayName: "OG", author: "Dennis Bednarz", key: "OG", image: altImage("OG")),
+        AltIcon(displayName: "Pride", author: "emiyl0", key: "Pride", image: altImage("Pride")),
         AltIcon(displayName: "Taurine", author: "Alpha_Stream", key: "Taurine", image: altImage("Taurine")),
         AltIcon(displayName: "Chimera", author: "Korfi", key: "Chimera", image: altImage("Chimera")),
         AltIcon(displayName: "Procursus", author: "Korfi", key: "Procursus", image: altImage("Procursus")),
@@ -94,7 +95,9 @@ class AltIconTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
-        UIApplication.shared.setAlternateIconName(altIcon.key) { _ in }
+        UIApplication.shared.setAlternateIconName(altIcon.key) { error in
+            NSLog("[Sileo] Error = \(error?.localizedDescription ?? "Unknown")")
+        }
         NotificationCenter.default.post(name: AltIconTableViewController.IconUpdate, object: nil)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)
     }
