@@ -25,6 +25,7 @@ final class ZSTD {
         }
         AmyLogManager.log("[Sileo] Loading buffIn")
         let buffInSize = ZSTD_DStreamInSize()
+        AmyLogManager.log("[Sileo] malloc \(buffInSize)")
         guard let buffIn = malloc(buffInSize) else { return (ZSTDError.buffIn.rawValue, nil) }
         defer {
             free(buffIn)
