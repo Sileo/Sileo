@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
-"Remove" = "Remove";
+"Remove" = "Entfernen";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
@@ -98,7 +98,7 @@
 "Ignored Updates" = "Ignorierte Updates";
 
 "Repos" = "Quellen";
-"Repo" = "Repository";
+"Repo" = "Quelle";
 
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
@@ -118,7 +118,7 @@
 "Package_Changelogs_Unavailable" = "Es sind keine Änderungen für dieses Paket bekannt.";
 
 "Installed_Package_Header" = "Installiertes Paket";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Installierte Pakete";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Paketinhalte anzeigen";
 
