@@ -13,7 +13,35 @@ final class Repo: Equatable {
     var isLoaded: Bool = false
     var isIconLoaded: Bool = false
     
-    var repoName: String = ""
+    private var repoNameTmp: Bool = false
+    var repoName: String = "" {
+        willSet(set) {
+            if repoName.isEmpty && !set.isEmpty {
+                repoNameTmp = true
+            }
+        }
+        didSet {
+            if !repoNameTmp { return }
+            repoNameTmp = false
+            func reloadData() {
+                guard let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,
+                    let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+                    let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+                    let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController else {
+                    return
+                }
+                sourcesVC.reloadData()
+            }
+            if Thread.isMainThread {
+                reloadData()
+            } else {
+                DispatchQueue.main.async {
+                    reloadData()
+                }
+            }
+        }
+    }
+    
     var repoDescription: String = ""
     var rawEntry: String = ""
     var rawURL: String = ""

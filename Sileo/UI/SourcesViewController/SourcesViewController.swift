@@ -283,7 +283,6 @@ class SourcesViewController: SileoViewController {
             if strongSelf.updatingRepoList.isEmpty {
                 strongSelf.killIndicator()
             }
-
             if didFindErrors {
                 strongSelf.showRefreshErrorViewController(errorOutput: errorOutput, completion: nil)
             }
@@ -471,10 +470,9 @@ class SourcesViewController: SileoViewController {
                         let repos = RepoManager.shared.addRepos(with: safe)
                         if !repos.isEmpty {
                             self.reloadData()
+                            NSLog("[Sileo] Sending \(repos) to be updated")
                             self.updateSpecific(repos)
                         }
-                        self.reloadData()
-                        self.refreshSources(forceUpdate: false, forceReload: false)
                     }
                     if !piracy.isEmpty {
                         self.showFlaggedSourceWarningController(urls: piracy)
@@ -638,13 +636,17 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
             return UISwipeActionsConfiguration(actions: [refresh])
         }
         let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _, completionHandler in
-            repoManager.remove(repo: self.sortedRepoList[indexPath.row])
-            
-            self.reSortList()
+            let repo = self.sortedRepoList[indexPath.row]
+            repoManager.remove(repo: repo)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+            self.reSortList()
             self.updateFooterCount()
-            self.refreshSources(forceUpdate: false, forceReload: true)
+            if !(repo.packages ?? []).isEmpty {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    PackageListManager.shared.purgeCache()
+                    PackageListManager.shared.waitForReady()
+                }
+            }
             completionHandler(true)
         }
         return UISwipeActionsConfiguration(actions: [remove, refresh])

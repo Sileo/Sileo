@@ -508,7 +508,7 @@ final class RepoManager {
             backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
             backgroundIdentifier = nil
         }
-        
+                
         var errorsFound = false
         let errorOutput = NSMutableAttributedString()
         var repos = repos
@@ -529,7 +529,7 @@ final class RepoManager {
                     
                     repo.startedRefresh = true
                     
-                    if !force && !self.repoRequiresUpdate(repo) {
+                    if !force && !self.repoRequiresUpdate(repo) && !(repo.packages ?? []).isEmpty {
                         if !repo.isLoaded {
                             repo.isLoaded = true
                             self.postProgressNotification(repo)
