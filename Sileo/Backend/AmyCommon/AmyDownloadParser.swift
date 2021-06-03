@@ -149,9 +149,21 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
         }
     }
     
+    public func terminate(_ url: URL) {
+        queue.sync {
+            guard let index = self.containers.lastIndex(where: { $0.url == url }) else { return }
+            self.containers[index].toBeTerminated = true
+        }
+    }
+    
     // The Download Finished
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let container = container(downloadTask.response?.url) else { return }
+        if container.toBeTerminated {
+            remove(container)
+            downloadTask.cancel()
+            return
+        }
         let filename = location.lastPathComponent,
             destination = AmyNetworkResolver.shared.downloadCache.appendingPathComponent(filename)
         do {
@@ -181,6 +193,11 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     // The Download has made Progress
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         guard var container = container(downloadTask.response?.url) else { return }
+        if container.toBeTerminated {
+            remove(container)
+            downloadTask.cancel()
+            return
+        }
         container.progress.period = bytesWritten
         container.progress.total = totalBytesWritten
         container.progress.expected = totalBytesExpectedToWrite
@@ -191,6 +208,10 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     // Checking for errors in the download
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         guard var container = container(task.response?.url) else { return }
+        if container.toBeTerminated {
+            remove(container)
+            return
+        }
         if let error = error {
             if (error as NSError).code == NSURLErrorCancelled || (error as NSError).code == NSFileWriteOutOfSpaceError { return }
             if container.shouldResume {
@@ -214,6 +235,11 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     // The Download started again with some progress
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         guard var container = container(downloadTask.response?.url) else { return }
+        if container.toBeTerminated {
+            remove(container)
+            downloadTask.cancel()
+            return
+        }
         container.progress.period = 0
         container.progress.total = fileOffset
         container.progress.expected = expectedTotalBytes
@@ -232,6 +258,8 @@ struct AmyDownloadParserContainer {
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
     public var waitingCallback: ((_ message: String) -> Void)?
+    
+    public var toBeTerminated = false
 }
 
 struct Progress {

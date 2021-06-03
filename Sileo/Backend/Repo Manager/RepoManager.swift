@@ -675,6 +675,8 @@ final class RepoManager {
                             if !breakOff {
                                 repo.packagesProgress = CGFloat(progress.fractionCompleted)
                                 self.postProgressNotification(repo)
+                            } else {
+                                AmyDownloadParserDelegate.shared.terminate(url)
                             }
                         },
                         success: { succeededURL, fileURL in
@@ -931,6 +933,7 @@ final class RepoManager {
                                 isPackagesFileValid = false
                                 errorsFound = true
                             }
+                            reposUpdated += 1
                         }
                         
                         if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
@@ -963,7 +966,6 @@ final class RepoManager {
                     try? FileManager.default.removeItem(at: releaseFile.url.aptUrl)
                     releaseGPGFileURL.map { try? FileManager.default.removeItem(at: $0) }
                     
-                    reposUpdated += 1
                     self.checkUpdatesInBackground(completion: nil)
                 }
                 
@@ -1003,7 +1005,7 @@ final class RepoManager {
             
             DispatchQueue.global().async {
                 if forceReload {
-                    reposUpdated = 1
+                    //reposUpdated = 1
                 }
                 
                 if reposUpdated > 0 {
