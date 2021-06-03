@@ -12,7 +12,6 @@ class PackageIconView: UIImageView {
     override func didMoveToWindow() {
         super.didMoveToWindow()
         self.backgroundColor = UIColor(white: 246.0/255.0, alpha: 1)
-        self.layer.borderColor = UIColor(white: 0.86, alpha: 1).cgColor
         self.layer.setValue(true, forKey: "continuousCorners")
         self.clipsToBounds = true
         self.accessibilityIgnoresInvertColors = true
