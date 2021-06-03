@@ -470,7 +470,6 @@ class SourcesViewController: SileoViewController {
                         let repos = RepoManager.shared.addRepos(with: safe)
                         if !repos.isEmpty {
                             self.reloadData()
-                            NSLog("[Sileo] Sending \(repos) to be updated")
                             self.updateSpecific(repos)
                         }
                     }
