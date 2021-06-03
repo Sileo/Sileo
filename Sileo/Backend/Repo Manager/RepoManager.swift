@@ -181,11 +181,15 @@ final class RepoManager {
         if normalizedStr.last != "/" {
             normalizedStr.append("/")
         }
+        normalizedStr = normalizedStr.replacingOccurrences(of: "https://", with: "")
+        normalizedStr = normalizedStr.replacingOccurrences(of: "http://", with: "")
         return repoList.first(where: {
             var repoNormalizedStr = $0.rawURL.lowercased()
             if repoNormalizedStr.last != "/" {
                 repoNormalizedStr.append("/")
             }
+            repoNormalizedStr = repoNormalizedStr.replacingOccurrences(of: "https://", with: "")
+            repoNormalizedStr = repoNormalizedStr.replacingOccurrences(of: "http://", with: "")
             return repoNormalizedStr == normalizedStr
         })
     }
@@ -887,6 +891,9 @@ final class RepoManager {
                                             } else {
                                                 throw error ?? "Unknown Error"
                                             }
+                                            if let hash = hash {
+                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                            }
                                             return
                                         }
                                         #endif
@@ -1006,7 +1013,7 @@ final class RepoManager {
             
             DispatchQueue.global().async {
                 if forceReload {
-                    //reposUpdated = 1
+                    // reposUpdated = 1
                 }
                 
                 if reposUpdated > 0 {
