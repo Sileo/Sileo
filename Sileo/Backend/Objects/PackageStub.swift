@@ -12,6 +12,7 @@ import SQLite
 class PackageStub {
     public var package: String
     public var version: String
+    public var repoURL: String
     
     public var firstSeenDate = Date()
     public var userReadDate: Date?
@@ -22,6 +23,7 @@ class PackageStub {
         let version = Expression<String>("version")
         let firstSeen = Expression<Int64>("firstSeen")
         let userRead = Expression<Int64>("userRead")
+        let repoURL = Expression<String>("repoURL")
         let packages = Table("Packages")
         _ = try? database.run(packages.create(ifNotExists: true,
                                               block: { tbd in
@@ -30,6 +32,7 @@ class PackageStub {
                                                 tbd.column(version)
                                                 tbd.column(firstSeen)
                                                 tbd.column(userRead)
+                                                tbd.column(repoURL)
                                                 tbd.unique(guid)
         }))
     }
@@ -41,6 +44,7 @@ class PackageStub {
         let version = Expression<String>("version")
         let firstSeen = Expression<Int64>("firstSeen")
         let userRead = Expression<Int64>("userRead")
+        let repoURL = Expression<String>("repoURL")
         let packages = Table("Packages")
         
         var stubs: [PackageStub] = []
@@ -50,13 +54,14 @@ class PackageStub {
                                         package,
                                         version,
                                         firstSeen,
-                                        userRead)
+                                        userRead,
+                                        repoURL)
                 .order(firstSeen.desc, package, version)
             if limit > 0 {
                 query = query.limit(limit, offset: offset)
             }
             for stub in try database.prepare(query) {
-                    let stubObj = PackageStub(packageName: stub[package], version: stub[version])
+                    let stubObj = PackageStub(packageName: stub[package], version: stub[version], source: stub[repoURL])
                     stubObj.firstSeenDate = Date(timeIntervalSince1970: TimeInterval(stub[firstSeen]))
                     if stub[userRead] != 0 {
                         stubObj.userReadDate = Date(timeIntervalSince1970: TimeInterval(stub[userRead]))
@@ -97,11 +102,13 @@ class PackageStub {
     init(from package: Package) {
         self.package = package.package
         self.version = package.version
+        self.repoURL = package.sourceFileURL?.lastPathComponent ?? "status"
     }
     
-    fileprivate init(packageName: String, version: String) {
+    fileprivate init(packageName: String, version: String, source: String) {
         self.package = packageName
         self.version = version
+        self.repoURL = source
     }
     
     func save() {
@@ -112,8 +119,9 @@ class PackageStub {
         let version = Expression<String>("version")
         let firstSeen = Expression<Int64>("firstSeen")
         let userRead = Expression<Int64>("userRead")
+        let repoURL = Expression<String>("repoURL")
         let packages = Table("Packages")
-        
+
         let deleteQuery = packages.filter(guid == "\(self.package)-\(self.version)")
         _ = try? database.run(deleteQuery.delete())
         
@@ -122,6 +130,8 @@ class PackageStub {
             package <- self.package,
             version <- self.version,
             firstSeen <- Int64(firstSeenDate.timeIntervalSince1970),
-            userRead <- Int64(userReadDate?.timeIntervalSince1970 ?? 0)))
+            userRead <- Int64(userReadDate?.timeIntervalSince1970 ?? 0),
+            repoURL <- self.repoURL
+        ))
     }
 }

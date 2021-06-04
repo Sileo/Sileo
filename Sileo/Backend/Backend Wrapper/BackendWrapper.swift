@@ -1,5 +1,6 @@
 import Foundation
 
+/*
 @objc class BackendWrapper: NSObject {
     @objc enum BackendWrapperAction: NSInteger {
         case upgrade
@@ -592,3 +593,4 @@ import Foundation
         return UnsafeRawPointer(Unmanaged.passUnretained(repo).toOpaque())
     }
 }
+*/

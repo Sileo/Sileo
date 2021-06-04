@@ -81,15 +81,15 @@ class CategoryViewController: SileoTableViewController {
             if let context = self.repoContext,
                   let url = context.url {
                 let betterContext = RepoManager.shared.repo(with: url) ?? context
-                packages =  betterContext.packages
+                packages =  betterContext.packageArray
                 installed = betterContext.installed
             } else {
-                packages = PackageListManager.shared.allPackages
+                packages = PackageListManager.shared.allPackagesArray
                 installed = nil
             }
             
             for package in packages ?? [] {
-                let category = PackageListManager.shared.humanReadableCategory(package.section)
+                let category = PackageListManager.humanReadableCategory(package.section)
                 if !categories.contains(category) {
                     categories.insert(category)
                 }

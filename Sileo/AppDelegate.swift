@@ -84,11 +84,11 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         PackageListManager.shared.initWait()
         
         let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-        let currentPackages = PackageListManager.shared.allPackages
+        let currentPackages = PackageListManager.shared.allPackagesArray
         if currentUpdates.isEmpty { return completionHandler(.newData) }
         RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
             let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-            let newPackages = PackageListManager.shared.allPackages
+            let newPackages = PackageListManager.shared.allPackagesArray
             if newPackages.isEmpty { return completionHandler(.newData) }
             
             let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }

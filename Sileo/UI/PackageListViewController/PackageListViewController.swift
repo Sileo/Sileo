@@ -185,7 +185,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             let packageMan = PackageListManager.shared
             
             if !self.showSearchField {
-                #warning("Amy bitch fix this")
                 let pkgs = packageMan.packageList(identifier: self.packagesLoadIdentifier, sortPackages: true, repoContext: self.repoContext)
                 self.packages = pkgs
                 self.searchCache[""] = pkgs
@@ -593,7 +592,7 @@ extension PackageListViewController: UISearchBarDelegate {
            return isEmpty ? .nothing : .delete
        }
        
-       let all = PackageListManager.shared.allPackages 
+       let all = PackageListManager.shared.allPackagesArray
        let oldEmpty = provisionalPackages.isEmpty
        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
            let search = (package.name?.lowercased().contains(text) ?? false) ||
@@ -681,7 +680,6 @@ extension PackageListViewController: UISearchResultsUpdating {
             } else if let cachedPackages = self.searchCache[query] {
                 packages = cachedPackages
             } else {
-                #warning("Amy bitch fix this")
                 packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
                                                       search: query,
                                                       sortPackages: true,

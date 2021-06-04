@@ -206,8 +206,8 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             fatalError("Invalid Storyboard")
         }
         for viewController in tabBarController.viewControllers ?? [] {
-            if nil != viewController as? SileoNavigationController { continue }
-            if nil != viewController as? SourcesSplitViewController { continue }
+            if viewController as? SileoNavigationController != nil { continue }
+            if viewController as? SourcesSplitViewController != nil { continue }
             fatalError("Invalid View Controllers")
         }
     }

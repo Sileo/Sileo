@@ -184,6 +184,9 @@ final class RepoManager {
         repoList.removeAll { repos.contains($0) }
         repoListLock.signal()
         writeListToFile()
+        for repo in repos {
+            DatabaseManager.shared.deleteRepo(repo: repo)
+        }
     }
     
     func remove(repo: Repo) {
@@ -547,7 +550,7 @@ final class RepoManager {
                     
                     repo.startedRefresh = true
                     
-                    if !force && !self.repoRequiresUpdate(repo) && !(repo.packages ?? []).isEmpty {
+                    if !force && !self.repoRequiresUpdate(repo) && !repo.packageDict.isEmpty {
                         if !repo.isLoaded {
                             repo.isLoaded = true
                             self.postProgressNotification(repo)
@@ -770,7 +773,7 @@ final class RepoManager {
                     
                     func escapeEarly() {
                         if breakOff { return }
-                        if (repo.packages ?? []).isEmpty { return }
+                        if repo.packageDict.isEmpty { return }
                         let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
                         guard optPackagesFile == nil,
                               let releaseFile = optReleaseFile,
@@ -943,23 +946,25 @@ final class RepoManager {
                         
                         if !skipPackages {
                             if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
-                                if let packages = PackageListManager.shared.readPackages(packagesFile: packagesFile.url) {
-                                    repo.packages = packages
-                                    self.update(repo)
-                                } else {
-                                    log("Error parsing Packages from \(repo.repoURL)", type: .error)
-                                    try? FileManager.default.removeItem(at: packagesFile.url)
-                                    isPackagesFileValid = false
-                                    errorsFound = true
+                                let packageDict = repo.packageDict
+                                NSLog("[Sileo] reading package list")
+                                repo.packageDict = PackageListManager.readPackages(repoContext: repo, packagesFile: packagesFile.url)
+                                NSLog("[Sileo] Working our package changes")
+                                let databaseChanges = Array(repo.packageDict.values).filter { package -> Bool in
+                                    if let tmp = packageDict[package.packageID] {
+                                        if tmp.version == package.version {
+                                            return false
+                                        }
+                                    }
+                                    return true
                                 }
-                            } else {
-                                repo.packages = nil
+                                NSLog("[Sileo] Saving to database")
+                                DatabaseManager.shared.save(packages: databaseChanges)
+                                NSLog("[Sileo] Saved to database")
                                 self.update(repo)
-                            }
-                            
-                            if let packages = PackageListManager.shared.readPackages(packagesFile: packagesFile.url) {
-                                repo.packages = packages
-                                
+                            } else {
+                                repo.packageDict = [:]
+                                self.update(repo)
                             }
                             reposUpdated += 1
                         }
@@ -1063,7 +1068,7 @@ final class RepoManager {
     
     private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL) -> (Bool, String?) {
         guard let data = data,
-              !(repo.packages?.isEmpty ?? true),
+              !repo.packageDict.isEmpty,
               let repo = URL(string: repo.repoURL) else { return (false, nil) }
         let hash = data.hash(ofType: .sha256)
         if !FileManager.default.fileExists(atPath: path.path) {

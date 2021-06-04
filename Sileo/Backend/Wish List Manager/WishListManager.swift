@@ -22,8 +22,8 @@ class WishListManager {
             wishlist = []
             return
         }
-        let installedPackages = PackageListManager.shared.installedPackages ?? []
-        rawWishlist.removeAll { item in installedPackages.contains { $0.package == item } }
+        let installedPackages = PackageListManager.shared.installedPackages
+        rawWishlist.removeAll { item in installedPackages.contains { $0.key == item } }
         wishlist = rawWishlist
     }
     

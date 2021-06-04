@@ -561,11 +561,9 @@ final class DownloadManager {
             self.unlockQueue()
         }
         
-        guard let installedPackages = PackageListManager.shared.installedPackages else {
-            return
-        }
+        let installedPackages = PackageListManager.shared.installedPackages.values
         for package in installedPackages {
-            guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) else {
+            guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package, repoContext: nil) else {
                 continue
             }
             let downloadPackage = DownloadPackage(package: newestPackage)
@@ -805,7 +803,7 @@ final class DownloadManager {
             let id = tuple.0
             let version = tuple.1
             
-            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id) {
+            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                 if find(package: pkg) == .none {
                     add(package: pkg, queue: .upgrades)
                 }
@@ -816,7 +814,7 @@ final class DownloadManager {
             let id = tuple.0
             let version = tuple.1
             
-            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id) {
+            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                 if find(package: pkg) == .none {
                     add(package: pkg, queue: .installations)
                 }

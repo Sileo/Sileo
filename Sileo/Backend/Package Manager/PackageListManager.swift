@@ -14,21 +14,28 @@ final class PackageListManager {
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
     static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
-    private(set) var installedPackages: [Package]? {
+    private(set) var installedPackages: [String: Package] {
         didSet {
-            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages?.count ?? 0)
+            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages.count)
         }
     }
     
     private let initSemphaore = DispatchSemaphore(value: 0)
     private var isLoaded = false
     
-    public var allPackages: [Package] {
-        var packages = installedPackages ?? []
+    public var allPackagesArray: [Package] {
+        var packages = Array(installedPackages.values)
         for repo in RepoManager.shared.repoList {
-            packages += repo.packages ?? []
+            packages += repo.packageArray
         }
         return packages
+    }
+    public var allPackagesDict: [String: Package] {
+        var dict = [String: Package]()
+        for repo in RepoManager.shared.repoList {
+            dict = dict.merging(repo.packageDict) { _, new in new }
+        }
+        return dict
     }
 
     private var databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
@@ -36,13 +43,12 @@ final class PackageListManager {
     
     init() {
         NSLog("[Sileo] App Has Launched")
+        self.installedPackages = PackageListManager.readPackages(installed: true)
         DispatchQueue.global(qos: .userInitiated).async {
-            self.installedPackages = self.readPackages(installed: true)
             let repoMan = RepoManager.shared
             for repo in repoMan.repoList {
-                repo.packages = self.readPackages(repoContext: repo)
+                repo.packageDict = PackageListManager.readPackages(repoContext: repo)
                 repoMan.update(repo)
-                NSLog("[Sileo] \(repo.url!) has been loaded into memory")
             }
             DispatchQueue.main.async {
                 self.isLoaded = true
@@ -72,7 +78,7 @@ final class PackageListManager {
     }
     
     public func installChange() {
-        installedPackages = self.readPackages(installed: true)
+        installedPackages = PackageListManager.readPackages(installed: true)
         for repo in RepoManager.shared.repoList {
             repo.reloadInstalled()
         }
@@ -81,8 +87,8 @@ final class PackageListManager {
 
     public func availableUpdates() -> [(Package, Package?)] {
         var updatesAvailable: [(Package, Package?)] = []
-        for package in installedPackages ?? [] {
-            guard let latestPackage = self.newestPackage(identifier: package.packageID) else {
+        for package in installedPackages.values {
+            guard let latestPackage = self.newestPackage(identifier: package.packageID, repoContext: nil) else {
                 continue
             }
             if latestPackage.version != package.version {
@@ -94,6 +100,35 @@ final class PackageListManager {
         return updatesAvailable
     }
     
+    #warning("I think this is dumb as fuck, Hayden said we need it, commented out for now")
+    /*
+    private func checkHardcodedPolicy(_ package1: Package, package2: Package) -> Bool {
+        let sourceRepo1 = package1.sourceRepo?.url?.host
+        let sourceRepo2 = package2.sourceRepo?.url?.host
+        if sourceRepo1 == "apt.procurs.us" && sourceRepo2 != "apt.procurs.us" {
+            return true
+        } else if sourceRepo1 != "apt.procurs.us" && sourceRepo2 == "apt.procurs.us" {
+            return false
+        }
+        if sourceRepo1 == "repo.theodyssey.dev" && sourceRepo2 != "repo.theodyssey.dev" {
+            return true
+        } else if sourceRepo1 != "repo.theodyssey.dev" && sourceRepo2 == "repo.theodyssey.dev" {
+            return false
+        }
+        if sourceRepo1 == "repo.chimera.sh" && sourceRepo2 != "repo.chimera.sh" {
+            return true
+        } else if sourceRepo1 != "repo.chimera.sh" && sourceRepo2 == "repo.chimera.sh" {
+            return false
+        }
+        if sourceRepo1 == "repo.getsileo.app" && sourceRepo2 != "repo.getsileo.app" {
+            return true
+        } else if sourceRepo1 != "repo.getsileo.app" && sourceRepo2 == "repo.getsileo.app" {
+            return false
+        }
+        return DpkgWrapper.isVersion(package1.version,
+                                     greaterThan: package2.version)
+    }
+    */
     private func loadAllPackages(_ completion: (() -> Void)? = nil) {
         databaseUpdateQueue.async {
             /*
@@ -134,7 +169,7 @@ final class PackageListManager {
         }
     }
     
-    public func humanReadableCategory(_ rawCategory: String?) -> String {
+    public class func humanReadableCategory(_ rawCategory: String?) -> String {
         let category = rawCategory ?? ""
         if category.isEmpty {
             return String(localizationKey: "No_Category", type: .categories)
@@ -142,7 +177,7 @@ final class PackageListManager {
         return String(localizationKey: category, type: .categories)
     }
     
-    func package(packageEnum: ([String: String], PackageTags)) -> Package? {
+    class func package(packageEnum: ([String: String], PackageTags)) -> Package? {
         let dictionary = packageEnum.0
         guard let packageID = dictionary["package"] else {
             return nil
@@ -184,24 +219,32 @@ final class PackageListManager {
         return package
     }
 
-    public func readPackages(repoContext: Repo? = nil, packagesFile: URL? = nil, installed: Bool = false) -> [Package]? {
+    public class func readPackages(repoContext: Repo? = nil, packagesFile: URL? = nil, installed: Bool = false) -> [String: Package] {
         var tmpPackagesFile: URL?
+        var toWrite: URL?
+        var dict = [String: Package]()
         if installed {
             tmpPackagesFile = CommandPath.dpkgDir.appendingPathComponent("status").resolvingSymlinksInPath()
+            toWrite = tmpPackagesFile
         } else if let override = packagesFile {
             tmpPackagesFile = override
+            if let repo = repoContext {
+                toWrite = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+            } else {
+                toWrite = override
+            }
         } else if let repo = repoContext {
             tmpPackagesFile = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+            toWrite = RepoManager.shared.cacheFile(named: "Packages", for: repo)
         }
         guard let packagesFile = tmpPackagesFile,
-              let rawPackagesData = try? Data(contentsOf: packagesFile.aptUrl) else { return nil }
-        var packagesList = Set<Package>()
-        
+              let rawPackagesData = try? Data(contentsOf: packagesFile.aptUrl) else { return dict }
+
         var index = 0
         var separator = "\n\n".data(using: .utf8)!
         
         guard let firstSeparator = rawPackagesData.range(of: "\n".data(using: .utf8)!, options: [], in: 0..<rawPackagesData.count) else {
-            return Array(packagesList)
+            return dict
         }
         if firstSeparator.lowerBound != 0 {
             let subdata = rawPackagesData.subdata(in: firstSeparator.lowerBound-1..<firstSeparator.lowerBound)
@@ -212,7 +255,6 @@ final class PackageListManager {
         }
         
         let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
-        var packageDict = [:] as [String: Package]
         while index < rawPackagesData.count {
             let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
             var newIndex = 0
@@ -251,7 +293,7 @@ final class PackageListManager {
                 continue
             }
             package.sourceFile = repoContext?.rawEntry
-            package.sourceFileURL = packagesFile.aptUrl
+            package.sourceFileURL = toWrite
             package.rawData = packageData
             package.addOld([package])
             
@@ -277,35 +319,32 @@ final class PackageListManager {
                         continue
                     }
                 }
-                packagesList.insert(package)
+                dict[package.packageID] = package
             } else {
-                if let otherPkg = packageDict[packageID] {
+                if let otherPkg = dict[packageID] {
                     if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
-                        packageDict[packageID] = package
+                        dict[packageID] = package
                     }
                     otherPkg.addOld(package.allVersions)
                     package.allVersionsInternal = otherPkg.allVersionsInternal
                 } else {
-                    packageDict[packageID] = package
+                    dict[packageID] = package
                 }
             }
         }
-        for (_, val) in packageDict {
-            packagesList.insert(val)
-        }
-        return Array(packagesList)
+        return dict
     }
     
     public func packageList(identifier: String = "", search: String? = nil, sortPackages: Bool = false, repoContext: Repo? = nil) -> [Package] {
         if identifier == "--installed" {
-            return installedPackages ?? []
+            return Array(installedPackages.values)
         } else if identifier == "--wishlist" {
             return packages(identifiers: WishListManager.shared.wishlist, sorted: sortPackages)
         }
-        var packages = repoContext?.packages ?? allPackages
+        var packages = repoContext?.packageArray ?? allPackagesArray
         if identifier.hasPrefix("category:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 9)
-            let category = humanReadableCategory(String(identifier[index...]))
+            let category = PackageListManager.humanReadableCategory(String(identifier[index...]))
             packages = packages.filter({ $0.section == category })
         } else if identifier.hasPrefix("author:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 7)
@@ -378,7 +417,7 @@ final class PackageListManager {
         return packages
     }
     
-    public func newestPackage(identifier: String) -> Package? {
+    public func newestPackage(identifier: String, repoContext: Repo?) -> Package? {
         if identifier.contains("/") {
             let url = URL(fileURLWithPath: identifier)
             guard let rawPackageControl = try? DpkgWrapper.rawFields(packageURL: url) else {
@@ -387,37 +426,34 @@ final class PackageListManager {
             guard let rawPackage = try? ControlFileParser.dictionary(controlFile: rawPackageControl, isReleaseFile: true) else {
                 return nil
             }
-            guard let package = self.package(packageEnum: rawPackage) else {
+            guard let package = PackageListManager.package(packageEnum: rawPackage) else {
                 return nil
             }
             package.package = identifier
             package.packageFileURL = url
             return package
+        } else if let repoContext = repoContext {
+            return repoContext.packageDict[identifier.lowercased()]
         } else {
-            let allPackages = allPackages
+            let allPackages = allPackagesArray
             let lowerIdentifier = identifier.lowercased()
             return allPackages.first(where: { $0.packageID == lowerIdentifier })
         }
     }
     
     public func installedPackage(identifier: String) -> Package? {
-        guard let installedPackages = installedPackages else {
-            return nil
-        }
-        
-        let lowerIdentifier = identifier.lowercased()
-        return installedPackages.first(where: { $0.packageID == lowerIdentifier })
+        installedPackages[identifier.lowercased()]
     }
     
     public func package(url: URL) -> Package? {
         let canonicalPath = (try? url.resourceValues(forKeys: [.canonicalPathKey]))?.canonicalPath
         let filePath = canonicalPath ?? url.path
-        return newestPackage(identifier: filePath)
+        return newestPackage(identifier: filePath, repoContext: nil)
     }
     
     public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil) -> [Package] {
         if identifiers.isEmpty { return [] }
-        let packages = (repoContext?.packages ?? allPackages)
+        let packages = (repoContext?.packageArray ?? allPackagesArray)
         var rawPackages = [Package]()
         for identifier in identifiers {
             rawPackages += packages.filter { $0.packageID == identifier }
@@ -450,12 +486,12 @@ final class PackageListManager {
     }
     
     public func package(identifier: String, version: String) -> Package? {
-        let allPackages = allPackages
+        let allPackages = allPackagesArray
         return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
     }
     
-    public func package(identifiersAndVersions: [(String, String)]) -> [Package]? {
-        let allPackages = allPackages
+    public func package(identifiersAndVersions: [(String, String)], repoContext: Repo?) -> [Package]? {
+        let allPackages = allPackagesArray
         
         let filtered = allPackages.filter({
             let pkg = $0

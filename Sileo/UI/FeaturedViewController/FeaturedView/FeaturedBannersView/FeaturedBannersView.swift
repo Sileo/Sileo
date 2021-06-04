@@ -98,7 +98,7 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
     func viewController(bannerView: FeaturedBannerView) -> UIViewController? {
         let banner = bannerView.banner
         if let package = banner["package"] as? String {
-            if let pkg = PackageListManager.shared.newestPackage(identifier: package) {
+            if let pkg = PackageListManager.shared.newestPackage(identifier: package, repoContext: nil) {
                 let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
                 packageViewController.package = pkg
                 return packageViewController

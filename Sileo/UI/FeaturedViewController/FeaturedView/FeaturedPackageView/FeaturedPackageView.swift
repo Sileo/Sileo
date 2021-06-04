@@ -189,7 +189,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc func openDepiction(_ : Any?) {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
@@ -226,8 +226,8 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc public func reloadPackage() {
-        self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package)
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil)
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
             if self.packageButton.package == nil {
                 self.packageButton.package = package
@@ -242,7 +242,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             return
         }
         
-        guard let package = PackageListManager.shared.newestPackage(identifier: self.package) else {
+        guard let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) else {
             return
         }
         isUpdatingPurchaseStatus = true
@@ -285,7 +285,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
 
 extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             return packageViewController
@@ -301,7 +301,7 @@ extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
 @available(iOS 13.0, *)
 extension FeaturedPackageView: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             

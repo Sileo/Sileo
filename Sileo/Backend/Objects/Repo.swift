@@ -53,25 +53,25 @@ final class Repo: Equatable {
     var releaseProgress = CGFloat(0)
     var releaseGPGProgress = CGFloat(0)
     var packagesProgress = CGFloat(0)
-    
-    var packages: [Package]? {
+
+    var packageDict: [String: Package] = [:] {
         didSet {
             reloadInstalled()
         }
+    }
+    var packageArray: [Package] {
+        Array(packageDict.values)
     }
     var packagesProvides: [Package]?
     var installed: [Package]?
     
     public func reloadInstalled() {
-        guard let packages = packages,
-              !packages.isEmpty,
-              let installedPackages = PackageListManager.shared.installedPackages else { return }
-        self.installed = installedPackages.filter { installed -> Bool in
-            guard let package = packages.first(where: { $0.packageID == installed.packageID }) else { return false }
-            if package.version == installed.version || DpkgWrapper.isVersion(package.version, greaterThan: installed.version) {
-                return true
-            }
-            return false
+        if packageDict.isEmpty { installed = nil }
+        let installed = Array(PackageListManager.shared.installedPackages.values)
+        self.installed = installed.filter { installed -> Bool in
+            guard let package = packageDict[installed.packageID] else { return false }
+            if package.version == installed.version { return true }
+            return DpkgWrapper.isVersion(package.version, greaterThan: installed.version)
         }
     }
     

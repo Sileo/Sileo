@@ -222,7 +222,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         }
         
         if package.packageFileURL == nil {
-            if let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) {
+            if let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package, repoContext: nil) {
                 package = newestPackage
                 self.package = package
             }

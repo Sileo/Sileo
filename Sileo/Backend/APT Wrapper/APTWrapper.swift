@@ -183,7 +183,7 @@ class APTWrapper {
                             continue
                         }
                         for (packageID, dependencyCandidateLists) in dependencyOutput {
-                            guard let package = PackageListManager.shared.newestPackage(identifier: packageID) else {
+                            guard let package = PackageListManager.shared.newestPackage(identifier: packageID, repoContext: nil) else {
                                 continue
                             }
                             for dependencyCandidateList in dependencyCandidateLists {

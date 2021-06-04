@@ -23,7 +23,7 @@ class DependencyResolverAccelerator {
         preflightedRepos = false
         
         partialRepoList = [:]
-        for depPackage in PackageListManager.shared.installedPackages ?? [] {
+        for depPackage in Array(PackageListManager.shared.installedPackages.values) {
             getDependenciesInternal(package: depPackage)
         }
         
@@ -56,7 +56,8 @@ class DependencyResolverAccelerator {
         
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
-        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists, "&&", CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists, "&&", CommandPath.chown,
+                           "-R", "mobile:mobile", CommandPath.sileolists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
         #endif
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
@@ -124,8 +125,8 @@ class DependencyResolverAccelerator {
             if let packagesData = package.rawControl[packageKey] {
                 let packageIds = parseDependsString(depends: packagesData)
                 for repo in RepoManager.shared.repoList {
-                    for packageId in packageIds {
-                        if let depPackage = repo.packages?.first(where: { $0.packageID == packageId }) {
+                    for packageID in packageIds {
+                        if let depPackage = repo.packageDict[packageID] {
                             getDependenciesInternal(package: depPackage)
                         }
                     }
