@@ -40,11 +40,12 @@ class DatabaseManager {
         self.database = database
         
         if self.schemaVersion < DatabaseSchemaVersion.version02111.rawValue { // 2.x database is not compatible with 1.x
+            _ = try? database.run("DROP table Packages")
+        } else if self.schemaVersion < DatabaseSchemaVersion.version02000.rawValue {
             _ = try? database.run("DROP table NewsArticle")
             _ = try? database.run("DROP table PackageStub")
-            _ = try? database.run("DROP table Packages")
-            self.schemaVersion = Int32(DatabaseSchemaVersion.version02111.rawValue)
         }
+        self.schemaVersion = Int32(DatabaseSchemaVersion.version02111.rawValue)
         PackageStub.createTable(database: database)
     }
     
@@ -84,6 +85,32 @@ class DatabaseManager {
                     version <- stub.version,
                     firstSeen <- firstSeenLocal,
                     userRead <- userReadLocal,
+                    repoURL <- stub.repoURL
+                ))
+            }
+        }
+    }
+    
+    public func saveStubs(stubs: [PackageStub]) {
+        if stubs.isEmpty { return }
+        let guid = Expression<String>("guid")
+        let package = Expression<String>("package")
+        let version = Expression<String>("version")
+        let firstSeen = Expression<Int64>("firstSeen")
+        let userRead = Expression<Int64>("userRead")
+        let repoURL = Expression<String>("repoURL")
+        let table = Table("Packages")
+
+        try? database.transaction {
+            for stub in stubs {
+                let deleteQuery = table.filter(guid == "\(stub.package)-\(stub.version)")
+                _ = try? database.run(deleteQuery.delete())
+                _ = try? database.run(table.insert(
+                    guid <- "\(stub.package)-\(stub.version)",
+                    package <- stub.package,
+                    version <- stub.version,
+                    firstSeen <- Int64(stub.firstSeenDate.timeIntervalSince1970),
+                    userRead <- Int64(stub.userReadDate?.timeIntervalSince1970 ?? 0),
                     repoURL <- stub.repoURL
                 ))
             }

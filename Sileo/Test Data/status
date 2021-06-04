@@ -5,7 +5,7 @@ Section: Packaging
 Installed-Size: 2972
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.3.4
+Version: 2.3.3
 Replaces: apt1.8, apt1.4, libapt, libapt-pkg5.0, apt-lib, apt-key
 Provides: apt1.8 (= 1:0), apt-lib (= 1:0), libapt (= 1:0), apt-key (= 1:0)
 Depends: libapt-pkg6.0 (= 2.3.5), libgnutls30, gpgv, dpkg (>= 1.19.0), coreutils

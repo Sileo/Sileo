@@ -134,8 +134,6 @@ extension NewsViewController { // Get Data
         updateLock.signal()
 
         updateQueue.async {
-            //PackageListManager.shared.waitForChangesDatabaseReady()
-
             self.updateLock.wait()
             // Initialise the sections.
             self.sortedSections = PackageStub.timestamps()
@@ -166,17 +164,35 @@ extension NewsViewController { // Get Data
         updateQueue.async {
             self.updateLock.wait()
             let packageListManager = PackageListManager.shared
-            //packageListManager.waitForChangesDatabaseReady()
-
+            packageListManager.initWait()
+            
             let start = self.loadedPackages
             var toLoad = 100
 
             let seenPackages = PackageStub.stubs(limit: toLoad, offset: start)
             toLoad = seenPackages.count
-                       
-            let packageIDs = seenPackages.map { $0.package }
-            let packages = packageListManager.packages(identifiers: packageIDs, sorted: false) // __block
 
+            // Going to take advantage of those sweet contexts and dictionaries for super speedy package loads
+            var packages = [Package]()
+            var packageCache: [String: [String]] = [:]
+            for stub in seenPackages {
+                if var packages = packageCache[stub.repoURL] {
+                    packages.append(stub.package)
+                    packageCache[stub.repoURL] = packages
+                } else {
+                    packageCache[stub.repoURL] = [stub.package]
+                }
+            }
+            for key in packageCache.keys {
+                let repo = RepoManager.shared.repoList.first(where: { RepoManager.shared.cacheFile(named: "Packages", for: $0).lastPathComponent == key })
+                let localPackages = packageCache[key] ?? []
+                for package in localPackages {
+                    if let package = repo?.packageDict[package] {
+                        packages.append(package)
+                    }
+                }
+            }
+            
             var updatedIndexPaths: [IndexPath] = []
 
             for (seenPackage, actualPackage) in zip(seenPackages, packages) {

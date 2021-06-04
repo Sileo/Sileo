@@ -90,15 +90,7 @@ class PackageStub {
         }
         return timestamps
     }
-    
-    static func delete(packageName: String) {
-        let database = DatabaseManager.shared.database
-        
-        let package = Expression<String>("package")
-        let packages = Table("Packages")
-        _ = try? database.run(packages.filter(package == packageName).delete())
-    }
-    
+
     init(from package: Package) {
         self.package = package.package
         self.version = package.version
@@ -109,29 +101,5 @@ class PackageStub {
         self.package = packageName
         self.version = version
         self.repoURL = source
-    }
-    
-    func save() {
-        let database = DatabaseManager.shared.database
-        
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
-        let packages = Table("Packages")
-
-        let deleteQuery = packages.filter(guid == "\(self.package)-\(self.version)")
-        _ = try? database.run(deleteQuery.delete())
-        
-        _ = try? database.run(packages.insert(
-            guid <- "\(self.package)-\(self.version)",
-            package <- self.package,
-            version <- self.version,
-            firstSeen <- Int64(firstSeenDate.timeIntervalSince1970),
-            userRead <- Int64(userReadDate?.timeIntervalSince1970 ?? 0),
-            repoURL <- self.repoURL
-        ))
     }
 }

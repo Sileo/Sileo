@@ -211,9 +211,7 @@ class SourcesViewController: SileoViewController {
         for repo in sortedRepoList {
             addToQueue(repo)
         }
-        NSLog("[Sileo] Starting Repo Refresh")
         RepoManager.shared.update(force: forceUpdate, forceReload: forceReload, isBackground: isBackground, completion: { didFindErrors, errorOutput in
-            NSLog("[Sileo] Finished Repo Refresh")
             for repo in self.sortedRepoList {
                 self.removeFromQueue(repo)
             }

@@ -55,7 +55,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             PackageListManager.shared.initWait()
             
             var foundBroken = false
-            for package in PackageListManager.shared.installedPackages ?? [] where package.status == .halfconfigured {
+            for package in PackageListManager.shared.installedPackages.values where package.status == .halfconfigured {
                 foundBroken = true
             }
             

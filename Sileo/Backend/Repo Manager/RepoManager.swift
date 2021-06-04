@@ -441,7 +441,7 @@ final class RepoManager {
         }
         
         let request = URLManager.urlRequest(url)
-        let task = AmyDownloadParser(request: request)
+        guard let task = AmyDownloadParser(request: request) else { return nil }
         task.progressCallback = { responseProgress in
             progress?(responseProgress)
         }
@@ -947,9 +947,7 @@ final class RepoManager {
                         if !skipPackages {
                             if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
                                 let packageDict = repo.packageDict
-                                NSLog("[Sileo] reading package list")
                                 repo.packageDict = PackageListManager.readPackages(repoContext: repo, packagesFile: packagesFile.url)
-                                NSLog("[Sileo] Working our package changes")
                                 let databaseChanges = Array(repo.packageDict.values).filter { package -> Bool in
                                     if let tmp = packageDict[package.packageID] {
                                         if tmp.version == package.version {
@@ -958,9 +956,7 @@ final class RepoManager {
                                     }
                                     return true
                                 }
-                                NSLog("[Sileo] Saving to database")
                                 DatabaseManager.shared.save(packages: databaseChanges)
-                                NSLog("[Sileo] Saved to database")
                                 self.update(repo)
                             } else {
                                 repo.packageDict = [:]

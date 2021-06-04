@@ -272,11 +272,9 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         if tabBarController.selectedIndex == 1 && viewController != tabBarController.selectedViewController {
             // Consider unread packages and articles as read after switching away from the news tab
             DispatchQueue.global().async {
-                let stubs = PackageStub.stubs(limit: 0, offset: 0)
-                for stub in stubs where stub.userReadDate == nil {
-                    stub.userReadDate = Date()
-                    stub.save()
-                }
+                var stubs = PackageStub.stubs(limit: 0, offset: 0)
+                stubs = stubs.filter { $0.userReadDate == nil }
+                DatabaseManager.shared.saveStubs(stubs: stubs)
                 
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)

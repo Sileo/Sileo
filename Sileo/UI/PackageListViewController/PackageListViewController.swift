@@ -672,6 +672,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             let packageManager = PackageListManager.shared
             var packages: [Package] = []
+            
             if self.packagesLoadIdentifier == "--contextInstalled" {
                 guard let context = self.repoContext,
                       let url = context.url else { return }

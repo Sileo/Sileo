@@ -42,7 +42,6 @@ final class PackageListManager {
     public static let shared = PackageListManager()
     
     init() {
-        NSLog("[Sileo] App Has Launched")
         self.installedPackages = PackageListManager.readPackages(installed: true)
         DispatchQueue.global(qos: .userInitiated).async {
             let repoMan = RepoManager.shared
@@ -129,45 +128,6 @@ final class PackageListManager {
                                      greaterThan: package2.version)
     }
     */
-    private func loadAllPackages(_ completion: (() -> Void)? = nil) {
-        databaseUpdateQueue.async {
-            /*
-            let allPackages = self.allPackages
-            self.changesDatabaseLock.wait()
-            
-            let newGuids = DatabaseManager.shared.serializePackages(allPackages)
-            let oldGuidsFile = DatabaseManager.shared.knownPackages()
-            
-            if !oldGuidsFile.isEmpty {
-                let addedPackages = newGuids.filter({ !oldGuidsFile.contains($0) })
-                for changedPackage in addedPackages {
-                    if let packageID = changedPackage["package"],
-                        let package = allPackagesTempDictionary[packageID] {
-                        let stub = PackageStub(from: package)
-                        stub.save()
-                    }
-                }
-                
-                let removedPackages = oldGuidsFile.filter({ !newGuids.contains($0) })
-                for removedPackage in removedPackages {
-                    if let packageID = removedPackage["package"] {
-                        if allPackagesTempDictionary[packageID] == nil {
-                            PackageStub.delete(packageName: packageID)
-                        }
-                    }
-                }
-            }
-            DatabaseManager.shared.savePackages(newGuids)
-            allPackagesTempDictionary.removeAll()
-            self.changesDatabaseLock.signal()
-            */
-                        
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
-                completion?()
-            }
-        }
-    }
     
     public class func humanReadableCategory(_ rawCategory: String?) -> String {
         let category = rawCategory ?? ""
@@ -335,11 +295,15 @@ final class PackageListManager {
         return dict
     }
     
-    public func packageList(identifier: String = "", search: String? = nil, sortPackages: Bool = false, repoContext: Repo? = nil) -> [Package] {
+    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil) -> [Package] {
         if identifier == "--installed" {
-            return Array(installedPackages.values)
+            if sort {
+                return sortPackages(packages: Array(installedPackages.values), search: search)
+            } else {
+                return Array(installedPackages.values)
+            }
         } else if identifier == "--wishlist" {
-            return packages(identifiers: WishListManager.shared.wishlist, sorted: sortPackages)
+            return packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
         }
         var packages = repoContext?.packageArray ?? allPackagesArray
         if identifier.hasPrefix("category:") {
@@ -356,7 +320,8 @@ final class PackageListManager {
                 return ControlFileParser.authorEmail(string: lowercaseAuthor) == authorEmail.lowercased()
             }
         }
-        if let searchQuery = search {
+        if let searchQuery = search,
+           !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
             packages.removeAll { package in
                 var shouldRemove = true
@@ -384,37 +349,44 @@ final class PackageListManager {
                 return shouldRemove
             }
         }
-        if sortPackages {
-            packages.sort { obj1, obj2 -> Bool in
-                if let pkg1 = obj1.name?.lowercased() {
-                    if let pkg2 = obj2.name?.lowercased() {
-                        if let searchQuery = search?.lowercased() {
-                            if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
-                                return true
-                            } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {
-                                return false
-                            }
-                            
-                            let diff1 = pkg1.count - searchQuery.count
-                            let diff2 = pkg2.count - searchQuery.count
-                            
-                            if diff1 < diff2 {
-                                return true
-                            } else if diff1 > diff2 {
-                                return false
-                            }
-                            return pkg1.compare(pkg2) != .orderedDescending
-                        } else {
-                            return pkg1.compare(pkg2) != .orderedDescending
-                        }
-                    } else {
-                        return true
-                    }
-                }
-                return false
-            }
+        if sort {
+            packages = sortPackages(packages: packages, search: search)
         }
         return packages
+    }
+    
+    public func sortPackages(packages: [Package], search: String?) -> [Package] {
+        var tmp = packages
+        tmp.sort { obj1, obj2 -> Bool in
+            if let pkg1 = obj1.name?.lowercased() {
+                if let pkg2 = obj2.name?.lowercased() {
+                    if let searchQuery = search?.lowercased(),
+                       !searchQuery.isEmpty {
+                        if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
+                            return true
+                        } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {
+                            return false
+                        }
+                        
+                        let diff1 = pkg1.count - searchQuery.count
+                        let diff2 = pkg2.count - searchQuery.count
+                        
+                        if diff1 < diff2 {
+                            return true
+                        } else if diff1 > diff2 {
+                            return false
+                        }
+                        return pkg1.compare(pkg2) != .orderedDescending
+                    } else {
+                        return pkg1.compare(pkg2) != .orderedDescending
+                    }
+                } else {
+                    return true
+                }
+            }
+            return false
+        }
+        return tmp
     }
     
     public func newestPackage(identifier: String, repoContext: Repo?) -> Package? {
@@ -437,7 +409,18 @@ final class PackageListManager {
         } else {
             let allPackages = allPackagesArray
             let lowerIdentifier = identifier.lowercased()
-            return allPackages.first(where: { $0.packageID == lowerIdentifier })
+            let available = allPackages.filter { $0.packageID == lowerIdentifier }
+            var tmp: Package?
+            for package in available {
+                if let old = tmp {
+                    if DpkgWrapper.isVersion(package.version, greaterThan: old.version) {
+                        tmp = package
+                    }
+                } else {
+                    tmp = package
+                }
+            }
+            return tmp
         }
     }
     
