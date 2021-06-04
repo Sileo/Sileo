@@ -185,10 +185,8 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             let packageMan = PackageListManager.shared
             
             if !self.showSearchField {
-                let pkgs = packageMan.packagesList(loadIdentifier: self.packagesLoadIdentifier,
-                                                   repoContext: self.repoContext,
-                                                   sortPackages: true,
-                                                   lookupTable: self.searchCache) ?? []
+                #warning("Amy bitch fix this")
+                let pkgs = packageMan.packageList(identifier: self.packagesLoadIdentifier, sortPackages: true, repoContext: self.repoContext)
                 self.packages = pkgs
                 self.searchCache[""] = pkgs
                 if let controller = self.searchController {
@@ -595,7 +593,7 @@ extension PackageListViewController: UISearchBarDelegate {
            return isEmpty ? .nothing : .delete
        }
        
-       let all = PackageListManager.shared.allPackages ?? []
+       let all = PackageListManager.shared.allPackages 
        let oldEmpty = provisionalPackages.isEmpty
        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
            let search = (package.name?.lowercased().contains(text) ?? false) ||
@@ -639,7 +637,6 @@ extension PackageListViewController: UISearchResultsUpdating {
         }
         
         let searchBar = searchController.searchBar
-        var packagesLoadIdentifier = self.packagesLoadIdentifier
         self.canisterHeartbeat?.invalidate()
     
         if searchBar.text?.isEmpty ?? true {
@@ -659,12 +656,6 @@ extension PackageListViewController: UISearchResultsUpdating {
                 return
             }
         } else {
-            if !packagesLoadIdentifier.isEmpty {
-                packagesLoadIdentifier += ",search:\(searchBar.text ?? "")"
-            } else {
-                packagesLoadIdentifier = "search:\(searchBar.text ?? "")"
-            }
-            
             canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 CanisterResolver.shared.fetch(searchBar.text ?? "") {
                     DispatchQueue.main.async {
@@ -682,7 +673,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             let packageManager = PackageListManager.shared
             var packages: [Package] = []
-            if packagesLoadIdentifier == "--contextInstalled" {
+            if self.packagesLoadIdentifier == "--contextInstalled" {
                 guard let context = self.repoContext,
                       let url = context.url else { return }
                 let betterContext = RepoManager.shared.repo(with: url) ?? context
@@ -690,15 +681,16 @@ extension PackageListViewController: UISearchResultsUpdating {
             } else if let cachedPackages = self.searchCache[query] {
                 packages = cachedPackages
             } else {
-                packages = packageManager.packagesList(loadIdentifier: packagesLoadIdentifier,
-                                                       repoContext: self.repoContext,
-                                                       sortPackages: true,
-                                                       lookupTable: self.searchCache) ?? [Package]()
+                #warning("Amy bitch fix this")
+                packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
+                                                      search: query,
+                                                      sortPackages: true,
+                                                      repoContext: self.repoContext)
             }
             
             self.mutexLock.signal()
             self.mutexLock.wait()
-            if packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
+            if self.packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
                 packages = packages.sorted(by: { package1, package2 -> Bool in
                     let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
                     let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")

@@ -61,10 +61,11 @@ class PaymentProfileViewController: BaseSettingsViewController, UICollectionView
                 self.title = name as? String ?? ""
             }
         }
-        provider?.fetchUserInfo(fromCache: false) { error, info in
+        provider?.fetchUserInfo(fromCache: false) { [weak self] error, info in
+            guard let strong = self else { return }
             guard let userInfo = info as [String: Any]? else {
                 DispatchQueue.main.async {
-                    self.presentFatalPaymentError(error)
+                    strong.presentFatalPaymentError(error)
                 }
                 return
             }
@@ -72,12 +73,13 @@ class PaymentProfileViewController: BaseSettingsViewController, UICollectionView
             if let items = userInfo["items"] as? [String] {
                 idents.append(contentsOf: items)
             }
-            let packages: Array = PackageListManager.shared.packages(identifiers: idents, sorted: true)
-            self.packages = packages
+            if let repo = RepoManager.shared.repoList.first(where: { strong.provider?.repoURL == $0.rawURL }) {
+                self?.packages = PackageListManager.shared.packages(identifiers: idents, sorted: true, repoContext: repo)
+            }
             DispatchQueue.main.async {
-                self.profileHeaderView?.userInfo = userInfo
-                self.packageCollectionView?.reloadData()
-                self.tableView.reloadData()
+                strong.profileHeaderView?.userInfo = userInfo
+                strong.packageCollectionView?.reloadData()
+                strong.tableView.reloadData()
             }
         }
     }
@@ -167,7 +169,6 @@ extension PaymentProfileViewController { // Table View Delegate
         if (indexPath.section == 1 || (indexPath.section == 0 && packages.isEmpty)) && !self.signingOut {
             let info = provider?.info
             let name = info?["name"] as? String
-            
             let signOutTitle = String(localizationKey: "Payment_Provider_Sign_Out_Confirm.Title")
             
             let title: String = (name != nil) ? String(format: signOutTitle, name ?? "") : signOutTitle

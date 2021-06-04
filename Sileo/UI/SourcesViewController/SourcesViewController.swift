@@ -211,8 +211,9 @@ class SourcesViewController: SileoViewController {
         for repo in sortedRepoList {
             addToQueue(repo)
         }
-        
+        NSLog("[Sileo] Starting Repo Refresh")
         RepoManager.shared.update(force: forceUpdate, forceReload: forceReload, isBackground: isBackground, completion: { didFindErrors, errorOutput in
+            NSLog("[Sileo] Finished Repo Refresh")
             for repo in self.sortedRepoList {
                 self.removeFromQueue(repo)
             }
@@ -640,12 +641,7 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.reSortList()
             self.updateFooterCount()
-            if !(repo.packages ?? []).isEmpty {
-                DispatchQueue.global(qos: .userInitiated).async {
-                    PackageListManager.shared.purgeCache()
-                    PackageListManager.shared.waitForReady()
-                }
-            }
+            NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
             completionHandler(true)
         }
         return UISwipeActionsConfiguration(actions: [remove, refresh])

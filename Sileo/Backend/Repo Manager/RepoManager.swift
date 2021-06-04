@@ -8,8 +8,11 @@
 
 import Foundation
 
+// swiftlint:disable:next type_body_length
 final class RepoManager {
+    
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
+    private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
     
     enum RepoHashType: String, CaseIterable {
         case sha256
@@ -28,6 +31,17 @@ final class RepoManager {
     private(set) var repoList: [Repo] = []
     private var repoListLock = DispatchSemaphore(value: 1)
     
+    public func update(_ repo: Repo) {
+        repoDatabase.async(flags: .barrier) {
+            guard let index = self.repoList.lastIndex(where: { $0.rawURL == repo.rawURL }) else { return }
+            repo.releaseProgress = 0
+            repo.packagesProgress = 0
+            repo.releaseGPGProgress = 0
+            repo.startedRefresh = false
+            self.repoList[index] = repo
+        }
+    }
+
     // swiftlint:disable:next force_try
     lazy private var dataDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
     
@@ -476,7 +490,7 @@ final class RepoManager {
     }
     
     private func repoRequiresUpdate(_ repo: Repo) -> Bool {
-        PackageListManager.shared.waitForReady()
+        PackageListManager.shared.initWait()
         let packagesFile = cacheFile(named: "Packages", for: repo)
         if !packagesFile.exists {
             return true
@@ -841,6 +855,7 @@ final class RepoManager {
                         }
                     }
                     
+                    let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
                     if !breakOff {
                         guard let packagesFile = optPackagesFile else {
@@ -862,7 +877,6 @@ final class RepoManager {
                             errorsFound = true
                         }
                         
-                        let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                         if let packagesData = try? Data(contentsOf: packagesFile.url) {
                             let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst)
                             skipPackages = shouldSkip
@@ -928,18 +942,24 @@ final class RepoManager {
                         }
                         
                         if !skipPackages {
-                            do {
-                                _ = try PackageListManager.shared.packagesList(loadIdentifier: "",
-                                                                               repoContext: repo,
-                                                                               useCache: false,
-                                                                               overridePackagesFile: packagesFile.url,
-                                                                               sortPackages: false,
-                                                                               lookupTable: [:])
-                            } catch {
-                                log("Error parsing Packages from \(repo.repoURL): \(error.localizedDescription)", type: .error)
-                                try? FileManager.default.removeItem(at: packagesFile.url)
-                                isPackagesFileValid = false
-                                errorsFound = true
+                            if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
+                                if let packages = PackageListManager.shared.readPackages(packagesFile: packagesFile.url) {
+                                    repo.packages = packages
+                                    self.update(repo)
+                                } else {
+                                    log("Error parsing Packages from \(repo.repoURL)", type: .error)
+                                    try? FileManager.default.removeItem(at: packagesFile.url)
+                                    isPackagesFileValid = false
+                                    errorsFound = true
+                                }
+                            } else {
+                                repo.packages = nil
+                                self.update(repo)
+                            }
+                            
+                            if let packages = PackageListManager.shared.readPackages(packagesFile: packagesFile.url) {
+                                repo.packages = packages
+                                
                             }
                             reposUpdated += 1
                         }
@@ -953,7 +973,10 @@ final class RepoManager {
                         }
                         try? FileManager.default.removeItem(at: packagesFile.url.aptUrl)
                     }
-                    
+                    if (skipPackages || breakOff) && FileManager.default.fileExists(atPath: packagesFileDst.path) {
+                        let attributes = [FileAttributeKey.modificationDate: Date()]
+                        try? FileManager.default.setAttributes(attributes, ofItemAtPath: packagesFileDst.path)
+                    }
                     if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) && !isReleaseGPGValid {
                         reposUpdated += 1
                         self.checkUpdatesInBackground(completion: nil)
@@ -1011,24 +1034,14 @@ final class RepoManager {
             #endif
             self.postProgressNotification(nil)
             
-            DispatchQueue.global().async {
-                if forceReload {
-                    // reposUpdated = 1
-                }
-                
+            DispatchQueue.main.async {
                 if reposUpdated > 0 {
-                    PackageListManager.shared.purgeCache()
-                    PackageListManager.shared.waitForReady()
+                    DownloadManager.shared.repoRefresh()
+                    NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                 }
-                
-                DispatchQueue.main.async {
-                    if reposUpdated > 0 {
-                        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                    }
-                    backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
-                    NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
-                    completion(errorsFound, errorOutput)
-                }
+                backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
+                NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
+                completion(errorsFound, errorOutput)
             }
         }
     }
@@ -1065,7 +1078,7 @@ final class RepoManager {
     
     func update(force: Bool, forceReload: Bool, isBackground: Bool, repos: [Repo] = RepoManager.shared.repoList, completion: @escaping (Bool, NSAttributedString) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            PackageListManager.shared.waitForReady()
+            PackageListManager.shared.initWait()
             DispatchQueue.main.async {
                 self._update(force: force, forceReload: forceReload, isBackground: isBackground, repos: repos, completion: completion)
             }

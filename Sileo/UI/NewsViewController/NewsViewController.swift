@@ -134,7 +134,7 @@ extension NewsViewController { // Get Data
         updateLock.signal()
 
         updateQueue.async {
-            PackageListManager.shared.waitForChangesDatabaseReady()
+            //PackageListManager.shared.waitForChangesDatabaseReady()
 
             self.updateLock.wait()
             // Initialise the sections.
@@ -153,6 +153,8 @@ extension NewsViewController { // Get Data
         }
     }
 
+    #warning("Amy Bitch, The New Page needs completelye fixing")
+    
     func loadNextBatch() {
         if isLoading {
             return
@@ -164,7 +166,7 @@ extension NewsViewController { // Get Data
         updateQueue.async {
             self.updateLock.wait()
             let packageListManager = PackageListManager.shared
-            packageListManager.waitForChangesDatabaseReady()
+            //packageListManager.waitForChangesDatabaseReady()
 
             let start = self.loadedPackages
             var toLoad = 100

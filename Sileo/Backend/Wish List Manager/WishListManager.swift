@@ -22,7 +22,7 @@ class WishListManager {
             wishlist = []
             return
         }
-        let installedPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) ?? []
+        let installedPackages = PackageListManager.shared.installedPackages ?? []
         rawWishlist.removeAll { item in installedPackages.contains { $0.package == item } }
         wishlist = rawWishlist
     }

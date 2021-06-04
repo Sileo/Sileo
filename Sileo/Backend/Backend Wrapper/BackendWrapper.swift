@@ -35,7 +35,7 @@ import Foundation
         
         let packageMan = PackageListManager.shared
         let downloadMan = DownloadManager.shared
-        let allPkgs = packageMan.allPackages ?? []
+        let allPkgs = packageMan.allPackages 
         
         for (identifier, version) in identifiersAndVersions2 {
             if let installedPkg = packageMan.installedPackage(identifier: identifier), installedPkg.version == version {
@@ -100,7 +100,7 @@ import Foundation
         
         let packageMan = PackageListManager.shared
         let downloadMan = DownloadManager.shared
-        let allPkgs = packageMan.allPackages ?? []
+        let allPkgs = packageMan.allPackages
         
         for identifier in identifiers2 {
             guard let installedPkg = packageMan.installedPackage(identifier: identifier) else {
@@ -237,9 +237,7 @@ import Foundation
     }
     
     @objc class func availablePackageIdentifiers() -> NSArray? {
-        guard let packages = PackageListManager.shared.allPackages else {
-            return nil
-        }
+        let packages = PackageListManager.shared.allPackages
         let packageIdentifiers = NSMutableArray()
         for package in packages {
             packageIdentifiers.add(package.packageID as NSString)
@@ -466,9 +464,7 @@ import Foundation
         let normalized = url.trimmingCharacters(in: set)
         
         let repo = RepoManager.shared.repoList.first(where: { $0.rawURL.trimmingCharacters(in: set) == normalized })
-        let dict = repo?.packagesDict
-        let identifiers = dict?.keys.map({ $0 })
-        
+        let identifiers = (repo?.packages ?? []).map { $0.packageID }        
         return identifiers as NSArray?
     }
     

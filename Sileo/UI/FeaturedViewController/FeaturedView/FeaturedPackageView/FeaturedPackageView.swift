@@ -226,19 +226,14 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc public func reloadPackage() {
-        DispatchQueue.global(qos: .default).async {
-            PackageListManager.shared.waitForReady()
-            DispatchQueue.main.async {
-                self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package)
-                if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
-                    self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
-                    if self.packageButton.package == nil {
-                        self.packageButton.package = package
-                    }
-                } else {
-                    self.versionLabel.text = String(localizationKey: "Package_Unavailable")
-                }
+        self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package)
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+            self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
+            if self.packageButton.package == nil {
+                self.packageButton.package = package
             }
+        } else {
+            self.versionLabel.text = String(localizationKey: "Package_Unavailable")
         }
     }
     

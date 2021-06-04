@@ -67,7 +67,7 @@ class PaymentManager {
                 DownloadManager.shared.deregister(downloadOverrideProvider: self.paymentProvidersForURL[sourceRepo]!, repo: repo)
             }
             
-            let provider = self.paymentProvidersForEndpoint[endpointURL.absoluteString] ?? PaymentProvider(baseURL: endpointURL)
+            let provider = self.paymentProvidersForEndpoint[endpointURL.absoluteString] ?? PaymentProvider(baseURL: endpointURL, repoURL: repo.rawURL)
             self.paymentProvidersForEndpoint[endpointURL.absoluteString] = provider
             self.paymentProvidersForURL[sourceRepo] = provider
             DownloadManager.shared.register(downloadOverrideProvider: provider, repo: repo)

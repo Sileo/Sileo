@@ -19,6 +19,7 @@ enum PaymentStatus: Int {
 
 class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     let baseURL: URL
+    let repoURL: String
     var info: [String: AnyObject]?
     var storedUserInfo: [String: AnyObject]?
     
@@ -27,8 +28,9 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     
     static let listUpdateNotificationName = "PaymentProviderListUpdateNotificationName"
     
-    init(baseURL url: URL) {
+    init(baseURL url: URL, repoURL: String) {
         baseURL = url
+        self.repoURL = repoURL
         
         loadCache()
         fetchUserInfo(fromCache: true, completion: nil)

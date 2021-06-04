@@ -50,17 +50,27 @@ class DependencyResolverAccelerator {
         if !preflightedRepos {
             preflightInstalled()
         }
-        PackageListManager.shared.waitForReady()
+        PackageListManager.shared.initWait()
         dependencyLock.wait()
         partialRepoList = preflightedRepoList
-
+        
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        #else
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists, "&&", CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
+        #endif
+        
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
             return
         }
         for filePath in filePaths {
-            try? FileManager.default.removeItem(at: filePath.aptUrl)
+            try? FileManager.default.removeItem(at: filePath)
         }
-  
+        /*
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        #else
+        spawnAsRoot(command: "cp /var/lib/apt/lists/*Release /var/lib/apt/sileolists/")
+        #endif
+        */*/
         for package in install {
             getDependenciesInternal2(package: package.package)
         }
@@ -115,7 +125,7 @@ class DependencyResolverAccelerator {
                 let packageIds = parseDependsString(depends: packagesData)
                 for repo in RepoManager.shared.repoList {
                     for packageId in packageIds {
-                        if let depPackage = repo.packagesDict?[packageId] {
+                        if let depPackage = repo.packages?.first(where: { $0.packageID == packageId }) {
                             getDependenciesInternal(package: depPackage)
                         }
                     }

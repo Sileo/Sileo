@@ -228,7 +228,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                 }
             } else {
                 let allPkgs = PackageListManager.shared.allPackages
-                if let pkg = allPkgs?.first(where: { $0.version == package.version && $0.package == package.package }) {
+                if let pkg = allPkgs.first(where: { $0.version == package.version && $0.package == package.package }) {
                     let queueFound = DownloadManager.shared.find(package: pkg)
                     if DpkgWrapper.isVersion(pkg.version, greaterThan: installedPackage.version) {
                         if queueFound != .upgrades {

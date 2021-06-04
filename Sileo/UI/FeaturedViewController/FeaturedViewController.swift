@@ -37,10 +37,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         }, completion: { _ in
             self.activityIndicatorView?.isHidden = true
         })
-        DispatchQueue.global(qos: .userInitiated).async {
-            PackageListManager.shared.waitForReady()
-        }
-        
+
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
@@ -55,14 +52,11 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                 }
             }
             
-            PackageListManager.shared.waitForReady()
+            PackageListManager.shared.initWait()
             
             var foundBroken = false
-            
-            if let installedPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) {
-                for package in installedPackages where package.status == .halfconfigured {
-                    foundBroken = true
-                }
+            for package in PackageListManager.shared.installedPackages ?? [] where package.status == .halfconfigured {
+                foundBroken = true
             }
             
             if DpkgWrapper.dpkgInterrupted() || foundBroken {
@@ -75,10 +69,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                 
                 DispatchQueue.global(qos: .default).async {
                     let (status, output, errorOutput) = spawnAsRoot(args: [CommandPath.dpkg, "--configure", "-a"])
-                    
-                    PackageListManager.shared.purgeCache()
-                    PackageListManager.shared.waitForReady()
-                    
+                    PackageListManager.shared.installChange()
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {
                             if status != 0 {

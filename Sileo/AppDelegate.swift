@@ -16,11 +16,16 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         #if targetEnvironment(macCatalyst)
         _ = MacRootWrapper.shared
         #endif
+        SileoThemeManager.shared.updateUserInterface()
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
         _ = AmyNetworkResolver.shared
-        SileoThemeManager.shared.updateUserInterface()
+        
+        // being parsing sources files
+        _ = RepoManager.shared
+        // Init the local database
+        _ = PackageListManager.shared
         
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
@@ -73,36 +78,18 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                 _ = navController.viewControllers[0].view
             }
         }
-        
-        #if targetEnvironment(simulator)
-        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-            return
-        }
-        #endif
-        
-        if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
-            // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
-            if let tabBarController = self.window?.rootViewController as? UITabBarController,
-               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
-               let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: true, useErrorScreen: false, completion: nil)
-            }
-        }
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        PackageListManager.shared.waitForReady()
+        PackageListManager.shared.initWait()
         
         let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-        guard let currentPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
-            return
-        }
+        let currentPackages = PackageListManager.shared.allPackages
+        if currentUpdates.isEmpty { return completionHandler(.newData) }
         RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
             let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-            guard let newPackages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: nil) else {
-                return
-            }
+            let newPackages = PackageListManager.shared.allPackages
+            if newPackages.isEmpty { return completionHandler(.newData) }
             
             let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
             if diffUpdates.count > 3 {
@@ -200,7 +187,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         DispatchQueue.global(qos: .default).async {
-            PackageListManager.shared.waitForReady()
+            PackageListManager.shared.initWait()
             DispatchQueue.main.async {
                 if url.scheme == "file" {
                     // The file is a deb. Open the package view controller to that file.

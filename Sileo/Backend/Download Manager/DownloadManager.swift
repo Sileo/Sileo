@@ -561,10 +561,10 @@ final class DownloadManager {
             self.unlockQueue()
         }
         
-        guard let statusPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) else {
+        guard let installedPackages = PackageListManager.shared.installedPackages else {
             return
         }
-        for package in statusPackages {
+        for package in installedPackages {
             guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) else {
                 continue
             }
@@ -782,6 +782,47 @@ final class DownloadManager {
                 completionHandler(nil, nil)
             }
         }
+    }
+    
+    public func repoRefresh() {
+        if operationCount() == 0 { return }
+        let savedUpgrades: [(String, String)] = upgrades.map({
+            let pkg = $0.package
+            return (pkg.packageID, pkg.version)
+        })
+        let savedInstalls: [(String, String)] = installations.map({
+            let pkg = $0.package
+            return (pkg.packageID, pkg.version)
+        })
         
+        upgrades.removeAll()
+        installations.removeAll()
+        installdeps.removeAll()
+        uninstalldeps.removeAll()
+        let plm = PackageListManager.shared
+        
+        for tuple in savedUpgrades {
+            let id = tuple.0
+            let version = tuple.1
+            
+            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id) {
+                if find(package: pkg) == .none {
+                    add(package: pkg, queue: .upgrades)
+                }
+            }
+        }
+        
+        for tuple in savedInstalls {
+            let id = tuple.0
+            let version = tuple.1
+            
+            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id) {
+                if find(package: pkg) == .none {
+                    add(package: pkg, queue: .installations)
+                }
+            }
+        }
+        
+        reloadData(recheckPackages: true)
     }
 }

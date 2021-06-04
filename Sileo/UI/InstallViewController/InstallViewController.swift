@@ -79,33 +79,28 @@ class InstallViewController: SileoViewController {
             for file in DownloadManager.shared.cachedFiles {
                 deleteFileAsRoot(file)
             }
-            DispatchQueue.global(qos: .userInitiated).async {
-                PackageListManager.shared.purgeCache()
-                PackageListManager.shared.waitForReady({
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                        
-                        let rawUpdates = PackageListManager.shared.availableUpdates()
-                        let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
-                        UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
-                        
-                        self.setProgress(1, animated: true)
-                        self.activityIndicatorView?.stopAnimating()
-                        self.progressView?.alpha = 0
-                        self.returnButtonAction = .back
-                        self.updateCompleteButton()
-                        self.completeButton?.alpha = 1
-                        self.showDetailsButton?.isHidden = false
-                        self.completeLaterButton?.alpha = shouldShow(.back) ? 1 : 0
-                        self.refreshSileo = false
-                        
-                        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-                            NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
-                        }
-                    }
-                })
+            PackageListManager.shared.installChange()
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                
+                let rawUpdates = PackageListManager.shared.availableUpdates()
+                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                
+                self.setProgress(1, animated: true)
+                self.activityIndicatorView?.stopAnimating()
+                self.progressView?.alpha = 0
+                self.returnButtonAction = .back
+                self.updateCompleteButton()
+                self.completeButton?.alpha = 1
+                self.showDetailsButton?.isHidden = false
+                self.completeLaterButton?.alpha = shouldShow(.back) ? 1 : 0
+                self.refreshSileo = false
+                
+                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+                    NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
+                }
             }
-            
         }
         #else
         let downloadManager = DownloadManager.shared
@@ -147,31 +142,26 @@ class InstallViewController: SileoViewController {
                 self.detailsTextView?.scrollRangeToVisible(NSRange(location: detailsAttributedString.string.count - 1, length: 1))
             }
         }, completionCallback: { _, finish, refresh in
-            DispatchQueue.global(qos: .userInitiated).async {
-                PackageListManager.shared.purgeCache()
-                PackageListManager.shared.waitForReady({
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
-                        let rawUpdates = PackageListManager.shared.availableUpdates()
-                        let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
-                        UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
-                        
-                        self.returnButtonAction = finish
-                        self.refreshSileo = refresh
-                        self.setProgress(1, animated: true)
-                        self.activityIndicatorView?.stopAnimating()
-                        self.progressView?.alpha = 0
-                        self.updateCompleteButton()
-                        self.completeButton?.alpha = 1
-                        self.showDetailsButton?.isHidden = false
-                        self.completeLaterButton?.alpha = shouldShow(finish) ? 1 : 0
-                        if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
-                            self.completeButtonTapped(nil)
-                        }
-                    }
-                })
+            DispatchQueue.main.async {
+                PackageListManager.shared.installChange()
+                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                let rawUpdates = PackageListManager.shared.availableUpdates()
+                let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                
+                self.returnButtonAction = finish
+                self.refreshSileo = refresh
+                self.setProgress(1, animated: true)
+                self.activityIndicatorView?.stopAnimating()
+                self.progressView?.alpha = 0
+                self.updateCompleteButton()
+                self.completeButton?.alpha = 1
+                self.showDetailsButton?.isHidden = false
+                self.completeLaterButton?.alpha = shouldShow(finish) ? 1 : 0
+                if UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored {
+                    self.completeButtonTapped(nil)
+                }
             }
-            
         })
         #endif
     }
