@@ -19,7 +19,6 @@ class PackageIconView: UIImageView {
         guard let screen = self.window?.screen else {
             return
         }
-        self.layer.borderWidth = 1 / screen.scale
     }
     
     override func layoutSubviews() {
