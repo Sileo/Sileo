@@ -284,6 +284,7 @@ final class PackageListManager {
     }
     
     public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil) -> [Package] {
+        if search?.isEmpty ?? true && identifier.isEmpty { return [] }
         var packageList = [Package]()
         if identifier == "--installed" {
             packageList = Array(installedPackages.values)

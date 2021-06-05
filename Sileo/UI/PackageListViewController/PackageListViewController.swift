@@ -632,26 +632,7 @@ extension PackageListViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         self.canisterHeartbeat?.invalidate()
     
-        if searchBar.text?.isEmpty ?? true {
-            if showSearchField {
-                var toDelete = [Int]()
-                for section in 0...(collectionView?.numberOfSections ?? 0) {
-                    let tmp = findWhatFuckingSectionThisIs(section)
-                    switch tmp {
-                    case .updates, .ignoredUpdates: break
-                    case .canister:
-                        if !provisionalPackages.isEmpty { toDelete.append(section) }
-                    case .packages, .reallyBoringList:
-                        if !packages.isEmpty { toDelete.append(section) }
-                    }
-                }
-                self.packages = []
-                self.provisionalPackages = []
-                for section in toDelete {
-                    collectionView?.deleteSections(IndexSet(integer: section))
-                }
-            }
-        } else {
+        if !(searchBar.text?.isEmpty ?? true) {
             canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 CanisterResolver.shared.fetch(searchBar.text ?? "") {
                     DispatchQueue.main.async {
