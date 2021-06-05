@@ -16,9 +16,6 @@ class PackageIconView: UIImageView {
         self.clipsToBounds = true
         self.accessibilityIgnoresInvertColors = true
         self.contentMode = .scaleAspectFill
-        guard let screen = self.window?.screen else {
-            return
-        }
     }
     
     override func layoutSubviews() {
