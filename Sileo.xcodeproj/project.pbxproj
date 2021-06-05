@@ -83,7 +83,7 @@
 		49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989C214657BB00677FCA /* WhiteBlur.m */; };
-		A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A0EA2F2665A36E00CD772C /* libzstd.1-mac.tbd */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (Weak, ); }; };
+		A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A0EA2F2665A36E00CD772C /* libzstd.1-mac.tbd */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (Required, ); }; };
 		A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A0EA492665AAC900CD772C /* libzstd.1.tbd */; platformFilter = ios; settings = {ATTRIBUTES = (Required, ); }; };
 		C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C305468521D6900C003E73FC /* PackageListHeader.xib */; };
 		C373923621D5E46900E6F704 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373923421D5E46900E6F704 /* Localizable.strings */; };

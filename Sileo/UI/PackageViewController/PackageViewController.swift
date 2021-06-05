@@ -305,26 +305,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 }
             }
             task.resume()
-        } else {
-            DispatchQueue.global(qos: .default).async {
-                if let url = URL(string: "https://coolstar.moe/sileoassets/depictionoverride.php?package=\(package.package)"),
-                    let data = try? Data(contentsOf: url) {
-                    self.parseNativeDepiction(data, host: url.host ?? "", failureCallback: {
-                        let scraper = HTMLDepictionScraper()
-                        if let legacyDepiction = package.legacyDepiction,
-                            let url = URL(string: legacyDepiction) {
-                            if let rawJSON = try? scraper.scrapeHTML(url: url),
-                                let data = rawJSON.data(using: .utf8) {
-                                self.parseNativeDepiction(data, host: "", failureCallback: {
-                                    os_log("Parsing Failed")
-                                })
-                            } else {
-                                os_log("Parsing Failed")
-                            }
-                        }
-                    })
-                }
-            }
         }
 
         depictionFooterView?.removeFromSuperview()
