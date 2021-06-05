@@ -161,6 +161,7 @@ final class PackageListManager {
         }
         
         package.filename = dictionary["filename"]
+        package.essential = dictionary["essential"]
         package.size = dictionary["size"]
         
         package.rawControl = dictionary
