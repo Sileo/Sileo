@@ -919,7 +919,7 @@ final class RepoManager {
                                                 throw error ?? "Unknown Error"
                                             }
                                             if let hash = hash {
-                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash, hashtype: hashToSave)
                                             }
                                             return
                                         }
@@ -932,7 +932,7 @@ final class RepoManager {
                                                 throw error ?? "Unknown Error"
                                             }
                                             if let hash = hash {
-                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                                self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash, hashtype: hashToSave)
                                             }
                                             return
                                         }
