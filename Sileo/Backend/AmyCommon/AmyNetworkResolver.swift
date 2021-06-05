@@ -21,6 +21,7 @@ final class AmyNetworkResolver {
     }
     
     var memoryCache = [String: UIImage]()
+    private var memoryCacheLock = NSLock()
     
     public func clearCache() {
         if cacheDirectory.dirExists {
@@ -347,10 +348,13 @@ final class AmyNetworkResolver {
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
+        self.memoryCacheLock.lock()
         if cache,
            let memory = memoryCache[encoded] {
+            self.memoryCacheLock.unlock()
             return memory
         }
+        self.memoryCacheLock.unlock()
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if path.exists {
             if let data = try? Data(contentsOf: path) {
@@ -359,7 +363,10 @@ final class AmyNetworkResolver {
                         image = downscaled
                     }
                     if cache {
+                        
+                        memoryCacheLock.lock()
                         memoryCache[encoded] = image
+                        memoryCacheLock.unlock()
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
                             return image
@@ -383,7 +390,9 @@ final class AmyNetworkResolver {
                 }
                 completion?(pastData != data, image)
                 if cache {
+                    self?.memoryCacheLock.lock()
                     self?.memoryCache[encoded] = image
+                    self?.memoryCacheLock.unlock()
                     do {
                         try data.write(to: path, options: .atomic)
                     } catch {
@@ -415,9 +424,12 @@ final class AmyNetworkResolver {
         }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
+        memoryCacheLock.lock()
         if let memory = memoryCache[encoded] {
+            memoryCacheLock.unlock()
             return (!AmyNetworkResolver.skipNetwork(path), memory)
         }
+        memoryCacheLock.unlock()
         if let data = try? Data(contentsOf: path) {
             if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {

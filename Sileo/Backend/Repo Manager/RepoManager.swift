@@ -789,12 +789,23 @@ final class RepoManager {
                     func escapeEarly() {
                         if breakOff { return }
                         if repo.packageDict.isEmpty { return }
-                        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
-                        guard optPackagesFile == nil,
-                              let releaseFile = optReleaseFile,
-                              let url = URL(string: repo.repoURL),
+                        guard !breakOff,
+                              !repo.packageDict.isEmpty,
+                              optPackagesFile == nil,
+                              let releaseFile = optReleaseFile else { return }
+                        let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
+                        guard !supportedHashTypes.isEmpty else { return }
+                        let hashes: (RepoManager.RepoHashType, String)
+                        if let tmp = supportedHashTypes.first(where: { $0.0 == RepoHashType.sha256 }) {
+                            hashes = tmp
+                        } else if let tmp = supportedHashTypes.first(where: { $0.0 == RepoHashType.sha512 }) {
+                            hashes = tmp
+                        } else { return }
+                        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
+                        guard let url = URL(string: repo.repoURL),
                               let cachedData = try? Data(contentsOf: jsonPath),
-                              let cacheDict = (try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers)) as? [String: String] else { return }
+                              let cacheTmp = (try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers)) as? [String: [String: String]],
+                              let cacheDict = cacheTmp[hashes.0.rawValue] else { return }
                         var hashDict = [String: String]()
                         let extensions = ["zst", "xz", "bz2", "gz", ""]
                         for ext in extensions {
@@ -803,12 +814,8 @@ final class RepoManager {
                             }
                         }
                         if hashDict.isEmpty { return }
-                        let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
-                        guard !supportedHashTypes.isEmpty,
-                              let sha256Types = supportedHashTypes.first(where: { $0.0 == RepoHashType.sha256 }) else {
-                            return
-                        }
-                        let repoHashStrings = sha256Types.1
+                        
+                        let repoHashStrings = hashes.1
                         let files = repoHashStrings.components(separatedBy: "\n")
                         for file in files {
                             var seperated = file.components(separatedBy: " ")
@@ -889,14 +896,15 @@ final class RepoManager {
                         var isPackagesFileValid = supportedHashTypes.allSatisfy {
                             self.isHashValid(hashKey: $1, hashType: $0, url: packagesFile.url, fileName: packagesFile.name)
                         }
-                        
+                        let hashToSave: RepoHashType = supportedHashTypes.contains(where: { $0.0.hashType == .sha512 })
+                            ? .sha512 : .sha256
                         if releaseFileContainsHashes && !isPackagesFileValid {
                             log("Hash for \(packagesFile.name) from \(repo.repoURL) is invalid!", type: .error)
                             errorsFound = true
                         }
                         
                         if let packagesData = try? Data(contentsOf: packagesFile.url) {
-                            let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst)
+                            let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst, hashtype: hashToSave)
                             skipPackages = shouldSkip
                             
                             func loadPackageData() {
@@ -947,7 +955,7 @@ final class RepoManager {
                                             try packagesData.write(to: packagesFile.url, options: .atomic)
                                         }
                                         if let hash = hash {
-                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash)
+                                            self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash, hashtype: hashToSave)
                                         }
                                     } catch {
                                         log("Could not decompress packages from \(repo.repoURL) (\(succeededExtension)): \(error.localizedDescription)", type: .error)
@@ -1063,34 +1071,37 @@ final class RepoManager {
         }
     }
     
-    private func ignorePackage(repo: String, type: String, hash: String) {
+    private func ignorePackage(repo: String, type: String, hash: String, hashtype: RepoHashType) {
         guard let repo = URL(string: repo) else { return }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
-        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
-        var dict = [String: String]()
+        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
+        var dict = [String: [String: String]]()
         if let cachedData = try? Data(contentsOf: jsonPath),
-           let tmp = try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers) as? [String: String] {
+           let tmp = try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers) as? [String: [String: String]] {
             dict = tmp
         }
-        dict[repoPath.absoluteString] = hash
+        var hashDict = dict[hashtype.rawValue] ?? [:]
+        hashDict[repoPath.absoluteString] = hash
+        dict[hashtype.rawValue] = hashDict
         if let jsonData = try? JSONEncoder().encode(dict) {
             try? jsonData.write(to: jsonPath)
         }
     }
     
-    private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL) -> (Bool, String?) {
+    private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL, hashtype: RepoHashType) -> (Bool, String?) {
         guard let data = data,
               !repo.packageDict.isEmpty,
               let repo = URL(string: repo.repoURL) else { return (false, nil) }
-        let hash = data.hash(ofType: .sha256)
+        let hash = data.hash(ofType: hashtype.hashType)
         if !FileManager.default.fileExists(atPath: path.path) {
             return (false, hash)
         }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
-        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoCache").appendingPathExtension("json")
+        let jsonPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
         let cachedData = try? Data(contentsOf: jsonPath)
-        let dict = (try? JSONSerialization.jsonObject(with: cachedData ?? Data(), options: .mutableContainers) as? [String: String]) ?? [String: String]()
-        return ((dict[repoPath.absoluteString]) == hash, hash)
+        let dict = (try? JSONSerialization.jsonObject(with: cachedData ?? Data(), options: .mutableContainers) as? [String: [String: String]]) ?? [String: [String: String]]()
+        let hashDict = dict[hashtype.rawValue] ?? [:]
+        return ((hashDict[repoPath.absoluteString]) == hash, hash)
     }
     
     func update(force: Bool, forceReload: Bool, isBackground: Bool, repos: [Repo] = RepoManager.shared.repoList, completion: @escaping (Bool, NSAttributedString) -> Void) {
