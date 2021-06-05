@@ -53,7 +53,6 @@ final class AmyDownloadParser: NSObject {
         }
     }
 
-    
     public var url: URL? { request.url }
     public var hasRetried = false
     public var container: AmyDownloadParserContainer? {
@@ -77,7 +76,6 @@ final class AmyDownloadParser: NSObject {
         let container = AmyDownloadParserContainer(url: url) { [weak self] request in
             guard let strong = self else { return }
             strong.request = request
-            strong.task = AmyDownloadParser.sessionManager.downloadTask(with: request)
             strong.resume()
         }
         AmyDownloadParserDelegate.shared.addContainer(container)
@@ -90,7 +88,6 @@ final class AmyDownloadParser: NSObject {
         let container = AmyDownloadParserContainer(url: url) { [weak self] request in
             guard let strong = self else { return }
             strong.request = request
-            strong.task = AmyDownloadParser.sessionManager.downloadTask(with: request)
             strong.resume()
         }
         AmyDownloadParserDelegate.shared.addContainer(container)

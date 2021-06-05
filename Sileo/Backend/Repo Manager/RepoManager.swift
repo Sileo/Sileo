@@ -88,6 +88,8 @@ final class RepoManager {
             writeListToFile()
         }
         #else
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.lists, "&&", CommandPath.chown,
+                           "-R", "root:wheel", CommandPath.lists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.lists])
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
         for item in directory.implicitContents {
             if item.pathExtension == "list" {

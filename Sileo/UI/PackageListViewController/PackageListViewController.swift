@@ -666,6 +666,48 @@ extension PackageListViewController: UISearchResultsUpdating {
         }
         
         let query = searchBar.text ?? ""
+        
+        let packageManager = PackageListManager.shared
+        var packageList: [Package] = []
+        
+        if self.packagesLoadIdentifier == "--contextInstalled" {
+            guard let context = self.repoContext,
+                  let url = context.url else { return }
+            let betterContext = RepoManager.shared.repo(with: url) ?? context
+            packageList = betterContext.installed ?? []
+        } else if let cachedPackages = self.searchCache[query] {
+            packageList = cachedPackages
+        } else {
+            packageList = packageManager.packageList(identifier: self.packagesLoadIdentifier,
+                                                     search: query,
+                                                     sortPackages: true,
+                                                     repoContext: self.repoContext)
+        }
+        if self.packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
+            packageList = packageList.sorted(by: { package1, package2 -> Bool in
+                let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
+                let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
+                let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
+                let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
+                
+                if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
+                    let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
+                    return date2.compare(date1) == .orderedAscending
+                }
+                
+                return true
+            })
+        }
+        self.packages = packageList
+        
+        self.updateProvisional()
+        
+        if self.refreshEnabled {
+            UIView.performWithoutAnimation {
+                self.collectionView?.reloadData()
+            }
+        }
+        /*
         DispatchQueue.global(qos: .default).async {
             self.mutexLock.wait()
             self.updatingCount += 1
@@ -722,6 +764,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                 self.mutexLock.signal()
             }
         }
+        */
     }
 }
 

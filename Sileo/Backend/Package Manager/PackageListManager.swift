@@ -24,18 +24,11 @@ final class PackageListManager {
     private var isLoaded = false
     
     public var allPackagesArray: [Package] {
-        var packages = Array(installedPackages.values)
+        var packages = [Package]()
         for repo in RepoManager.shared.repoList {
             packages += repo.packageArray
         }
         return packages
-    }
-    public var allPackagesDict: [String: Package] {
-        var dict = [String: Package]()
-        for repo in RepoManager.shared.repoList {
-            dict = dict.merging(repo.packageDict) { _, new in new }
-        }
-        return dict
     }
 
     private var databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
@@ -296,24 +289,22 @@ final class PackageListManager {
     }
     
     public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil) -> [Package] {
+        var packageList = [Package]()
         if identifier == "--installed" {
-            if sort {
-                return sortPackages(packages: Array(installedPackages.values), search: search)
-            } else {
-                return Array(installedPackages.values)
-            }
+            packageList = Array(installedPackages.values)
         } else if identifier == "--wishlist" {
-            return packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
+            packageList = packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
+        } else {
+            packageList = repoContext?.packageArray ?? allPackagesArray
         }
-        var packages = repoContext?.packageArray ?? allPackagesArray
         if identifier.hasPrefix("category:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 9)
             let category = PackageListManager.humanReadableCategory(String(identifier[index...]))
-            packages = packages.filter({ $0.section == category })
+            packageList = packageList.filter({ $0.section == category })
         } else if identifier.hasPrefix("author:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 7)
             let authorEmail = String(identifier[index...]).lowercased()
-            packages = packages.filter {
+            packageList = packageList.filter {
                 guard let lowercaseAuthor = $0.author?.lowercased() else {
                     return true
                 }
@@ -323,7 +314,7 @@ final class PackageListManager {
         if let searchQuery = search,
            !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
-            packages.removeAll { package in
+            packageList.removeAll { package in
                 var shouldRemove = true
                 if package.package.lowercased().contains(search) { shouldRemove = false }
                 if let name = package.name?.lowercased() {
@@ -350,9 +341,9 @@ final class PackageListManager {
             }
         }
         if sort {
-            packages = sortPackages(packages: packages, search: search)
+            packageList = sortPackages(packages: packageList, search: search)
         }
-        return packages
+        return packageList
     }
     
     public func sortPackages(packages: [Package], search: String?) -> [Package] {
