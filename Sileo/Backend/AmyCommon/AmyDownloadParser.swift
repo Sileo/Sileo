@@ -66,7 +66,7 @@ final class AmyDownloadParser: NSObject {
     }
     
     init(url: URL, method: String = "GET", headers: [String: String] = [:]) {
-        var request = URLRequest(url: url, timeoutInterval: 30)
+        var request = URLRequest(url: url, timeoutInterval: 5)
         request.httpMethod = method
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)

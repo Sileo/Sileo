@@ -38,11 +38,36 @@ final class PackageListManager {
         self.installedPackages = PackageListManager.readPackages(installed: true)
         DispatchQueue.global(qos: .userInitiated).async {
             let repoMan = RepoManager.shared
-            for repo in repoMan.repoList {
-                repo.packageDict = PackageListManager.readPackages(repoContext: repo)
-                repoMan.update(repo)
+            var repoList = repoMan.repoList
+            let threadCount = ((ProcessInfo.processInfo.processorCount * 2) > repoList.count) ? repoList.count : (ProcessInfo.processInfo.processorCount * 2)
+            let loadGroup = DispatchGroup()
+            let loadLock = NSLock()
+            let updateLock = NSLock()
+            var loadedRepoList = [Repo]()
+            
+            for threadID in 0..<(threadCount) {
+                loadGroup.enter()
+                let repoQueue = DispatchQueue(label: "repo-init-queue-\(threadID)")
+                repoQueue.async {
+                    while true {
+                        loadLock.lock()
+                        guard !repoList.isEmpty else {
+                            loadLock.unlock()
+                            break
+                        }
+                        let repo = repoList.removeFirst()
+                        loadLock.unlock()
+                        repo.packageDict = PackageListManager.readPackages(repoContext: repo)
+                        
+                        updateLock.lock()
+                        loadedRepoList.append(repo)
+                        updateLock.unlock()
+                    }
+                    loadGroup.leave()
+                }
             }
-            DispatchQueue.main.async {
+            repoMan.update(loadedRepoList)
+            loadGroup.notify(queue: .main) {
                 self.isLoaded = true
                 self.initSemphaore.signal()
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
@@ -91,37 +116,7 @@ final class PackageListManager {
         }
         return updatesAvailable
     }
-    
-    #warning("I think this is dumb as fuck, Hayden said we need it, commented out for now")
-    /*
-    private func checkHardcodedPolicy(_ package1: Package, package2: Package) -> Bool {
-        let sourceRepo1 = package1.sourceRepo?.url?.host
-        let sourceRepo2 = package2.sourceRepo?.url?.host
-        if sourceRepo1 == "apt.procurs.us" && sourceRepo2 != "apt.procurs.us" {
-            return true
-        } else if sourceRepo1 != "apt.procurs.us" && sourceRepo2 == "apt.procurs.us" {
-            return false
-        }
-        if sourceRepo1 == "repo.theodyssey.dev" && sourceRepo2 != "repo.theodyssey.dev" {
-            return true
-        } else if sourceRepo1 != "repo.theodyssey.dev" && sourceRepo2 == "repo.theodyssey.dev" {
-            return false
-        }
-        if sourceRepo1 == "repo.chimera.sh" && sourceRepo2 != "repo.chimera.sh" {
-            return true
-        } else if sourceRepo1 != "repo.chimera.sh" && sourceRepo2 == "repo.chimera.sh" {
-            return false
-        }
-        if sourceRepo1 == "repo.getsileo.app" && sourceRepo2 != "repo.getsileo.app" {
-            return true
-        } else if sourceRepo1 != "repo.getsileo.app" && sourceRepo2 == "repo.getsileo.app" {
-            return false
-        }
-        return DpkgWrapper.isVersion(package1.version,
-                                     greaterThan: package2.version)
-    }
-    */
-    
+
     public class func humanReadableCategory(_ rawCategory: String?) -> String {
         let category = rawCategory ?? ""
         if category.isEmpty {
@@ -288,14 +283,30 @@ final class PackageListManager {
         return dict
     }
     
-    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil) -> [Package] {
+    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil) -> [Package] {
         var packageList = [Package]()
         if identifier == "--installed" {
             packageList = Array(installedPackages.values)
         } else if identifier == "--wishlist" {
             packageList = packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
         } else {
-            packageList = repoContext?.packageArray ?? allPackagesArray
+            if var search = search?.lowercased(),
+               let lookupTable = lookupTable {
+                var isFound = false
+                while !search.isEmpty && !isFound {
+                    if let packages = lookupTable[search] {
+                        packageList = packages
+                        isFound = true
+                    } else {
+                        search.removeLast()
+                    }
+                }
+                if !isFound {
+                    packageList = repoContext?.packageArray ?? allPackagesArray
+                }
+            } else {
+                packageList = repoContext?.packageArray ?? allPackagesArray
+            }
         }
         if identifier.hasPrefix("category:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 9)

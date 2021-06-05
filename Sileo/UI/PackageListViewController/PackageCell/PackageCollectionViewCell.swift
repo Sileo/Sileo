@@ -113,14 +113,18 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
             }
         }
         
-        NotificationCenter.default.addObserver([self],
-                                               selector: #selector(PackageCollectionViewCell.refreshState),
-                                               name: DownloadManager.reloadNotification, object: nil)
-        
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(PackageCollectionViewCell.refreshState),
+                                               name: DownloadManager.lockStateChangeNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(PackageCollectionViewCell.refreshState),
+                                               name: DownloadManager.reloadNotification,
                                                object: nil)
     }
     

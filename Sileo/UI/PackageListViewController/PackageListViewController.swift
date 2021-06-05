@@ -117,12 +117,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
-                                               name: DownloadManager.reloadNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
-                                               name: DownloadManager.lockStateChangeNotification,
-                                               object: nil)
         if self.showUpdates {
             NotificationCenter.default.addObserver(self, selector: #selector(self.reloadUpdates),
                                                    name: PackageListManager.prefsNotification,
@@ -639,20 +633,23 @@ extension PackageListViewController: UISearchResultsUpdating {
         self.canisterHeartbeat?.invalidate()
     
         if searchBar.text?.isEmpty ?? true {
-            let emptyResults = self.searchCache[""]
-            self.searchCache = [:]
-            self.searchCache[""] = emptyResults
-            
             if showSearchField {
-                if !packages.isEmpty {
-                    packages = []
-                    collectionView?.deleteSections(IndexSet(integer: 0))
+                var toDelete = [Int]()
+                for section in 0...(collectionView?.numberOfSections ?? 0) {
+                    let tmp = findWhatFuckingSectionThisIs(section)
+                    switch tmp {
+                    case .updates, .ignoredUpdates: break
+                    case .canister:
+                        if !provisionalPackages.isEmpty { toDelete.append(section) }
+                    case .packages, .reallyBoringList:
+                        if !packages.isEmpty { toDelete.append(section) }
+                    }
                 }
-                if !provisionalPackages.isEmpty {
-                    provisionalPackages = []
-                    collectionView?.deleteSections(IndexSet(integer: 0))
+                self.packages = []
+                self.provisionalPackages = []
+                for section in toDelete {
+                    collectionView?.deleteSections(IndexSet(integer: section))
                 }
-                return
             }
         } else {
             canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
@@ -666,7 +663,6 @@ extension PackageListViewController: UISearchResultsUpdating {
         }
         
         let query = searchBar.text ?? ""
-        
         let packageManager = PackageListManager.shared
         var packageList: [Package] = []
         
@@ -675,13 +671,15 @@ extension PackageListViewController: UISearchResultsUpdating {
                   let url = context.url else { return }
             let betterContext = RepoManager.shared.repo(with: url) ?? context
             packageList = betterContext.installed ?? []
-        } else if let cachedPackages = self.searchCache[query] {
+        } else if !query.isEmpty,
+                  let cachedPackages = self.searchCache[query] {
             packageList = cachedPackages
         } else {
             packageList = packageManager.packageList(identifier: self.packagesLoadIdentifier,
                                                      search: query,
                                                      sortPackages: true,
-                                                     repoContext: self.repoContext)
+                                                     repoContext: self.repoContext,
+                                                     lookupTable: searchCache)
         }
         if self.packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
             packageList = packageList.sorted(by: { package1, package2 -> Bool in
@@ -699,6 +697,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             })
         }
         self.packages = packageList
+        self.searchCache[query.lowercased()] = packageList
         
         self.updateProvisional()
         
@@ -707,64 +706,6 @@ extension PackageListViewController: UISearchResultsUpdating {
                 self.collectionView?.reloadData()
             }
         }
-        /*
-        DispatchQueue.global(qos: .default).async {
-            self.mutexLock.wait()
-            self.updatingCount += 1
-            
-            let packageManager = PackageListManager.shared
-            var packages: [Package] = []
-            
-            if self.packagesLoadIdentifier == "--contextInstalled" {
-                guard let context = self.repoContext,
-                      let url = context.url else { return }
-                let betterContext = RepoManager.shared.repo(with: url) ?? context
-                packages = betterContext.installed ?? []
-            } else if let cachedPackages = self.searchCache[query] {
-                packages = cachedPackages
-            } else {
-                packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
-                                                      search: query,
-                                                      sortPackages: true,
-                                                      repoContext: self.repoContext)
-            }
-            
-            self.mutexLock.signal()
-            self.mutexLock.wait()
-            if self.packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
-                packages = packages.sorted(by: { package1, package2 -> Bool in
-                    let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
-                    let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
-                    let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
-                    let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
-                    
-                    if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
-                        let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
-                        return date2.compare(date1) == .orderedAscending
-                    }
-                    
-                    return true
-                })
-            }
-            
-            self.packages = packages
-            self.updatingCount -= 1
-            self.mutexLock.signal()
-            
-            DispatchQueue.main.async {
-                self.updateProvisional()
-                self.mutexLock.wait()
-                
-                if self.updatingCount == 0 && self.refreshEnabled {
-                    UIView.performWithoutAnimation {
-                        self.collectionView?.reloadData()
-                    }
-                }
-                
-                self.mutexLock.signal()
-            }
-        }
-        */
     }
 }
 

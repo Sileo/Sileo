@@ -22,6 +22,8 @@ class DatabaseManager {
     
     let database: Connection
     
+    private var packages = [Package]()
+    
     init() {
         guard let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
                 fatalError("Unable to get Sileo container!")
@@ -60,7 +62,11 @@ class DatabaseManager {
         Set(packages.map { ["package": $0.package, "version": $0.version] })
     }
     
-    public func save(packages: [Package]) {
+    public func addToSaveQueue(packages: [Package]) {
+        self.packages += packages
+    }
+    
+    public func saveQueue() {
         if packages.isEmpty { return }
         let guid = Expression<String>("guid")
         let package = Expression<String>("package")

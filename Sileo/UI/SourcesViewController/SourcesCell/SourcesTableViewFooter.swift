@@ -10,24 +10,16 @@ import UIKit
 
 class SourcesTableViewFooter: UITableViewHeaderFooterView {
     
-    private let titleView = UILabel(frame: .zero)
+    private let titleView = UILabel(frame: CGRect(x: 15, y: 5.5, width: 320, height: 20))
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         backgroundView = UIView()
-    
+        
         titleView.autoresizingMask = .flexibleWidth
-        titleView.textAlignment = .center
         titleView.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
         titleView.font = UIFont.systemFont(ofSize: 12)
-        contentView.addSubview(titleView)
-        
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.centerXAnchor.constraint(equalTo: contentView.layoutMarginsGuide.centerXAnchor).isActive = true
-        titleView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 3.5).isActive = true
-        titleView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        titleView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        titleView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        addSubview(titleView)
     }
     
     required init?(coder: NSCoder) {

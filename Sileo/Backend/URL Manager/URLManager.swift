@@ -15,7 +15,7 @@ class URLManager {
     }
     
     static func urlRequest(_ url: URL, includingDeviceInfo: Bool = true) -> URLRequest {
-        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 5)
         
         let cfVersion = String(format: "%.3f", kCFCoreFoundationVersionNumber)
         let bundleName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] ?? ""

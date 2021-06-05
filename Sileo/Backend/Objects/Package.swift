@@ -29,9 +29,9 @@ final class Package: Hashable, Equatable {
     public var commercial: Bool = false
     public var tags: PackageTags = .none
     
-    public var allVersionsInternal = [PackageOld]()
+    public var allVersionsInternal = [String: PackageOld]()
     public var allVersions: [Package] {
-        return allVersionsInternal.map({ $0.packageNew })
+        return allVersionsInternal.map({ $1.packageNew })
     }
     
     public var fromStatusFile: Bool = false
@@ -73,8 +73,7 @@ final class Package: Hashable, Equatable {
     public func addOld(_ packages: [Package]) {
         for package in packages {
             let packageOld = PackageOld(package: package)
-            allVersionsInternal.removeAll(where: { packageOld == $0 })
-            allVersionsInternal.append(packageOld)
+            allVersionsInternal[packageOld.version] = packageOld
         }
     }
 }

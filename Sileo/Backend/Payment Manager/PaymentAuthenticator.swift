@@ -89,27 +89,7 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             
             completion?(nil, false)
         }
-        /*
-        if #available(iOS 13.0, *) {
-            currentAuthenticationSession?.presentationContextProvider = self
-            if #available(iOS 13.4, *) {
-                for window in UIApplication.shared.windows {
-                    self.lastWindow = window
-                    if self.currentAuthenticationSession?.canStart ?? false {
-                        break
-                    }
-                }
-            } else {
-                self.lastWindow = window
-            }
-        }
-        */
         self.currentAuthenticationSession?.start()
         #endif
     }
-    /*
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        lastWindow ?? ASPresentationAnchor()
-    }
-    */
 }
