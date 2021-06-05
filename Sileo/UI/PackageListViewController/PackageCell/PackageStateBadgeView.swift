@@ -29,9 +29,7 @@ import Foundation
         imageView = UIImageView()
         
         super.init(frame: frame)
-        
-        self.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
-        
+          
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .white
@@ -49,16 +47,7 @@ import Foundation
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override public func didMoveToWindow() {
-        super.didMoveToWindow()
-        
-        guard let screen = self.window?.screen else {
-            return
-        }
-        self.layer.borderWidth = 1 / screen.scale
-    }
-    
+      
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = fmin(self.bounds.width, self.bounds.height)/2
