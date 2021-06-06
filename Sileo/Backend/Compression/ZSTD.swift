@@ -5,7 +5,7 @@
 //  Created by Andromeda on 31/05/2021.
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
-#if !targetEnvironment(simulator) || !TARGET_SANDBOX
+#if !targetEnvironment(simulator) && !TARGET_SANDBOX
 import Foundation
 
 final class ZSTD {
