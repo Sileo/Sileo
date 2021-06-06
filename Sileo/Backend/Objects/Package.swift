@@ -31,7 +31,9 @@ final class Package: Hashable, Equatable {
     
     public var allVersionsInternal = [String: PackageOld]()
     public var allVersions: [Package] {
-        return allVersionsInternal.map({ $1.packageNew })
+        var allVersionsInternal = allVersionsInternal.map { $1.packageNew }
+        allVersionsInternal.insert(self, at: 0)
+        return allVersionsInternal
     }
     
     public var fromStatusFile: Bool = false
@@ -74,6 +76,12 @@ final class Package: Hashable, Equatable {
         for package in packages {
             let packageOld = PackageOld(package: package)
             allVersionsInternal[packageOld.version] = packageOld
+        }
+    }
+    
+    public func addOldInternal(_ packages: [PackageOld]) {
+        for package in packages {
+            allVersionsInternal[package.version] = package
         }
     }
 }

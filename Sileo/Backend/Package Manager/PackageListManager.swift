@@ -244,7 +244,6 @@ final class PackageListManager {
             package.sourceFile = repoContext?.rawEntry
             package.sourceFileURL = toWrite
             package.rawData = packageData
-            package.addOld([package])
             
             if isStatusFile {
                 var wantInfo: pkgwant = .install
@@ -274,7 +273,7 @@ final class PackageListManager {
                     if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
                         dict[packageID] = package
                     }
-                    otherPkg.addOld(package.allVersions)
+                    otherPkg.addOldInternal(Array(package.allVersionsInternal.values))
                     package.allVersionsInternal = otherPkg.allVersionsInternal
                 } else {
                     dict[packageID] = package
