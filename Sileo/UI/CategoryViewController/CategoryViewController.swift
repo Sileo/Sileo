@@ -73,7 +73,7 @@ class CategoryViewController: SileoTableViewController {
     }
     
     @objc func reloadData() {
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             var categories: Set<String> = []
             var categoriesCountCache: [String: Int] = [:]
             let packages: [Package]?
@@ -97,7 +97,7 @@ class CategoryViewController: SileoTableViewController {
                 let count = categoriesCountCache[loadIdentifier] ?? 0
                 categoriesCountCache[loadIdentifier] = count + 1
             }
-            categoriesCountCache[""] = packages?.count ?? 0
+            categoriesCountCache["--allCategories"] = packages?.count ?? 0
             categoriesCountCache["--contextInstalled"] = installed?.count ?? 0
             self.showInstalled = !(installed?.isEmpty ?? true)
             self.categoriesCountCache = categoriesCountCache
@@ -224,7 +224,7 @@ class CategoryViewController: SileoTableViewController {
     
     func loadIdentifier(forCategoryAt indexPath: IndexPath) -> String {
         if self.isAllCategories(indexPath: indexPath) {
-            return ""
+            return "--allCategories"
         }
         if self.isInstalled(indexPath: indexPath) {
             return "--contextInstalled"

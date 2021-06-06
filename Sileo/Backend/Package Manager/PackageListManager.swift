@@ -25,10 +25,15 @@ final class PackageListManager {
     
     public var allPackagesArray: [Package] {
         var packages = [Package]()
+        var installedPackages = installedPackages
         for repo in RepoManager.shared.repoList {
+            let repoPackageArray = repo.packageArray
             packages += repo.packageArray
+            for package in repoPackageArray where installedPackages[package.packageID] != nil {
+                installedPackages.removeValue(forKey: package.packageID)
+            }
         }
-        return packages
+        return packages + Array(installedPackages.values)
     }
 
     private var databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
@@ -285,7 +290,6 @@ final class PackageListManager {
     }
     
     public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil) -> [Package] {
-        if search?.isEmpty ?? true && identifier.isEmpty && repoContext == nil { return [] }
         var packageList = [Package]()
         if identifier == "--installed" {
             packageList = Array(installedPackages.values)
