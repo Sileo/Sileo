@@ -18,13 +18,9 @@ class SourcesViewController: SileoViewController {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.checkForUpdatesInBackground()
+        RepoManager.shared.checkUpdatesInBackground()
         
         weak var weakSelf: SourcesViewController? = self
-        NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(self.checkForUpdatesInBackground),
-                                               name: PackageListManager.reloadNotification,
-                                               object: nil)
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(self.reloadRepo(_:)),
                                                name: RepoManager.progressNotification,
@@ -51,12 +47,6 @@ class SourcesViewController: SileoViewController {
         }
         
         return categoryVC
-    }
-    
-    @objc func checkForUpdatesInBackground() {
-        let repoManager = RepoManager.shared
-        repoManager.checkUpdatesInBackground {
-        }
     }
 
     override func viewDidLoad() {

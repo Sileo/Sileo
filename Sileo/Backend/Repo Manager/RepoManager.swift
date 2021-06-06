@@ -372,7 +372,7 @@ final class RepoManager {
             .appendingPathComponent(prefix.lastPathComponent + name)
     }
     
-    private func _checkUpdatesInBackground(_ repos: [Repo], completion: (() -> Void)?) {
+    private func _checkUpdatesInBackground(_ repos: [Repo]) {
         let metadataUpdateGroup = DispatchGroup()
         for repo in repos {
             metadataUpdateGroup.enter()
@@ -432,14 +432,10 @@ final class RepoManager {
                 }
             }
         }
-        
-        metadataUpdateGroup.notify(queue: .main) {
-            completion?()
-        }
     }
     
-    func checkUpdatesInBackground(completion: (() -> Void)?) {
-        _checkUpdatesInBackground(repoList, completion: completion)
+    func checkUpdatesInBackground() {
+        _checkUpdatesInBackground(repoList)
     }
     
     @discardableResult
@@ -862,7 +858,7 @@ final class RepoManager {
                         log("Could not find release file for \(repo.repoURL)", type: .error)
                         errorsFound = true
                         reposUpdated += 1
-                        self.checkUpdatesInBackground(completion: nil)
+                        self.checkUpdatesInBackground()
                         continue
                     }
                     
@@ -887,7 +883,7 @@ final class RepoManager {
                             log("Could not find packages file for \(repo.repoURL)", type: .error)
                             errorsFound = true
                             reposUpdated += 1
-                            self.checkUpdatesInBackground(completion: nil)
+                            self.checkUpdatesInBackground()
                             continue
                         }
                         
@@ -1003,7 +999,7 @@ final class RepoManager {
                     }
                     if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) && !isReleaseGPGValid {
                         reposUpdated += 1
-                        self.checkUpdatesInBackground(completion: nil)
+                        self.checkUpdatesInBackground()
                         continue
                     }
                     
@@ -1021,7 +1017,7 @@ final class RepoManager {
                     try? FileManager.default.removeItem(at: releaseFile.url.aptUrl)
                     releaseGPGFileURL.map { try? FileManager.default.removeItem(at: $0) }
                     
-                    self.checkUpdatesInBackground(completion: nil)
+                    self.checkUpdatesInBackground()
                 }
                 
                 updateGroup.leave()
