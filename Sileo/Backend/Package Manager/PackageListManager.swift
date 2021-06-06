@@ -271,6 +271,7 @@ final class PackageListManager {
             } else {
                 if let otherPkg = dict[packageID] {
                     if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
+                        package.addOld([otherPkg])
                         dict[packageID] = package
                     }
                     otherPkg.addOldInternal(Array(package.allVersionsInternal.values))
