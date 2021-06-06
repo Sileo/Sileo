@@ -25,7 +25,7 @@ final class Package: Hashable, Equatable {
     public var sourceFileURL: URL?
     public var rawControl: [String: String] = [:]
     public var rawData: Data?
-    public var essential: Bool = false
+    public var essential: String?
     public var commercial: Bool = false
     public var tags: PackageTags = .none
     
@@ -92,6 +92,7 @@ final class PackageOld: Hashable, Equatable {
     public var rawData: Data?
     public var sourceFileURL: URL?
     public var source: String?
+    public var essential: String?
     public var commercial: Bool = false
     public var filename: String?
     public var size: String?
@@ -108,6 +109,7 @@ final class PackageOld: Hashable, Equatable {
         self.rawData = package.rawData
         self.sourceFileURL = package.sourceFileURL
         self.source = package.source
+        self.essential = package.essential
         self.commercial = package.commercial
         self.filename = package.filename
         self.size = package.size
@@ -123,6 +125,7 @@ final class PackageOld: Hashable, Equatable {
         package.rawData = self.rawData
         package.sourceFileURL = self.sourceFileURL
         package.source = self.source
+        package.essential = self.essential
         package.commercial = self.commercial
         package.filename = self.filename
         package.size = self.size

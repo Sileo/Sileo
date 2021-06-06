@@ -161,6 +161,7 @@ final class PackageListManager {
         }
         
         package.filename = dictionary["filename"]
+        package.essential = dictionary["essential"]
         package.size = dictionary["size"]
         
         package.rawControl = dictionary
@@ -284,7 +285,7 @@ final class PackageListManager {
     }
     
     public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil) -> [Package] {
-        if search?.isEmpty ?? true && identifier.isEmpty { return [] }
+        if search?.isEmpty ?? true && identifier.isEmpty && repoContext == nil { return [] }
         var packageList = [Package]()
         if identifier == "--installed" {
             packageList = Array(installedPackages.values)
