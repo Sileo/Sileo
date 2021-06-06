@@ -18,6 +18,10 @@ final class GZIP {
         
         let inBuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(16384))
         let outBuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(16384))
+        defer {
+            inBuf.deallocate()
+            outBuf.deallocate()
+        }
         var have: UInt32
         var stream = z_stream()
         defer {

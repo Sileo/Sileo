@@ -26,6 +26,10 @@ final class ZSTD {
         let buffOutSize = ZSTD_DStreamOutSize()
         let inBuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(buffInSize))
         let outBuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(buffOutSize))
+        defer {
+            inBuf.deallocate()
+            outBuf.deallocate()
+        }
         guard let dctx = ZSTD_createDCtx() else { return (ZSTDError.context.rawValue, nil) }
         defer {
             ZSTD_freeDCtx(dctx)

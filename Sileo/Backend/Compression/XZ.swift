@@ -47,6 +47,10 @@ final class XZ {
         
         let inbuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(BUFSIZ))
         let outbuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(BUFSIZ))
+        defer {
+            inbuf.deallocate()
+            outbuf.deallocate()
+        }
         let data = NSMutableData()
         
         strm.next_in = nil
