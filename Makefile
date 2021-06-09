@@ -85,7 +85,7 @@ else
 BUILD_CONFIG  := Release
 endif
 
-ifeq ($(shell dpkg-deb --help | grep "zstd" && echo 1),1)
+ifeq ($(shell dpkg-deb --help | grep -qi "zstd" && echo 1),1)
 DPKG_TYPE ?= zstd
 else
 DPKG_TYPE ?= xz
