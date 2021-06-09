@@ -1,7 +1,6 @@
 on:
   push:
     branches:
-      - main
       - 2.1.x
 name: Build
 jobs:
@@ -9,22 +8,51 @@ jobs:
     name: Build and Upload Sileo
     runs-on: macos-latest
     steps:
+      - uses: actions/cache@v2
+        id: procache
+        with:
+          path: ~/__cache
+          key: ${{ runner.os }}-procursus
+          
       - name: Checkout
         uses: actions/checkout@master
         with:
           submodules: true
-      - name: Install ldid and dpkg
+        
+      - name: Setup Procursus Bootstrap (install)
+        if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install ldid dpkg
+          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
+          sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt install ldid -y
+      - name: Add Procursus to PATH
+        run: |
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+      - name: Setup Procursus Bootstrap (cache)
+        if: steps.procache.outputs.cache-hit == 'true'
+        run: |
+          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
+          sudo rsync -aP ~/__cache/procursus /opt
+          sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
       - name: Build Sileo Nightly
         run: |
-         make clean package NIGHTLY=1 DEBUG=0
+          make clean package NIGHTLY=1 DEBUG=0
       - name: Upload To Repo
         env: # 
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package=$(ls -t packages | head -1)
           curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+      - name: Copy Procursus to Cache Location
+        run: |
+          sudo mkdir -p ~/__cache
+          sudo rsync -aP /opt/procursus ~/__cache
+          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
