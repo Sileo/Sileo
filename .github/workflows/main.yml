@@ -33,9 +33,11 @@ jobs:
           sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt install ldid -y
+          
       - name: Add Procursus to PATH
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
@@ -43,20 +45,24 @@ jobs:
           sudo rsync -aP ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          
       - name: Build Sileo Nightly
         run: |
           make clean package NIGHTLY=1 DEBUG=0
+          
       - name: Upload To Repo
         env: # 
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package=$(ls -t packages | head -1)
           curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
+          
       - name: Copy Procursus to Cache Location
         run: |
           sudo mkdir -p ~/__cache
           sudo rsync -aP /opt/procursus ~/__cache
           sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
+          
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
@@ -64,6 +70,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
+          
       - name: Run SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
   test:
@@ -73,7 +80,9 @@ jobs:
       - uses: actions/checkout@master
         with:
           submodules: true
+          
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_12.4.app 
+        
       - name: Run Tests
         run: xcodebuild test -scheme "Sileo Demo" -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
