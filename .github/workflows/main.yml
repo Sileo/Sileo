@@ -1,7 +1,6 @@
 on:
   push:
     branches:
-      - main
       - 2.1.x
 name: Build
 jobs:
