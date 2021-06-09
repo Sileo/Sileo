@@ -9,13 +9,30 @@ jobs:
     name: Build and Upload Sileo
     runs-on: macos-latest
     steps:
+      - uses: actions/cache@v2
+        id: procache
+        with:
+          path: /opt/procursus
+          key: ${{ runner.os }}-pro
+          
       - name: Checkout
         uses: actions/checkout@master
         with:
           submodules: true
-      - name: Install ldid and dpkg
+        
+      - name: Install Procursus and ldid
+        if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install ldid dpkg
+          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
+          sudo gtar --preserve-permissions -xkf ./bootstrap.tar.zst -C /
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          sudo apt update
+          sudo apt -V dist-upgrade -y || :
+      - name: Install Procursus and ldid
+        run: |
+          sudo apt-get update
+          sudo apt -V dist-upgrade -y
+          sudo apt install ldid
       - name: Build Sileo Nightly
         run: |
          make clean package NIGHTLY=1 DEBUG=0
