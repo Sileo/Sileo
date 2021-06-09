@@ -35,13 +35,13 @@ jobs:
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
-          sudo cp -c ~/__cache/procursus /opt
+          sudo rsync -a ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
 
       - name: Copy Procursus to Cache Location
         run: |
-          sudo mkdir -p ~/__cache && sudo cp -c /opt/procursus __cache
+          sudo mkdir -p ~/__cache && sudo rsync -a /opt/procursus __cache
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
