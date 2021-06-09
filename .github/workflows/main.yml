@@ -32,6 +32,7 @@ jobs:
       - name: Add Procursus to PATH
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          swift --version
       - name: Update Procursus
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
