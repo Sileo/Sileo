@@ -12,7 +12,7 @@ jobs:
         id: procache
         with:
           path: ~/__cache
-          key: ${{ runner.os }}-procache
+          key: ${{ runner.os }}-pro-cache
           
       - name: Checkout
         uses: actions/checkout@master
@@ -35,14 +35,13 @@ jobs:
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
-          sudo rsync -a ~/__cache/procursus /opt
+          sudo cp -c ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
 
       - name: Copy Procursus to Cache Location
         run: |
-          sudo mkdir -p ~/__cache
-          sudo rsync -a /opt/procursus __cache/procursus
+          sudo mkdir -p ~/__cache && sudo cp -c /opt/procursus __cache
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
