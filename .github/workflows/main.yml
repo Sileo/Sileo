@@ -12,7 +12,7 @@ jobs:
         id: procache
         with:
           path: ~/__cache
-          key: ${{ runner.os }}-pro-cache
+          key: ${{ runner.os }}-proccache
           
       - name: Checkout
         uses: actions/checkout@master
@@ -35,9 +35,7 @@ jobs:
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
-          ls ~/__cache
-          sudo mkdir -p /opt/procursus
-          sudo rsync -a ~/__cache /opt/procursus
+          sudo rsync -aP ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
       - name: Build Sileo Nightly
@@ -51,7 +49,8 @@ jobs:
           curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
       - name: Copy Procursus to Cache Location
         run: |
-          sudo mkdir -p ~/__cache && sudo rsync -a /opt/procursus __cache
+          sudo mkdir -p ~/__cache
+          sudo rsync -aP /opt/procursus ~/__cache
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
