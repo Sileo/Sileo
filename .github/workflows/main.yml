@@ -35,7 +35,9 @@ jobs:
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
-          sudo rsync -a ~/__cache/procursus /opt
+          ls ~/__cache
+          sudo mkdir -p /opt/procursus
+          sudo rsync -a ~/__cache /opt/procursus
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
       - name: Build Sileo Nightly
