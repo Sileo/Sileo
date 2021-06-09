@@ -11,7 +11,11 @@ jobs:
       - uses: actions/cache@v2
         id: procache
         with:
-          path: /opt/procursus
+          path: |
+            /opt/procursus
+            !/opt/procursus/var/cache/apt/archives/partial
+            !/opt/procursus/var/lib/apt/lists/partial
+            !/opt/procursus/Library/dpkg/triggers/Lock
           key: ${{ runner.os }}-pro
           
       - name: Checkout
@@ -36,17 +40,9 @@ jobs:
       - name: Update Procursus
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
+          sudo mkdir -p /opt/procursus/var/cache/apt/archives/partial /opt/procursus/var/lib/apt/lists/partial
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
-      - name: Build Sileo Nightly
-        run: |
-         make clean package NIGHTLY=1 DEBUG=0
-      - name: Upload To Repo
-        env: # 
-          token: ${{ secrets.AMY_REPO_SECRET }}
-        run: |
-          package=$(ls -t packages | head -1)
-          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
