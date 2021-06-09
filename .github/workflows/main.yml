@@ -12,7 +12,7 @@ jobs:
         id: procache
         with:
           path: ~/__cache
-          key: ${{ runner.os }}-proccache
+          key: ${{ runner.os }}-procursus
           
       - name: Checkout
         uses: actions/checkout@master
