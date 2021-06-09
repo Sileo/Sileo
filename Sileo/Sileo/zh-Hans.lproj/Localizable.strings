@@ -98,6 +98,7 @@
 "Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
+"Repo" = "软件源";
 
 "Add_Source.Title" = "添加软件源";
 "Add_Source.Body" = "新增软件源地址";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
+"Installed_Packages" = "已安装的软件包";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "显示软件包内容";
 
@@ -138,7 +140,7 @@
 "Auto_Complete_Queue" = "自动完成队列";
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "搜索增强";
+"Show_Provisional" = "搜索增强 （Canister）";
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";

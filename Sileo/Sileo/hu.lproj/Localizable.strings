@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Források újratöltése";
 "Package_Installed_Files_Page" = "Telepített fájlok";
 "Refresh" = "Újratöltés";
-"Remove" = "Eltávolítás";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Összes csomag";
 "All_Packages.Cell_Subtitle" = "Nézd meg a forrásaidban lévő összes csomagot";
@@ -98,6 +98,7 @@
 "Ignored Updates" = "Figyelmen kívül hagyott frissítések";
 
 "Repos" = "Csomagtárolók";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Forrás hozzáadása";
 "Add_Source.Body" = "APT URL hozzáadása";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Nem érhető el változási napló ehhez a csomaghoz.";
 
 "Installed_Package_Header" = "Telepített csomag";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Verzió";
 "Show_Package_Contents_Button" = "Csomag tartalmának megjelenítése";
 

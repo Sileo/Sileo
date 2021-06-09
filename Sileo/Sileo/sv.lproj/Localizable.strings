@@ -23,7 +23,7 @@
 "Cancel" = "Avbryt";
 "Acknowledge" = "Medge";
 "Remove" = "Radera";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Sileo Laget";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrund App Uppdatering";
@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignorerade Uppdateringar";
 
 "Repos" = "Källor";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Lägg Till Källa";
 "Add_Source.Body" = "Lägg Till APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Ändringlogen är inte tillgänglig för detta paket.";
 
 "Installed_Package_Header" = "Installerat Paket";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Visa Paket Innehåll";
 
@@ -138,22 +140,22 @@
 "Auto_Complete_Queue" = "Autoslutför Kö";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bekräfta Automatiskt Uppgradera Allt Genväg";
 "Swipe_Actions" = "Svepåtgärder";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "Visa Paket Från Canister";
 "Show_Ignored_Updates" = "Visa Ignorerade Uppdateringar";
 "Developer_Mode" = "Utvecklar Läge";
 "Pog_Developer" = "Du är nu en utvecklare!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Developer_Mode_Explain" = "Utveckar Läge stänger av HTTPS som betalnings API behöver.";
+"Auto_Refresh_Sources" = "Auto Uppdatera Källor";
+"iCloud_Profile" = "Visa iCloud Bild i Utvalda";
+"Cache_Size" = "Cache Storlek";
+"Clear_Cache" = "Rensa Nätverk Cache";
+"Clear_Cache_Message" = "Vill du rensa nätverks cache? Detta ger mer %@";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Tema Inställningar";
 
 "Cydia_Sign_In" = "Logga in på Cydia Store";
 "Payment_Provider_Signed_In" = "Inloggad";

@@ -98,6 +98,7 @@
 "Ignored Updates" = "アップデートを無視";
 
 "Repos" = "リポジトリ";
+"Repo" = "リポジトリ";
 
 "Add_Source.Title" = "リポジトリを追加";
 "Add_Source.Body" = "リポジトリの URL を入力";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "このパッケージでは更新履歴を表示できません";
 
 "Installed_Package_Header" = "インストール済み";
+"Installed_Packages" = "インストール済み";
 "Version" = "バージョン";
 "Show_Package_Contents_Button" = "パッケージの内容を表示";
 

@@ -98,6 +98,7 @@
 "Ignored Updates" = "Mises à jour ignorées";
 
 "Repos" = "Sources";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Ajouter la source";
 "Add_Source.Body" = "Ajouter l'addresse APT";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Les changements ne sont pas disponibles pour ce paquet.";
 
 "Installed_Package_Header" = "Paquet installé";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Afficher le contenu du paquet";
 

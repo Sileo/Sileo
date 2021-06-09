@@ -22,7 +22,7 @@
 "Delete" = "מחק";
 "Cancel" = "ביטול";
 "Acknowledge" = "אני מקבל";
-"Remove" = "הסרה";
+"Remove" = "מחיקה";
 "Sileo_Team" = "Sileo Team";
 
 // Popup messages
@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "מרענן מקורות";
 "Package_Installed_Files_Page" = "קבצים מותקנים";
 "Refresh" = "רענן";
-"Remove" = "מחיקה";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "כל החבילות";
 "All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
@@ -98,6 +98,7 @@
 "Ignored Updates" = "שדרוגים בהתעלמות";
 
 "Repos" = "מאגרים";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "הוסף מקור";
 "Add_Source.Body" = "הוסף APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "לוג השינויים האחרונים אינו זמין עבור חבילה זו.";
 
 "Installed_Package_Header" = "חבילות מותקנות";
+"Installed_Packages" = "Installed Packages";
 "Version" = "גירסא";
 "Show_Package_Contents_Button" = "הראה תוכן חבילה";
 

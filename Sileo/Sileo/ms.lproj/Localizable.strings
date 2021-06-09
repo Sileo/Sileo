@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositori";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Tambah Sumber";
 "Add_Source.Body" = "Tambah URL APT";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
 
 "Installed_Package_Header" = "Pakej Dipasang";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versi";
 "Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
 

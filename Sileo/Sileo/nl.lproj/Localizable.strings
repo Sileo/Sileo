@@ -97,7 +97,8 @@
 "External_Repo" = "Externe Repo's";
 "Ignored Updates" = "Genegeerde Updates";
 
-"Repos" = "Repositories";
+"Repos" = "Bronnen";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Voeg Bron Toe";
 "Add_Source.Body" = "Voeg APT URL toe";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Aanpassingen zijn niet beschikbaar voor dit pakket.";
 
 "Installed_Package_Header" = "Geïnstalleerd pakket";
+"Installed_Packages" = "Geïnstalleerde Pakketten";
 "Version" = "Versie";
 "Show_Package_Contents_Button" = "Toon Pakket Inhoud";
 

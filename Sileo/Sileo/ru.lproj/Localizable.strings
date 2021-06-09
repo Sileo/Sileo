@@ -98,6 +98,7 @@
 "Ignored Updates" = "Игнорируемые обновления";
 
 "Repos" = "Репозитории";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Добавить источник";
 "Add_Source.Body" = "Добавить APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Список изменения не доступнен для этого пакета.";
 
 "Installed_Package_Header" = "Установленные пакеты";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Версия";
 "Show_Package_Contents_Button" = "Показать содержимое пакета";
 
@@ -147,7 +149,7 @@
 "iCloud_Profile" = "Показать изображение iCloud в избранном";
 "Cache_Size" = "Размер кеша";
 "Clear_Cache" = "Очистить сетевой кэш";
-"Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это бесплатно %@";
+"Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это освободит %@";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";

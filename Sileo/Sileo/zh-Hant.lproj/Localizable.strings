@@ -98,6 +98,7 @@
 "Ignored Updates" = "已忽略更新";
 
 "Repos" = "套件來源";
+"Repo" = "套件來源";
 
 "Add_Source.Title" = "新增來源";
 "Add_Source.Body" = "新增套件來源網址";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "無法取得此套件的更新記錄。";
 
 "Installed_Package_Header" = "已安裝套件";
+"Installed_Packages" = "已安裝套件";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "顯示套件內容";
 

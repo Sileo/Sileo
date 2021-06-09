@@ -98,6 +98,7 @@
 "Ignored Updates" = "Yoksayılan Güncellemeler";
 
 "Repos" = "Kaynaklar";
+"Repo" = "Kaynak";
 
 "Add_Source.Title" = "Kaynak Ekle";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Değişiklikler bu paket için mevcut değil.";
 
 "Installed_Package_Header" = "Kurulu Paket";
+"Installed_Packages" = "Yüklenen Paketler";
 "Version" = "Sürüm";
 "Show_Package_Contents_Button" = "Paket İçeriğini Göster";
 

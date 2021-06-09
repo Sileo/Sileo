@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignorerte oppdateringer";
 
 "Repos" = "Kilder";
+"Repo" = "Kilde";
 
 "Add_Source.Title" = "Legg til kilde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Endringsloggen er ikke tilgjengelig for denne pakken.";
 
 "Installed_Package_Header" = "Installert pakke";
+"Installed_Packages" = "Installerte pakker";
 "Version" = "Versjon";
 "Show_Package_Contents_Button" = "Vis pakkeinnhold";
 
@@ -145,9 +147,9 @@
 "Developer_Mode_Explain" = "Utviklermodus deaktiverer HTTPS-kravet til betalings-APIet.";
 "Auto_Refresh_Sources" = "Automatisk oppdatering av kilder";
 "iCloud_Profile" = "Vis iCloud profilbilde på utvalgte";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Cache_Size" = "Hurtigbuffer størrelse";
+"Clear_Cache" = "Tøm nettverksbufferen";
+"Clear_Cache_Message" = "Vil du tømme nettverksbufferen? Dette vil frigjøre %@";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";

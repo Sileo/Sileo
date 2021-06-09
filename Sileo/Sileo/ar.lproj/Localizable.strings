@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "إزالة";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -98,6 +98,7 @@
 "Ignored Updates" = "التحديثات المُتجاهلة";
 
 "Repos" = "المستودعات";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
 
 "Installed_Package_Header" = "حزمة مثبتة";
+"Installed_Packages" = "Installed Packages";
 "Version" = "الإصدار";
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 

@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "แหล่งจัดเก็บข้อมูล";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "เพิ่มแหล่ง";
 "Add_Source.Body" = "ป้อน APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "รายการเปลี่ยนแปลงไม่พร้อมสำหรับแพ็คเกจนี้";
 
 "Installed_Package_Header" = "แพ็คเกจที่ติดตั้งแล้ว";
+"Installed_Packages" = "Installed Packages";
 "Version" = "เวอร์ชั่น";
 "Show_Package_Contents_Button" = "เนื้อหาระบบไฟล์";
 

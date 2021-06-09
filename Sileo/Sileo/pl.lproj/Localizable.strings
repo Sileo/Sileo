@@ -98,6 +98,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositories";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Add Source";
 "Add_Source.Body" = "Add APT URL";
@@ -117,6 +118,7 @@
 "Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
 "Installed_Package_Header" = "Installed Package";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Show Package Contents";
 
