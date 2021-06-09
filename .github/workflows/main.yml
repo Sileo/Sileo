@@ -23,12 +23,13 @@ jobs:
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
           wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
-          sudo gtar --preserve-permissions -xkf ./bootstrap.tar.zst -C /
+          sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           sudo apt update
           sudo apt -V dist-upgrade -y || :
       - name: Install Procursus and ldid
         run: |
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           sudo apt-get update
           sudo apt -V dist-upgrade -y
           sudo apt install ldid
