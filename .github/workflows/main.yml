@@ -6,7 +6,7 @@ name: Build
 jobs:
   make:
     name: Build and Upload Sileo
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - uses: actions/cache@v2
         id: procache
@@ -38,15 +38,6 @@ jobs:
         run: |
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
-      - name: Build Sileo Nightly
-        run: |
-         make clean package NIGHTLY=1 DEBUG=0
-      - name: Upload To Repo
-        env: # 
-          token: ${{ secrets.AMY_REPO_SECRET }}
-        run: |
-          package=$(ls -t packages | head -1)
-          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
   lint:
     name: Lint Sileo
     runs-on: ubuntu-latest
