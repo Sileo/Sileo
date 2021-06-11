@@ -41,9 +41,13 @@ class DepictionButton: UIButton {
             if openExternal {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
-                let safariViewController = SFSafariViewController(url: url)
-                safariViewController.preferredControlTintColor = UINavigationBar.appearance().tintColor
-                parentViewController?.present(safariViewController, animated: true, completion: nil)
+                UIApplication.shared.open(url, options: [.universalLinksOnly: true]) { success in
+                    if !success {
+                        let safariViewController = SFSafariViewController(url: url)
+                        safariViewController.preferredControlTintColor = UINavigationBar.appearance().tintColor
+                        parentViewController?.present(safariViewController, animated: true, completion: nil)
+                    }
+                }
             }
         } else if action.hasPrefix("mailto"),
             let url = URL(string: action) {

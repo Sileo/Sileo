@@ -26,15 +26,8 @@ open class DepictionBaseView: UIView, DepictionViewProtocol {
     public var isHighlighted: Bool = false
 
     class func view(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor?, isActionable: Bool) -> DepictionBaseView? {
-        guard var className = dictionary["class"] as? String else {
+        guard let className = dictionary["class"] as? String else {
             return nil
-        }
-        
-        if className == "DepictionMarkdownView" {
-            if let rawFormat = dictionary["useRawFormat"] as? Bool,
-                rawFormat == true {
-                className = "DepictionMarkdownViewSlow"
-            }
         }
         
         guard let rawclass = Bundle.main.classNamed("Sileo.\(className)") as? DepictionBaseView.Type else {
