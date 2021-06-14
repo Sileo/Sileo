@@ -15,7 +15,7 @@ class ThemePickerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
     public var title = UILabel()
     public var subtitle = UILabel()
     public var separator = UIView()
-    public var callback: ThemeSelected?
+    public weak var callback: ThemeSelected?
 
     private let standardHeight: CGFloat = 44.0 // The standard height of a UITableView
     
@@ -76,6 +76,6 @@ class ThemePickerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
     }
 }
 
-protocol ThemeSelected {
+protocol ThemeSelected: AmyObject {
     func themeSelected(_ index: Int)
 }

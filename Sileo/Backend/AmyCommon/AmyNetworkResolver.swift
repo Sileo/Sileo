@@ -480,5 +480,6 @@ extension URL {
     }
 }
 
+typealias AmyObject = AnyObject
 // swiftlint:disable type_name
 public class Amy: Any {}
