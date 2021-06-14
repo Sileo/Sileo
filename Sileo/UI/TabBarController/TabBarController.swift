@@ -265,4 +265,23 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             self.updatePopup()
         }
     }
+    
+    public func displayError(_ error: Error) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.displayError(error)
+            }
+            return
+        }
+        let alertController = UIAlertController(title: String(localizationKey: "Unknown", type: .error), message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: String(localizationKey: "Refresh"), style: .default) { _ in
+            if let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,
+               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+               let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: false, useErrorScreen: false, completion: nil)
+            }
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

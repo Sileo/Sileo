@@ -20,6 +20,15 @@ class DependencyResolverAccelerator {
     public func preflightInstalled() {
         dependencyLock.wait()
         
+        // Only call these once, waste of resources to constantly call
+        // If the user deletes sileolists while the app is open, they're dumb
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        #else
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
+        #endif
+        
         preflightedRepos = false
         
         partialRepoList = [:]
@@ -46,7 +55,7 @@ class DependencyResolverAccelerator {
         #endif
     }
     
-    public func getDependencies(install: [DownloadPackage], remove: [DownloadPackage]) {
+    public func getDependencies(install: [DownloadPackage], remove: [DownloadPackage]) throws {
         if !preflightedRepos {
             preflightInstalled()
         }
@@ -54,24 +63,13 @@ class DependencyResolverAccelerator {
         dependencyLock.wait()
         partialRepoList = preflightedRepoList
         
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists, "&&", CommandPath.chown,
-                           "-R", "mobile:mobile", CommandPath.sileolists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
-        #endif
-        
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
             return
         }
         for filePath in filePaths {
             try? FileManager.default.removeItem(at: filePath)
         }
-        /*
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(command: "cp /var/lib/apt/lists/*Release /var/lib/apt/sileolists/")
-        #endif
-        */*/
+
         for package in install {
             getDependenciesInternal2(package: package.package)
         }
@@ -94,7 +92,12 @@ class DependencyResolverAccelerator {
                 }
                 sourcesData.append(packageData)
             }
-            try? sourcesData.write(to: newSourcesFile.aptUrl)
+            do {
+                try sourcesData.write(to: newSourcesFile.aptUrl)
+            } catch {
+                throw error
+            }
+            
         }
         
         partialRepoList.removeAll()

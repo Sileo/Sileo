@@ -42,6 +42,10 @@ final class Repo: Equatable {
         }
     }
     
+    var packagesExist: Bool {
+        FileManager.default.fileExists(atPath: RepoManager.shared.cacheFile(named: "Packages", for: self).aptPath)
+    }
+    
     var repoDescription: String = ""
     var rawEntry: String = ""
     var rawURL: String = ""

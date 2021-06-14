@@ -2,7 +2,7 @@
 //  AmyLogManager.swift
 //  Sileo
 //
-//  Created by Andromeda on 03/06/2021.
+//  Created by Amy on 03/06/2021.
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
 

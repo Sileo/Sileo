@@ -2,7 +2,7 @@
 //  LZMA.swift
 //  Sileo
 //
-//  Created by Andromeda on 01/06/2021.
+//  Created by Amy on 01/06/2021.
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
 

@@ -246,22 +246,14 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             return
         }
         isUpdatingPurchaseStatus = true
-        
-        var isPurchased = false
-        
-        if let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String] {
-            if existingPurchased.contains(package.package) {
-                isPurchased = true
-            }
-        }
-        
+            
         guard let repo = package.sourceRepo else {
             return
         }
         
         PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
             if error != nil {
-                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
+                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: false, available: true)
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false
                     self.packageButton.paymentInfo = info
@@ -270,7 +262,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             provider?.getPackageInfo(forIdentifier: self.package) { error, info in
                 var info = info
                 if error != nil {
-                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
+                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: false, available: true)
                 }
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false

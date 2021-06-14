@@ -83,7 +83,7 @@ class APTWrapper {
     }
     
     // APT syntax: a- = remove a; b = install b
-    public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) -> [String: [[String: Any]]] {
+    public class func packageOperations(installs: [DownloadPackage], removals: [DownloadPackage]) throws -> [String: [[String: Any]]] {
         var arguments = ["-sqf", "--allow-remove-essential", "--allow-change-held-packages",
                          "--allow-downgrades", "-oquiet::NoUpdate=true",
                          "-oApt::Get::HideAutoRemove=true", "-oquiet::NoProgress=true",
@@ -125,6 +125,9 @@ class APTWrapper {
             aptOutput = ""
         } else {
             (_, aptOutput, aptErrorOutput) = spawn(command: CommandPath.aptget, args: ["apt-get"] + arguments)
+            if !aptErrorOutput.isEmpty {
+                throw aptErrorOutput
+            }
         }
         #endif
         

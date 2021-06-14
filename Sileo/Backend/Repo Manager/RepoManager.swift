@@ -101,8 +101,7 @@ final class RepoManager {
             writeListToFile()
         }
         #else
-        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.lists, "&&", CommandPath.chown,
-                           "-R", "root:wheel", CommandPath.lists, "&&", CommandPath.chmod, "-R", "0755", CommandPath.lists])
+        fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
         for item in directory.implicitContents {
             if item.pathExtension == "list" {
@@ -434,6 +433,14 @@ final class RepoManager {
         }
     }
     
+    private func fixLists() {
+        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.lists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", "root:wheel", CommandPath.lists])
+        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.lists])
+        #endif
+    }
+    
     func checkUpdatesInBackground() {
         _checkUpdatesInBackground(repoList)
     }
@@ -531,6 +538,12 @@ final class RepoManager {
         repos: [Repo],
         completion: @escaping (Bool, NSAttributedString) -> Void
     ) {
+        var directory: ObjCBool = false
+        let exists = FileManager.default.fileExists(atPath: CommandPath.lists, isDirectory: &directory)
+        NSLog("[Sileo] exists = \(exists), directory = \(directory)")
+        if !exists ||  !directory.boolValue {
+            fixLists()
+        }
         var reposUpdated = 0
         let dpkgArchitectures = DpkgWrapper.getArchitectures()
         let updateGroup = DispatchGroup()
@@ -787,6 +800,7 @@ final class RepoManager {
                         if repo.packageDict.isEmpty { return }
                         guard !breakOff,
                               !repo.packageDict.isEmpty,
+                              repo.packagesExist,
                               optPackagesFile == nil,
                               let releaseFile = optReleaseFile else { return }
                         let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
@@ -1056,7 +1070,9 @@ final class RepoManager {
             DatabaseManager.shared.saveQueue()
             
             DispatchQueue.main.async {
+                DownloadManager.shared.repoRefresh()
                 if reposUpdated > 0 {
+                    DependencyResolverAccelerator.shared.preflightInstalled()
                     DownloadManager.shared.repoRefresh()
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                 }
@@ -1087,6 +1103,7 @@ final class RepoManager {
     private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL, hashtype: RepoHashType) -> (Bool, String?) {
         guard let data = data,
               !repo.packageDict.isEmpty,
+              repo.packagesExist,
               let repo = URL(string: repo.repoURL) else { return (false, nil) }
         let hash = data.hash(ofType: hashtype.hashType)
         if !FileManager.default.fileExists(atPath: path.path) {

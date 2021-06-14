@@ -6,7 +6,7 @@
 //  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreSpotlight
 
 final class PackageListManager {
@@ -104,7 +104,6 @@ final class PackageListManager {
         for repo in RepoManager.shared.repoList {
             repo.reloadInstalled()
         }
-        DependencyResolverAccelerator.shared.preflightInstalled()
     }
 
     public func availableUpdates() -> [(Package, Package?)] {
@@ -397,7 +396,7 @@ final class PackageListManager {
         return tmp
     }
     
-    public func newestPackage(identifier: String, repoContext: Repo?) -> Package? {
+    public func newestPackage(identifier: String, repoContext: Repo?, packages: [Package]? = nil) -> Package? {
         if identifier.contains("/") {
             let url = URL(fileURLWithPath: identifier)
             guard let rawPackageControl = try? DpkgWrapper.rawFields(packageURL: url) else {
@@ -415,11 +414,10 @@ final class PackageListManager {
         } else if let repoContext = repoContext {
             return repoContext.packageDict[identifier.lowercased()]
         } else {
-            let allPackages = allPackagesArray
-            let lowerIdentifier = identifier.lowercased()
-            let available = allPackages.filter { $0.packageID == lowerIdentifier }
+            var packages = packages ?? allPackagesArray
+            packages = packages.filter { $0.packageID == identifier }
             var tmp: Package?
-            for package in available {
+            for package in packages {
                 if let old = tmp {
                     if DpkgWrapper.isVersion(package.version, greaterThan: old.version) {
                         tmp = package
@@ -476,13 +474,13 @@ final class PackageListManager {
         }
     }
     
-    public func package(identifier: String, version: String) -> Package? {
-        let allPackages = allPackagesArray
+    public func package(identifier: String, version: String, packages: [Package]? = nil) -> Package? {
+        let allPackages = packages ?? allPackagesArray
         return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
     }
     
-    public func package(identifiersAndVersions: [(String, String)], repoContext: Repo?) -> [Package]? {
-        let allPackages = allPackagesArray
+    public func package(identifiersAndVersions: [(String, String)], repoContext: Repo?, packages: [Package]? = nil) -> [Package]? {
+        let allPackages = packages ?? allPackagesArray
         
         let filtered = allPackages.filter({
             let pkg = $0
@@ -510,7 +508,9 @@ final class PackageListManager {
             
             downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        
-        downloadMan.reloadData(recheckPackages: true, completion: completion)
+        downloadMan.reloadData(recheckPackages: true) {
+            completion?()
+            TabBarController.singleton?.presentPopupController()
+        }
     }
 }

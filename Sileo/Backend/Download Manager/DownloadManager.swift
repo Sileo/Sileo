@@ -173,7 +173,7 @@ final class DownloadManager {
     public func cancelUnqueuedDownloads() {
         self.lockQueue()
         defer {
-            self.addBrokenPackages()
+            self.checkInstalled()
             self.unlockQueue()
         }
         
@@ -470,8 +470,7 @@ final class DownloadManager {
         return true
     }
     
-    private func recheckTotalOps() {
-        self.lockQueue()
+    private func recheckTotalOps() throws {
         
         defer {
             self.unlockQueue()
@@ -484,10 +483,19 @@ final class DownloadManager {
         
         let installationsAndUpgrades = self.installations + self.upgrades
         
-        DependencyResolverAccelerator.shared.getDependencies(install: installationsAndUpgrades, remove: uninstallations)
-       
+        do {
+            try DependencyResolverAccelerator.shared.getDependencies(install: installationsAndUpgrades, remove: uninstallations)
+        } catch {
+            throw error
+        }
+        
         #if !TARGET_SANDBOX && !targetEnvironment(simulator)
-        let depOperations = APTWrapper.packageOperations(installs: installationsAndUpgrades, removals: uninstallations)
+        let depOperations: [String: [[String: Any]]]
+        do {
+            depOperations = try APTWrapper.packageOperations(installs: installationsAndUpgrades, removals: uninstallations)
+        } catch {
+            throw error
+        }
         
         var installIdentifiers: [String] = []
         if let installOperations = depOperations["Inst"] as? [[String: String]] {
@@ -555,12 +563,7 @@ final class DownloadManager {
         #endif
     }
     
-    private func addBrokenPackages() {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
+    private func checkInstalled() {
         let installedPackages = PackageListManager.shared.installedPackages.values
         for package in installedPackages {
             guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package, repoContext: nil) else {
@@ -596,7 +599,7 @@ final class DownloadManager {
         confirmedRemovals.removeAll()
         errors.removeAll()
         
-        self.addBrokenPackages()
+        self.checkInstalled()
         self.addDownloadItemsIfNotPresent()
     }
     
@@ -607,7 +610,13 @@ final class DownloadManager {
     public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
         DispatchQueue.global(qos: .default).async {
             if !self.lockedForInstallation && recheckPackages {
-                self.recheckTotalOps()
+                do {
+                    try self.recheckTotalOps()
+                } catch {
+                    TabBarController.singleton?.displayError(error)
+                    self.unlockQueue()
+                    return
+                }
             }
             
             self.queueLock.wait()
@@ -615,17 +624,11 @@ final class DownloadManager {
             
             DispatchQueue.main.async {
                 self.queueLock.wait()
-                let emptyLock = self.queueLockCount == 0
-                if emptyLock {
-                    self.viewController.reloadData()
-                    TabBarController.singleton?.updatePopup(completion: completion)
-                    NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
-                }
+                self.viewController.reloadData()
+                TabBarController.singleton?.updatePopup(completion: completion)
+                NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
                 self.queueLock.signal()
-                
-                if !emptyLock, let completion = completion {
-                    completion()
-                }
+                completion?()
             }
         }
     }
@@ -660,12 +663,14 @@ final class DownloadManager {
     }
     
     public func add(package: Package, queue: DownloadManagerQueue) {
-        self.lockQueue()
         defer {
             self.unlockQueue()
         }
         
         let downloadPackage = DownloadPackage(package: package)
+        let found = find(package: package)
+        remove(downloadPackage: downloadPackage, queue: found)
+        self.lockQueue()
         let package = downloadPackage.package.package
         switch queue {
         case .none:
@@ -731,7 +736,7 @@ final class DownloadManager {
         queueLockCount -= 1
         queueLock.signal()
     }
-    
+
     public func register(downloadOverrideProvider: DownloadOverrideProviding, repo: Repo) {
         if repoDownloadOverrideProviders[repo.repoURL] == nil {
             repoDownloadOverrideProviders[repo.repoURL] = Set()
@@ -750,14 +755,12 @@ final class DownloadManager {
     }
     
     private func overrideDownloadURL(package: Package, repo: Repo?, completionHandler: @escaping (String?, URL?) -> Void) {
-        guard let repo = repo else {
+        guard let repo = repo,
+              let providers = repoDownloadOverrideProviders[repo.repoURL],
+              !providers.isEmpty else {
             return completionHandler(nil, nil)
         }
-        guard let providers = repoDownloadOverrideProviders[repo.repoURL],
-            !providers.isEmpty else {
-            return completionHandler(nil, nil)
-        }
-        
+
         // The number of providers checked so far
         var checked = 0
         let total = providers.count
@@ -783,44 +786,61 @@ final class DownloadManager {
     }
     
     public func repoRefresh() {
-        if operationCount() == 0 { return }
-        let savedUpgrades: [(String, String)] = upgrades.map({
-            let pkg = $0.package
-            return (pkg.packageID, pkg.version)
-        })
-        let savedInstalls: [(String, String)] = installations.map({
-            let pkg = $0.package
-            return (pkg.packageID, pkg.version)
-        })
-        
-        upgrades.removeAll()
-        installations.removeAll()
-        installdeps.removeAll()
-        uninstalldeps.removeAll()
         let plm = PackageListManager.shared
-        
-        for tuple in savedUpgrades {
-            let id = tuple.0
-            let version = tuple.1
+        let allPackages = plm.allPackagesArray
+        var reloadNeeded = false
+        if operationCount() != 0 {
+            reloadNeeded = true
+            let savedUpgrades: [(String, String)] = upgrades.map({
+                let pkg = $0.package
+                return (pkg.packageID, pkg.version)
+            })
+            let savedInstalls: [(String, String)] = installations.map({
+                let pkg = $0.package
+                return (pkg.packageID, pkg.version)
+            })
             
-            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
-                if find(package: pkg) == .none {
-                    add(package: pkg, queue: .upgrades)
+            upgrades.removeAll()
+            installations.removeAll()
+            installdeps.removeAll()
+            uninstalldeps.removeAll()
+            
+            for tuple in savedUpgrades {
+                let id = tuple.0
+                let version = tuple.1
+                
+                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                    if find(package: pkg) == .none {
+                        add(package: pkg, queue: .upgrades)
+                    }
+                }
+            }
+            
+            for tuple in savedInstalls {
+                let id = tuple.0
+                let version = tuple.1
+                
+                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                    if find(package: pkg) == .none {
+                        add(package: pkg, queue: .installations)
+                    }
                 }
             }
         }
         
-        for tuple in savedInstalls {
-            let id = tuple.0
-            let version = tuple.1
-            
-            if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
-                if find(package: pkg) == .none {
-                    add(package: pkg, queue: .installations)
-                }
+        // Check for essential
+        let installedPackages = plm.installedPackages
+        if let procursus = RepoManager.shared.repoList.first(where: { $0.url?.host == "apt.procurs.us" }) {
+            for package in procursus.packageArray where package.essential?.lowercased() == "yes" &&
+                                                        installedPackages[package.packageID] == nil &&
+                                                        find(package: package) == .none {
+                reloadNeeded = true
+                add(package: package, queue: .installdeps)
             }
         }
-        
-        reloadData(recheckPackages: true)
+        // Don't bother to reloadData if there's nothing to reload, it's a waste of resources
+        if reloadNeeded {
+            reloadData(recheckPackages: true)
+        }
     }
 }

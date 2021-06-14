@@ -669,12 +669,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         PaymentManager.shared.getPaymentProvider(for: sourceRepo) { error, provider in
             if error != nil {
-                self.checkLegacyPurchaseStatus(package)
+                return
             }
             provider?.getPackageInfo(forIdentifier: package.package) { error, info in
                 guard let info = info,
                     error == nil else {
-                    self.checkLegacyPurchaseStatus(package)
                     return
                 }
                 DispatchQueue.main.async {
@@ -685,45 +684,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             }
         }
     }
-
-    func checkLegacyPurchaseStatus(_ package: Package) {
-        let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String]
-        let isPurchased = existingPurchased?.contains(package.package) ?? false
-
-        if isPurchased {
-            let info = PaymentPackageInfo(dictionary: ["price": String(localizationKey: "Package_Paid"),
-                                                       "purchased": true,
-                                                       "available": true])
-            DispatchQueue.main.async {
-                self.isUpdatingPurchaseStatus = false
-                if let info = info {
-                    self.downloadButton.paymentInfo = info
-                    self.navBarDownloadButton?.paymentInfo = info
-                }
-            }
-        } else {
-            var price = String(localizationKey: "Package_Paid")
-            if let cydiaAPIURL = URL(string: "https://cydia.saurik.com/api/ibbignerd?query=\(package.package)"),
-                let jsonData = try? Data(contentsOf: cydiaAPIURL),
-                let rawObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),
-                let dictionary = rawObject as? [String: Any] {
-                if let msrp = dictionary["msrp"] as? NSNumber {
-                    price = String(format: "$%.2f", msrp.floatValue)
-                }
-            }
-            let info = PaymentPackageInfo(dictionary: ["price": price,
-                                                       "purchased": false,
-                                                       "available": false])
-            DispatchQueue.main.async {
-                self.isUpdatingPurchaseStatus = false
-                if let info = info {
-                    self.downloadButton.paymentInfo = info
-                    self.navBarDownloadButton?.paymentInfo = info
-                }
-            }
-        }
-    }
-
+    
     override var previewActionItems: [UIPreviewActionItem] {
         downloadButton.actionItems().map({ $0.previewAction() })
     }

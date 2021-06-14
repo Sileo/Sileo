@@ -88,7 +88,7 @@ extension SettingsViewController { // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // Payment Providers section
-            return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1) + 1
+            return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1)
         case 1: // Themes
             return 4
         case 2:
@@ -126,10 +126,7 @@ extension SettingsViewController { // UITableViewDataSource
                 let cellClass = SettingsLoadingTableViewCell.self
                 return self.reusableCell(withStyle: style, reuseIdentifier: id, cellClass: cellClass)
             }
-            let cell: UITableViewCell? = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "CydiaCellIdentifier")
-            cell?.textLabel?.text = String(localizationKey: "Cydia_Sign_In")
-            cell?.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            return cell ?? UITableViewCell()
+            return UITableViewCell()
         case 1: // Translation Credit Section OR Settings section
             switch indexPath.row {
             case 0:
@@ -243,14 +240,6 @@ extension SettingsViewController { // UITableViewDataSource
                         self.present(PaymentError.alert(for: error, title: title), animated: true)
                     }
                 }
-            } else if hasLoadedOnce || (indexPath.row - authenticatedProviders.count - unauthenticatedProviders.count) > 0 {
-                #if !targetEnvironment(macCatalyst)
-                tableView.deselectRow(at: indexPath, animated: true)
-                let nibName = "CydiaAccountViewController"
-                let cydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
-                let navController: UINavigationController = UINavigationController(rootViewController: cydiaAccountViewController)
-                self.present(navController, animated: true)
-                #endif
             }
         case 1:
             if indexPath.row == 1 { // Tint color selector

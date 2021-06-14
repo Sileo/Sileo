@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import KeychainAccess
 import LocalAuthentication
 
 enum PaymentStatus: Int {
@@ -74,7 +73,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     }
     
     var authenticationToken: String? {
-        PaymentProvider.tokenKeychain[baseURL.absoluteString]
+        KeychainManager.shared.token(key: baseURL.absoluteString)
     }
     
     var authenticationURL: URL {
@@ -157,8 +156,8 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     }
     
     func authenticate(withToken token: String, paymentSecret: String) {
-        PaymentProvider.tokenKeychain[baseURL.absoluteString] = token
-        PaymentProvider.paymentSecretKeychain[baseURL.absoluteString] = paymentSecret
+        KeychainManager.shared.saveSecret(key: baseURL.absoluteString, data: paymentSecret)
+        KeychainManager.shared.saveToken(key: baseURL.absoluteString, data: token)
         PaymentProvider.triggerListUpdateNotification()
     }
     
@@ -172,8 +171,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     func invalidateSavedToken() {
         storedUserInfo = nil
         saveCache()
-        PaymentProvider.tokenKeychain[baseURL.absoluteString] = nil
-        PaymentProvider.paymentSecretKeychain[baseURL.absoluteString] = nil
+        KeychainManager.shared.clearKeys(baseURL.absoluteString)
         PaymentProvider.triggerListUpdateNotification()
     }
     
@@ -276,7 +274,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
                 // This is my really *clever* way to check if user pressed cancel or not
                 let context = LAContext()
                 if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: nil) {
-                    if let secret = PaymentProvider.paymentSecretKeychain[baseURL.absoluteString] {
+                    if let secret = KeychainManager.shared.secret(key: baseURL.absoluteString) {
                         body["payment_secret"] = secret as AnyObject
                     } else {
                         return completion(nil, nil, true)
@@ -333,20 +331,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
             }
         }).resume()
     }
-    
-    // MARK: - Keychain Convenience
-    
-    static var tokenKeychain: Keychain {
-        Keychain(service: "SileoPaymentToken", accessGroup: "org.coolstar.Sileo")
-            .synchronizable(false)
-    }
-    
-    static var paymentSecretKeychain: Keychain {
-        Keychain(service: "SileoPaymentSecret", accessGroup: "org.coolstar.Sileo")
-            .synchronizable(false)
-            .accessibility(.whenUnlockedThisDeviceOnly, authenticationPolicy: .userPresence)
-            .authenticationPrompt("Authenticate to complete your purchase")
-    }
+
 }
 
 func == (lhs: PaymentProvider, rhs: PaymentProvider) -> Bool {

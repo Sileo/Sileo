@@ -2,7 +2,7 @@
 //  GZIP.swift
 //  Sileo
 //
-//  Created by Andromeda on 02/06/2021.
+//  Created by Amy on 02/06/2021.
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
 

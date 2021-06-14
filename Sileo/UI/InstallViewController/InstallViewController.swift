@@ -23,6 +23,7 @@ class InstallViewController: SileoViewController {
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
     @IBOutlet var progressView: UIProgressView?
     @IBOutlet var teleprompterView: UIView?
+    private var isFired = false
     
     var teleprompterLabels: [SileoLabelView] = []
     
@@ -215,6 +216,10 @@ class InstallViewController: SileoViewController {
         }
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return isFired
+    }
+    
     func updateCompleteButton() {
         switch returnButtonAction {
         case .back:
@@ -243,35 +248,45 @@ class InstallViewController: SileoViewController {
     }
     
     @IBAction func completeButtonTapped(_ sender: Any?) {
-        self.completeButton?.isEnabled = false
-        self.completeLaterButton?.isEnabled = false
-        switch self.returnButtonAction {
-        case .back, .uicache:
-            if self.refreshSileo { spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0) }
-            self.navigationController?.popViewController(animated: true)
-            DownloadManager.shared.lockedForInstallation = false
-            DownloadManager.shared.removeAllItems()
-            DownloadManager.shared.reloadData(recheckPackages: true)
-            TabBarController.singleton?.dismissPopupController()
-        case .reopen:
-            exit(0)
-        case .restart, .reload:
-            if refreshSileo {
-                spawnAsRoot(args: [CommandPath.uicache, "-rp", "\(Bundle.main.bundlePath)"])
-            } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
-            let args: [String]
-            if refreshSileo { args = ["/usr/bin/sbreload", "&&", CommandPath.uicache, "-p", "\(Bundle.main.bundlePath)"] } else {
-                args = ["/usr/bin/sbreload"] }
-            spawnAsRoot(args: args)
-        case .reboot:
-            spawnAsRoot(args: ["/usr/bin/sync"])
-            spawnAsRoot(args: ["/usr/bin/ldrestart"])
+        if (returnButtonAction == .back || returnButtonAction == .uicache) && !refreshSileo {
+            completeLaterButtonTapped(sender)
         }
+        
+        guard let window = UIApplication.shared.windows.first else { return completeLaterButtonTapped(sender) }
+        isFired = true
+        setNeedsStatusBarAppearanceUpdate()
+        let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+            window.alpha = 0
+            window.transform = .init(scaleX: 0.9, y: 0.9)
+        }
+        let refreshSileo = refreshSileo
+        // When the animation has finished, fire the dumb respring code
+        animator.addCompletion { _ in
+            switch self.returnButtonAction {
+            case .back, .uicache:
+                spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"]); exit(0)
+            case .reopen:
+                exit(0)
+            case .restart, .reload:
+                if refreshSileo {
+                    spawnAsRoot(args: [CommandPath.uicache, "-rp", "\(Bundle.main.bundlePath)"])
+                } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
+                let args: [String]
+                if refreshSileo {
+                    args = [CommandPath.uicache, "-rp", Bundle.main.bundlePath]
+                } else {
+                    args = ["/usr/bin/sbreload"] }
+                spawnAsRoot(args: args)
+            case .reboot:
+                spawnAsRoot(args: ["/usr/bin/sync"])
+                spawnAsRoot(args: ["/usr/bin/ldrestart"])
+            }
+        }
+        // Fire the animation
+        animator.startAnimation()
     }
     
-    @IBAction func completeLaterButtonTapped(_ sender: Any) {
-        self.completeButton?.isEnabled = false
-        self.completeLaterButton?.isEnabled = false
+    @IBAction func completeLaterButtonTapped(_ sender: Any?) {
         self.navigationController?.popViewController(animated: true)
         DownloadManager.shared.lockedForInstallation = false
         DownloadManager.shared.removeAllItems()
