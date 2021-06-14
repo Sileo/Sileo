@@ -256,7 +256,7 @@ class InstallViewController: SileoViewController {
         guard let window = UIApplication.shared.windows.first else { return completeLaterButtonTapped(sender) }
         isFired = true
         setNeedsStatusBarAppearanceUpdate()
-        let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+        let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1) {
             window.alpha = 0
             window.transform = .init(scaleX: 0.9, y: 0.9)
         }
