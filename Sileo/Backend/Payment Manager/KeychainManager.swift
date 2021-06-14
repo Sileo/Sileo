@@ -44,13 +44,13 @@ final class KeychainManager {
             kSecAttrAccount as String: key,
             kSecAttrAccessGroup: accessGroup,
             kSecAttrService as String: SileoService.token.rawValue,
-            kSecValueData as String: data,
-            kSecAttrSynchronizable as String: false
+            kSecValueData as String: data.data(using: .utf8) as Any,
+            kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         
         SecItemDelete(query as CFDictionary)
-        
-        return SecItemAdd(query as CFDictionary, nil)
+        let response = SecItemAdd(query as CFDictionary, nil)
+        return response
     }
     
     @discardableResult public func saveSecret(key: String, data: String) -> OSStatus {
@@ -59,14 +59,14 @@ final class KeychainManager {
             kSecAttrAccount as String: key,
             kSecAttrAccessGroup: accessGroup,
             kSecAttrService as String: SileoService.secret.rawValue,
-            kSecValueData as String: data,
+            kSecValueData as String: data.data(using: .utf8) as Any,
             kSecAttrAccessControl as String: accessControl,
-            kSecAttrSynchronizable as String: false
+            kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         
         SecItemDelete(query as CFDictionary)
-        
-        return SecItemAdd(query as CFDictionary, nil)
+        let response = SecItemAdd(query as CFDictionary, nil)
+        return response
     }
     
     public func token(key: String) -> String? {
