@@ -7,14 +7,14 @@
 //
 
 import Foundation
-import AUPickerCell
 import Alderis
 
-class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
+class SettingsViewController: BaseSettingsViewController, ThemeSelected {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
     private var hasLoadedOnce: Bool = false
     private var observer: Any?
+    public var themeExpanded = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -130,14 +130,16 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Translation Credit Section OR Settings section
             switch indexPath.row {
             case 0:
-                let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                cell.delegate = self
+                let cell = ThemePickerCell(style: .default, reuseIdentifier: "SettingsCellIdentifier")
                 cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                cell.leftLabel.text = String(localizationKey: "Theme")
+                cell.pickerView.selectRow(cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0, inComponent: 0, animated: false)
+                cell.callback = self
+                cell.title.text = String(localizationKey: "Theme")
+                cell.subtitle.text = cell.values[cell.pickerView.selectedRow(inComponent: 0)]
                 cell.backgroundColor = .clear
-                cell.leftLabel.textColor = .tintColor
-                cell.rightLabel.textColor = .tintColor
+                cell.title.textColor = .tintColor
+                cell.subtitle.textColor = .tintColor
+                cell.pickerView.textColor = .sileoLabel
                 return cell
             case 1:
                 let cell = SettingsColorTableViewCell()
@@ -220,10 +222,12 @@ extension SettingsViewController { // UITableViewDataSource
     }
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
-            cell.selectedInTableView(tableView)
+        if indexPath.row == 0 && indexPath.section == 1 {
+            themeExpanded = !themeExpanded
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
-        
+
         switch indexPath.section {
         case 0: // Payment Providers section
             if indexPath.row < authenticatedProviders.count {
@@ -318,8 +322,8 @@ extension SettingsViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
-            return cell.height
+        if indexPath.row == 0 && indexPath.section == 1 {
+            return !themeExpanded ? 44 : 160
         }
         
         let auth = authenticatedProviders.count
@@ -330,9 +334,10 @@ extension SettingsViewController { // UITableViewDataSource
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    func auPickerCell(_ cell: AUPickerCell, didPick row: Int, value: Any) {
-        SileoThemeManager.shared.activate(theme: SileoThemeManager.shared.themeList[row])
+    func themeSelected(_ index: Int) {
+        SileoThemeManager.shared.activate(theme: SileoThemeManager.shared.themeList[index])
     }
+
 }
 
 extension SettingsViewController: ColorPickerDelegate {

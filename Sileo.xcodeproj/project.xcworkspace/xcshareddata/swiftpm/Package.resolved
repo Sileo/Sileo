@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "AUPickerCell",
-        "repositoryURL": "https://github.com/elihwyma/AUPickerCell",
-        "state": {
-          "branch": "master",
-          "revision": "a3135f3144bcd068fc0485957d4ad56fd41cb9c8",
-          "version": null
-        }
-      },
-      {
         "package": "Cosmos",
         "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
         "state": {

@@ -250,6 +250,7 @@ class InstallViewController: SileoViewController {
     @IBAction func completeButtonTapped(_ sender: Any?) {
         if (returnButtonAction == .back || returnButtonAction == .uicache) && !refreshSileo {
             completeLaterButtonTapped(sender)
+            return
         }
         
         guard let window = UIApplication.shared.windows.first else { return completeLaterButtonTapped(sender) }

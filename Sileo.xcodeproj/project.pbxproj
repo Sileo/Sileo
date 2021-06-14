@@ -113,6 +113,8 @@
 		E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */; };
 		E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
 		E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
+		E13F31C72677E71E00AB8932 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F31C62677E71D00AB8932 /* ThemePickerView.swift */; };
+		E13F31C82677E71E00AB8932 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F31C62677E71D00AB8932 /* ThemePickerView.swift */; };
 		E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
 		E14C5E66266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
 		E14C5EBD266687C80080BFCE /* XZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EBC266687C80080BFCE /* XZ.swift */; };
@@ -137,7 +139,6 @@
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
-		E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5357261743C200BB8A69 /* AUPickerCell */; };
 		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
 		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
@@ -177,7 +178,6 @@
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
-		E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1D05261500A100E56882 /* AUPickerCell */; };
 		E1F10B1E2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
 		E1F10B1F2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
@@ -793,6 +793,7 @@
 		E13BD7782645E1AA006A5EF2 /* Nightly~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@3x.png"; sourceTree = "<group>"; };
 		E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
 		E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTeamViewController.swift; sourceTree = "<group>"; };
+		E13F31C62677E71D00AB8932 /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
 		E14C5E64266547D10080BFCE /* ZSTD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZSTD.swift; sourceTree = "<group>"; };
 		E14C5EBC266687C80080BFCE /* XZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZ.swift; sourceTree = "<group>"; };
 		E14C5EC3266803CB0080BFCE /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libbz2.tbd; sourceTree = DEVELOPER_DIR; };
@@ -1072,7 +1073,6 @@
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
 				49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
-				E19A5358261743C200BB8A69 /* AUPickerCell in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
@@ -1102,7 +1102,6 @@
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
-				E1EA1D06261500A100E56882 /* AUPickerCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1482,7 @@
 				FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */,
 				FB40262823DE87F8002D97FE /* SettingsIconHeaderView.swift */,
 				E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */,
+				E13F31C62677E71D00AB8932 /* ThemePickerView.swift */,
 				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
 			);
 			path = Root;
@@ -2513,7 +2513,6 @@
 				E19A5351261743B300BB8A69 /* SwipeCellKit */,
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
-				E19A5357261743C200BB8A69 /* AUPickerCell */,
 				E1A8B6352656DF15009C43EA /* Alderis */,
 			);
 			productName = iTweak;
@@ -2545,7 +2544,6 @@
 				E13638F12614F6C000698D55 /* SQLite */,
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
-				E1EA1D05261500A100E56882 /* AUPickerCell */,
 				E1A8B6302656DF04009C43EA /* Alderis */,
 			);
 			productName = iTweak;
@@ -2673,7 +2671,6 @@
 				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
-				E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */,
 				E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
@@ -3008,6 +3005,7 @@
 				F1C85B452325707A0064D3A2 /* SileoTableViewCell.swift in Sources */,
 				F139D09822EA9209007F5C0D /* DepictionSpacerView.swift in Sources */,
 				F139D0BC22EA9209007F5C0D /* DepictionStackView.swift in Sources */,
+				E13F31C82677E71E00AB8932 /* ThemePickerView.swift in Sources */,
 				E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
 				E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				F139D11222EA9209007F5C0D /* DepictionSubheaderView.swift in Sources */,
@@ -3190,6 +3188,7 @@
 				F1C5D99522D13F480021BD89 /* DepictionTabControl.swift in Sources */,
 				F1C5D99822D141FF0021BD89 /* DepictionTabView.swift in Sources */,
 				F1C5D9BA22D16B7F0021BD89 /* DepictionTableButtonView.swift in Sources */,
+				E13F31C72677E71E00AB8932 /* ThemePickerView.swift in Sources */,
 				F1C5D9B722D1696C0021BD89 /* DepictionTableTextView.swift in Sources */,
 				E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				FB6F3D2A24A9273300E941F8 /* PaymentProvider.swift in Sources */,
@@ -4125,14 +4124,6 @@
 				kind = branch;
 			};
 		};
-		E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elihwyma/AUPickerCell";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -4191,11 +4182,6 @@
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
 			productName = LNZTreeView;
 		};
-		E19A5357261743C200BB8A69 /* AUPickerCell */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
-			productName = AUPickerCell;
-		};
 		E1A8B6302656DF04009C43EA /* Alderis */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */;
@@ -4210,11 +4196,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
 			productName = LNZTreeView;
-		};
-		E1EA1D05261500A100E56882 /* AUPickerCell */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1EA1D04261500A100E56882 /* XCRemoteSwiftPackageReference "AUPickerCell" */;
-			productName = AUPickerCell;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

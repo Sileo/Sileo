@@ -36,6 +36,10 @@
 + (UIImage *)kitImageNamed:(NSString *)imageName;
 @end
 
+@interface UIPickerView (Private)
+@property (setter=_setTextColor:,getter=_textColor,nonatomic,retain) UIColor* textColor;
+@end
+
 @interface UITableView (Private)
 -(BOOL)allowsFooterViewsToFloat;
 @end
