@@ -103,9 +103,9 @@ extension InstalledContentsViewController: LNZTreeViewDataSource {
 
         if node.isExpandable {
             if isExpanded {
-                cell.imageView?.image = UIImage(imageLiteralResourceName: "index_folder_indicator_open").withRenderingMode(.alwaysTemplate)
+                cell.imageView?.image = UIImage(named: "index_folder_indicator_open")?.withRenderingMode(.alwaysTemplate)
             } else {
-                cell.imageView?.image = UIImage(imageLiteralResourceName: "index_folder_indicator").withRenderingMode(.alwaysTemplate)
+                cell.imageView?.image = UIImage(named: "index_folder_indicator")?.withRenderingMode(.alwaysTemplate)
             }
         } else {
             cell.imageView?.image = nil

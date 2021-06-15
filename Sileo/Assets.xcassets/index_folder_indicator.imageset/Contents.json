@@ -1,8 +1,8 @@
 {
   "images" : [
     {
+      "filename" : "index_folder_indicator.png",
       "idiom" : "universal",
-      "filename" : "index_folder_indicator.pdf",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
