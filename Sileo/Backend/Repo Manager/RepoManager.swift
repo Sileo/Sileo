@@ -201,6 +201,7 @@ final class RepoManager {
         for repo in repos {
             DatabaseManager.shared.deleteRepo(repo: repo)
         }
+        NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }
     
     func remove(repo: Repo) {
@@ -1075,6 +1076,7 @@ final class RepoManager {
                     DependencyResolverAccelerator.shared.preflightInstalled()
                     DownloadManager.shared.repoRefresh()
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                    NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 }
                 backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
                 NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)

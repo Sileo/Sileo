@@ -267,23 +267,6 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         }
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // If switching away from the news tab
-        if tabBarController.selectedIndex == 1 && viewController != tabBarController.selectedViewController {
-            // Consider unread packages and articles as read after switching away from the news tab
-            DispatchQueue.global().async {
-                var stubs = PackageStub.stubs(limit: 0, offset: 0)
-                stubs = stubs.filter { $0.userReadDate == nil }
-                DatabaseManager.shared.saveStubs(stubs: stubs)
-                
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
-                }
-            }
-        }
-        return true
-    }
-    
     func applicationDidEnterBackground(_ application: UIApplication) {
         UIColor.isTransitionLockedForiOS13Bug = true
     }

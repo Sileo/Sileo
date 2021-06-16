@@ -15,7 +15,8 @@ class PackageStub {
     public var repoURL: String
     
     public var firstSeenDate = Date()
-    public var userReadDate: Date?
+    public var userReadDate: Int64?
+    public var firstSeen: Int64?
     
     static func createTable(database: Connection) {
         let guid = Expression<String>("guid")
@@ -35,43 +36,6 @@ class PackageStub {
                                                 tbd.column(repoURL)
                                                 tbd.unique(guid)
         }))
-    }
-    
-    static func stubs(limit: Int, offset: Int) -> [PackageStub] {
-        let database = DatabaseManager.shared.database
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
-        let packages = Table("Packages")
-        
-        var stubs: [PackageStub] = []
-        
-        do {
-            var query = packages.select(guid,
-                                        package,
-                                        version,
-                                        firstSeen,
-                                        userRead,
-                                        repoURL)
-                .order(firstSeen.desc, package, version)
-            if limit > 0 {
-                query = query.limit(limit, offset: offset)
-            }
-            for stub in try database.prepare(query) {
-                    let stubObj = PackageStub(packageName: stub[package], version: stub[version], source: stub[repoURL])
-                    stubObj.firstSeenDate = Date(timeIntervalSince1970: TimeInterval(stub[firstSeen]))
-                    if stub[userRead] != 0 {
-                        stubObj.userReadDate = Date(timeIntervalSince1970: TimeInterval(stub[userRead]))
-                    }
-                    stubs.append(stubObj)
-            }
-        } catch {
-            
-        }
-        return stubs
     }
     
     static func timestamps() -> [Int64] {
@@ -97,7 +61,7 @@ class PackageStub {
         self.repoURL = package.sourceFileURL?.lastPathComponent ?? "status"
     }
     
-    fileprivate init(packageName: String, version: String, source: String) {
+    public init(packageName: String, version: String, source: String) {
         self.package = packageName
         self.version = version
         self.repoURL = source

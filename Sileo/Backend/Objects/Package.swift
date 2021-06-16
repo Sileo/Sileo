@@ -44,7 +44,7 @@ final class Package: Hashable, Equatable {
     public var filename: String?
     public var size: String?
     public var packageFileURL: URL?
-    public var userReadDate: Date?
+    public var userRead = false
     
     var sourceRepo: Repo? {
         guard let sourceFileSafe = sourceFile else {

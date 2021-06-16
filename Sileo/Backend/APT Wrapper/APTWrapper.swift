@@ -126,7 +126,9 @@ class APTWrapper {
         } else {
             (_, aptOutput, aptErrorOutput) = spawn(command: CommandPath.aptget, args: ["apt-get"] + arguments)
             if !aptErrorOutput.isEmpty {
-                throw aptErrorOutput
+                if !aptErrorOutput.contains("held or broken") {
+                    throw aptErrorOutput
+                }
             }
         }
         #endif

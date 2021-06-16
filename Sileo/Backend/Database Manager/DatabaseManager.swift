@@ -23,6 +23,7 @@ class DatabaseManager {
     let database: Connection
     
     private var packages = [Package]()
+    private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-seen-update")
     
     init() {
         guard let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
@@ -78,7 +79,6 @@ class DatabaseManager {
         
         let stubToCopy = PackageStub(from: packages[0])
         let firstSeenLocal = Int64(stubToCopy.firstSeenDate.timeIntervalSince1970)
-        let userReadLocal = Int64(stubToCopy.userReadDate?.timeIntervalSince1970 ?? 0)
         
         try? database.transaction {
             for tmp in packages {
@@ -90,11 +90,12 @@ class DatabaseManager {
                     package <- stub.package,
                     version <- stub.version,
                     firstSeen <- firstSeenLocal,
-                    userRead <- userReadLocal,
+                    userRead <- stub.userReadDate ?? 0,
                     repoURL <- stub.repoURL
                 ))
             }
         }
+        packages.removeAll()
     }
     
     public func saveStubs(stubs: [PackageStub]) {
@@ -116,13 +117,63 @@ class DatabaseManager {
                     package <- stub.package,
                     version <- stub.version,
                     firstSeen <- Int64(stub.firstSeenDate.timeIntervalSince1970),
-                    userRead <- Int64(stub.userReadDate?.timeIntervalSince1970 ?? 0),
+                    userRead <- stub.userReadDate ?? 0,
                     repoURL <- stub.repoURL
                 ))
             }
         }
     }
     
+    public func stubsAtTimestamp(_ timestamp: Int64) -> [PackageStub] {
+        let database = self.database
+        let guid = Expression<String>("guid")
+        let package = Expression<String>("package")
+        let version = Expression<String>("version")
+        let firstSeen = Expression<Int64>("firstSeen")
+        let userRead = Expression<Int64>("userRead")
+        let repoURL = Expression<String>("repoURL")
+        let packages = Table("Packages")
+        
+        var stubs: [PackageStub] = []
+        
+        do {
+            let query = packages.select(guid,
+                                        package,
+                                        version,
+                                        firstSeen,
+                                        userRead,
+                                        repoURL)
+                .filter(firstSeen == timestamp)
+            for stub in try database.prepare(query) {
+                let stubObj = PackageStub(packageName: stub[package], version: stub[version], source: stub[repoURL])
+                stubObj.firstSeenDate = Date(timeIntervalSince1970: TimeInterval(stub[firstSeen]))
+                stubObj.firstSeen = stub[firstSeen]
+                stubObj.repoURL = stub[repoURL]
+                stubObj.userReadDate = stub[userRead]
+                stubs.append(stubObj)
+            }
+        } catch {
+            
+        }
+        return stubs
+    }
+    
+    public func markAsSeen(_ dataPackage: Package) {
+        updateQueue.async {
+            let database = self.database
+            let packages = Table("Packages")
+            let package = Expression<String>("package")
+            let userRead = Expression<Int64>("userRead")
+            
+            let stub = packages.filter(package == dataPackage.packageID)
+            do {
+                try database.run(stub.update(userRead <- 1))
+            } catch {
+                
+            }
+        }
+    }
+   
     public func deleteRepo(repo: Repo) {
         let file = RepoManager.shared.cacheFile(named: "Packages", for: repo).lastPathComponent
         let repoURL = Expression<String>("repoURL")
