@@ -9,8 +9,6 @@
 import Foundation
 
 extension UIColor {
-    static var isTransitionLockedForiOS13Bug: Bool = false // compensate for a bug in stock iOS
-    
     static var isDarkModeEnabled: Bool {
         if SileoThemeManager.shared.currentTheme.preferredUserInterfaceStyle == .dark {
             return true
@@ -60,5 +58,17 @@ extension UIColor {
     
     static var tintColor: UIColor {
         SileoThemeManager.shared.tintColor
+    }
+
+    var cssString: String {
+        var red = CGFloat(0)
+        var green = CGFloat(0)
+        var blue = CGFloat(0)
+        var alpha = CGFloat(0)
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        red *= 255
+        green *= 255
+        blue *= 255
+        return String(format: "rgba(%.0f, %.0f, %.0f, %.2f)", red, green, blue, alpha)
     }
 }

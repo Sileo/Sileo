@@ -219,7 +219,7 @@
 		F139D0BD22EA9209007F5C0D /* DepictionReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98B22D137820021BD89 /* DepictionReviewView.swift */; };
 		F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B022D15B680021BD89 /* DepictionAutoStackView.swift */; };
 		F139D0C022EA9209007F5C0D /* FeaturedSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9C822D1886E0021BD89 /* FeaturedSeparatorView.swift */; };
-		F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */; };
+		F139D0C322EA9209007F5C0D /* DepictionMarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A722D151A50021BD89 /* DepictionMarkdownView.swift */; };
 		F139D0C522EA9209007F5C0D /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62022E53E6F00CBD045 /* String+Hash.swift */; };
 		F139D0C922EA9209007F5C0D /* DepictionTableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B922D16B7F0021BD89 /* DepictionTableButtonView.swift */; };
 		F139D0CC22EA9209007F5C0D /* DpkgWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7051222D0359900F602DA /* DpkgWrapper.swift */; };
@@ -317,10 +317,6 @@
 		F149E0BD20B6040B005CA30B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F149E0BC20B6040B005CA30B /* Assets.xcassets */; };
 		F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F149E0BE20B6040B005CA30B /* LaunchScreen.storyboard */; };
 		F149E0D820B6040B005CA30B /* SileoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F149E0D720B6040B005CA30B /* SileoUITests.m */; };
-		F14F7D59240A766D00062310 /* CSTextRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D58240A766D00062310 /* CSTextRenderView.swift */; };
-		F14F7D5A240A766D00062310 /* CSTextRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D58240A766D00062310 /* CSTextRenderView.swift */; };
-		F14F7D5C240A7E7800062310 /* CSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D5B240A7E7800062310 /* CSTextView.swift */; };
-		F14F7D5D240A7E7800062310 /* CSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D5B240A7E7800062310 /* CSTextView.swift */; };
 		F16115CE244D827A003BF1E6 /* DepictionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16115CD244D827A003BF1E6 /* DepictionButton.swift */; };
 		F16115CF244D827A003BF1E6 /* DepictionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16115CD244D827A003BF1E6 /* DepictionButton.swift */; };
 		F16115D1244D87CD003BF1E6 /* FeaturedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16115D0244D87CD003BF1E6 /* FeaturedButton.swift */; };
@@ -367,12 +363,6 @@
 		F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
 		F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1974938213695660065E630 /* PackageListHeaderBlank.xib */; };
 		F19FB39D22BF50D3008E986B /* ControlFileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19FB39C22BF50D3008E986B /* ControlFileParser.swift */; };
-		F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */; };
-		F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */; };
-		F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */; };
-		F1A116B82384D49500B6F408 /* DepictionColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */; };
-		F1A116BA2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B92384D57D00B6F408 /* DepictionFontCollection.swift */; };
-		F1A116BB2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B92384D57D00B6F408 /* DepictionFontCollection.swift */; };
 		F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A23FAB23383E6A00C71D8E /* SourcesViewController.swift */; };
 		F1A23FAD23383E6A00C71D8E /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A23FAB23383E6A00C71D8E /* SourcesViewController.swift */; };
 		F1A4D8DC231C25FA00149DDF /* Dusk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107EB61230D195A002B8C20 /* Dusk.swift */; };
@@ -406,7 +396,7 @@
 		F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D99D22D1453A0021BD89 /* DepictionMinVersionForceView.swift */; };
 		F1C5D9A222D146A90021BD89 /* DepictionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A122D146A90021BD89 /* DepictionHeaderView.swift */; };
 		F1C5D9A522D148540021BD89 /* DepictionSubheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A422D148540021BD89 /* DepictionSubheaderView.swift */; };
-		F1C5D9A822D151A50021BD89 /* DepictionMarkdownViewSlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */; };
+		F1C5D9A822D151A50021BD89 /* DepictionMarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A722D151A50021BD89 /* DepictionMarkdownView.swift */; };
 		F1C5D9AB22D1583D0021BD89 /* DepictionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9AA22D1583D0021BD89 /* DepictionImageView.swift */; };
 		F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B022D15B680021BD89 /* DepictionAutoStackView.swift */; };
 		F1C5D9B422D160B50021BD89 /* DepictionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B322D160B50021BD89 /* DepictionLabelView.swift */; };
@@ -892,8 +882,6 @@
 		F149E0D320B6040B005CA30B /* SileoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SileoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F149E0D720B6040B005CA30B /* SileoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SileoUITests.m; sourceTree = "<group>"; };
 		F149E0D920B6040B005CA30B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F14F7D58240A766D00062310 /* CSTextRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextRenderView.swift; sourceTree = "<group>"; };
-		F14F7D5B240A7E7800062310 /* CSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextView.swift; sourceTree = "<group>"; };
 		F15B268622765E5900B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Sileo/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F15B268722765E5900B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = Sileo/es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		F15B268822765E5A00B57E06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Sileo/es.lproj/Categories.strings; sourceTree = "<group>"; };
@@ -949,9 +937,6 @@
 		F1974938213695660065E630 /* PackageListHeaderBlank.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeaderBlank.xib; sourceTree = "<group>"; };
 		F19FB39B22BF50D3008E986B /* Sileo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sileo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F19FB39C22BF50D3008E986B /* ControlFileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlFileParser.swift; sourceTree = "<group>"; };
-		F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionMarkdownViewFast.swift; sourceTree = "<group>"; };
-		F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionColorCollection.swift; sourceTree = "<group>"; };
-		F1A116B92384D57D00B6F408 /* DepictionFontCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFontCollection.swift; sourceTree = "<group>"; };
 		F1A23FAB23383E6A00C71D8E /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		F1A4D8DD231DA96700149DDF /* ControlFileParserFast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlFileParserFast.h; sourceTree = "<group>"; };
 		F1A4D8DE231DA96700149DDF /* ControlFileParserFast.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ControlFileParserFast.c; sourceTree = "<group>"; };
@@ -976,7 +961,7 @@
 		F1C5D99D22D1453A0021BD89 /* DepictionMinVersionForceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionMinVersionForceView.swift; sourceTree = "<group>"; };
 		F1C5D9A122D146A90021BD89 /* DepictionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionHeaderView.swift; sourceTree = "<group>"; };
 		F1C5D9A422D148540021BD89 /* DepictionSubheaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionSubheaderView.swift; sourceTree = "<group>"; };
-		F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionMarkdownViewSlow.swift; sourceTree = "<group>"; };
+		F1C5D9A722D151A50021BD89 /* DepictionMarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionMarkdownView.swift; sourceTree = "<group>"; };
 		F1C5D9AA22D1583D0021BD89 /* DepictionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionImageView.swift; sourceTree = "<group>"; };
 		F1C5D9B022D15B680021BD89 /* DepictionAutoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionAutoStackView.swift; sourceTree = "<group>"; };
 		F1C5D9B322D160B50021BD89 /* DepictionLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionLabelView.swift; sourceTree = "<group>"; };
@@ -1702,10 +1687,7 @@
 		F100C318210D9C8200A9B7D8 /* DepictionMarkdownView */ = {
 			isa = PBXGroup;
 			children = (
-				F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */,
-				F1A116B92384D57D00B6F408 /* DepictionFontCollection.swift */,
-				F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */,
-				F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */,
+				F1C5D9A722D151A50021BD89 /* DepictionMarkdownView.swift */,
 			);
 			path = DepictionMarkdownView;
 			sourceTree = "<group>";
@@ -2096,8 +2078,6 @@
 				F13E7036214E411A00A5A2F4 /* DPKG inline */,
 				F18B58472581A7E90064CD71 /* CSActionItem.swift */,
 				F147E67B22F02EAB0048F868 /* CSGradientView.swift */,
-				F14F7D58240A766D00062310 /* CSTextRenderView.swift */,
-				F14F7D5B240A7E7800062310 /* CSTextView.swift */,
 				F107EB61230D195A002B8C20 /* Dusk.swift */,
 				F13AEE6222F69C47004BAA05 /* EditableTableView.swift */,
 				F1705FF324CA16DD001596A0 /* Store.swift */,
@@ -2985,7 +2965,7 @@
 				FB208DC624D70D5B000297FB /* SileoThemeManager.swift in Sources */,
 				F139D10122EA9209007F5C0D /* DepictionImageView.swift in Sources */,
 				F139D0FD22EA9209007F5C0D /* DepictionLabelView.swift in Sources */,
-				F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */,
+				F139D0C322EA9209007F5C0D /* DepictionMarkdownView.swift in Sources */,
 				FB40263123DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F172582024EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
 				4929235F266335C100B5B37A /* DFContinuousForceTouchGestureRecognizer.m in Sources */,
@@ -3018,7 +2998,6 @@
 				F139D10C22EA9209007F5C0D /* DepictionVideoView.swift in Sources */,
 				F139D11022EA9209007F5C0D /* DepictionWebView.swift in Sources */,
 				F13AEE5C22F62B9D004BAA05 /* Download.swift in Sources */,
-				F14F7D5D240A7E7800062310 /* CSTextView.swift in Sources */,
 				F1AB912522ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
 				F13AEE5722F5613C004BAA05 /* DownloadManager.swift in Sources */,
 				E1DC86072669673600B3DC42 /* AmyLogManager.swift in Sources */,
@@ -3038,7 +3017,6 @@
 				F139D0FB22EA9209007F5C0D /* FeaturedBannerView.swift in Sources */,
 				F12652D725A165340094E446 /* SourcesSplitViewController.swift in Sources */,
 				FBBD0041240C31B4008E11B2 /* NewsArticlesViewController.swift in Sources */,
-				F1A116BB2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */,
 				F172581D24EB88E3000F2FAF /* PackageStub.swift in Sources */,
 				F139D0BA22EA9209007F5C0D /* FeaturedBannersView.swift in Sources */,
 				F170606024CF50C7001596A0 /* SileoNavigationController.swift in Sources */,
@@ -3065,7 +3043,6 @@
 				F139D0B022EA9209007F5C0D /* Hash.swift in Sources */,
 				FBBD003D240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
-				F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */,
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				FB6F3D3524AA68C700E941F8 /* PaymentPackageInfo.swift in Sources */,
@@ -3086,8 +3063,6 @@
 				F139D0DD22EA9209007F5C0D /* PackageListHeader.swift in Sources */,
 				F139D10D22EA9209007F5C0D /* PackageListManager.swift in Sources */,
 				F1D82F7823094E1C00EECCAE /* PackageListViewController.swift in Sources */,
-				F14F7D5A240A766D00062310 /* CSTextRenderView.swift in Sources */,
-				F1A116B82384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				F1CA758E244CF813000BA15C /* String+Error.swift in Sources */,
 				F147E67722F021560048F868 /* PackageStateBadgeView.swift in Sources */,
@@ -3162,7 +3137,7 @@
 				FBD910CF24E0699000767541 /* SettingsColorTableViewCell.swift in Sources */,
 				F1C5D9AB22D1583D0021BD89 /* DepictionImageView.swift in Sources */,
 				F1C5D9B422D160B50021BD89 /* DepictionLabelView.swift in Sources */,
-				F1C5D9A822D151A50021BD89 /* DepictionMarkdownViewSlow.swift in Sources */,
+				F1C5D9A822D151A50021BD89 /* DepictionMarkdownView.swift in Sources */,
 				E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
 				FB40263023DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */,
@@ -3197,7 +3172,6 @@
 				F1C5D9EA22D1A9270021BD89 /* DepictionWebView.swift in Sources */,
 				F13AEE5B22F62B9D004BAA05 /* Download.swift in Sources */,
 				FB6F3D3424AA68A900E941F8 /* PaymentPackageInfo.swift in Sources */,
-				F14F7D5C240A7E7800062310 /* CSTextView.swift in Sources */,
 				F1AB912422ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
 				F13AEE5622F5613C004BAA05 /* DownloadManager.swift in Sources */,
 				F1330EB12325644700971073 /* SileoContentView.swift in Sources */,
@@ -3218,7 +3192,6 @@
 				F172581C24EB88E3000F2FAF /* PackageStub.swift in Sources */,
 				FBBD0040240C31B4008E11B2 /* NewsArticlesViewController.swift in Sources */,
 				F170605F24CF50C7001596A0 /* SileoNavigationController.swift in Sources */,
-				F1A116BA2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */,
 				F1C5D9E122D199900021BD89 /* FeaturedBannersView.swift in Sources */,
 				F1C5D9C622D1879D0021BD89 /* FeaturedBaseView.swift in Sources */,
 				F1C5D9E422D1A1140021BD89 /* FeaturedButtonView.swift in Sources */,
@@ -3239,7 +3212,6 @@
 				F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */,
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
-				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				E1F10B1E2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */,
 				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
 				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
@@ -3262,8 +3234,6 @@
 				F1DB3BCC22D57BD9008FCFA1 /* PackageListHeader.swift in Sources */,
 				F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */,
 				F1D82F1823050FED00EECCAE /* PackageListViewController.swift in Sources */,
-				F14F7D59240A766D00062310 /* CSTextRenderView.swift in Sources */,
-				F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F1CA758D244CF813000BA15C /* String+Error.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
