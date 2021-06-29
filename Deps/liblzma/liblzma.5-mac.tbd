@@ -7,6 +7,7 @@ current-version: 8.5
 compatibility-version: 8
 exports:
   - targets:         [ x86_64, x86_64-maccatalyst ]
+    symbols:         [ _lzma_alone_decoder, _lzma_alone_encoder, _lzma_auto_decoder, 
                        _lzma_block_buffer_bound, _lzma_block_buffer_decode, _lzma_block_buffer_encode, 
                        _lzma_block_compressed_size, _lzma_block_decoder, _lzma_block_encoder, 
                        _lzma_block_header_decode, _lzma_block_header_encode, _lzma_block_header_size, 
