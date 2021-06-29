@@ -158,10 +158,6 @@ class APTWrapper {
                                         progressCallback: @escaping (Double, Bool, String) -> Void,
                                         outputCallback: @escaping (String, Int) -> Void,
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
-        guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
-            fatalError("Unable to find giveMeRoot")
-        }
-
         var arguments = [CommandPath.aptget, "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
                         "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
@@ -178,7 +174,23 @@ class APTWrapper {
             let packageStr = package.package.package + "-"
             arguments.append(packageStr)
         }
-
+        #if targetEnvironment(macCatalyst)
+        var aptOutput = ""
+        var status = 0
+        DispatchQueue.global(qos: .default).async {
+            #warning("I am aware of why this now fails and will fix next")
+            (status, aptOutput, _) = spawnAsRoot(args: arguments)
+            outputCallback(aptOutput, 0)
+            spawnAsRoot(args: [CommandPath.aptget, "clean"])
+            for file in DownloadManager.shared.cachedFiles {
+                deleteFileAsRoot(file)
+            }
+            completionCallback(Int(status), .back, false)
+        }
+        #else
+        guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
+            fatalError("Unable to find giveMeRoot")
+        }
         DispatchQueue.global(qos: .default).async {
             var oldApps = APTWrapper.dictionaryOfScannedApps()
 
@@ -442,5 +454,6 @@ class APTWrapper {
             }
             completionCallback(Int(status), finish, refreshSileo)
         }
+        #endif
     }
 }

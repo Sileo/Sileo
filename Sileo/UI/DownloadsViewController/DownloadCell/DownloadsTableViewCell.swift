@@ -114,6 +114,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         
         self.selectionStyle = .none
         self.contentView.addSubview(retryButton)
+        self.detailTextLabel?.adjustsFontSizeToFitWidth = true
         retryButton.translatesAutoresizingMaskIntoConstraints = false
         retryButton.heightAnchor.constraint(equalToConstant: 17.5).isActive = true
         retryButton.widthAnchor.constraint(equalToConstant: 17.5).isActive = true
