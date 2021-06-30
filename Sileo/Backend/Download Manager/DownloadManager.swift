@@ -61,7 +61,7 @@ final class DownloadManager {
     var uninstallations: [DownloadPackage] = []
     var installdeps: [DownloadPackage] = []
     var uninstalldeps: [DownloadPackage] = []
-    var errors: [[String: Any]] = []
+    var errors: [APTBrokenPackage] = []
     
     var queued: [String: Download] = [:]
     var queuedRemovals: [String] = []
@@ -489,78 +489,64 @@ final class DownloadManager {
             throw error
         }
         
-        #if !TARGET_SANDBOX && !targetEnvironment(simulator)
-        let depOperations: [String: [[String: Any]]]
+        #if TARGET_SANDBOX || targetEnvironment(simulator)
+        return
+        #endif
+        guard !(installationsAndUpgrades.isEmpty && uninstallations.isEmpty) else {
+            return
+        }
+        let aptOutput: APTOutput
         do {
-            depOperations = try APTWrapper.packageOperations(installs: installationsAndUpgrades, removals: uninstallations)
+            aptOutput = try APTWrapper.operationList(installList: installationsAndUpgrades, removeList: uninstallations)
         } catch {
             throw error
         }
         
-        var installIdentifiers: [String] = []
-        if let installOperations = depOperations["Inst"] as? [[String: String]] {
-            for installEntry in installOperations {
-                if let packageID = installEntry["package"] {
-                    installIdentifiers.append(packageID)
-                }
-            }
+        var installIdentifiers = [String]()
+        for operation in aptOutput.operations where operation.type == .install {
+            installIdentifiers.append(operation.packageID)
         }
-        
         for package in installations where package.package.package.contains("/") {
             installIdentifiers.removeAll { $0 == package.package.packageID }
         }
         
         let rawInstalls = PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: true)
-        var installDeps: [DownloadPackage] = rawInstalls.compactMap { DownloadPackage(package: $0) }
-        
-        if depOperations["Err"]?.isEmpty ?? true {
-            var installationstemp = installations
-            installationstemp.removeAll { installDeps.contains($0) }
+        var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
+        if aptOutput.conflicts.isEmpty {
+            
+            var installationstmp = installations
+            installationstmp.removeAll { installDeps.contains($0) }
+            var upgradesTmp = upgrades
+            upgradesTmp.removeAll { installDeps.contains($0) }
             
             for package in installations where package.package.package.contains("/") {
-                installationstemp.removeAll { $0 == package }
+                installationstmp.removeAll { $0 == package }
+                upgradesTmp.removeAll { $0 == package }
             }
-            
-            installations.removeAll { installationstemp.contains($0) }
-            
-            var upgradestemp = upgrades
-            upgradestemp.removeAll { installDeps.contains($0) }
-            for package in installations where package.package.package.contains("/") {
-                upgradestemp.removeAll { $0 == package }
-            }
-            
-            upgrades.removeAll { upgradestemp.contains($0) }
+            installations.removeAll { installationstmp.contains($0) }
+            upgrades.removeAll { upgradesTmp.contains($0) }
         }
-        
         installDeps.removeAll { installationsAndUpgrades.contains($0) }
         
-        var uninstallIdentifiers: [String] = []
-        if let removeOperations = depOperations["Remv"] as? [[String: String]] {
-            for uninstallEntry in removeOperations {
-                if let packageID = uninstallEntry["package"] {
-                    uninstallIdentifiers.append(packageID)
-                }
-            }
+        var uninstallIdentifiers = [String]()
+        for operation in aptOutput.operations where operation.type == .remove {
+            uninstallIdentifiers.append(operation.packageID)
         }
-        
         let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: true)
         var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
-        
-        if depOperations["Err"]?.isEmpty ?? true {
-            var uninstalltemp = uninstallations
-            uninstalltemp.removeAll { uninstallDeps.contains($0) }
-            uninstallations.removeAll { uninstalltemp.contains($0) }
+            
+        if aptOutput.conflicts.isEmpty {
+            var uninstalltmp = uninstallations
+            uninstalltmp.removeAll { uninstallDeps.contains($0) }
+            uninstallations.removeAll { uninstalltmp.contains($0) }
         }
         
         uninstallDeps.removeAll { uninstallations.contains($0) }
-        
-        installdeps.append(contentsOf: installDeps)
-        uninstalldeps.append(contentsOf: uninstallDeps)
-        
-        if let errorsList = depOperations["Err"] {
-            errors.append(contentsOf: errorsList)
-        }
-        #endif
+        uninstalldeps = uninstallDeps
+        uninstalldeps.removeDuplicates()
+        installdeps = installDeps
+        installdeps.removeDuplicates()
+        errors.append(contentsOf: aptOutput.conflicts)
     }
     
     private func checkInstalled() {
@@ -670,6 +656,7 @@ final class DownloadManager {
         let downloadPackage = DownloadPackage(package: package)
         let found = find(package: package)
         remove(downloadPackage: downloadPackage, queue: found)
+        
         self.lockQueue()
         let package = downloadPackage.package.package
         switch queue {
@@ -842,5 +829,19 @@ final class DownloadManager {
         if reloadNeeded {
             reloadData(recheckPackages: true)
         }
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
     }
 }

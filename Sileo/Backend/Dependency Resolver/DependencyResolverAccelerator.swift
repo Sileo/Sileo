@@ -25,7 +25,7 @@ class DependencyResolverAccelerator {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.chown, "-R", "mobile:mobile", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
         #endif
         
@@ -90,7 +90,16 @@ class DependencyResolverAccelerator {
                 guard let packageData = package.rawData else {
                     continue
                 }
-                sourcesData.append(packageData)
+                var string = String(decoding: packageData, as: UTF8.self)
+                if string.suffix(2) != "\n\n" {
+                    if string.last == "\n" {
+                        string += "\n"
+                    } else {
+                        string += "\n\n"
+                    }
+                }
+                guard let data = string.data(using: .utf8) else { continue }
+                sourcesData.append(data)
             }
             do {
                 try sourcesData.write(to: newSourcesFile.aptUrl)

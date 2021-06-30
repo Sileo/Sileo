@@ -1071,8 +1071,8 @@ final class RepoManager {
             DatabaseManager.shared.saveQueue()
             
             DispatchQueue.main.async {
-                DownloadManager.shared.repoRefresh()
                 if reposUpdated > 0 {
+                    DownloadManager.shared.repoRefresh()
                     DependencyResolverAccelerator.shared.preflightInstalled()
                     DownloadManager.shared.repoRefresh()
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)

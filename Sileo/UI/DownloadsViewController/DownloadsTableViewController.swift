@@ -23,7 +23,7 @@ class DownloadsTableViewController: SileoViewController {
     var uninstallations: [DownloadPackage] = []
     var installdeps: [DownloadPackage] = []
     var uninstalldeps: [DownloadPackage] = []
-    var errors: [[String: Any]] = []
+    var errors: [APTBrokenPackage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,14 +248,14 @@ extension DownloadsTableViewController: UITableViewDataSource {
         if indexPath.section == 3 {
             // Error listing
             let error = errors[indexPath.row]
-            if let package = error["package"] as? Package {
-                cell.package = DownloadPackage(package: package)
+            let package = Package(package: error.packageID, version: "-1")
+            cell.package = DownloadPackage(package: package)
+            cell.title = error.packageID
+            var description = ""
+            for (index, conflict) in error.conflictingPackages.enumerated() {
+                description += "\(conflict.conflict.rawValue) \(conflict.package)\(index == error.conflictingPackages.count - 1 ? "" : ", ")"
             }
-            cell.shouldHaveDownload = false
-            if let key = error["key"] as? String,
-                let otherPkg = error["otherPkg"] as? String {
-                cell.errorDescription = "\(key) \(otherPkg)"
-            }
+            cell.errorDescription = description
             cell.download = nil
         } else {
             // Normal operation listing

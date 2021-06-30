@@ -363,4 +363,12 @@ public class CommandPath {
         return ""
         #endif
     }
+    
+    static var group: String {
+        #if targetEnvironment(macCatalyst)
+        return "\(NSUserName()):staff"
+        #else
+        return "mobile:mobile"
+        #endif
+    }
 }

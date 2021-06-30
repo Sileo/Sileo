@@ -274,14 +274,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             return
         }
         let alertController = UIAlertController(title: String(localizationKey: "Unknown", type: .error), message: error.localizedDescription, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: String(localizationKey: "Refresh"), style: .default) { _ in
-            if let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,
-               let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
-               let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
-               let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: false, useErrorScreen: false, completion: nil)
-            }
-        })
+        alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
 }

@@ -127,8 +127,6 @@
 		E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED026680E030080BFCE /* libz.tbd */; };
 		E14C5EE9266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
 		E14C5EEA266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
-		E14C5EEF2668223D0080BFCE /* liblzma.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5EEB266822120080BFCE /* liblzma.5.tbd */; platformFilter = ios; settings = {ATTRIBUTES = (Weak, ); }; };
-		E14C5EF02668227C0080BFCE /* liblzma.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED326680E9B0080BFCE /* liblzma.5.tbd */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -163,6 +161,8 @@
 		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
+		E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
+		E1D6DFB8268BA730005BF9EA /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
 		E1DC86062669673600B3DC42 /* AmyLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC86052669673600B3DC42 /* AmyLogManager.swift */; };
 		E1DC86072669673600B3DC42 /* AmyLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC86052669673600B3DC42 /* AmyLogManager.swift */; };
 		E1DC860D26697CD600B3DC42 /* Pride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860926697CD600B3DC42 /* Pride@2x.png */; };
@@ -178,6 +178,16 @@
 		E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1DDA6382630830300E889A5 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
+		E1EB035F268BA3D40097CEE1 /* liblzma.5-mac.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EB035D268BA3C30097CEE1 /* liblzma.5-mac.tbd */; platformFilter = maccatalyst; };
+		E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EB035E268BA3C30097CEE1 /* liblzma.5.tbd */; platformFilter = ios; };
+		E1EB0362268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */; };
+		E1EB0363268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */; };
+		E1EB0365268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */; };
+		E1EB0366268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */; };
+		E1EB0368268BA4B00097CEE1 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */; };
+		E1EB0369268BA4B00097CEE1 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */; };
+		E1EB036B268BA4C30097CEE1 /* DependencyResolverAccelerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */; };
+		E1EB036C268BA4C30097CEE1 /* DependencyResolverAccelerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */; };
 		E1F10B1E2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
 		E1F10B1F2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
@@ -284,12 +294,8 @@
 		F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
 		F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */ = {isa = PBXBuildFile; fileRef = F13AD30E23F9306F0035986E /* sileo-apt.conf */; };
 		F13AEE5322F52F98004BAA05 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */; };
-		F13AEE5622F5613C004BAA05 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5522F5613C004BAA05 /* DownloadManager.swift */; };
-		F13AEE5722F5613C004BAA05 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5522F5613C004BAA05 /* DownloadManager.swift */; };
 		F13AEE5B22F62B9D004BAA05 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5A22F62B9D004BAA05 /* Download.swift */; };
 		F13AEE5C22F62B9D004BAA05 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5A22F62B9D004BAA05 /* Download.swift */; };
-		F13AEE5E22F63122004BAA05 /* DownloadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5D22F63122004BAA05 /* DownloadsTableViewController.swift */; };
-		F13AEE5F22F63122004BAA05 /* DownloadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5D22F63122004BAA05 /* DownloadsTableViewController.swift */; };
 		F13AEE6022F64A86004BAA05 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */; };
 		F13AEE6322F69C47004BAA05 /* EditableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE6222F69C47004BAA05 /* EditableTableView.swift */; };
 		F13AEE6422F69C47004BAA05 /* EditableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE6222F69C47004BAA05 /* EditableTableView.swift */; };
@@ -391,8 +397,6 @@
 		F1AB912E22ED0D220054341B /* BaseSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB912C22ED0D220054341B /* BaseSubtitleTableViewCell.swift */; };
 		F1AB913022ED12070054341B /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB912F22ED12070054341B /* SourcesTableViewCell.swift */; };
 		F1AB913122ED12070054341B /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB912F22ED12070054341B /* SourcesTableViewCell.swift */; };
-		F1AB913322ED133D0054341B /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */; };
-		F1AB913422ED133D0054341B /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */; };
 		F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B99F0520DBE64700374C27 /* PackageListViewController.xib */; };
 		F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */; };
@@ -465,8 +469,6 @@
 		F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
 		F1FF7A6724FAF0310088F88B /* FeaturedLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6624FAF0310088F88B /* FeaturedLayerView.swift */; };
 		F1FF7A6824FAF0310088F88B /* FeaturedLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6624FAF0310088F88B /* FeaturedLayerView.swift */; };
-		F1FFE5DA23D5145300916364 /* DependencyResolverAccelerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */; };
-		F1FFE5DB23D5145300916364 /* DependencyResolverAccelerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */; };
 		FB208DC324D709B7000297FB /* SileoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB208DC224D709B7000297FB /* SileoTheme.swift */; };
 		FB208DC524D70A91000297FB /* SileoThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB208DC424D70A91000297FB /* SileoThemeManager.swift */; };
 		FB208DC624D70D5B000297FB /* SileoThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB208DC424D70A91000297FB /* SileoThemeManager.swift */; };
@@ -801,7 +803,6 @@
 		E14C5EC9266804120080BFCE /* BZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BZIP.swift; sourceTree = "<group>"; };
 		E14C5ECE26680DF40080BFCE /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libz.1.tbd; sourceTree = DEVELOPER_DIR; };
 		E14C5ED026680E030080BFCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		E14C5ED326680E9B0080BFCE /* liblzma.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.5.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/liblzma.5.tbd; sourceTree = DEVELOPER_DIR; };
 		E14C5ED726680F340080BFCE /* lzma.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lzma.h; sourceTree = "<group>"; };
 		E14C5EDA26680F340080BFCE /* index.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = index.h; sourceTree = "<group>"; };
 		E14C5EDB26680F340080BFCE /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
@@ -818,7 +819,6 @@
 		E14C5EE626680F350080BFCE /* filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		E14C5EE726680F350080BFCE /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		E14C5EE8266810A30080BFCE /* GZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GZIP.swift; sourceTree = "<group>"; };
-		E14C5EEB266822120080BFCE /* liblzma.5.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = liblzma.5.tbd; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
@@ -840,12 +840,19 @@
 		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
 		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
+		E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APTJsonParser.swift; sourceTree = "<group>"; };
 		E1DC86052669673600B3DC42 /* AmyLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyLogManager.swift; sourceTree = "<group>"; };
 		E1DC860926697CD600B3DC42 /* Pride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@2x.png"; sourceTree = "<group>"; };
 		E1DC860A26697CD600B3DC42 /* Pride~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride~ipad@2x.png"; sourceTree = "<group>"; };
 		E1DC860B26697CD600B3DC42 /* Pride~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride~ipad@3x.png"; sourceTree = "<group>"; };
 		E1DC860C26697CD600B3DC42 /* Pride@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@3x.png"; sourceTree = "<group>"; };
 		E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
+		E1EB035D268BA3C30097CEE1 /* liblzma.5-mac.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "liblzma.5-mac.tbd"; sourceTree = "<group>"; };
+		E1EB035E268BA3C30097CEE1 /* liblzma.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = liblzma.5.tbd; sourceTree = "<group>"; };
+		E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewCell.swift; sourceTree = "<group>"; };
+		E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewController.swift; sourceTree = "<group>"; };
+		E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
 		E1F10B062662E25800DA726E /* status */ = {isa = PBXFileReference; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewFooter.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
@@ -868,9 +875,7 @@
 		F139D14C22EA9209007F5C0D /* Sileo Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sileo Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13AD30E23F9306F0035986E /* sileo-apt.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sileo-apt.conf"; sourceTree = "<group>"; };
 		F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
-		F13AEE5522F5613C004BAA05 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		F13AEE5A22F62B9D004BAA05 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
-		F13AEE5D22F63122004BAA05 /* DownloadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewController.swift; sourceTree = "<group>"; };
 		F13AEE6222F69C47004BAA05 /* EditableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableView.swift; sourceTree = "<group>"; };
 		F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Sources.swift"; sourceTree = "<group>"; };
 		F13AEE7222F76B63004BAA05 /* InstalledContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledContentsViewController.swift; sourceTree = "<group>"; };
@@ -962,7 +967,6 @@
 		F1AB912922ED09AE0054341B /* SourceProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceProgressIndicatorView.swift; sourceTree = "<group>"; };
 		F1AB912C22ED0D220054341B /* BaseSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		F1AB912F22ED12070054341B /* SourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewCell.swift; sourceTree = "<group>"; };
-		F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewCell.swift; sourceTree = "<group>"; };
 		F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesErrorsViewController.xib; sourceTree = "<group>"; };
 		F1B99F0520DBE64700374C27 /* PackageListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageListViewController.xib; sourceTree = "<group>"; };
 		F1C5D98522D123FA0021BD89 /* DepictionBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionBaseView.swift; sourceTree = "<group>"; };
@@ -1028,7 +1032,6 @@
 		F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstalledContentsViewController.xib; sourceTree = "<group>"; };
 		F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionLayerView.swift; sourceTree = "<group>"; };
 		F1FF7A6624FAF0310088F88B /* FeaturedLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLayerView.swift; sourceTree = "<group>"; };
-		F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
 		FB208DC224D709B7000297FB /* SileoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTheme.swift; sourceTree = "<group>"; };
 		FB208DC424D70A91000297FB /* SileoThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoThemeManager.swift; sourceTree = "<group>"; };
 		FB40261F23DE2B9C002D97FE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -1067,7 +1070,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E14C5EF02668227C0080BFCE /* liblzma.5.tbd in Frameworks */,
 				E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC8266803F30080BFCE /* libbz2.tbd in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
@@ -1087,8 +1089,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */,
+				E1EB035F268BA3D40097CEE1 /* liblzma.5-mac.tbd in Frameworks */,
 				E14C5ED126680E030080BFCE /* libz.tbd in Frameworks */,
-				E14C5EEF2668223D0080BFCE /* liblzma.5.tbd in Frameworks */,
 				E14C5EC7266803EA0080BFCE /* libbz2.tbd in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
 				49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */,
@@ -1145,7 +1148,6 @@
 		33F3CD3020E059ED00B3A1D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E14C5ED326680E9B0080BFCE /* liblzma.5.tbd */,
 				E14C5ED026680E030080BFCE /* libz.tbd */,
 				E14C5ECE26680DF40080BFCE /* libz.1.tbd */,
 				E14C5EC5266803DA0080BFCE /* libbz2.1.0.5.tbd */,
@@ -1541,7 +1543,8 @@
 		E14C5ED626680F340080BFCE /* liblzma */ = {
 			isa = PBXGroup;
 			children = (
-				E14C5EEB266822120080BFCE /* liblzma.5.tbd */,
+				E1EB035D268BA3C30097CEE1 /* liblzma.5-mac.tbd */,
+				E1EB035E268BA3C30097CEE1 /* liblzma.5.tbd */,
 				E14C5ED726680F340080BFCE /* lzma.h */,
 				E14C5ED926680F340080BFCE /* lzma */,
 			);
@@ -1961,7 +1964,7 @@
 		F162CCB120E82E1100226F10 /* Download Manager */ = {
 			isa = PBXGroup;
 			children = (
-				F13AEE5522F5613C004BAA05 /* DownloadManager.swift */,
+				E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */,
 				F1705FED24CA15A2001596A0 /* DownloadOverrideProviding.swift */,
 			);
 			path = "Download Manager";
@@ -2077,7 +2080,7 @@
 		F19265CB2106B40300B31E13 /* DownloadCell */ = {
 			isa = PBXGroup;
 			children = (
-				F1AB913222ED133D0054341B /* DownloadsTableViewCell.swift */,
+				E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */,
 			);
 			path = DownloadCell;
 			sourceTree = "<group>";
@@ -2281,6 +2284,7 @@
 			isa = PBXGroup;
 			children = (
 				F1DD3CCC231118A500D86A52 /* APTWrapper.swift */,
+				E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */,
 			);
 			path = "APT Wrapper";
 			sourceTree = "<group>";
@@ -2290,7 +2294,7 @@
 			children = (
 				F19265CB2106B40300B31E13 /* DownloadCell */,
 				F197493421368D8E0065E630 /* DownloadConfirmButton */,
-				F13AEE5D22F63122004BAA05 /* DownloadsTableViewController.swift */,
+				E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */,
 				F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */,
 			);
 			path = DownloadsViewController;
@@ -2463,7 +2467,7 @@
 		F1FFE5D823D5142F00916364 /* Dependency Resolver */ = {
 			isa = PBXGroup;
 			children = (
-				F1FFE5D923D5145300916364 /* DependencyResolverAccelerator.swift */,
+				E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */,
 			);
 			path = "Dependency Resolver";
 			sourceTree = "<group>";
@@ -2997,6 +3001,7 @@
 				F139D0B122EA9209007F5C0D /* DepictionScreenshotsView.swift in Sources */,
 				F139D0E122EA9209007F5C0D /* DepictionScreenshotsViewController.swift in Sources */,
 				FBBD003F240C31B4008E11B2 /* NewsGradientBackgroundView.swift in Sources */,
+				E1EB036C268BA4C30097CEE1 /* DependencyResolverAccelerator.swift in Sources */,
 				FB40262723DE5547002D97FE /* SettingsViewController.swift in Sources */,
 				F139D0F922EA9209007F5C0D /* DepictionSeparatorView.swift in Sources */,
 				F170606324CF54E0001596A0 /* SileoTableViewController.swift in Sources */,
@@ -3012,6 +3017,7 @@
 				F147E68722F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
 				F139D0B522EA9209007F5C0D /* DepictionTabControl.swift in Sources */,
 				F139D0E722EA9209007F5C0D /* DepictionTabView.swift in Sources */,
+				E1EB0369268BA4B00097CEE1 /* DownloadManager.swift in Sources */,
 				F139D0C922EA9209007F5C0D /* DepictionTableButtonView.swift in Sources */,
 				F139D0B422EA9209007F5C0D /* DepictionTableTextView.swift in Sources */,
 				F170600224CCC7E6001596A0 /* PackageQueueButton.swift in Sources */,
@@ -3020,14 +3026,11 @@
 				F13AEE5C22F62B9D004BAA05 /* Download.swift in Sources */,
 				F14F7D5D240A7E7800062310 /* CSTextView.swift in Sources */,
 				F1AB912522ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
-				F13AEE5722F5613C004BAA05 /* DownloadManager.swift in Sources */,
 				E1DC86072669673600B3DC42 /* AmyLogManager.swift in Sources */,
 				F1330EB22325644700971073 /* SileoContentView.swift in Sources */,
 				F13AEE6022F64A86004BAA05 /* DownloadPackage.swift in Sources */,
-				F1AB913422ED133D0054341B /* DownloadsTableViewCell.swift in Sources */,
 				E1C6C0D92677BFDE006228E0 /* KeychainManager.swift in Sources */,
 				F16115D2244D87CD003BF1E6 /* FeaturedButton.swift in Sources */,
-				F13AEE5F22F63122004BAA05 /* DownloadsTableViewController.swift in Sources */,
 				E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */,
 				F139D0CC22EA9209007F5C0D /* DpkgWrapper.swift in Sources */,
 				F1A4D8DC231C25FA00149DDF /* Dusk.swift in Sources */,
@@ -3038,6 +3041,7 @@
 				F139D0FB22EA9209007F5C0D /* FeaturedBannerView.swift in Sources */,
 				F12652D725A165340094E446 /* SourcesSplitViewController.swift in Sources */,
 				FBBD0041240C31B4008E11B2 /* NewsArticlesViewController.swift in Sources */,
+				E1EB0366268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */,
 				F1A116BB2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */,
 				F172581D24EB88E3000F2FAF /* PackageStub.swift in Sources */,
 				F139D0BA22EA9209007F5C0D /* FeaturedBannersView.swift in Sources */,
@@ -3084,8 +3088,10 @@
 				FB6F3D3224AA635F00E941F8 /* PaymentError.swift in Sources */,
 				F1AB912822ED081E0054341B /* PackageIconView.swift in Sources */,
 				F139D0DD22EA9209007F5C0D /* PackageListHeader.swift in Sources */,
+				E1D6DFB8268BA730005BF9EA /* APTJsonParser.swift in Sources */,
 				F139D10D22EA9209007F5C0D /* PackageListManager.swift in Sources */,
 				F1D82F7823094E1C00EECCAE /* PackageListViewController.swift in Sources */,
+				E1EB0363268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */,
 				F14F7D5A240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B82384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */,
@@ -3113,7 +3119,6 @@
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
 				F13AEE6D22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
-				F1FFE5DB23D5145300916364 /* DependencyResolverAccelerator.swift in Sources */,
 				F139D0E222EA9209007F5C0D /* WhiteBlur.m in Sources */,
 				F139D0FF22EA9209007F5C0D /* WishListManager.swift in Sources */,
 				E14C5EBE266687C80080BFCE /* XZ.swift in Sources */,
@@ -3180,6 +3185,7 @@
 				F1C85B47232574F70064D3A2 /* SileoSelectionView.swift in Sources */,
 				F170606224CF54E0001596A0 /* SileoTableViewController.swift in Sources */,
 				F1C85B442325707A0064D3A2 /* SileoTableViewCell.swift in Sources */,
+				E1EB036B268BA4C30097CEE1 /* DependencyResolverAccelerator.swift in Sources */,
 				F1C5D99B22D144790021BD89 /* DepictionSpacerView.swift in Sources */,
 				F1C5D98F22D13AA90021BD89 /* DepictionStackView.swift in Sources */,
 				F1C5D9A522D148540021BD89 /* DepictionSubheaderView.swift in Sources */,
@@ -3195,17 +3201,15 @@
 				F170600124CCC7E6001596A0 /* PackageQueueButton.swift in Sources */,
 				F1C5D9ED22D1ABDC0021BD89 /* DepictionVideoView.swift in Sources */,
 				F1C5D9EA22D1A9270021BD89 /* DepictionWebView.swift in Sources */,
+				E1EB0368268BA4B00097CEE1 /* DownloadManager.swift in Sources */,
 				F13AEE5B22F62B9D004BAA05 /* Download.swift in Sources */,
 				FB6F3D3424AA68A900E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F14F7D5C240A7E7800062310 /* CSTextView.swift in Sources */,
 				F1AB912422ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
-				F13AEE5622F5613C004BAA05 /* DownloadManager.swift in Sources */,
 				F1330EB12325644700971073 /* SileoContentView.swift in Sources */,
 				F13AEE5322F52F98004BAA05 /* DownloadPackage.swift in Sources */,
-				F1AB913322ED133D0054341B /* DownloadsTableViewCell.swift in Sources */,
 				F16115D1244D87CD003BF1E6 /* FeaturedButton.swift in Sources */,
 				E1DC86062669673600B3DC42 /* AmyLogManager.swift in Sources */,
-				F13AEE5E22F63122004BAA05 /* DownloadsTableViewController.swift in Sources */,
 				F1A7051322D0359900F602DA /* DpkgWrapper.swift in Sources */,
 				F107EB62230D195A002B8C20 /* Dusk.swift in Sources */,
 				E1C6C0D82677BFDE006228E0 /* KeychainManager.swift in Sources */,
@@ -3221,6 +3225,7 @@
 				F1A116BA2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */,
 				F1C5D9E122D199900021BD89 /* FeaturedBannersView.swift in Sources */,
 				F1C5D9C622D1879D0021BD89 /* FeaturedBaseView.swift in Sources */,
+				E1EB0365268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */,
 				F1C5D9E422D1A1140021BD89 /* FeaturedButtonView.swift in Sources */,
 				F1C5D9D522D189AF0021BD89 /* FeaturedHeaderView.swift in Sources */,
 				F1C5D9D822D18B410021BD89 /* FeaturedInfoFooterView.swift in Sources */,
@@ -3267,8 +3272,10 @@
 				F1CA758D244CF813000BA15C /* String+Error.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
+				E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */,
 				F147E67622F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				FB40262923DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
+				E1EB0362268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */,
 				F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68022F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
 				F1330EA92324F76C00971073 /* UIColor-ThemeColors.swift in Sources */,
@@ -3295,7 +3302,6 @@
 				F1AB911E22ED02900054341B /* TabBar.swift in Sources */,
 				F120234121470F69005EAFAC /* UIColor+HTMLColors.m in Sources */,
 				F13AEE6C22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
-				F1FFE5DA23D5145300916364 /* DependencyResolverAccelerator.swift in Sources */,
 				56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */,
 				F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */,
 				56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */,
