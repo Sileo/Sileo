@@ -78,7 +78,6 @@
 		49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
 		49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */; };
 		49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
-		49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
 		49FB3891266074B40029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -127,6 +126,7 @@
 		E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED026680E030080BFCE /* libz.tbd */; };
 		E14C5EE9266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
 		E14C5EEA266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
+		E15AEBC5268CB0D800DEE018 /* giveMeRoot in Resources */ = {isa = PBXBuildFile; fileRef = E15AEBC4268CB0D800DEE018 /* giveMeRoot */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -139,6 +139,7 @@
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
 		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
+		E1AA47B0268DF2F200D87E5E /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -534,13 +535,6 @@
 			remoteGlobalIDString = 39DB52E41B5823330061C589;
 			remoteInfo = LNPopupController;
 		};
-		49983AF0266357460072CBAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
 		49FB3892266074B40029CAFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
@@ -819,6 +813,7 @@
 		E14C5EE626680F350080BFCE /* filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		E14C5EE726680F350080BFCE /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		E14C5EE8266810A30080BFCE /* GZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GZIP.swift; sourceTree = "<group>"; };
+		E15AEBC4268CB0D800DEE018 /* giveMeRoot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = giveMeRoot; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
@@ -1094,11 +1089,11 @@
 				E14C5ED126680E030080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC7266803EA0080BFCE /* libbz2.tbd in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
-				49E9BB132663392C0090475B /* LNPopupController.framework in Frameworks */,
 				E13638E82614F66400698D55 /* Down in Frameworks */,
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
 				A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */,
+				E1AA47B0268DF2F200D87E5E /* LNPopupController.framework in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E1A8B6312656DF04009C43EA /* Alderis in Frameworks */,
@@ -1419,6 +1414,7 @@
 				49FB388D2660745F0029CAFF /* Info.plist */,
 				E1777824266006290091AFAB /* LaunchAsRoot.h */,
 				E1C3B7DB26600852009175B6 /* LaunchAsRoot.m */,
+				E15AEBC4268CB0D800DEE018 /* giveMeRoot */,
 			);
 			path = SileoRootWrapper;
 			sourceTree = "<group>";
@@ -2537,7 +2533,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				49983AF1266357460072CBAE /* PBXTargetDependency */,
 				49FB3893266074B40029CAFF /* PBXTargetDependency */,
 			);
 			name = Sileo;
@@ -2711,6 +2706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15AEBC5268CB0D800DEE018 /* giveMeRoot in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3337,11 +3333,6 @@
 			name = LNPopupController;
 			targetProxy = 49983AED266357410072CBAE /* PBXContainerItemProxy */;
 		};
-		49983AF1266357460072CBAE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = 49983AF0266357460072CBAE /* PBXContainerItemProxy */;
-		};
 		49FB3893266074B40029CAFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = maccatalyst;
@@ -3548,7 +3539,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UUGF4RZ8S8;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MARKETING_VERSION = 2.1.1;
@@ -3568,7 +3559,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UUGF4RZ8S8;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MARKETING_VERSION = 2.1.1;
@@ -3870,6 +3861,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -3936,6 +3928,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

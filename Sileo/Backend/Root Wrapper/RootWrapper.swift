@@ -19,7 +19,7 @@ class MacRootWrapper {
         _ = klass.shared
     }
     
-    public func spawn(args: [String]) -> (Int, String) {
+    public func spawn(args: [String], outputCallback: ((_ output: String?) -> Void)? = nil) -> (Int, String) {
         guard !args.isEmpty,
               let launchPath = args.first
         else {
@@ -29,7 +29,9 @@ class MacRootWrapper {
         var arguments = args
         arguments.removeFirst()
         
-        let stdoutString = self.wrapperClass.shared.spawn(withPath: launchPath, args: arguments)
+        let stdoutString = self.wrapperClass.shared.spawn(withPath: launchPath, args: arguments) { output in
+            outputCallback?(output)
+        }
         
         let status = stdoutString == nil ? -1 : 0
         let outputString = stdoutString ?? ""
@@ -158,11 +160,21 @@ class MacRootWrapper {
     return (Int(status), stdoutStr, stderrStr)
 }
 
-@discardableResult func spawnAsRoot(args: [String]) -> (Int, String, String) {
+@discardableResult func spawnAsRoot(args: [String], platformatise: Bool = false, outputCallback: ((_ output: String?) -> Void)? = nil) -> (Int, String, String) {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     fatalError("Commands should not be run in sandbox")
     #elseif targetEnvironment(macCatalyst)
-    let (status, output) = MacRootWrapper.shared.spawn(args: args)
+    var args = args
+    if platformatise {
+        guard let plugins = Bundle.main.builtInPlugInsURL else { return (-1, "", "") }
+        let fullURL = plugins.appendingPathComponent("SileoRootWrapper")
+            .appendingPathExtension("bundle")
+            .appendingPathComponent("Contents")
+            .appendingPathComponent("Resources")
+            .appendingPathComponent("giveMeRoot")
+        args = [fullURL.path] + args
+    }
+    let (status, output) = MacRootWrapper.shared.spawn(args: args, outputCallback: outputCallback) 
     return (status, output, "")
     #else
     guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {

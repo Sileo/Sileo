@@ -178,9 +178,15 @@ class APTWrapper {
         var aptOutput = ""
         var status = 0
         DispatchQueue.global(qos: .default).async {
-            #warning("I am aware of why this now fails and will fix next")
-            (status, aptOutput, _) = spawnAsRoot(args: arguments)
-            outputCallback(aptOutput, 0)
+            (status, aptOutput, _) = spawnAsRoot(args: arguments, platformatise: true) { output in
+                guard let output = output else { return }
+                let statusLines = output.components(separatedBy: "\n")
+                guard let first = statusLines.first else { return }
+                outputCallback(first, 0)
+                progressCallback(0.0, true, first)
+            }
+            
+            outputCallback(aptOutput, status)
             spawnAsRoot(args: [CommandPath.aptget, "clean"])
             for file in DownloadManager.shared.cachedFiles {
                 deleteFileAsRoot(file)
