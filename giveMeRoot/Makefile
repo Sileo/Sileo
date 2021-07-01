@@ -4,16 +4,13 @@ MAC ?= 0
 
 ifeq ($(SILEO_PLATFORM),darwin-arm64)
 CC             ?= xcrun -sdk macosx cc -arch arm64
-TAGET_CODESIGN ?= 
 else ifeq ($(SILEO_PLATFORM),darwin-amd64)
 CC             ?= xcrun -sdk macosx cc -arch x86_64
-TAGET_CODESIGN ?= 
 else 
 CC             ?= xcrun -sdk iphoneos cc -arch arm64
-TAGET_CODESIGN ?= ldid
 endif
 
-
+TAGET_CODESIGN ?= ldid
 CFLAGS         ?= -Wall
 
 .PHONY: all clean
@@ -43,9 +40,14 @@ endif
 $(OUTDIR):
 	@mkdir -p $(OUTDIR)
 
+ifeq ($(MAC), 0)
 $(OUTDIR)/$(TARGET): giveMeRoot.c | $(OUTDIR)
 	@$(CC) -o $@ $^ $(CFLAGS)
 	@$(TAGET_CODESIGN) -SEntitlements.plist $@
+else
+$(OUTDIR)/$(TARGET): giveMeRoot.c | $(OUTDIR)
+	@$(CC) -o $@ $^ $(CFLAGS)
+endif
 
 clean:
 	@rm -rf ./$(OUTDIR)

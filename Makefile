@@ -23,7 +23,7 @@ ARCH            = arm64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-arm64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
-PREFIX          = /opt/procursus
+PREFIX          =
 MAC             = 1
 else ifeq ($(SILEO_PLATFORM),darwin-amd64)
 # These trues are temporary
@@ -32,7 +32,7 @@ ARCH            = x86_64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-amd64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
-PREFIX          = /opt/procursus
+PREFIX          =
 MAC             = 1
 else
 $(error Unknown platform $(SILEO_PLATFORM))
@@ -117,22 +117,30 @@ $(SILEO_APP_DIR):
 
 all:: $(SILEO_APP_DIR) giveMeRoot/bin/giveMeRoot
 
+ifneq ($(MAC),1)
 stage: all
 	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
-	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
-	ifneq ($(MAC),1)
 	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/
 	@$(TARGET_CODESIGN) -SSileo/Entitlements.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/
 	@$(TARGET_CODESIGN) -SgiveMeRoot/Entitlements.plist $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/giveMeRoot
 	@chmod 4755 $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/giveMeRoot
-	else
+else
+stage: all
+	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
+	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
+	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
+	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
+	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
 	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/
-	endif
+endif
 	
+
+package: stage
+	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
 	@sed -e s/@@MARKETING_VERSION@@/$(SILEO_VERSION)/ \
 		-e 's/@@PACKAGE_ID@@/$(SILEO_ID)/' \
 		-e 's/@@PACKAGE_NAME@@/$(SILEO_NAME)/' \
@@ -144,8 +152,6 @@ stage: all
 		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
-
-package: stage
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
 

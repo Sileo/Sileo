@@ -1,6 +1,3 @@
-[submodule "Deps/LNPopupController"]
-	path = Deps/LNPopupController
-	url = https://github.com/Sileo/LNPopupController
 [submodule "Deps/DFContinuousForceTouchGestureRecognizer"]
 	path = Deps/DFContinuousForceTouchGestureRecognizer
 	url = https://github.com/foggzilla/DFContinuousForceTouchGestureRecognizer

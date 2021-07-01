@@ -77,7 +77,6 @@
 		49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */; };
 		49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
 		49CE7CE12607F9A400A20711 /* CoolBreeze~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCD2607F9A400A20711 /* CoolBreeze~ipad@2x.png */; };
-		49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
 		49FB3891266074B40029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -139,7 +138,6 @@
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
 		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
 		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
-		E1AA47B0268DF2F200D87E5E /* LNPopupController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4929235A2663355A00B5B37A /* LNPopupController.framework */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
@@ -521,20 +519,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		492923592663355A00B5B37A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 39DB52E51B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
-		49983AED266357410072CBAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39DB52E41B5823330061C589;
-			remoteInfo = LNPopupController;
-		};
 		49FB3892266074B40029CAFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
@@ -586,6 +570,26 @@
 				49FB3894266074B90029CAFF /* SileoRootWrapper.bundle in Embed PlugIns */,
 			);
 			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AA47B7268DF3CD00D87E5E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AA47BB268DF3D800D87E5E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -687,7 +691,6 @@
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		492923552663355A00B5B37A /* LNPopupController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LNPopupController.xcodeproj; path = Deps/LNPopupController/LNPopupController/LNPopupController.xcodeproj; sourceTree = "<group>"; };
 		4929235C266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFContinuousForceTouchGestureRecognizer.h; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.h; sourceTree = "<group>"; };
 		4929235D266335A800B5B37A /* DFContinuousForceTouchGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFContinuousForceTouchGestureRecognizer.m; path = Deps/DFContinuousForceTouchGestureRecognizer/Pod/Classes/DFContinuousForceTouchGestureRecognizer.m; sourceTree = "<group>"; };
 		492923702663362700B5B37A /* Sus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sus.png; sourceTree = "<group>"; };
@@ -1068,7 +1071,6 @@
 				E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC8266803F30080BFCE /* libbz2.tbd in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
-				49E9BB11266339210090475B /* LNPopupController.framework in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
@@ -1093,7 +1095,6 @@
 				E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */,
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
 				A8A0EA302665A36E00CD772C /* libzstd.1-mac.tbd in Frameworks */,
-				E1AA47B0268DF2F200D87E5E /* LNPopupController.framework in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E1A8B6312656DF04009C43EA /* Alderis in Frameworks */,
@@ -1159,17 +1160,8 @@
 				E14C5ED626680F340080BFCE /* liblzma */,
 				E14C5E6726659CCA0080BFCE /* libzstd */,
 				4929235B2663358700B5B37A /* DFContinuousForceTouchGestureRecognizer */,
-				492923552663355A00B5B37A /* LNPopupController.xcodeproj */,
 			);
 			name = Deps;
-			sourceTree = "<group>";
-		};
-		492923562663355A00B5B37A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4929235A2663355A00B5B37A /* LNPopupController.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4929235B2663358700B5B37A /* DFContinuousForceTouchGestureRecognizer */ = {
@@ -2498,11 +2490,11 @@
 				E177781F266006070091AFAB /* Embed PlugIns */,
 				F139D12B22EA9209007F5C0D /* Resources */,
 				E13BD79826473390006A5EF2 /* Run Script */,
+				E1AA47BB268DF3D800D87E5E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				49983AEE266357410072CBAE /* PBXTargetDependency */,
 				49FB3896266074B90029CAFF /* PBXTargetDependency */,
 			);
 			name = "Sileo Demo";
@@ -2529,6 +2521,7 @@
 				E177780F266005DF0091AFAB /* Embed PlugIns */,
 				F149E0AB20B6040B005CA30B /* Resources */,
 				F1144EFE20FC636C001FF36C /* ShellScript */,
+				E1AA47B7268DF3CD00D87E5E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2674,12 +2667,6 @@
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 492923562663355A00B5B37A /* Products */;
-					ProjectRef = 492923552663355A00B5B37A /* LNPopupController.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F149E0AC20B6040B005CA30B /* Sileo */,
@@ -2690,16 +2677,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4929235A2663355A00B5B37A /* LNPopupController.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = LNPopupController.framework;
-			remoteRef = 492923592663355A00B5B37A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		49FB38892660745F0029CAFF /* Resources */ = {
@@ -3328,11 +3305,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		49983AEE266357410072CBAE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LNPopupController;
-			targetProxy = 49983AED266357410072CBAE /* PBXContainerItemProxy */;
-		};
 		49FB3893266074B40029CAFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = maccatalyst;
@@ -3612,10 +3584,7 @@
 					"-flto",
 					"$(inherited)",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-flto",
-				);
+				OTHER_LDFLAGS = "-flto";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3663,10 +3632,7 @@
 					"-flto",
 					"$(inherited)",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-flto",
-				);
+				OTHER_LDFLAGS = "-flto";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3849,7 +3815,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
@@ -3917,7 +3883,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
