@@ -1,11 +1,12 @@
 TARGET  = giveMeRoot
 OUTDIR ?= bin
-MAC ?= 0
 
 ifeq ($(SILEO_PLATFORM),darwin-arm64)
 CC             ?= xcrun -sdk macosx cc -arch arm64
+MAC = 1
 else ifeq ($(SILEO_PLATFORM),darwin-amd64)
 CC             ?= xcrun -sdk macosx cc -arch x86_64
+MAC = 1
 else 
 CC             ?= xcrun -sdk iphoneos cc -arch arm64
 endif
