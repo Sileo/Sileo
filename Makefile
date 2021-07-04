@@ -58,26 +58,41 @@ export EXPANDED_CODE_SIGN_IDENTITY_NAME =
 STRIP = xcrun strip
 
 ifneq ($(BETA),0)
+ifeq ($(MAC), 0)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
+SILEO_ID   = org.coolstar.sileobeta
+else
+export PRODUCT_BUNDLE_IDENTIFIER = "sileobeta"
+SILEO_ID   = sileobeta
+endif
 export DISPLAY_NAME = "Sileo Beta"
 ICON = https:\/\/getsileo.app\/img\/icon.png
-SILEO_ID   = org.coolstar.sileobeta
 SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else ifneq ($(NIGHTLY),0)
+ifeq ($(MAC), 0)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
+SILEO_ID   = org.coolstar.sileonightly
+else
+export PRODUCT_BUNDLE_IDENTIFIER = "sileonightly"
+SILEO_ID   = sileonightly
+endif
 export DISPLAY_NAME = "Sileo Nightly"
 ICON = https:\/\/beta.anamy.gay\/static\/SileoNightly.png
-SILEO_ID   = org.coolstar.sileonightly
 SILEO_NAME = Sileo (Nightly Channel)
 SILEO_APP  = Sileo-Nightly.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 else
+ifeq ($(MAC), 0)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
+SILEO_ID   = org.coolstar.sileo
+else
+export PRODUCT_BUNDLE_IDENTIFIER = "sileo"
+SILEO_ID   = sileo
+endif
 export DISPLAY_NAME = "Sileo"
 ICON = https:\/\/getsileo.app\/img\/icon.png
-SILEO_ID   = org.coolstar.sileo
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)
