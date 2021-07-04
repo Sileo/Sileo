@@ -136,6 +136,8 @@
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
+		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
+		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
 		E1A8B6312656DF04009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6302656DF04009C43EA /* Alderis */; };
 		E1A8B6362656DF15009C43EA /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E1A8B6352656DF15009C43EA /* Alderis */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
@@ -1071,6 +1073,7 @@
 				E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC8266803F30080BFCE /* libbz2.tbd in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
+				E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
@@ -1101,6 +1104,7 @@
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
+				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2506,6 +2510,7 @@
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E1A8B6352656DF15009C43EA /* Alderis */,
+				E19F95A1269245EB002ABB8C /* LNPopupController-Static */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -2537,6 +2542,7 @@
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E1A8B6302656DF04009C43EA /* Alderis */,
+				E19F959F269245E4002ABB8C /* LNPopupController-Static */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -2664,6 +2670,7 @@
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */,
+				E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -4073,6 +4080,14 @@
 				minimumVersion = 2.7.1;
 			};
 		};
+		E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/LNPopupController";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E1A8B62F2656DF04009C43EA /* XCRemoteSwiftPackageReference "Alderis" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/Alderis";
@@ -4146,6 +4161,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
 			productName = LNZTreeView;
+		};
+		E19F959F269245E4002ABB8C /* LNPopupController-Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */;
+			productName = "LNPopupController-Static";
+		};
+		E19F95A1269245EB002ABB8C /* LNPopupController-Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */;
+			productName = "LNPopupController-Static";
 		};
 		E1A8B6302656DF04009C43EA /* Alderis */ = {
 			isa = XCSwiftPackageProductDependency;
