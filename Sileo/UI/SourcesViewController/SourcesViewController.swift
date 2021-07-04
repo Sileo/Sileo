@@ -84,6 +84,8 @@ class SourcesViewController: SileoViewController {
         #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
         #endif
+    
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(handleImageUpdate(_:)), name: SourcesTableViewCell.repoImageUpdate, object: nil)
     }
     
     @objc func updateSileoColors() {
@@ -137,6 +139,18 @@ class SourcesViewController: SileoViewController {
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
             }
             #endif
+        }
+    }
+    
+    @objc private func handleImageUpdate(_ notification: Notification) {
+        guard let url = notification.object as? String,
+              let visibibleCells = tableView?.visibleCells as? [SourcesTableViewCell] else { return }
+        for cell in visibibleCells {
+            guard let repo = cell.repo else { continue }
+            if repo.rawURL == url {
+                cell.image(repo)
+                return
+            }
         }
     }
     
