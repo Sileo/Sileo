@@ -15,5 +15,5 @@
 - (instancetype)init;
 - (void)dealloc;
 - (BOOL)authenticateIfNeeded;
-- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args;
+- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args callback:(void (^) (NSString *))callback;
 @end

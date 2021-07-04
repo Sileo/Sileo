@@ -9,6 +9,9 @@
 import Foundation
 
 class SourcesTableViewCell: BaseSubtitleTableViewCell {
+    
+    static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
+    
     public var repo: Repo? = nil {
         didSet {
             if let repo = repo {
@@ -49,8 +52,8 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
         super.prepareForReuse()
         self.repo = nil
     }
-    
-    private func image(_ repo: Repo) {
+
+    public func image(_ repo: Repo) {
         // Quite frankly the backend here sucks ass, so if you open the sources page too quick after launching the image will not be set
         // This will pull it from local cache in the event that we're too quick. If doesn't exist in Cache, show the default icon
         if repo.url?.host == "apt.thebigboss.org" {

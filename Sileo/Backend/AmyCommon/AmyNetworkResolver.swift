@@ -363,13 +363,14 @@ final class AmyNetworkResolver {
                         image = downscaled
                     }
                     if cache {
-                        
                         memoryCacheLock.lock()
                         memoryCache[encoded] = image
                         memoryCacheLock.unlock()
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
                             return image
+                        } else {
+                            completion?(true, image)
                         }
                     } else {
                         return image

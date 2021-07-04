@@ -56,6 +56,7 @@
     status = AuthorizationCopyRights(authRef, &requestedRights, &environment, flags, &grantedRights);
     if (status != errAuthorizationSuccess) {
         AuthorizationFree(authRef, kAuthorizationFlagDefaults);
+        exit(0);
         return NO;
     }
     
@@ -63,7 +64,7 @@
     return YES;
 }
 
-- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args {
+- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args callback:(void (^) (NSString *))callback {
     [self authenticateIfNeeded];
     
     NSUInteger argCount = args.count;
@@ -85,14 +86,22 @@
     }
     
     NSMutableString *output = [NSMutableString string];
+    NSMutableString *tmpOutput = [NSMutableString string];
     while (true) {
         char c = fgetc(stream);
         if (feof(stream) != 0) {
             break;
         }
-        [output appendFormat:@"%c", c];
+        NSString *character = [NSString stringWithFormat:@"%c", c];
+        [output appendFormat: @"%@", character];
+        [tmpOutput appendFormat:@"%@", character];
+        if ([character isEqualToString:@"\n"]) {
+            callback(tmpOutput);
+            tmpOutput = [NSMutableString string];
+        }
     }
     
     return output;
 }
+
 @end

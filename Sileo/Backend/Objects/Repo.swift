@@ -52,7 +52,12 @@ final class Repo: Equatable {
     var suite: String = ""
     var components: [String] = []
     var entryFile: String = ""
-    var repoIcon: UIImage?
+    var repoIcon: UIImage? {
+        didSet {
+            guard repoIcon != nil else { return }
+            NotificationCenter.default.post(name: SourcesTableViewCell.repoImageUpdate, object: rawURL)
+        }
+    }
     var startedRefresh: Bool = false
     var releaseProgress = CGFloat(0)
     var releaseGPGProgress = CGFloat(0)

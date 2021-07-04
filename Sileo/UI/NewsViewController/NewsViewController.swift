@@ -343,13 +343,16 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if currentSection(indexPath.section) == .news {
+        let currentSection = currentSection(indexPath.section)
+        if currentSection == .news {
             let headerView = cell as? NewsArticlesHeader
             if let viewController = headerView?.viewController {
                 self.addChild(viewController)
                 viewController.didMove(toParent: self)
             }
             return
+        } else if currentSection == .packages {
+            markAsSeen(indexPath)
         }
     }
 
@@ -361,8 +364,6 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
                 viewController.removeFromParent()
                 viewController.didMove(toParent: nil)
             }
-        } else if currentSection == .packages {
-            markAsSeen(indexPath)
         }
     }
     
