@@ -3567,11 +3567,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -3612,14 +3607,10 @@
 				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -3801,27 +3792,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 				);
 				MARKETING_VERSION = 2.1.1;
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/HCSStarRatingView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/MMMarkdown\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/RATreeView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-				);
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
@@ -3869,27 +3840,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 				);
 				MARKETING_VERSION = 2.1.1;
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/HCSStarRatingView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/MMMarkdown\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/NSHash\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/RATreeView\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-				);
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
 				PRODUCT_MODULE_NAME = Sileo;
@@ -3917,6 +3868,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3938,6 +3890,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

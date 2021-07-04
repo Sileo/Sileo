@@ -8,7 +8,7 @@
 
 import XCTest
 import Foundation
-@testable import Sileo_Demo
+@testable import Sileo
 
 class SileoTests: XCTestCase {
     var observer: NSObjectProtocol?
@@ -86,7 +86,7 @@ class SileoTests: XCTestCase {
     
     // TODO - setup https://beta.anamy.gay to have a sandbox package with the sandbox UDID authorized
     func testBAddQueue() throws {
-        guard let allPackages = PackageListManager.shared.allPackages,
+        guard let allPackages = PackageListManager.shared.allPackagesArray,
               !allPackages.isEmpty
         else {
             XCTAssert(false, "All Packages is Empty")
