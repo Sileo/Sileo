@@ -56,6 +56,7 @@
     status = AuthorizationCopyRights(authRef, &requestedRights, &environment, flags, &grantedRights);
     if (status != errAuthorizationSuccess) {
         AuthorizationFree(authRef, kAuthorizationFlagDefaults);
+        exit(0);
         return NO;
     }
     

@@ -88,6 +88,12 @@ class SourcesViewController: SileoViewController {
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(handleImageUpdate(_:)), name: SourcesTableViewCell.repoImageUpdate, object: nil)
     }
     
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(refreshSources(_:)), discoverabilityTitle: "Refresh Sources")
+        ]
+    }
+    
     @objc func updateSileoColors() {
         self.tableView?.backgroundColor = .sileoBackgroundColor
         self.tableView?.separatorColor = .sileoSeparatorColor
