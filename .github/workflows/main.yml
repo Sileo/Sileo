@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 2.1.x
+      - 2.2.x
 name: Build
 jobs:
   make:
