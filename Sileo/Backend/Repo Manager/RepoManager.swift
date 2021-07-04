@@ -189,6 +189,38 @@ final class RepoManager {
         return repos
     }
     
+    public func addDistRepo(url: URL, suites: String, components: String) {
+        var normalizedStr = url.absoluteString
+        if normalizedStr.last != "/" {
+            normalizedStr.append("/")
+        }
+        guard let normalizedURL = URL(string: normalizedStr) else {
+            return
+        }
+        
+        guard !hasRepo(with: normalizedURL),
+              normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+              normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
+        else {
+            return
+        }
+        
+        repoListLock.wait()
+        let repo = Repo()
+        repo.rawURL = normalizedStr
+        repo.suite = "./"
+        repo.rawEntry = """
+        Types: deb
+        URIs: \(repo.repoURL)
+        Suites: \(suites)
+        Components: \(components)
+        """
+        repo.entryFile = "\(CommandPath.sourcesListD)/sileo.sources"
+        repoList.append(repo)
+        repoListLock.signal()
+        writeListToFile()
+    }
+    
     @discardableResult func addRepo(with url: URL) -> [Repo] {
         addRepos(with: [url])
     }

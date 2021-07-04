@@ -59,8 +59,9 @@ class SourcesViewController: SileoViewController {
         tableView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        #if !targetEnvironment(macCatalyst)
         tableView?.refreshControl = refreshControl
-
+        #endif
         refreshControl.addTarget(self, action: #selector(refreshSources(_:)), for: .valueChanged)
         
         self.title = String(localizationKey: "Sources_Page")
@@ -82,7 +83,9 @@ class SourcesViewController: SileoViewController {
         self.registerForPreviewing(with: self, sourceView: self.tableView!)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
+        let nav = self.navigationItem
+        nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSource(_:)))
+        nav.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
         #endif
     
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(handleImageUpdate(_:)), name: SourcesTableViewCell.repoImageUpdate, object: nil)
@@ -90,7 +93,8 @@ class SourcesViewController: SileoViewController {
     
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(refreshSources(_:)), discoverabilityTitle: "Refresh Sources")
+            UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(refreshSources(_:)), discoverabilityTitle: "Refresh Sources"),
+            UIKeyCommand(input: "+", modifierFlags: .command, action: #selector(addSource(_:)), discoverabilityTitle: "Add Source")
         ]
     }
     
@@ -125,6 +129,7 @@ class SourcesViewController: SileoViewController {
         self.setEditing(!self.isEditing, animated: true)
     }
     
+    #if !targetEnvironment(simulator) && !targetEnvironment(macCatalyst)
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -132,7 +137,6 @@ class SourcesViewController: SileoViewController {
             let nav = self.navigationItem
             nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
             
-            #if !targetEnvironment(simulator)
             if editing {
                 let exportTitle = String(localizationKey: "Export")
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
@@ -140,13 +144,10 @@ class SourcesViewController: SileoViewController {
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.toggleEditing(_:)))
             }
-            #else
-            if editing {
-                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
-            }
-            #endif
+            
         }
     }
+    #endif
     
     @objc private func handleImageUpdate(_ notification: Notification) {
         guard let url = notification.object as? String,
@@ -369,7 +370,7 @@ class SourcesViewController: SileoViewController {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
         alert.addTextField { textField in
-            textField.placeholder = "https://coolstar.org/publicrepo/"
+            textField.placeholder = "URL"
             if let urlString = url?.absoluteString {
                 let parsedURL = urlString.replacingOccurrences(of: "sileo://source/", with: "")
                 textField.text = parsedURL
@@ -387,6 +388,12 @@ class SourcesViewController: SileoViewController {
             }
         })
         alert.addAction(addAction)
+        
+        let distRepoAction = UIAlertAction(title: String(localizationKey: "Add_Dist_Repo"), style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+            self.addDistRepo(string: alert.textFields?[0].text)
+        })
+        alert.addAction(distRepoAction)
         
         let cancelAcction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
             self.dismiss(animated: true, completion: nil)
@@ -435,6 +442,42 @@ class SourcesViewController: SileoViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func addDistRepo(string: String?) {
+        let title = String(localizationKey: "Add_Source.Title")
+        let msg = String(localizationKey: "Add_Dist_Repo")
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = "URL"
+            textField.text = string
+            textField.keyboardType = .URL
+        }
+        alert.addTextField { textField in
+            textField.placeholder = "Suites"
+        }
+        alert.addTextField { textField in
+            textField.placeholder = "Components"
+        }
+        
+        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+            guard let urlField = alert.textFields?[0],
+                  let suiteField = alert.textFields?[1],
+                  let componentField = alert.textFields?[2],
+                  let url = URL(string: urlField.text ?? "") else { return }
+            RepoManager.shared.addDistRepo(url: url, suites: suiteField.text ?? "", components: componentField.text ?? "")
+        })
+        alert.addAction(addAction)
+        
+        let cancel = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    #if !targetEnvironment(macCatalyst)
     @objc func addSource(_ sender: Any?) {
         // If URL(s) are copied, we ask the user if they want to add those.
         // Otherwise, we present the entry field dialog for the user to type a URL.
@@ -459,6 +502,11 @@ class SourcesViewController: SileoViewController {
             }
         }
     }
+    #else
+    @objc func addSource(_ sender: Any?) {
+        self.presentAddSourceEntryField(url: nil)
+    }
+    #endif
 
     func showFlaggedSourceWarningController(urls: [URL]) {
         let flaggedSourceController = FlaggedSourceWarningViewController(nibName: "FlaggedSourceWarningViewController", bundle: nil)
