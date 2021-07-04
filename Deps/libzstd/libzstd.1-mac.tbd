@@ -1,6 +1,6 @@
 --- !tapi-tbd
 tbd-version:     4
-targets:         [ x86_64-maccatalyst ]
+targets:         [ x86_64-maccatalyst, arm64 ]
 uuids:
   - target:          x86_64-maccatalyst
     value:           5CC62662-32C9-33E9-941F-E883E685FB07
@@ -8,7 +8,7 @@ flags:           [ not_app_extension_safe ]
 install-name:    '/opt/procursus/lib/libzstd.1.dylib'
 current-version: 1.5.0
 exports:
-  - targets:         [ x86_64-maccatalyst ]
+  - targets:         [ x86_64-maccatalyst, arm64 ]
     symbols:         [ _ZBUFF_compressContinue, _ZBUFF_compressEnd, _ZBUFF_compressFlush, 
                        _ZBUFF_compressInit, _ZBUFF_compressInitDictionary, _ZBUFF_compressInit_advanced, 
                        _ZBUFF_createCCtx, _ZBUFF_createCCtx_advanced, _ZBUFF_createDCtx, 

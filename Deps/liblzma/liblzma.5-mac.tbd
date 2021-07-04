@@ -1,12 +1,12 @@
 --- !tapi-tbd
 tbd-version:     4
-targets:         [ x86_64, x86_64-maccatalyst ]
+targets:         [ x86_64, x86_64-maccatalyst, arm64 ]
 flags:           [ not_app_extension_safe ]
 install-name:    '/opt/procursus/lib/liblzma.5.dylib'
 current-version: 8.5
 compatibility-version: 8
 exports:
-  - targets:         [ x86_64, x86_64-maccatalyst ]
+  - targets:         [ x86_64, x86_64-maccatalyst, arm64 ]
     symbols:         [ _lzma_alone_decoder, _lzma_alone_encoder, _lzma_auto_decoder, 
                        _lzma_block_buffer_bound, _lzma_block_buffer_decode, _lzma_block_buffer_encode, 
                        _lzma_block_compressed_size, _lzma_block_decoder, _lzma_block_encoder, 
