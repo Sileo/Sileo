@@ -218,131 +218,131 @@ func moveFileAsRoot(from: URL, to: URL) {
 
 public class CommandPath {
     // swiftlint:disable identifier_name
-    static var mv: String {
+    static var mv: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/mv"
         #else
         return "/usr/bin/mv"
         #endif
-    }
+    }()
     
-    static var chown: String {
+    static var chown: String = {
         #if targetEnvironment(macCatalyst)
         return "/usr/sbin/chown"
         #else
         return "/usr/bin/chown"
         #endif
-    }
+    }()
     
-    static var chmod: String {
+    static var chmod: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/chmod"
         #else
         return "/usr/bin/chmod"
         #endif
-    }
+    }()
     // swiftlint:disable identifier_name
-    static var ln: String {
+    static var ln: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/ln"
         #else
         return "/usr/bin/ln"
         #endif
-    }
+    }()
     // swiftlint:disable identifier_name
-    static var rm: String {
+    static var rm: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/rm"
         #else
         return "/usr/bin/rm"
         #endif
-    }
+    }()
     
-    static var mkdir: String {
+    static var mkdir: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/mkdir"
         #else
         return "/usr/bin/mkdir"
         #endif
-    }
+    }()
     // swiftlint:disable identifier_name
-    static var cp: String {
+    static var cp: String = {
         #if targetEnvironment(macCatalyst)
         return "/bin/cp"
         #else
         return "/usr/bin/cp"
         #endif
-    }
+    }()
     
-    static var aptmark: String {
+    static var aptmark: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-mark"
         #else
         return "/usr/bin/apt-mark"
         #endif
-    }
+    }()
     
-    static var dpkgdeb: String {
+    static var dpkgdeb: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg-deb"
         #else
         return "/usr/bin/dpkg-deb"
         #endif
-    }
+    }()
     
-    static var dpkg: String {
+    static var dpkg: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg"
         #else
         return "/usr/bin/dpkg"
         #endif
-    }
+    }()
     
-    static var aptget: String {
+    static var aptget: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-get"
         #else
         return "/usr/bin/apt-get"
         #endif
-    }
+    }()
     
-    static var aptkey: String {
+    static var aptkey: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-key"
         #else
         return "/usr/bin/apt-key"
         #endif
-    }
+    }()
     // swiftlint:disable identifier_name
-    static var sh: String {
+    static var sh: String = {
         "/bin/sh"
-    }
+    }()
     
-    static var sileolists: String {
+    static var sileolists: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/sileolists"
         #else
         return "/var/lib/apt/sileolists"
         #endif
-    }
+    }()
     
-    static var lists: String {
+    static var lists: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/lists"
         #else
         return "/var/lib/apt/lists"
         #endif
-    }
+    }()
     
-    static var whoami: String {
+    static var whoami: String = {
         "/usr/bin/whoami"
-    }
+    }()
     
-    static var uicache: String {
+    static var uicache: String = {
         "/usr/bin/uicache"
-    }
+    }()
     
-    static var dpkgDir: URL {
+    static var dpkgDir: URL = {
         #if targetEnvironment(macCatalyst)
         return URL(fileURLWithPath: "/opt/procursus/Library/dpkg")
         #elseif targetEnvironment(simulator) || TARGET_SANDBOX
@@ -350,37 +350,38 @@ public class CommandPath {
         #else
         return URL(fileURLWithPath: "/Library/dpkg")
         #endif
-    }
+    }()
     
-    static var sourcesListD: String {
+    static var sourcesListD: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/etc/apt/sources.list.d"
         #else
         return "/etc/apt/sources.list.d"
         #endif
-    }
+    }()
     
-    static var RepoIcon: String {
+    static var RepoIcon: String = {
         #if targetEnvironment(macCatalyst)
         return "RepoIcon"
         #else
         return "CydiaIcon"
         #endif
-    }
+    }()
     
-    static var lazyPrefix: String {
+    // This is only important for macOS
+    static var lazyPrefix: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus"
         #else
         return ""
         #endif
-    }
+    }()
     
-    static var group: String {
+    static var group: String = {
         #if targetEnvironment(macCatalyst)
         return "\(NSUserName()):staff"
         #else
         return "mobile:mobile"
         #endif
-    }
+    }()
 }
