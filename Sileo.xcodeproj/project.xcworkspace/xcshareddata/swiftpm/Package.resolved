@@ -5,8 +5,8 @@
         "package": "Alderis",
         "repositoryURL": "https://github.com/elihwyma/Alderis",
         "state": {
-          "branch": "master",
-          "revision": "42c24e5cee43989952698374811a786c69f3c443",
+          "branch": "spm-fixes",
+          "revision": "1e5df800f14c9ba3523f3c6ca7b11e44f939a75a",
           "version": null
         }
       },

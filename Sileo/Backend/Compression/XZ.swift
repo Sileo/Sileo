@@ -18,12 +18,12 @@ public enum XZType {
 // swiftlint:disable type_name
 final class XZ {
     
-    static var available: Bool {
+    static var available: Bool = {
         if let contents = try? URL(fileURLWithPath: "/usr/local/lib/").contents() {
             return contents.contains(where: { $0.absoluteString.contains("liblzma") })
         }
         return false
-    }
+    }()
     
     class func decompress(path: String, type: XZType) -> (String?, Data?) {
         var strm = lzma_stream()

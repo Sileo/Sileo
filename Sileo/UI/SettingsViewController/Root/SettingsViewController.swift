@@ -8,6 +8,7 @@
 
 import Foundation
 import Alderis
+import UIKit
 
 class SettingsViewController: BaseSettingsViewController, ThemeSelected {
     private var authenticatedProviders: [PaymentProvider] = Array()
@@ -300,25 +301,25 @@ extension SettingsViewController { // UITableViewDataSource
     }
     
     private func presentAlderis() {
-        if #available(iOS 13, *) {
+        if #available(iOS 14, *) {
+            let colorPickerViewController = UIColorPickerViewController()
+            colorPickerViewController.delegate = self
+            colorPickerViewController.supportsAlpha = false
+            colorPickerViewController.selectedColor = .tintColor
+            self.present(colorPickerViewController, animated: true)
+        } else {
             let colorPickerViewController = ColorPickerViewController()
             colorPickerViewController.delegate = self
             colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                // Ignore this warning, it's only temporary
                 if #available(iOS 13, *) {
                     colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
                 }
             }
             colorPickerViewController.modalPresentationStyle = .overFullScreen
             self.parent?.present(colorPickerViewController, animated: true, completion: nil)
-        } else {
-            let uiac = UIAlertController(title: "Crash Prevention",
-                                         message: "Alderis has a known bug on iOS 12 which will cause it to crash. To protect you from this it has been disabled in Sileo on iOS 12",
-                                         preferredStyle: .alert)
-            uiac.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
-            self.parent?.present(uiac, animated: true, completion: nil)
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -344,4 +345,13 @@ extension SettingsViewController: ColorPickerDelegate {
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect color: UIColor) {
         SileoThemeManager.shared.setTintColor(color)
     }
+}
+
+@available(iOS 14.0, *)
+extension SettingsViewController: UIColorPickerViewControllerDelegate {
+
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        SileoThemeManager.shared.setTintColor(viewController.selectedColor)
+    }
+    
 }

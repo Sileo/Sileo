@@ -7,10 +7,11 @@ BETA          ?= 0
 # Build Nightly or not?
 NIGHTLY       ?= 0
 
+TARGET_CODESIGN = $(shell which ldid)
+
 # Platform to build for.
 SILEO_PLATFORM ?= iphoneos-arm64
 ifeq ($(SILEO_PLATFORM),iphoneos-arm64)
-TARGET_CODESIGN = $(shell which ldid)
 ARCH            = arm64
 PLATFORM        = iphoneos
 DEB_ARCH        = iphoneos-arm
@@ -20,7 +21,6 @@ DESTINATION     =
 CONTENTS        = 
 else ifeq ($(SILEO_PLATFORM),darwin-arm64)
 # These trues are temporary
-TARGET_CODESIGN = true
 ARCH            = arm64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-arm64
@@ -31,7 +31,6 @@ DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name
 CONTENTS        = Contents/
 else ifeq ($(SILEO_PLATFORM),darwin-amd64)
 # These trues are temporary
-TARGET_CODESIGN = true
 ARCH            = x86_64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-amd64
@@ -57,34 +56,7 @@ export EXPANDED_CODE_SIGN_IDENTITY_NAME =
 
 STRIP = xcrun strip
 
-ifneq ($(BETA),0)
-ifeq ($(MAC), 0)
-export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
-SILEO_ID   = org.coolstar.sileobeta
-else
-export PRODUCT_BUNDLE_IDENTIFIER = "sileobeta"
-SILEO_ID   = sileobeta
-endif
-export DISPLAY_NAME = "Sileo Beta"
-ICON = https:\/\/getsileo.app\/img\/icon.png
-SILEO_NAME = Sileo (Beta Channel)
-SILEO_APP  = Sileo-Beta.app
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
-else ifneq ($(NIGHTLY),0)
-ifeq ($(MAC), 0)
-export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
-SILEO_ID   = org.coolstar.sileonightly
-else
-export PRODUCT_BUNDLE_IDENTIFIER = "sileonightly"
-SILEO_ID   = sileonightly
-endif
-export DISPLAY_NAME = "Sileo Nightly"
-ICON = https:\/\/beta.anamy.gay\/static\/SileoNightly.png
-SILEO_NAME = Sileo (Nightly Channel)
-SILEO_APP  = Sileo-Nightly.app
-SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
-else
-ifeq ($(MAC), 0)
+ifneq ($(MAC), 1)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
 SILEO_ID   = org.coolstar.sileo
 else
@@ -96,7 +68,38 @@ ICON = https:\/\/getsileo.app\/img\/icon.png
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)
+
+
+ifeq ($(BETA), 1)
+ifeq ($(MAC), 1)
+export PRODUCT_BUNDLE_IDENTIFIER = "sileobeta"
+SILEO_ID   = sileobeta
+else
+export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
+SILEO_ID   = org.coolstar.sileobeta
 endif
+export DISPLAY_NAME = "Sileo Beta"
+ICON = https:\/\/getsileo.app\/img\/icon.png
+SILEO_NAME = Sileo (Beta Channel)
+SILEO_APP  = Sileo-Beta.app
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
+endif
+
+ifeq ($(NIGHTLY), 1)
+ifeq ($(MAC), 1)
+export PRODUCT_BUNDLE_IDENTIFIER = "sileonightly"
+SILEO_ID   = sileonightly
+else
+export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
+SILEO_ID   = org.coolstar.sileonightly
+endif
+export DISPLAY_NAME = "Sileo Nightly"
+ICON = https:\/\/beta.anamy.gay\/static\/SileoNightly.png
+SILEO_NAME = Sileo (Nightly Channel)
+SILEO_APP  = Sileo-Nightly.app
+SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
+endif
+
 
 SILEOTMP = $(TMPDIR)/sileo
 SILEO_STAGE_DIR = $(SILEOTMP)/stage
@@ -124,15 +127,14 @@ $(SILEO_APP_DIR):
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' $(DESTINATION) -configuration $(BUILD_CONFIG) ARCHS=$(ARCH) -derivedDataPath $(SILEOTMP) \
 		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
 		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
-		DSTROOT=$(SILEOTMP)/install $(XCPRETTY)
+		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 else
 $(SILEO_APP_DIR):
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
 		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
 		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
-		DSTROOT=$(SILEOTMP)/install $(XCPRETTY)
-	@rm -f $(SILEO_APP_DIR)/Frameworks/libswift*.dylib
+		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@function process_exec { \
 		$(STRIP) $$1; \
 	}; \
@@ -166,6 +168,9 @@ stage: all
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
 	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/
+	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/MacOS/Sileo
+	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/MacOS/SileoRootWrapper
+	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/giveMeRoot
 endif
 	
 ifeq ($(MAC), 1)

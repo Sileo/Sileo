@@ -27,15 +27,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Pride</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Pride</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -108,6 +99,15 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pride</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>Procursus</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -168,15 +168,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Pride</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Pride~ipad</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -245,6 +236,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>OceanicBlue~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pride~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>

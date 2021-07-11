@@ -4,6 +4,7 @@
 
 #import "libzstd.h"
 #import "lzma.h"
+#import "lz4.h"
 #import "UIColor+HTMLColors.h"
 #import "WhiteBlur.h"
 #import "ControlFileParserFast.h"
