@@ -65,8 +65,11 @@ jobs:
           package1=$(ls -t packages | head -1)
           package2=$(ls -t | head -2 | tail -1)
           package3=$(ls -t | head -3 | tail -1)
+          echo ${package1}
           curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          echo ${package2}
           curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          echo ${package3}
           curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
           
