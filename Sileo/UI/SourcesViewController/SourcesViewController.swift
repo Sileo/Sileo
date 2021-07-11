@@ -459,13 +459,17 @@ class SourcesViewController: SileoViewController {
             textField.placeholder = "Components"
         }
         
-        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
+        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
             guard let urlField = alert.textFields?[0],
                   let suiteField = alert.textFields?[1],
                   let componentField = alert.textFields?[2],
                   let url = URL(string: urlField.text ?? "") else { return }
-            RepoManager.shared.addDistRepo(url: url, suites: suiteField.text ?? "", components: componentField.text ?? "")
+            guard let repo = RepoManager.shared.addDistRepo(url: url, suites: suiteField.text ?? "", components: componentField.text ?? "") else {
+                return
+            }
+            self?.reloadData()
+            self?.updateSingleRepo(repo)
         })
         alert.addAction(addAction)
         

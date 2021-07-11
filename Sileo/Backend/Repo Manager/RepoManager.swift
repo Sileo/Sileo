@@ -189,20 +189,20 @@ final class RepoManager {
         return repos
     }
     
-    public func addDistRepo(url: URL, suites: String, components: String) {
+    public func addDistRepo(url: URL, suites: String, components: String) -> Repo? {
         var normalizedStr = url.absoluteString
         if normalizedStr.last != "/" {
             normalizedStr.append("/")
         }
         guard let normalizedURL = URL(string: normalizedStr) else {
-            return
+            return nil
         }
         
         guard !hasRepo(with: normalizedURL),
               normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
               normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
         else {
-            return
+            return nil
         }
         
         repoListLock.wait()
@@ -219,6 +219,7 @@ final class RepoManager {
         repoList.append(repo)
         repoListLock.signal()
         writeListToFile()
+        return repo
     }
     
     @discardableResult func addRepo(with url: URL) -> [Repo] {
