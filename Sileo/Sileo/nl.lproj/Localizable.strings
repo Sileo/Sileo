@@ -98,7 +98,7 @@
 "Ignored Updates" = "Genegeerde Updates";
 
 "Repos" = "Bronnen";
-"Repo" = "Repository";
+"Repo" = "Bron";
 
 "Add_Source.Title" = "Voeg Bron Toe";
 "Add_Source.Body" = "Voeg APT URL toe";
