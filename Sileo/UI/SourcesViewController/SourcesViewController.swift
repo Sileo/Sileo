@@ -643,6 +643,7 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
         indexPath.section > 0
     }
     
+    #if !targetEnvironment(macCatalyst)
     func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         action == #selector(UIResponderStandardEditActions.copy(_:)) 
     }
@@ -655,7 +656,28 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
         let repo = sortedRepoList[indexPath.row]
         UIPasteboard.general.url = repo.url
     }
-    
+    #else
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        UIContextMenuConfiguration(identifier: nil,
+                                   previewProvider: nil) { [weak self] _ in
+            let copyAction = UIAction(title: "Copy") { [weak self] _ in
+                let repo = self?.sortedRepoList[indexPath.row]
+                UIPasteboard.general.url = repo?.url
+            }
+            let deleteAction = UIAction(title: "Remove") { [weak self] _ in
+                guard let strong = self else { return }
+                let repo = strong.sortedRepoList[indexPath.row]
+                RepoManager.shared.remove(repo: repo)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                strong.reSortList()
+                strong.updateFooterCount()
+                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+            }
+            return UIMenu(title: "", children: [copyAction, deleteAction])
+        }
+    }
+    #endif
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }

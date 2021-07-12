@@ -828,10 +828,12 @@ final class RepoManager {
                     
                     // if the repo is flat, then we didn't wait for Release earlier so wait now
                     let numReleaseWaits = repo.isFlat ? 2 : 1
+                    var isReleaseGPGValid = false
                     
                     func escapeEarly() {
-                        if breakOff { return }
-                        if repo.packageDict.isEmpty { return }
+                        #if targetEnvironment(macCatalyst)
+                        guard isReleaseGPGValid else { return }
+                        #endif
                         guard !breakOff,
                               !repo.packageDict.isEmpty,
                               repo.packagesExist,
@@ -910,7 +912,6 @@ final class RepoManager {
                         continue
                     }
                     
-                    var isReleaseGPGValid = false
                     if let releaseGPGFileURL = releaseGPGFileURL {
                         var error: String = ""
                         let validAndTrusted = APTWrapper.verifySignature(key: releaseGPGFileURL.aptPath, data: releaseFile.url.aptPath, error: &error)
@@ -918,11 +919,28 @@ final class RepoManager {
                             if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) {
                                 log("Invalid GPG signature at \(releaseGPGURL)", type: .error)
                                 errorsFound = true
+                                #if targetEnvironment(macCatalyst)
+                                repo.packageDict = [:]
+                                reposUpdated += 1
+                                self.checkUpdatesInBackground()
+                                continue
+                                #endif
                             }
                         } else {
                             isReleaseGPGValid = true
                         }
                     }
+                    
+                    #if targetEnvironment(macCatalyst)
+                    if !isReleaseGPGValid {
+                        repo.packageDict = [:]
+                        errorsFound = true
+                        log("\(repo.repoURL) had no valid GPG signature", type: .error)
+                        reposUpdated += 1
+                        self.checkUpdatesInBackground()
+                        continue
+                    }
+                    #endif
                     
                     let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
