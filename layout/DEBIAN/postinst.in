@@ -48,6 +48,7 @@ case "$1" in
 		\
 		;' $sourcesDir/sileo.sources
 		fi
+		rm -rf $sourcesDir/../preferences.d/checkra1n
 		exit 0
 		;;
 	(triggered)
