@@ -130,7 +130,6 @@
 		E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED026680E030080BFCE /* libz.tbd */; };
 		E14C5EE9266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
 		E14C5EEA266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
-		E15AEBC5268CB0D800DEE018 /* giveMeRoot in Resources */ = {isa = PBXBuildFile; fileRef = E15AEBC4268CB0D800DEE018 /* giveMeRoot */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -141,6 +140,9 @@
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
+		E19CC2D4269C6DFA0059251F /* SileoRootDaemon in Copy Files */ = {isa = PBXBuildFile; fileRef = E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E19CC2DD269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
+		E19CC2DE269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
 		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
 		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
@@ -163,6 +165,11 @@
 		E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90266263D79C600569D1E /* AmyGifManager.swift */; };
 		E1C90270263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
 		E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */; };
+		E1C960A7269E0D1F00F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
+		E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */; };
+		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
+		E1D33901269C3ECB00933AA5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D33900269C3ECB00933AA5 /* main.swift */; };
+		E1D33908269C41F900933AA5 /* RootHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D33907269C41F900933AA5 /* RootHelper.swift */; };
 		E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
@@ -547,6 +554,13 @@
 			remoteGlobalIDString = F139D08F22EA9209007F5C0D;
 			remoteInfo = "Sileo Demo";
 		};
+		E19CC2DA269C7DCF0059251F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1D338FD269C3ECB00933AA5;
+			remoteInfo = SileoRootDaemon;
+		};
 		F149E0D420B6040B005CA30B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F149E0A520B6040B005CA30B /* Project object */;
@@ -579,6 +593,17 @@
 			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E19CC2D3269C6DAB0059251F /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				E19CC2D4269C6DFA0059251F /* SileoRootDaemon in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1AA47B7268DF3CD00D87E5E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,6 +623,15 @@
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1D338FC269C3ECB00933AA5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -826,10 +860,11 @@
 		E14C5EE626680F350080BFCE /* filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		E14C5EE726680F350080BFCE /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		E14C5EE8266810A30080BFCE /* GZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GZIP.swift; sourceTree = "<group>"; };
-		E15AEBC4268CB0D800DEE018 /* giveMeRoot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = giveMeRoot; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
+		E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignUpdate.swift; sourceTree = "<group>"; };
+		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -846,7 +881,14 @@
 		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
 		E1C90266263D79C600569D1E /* AmyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyGifManager.swift; sourceTree = "<group>"; };
 		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
+		E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTPipe.swift; sourceTree = "<group>"; };
+		E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesignCheck.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
+		E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SileoRootDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1D33900269C3ECB00933AA5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E1D33905269C402900933AA5 /* Launchd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Launchd.plist; sourceTree = "<group>"; };
+		E1D33906269C40C200933AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1D33907269C41F900933AA5 /* RootHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHelper.swift; sourceTree = "<group>"; };
 		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
 		E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APTJsonParser.swift; sourceTree = "<group>"; };
 		E1DC86052669673600B3DC42 /* AmyLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyLogManager.swift; sourceTree = "<group>"; };
@@ -1069,6 +1111,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		49FB38882660745F0029CAFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1D338FB269C3ECB00933AA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1423,7 +1472,6 @@
 				49FB388D2660745F0029CAFF /* Info.plist */,
 				E1777824266006290091AFAB /* LaunchAsRoot.h */,
 				E1C3B7DB26600852009175B6 /* LaunchAsRoot.m */,
-				E15AEBC4268CB0D800DEE018 /* giveMeRoot */,
 			);
 			path = SileoRootWrapper;
 			sourceTree = "<group>";
@@ -1598,6 +1646,14 @@
 			path = "Canister Resolver";
 			sourceTree = "<group>";
 		};
+		E19CC2D7269C7D550059251F /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		E1BB50D8260E912000F870B8 /* OG */ = {
 			isa = PBXGroup;
 			children = (
@@ -1627,6 +1683,20 @@
 				E1DC86052669673600B3DC42 /* AmyLogManager.swift */,
 			);
 			path = AmyCommon;
+			sourceTree = "<group>";
+		};
+		E1D338FF269C3ECB00933AA5 /* SileoRootDaemon */ = {
+			isa = PBXGroup;
+			children = (
+				E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */,
+				E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */,
+				E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */,
+				E1D33907269C41F900933AA5 /* RootHelper.swift */,
+				E1D33900269C3ECB00933AA5 /* main.swift */,
+				E1D33905269C402900933AA5 /* Launchd.plist */,
+				E1D33906269C40C200933AA5 /* Info.plist */,
+			);
+			path = SileoRootDaemon;
 			sourceTree = "<group>";
 		};
 		E1DC860826697CD600B3DC42 /* Pride */ = {
@@ -1849,6 +1919,8 @@
 				493B23BE260979AF007D605F /* Sileo Demo */,
 				4975C4EF2647750D00D344B0 /* giveMeRoot */,
 				49FB388C2660745F0029CAFF /* SileoRootWrapper */,
+				E1D338FF269C3ECB00933AA5 /* SileoRootDaemon */,
+				E19CC2D7269C7D550059251F /* Scripts */,
 				F149E0CB20B6040B005CA30B /* SileoTests */,
 				F149E0D620B6040B005CA30B /* SileoUITests */,
 				4975C4FB2647758600D344B0 /* Make */,
@@ -1871,6 +1943,7 @@
 				49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */,
 				F149E0C820B6040B005CA30B /* SileoTests.xctest */,
 				F149E0D320B6040B005CA30B /* SileoUITests.xctest */,
+				E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2509,6 +2582,23 @@
 			productReference = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		E1D338FD269C3ECB00933AA5 /* SileoRootDaemon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1D33904269C3ECB00933AA5 /* Build configuration list for PBXNativeTarget "SileoRootDaemon" */;
+			buildPhases = (
+				E1D338FA269C3ECB00933AA5 /* Sources */,
+				E1D338FB269C3ECB00933AA5 /* Frameworks */,
+				E1D338FC269C3ECB00933AA5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SileoRootDaemon;
+			productName = SileoRootDaemon;
+			productReference = E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */;
+			productType = "com.apple.product-type.tool";
+		};
 		F139D08F22EA9209007F5C0D /* Sileo Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F139D14922EA9209007F5C0D /* Build configuration list for PBXNativeTarget "Sileo Demo" */;
@@ -2545,17 +2635,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DC20B6040B005CA30B /* Build configuration list for PBXNativeTarget "Sileo" */;
 			buildPhases = (
-				F1CA042822DA824A00CED7A9 /* Run Script */,
+				E19CC2D9269C7DC10059251F /* ShellScript */,
 				F149E0A920B6040B005CA30B /* Sources */,
 				F149E0AA20B6040B005CA30B /* Frameworks */,
 				E177780F266005DF0091AFAB /* Embed PlugIns */,
 				F149E0AB20B6040B005CA30B /* Resources */,
 				F1144EFE20FC636C001FF36C /* ShellScript */,
+				F1CA042822DA824A00CED7A9 /* Run Script */,
 				E1AA47B7268DF3CD00D87E5E /* Embed Frameworks */,
+				E19CC2D3269C6DAB0059251F /* Copy Files */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E19CC2DB269C7DCF0059251F /* PBXTargetDependency */,
 				49FB3893266074B40029CAFF /* PBXTargetDependency */,
 			);
 			name = Sileo;
@@ -2615,11 +2708,16 @@
 		F149E0A520B6040B005CA30B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Sileo Team";
 				TargetAttributes = {
 					49FB388A2660745F0029CAFF = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+					};
+					E1D338FD269C3ECB00933AA5 = {
+						CreatedOnToolsVersion = 13.0;
 					};
 					F139D08F22EA9209007F5C0D = {
 						ProvisioningStyle = Automatic;
@@ -2706,6 +2804,7 @@
 				49FB388A2660745F0029CAFF /* SileoRootWrapper */,
 				F149E0C720B6040B005CA30B /* SileoTests */,
 				F149E0D220B6040B005CA30B /* SileoUITests */,
+				E1D338FD269C3ECB00933AA5 /* SileoRootDaemon */,
 			);
 		};
 /* End PBXProject section */
@@ -2715,7 +2814,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15AEBC5268CB0D800DEE018 /* giveMeRoot in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2891,6 +2989,23 @@
 			shellPath = /bin/sh;
 			shellScript = "cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\ncp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\n";
 		};
+		E19CC2D9269C7DC10059251F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export MAIN_BUNDLE_ID=\"org.coolstar.SileoStore\"\nexport HELPER_BUNDLE_ID=\"SileoRootDaemon\"\nswift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\n";
+		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2947,6 +3062,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AD535426607A1E00797C5A /* LaunchAsRoot.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1D338FA269C3ECB00933AA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19CC2DE269C867C0059251F /* RootDaemonProtocol.swift in Sources */,
+				E1D33901269C3ECB00933AA5 /* main.swift in Sources */,
+				E1D33908269C41F900933AA5 /* RootHelper.swift in Sources */,
+				E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */,
+				E1C960A7269E0D1F00F4BF34 /* APTPipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3232,6 +3359,7 @@
 				F1A116BA2384D57D00B6F408 /* DepictionFontCollection.swift in Sources */,
 				F1C5D9E122D199900021BD89 /* FeaturedBannersView.swift in Sources */,
 				F1C5D9C622D1879D0021BD89 /* FeaturedBaseView.swift in Sources */,
+				E19CC2DD269C867C0059251F /* RootDaemonProtocol.swift in Sources */,
 				E1EB0365268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */,
 				F1C5D9E422D1A1140021BD89 /* FeaturedButtonView.swift in Sources */,
 				F1C5D9D522D189AF0021BD89 /* FeaturedHeaderView.swift in Sources */,
@@ -3305,6 +3433,7 @@
 				F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */,
 				F1D6A62622E53E7000CBD045 /* String+Hash.swift in Sources */,
 				172B2ECF22F0896E000155B9 /* String+LocalizedHelpers.swift in Sources */,
+				E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */,
 				F1D6A62C22E53E7000CBD045 /* String+Utilities.swift in Sources */,
 				F1AB911E22ED02900054341B /* TabBar.swift in Sources */,
 				F120234121470F69005EAFAC /* UIColor+HTMLColors.m in Sources */,
@@ -3355,6 +3484,12 @@
 			isa = PBXTargetDependency;
 			target = F139D08F22EA9209007F5C0D /* Sileo Demo */;
 			targetProxy = E14C5E6C26659D5B0080BFCE /* PBXContainerItemProxy */;
+		};
+		E19CC2DB269C7DCF0059251F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = maccatalyst;
+			target = E1D338FD269C3ECB00933AA5 /* SileoRootDaemon */;
+			targetProxy = E19CC2DA269C7DCF0059251F /* PBXContainerItemProxy */;
 		};
 		F149E0D520B6040B005CA30B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3542,12 +3677,18 @@
 		49FB388F2660745F0029CAFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -3555,6 +3696,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -3562,19 +3705,80 @@
 		49FB38902660745F0029CAFF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sileoteam.SileoRootWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		E1D33902269C3ECB00933AA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					SileoRootDaemon/Launchd.plist,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					SileoRootDaemon/Info.plist,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E1D33903269C3ECB00933AA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					SileoRootDaemon/Launchd.plist,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					SileoRootDaemon/Info.plist,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3976,6 +4180,15 @@
 			buildConfigurations = (
 				49FB388F2660745F0029CAFF /* Debug */,
 				49FB38902660745F0029CAFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1D33904269C3ECB00933AA5 /* Build configuration list for PBXNativeTarget "SileoRootDaemon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1D33902269C3ECB00933AA5 /* Debug */,
+				E1D33903269C3ECB00933AA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

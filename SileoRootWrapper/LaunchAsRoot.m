@@ -18,90 +18,36 @@
     return singleton;
 }
 
-- (instancetype)init {
-    self = [super init];
-    [self authenticateIfNeeded];
-    return self;
+-(NSXPCConnection *)connection {
+    return [[NSXPCConnection alloc] initWithMachServiceName:@"SileoRootDaemon" options: NSXPCConnectionPrivileged];
 }
 
-- (void)dealloc {
-    AuthorizationFree(self.authRef, kAuthorizationFlagDefaults);
-}
+-(BOOL)installDaemon {
+    AuthorizationItem authItem      = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
+    AuthorizationRights authRights  = { 1, &authItem };
+    AuthorizationFlags flags        =   kAuthorizationFlagDefaults              |
+    kAuthorizationFlagInteractionAllowed    |
+    kAuthorizationFlagPreAuthorize          |
+    kAuthorizationFlagExtendRights;
 
-- (BOOL)authenticateIfNeeded {
-    if (self.authRef != NULL) {
-        return YES;
-    }
-    
-    OSStatus status;
-    AuthorizationRef authRef;
-    
-    status = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, kAuthorizationFlagDefaults, &authRef);
+    AuthorizationRef authRef = NULL;
+
+    OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
     if (status != errAuthorizationSuccess) {
-        AuthorizationFree(authRef, kAuthorizationFlagDefaults);
-        return NO;
-    }
-    
-    AuthorizationItem right1 = {kAuthorizationRightExecute, 0, NULL, 0};
-    AuthorizationItem rights[] = {right1};
-    AuthorizationRights requestedRights = {sizeof(rights) / sizeof(right1), rights};
-    
-    const char *reason = "Sileo wants to interact with apt as root.";
-    AuthorizationItem env1 = {kAuthorizationEnvironmentPrompt, strlen(reason), (void *)reason, 0};
-    AuthorizationItem envs[] = {env1};
-    AuthorizationRights environment = {sizeof(envs) / sizeof(env1), envs};
-    
-    AuthorizationFlags flags = kAuthorizationFlagDefaults | kAuthorizationFlagExtendRights | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize;
-    AuthorizationRights *grantedRights;
-    status = AuthorizationCopyRights(authRef, &requestedRights, &environment, flags, &grantedRights);
-    if (status != errAuthorizationSuccess) {
-        AuthorizationFree(authRef, kAuthorizationFlagDefaults);
         exit(0);
-        return NO;
     }
-    
-    self.authRef = authRef;
+    NSString *name = @"SileoRootDaemon";
+    CFStringRef str = (__bridge CFStringRef)name;
+    CFErrorRef error;
+    BOOL success = SMJobBless(kSMDomainSystemLaunchd, str, authRef, &error);
+    if (!success) {
+        NSLog(@"[Sileo] SMJobBless failed with error %@", error);
+        exit(0);
+    }
+    free(error);
+    AuthorizationFree(authRef, kAuthorizationFlagDefaults);
+    NSLog(@"[Sileo] helper installed succesfully");
     return YES;
-}
-
-- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args callback:(void (^) (NSString *))callback {
-    [self authenticateIfNeeded];
-    
-    NSUInteger argCount = args.count;
-    size_t size = (argCount + 1) * sizeof(const char *);
-    const char **arguments = malloc(size);
-    for (int i = 0; i < argCount; i++) {
-        arguments[i] = [args objectAtIndex:i].UTF8String;
-    }
-    arguments[argCount] = NULL;
-    
-    FILE *stream;
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    OSStatus status = AuthorizationExecuteWithPrivileges(self.authRef, path.UTF8String, kAuthorizationFlagDefaults, (char * const *)arguments, &stream);
-    #pragma clang diagnostic pop
-    free(arguments);
-    if (status != errAuthorizationSuccess) {
-        return nil;
-    }
-    
-    NSMutableString *output = [NSMutableString string];
-    NSMutableString *tmpOutput = [NSMutableString string];
-    while (true) {
-        char c = fgetc(stream);
-        if (feof(stream) != 0) {
-            break;
-        }
-        NSString *character = [NSString stringWithFormat:@"%c", c];
-        [output appendFormat: @"%@", character];
-        [tmpOutput appendFormat:@"%@", character];
-        if ([character isEqualToString:@"\n"]) {
-            callback(tmpOutput);
-            tmpOutput = [NSMutableString string];
-        }
-    }
-    
-    return output;
 }
 
 @end

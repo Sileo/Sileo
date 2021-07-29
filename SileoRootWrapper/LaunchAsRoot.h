@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Security/Authorization.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 @interface LaunchAsRoot : NSObject
 @property (class, readonly) LaunchAsRoot *shared;
-@property AuthorizationRef authRef;
-- (instancetype)init;
-- (void)dealloc;
-- (BOOL)authenticateIfNeeded;
-- (NSString *)spawnWithPath:(NSString *)path args:(NSArray<NSString *> *)args callback:(void (^) (NSString *))callback;
+- (NSXPCConnection *)connection;
+- (BOOL)installDaemon;
 @end
