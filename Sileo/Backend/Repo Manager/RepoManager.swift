@@ -1233,7 +1233,7 @@ final class RepoManager {
             return
         }
         
-        spawnAsRoot(args: [CommandPath.cp, "-f", "\(tempPath.path)", "\(sileoList)"])
+        spawnAsRoot(args: [CommandPath.cp, "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
         spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
         
         #endif
