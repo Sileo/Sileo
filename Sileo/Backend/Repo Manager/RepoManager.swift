@@ -963,7 +963,7 @@ final class RepoManager {
             return
         }
         
-        spawnAsRoot(args: ["/usr/bin/cp", "-f", "\(tempPath.path)", "\(sileoList)"])
+        spawnAsRoot(args: ["/usr/bin/cp", "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
         spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(sileoList)"])
         
         #endif
