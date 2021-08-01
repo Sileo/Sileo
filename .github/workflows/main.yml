@@ -45,6 +45,8 @@ jobs:
           sudo rsync -aP ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+
           
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
