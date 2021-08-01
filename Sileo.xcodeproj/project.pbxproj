@@ -3004,7 +3004,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export MAIN_BUNDLE_ID=\"org.coolstar.SileoStore\"\nexport HELPER_BUNDLE_ID=\"SileoRootDaemon\"\nswift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\n";
+			shellScript = "export MAIN_BUNDLE_ID=\"org.coolstar.SileoStore\"\nexport HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n#swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\n";
 		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
