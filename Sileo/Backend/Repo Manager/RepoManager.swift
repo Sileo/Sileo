@@ -11,10 +11,10 @@ import Foundation
 // swiftlint:disable:next type_body_length
 final class RepoManager {
     // This check is here because it's used in multiple places throughout the code
-    private final let isProcursus = FileManager.default.fileExists(atPath: "/etc/apt/trusted.gpg.d/memo.gpg")
+    private final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
-    
+
     enum RepoHashType: String, CaseIterable {
         case sha256
         case sha512
@@ -26,12 +26,12 @@ final class RepoManager {
             }
         }
     }
-    
+
     static let shared = RepoManager()
-    
+
     private(set) var repoList: [Repo] = []
     private var repoListLock = DispatchSemaphore(value: 1)
-    
+
     public func update(_ repo: Repo) {
         repoDatabase.async(flags: .barrier) {
             guard let index = self.repoList.lastIndex(where: { $0.rawURL == repo.rawURL }) else { return }
@@ -42,7 +42,7 @@ final class RepoManager {
             self.repoList[index] = repo
         }
     }
-    
+
     public func update(_ repos: [Repo]) {
         repoDatabase.sync(flags: .barrier) {
             for repo in repos {
@@ -58,13 +58,13 @@ final class RepoManager {
 
     // swiftlint:disable:next force_try
     lazy private var dataDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-    
+
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     private var sourcesURL: URL {
         FileManager.default.documentDirectory.appendingPathComponent("sileo.sources")
     }
     #endif
-    
+
     init() {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         let containerURL = FileManager.default.documentDirectory.deletingLastPathComponent()
@@ -79,7 +79,7 @@ final class RepoManager {
         #else
         spawnAsRoot(args: [CommandPath.rm, "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
         #endif
-        
+
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         repoListLock.wait()
         let jailbreakRepo = Repo()
@@ -95,10 +95,10 @@ final class RepoManager {
         jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
         repoList.append(jailbreakRepo)
         repoListLock.signal()
-        
+
         if sourcesURL.exists {
             parseSourcesFile(at: sourcesURL)
-        } else {            
+        } else {
             writeListToFile()
         }
         #else
@@ -113,7 +113,7 @@ final class RepoManager {
         }
         #endif
     }
-    
+
     @discardableResult func addRepos(with urls: [URL]) -> [Repo] {
         var repos = [Repo]()
         func handleDistRepo(_ url: URL) -> Bool {
@@ -152,7 +152,7 @@ final class RepoManager {
             default: return false
             }
         }
-        
+
         for url in urls {
             var normalizedStr = url.absoluteString
             if normalizedStr.last != "/" {
@@ -161,17 +161,17 @@ final class RepoManager {
             guard let normalizedURL = URL(string: normalizedStr) else {
                 continue
             }
-            
+
             guard !hasRepo(with: normalizedURL),
                   // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
-                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
-                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
-                  !isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
+                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
+                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
+                  !isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
             else {
                 continue
             }
-            
+
             repoListLock.wait()
             if !handleDistRepo(url) {
                 let repo = Repo()
@@ -192,7 +192,7 @@ final class RepoManager {
         writeListToFile()
         return repos
     }
-    
+
     public func addDistRepo(url: URL, suites: String, components: String) -> Repo? {
         var normalizedStr = url.absoluteString
         if normalizedStr.last != "/" {
@@ -201,17 +201,17 @@ final class RepoManager {
         guard let normalizedURL = URL(string: normalizedStr) else {
             return nil
         }
-        
+
         guard !hasRepo(with: normalizedURL),
               // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
-              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
-              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
-              !isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
+              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
+              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
+              !isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
         else {
             return nil
         }
-        
+
         repoListLock.wait()
         let repo = Repo()
         repo.rawURL = normalizedStr
@@ -228,11 +228,11 @@ final class RepoManager {
         writeListToFile()
         return repo
     }
-    
+
     @discardableResult func addRepo(with url: URL) -> [Repo] {
         addRepos(with: [url])
     }
-    
+
     func remove(repos: [Repo]) {
         repoListLock.wait()
         repoList.removeAll { repos.contains($0) }
@@ -243,11 +243,11 @@ final class RepoManager {
         }
         NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }
-    
+
     func remove(repo: Repo) {
         remove(repos: [repo])
     }
-    
+
     func repo(with url: URL) -> Repo? {
         var normalizedStr = url.absoluteString.lowercased()
         if normalizedStr.last != "/" {
@@ -265,11 +265,11 @@ final class RepoManager {
             return repoNormalizedStr == normalizedStr
         })
     }
-    
+
     func repo(withSourceFile sourceFile: String) -> Repo? {
         repoList.first { $0.rawEntry == sourceFile }
     }
-    
+
     func hasRepo(with url: URL) -> Bool {
         if url.host?.lowercased() == "apt.bigboss.org" ||
             url.host?.lowercased() == "bigboss.org" ||
@@ -285,19 +285,19 @@ final class RepoManager {
         let repo = self.repo(with: url)
         return repo != nil
     }
-    
+
     private func parseRepoEntry(_ repoEntry: String, at url: URL, withTypes types: [String], uris: [String], suites: [String], components: [String]?) {
         guard types.contains("deb") else {
             return
         }
-        
+
         for repoURL in uris {
             guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
                   !hasRepo(with: URL(string: repoURL)!)
             else {
                 continue
             }
-            
+
             let repos = suites.map { (suite: String) -> Repo in
                 let repo = Repo()
                 repo.rawEntry = repoEntry
@@ -307,7 +307,7 @@ final class RepoManager {
                 repo.entryFile = url.absoluteString
                 return repo
             }
-            
+
             repoListLock.wait()
             repoList += repos
             repoListLock.signal()
@@ -320,29 +320,29 @@ final class RepoManager {
         else {
             return
         }
-        
+
         let repoEntries = rawList.components(separatedBy: "\n")
         for repoEntry in repoEntries {
             let parts = repoEntry.components(separatedBy: " ")
             guard parts.count >= 3 else {
                 continue
             }
-            
+
             let type = parts[0]
             let uri = parts[1]
             let suite = parts[2]
             let components = (parts.count > 3) ? Array(parts[3...]) : nil
-            
+
             parseRepoEntry(repoEntry, at: url, withTypes: [type], uris: [uri], suites: [suite], components: components)
         }
     }
-    
+
     private func parseSourcesFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
-        
+
         for repoEntry in repoEntries {
             guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
                   let rawTypes = repoData["types"],
@@ -352,11 +352,11 @@ final class RepoManager {
             else {
                 continue
             }
-            
+
             let types = rawTypes.components(separatedBy: " ")
             let uris = rawUris.components(separatedBy: " ")
             let suites = rawSuites.components(separatedBy: " ")
-            
+
             let allComponents = rawComponents.components(separatedBy: " ")
             let components: [String]?
             if allComponents.count == 1 && allComponents[0] == "" {
@@ -364,11 +364,11 @@ final class RepoManager {
             } else {
                 components = allComponents
             }
-            
+
             parseRepoEntry(repoEntry, at: url, withTypes: types, uris: uris, suites: suites, components: components)
         }
     }
-    
+
     var cachePrefix: URL {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         let listsURL = FileManager.default.documentDirectory.appendingPathComponent("lists")
@@ -380,7 +380,7 @@ final class RepoManager {
         return URL(fileURLWithPath: CommandPath.lists)
         #endif
     }
-    
+
     func cachePrefix(for repo: Repo) -> URL {
         var prefix = repo.repoURL
         prefix = String(prefix.drop(prefix: "https://"))
@@ -394,7 +394,7 @@ final class RepoManager {
         prefix = prefix.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "/", with: "_")
         return cachePrefix.appendingPathComponent(prefix)
     }
-    
+
     func cacheFile(named name: String, for repo: Repo) -> URL {
         let arch = DpkgWrapper.getArchitectures().first ?? ""
         let prefix = cachePrefix(for: repo)
@@ -410,12 +410,12 @@ final class RepoManager {
             .deletingLastPathComponent()
             .appendingPathComponent(prefix.lastPathComponent + name)
     }
-    
+
     private func _checkUpdatesInBackground(_ repos: [Repo]) {
         let metadataUpdateGroup = DispatchGroup()
         for repo in repos {
             metadataUpdateGroup.enter()
-            
+
             if !repo.isLoaded {
                 let releaseFile = cacheFile(named: "Release", for: repo)
                 if let info = releaseFile.aptContents,
@@ -433,7 +433,7 @@ final class RepoManager {
                     repo.isLoaded = true
                 }
             }
-            
+
             if repo.isIconLoaded {
                 metadataUpdateGroup.leave()
             } else {
@@ -472,7 +472,7 @@ final class RepoManager {
             }
         }
     }
-    
+
     private func fixLists() {
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
         spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.lists])
@@ -480,11 +480,11 @@ final class RepoManager {
         spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.lists])
         #endif
     }
-    
+
     func checkUpdatesInBackground() {
         _checkUpdatesInBackground(repoList)
     }
-    
+
     @discardableResult
     func queue(
         from url: URL?,
@@ -497,7 +497,7 @@ final class RepoManager {
             failure(520, nil)
             return nil
         }
-        
+
         let request = URLManager.urlRequest(url)
         guard let task = AmyDownloadParser(request: request) else { return nil }
         task.progressCallback = { responseProgress in
@@ -518,7 +518,7 @@ final class RepoManager {
         task.make()
         return task
     }
-    
+
     func fetch(
         from url: URL,
         withExtensionsUntilSuccess extensions: [String],
@@ -549,7 +549,7 @@ final class RepoManager {
             }
         )?.resume()
     }
-    
+
     private func repoRequiresUpdate(_ repo: Repo) -> Bool {
         PackageListManager.shared.initWait()
         let packagesFile = cacheFile(named: "Packages", for: repo)
@@ -563,13 +563,13 @@ final class RepoManager {
         }
         return Date().timeIntervalSince(modifiedDate) > 3 * 3600
     }
-    
+
     public func postProgressNotification(_ repo: Repo?) {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: RepoManager.progressNotification, object: repo)
         }
     }
-    
+
     // swiftlint:disable function_body_length
     private func _update (
         force: Bool,
@@ -587,18 +587,18 @@ final class RepoManager {
         var reposUpdated = 0
         let dpkgArchitectures = DpkgWrapper.getArchitectures()
         let updateGroup = DispatchGroup()
-        
+
         var backgroundIdentifier: UIBackgroundTaskIdentifier?
         backgroundIdentifier = UIApplication.shared.beginBackgroundTask {
             backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
             backgroundIdentifier = nil
         }
-                
+
         var errorsFound = false
         let errorOutput = NSMutableAttributedString()
         var repos = repos
         let lock = NSLock()
-        
+
         for threadID in 0..<(ProcessInfo.processInfo.processorCount * 2) {
             updateGroup.enter()
             let repoQueue = DispatchQueue(label: "repo-queue-\(threadID)")
@@ -611,9 +611,9 @@ final class RepoManager {
                     }
                     let repo = repos.removeFirst()
                     lock.unlock()
-                    
+
                     repo.startedRefresh = true
-                    
+
                     if !force && !self.repoRequiresUpdate(repo) && !repo.packageDict.isEmpty {
                         if !repo.isLoaded {
                             repo.isLoaded = true
@@ -621,13 +621,13 @@ final class RepoManager {
                         }
                         continue
                     }
-                    
+
                     let semaphore = DispatchSemaphore(value: 0)
-                    
+
                     enum LogType: CustomStringConvertible {
                         case error
                         case warning
-                        
+
                         var description: String {
                             switch self {
                             case .error:
@@ -636,7 +636,7 @@ final class RepoManager {
                                 return "Warning"
                             }
                         }
-                        
+
                         var color: UIColor {
                             switch self {
                             case .error:
@@ -652,12 +652,12 @@ final class RepoManager {
                             attributes: [.foregroundColor: type.color])
                         )
                     }
-                    
+
                     var preferredArch: String?
                     var optReleaseFile: (url: URL, dict: [String: String])?
                     var optPackagesFile: (url: URL, name: String)?
                     var releaseGPGFileURL: URL?
-                    
+
                     let releaseURL = URL(string: repo.repoURL)!.appendingPathComponent("Release")
                     let releaseTask = self.queue(
                         from: releaseURL,
@@ -669,13 +669,13 @@ final class RepoManager {
                             defer {
                                 semaphore.signal()
                             }
-                            
+
                             guard let releaseContents = fileURL.aptContents else {
                                 log("Could not parse release file from \(releaseURL)", type: .error)
                                 errorsFound = true
                                 return
                             }
-                            
+
                             let releaseDict: [String: String]
                             do {
                                 releaseDict = try ControlFileParser.dictionary(controlFile: releaseContents, isReleaseFile: true).0
@@ -684,25 +684,25 @@ final class RepoManager {
                                 errorsFound = true
                                 return
                             }
-                            
+
                             let repoArchs = releaseDict["architectures"]?.components(separatedBy: " ") ?? releaseDict["architecture"].map { [$0] }
                             preferredArch = repoArchs.flatMap { dpkgArchitectures.first(where: $0.contains) }
-                            
+
                             guard preferredArch != nil else {
                                 log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
                                 errorsFound = true
                                 return
                             }
-                            
+
                             guard ["components"].allSatisfy(releaseDict.keys.contains) else {
                                 try? FileManager.default.removeItem(at: fileURL)
                                 log("Could not parse release file.", type: .error)
                                 errorsFound = true
                                 return
                             }
-                            
+
                             optReleaseFile = (fileURL, releaseDict)
-                            
+
                             repo.releaseProgress = 1
                             self.postProgressNotification(repo)
                         },
@@ -710,7 +710,7 @@ final class RepoManager {
                             defer {
                                 semaphore.signal()
                             }
-                            
+
                             log("\(releaseURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                             errorsFound = true
                             repo.releaseProgress = 1
@@ -718,7 +718,7 @@ final class RepoManager {
                         }
                     )
                     releaseTask?.resume()
-                    
+
                     let startTime = Date()
                     let refreshTimeout: TimeInterval = isBackground ? 10 : 20
                     if !repo.isFlat { // we have to wait for preferredArch to be determined
@@ -727,14 +727,14 @@ final class RepoManager {
                             releaseTask?.cancel()
                         }
                     }
-                    
+
                     let packages: URL?
                     if repo.isFlat || preferredArch != nil {
                         packages = repo.packagesURL(arch: preferredArch)
                     } else {
                         packages = nil
                     }
-                    
+
                     var succeededExtension = ""
                     var extensions = ["bz2", "gz", ""]
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
@@ -770,17 +770,17 @@ final class RepoManager {
                                     semaphore.signal()
                                 }
                             }
-                            
+
                             if !breakOff {
                                 succeededExtension = succeededURL.pathExtension
-                                
+
                                 // to calculate the package file name, subtract the base URL from it. Ensure there's no leading /
                                 let repoURL = repo.repoURL
                                 let substringOffset = repoURL.hasSuffix("/") ? 0 : 1
-                                
+
                                 let fileName = succeededURL.absoluteString.dropFirst(repoURL.count + substringOffset)
                                 optPackagesFile = (fileURL, String(fileName))
-                                
+
                                 repo.packagesProgress = 1
                                 self.postProgressNotification(repo)
                             } else {
@@ -799,7 +799,7 @@ final class RepoManager {
                             repo.packagesProgress = 1
                             self.postProgressNotification(repo)
                         }
-                    ) 
+                    )
                     }
                     let releaseGPGFileDst = self.cacheFile(named: "Release.gpg", for: repo)
                     let releaseGPGURL = URL(string: repo.repoURL)!.appendingPathComponent("Release.gpg")
@@ -821,7 +821,7 @@ final class RepoManager {
                             defer {
                                 semaphore.signal()
                             }
-                            
+
                             if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) {
                                 log("\(releaseGPGURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                                 errorsFound = true
@@ -831,11 +831,11 @@ final class RepoManager {
                         }
                     )
                     releaseGPGTask?.resume()
-                    
+
                     // if the repo is flat, then we didn't wait for Release earlier so wait now
                     let numReleaseWaits = repo.isFlat ? 2 : 1
                     var isReleaseGPGValid = false
-                    
+
                     func escapeEarly() {
                         #if targetEnvironment(macCatalyst)
                         guard isReleaseGPGValid else { return }
@@ -866,7 +866,7 @@ final class RepoManager {
                             }
                         }
                         if hashDict.isEmpty { return }
-                        
+
                         let repoHashStrings = hashes.1
                         let files = repoHashStrings.components(separatedBy: "\n")
                         for file in files {
@@ -895,9 +895,9 @@ final class RepoManager {
                             }
                         }
                     }
-                    
+
                     escapeEarly()
-                    
+
                     if !breakOff {
                         if packages != nil {
                             let timeout = refreshTimeout - Date().timeIntervalSince(startTime)
@@ -917,7 +917,7 @@ final class RepoManager {
                         self.checkUpdatesInBackground()
                         continue
                     }
-                    
+
                     if let releaseGPGFileURL = releaseGPGFileURL {
                         var error: String = ""
                         let validAndTrusted = APTWrapper.verifySignature(key: releaseGPGFileURL.aptPath, data: releaseFile.url.aptPath, error: &error)
@@ -936,7 +936,7 @@ final class RepoManager {
                             isReleaseGPGValid = true
                         }
                     }
-                    
+
                     #if targetEnvironment(macCatalyst)
                     if !isReleaseGPGValid {
                         repo.packageDict = [:]
@@ -947,7 +947,7 @@ final class RepoManager {
                         continue
                     }
                     #endif
-                    
+
                     let packagesFileDst = self.cacheFile(named: "Packages", for: repo)
                     var skipPackages = false
                     if !breakOff {
@@ -958,7 +958,7 @@ final class RepoManager {
                             self.checkUpdatesInBackground()
                             continue
                         }
-                        
+
                         let supportedHashTypes = RepoHashType.allCases.compactMap { type in releaseFile.dict[type.rawValue].map { (type, $0) } }
                         let releaseFileContainsHashes = !supportedHashTypes.isEmpty
                         var isPackagesFileValid = supportedHashTypes.allSatisfy {
@@ -970,11 +970,11 @@ final class RepoManager {
                             log("Hash for \(packagesFile.name) from \(repo.repoURL) is invalid!", type: .error)
                             errorsFound = true
                         }
-                        
+
                         if let packagesData = try? Data(contentsOf: packagesFile.url) {
                             let (shouldSkip, hash) = self.ignorePackages(repo: repo, data: packagesData, type: succeededExtension, path: packagesFileDst, hashtype: hashToSave)
                             skipPackages = shouldSkip
-                            
+
                             func loadPackageData() {
                                 if !skipPackages {
                                     do {
@@ -991,7 +991,7 @@ final class RepoManager {
                                             }
                                             return
                                         }
-                                        
+
                                         if succeededExtension == "xz" || succeededExtension == "lzma" {
                                             let (error, data) = XZ.decompress(path: packagesFile.url.path, type: succeededExtension == "xz" ? .xz : .lzma)
                                             if let data = data {
@@ -1034,7 +1034,7 @@ final class RepoManager {
                             }
                             loadPackageData()
                         }
-                        
+
                         if !skipPackages {
                             if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
                                 let packageDict = repo.packageDict
@@ -1055,7 +1055,7 @@ final class RepoManager {
                             }
                             reposUpdated += 1
                         }
-                        
+
                         if !releaseFileContainsHashes || (releaseFileContainsHashes && isPackagesFileValid) {
                             if !skipPackages {
                                 moveFileAsRoot(from: packagesFile.url, to: packagesFileDst)
@@ -1074,10 +1074,10 @@ final class RepoManager {
                         self.checkUpdatesInBackground()
                         continue
                     }
-                    
+
                     let releaseFileDst = self.cacheFile(named: "Release", for: repo)
                     moveFileAsRoot(from: releaseFile.url, to: releaseFileDst)
-                    
+
                     if let releaseGPGFileURL = releaseGPGFileURL {
                         if isReleaseGPGValid {
                             moveFileAsRoot(from: releaseGPGFileURL, to: releaseGPGFileDst)
@@ -1085,21 +1085,21 @@ final class RepoManager {
                             deleteFileAsRoot(releaseGPGFileDst)
                         }
                     }
-                    
+
                     try? FileManager.default.removeItem(at: releaseFile.url.aptUrl)
                     releaseGPGFileURL.map { try? FileManager.default.removeItem(at: $0) }
-                    
+
                     self.checkUpdatesInBackground()
                 }
-                
+
                 updateGroup.leave()
             }
         }
-        
+
         updateGroup.notify(queue: .main) {
             #if !targetEnvironment(macCatalyst)
             var files = self.cachePrefix.implicitContents
-            
+
             var expectedFiles: [String] = []
             expectedFiles = self.repoList.flatMap { (repo: Repo) -> [String] in
                 var names = [
@@ -1120,13 +1120,13 @@ final class RepoManager {
             }
             expectedFiles.append("lock")
             expectedFiles.append("partial")
-            
+
             files.removeAll { expectedFiles.contains($0.lastPathComponent) }
             files.forEach(deleteFileAsRoot)
             #endif
             self.postProgressNotification(nil)
             DatabaseManager.shared.saveQueue()
-            
+
             DispatchQueue.main.async {
                 if reposUpdated > 0 {
                     DownloadManager.shared.repoRefresh()
@@ -1141,7 +1141,7 @@ final class RepoManager {
             }
         }
     }
-    
+
     private func ignorePackage(repo: String, type: String, hash: String, hashtype: RepoHashType) {
         guard let repo = URL(string: repo) else { return }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
@@ -1158,7 +1158,7 @@ final class RepoManager {
             try? jsonData.write(to: jsonPath)
         }
     }
-    
+
     private func ignorePackages(repo: Repo, data: Data?, type: String, path: URL, hashtype: RepoHashType) -> (Bool, String?) {
         guard let data = data,
               !repo.packageDict.isEmpty,
@@ -1175,7 +1175,7 @@ final class RepoManager {
         let hashDict = dict[hashtype.rawValue] ?? [:]
         return ((hashDict[repoPath.absoluteString]) == hash, hash)
     }
-    
+
     func update(force: Bool, forceReload: Bool, isBackground: Bool, repos: [Repo] = RepoManager.shared.repoList, completion: @escaping (Bool, NSAttributedString) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             PackageListManager.shared.initWait()
@@ -1184,27 +1184,27 @@ final class RepoManager {
             }
         }
     }
-    
+
     func isHashValid(hashKey: String, hashType: RepoHashType, url: URL, fileName: String) -> Bool {
         guard let packagesData = try? Data(contentsOf: url) else { return false }
         let refhash = packagesData.hash(ofType: hashType.hashType)
-        
+
         let hashEntries = hashKey.components(separatedBy: "\n")
-        
+
         return hashEntries.contains {
             var components = $0.components(separatedBy: " ")
             components.removeAll { $0.isEmpty }
-            
+
             return components.count >= 3 &&
                    components[0] == refhash &&
                    components[1] == "\(packagesData.count)" &&
                    components[2] == fileName
         }
     }
-    
+
     func writeListToFile() {
         repoListLock.wait()
-        
+
         var rawRepoList = ""
         var added: Set<String> = []
         for repo in repoList {
@@ -1216,13 +1216,13 @@ final class RepoManager {
             rawRepoList += "\(repo.rawEntry)\n\n"
             added.insert(repo.rawEntry)
         }
-        
+
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        
+
         try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
-        
+
         #else
-        
+
         var sileoList = ""
         if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
            FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
@@ -1231,19 +1231,19 @@ final class RepoManager {
         } else {
             sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
         }
-        
+
         let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         do {
             try rawRepoList.write(to: tempPath, atomically: true, encoding: .utf8)
         } catch {
             return
         }
-        
+
         spawnAsRoot(args: [CommandPath.cp, "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
         spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
-        
+
         #endif
-        
+
         repoListLock.signal()
     }
 }
