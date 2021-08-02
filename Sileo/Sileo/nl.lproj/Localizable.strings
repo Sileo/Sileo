@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Bronnen Verversen";
 "Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
 "Refresh" = "Ververs";
-"Remove" = "Verwijder";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle Pakketten";
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
@@ -103,6 +103,7 @@
 "Add_Source.Title" = "Voeg Bron Toe";
 "Add_Source.Body" = "Voeg APT URL toe";
 "Add_Source.Button.Add" = "Voeg Bron Toe";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
