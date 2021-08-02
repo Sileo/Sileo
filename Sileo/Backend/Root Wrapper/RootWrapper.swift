@@ -2,15 +2,15 @@ import Foundation
 
 #if targetEnvironment(macCatalyst)
 final public class MacRootWrapper {
-    
+
     static let shared = MacRootWrapper()
     let sharedPipe = AptRootPipeWrapper()
-    
+
     public var connection: NSXPCConnection?
     private var invalidated = false
     public var helper: RootHelperProtocol?
     public var wrapperClass: LaunchAsRoot.Type
-    
+
     init() {
         guard let bundleURL = Bundle.main.builtInPlugInsURL?.appendingPathComponent("SileoRootWrapper.bundle"),
               let bundle = Bundle(url: bundleURL),
@@ -19,7 +19,7 @@ final public class MacRootWrapper {
         else {
             fatalError("Unable to initialize ability to spawn a process as root")
         }
-        
+
         self.wrapperClass = klass
         _ = klass.shared
         func connect() {
@@ -33,9 +33,9 @@ final public class MacRootWrapper {
         NSLog("[Sileo] Checking Helper Is Installed")
         NSLog("[Sileo] Making Connection To Helper")
         connect()
-        
+
         guard let helper = helper else { fatalError("[Sileo] Protocol 3: Protect the Pilot") }
-        
+
         NSLog("[Sileo] Checking Installed Helper Version")
         helper.version { version in
             guard version == DaemonVersion else {
@@ -51,21 +51,21 @@ final public class MacRootWrapper {
             NSLog("[Sileo] Installed Daemon Version is \(version) which is the latest")
         }
     }
-    
+
     public func spawn(args: [String], outputCallback: ((_ output: String?) -> Void)? = nil) -> (Int, String, String) {
         guard !args.isEmpty,
               let launchPath = args.first
         else {
             fatalError("Found invalid args when spawning a process as root")
         }
-        
+
         var arguments = args
         arguments.removeFirst()
-        
+
         var status = -1
         var stdoutStr = ""
         var stderrStr = ""
-        
+
         guard let helper = helper else {
             fatalError("[Sileo] Protocol 3: Protect the Pilot")
         }
@@ -79,7 +79,7 @@ final public class MacRootWrapper {
         NSLog("[Sileo] Returning Command")
         return (status, stdoutStr, stderrStr)
     }
-    
+
     public func connectToDaemon() -> Bool {
         guard self.connection == nil,
               let connection = wrapperClass.shared.connection(),
@@ -90,9 +90,9 @@ final public class MacRootWrapper {
         connection.invalidationHandler = {
             self.invalidated = true
         }
-        
+
         connection.resume()
-        
+
         guard let helper = connection.synchronousRemoteObjectProxyWithErrorHandler({ error in
             NSLog("[Sileo] Error = \(error)")
             return
@@ -117,19 +117,19 @@ final public class MacRootWrapper {
 @discardableResult func spawn(command: String, args: [String]) -> (Int, String, String) {
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
-    
+
     let bufsiz = Int(BUFSIZ)
-    
+
     pipe(&pipestdout)
     pipe(&pipestderr)
-    
+
     guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1 else {
         return (-1, "", "")
     }
     guard fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1 else {
         return (-1, "", "")
     }
-    
+
     var fileActions: posix_spawn_file_actions_t?
     posix_spawn_file_actions_init(&fileActions)
     posix_spawn_file_actions_addclose(&fileActions, pipestdout[0])
@@ -138,12 +138,12 @@ final public class MacRootWrapper {
     posix_spawn_file_actions_adddup2(&fileActions, pipestderr[1], STDERR_FILENO)
     posix_spawn_file_actions_addclose(&fileActions, pipestdout[1])
     posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
-    
+
     let argv: [UnsafeMutablePointer<CChar>?] = args.map { $0.withCString(strdup) }
     defer { for case let arg? in argv { free(arg) } }
-    
+
     var pid: pid_t = 0
-    
+
     #if targetEnvironment(macCatalyst)
     let env = [ "PATH=/opt/procursus/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin" ]
     let proenv: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
@@ -155,24 +155,24 @@ final public class MacRootWrapper {
     if spawnStatus != 0 {
         return (-1, "", "")
     }
-    
+
     close(pipestdout[1])
     close(pipestderr[1])
-    
+
     var stdoutStr = ""
     var stderrStr = ""
-    
+
     let mutex = DispatchSemaphore(value: 0)
-    
+
     let readQueue = DispatchQueue(label: "org.coolstar.sileo.command",
                                   qos: .userInitiated,
                                   attributes: .concurrent,
                                   autoreleaseFrequency: .inherit,
                                   target: nil)
-    
+
     let stdoutSource = DispatchSource.makeReadSource(fileDescriptor: pipestdout[0], queue: readQueue)
     let stderrSource = DispatchSource.makeReadSource(fileDescriptor: pipestderr[0], queue: readQueue)
-    
+
     stdoutSource.setCancelHandler {
         close(pipestdout[0])
         mutex.signal()
@@ -181,21 +181,21 @@ final public class MacRootWrapper {
         close(pipestderr[0])
         mutex.signal()
     }
-    
+
     stdoutSource.setEventHandler {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
         defer { buffer.deallocate() }
-        
+
         let bytesRead = read(pipestdout[0], buffer, bufsiz)
         guard bytesRead > 0 else {
             if bytesRead == -1 && errno == EAGAIN {
                 return
             }
-            
+
             stdoutSource.cancel()
             return
         }
-        
+
         let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
         array.withUnsafeBufferPointer { ptr in
             let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
@@ -205,32 +205,32 @@ final public class MacRootWrapper {
     stderrSource.setEventHandler {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
         defer { buffer.deallocate() }
-        
+
         let bytesRead = read(pipestderr[0], buffer, bufsiz)
         guard bytesRead > 0 else {
             if bytesRead == -1 && errno == EAGAIN {
                 return
             }
-            
+
             stderrSource.cancel()
             return
         }
-        
+
         let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
         array.withUnsafeBufferPointer { ptr in
             let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
             stderrStr += str
         }
     }
-    
+
     stdoutSource.resume()
     stderrSource.resume()
-    
+
     mutex.wait()
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    
+
     return (Int(status), stdoutStr, stderrStr)
 }
 
@@ -257,7 +257,7 @@ func deleteFileAsRoot(_ url: URL) {
 
 func hardLinkAsRoot(from: URL, to: URL) {
     deleteFileAsRoot(to)
-    
+
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.createSymbolicLink(at: to, withDestinationURL: from)
     #else
@@ -269,7 +269,7 @@ func hardLinkAsRoot(from: URL, to: URL) {
 
 func moveFileAsRoot(from: URL, to: URL) {
     deleteFileAsRoot(to)
-    
+
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.moveItem(at: from, to: to)
     #else
@@ -280,15 +280,75 @@ func moveFileAsRoot(from: URL, to: URL) {
 }
 
 public class CommandPath {
+    // Certain paths need to check for either Procursus mobile or Elucubratus as a fallback option
+    // Every method that uses this check already accounts for macCatalyst paths still resolving too
+    private static var isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+
     // swiftlint:disable identifier_name
     static var mv: String = {
-        #if targetEnvironment(macCatalyst)
+        if isMobileProcursus {
+            return "/usr/bin/mv"
+        }
+
         return "/bin/mv"
+    }()
+
+    static var chmod: String = {
+        if isMobileProcursus {
+            return "/usr/bin/chmod"
+        }
+
+        return "/bin/chmod"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var ln: String = {
+        if isMobileProcursus {
+            return "/usr/bin/ln"
+        }
+
+        return "/bin/ln"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var rm: String = {
+        if isMobileProcursus {
+            return "/usr/bin/rm"
+        }
+
+        return "/bin/rm"
+    }()
+
+    static var mkdir: String = {
+        if isMobileProcursus {
+            return "/usr/bin/mkdir"
+        }
+
+        return "/bin/mkdir"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var cp: String = {
+        if isMobileProcursus {
+            return "/usr/bin/cp"
+        }
+
+        return "/bin/cp"
+    }()
+
+    static var sourcesListD: String = {
+        // Check for not Procursus so we can keep the check below
+        if !isMobileProcursus {
+            return "/etc/apt/sileo.list.d"
+        }
+
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus/etc/apt/sources.list.d"
         #else
-        return "/usr/bin/mv"
+        return "/etc/apt/sources.list.d"
         #endif
     }()
-    
+
     static var chown: String = {
         #if targetEnvironment(macCatalyst)
         return "/usr/sbin/chown"
@@ -296,47 +356,7 @@ public class CommandPath {
         return "/usr/bin/chown"
         #endif
     }()
-    
-    static var chmod: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/chmod"
-        #else
-        return "/usr/bin/chmod"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var ln: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/ln"
-        #else
-        return "/usr/bin/ln"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var rm: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/rm"
-        #else
-        return "/usr/bin/rm"
-        #endif
-    }()
-    
-    static var mkdir: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/mkdir"
-        #else
-        return "/usr/bin/mkdir"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var cp: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/cp"
-        #else
-        return "/usr/bin/cp"
-        #endif
-    }()
-    
+
     static var aptmark: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-mark"
@@ -344,7 +364,7 @@ public class CommandPath {
         return "/usr/bin/apt-mark"
         #endif
     }()
-    
+
     static var dpkgdeb: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg-deb"
@@ -352,7 +372,7 @@ public class CommandPath {
         return "/usr/bin/dpkg-deb"
         #endif
     }()
-    
+
     static var dpkg: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg"
@@ -360,7 +380,7 @@ public class CommandPath {
         return "/usr/bin/dpkg"
         #endif
     }()
-    
+
     static var aptget: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-get"
@@ -368,7 +388,7 @@ public class CommandPath {
         return "/usr/bin/apt-get"
         #endif
     }()
-    
+
     static var aptkey: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-key"
@@ -376,11 +396,12 @@ public class CommandPath {
         return "/usr/bin/apt-key"
         #endif
     }()
+
     // swiftlint:disable identifier_name
     static var sh: String = {
         "/bin/sh"
     }()
-    
+
     static var sileolists: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/sileolists"
@@ -388,7 +409,7 @@ public class CommandPath {
         return "/var/lib/apt/sileolists"
         #endif
     }()
-    
+
     static var lists: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/lists"
@@ -396,15 +417,15 @@ public class CommandPath {
         return "/var/lib/apt/lists"
         #endif
     }()
-    
+
     static var whoami: String = {
         "/usr/bin/whoami"
     }()
-    
+
     static var uicache: String = {
         "/usr/bin/uicache"
     }()
-    
+
     static var dpkgDir: URL = {
         #if targetEnvironment(macCatalyst)
         return URL(fileURLWithPath: "/opt/procursus/Library/dpkg")
@@ -414,15 +435,7 @@ public class CommandPath {
         return URL(fileURLWithPath: "/Library/dpkg")
         #endif
     }()
-    
-    static var sourcesListD: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/etc/apt/sources.list.d"
-        #else
-        return "/etc/apt/sources.list.d"
-        #endif
-    }()
-    
+
     static var RepoIcon: String = {
         #if targetEnvironment(macCatalyst)
         return "RepoIcon"
@@ -430,7 +443,7 @@ public class CommandPath {
         return "CydiaIcon"
         #endif
     }()
-    
+
     // This is only important for macOS
     static var lazyPrefix: String = {
         #if targetEnvironment(macCatalyst)
@@ -439,7 +452,7 @@ public class CommandPath {
         return ""
         #endif
     }()
-    
+
     static var group: String = {
         #if targetEnvironment(macCatalyst)
         return "\(NSUserName()):staff"

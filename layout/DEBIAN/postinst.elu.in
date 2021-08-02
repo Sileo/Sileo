@@ -27,6 +27,41 @@ case "$1" in
 			echo "" > $sourcesDir/sileo.sources
 		fi
 
+		if [ -s $sourcesDir/cydia.list ]; then
+			if grep -Fxq "deb https://apt.bingner.com/ ./" $sourcesDir/cydia.list; then
+				rm -rf /etc/apt/sources.list.d/sileo.sources
+				sourcesDir="/etc/apt/sileo.list.d"
+
+				if ! [ -s $sourcesDir ]; then
+					mkdir -p $sourcesDir
+					touch $sourcesDir/sileo.sources
+
+				fi
+
+				if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+					then
+						echo "Installed BigBoss Repo"
+						sed -i '1s;^;Types: deb\
+URIs: http://apt.thebigboss.org/repofiles/cydia/\
+Suites: stable\
+Components: main\
+\
+;' $sourcesDir/sileo.sources
+				fi
+
+				if ! [ -s $sourcesDir/elucubratus.sources ]; then
+					echo "Installed Elucubratus Repo"
+					echo "" > $sourcesDir/elucubratus.sources
+					sed -i '1s;^;Types: deb\
+URIs: https://apt.bingner.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/elucubratus.sources
+				fi
+			fi
+		fi
+
 		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
 		then
 			echo "Installed Chariz Repo"
@@ -48,10 +83,14 @@ Components:\
 \
 ;' $sourcesDir/sileo.sources
 		fi
-		rm -rf $sourcesDir/../preferences.d/checkra1n
 		exit 0
 		;;
 	(triggered)
+		if [ "$2" == "/Library/MobileSubstrate/DynamicLibraries" ]; then
+			finish restart
+			exit 0
+		fi
+
 		finish uicache
 		exit 0
 		;;
