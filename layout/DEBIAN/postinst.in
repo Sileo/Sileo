@@ -86,6 +86,11 @@ Components:\
 		exit 0
 		;;
 	(triggered)
+		if [ "$2" == "/Library/MobileSubstrate/DynamicLibraries" ]; then
+			finish restart
+			exit 0
+		fi
+
 		finish uicache
 		exit 0
 		;;
