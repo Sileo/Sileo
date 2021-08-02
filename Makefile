@@ -15,10 +15,10 @@ ifeq ($(SILEO_PLATFORM),iphoneos-arm64)
 ARCH            = arm64
 PLATFORM        = iphoneos
 DEB_ARCH        = iphoneos-arm
-DEB_DEPENDS     = firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
+DEB_DEPENDS     = firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
 PREFIX          =
 DESTINATION     =
-CONTENTS        = 
+CONTENTS        =
 else ifeq ($(SILEO_PLATFORM),darwin-arm64)
 # These trues are temporary
 ARCH            = arm64
@@ -111,15 +111,18 @@ else
 BUILD_CONFIG  := Release
 endif
 
+ifeq ($(MAC), 1)
+# Only use ZSTD for the deb package if we are targeting mac
 ifeq ($(shell dpkg-deb --help | grep -qi "zstd" && echo 1),1)
 DPKG_TYPE ?= zstd
-else
-DPKG_TYPE ?= xz
 endif
+endif
+
+DPKG_TYPE ?= xz
 
 giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 	$(MAKE) -C giveMeRoot \
-		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)" 
+		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)"
 
 ifeq ($(MAC), 1)
 $(SILEO_APP_DIR):
@@ -172,7 +175,7 @@ stage: all
 	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/MacOS/SileoRootWrapper
 	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/giveMeRoot
 endif
-	
+
 ifeq ($(MAC), 1)
 package: stage
 	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
