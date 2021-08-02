@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
-"Remove" = "Kaldır";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
@@ -103,6 +103,7 @@
 "Add_Source.Title" = "Kaynak Ekle";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
 
