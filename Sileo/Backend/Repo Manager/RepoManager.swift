@@ -10,7 +10,8 @@ import Foundation
 
 // swiftlint:disable:next type_body_length
 final class RepoManager {
-    
+    // This check is here because it's used in multiple places throughout the code
+    private final let isProcursus = FileManager.default.fileExists(atPath: "/etc/apt/trusted.gpg.d/memo.gpg")
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
     
@@ -162,7 +163,11 @@ final class RepoManager {
             }
             
             guard !hasRepo(with: normalizedURL),
-                  normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
+                  // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
+                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
+                  isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
+                  !isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
             else {
                 continue
             }
@@ -198,7 +203,11 @@ final class RepoManager {
         }
         
         guard !hasRepo(with: normalizedURL),
-              normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
+              // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
+              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
+              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
+              isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
+              !isProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
         else {
             return nil
         }
