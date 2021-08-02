@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "正在重新整理來源";
 "Package_Installed_Files_Page" = "已安裝檔案";
 "Refresh" = "重新整理";
-"Remove" = "Remove";
+"Remove" = "移除";
 
 "All_Packages.Title" = "所有套件";
 "All_Packages.Cell_Subtitle" = "查看已新增來源的所有套件";
@@ -103,7 +103,7 @@
 "Add_Source.Title" = "新增來源";
 "Add_Source.Body" = "新增套件來源網址";
 "Add_Source.Button.Add" = "新增來源";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "新增 Dist 來源";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動輸入";
 
