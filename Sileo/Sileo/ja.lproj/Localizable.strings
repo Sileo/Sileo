@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "削除";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -103,6 +103,7 @@
 "Add_Source.Title" = "リポジトリを追加";
 "Add_Source.Body" = "リポジトリの URL を入力";
 "Add_Source.Button.Add" = "追加";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動で入力";
 

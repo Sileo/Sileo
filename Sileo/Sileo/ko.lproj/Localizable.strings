@@ -103,6 +103,7 @@
 "Add_Source.Title" = "소스 추가";
 "Add_Source.Body" = "APT 주소 추가";
 "Add_Source.Button.Add" = "소스 추가";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "직접 입력";
 

@@ -87,7 +87,7 @@
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Fjern";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -103,6 +103,7 @@
 "Add_Source.Title" = "Legg til kilde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
 "Add_Source.Button.Add" = "Legg til kilde";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Legg til manuelt";
 
