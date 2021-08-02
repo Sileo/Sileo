@@ -103,6 +103,7 @@
 "Add_Source.Title" = "Forrás hozzáadása";
 "Add_Source.Body" = "APT URL hozzáadása";
 "Add_Source.Button.Add" = "Forrás hozzáadása";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Kézi megadás";
 
