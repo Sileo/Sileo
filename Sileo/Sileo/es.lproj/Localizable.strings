@@ -103,6 +103,7 @@
 "Add_Source.Title" = "Añadir Fuente";
 "Add_Source.Body" = "Añadir URL APT";
 "Add_Source.Button.Add" = "Añadir Fuente";
+"Add_Dist_Repo" = "Add Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Añadir Manualmente";
 
