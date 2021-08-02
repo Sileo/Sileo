@@ -38,6 +38,17 @@ case "$1" in
 
 				fi
 
+				if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+					then
+						echo "Installed BigBoss Repo"
+						sed -i '1s;^;Types: deb\
+URIs: http://apt.thebigboss.org/repofiles/cydia/\
+Suites: stable\
+Components: main\
+\
+;' $sourcesDir/sileo.sources
+				fi
+
 				if ! [ -s $sourcesDir/elucubratus.sources ]; then
 					echo "Installed Elucubratus Repo"
 					echo "" > $sourcesDir/elucubratus.sources
@@ -49,17 +60,6 @@ Components:\
 ;' $sourcesDir/elucubratus.sources
 				fi
 			fi
-		fi
-
-		if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
-		then
-			echo "Installed BigBoss Repo"
-			sed -i '1s;^;Types: deb\
-URIs: http://apt.thebigboss.org/repofiles/cydia/\
-Suites: stable\
-Components: main\
-\
-;' $sourcesDir/sileo.sources
 		fi
 
 		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
