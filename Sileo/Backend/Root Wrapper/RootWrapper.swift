@@ -280,12 +280,72 @@ func moveFileAsRoot(from: URL, to: URL) {
 }
 
 public class CommandPath {
+    // Certain paths need to check for either Procursus mobile or Elucubratus as a fallback option
+    // Every method that uses this check already accounts for macCatalyst paths still resolving too
+    private static var isProcursus = FileManager.default.fileExists(atPath: "/etc/apt/trusted.gpg.d/memo.gpg")
+    
     // swiftlint:disable identifier_name
     static var mv: String = {
-        #if targetEnvironment(macCatalyst)
+        if isProcursus {
+            return "/usr/bin/mv"
+        }
+
         return "/bin/mv"
+    }()
+    
+    static var chmod: String = {
+        if isProcursus {
+            return "/usr/bin/chmod"
+        }
+
+        return "/bin/chmod"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var ln: String = {
+        if isProcursus {
+            return "/usr/bin/ln"
+        }
+ 
+        return "/bin/ln"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var rm: String = {
+        if isProcursus {
+            return "/usr/bin/rm"
+        }
+
+        return "/bin/rm"
+    }()
+    
+    static var mkdir: String = {
+        if isProcursus {
+            return "/usr/bin/mkdir"
+        }
+        
+        return "/bin/mkdir"
+    }()
+
+    // swiftlint:disable identifier_name
+    static var cp: String = {
+        if isProcursus {
+            return "/usr/bin/cp"
+        }
+        
+        return "/bin/cp"
+    }()
+    
+    static var sourcesListD: String = {
+        // Check for not Procursus so we can keep the check below
+        if !isProcursus {
+            return "/etc/apt/sileo.list.d"
+        }
+        
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus/etc/apt/sources.list.d"
         #else
-        return "/usr/bin/mv"
+        return "/etc/apt/sources.list.d"
         #endif
     }()
     
@@ -294,46 +354,6 @@ public class CommandPath {
         return "/usr/sbin/chown"
         #else
         return "/usr/bin/chown"
-        #endif
-    }()
-    
-    static var chmod: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/chmod"
-        #else
-        return "/usr/bin/chmod"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var ln: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/ln"
-        #else
-        return "/usr/bin/ln"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var rm: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/rm"
-        #else
-        return "/usr/bin/rm"
-        #endif
-    }()
-    
-    static var mkdir: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/mkdir"
-        #else
-        return "/usr/bin/mkdir"
-        #endif
-    }()
-    // swiftlint:disable identifier_name
-    static var cp: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/bin/cp"
-        #else
-        return "/usr/bin/cp"
         #endif
     }()
     
@@ -376,6 +396,7 @@ public class CommandPath {
         return "/usr/bin/apt-key"
         #endif
     }()
+
     // swiftlint:disable identifier_name
     static var sh: String = {
         "/bin/sh"
@@ -412,14 +433,6 @@ public class CommandPath {
         return Bundle.main.bundleURL
         #else
         return URL(fileURLWithPath: "/Library/dpkg")
-        #endif
-    }()
-    
-    static var sourcesListD: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/etc/apt/sources.list.d"
-        #else
-        return "/etc/apt/sources.list.d"
         #endif
     }()
     
