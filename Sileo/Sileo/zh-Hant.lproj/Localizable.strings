@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
