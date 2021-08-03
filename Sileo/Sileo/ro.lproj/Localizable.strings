@@ -151,6 +151,11 @@
 "Cache_Size" = "Mărimea cache-ului";
 "Clear_Cache" = "Ștergeți cache-ul network";
 "Clear_Cache_Message" = "Doriți să ștergeți cache-ul network? Va elibera %@ din stocare";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
