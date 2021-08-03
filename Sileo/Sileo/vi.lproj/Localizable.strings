@@ -148,7 +148,7 @@
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
 "Auto_Refresh_Sources" = "Tự động làm mới nguồn";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
+"Cache_Size" = "Kích thước bộ nhớ đệm";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 
