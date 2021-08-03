@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Toon Details";
 "Hide_Install_Details" = "Verberg Details";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Herstart Sileo";
 "After_Install_Respring" = "Herstart SpringBoard";
