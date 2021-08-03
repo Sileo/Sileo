@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Pakete durchsuchen";
 "Sort_Name" = "Name";
 "Sort_Date" = "Datum";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sortieren nach:";
 
 "Package_Unavailable" = "Paket nicht verfügbar";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "Details anzeigen";
 "Hide_Install_Details" = "Details ausblenden";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
