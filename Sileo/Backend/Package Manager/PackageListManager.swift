@@ -159,6 +159,10 @@ final class PackageListManager {
         package.legacyDepiction = dictionary["depiction"]
         package.depiction = dictionary["sileodepiction"]
         
+        if let installedSize = dictionary["installed-size"] {
+            package.installedSize = Int(installedSize)
+        }
+
         package.tags = packageEnum.1
         if package.tags.contains(.commercial) {
             package.commercial = true

@@ -300,6 +300,24 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         pasteboard.string = bodyFromArray
     }
     
+    enum SortMode {
+        case name
+        case installdate
+        case size
+        
+        init(from string: String?) {
+            switch string {
+            case "installdate": self = .installdate
+            case "size": self = .size
+            default: self = .name
+            }
+        }
+        
+        init() {
+            self = .init(from: UserDefaults.standard.string(forKey: "InstallSortType"))
+        }
+    }
+    
     @objc func showWishlist(_ sender: Any?) {
         let wishlistController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
         wishlistController.title = String(localizationKey: "Wishlist")
@@ -317,7 +335,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         alert.popoverPresentationController?.sourceView = sender
         
         let nameAction = UIAlertAction(title: String(localizationKey: "Sort_Name"), style: .default, handler: { _ in
-            UserDefaults.standard.set(false, forKey: "sortInstalledByDate")
+            UserDefaults.standard.set("name", forKey: "InstallSortType")
             if let searchController = self.searchController {
                 self.updateSearchResults(for: searchController)
             }
@@ -326,13 +344,22 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         alert.addAction(nameAction)
         
         let dateAction = UIAlertAction(title: String(localizationKey: "Sort_Date"), style: .default, handler: { _ in
-            UserDefaults.standard.set(true, forKey: "sortInstalledByDate")
+            UserDefaults.standard.set("installdate", forKey: "InstallSortType")
             if let searchController = self.searchController {
                 self.updateSearchResults(for: searchController)
             }
             self.dismiss(animated: true, completion: nil)
         })
         alert.addAction(dateAction)
+        
+        let sizeAction = UIAlertAction(title: String(localizationKey: "Sort_Install_Size"), style: .default, handler: { _ in
+            UserDefaults.standard.set("size", forKey: "InstallSortType")
+            if let searchController = self.searchController {
+                self.updateSearchResults(for: searchController)
+            }
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(sizeAction)
         
         let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
             self.dismiss(animated: true, completion: nil)
@@ -448,6 +475,11 @@ extension PackageListViewController: UICollectionViewDataSource {
                 headerView.label?.text = String(localizationKey: "Installed_Heading")
                 headerView.actionText = nil
                 headerView.sortButton?.isHidden = false
+                switch SortMode() {
+                case .name: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
+                case .installdate: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
+                case .size: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Install_Size"), for: .normal)
+                }
                 if UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
                     headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
                 } else {
@@ -679,22 +711,28 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             self.mutexLock.signal()
             self.mutexLock.wait()
-            if self.packagesLoadIdentifier == "--installed" && UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
-                packages = packages.sorted(by: { package1, package2 -> Bool in
-                    let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
-                    let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
-                    let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
-                    let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
-                    
-                    if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
-                        let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
-                        return date2.compare(date1) == .orderedAscending
-                    }
-                    
-                    return true
-                })
+            if self.packagesLoadIdentifier == "--installed" {
+                switch SortMode() {
+                case .installdate:
+                    packages = packages.sorted(by: { package1, package2 -> Bool in
+                        let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
+                        let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
+                        let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
+                        let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
+                        
+                        if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
+                            let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
+                            return date2.compare(date1) == .orderedAscending
+                        }
+                        
+                        return true
+                    })
+                case .size:
+                    packages = packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
+                default: break
+                }
             }
-            
+   
             self.packages = packages
             self.updatingCount -= 1
             self.mutexLock.signal()

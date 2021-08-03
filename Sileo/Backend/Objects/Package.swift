@@ -27,6 +27,7 @@ final class Package: Hashable, Equatable {
     public var rawData: Data?
     public var essential: String?
     public var commercial: Bool = false
+    public var installedSize: Int?
     public var tags: PackageTags = .none
     
     public var allVersionsInternal = [String: PackageOld]()
@@ -106,6 +107,7 @@ final class PackageOld: Hashable, Equatable {
     public var size: String?
     public var packageFileURL: URL?
     public var architecture: String?
+    public var installedSize: Int?
     
     init(package: Package) {
         self.sourceFile = package.sourceFile
@@ -123,6 +125,7 @@ final class PackageOld: Hashable, Equatable {
         self.size = package.size
         self.packageFileURL = package.packageFileURL
         self.architecture = package.architecture
+        self.installedSize = package.installedSize
     }
     
     public var packageNew: Package {
@@ -139,6 +142,7 @@ final class PackageOld: Hashable, Equatable {
         package.size = self.size
         package.packageFileURL = self.packageFileURL
         package.architecture = self.architecture
+        package.installedSize = self.installedSize
         return package
     }
     
