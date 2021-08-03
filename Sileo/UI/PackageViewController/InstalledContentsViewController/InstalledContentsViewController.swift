@@ -50,6 +50,13 @@ class InstalledContentsViewController: UIViewController {
 
         self.treeView = treeView
         treeView.expand(node: rootNode, inSection: 0)
+        
+        let url = URL(string: "filza:///")!
+        if UIApplication.shared.canOpenURL(url) {
+            let openInFilza = UIMenuItem(title: String(localizationKey: "Open_In_Filza"), action: #selector(InstalledContentsTableViewCell.openInFilza(_:)))
+            UIMenuController.shared.menuItems = [openInFilza]
+        }
+        
     }
 
     private func children(path: String) -> [FileNode]? {
@@ -101,7 +108,7 @@ extension InstalledContentsViewController: LNZTreeViewDataSource {
         let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
         // swiftlint:disable force_cast
         let cell = treeView.dequeueReusableCell(withIdentifier: "cell", for: node, inSection: indexPath.section) as! InstalledContentsTableViewCell
-        
+        cell.node = node
         if node.isExpandable {
             if isExpanded {
                 cell.imageView?.image = UIImage(named: "index_folder_indicator_open")?.withRenderingMode(.alwaysTemplate)
@@ -132,11 +139,25 @@ extension InstalledContentsViewController: LNZTreeViewDelegate {
     }
     
     func treeView(_ treeView: LNZTreeView, didSelectNodeAt indexPath: IndexPath, forParentNode parentNode: TreeNodeProtocol?) {
-        let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
-        let url = URL(string: "filza://\(node.path)")!
-        NSLog("[Sileo] path = \(node.path)")
-        if !node.isExpandable {
-            UIApplication.shared.open(url)
-        }
+        treeView.deselectRow(at: indexPath, animated: true)
     }
+
+    func treeView(_ treeView: LNZTreeView, shouldShowMenuForRowAt indexPath: IndexPath, forParentNode parentNode: TreeNodeProtocol?) -> Bool {
+        let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
+        
+        return !node.isExpandable
+    }
+    
+    func treeView(_ treeView: LNZTreeView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?, forParentNode parentNode: TreeNodeProtocol?) -> Bool {
+        action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(InstalledContentsTableViewCell.openInFilza(_:))
+    }
+    
+    func treeView(_ treeView: LNZTreeView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?, forParentNode parentNode: TreeNodeProtocol?) {
+        if action != #selector(UIResponderStandardEditActions.copy(_:)) {
+            return
+        }
+        let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
+        UIPasteboard.general.string = node.path
+    }
+    
 }

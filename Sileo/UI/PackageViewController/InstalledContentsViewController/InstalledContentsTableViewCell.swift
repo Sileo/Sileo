@@ -8,8 +8,9 @@
 
 import Foundation
 
-
 class InstalledContentsTableViewCell: UITableViewCell {
+    
+    public var node: FileNode?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -51,5 +52,11 @@ class InstalledContentsTableViewCell: UITableViewCell {
         let offset = CGFloat(indentationLevel) * indentationWidth
         imageFrame.origin.x += offset
         imageView?.frame = imageFrame
+    }
+    
+    @objc public func openInFilza(_ sender: UIMenuController?) {
+        guard let node = node else { return }
+        let url = URL(string: "filza://\(node.path)")!
+        UIApplication.shared.open(url)
     }
 }
