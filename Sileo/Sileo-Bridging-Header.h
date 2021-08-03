@@ -8,7 +8,6 @@
 #import "UIColor+HTMLColors.h"
 #import "WhiteBlur.h"
 #import "ControlFileParserFast.h"
-#import "DFContinuousForceTouchGestureRecognizer.h"
 
 #if TARGET_OS_MACCATALYST
 #import "LaunchAsRoot.h"

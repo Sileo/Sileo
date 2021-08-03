@@ -12,7 +12,7 @@ protocol PackageQueueButtonDataProvider {
     func updatePurchaseStatus()
 }
 
-class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
+class PackageQueueButton: PackageButton {
     public var viewControllerForPresentation: UIViewController?
     public var package: Package? {
         didSet {
@@ -63,28 +63,12 @@ class PackageQueueButton: PackageButton, DFContinuousForceTouchDelegate {
                                                name: DownloadManager.lockStateChangeNotification,
                                                object: nil)
         
-        let forceTouchGesture = DFContinuousForceTouchGestureRecognizer()
-        forceTouchGesture.forceTouchDelegate = self
-        forceTouchGesture.baseForceTouchPressure = 4
-        self.addGestureRecognizer(forceTouchGesture)
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(PackageQueueButton.handleBtnLongPressGesture(_:)))
+
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(PackageQueueButton.showDowngradePrompt(_:)))
         self.addGestureRecognizer(longPressGesture)
     }
-    
-    @objc func handleBtnLongPressGesture(_ recognizer: UILongPressGestureRecognizer) {
-        if self.traitCollection.forceTouchCapability != .available {
-            if recognizer.state == .began {
-                self.showDowngradePrompt(recognizer)
-            }
-        }
-    }
-    
-    func forceTouchRecognized(_ recognizer: DFContinuousForceTouchGestureRecognizer!) {
-        self.showDowngradePrompt(recognizer)
-    }
-    
-    func showDowngradePrompt(_ sender: Any?) {
+
+    @objc func showDowngradePrompt(_ sender: Any?) {
         guard let package = package,
             (!package.commercial || purchased) else {
             return
