@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Mostra Dettagli";
 "Hide_Install_Details" = "Nascondi Dettagli";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Riavvia Sileo";
 "After_Install_Respring" = "Riavvia la SpringBoard";
