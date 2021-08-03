@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Details anzeigen";
 "Hide_Install_Details" = "Details ausblenden";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
