@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";
