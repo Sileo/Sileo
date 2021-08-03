@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Căutați pachete";
 "Sort_Name" = "Nume";
 "Sort_Date" = "Dată";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sortează după:";
 
 "Package_Unavailable" = "Pachet nedisponibil";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "Arătați Detalie";
 "Hide_Install_Details" = "Ascundeți Detalie";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Reporniți Sileo";
 "After_Install_Respring" = "Reporniți SpringBoard";
