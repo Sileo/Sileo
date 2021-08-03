@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "ค้นหาแพ็คเกจ";
 "Sort_Name" = "ชื่อ";
 "Sort_Date" = "วันที่";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "จัดเรียงตาม :";
 
 "Package_Unavailable" = "แพ็คเกจไม่พร้อมใช้งาน";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "แสดงรายละเอียด";
 "Hide_Install_Details" = "ซ่อนรายละเอียด";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "รีสตาร์ท Sileo";
 "After_Install_Respring" = "รีสปริง";
