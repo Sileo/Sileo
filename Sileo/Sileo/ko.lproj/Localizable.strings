@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "패키지 검색";
 "Sort_Name" = "이름";
 "Sort_Date" = "날짜";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "분류:";
 
 "Package_Unavailable" = "패키지를 사용할 수 없음";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "자세히보기";
 "Hide_Install_Details" = "간략히";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo 재시작";
 "After_Install_Respring" = "SpringBoard 재시작";
