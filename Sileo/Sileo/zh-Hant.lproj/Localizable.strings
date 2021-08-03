@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
