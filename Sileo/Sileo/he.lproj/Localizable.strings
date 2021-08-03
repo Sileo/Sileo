@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "הצג פרטים";
 "Hide_Install_Details" = "החבא פרטים";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "הפעל מחדש את סילאו";
 "After_Install_Respring" = "רענן את SpringBoard";
