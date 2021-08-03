@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Paketlerde Ara";
 "Sort_Name" = "Ad";
 "Sort_Date" = "Tarih";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sıralama Şekli:";
 
 "Package_Unavailable" = "Paket Kullanılamıyor";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "Detayları Göster";
 "Hide_Install_Details" = "Detayları Gizle";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";
