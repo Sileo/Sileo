@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "แสดงรายละเอียด";
 "Hide_Install_Details" = "ซ่อนรายละเอียด";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "รีสตาร์ท Sileo";
 "After_Install_Respring" = "รีสปริง";
