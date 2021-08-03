@@ -59,4 +59,9 @@ class InstalledContentsTableViewCell: UITableViewCell {
         let url = URL(string: "filza://\(node.path)")!
         UIApplication.shared.open(url)
     }
+    
+    @objc public func copyPath(_ sender: UIMenuController?) {
+        guard let node = node else { return }
+        UIPasteboard.general.string = node.path
+    }
 }

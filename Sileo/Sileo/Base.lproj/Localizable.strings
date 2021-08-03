@@ -173,6 +173,7 @@
 "Show_Install_Details" = "Show Details";
 "Hide_Install_Details" = "Hide Details";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Restart Sileo";
 "After_Install_Respring" = "Restart SpringBoard";

@@ -51,10 +51,13 @@ class InstalledContentsViewController: UIViewController {
         self.treeView = treeView
         treeView.expand(node: rootNode, inSection: 0)
         
+        let copyPath = UIMenuItem(title: String(localizationKey: "Copy_Path"), action: #selector(InstalledContentsTableViewCell.copyPath(_:)))
         let url = URL(string: "filza:///")!
         if UIApplication.shared.canOpenURL(url) {
             let openInFilza = UIMenuItem(title: String(localizationKey: "Open_In_Filza"), action: #selector(InstalledContentsTableViewCell.openInFilza(_:)))
-            UIMenuController.shared.menuItems = [openInFilza]
+            UIMenuController.shared.menuItems = [copyPath, openInFilza]
+        } else {
+            UIMenuController.shared.menuItems = [copyPath]
         }
         
     }
@@ -149,15 +152,7 @@ extension InstalledContentsViewController: LNZTreeViewDelegate {
     }
     
     func treeView(_ treeView: LNZTreeView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?, forParentNode parentNode: TreeNodeProtocol?) -> Bool {
-        action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(InstalledContentsTableViewCell.openInFilza(_:))
-    }
-    
-    func treeView(_ treeView: LNZTreeView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?, forParentNode parentNode: TreeNodeProtocol?) {
-        if action != #selector(UIResponderStandardEditActions.copy(_:)) {
-            return
-        }
-        let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
-        UIPasteboard.general.string = node.path
+        action == #selector(InstalledContentsTableViewCell.copyPath(_:)) || action == #selector(InstalledContentsTableViewCell.openInFilza(_:))
     }
     
 }
