@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Detayları Göster";
 "Hide_Install_Details" = "Detayları Gizle";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";
