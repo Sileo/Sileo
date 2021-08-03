@@ -151,6 +151,11 @@
 "Cache_Size" = "Cache Storlek";
 "Clear_Cache" = "Rensa Nätverk Cache";
 "Clear_Cache_Message" = "Vill du rensa nätverks cache? Detta ger mer %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
@@ -167,6 +172,7 @@
 
 "Show_Install_Details" = "Visa Detaljer";
 "Hide_Install_Details" = "Göm Detaljer";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Starta Om Sileo";
 "After_Install_Respring" = "Starta Om SpringBoard";

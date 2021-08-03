@@ -151,6 +151,11 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
@@ -167,6 +172,7 @@
 
 "Show_Install_Details" = "Mais Detalhes";
 "Hide_Install_Details" = "Esconder Detalhes";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
