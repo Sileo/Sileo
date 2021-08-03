@@ -178,6 +178,7 @@ stage: all
 	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
+	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/
 	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/
 	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/MacOS/Sileo
 	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/MacOS/SileoRootWrapper
