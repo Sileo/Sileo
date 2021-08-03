@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
-		172B2ECF22F0896E000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED022F08B21000155B9 /* SourceLicense.swift */; };
 		172B2ED322F08D31000155B9 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED222F08D31000155B9 /* LicenseViewController.swift */; };
 		172B2ED522F08F8E000155B9 /* LicensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */; };
@@ -16,7 +15,6 @@
 		172B2ED822F0A351000155B9 /* SourceLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED022F08B21000155B9 /* SourceLicense.swift */; };
 		172B2ED922F0A353000155B9 /* LicensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */; };
 		172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED222F08D31000155B9 /* LicenseViewController.swift */; };
-		172B2EDB22F0A358000155B9 /* String+LocalizedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */; };
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
@@ -130,6 +128,14 @@
 		E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED026680E030080BFCE /* libz.tbd */; };
 		E14C5EE9266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
 		E14C5EEA266810A30080BFCE /* GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EE8266810A30080BFCE /* GZIP.swift */; };
+		E15A953F26B9817A000DB10E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A953E26B9817A000DB10E /* Language.swift */; };
+		E15A954026B9817A000DB10E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A953E26B9817A000DB10E /* Language.swift */; };
+		E15A954226B981E4000DB10E /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954126B981E4000DB10E /* LanguageHelper.swift */; };
+		E15A954326B981E4000DB10E /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954126B981E4000DB10E /* LanguageHelper.swift */; };
+		E15A954926B99104000DB10E /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */; };
+		E15A954A26B99104000DB10E /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */; };
+		E15A954C26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
+		E15A954D26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
@@ -243,7 +249,6 @@
 		F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B022D15B680021BD89 /* DepictionAutoStackView.swift */; };
 		F139D0C022EA9209007F5C0D /* FeaturedSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9C822D1886E0021BD89 /* FeaturedSeparatorView.swift */; };
 		F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9A722D151A50021BD89 /* DepictionMarkdownViewSlow.swift */; };
-		F139D0C522EA9209007F5C0D /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62022E53E6F00CBD045 /* String+Hash.swift */; };
 		F139D0C922EA9209007F5C0D /* DepictionTableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D9B922D16B7F0021BD89 /* DepictionTableButtonView.swift */; };
 		F139D0CC22EA9209007F5C0D /* DpkgWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7051222D0359900F602DA /* DpkgWrapper.swift */; };
 		F139D0CE22EA9209007F5C0D /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62322E53E7000CBD045 /* String+Utilities.swift */; };
@@ -457,7 +462,6 @@
 		F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D113F820DC608900C8F051 /* PackageViewController.xib */; };
 		F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */; };
 		F1D6A62422E53E7000CBD045 /* FileManager+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */; };
-		F1D6A62622E53E7000CBD045 /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62022E53E6F00CBD045 /* String+Hash.swift */; };
 		F1D6A62822E53E7000CBD045 /* Locks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62122E53E6F00CBD045 /* Locks.swift */; };
 		F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62222E53E7000CBD045 /* Hash.swift */; };
 		F1D6A62C22E53E7000CBD045 /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62322E53E7000CBD045 /* String+Utilities.swift */; };
@@ -637,7 +641,6 @@
 
 /* Begin PBXFileReference section */
 		1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlaggedSourceWarningViewController.xib; sourceTree = "<group>"; };
-		172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocalizedHelpers.swift"; sourceTree = "<group>"; };
 		172B2ED022F08B21000155B9 /* SourceLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLicense.swift; sourceTree = "<group>"; };
 		172B2ED222F08D31000155B9 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		172B2ED422F08F8E000155B9 /* LicensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesTableViewController.swift; sourceTree = "<group>"; };
@@ -860,6 +863,10 @@
 		E14C5EE626680F350080BFCE /* filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		E14C5EE726680F350080BFCE /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		E14C5EE8266810A30080BFCE /* GZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GZIP.swift; sourceTree = "<group>"; };
+		E15A953E26B9817A000DB10E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		E15A954126B981E4000DB10E /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionCell.swift; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
@@ -1061,7 +1068,6 @@
 		F1D113F820DC608900C8F051 /* PackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageViewController.xib; sourceTree = "<group>"; };
 		F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedViewController.xib; sourceTree = "<group>"; };
 		F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Utilities.swift"; sourceTree = "<group>"; };
-		F1D6A62022E53E6F00CBD045 /* String+Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
 		F1D6A62122E53E6F00CBD045 /* Locks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locks.swift; sourceTree = "<group>"; };
 		F1D6A62222E53E7000CBD045 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		F1D6A62322E53E7000CBD045 /* String+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utilities.swift"; sourceTree = "<group>"; };
@@ -1490,6 +1496,7 @@
 		6A5C432C20DF1E92001F32A3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E15A953D26B98163000DB10E /* LocalizationHelpers */,
 				F1AB912C22ED0D220054341B /* BaseSubtitleTableViewCell.swift */,
 				F1AB912622ED081E0054341B /* PackageIconView.swift */,
 				F1330EB02325644700971073 /* SileoContentView.swift */,
@@ -1636,6 +1643,24 @@
 				E14C5EE726680F350080BFCE /* base.h */,
 			);
 			path = lzma;
+			sourceTree = "<group>";
+		};
+		E15A953D26B98163000DB10E /* LocalizationHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E15A954126B981E4000DB10E /* LanguageHelper.swift */,
+				E15A953E26B9817A000DB10E /* Language.swift */,
+			);
+			path = LocalizationHelpers;
+			sourceTree = "<group>";
+		};
+		E15A954426B990B1000DB10E /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */,
+				E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		E166F6F7260A6F9800663FA1 /* Canister Resolver */ = {
@@ -1964,7 +1989,6 @@
 				F149E0BE20B6040B005CA30B /* LaunchScreen.storyboard */,
 				F149E0BC20B6040B005CA30B /* Assets.xcassets */,
 				49CE7CB42607F9A400A20711 /* Icons */,
-				172B2ECE22F0896E000155B9 /* String+LocalizedHelpers.swift */,
 				C373924721D5F80300E6F704 /* Categories.strings */,
 				C373924521D5F80300E6F704 /* Errors.strings */,
 				C373923421D5E46900E6F704 /* Localizable.strings */,
@@ -2106,6 +2130,7 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E15A954426B990B1000DB10E /* Language */,
 				E13BD7872646C692006A5EF2 /* Sileo Team */,
 				49CE7CAD2607F97C00A20711 /* Alt Icons */,
 				C315A7BC217D99C200341243 /* Base */,
@@ -2274,7 +2299,6 @@
 				F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */,
 				F1D6A62222E53E7000CBD045 /* Hash.swift */,
 				F1D6A62122E53E6F00CBD045 /* Locks.swift */,
-				F1D6A62022E53E6F00CBD045 /* String+Hash.swift */,
 				F1D6A62322E53E7000CBD045 /* String+Utilities.swift */,
 				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
 				F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */,
@@ -3091,6 +3115,7 @@
 				E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */,
 				F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
 				F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */,
+				E15A954D26B99408000DB10E /* LanguageSelectionCell.swift in Sources */,
 				E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */,
 				F16115CF244D827A003BF1E6 /* DepictionButton.swift in Sources */,
 				F1AB912E22ED0D220054341B /* BaseSubtitleTableViewCell.swift in Sources */,
@@ -3099,6 +3124,7 @@
 				F147E68422F206C40048F868 /* CategoryViewController.swift in Sources */,
 				FB6F3D2F24AA526200E941F8 /* PaymentManager.swift in Sources */,
 				E14C5E66266547D10080BFCE /* ZSTD.swift in Sources */,
+				E15A954326B981E4000DB10E /* LanguageHelper.swift in Sources */,
 				E1C90268263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1330EB52325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
@@ -3109,6 +3135,7 @@
 				FB40263A23DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
 				F1A4D8E0231DAFDD00149DDF /* ControlFileParserFast.c in Sources */,
 				F1A23FAD23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
+				E15A954A26B99104000DB10E /* LanguageSelectionViewController.swift in Sources */,
 				F139D0BE22EA9209007F5C0D /* DepictionAutoStackView.swift in Sources */,
 				E14C5ECB266804120080BFCE /* BZIP.swift in Sources */,
 				F139D0EC22EA9209007F5C0D /* DepictionBaseView.swift in Sources */,
@@ -3144,6 +3171,7 @@
 				F139D09822EA9209007F5C0D /* DepictionSpacerView.swift in Sources */,
 				F139D0BC22EA9209007F5C0D /* DepictionStackView.swift in Sources */,
 				E13F31C82677E71E00AB8932 /* ThemePickerView.swift in Sources */,
+				E15A954026B9817A000DB10E /* Language.swift in Sources */,
 				E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
 				E1C90271263D847D00569D1E /* AmyDownloadParser.swift in Sources */,
 				F139D11222EA9209007F5C0D /* DepictionSubheaderView.swift in Sources */,
@@ -3246,8 +3274,6 @@
 				172B2ED822F0A351000155B9 /* SourceLicense.swift in Sources */,
 				F1AB912B22ED09AE0054341B /* SourceProgressIndicatorView.swift in Sources */,
 				F1AB913122ED12070054341B /* SourcesTableViewCell.swift in Sources */,
-				F139D0C522EA9209007F5C0D /* String+Hash.swift in Sources */,
-				172B2EDB22F0A358000155B9 /* String+LocalizedHelpers.swift in Sources */,
 				F139D0CE22EA9209007F5C0D /* String+Utilities.swift in Sources */,
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
@@ -3271,6 +3297,7 @@
 				F183CFB02318D1FF00D3AF3B /* AppDelegate.swift in Sources */,
 				F1C85B4D2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */,
 				F16115CE244D827A003BF1E6 /* DepictionButton.swift in Sources */,
+				E15A954C26B99408000DB10E /* LanguageSelectionCell.swift in Sources */,
 				F1AB912D22ED0D220054341B /* BaseSubtitleTableViewCell.swift in Sources */,
 				FB40264623E0FCAE002D97FE /* PaymentProfileHeaderView.swift in Sources */,
 				E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */,
@@ -3287,6 +3314,7 @@
 				E1C90267263D79C600569D1E /* AmyGifManager.swift in Sources */,
 				F1705FFE24CB7040001596A0 /* PackageButton.swift in Sources */,
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
+				E15A953F26B9817A000DB10E /* Language.swift in Sources */,
 				F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,
@@ -3374,7 +3402,9 @@
 				E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */,
 				F13AEE7C22F76DE6004BAA05 /* FileNode.swift in Sources */,
 				F170605C24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
+				E15A954226B981E4000DB10E /* LanguageHelper.swift in Sources */,
 				172B2ED722F09E8F000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
+				E15A954926B99104000DB10E /* LanguageSelectionViewController.swift in Sources */,
 				F1DD3D1B2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */,
 				F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */,
@@ -3431,8 +3461,6 @@
 				F1AB913022ED12070054341B /* SourcesTableViewCell.swift in Sources */,
 				F12652D625A165340094E446 /* SourcesSplitViewController.swift in Sources */,
 				F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */,
-				F1D6A62622E53E7000CBD045 /* String+Hash.swift in Sources */,
-				172B2ECF22F0896E000155B9 /* String+LocalizedHelpers.swift in Sources */,
 				E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */,
 				F1D6A62C22E53E7000CBD045 /* String+Utilities.swift in Sources */,
 				F1AB911E22ED02900054341B /* TabBar.swift in Sources */,

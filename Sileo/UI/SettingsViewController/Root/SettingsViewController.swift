@@ -93,9 +93,9 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 8
+            return 7
         case 3: // About section
-            return 3
+            return 4
         default:
             return 0
         }
@@ -188,10 +188,6 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
-            case 7:
-                cell.amyPogLabel.text = "Use Experimental Decompression"
-                cell.fallback = true
-                cell.defaultKey = "ExperimentalDecompression"
             default:
                 fatalError("You done goofed")
             }
@@ -211,6 +207,11 @@ extension SettingsViewController { // UITableViewDataSource
             case 2:
                 let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
                 cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                return cell
+            case 3:
+                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Language")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             default:
@@ -265,6 +266,9 @@ extension SettingsViewController { // UITableViewDataSource
             case 2:
                 let licensesViewController: LicensesTableViewController = LicensesTableViewController()
                 self.navigationController?.pushViewController(licensesViewController, animated: true)
+            case 3:
+                let languageSelection = LanguageSelectionViewController(style: .grouped)
+                self.navigationController?.pushViewController(languageSelection, animated: true)
             default: break
             }
         default:

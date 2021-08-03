@@ -21,7 +21,8 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
         _ = AmyNetworkResolver.shared
-        
+        // Start the language helper for customised localizations
+        _ = LanguageHelper.shared
         // being parsing sources files
         _ = RepoManager.shared
         // Init the local database

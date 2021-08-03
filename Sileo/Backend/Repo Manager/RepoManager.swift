@@ -738,18 +738,16 @@ final class RepoManager {
                     var succeededExtension = ""
                     var extensions = ["bz2", "gz", ""]
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-                    if UserDefaults.standard.optionalBool("ExperimentalDecompression", fallback: true) {
-                        if ZSTD.available {
-                            extensions.insert("zst", at: 0)
+                    if ZSTD.available {
+                        extensions.insert("zst", at: 0)
+                    }
+                    if XZ.available {
+                        var buffer = 0
+                        if extensions.count == 3 {
+                            buffer = 1
                         }
-                        if XZ.available {
-                            var buffer = 0
-                            if extensions.count == 3 {
-                                buffer = 1
-                            }
-                            extensions.insert("xz", at: 1 - buffer)
-                            extensions.insert("lzma", at: 2 - buffer)
-                        }
+                        extensions.insert("xz", at: 1 - buffer)
+                        extensions.insert("lzma", at: 2 - buffer)
                     }
                     #endif
                     var breakOff = false
