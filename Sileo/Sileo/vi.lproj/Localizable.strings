@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Hiển thị chi tiết";
 "Hide_Install_Details" = "Ẩn chi tiết";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Khởi động lại Sileo";
 "After_Install_Respring" = "Khởi Động Lại SpringBoard";
