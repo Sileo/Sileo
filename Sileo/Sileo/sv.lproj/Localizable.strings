@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Visa Detaljer";
 "Hide_Install_Details" = "Göm Detaljer";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Starta Om Sileo";
 "After_Install_Respring" = "Starta Om SpringBoard";
