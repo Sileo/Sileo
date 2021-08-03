@@ -45,6 +45,8 @@ final public class LanguageHelper {
         
         if let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj"),
            let bundle = Bundle(path: path) {
+            let isRtl = Locale.characterDirection(forLanguage: selectedLanguage) == .rightToLeft
+            UIView.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
             self.bundle = bundle
             return
         }

@@ -63,7 +63,6 @@ class PackageQueueButton: PackageButton {
                                                name: DownloadManager.lockStateChangeNotification,
                                                object: nil)
         
-
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(PackageQueueButton.showDowngradePrompt(_:)))
         self.addGestureRecognizer(longPressGesture)
     }
