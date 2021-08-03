@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Buscar Paquetes";
 "Sort_Name" = "Nombre";
 "Sort_Date" = "Fecha";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Ordenar por:";
 
 "Package_Unavailable" = "Paquete no disponible";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "Mostrar Detalles";
 "Hide_Install_Details" = "Ocultar Detalles";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
