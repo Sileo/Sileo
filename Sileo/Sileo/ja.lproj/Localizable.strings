@@ -151,6 +151,11 @@
 "Cache_Size" = "キャッシュサイズ";
 "Clear_Cache" = "ネットワークのキャッシュをクリア";
 "Clear_Cache_Message" = "ネットワークのキャッシュをクリアしますか？これにより%@の容量を解放します。";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -167,6 +172,7 @@
 
 "Show_Install_Details" = "詳細を表示";
 "Hide_Install_Details" = "詳細を非表示";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Sileo を再起動";
 "After_Install_Respring" = "SpringBoard を再起動";

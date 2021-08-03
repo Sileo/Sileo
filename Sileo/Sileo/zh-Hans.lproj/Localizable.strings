@@ -151,6 +151,11 @@
 "Cache_Size" = "缓存";
 "Clear_Cache" = "清除网络缓存";
 "Clear_Cache_Message" = "您想清除网络缓存吗？这将节省 %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -167,6 +172,7 @@
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";

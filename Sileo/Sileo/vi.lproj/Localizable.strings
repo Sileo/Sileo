@@ -151,6 +151,11 @@
 "Cache_Size" = "Kích thước bộ nhớ đệm";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
@@ -167,6 +172,7 @@
 
 "Show_Install_Details" = "Hiển thị chi tiết";
 "Hide_Install_Details" = "Ẩn chi tiết";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Khởi động lại Sileo";
 "After_Install_Respring" = "Khởi Động Lại SpringBoard";
