@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Sök efter Paket";
 "Sort_Name" = "Namn";
 "Sort_Date" = "Datum";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sortera Efter:";
 
 "Package_Unavailable" = "Paket Inte Tillgängligt";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "Visa Detaljer";
 "Hide_Install_Details" = "Göm Detaljer";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Starta Om Sileo";
 "After_Install_Respring" = "Starta Om SpringBoard";
