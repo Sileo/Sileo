@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "搜索软件包";
 "Sort_Name" = "名称";
 "Sort_Date" = "日期";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "排序方式:";
 
 "Package_Unavailable" = "软件包不可用";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";
