@@ -151,6 +151,11 @@
 "Cache_Size" = "Önbellek Boyutu";
 "Clear_Cache" = "Ağ Önbelleğini Temizle";
 "Clear_Cache_Message" = "Ağ önbelleğini temizlemek istiyor musunuz? %@ alan boşalacak.";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
