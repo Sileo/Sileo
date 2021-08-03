@@ -172,6 +172,7 @@
 
 "Show_Install_Details" = "Részletek megjelenítése";
 "Hide_Install_Details" = "Részletek elrejtése";
+"Open_In_Filza" = "Open in Filza";
 
 "After_Install_Relaunch" = "Sleo újraindítása";
 "After_Install_Respring" = "SpringBoard újraindítása";
