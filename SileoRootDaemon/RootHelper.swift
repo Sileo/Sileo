@@ -40,7 +40,6 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
     }
     
     public func spawn(command: String, args: [String], _ completion: @escaping (Int, String, String) -> Void) {
-        NSLog("[Sileo] Spawn Command has been made for \(command)")
         var pipestdout: [Int32] = [0, 0]
         var pipestderr: [Int32] = [0, 0]
         
@@ -73,9 +72,7 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
         let env = [ "PATH=/opt/procursus/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin" ]
         let proenv: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
         defer { for case let pro? in proenv { free(pro) } }
-        NSLog("[Sileo] getting spawn status of \(command)")
         let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
-        NSLog("[Sileo] spawn status of \(command) = \(spawnStatus)")
         if spawnStatus != 0 {
             return completion(-1, "", "")
         }
@@ -153,11 +150,8 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
         mutex.wait()
         mutex.wait()
         var status: Int32 = 0
-        NSLog("[Sileo] waiting for pid of \(command)")
         waitpid(pid, &status, 0)
-        NSLog("[Sileo] Got status and calling completion")
         completion(Int(status), stdoutStr, stderrStr)
-        NSLog("[Sileo] Fired completion")
     }
     
     public func version(_ completion: @escaping (String) -> Void) {
@@ -167,10 +161,8 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
     public func spawnAsRoot(command: String, args: [String]) {
         guard let connection = connection,
               let helper = connection.remoteObjectProxyWithErrorHandler({ error in
-            NSLog("[Sileo] Error = \(error)")
             return
         }) as? AptRootPipeProtocol else {
-            NSLog("[Sileo] Daemon not installed")
             return
         }
         var pipestatusfd: [Int32] = [0, 0]
@@ -217,11 +209,9 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
             }
         }
         
-        NSLog("[Sileo] Firing posix_spawn")
         var pid: pid_t = 0
         let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], env + [nil])
         if spawnStatus != 0 {
-            NSLog("[Sileo] Exiting early with spawnStatus \(spawnStatus)")
             helper.completion?(status: -1)
             return
         }
@@ -238,7 +228,6 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
                                       autoreleaseFrequency: .inherit,
                                       target: nil)
         
-        NSLog("[Sileo] Setting up read sources")
         let stdoutSource = DispatchSource.makeReadSource(fileDescriptor: pipestdout[0], queue: readQueue)
         let stderrSource = DispatchSource.makeReadSource(fileDescriptor: pipestderr[0], queue: readQueue)
         let statusFdSource = DispatchSource.makeReadSource(fileDescriptor: pipestatusfd[0], queue: readQueue)
@@ -273,7 +262,6 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
             let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
             array.withUnsafeBufferPointer { ptr in
                 let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
-                NSLog("[Sileo] stdout pipe \(str)")
                 helper.stdout?(str: str)
             }
         }
@@ -294,12 +282,10 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
             let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
             array.withUnsafeBufferPointer { ptr in
                 let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
-                NSLog("[Sileo] stderr pipe \(str)")
                 helper.stderr?(str: str)
             }
         }
         statusFdSource.setEventHandler {
-            NSLog("[Sileo] statusFdSource event")
             let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufsiz)
             defer { buffer.deallocate() }
 
@@ -317,7 +303,6 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
             array.withUnsafeBufferPointer { ptr in
                 let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
                 
-                NSLog("[Sileo] statusfd pipe \(str)")
                 helper.statusFd?(str: str)
             }
         }
@@ -330,10 +315,8 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
         mutex.wait()
         mutex.wait()
 
-        NSLog("[Sileo] Waiting for PID")
         var status: Int32 = 0
         waitpid(pid, &status, 0)
-        NSLog("[Sileo] Finished Waiting for PID")
         helper.completion?(status: Int(status))
     }
     
@@ -341,7 +324,6 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
         do {
             return try CodesignCheck.codeSigningMatches(pid: connection.processIdentifier)
         } catch {
-            NSLog("Code signing check failed with error: \(error)")
             return false
         }
     }

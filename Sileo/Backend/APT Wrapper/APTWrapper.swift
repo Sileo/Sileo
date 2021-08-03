@@ -178,20 +178,16 @@ class APTWrapper {
         var runUICache = false
         #if targetEnvironment(macCatalyst)
         arguments[0] = "apt-get"
-        NSLog("[Sileo] Command = \(CommandPath.aptget) Args = \(arguments)")
         DispatchQueue.global(qos: .default).async {
             let wrapper = MacRootWrapper.shared
             let pipeObject = wrapper.sharedPipe
             pipeObject.stdoutCompletion = { str in
-                NSLog("[Sileo] callback 1")
                 outputCallback(str, Int(STDOUT_FILENO))
             }
             pipeObject.stderrCompletion = { str in
-                NSLog("[Sileo] callback 2")
                 outputCallback(str, Int(STDERR_FILENO))
             }
             pipeObject.statusFdCompletion = { str in
-                NSLog("[Sileo] callback 3")
                 let statusLines = str.components(separatedBy: "\n")
                 for status in statusLines {
                     let (statusValid, statusProgress, statusReadable) = self.installProgress(aptStatus: status)
@@ -199,14 +195,8 @@ class APTWrapper {
                 }
             }
             pipeObject.pipeCompletion = { status in
-                wrapper.connection?.invalidationHandler = nil
-                wrapper.connection?.invalidate()
-                guard wrapper.connectToDaemon() else {
-                    fatalError("[Sileo] Protocol 3: Protect the Pilot")
-                }
-                NSLog("[Sileo] Pipe Completion Called")
+                wrapper.resetConnection()
                 spawnAsRoot(args: [CommandPath.aptget, "clean"])
-                NSLog("[Sileo] Clean never responded")
                 for file in DownloadManager.shared.cachedFiles {
                     deleteFileAsRoot(file)
                 }

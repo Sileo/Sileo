@@ -506,6 +506,15 @@ final class DownloadManager {
         for operation in aptOutput.operations where operation.type == .install {
             installIdentifiers.append(operation.packageID)
         }
+        
+        if UserDefaults.standard.optionalBool("InstallRecommends", fallback: true) {
+            for operation in aptOutput.conflicts {
+                for item in operation.conflictingPackages where item.conflict == .recommends {
+                    installIdentifiers.append(item.package)
+                }
+            }
+        }
+        
         for package in installations where package.package.package.contains("/") {
             installIdentifiers.removeAll { $0 == package.package.packageID }
         }

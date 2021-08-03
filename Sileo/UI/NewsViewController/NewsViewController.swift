@@ -120,11 +120,13 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    /*
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
+    */
 }
 
 extension NewsViewController { // Get Data

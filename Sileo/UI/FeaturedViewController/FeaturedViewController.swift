@@ -110,7 +110,11 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         if UIApplication.shared.applicationState == .background {
             return
         }
+        #if targetEnvironment(macCatalyst)
+        let deviceName = "mac"
+        #else
         let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        #endif
         guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
             return
         }

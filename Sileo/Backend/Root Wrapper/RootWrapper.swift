@@ -30,25 +30,20 @@ final public class MacRootWrapper {
                 }
             }
         }
-        NSLog("[Sileo] Checking Helper Is Installed")
-        NSLog("[Sileo] Making Connection To Helper")
         connect()
 
         guard let helper = helper else { fatalError("[Sileo] Protocol 3: Protect the Pilot") }
-
-        NSLog("[Sileo] Checking Installed Helper Version")
         helper.version { version in
             guard version == DaemonVersion else {
                 self.connection?.invalidationHandler = nil
                 self.connection?.invalidate()
-                NSLog("[Sileo] Installed Daemon is \(version) but the latest is \(DaemonVersion), asking user to update")
+
                 klass.shared.installDaemon()
                 guard self.connectToDaemon() else {
                     fatalError("[Sileo] Authorization Alpha-Alpha 3-0-5.")
                 }
                 return
             }
-            NSLog("[Sileo] Installed Daemon Version is \(version) which is the latest")
         }
     }
 
@@ -71,12 +66,10 @@ final public class MacRootWrapper {
         }
         // swiftlint:disable identifier_name
         helper.spawn(command: launchPath, args: args) { _status, _stdoutStr, _stderrStr in
-            NSLog("[Sileo] completionCallback never recieved")
             status = _status
             stdoutStr = _stdoutStr
             stderrStr = _stderrStr
         }
-        NSLog("[Sileo] Returning Command")
         return (status, stdoutStr, stderrStr)
     }
 
@@ -94,10 +87,8 @@ final public class MacRootWrapper {
         connection.resume()
 
         guard let helper = connection.synchronousRemoteObjectProxyWithErrorHandler({ error in
-            NSLog("[Sileo] Error = \(error)")
             return
         }) as? RootHelperProtocol else {
-            NSLog("[Sileo] Daemon not installed")
             return false
         }
         var version = ""
@@ -110,6 +101,16 @@ final public class MacRootWrapper {
         self.connection = connection
         self.helper = helper
         return true
+    }
+    
+    public func resetConnection() {
+        self.connection?.invalidate()
+        self.connection = nil
+        self.helper = nil
+        
+        guard connectToDaemon() else {
+            fatalError("[Sileo] Authorization Alpha-Alpha 3-0-5.")
+        }
     }
 }
 #endif
@@ -337,14 +338,13 @@ public class CommandPath {
     }()
 
     static var sourcesListD: String = {
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus/etc/apt/sources.list.d"
+        #else
         // Check for not Procursus so we can keep the check below
         if !isMobileProcursus {
             return "/etc/apt/sileo.list.d"
         }
-
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/etc/apt/sources.list.d"
-        #else
         return "/etc/apt/sources.list.d"
         #endif
     }()

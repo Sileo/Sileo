@@ -673,7 +673,12 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
                 strong.updateFooterCount()
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
             }
-            return UIMenu(title: "", children: [copyAction, deleteAction])
+            let refreshAction = UIAction(title: "Refresh") { [weak self] _ in
+                guard let strong = self else { return }
+                let repo = strong.sortedRepoList[indexPath.row]
+                strong.updateSpecific([repo])
+            }
+            return UIMenu(title: "", children: [copyAction, deleteAction, refreshAction])
         }
     }
     #endif

@@ -4,12 +4,12 @@
 <dict>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier &quot;org.coolstar.SileoStore&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier &quot;sileostore&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</array>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.2-33</string>
+	<string>2.2-37</string>
 	<key>CFBundleName</key>
 	<string>SileoRootDaemon</string>
 	<key>CFBundleIdentifier</key>

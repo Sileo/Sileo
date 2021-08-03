@@ -162,16 +162,7 @@ final class RepoManager {
                 continue
             }
 
-            guard !hasRepo(with: normalizedURL),
-                  // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
-                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
-                  isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
-                  !isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
-            else {
-                continue
-            }
-
+            guard shouldAddRepo(normalizedURL) else { continue }
             repoListLock.wait()
             if !handleDistRepo(url) {
                 let repo = Repo()
@@ -192,6 +183,22 @@ final class RepoManager {
         writeListToFile()
         return repos
     }
+    
+    public func shouldAddRepo(_ url: URL) -> Bool {
+        guard !hasRepo(with: url) else { return false }
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        if isMobileProcursus {
+            guard !normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com"),
+                  !normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com"),
+                  !normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") else { return false }
+        } else {
+            guard !normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") else { return false }
+        }
+        return true
+        #endif
+    }
 
     public func addDistRepo(url: URL, suites: String, components: String) -> Repo? {
         var normalizedStr = url.absoluteString
@@ -201,24 +208,17 @@ final class RepoManager {
         guard let normalizedURL = URL(string: normalizedStr) else {
             return nil
         }
-
-        guard !hasRepo(with: normalizedURL),
-              // Prevent cross adding when using a certain bootstrap so we don't mix core dependencies
-              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
-              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") == false,
-              isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") == false,
-              !isMobileProcursus && normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") == false
-        else {
-            return nil
-        }
+        
+        guard shouldAddRepo(normalizedURL) else { return nil }
 
         repoListLock.wait()
         let repo = Repo()
         repo.rawURL = normalizedStr
-        repo.suite = "./"
+        repo.suite = suites
+        repo.components = components.split(separator: " ") as? [String] ?? [components]
         repo.rawEntry = """
         Types: deb
-        URIs: \(repo.repoURL)
+        URIs: \(repo.rawURL)
         Suites: \(suites)
         Components: \(components)
         """
@@ -580,7 +580,6 @@ final class RepoManager {
     ) {
         var directory: ObjCBool = false
         let exists = FileManager.default.fileExists(atPath: CommandPath.lists, isDirectory: &directory)
-        NSLog("[Sileo] exists = \(exists), directory = \(directory)")
         if !exists ||  !directory.boolValue {
             fixLists()
         }
@@ -1236,8 +1235,12 @@ final class RepoManager {
         } catch {
             return
         }
-
+        
+        #if targetEnvironment(macCatalyst)
+        spawnAsRoot(args: [CommandPath.cp, "-f", "\(tempPath.path)", "\(sileoList)"])
+        #else
         spawnAsRoot(args: [CommandPath.cp, "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
+        #endif
         spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
 
         #endif

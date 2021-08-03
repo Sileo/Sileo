@@ -41,12 +41,10 @@
     CFErrorRef error;
     BOOL success = SMJobBless(kSMDomainSystemLaunchd, str, authRef, &error);
     if (!success) {
-        NSLog(@"[Sileo] SMJobBless failed with error %@", error);
         exit(0);
     }
     free(error);
     AuthorizationFree(authRef, kAuthorizationFlagDefaults);
-    NSLog(@"[Sileo] helper installed succesfully");
     return YES;
 }
 

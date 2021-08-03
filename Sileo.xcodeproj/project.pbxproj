@@ -3014,7 +3014,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export MAIN_BUNDLE_ID=\"org.coolstar.SileoStore\"\nexport HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n#swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\n";
+			shellScript = "if [ \"${PLATFORM_NAME}\" == \"macosx\" ] \nthen \n    export MAIN_BUNDLE_ID=\"sileostore\"\n    export HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n    swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\nfi\n";
 		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3740,6 +3740,245 @@
 			};
 			name = Release;
 		};
+		E15A954F26B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Mac_Automations;
+		};
+		E15A955026B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Sileo.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				ENABLE_BITCODE = NO;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				ENABLE_TESTABILITY = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SCRROOT)/Deps/lliblzma\"",
+					"\"$(SRCROOT)/Deps/libzstd\"",
+					"\"$(SRCROOT)/Deps/liblz4",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Deps/liblzma",
+					"$(PROJECT_DIR)/Deps/libzstd",
+					"$(PROJECT_DIR)/Deps/liblz4",
+				);
+				MARKETING_VERSION = 2.2;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
+				PRODUCT_MODULE_NAME = Sileo;
+				PRODUCT_NAME = Sileo;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Mac_Automations;
+		};
+		E15A955126B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					/usr/lib/libswift/stable,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Deps/libzstd",
+					"$(PROJECT_DIR)/Deps/liblzma",
+					"$(PROJECT_DIR)/Deps/liblz4",
+				);
+				MARKETING_VERSION = 2.2;
+				OTHER_CFLAGS = (
+					"-flto",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-flto";
+				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
+				PRODUCT_MODULE_NAME = Sileo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TARGET_SANDBOX;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Mac_Automations;
+		};
+		E15A955226B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.1.1;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sileoteam.SileoRootWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Mac_Automations;
+		};
+		E15A955326B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = SileoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sileo.app/Sileo";
+			};
+			name = Mac_Automations;
+		};
+		E15A955426B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = SileoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sileo;
+			};
+			name = Mac_Automations;
+		};
+		E15A955526B9CB38000DB10E /* Mac_Automations */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					SileoRootDaemon/Launchd.plist,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					SileoRootDaemon/Info.plist,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Mac_Automations;
+		};
 		E1D33902269C3ECB00933AA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4192,6 +4431,7 @@
 			buildConfigurations = (
 				49FB388F2660745F0029CAFF /* Debug */,
 				49FB38902660745F0029CAFF /* Release */,
+				E15A955226B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4201,6 +4441,7 @@
 			buildConfigurations = (
 				E1D33902269C3ECB00933AA5 /* Debug */,
 				E1D33903269C3ECB00933AA5 /* Release */,
+				E15A955526B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4210,6 +4451,7 @@
 			buildConfigurations = (
 				F139D14A22EA9209007F5C0D /* Debug */,
 				F139D14B22EA9209007F5C0D /* Release */,
+				E15A955126B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4219,6 +4461,7 @@
 			buildConfigurations = (
 				F149E0DA20B6040B005CA30B /* Debug */,
 				F149E0DB20B6040B005CA30B /* Release */,
+				E15A954F26B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4228,6 +4471,7 @@
 			buildConfigurations = (
 				F149E0DD20B6040B005CA30B /* Debug */,
 				F149E0DE20B6040B005CA30B /* Release */,
+				E15A955026B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4237,6 +4481,7 @@
 			buildConfigurations = (
 				F149E0E020B6040B005CA30B /* Debug */,
 				F149E0E120B6040B005CA30B /* Release */,
+				E15A955326B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4246,6 +4491,7 @@
 			buildConfigurations = (
 				F149E0E320B6040B005CA30B /* Debug */,
 				F149E0E420B6040B005CA30B /* Release */,
+				E15A955426B9CB38000DB10E /* Mac_Automations */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

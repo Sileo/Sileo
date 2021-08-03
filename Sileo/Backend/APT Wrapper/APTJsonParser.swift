@@ -184,7 +184,6 @@ extension APTWrapper {
             if cleanLine.hasPrefix("{") && cleanLine.hasSuffix("}") {
                 guard let data = cleanLine.data(using: .utf8) else {
                     // What the actual hell, oh well..
-                    NSLog("[Sileo] failedDataEncoding, \(cleanLine)")
                     throw APTParserErrors.failedDataEncoding
                 }
 
@@ -206,7 +205,6 @@ extension APTWrapper {
             // We need a substring of the JSON object only
             guard let openingBracket = cleanOutput.firstIndex(of: "{"),
                   let closingBracket = cleanOutput.lastIndex(of: "}") else {
-                NSLog("[Sileo] blankJsonOutput \(cleanOutput)")
                 throw APTParserErrors.blankJsonOutput
             }
 
@@ -217,7 +215,6 @@ extension APTWrapper {
                 .appending("}") // Appended this because we cut it off in our substring
 
             guard let data = jsonObject.data(using: .utf8) else {
-                NSLog("[Sileo] failedDataEncoding \(jsonObject)")
                 throw APTParserErrors.failedDataEncoding
             }
 

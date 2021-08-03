@@ -72,11 +72,13 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         }
         self.updateTintColor()
         
-        // Force all view controllers to load now
-        for controller in tabBarController.viewControllers ?? [] {
-            _ = controller.view
-            if let navController = controller as? UINavigationController {
-                _ = navController.viewControllers[0].view
+        if UIApplication.shared.applicationState == .active {
+            // Force all view controllers to load now
+            for controller in tabBarController.viewControllers ?? [] {
+                _ = controller.view
+                if let navController = controller as? UINavigationController {
+                    _ = navController.viewControllers[0].view
+                }
             }
         }
     }

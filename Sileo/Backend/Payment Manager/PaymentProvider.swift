@@ -297,7 +297,6 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
                     self.invalidateSavedToken()
                 }
             }
-            if includePaymentSecret { NSLog("[Sileo] Completion moment") }
             completion(error, data, false)
         }
     }
