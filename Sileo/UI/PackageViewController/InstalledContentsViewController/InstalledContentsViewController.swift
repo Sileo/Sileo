@@ -15,7 +15,7 @@ class InstalledContentsViewController: UIViewController {
     private var treeView: LNZTreeView?
     private var filesList: [String] = []
     
-    fileprivate var rootNode = FileNode(withIdentifier: "/")
+    fileprivate var rootNode = FileNode(withIdentifier: "/", path: "/")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class InstalledContentsViewController: UIViewController {
             
         }
         
-        rootNode = FileNode(withIdentifier: "/", andChildren: children(path: "/"))
+        rootNode = FileNode(withIdentifier: "/", andChildren: children(path: "/"), path: "/")
         
         let treeView = LNZTreeView(frame: self.view.bounds)
         treeView.dataSource = self
@@ -66,7 +66,7 @@ class InstalledContentsViewController: UIViewController {
                 let index = file.index(file.startIndex, offsetBy: count)
                 let pathRemaining = file[index...]
                 if !pathRemaining.contains("/") && !pathRemaining.isEmpty && pathRemaining != "." {
-                    items.append(FileNode(withIdentifier: file, andChildren: children(path: file)))
+                    items.append(FileNode(withIdentifier: file, andChildren: children(path: file), path: file))
                 }
             }
         }
@@ -99,8 +99,9 @@ extension InstalledContentsViewController: LNZTreeViewDataSource {
 
     func treeView(_ treeView: LNZTreeView, cellForRowAt indexPath: IndexPath, forParentNode parentNode: TreeNodeProtocol?, isExpanded: Bool) -> UITableViewCell {
         let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
-        let cell = treeView.dequeueReusableCell(withIdentifier: "cell", for: node, inSection: indexPath.section)
-
+        // swiftlint:disable force_cast
+        let cell = treeView.dequeueReusableCell(withIdentifier: "cell", for: node, inSection: indexPath.section) as! InstalledContentsTableViewCell
+        
         if node.isExpandable {
             if isExpanded {
                 cell.imageView?.image = UIImage(named: "index_folder_indicator_open")?.withRenderingMode(.alwaysTemplate)
@@ -128,5 +129,14 @@ extension InstalledContentsViewController: LNZTreeViewDataSource {
 extension InstalledContentsViewController: LNZTreeViewDelegate {
     func treeView(_ treeView: LNZTreeView, heightForNodeAt indexPath: IndexPath, forParentNode parentNode: TreeNodeProtocol?) -> CGFloat {
         43
+    }
+    
+    func treeView(_ treeView: LNZTreeView, didSelectNodeAt indexPath: IndexPath, forParentNode parentNode: TreeNodeProtocol?) {
+        let node = (self.treeView(treeView, nodeForRowAt: indexPath, forParentNode: parentNode) as? FileNode) ?? rootNode
+        let url = URL(string: "filza://\(node.path)")!
+        NSLog("[Sileo] path = \(node.path)")
+        if !node.isExpandable {
+            UIApplication.shared.open(url)
+        }
     }
 }

@@ -10,6 +10,7 @@ import LNZTreeView
 
 class FileNode: TreeNodeProtocol {
     var identifier: String
+    var path: String
 
     var isExpandable: Bool {
         children != nil
@@ -17,8 +18,9 @@ class FileNode: TreeNodeProtocol {
 
     var children: [FileNode]?
 
-    init(withIdentifier identifier: String, andChildren children: [FileNode]? = nil) {
+    init(withIdentifier identifier: String, andChildren children: [FileNode]? = nil, path: String) {
         self.identifier = identifier
         self.children = children
+        self.path = path
     }
 }
