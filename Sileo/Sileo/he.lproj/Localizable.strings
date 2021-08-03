@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "חפש חבילה";
 "Sort_Name" = "שם";
 "Sort_Date" = "תאריך";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "סדר לפי:";
 
 "Package_Unavailable" = "חבילה אינה זמינה";
@@ -173,6 +174,7 @@
 "Show_Install_Details" = "הצג פרטים";
 "Hide_Install_Details" = "החבא פרטים";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "הפעל מחדש את סילאו";
 "After_Install_Respring" = "רענן את SpringBoard";
