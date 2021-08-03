@@ -12,7 +12,7 @@
 "About" = "Xem Thêm";
 "Close" = "Đóng";
 "Double tap to open." = "Đúp 2 lần để mở.";
-"Untitled_Repo" = "Untitled Repo";
+"Untitled_Repo" = "Kho lưu trữ không tên";
 "OK" = "Đồng Ý";
 "Done" = "Hoàn Thành";
 "Done_Editing" = "Hoàn Thành";
@@ -98,7 +98,7 @@
 "Ignored Updates" = "Bỏ qua Cập nhật";
 
 "Repos" = "Kho lưu trữ";
-"Repo" = "Repository";
+"Repo" = "Kho lưu trữ";
 
 "Add_Source.Title" = "Thêm nguồn";
 "Add_Source.Body" = "Thêm liên kết APT";
@@ -119,7 +119,7 @@
 "Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
 
 "Installed_Package_Header" = "Gói đã cài đặt";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Các gói đã cài đặt";
 "Version" = "Phiên bản";
 "Show_Package_Contents_Button" = "Xem Nội dung đóng gói";
 
