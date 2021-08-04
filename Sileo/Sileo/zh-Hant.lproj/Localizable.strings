@@ -157,6 +157,7 @@
 "Apply_Changes" = "套用變更內容";
 "Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
 "Help_Translate" = "幫助翻譯 Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
