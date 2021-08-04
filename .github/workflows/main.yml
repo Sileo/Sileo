@@ -59,10 +59,6 @@ jobs:
           echo ${package1}
           curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-      - name: Build Sileo Nightly (darwin-amd64)
-        run: |
-          make clean package NIGHTLY=1 DEBUG=0 SILEO_PLATFORM=darwin-amd64
-          
       - name: Copy Procursus to Cache Location
         run: |
           sudo mkdir -p ~/__cache
