@@ -623,18 +623,18 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 NotificationCenter.default.post(Notification(name: PackageListManager.prefsNotification))
             }
             sharePopup.addAction(ignoreUpdates)
-        } else {
-            let wishListText = WishListManager.shared.isPackageInWishList(package.package) ?
-                String(localizationKey: "Package_Wishlist_Remove") : String(localizationKey: "Package_Wishlist_Add")
-            let wishlist = UIAlertAction(title: wishListText, style: .default) { _ in
-                if WishListManager.shared.isPackageInWishList(package.package) {
-                    WishListManager.shared.removePackageFromWishList(package.package)
-                } else {
-                    _ = WishListManager.shared.addPackageToWishList(package.package)
-                }
-            }
-            sharePopup.addAction(wishlist)
         }
+        
+        let wishListText = WishListManager.shared.isPackageInWishList(package.package) ?
+            String(localizationKey: "Package_Wishlist_Remove") : String(localizationKey: "Package_Wishlist_Add")
+        let wishlist = UIAlertAction(title: wishListText, style: .default) { _ in
+            if WishListManager.shared.isPackageInWishList(package.package) {
+                WishListManager.shared.removePackageFromWishList(package.package)
+            } else {
+                _ = WishListManager.shared.addPackageToWishList(package.package)
+            }
+        }
+        sharePopup.addAction(wishlist)
         
         let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: nil)
         sharePopup.addAction(cancelAction)
