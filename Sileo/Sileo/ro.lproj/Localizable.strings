@@ -157,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Ajutați cu localizarea pentru Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
