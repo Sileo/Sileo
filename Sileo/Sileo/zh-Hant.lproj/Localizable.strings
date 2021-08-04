@@ -154,9 +154,9 @@
 "Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
 "Language" = "語言";
 "Use_System_Language" = "使用系統語言";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Apply_Changes" = "套用變更內容";
+"Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
+"Help_Translate" = "幫助翻譯 Sileo";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
@@ -173,8 +173,8 @@
 
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "在 Filza 打開";
+"Copy_Path" = "拷貝目錄";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
