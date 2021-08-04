@@ -157,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";
