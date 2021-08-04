@@ -480,11 +480,6 @@ extension PackageListViewController: UICollectionViewDataSource {
                 case .installdate: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
                 case .size: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Install_Size"), for: .normal)
                 }
-                if UserDefaults.standard.bool(forKey: "sortInstalledByDate") {
-                    headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
-                } else {
-                    headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
-                }
                 headerView.sortButton?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
                 headerView.separatorView?.isHidden = false
                 return headerView

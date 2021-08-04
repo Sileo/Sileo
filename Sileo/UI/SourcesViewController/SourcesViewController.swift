@@ -384,6 +384,7 @@ class SourcesViewController: SileoViewController {
                 textField.text = "https://"
             }
             textField.keyboardType = .URL
+            textField.addTarget(self, action: #selector(Self.textFieldDidChange(_:)), for: .editingChanged)
         }
         
         let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { _ in
@@ -457,6 +458,7 @@ class SourcesViewController: SileoViewController {
             textField.placeholder = "URL"
             textField.text = string
             textField.keyboardType = .URL
+            textField.addTarget(self, action: #selector(Self.textFieldDidChange(_:)), for: .editingChanged)
         }
         alert.addTextField { textField in
             textField.placeholder = "Suites"
@@ -552,6 +554,19 @@ class SourcesViewController: SileoViewController {
                 self.updateSpecific(repos)
             }
         }
+    }
+    
+    // Smart Handling of pasted in sources
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard var text = textField.text,
+              text.count >= 15 else { return }
+        if text.prefix(16).lowercased() == "https://https://" || text.prefix(15).lowercased() == "https://http://" {
+            text = String(text.dropFirst(8))
+        } else if text.prefix(15).lowercased() == "https://file://" {
+            text = String(text.dropFirst(7))
+        }
+        
+        textField.text = text
     }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import BackgroundTasks
 
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
