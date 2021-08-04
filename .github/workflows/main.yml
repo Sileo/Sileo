@@ -63,22 +63,6 @@ jobs:
         run: |
           make clean package NIGHTLY=1 DEBUG=0 SILEO_PLATFORM=darwin-amd64
           
-      - name: Build Sileo Nightly (darwin-arm64)
-        run: |
-          make clean package NIGHTLY=1 DEBUG=0 SILEO_PLATFORM=darwin-arm64
-          
-      - name: Upload To Repo
-        env: # 
-          token: ${{ secrets.AMY_REPO_SECRET }}
-        run: |
-          package2=$(ls -t packages | head -2 | tail -1)
-          package3=$(ls -t packages | head -3 | tail -1)
-          echo ${package2}
-          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          echo ${package3}
-          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-          
       - name: Copy Procursus to Cache Location
         run: |
           sudo mkdir -p ~/__cache

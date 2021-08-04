@@ -150,6 +150,12 @@ class SourcesViewController: SileoViewController {
     #endif
     
     @objc private func handleImageUpdate(_ notification: Notification) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.handleImageUpdate(notification)
+            }
+            return
+        }
         guard let url = notification.object as? String,
               let visibibleCells = tableView?.visibleCells as? [SourcesTableViewCell] else { return }
         for cell in visibibleCells {

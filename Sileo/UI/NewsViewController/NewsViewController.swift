@@ -141,9 +141,11 @@ extension NewsViewController { // Get Data
                 self.timestamps = []
                 self.outOfStamps = false
                 DispatchQueue.main.async {
-                    // Scroll to top
+                    // Reset all variables that may block the batch load
                     self.isLoading = false
                     self.reset = false
+                    self.outOfStamps = false
+                    // Empty collection view and scroll to top
                     self.collectionView.reloadData()
                     self.collectionView.contentOffset = CGPoint(x: 0, y: -(self.collectionView.safeAreaInsets.top))
                     self.loadNextBatch()
