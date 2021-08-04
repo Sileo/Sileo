@@ -563,8 +563,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         
         let sharePopup = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let shareAction = UIAlertAction(title: String(localizationKey: "Package_Share_Action"), style: .default) { _ in
-            let packageURL = URL(string: URLManager.url(package: package.package))
-            let activityViewController = UIActivityViewController(activityItems: [packageURL as Any], applicationActivities: nil)
+            var packageString = "\(package.name ?? package.package) - \(URLManager.url(package: package.package))"
+            if let repo = package.sourceRepo {
+                packageString += " - from \(repo.url?.absoluteString ?? repo.rawURL)"
+            }
+            let activityViewController = UIActivityViewController(activityItems: [packageString], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = shareButton
             self.present(activityViewController, animated: true, completion: nil)
         }
