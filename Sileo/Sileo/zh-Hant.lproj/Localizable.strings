@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "已安裝大小";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -152,8 +152,8 @@
 "Cache_Size" = "快取大小";
 "Clear_Cache" = "清除網頁快取";
 "Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
+"Language" = "語言";
+"Use_System_Language" = "使用系統語言";
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
