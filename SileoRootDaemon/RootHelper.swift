@@ -160,7 +160,7 @@ public class RootHelper: NSObject, NSXPCListenerDelegate, RootHelperProtocol, Ap
     
     public func spawnAsRoot(command: String, args: [String]) {
         guard let connection = connection,
-              let helper = connection.remoteObjectProxyWithErrorHandler({ error in
+              let helper = connection.remoteObjectProxyWithErrorHandler({ _ in
             return
         }) as? AptRootPipeProtocol else {
             return

@@ -190,11 +190,11 @@ final class RepoManager {
         return true
         #else
         if isMobileProcursus {
-            guard !normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com"),
-                  !normalizedURL.host?.localizedCaseInsensitiveContains("test.apt.bingner.com"),
-                  !normalizedURL.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") else { return false }
+            guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
+                  !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
+                  !(url.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") ?? false) else { return false }
         } else {
-            guard !normalizedURL.host?.localizedCaseInsensitiveContains("apt.procurs.us") else { return false }
+            guard !(url.host?.localizedCaseInsensitiveContains("apt.procurs.us") ?? false) else { return false }
         }
         return true
         #endif
