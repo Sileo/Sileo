@@ -32,9 +32,9 @@ final public class LanguageHelper {
         var selectedLanguage: String
         if UserDefaults.standard.object(forKey: "UseSystemLanguage") == nil {
             UserDefaults.standard.setValue(true, forKey: "UseSystemLanguage")
-            selectedLanguage = currentLocale.localeIdentifier
+            return
         } else if UserDefaults.standard.bool(forKey: "UseSystemLanguage") {
-            selectedLanguage = currentLocale.localeIdentifier
+            return
         // swiftlint:disable:next identifier_name
         } else if let _selectedLanguage = UserDefaults.standard.string(forKey: "SelectedLanguage") {
             selectedLanguage = _selectedLanguage
@@ -77,8 +77,11 @@ enum LocalizedStringType {
 extension String {
     /// Creates a localized string from the provided key.
     init(localizationKey: String, type: LocalizedStringType = .general) {
-        guard let bundle = LanguageHelper.shared.bundle else { self = localizationKey; return }
-        // swiftlint:disable:next nslocalizedstring_key
-        self = NSLocalizedString(localizationKey, tableName: type.tableName, bundle: bundle, comment: "")
+        // swiftlint:disable nslocalizedstring_key
+        if let bundle = LanguageHelper.shared.bundle {
+            self = NSLocalizedString(localizationKey, tableName: type.tableName, bundle: bundle, comment: "")
+        } else {
+            self = NSLocalizedString(localizationKey, tableName: type.tableName, comment: "")
+        }
     }
 }
