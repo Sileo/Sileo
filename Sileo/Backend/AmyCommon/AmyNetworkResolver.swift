@@ -21,7 +21,7 @@ final class AmyNetworkResolver {
     }
     
     var memoryCache = [String: UIImage]()
-    private var memoryCacheLock = NSLock()
+    public var memoryCacheLock = NSLock()
     
     public func clearCache() {
         if cacheDirectory.dirExists {

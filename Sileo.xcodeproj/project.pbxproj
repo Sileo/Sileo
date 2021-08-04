@@ -172,6 +172,8 @@
 		E1C960A7269E0D1F00F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */; };
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
+		E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
+		E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1D33901269C3ECB00933AA5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D33900269C3ECB00933AA5 /* main.swift */; };
 		E1D33908269C41F900933AA5 /* RootHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D33907269C41F900933AA5 /* RootHelper.swift */; };
 		E1D44BB82665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
@@ -886,6 +888,7 @@
 		E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmyDownloadParser.swift; sourceTree = "<group>"; };
 		E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTPipe.swift; sourceTree = "<group>"; };
 		E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesignCheck.swift; sourceTree = "<group>"; };
+		E1CDA8C426BB508A001813BD /* FolderFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFinder.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
 		E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SileoRootDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D33900269C3ECB00933AA5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -2210,6 +2213,7 @@
 				F120233F21470F69005EAFAC /* UIColor+HTMLColors.m */,
 				499162C22607C06500D09BE7 /* UIView+FromNib.swift */,
 				499162C12607C06500D09BE7 /* UserDefaults+Optional.swift */,
+				E1CDA8C426BB508A001813BD /* FolderFinder.swift */,
 			);
 			path = Contrib;
 			sourceTree = "<group>";
@@ -3128,6 +3132,7 @@
 				F139D11522EA9209007F5C0D /* DepictionButtonView.swift in Sources */,
 				F1705FE924CA1146001596A0 /* URLManager.swift in Sources */,
 				FB40263423DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
+				E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */,
 				F1705FF224CA1657001596A0 /* UIDevice+Private.swift in Sources */,
 				F139D11A22EA9209007F5C0D /* DepictionHeaderView.swift in Sources */,
 				E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
@@ -3316,6 +3321,7 @@
 				F1C5D9B422D160B50021BD89 /* DepictionLabelView.swift in Sources */,
 				F1C5D9A822D151A50021BD89 /* DepictionMarkdownViewSlow.swift in Sources */,
 				E13BD78F2646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */,
+				E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */,
 				FB40263023DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */,
 				F172581F24EB8C12000F2FAF /* DatabaseManager.swift in Sources */,

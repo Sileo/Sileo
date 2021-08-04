@@ -170,23 +170,27 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = true
                 cell.defaultKey = "ShowProvisional"
             case 2:
+                cell.amyPogLabel.text = String(localizationKey: "iCloud_Profile")
+                cell.fallback = true
+                cell.defaultKey = "iCloudProfile"
+            case 3:
                 cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
                 cell.fallback = true
                 cell.defaultKey = "ShowIgnoredUpdates"
-            case 3:
+            case 4:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Refresh_Sources")
                 cell.fallback = true
                 cell.defaultKey = "AutoRefreshSources"
-            case 4:
+            case 5:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                 cell.defaultKey = "AutoComplete"
-            case 5:
+            case 6:
                 cell.amyPogLabel.text = String(localizationKey: "Always_Show_Install_Log")
                 cell.defaultKey = "AlwaysShowLog"
-            case 6:
+            case 7:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-            case 7:
+            case 8:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"

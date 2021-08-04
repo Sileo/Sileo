@@ -219,7 +219,18 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     func setPicture(_ button: UIButton) -> UIButton {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true),
+            let image = ICloudPFPHandler.refreshiCloudPicture({ image in
+                DispatchQueue.main.async {
+                    if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true) {
+                        button.setImage(image, for: .normal)
+                    }
+                }
+            }) {
+                button.setImage(image, for: .normal)
+        } else {
+            button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
         button.tintColor = .tintColor
         return button
     }
