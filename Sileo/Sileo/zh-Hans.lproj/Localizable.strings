@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "搜索软件包";
 "Sort_Name" = "名称";
 "Sort_Date" = "日期";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "已安装大小";
 "Sort_By" = "排序方式:";
 
 "Package_Unavailable" = "软件包不可用";
@@ -152,11 +152,11 @@
 "Cache_Size" = "缓存";
 "Clear_Cache" = "清除网络缓存";
 "Clear_Cache_Message" = "您想清除网络缓存吗？这将节省 %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Language" = "语言";
+"Use_System_Language" = "使用系统语言";
+"Apply_Changes" = "应用更改";
+"Apply_Changes_Confirm" = "应用更改需要重启 Sileo";
+"Help_Translate" = "帮助翻译 Sileo";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -173,8 +173,8 @@
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "在 Filza 打开";
+"Copy_Path" = "复制目录";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";
