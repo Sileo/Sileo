@@ -204,6 +204,7 @@ package: stage
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm
+	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/PkgInfo
 	@mv $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac $(SILEO_STAGE_DIR)/DEBIAN/prerm
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/prerm
 	@mkdir -p ./packages
