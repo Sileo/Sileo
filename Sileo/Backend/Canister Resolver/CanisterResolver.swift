@@ -32,10 +32,11 @@ final class CanisterResolver {
                                                object: nil)
     }
     
-    public func fetch(_ query: String, fetch: @escaping () -> Void) {
+    @discardableResult public func fetch(_ query: String, fetch: @escaping (Bool) -> Void) -> Bool {
+        guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch(false); return false }
         if query.count <= 3,
-           savedSearch.contains(query) { return }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction"
+           savedSearch.contains(query) { fetch(false); return false }
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
         AmyNetworkResolver.dict(url: url) { [weak self] success, dict in
             guard let strong = self else { return }
             guard success,
@@ -43,6 +44,7 @@ final class CanisterResolver {
                   dict["status"] as? String == "Successful",
                   let data = dict["data"] as? [[String: Any]] else { return }
             strong.savedSearch.append(query)
+            var change = false
             for entry in data {
                 var package = ProvisionalPackage()
                 package.name = entry["name"] as? String
@@ -60,17 +62,28 @@ final class CanisterResolver {
                     author.removeSubrange(range.lowerBound..<author.endIndex)
                     if author.last == " " { author = String(author.dropLast()) }
                     package.author = author
+                } else if let author = entry["author"] as? String {
+                    package.author = author
+                } else if var maintainer = entry["maintainer"] as? String,
+                          let range = maintainer.range(of: "<") {
+                    maintainer.removeSubrange(range.lowerBound..<maintainer.endIndex)
+                    if maintainer.last == " " { maintainer = String(maintainer.dropLast()) }
+                    package.author = maintainer
+                } else if let maintainer = entry["maintainer"] as? String {
+                    package.author = maintainer
                 } else {
-                    package.author = entry["author"] as? String
+                    package.author = "Unknown"
                 }
                 package.version = entry["latestVersion"] as? String
                 if !strong.packages.contains(where: { $0.identifier == package.identifier }) && !strong.filteredRepos.contains(package.repo ?? "") {
+                    change = true
                     strong.packages.append(package)
                 }
             }
             
-            return fetch()
+            fetch(change)
         }
+        return true
     }
     
     class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {

@@ -156,7 +156,7 @@ extension NewsViewController { // Get Data
     }
     
     func loadNextBatch() {
-        if isLoading || outOfStamps || reset {
+        if (isLoading || outOfStamps || reset) && !activityIndicatorView.isAnimating {
             return
         }
         isLoading = true
@@ -167,6 +167,7 @@ extension NewsViewController { // Get Data
             var timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
             if timestampsWeCareAbout.isEmpty {
                 self.outOfStamps = true
+                self.isLoading = false
                 DispatchQueue.main.async {
                     self.collectionView.isHidden = false
                     self.activityIndicatorView.stopAnimating()
@@ -177,6 +178,7 @@ extension NewsViewController { // Get Data
             // If we have run out of new timestamp sections, stop loading
             if timestampsWeCareAbout.isEmpty {
                 self.outOfStamps = true
+                self.isLoading = false
                 return
             }
             // Ok so we've got a list of timestamps we haven't bothered to load yet

@@ -21,7 +21,7 @@ final class PackageListManager {
     }
     
     private let initSemphaore = DispatchSemaphore(value: 0)
-    private var isLoaded = false
+    public var isLoaded = false
     
     public var allPackagesArray: [Package] {
         var packages = [Package]()
@@ -95,6 +95,9 @@ final class PackageListManager {
     }
     
     public func initWait() {
+        if Thread.isMainThread {
+            fatalError("\(Thread.current.threadName) cannot be used to hold backend")
+        }
         if isLoaded { return }
         initSemphaore.wait()
     }
@@ -336,25 +339,25 @@ final class PackageListManager {
             let search = searchQuery.lowercased()
             packageList.removeAll { package in
                 var shouldRemove = true
-                if package.package.lowercased().contains(search) { shouldRemove = false }
+                if package.package.lowercased().localizedCaseInsensitiveContains(search) { shouldRemove = false }
                 if let name = package.name?.lowercased() {
                     if !name.isEmpty {
-                        if name.contains(search) { shouldRemove = false }
+                        if name.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let description = package.packageDescription?.lowercased() {
                     if !description.isEmpty {
-                        if description.contains(search) { shouldRemove = false }
+                        if description.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let author = package.author?.lowercased() {
                     if !author.isEmpty {
-                        if author.contains(search) { shouldRemove = false }
+                        if author.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let maintainer = package.maintainer?.lowercased() {
                     if !maintainer.isEmpty {
-                        if maintainer.contains(search) { shouldRemove = false }
+                        if maintainer.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 return shouldRemove
@@ -363,7 +366,18 @@ final class PackageListManager {
         if sort {
             packageList = sortPackages(packages: packageList, search: search)
         }
-        return packageList
+        // Remove Any Duplicates
+        var temp = [String: Package]()
+        for package in packageList {
+            if let existing = temp[package.packageID] {
+                if DpkgWrapper.isVersion(package.version, greaterThan: existing.version) {
+                    temp[package.packageID] = package
+                }
+            } else {
+                temp[package.packageID] = package
+            }
+        }
+        return Array(temp.values)
     }
     
     public func sortPackages(packages: [Package], search: String?) -> [Package] {
@@ -517,4 +531,19 @@ final class PackageListManager {
             TabBarController.singleton?.presentPopupController()
         }
     }
+}
+
+extension Thread {
+
+    var threadName: String {
+        if let currentOperationQueue = OperationQueue.current?.name {
+            return "OperationQueue: \(currentOperationQueue)"
+        } else if let underlyingDispatchQueue = OperationQueue.current?.underlyingQueue?.label {
+            return "DispatchQueue: \(underlyingDispatchQueue)"
+        } else {
+            let name = __dispatch_queue_get_label(nil)
+            return String(cString: name, encoding: .utf8) ?? Thread.current.description
+        }
+    }
+    
 }

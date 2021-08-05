@@ -18,17 +18,17 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = MacRootWrapper.shared
         #endif
         SileoThemeManager.shared.updateUserInterface()
+        // being parsing sources files
+        _ = RepoManager.shared
+        // Init the local database
+        _ = PackageListManager.shared
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
         _ = AmyNetworkResolver.shared
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
-        // being parsing sources files
-        _ = RepoManager.shared
-        // Init the local database
-        _ = PackageListManager.shared
-        
+
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
         }

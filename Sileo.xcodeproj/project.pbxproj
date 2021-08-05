@@ -372,6 +372,7 @@
 		E128193B26BBFAA500D2553B /* MangoCrazy~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBD2607F9A400A20711 /* MangoCrazy~ipad@3x.png */; };
 		E128194026BBFAA500D2553B /* SileoRootDaemon in Copy Files */ = {isa = PBXBuildFile; fileRef = E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E128199726BBFBA300D2553B /* SileoBackendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128199626BBFBA300D2553B /* SileoBackendTests.swift */; };
+		E12819A026BC16ED00D2553B /* status in Resources */ = {isa = PBXBuildFile; fileRef = E128199F26BC16ED00D2553B /* status */; };
 		E12FC0D5269A3F7D008A0A36 /* liblz4.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FC0D3269A3F7D008A0A36 /* liblz4.1.tbd */; platformFilter = ios; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
 		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
@@ -1151,6 +1152,7 @@
 		E128199426BBFBA300D2553B /* Sileo Backend Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sileo Backend Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E128199626BBFBA300D2553B /* SileoBackendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoBackendTests.swift; sourceTree = "<group>"; };
 		E128199826BBFBA300D2553B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E128199F26BC16ED00D2553B /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		E12FC0D3269A3F7D008A0A36 /* liblz4.1.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = liblz4.1.tbd; sourceTree = "<group>"; };
 		E12FC0D4269A3F7D008A0A36 /* lz4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lz4.h; sourceTree = "<group>"; };
 		E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nightly~ipad@2x.png"; sourceTree = "<group>"; };
@@ -1233,7 +1235,6 @@
 		E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsTableViewController.swift; sourceTree = "<group>"; };
 		E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
-		E1F10B062662E25800DA726E /* status */ = {isa = PBXFileReference; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewFooter.swift; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -2632,8 +2633,8 @@
 		F1B99EF720DBE56100374C27 /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
+				E128199F26BC16ED00D2553B /* status */,
 				F1FCE023213A0B7300D4697A /* dpkg.list */,
-				E1F10B062662E25800DA726E /* status */,
 			);
 			path = "Test Data";
 			sourceTree = "<group>";
@@ -3295,6 +3296,7 @@
 				F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */,
 				E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
 				F139D14222EA9209007F5C0D /* PackageCollectionViewCell.xib in Resources */,
+				E12819A026BC16ED00D2553B /* status in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
 				E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,

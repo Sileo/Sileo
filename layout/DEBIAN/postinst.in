@@ -19,7 +19,7 @@ finish() {
 
 case "$1" in
 	(configure)
-		if ! [ -s /.procursus_strapped ]; then
+		if ! [ -f /.procursus_strapped ]; then
 			sourcesDir="/etc/apt/sileo.list.d"
 			mkdir -p $sourcesDir
 
@@ -43,7 +43,7 @@ Components:\
 			echo "" > $sourcesDir/sileo.sources
 		fi
 
-		if ! [ -s /.procursus_strapped ]; then
+		if ! [ -f /.procursus_strapped ]; then
 			if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
 					then
 						echo "Installed BigBoss Repo"

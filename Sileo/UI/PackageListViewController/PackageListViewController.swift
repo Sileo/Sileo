@@ -587,7 +587,8 @@ extension PackageListViewController: UISearchBarDelegate {
         else {
             return
         }
-        CanisterResolver.shared.fetch(text) { 
+        CanisterResolver.shared.fetch(text) { change in
+            guard change else { return }
             DispatchQueue.main.async {
                 self.updateSearchResults(for: self.searchController ?? UISearchController())
             }
@@ -668,7 +669,8 @@ extension PackageListViewController: UISearchResultsUpdating {
             }
         } else {
             canisterHeartbeat = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
-                CanisterResolver.shared.fetch(searchBar.text ?? "") {
+                CanisterResolver.shared.fetch(searchBar.text ?? "") { change in
+                    guard change else { return }
                     DispatchQueue.main.async {
                         let response = self?.updateProvisional() ?? .nothing
                         handleResponse(response)

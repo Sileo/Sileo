@@ -23,6 +23,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     
     var isUpdatingPurchaseStatus: Bool = false
     var icon: String?
+    var packageObject: Package?
     
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let package = dictionary["package"] as? String else {
@@ -151,6 +152,10 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
                                                selector: #selector(FeaturedPackageView.reloadPackage),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(FeaturedPackageView.reloadPackage),
+                                               name: Notification.Name("ShowProvisional"),
+                                               object: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -189,7 +194,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc func openDepiction(_ : Any?) {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
+        if let package = packageObject {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
@@ -226,13 +231,51 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc public func reloadPackage() {
-        self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil)
+        self.packageObject = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil)
+        self.packageButton.package = self.packageObject
         if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
-            if self.packageButton.package == nil {
-                self.packageButton.package = package
+            return
+        }
+        if !PackageListManager.shared.isLoaded { return }
+        let canister = CanisterResolver.shared
+        func tryCanister() -> Bool {
+            let temp = canister.packages.filter { $0.identifier == self.package }
+            var buffer: Package?
+            for provis in temp {
+                guard let package = CanisterResolver.package(provis) else { continue }
+                if let contained = buffer {
+                    if DpkgWrapper.isVersion(package.version, greaterThan: contained.version) {
+                        buffer = package
+                    }
+                } else {
+                    buffer = package
+                }
             }
-        } else {
+            guard let buffer = buffer else {
+                self.versionLabel.text = String(localizationKey: "Package_Unavailable")
+                return false
+            }
+            self.versionLabel.text = String(format: "%@ · %@", buffer.version, self.repoName)
+            self.packageButton.package = buffer
+            self.packageButton.isEnabled = true
+            self.packageObject = buffer
+            return true
+        }
+        if canister.packages.contains(where: { $0.identifier == self.package }) {
+            if tryCanister() {
+                return
+            }
+        }
+        if !canister.fetch(self.package, fetch: { change in
+            DispatchQueue.main.async {
+                guard change,
+                      tryCanister() else {
+                    self.versionLabel.text = String(localizationKey: "Package_Unavailable")
+                    return
+                }
+            }
+        }) {
             self.versionLabel.text = String(localizationKey: "Package_Unavailable")
         }
     }

@@ -20,6 +20,7 @@ public enum DownloadManagerQueue: Int {
 final class DownloadManager {
     static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
+    static let aptQueue = DispatchQueue(label: "Sileo.AptQueue")
     
     enum Error: LocalizedError {
         case hashMismatch(packageHash: String, refHash: String)

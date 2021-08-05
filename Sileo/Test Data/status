@@ -2,13 +2,13 @@ Package: apt
 Status: install ok installed
 Priority: required
 Section: Packaging
-Installed-Size: 2972
+Installed-Size: 4492
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.3.3
+Version: 2.3.7
 Replaces: apt1.8, apt1.4, libapt, libapt-pkg5.0, apt-lib, apt-key
 Provides: apt1.8 (= 1:0), apt-lib (= 1:0), libapt (= 1:0), apt-key (= 1:0)
-Depends: libapt-pkg6.0 (= 2.3.5), libgnutls30, gpgv, dpkg (>= 1.19.0), coreutils
+Depends: libapt-pkg6.0 (= 2.3.7), libgnutls30, gpgv, dpkg (>= 1.19.0), coreutils, procursus-keyring
 Pre-Depends: dpkg (>= 1.14.25-8), system-cmds (>= 854.40.2-2)
 Conflicts: apt7 (<< 1:0), apt1.4 (<< 1:0), apt1.8, libapt-pkg5.0 (<< 1:0), libapt (<< 1:0), apt-key (<< 1:0)
 Description: commandline package manager
@@ -42,6 +42,16 @@ Pre-Depends: dash (>= 0.5.11.3-1), libreadline8 (>= 8.0), profile.d (>= 0-5), de
 Description: the best shell ever written by Brian Fox
 Homepage: http://www.gnu.org/software/bash/
 
+Package: build-essential
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 122208
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 14.5
+Description: Contains an SDK for your platform.
+
 Package: bzip2
 Status: install ok installed
 Priority: important
@@ -57,27 +67,171 @@ Package: ca-certificates
 Status: install ok installed
 Priority: optional
 Section: Utilities
-Installed-Size: 208
+Installed-Size: 204
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
 Multi-Arch: foreign
-Version: 0.0.4
+Version: 20210609
 Description: CA certs for curl, wget, git.
 Name: CA Certificates
+
+Package: chariz-keyring
+Status: install ok installed
+Priority: optional
+Section: Keyrings
+Installed-Size: 4
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 2021.07.18
+Replaces: procursus-keyring (<< 2020.05.09-1)
+Conflicts: procursus-keyring (<< 2020.05.09-1)
+Description: GnuPG keys for the Chariz repository
+Name: Chariz APT Keyring
+
+Package: com.amywhile.aemulo
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 2948
+Maintainer: Amy While
+Architecture: iphoneos-arm
+Version: 0.1-430+debug
+Depends: mobilesubstrate (>= 0.9.5000)
+Description: NFC Fuckery
+Name: Aemulo
+Author: Amy While
+
+Package: com.amywhile.signalreborn
+Status: install ok installed
+Section: Application
+Installed-Size: 1520
+Maintainer: Amy While
+Architecture: iphoneos-arm
+Version: 2.2
+Replaces: com.charliewhile.signalreborn
+Depends: firmware (>= 12.2) | org.swift.libswift
+Breaks: com.charliewhile.signalreborn
+Conflicts: com.charliewhile.signalreborn
+Description: Visualise your nearby cell towers
+Name: SignalReborn
+Author: Amy While
+
+Package: com.cokepokes.libnotifications
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 910
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 0.3-4
+Depends: firmware (>= 8.0)
+Description: App notification library.
+Name: libnotifications
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libnotificationsDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libnotificationsDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: CokePokes <cokepokes@gmail.com>
+Tag: purpose::extension
+dev: cokepokes
+
+Package: com.dgh0st.flexall
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 260
+Maintainer: DGh0st <deeppwnage@yahoo.com>
+Architecture: iphoneos-arm
+Version: 0.0.1-21
+Depends: mobilesubstrate, libflex
+Description: Load FLEX loader dynamically.
+Name: FLEXall
+Author: DGh0st <deeppwnage@yahoo.com>
+
+Package: com.muirey03.cr4shed
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 1856
+Maintainer: Muirey03
+Architecture: iphoneos-arm
+Version: 4.2.2
+Depends: mobilesubstrate, com.muirey03.libmryipc, com.cokepokes.libnotifications (>= 0.2-2), cy+cpu.arm64 | cy+cpu.arm64e, firmware (>= 9.0), ws.hbang.common (>= 1.11)
+Description: A modern crash reporter for iOS
+Name: Cr4shed
+Author: Muirey03
+
+Package: com.muirey03.libmryipc
+Status: install ok installed
+Section: Development
+Installed-Size: 464
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 2.0.1
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 7.0)
+Conflicts: ws.hbang.stopcrashingpls (= 1.0)
+Description: Easy-to-use, RocketBootstrap-less iOS IPC
+Name: libMRYIPC
+Author: Muirey03 <tommy.muir@btinternet.com>
+dev: muirey03
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libmryipcDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libmryipcDp
+Tag: role::developer, purpose::library, cydia::obsolete
+
+Package: com.tigisoftware.appdatamanager
+Status: install ok installed
+Priority: optional
+Section: Utilities
+Installed-Size: 9122
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 1.6.0-9
+Depends: firmware (>= 7.0)
+Description: tool to WIPE, BACKUP, RESTORE AppData for installed Apps
+Name: Apps Manager
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=appsmanagerDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=appsmanagerDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Author: TIGI Software <satashi2009@gmail.com>
+Tag: purpose::uikit, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, compatible::ios13
+dev: satashi2009
+Icon: file:///Applications/ADManager.app/AppIcon60x60@2x.png
+
+Package: com.tigisoftware.filza
+Status: install ok installed
+Priority: optional
+Section: Utilities
+Installed-Size: 32108
+Maintainer: TIGI Software
+Architecture: iphoneos-arm
+Version: 3.8.2-6
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza64bit
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7+
+Name: Filza File Manager
+Author: TIGI Software
 
 Package: coreutils
 Status: install ok installed
 Priority: standard
 Section: Utilities
-Installed-Size: 14876
+Installed-Size: 23208
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 8.32-11
+Version: 8.32-13
 Replaces: netatalk (<= 2.0.3-6), coreutils-bin, shell-cmds (<< 207.40.1), text-cmds (<< 1:0), file-cmds (<< 272.250.1-1)
-Provides: md5sum, sha1sum, coreutils-bin (= 8.32-11), dirname, kill, mktemp, su
-Depends: sh, profile.d, libintl8 (>= 0.20.0), libgmp10, libcrypt2
+Provides: md5sum, sha1sum, coreutils-bin (= 8.32-13), dirname, kill, mktemp, su
+Depends: sh, profile.d, libintl8 (>= 0.20.0), libgmp10, libcrypt2, libiosexec1
 Conflicts: coreutils-bin (<< 1:0), shell-cmds (<< 207.40.1), text-cmds (<< 1:0), file-cmds (<< 272.250.1-1), system-cmds (<< 854.40.2-3)
-Description: core set of Unix shell utilities from GNU
+Description: GNU core utilities
+ This package contains the basic file, shell and text manipulation
+ utilities which are expected to exist on every operating system.
+ .
+ Specifically, this package includes: 
+ arch base64 basename cat chcon chgrp chmod chown chroot cksum comm cp
+ csplit cut date dd df dir dircolors dirname du echo env expand expr
+ factor false flock fmt fold groups head hostid id install join link ln
+ logname ls md5sum mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt
+ od paste pathchk pinky pr printenv printf ptx pwd readlink realpath rm 
+ rmdir runcon sha*sum seq shred sleep sort split stat stty sum sync tac 
+ tail tee test timeout touch tr true truncate tsort tty uname unexpand 
+ uniq unlink users vdir wc who whoami yes
 Homepage: http://www.gnu.org/software/coreutils/
 
 Package: cy+cpu.arm64
@@ -152,17 +306,30 @@ Version: 14.3
 Description: virtual operating system dependency
 Tag: role::cydia
 
+Package: daniel.classdump-dyld
+Status: install ok installed
+Section: System
+Installed-Size: 540
+Architecture: iphoneos-arm
+Version: 1.6-2
+Description: Class-dump most images on device or shared cache
+Name: classdump-dyld
+Author: Elias Limneos <limneoselias@gmail.com>
+Tag: purpose::extension, role::developer
+dev: limneos
+
 Package: darwintools
 Status: install ok installed
 Priority: required
 Section: Administration
-Installed-Size: 140
+Installed-Size: 148
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.4
+Version: 1.5
+Depends: grep, coreutils (>= 8.32-12)
+Pre-Depends: libiosexec1
 Recommends: uikittools (>= 2.0.0)
-Description: sw_vers, firmware
-Name: Darwin Tools
+Description: Provides sw_vers, /usr/libexec/firmware, and /etc/resolv.conf
 
 Package: dash
 Essential: yes
@@ -172,7 +339,7 @@ Section: Terminal_Support
 Installed-Size: 188
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 0.5.11.3-2
+Version: 0.5.11.4
 Provides: sh
 Depends: debianutils (>= 4.11.2), libedit0, libiosexec1
 Pre-Depends: debianutils (>= 4.11.2)
@@ -202,6 +369,30 @@ Description: Miscellaneous utilities specific to Debian
  The specific utilities included are:
  add-shell remove-shell run-parts
 Name: Debian Utilities
+
+Package: debugserver
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: debugserver-11
+Description: Next generation, high-performance debugger (debugserver)
+Homepage: https://www.llvm.org/
+
+Package: debugserver-11
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 4712
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: libllvm11, libclang-cpp11
+Description: Next generation, high-performance debugger (debugserver)
+Homepage: https://www.llvm.org/
 
 Package: diffutils
 Status: install ok installed
@@ -251,11 +442,10 @@ Section: System
 Installed-Size: 0
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 0-4
-Depends: org.coolstar.sileo (>= 2.0) | xyz.willy.zebra (>= 1.1) | me.apptapp.installer (>= 5.1) | cydia | openssh-server
+Version: 0-5
+Depends: org.coolstar.sileo (>= 2.1) | xyz.willy.zebra (>= 1.1.19) | me.apptapp.installer (>= 5.1) | cydia | openssh-server, shshd
 Pre-Depends: bootstrap | dpkg (>= 1.19.0)
-Description: Virtual package to keep you safe from uninstalling all your package managers.
-Name: Essential
+Description: Virtual package to keep you safe from uninstalling important packages.
 Tag: cydia::essential, role::goddess
 
 Package: file-cmds
@@ -311,6 +501,39 @@ Replaces: system-cmds (<= 433.4-11), diskdev-cmds (<= 421.7-3)
 Pre-Depends: firmware (>= 11.0)
 Description: represents Telesphoreo / iPhoneOS conflicts
 Name: iPhone Firmware (/sbin)
+
+Package: gettext-localizations
+Status: install ok installed
+Priority: important
+Section: Localizations
+Installed-Size: 6256
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2020.10.07
+Replaces: com.linusyang.localeutf8
+Provides: com.linusyang.localeutf8 (= 99.9)
+Depends: libintl8 (>= 0.20.0)
+Conflicts: com.linusyang.localeutf8
+Description: Locale files necessary for command line tool translation.
+
+Package: git
+Status: install ok installed
+Priority: optional
+Section: Data_Storage
+Installed-Size: 20816
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.31.1-1
+Depends: libiosexec1, libcurl4, libssl1.1, libintl8, libpcre2-8-0, libidn2-0, firmware (>= 14.0) | libexpat1
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
 
 Package: gpgv
 Status: install ok installed
@@ -3459,6 +3682,22 @@ Description: GNU compression utilities
  in '.Z' created with 'compress'.
 Homepage: http://www.gzip.org/
 
+Package: jp.soh.reprovision
+Status: install ok installed
+Priority: optional
+Section: System
+Maintainer: Soh Satoh
+Architecture: iphoneos-arm
+Version: 0.6.2~release
+Replaces: com.matchstic.extender-installer, com.matchstic.reprovision
+Provides: com.matchstic.extender-installer, com.matchstic.reprovision
+Depends: firmware (>= 9.0)
+Description: Re-sign applications on your device
+Name: ReProvision Reborn
+Author: Soh Satoh, Matt Clarke
+dev: Matt Clarke
+Icon: file:///Applications/ReProvision.app/AppIcon60x60@2x.png
+
 Package: launchctl
 Essential: yes
 Status: install ok installed
@@ -3471,16 +3710,46 @@ Version: 23-3
 Description: Tells launchd what to do
 Name: Launch Daemon Controller
 
+Package: ld64
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 2924
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 609-2
+Replaces: org.coolstar.ld64
+Provides: org.coolstar.ld64
+Depends: libuuid16, libxar1, liblto, libtapi
+Conflicts: org.coolstar.ld64
+Description: 64-bit iOS linker
+Homepage: https://www.llvm.org/
+Tag: purpose::console, role::developer
+
+Package: ldid
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 248
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.1.4
+Depends: libssl1.1, libplist (>= 2.2.0)
+Description: pseudo-codesign Mach-O files
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Name: Link Identity Editor
+Tag: purpose::console, role::developer
+
 Package: libapt-pkg6.0
 Status: install ok installed
 Priority: required
 Section: Libraries
-Installed-Size: 1800
+Installed-Size: 2904
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.3.5
+Version: 2.3.7
 Replaces: apt1.8, apt1.4, libapt, libapt-pkg5.0, apt-lib, apt-key, apt (<< 2.1.10-2)
-Provides: libapt-pkg (= 2.3.5)
+Provides: libapt-pkg (= 2.3.7)
 Depends: libiosexec1, libgcrypt20, liblz4-1, liblzma5 (>= 5.2.5), libxxhash0, libzstd1
 Conflicts: apt7 (<< 1:0), apt1.4 (<< 1:0), apt1.8 (<< 1:0), libapt-pkg5.0 (<< 1:0), libapt (<< 1:0), apt-key (<< 1:0), apt (<< 2.1.10-2)
 Description: commandline package manager
@@ -3502,6 +3771,29 @@ Description: IPC library for the GnuPG components
  protocol". This protocol is used for IPC between most newer GnuPG
  components. Both server and client side functions are provided.
 
+Package: libbrotli1
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 1864
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.0.9
+Description: Shared libraries for the Brotli compression format
+Homepage: https://www.brotli.org/
+Tag: purpose::library, role::developer
+
+Package: libclang-cpp11
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 50548
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: libllvm11
+Description: Modular compiler and toolchain technologies, runtime library
+
 Package: libcrypt2
 Status: install ok installed
 Priority: optional
@@ -3518,14 +3810,43 @@ Description: libcrypt shared library
  as well as a set of extended interfaces like 'crypt_gensalt'.
 Tag: purpose::library, role::developer
 
+Package: libcurl4
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 536
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 7.77.0
+Replaces: curl (<< 7.77.0)
+Depends: libnghttp2-14, libssh2-1, libssl1.1, libidn2-0, libbrotli1, libzstd1, librtmp1
+Conflicts: curl (<< 7.77.0)
+Description: easy-to-use client-side URL transfer library (OpenSSL flavour)
+Homepage: http://curl.haxx.se/
+Tag: purpose::console, role::hacker
+
+Package: libdimentio0
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 92
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1:0~20210608.7ffffff
+Replaces: com.michael.dimentio, com.kasiimh1.dimentio, com.0x7ff.dimentio
+Depends: firmware (<< 14.0) | libkernrw0 | libkrw
+Conflicts: com.michael.dimentio, com.kasiimh1.dimentio, com.0x7ff.dimentio
+Description: PoC tool for setting nonce without triggering KPP/KTRR/PAC. (Runtime libraries)
+Author: 0x7ff
+
 Package: libedit0
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 252
+Installed-Size: 224
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 3.1-20210419
+Version: 3.1-20210522
 Depends: libncursesw6 (>= 6.0)
 Description: BSD editline and history libraries
  Command line editor library provides generic line editing,
@@ -3549,6 +3870,34 @@ Description: Foreign Function Interface library runtime
  A foreign function interface is the popular name for the interface that
  allows code written in one language to call code written in another
  language.
+
+Package: libffi8
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 120
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 3.4.2
+Description: Foreign Function Interface library runtime
+ A foreign function interface is the popular name for the interface that
+ allows code written in one language to call code written in another
+ language.
+
+Package: libflex
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 10468
+Maintainer: Tanner Bennett <thepantsthief@me.com>
+Architecture: iphoneos-arm
+Version: 4.4.0
+Pre-Depends: firmware (>= 9.0)
+Description: A library for Flipboard Explorer.
+Name: libFLEX
+Author: Tanner Bennett <thepantsthief@me.com>
+Depiction: https://nscake.github.io/package.html?package=libflex
+SileoDepiction: https://nscake.github.io/depictions/libflex.sileo.json
 
 Package: libgcrypt20
 Status: install ok installed
@@ -3586,10 +3935,10 @@ Package: libgnutls30
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 1972
+Installed-Size: 1916
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 3.7.1
+Version: 3.7.2
 Replaces: gnutls (<< 1:0)
 Provides: gnutls (= 1:0)
 Depends: libintl8 (>= 0.20.0), libgmp10, libidn2-0, libunistring2, libnettle8, libhogweed6, libp11-kit0, libtasn1-6
@@ -3632,11 +3981,11 @@ Package: libhogweed6
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 384
+Installed-Size: 312
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 3.7.2
-Depends: libgmp10, libnettle8 (= 3.7.2)
+Version: 3.7.3
+Depends: libgmp10, libnettle8 (= 3.7.3)
 Description: low level cryptographic library (public-key cryptos)
 Homepage: http://www.lysator.liu.se/~nisse/nettle/
 
@@ -3644,15 +3993,15 @@ Package: libidn2-0
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 192
+Installed-Size: 348
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 2.3.0-3
-Replaces: libidn2 (<< 2.3.0-3)
-Provides: libidn2 (= 2.3.0-3)
+Version: 2.3.2
+Replaces: libidn2 (<< 2.3.2)
+Provides: libidn2 (= 2.3.2)
 Depends: libintl8, libunistring2
-Conflicts: libidn2 (<< 2.3.0-3)
+Conflicts: libidn2 (<< 2.3.2)
 Description: Internationalized domain names (IDNA2008/TR46) library
 Homepage: https://www.gnu.org/software/libidn/#libidn2
 
@@ -3675,19 +4024,88 @@ Section: Libraries
 Installed-Size: 68
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.0.16
+Version: 1.0.17~1.1-alpha1
 Description: shim for execve w/ shell script support
 Homepage: http://github.com/ProcursusTeam/libiosexec
+
+Package: libkernrw0
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 72
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.0-1
+Replaces: org.coolstar.libkernrw (<< 1.0-1)
+Provides: org.coolstar.libkernrw (= 1.0-1)
+Conflicts: org.coolstar.libkernrw (<< 1.0-1)
+Description: Kernel R/W API for iOS 14+ (Shared Library)
+
+Package: libllvm10
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 93672
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 10.0.0~5.3.1~RELEASE
+Depends: libncursesw6 (>= 6.0), libedit0, libffi7
+Description: Modular compiler and toolchain technologies, runtime library
+Tag: purpose::console, role::developer
+
+Package: libllvm11
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 58972
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: libncursesw6 (>= 6.0), libedit0, libffi7
+Description: Modular compiler and toolchain technologies, runtime library
+
+Package: liblto
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: liblto11
+Description: Modular compiler and toolchain technologies, runtime library
+
+Package: liblto10
+Status: install ok installed
+Priority: optional
+Section: Development
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 10.0.0~5.3.1~RELEASE
+Depends: libllvm10
+Description: Modular compiler and toolchain technologies, runtime library
+Tag: purpose::console, role::developerInstalled-Size: 400
+
+Package: liblto11
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 112
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 11.1.0~5.4.1~RELEASE
+Depends: libllvm11
+Description: Modular compiler and toolchain technologies, runtime library
 
 Package: liblz4-1
 Status: install ok installed
 Priority: important
 Section: Libraries
-Installed-Size: 172
+Installed-Size: 156
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.9.2-2
-Conflicts: lz4 (<< 1.9.2-2)
+Version: 1.9.3
+Conflicts: lz4 (<< 1.9.3)
 Description: Fast LZ compression algorithm library - runtime
 Homepage: http://tukaani.org/lzma/
 
@@ -3711,6 +4129,21 @@ Description: XZ-format compression library
  format, use the p7zip package instead.)
 Homepage: https://tukaani.org/xz/
 
+Package: libmagic1
+Status: install ok installed
+Priority: important
+Section: Libraries
+Installed-Size: 7052
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 5.40
+Replaces: file (<< 5.40)
+Depends: liblzma5 (>= 5.2.5)
+Conflicts: file (<< 5.40)
+Description: Recognize the type of data in a file using "magic" numbers - library
+ This library can be used to classify files according to magic number
+ tests. It implements the core functionality of the file command.
+
 Package: libmd0
 Status: install ok installed
 Priority: optional
@@ -3728,26 +4161,42 @@ Package: libncursesw6
 Status: install ok installed
 Priority: required
 Section: Libraries
-Installed-Size: 660
+Installed-Size: 616
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 6.2-1
-Replaces: ncurses (<< 6.2-1)
-Provides: ncurses (= 6.2-1)
-Depends: ncurses-term (>= 6.2-1)
-Conflicts: ncurses (<< 6.2-1)
+Version: 6.2+20201114
+Replaces: ncurses (<< 6.2+20201114)
+Provides: ncurses (= 6.2+20201114)
+Depends: ncurses-term (>= 6.2+20201114)
+Conflicts: ncurses (<< 6.2+20201114)
 Description: shared libraries for terminal handling (wide character support)
 
 Package: libnettle8
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 408
+Installed-Size: 284
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 3.7.2
+Version: 3.7.3
 Description: low level cryptographic library (symmetric and one-way cryptos)
 Homepage: http://www.lysator.liu.se/~nisse/nettle/
+
+Package: libnghttp2-14
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 220
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.43.0
+Description: library implementing HTTP/2 protocol (shared library)
+ This is an implementation of the Hypertext Transfer Protocol version
+ 2 in C. The framing layer of HTTP/2 is implemented as a reusable C
+ library.
+ .
+ This package installs a shared library.
+Homepage: https://nghttp2.org/
 
 Package: libnpth0
 Status: install ok installed
@@ -3768,14 +4217,14 @@ Package: libp11-kit0
 Status: install ok installed
 Priority: standard
 Section: Libraries
-Installed-Size: 1772
+Installed-Size: 1064
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 0.23.21
-Replaces: p11-kit (<< 0.23.21)
-Depends: libintl8, libffi7, ca-certificates
-Conflicts: p11-kit (<< 0.23.21)
+Version: 0.24.0
+Replaces: p11-kit (<< 0.24.0)
+Depends: libintl8, libffi8, ca-certificates
+Conflicts: p11-kit (<< 0.24.0)
 Description: library for loading and coordinating access to PKCS#11 modules - runtime
  The p11-kit library provides a way to load and enumerate Public-Key
  Cryptography Standard #11 modules, along with a standard configuration
@@ -3819,13 +4268,13 @@ Package: libpcre1
 Status: install ok installed
 Priority: standard
 Section: Libraries
-Installed-Size: 572
+Installed-Size: 432
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 8.44-1
+Version: 8.45
 Replaces: pcre, libpcre
-Provides: pcre (= 1:0), libpcre (= 8.44-1)
+Provides: pcre (= 1:0), libpcre (= 8.45)
 Conflicts: pcre (<< 1:0), libpcre (<< 1:0)
 Description: Old Perl 5 Compatible Regular Expression Library - runtime library
  This is a library of functions to support regular expressions whose syntax 
@@ -3835,6 +4284,40 @@ Description: Old Perl 5 Compatible Regular Expression Library - runtime library
  packages should migrate to pcre2.
  .
  This package contains the runtime library.
+
+Package: libpcre2-8-0
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 520
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 10.37
+Replaces: pcre2, libpcre2
+Provides: pcre2 (= 1:0), libpcre2 (= 10.37)
+Conflicts: pcre2 (<< 1:0), libpcre2 (<< 1:0)
+Description: New Perl Compatible Regular Expression Library- 8 bit runtime files
+ This is PCRE2, the new implementation of PCRE, a library of functions
+ to support regular expressions whose syntax and semantics are as
+ close as possible to those of the Perl 5 language. New projects
+ should use this library in preference to the older library.
+ .
+ This package contains the 8 bit runtime library.
+
+Package: libplist3
+Status: install ok installed
+Priority: standard
+Section: Networking
+Installed-Size: 232
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.2.0
+Replaces: libplist
+Provides: libplist (= 99)
+Conflicts: libplist
+Description: Library for handling Apple binary and XML property lists
+Tag: purpose::library, role::developer
 
 Package: libreadline8
 Status: install ok installed
@@ -3850,16 +4333,48 @@ Depends: libncursesw6
 Conflicts: readline (<< 8.1)
 Description: GNU readline and history libraries, run-time libraries
 
+Package: librtmp1
+Status: install ok installed
+Priority: standard
+Section: Libraries
+Installed-Size: 352
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.4+20151223.gitfa8646d.1
+Depends: libgnutls30, libhogweed6, libnettle8, libgmp10
+Description: toolkit for RTMP streams (shared library)
+ A small dumper for media content streamed over the RTMP protocol (like BBC's
+ iPlayer high quality streams). Supplying an RTMP URL will result in a dumped
+ flv file, which can be played/transcoded with standard tools.
+ .
+ This package contains the shared libraries, header files needed by
+ programs that want to use librtmp.
+
+Package: libssh2-1
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 552
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.9.0-2
+Replaces: libssh2 (<< 1.9.0-2)
+Provides: libssh2 (= 1.9.0-2)
+Depends: libssl1.1
+Conflicts: libssh2 (<< 1.9.0-2)
+Description: SSH2 client-side library
+Homepage: https://www.libssh2.org/
+
 Package: libssl1.1
 Status: install ok installed
 Priority: standard
 Section: Libraries
-Installed-Size: 3208
+Installed-Size: 3120
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 1.1.1k
+Version: 1.1.1k-1
 Replaces: libressl, libssl1.1.1
-Provides: libressl, libssl1.1.1 (= 1.1.1k)
+Provides: libressl, libssl1.1.1 (= 1.1.1k-1)
 Depends: ca-certificates
 Conflicts: libressl, libssl1.1.1
 Description: Secure Sockets Layer toolkit - shared libraries
@@ -3871,17 +4386,30 @@ Description: Secure Sockets Layer toolkit - shared libraries
 Name: OpenSSL 1.1.x Libraries
 Tag: purpose::library, role::developer
 
+Package: libtapi
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 412
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1100.0.11-1
+Replaces: libtapi10
+Depends: libncursesw6 (>= 6.0)
+Conflicts: libtapi10
+Description: Text-based Application Programming Interface (library)
+
 Package: libtasn1-6
 Status: install ok installed
 Priority: optional
 Section: Libraries
-Installed-Size: 128
+Installed-Size: 108
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
 Multi-Arch: foreign
-Version: 4.16.0-2
+Version: 4.17.0
 Replaces: libtasn1 (<< 1:0)
-Provides: libtasn1 (= 4.16.0-2)
+Provides: libtasn1 (= 4.17.0)
 Conflicts: libtasn1 (<< 1:0)
 Description: Manage ASN.1 structures (runtime)
  Manage ASN1 (Abstract Syntax Notation One) structures.
@@ -3910,6 +4438,38 @@ Provides: libunistring (= 0.9.10-2)
 Conflicts: libunistring (<< 0.9.10-2)
 Description: Unicode string library for C
 Homepage: https://www.gnu.org/software/libunistring/
+
+Package: libuuid16
+Status: install ok installed
+Priority: important
+Section: Libraries
+Installed-Size: 216
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.6.2-3
+Replaces: uuid (<< 1.6.2-3)
+Conflicts: uuid (<< 1.6.2-3)
+Description: Universally Unique ID library
+ The libuuid library generates and parses 128-bit Universally Unique
+ IDs (UUIDs). A UUID is an identifier that is unique within the space
+ of all such identifiers across both space and time. It can be used for
+ multiple purposes, from tagging objects with an extremely short lifetime
+ to reliably identifying very persistent objects across a network.
+
+Package: libxar1
+Status: install ok installed
+Priority: optional
+Section: Libraries
+Installed-Size: 144
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.8.0.452+fc-6
+Replaces: xar (<< 1.8.0.452+fc-6)
+Depends: libssl1.1
+Conflicts: xar (<< 1.8.0.452+fc-6)
+Description: eXtensible ARchive format - dynamic library
+Homepage: https://mackyle.github.io/xar/
+Tag: purpose::console, role::hacker
 
 Package: libxxhash0
 Status: install ok installed
@@ -3940,6 +4500,51 @@ Description: fast lossless compression algorithm
  .
  This package contains the shared library.
 
+Package: make
+Status: install ok installed
+Priority: important
+Section: Development
+Installed-Size: 1440
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 4.3-6
+Depends: libiosexec1 (>> 1.0.16), libintl8
+Description: utility for directing compilation
+ GNU Make is a utility which controls the generation of executables
+ and other target files of a program from the program's source
+ files. It determines automatically which pieces of a large program
+ need to be (re)created, and issues the commands to (re)create
+ them. Make can be used to organize any task in which targets (files)
+ are to be automatically updated based on input files whenever the
+ corresponding input is newer --- it is not limited to building
+ computer programs. Indeed, Make is a general purpose dependency
+ solver.
+
+Package: moe.absolucy.lucient
+Status: install ok installed
+Section: Tweaks
+Installed-Size: 7148
+Maintainer: Lucy <support@absolucy.moe>
+Architecture: iphoneos-arm
+Version: 1.2.0
+Replaces: moe.absolucy.lucient.trial
+Depends: firmware (>= 14.0), preferenceloader, com.cokepokes.libnotifications
+Conflicts: moe.absolucy.lucient.trial
+Description: A lovely Android 12-inspired lock screen overhaul
+Name: Lucient
+Author: Lucy <support@absolucy.moe>
+
+Package: nano
+Status: install ok installed
+Priority: standard
+Section: Text_Editors
+Installed-Size: 664
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 5.7
+Depends: libmagic1, libncursesw6, libintl8
+Description: completely free, modern clone of Pico
+
 Package: ncurses-bin
 Status: install ok installed
 Priority: important
@@ -3947,23 +4552,64 @@ Section: Utilities
 Installed-Size: 632
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 6.2-1
-Replaces: ncurses (<< 6.2-1)
-Depends: libncursesw6 (>= 6.2-1)
-Conflicts: ncurses (<< 6.2-1)
+Version: 6.2+20201114
+Replaces: ncurses (<< 6.2+20201114)
+Depends: libncursesw6 (>= 6.2+20201114)
+Conflicts: ncurses (<< 6.2+20201114)
 Description: terminal-related programs and man pages
 
 Package: ncurses-term
 Status: install ok installed
 Priority: required
 Section: System
-Installed-Size: 1188
+Installed-Size: 1236
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
-Version: 6.2-1
-Replaces: ncurses (<< 6.2-1)
-Conflicts: ncurses (<< 6.2-1)
+Version: 6.2+20201114
+Replaces: ncurses (<< 6.2+20201114)
+Conflicts: ncurses (<< 6.2+20201114)
 Description: This package contains terminfo data files to support most types of terminals.
+
+Package: net.limneos.libbulletin
+Status: install ok installed
+Section: Development
+Installed-Size: 339
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Architecture: iphoneos-arm
+Version: 0.1-158
+Depends: mobilesubstrate (>= 0.9.5000)
+Description: Simple library that displays bulletins
+Name: libbulletin
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libbulletinDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libbulletinDp
+Author: Elias Limneos <limneoselias@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: limneos
+Tag: cydia::obsolete, purpose::extension
+
+Package: odcctools
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 6488
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 973.0.1-1
+Depends: libuuid16, libxar1, liblto, libtapi
+Description: linker and assembler for the iPhone
+Homepage: https://github.com/tpoechtrager/cctools-port
+Name: Darwin CC Tools
+
+Package: odyssey-keyring
+Status: install ok installed
+Priority: optional
+Section: Keyrings
+Installed-Size: 4
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 2021.07.20
+Description: GnuPG keys for the Odyssey repository
+Name: Odyssey APT Keyring
 
 Package: openssh
 Status: install ok installed
@@ -4020,7 +4666,7 @@ Status: install ok installed
 Section: System
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Architecture: iphoneos-arm
-Version: 1.6.0
+Version: 1.6.2
 Replaces: com.ex.libsubstitute, org.coolstar.tweakinject, mobilesubstrate, libhooker-strap, com.saurik.substrate.safemode
 Provides: com.ex.libsubstitute (= 2.0), org.coolstar.tweakinject (= 1.5.0), mobilesubstrate (= 99.4), libhooker-strap (= 1.1), com.saurik.substrate.safemode (= 2.0)
 Depends: firmware (>= 11.0), cy+cpu.arm64, org.coolstar.safemode
@@ -4030,6 +4676,20 @@ Name: libhooker
 Author: CoolStar <coolstarorganization@gmail.com>
 Icon: https://repo.theodyssey.dev/depictions/icons/libhooker.png
 SileoDepiction: https://repo.theodyssey.dev/depictions/json/libhooker.json
+
+Package: org.coolstar.libhooker-configurator
+Status: install ok installed
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2+20210712.1626078275.e455d6b
+Depends: org.coolstar.libhooker (>= 1.4.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), firmware (>= 12.0)
+Description: Configuration Utility for libhooker
+Icon: https://repo.theodyssey.dev/depictions/icons/libhooker.png
+SileoDepiction: https://repo.theodyssey.dev/depictions/json/libhooker-configurator.json
+Name: libhooker-configurator
+Author: CoolStar <coolstarorganization@gmail.com>
 
 Package: org.coolstar.safemode
 Status: install ok installed
@@ -4048,7 +4708,7 @@ Status: install ok installed
 Section: Packaging
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.1
+Version: 2.1.2
 Depends: firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
 Description: A modern APT package manager frontend
 Name: Sileo
@@ -4056,18 +4716,96 @@ Author: Sileo Team <getsileoapp@gmail.com>
 Icon: https://getsileo.app/img/icon.png
 SileoDepiction: https://featuredpage.getsileo.app/depiction.json
 
+Package: org.coolstar.sileobeta
+Status: install ok installed
+Section: Packaging
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.1.1+20210531.1622500009.57b5930
+Depends: firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
+Description: A modern APT package manager frontend
+Name: Sileo (Beta Channel)
+Author: Sileo Team <getsileoapp@gmail.com>
+Icon: https://getsileo.app/img/icon.png
+SileoDepiction: https://featuredpage.getsileo.app/depiction.json
+
+Package: org.coolstar.sileonightly
+Status: install ok installed
+Section: Packaging
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 2.2+20210804.1628114863.dc2a62b
+Depends: firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
+Description: A modern APT package manager frontend
+Name: Sileo (Nightly Channel)
+Author: Sileo Team <getsileoapp@gmail.com>
+Icon: https://beta.anamy.gay/static/SileoNightly.png
+SileoDepiction: https://featuredpage.getsileo.app/depiction.json
+
+Package: org.swift.libswift
+Status: install ok installed
+Section: Development
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 5.0-electra2
+Depends: firmware (>= 7.0)
+Description: Swift runtime for iOS
+Name: libswift (stable)
+SileoDepiction: https://coolstar.moe/sileoassets/depictionoverride.php?package=org.swift.libswift
+Author: Kabir Oberai <oberai.kabir+libswift@gmail.com>
+dev: kabiroberai
+Tag: purpose::extension, compatible::ios12
+
+Package: p7zip
+Status: install ok installed
+Priority: optional
+Section: Archiving
+Installed-Size: 9572
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 17.04
+Description: claims to be a good compressor
+Name: 7-zip (POSIX)
+Tag: purpose::console, role::hacker
+
+Package: packix-keyring
+Status: install ok installed
+Priority: optional
+Section: Keyrings
+Installed-Size: 4
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: all
+Version: 2021.07.19
+Description: GnuPG keys for the Packix repository
+Name: Packix APT Keyring
+
+Package: preferenceloader
+Status: install ok installed
+Section: System
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.0.3
+Depends: mobilesubstrate
+Description: load preferences in style
+Name: PreferenceLoader
+Author: Dustin Howett <cydia.pl@relay.howett.net>
+dev: dustinhowett
+Tag: role::hacker, purpose::library
+SileoDepiction: https://repo.theodyssey.dev/depictions/json/preferenceloader.json
+
 Package: procursus-keyring
 Essential: yes
 Status: install ok installed
 Priority: required
-Section: System
-Installed-Size: 8
+Section: Keyrings
+Installed-Size: 4
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: all
-Version: 2020.05.09
-Description: GnuPG keys for stock *OS repositories.
+Version: 2020.05.09-2
+Depends: odyssey-keyring, chariz-keyring, packix-keyring
+Description: GnuPG keys for the Procursus repo
 Name: Procursus APT Keyring
-Tag: purpose::backend, role::hacker
 
 Package: profile.d
 Status: install ok installed
@@ -4081,6 +4819,20 @@ Depends: zsh
 Pre-Depends: system-cmds (>= 805.220.1)
 Description: makes packaging for /etc/profile reasonable
 Name: Profile Directory
+
+Package: re.frida.server
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 56952
+Maintainer: Ole André Vadla Ravnås <oleavr@nowsecure.com>
+Architecture: iphoneos-arm
+Version: 15.0.10
+Conflicts: re.frida.server64
+Description: Inject JavaScript to explore iOS apps over USB.
+Name: Frida
+Homepage: https://www.frida.re/
+Author: Frida Developers <oleavr@nowsecure.com>
 
 Package: sed
 Status: install ok installed
@@ -4110,6 +4862,27 @@ Depends: libpam2
 Conflicts: coreutils (<< 8.32-9)
 Description: killall, renice, script, time, which, getopt, what, hexdump, su
 
+Package: shshd
+Essential: yes
+Status: install ok installed
+Priority: standard
+Section: Administration
+Installed-Size: 84
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.1.1.1
+Depends: libdimentio0 (>= 99), firmware (>= 12.2) | org.swift.libswift (>= 5.0)
+Description: SHSH blob saving daemon
+ After installing, this package will automatically save your blobs
+ to 1Conan's TSSSaver. The link to your specific blobs can be retrieved
+ by manually running `/usr/sbin/shshd` as root (sudo/su) and copying the output, or by
+ visiting "https://tsssaver.1conan.com/shsh/(your ecid in decimal form)".
+ .
+ This should be compatible with all devices using Procursus, including
+ A12+ devices, as it saves blobs with the entangled apnonce. Requires
+ you to set nonce generator before using.
+Author: Hayden Seay <me@diatr.us>
+
 Package: snaputil
 Status: install ok installed
 Section: System
@@ -4135,6 +4908,47 @@ Version: 1.9.6p1-4
 Depends: libintl8, libpam2, libiosexec1
 Description: temporarily assume root priviledges
 
+Package: swift
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 0
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 5.4.1~RELEASE
+Replaces: com.kabiroberai.swift-toolchain
+Depends: swift-5.4.1
+Conflicts: com.kabiroberai.swift-toolchain
+Description: Swift developer package
+Homepage: https://swift.org/
+Tag: purpose::console, role::developer
+
+Package: swift-5.3.1
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 1177312
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 5.3.1~RELEASE
+Depends: libllvm10, ld64, build-essential
+Description: Swift developer package
+Homepage: https://swift.org/
+Tag: purpose::console, role::developer
+
+Package: swift-5.4.1
+Status: install ok installed
+Priority: optional
+Section: Development
+Installed-Size: 635892
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 5.4.1~RELEASE
+Depends: libllvm11, ld64, build-essential
+Description: Swift developer package
+Homepage: https://swift.org/
+Tag: purpose::console, role::developer
+
 Package: system-cmds
 Essential: yes
 Status: install ok installed
@@ -4143,9 +4957,10 @@ Section: Administration
 Installed-Size: 1872
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 854.40.2-10
+Version: 854.40.2-11
 Provides: login, passwd, reboot
 Depends: firmware-sbin, file-cmds, libcrypt2, libpam2
+Pre-Depends: libiosexec1
 Recommends: vi
 Description: iostat, login, passwd, sync, sysctl, pw
 
@@ -4176,6 +4991,92 @@ Description: Command line access for UIKit/LaunchServices/CoreServices
 Author: CoolStar <coolstarorganization@gmail.com>
 Name: UIKit Tools
 Sileodepiction: https://coolstar.moe/sileoassets/depictionoverride.php?package=uikittools
+
+Package: unrar
+Status: install ok installed
+Priority: optional
+Section: Archiving
+Installed-Size: 356
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 6.0.4-1
+Description: Unarchiver for .rar files (non-free version)
+ Unrar can extract files from .rar archives. If you want to create .rar
+ archives, install package rar.
+Homepage: http://www.rarlab.com/rar_add.htm
+
+Package: unzip
+Status: install ok installed
+Priority: important
+Section: Archiving
+Installed-Size: 1464
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 6.0-25
+Description: de-compesses files in zip format
+Tag: purpose::console, role::hacker
+
+Package: wget
+Status: install ok installed
+Priority: important
+Section: Networking
+Installed-Size: 1144
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Version: 1.20.3-3
+Depends: libssl1.1, libpcre2-8-0, libintl8, libunistring2, libidn2-0
+Description: simple HTTP file transfer client
+Tag: purpose::console, role::hacker
+
+Package: ws.hbang.common
+Status: install ok installed
+Section: Development
+Installed-Size: 1852
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Architecture: iphoneos-arm
+Version: 1.17
+Depends: firmware (<< 8.0) | firmware (>= 11.0) | com.rpetrich.rocketbootstrap
+Description: Support library for tweaks
+Name: Cephei Tweak Support
+Author: HASHBANG Productions <support@hbang.ws>
+Icon: https://cdn.chariz.cloud/icon/cephei/icon@3x.png
+Depiction: https://chariz.com/get/cephei
+Support: https://hashbang.productions/support/
+Tag: role::developer, compatible_min::ios5.0
+dev: hbang
+
+Package: ws.hbang.newterm2
+Status: install ok installed
+Section: Terminal Support
+Installed-Size: 6664
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Architecture: iphoneos-arm
+Version: 2.5
+Replaces: ws.hbang.newterm, com.lint.ntarrows
+Depends: firmware (>= 10.0), firmware (>= 12.2) | org.swift.libswift, ws.hbang.common (>= 1.16), bash, coreutils, ncurses, system-cmds, gettext-localizations | com.linusyang.localeutf8
+Conflicts: ws.hbang.newterm, com.lint.ntarrows
+Description: A powerful terminal app for iOS
+Name: NewTerm 2
+Author: HASHBANG Productions <support@hbang.ws>
+Icon: https://chariz.com/cdn/icon/newterm/icon@3x.png
+Depiction: https://chariz.com/get/newterm
+Support: https://hashbang.productions/support/
+Tag: compatible_min::ios10.0
+
+Package: xyz.willy.zebra
+Status: install ok installed
+Section: Packaging
+Installed-Size: 16308
+Maintainer: Wilson Styres <wilson@styres.me>
+Architecture: iphoneos-arm
+Version: 1.1.21
+Depends: dpkg, uikittools, firmware (>= 9.0)
+Description: A Useful Package Manager
+Name: Zebra
+Author: Wilson Styres <wilson@styres.me>
+Depiction: https://getzbra.com/repo/depictions/xyz.willy.Zebra/
+Tag: compatible::9.0-14.6
 
 Package: xz-utils
 Status: install ok installed
@@ -4210,6 +5111,18 @@ Description: XZ-format compression utilities
   * support for flushing the encoder.
 Homepage: https://tukaani.org/xz/
 Name: XZ Utils
+
+Package: zip
+Status: install ok installed
+Priority: important
+Section: Archiving
+Installed-Size: 1392
+Maintainer: Hayden Seay <me@diatr.us>
+Architecture: iphoneos-arm
+Multi-Arch: foreign
+Version: 3.0-11
+Description: standard Windows compression tool
+Tag: purpose::console, role::hacker
 
 Package: zsh
 Essential: yes
