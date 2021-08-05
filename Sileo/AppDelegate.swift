@@ -35,7 +35,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-        
+                
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             let updatesPrompt = UserDefaults.standard.bool(forKey: "updatesPrompt")
             if !updatesPrompt {
@@ -74,10 +74,13 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         self.updateTintColor()
         
         // Force all view controllers to load now
-        for controller in tabBarController.viewControllers ?? [] {
+        for (index, controller) in (tabBarController.viewControllers ?? []).enumerated() {
             _ = controller.view
             if let navController = controller as? UINavigationController {
                 _ = navController.viewControllers[0].view
+            }
+            if index == 4 {
+                controller.tabBarItem._setInternalTitle(String(localizationKey: "Search_Page"))
             }
         }
     }

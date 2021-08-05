@@ -19,6 +19,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         super.viewDidLoad()
         
         self.title = String(localizationKey: "Featured_Page")
+        self.navigationController?.tabBarItem._setInternalTitle(String(localizationKey: "Featured_Page"))
         
         self.setupProfileButton()
         

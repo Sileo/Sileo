@@ -19,6 +19,7 @@
 
 @interface UITabBarItem (Private)
 - (UIView *)view;
+-(void)_setInternalTitle:(id)arg1 ;
 @end
 
 @interface UINavigationBar (Private)
