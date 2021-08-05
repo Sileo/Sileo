@@ -19,12 +19,41 @@ finish() {
 
 case "$1" in
 	(configure)
+		if ! [ -s /.procursus_strapped ]; then
+			sourcesDir="/etc/apt/sileo.list.d"
+			mkdir -p $sourcesDir
+
+			if ! [ -s $sourcesDir/elucubratus.sources ]; then
+					echo "Installed Elucubratus Repo"
+					echo "" > $sourcesDir/elucubratus.sources
+					sed -i '1s;^;Types: deb\
+URIs: https://apt.bingner.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/elucubratus.sources
+			fi
+		fi
+
 		touch $sourcesDir/sileo.sources
 
 		cr="\n"
 
 		if ! [ -s "$sourcesDir/sileo.sources" ]; then
 			echo "" > $sourcesDir/sileo.sources
+		fi
+
+		if ! [ -s /.procursus_strapped ]; then
+			if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+					then
+						echo "Installed BigBoss Repo"
+						sed -i '1s;^;Types: deb\
+URIs: http://apt.thebigboss.org/repofiles/cydia/\
+Suites: stable\
+Components: main\
+\
+;' $sourcesDir/sileo.sources
+			fi
 		fi
 
 		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
@@ -52,6 +81,13 @@ Components:\
 		exit 0
 		;;
 	(triggered)
+		if ! [ -s /usr/lib/libblackjack.dylib ]; then
+			if [ "$2" == "/Library/MobileSubstrate/DynamicLibraries" ]; then
+				finish restart
+				exit 0
+			fi
+		fi
+
 		finish uicache
 		exit 0
 		;;

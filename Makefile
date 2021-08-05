@@ -1,17 +1,15 @@
 # See if we want verbose make.
-V             ?= 0
+V                  ?= 0
 # Debug build or not?
-DEBUG         ?= 0
+DEBUG              ?= 0
 # Beta build or not?
-BETA          ?= 0
+BETA               ?= 0
 # Build Nightly or not?
-NIGHTLY       ?= 0
-
+NIGHTLY            ?= 0
 # Build from automation or not
-AUTOMATION    ?= 0
-
-# Build for Elucubratus or not?
-ELU_BUILD     ?= 0
+AUTOMATION         ?= 0
+# Build for all bootstraps or not
+ALL_BOOTSTRAPS     ?= 0
 
 TARGET_CODESIGN = $(shell which ldid)
 
@@ -25,10 +23,10 @@ PREFIX          =
 DESTINATION     =
 CONTENTS        =
 
-ifeq ($(ELU_BUILD), 1)
-DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
-else
+ifeq ($(ALL_BOOTSTRAPS), 1)
 DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
+else
+DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
 endif
 
 else ifeq ($(SILEO_PLATFORM),darwin-arm64)
@@ -127,7 +125,7 @@ ifeq ($(AUTOMATION),1)
 BUILD_CONFIG  := Mac_Automations
 endif
 
-ifeq ($(ELU_BUILD), 1)
+ifeq ($(ALL_BOOTSTRAPS), 1)
 DPKG_TYPE ?= xz
 else ifeq ($(shell dpkg-deb --help | grep -qi "zstd" && echo 1),1)
 DPKG_TYPE ?= zstd
@@ -201,29 +199,9 @@ package: stage
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
-else ifeq ($(ELU_BUILD), 1)
-package: stage
-	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
-	@mv $(SILEO_STAGE_DIR)/DEBIAN/postinst.elu.in $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
-	@mv $(SILEO_STAGE_DIR)/DEBIAN/triggers.elu $(SILEO_STAGE_DIR)/DEBIAN/triggers
-	@sed -e s/@@MARKETING_VERSION@@/$(SILEO_VERSION)/ \
-		-e 's/@@PACKAGE_ID@@/$(SILEO_ID)/' \
-		-e 's/@@PACKAGE_NAME@@/$(SILEO_NAME)/' \
-		-e 's/@@DEB_ARCH@@/$(DEB_ARCH)/' \
-		-e 's/@@ICON@@/$(ICON)/' \
-		-e 's/@@DEB_DEPENDS@@/$(DEB_DEPENDS)/' $(SILEO_STAGE_DIR)/DEBIAN/control.in > $(SILEO_STAGE_DIR)/DEBIAN/control
-	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
-	@sed -e s/@@SILEO_APP@@/$(SILEO_APP)/ \
-		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
-	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
-	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
-	@mkdir -p ./packages
-	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
 else
 package: stage
 	@cp -a ./layout/DEBIAN $(SILEO_STAGE_DIR)
-	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst.elu.in
-	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/triggers.elu
 	@sed -e s/@@MARKETING_VERSION@@/$(SILEO_VERSION)/ \
 		-e 's/@@PACKAGE_ID@@/$(SILEO_ID)/' \
 		-e 's/@@PACKAGE_NAME@@/$(SILEO_NAME)/' \
