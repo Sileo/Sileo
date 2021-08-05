@@ -47,7 +47,8 @@ jobs:
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
 
-          
+      - name: Run Tests
+        run: xcodebuild test -scheme "Sileo (Test Handler)" -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0
@@ -75,4 +76,3 @@ jobs:
           
       - name: Run SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
-
