@@ -22,6 +22,8 @@ class PackageListHeader: UICollectionReusableView {
         toolbar?._hidesShadow = true
         toolbar?.tag = WHITE_BLUR_TAG
         
+        sortIcon?.image = UIImage(named: "SortChevron")?.withRenderingMode(.alwaysTemplate)
+        
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),

@@ -363,9 +363,6 @@ final class PackageListManager {
                 return shouldRemove
             }
         }
-        if sort {
-            packageList = sortPackages(packages: packageList, search: search)
-        }
         // Remove Any Duplicates
         var temp = [String: Package]()
         for package in packageList {
@@ -377,7 +374,11 @@ final class PackageListManager {
                 temp[package.packageID] = package
             }
         }
-        return Array(temp.values)
+        packageList = Array(temp.values)
+        if sort {
+            packageList = sortPackages(packages: packageList, search: search)
+        }
+        return packageList
     }
     
     public func sortPackages(packages: [Package], search: String?) -> [Package] {
