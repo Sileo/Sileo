@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Căutați pachete";
 "Sort_Name" = "Nume";
 "Sort_Date" = "Dată";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sortează după:";
 
 "Package_Unavailable" = "Pachet nedisponibil";
@@ -155,7 +156,8 @@
 "Use_System_Language" = "Use System Language";
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Help_Translate" = "Ajutați cu localizarea pentru Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
@@ -172,7 +174,8 @@
 
 "Show_Install_Details" = "Arătați Detalie";
 "Hide_Install_Details" = "Ascundeți Detalie";
-"Open_In_Filza" = "Open in Filza";
+"Open_In_Filza" = "Deschide-ți în Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Reporniți Sileo";
 "After_Install_Respring" = "Reporniți SpringBoard";

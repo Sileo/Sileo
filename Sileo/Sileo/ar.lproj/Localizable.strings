@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "ابحث عن حزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "عرض التفاصيل";
 "Hide_Install_Details" = "إخفاء التفاصيل";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";

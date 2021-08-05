@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Csomagok keresése";
 "Sort_Name" = "Név";
 "Sort_Date" = "Dátum";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Rendezés:";
 
 "Package_Unavailable" = "Csomag nem elérhető";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo Világos";
 "Sileo_Dark" = "Sileo Sötét";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "Részletek megjelenítése";
 "Hide_Install_Details" = "Részletek elrejtése";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sleo újraindítása";
 "After_Install_Respring" = "SpringBoard újraindítása";
