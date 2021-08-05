@@ -32,13 +32,13 @@ final class CanisterResolver {
                                                object: nil)
     }
     
-    @discardableResult public func fetch(_ query: String, fetch: @escaping (Bool) -> Void) -> Bool {
+    @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
         #if targetEnvironment(macCatalyst)
         fetch(false); return false
         #endif
-        guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch(false); return false }
+        guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
         if query.count <= 3,
-           savedSearch.contains(query) { fetch(false); return false }
+           savedSearch.contains(query) { fetch?(false); return false }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
         AmyNetworkResolver.dict(url: url) { [weak self] success, dict in
             guard let strong = self else { return }
@@ -84,7 +84,7 @@ final class CanisterResolver {
                 }
             }
             
-            fetch(change)
+            fetch?(change)
         }
         return true
     }
@@ -183,6 +183,22 @@ final class CanisterResolver {
         package.legacyDepiction = provisional.legacyDepiction
         package.isProvisional = true
         return package
+    }
+    
+    public func package(for bundleID: String) -> Package? {
+        let temp = packages.filter { $0.identifier == bundleID }
+        var buffer: Package?
+        for provis in temp {
+            guard let package = CanisterResolver.package(provis) else { continue }
+            if let contained = buffer {
+                if DpkgWrapper.isVersion(package.version, greaterThan: contained.version) {
+                    buffer = package
+                }
+            } else {
+                buffer = package
+            }
+        }
+        return buffer
     }
     
     static let refreshList = Notification.Name("Canister.RefreshList")

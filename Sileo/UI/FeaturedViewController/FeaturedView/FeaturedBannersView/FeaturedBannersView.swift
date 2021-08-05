@@ -67,6 +67,7 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
         centerX.priority = .defaultLow
         centerX.isActive = true
         
+        var packages = [String]()
         for banner in banners {
             guard (banner["url"] as? String) != nil else {
                 continue
@@ -78,12 +79,24 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             let bannerView = FeaturedBannerView()
             bannerView.layer.cornerRadius = itemCornerRadius
             bannerView.banner = banner
+            if let package = banner["package"] as? String {
+                packages.append(package)
+            }
             bannerView.addTarget(self, action: #selector(FeaturedBannersView.bannerTapped), for: .touchUpInside)
             bannerView.widthAnchor.constraint(equalToConstant: itemSize.width).isActive = true
             bannerView.previewDelegate = self
             
             viewController.registerForPreviewing(with: bannerView, sourceView: bannerView)
             stackView.addArrangedSubview(bannerView)
+        }
+        
+        let allPackages = PackageListManager.shared.allPackagesArray
+        for package in packages {
+            if PackageListManager.shared.newestPackage(identifier: package,
+                                                       repoContext: nil,
+                                                       packages: allPackages) == nil {
+                CanisterResolver.shared.fetch(package)
+            }
         }
     }
     
@@ -101,6 +114,11 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             if let pkg = PackageListManager.shared.newestPackage(identifier: package, repoContext: nil) {
                 let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
                 packageViewController.package = pkg
+                return packageViewController
+            }
+            if let package = CanisterResolver.shared.package(for: package) {
+                let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
+                packageViewController.package = package
                 return packageViewController
             }
         } else if let packages = banner["packages"] as? [String] {

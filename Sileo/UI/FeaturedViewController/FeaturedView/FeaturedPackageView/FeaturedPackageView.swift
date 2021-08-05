@@ -239,38 +239,21 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         }
         if !PackageListManager.shared.isLoaded { return }
         let canister = CanisterResolver.shared
-        func tryCanister() -> Bool {
-            let temp = canister.packages.filter { $0.identifier == self.package }
-            var buffer: Package?
-            for provis in temp {
-                guard let package = CanisterResolver.package(provis) else { continue }
-                if let contained = buffer {
-                    if DpkgWrapper.isVersion(package.version, greaterThan: contained.version) {
-                        buffer = package
-                    }
-                } else {
-                    buffer = package
-                }
+        func setPackage() -> Bool {
+            if let package = canister.package(for: self.package) {
+                self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
+                self.packageButton.package = package
+                self.packageButton.isEnabled = true
+                self.packageObject = package
+                return true
             }
-            guard let buffer = buffer else {
-                self.versionLabel.text = String(localizationKey: "Package_Unavailable")
-                return false
-            }
-            self.versionLabel.text = String(format: "%@ · %@", buffer.version, self.repoName)
-            self.packageButton.package = buffer
-            self.packageButton.isEnabled = true
-            self.packageObject = buffer
-            return true
+            return false
         }
-        if canister.packages.contains(where: { $0.identifier == self.package }) {
-            if tryCanister() {
-                return
-            }
-        }
+        if setPackage() { return }
         if !canister.fetch(self.package, fetch: { change in
             DispatchQueue.main.async {
                 guard change,
-                      tryCanister() else {
+                      setPackage() else {
                     self.versionLabel.text = String(localizationKey: "Package_Unavailable")
                     return
                 }
