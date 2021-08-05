@@ -7,6 +7,9 @@ BETA          ?= 0
 # Build Nightly or not?
 NIGHTLY       ?= 0
 
+# Build from automation or not
+AUTOMATION    ?= 0
+
 # Build for Elucubratus or not?
 ELU_BUILD     ?= 0
 
@@ -120,6 +123,10 @@ else
 BUILD_CONFIG  := Release
 endif
 
+ifeq ($(AUTOMATION),1)
+BUILD_CONFIG  := Mac_Automations
+endif
+
 ifeq ($(ELU_BUILD), 1)
 DPKG_TYPE ?= xz
 else ifeq ($(shell dpkg-deb --help | grep -qi "zstd" && echo 1),1)
@@ -136,8 +143,7 @@ ifeq ($(MAC), 1)
 $(SILEO_APP_DIR):
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' $(DESTINATION) -configuration $(BUILD_CONFIG) ARCHS=$(ARCH) -derivedDataPath $(SILEOTMP) \
-		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
-		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
+		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" DISPLAY_NAME=$(DISPLAY_NAME) \
 		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 else
 $(SILEO_APP_DIR):
@@ -158,7 +164,11 @@ $(SILEO_APP_DIR):
 	process_bundle $(SILEO_APP_DIR)
 endif
 
+ifneq ($(MAC), 1)
 all:: $(SILEO_APP_DIR) giveMeRoot/bin/giveMeRoot
+else
+all:: $(SILEO_APP_DIR)
+endif
 
 ifneq ($(MAC),1)
 stage: all
@@ -176,12 +186,7 @@ stage: all
 	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
-	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
-	@cp giveMeRoot/bin/giveMeRoot $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/
-	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/MacOS/Sileo
-	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/MacOS/SileoRootWrapper
-	@$(TARGET_CODESIGN) -SSileo/Sileo.entitlements $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/Plugins/SileoRootWrapper.bundle/Contents/Resources/giveMeRoot
 endif
 
 ifeq ($(MAC), 1)
