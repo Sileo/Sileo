@@ -35,7 +35,7 @@ ARCH            = arm64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-arm64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
-PREFIX          =
+PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
@@ -45,7 +45,7 @@ ARCH            = x86_64
 PLATFORM        = macosx
 DEB_ARCH        = darwin-amd64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
-PREFIX          =
+PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
@@ -84,14 +84,15 @@ ifeq ($(BETA), 1)
 ifeq ($(MAC), 1)
 export PRODUCT_BUNDLE_IDENTIFIER = "sileobeta"
 SILEO_ID   = sileobeta
+SILEO_APP  = Sileo.app
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
 SILEO_ID   = org.coolstar.sileobeta
-endif
-export DISPLAY_NAME = "Sileo Beta"
-ICON = https:\/\/getsileo.app\/img\/icon.png
-SILEO_NAME = Sileo (Beta Channel)
 SILEO_APP  = Sileo-Beta.app
+endif
+ICON = https:\/\/getsileo.app\/img\/icon.png
+export DISPLAY_NAME = "Sileo Beta"
+SILEO_NAME = Sileo (Beta Channel)
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 endif
 
@@ -99,21 +100,22 @@ ifeq ($(NIGHTLY), 1)
 ifeq ($(MAC), 1)
 export PRODUCT_BUNDLE_IDENTIFIER = "sileonightly"
 SILEO_ID   = sileonightly
+SILEO_APP  = Sileo.app
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
 SILEO_ID   = org.coolstar.sileonightly
+SILEO_APP  = Sileo-Nightly.app
 endif
 export DISPLAY_NAME = "Sileo Nightly"
 ICON = https:\/\/github.com\/Sileo\/Sileo\/raw\/stable\/Icons\/Nightly.png
 SILEO_NAME = Sileo (Nightly Channel)
-SILEO_APP  = Sileo-Nightly.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
 endif
 
 
 SILEOTMP = $(TMPDIR)/sileo
 SILEO_STAGE_DIR = $(SILEOTMP)/stage
-SILEO_APP_DIR = $(SILEOTMP)/install/$(PREFIX)/Applications/Sileo.app
+SILEO_APP_DIR = $(SILEOTMP)/install/Applications/Sileo.app
 
 ifneq ($(DEBUG),0)
 BUILD_CONFIG  := Debug
@@ -196,7 +198,14 @@ package: stage
 		-e 's/@@DEB_ARCH@@/$(DEB_ARCH)/' \
 		-e 's/@@ICON@@/$(ICON)/' \
 		-e 's/@@DEB_DEPENDS@@/$(DEB_DEPENDS)/' $(SILEO_STAGE_DIR)/DEBIAN/control.in > $(SILEO_STAGE_DIR)/DEBIAN/control
-	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
+	@mv $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in $(SILEO_STAGE_DIR)/DEBIAN/postinst
+	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
+	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in	
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm
+	@mv $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac $(SILEO_STAGE_DIR)/DEBIAN/prerm
+	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/prerm
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
 else
@@ -213,6 +222,8 @@ package: stage
 		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
 endif
