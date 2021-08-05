@@ -9,7 +9,7 @@
 import Foundation
 #if targetEnvironment(macCatalyst) || os(macOS)
 // swiftlint:disable identifier_name
-let DaemonVersion = "2.2-37"
+let DaemonVersion = "2.2-38"
 
 @objc public protocol RootHelperProtocol {
     func spawn(command: String, args: [String], _ completion: @escaping (Int, String, String) -> Void)

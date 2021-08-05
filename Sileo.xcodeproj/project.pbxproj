@@ -3018,7 +3018,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${PLATFORM_NAME}\" == \"macosx\" ] \nthen \n    export MAIN_BUNDLE_ID=\"sileostore\"\n    export HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n    swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\nfi\n";
+			shellScript = "if [ \"${PLATFORM_NAME}\" == \"macosx\" ] \nthen \n    export MAIN_BUNDLE_ID=\"sileostore\"\n    export HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n    #swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\nfi\n";
 		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

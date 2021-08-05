@@ -13,3 +13,13 @@ extension UIView {
         (Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as? T)!
     }
 }
+
+
+extension UITextView {
+    #if targetEnvironment(macCatalyst)
+    @objc(_focusRingType)
+    var focusRingType: UInt {
+        return 1 //NSFocusRingTypeNone
+    }
+    #endif
+}

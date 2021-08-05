@@ -9,7 +9,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.2-37</string>
+	<string>2.2-38</string>
 	<key>CFBundleName</key>
 	<string>SileoRootDaemon</string>
 	<key>CFBundleIdentifier</key>
