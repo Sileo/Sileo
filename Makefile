@@ -106,7 +106,7 @@ export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
 SILEO_ID   = org.coolstar.sileonightly
 endif
 export DISPLAY_NAME = "Sileo Nightly"
-ICON = https:\/\/beta.anamy.gay\/static\/SileoNightly.png
+ICON = https:\/\/github.com\/Sileo\/Sileo\/raw\/stable\/Icons\/Nightly.png
 SILEO_NAME = Sileo (Nightly Channel)
 SILEO_APP  = Sileo-Nightly.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
