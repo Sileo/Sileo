@@ -157,7 +157,7 @@
 "Apply_Changes" = "应用更改";
 "Apply_Changes_Confirm" = "应用更改需要重启 Sileo";
 "Help_Translate" = "帮助翻译 Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Always_Show_Install_Log" = "总是显示安装详情";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
