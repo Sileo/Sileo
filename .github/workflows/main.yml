@@ -65,14 +65,4 @@ jobs:
           sudo mkdir -p ~/__cache
           sudo rsync -aP /opt/procursus ~/__cache
           sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
-          
-  lint:
-    name: Lint Sileo
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-          
-      - name: Run SwiftLint
-        uses: norio-nomura/action-swiftlint@3.2.1
+

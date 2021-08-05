@@ -81,15 +81,16 @@ Components:\
 		exit 0
 		;;
 	(triggered)
+		if [ "$2" = "/Applications" ]; then
+			finish uicache
+			exit 0
+		fi
 		if ! [ -s /usr/lib/libblackjack.dylib ]; then
-			if [ "$2" == "/Library/MobileSubstrate/DynamicLibraries" ]; then
+			if [ "$2" = "/Library/MobileSubstrate/DynamicLibraries" ]; then
 				finish restart
 				exit 0
 			fi
 		fi
-
-		finish uicache
-		exit 0
 		;;
 	(abort-upgrade|abort-remove|abort-deconfigure)
 		exit 0
