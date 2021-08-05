@@ -1,16 +1,17 @@
 //
-//  RepoTest.swift
-//  SileoTests
+//  Sileo_Backend_Tests.swift
+//  Sileo Backend Tests
 //
-//  Created by Amy on 03/05/2021.
-//  Copyright © 2021 Amy While. All rights reserved.
+//  Created by Andromeda on 05/08/2021.
+//  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
 import XCTest
 import Foundation
 @testable import Sileo
 
-class SileoTests: XCTestCase {
+class SileoBackendTests: XCTestCase {
+
     var observer: NSObjectProtocol?
     
     override func tearDown() {
@@ -43,13 +44,11 @@ class SileoTests: XCTestCase {
             URL(string: "https://repo.chariz.com/")!,
             URL(string: "https://repo.packix.com")!,
             URL(string: "https://isecureos.idevicecentral.com/repo/")!,
-            URL(string: "http://repo.co.kr/")!,
             URL(string: "https://nscake.github.io/")!,
             URL(string: "https://sarahh12099.github.io/repo/")!,
             URL(string: "https://skitty.xyz/repo")!,
             URL(string: "https://getzbra.com/repo")!,
             URL(string: "http://junesiphone.com/supersecret")!,
-            URL(string: "https://repo.dynastic.co")!,
             URL(string: "https://repo.icrazeios.com/")!,
             URL(string: "https://thealphastream.github.io/repo")!,
             URL(string: "https://www.monotrix.xyz/")!,
@@ -86,9 +85,8 @@ class SileoTests: XCTestCase {
     
     // TODO - setup https://beta.anamy.gay to have a sandbox package with the sandbox UDID authorized
     func testBAddQueue() throws {
-        guard let allPackages = PackageListManager.shared.allPackagesArray,
-              !allPackages.isEmpty
-        else {
+        let allPackages = PackageListManager.shared.allPackagesArray
+        guard !allPackages.isEmpty else {
             XCTAssert(false, "All Packages is Empty")
             throw "All Packages is Empty"
         }
@@ -132,4 +130,6 @@ class SileoTests: XCTestCase {
             XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
         }
     }
+
 }
+

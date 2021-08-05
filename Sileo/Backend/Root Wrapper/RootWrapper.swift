@@ -86,7 +86,7 @@ final public class MacRootWrapper {
 
         connection.resume()
 
-        guard let helper = connection.synchronousRemoteObjectProxyWithErrorHandler({ error in
+        guard let helper = connection.synchronousRemoteObjectProxyWithErrorHandler({ _ in
             return
         }) as? RootHelperProtocol else {
             return false

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-               BuildableName = "Sileo Demo.app"
-               BlueprintName = "Sileo Demo"
+               BlueprintIdentifier = "49FB388A2660745F0029CAFF"
+               BuildableName = "SileoRootWrapper.bundle"
+               BlueprintName = "SileoRootWrapper"
                ReferencedContainer = "container:Sileo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-            BuildableName = "Sileo Demo.app"
-            BlueprintName = "Sileo Demo"
-            ReferencedContainer = "container:Sileo.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-            BuildableName = "Sileo Demo.app"
-            BlueprintName = "Sileo Demo"
+            BlueprintIdentifier = "49FB388A2660745F0029CAFF"
+            BuildableName = "SileoRootWrapper.bundle"
+            BlueprintName = "SileoRootWrapper"
             ReferencedContainer = "container:Sileo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

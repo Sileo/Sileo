@@ -14,20 +14,30 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-               BuildableName = "Sileo Demo.app"
-               BlueprintName = "Sileo Demo"
+               BlueprintIdentifier = "E128180626BBFAA500D2553B"
+               BuildableName = "Sileo (Test Handler).app"
+               BlueprintName = "Sileo (Test Handler)"
                ReferencedContainer = "container:Sileo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E128199326BBFBA300D2553B"
+               BuildableName = "Sileo Backend Tests.xctest"
+               BlueprintName = "Sileo Backend Tests"
+               ReferencedContainer = "container:Sileo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -44,9 +54,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-            BuildableName = "Sileo Demo.app"
-            BlueprintName = "Sileo Demo"
+            BlueprintIdentifier = "E128180626BBFAA500D2553B"
+            BuildableName = "Sileo (Test Handler).app"
+            BlueprintName = "Sileo (Test Handler)"
             ReferencedContainer = "container:Sileo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +71,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F139D08F22EA9209007F5C0D"
-            BuildableName = "Sileo Demo.app"
-            BlueprintName = "Sileo Demo"
+            BlueprintIdentifier = "E128180626BBFAA500D2553B"
+            BuildableName = "Sileo (Test Handler).app"
+            BlueprintName = "Sileo (Test Handler)"
             ReferencedContainer = "container:Sileo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
