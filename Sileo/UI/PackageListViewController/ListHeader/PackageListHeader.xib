@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,19 +34,39 @@
                         <constraint firstAttribute="height" constant="1" id="V9B-qu-4e9"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1i8-qo-Aie" userLabel="Sort Container" customClass="UIControl">
+                    <rect key="frame" x="54" y="25" width="250" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cI-37-aEA" userLabel="SortHeader">
+                            <rect key="frame" x="0.0" y="0.0" width="229.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SortChevron" translatesAutoresizingMaskIntoConstraints="NO" id="oHz-JA-MSF" userLabel="SortIcon">
+                            <rect key="frame" x="232" y="1.5" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="oHz-JA-MSF" secondAttribute="height" id="KHh-Gb-e4E"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="oHz-JA-MSF" secondAttribute="bottom" constant="1.5" id="CLO-Cm-4We"/>
+                        <constraint firstAttribute="width" constant="250" id="CeV-fF-I0O"/>
+                        <constraint firstItem="oHz-JA-MSF" firstAttribute="leading" secondItem="0cI-37-aEA" secondAttribute="trailing" constant="2.5" id="OTE-kv-5pM"/>
+                        <constraint firstAttribute="trailing" secondItem="oHz-JA-MSF" secondAttribute="trailing" id="P5R-t2-gWB"/>
+                        <constraint firstAttribute="height" constant="21" id="gZ0-pt-ZMK"/>
+                        <constraint firstItem="0cI-37-aEA" firstAttribute="leading" secondItem="1i8-qo-Aie" secondAttribute="leading" id="hw7-3u-GJP"/>
+                        <constraint firstItem="oHz-JA-MSF" firstAttribute="top" secondItem="1i8-qo-Aie" secondAttribute="top" constant="1.5" id="qL2-vd-lJ6"/>
+                        <constraint firstItem="0cI-37-aEA" firstAttribute="top" secondItem="1i8-qo-Aie" secondAttribute="top" id="uoP-rP-5Cz"/>
+                        <constraint firstAttribute="bottom" secondItem="0cI-37-aEA" secondAttribute="bottom" id="wwT-kY-24o"/>
+                    </constraints>
+                </view>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZU-hB-Pd7">
                     <rect key="frame" x="251" y="20" width="53" height="33"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <state key="normal" title="Button"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WE-WV-fxE">
-                    <rect key="frame" x="204" y="25" width="100" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="uY1-D4-mla"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
-                    <state key="normal" title="Name" image="SortChevron"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="9Gg-ye-v9C"/>
@@ -55,20 +75,22 @@
                 <constraint firstItem="bUD-Rb-AnK" firstAttribute="bottom" secondItem="9Gg-ye-v9C" secondAttribute="bottom" constant="-10" id="4wt-0D-Hv1"/>
                 <constraint firstItem="bUD-Rb-AnK" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" id="94u-Kc-K6a"/>
                 <constraint firstItem="cGW-yp-qSd" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="B4c-Cp-B62"/>
-                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="4WE-WV-fxE" secondAttribute="trailing" constant="16" id="DAD-qA-hX8"/>
                 <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="kZU-hB-Pd7" secondAttribute="trailing" constant="16" id="FHp-zc-W7c"/>
                 <constraint firstItem="bUD-Rb-AnK" firstAttribute="trailing" secondItem="9Gg-ye-v9C" secondAttribute="trailing" id="HhK-Km-n3O"/>
                 <constraint firstItem="bUD-Rb-AnK" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" id="JXK-KF-dt5"/>
                 <constraint firstItem="Jqr-mH-ppT" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="20" id="OF2-8f-Zkh"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="1i8-qo-Aie" secondAttribute="trailing" constant="16" id="Tfz-m1-oIE"/>
+                <constraint firstItem="1i8-qo-Aie" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="25" id="ZLx-Lj-Bqi"/>
                 <constraint firstItem="Jqr-mH-ppT" firstAttribute="leading" secondItem="9Gg-ye-v9C" secondAttribute="leading" constant="16" id="aDA-hd-svO"/>
                 <constraint firstItem="9Gg-ye-v9C" firstAttribute="trailing" secondItem="Jqr-mH-ppT" secondAttribute="trailing" constant="16" id="bvp-7o-VdN"/>
-                <constraint firstItem="4WE-WV-fxE" firstAttribute="top" secondItem="9Gg-ye-v9C" secondAttribute="top" constant="25" id="oaj-9E-aG8"/>
                 <constraint firstAttribute="trailing" secondItem="cGW-yp-qSd" secondAttribute="trailing" id="rvJ-5s-JKX"/>
                 <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="cGW-yp-qSd" secondAttribute="bottom" constant="9" id="zhv-WA-fTi"/>
             </constraints>
             <connections>
                 <outlet property="label" destination="Jqr-mH-ppT" id="qpZ-mf-1wS"/>
-                <outlet property="sortButton" destination="4WE-WV-fxE" id="XEB-qF-rF6"/>
+                <outlet property="sortContainer" destination="1i8-qo-Aie" id="7Ev-hA-ugt"/>
+                <outlet property="sortHeader" destination="0cI-37-aEA" id="bCu-Ot-NpA"/>
+                <outlet property="sortIcon" destination="oHz-JA-MSF" id="jxI-v9-eiS"/>
                 <outlet property="toolbar" destination="bUD-Rb-AnK" id="HxE-p7-lS3"/>
                 <outlet property="upgradeButton" destination="kZU-hB-Pd7" id="oXJ-89-Asj"/>
             </connections>

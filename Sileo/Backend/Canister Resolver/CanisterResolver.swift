@@ -33,6 +33,9 @@ final class CanisterResolver {
     }
     
     @discardableResult public func fetch(_ query: String, fetch: @escaping (Bool) -> Void) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        fetch(false); return false
+        #endif
         guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch(false); return false }
         if query.count <= 3,
            savedSearch.contains(query) { fetch(false); return false }

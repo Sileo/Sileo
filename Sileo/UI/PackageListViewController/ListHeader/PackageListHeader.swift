@@ -12,9 +12,11 @@ class PackageListHeader: UICollectionReusableView {
     @IBOutlet weak var label: UILabel?
     @IBOutlet weak var toolbar: UIToolbar?
     @IBOutlet weak var upgradeButton: UIButton?
-    @IBOutlet weak var sortButton: UIButton?
+    @IBOutlet weak var sortIcon: UIImageView?
+    @IBOutlet weak var sortHeader: UILabel?
     @IBOutlet weak var separatorView: UIImageView?
-
+    @IBOutlet weak var sortContainer: UIControl?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         toolbar?._hidesShadow = true
@@ -25,11 +27,13 @@ class PackageListHeader: UICollectionReusableView {
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
-        label?.textColor = .sileoLabel
+        updateSileoColors()
     }
     
     @objc func updateSileoColors() {
         label?.textColor = .sileoLabel
+        sortIcon?.tintColor = .tintColor
+        sortHeader?.textColor = .tintColor
     }
     
     public var actionText: String? {

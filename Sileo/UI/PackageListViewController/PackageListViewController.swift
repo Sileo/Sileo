@@ -452,21 +452,21 @@ extension PackageListViewController: UICollectionViewDataSource {
         case .canister:
             headerView.actionText = nil
             headerView.separatorView?.isHidden = false
-            headerView.sortButton?.isHidden = true
+            headerView.sortContainer?.isHidden = true
             headerView.upgradeButton?.isHidden = true
             headerView.label?.text = String(localizationKey: "External_Repo")
             return headerView
         case .ignoredUpdates:
             headerView.actionText = nil
             headerView.separatorView?.isHidden = false
-            headerView.sortButton?.isHidden = true
+            headerView.sortContainer?.isHidden = true
             headerView.upgradeButton?.isHidden = true
             headerView.label?.text = String(localizationKey: "Ignored Updates")
             return headerView
         case .updates:
             headerView.label?.text = String(localizationKey: "Updates_Heading")
             headerView.actionText = String(localizationKey: "Upgrade_All_Button")
-            headerView.sortButton?.isHidden = true
+            headerView.sortContainer?.isHidden = true
             headerView.separatorView?.isHidden = true
             headerView.upgradeButton?.addTarget(self, action: #selector(self.upgradeAllClicked(_:)), for: .touchUpInside)
             return headerView
@@ -474,19 +474,19 @@ extension PackageListViewController: UICollectionViewDataSource {
             if showUpdates {
                 headerView.label?.text = String(localizationKey: "Installed_Heading")
                 headerView.actionText = nil
-                headerView.sortButton?.isHidden = false
+                headerView.sortContainer?.isHidden = false
                 switch SortMode() {
-                case .name: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Name"), for: .normal)
-                case .installdate: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Date"), for: .normal)
-                case .size: headerView.sortButton?.setTitle(String(localizationKey: "Sort_Install_Size"), for: .normal)
+                case .name: headerView.sortHeader?.text = String(localizationKey: "Sort_Name")
+                case .installdate: headerView.sortHeader?.text = String(localizationKey: "Sort_Date")
+                case .size: headerView.sortHeader?.text = String(localizationKey: "Sort_Install_Size")
                 }
-                headerView.sortButton?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
+                headerView.sortContainer?.addTarget(self, action: #selector(self.sortPopup(sender:)), for: .touchUpInside)
                 headerView.separatorView?.isHidden = false
                 return headerView
             } else if showProvisional && loadProvisional {
                 headerView.actionText = nil
                 headerView.separatorView?.isHidden = false
-                headerView.sortButton?.isHidden = true
+                headerView.sortContainer?.isHidden = true
                 headerView.upgradeButton?.isHidden = true
                 headerView.label?.text = String(localizationKey: "Internal_Repo")
                 return headerView
