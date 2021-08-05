@@ -20,6 +20,29 @@ jobs:
         uses: actions/checkout@master
         with:
           submodules: true
+      - name: Import all certificates
+        env: 
+          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+          DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
+          DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security list-keychains -s build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security set-keychain-settings
+          security import <(echo $DEVELOPMENT_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -T /usr/bin/codesign
+          security import <(echo $DISTRIBUTION_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
         
       - name: Setup Procursus Bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
@@ -52,13 +75,22 @@ jobs:
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0
+      - name: Build Sileo Nightly (darwin-amd64)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
+      - name: Build Sileo Nightly (darwin-arm64)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
       - name: Upload To Repo
         env: # 
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package1=$(ls -t packages | head -1)
-          echo ${package1}
+          package2=$(ls -t packages | head -2 | tail -1)
+          package3=$(ls -t packages | head -3 | tail -1)
           curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
       - name: Copy Procursus to Cache Location
         run: |
