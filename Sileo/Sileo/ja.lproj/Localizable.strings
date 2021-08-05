@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "パッケージを検索";
 "Sort_Name" = "名前";
 "Sort_Date" = "更新日時";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "並べ替え:";
 
 "Package_Unavailable" = "パッケージを利用できません";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "詳細を表示";
 "Hide_Install_Details" = "詳細を非表示";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo を再起動";
 "After_Install_Respring" = "SpringBoard を再起動";

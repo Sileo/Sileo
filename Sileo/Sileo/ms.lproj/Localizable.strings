@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Cari pakej-pakej";
 "Sort_Name" = "Nama";
 "Sort_Date" = "Tarikh";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Susun mengikut:";
 
 "Package_Unavailable" = "Tiada Pakej";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo Cerah";
 "Sileo_Dark" = "Sileo Gelap";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "Tunjuk Butiran";
 "Hide_Install_Details" = "Sorok Butiran";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";

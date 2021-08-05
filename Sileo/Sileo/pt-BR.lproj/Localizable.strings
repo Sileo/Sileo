@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Procurar por Pacotes";
 "Sort_Name" = "Nome";
 "Sort_Date" = "Data";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Ordenar por:";
 
 "Package_Unavailable" = "Pacote indisponível";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "Mais Detalhes";
 "Hide_Install_Details" = "Esconder Detalhes";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";

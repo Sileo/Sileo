@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Søk etter pakker";
 "Sort_Name" = "Navn";
 "Sort_Date" = "Dato";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sorter etter:";
 
 "Package_Unavailable" = "Pakke utilgjengelig";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "Vis detaljer";
 "Hide_Install_Details" = "Skjul detaljer";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Start Sileo på nytt";
 "After_Install_Respring" = "Start SpringBoard på nytt";

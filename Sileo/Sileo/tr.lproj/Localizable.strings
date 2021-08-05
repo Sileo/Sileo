@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "Paketlerde Ara";
 "Sort_Name" = "Ad";
 "Sort_Date" = "Tarih";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sıralama Şekli:";
 
 "Package_Unavailable" = "Paket Kullanılamıyor";
@@ -156,6 +157,7 @@
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
@@ -173,6 +175,7 @@
 "Show_Install_Details" = "Detayları Göster";
 "Hide_Install_Details" = "Detayları Gizle";
 "Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";

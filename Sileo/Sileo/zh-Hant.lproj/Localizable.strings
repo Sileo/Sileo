@@ -72,6 +72,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
+"Sort_Install_Size" = "已安裝大小";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -151,11 +152,12 @@
 "Cache_Size" = "快取大小";
 "Clear_Cache" = "清除網頁快取";
 "Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Language" = "語言";
+"Use_System_Language" = "使用系統語言";
+"Apply_Changes" = "套用變更內容";
+"Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
+"Help_Translate" = "幫助翻譯 Sileo";
+"Always_Show_Install_Log" = "總是顯示安裝詳情";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
@@ -172,7 +174,8 @@
 
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
-"Open_In_Filza" = "Open in Filza";
+"Open_In_Filza" = "在 Filza 打開";
+"Copy_Path" = "拷貝目錄";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
