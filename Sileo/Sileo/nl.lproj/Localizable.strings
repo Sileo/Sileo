@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "Zoek naar Pakketten";
 "Sort_Name" = "Naam";
 "Sort_Date" = "Datum";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Geïnstalleerde Grootte";
 "Sort_By" = "Sorteer op:";
 
 "Package_Unavailable" = "Pakket Niet Beschikbaar";
@@ -88,7 +88,7 @@
 "Refreshing_Sources_Page" = "Bronnen Verversen";
 "Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
 "Refresh" = "Ververs";
-"Remove" = "Remove";
+"Remove" = "Verwijder";
 
 "All_Packages.Title" = "Alle Pakketten";
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
@@ -152,12 +152,12 @@
 "Cache_Size" = "Cache Grootte";
 "Clear_Cache" = "Verwijder Netwerk Cache";
 "Clear_Cache_Message" = "Wil je de netwerk cache verwijderen? Dit zal %@ vrijmaken";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
+"Language" = "Taal";
+"Use_System_Language" = "Gebruik Systeem Taal";
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
