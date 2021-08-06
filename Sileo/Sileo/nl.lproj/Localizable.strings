@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Voeg Bron Toe";
 "Add_Source.Body" = "Voeg APT URL toe";
 "Add_Source.Button.Add" = "Voeg Bron Toe";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Voeg Distributie Repo Toe";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
@@ -154,9 +154,9 @@
 "Clear_Cache_Message" = "Wil je de netwerk cache verwijderen? Dit zal %@ vrijmaken";
 "Language" = "Taal";
 "Use_System_Language" = "Gebruik Systeem Taal";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Apply_Changes" = "Pas Aanpassingen Toe";
+"Apply_Changes_Confirm" = "Voor het toepassen van aanpassingen is het herstarten van Sileo vereist";
+"Help_Translate" = "Help Met Het Vertalen Van Sileo";
 "Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
 
 "Sileo_Light" = "Sileo Licht";
@@ -175,7 +175,7 @@
 "Show_Install_Details" = "Toon Details";
 "Hide_Install_Details" = "Verberg Details";
 "Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Copy_Path" = "Kopieer Pad";
 
 "After_Install_Relaunch" = "Herstart Sileo";
 "After_Install_Respring" = "Herstart SpringBoard";
