@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Añadir Fuente";
 "Add_Source.Body" = "Añadir URL APT";
 "Add_Source.Button.Add" = "Añadir Fuente";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Añadir repositorio de distribución";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Añadir Manualmente";
 
@@ -120,7 +120,7 @@
 "Package_Changelogs_Unavailable" = "Este paquete no tiene lista de cambios.";
 
 "Installed_Package_Header" = "Paquete Instalado";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Paquetes instalados";
 "Version" = "Versión";
 "Show_Package_Contents_Button" = "Mostrar Contenido del Paquete";
 
@@ -142,28 +142,28 @@
 "Auto_Complete_Queue" = "Auto completar cola";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmar automáticamente \"Actualizar todo\"";
 "Swipe_Actions" = "Acciones de deslizamiento";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Show_Provisional" = "Mostrar paquetes de Canister";
+"Show_Ignored_Updates" = "Mostrar actualizaciones ignoradas";
+"Developer_Mode" = "Modo desarrollador";
+"Pog_Developer" = "¡Ahora eres un desarrollador!";
+"Developer_Mode_Explain" = "El modo desarrollador desabilita el requerimiento de HTTPS en la API de pagos.";
+"Auto_Refresh_Sources" = "Refrescar fuentes automáticamente";
+"iCloud_Profile" = "Mostrar foto de iCloud en Destacados";
+"Cache_Size" = "Tamaño de caché";
+"Clear_Cache" = "Limpiar la caché de red";
+"Clear_Cache_Message" = "¿Quieres limpiar la caché de red? Esto liberará %@";
+"Language" = "Lenguaje";
+"Use_System_Language" = "Usar lenguaje del sistema";
+"Apply_Changes" = "Aplicar Cambios";
+"Apply_Changes_Confirm" = "Aplicar cambios requerirá reiniciar sileo";
+"Help_Translate" = "Ayuda a traducir Sileo";
+"Always_Show_Install_Log" = "Siempre mostrar registro de instalación";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Oscuro";
 "Sileo_Adaptive" = "Sileo Adaptativo";
 "System" = "Sistema";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Ajustes de Temas";
 
 "Cydia_Sign_In" = "Iniciar Sesión en Cydia Store";
 "Payment_Provider_Signed_In" = "Autenticado";
@@ -174,7 +174,7 @@
 
 "Show_Install_Details" = "Mostrar Detalles";
 "Hide_Install_Details" = "Ocultar Detalles";
-"Open_In_Filza" = "Open in Filza";
+"Open_In_Filza" = "Abrir en Filza";
 "Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
