@@ -23,7 +23,7 @@
 "Cancel" = "Cancelar";
 "Acknowledge" = "Comprendo";
 "Remove" = "Eliminar";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Equipo de Sileo";
 
 // Popup messages
 "Background_App_Refresh" = "Actualizar en segundo plano";
@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "Buscar Paquetes";
 "Sort_Name" = "Nombre";
 "Sort_Date" = "Fecha";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Tamaño de instalación";
 "Sort_By" = "Ordenar por:";
 
 "Package_Unavailable" = "Paquete no disponible";
@@ -88,18 +88,18 @@
 "Refreshing_Sources_Page" = "Refrescando Fuentes";
 "Package_Installed_Files_Page" = "Archivos Instalados";
 "Refresh" = "Actualizar";
-"Remove" = "Remove";
+"Remove" = "Eliminar";
 
 "All_Packages.Title" = "Todos los Paquetes";
 "All_Packages.Cell_Subtitle" = "Ver todos los paquetes de sus fuentes";
 
 "All_Categories" = "Todas las categorías";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Repositorios internos";
+"External_Repo" = "Repositorios externos";
+"Ignored Updates" = "Actualizaciones Ignoradas";
 
 "Repos" = "Repositorios";
-"Repo" = "Repository";
+"Repo" = "Repositorio";
 
 "Add_Source.Title" = "Añadir Fuente";
 "Add_Source.Body" = "Añadir URL APT";
@@ -175,7 +175,7 @@
 "Show_Install_Details" = "Mostrar Detalles";
 "Hide_Install_Details" = "Ocultar Detalles";
 "Open_In_Filza" = "Abrir en Filza";
-"Copy_Path" = "Copy Path";
+"Copy_Path" = "Copiar directorio";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
