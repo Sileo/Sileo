@@ -34,7 +34,7 @@ final class CanisterResolver {
     
     @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
         #if targetEnvironment(macCatalyst)
-        fetch(false); return false
+        fetch?(false); return false
         #endif
         guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
         if query.count <= 3,
