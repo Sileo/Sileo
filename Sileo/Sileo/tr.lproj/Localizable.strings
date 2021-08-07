@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Kaynak Ekle";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Dağıtım Kaynağını Ekle";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
 
@@ -157,7 +157,7 @@
 "Apply_Changes" = "Değişiklikleri Onayla";
 "Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
 "Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Always_Show_Install_Log" = "Her Zaman Yükleme Kaydını Göster";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
@@ -174,8 +174,8 @@
 
 "Show_Install_Details" = "Detayları Göster";
 "Hide_Install_Details" = "Detayları Gizle";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Filza'da Aç";
+"Copy_Path" = "Yolu Kopyala";
 
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";
