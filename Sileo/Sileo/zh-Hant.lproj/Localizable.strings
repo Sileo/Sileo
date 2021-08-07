@@ -104,7 +104,7 @@
 "Add_Source.Title" = "新增來源";
 "Add_Source.Body" = "新增套件來源網址";
 "Add_Source.Button.Add" = "新增來源";
-"Add_Dist_Repo" = "新增 Dist 來源";
+"Add_Dist_Repo" = "新增發行版來源";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動輸入";
 
