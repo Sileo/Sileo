@@ -146,7 +146,7 @@
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
 "Pog_Developer" = "您現在已成為開發者！";
-"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 需求。";
+"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 請求。";
 "Auto_Refresh_Sources" = "自動重新整理來源";
 "iCloud_Profile" = "在精選顯示 iCloud 個人檔案照片";
 "Cache_Size" = "快取大小";
