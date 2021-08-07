@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "Paketlerde Ara";
 "Sort_Name" = "Ad";
 "Sort_Date" = "Tarih";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Kurulu Boyut";
 "Sort_By" = "Sıralama Şekli:";
 
 "Package_Unavailable" = "Paket Kullanılamıyor";
@@ -88,7 +88,7 @@
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
-"Remove" = "Remove";
+"Remove" = "Kaldır";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Kaynak Ekle";
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Dağıtım Kaynağını Ekle";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
 
@@ -152,12 +152,12 @@
 "Cache_Size" = "Önbellek Boyutu";
 "Clear_Cache" = "Ağ Önbelleğini Temizle";
 "Clear_Cache_Message" = "Ağ önbelleğini temizlemek istiyor musunuz? %@ alan boşalacak.";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "Dil";
+"Use_System_Language" = "Sistemi Dilini Kullan";
+"Apply_Changes" = "Değişiklikleri Onayla";
+"Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
+"Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
+"Always_Show_Install_Log" = "Her Zaman Yükleme Kaydını Göster";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
@@ -174,8 +174,8 @@
 
 "Show_Install_Details" = "Detayları Göster";
 "Hide_Install_Details" = "Detayları Gizle";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Filza'da Aç";
+"Copy_Path" = "Yolu Kopyala";
 
 "After_Install_Relaunch" = "Sileo’yu Yeniden Başlat";
 "After_Install_Respring" = "SpringBoard’ı Yeniden Başlat";
