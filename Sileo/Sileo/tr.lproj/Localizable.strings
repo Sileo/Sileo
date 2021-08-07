@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "Paketlerde Ara";
 "Sort_Name" = "Ad";
 "Sort_Date" = "Tarih";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Kurulu Boyut";
 "Sort_By" = "Sıralama Şekli:";
 
 "Package_Unavailable" = "Paket Kullanılamıyor";
@@ -88,7 +88,7 @@
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
-"Remove" = "Remove";
+"Remove" = "Kaldır";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
@@ -152,11 +152,11 @@
 "Cache_Size" = "Önbellek Boyutu";
 "Clear_Cache" = "Ağ Önbelleğini Temizle";
 "Clear_Cache_Message" = "Ağ önbelleğini temizlemek istiyor musunuz? %@ alan boşalacak.";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Language" = "Dil";
+"Use_System_Language" = "Sistemi Dilini Kullan";
+"Apply_Changes" = "Değişiklikleri Onayla";
+"Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
+"Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
 "Always_Show_Install_Log" = "Always Show Install Log";
 
 "Sileo_Light" = "Açık Sileo";
