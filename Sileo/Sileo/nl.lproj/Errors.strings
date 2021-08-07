@@ -11,7 +11,7 @@
 "Unknown" = "Er is een onbekende fout opgetreden.";
 "Error_Indicator" = "Fout: %@";
 
-"No_Package.Title" = "Kon de package %@ niet vinden in de geïnstalleerde repositories.";
+"No_Package.Title" = "Kon het pakket %@ niet vinden in de geïnstalleerde bronnen.";
 "No_Package.Body" = "Wacht op Sileo om het te laten updaten als het nieuw is, en probeer het daarna nog een keer. Kijk online voor meer hulp.";
 
 "Invalid_URL.Title" = "Ongeldige URL";
@@ -19,7 +19,7 @@
 "Download_Size_Mismatch" = "Verwachtte grootte %@, maar kreeg in plaats daarvan %@.";
 "Download_Failing_Status_Code" = "Mislukt met status %ld";
 "Download_Hash_Mismatch" = "Verwachtte hash %@, maar kreeg in plaats daarvan %@.";
-"Untrusted_Package" = "Package %@ is onbetrouwbaar en kan niet worden geverifieerd";
+"Untrusted_Package" = "Pakket %@ is niet vertrouwd en kan niet worden geverifieerd";
 
 "Insecure_Paid_Download" = "Betalings-geautoriseerd pakket download URLs moeten beveiligd zijn (HTTPS).";
 
