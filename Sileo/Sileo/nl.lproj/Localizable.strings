@@ -12,7 +12,7 @@
 "About" = "Over";
 "Close" = "Sluit";
 "Double tap to open." = "Tik twee keer om te openen.";
-"Untitled_Repo" = "Naamloze Repo";
+"Untitled_Repo" = "Naamloze Bron";
 "OK" = "OK";
 "Done" = "Klaar";
 "Done_Editing" = "Klaar";
@@ -94,8 +94,8 @@
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
 
 "All_Categories" = "Alle Categorieën";
-"Internal_Repo" = "Interne Repo's";
-"External_Repo" = "Externe Repo's";
+"Internal_Repo" = "Interne Bronnen";
+"External_Repo" = "Externe Bronnen";
 "Ignored Updates" = "Genegeerde Updates";
 
 "Repos" = "Bronnen";
@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Voeg Bron Toe";
 "Add_Source.Body" = "Voeg APT URL toe";
 "Add_Source.Button.Add" = "Voeg Bron Toe";
-"Add_Dist_Repo" = "Voeg Distributie Repo Toe";
+"Add_Dist_Repo" = "Voeg Distributie Bron Toe";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
@@ -184,12 +184,12 @@
 "After_Install_Respring_Later" = "Herstart Springboard Later";
 "After_Install_Reboot_Later" = "Herstart Apparaat Later";
 
-"Dangerous_Repo.Title" = "Gevaarlijke Repo";
-"Dangerous_Repo.Body" = "Je probeert een repository toe te voegen die bekend staat als gevaarlijk voor redenen als piracy, illegale inhoud of malware.\n\nRepositories die gemarkeerd zijn als schadelijk verspreiden vaak software met onverwachte gevolgen, als betaalde software of andere schadelijke packages. Dit kan blijvende gevolgen hebben op jouw apparaat en privacy, en kan soms effect hebben op jouw mogelijkheid om te jailbreaken. Wij raden je aan dat je met uiterste voorzichtigheid handelt om schadelijke software te vermijden.";
+"Dangerous_Repo.Title" = "Gevaarlijke Bron";
+"Dangerous_Repo.Body" = "Je probeert een bron toe te voegen die bekend staat als gevaarlijk voor redenen als piracy, illegale inhoud of malware.\n\nBronnen die gemarkeerd zijn als schadelijk verspreiden vaak software met onverwachte gevolgen, als betaalde software of andere schadelijke pakketten. Dit kan blijvende gevolgen hebben op jouw apparaat en privacy, en kan soms effect hebben op jouw mogelijkheid om te jailbreaken. Wij raden je aan dat je met uiterste voorzichtigheid handelt om schadelijke software te vermijden.";
 "Dangerous_Repo.Continue" = "Ik accepteer de risico's, ga verder";
 "Dangerous_Repo.Cancel" = "Breng me terug naar veiligheid";
-"Dangerous_Repo.Last_Chance.Title" = "Voeg Schadelijke Repo Toe?";
-"Dangerous_Repo.Last_Chance.Body" = "Gevaarlijke repositories kunnen verwoestende gevolgen hebben op gebruik van jouw apparaat of jailbreaks. We raden je sterk aan dat je terug gaat voor je eigen veiligheid. Weet je zeker dat je %@ toe wilt voegen?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Title" = "Voeg Schadelijke Bron Toe?";
+"Dangerous_Repo.Last_Chance.Body" = "Gevaarlijke bronnen kunnen verwoestende gevolgen hebben op gebruik van jouw apparaat of jailbreaks. We raden je sterk aan dat je terug gaat voor je eigen veiligheid. Weet je zeker dat je %@ toe wilt voegen?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Ga verder";
 "Dangerous_Repo.Last_Chance.Cancel" = "Ga terug";
 
