@@ -226,7 +226,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             tabBarController.selectedViewController = sourcesSVC
             sourcesVC.presentAddSourceEntryField(url: newURL)
         }
-        return false
+        return true
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
