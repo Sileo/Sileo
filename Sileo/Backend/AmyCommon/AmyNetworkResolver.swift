@@ -13,11 +13,11 @@ final class AmyNetworkResolver {
     static let shared = AmyNetworkResolver()
     
     var cacheDirectory: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo")
     }
     
     var downloadCache: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").appendingPathComponent("DownloadCache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo").appendingPathComponent("DownloadCache")
     }
     
     var memoryCache = [String: UIImage]()
@@ -34,9 +34,12 @@ final class AmyNetworkResolver {
     }
     
     public func setupCache() {
+        if FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").exists {
+            try? FileManager.default.moveItem(at: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache"), to: cacheDirectory)
+        }
         if !cacheDirectory.dirExists {
             do {
-                try FileManager.default.createDirectory(atPath: cacheDirectory.path, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: cacheDirectory.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
@@ -56,7 +59,7 @@ final class AmyNetworkResolver {
         }
         if !downloadCache.dirExists {
             do {
-                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
@@ -454,30 +457,37 @@ extension FileManager {
         guard let enumerator = self.enumerator(at: dir, includingPropertiesForKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey]) else { return 0 }
         var bytes = 0
         for case let url as URL in enumerator {
-            bytes += url.size
+            bytes += Int(url.size)
         }
         return bytes
     }
     
     func sizeString(_ dir: URL) -> String {
-        let bytes = Float(directorySize(dir))
-        let kiloBytes = bytes / Float(1024)
-        if kiloBytes <= 1024 {
-            return "\(String(format: "%.1f", kiloBytes)) KB"
-        }
-        let megaBytes = kiloBytes / Float(1024)
-        if megaBytes <= 1024 {
-            return "\(String(format: "%.1f", megaBytes)) MB"
-        }
-        let gigaBytes = megaBytes / Float(1024)
-        return "\(String(format: "%.1f", gigaBytes)) GB"
+        let bytes = directorySize(dir)
+        return ByteCountFormatter.string(fromByteCount: Int64(bytes), countStyle: .file)
     }
 }
 
 extension URL {
-    var size: Int {
-        guard let values = try? self.resourceValues(forKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey]) else { return 0 }
-        return values.totalFileAllocatedSize ?? values.fileAllocatedSize ?? 0
+    var attributes: [FileAttributeKey: Any]? {
+        do {
+            return try FileManager.default.attributesOfItem(atPath: path)
+        } catch let error as NSError {
+            print("FileAttribute error: \(error)")
+        }
+        return nil
+    }
+
+    var size: UInt64 {
+        return attributes?[.size] as? UInt64 ?? UInt64(0)
+    }
+
+    var fileSizeString: String {
+        return ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+    }
+
+    var creationDate: Date? {
+        return attributes?[.creationDate] as? Date
     }
 }
 
