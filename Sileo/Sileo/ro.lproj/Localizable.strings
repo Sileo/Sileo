@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "Căutați pachete";
 "Sort_Name" = "Nume";
 "Sort_Date" = "Dată";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Mărimea instalată";
 "Sort_By" = "Sortează după:";
 
 "Package_Unavailable" = "Pachet nedisponibil";
@@ -104,7 +104,7 @@
 "Add_Source.Title" = "Adăgați sursă";
 "Add_Source.Body" = "Adăugați URL APT";
 "Add_Source.Button.Add" = "Adăugați sursă";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Adăgați repozitoriu dist.";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
 
@@ -152,12 +152,12 @@
 "Cache_Size" = "Mărimea cache-ului";
 "Clear_Cache" = "Ștergeți cache-ul network";
 "Clear_Cache_Message" = "Doriți să ștergeți cache-ul network? Va elibera %@ din stocare";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Language" = "Limbă";
+"Use_System_Language" = "Folosiți limba sistemului";
+"Apply_Changes" = "Aplicați Schimbările";
+"Apply_Changes_Confirm" = "Pentru a aplica schimbările trebuie să reporniți Sileo";
 "Help_Translate" = "Ajutați cu localizarea pentru Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Always_Show_Install_Log" = "Afișați jurnalul de instalare întotdeauna";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
@@ -175,7 +175,7 @@
 "Show_Install_Details" = "Arătați Detalie";
 "Hide_Install_Details" = "Ascundeți Detalie";
 "Open_In_Filza" = "Deschide-ți în Filza";
-"Copy_Path" = "Copy Path";
+"Copy_Path" = "Copiați calea";
 
 "After_Install_Relaunch" = "Reporniți Sileo";
 "After_Install_Respring" = "Reporniți SpringBoard";
