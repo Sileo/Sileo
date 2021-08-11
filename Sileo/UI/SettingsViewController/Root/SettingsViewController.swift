@@ -260,8 +260,14 @@ extension SettingsViewController { // UITableViewDataSource
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
             } else if indexPath.row == 3 {
+                #if targetEnvironment(macCatalyst)
+                let errorVC = UIAlertController(title: "Not Supported", message: "Alternate Icons are currently not supported in macOS", preferredStyle: .alert)
+                errorVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in errorVC.dismiss(animated: true) }))
+                self.present(errorVC, animated: true)
+                #else
                 let altVC = AltIconTableViewController()
                 self.navigationController?.pushViewController(altVC, animated: true)
+                #endif
             }
         case 3: // About section
             switch indexPath.row {

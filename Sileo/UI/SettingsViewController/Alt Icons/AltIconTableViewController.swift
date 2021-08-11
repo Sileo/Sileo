@@ -20,7 +20,12 @@ class AltIconTableViewController: UITableViewController {
     public static let IconUpdate = Notification.Name("AlternateIconUpdate")
     
     public class func altImage(_ name: String) -> UIImage {
+        #if targetEnvironment(macCatalyst)
+        let path = Bundle.main.bundleURL.appendingPathComponent("Contents").appendingPathComponent("Resources").appendingPathComponent("AppIcon.icns")
+        #else
         let path = Bundle.main.bundleURL.appendingPathComponent(name + "@2x.png")
+        #endif
+        NSLog("[Aemulo] Path = \(path)")
         return UIImage(contentsOfFile: path.path) ?? UIImage()
     }
     
@@ -97,7 +102,9 @@ class AltIconTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
-        UIApplication.shared.setAlternateIconName(altIcon.key) { _ in }
+        UIApplication.shared.setAlternateIconName(altIcon.key) { error in
+            NSLog("[Sileo] Failed to set icon with error \(error?.localizedDescription)")
+        }
         NotificationCenter.default.post(name: AltIconTableViewController.IconUpdate, object: nil)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)
     }
