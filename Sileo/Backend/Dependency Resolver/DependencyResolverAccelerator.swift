@@ -131,7 +131,7 @@ class DependencyResolverAccelerator {
         }
         partialRepoList[sourceFileURL]?.insert(package)
         
-        let packageKeys = ["depends", "pre-depends", "conflicts", "replaces"]
+        let packageKeys = ["depends", "pre-depends", "conflicts", "replaces", "recommends"]
         
         for packageKey in packageKeys {
             if let packagesData = package.rawControl[packageKey] {

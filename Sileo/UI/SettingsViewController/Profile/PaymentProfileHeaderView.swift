@@ -9,7 +9,7 @@
 import Foundation
 
 class PaymentProfileHeaderView: UIView, SettingsHeaderViewDisplayable {
-    private var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    private var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     private var stackView: UIStackView = UIStackView()
     private var providerLabel: UILabel = UILabel()
     private var nameLabel: UILabel = UILabel()

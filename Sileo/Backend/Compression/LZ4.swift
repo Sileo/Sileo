@@ -38,5 +38,3 @@ final class LZ4 {
     }
 }
 #endif
-
- 
