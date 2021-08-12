@@ -304,7 +304,6 @@
 		E12818F826BBFAA500D2553B /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		E12818F926BBFAA500D2553B /* Procursus~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FA26098169007D605F /* Procursus~ipad@2x.png */; };
 		E12818FA26BBFAA500D2553B /* MangoCrazy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CBC2607F9A400A20711 /* MangoCrazy@2x.png */; };
-		E12818FB26BBFAA500D2553B /* InstallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103401E213746B600B9180B /* InstallViewController.xib */; };
 		E12818FC26BBFAA500D2553B /* InstalledContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */; };
 		E12818FD26BBFAA500D2553B /* SugarFree~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC12607F9A400A20711 /* SugarFree~ipad@2x.png */; };
 		E12818FE26BBFAA500D2553B /* Procursus~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23FB26098169007D605F /* Procursus~ipad@3x.png */; };
@@ -510,7 +509,6 @@
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
-		F1034020213746B600B9180B /* InstallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103401E213746B600B9180B /* InstallViewController.xib */; };
 		F1053218244AD2C30042201C /* verrevcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1053217244AD2C30042201C /* verrevcmp.swift */; };
 		F1053219244AD2C30042201C /* verrevcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1053217244AD2C30042201C /* verrevcmp.swift */; };
 		F105321F244AD85E0042201C /* dpkgversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F105321E244AD85E0042201C /* dpkgversion.swift */; };
@@ -592,7 +590,6 @@
 		F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */; };
 		F139D13522EA9209007F5C0D /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
-		F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103401E213746B600B9180B /* InstallViewController.xib */; };
 		F139D13722EA9209007F5C0D /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924521D5F80300E6F704 /* Errors.strings */; };
 		F139D13822EA9209007F5C0D /* NewsArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */; };
 		F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D113F820DC608900C8F051 /* PackageViewController.xib */; };
@@ -1260,7 +1257,6 @@
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
-		F103401E213746B600B9180B /* InstallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallViewController.xib; sourceTree = "<group>"; };
 		F1053217244AD2C30042201C /* verrevcmp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = verrevcmp.swift; sourceTree = "<group>"; };
 		F105321E244AD85E0042201C /* dpkgversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dpkgversion.swift; sourceTree = "<group>"; };
 		F107EB61230D195A002B8C20 /* Dusk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dusk.swift; sourceTree = "<group>"; };
@@ -2201,14 +2197,6 @@
 			path = DepictionMarkdownView;
 			sourceTree = "<group>";
 		};
-		F103401B2137459A00B9180B /* InstallViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F103401E213746B600B9180B /* InstallViewController.xib */,
-			);
-			path = InstallViewController;
-			sourceTree = "<group>";
-		};
 		F10BD1D12114FFEB003678B8 /* DepictionTableTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2600,7 +2588,6 @@
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
 				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
 				F16C967220B7649E001408E9 /* FeaturedViewController */,
-				F103401B2137459A00B9180B /* InstallViewController */,
 				F1D3494121191DF700CADF87 /* NewsViewController */,
 				F1B99F0220DBE5C700374C27 /* PackageListViewController */,
 				F1D113F520DC5EA100C8F051 /* PackageViewController */,
@@ -3230,7 +3217,6 @@
 				E12818F826BBFAA500D2553B /* FlaggedSourceWarningViewController.xib in Resources */,
 				E12818F926BBFAA500D2553B /* Procursus~ipad@2x.png in Resources */,
 				E12818FA26BBFAA500D2553B /* MangoCrazy@2x.png in Resources */,
-				E12818FB26BBFAA500D2553B /* InstallViewController.xib in Resources */,
 				E12818FC26BBFAA500D2553B /* InstalledContentsViewController.xib in Resources */,
 				E12818FD26BBFAA500D2553B /* SugarFree~ipad@2x.png in Resources */,
 				E12818FE26BBFAA500D2553B /* Procursus~ipad@3x.png in Resources */,
@@ -3322,7 +3308,6 @@
 				E1D2E2DA26C3383D00444437 /* Mixture@3x.png in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				E1D2E2D226C3383D00444437 /* Midnight@3x.png in Resources */,
-				F139D13622EA9209007F5C0D /* InstallViewController.xib in Resources */,
 				E13BD77E2645E1AA006A5EF2 /* Nightly@2x.png in Resources */,
 				F139D14022EA9209007F5C0D /* InstalledContentsViewController.xib in Resources */,
 				E13BD77A2645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
@@ -3385,7 +3370,6 @@
 				493B240626098169007D605F /* Procursus~ipad@2x.png in Resources */,
 				49CE7CD32607F9A400A20711 /* MangoCrazy@2x.png in Resources */,
 				E1D2E2DB26C3383D00444437 /* Mixture~ipad@3x.png in Resources */,
-				F1034020213746B600B9180B /* InstallViewController.xib in Resources */,
 				E1D2E2D126C3383D00444437 /* Midnight@3x.png in Resources */,
 				F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */,
 				49CE7CD72607F9A400A20711 /* SugarFree~ipad@2x.png in Resources */,
