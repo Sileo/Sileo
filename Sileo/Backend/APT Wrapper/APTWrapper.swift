@@ -189,8 +189,8 @@ class APTWrapper {
             pipeObject.statusFdCompletion = { str in
                 let statusLines = str.components(separatedBy: "\n")
                 for status in statusLines {
-                    let (statusValid, statusProgress, statusReadable) = self.installProgress(aptStatus: status)
-                    progressCallback(statusProgress, statusValid, statusReadable)
+                    let (statusValid, statusProgress, statusReadable, package) = self.installProgress(aptStatus: status)
+                    progressCallback(statusProgress, statusValid, statusReadable, package)
                 }
             }
             pipeObject.pipeCompletion = { status in
