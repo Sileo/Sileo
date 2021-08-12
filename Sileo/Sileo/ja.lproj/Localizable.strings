@@ -72,7 +72,7 @@
 "Package_Search.Placeholder" = "パッケージを検索";
 "Sort_Name" = "名前";
 "Sort_Date" = "更新日時";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "インストール済みファイルサイズ";
 "Sort_By" = "並べ替え:";
 
 "Package_Unavailable" = "パッケージを利用できません";
@@ -88,7 +88,7 @@
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "Remove";
+"Remove" = "削除";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -152,8 +152,8 @@
 "Cache_Size" = "キャッシュサイズ";
 "Clear_Cache" = "ネットワークのキャッシュをクリア";
 "Clear_Cache_Message" = "ネットワークのキャッシュをクリアしますか？これにより%@の容量を解放します。";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
+"Language" = "言語";
+"Use_System_Language" = "システム言語を使用";
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
