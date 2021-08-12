@@ -11,19 +11,40 @@ import Foundation
 class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     public var package: DownloadPackage? = nil {
         didSet {
-            self.title = package?.package.name
-            if let url = package?.package.icon {
+            internalPackage = package?.package
+        }
+    }
+    
+    public var internalPackage: Package? {
+        didSet {
+            self.title = internalPackage?.name
+            if let url = internalPackage?.icon {
                 self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
                     if refresh,
                        let strong = self,
                        let image = image,
-                       url == strong.package?.package.icon {
+                       url == strong.internalPackage?.icon {
                         DispatchQueue.main.async {
                             strong.icon = image
                         }
                     }
                 } ?? UIImage(named: "Tweak Icon")
+            } else {
+                self.icon = UIImage(named: "Tweak Icon")
             }
+        }
+    }
+    
+    public var operation: DownloadsTableViewController.InstallOperation? {
+        didSet {
+            internalPackage = operation?.package
+            var progress = operation?.progress ?? 0.0
+            progress = (progress / 1.0) * 0.3
+            self.progress = progress + 0.7
+            if let status = operation?.status {
+                subtitle = status
+            }
+            operation?.cell = self
         }
     }
     
@@ -33,10 +54,16 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        operation?.cell = nil
+    }
+    
     public func updateDownload() {
         retryButton.isHidden = true
         if let download = download {
-            self.progress = download.progress
+            self.progress = (download.progress / 1.0) * 0.7
             if download.success {
                 self.subtitle = String(localizationKey: "Ready_Status")
             } else if let message = download.message {
@@ -110,7 +137,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
         self.contentView.addSubview(retryButton)

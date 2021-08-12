@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InstallViewController" customModule="Sileo" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicatorView" destination="19i-8J-rmy" id="A89-Ib-HFJ"/>
                 <outlet property="completeButton" destination="p1C-xt-2qL" id="PCg-l3-5Ba"/>
                 <outlet property="completeLaterButton" destination="Xdn-dp-JBi" id="6Hv-Ym-Rah"/>
                 <outlet property="detailsTextView" destination="aIR-zp-JS7" id="xKj-Ke-swZ"/>
                 <outlet property="detailsView" destination="A3v-PE-MEb" id="hWW-eg-xbs"/>
                 <outlet property="hideDetailsButton" destination="n5a-hA-hXj" id="mcb-Qh-ADA"/>
-                <outlet property="progressView" destination="ESx-ag-uUx" id="9US-d2-iYh"/>
                 <outlet property="showDetailsButton" destination="7Ah-cE-N79" id="bpa-y8-yoi"/>
-                <outlet property="teleprompterView" destination="ELx-1T-9zc" id="iEZ-ul-xNI"/>
+                <outlet property="tableView" destination="r99-Ww-yFa" id="0Kk-kd-D9j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,29 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELx-1T-9zc">
-                    <rect key="frame" x="27.5" y="243.5" width="320" height="180"/>
-                    <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ESx-ag-uUx">
-                            <rect key="frame" x="52" y="168" width="236" height="4"/>
-                        </progressView>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="19i-8J-rmy">
-                            <rect key="frame" x="16" y="136" width="20" height="20"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="ESx-ag-uUx" secondAttribute="trailing" constant="32" id="4JF-Xt-Ef9"/>
-                        <constraint firstAttribute="bottom" secondItem="19i-8J-rmy" secondAttribute="bottom" constant="24" id="7Lr-hf-fdK"/>
-                        <constraint firstAttribute="bottom" secondItem="ESx-ag-uUx" secondAttribute="bottom" constant="8" id="E7K-3D-81I"/>
-                        <constraint firstItem="ESx-ag-uUx" firstAttribute="leading" secondItem="ELx-1T-9zc" secondAttribute="leading" constant="52" id="Zx8-jI-9q6"/>
-                        <constraint firstAttribute="height" constant="180" id="bxr-6H-Fsx"/>
-                        <constraint firstItem="19i-8J-rmy" firstAttribute="leading" secondItem="ELx-1T-9zc" secondAttribute="leading" constant="16" id="j4h-ij-Rcc"/>
-                        <constraint firstAttribute="width" constant="320" id="m1s-aL-3HZ"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-xt-2qL" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
-                    <rect key="frame" x="20" y="585" width="335" height="50"/>
+                    <rect key="frame" x="20" y="602" width="335" height="50"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="hUV-0F-01k"/>
@@ -63,14 +41,17 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ah-cE-N79">
-                    <rect key="frame" x="143" y="431.5" width="89" height="30"/>
+                    <rect key="frame" x="20" y="492" width="335" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="5wo-Y6-vg9"/>
+                    </constraints>
                     <state key="normal" title="Show Details"/>
                     <connections>
                         <action selector="showDetails:" destination="-1" eventType="touchUpInside" id="sac-iF-ucJ"/>
                     </connections>
                 </button>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdn-dp-JBi" userLabel="Later" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
-                    <rect key="frame" x="20" y="520" width="335" height="50"/>
+                    <rect key="frame" x="20" y="537" width="335" height="50"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="zRD-Ls-oWc"/>
@@ -82,24 +63,29 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="pleaseJustLetMeBeClearThankYouLoveYouBye" value="YES"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="completeLaterButtonTapped:" destination="-1" eventType="touchUpInside" id="CmT-fB-jfA"/>
-                    </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r99-Ww-yFa">
+                    <rect key="frame" x="0.0" y="32" width="375" height="445"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="r99-Ww-yFa" secondAttribute="trailing" id="8KF-q7-tnd"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Xdn-dp-JBi" secondAttribute="trailing" constant="20" id="CzE-Ka-e3u"/>
+                <constraint firstItem="Xdn-dp-JBi" firstAttribute="top" secondItem="7Ah-cE-N79" secondAttribute="bottom" constant="15" id="IAI-A8-JXd"/>
                 <constraint firstItem="p1C-xt-2qL" firstAttribute="top" secondItem="Xdn-dp-JBi" secondAttribute="bottom" constant="15" id="Pie-4G-37U"/>
                 <constraint firstItem="7Ah-cE-N79" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="STb-tS-XH7"/>
+                <constraint firstItem="7Ah-cE-N79" firstAttribute="top" secondItem="r99-Ww-yFa" secondAttribute="bottom" constant="15" id="Y49-mp-avr"/>
+                <constraint firstItem="r99-Ww-yFa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="32" id="YQA-Wx-d5c"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="p1C-xt-2qL" secondAttribute="trailing" constant="20" id="a2s-tw-JmU"/>
-                <constraint firstItem="ELx-1T-9zc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kTp-hZ-Y3s"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="p1C-xt-2qL" secondAttribute="bottom" constant="32" id="mE7-Py-kdk"/>
-                <constraint firstItem="7Ah-cE-N79" firstAttribute="top" secondItem="ELx-1T-9zc" secondAttribute="bottom" constant="8" id="nVu-8z-iSy"/>
-                <constraint firstItem="ELx-1T-9zc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o3q-Zd-8kk"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="p1C-xt-2qL" secondAttribute="bottom" constant="15" id="mE7-Py-kdk"/>
                 <constraint firstItem="Xdn-dp-JBi" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="qwH-ai-ILk"/>
+                <constraint firstItem="7Ah-cE-N79" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="uRw-Kh-t70"/>
                 <constraint firstItem="p1C-xt-2qL" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="vhB-mN-MxQ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="7Ah-cE-N79" secondAttribute="trailing" constant="20" id="vyf-NH-811"/>
+                <constraint firstItem="r99-Ww-yFa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="zgH-HD-aRc"/>
             </constraints>
             <point key="canvasLocation" x="706" y="154"/>
         </view>
@@ -144,6 +130,9 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="tableCellGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

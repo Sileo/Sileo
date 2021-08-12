@@ -12,7 +12,7 @@ import LNPopupController
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     static var singleton: TabBarController?
     private var downloadsController: UINavigationController?
-    private var popupIsPresented = false
+    private(set) public var popupIsPresented = false
     private var popupLock = DispatchSemaphore(value: 1)
     private var shouldSelectIndex = -1
     private var fuckedUpSources = false

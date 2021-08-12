@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadsTableViewController" customModule="Sileo" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="KuX-Le-H3l" id="16m-ge-uUj"/>
+                <outlet property="completeButton" destination="bek-1B-uNa" id="65b-3u-4Oe"/>
+                <outlet property="completeLaterButton" destination="1Gm-L4-zfQ" id="29l-Cs-D6b"/>
                 <outlet property="confirmButton" destination="hbf-91-V4N" id="9fS-G9-FPU"/>
+                <outlet property="detailsTextView" destination="aIR-zp-JS7" id="h4p-gj-4sZ"/>
+                <outlet property="detailsView" destination="A3v-PE-MEb" id="hGF-HO-HUD"/>
+                <outlet property="doneToTop" destination="rha-rD-56N" id="Qen-rk-hjs"/>
                 <outlet property="footerView" destination="pjN-7s-mF9" id="RbK-Ma-Gbg"/>
                 <outlet property="footerViewHeight" destination="K05-0C-3LC" id="Uzg-6M-emy"/>
+                <outlet property="hideDetailsButton" destination="n5a-hA-hXj" id="EzJ-CM-Rqd"/>
+                <outlet property="laterHeight" destination="Wt6-ko-BrE" id="r4H-dx-EMA"/>
+                <outlet property="showDetailsButton" destination="sPt-Lm-0nf" id="eNl-L5-U0r"/>
                 <outlet property="tableView" destination="KRs-py-Nfv" id="LlG-8q-Wfg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2Ja-mX-tSq"/>
             </connections>
@@ -34,7 +42,45 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjN-7s-mF9">
                     <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbf-91-V4N" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPt-Lm-0nf" userLabel="Show Details">
+                            <rect key="frame" x="20" y="15" width="335" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="zd0-AB-IMe"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="showDetails:" destination="-1" eventType="touchUpInside" id="NHB-du-ujQ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bek-1B-uNa" userLabel="Done" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                            <rect key="frame" x="20" y="125" width="335" height="50"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="z6p-38-JP2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="completeButtonTapped:" destination="-1" eventType="touchUpInside" id="fAq-OZ-Mts"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gm-L4-zfQ" userLabel="Later" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                            <rect key="frame" x="20" y="60" width="335" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Wt6-ko-BrE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="pleaseJustLetMeBeClearThankYouLoveYouBye" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="completeLaterButtonTapped:" destination="-1" eventType="touchUpInside" id="rRh-2c-Fie"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbf-91-V4N" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
                             <rect key="frame" x="20" y="15" width="335" height="50"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -48,7 +94,7 @@
                                 <action selector="confirmQueued:" destination="-1" eventType="touchUpInside" id="drK-cu-L5d"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-Le-H3l">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-Le-H3l">
                             <rect key="frame" x="20" y="80" width="335" height="33"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <state key="normal" title="Clear Queue"/>
@@ -58,19 +104,29 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="1Gm-L4-zfQ" firstAttribute="top" secondItem="sPt-Lm-0nf" secondAttribute="bottom" constant="15" id="0Yy-0t-77E"/>
+                        <constraint firstAttribute="trailing" secondItem="sPt-Lm-0nf" secondAttribute="trailing" constant="20" id="5XK-pi-CeB"/>
+                        <constraint firstItem="sPt-Lm-0nf" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="DnY-Ko-lef"/>
                         <constraint firstAttribute="trailing" secondItem="KuX-Le-H3l" secondAttribute="trailing" constant="20" id="H6X-AB-nMM"/>
                         <constraint firstItem="hbf-91-V4N" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="Hvh-RJ-VEE"/>
                         <constraint firstAttribute="height" id="K05-0C-3LC"/>
+                        <constraint firstItem="sPt-Lm-0nf" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="Pxf-Fo-8SX"/>
                         <constraint firstItem="hbf-91-V4N" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="TUG-m2-dVI"/>
+                        <constraint firstAttribute="trailing" secondItem="bek-1B-uNa" secondAttribute="trailing" constant="20" id="YSh-LR-2Ft"/>
+                        <constraint firstItem="bek-1B-uNa" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="d2t-uE-rA8"/>
                         <constraint firstAttribute="trailing" secondItem="hbf-91-V4N" secondAttribute="trailing" constant="20" id="dR4-XQ-9rN"/>
                         <constraint firstItem="KuX-Le-H3l" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="jYs-Ng-FWQ"/>
                         <constraint firstItem="hbf-91-V4N" firstAttribute="centerX" secondItem="pjN-7s-mF9" secondAttribute="centerX" id="lgJ-Bn-Qs5"/>
+                        <constraint firstItem="1Gm-L4-zfQ" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="nkX-3I-RVv"/>
+                        <constraint firstAttribute="trailing" secondItem="1Gm-L4-zfQ" secondAttribute="trailing" constant="20" id="pep-6M-sxJ"/>
                         <constraint firstItem="KuX-Le-H3l" firstAttribute="centerX" secondItem="pjN-7s-mF9" secondAttribute="centerX" id="qeW-Cs-bdO"/>
+                        <constraint firstItem="bek-1B-uNa" firstAttribute="top" secondItem="1Gm-L4-zfQ" secondAttribute="bottom" constant="15" id="rha-rD-56N"/>
                         <constraint firstItem="KuX-Le-H3l" firstAttribute="top" secondItem="hbf-91-V4N" secondAttribute="bottom" constant="15" id="yjI-qJ-aTJ"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
             <constraints>
                 <constraint firstItem="KRs-py-Nfv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IMx-ir-88S"/>
                 <constraint firstItem="KRs-py-Nfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KOk-Ml-Epx"/>
@@ -80,8 +136,51 @@
                 <constraint firstItem="KRs-py-Nfv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fv6-cd-mCC"/>
                 <constraint firstItem="pjN-7s-mF9" firstAttribute="top" secondItem="KRs-py-Nfv" secondAttribute="bottom" id="wdn-Vb-Qa1"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="78.5"/>
         </view>
+        <view contentMode="scaleToFill" id="A3v-PE-MEb">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-hA-hXj" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                    <rect key="frame" x="20" y="585" width="335" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gBt-2k-r0l"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="Hide Details">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="hideDetails:" destination="-1" eventType="touchUpInside" id="Pjw-qp-o6n"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIR-zp-JS7">
+                    <rect key="frame" x="16" y="0.0" width="343" height="577"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="XF6-Az-efD"/>
+            <color key="backgroundColor" red="0.11764705882352941" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="trailing" secondItem="aIR-zp-JS7" secondAttribute="trailing" constant="16" id="5Y2-ud-dyn"/>
+                <constraint firstItem="aIR-zp-JS7" firstAttribute="leading" secondItem="XF6-Az-efD" secondAttribute="leading" constant="16" id="Jrr-Nu-4rf"/>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="trailing" secondItem="n5a-hA-hXj" secondAttribute="trailing" constant="20" id="N4J-Ky-ask"/>
+                <constraint firstItem="aIR-zp-JS7" firstAttribute="top" secondItem="XF6-Az-efD" secondAttribute="top" id="XVb-F6-vYj"/>
+                <constraint firstItem="n5a-hA-hXj" firstAttribute="leading" secondItem="XF6-Az-efD" secondAttribute="leading" constant="20" id="bbT-hX-S2r"/>
+                <constraint firstItem="n5a-hA-hXj" firstAttribute="top" secondItem="aIR-zp-JS7" secondAttribute="bottom" constant="8" id="cVo-M3-L5z"/>
+                <constraint firstItem="XF6-Az-efD" firstAttribute="bottom" secondItem="n5a-hA-hXj" secondAttribute="bottom" constant="32" id="twU-AS-FMA"/>
+            </constraints>
+            <point key="canvasLocation" x="-650" y="84"/>
+        </view>
     </objects>
+    <resources>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -82,22 +82,21 @@ class APTWrapper {
         return dictionary
     }
 
-    public class func installProgress(aptStatus: String) -> (Bool, Double, String) {
+    public class func installProgress(aptStatus: String) -> (Bool, Double, String, String) {
         let statusParts = aptStatus.components(separatedBy: ":")
         if statusParts.count < 4 {
-            return (false, 0, "")
+            return (false, 0, "", "")
         }
         if statusParts[0] != "pmstatus" {
-            return (false, 0, "")
+            return (false, 0, "", "")
         }
 
-        // let packageName = statusParts[1]
-
+        let packageName = statusParts[1]
         guard let rawProgress = Double(statusParts[2]) else {
-            return (false, 0, "")
+            return (false, 0, "", "")
         }
         let statusReadable = statusParts[3]
-        return (true, rawProgress, statusReadable)
+        return (true, rawProgress, statusReadable, packageName)
     }
 
     public class func verifySignature(key: String, data: String, error: inout String) -> Bool {
@@ -155,7 +154,7 @@ class APTWrapper {
 
     public class func performOperations(installs: [DownloadPackage],
                                         removals: [DownloadPackage],
-                                        progressCallback: @escaping (Double, Bool, String) -> Void,
+                                        progressCallback: @escaping (Double, Bool, String, String) -> Void,
                                         outputCallback: @escaping (String, Int) -> Void,
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
         var arguments = [CommandPath.aptget, "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
@@ -367,8 +366,8 @@ class APTWrapper {
 
                     let statusLines = str.components(separatedBy: "\n")
                     for status in statusLines {
-                        let (statusValid, statusProgress, statusReadable) = self.installProgress(aptStatus: status)
-                        progressCallback(statusProgress, statusValid, statusReadable)
+                        let (statusValid, statusProgress, statusReadable, package) = self.installProgress(aptStatus: status)
+                        progressCallback(statusProgress, statusValid, statusReadable, package)
                     }
                 }
             }
@@ -440,7 +439,6 @@ class APTWrapper {
             
             var refreshSileo = false
             if runUICache {
-                progressCallback(99, true, "Updating icon cache...")
                 outputCallback("Updating Icon Cache\n", debugFD)
 
                 var newApps = dictionaryOfScannedApps()

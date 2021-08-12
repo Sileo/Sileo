@@ -25,7 +25,6 @@ class AltIconTableViewController: UITableViewController {
         #else
         let path = Bundle.main.bundleURL.appendingPathComponent(name + "@2x.png")
         #endif
-        NSLog("[Aemulo] Path = \(path)")
         return UIImage(contentsOfFile: path.path) ?? UIImage()
     }
     

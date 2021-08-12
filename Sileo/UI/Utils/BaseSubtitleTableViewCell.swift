@@ -69,7 +69,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
         
         self.textLabel?.frame = textLabelFrame
         self.detailTextLabel?.frame = detailTextLabelFrame
-        progressView.frame = CGRect(x: progressX, y: self.contentView.bounds.height - 2, width: self.contentView.bounds.width - progressX, height: 2)
+        progressView.frame = CGRect(x: progressX, y: self.contentView.bounds.height - 2, width: self.contentView.bounds.width - (progressX * 2), height: 2)
     }
     
     public var title: String? = nil {

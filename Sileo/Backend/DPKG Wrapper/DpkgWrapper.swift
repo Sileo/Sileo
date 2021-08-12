@@ -82,7 +82,7 @@ class DpkgWrapper {
         return interrupted
     }
     
-    public class func getArchitectures() -> [String] {
+    public static var getArchitectures: [String] = {
         #if arch(x86_64) && !targetEnvironment(simulator)
         let defaultArchitectures = ["darwin-amd64"]
         #elseif arch(arm64) && os(macOS)
@@ -99,7 +99,7 @@ class DpkgWrapper {
         }
         return outputString.components(separatedBy: CharacterSet(charactersIn: "\n"))
         #endif
-    }
+    }()
     
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
         guard let dpkgCmp = try? compareVersions(version, greaterThan) else {

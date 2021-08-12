@@ -396,7 +396,7 @@ final class RepoManager {
     }
 
     func cacheFile(named name: String, for repo: Repo) -> URL {
-        let arch = DpkgWrapper.getArchitectures().first ?? ""
+        let arch = DpkgWrapper.getArchitectures.first ?? ""
         let prefix = cachePrefix(for: repo)
         if !repo.isFlat && name == "Packages" {
             return prefix
@@ -584,7 +584,7 @@ final class RepoManager {
             fixLists()
         }
         var reposUpdated = 0
-        let dpkgArchitectures = DpkgWrapper.getArchitectures()
+        let dpkgArchitectures = DpkgWrapper.getArchitectures
         let updateGroup = DispatchGroup()
 
         var backgroundIdentifier: UIBackgroundTaskIdentifier?

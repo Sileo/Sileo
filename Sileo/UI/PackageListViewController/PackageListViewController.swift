@@ -424,10 +424,10 @@ extension PackageListViewController: UICollectionViewDataSource {
             fatalError("This is what we call a pro gamer move, where we fatalError because of something horrendous")
         }
         switch findWhatFuckingSectionThisIs(indexPath.section) {
-        case .canister: cell.provisionalTarget = provisionalPackages[indexPath.row]; cell.targetPackage = nil
-        case .ignoredUpdates: cell.targetPackage = ignoredUpdates[indexPath.row]; cell.provisionalTarget = nil
-        case .packages, .reallyBoringList: cell.targetPackage = packages[indexPath.row]; cell.provisionalTarget = nil
-        case .updates: cell.targetPackage = availableUpdates[indexPath.row]; cell.provisionalTarget = nil
+        case .canister: cell.provisionalTarget = provisionalPackages[safe: indexPath.row]; cell.targetPackage = nil
+        case .ignoredUpdates: cell.targetPackage = ignoredUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
+        case .packages, .reallyBoringList: cell.targetPackage = packages[safe: indexPath.row]; cell.provisionalTarget = nil
+        case .updates: cell.targetPackage = availableUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
         }
         return cell
     }
@@ -662,7 +662,6 @@ extension PackageListViewController: UISearchResultsUpdating {
     
         if searchBar.text?.isEmpty ?? true {
             self.searchCache = [:]
-            
             if showSearchField {
                 packages = []
                 provisionalPackages = []
@@ -730,7 +729,6 @@ extension PackageListViewController: UISearchResultsUpdating {
                 }
             }
    
-            self.packages = packages
             self.updatingCount -= 1
             self.mutexLock.signal()
             
@@ -740,6 +738,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                 
                 if self.updatingCount == 0 && self.refreshEnabled {
                     UIView.performWithoutAnimation {
+                        self.packages = packages
                         self.collectionView?.reloadData()
                     }
                 }
@@ -747,6 +746,12 @@ extension PackageListViewController: UISearchResultsUpdating {
                 self.mutexLock.signal()
             }
         }
+    }
+}
+
+extension Collection {
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
 

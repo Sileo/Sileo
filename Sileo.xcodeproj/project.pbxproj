@@ -208,7 +208,6 @@
 		E128189126BBFAA500D2553B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBD0035240C31B3008E11B2 /* NewsViewController.swift */; };
 		E128189226BBFAA500D2553B /* DepictionMarkdownViewFast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */; };
 		E128189326BBFAA500D2553B /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
-		E128189426BBFAA500D2553B /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */; };
 		E128189526BBFAA500D2553B /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E128189626BBFAA500D2553B /* InstalledContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE7822F76CDE004BAA05 /* InstalledContentsTableViewCell.swift */; };
 		E128189726BBFAA500D2553B /* InstalledContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE7222F76B63004BAA05 /* InstalledContentsViewController.swift */; };
@@ -772,9 +771,7 @@
 		F1DB3BCC22D57BD9008FCFA1 /* PackageListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB3BCB22D57BD9008FCFA1 /* PackageListHeader.swift */; };
 		F1DB3BCF22D58200008FCFA1 /* SourceErrorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB3BCE22D58200008FCFA1 /* SourceErrorsViewController.swift */; };
 		F1DD3CCD231118A500D86A52 /* APTWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCC231118A500D86A52 /* APTWrapper.swift */; };
-		F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */; };
 		F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCC231118A500D86A52 /* APTWrapper.swift */; };
-		F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */; };
 		F1DD3D1B2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
 		F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
 		F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
@@ -1420,7 +1417,6 @@
 		F1DB3BCB22D57BD9008FCFA1 /* PackageListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListHeader.swift; sourceTree = "<group>"; };
 		F1DB3BCE22D58200008FCFA1 /* SourceErrorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceErrorsViewController.swift; sourceTree = "<group>"; };
 		F1DD3CCC231118A500D86A52 /* APTWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTWrapper.swift; sourceTree = "<group>"; };
-		F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
 		F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDepictionScraper.swift; sourceTree = "<group>"; };
 		F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLScraperJSInterface.swift; sourceTree = "<group>"; };
 		F1EC3E5422767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2208,7 +2204,6 @@
 		F103401B2137459A00B9180B /* InstallViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F1DD3CCE2311C5CA00D86A52 /* InstallViewController.swift */,
 				F103401E213746B600B9180B /* InstallViewController.xib */,
 			);
 			path = InstallViewController;
@@ -3732,7 +3727,6 @@
 				E128189126BBFAA500D2553B /* NewsViewController.swift in Sources */,
 				E128189226BBFAA500D2553B /* DepictionMarkdownViewFast.swift in Sources */,
 				E128189326BBFAA500D2553B /* SourcesTableViewFooter.swift in Sources */,
-				E128189426BBFAA500D2553B /* InstallViewController.swift in Sources */,
 				E128189526BBFAA500D2553B /* CanisterResolver.swift in Sources */,
 				E128189626BBFAA500D2553B /* InstalledContentsTableViewCell.swift in Sources */,
 				E128189726BBFAA500D2553B /* InstalledContentsViewController.swift in Sources */,
@@ -3948,7 +3942,6 @@
 				FBBD003D240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
 				F1A116AC23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
-				F1DD3CD123132D4100D86A52 /* InstallViewController.swift in Sources */,
 				F13AEE7A22F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				FB6F3D3524AA68C700E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F13AEE7422F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,
@@ -4128,7 +4121,6 @@
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
 				E1F10B1E2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */,
-				F1DD3CCF2311C5CA00D86A52 /* InstallViewController.swift in Sources */,
 				E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */,
 				F13AEE7922F76CDE004BAA05 /* InstalledContentsTableViewCell.swift in Sources */,
 				F13AEE7322F76B63004BAA05 /* InstalledContentsViewController.swift in Sources */,

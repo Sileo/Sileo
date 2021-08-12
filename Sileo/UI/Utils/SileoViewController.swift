@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SileoViewController: UIViewController {
+public class SileoViewController: UIViewController {
     var statusBarStyle: UIStatusBarStyle = .default {
         didSet {
             var style = statusBarStyle
@@ -24,7 +24,7 @@ class SileoViewController: UIViewController {
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
         if statusBarStyle == .default {
             if SileoThemeManager.shared.currentTheme.preferredUserInterfaceStyle == .dark {
                 return .lightContent
