@@ -166,8 +166,14 @@ extension NewsViewController { // Get Data
                 self.outOfStamps = true
                 self.isLoading = false
                 DispatchQueue.main.async {
-                    self.collectionView.isHidden = false
-                    self.activityIndicatorView.stopAnimating()
+                    if self.activityIndicatorView.isAnimating {
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.activityIndicatorView.alpha = 0
+                        }, completion: { _ in
+                            self.collectionView.isHidden = false
+                            self.activityIndicatorView.stopAnimating()
+                        })
+                    }
                 }
                 return
             }
@@ -176,6 +182,16 @@ extension NewsViewController { // Get Data
             if timestampsWeCareAbout.isEmpty {
                 self.outOfStamps = true
                 self.isLoading = false
+                DispatchQueue.main.async {
+                    if self.activityIndicatorView.isAnimating {
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.activityIndicatorView.alpha = 0
+                        }, completion: { _ in
+                            self.collectionView.isHidden = false
+                            self.activityIndicatorView.stopAnimating()
+                        })
+                    }
+                }
                 return
             }
             // Ok so we've got a list of timestamps we haven't bothered to load yet
