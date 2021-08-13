@@ -17,8 +17,9 @@ final class Download {
     var totalBytesWritten = Int64(0)
     var totalBytesExpectedToWrite = Int64(0)
     var success = false
-    var queued = true
+    var queued = false
     var completed = false
+    var started = false
     var message: String?
     
     init(package: Package) {

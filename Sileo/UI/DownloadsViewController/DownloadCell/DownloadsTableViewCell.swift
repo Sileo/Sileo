@@ -72,13 +72,16 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
                 !failureReason.isEmpty {
                 retryButton.isHidden = false
                 self.subtitle = String(format: String(localizationKey: "Error_Indicator", type: .error), failureReason)
-            } else if download.queued {
-                self.subtitle = String(localizationKey: "Queued_Package_Status")
-            } else {
+            } else if download.started {
                 self.subtitle = String(format: String(localizationKey: "Download_Progress"),
                                        ByteCountFormatter.string(fromByteCount: Int64(download.totalBytesWritten), countStyle: .file),
                                        ByteCountFormatter.string(fromByteCount: Int64(download.totalBytesExpectedToWrite), countStyle: .file))
+            } else {
+                self.subtitle = String(localizationKey: "Queued_Package_Status")
             }
+        } else if shouldHaveDownload {
+            self.subtitle = String(localizationKey: "Queued_Package_Status")
+            self.progress = 0
         } else {
             self.progress = 0
             self.subtitle = String(localizationKey: errorDescription ?? (shouldHaveDownload ? "Download_Starting" : "Ready_Status"))

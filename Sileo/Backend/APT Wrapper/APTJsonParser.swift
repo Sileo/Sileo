@@ -6,11 +6,20 @@
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
-enum APTParserErrors: Error {
+enum APTParserErrors: LocalizedError {
     case missingSileoConf
     case blankRequest
     case failedDataEncoding
     case blankJsonOutput
+    
+    var errorDescription: String? {
+        switch self {
+        case .blankJsonOutput: return "APT was unable to find this package. Please try refreshing your sources"
+        case .failedDataEncoding: return "APT returned an invalid response that cannot be parsed."
+        case .missingSileoConf: return "Your Sileo install is incomplete. Please reinstall"
+        case .blankRequest: return "Internal Error: Blank Request sent for packages"
+        }
+    }
 }
 
 struct APTOutput {

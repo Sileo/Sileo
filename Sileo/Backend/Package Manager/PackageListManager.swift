@@ -41,6 +41,9 @@ final class PackageListManager {
     
     init() {
         self.installedPackages = PackageListManager.readPackages(installed: true)
+        DownloadManager.aptQueue.async {
+            DependencyResolverAccelerator.shared.preflightInstalled()
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             let repoMan = RepoManager.shared
             var repoList = repoMan.repoList

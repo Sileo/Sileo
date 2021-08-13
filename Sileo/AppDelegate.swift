@@ -18,7 +18,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = MacRootWrapper.shared
         #endif
         SileoThemeManager.shared.updateUserInterface()
-        // being parsing sources files
+        // Begin parsing sources files
         _ = RepoManager.shared
         // Init the local database
         _ = PackageListManager.shared
@@ -35,7 +35,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         tabBarController.delegate = self
         tabBarController.tabBar._blurEnabled = true
         tabBarController.tabBar.tag = WHITE_BLUR_TAG
-                
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             let updatesPrompt = UserDefaults.standard.bool(forKey: "updatesPrompt")
             if !updatesPrompt {
@@ -253,7 +253,6 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                 PackageListManager.shared.upgradeAll(completion: {
                     if UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false) {
                         let downloadMan = DownloadManager.shared
-                        downloadMan.startUnqueuedDownloads()
                         downloadMan.reloadData(recheckPackages: false)
                     }
                     

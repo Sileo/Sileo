@@ -44,19 +44,6 @@ final class AmyNetworkResolver {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
         }
-        if let contents = try? cacheDirectory.contents(),
-           !contents.isEmpty {
-            var yes = DateComponents()
-            yes.day = -7
-            let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
-            for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
-                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
-                if weekOld > date {
-                    try? FileManager.default.removeItem(atPath: cached.path)
-                }
-            }
-        }
         if !downloadCache.dirExists {
             do {
                 try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: true, attributes: nil)
@@ -64,10 +51,27 @@ final class AmyNetworkResolver {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
         }
-        if let contents = try? downloadCache.contents(),
-           !contents.isEmpty {
-            for cached in contents {
-                try? FileManager.default.removeItem(atPath: cached.path)
+        
+        DispatchQueue.global(qos: .utility).async {
+            if let contents = try? self.cacheDirectory.contents(),
+               !contents.isEmpty {
+                var yes = DateComponents()
+                yes.day = -7
+                let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
+                for cached in contents {
+                    if cached.path == self.downloadCache.path { continue }
+                    guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
+                          let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
+                    if weekOld > date {
+                        try? FileManager.default.removeItem(atPath: cached.path)
+                    }
+                }
+            }
+            if let contents = try? self.downloadCache.contents(),
+               !contents.isEmpty {
+                for cached in contents {
+                    try? FileManager.default.removeItem(atPath: cached.path)
+                }
             }
         }
     }

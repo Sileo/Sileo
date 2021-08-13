@@ -160,9 +160,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func dismissPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
-            if let completion = completion {
-                completion()
-            }
+            completion?()
             return
         }
         
@@ -178,7 +176,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         updatePopup(completion: nil)
     }
     
-    func updatePopup(completion: (() -> Void)?) {
+    func updatePopup(completion: (() -> Void)? = nil, bypass: Bool = false) {
+        func hideRegardless() {
+            if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
+                downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
+                downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
+                self.presentPopup(completion: completion)
+            } else {
+                self.dismissPopup(completion: completion)
+            }
+        }
+        if bypass {
+            hideRegardless()
+            return
+        }
         let manager = DownloadManager.shared
         if manager.lockedForInstallation {
             downloadsController?.popupItem.title = String(localizationKey: "Installing_Package_Status")
@@ -190,9 +201,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.downloadingPackages())
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
-        } else if manager.queuedPackages() > 0 {
+        } else if manager.operationCount() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
-            downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.queuedPackages())
+            downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.operationCount())
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
         } else if manager.readyPackages() > 0 {
@@ -206,13 +217,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
-                downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
-                downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
-                self.presentPopup(completion: completion)
-            } else {
-                self.dismissPopup(completion: completion)
-            }
+            hideRegardless()
         }
     }
     

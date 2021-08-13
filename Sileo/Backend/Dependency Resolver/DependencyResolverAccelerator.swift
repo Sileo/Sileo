@@ -10,16 +10,14 @@ import Foundation
 
 class DependencyResolverAccelerator {
     public static let shared = DependencyResolverAccelerator()
-    private var dependencyLock = DispatchSemaphore(value: 1)
     private var partialRepoList: [URL: Set<Package>] = [:]
     private var packageList: Set<Package> = []
-    
-    private var preflightedRepoList: [URL: Set<Package>] = [:]
     private var preflightedRepos = false
     
     public func preflightInstalled() {
-        dependencyLock.wait()
-        
+        if Thread.isMainThread {
+            fatalError("Don't call things that will block the UI from the main thread")
+        }
         // Only call these once, waste of resources to constantly call
         // If the user deletes sileolists while the app is open, they're dumb
         #if targetEnvironment(simulator) || TARGET_SANDBOX
@@ -28,19 +26,13 @@ class DependencyResolverAccelerator {
         spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
         #endif
-        
-        preflightedRepos = false
-        
+                
         partialRepoList = [:]
         for depPackage in Array(PackageListManager.shared.installedPackages.values) {
             getDependenciesInternal(package: depPackage)
         }
-        
-        preflightedRepoList = partialRepoList
-        partialRepoList = [:]
-        
+                
         preflightedRepos = true
-        dependencyLock.signal()
     }
     
     private var depResolverPrefix: URL {
@@ -56,12 +48,10 @@ class DependencyResolverAccelerator {
     }
     
     public func getDependencies(install: [DownloadPackage], remove: [DownloadPackage]) throws {
-        if !preflightedRepos {
-            preflightInstalled()
+        if Thread.isMainThread {
+            fatalError("Don't call things that will block the UI from the main thread")
         }
         PackageListManager.shared.initWait()
-        dependencyLock.wait()
-        partialRepoList = preflightedRepoList
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
             return
@@ -106,11 +96,7 @@ class DependencyResolverAccelerator {
             } catch {
                 throw error
             }
-            
         }
-        
-        partialRepoList.removeAll()
-        dependencyLock.signal()
     }
     
     private func getDependenciesInternal(package: Package) {

@@ -138,23 +138,35 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func loadData() {
+        if Thread.isMainThread {
+            fatalError("Wtf are you doing")
+        }
         let manager = DownloadManager.shared
-        upgrades = manager.upgrades.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        installations = manager.installations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        uninstallations = manager.uninstallations.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        installdeps = manager.installdeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        uninstalldeps = manager.uninstalldeps.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        errors = manager.errors
+        upgrades = manager.upgrades.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installations = manager.installations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstallations = manager.uninstallations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        installdeps = manager.installdeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        uninstalldeps = manager.uninstalldeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        errors = manager.errors.raw
     }
     
     public func reloadData() {
-        self.loadData()
-        
-        self.tableView?.reloadData()
-        self.reloadControlsOnly()
+        DownloadManager.aptQueue.async { [self] in
+            self.loadData()
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
+                self.reloadControlsOnly()
+            }
+        }
     }
 
     public func reloadControlsOnly() {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.reloadControlsOnly()
+            }
+            return
+        }
         if isFinishedInstalling {
             cancelButton?.isHidden = true
             confirmButton?.isHidden = true
@@ -185,7 +197,7 @@ class DownloadsTableViewController: SileoViewController {
             completeLaterButton?.isHidden = true
         }
         let manager = DownloadManager.shared
-        if manager.queuedPackages() > 0 {
+        if manager.operationCount() > 0 && !manager.queueStarted {
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 128
                 self.footerView?.alpha = 1
@@ -197,14 +209,10 @@ class DownloadsTableViewController: SileoViewController {
             }
         }
         
-        if manager.readyPackages() >= manager.installingPackages() &&
-            manager.readyPackages() > 0 && manager.downloadingPackages() == 0 &&
-            manager.errors.isEmpty {
-            if !manager.lockedForInstallation {
-                manager.lockedForInstallation = true
-                transferToInstall()
-                TabBarController.singleton?.presentPopupController()
-            }
+        if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted {
+            manager.lockedForInstallation = true
+            transferToInstall()
+            TabBarController.singleton?.presentPopupController()
         }
         if manager.errors.isEmpty {
             self.confirmButton?.isEnabled = true
@@ -216,6 +224,12 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func reloadDownload(package: Package?) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [self] in
+                self.reloadDownload(package: package)
+            }
+            return
+        }
         guard let package = package else {
             return
         }
@@ -238,14 +252,19 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     @IBAction func cancelQueued(_ sender: Any?) {
-        DownloadManager.shared.cancelUnqueuedDownloads()
+        DownloadManager.shared.queueStarted = false
+        DownloadManager.aptQueue.async {
+            DownloadManager.shared.removeAllItems()
+            DownloadManager.shared.reloadData(recheckPackages: true)
+        }
         TabBarController.singleton?.dismissPopupController()
-        DownloadManager.shared.reloadData(recheckPackages: true)
+        TabBarController.singleton?.updatePopup(bypass: true)
     }
     
     @IBAction func confirmQueued(_ sender: Any?) {
-        DownloadManager.shared.startUnqueuedDownloads()
+        DownloadManager.shared.startMoreDownloads()
         DownloadManager.shared.reloadData(recheckPackages: false)
+        DownloadManager.shared.queueStarted = true
     }
     
     override func accessibilityPerformEscape() -> Bool {
@@ -338,11 +357,6 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     @IBAction func completeLaterButtonTapped(_ sender: Any?) {
-        DownloadManager.shared.lockedForInstallation = false
-        DownloadManager.shared.removeAllItems()
-        DownloadManager.shared.reloadData(recheckPackages: true)
-        TabBarController.singleton?.dismissPopupController()
-        
         isInstalling = false
         isFinishedInstalling = false
         returnButtonAction = .back
@@ -350,6 +364,15 @@ class DownloadsTableViewController: SileoViewController {
         hasErrored = false
         tableView?.setEditing(true, animated: true)
         self.actions.removeAll()
+        
+        DownloadManager.shared.lockedForInstallation = false
+        DownloadManager.aptQueue.async {
+            DownloadManager.shared.removeAllItems()
+            DownloadManager.shared.reloadData(recheckPackages: true)
+        }
+        DownloadManager.shared.queueStarted = false
+        TabBarController.singleton?.dismissPopupController()
+        TabBarController.singleton?.updatePopup(bypass: true)
     }
     
     func transform(attributedString: NSMutableAttributedString) -> NSMutableAttributedString {
@@ -662,10 +685,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
                 cell.package = array[indexPath.row]
                 cell.shouldHaveDownload = indexPath.section == 0 || indexPath.section == 2
                 cell.errorDescription = nil
-                cell.download = nil
-                if cell.shouldHaveDownload {
-                    cell.download = DownloadManager.shared.download(package: cell.package?.package.package ?? "")
-                }
+                cell.download = DownloadManager.shared.download(package: cell.package?.package.package ?? "")
             }
         }
         return cell
@@ -702,12 +722,15 @@ extension DownloadsTableViewController: UITableViewDelegate {
             case 0:
                 array = installations
                 queue = .installations
+                installations.remove(at: indexPath.row)
             case 1:
                 array = uninstallations
                 queue = .uninstallations
+                uninstallations.remove(at: indexPath.row)
             case 2:
                 array = upgrades
                 queue = .upgrades
+                upgrades.remove(at: indexPath.row)
             default:
                 break
             }
@@ -717,9 +740,7 @@ extension DownloadsTableViewController: UITableViewDelegate {
             
             let downloadManager = DownloadManager.shared
             downloadManager.remove(downloadPackage: array[indexPath.row], queue: queue)
-            self.loadData()
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
             downloadManager.reloadData(recheckPackages: true)
         }
     }

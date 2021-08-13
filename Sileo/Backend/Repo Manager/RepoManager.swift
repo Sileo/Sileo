@@ -11,7 +11,7 @@ import Foundation
 // swiftlint:disable:next type_body_length
 final class RepoManager {
     // This check is here because it's used in multiple places throughout the code
-    private final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    public final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
 
@@ -1126,9 +1126,10 @@ final class RepoManager {
 
             DispatchQueue.main.async {
                 if reposUpdated > 0 {
-                    DownloadManager.shared.repoRefresh()
-                    DependencyResolverAccelerator.shared.preflightInstalled()
-                    DownloadManager.shared.repoRefresh()
+                    DownloadManager.aptQueue.async {
+                        DownloadManager.shared.repoRefresh()
+                        DependencyResolverAccelerator.shared.preflightInstalled()
+                    }
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                     NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 }
