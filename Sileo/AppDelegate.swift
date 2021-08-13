@@ -86,72 +86,74 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        PackageListManager.shared.initWait()
-        
-        let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-        let currentPackages = PackageListManager.shared.allPackagesArray
-        if currentUpdates.isEmpty { return completionHandler(.newData) }
-        RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
-            let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-            let newPackages = PackageListManager.shared.allPackagesArray
-            if newPackages.isEmpty { return completionHandler(.newData) }
+        DispatchQueue.global(qos: .userInitiated).async {
+            PackageListManager.shared.initWait()
             
-            let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
-            if diffUpdates.count > 3 {
-                let content = UNMutableNotificationContent()
-                content.title = String(localizationKey: "Updates Available")
-                content.body = String(format: String(localizationKey: "New updates for %d packages are available"), diffUpdates.count)
-                content.badge = newUpdates.count as NSNumber
+            let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
+            let currentPackages = PackageListManager.shared.allPackagesArray
+            if currentUpdates.isEmpty { return completionHandler(.newData) }
+            RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
+                let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
+                let newPackages = PackageListManager.shared.allPackagesArray
+                if newPackages.isEmpty { return completionHandler(.newData) }
                 
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                
-                let request = UNNotificationRequest(identifier: "org.coolstar.sileo.updates", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            } else {
-                for package in diffUpdates {
+                let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
+                if diffUpdates.count > 3 {
                     let content = UNMutableNotificationContent()
-                    content.title = String(localizationKey: "New Update")
-                    content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
-                                          package.name ?? "",
-                                          ControlFileParser.authorName(string: package.author ?? ""),
-                                          package.version,
-                                          package.sourceRepo?.displayName ?? "")
+                    content.title = String(localizationKey: "Updates Available")
+                    content.body = String(format: String(localizationKey: "New updates for %d packages are available"), diffUpdates.count)
                     content.badge = newUpdates.count as NSNumber
                     
                     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
                     
-                    let request = UNNotificationRequest(identifier: "org.coolstar.sileo.update-\(package.package)",
-                                                        content: content,
-                                                        trigger: trigger)
+                    let request = UNNotificationRequest(identifier: "org.coolstar.sileo.updates", content: content, trigger: trigger)
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                } else {
+                    for package in diffUpdates {
+                        let content = UNMutableNotificationContent()
+                        content.title = String(localizationKey: "New Update")
+                        content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
+                                              package.name ?? "",
+                                              ControlFileParser.authorName(string: package.author ?? ""),
+                                              package.version,
+                                              package.sourceRepo?.displayName ?? "")
+                        content.badge = newUpdates.count as NSNumber
+                        
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                        
+                        let request = UNNotificationRequest(identifier: "org.coolstar.sileo.update-\(package.package)",
+                                                            content: content,
+                                                            trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    }
                 }
-            }
-            
-            let diffPackages = newPackages.filter { !currentPackages.contains($0) }
-            
-            let wishlist = WishListManager.shared.wishlist
-            for package in diffPackages {
-                if wishlist.contains(package.package) {
-                    let content = UNMutableNotificationContent()
-                    content.title = String(localizationKey: "New Update")
-                    content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
-                                          package.name ?? "",
-                                          ControlFileParser.authorName(string: package.author ?? ""),
-                                          package.version,
-                                          package.sourceRepo?.displayName ?? "")
-                    content.badge = newUpdates.count as NSNumber
-                    
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                    
-                    let request = UNNotificationRequest(identifier: "org.coolstar.sileo.update-\(package.package)",
-                                                        content: content,
-                                                        trigger: trigger)
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+                let diffPackages = newPackages.filter { !currentPackages.contains($0) }
+                
+                let wishlist = WishListManager.shared.wishlist
+                for package in diffPackages {
+                    if wishlist.contains(package.package) {
+                        let content = UNMutableNotificationContent()
+                        content.title = String(localizationKey: "New Update")
+                        content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
+                                              package.name ?? "",
+                                              ControlFileParser.authorName(string: package.author ?? ""),
+                                              package.version,
+                                              package.sourceRepo?.displayName ?? "")
+                        content.badge = newUpdates.count as NSNumber
+                        
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                        
+                        let request = UNNotificationRequest(identifier: "org.coolstar.sileo.update-\(package.package)",
+                                                            content: content,
+                                                            trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    }
                 }
+                completionHandler(.newData)
             }
-            
-            completionHandler(.newData)
         }
+        
     }
     
     func updateTintColor() {
@@ -203,7 +205,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController? else {
                         return
                     }
-                    featuredVc?.pushViewController(viewController, animated: true)
+                    featuredVc?.present(viewController, animated: true)
                     tabBarController.selectedIndex = 0
                 } else {
                     // presentModally ignored; we always present modally for an external URL open.
