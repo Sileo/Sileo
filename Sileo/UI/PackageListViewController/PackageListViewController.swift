@@ -201,7 +201,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                     self.navigationController?.tabBarItem.badgeValue = nil
                 }
                 
-                self.collectionView?.reloadData()
+                if let searchController = self.searchController {
+                    self.updateSearchResults(for: searchController)
+                }
             }
         }
     }
