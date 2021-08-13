@@ -12,13 +12,13 @@
 "Error_Indicator" = "Errore: %@";
 
 "No_Package.Title" = "Non è stato possibile trovare il pacchetto %@ nelle sorgenti al momento installate.";
-"No_Package.Body" = "Se è nuovo, aspetta che Sileo completi l'aggiornamento, dopo prova ancora. Cerca su internet per ricevere aiuto.";
+"No_Package.Body" = "Se è nuovo, aspetta che Sileo completi l'aggiornamento, dopo prova di nuovo. Cerca online per ulteriori aiuti.";
 
 "Invalid_URL.Title" = "URL non valido";
 
-"Download_Size_Mismatch" = "Le dimensioni previste erano %@, sono %@ invece.";
+"Download_Size_Mismatch" = "Le dimensioni previste erano %@, invece sono %@.";
 "Download_Failing_Status_Code" = "Non riuscito con lo stato %ld";
-"Download_Hash_Mismatch" = "Hash previsto %@, è %@ invece.";
+"Download_Hash_Mismatch" = "Hash previsto %@, ottenuto %@ invece.";
 "Untrusted_Package" = "Il pacchetto %@ non è attendibile e non può essere verificato.";
 
 "Insecure_Paid_Download" = "Gli URL per il download dei pacchetti a pagamento devono essere sicuri (HTTPS).";
