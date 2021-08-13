@@ -172,33 +172,33 @@
 "Payment_Provider_Sign_Out_Confirm.Title" = "Uscire da %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Non sarai più in grado di scaricare i pacchetti acquistati finché non effettui di nuovo l'accesso.";
 
-"Show_Install_Details" = "Mostra Dettagli";
-"Hide_Install_Details" = "Nascondi Dettagli";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Show_Install_Details" = "Mostrare i Dettagli";
+"Hide_Install_Details" = "Nascondere i Dettagli";
+"Open_In_Filza" = "Apri su Filza";
+"Copy_Path" = "Copiare il Percorso";
 
-"After_Install_Relaunch" = "Riavvia Sileo";
-"After_Install_Respring" = "Riavvia la SpringBoard";
-"After_Install_Reboot" = "Riavvia il Dispositivo";
-"After_Install_Relaunch_Later" = "Riavvia Sileo più tardi";
-"After_Install_Respring_Later" = "Riavvia la SpringBoard più tardi";
-"After_Install_Reboot_Later" = "Riavvia il Dispositivo più tardi";
+"After_Install_Relaunch" = "Riavviare Sileo";
+"After_Install_Respring" = "Riavviare la SpringBoard";
+"After_Install_Reboot" = "Riavviare il Dispositivo";
+"After_Install_Relaunch_Later" = "Riavviare Sileo più tardi";
+"After_Install_Respring_Later" = "Riavviare la SpringBoard più tardi";
+"After_Install_Reboot_Later" = "Riavviare il Dispositivo più tardi";
 
-"Dangerous_Repo.Title" = "Utente Pericolosa";
-"Dangerous_Repo.Body" = "Stai tentando di aggiungere una sorgente che è nota per essere dannosa per motivi come pirateria, contenuti illegali o malware. \n\nLe Sorgenti contrassegnate come dannosi spesso distribuiscono software con effetti inaspettati, sia sotto forma di pacchetti a pagamento messi a disposizione gratuitamente o altri pacchetti dannosi. Ciò può avere effetti duraturi sul dispositivo e sulla privacy, può anche compromettere la capacità di fare il jailbreak. Si consiglia di prestare la massima attenzione evitando software dannosi.";
-"Dangerous_Repo.Continue" = "Accetto i rischi, continua";
-"Dangerous_Repo.Cancel" = "Riportami al Sicuro";
-"Dangerous_Repo.Last_Chance.Title" = "Aggiungere la sorgente dannosa?";
-"Dangerous_Repo.Last_Chance.Body" = "Le Sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza. %@"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continua";
-"Dangerous_Repo.Last_Chance.Cancel" = "Torna Indietro";
+"Dangerous_Repo.Title" = "Sorgente Pericolosa";
+"Dangerous_Repo.Body" = "Stai tentando di aggiungere una sorgente che è nota per essere dannosa per motivi come pirateria, contenuti illegali o malware. \n\nLe Sorgenti contrassegnate come dannose spesso distribuiscono software con effetti imprevisti, sia sotto forma di pacchetti a pagamento messi a disposizione gratuitamente o altri pacchetti dannosi. Ciò può avere effetti duraturi sul dispositivo e sulla privacy, può anche compromettere la capacità di eseguire il jailbreak. Consigliamo di prestare la massima attenzione per evitare software dannosi.";
+"Dangerous_Repo.Continue" = "Accetto i rischi, continuare";
+"Dangerous_Repo.Cancel" = "Riportami al sicuro";
+"Dangerous_Repo.Last_Chance.Title" = "Aggiungere la Sorgente Dannosa?";
+"Dangerous_Repo.Last_Chance.Body" = "Le sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o di eseguire il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza. Sei sicuro di voler aggiungere %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continuare";
+"Dangerous_Repo.Last_Chance.Cancel" = "Tornare indietro";
 
 // All export-based strings
-"Export" = "Esporta";
-"Export_Packages" = "Vuoi esportare la lista dei tuoi pacchetti? Ciò copierà tutti i nomi dei pacchetti e le loro versioni negli appunti.";
-"Export_Sources" = "Vuoi esportare la lista delle tue sorgenti? Ciò copierà tutti gli URL delle sorgenti negli appunti.";
-"Export_Yes" = "Sì, copia.";
-"Export_No" = "No, annulla.";
+"Export" = "Esportare";
+"Export_Packages" = "Desideri esportare la lista dei tuoi pacchetti? Ciò copierà tutti i nomi dei pacchetti e le loro versioni.";
+"Export_Sources" = "Desideri esportare la lista delle tue sorgenti? Ciò copierà tutti gli URL delle sorgenti.";
+"Export_Yes" = "Sì, copiare.";
+"Export_No" = "No, annullare.";
 
 // Depcitions
-"View_Depiction" = "Mostra dettagli";
+"View_Depiction" = "Visualizzare la Descrizione";
