@@ -37,9 +37,10 @@ final class CanisterResolver {
         fetch?(false); return false
         #endif
         guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
-        if query.count <= 3,
-           savedSearch.contains(query) { fetch?(false); return false }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
+        guard query.count > 3,
+           !savedSearch.contains(query),
+           let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
         AmyNetworkResolver.dict(url: url) { [weak self] success, dict in
             guard let strong = self else { return }
             guard success,
