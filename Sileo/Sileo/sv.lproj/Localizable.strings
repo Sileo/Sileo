@@ -174,8 +174,8 @@
 
 "Show_Install_Details" = "Visa Detaljer";
 "Hide_Install_Details" = "Göm Detaljer";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Öppna i Filza";
+"Copy_Path" = "Kopiera Sökväg";
 
 "After_Install_Relaunch" = "Starta Om Sileo";
 "After_Install_Respring" = "Starta Om SpringBoard";
