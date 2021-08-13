@@ -20,6 +20,8 @@ final class PackageListManager {
         }
     }
     
+    private(set) var localPackages = [String: Package]()
+    
     private let initSemphaore = DispatchSemaphore(value: 0)
     public var isLoaded = false
     
@@ -459,7 +461,11 @@ final class PackageListManager {
     public func package(url: URL) -> Package? {
         let canonicalPath = (try? url.resourceValues(forKeys: [.canonicalPathKey]))?.canonicalPath
         let filePath = canonicalPath ?? url.path
-        return newestPackage(identifier: filePath, repoContext: nil)
+        let package = newestPackage(identifier: filePath, repoContext: nil)
+        if localPackages[filePath] == nil {
+            localPackages[filePath] = package
+        }
+        return package
     }
     
     public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil) -> [Package] {

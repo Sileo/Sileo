@@ -21,5 +21,5 @@ final class DownloadPackage: Hashable {
 }
 
 func == (lhs: DownloadPackage, rhs: DownloadPackage) -> Bool {
-    lhs.package.package == rhs.package.package
+    lhs.package.packageID == rhs.package.packageID
 }

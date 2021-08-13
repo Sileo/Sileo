@@ -265,11 +265,11 @@ final class DownloadManager {
                 // Get the download object, we don't want to create multiple
                 let download: Download
                 let package = dlPackage.package
-                if let tmp = downloads[package.package] {
+                if let tmp = downloads[package.packageID] {
                     download = tmp
                 } else {
                     download = Download(package: package)
-                    downloads[package.package] = download
+                    downloads[package.packageID] = download
                 }
                 
                 // Means download has already started / completed
@@ -400,9 +400,10 @@ final class DownloadManager {
         guard !(installationsAndUpgrades.isEmpty && uninstallations.isEmpty) else {
             return
         }
+        let all = (installationsAndUpgrades + uninstallations.raw).map { $0.package }
         do {
             // Run the dep accelerator for any packages that have not already been cared about
-            try DependencyResolverAccelerator.shared.getDependencies(install: installationsAndUpgrades, remove: uninstallations.raw)
+            try DependencyResolverAccelerator.shared.getDependencies(packages: all)
         } catch {
             throw error
         }
@@ -423,10 +424,7 @@ final class DownloadManager {
         for operation in aptOutput.operations where operation.type == .install {
             installIdentifiers.append(operation.packageID)
         }
-        for package in installations.raw where package.package.package.contains("/") {
-            installIdentifiers.removeAll { $0 == package.package.packageID }
-        }
-        
+
         // Get every package to be uninstalled
         var uninstallIdentifiers = [String]()
         for operation in aptOutput.operations where operation.type == .remove {
@@ -442,11 +440,10 @@ final class DownloadManager {
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
         var installations = installations.raw
         var upgrades = upgrades.raw
-        
+
         if aptOutput.conflicts.isEmpty {
             installations.removeAll { uninstallDeps.contains($0) }
             uninstallations.removeAll { installDeps.contains($0) }
-            
             
             installations.removeAll { !installDeps.contains($0) }
             upgrades.removeAll { !installDeps.contains($0) }

@@ -205,7 +205,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController? else {
                         return
                     }
-                    featuredVc?.present(viewController, animated: true)
+                    featuredVc?.pushViewController(viewController, animated: true)
                     tabBarController.selectedIndex = 0
                 } else {
                     // presentModally ignored; we always present modally for an external URL open.

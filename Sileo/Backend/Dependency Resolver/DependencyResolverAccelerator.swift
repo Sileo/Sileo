@@ -47,7 +47,7 @@ class DependencyResolverAccelerator {
         #endif
     }
     
-    public func getDependencies(install: [DownloadPackage], remove: [DownloadPackage]) throws {
+    public func getDependencies(packages: [Package]) throws {
         if Thread.isMainThread {
             fatalError("Don't call things that will block the UI from the main thread")
         }
@@ -60,12 +60,8 @@ class DependencyResolverAccelerator {
             try? FileManager.default.removeItem(at: filePath)
         }
 
-        for package in install {
-            getDependenciesInternal2(package: package.package)
-        }
-        
-        for package in remove {
-            getDependenciesInternal2(package: package.package)
+        for package in packages {
+            getDependenciesInternal2(package: package)
         }
         
         let resolverPrefix = depResolverPrefix
