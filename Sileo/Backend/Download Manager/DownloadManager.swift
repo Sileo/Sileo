@@ -737,9 +737,12 @@ class SafePackageArray<Element> {
     }
     
     var count: Int {
-        var result = 0
-        DownloadManager.aptQueue.sync { result = self.array.count }
-        return result
+        if Thread.isMainThread {
+            var result = 0
+            DownloadManager.aptQueue.sync { result = self.array.count }
+            return result
+        }
+        return array.count
     }
     
     var isEmpty: Bool {

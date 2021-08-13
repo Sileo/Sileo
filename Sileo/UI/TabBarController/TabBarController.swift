@@ -55,6 +55,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
         }
+        if tabBarController.selectedIndex == 4 && shouldSelectIndex == 4 {
+            if let navController = tabBarController.viewControllers?[4] as? SileoNavigationController,
+               let packageList = navController.viewControllers[0] as? PackageListViewController {
+                packageList.searchController?.searchBar.becomeFirstResponder()
+            }
+        }
         if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
             if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
                let packageList = navController.viewControllers[0] as? PackageListViewController,

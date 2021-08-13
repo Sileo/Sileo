@@ -197,7 +197,7 @@ class DownloadsTableViewController: SileoViewController {
             completeLaterButton?.isHidden = true
         }
         let manager = DownloadManager.shared
-        if manager.operationCount() > 0 && !manager.queueStarted && manager.errors.count == 0  {
+        if manager.operationCount() > 0 && !manager.queueStarted && manager.errors.isEmpty {
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 128
                 self.footerView?.alpha = 1
@@ -209,7 +209,7 @@ class DownloadsTableViewController: SileoViewController {
             }
         }
         
-        if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted && manager.errors.count == 0  {
+        if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted && manager.errors.isEmpty {
             manager.lockedForInstallation = true
             transferToInstall()
             TabBarController.singleton?.presentPopupController()
