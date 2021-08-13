@@ -11,7 +11,7 @@
 
 "About" = "Info";
 "Close" = "Chiudi";
-"Double tap to open." = "Doppio tap per aprire";
+"Double tap to open." = "Doppio tocco per aprire.";
 "Untitled_Repo" = "Sorgente senza titolo";
 "OK" = "OK";
 "Done" = "Fatto";
@@ -19,60 +19,60 @@
 "More_Info" = "Più informazioni";
 "Loading" = "Caricamento in corso…";
 "Share" = "Condividi";
-"Delete" = "Cancella";
+"Delete" = "Elimina";
 "Cancel" = "Annulla";
-"Acknowledge" = "Acknowledge";
+"Acknowledge" = "Riconoscere";
 "Remove" = "Rimuovi";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Team di Sileo";
 
 // Popup messages
-"Background_App_Refresh" = "Aggiorna app in background";
-"Background_App_Refresh_Message" = "Per l'esperienza migliore e più veloce, è consigliato attivare l'aggiornamento delle app in background. Puoi anche ricevere notifiche quando i tuoi tweak vengono aggiornati!";
-"Upgrade_All_Shortcut_Processing_Message" = "Aggiorno tutte le sorgenti e i pacchetti...";
+"Background_App_Refresh" = "Aggiornamento delle app in background";
+"Background_App_Refresh_Message" = "Per la migliore e più veloce esperienza, è consigliato attivare l'aggiornamento delle app in background. Puoi anche ricevere notifiche quando i tuoi tweak vengono aggiornati!";
+"Upgrade_All_Shortcut_Processing_Message" = "Aggiornamento di tutte le sorgenti e i pacchetti...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installando";
-"Downloading_Package_Status" = "In Download";
+"Downloading_Package_Status" = "Scaricando";
 "Queued_Package_Status" = "In coda";
 "Ready_Status" = "Pronto";
 "Removal_Queued_Package_Status" = "In coda per la rimozione";
-"Download_Starting" = "Avvio…";
+"Download_Starting" = "Avviando…";
 "Download_Progress" = "%@ di %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Queue_Confirm_Button" = "Conferma";
-"Queue_Clear_Button" = "Pulisci Coda";
+"Queue_Confirm_Button" = "Confermare";
+"Queue_Clear_Button" = "Pulisci coda";
 
-"Package_Upgrade_Action" = "Aggiorna";
-"Package_Reinstall_Action" = "Re-Installa";
-"Package_Uninstall_Action" = "Disinstalla";
-"Package_Modify_Action" = "Modifica";
-"Package_Get_Action" = "Ottieni";
+"Package_Upgrade_Action" = "Aggiornare";
+"Package_Reinstall_Action" = "Re-Installare";
+"Package_Uninstall_Action" = "Disinstallare";
+"Package_Modify_Action" = "Modificare";
+"Package_Get_Action" = "Ottenere";
 "Package_Queue_Action" = "Coda";
-"Package_Cancel_Action" = "Annulla";
+"Package_Cancel_Action" = "Annullare";
 "Package_Paid" = "A pagamento";
 
 "Package_Share_Action" = "Condividi Pacchetto…";
-"Package_Developer_Find_Action" = "Altro da questo Sviluppatore...";
+"Package_Developer_Find_Action" = "Altro di questo Sviluppatore";
 "Package_Support_Action" = "Supporto";
 "Package_Hold_Enable_Action" = "Ignora Aggiornamenti Futuri";
-"Package_Hold_Disable_Action" = "Smetti di Ignorare gli Aggiornamenti";
+"Package_Hold_Disable_Action" = "Smettere di Ignorare gli Aggiornamenti";
 "Package_Wishlist_Add" = "Aggiungi alla Lista dei Desideri";
-"Package_Wishlist_Remove" = "Rimuovi alla Lista dei Desideri";
+"Package_Wishlist_Remove" = "Rimuovere dalla Lista dei Desideri";
 "Wishlist" = "Lista dei Desideri";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Installa";
-"Queued_Uninstall_Heading" = "Disinstalla";
-"Queued_Update_Heading" = "Aggiorna";
+"Queued_Install_Heading" = "Installare";
+"Queued_Uninstall_Heading" = "Disinstallare";
+"Queued_Update_Heading" = "Aggiornare";
 "Download_Errors_Heading" = "Errori";
 
-"Installed_Heading" = "Installati";
+"Installed_Heading" = "Installato";
 "Updates_Heading" = "Aggiornamenti";
 "Upgrade_All_Button" = "Aggiorna Tutto";
-"Package_Search.Placeholder" = "Cerca i Pacchetti";
+"Package_Search.Placeholder" = "Cerca Pacchetti";
 "Sort_Name" = "Nome";
 "Sort_Date" = "Data";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Dimensione dell'Installazione";
 "Sort_By" = "Ordina per:";
 
 "Package_Unavailable" = "Pacchetto non Disponibile";
@@ -87,47 +87,47 @@
 "Search_Page" = "Cerca";
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
-"Refresh" = "Aggiorna";
-"Remove" = "Remove";
+"Refresh" = "Aggiornare";
+"Remove" = "Rimuovere";
 
 "All_Packages.Title" = "Tutti i Pacchetti";
-"All_Packages.Cell_Subtitle" = "Vedi tutti i pacchetti delle tue fonti";
+"All_Packages.Cell_Subtitle" = "Vedere tutti i pacchetti delle tue sorgenti";
 
 "All_Categories" = "Tutte le Categorie";
 "Internal_Repo" = "Sorgenti Interne";
 "External_Repo" = "Sorgenti Esterne";
 "Ignored Updates" = "Aggiornamenti Ignorati";
 
-"Repos" = "Fonti";
-"Repo" = "Repository";
+"Repos" = "Sorgenti";
+"Repo" = "Sorgente";
 
-"Add_Source.Title" = "Aggiungi Sorgente";
-"Add_Source.Body" = "Aggiungi APT URL";
-"Add_Source.Button.Add" = "Aggiungi Sorgente";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Source.Title" = "Aggiungere Sorgente";
+"Add_Source.Body" = "Aggiungere APT URL";
+"Add_Source.Button.Add" = "Aggiungere Sorgente";
+"Add_Dist_Repo" = "Aggiungere Sorgente di Distribuzione";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Inserisci Manualmente";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Inserire Manualmente";
 
 "Untitled_Form" = "Modulo Senza Titolo";
 "Form_Submitted.Default_Title" = "Modulo Inviato";
 "Form_Submitted.Default_Body" = "Il modulo è stato inviato con successo.";
 
-"Web_Depiction_Deprecated_Warning" = "Le descrizioni fatte tramite \"Web View\" sono deprecate. Si prega di contattare il manutentore della sorgente sull'aggiornamento alle descrizioni native.";
+"Web_Depiction_Deprecated_Warning" = "Le descrizioni fatte tramite \"Web View\" non sono ammesse. Si prega di contattare il responsabile della sorgente sull'aggiornamento alle descrizioni native.";
 
 "Package_Details_Tab" = "Dettagli";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "Nessuna descrizione disponibile per questo pacchetto.";
-"Package_Changelogs_Unavailable" = "I Changelog non sono disponibili per questo pacchetto.";
+"Package_Changelog_Tab" = "Registro delle Modifiche";
+"Package_No_Description_Available" = "Non è disponibile nessuna descrizione per questo pacchetto.";
+"Package_Changelogs_Unavailable" = "I Registri dei Cambiamenti non sono disponibili per questo pacchetto.";
 
 "Installed_Package_Header" = "Pacchetto Installato";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Pacchetti Installati";
 "Version" = "Versione";
 "Show_Package_Contents_Button" = "Mostra il Contenuto del Pacchetto";
 
 "Licenses_Page_Title" = "Licenze";
 "Alternate_Icon_Title" = "Icone Alternative";
 
-"Settings_Payment_Provider_Heading" = "Fornitori di Pagamento";
+"Settings_Payment_Provider_Heading" = "Fornitori del Pagamento";
 "Settings_Translations_Heading" = "Traduzioni";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Acquisti";
@@ -137,39 +137,39 @@
 "Settings_Page_Title" = "Impostazioni";
 "Dark_Mode_Toggle" = "Modalità Scura";
 "Theme" = "Tema";
-"Tint_Color" = "Colore Testo";
-"Reset_Tint_Color" = "Ripristina Colore Testo";
-"Auto_Complete_Queue" = "Termina coda automaticamente";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Swipe_Actions" = "Azioni Scorrimento";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Mostra Aggiornamenti Ignorati";
+"Tint_Color" = "Colore del Testo";
+"Reset_Tint_Color" = "Ripristinare Colore del Testo";
+"Auto_Complete_Queue" = "Terminare la coda automaticamente";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Confermare Automaticamente \"Aggiorna Tutto\"";
+"Swipe_Actions" = "Azioni di Scorrimento";
+"Show_Provisional" = "Mostrare i Pacchetti del Canister";
+"Show_Ignored_Updates" = "Mostrare gli Aggiornamenti Ignorati";
 "Developer_Mode" = "Modalità Sviluppatore";
 "Pog_Developer" = "Ora sei uno sviluppatore!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Developer_Mode_Explain" = "La Modalità Sviluppatore disabilita la necessità dell'HTTPS per l'API di pagamento.";
+"Auto_Refresh_Sources" = "Aggiornare le Sorgenti Automaticamente";
+"iCloud_Profile" = "Mostrare le Foto di iCloud nella sezione \"In Evidenza\"";
+"Cache_Size" = "Dimensione della Cache";
+"Clear_Cache" = "Cancellare la Cache di Rete";
+"Clear_Cache_Message" = "Vuoi cancellare la cache di rete? Questo libererà %@";
+"Language" = "Lingua";
+"Use_System_Language" = "Usare la Lingua di Sistema";
+"Apply_Changes" = "Applicare le Modifiche";
+"Apply_Changes_Confirm" = "Applicare i Cambiamenti necessiterà il riavvio di Sileo";
+"Help_Translate" = "Aiutare a Tradurre Sileo";
+"Always_Show_Install_Log" = "Mostrare Sempre il Log d'Installazione";
 
 "Sileo_Light" = "Sileo Chiaro";
 "Sileo_Dark" = "Sileo Scuro";
 "Sileo_Adaptive" = "Sileo Automatico";
 "System" = "Sistema";
-"Theme_Settings" = "Impostazioni Tema";
+"Theme_Settings" = "Impostazioni del Tema";
 
-"Cydia_Sign_In" = "Accedi al Cydia Store";
+"Cydia_Sign_In" = "Accedere allo Store di Cydia";
 "Payment_Provider_Signed_In" = "Accesso effettuato";
 "Payment_Provider_Signed_In_With_Name" = "Accesso effettuato come %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Esci";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Esci da %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out" = "Uscire";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Uscire da %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Non sarai più in grado di scaricare i pacchetti acquistati finché non effettui di nuovo l'accesso.";
 
 "Show_Install_Details" = "Mostra Dettagli";
