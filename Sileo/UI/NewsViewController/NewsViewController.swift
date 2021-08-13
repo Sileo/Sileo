@@ -25,7 +25,6 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     private var sections = [Int64: [Package]]()
     private var timestamps = [Int64]()
     private var outOfStamps = false
-    private var reset = false
     
     var dateFormatter: DateFormatter = DateFormatter()
     private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
@@ -132,7 +131,6 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
 extension NewsViewController { // Get Data
     @objc func reloadData() {
         isLoading = true
-        reset = true
         DispatchQueue.main.async {
             self.collectionView.isHidden = true
             self.activityIndicatorView.startAnimating()
@@ -143,7 +141,6 @@ extension NewsViewController { // Get Data
                 DispatchQueue.main.async {
                     // Reset all variables that may block the batch load
                     self.isLoading = false
-                    self.reset = false
                     self.outOfStamps = false
                     // Empty collection view and scroll to top
                     self.collectionView.reloadData()
@@ -156,7 +153,7 @@ extension NewsViewController { // Get Data
     }
     
     func loadNextBatch() {
-        if (isLoading || outOfStamps || reset) && !activityIndicatorView.isAnimating {
+        if (isLoading || outOfStamps) && !activityIndicatorView.isAnimating {
             return
         }
         isLoading = true
@@ -237,10 +234,7 @@ extension NewsViewController { // Get Data
                     complete[timestamp] = packages
                 }
             }
-            if self.reset { return }
             DispatchQueue.main.async {
-                // Check to make sure that a cancel hasn't been fired
-                if self.reset { return }
                 // Set our final new dictionary
                 // We do this on the main thread to avoid a mismatch somehow
                 self.sections = complete
