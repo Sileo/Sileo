@@ -197,7 +197,7 @@ class DownloadsTableViewController: SileoViewController {
             completeLaterButton?.isHidden = true
         }
         let manager = DownloadManager.shared
-        if manager.operationCount() > 0 && !manager.queueStarted {
+        if manager.operationCount() > 0 && !manager.queueStarted && manager.errors.count == 0 {
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 128
                 self.footerView?.alpha = 1
