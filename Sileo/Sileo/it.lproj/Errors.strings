@@ -26,10 +26,10 @@
 "Invalid_Payment_Provider_Response" = "Il fornitore di pagamenti ha emesso una risposta non valida.";
 "No_Payment_Provider" = "Questa sorgente non supporta gli acquisti da Sileo. Se questo è un pacchetto già acquistato sullo store di Cydia, puoi collegare il tuo account per scaricarlo.";
 
-"Package_Unavailable" = "Questo pacchetto non è disponibile dalle fonti installate. Si prega di verificare che la% @ sorgente sia disponibile.";
+"Package_Unavailable" = "Questo pacchetto non è disponibile nelle sorgenti installate. Si prega di verificare che la %@ sorgente sia disponibile.";
 
 "Installation_Error.Title" = "Errore di Installazione";
-"Installation_Error.Body" = "Sileo non è riuscito ad acquisire i permessi di root. Si prega di re-installare Sileo tramite l'SSH.";
+"Installation_Error.Body" = "Sileo non è riuscito ad acquisire i permessi di root. Si prega di re-installare Sileo tramite SSH.";
 
 "FixingDpkg.Title" = "Dpkg Interrotto";
 "FixingDpkg.Body" = "Dpkg è stato interrotto. Si prega di attendere mentre tentiamo di risolvere il problema.";
@@ -37,13 +37,13 @@
 "Invalid_Data" = "Dati non validi";
 "Try_Later" = "Si prega di provare più tardi.";
 
-"Sileo_Update_Required.Title" = "Aggiornamento per Sileo necessario";
+"Sileo_Update_Required.Title" = "Aggiornamento di Sileo necessario";
 "Featured_Requires_Sileo_Update" = "È necessario un aggiornamento di Sileo per visualizzare la sezione \"In Evidenza\", questa potrebbe essere visualizzata in modo errato.";
-"Depiction_Requires_Sileo_Update" = "È necessario un aggiornamento di Sileo per visualizzare questa pagina, questa potrebbe essere visualizzata in modo errato.";
+"Depiction_Requires_Sileo_Update" = "È necessario un aggiornamento di Sileo per visualizzare questa pagina, questa potrebbe non essere visualizzata correttamente.";
 
 "Form_Error.Title" = "Non è stato possibile caricare il modulo";
 "Form_Load_Error" = "Il modulo non può essere caricato dal server.";
-"Invalid_Form_Data" = "Il server ha fornito dati di modulo non validi.";
+"Invalid_Form_Data" = "Il server ha fornito dati invalidi per il modulo.";
 "Form_Submit_Failure" = "Si è verificato un errore durante l'invio del modulo: %@";
 "Form_Submit_Error.Title" = "Non è stato possibile inviare il modulo";
 "Form_Action_Host_Mismatch" = "L'host dell'URL dell'azione del modulo non corrisponde all'host di origine del modulo.";
