@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Confirmar";
 "Queue_Clear_Button" = "Borrar Cola";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Actualizar";
 "Package_Reinstall_Action" = "Reinstalar";
