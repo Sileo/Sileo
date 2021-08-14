@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "実行";
 "Queue_Clear_Button" = "キューをクリア";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "アップデート";
 "Package_Reinstall_Action" = "再インストール";
