@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Xác nhận";
 "Queue_Clear_Button" = "Xoá danh sách chờ";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Nâng cấp";
 "Package_Reinstall_Action" = "Cài đặt lại";
