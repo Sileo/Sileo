@@ -462,8 +462,8 @@ final class PackageListManager {
         let canonicalPath = (try? url.resourceValues(forKeys: [.canonicalPathKey]))?.canonicalPath
         let filePath = canonicalPath ?? url.path
         let package = newestPackage(identifier: filePath, repoContext: nil)
-        if localPackages[filePath] == nil {
-            localPackages[filePath] = package
+        if let package = package {
+            localPackages[package.packageID] = package
         }
         return package
     }
@@ -474,6 +474,9 @@ final class PackageListManager {
         var rawPackages = [Package]()
         for identifier in identifiers {
             rawPackages += packages.filter { $0.packageID == identifier }
+            if let package = localPackages[identifier] {
+                rawPackages.append(package)
+            }
         }
         if sorted {
             return rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
@@ -488,7 +491,7 @@ final class PackageListManager {
         } else {
             var packagesMap: [String: Package] = [:]
             for package in rawPackages {
-                packagesMap[package.package] = package
+                packagesMap[package.packageID] = package
             }
             
             var packages: [Package] = []
