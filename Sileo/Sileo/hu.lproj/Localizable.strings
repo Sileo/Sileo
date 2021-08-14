@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Megerősítés";
 "Queue_Clear_Button" = "Várakozási sor törlése";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Frissítés";
 "Package_Reinstall_Action" = "Újratelepítés";
