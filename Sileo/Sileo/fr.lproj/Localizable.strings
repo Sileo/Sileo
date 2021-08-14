@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Confirmer";
 "Queue_Clear_Button" = "Supprimer la file d'attente";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Mettre à jour";
 "Package_Reinstall_Action" = "Réinstaller";
