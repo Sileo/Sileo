@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Kabul Et";
 "Queue_Clear_Button" = "Kuyruğu Temizle";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "İndirmeleri İptal Et";
 
 "Package_Upgrade_Action" = "Güncelle";
 "Package_Reinstall_Action" = "Yeniden Kur";
