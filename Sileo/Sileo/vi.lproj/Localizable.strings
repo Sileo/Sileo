@@ -23,7 +23,7 @@
 "Cancel" = "Huỷ";
 "Acknowledge" = "Chấp Nhận";
 "Remove" = "Xoá";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Đội Sileo";
 
 // Popup messages
 "Background_App_Refresh" = "Làm mới ứng dụng nền";
@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Xác nhận";
 "Queue_Clear_Button" = "Xoá danh sách chờ";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Hủy tải về";
 
 "Package_Upgrade_Action" = "Nâng cấp";
 "Package_Reinstall_Action" = "Cài đặt lại";
@@ -73,7 +73,7 @@
 "Package_Search.Placeholder" = "Tìm kiếm các Gói";
 "Sort_Name" = "Tên";
 "Sort_Date" = "Ngày";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Kích cỡ";
 "Sort_By" = "Sắp xếp bởi:";
 
 "Package_Unavailable" = "Gói không khả dụng";
@@ -89,7 +89,7 @@
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Remove";
+"Remove" = "Xóa";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
@@ -105,7 +105,7 @@
 "Add_Source.Title" = "Thêm nguồn";
 "Add_Source.Body" = "Thêm liên kết APT";
 "Add_Source.Button.Add" = "Thêm nguồn";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Thêm nguồn phân phối";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Nhập thủ công";
 
@@ -149,16 +149,16 @@
 "Pog_Developer" = "Bạn bây giờ là một nhà phát triển!";
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
 "Auto_Refresh_Sources" = "Tự động làm mới nguồn";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
+"iCloud_Profile" = "Hiện ảnh đại diện iCloud trong Đặc sắc";
 "Cache_Size" = "Kích thước bộ nhớ đệm";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Clear_Cache" = "Xóa bộ nhớ đệm mạng";
+"Clear_Cache_Message" = "Bạn có muốn xóa bộ nhớ đệm mạng? Sẽ làm trống %@";
+"Language" = "Ngôn ngữ";
+"Use_System_Language" = "Sử dụng ngôn ngữ hệ thống";
+"Apply_Changes" = "Áp dụng thay đổi";
+"Apply_Changes_Confirm" = "Áp dụng thay đổi sẽ khởi động lại Sileo";
+"Help_Translate" = "Giúp đỡ dịch Sileo";
+"Always_Show_Install_Log" = "Luôn hiện nhật ký cài đặt";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
@@ -175,8 +175,8 @@
 
 "Show_Install_Details" = "Hiển thị chi tiết";
 "Hide_Install_Details" = "Ẩn chi tiết";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Mở trong Filza";
+"Copy_Path" = "Sao chép đường dẫn";
 
 "After_Install_Relaunch" = "Khởi động lại Sileo";
 "After_Install_Respring" = "Khởi Động Lại SpringBoard";
