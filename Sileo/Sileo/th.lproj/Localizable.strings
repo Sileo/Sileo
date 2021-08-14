@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "ยืนยัน";
 "Queue_Clear_Button" = "ล้างคิว";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "อัพเกรด";
 "Package_Reinstall_Action" = "ติดตั้งใหม่";
