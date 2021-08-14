@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Bekräfta";
 "Queue_Clear_Button" = "Rensa Kö";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Uppgradera";
 "Package_Reinstall_Action" = "Installera Om";
