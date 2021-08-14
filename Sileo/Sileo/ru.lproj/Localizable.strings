@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Подтвердить";
 "Queue_Clear_Button" = "Очистить очередь";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Обновить";
 "Package_Reinstall_Action" = "Переустановить";
