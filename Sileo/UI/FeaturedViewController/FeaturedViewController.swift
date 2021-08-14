@@ -266,6 +266,12 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         self.present(navController, animated: true, completion: nil)
     }
     
+    public func showPackage(_ package: Package?) {
+        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
+        packageViewController.package = package
+        self.navigationController?.pushViewController(packageViewController, animated: true)
+    }
+    
     func moveAndResizeProfile(height: CGFloat) {
         let delta = height - 44
         let heightDifferenceBetweenStates: CGFloat = 96.5 - 44

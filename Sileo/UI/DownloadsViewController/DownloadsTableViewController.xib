@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadsTableViewController" customModule="Sileo" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="KuX-Le-H3l" id="16m-ge-uUj"/>
+                <outlet property="cancelDownload" destination="vkZ-XZ-mTv" id="LG2-5y-ubq"/>
                 <outlet property="completeButton" destination="bek-1B-uNa" id="65b-3u-4Oe"/>
                 <outlet property="completeLaterButton" destination="1Gm-L4-zfQ" id="29l-Cs-D6b"/>
                 <outlet property="confirmButton" destination="hbf-91-V4N" id="9fS-G9-FPU"/>
@@ -66,6 +67,20 @@
                                 <action selector="completeButtonTapped:" destination="-1" eventType="touchUpInside" id="fAq-OZ-Mts"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-XZ-mTv" userLabel="Cancel Download" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
+                            <rect key="frame" x="20" y="15" width="335" height="50"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="cdm-Sa-brS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelDownload:" destination="-1" eventType="touchUpInside" id="c70-0W-oja"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gm-L4-zfQ" userLabel="Later" customClass="DownloadConfirmButton" customModule="Sileo" customModuleProvider="target">
                             <rect key="frame" x="20" y="60" width="335" height="50"/>
                             <constraints>
@@ -113,9 +128,12 @@
                         <constraint firstItem="sPt-Lm-0nf" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="Pxf-Fo-8SX"/>
                         <constraint firstItem="hbf-91-V4N" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="TUG-m2-dVI"/>
                         <constraint firstAttribute="trailing" secondItem="bek-1B-uNa" secondAttribute="trailing" constant="20" id="YSh-LR-2Ft"/>
+                        <constraint firstItem="vkZ-XZ-mTv" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" symbolic="YES" id="bvi-97-QD9"/>
                         <constraint firstItem="bek-1B-uNa" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="d2t-uE-rA8"/>
                         <constraint firstAttribute="trailing" secondItem="hbf-91-V4N" secondAttribute="trailing" constant="20" id="dR4-XQ-9rN"/>
+                        <constraint firstItem="vkZ-XZ-mTv" firstAttribute="top" secondItem="pjN-7s-mF9" secondAttribute="top" constant="15" id="hT0-c5-y8i"/>
                         <constraint firstItem="KuX-Le-H3l" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="jYs-Ng-FWQ"/>
+                        <constraint firstAttribute="trailing" secondItem="vkZ-XZ-mTv" secondAttribute="trailing" constant="20" symbolic="YES" id="kIj-oR-J1o"/>
                         <constraint firstItem="hbf-91-V4N" firstAttribute="centerX" secondItem="pjN-7s-mF9" secondAttribute="centerX" id="lgJ-Bn-Qs5"/>
                         <constraint firstItem="1Gm-L4-zfQ" firstAttribute="leading" secondItem="pjN-7s-mF9" secondAttribute="leading" constant="20" id="nkX-3I-RVv"/>
                         <constraint firstAttribute="trailing" secondItem="1Gm-L4-zfQ" secondAttribute="trailing" constant="20" id="pep-6M-sxJ"/>

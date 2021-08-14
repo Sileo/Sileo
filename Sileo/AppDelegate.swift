@@ -198,14 +198,12 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             DispatchQueue.main.async {
                 if url.scheme == "file" {
                     // The file is a deb. Open the package view controller to that file.
-                    let viewController = PackageViewController()
-                    viewController.package = PackageListManager.shared.package(url: url)
-                    viewController.isPresentedModally = true
                     guard let tabBarController = self.window?.rootViewController as? UITabBarController,
-                        let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController? else {
+                        let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController?,
+                        let featuredView = featuredVc?.viewControllers[0] as? FeaturedViewController else {
                         return
                     }
-                    featuredVc?.pushViewController(viewController, animated: true)
+                    featuredView.showPackage(PackageListManager.shared.package(url: url))
                     tabBarController.selectedIndex = 0
                 } else {
                     // presentModally ignored; we always present modally for an external URL open.

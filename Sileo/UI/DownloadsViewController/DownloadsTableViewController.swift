@@ -23,6 +23,7 @@ class DownloadsTableViewController: SileoViewController {
     @IBOutlet var completeLaterButton: DownloadConfirmButton?
     @IBOutlet var doneToTop: NSLayoutConstraint?
     @IBOutlet var laterHeight: NSLayoutConstraint?
+    @IBOutlet var cancelDownload: DownloadConfirmButton?
     
     var transitionController = false
     var statusBarView: UIView?
@@ -37,6 +38,7 @@ class DownloadsTableViewController: SileoViewController {
     private var actions = [InstallOperation]()
     private var isFired = false
     private var isInstalling = false
+    private var isDownloading = false
     private var isFinishedInstalling = false
     private var returnButtonAction: APTWrapper.FINISH = .back
     private var refreshSileo = false
@@ -100,10 +102,16 @@ class DownloadsTableViewController: SileoViewController {
         
         confirmButton?.setTitle(String(localizationKey: "Queue_Confirm_Button"), for: .normal)
         cancelButton?.setTitle(String(localizationKey: "Queue_Clear_Button"), for: .normal)
+        completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
+        completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
+        showDetailsButton?.setTitle(String(localizationKey: "Show_Install_Details"), for: .normal)
+        hideDetailsButton?.setTitle(String(localizationKey: "Hide_Install_Details"), for: .normal)
+        cancelDownload?.setTitle(String(localizationKey: "Queue_Cancel_Downloads"), for: .normal)
         
         completeButton?.layer.cornerRadius = 10
         completeLaterButton?.layer.cornerRadius = 10
         hideDetailsButton?.layer.cornerRadius = 10
+        cancelDownload?.layer.cornerRadius = 10
         showDetailsButton?.isHidden = true
         
         tableView?.register(DownloadsTableViewCell.self, forCellReuseIdentifier: "DownloadsTableViewCell")
@@ -129,6 +137,8 @@ class DownloadsTableViewController: SileoViewController {
         
         completeButton?.tintColor = UINavigationBar.appearance().tintColor
         completeButton?.isHighlighted = completeButton?.isHighlighted ?? false
+        cancelDownload?.tintColor = UINavigationBar.appearance().tintColor
+        cancelDownload?.isHighlighted = completeButton?.isHighlighted ?? false
         completeLaterButton?.tintColor = .clear
         completeLaterButton?.isHighlighted = completeLaterButton?.isHighlighted ?? false
         completeLaterButton?.setTitleColor(UINavigationBar.appearance().tintColor, for: .normal)
@@ -167,6 +177,7 @@ class DownloadsTableViewController: SileoViewController {
             }
             return
         }
+        cancelDownload?.isHidden = !isDownloading
         if isFinishedInstalling {
             cancelButton?.isHidden = true
             confirmButton?.isHidden = true
@@ -202,6 +213,16 @@ class DownloadsTableViewController: SileoViewController {
                 self.footerViewHeight?.constant = 128
                 self.footerView?.alpha = 1
             }
+        } else if isDownloading {
+            cancelButton?.isHidden = true
+            confirmButton?.isHidden = true
+            showDetailsButton?.isHidden = true
+            completeButton?.isHidden = true
+            completeLaterButton?.isHidden = true
+            UIView.animate(withDuration: 0.25) {
+                self.footerViewHeight?.constant = 90
+                self.footerView?.alpha = 1
+            }
         } else {
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 0
@@ -211,6 +232,12 @@ class DownloadsTableViewController: SileoViewController {
         
         if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted && manager.errors.isEmpty {
             manager.lockedForInstallation = true
+            isDownloading = false
+            cancelDownload?.isHidden = true
+            UIView.animate(withDuration: 0.25) {
+                self.footerViewHeight?.constant = 0
+                self.footerView?.alpha = 0
+            }
             transferToInstall()
             TabBarController.singleton?.presentPopupController()
         }
@@ -251,17 +278,41 @@ class DownloadsTableViewController: SileoViewController {
         cell.layoutSubviews()
     }
     
+    @IBAction func cancelDownload(_ sender: Any) {
+        isInstalling = false
+        isDownloading = false
+        isFinishedInstalling = false
+        returnButtonAction = .back
+        refreshSileo = false
+        hasErrored = false
+        tableView?.setEditing(true, animated: true)
+        self.actions.removeAll()
+        
+        DownloadManager.shared.cancelDownloads()
+        DownloadManager.shared.queueStarted = false
+        DownloadManager.shared.reloadData(recheckPackages: false)
+    }
+    
     @IBAction func cancelQueued(_ sender: Any?) {
         DownloadManager.shared.queueStarted = false
         DownloadManager.aptQueue.async {
             DownloadManager.shared.removeAllItems()
             DownloadManager.shared.reloadData(recheckPackages: true)
         }
-        TabBarController.singleton?.dismissPopupController()
+        TabBarController.singleton?.dismissPopupController(completion: { [self] in
+            isInstalling = true
+            tableView?.setEditing(true, animated: true)
+        })
         TabBarController.singleton?.updatePopup(bypass: true)
     }
     
     @IBAction func confirmQueued(_ sender: Any?) {
+        isDownloading = true
+        tableView?.setEditing(false, animated: true)
+        
+        for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
+            cell.setEditing(false, animated: true)
+        }
         DownloadManager.shared.startMoreDownloads()
         DownloadManager.shared.reloadData(recheckPackages: false)
         DownloadManager.shared.queueStarted = true
@@ -273,15 +324,8 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func transferToInstall() {
-        isInstalling = true
-        tableView?.setEditing(false, animated: true)
-        
         detailsAttributedString = NSMutableAttributedString(string: "")
-        completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
-        completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
-        showDetailsButton?.setTitle(String(localizationKey: "Show_Install_Details"), for: .normal)
-        hideDetailsButton?.setTitle(String(localizationKey: "Hide_Install_Details"), for: .normal)
-        
+        isInstalling = true
         let installs = installations + upgrades + installdeps
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }
@@ -363,14 +407,14 @@ class DownloadsTableViewController: SileoViewController {
         refreshSileo = false
         hasErrored = false
         tableView?.setEditing(true, animated: true)
-        self.actions.removeAll()
-        
+        actions.removeAll()
+
         DownloadManager.shared.lockedForInstallation = false
+        DownloadManager.shared.queueStarted = false
         DownloadManager.aptQueue.async {
             DownloadManager.shared.removeAllItems()
             DownloadManager.shared.reloadData(recheckPackages: true)
         }
-        DownloadManager.shared.queueStarted = false
         TabBarController.singleton?.dismissPopupController()
         TabBarController.singleton?.updatePopup(bypass: true)
     }
@@ -694,7 +738,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
 
 extension DownloadsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 3 || isInstalling {
+        if indexPath.section == 3 || isInstalling || isDownloading {
             return false
         }
         var array: [DownloadPackage] = []

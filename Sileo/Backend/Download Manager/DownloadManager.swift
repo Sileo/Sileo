@@ -482,6 +482,16 @@ final class DownloadManager {
         }
     }
     
+    public func cancelDownloads() {
+        for download in downloads.values {
+            download.task?.cancel()
+            if let backgroundTaskIdentifier = download.backgroundTask {
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+        }
+        downloads.removeAll()
+    }
+    
     public func removeAllItems() {
         upgrades.removeAll()
         installdeps.removeAll()
@@ -491,6 +501,9 @@ final class DownloadManager {
         errors.removeAll()
         for download in downloads.values {
             download.task?.cancel()
+            if let backgroundTaskIdentifier = download.backgroundTask {
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
         }
         downloads.removeAll()
         self.checkInstalled()

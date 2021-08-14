@@ -125,7 +125,7 @@ class SileoBackendTests: XCTestCase {
             return
         }
         
-        waitForExpectations(timeout: 30) { _ in
+        waitForExpectations(timeout: 120) { _ in
             let errors = downloadMan.errors
             XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
         }
