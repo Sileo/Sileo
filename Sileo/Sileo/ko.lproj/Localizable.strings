@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "확인";
 "Queue_Clear_Button" = "대기열 비우기";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "업그레이드";
 "Package_Reinstall_Action" = "재설치";

@@ -28,7 +28,7 @@
 // Popup messages
 "Background_App_Refresh" = "Appのバックグラウンド更新";
 "Background_App_Refresh_Message" = "最適で最速な体験を得るには、Appのバックグラウンド更新を有効にすることをお勧めします。tweakがアップデート可能になったときに通知を受け取ることができます。";
-"Upgrade_All_Shortcut_Processing_Message" = "リポジトリの更新とパッケージのアップデートを行なっています...";
+"Upgrade_All_Shortcut_Processing_Message" = "リポジトリの更新とパッケージのアップデートを行っています...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "インストール中";
@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "実行";
 "Queue_Clear_Button" = "キューをクリア";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "アップデート";
 "Package_Reinstall_Action" = "再インストール";
@@ -72,7 +73,7 @@
 "Package_Search.Placeholder" = "パッケージを検索";
 "Sort_Name" = "名前";
 "Sort_Date" = "更新日時";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "インストール済みファイルサイズ";
 "Sort_By" = "並べ替え:";
 
 "Package_Unavailable" = "パッケージを利用できません";
@@ -88,7 +89,7 @@
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "Remove";
+"Remove" = "削除";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -104,7 +105,7 @@
 "Add_Source.Title" = "リポジトリを追加";
 "Add_Source.Body" = "リポジトリの URL を入力";
 "Add_Source.Button.Add" = "追加";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Distリポジトリを追加";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動で入力";
 
@@ -152,12 +153,12 @@
 "Cache_Size" = "キャッシュサイズ";
 "Clear_Cache" = "ネットワークのキャッシュをクリア";
 "Clear_Cache_Message" = "ネットワークのキャッシュをクリアしますか？これにより%@の容量を解放します。";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "言語";
+"Use_System_Language" = "システム言語を使用";
+"Apply_Changes" = "変更を保存";
+"Apply_Changes_Confirm" = "変更を保存するには、Sileoを再起動する必要があります。";
+"Help_Translate" = "Sileoの翻訳を助ける";
+"Always_Show_Install_Log" = "インストールのログを常に表示する";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
@@ -174,8 +175,8 @@
 
 "Show_Install_Details" = "詳細を表示";
 "Hide_Install_Details" = "詳細を非表示";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Filzaで開く";
+"Copy_Path" = "パスをコピー";
 
 "After_Install_Relaunch" = "Sileo を再起動";
 "After_Install_Respring" = "SpringBoard を再起動";

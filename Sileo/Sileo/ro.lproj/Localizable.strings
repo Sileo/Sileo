@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Confirmați";
 "Queue_Clear_Button" = "Ștergeți coada";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Actualizați";
 "Package_Reinstall_Action" = "Reinstalați";

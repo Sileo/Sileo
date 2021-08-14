@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Sahkan";
 "Queue_Clear_Button" = "Kosongkan Aturan";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Kemas Kini";
 "Package_Reinstall_Action" = "Pasang Semula";

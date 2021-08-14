@@ -11,7 +11,7 @@
 
 "About" = "О программе";
 "Close" = "Закрыть";
-"Double tap to open." = "Нажмите два раза, чтоьы открыть.";
+"Double tap to open." = "Нажмите два раза, чтобы открыть.";
 "Untitled_Repo" = "Репозиторий без названия";
 "OK" = "ОК";
 "Done" = "Готово";
@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Подтвердить";
 "Queue_Clear_Button" = "Очистить очередь";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Обновить";
 "Package_Reinstall_Action" = "Переустановить";
@@ -72,7 +73,7 @@
 "Package_Search.Placeholder" = "Поиск в пакетах";
 "Sort_Name" = "Имя";
 "Sort_Date" = "Дата";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Установленный размер";
 "Sort_By" = "Сортировка по:";
 
 "Package_Unavailable" = "Пакет недоступен";
@@ -88,7 +89,7 @@
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
 "Refresh" = "Обновить";
-"Remove" = "Remove";
+"Remove" = "Удалить";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -99,12 +100,12 @@
 "Ignored Updates" = "Игнорируемые обновления";
 
 "Repos" = "Репозитории";
-"Repo" = "Repository";
+"Repo" = "Репозиторий";
 
 "Add_Source.Title" = "Добавить источник";
 "Add_Source.Body" = "Добавить APT URL";
 "Add_Source.Button.Add" = "Добавить источник";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Добавить репозиторий";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Ввести вручную";
 
@@ -120,7 +121,7 @@
 "Package_Changelogs_Unavailable" = "Список изменения не доступнен для этого пакета.";
 
 "Installed_Package_Header" = "Установленные пакеты";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Установленные пакеты";
 "Version" = "Версия";
 "Show_Package_Contents_Button" = "Показать содержимое пакета";
 
@@ -152,12 +153,12 @@
 "Cache_Size" = "Размер кеша";
 "Clear_Cache" = "Очистить сетевой кэш";
 "Clear_Cache_Message" = "Хочешь очистить сетевой кэш? Это освободит %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "Язык";
+"Use_System_Language" = "Использовать системный язык";
+"Apply_Changes" = "Применить изменения";
+"Apply_Changes_Confirm" = "Применение изменений потребует перезапуска Sileo";
+"Help_Translate" = "Помочь в переводе Sileo";
+"Always_Show_Install_Log" = "Всегда показывать логи установки";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";
@@ -174,8 +175,8 @@
 
 "Show_Install_Details" = "Показать детали";
 "Hide_Install_Details" = "Скрыть детали";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Открыть в Filza";
+"Copy_Path" = "Скопировать путь";
 
 "After_Install_Relaunch" = "Перезапустить Sileo";
 "After_Install_Respring" = "Перезапустить SpringBoard";
@@ -185,7 +186,7 @@
 "After_Install_Reboot_Later" = "Перезагрузить устройство позже";
 
 "Dangerous_Repo.Title" = "Опасный репозиторий";
-"Dangerous_Repo.Body" = "Вы пытаетесь добавить репозиторий, известный за такое вредное содержимое, как пиратство, нелегальный контент или вредоносные программы.\n\nРепозитории, отмеченные как опасные, часто разпространяют П.О. с неожиданными эффектами, в форме платных пакетов бесплатно или других вредоносных пакетов. Это может повлечь длительные последствия для вашего устройства и конфиденциальности, иногда затрагивающие возможность jailbreak. Мы рекомендуем вам проявлять крайнюю осторожность, чтобы избежать вредносного П.О.";
+"Dangerous_Repo.Body" = "Вы пытаетесь добавить репозиторий, который является вредоносным по таким причинам, как пиратство, нелегальный контент или вредоносное ПО.\n\nРепозитории, отмеченные как вредоносные, часто распространяют ПО с неожиданными эффектами, в виде платных пакетов бесплатно или других вредоносных пакетов. Это может иметь длительное воздействие на ваше устройство и конфиденциальность, иногда затрагивающие возможность jailbreak. Мы рекомендуем вам проявлять крайнюю осторожность, чтобы избежать вредносного ПО.";
 "Dangerous_Repo.Continue" = "Я принимаю риски, продолжить";
 "Dangerous_Repo.Cancel" = "Верните меня в безопасность";
 "Dangerous_Repo.Last_Chance.Title" = "Добавить вредоносный репозиторий?";

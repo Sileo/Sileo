@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Bekreft";
 "Queue_Clear_Button" = "Tøm kø";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Oppgrader";
 "Package_Reinstall_Action" = "Installer på nytt";

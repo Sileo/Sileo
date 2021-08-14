@@ -41,6 +41,7 @@
 
 "Queue_Confirm_Button" = "Bekräfta";
 "Queue_Clear_Button" = "Rensa Kö";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Uppgradera";
 "Package_Reinstall_Action" = "Installera Om";
@@ -72,7 +73,7 @@
 "Package_Search.Placeholder" = "Sök efter Paket";
 "Sort_Name" = "Namn";
 "Sort_Date" = "Datum";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Installation Storlek";
 "Sort_By" = "Sortera Efter:";
 
 "Package_Unavailable" = "Paket Inte Tillgängligt";
@@ -88,7 +89,7 @@
 "Refreshing_Sources_Page" = "Uppdaterar Källor";
 "Package_Installed_Files_Page" = "Installerade Filer";
 "Refresh" = "Uppdatera";
-"Remove" = "Remove";
+"Remove" = "Radera";
 
 "All_Packages.Title" = "Alla Paket";
 "All_Packages.Cell_Subtitle" = "Se alla paket från dina källor";
@@ -99,12 +100,12 @@
 "Ignored Updates" = "Ignorerade Uppdateringar";
 
 "Repos" = "Källor";
-"Repo" = "Repository";
+"Repo" = "Källor";
 
 "Add_Source.Title" = "Lägg Till Källa";
 "Add_Source.Body" = "Lägg Till APT URL";
 "Add_Source.Button.Add" = "Lägg Till Källa";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Lägg Till Dist Källa";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Skriv In Manuellt";
 
@@ -120,7 +121,7 @@
 "Package_Changelogs_Unavailable" = "Ändringlogen är inte tillgänglig för detta paket.";
 
 "Installed_Package_Header" = "Installerat Paket";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Installerat Paket";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Visa Paket Innehåll";
 
@@ -152,12 +153,12 @@
 "Cache_Size" = "Cache Storlek";
 "Clear_Cache" = "Rensa Nätverk Cache";
 "Clear_Cache_Message" = "Vill du rensa nätverks cache? Detta ger mer %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "Språk";
+"Use_System_Language" = "Använd System Språk";
+"Apply_Changes" = "Tillämpa Ändringar";
+"Apply_Changes_Confirm" = "Tillämpning av ändringarna behöver Sileo startas om";
+"Help_Translate" = "Hjälp Och Översätta Sileo";
+"Always_Show_Install_Log" = "Visa Alltid Installerings Log";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
@@ -174,8 +175,8 @@
 
 "Show_Install_Details" = "Visa Detaljer";
 "Hide_Install_Details" = "Göm Detaljer";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Öppna i Filza";
+"Copy_Path" = "Kopiera Sökväg";
 
 "After_Install_Relaunch" = "Starta Om Sileo";
 "After_Install_Respring" = "Starta Om SpringBoard";
