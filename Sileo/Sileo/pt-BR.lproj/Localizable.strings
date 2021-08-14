@@ -13,7 +13,7 @@
 "Close" = "Fechar";
 "Double tap to open." = "Duplo toque para abrir.";
 "Untitled_Repo" = "Repo sem título";
-"OK" = "OK";
+"OK" = "Ok";
 "Done" = "Concluído";
 "Done_Editing" = "Concluído";
 "More_Info" = "Mais Informações";
@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Confirmar";
 "Queue_Clear_Button" = "Limpar fila";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Cancelar downloads";
 
 "Package_Upgrade_Action" = "Atualizar";
 "Package_Reinstall_Action" = "Reinstalar";
@@ -73,7 +73,7 @@
 "Package_Search.Placeholder" = "Procurar por Pacotes";
 "Sort_Name" = "Nome";
 "Sort_Date" = "Data";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Tamanho Instalado";
 "Sort_By" = "Ordenar por:";
 
 "Package_Unavailable" = "Pacote indisponível";
@@ -89,7 +89,7 @@
 "Refreshing_Sources_Page" = "A atualizar Fontes";
 "Package_Installed_Files_Page" = "Ficheiros instalados";
 "Refresh" = "Atualizar";
-"Remove" = "Remove";
+"Remove" = "Remover";
 
 "All_Packages.Title" = "Todos os pacotes";
 "All_Packages.Cell_Subtitle" = "Ver todos os pacotes das suas fontes";
@@ -100,12 +100,12 @@
 "Ignored Updates" = "Atualizações Ignoradas";
 
 "Repos" = "Repositorios";
-"Repo" = "Repository";
+"Repo" = "Repositório";
 
 "Add_Source.Title" = "Adicionar Fonte";
 "Add_Source.Body" = "Adicionar URL APT";
 "Add_Source.Button.Add" = "Adicionar Fonte";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Adicionar Dist Repo";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Introduzir Manualmente";
 
@@ -121,7 +121,7 @@
 "Package_Changelogs_Unavailable" = "Registo de Mudanças não disponível para este pacote.";
 
 "Installed_Package_Header" = "Pacote instalado";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Pacotes Instalados";
 "Version" = "Versão";
 "Show_Package_Contents_Button" = "Mostrar conteúdo do pacote";
 
@@ -153,12 +153,12 @@
 "Cache_Size" = "Tamanho do cache";
 "Clear_Cache" = "Limpar cache da rede";
 "Clear_Cache_Message" = "Você deseja limpar o cache da rede? Isso vai liberar %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "Linguagem";
+"Use_System_Language" = "Use a linguagem do sistema";
+"Apply_Changes" = "Aplicar mudanças";
+"Apply_Changes_Confirm" = "A aplicação de alterações exigirá a reinicialização do Sileo";
+"Help_Translate" = "Ajude a traduzir Sileo";
+"Always_Show_Install_Log" = "Sempre mostrar o log de instalação";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
@@ -175,8 +175,8 @@
 
 "Show_Install_Details" = "Mais Detalhes";
 "Hide_Install_Details" = "Esconder Detalhes";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Abrir no Filza";
+"Copy_Path" = "Copiar caminho";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
