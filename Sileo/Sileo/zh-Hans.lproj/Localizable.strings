@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "确认";
 "Queue_Clear_Button" = "清除队列";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "取消下载";
 
 "Package_Upgrade_Action" = "更新";
 "Package_Reinstall_Action" = "重新安装";
