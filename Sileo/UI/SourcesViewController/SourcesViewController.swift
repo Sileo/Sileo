@@ -321,6 +321,12 @@ class SourcesViewController: SileoViewController {
     }
     
     @objc func reloadRepo(_ notification: NSNotification) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.reloadRepo(notification)
+            }
+            return
+        }
         if let repo = notification.object as? Repo {
             guard let idx = sortedRepoList.firstIndex(of: repo),
             let cell = self.tableView?.cellForRow(at: IndexPath(row: idx, section: 1)) as? SourcesTableViewCell else {
