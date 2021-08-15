@@ -78,8 +78,10 @@ class DepictionFormViewController: SileoTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(DepictionFormViewController.dismiss(_:)))
-        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Cancel"),
+                                                                style: .done,
+                                                                target: self,
+                                                                action: #selector(dismiss(_:)))
         
         let loadingView = UIActivityIndicatorView(style: .gray)
         loadingView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
@@ -131,9 +133,10 @@ class DepictionFormViewController: SileoTableViewController {
                                                                      target: self,
                                                                      action: #selector(DepictionFormViewController.submit(_:)))
                     } else {
-                        strong.submitBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                                     target: self,
-                                                                     action: #selector(DepictionFormViewController.submit(_:)))
+                        strong.submitBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
+                                                                                   style: .done,
+                                                                                   target: self,
+                                                                                   action: #selector(DepictionFormViewController.submit(_:)))
                     }
                     if url.host?.lowercased() != strong.formURL.host?.lowercased() {
                         strong.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)

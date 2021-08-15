@@ -192,7 +192,8 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.navigationItem.titleView = packageNavBarIconViewController
 
         if self.isPresentedModally {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
+                                                                    style: .done,
                                                                     target: self,
                                                                     action: #selector(PackageViewController.dismissImmediately))
         }

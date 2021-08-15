@@ -13,6 +13,7 @@ final public class LanguageHelper {
     static let shared = LanguageHelper()
     public let availableLanguages: [Language]
     public var bundle: Bundle?
+    public var locale: Locale?
     
     init() {
         var locales = Bundle.main.localizations
@@ -48,6 +49,7 @@ final public class LanguageHelper {
             let isRtl = Locale.characterDirection(forLanguage: selectedLanguage) == .rightToLeft
             UIView.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
             self.bundle = bundle
+            self.locale = Locale(identifier: selectedLanguage)
             return
         }
         

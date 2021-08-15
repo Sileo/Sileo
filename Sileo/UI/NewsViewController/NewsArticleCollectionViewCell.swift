@@ -21,6 +21,10 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
         didSet {
             titleLabel?.text = article?.title
             cardTitleLabel?.text = article?.title
+            let formatter = DateFormatter()
+            if let locale = LanguageHelper.shared.locale {
+                formatter.locale = locale
+            }
             let dateText = DateFormatter.localizedString(from: article?.date ?? Date(),
                                                          dateStyle: DateFormatter.Style.long,
                                                          timeStyle: DateFormatter.Style.none)

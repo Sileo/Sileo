@@ -41,6 +41,9 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         
         dateFormatter.dateStyle = DateFormatter.Style.long
         dateFormatter.timeStyle = DateFormatter.Style.short
+        if let locale = LanguageHelper.shared.locale {
+            dateFormatter.locale = locale
+        }
 
         collectionView.isHidden = true
         let flowLayout: UICollectionViewFlowLayout? = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout

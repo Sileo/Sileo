@@ -36,10 +36,11 @@ class BaseSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done_Editing"),
+                                                                 style: .done,
                                                                  target: self,
                                                                  action: #selector(dismissController))
-        
+       
         self.view.addSubview(headerContainerView)
         headerContainerView.layer.zPosition = 1000
         

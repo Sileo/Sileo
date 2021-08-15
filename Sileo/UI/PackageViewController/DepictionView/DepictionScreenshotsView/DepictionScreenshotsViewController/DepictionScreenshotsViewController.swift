@@ -20,9 +20,10 @@ class DepictionScreenshotsViewController: UIViewController, DepictionViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
+                                                                 style: .done,
                                                                  target: self,
-                                                                 action: #selector(DepictionScreenshotsViewController.dismiss))
+                                                                 action: #selector(DepictionScreenshotsViewController.dismiss(_:)))
         self.navigationController?.navigationBar.tintColor = self.tintColor
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         self.navigationController?.navigationBar._hidesShadow = true
