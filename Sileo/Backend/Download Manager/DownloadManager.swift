@@ -20,7 +20,13 @@ public enum DownloadManagerQueue: Int {
 final class DownloadManager {
     static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
-    static let aptQueue = DispatchQueue(label: "Sileo.AptQueue", qos: .userInitiated)
+    static let aptQueue: DispatchQueue = {
+        let queue = DispatchQueue(label: "Sileo.AptQueue", qos: .userInitiated)
+        queue.setSpecific(key: DownloadManager.queueKey, value: DownloadManager.queueContext)
+        return queue
+    }()
+    public static let queueKey = DispatchSpecificKey<Int>()
+    public static var queueContext = unsafeBitCast(DownloadManager.shared, to: Int.self)
     
     enum Error: LocalizedError {
         case hashMismatch(packageHash: String, refHash: String)
@@ -490,6 +496,7 @@ final class DownloadManager {
             }
         }
         downloads.removeAll()
+        currentDownloads = 0
     }
     
     public func removeAllItems() {
@@ -506,6 +513,7 @@ final class DownloadManager {
             }
         }
         downloads.removeAll()
+        currentDownloads = 0
         self.checkInstalled()
     }
     
@@ -740,6 +748,10 @@ final class DownloadManager {
 
 class SafePackageArray<Element> {
     private var array = [Element]()
+    
+    public var isOnAptQueue: Bool {
+        DispatchQueue.getSpecific(key: DownloadManager.queueKey) == DownloadManager.queueContext
+    }
             
     public convenience init(_ array: [Element]) {
         self.init()
@@ -747,7 +759,7 @@ class SafePackageArray<Element> {
     }
     
     var count: Int {
-        if Thread.isMainThread {
+        if !isOnAptQueue {
             var result = 0
             DownloadManager.aptQueue.sync { result = self.array.count }
             return result
@@ -756,45 +768,70 @@ class SafePackageArray<Element> {
     }
     
     var isEmpty: Bool {
-        if Thread.isMainThread {
+        if !isOnAptQueue {
             var result = false
             DownloadManager.aptQueue.sync { result = self.array.isEmpty }
             return result
-        } else {
-            return self.array.isEmpty
         }
+        return array.isEmpty
     }
     
     var raw: [Element] {
+        if !isOnAptQueue {
+            var result = [Element]()
+            DownloadManager.aptQueue.sync { result = self.array }
+            return result
+        }
         return array
     }
     
     func contains(where package: (Element) -> Bool) -> Bool {
-        var result = false
-        DownloadManager.aptQueue.sync { result = self.array.contains(where: package) }
-        return result
+        if !isOnAptQueue {
+            var result = false
+            DownloadManager.aptQueue.sync { result = self.array.contains(where: package) }
+            return result
+        }
+        return array.contains(where: package)
     }
     
     func setTo(_ packages: [Element]) {
-        DownloadManager.aptQueue.async(flags: .barrier) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array = packages
+            }
+        } else {
             self.array = packages
         }
     }
     
     func append(_ package: Element) {
-        DownloadManager.aptQueue.async(flags: .barrier) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array.append(package)
+            }
+        } else {
             self.array.append(package)
         }
     }
     
     func removeAll() {
-        DownloadManager.aptQueue.async(flags: .barrier) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array.removeAll()
+            }
+        } else {
             self.array.removeAll()
         }
     }
     
     func removeAll(package: @escaping (Element) -> Bool) {
-        DownloadManager.aptQueue.async(flags: .barrier) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                while let index = self.array.firstIndex(where: package) {
+                    self.array.remove(at: index)
+                }
+            }
+        } else {
             while let index = self.array.firstIndex(where: package) {
                 self.array.remove(at: index)
             }
@@ -802,16 +839,23 @@ class SafePackageArray<Element> {
     }
     
     func map<ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> [ElementOfResult] {
-        var result = [ElementOfResult]()
-        DownloadManager.aptQueue.sync { result = self.array.map(transform) }
-        return result
+        if !isOnAptQueue {
+            var result = [ElementOfResult]()
+            DownloadManager.aptQueue.sync { result = self.array.map(transform) }
+            return result
+        } else {
+            return array.map(transform)
+        }
     }
 }
 
 extension SafePackageArray where Element: Equatable {
     func contains(_ element: Element) -> Bool {
-        var result = false
-        DownloadManager.aptQueue.sync { result = self.array.contains(element) }
-        return result
+        if !isOnAptQueue {
+            var result = false
+            DownloadManager.aptQueue.sync { result = self.array.contains(element) }
+            return result
+        }
+        return self.array.contains(element)
     }
 }

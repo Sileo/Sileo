@@ -96,6 +96,7 @@ final class AmyDownloadParser: NSObject {
     public func cancel() {
         killed = true
         task?.cancel()
+        AmyDownloadParserDelegate.shared.remove(container)
     }
     
     public func resume() {
@@ -160,9 +161,9 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
         }
     }
     
-    public func remove(_ container: AmyDownloadParserContainer) {
+    public func remove(_ container: AmyDownloadParserContainer?) {
         queue.async(flags: .barrier) {
-            self.containers.removeAll(where: { $0.url == container.url })
+            self.containers.removeAll(where: { $0.url == container?.url })
         }
     }
     
