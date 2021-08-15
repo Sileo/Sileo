@@ -24,11 +24,9 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
 
     private var sections = [Int64: [Package]]()
     private var timestamps = [Int64]()
-    private var outOfStamps = false
-    
+
     var dateFormatter: DateFormatter = DateFormatter()
     private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
-    var isLoading: Bool = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -130,18 +128,14 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
 
 extension NewsViewController { // Get Data
     @objc func reloadData() {
-        isLoading = true
         DispatchQueue.main.async {
             self.collectionView.isHidden = true
             self.activityIndicatorView.startAnimating()
             self.updateQueue.async {
-                self.sections = [:]
-                self.timestamps = []
-                self.outOfStamps = false
                 DispatchQueue.main.async {
                     // Reset all variables that may block the batch load
-                    self.isLoading = false
-                    self.outOfStamps = false
+                    self.sections = [:]
+                    self.timestamps.removeAll()
                     // Empty collection view and scroll to top
                     self.collectionView.reloadData()
                     self.collectionView.contentOffset = CGPoint(x: 0, y: -(self.collectionView.safeAreaInsets.top))
@@ -149,39 +143,15 @@ extension NewsViewController { // Get Data
                 }
             }
         }
-        
     }
     
     func loadNextBatch() {
-        if (isLoading || outOfStamps) && !activityIndicatorView.isAnimating {
-            return
-        }
-        isLoading = true
         updateQueue.async {
             let packageListManager = PackageListManager.shared
             let databaseManager = DatabaseManager.shared
             packageListManager.initWait()
-            var timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
+            let timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
             if timestampsWeCareAbout.isEmpty {
-                self.outOfStamps = true
-                self.isLoading = false
-                DispatchQueue.main.async {
-                    if self.activityIndicatorView.isAnimating {
-                        UIView.animate(withDuration: 0.3, animations: {
-                            self.activityIndicatorView.alpha = 0
-                        }, completion: { _ in
-                            self.collectionView.isHidden = false
-                            self.activityIndicatorView.stopAnimating()
-                        })
-                    }
-                }
-                return
-            }
-            timestampsWeCareAbout.removeAll { self.timestamps.contains($0) }
-            // If we have run out of new timestamp sections, stop loading
-            if timestampsWeCareAbout.isEmpty {
-                self.outOfStamps = true
-                self.isLoading = false
                 DispatchQueue.main.async {
                     if self.activityIndicatorView.isAnimating {
                         UIView.animate(withDuration: 0.3, animations: {
@@ -199,7 +169,6 @@ extension NewsViewController { // Get Data
             // Thanks to new repo contexts, loading packages is signifcantly faster anyway
             var stubs = [PackageStub]()
             for timestamp in timestampsWeCareAbout {
-                if stubs.count >= 100 { break }
                 stubs += databaseManager.stubsAtTimestamp(timestamp)
             }
             // Going to take advantage of those sweet contexts and dictionaries for super speedy package loads
@@ -254,9 +223,7 @@ extension NewsViewController { // Get Data
                 // Set our final new dictionary
                 // We do this on the main thread to avoid a mismatch somehow
                 self.sections = complete
-                self.timestamps = complete.keys.sorted { $0 > $1 }
-                self.isLoading = false
-                
+                self.timestamps = timestampsWeCareAbout
                 self.collectionView.reloadData()
 
                 // Hide spinner if necessary
@@ -389,18 +356,6 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
         let package = section[indexPath.row]
         DatabaseManager.shared.markAsSeen(package)
         sections[timestamps[indexPath.section - newsBuffer]]?[indexPath.row].userRead = true
-    }
-}
-
-extension NewsViewController { // Scroll View Delegate
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetOffset = CGFloat(targetContentOffset.pointee.y)
-        // If reaching the bottom, load the next batch of updates
-        let distance = scrollView.contentSize.height - (targetOffset + scrollView.bounds.size.height)
-
-        if !isLoading && distance < scrollView.bounds.size.height {
-            self.loadNextBatch()
-        }
     }
 }
 
