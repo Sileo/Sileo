@@ -82,6 +82,7 @@ final class Repo: Equatable {
             if package.version == installed.version { return true }
             return DpkgWrapper.isVersion(package.version, greaterThan: installed.version)
         }
+        NotificationCenter.default.post(name: RepoManager.progressNotification, object: self)
     }
     
     var releaseDict: [String: String]? {
