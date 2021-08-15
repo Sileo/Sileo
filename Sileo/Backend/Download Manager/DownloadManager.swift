@@ -439,10 +439,16 @@ final class DownloadManager {
         
         var uninstallations = uninstallations.raw
         let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false)
+        guard rawUninstalls.count == uninstallIdentifiers.count else {
+            throw APTParserErrors.blankJsonOutput
+        }
         var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
     
         // Get the package objects for each
         let rawInstalls = PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
+        guard rawInstalls.count == installIdentifiers.count else {
+            throw APTParserErrors.blankJsonOutput
+        }
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
         var installations = installations.raw
         var upgrades = upgrades.raw
