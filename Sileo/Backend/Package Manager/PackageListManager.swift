@@ -107,11 +107,15 @@ final class PackageListManager {
         initSemphaore.wait()
     }
     
-    public func installChange() {
-        installedPackages = PackageListManager.readPackages(installed: true)
+    public func repoInstallChange() {
         for repo in RepoManager.shared.repoList {
             repo.reloadInstalled()
         }
+    }
+    
+    public func installChange() {
+        installedPackages = PackageListManager.readPackages(installed: true)
+        repoInstallChange()
     }
 
     public func availableUpdates() -> [(Package, Package?)] {

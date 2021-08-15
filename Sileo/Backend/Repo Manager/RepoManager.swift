@@ -1045,9 +1045,11 @@ final class RepoManager {
                                     return true
                                 }
                                 DatabaseManager.shared.addToSaveQueue(packages: databaseChanges)
+                                repo.reloadInstalled()
                                 self.update(repo)
                             } else {
                                 repo.packageDict = [:]
+                                repo.reloadInstalled()
                                 self.update(repo)
                             }
                             reposUpdated += 1
