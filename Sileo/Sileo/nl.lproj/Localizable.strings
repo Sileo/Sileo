@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Bevestig";
 "Queue_Clear_Button" = "Leeg Wachtrij";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Annuleer Downloads";
 
 "Package_Upgrade_Action" = "Upgrade";
 "Package_Reinstall_Action" = "Herinstalleer";
