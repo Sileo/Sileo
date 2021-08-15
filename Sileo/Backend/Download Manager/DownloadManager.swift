@@ -524,14 +524,11 @@ final class DownloadManager {
     public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
         DownloadManager.aptQueue.async { [self] in
             if recheckPackages {
-                if self.lockedForInstallation {
-                    TabBarController.singleton?.displayError(DownloadManager.Error.debugNotAllowed)
-                    return
-                }
                 do {
                     try self.recheckTotalOps()
                 } catch {
                     removeAllItems()
+                    viewController.cancelDownload(nil)
                     TabBarController.singleton?.displayError(error)
                 }
             }

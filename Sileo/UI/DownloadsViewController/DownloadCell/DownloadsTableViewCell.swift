@@ -64,7 +64,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         retryButton.isHidden = true
         if let download = download {
             self.progress = (download.progress / 1.0) * 0.7
-            if download.success {
+            if download.progress == 1.0 && download.failureReason == nil {
                 self.subtitle = String(localizationKey: "Ready_Status")
             } else if let message = download.message {
                 self.subtitle = message

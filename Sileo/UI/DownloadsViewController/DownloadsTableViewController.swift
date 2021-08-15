@@ -163,6 +163,9 @@ class DownloadsTableViewController: SileoViewController {
     public func reloadData() {
         DownloadManager.aptQueue.async { [self] in
             self.loadData()
+            if isDownloading {
+                DownloadManager.shared.startMoreDownloads()
+            }
             DispatchQueue.main.async {
                 self.tableView?.reloadData()
                 self.reloadControlsOnly()
@@ -278,7 +281,7 @@ class DownloadsTableViewController: SileoViewController {
         cell.layoutSubviews()
     }
     
-    @IBAction func cancelDownload(_ sender: Any) {
+    @IBAction public func cancelDownload(_ sender: Any?) {
         isInstalling = false
         isDownloading = false
         isFinishedInstalling = false
@@ -290,7 +293,9 @@ class DownloadsTableViewController: SileoViewController {
         
         DownloadManager.shared.cancelDownloads()
         DownloadManager.shared.queueStarted = false
-        DownloadManager.shared.reloadData(recheckPackages: false)
+        if sender != nil {
+            DownloadManager.shared.reloadData(recheckPackages: false)
+        }
     }
     
     @IBAction func cancelQueued(_ sender: Any?) {
@@ -299,6 +304,7 @@ class DownloadsTableViewController: SileoViewController {
             DownloadManager.shared.removeAllItems()
             DownloadManager.shared.reloadData(recheckPackages: true)
         }
+
         TabBarController.singleton?.dismissPopupController(completion: { [self] in
             isInstalling = true
             tableView?.setEditing(true, animated: true)
@@ -308,11 +314,7 @@ class DownloadsTableViewController: SileoViewController {
     
     @IBAction func confirmQueued(_ sender: Any?) {
         isDownloading = true
-        tableView?.setEditing(false, animated: true)
-        
-        for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
-            cell.setEditing(false, animated: true)
-        }
+    
         DownloadManager.shared.startMoreDownloads()
         DownloadManager.shared.reloadData(recheckPackages: false)
         DownloadManager.shared.queueStarted = true
@@ -324,6 +326,12 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func transferToInstall() {
+        tableView?.setEditing(false, animated: true)
+        
+        for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
+            cell.setEditing(false, animated: true)
+        }
+        
         detailsAttributedString = NSMutableAttributedString(string: "")
         isInstalling = true
         let installs = installations + upgrades + installdeps
@@ -409,6 +417,7 @@ class DownloadsTableViewController: SileoViewController {
         tableView?.setEditing(true, animated: true)
         actions.removeAll()
 
+        TabBarController.singleton?.popupContent?.popupInteractionStyle = .default
         DownloadManager.shared.lockedForInstallation = false
         DownloadManager.shared.queueStarted = false
         DownloadManager.aptQueue.async {
@@ -738,7 +747,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
 
 extension DownloadsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 3 || isInstalling || isDownloading {
+        if indexPath.section == 3 || isInstalling {
             return false
         }
         var array: [DownloadPackage] = []

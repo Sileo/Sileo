@@ -149,10 +149,13 @@ extension NewsViewController { // Get Data
     }
     
     func loadNextBatch() {
+        NSLog("[Sileo] Firing load bath")
         updateQueue.async {
+            NSLog("[Sileo] Joined Queueu")
             let packageListManager = PackageListManager.shared
             let databaseManager = DatabaseManager.shared
             packageListManager.initWait()
+            NSLog("[Sileo] Finished waiting")
             let timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
             if timestampsWeCareAbout.isEmpty {
                 DispatchQueue.main.async {
