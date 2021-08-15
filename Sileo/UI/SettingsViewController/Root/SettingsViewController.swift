@@ -367,7 +367,7 @@ extension SettingsViewController: ColorPickerDelegate {
 @available(iOS 14.0, *)
 extension SettingsViewController: UIColorPickerViewControllerDelegate {
 
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         SileoThemeManager.shared.setTintColor(viewController.selectedColor)
     }
     
