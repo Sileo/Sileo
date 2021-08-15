@@ -32,9 +32,6 @@ class WishListManager {
     }
     
     func addPackageToWishList(_ package: String) -> Bool {
-        guard PackageListManager.shared.installedPackage(identifier: package) == nil else {
-            return false
-        }
         if self.isPackageInWishList(package) {
             return false
         }
