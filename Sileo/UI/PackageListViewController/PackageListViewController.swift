@@ -175,7 +175,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
             self.registerForPreviewing(with: self, sourceView: collectionView)
         }
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let packageMan = PackageListManager.shared
             
             if !self.showSearchField {
