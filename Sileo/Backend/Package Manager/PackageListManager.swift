@@ -85,6 +85,7 @@ final class PackageListManager {
                     }
                 }
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 #if targetEnvironment(simulator)
                 if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
                     return
