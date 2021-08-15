@@ -79,7 +79,11 @@ final class PackageListManager {
             repoMan.update(loadedRepoList)
             loadGroup.notify(queue: .main) {
                 self.isLoaded = true
-                self.initSemphaore.signal()
+                while true {
+                    if self.initSemphaore.signal() == 0 {
+                        break
+                    }
+                }
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                 #if targetEnvironment(simulator)
                 if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
