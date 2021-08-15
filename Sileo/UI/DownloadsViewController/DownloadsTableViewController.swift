@@ -301,6 +301,15 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     @IBAction func cancelQueued(_ sender: Any?) {
+        isInstalling = false
+        isDownloading = false
+        isFinishedInstalling = false
+        returnButtonAction = .back
+        refreshSileo = false
+        hasErrored = false
+        tableView?.setEditing(true, animated: true)
+        self.actions.removeAll()
+        
         DownloadManager.shared.queueStarted = false
         DownloadManager.aptQueue.async {
             DownloadManager.shared.removeAllItems()
@@ -308,7 +317,7 @@ class DownloadsTableViewController: SileoViewController {
         }
 
         TabBarController.singleton?.dismissPopupController(completion: { [self] in
-            isInstalling = true
+            isInstalling = false
             tableView?.setEditing(true, animated: true)
         })
         TabBarController.singleton?.updatePopup(bypass: true)
