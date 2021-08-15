@@ -134,9 +134,9 @@ class DepictionFormViewController: SileoTableViewController {
                                                                      action: #selector(DepictionFormViewController.submit(_:)))
                     } else {
                         strong.submitBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
-                                                                                   style: .done,
-                                                                                   target: self,
-                                                                                   action: #selector(DepictionFormViewController.submit(_:)))
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(DepictionFormViewController.submit(_:)))
                     }
                     if url.host?.lowercased() != strong.formURL.host?.lowercased() {
                         strong.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)

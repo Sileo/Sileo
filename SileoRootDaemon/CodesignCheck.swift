@@ -108,7 +108,7 @@ struct CodesignCheck {
 
     private static func secCodeInfo(forStaticCode secStaticCode: SecStaticCode) throws -> [String: Any]? {
         try isValid(secStaticCode: secStaticCode)
-        var secCodeInfoCFDict:  CFDictionary?
+        var secCodeInfoCFDict: CFDictionary?
         try executeSecFunction { SecCodeCopySigningInformation(secStaticCode, SecCSFlags(rawValue: kSecCSSigningInformation), &secCodeInfoCFDict) }
         guard let secCodeInfo = secCodeInfoCFDict as? [String: Any] else {
             throw CodesignCheckError.message("CFDictionary returned empty from SecCodeCopySigningInformation")

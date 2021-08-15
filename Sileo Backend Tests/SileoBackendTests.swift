@@ -130,6 +130,4 @@ class SileoBackendTests: XCTestCase {
             XCTAssert(errors.isEmpty, "Failed with the errors \(errors)")
         }
     }
-
 }
-

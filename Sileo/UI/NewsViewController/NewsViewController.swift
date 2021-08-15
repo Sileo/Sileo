@@ -46,6 +46,7 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         }
 
         collectionView.isHidden = true
+        self.activityIndicatorView.startAnimating()
         let flowLayout: UICollectionViewFlowLayout? = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.sectionHeadersPinToVisibleBounds = true
         
@@ -63,8 +64,6 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
                                 forCellWithReuseIdentifier: "NewsArticlesHeader")
 
         self.registerForPreviewing(with: self, sourceView: self.collectionView)
-
-        self.reloadData()
         
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
@@ -152,7 +151,6 @@ extension NewsViewController { // Get Data
         updateQueue.async {
             let packageListManager = PackageListManager.shared
             let databaseManager = DatabaseManager.shared
-            packageListManager.initWait()
             let timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
             if timestampsWeCareAbout.isEmpty {
                 DispatchQueue.main.async {
@@ -408,10 +406,8 @@ extension NewsViewController {
 }
 
 extension Array {
-    
     func safe(_ index: Int) -> Element? {
         if (self.count - 1) < index { return nil }
         return self[index]
     }
-    
 }
