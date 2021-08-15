@@ -23,7 +23,7 @@
 "Cancel" = "Avbryt";
 "Acknowledge" = "Medge";
 "Remove" = "Radera";
-"Sileo_Team" = "Sileo Laget";
+"Sileo_Team" = "Sileo Utvecklare";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrund App Uppdatering";
@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Bekräfta";
 "Queue_Clear_Button" = "Rensa Kö";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Avbryt Nedladdningar";
 
 "Package_Upgrade_Action" = "Uppgradera";
 "Package_Reinstall_Action" = "Installera Om";
@@ -155,8 +155,8 @@
 "Clear_Cache_Message" = "Vill du rensa nätverks cache? Detta ger mer %@";
 "Language" = "Språk";
 "Use_System_Language" = "Använd System Språk";
-"Apply_Changes" = "Tillämpa Ändringar";
-"Apply_Changes_Confirm" = "Tillämpning av ändringarna behöver Sileo startas om";
+"Apply_Changes" = "Tillämpa";
+"Apply_Changes_Confirm" = "Sileo behöver startas om efter tillämpning";
 "Help_Translate" = "Hjälp Och Översätta Sileo";
 "Always_Show_Install_Log" = "Visa Alltid Installerings Log";
 
@@ -164,7 +164,7 @@
 "Sileo_Dark" = "Sileo Mörkt";
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "System";
-"Theme_Settings" = "Tema Inställningar";
+"Theme_Settings" = "Gränssnitt Inställningar";
 
 "Cydia_Sign_In" = "Logga in på Cydia Store";
 "Payment_Provider_Signed_In" = "Inloggad";
