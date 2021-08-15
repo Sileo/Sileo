@@ -41,7 +41,7 @@
 
 "Queue_Confirm_Button" = "Confermare";
 "Queue_Clear_Button" = "Pulisci coda";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Cancellare i Download";
 
 "Package_Upgrade_Action" = "Aggiornare";
 "Package_Reinstall_Action" = "Re-Installare";
