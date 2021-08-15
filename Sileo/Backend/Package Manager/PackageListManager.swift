@@ -300,12 +300,14 @@ final class PackageListManager {
         return dict
     }
     
-    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil) -> [Package] {
+    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil, packagePrepend: [Package]? = nil) -> [Package] {
         var packageList = [Package]()
         if identifier == "--installed" {
             packageList = Array(installedPackages.values)
         } else if identifier == "--wishlist" {
             packageList = packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
+        } else if let prepend = packagePrepend {
+            packageList = prepend
         } else {
             if var search = search?.lowercased(),
                let lookupTable = lookupTable {

@@ -696,7 +696,12 @@ extension PackageListViewController: UISearchResultsUpdating {
                 guard let context = self.repoContext,
                       let url = context.url else { return }
                 let betterContext = RepoManager.shared.repo(with: url) ?? context
-                packages = betterContext.installed ?? []
+                packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
+                                                      search: query,
+                                                      sortPackages: true,
+                                                      repoContext: nil,
+                                                      lookupTable: self.searchCache,
+                                                      packagePrepend: betterContext.installed ?? [])
             } else if let cachedPackages = self.searchCache[query] {
                 packages = cachedPackages
             } else {
