@@ -229,7 +229,7 @@ extension NewsViewController { // Get Data
                 // Set our final new dictionary
                 // We do this on the main thread to avoid a mismatch somehow
                 self.sections = complete
-                self.timestamps = timestampsWeCareAbout
+                self.timestamps = Array(complete.keys).sorted { $0 > $1 }
                 self.collectionView.reloadData()
 
                 // Hide spinner if necessary
