@@ -32,7 +32,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     private let mutexLock = DispatchSemaphore(value: 1)
     private var updatingCount = 0
-    private var refreshEnabled = false
     private var canisterHeartbeat: Timer?
     
     @IBInspectable var localizableTitle: String = ""
@@ -243,7 +242,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     
     @objc func reloadUpdates() {
         if showUpdates {
-            DispatchQueue.global(qos: .default).async {
+            DispatchQueue.global(qos: .userInteractive).async {
                 let updates = PackageListManager.shared.availableUpdates()
                 self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
                 if UserDefaults.standard.optionalBool("ShowIgnoredUpdates", fallback: true) {
@@ -374,7 +373,6 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
 
 extension PackageListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        refreshEnabled = true
         var count = 0
         if !packages.isEmpty { count += 1 }
         if showUpdates {
@@ -712,8 +710,6 @@ extension PackageListViewController: UISearchResultsUpdating {
                                                       lookupTable: self.searchCache)
             }
             
-            self.mutexLock.signal()
-            self.mutexLock.wait()
             if self.packagesLoadIdentifier == "--installed" {
                 switch SortMode() {
                 case .installdate:
@@ -735,7 +731,9 @@ extension PackageListViewController: UISearchResultsUpdating {
                 default: break
                 }
             }
-   
+            
+            self.mutexLock.signal()
+            self.mutexLock.wait()
             self.updatingCount -= 1
             self.mutexLock.signal()
             
@@ -743,7 +741,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                 self.updateProvisional()
                 self.mutexLock.wait()
                 
-                if self.updatingCount == 0 && self.refreshEnabled {
+                if self.updatingCount == 0 {
                     UIView.performWithoutAnimation {
                         self.packages = packages
                         self.collectionView?.reloadData()
