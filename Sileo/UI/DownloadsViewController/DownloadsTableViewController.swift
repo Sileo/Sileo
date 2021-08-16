@@ -317,7 +317,6 @@ class DownloadsTableViewController: SileoViewController {
         }
 
         TabBarController.singleton?.dismissPopupController(completion: { [self] in
-            isInstalling = false
             tableView?.setEditing(true, animated: true)
         })
         TabBarController.singleton?.updatePopup(bypass: true)
