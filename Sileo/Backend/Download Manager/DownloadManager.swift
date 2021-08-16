@@ -747,6 +747,27 @@ final class DownloadManager {
             reloadData(recheckPackages: true)
         }
     }
+    
+    public func isEssential(_ package: Package) -> Bool {
+        // Check for essential
+        var allowedHosts = [String]()
+        #if targetEnvironment(macCatalyst)
+        allowedHosts = ["apt.procurs.us"]
+        #else
+        if RepoManager.shared.isMobileProcursus {
+            allowedHosts = ["apt.procurs.us"]
+        } else {
+            allowedHosts = [
+                "apt.bingner.com",
+                "test.apt.bingner.com",
+                "apt.elucubratus.com"
+            ]
+        }
+        #endif
+        guard let sourceRepo = package.sourceRepo,
+              allowedHosts.contains(sourceRepo.url?.host ?? "") else { return false }
+        return package.essential == "yes"
+    }
 }
 
 class SafePackageArray<Element> {

@@ -11,7 +11,11 @@ import Foundation
 // swiftlint:disable:next type_body_length
 final class RepoManager {
     // This check is here because it's used in multiple places throughout the code
+    #if targetEnvironment(simulator)
+    public final let isMobileProcursus = true
+    #else
     public final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    #endif
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
 
