@@ -168,6 +168,7 @@ final class CanisterResolver {
         }
         if refreshLists {
             NotificationCenter.default.post(name: CanisterResolver.refreshList, object: nil)
+            DownloadManager.shared.reloadData(recheckPackages: true)
         }
     }
     
