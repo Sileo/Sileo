@@ -24,6 +24,7 @@
 "Acknowledge" = "Reconhecer";
 "Remove" = "Remover";
 "Sileo_Team" = "Equipe Sileo";
+"Warning" = "Warning";
 
 // Popup messages
 "Background_App_Refresh" = "Atualização do aplicativo em segundo plano";
@@ -38,6 +39,8 @@
 "Removal_Queued_Package_Status" = "Na fila para remoção";
 "Download_Starting" = "A iniciar…";
 "Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
 "Queue_Confirm_Button" = "Confirmar";
 "Queue_Clear_Button" = "Limpar fila";
