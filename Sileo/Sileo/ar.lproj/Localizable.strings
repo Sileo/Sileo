@@ -24,6 +24,7 @@
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
@@ -38,6 +39,8 @@
 "Removal_Queued_Package_Status" = "تم وضعه في قائمة الإنتظار للإزالة";
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
