@@ -1261,7 +1261,7 @@ final class RepoManager {
             #endif
         } else {
             // > but if you wanted to, just edit the cydia file too and update cydia's prefs
-            let defaults = UserDefaults.init(suiteName: "com.saurik.Cydia")
+            let defaults = UserDefaults(suiteName: "com.saurik.Cydia")
             var sourcesDict = [String: Any]()
             var rawRepoList = ""
             var added: Set<String> = []
@@ -1286,7 +1286,6 @@ final class RepoManager {
             try? rawRepoList.write(to: cydiaList, atomically: true, encoding: .utf8)
         }
         
-
         repoListLock.signal()
     }
 }
