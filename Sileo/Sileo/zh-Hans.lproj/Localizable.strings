@@ -64,8 +64,8 @@
 "Package_Wishlist_Remove" = "从愿望清单中删除";
 "Wishlist" = "愿望清单";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "没有新的软件包";
+"News_Check_Later" = "还没有新的软件包被列出。等数个小时后再回来，随着软件源更新，你应该会看到这里开始出现软件包。";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安装";
@@ -165,7 +165,7 @@
 "Apply_Changes_Confirm" = "应用更改需要重启 Sileo";
 "Help_Translate" = "帮助翻译 Sileo";
 "Always_Show_Install_Log" = "总是显示安装详情";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "全部升级时显示队列";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
