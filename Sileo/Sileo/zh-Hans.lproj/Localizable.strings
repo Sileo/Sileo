@@ -24,7 +24,7 @@
 "Acknowledge" = "收到";
 "Remove" = "移除";
 "Sileo_Team" = "Sileo 团队";
-"Warning" = "Warning";
+"Warning" = "警告";
 
 // Popup messages
 "Background_App_Refresh" = "后台App刷新";
@@ -40,7 +40,7 @@
 "Download_Starting" = "开始中…";
 "Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "下列软件包被列为必需的: %@\n 删除这些软件包可能会对您的设备造成不可逆的损坏，并且可能需要您进行恢复。只有当您确定您知道自己在做什么的时候才继续。";
 
 "Queue_Confirm_Button" = "确认";
 "Queue_Clear_Button" = "清除队列";
@@ -63,6 +63,9 @@
 "Package_Wishlist_Add" = "添加到愿望清单";
 "Package_Wishlist_Remove" = "从愿望清单中删除";
 "Wishlist" = "愿望清单";
+
+"No_New_Packages" = "没有新的软件包";
+"News_Check_Later" = "还没有新的软件包被列出。等数个小时后再回来，随着软件源更新，你应该会看到这里开始出现软件包。";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安装";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "应用更改需要重启 Sileo";
 "Help_Translate" = "帮助翻译 Sileo";
 "Always_Show_Install_Log" = "总是显示安装详情";
+"Auto_Show_Queue" = "全部升级时显示队列";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";

@@ -24,7 +24,7 @@
 "Acknowledge" = "承認";
 "Remove" = "削除";
 "Sileo_Team" = "Sileoチーム";
-"Warning" = "Warning";
+"Warning" = "警告";
 
 // Popup messages
 "Background_App_Refresh" = "Appのバックグラウンド更新";
@@ -40,11 +40,11 @@
 "Download_Starting" = "開始中…";
 "Download_Progress" = "%@ \\/ %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "次のパッケージは必須パッケージとされています。: %@\n これらを削除すると、デバイスに不可逆的なエラーが生じ、復元が必要になる場合があります。自分が何をしているかを確実に理解している場合にのみ続行してください。";
 
 "Queue_Confirm_Button" = "実行";
 "Queue_Clear_Button" = "キューをクリア";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "ダウンロードをキャンセル";
 
 "Package_Upgrade_Action" = "アップデート";
 "Package_Reinstall_Action" = "再インストール";
@@ -63,6 +63,9 @@
 "Package_Wishlist_Add" = "ほしいものリストに追加";
 "Package_Wishlist_Remove" = "ほしいものリストから削除";
 "Wishlist" = "ほしいものリスト";
+
+"No_New_Packages" = "新しいパッケージはありません";
+"News_Check_Later" = "インデックスが作成された新しいパッケージはまだありません。一定時間が経過し、リポジトリが更新されるとパッケージがここに表示されます。";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "インストール";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "変更を保存するには、Sileoを再起動する必要があります。";
 "Help_Translate" = "Sileoの翻訳を助ける";
 "Always_Show_Install_Log" = "インストールのログを常に表示する";
+"Auto_Show_Queue" = "すべてのアップデートを表示";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";

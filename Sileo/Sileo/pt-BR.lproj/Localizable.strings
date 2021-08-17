@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "Remover da lista de desejos";
 "Wishlist" = "Lista de desejos";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Instalar";
 "Queued_Uninstall_Heading" = "Desinstalar";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "A aplicação de alterações exigirá a reinicialização do Sileo";
 "Help_Translate" = "Ajude a traduzir Sileo";
 "Always_Show_Install_Log" = "Sempre mostrar o log de instalação";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";

@@ -40,8 +40,7 @@
 "Download_Starting" = "正在開始...";
 "Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "以下的套件是被列為必需/必要的： %@\n 移除這些套件 
-可能會對你的裝置造成不可回復的傷害而且有可能需要你還原裝置。只有當你知道自己是在做什麼事時才繼續。";
+"Essential_Warning" = "以下的套件是被列為重要/必需的：%@\n 移除這些套件可能會對您的裝置造成不可還原的傷害而且有可能需要您回復裝置。請僅在您了解並願意承擔風險的情況下繼續。";
 
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";
@@ -65,6 +64,9 @@
 "Package_Wishlist_Remove" = "從願望清單中移除";
 "Wishlist" = "願望清單";
 
+"No_New_Packages" = "沒有新套件";
+"News_Check_Later" = "還沒有新套件被索引。 等數個小時後再回來，隨著來源更新，你應該會看到這裏開始出現套件。";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安裝";
 "Queued_Uninstall_Heading" = "移除";
@@ -77,7 +79,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
-"Sort_Install_Size" = "已安裝大小";
+"Sort_Install_Size" = "大小";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -163,6 +165,7 @@
 "Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
 "Help_Translate" = "幫助翻譯 Sileo";
 "Always_Show_Install_Log" = "總是顯示安裝詳情";
+"Auto_Show_Queue" = "在全部更新時顯示佇列";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
