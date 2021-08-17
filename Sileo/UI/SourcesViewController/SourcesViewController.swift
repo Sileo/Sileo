@@ -85,7 +85,7 @@ class SourcesViewController: SileoViewController {
         
         self.registerForPreviewing(with: self, sourceView: self.tableView!)
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
-        #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
+        #if targetEnvironment(macCatalyst)
         let nav = self.navigationItem
         nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSource(_:)))
         nav.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
@@ -132,13 +132,13 @@ class SourcesViewController: SileoViewController {
         self.setEditing(!self.isEditing, animated: true)
     }
     
-    #if !targetEnvironment(simulator) && !targetEnvironment(macCatalyst)
+    #if !targetEnvironment(macCatalyst)
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        self.tableView?.setEditing(editing, animated: animated)
         
         UIView.animate(withDuration: animated ? 0.2 : 0.0) {
             let nav = self.navigationItem
-            nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
             
             if editing {
                 let exportTitle = String(localizationKey: "Export")
@@ -146,6 +146,7 @@ class SourcesViewController: SileoViewController {
                 nav.rightBarButtonItem = UIBarButtonItem(title: exportTitle, style: .plain, target: self, action: #selector(self.exportSources(_:)))
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.toggleEditing(_:)))
+                nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
             }
             
         }
