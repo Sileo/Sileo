@@ -165,6 +165,7 @@
 "Apply_Changes_Confirm" = "Pentru a aplica schimbările trebuie să reporniți Sileo";
 "Help_Translate" = "Ajutați cu localizarea pentru Sileo";
 "Always_Show_Install_Log" = "Afișați jurnalul de instalare întotdeauna";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
