@@ -152,7 +152,8 @@ class CategoryViewController: SileoTableViewController {
                         return
                 }
                 self.featuredBannerData = depiction
-                
+                guard let banners = depiction["banners"] as? [[String: Any]],
+                      !banners.isEmpty else { return }
                 DispatchQueue.main.async {
                     if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) {
                         let newHeight = headerView.depictionHeight(width: self.view.bounds.width)
