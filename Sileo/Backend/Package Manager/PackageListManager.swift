@@ -552,7 +552,9 @@ final class PackageListManager {
         }
         downloadMan.reloadData(recheckPackages: true) {
             completion?()
-            TabBarController.singleton?.presentPopupController()
+            if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
+                TabBarController.singleton?.presentPopupController()
+            }
         }
     }
 }

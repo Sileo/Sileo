@@ -185,12 +185,16 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                 cell.defaultKey = "AutoComplete"
             case 6:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Show_Queue")
+                cell.fallback = true
+                cell.defaultKey = "UpgradeAllAutoQueue"
+            case 7:
                 cell.amyPogLabel.text = String(localizationKey: "Always_Show_Install_Log")
                 cell.defaultKey = "AlwaysShowLog"
-            case 7:
+            case 8:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-            case 8:
+            case 9:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
