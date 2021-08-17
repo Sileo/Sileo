@@ -140,29 +140,23 @@ class CategoryViewController: SileoTableViewController {
             guard let featuredURL = repoContext.url?.appendingPathComponent("sileo-featured.json") else {
                 return
             }
-            URLSession.shared.dataTask(with: featuredURL) { data, _, error in
-                guard error == nil, let data = data else {
-                    return
-                }
-                guard let rawDepiction = try? JSONSerialization.jsonObject(with: data, options: []) else {
-                    return
-                }
-                guard let depiction = rawDepiction as? [String: Any],
-                    (depiction["class"] as? String) == "FeaturedBannersView" else {
-                        return
-                }
-                self.featuredBannerData = depiction
+            AmyNetworkResolver.dict(url: featuredURL, cache: true) { [weak self] success, dict in
+                guard success,
+                      let depiction = dict,
+                      let strong = self,
+                      (depiction["class"] as? String) == "FeaturedBannersView" else { return }
+                strong.featuredBannerData = depiction
                 guard let banners = depiction["banners"] as? [[String: Any]],
                       !banners.isEmpty else { return }
                 DispatchQueue.main.async {
-                    if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) {
-                        let newHeight = headerView.depictionHeight(width: self.view.bounds.width)
+                    if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: strong, tintColor: nil, isActionable: false) {
+                        let newHeight = headerView.depictionHeight(width: strong.view.bounds.width)
                         headerView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                        self.headerStackView?.addArrangedSubview(headerView)
-                        self.updateHeaderStackView()
+                        strong.headerStackView?.addArrangedSubview(headerView)
+                        strong.updateHeaderStackView()
                     }
                 }
-            }.resume()
+            }
         }
     }
     
