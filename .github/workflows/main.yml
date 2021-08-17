@@ -74,7 +74,7 @@ jobs:
         run: xcodebuild test -scheme "Sileo (Test Handler)" -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0
+          make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
