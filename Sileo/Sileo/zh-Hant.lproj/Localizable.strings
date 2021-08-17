@@ -40,7 +40,7 @@
 "Download_Starting" = "正在開始...";
 "Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "以下的套件是被列為重要/必需的：%@\n 移除這些套件可能會對您的裝置造成不可還原的傷害而且有可能需要您回復裝置。請僅在你了解並願意承擔風險的情況下繼續。";
+"Essential_Warning" = "以下的套件是被列為重要/必需的：%@\n 移除這些套件可能會對您的裝置造成不可還原的傷害而且有可能需要您回復裝置。請僅在您了解並願意承擔風險的情況下繼續。";
 
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";
