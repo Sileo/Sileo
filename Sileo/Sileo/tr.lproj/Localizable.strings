@@ -65,7 +65,7 @@
 "Wishlist" = "İstek Listesi";
 
 "No_New_Packages" = "Yeni Paket Yok";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"News_Check_Later" = "Henüz dizine eklenmiş yeni paket yok. Birkaç saat sonra tekrar gelin ve kaynaklar güncellendikçe paketler burada görünmeye başlayacaktır.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Kur";
@@ -165,7 +165,7 @@
 "Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
 "Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
 "Always_Show_Install_Log" = "Her Zaman Yükleme Kaydını Göster";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Hepsini Güncellede Sırayı Göster";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
