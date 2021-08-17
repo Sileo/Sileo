@@ -24,7 +24,7 @@
 "Acknowledge" = "Bevestig";
 "Remove" = "Verwijder";
 "Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
+"Warning" = "Waarschuwing";
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
@@ -63,6 +63,9 @@
 "Package_Wishlist_Add" = "Toevoegen aan Verlanglijst";
 "Package_Wishlist_Remove" = "Verwijderen van Verlanglijst";
 "Wishlist" = "Verlanglijst";
+
+"No_New_Packages" = "Geen Nieuwe Pakketten";
+"News_Check_Later" = "Er zijn nog geen nieuwe pakketten geïndexeerd. Kom terug in een paar uur wanneer pakketten hier zichtbaar worden nadat bronnen geüpdated worden.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installeren";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "Voor het toepassen van aanpassingen is het herstarten van Sileo vereist";
 "Help_Translate" = "Help Met Het Vertalen Van Sileo";
 "Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";

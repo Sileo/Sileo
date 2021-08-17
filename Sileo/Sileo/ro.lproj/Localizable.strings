@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
 "Wishlist" = "Lista de dorințe";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "De instalat";
 "Queued_Uninstall_Heading" = "De dezinstalat";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "Pentru a aplica schimbările trebuie să reporniți Sileo";
 "Help_Translate" = "Ajutați cu localizarea pentru Sileo";
 "Always_Show_Install_Log" = "Afișați jurnalul de instalare întotdeauna";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";

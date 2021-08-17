@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
 "Wishlist" = "قائمة الأمنيات";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
 "Queued_Uninstall_Heading" = "إلغاء التثبيت";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
 "Help_Translate" = "Help Translate Sileo";
 "Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";

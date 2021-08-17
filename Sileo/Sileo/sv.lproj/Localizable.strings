@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "Radera från Önskelistan";
 "Wishlist" = "Önskelista";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installera";
 "Queued_Uninstall_Heading" = "Avinstallera";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "Sileo behöver startas om efter tillämpning";
 "Help_Translate" = "Hjälp Och Översätta Sileo";
 "Always_Show_Install_Log" = "Visa Alltid Installerings Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";

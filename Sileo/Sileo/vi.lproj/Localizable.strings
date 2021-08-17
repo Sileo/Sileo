@@ -24,7 +24,7 @@
 "Acknowledge" = "Chấp Nhận";
 "Remove" = "Xoá";
 "Sileo_Team" = "Đội Sileo";
-"Warning" = "Warning";
+"Warning" = "Cảnh báo";
 
 // Popup messages
 "Background_App_Refresh" = "Làm mới ứng dụng nền";
@@ -40,7 +40,7 @@
 "Download_Starting" = "Đang bắt đầu…";
 "Download_Progress" = "%@ với %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Những gói sau đây được liệt kê là cần thiết: %@\n Loại bỏ chúng có thể gây hại không thể sửa chữa cho thiết bị của bạn và thiết bị của bạn có thể cần phải được khôi phục. Chỉ tiếp túc nếu như bạn chắc chắn bạn đang làm gì.";
 
 "Queue_Confirm_Button" = "Xác nhận";
 "Queue_Clear_Button" = "Xoá danh sách chờ";
@@ -63,6 +63,9 @@
 "Package_Wishlist_Add" = "Thêm vào danh sách yêu thích";
 "Package_Wishlist_Remove" = "Xóa khỏi danh sách yêu thích";
 "Wishlist" = "Danh sách yêu thích";
+
+"No_New_Packages" = "Không có gói mới";
+"News_Check_Later" = "Không có gói mới nào được tìm thấy. Quay trở lại trong vài giờ và bạn sẽ thấy các gói hiện lên khi mà các nguồn được cập nhật.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Tải về";
@@ -162,6 +165,7 @@
 "Apply_Changes_Confirm" = "Áp dụng thay đổi sẽ khởi động lại Sileo";
 "Help_Translate" = "Giúp đỡ dịch Sileo";
 "Always_Show_Install_Log" = "Luôn hiện nhật ký cài đặt";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
