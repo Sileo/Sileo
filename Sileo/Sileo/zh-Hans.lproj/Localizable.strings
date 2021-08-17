@@ -24,7 +24,7 @@
 "Acknowledge" = "收到";
 "Remove" = "移除";
 "Sileo_Team" = "Sileo 团队";
-"Warning" = "Warning";
+"Warning" = "警告";
 
 // Popup messages
 "Background_App_Refresh" = "后台App刷新";
@@ -40,7 +40,7 @@
 "Download_Starting" = "开始中…";
 "Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "下列软件包被列为必需的: %@\n 删除这些软件包可能会对您的设备造成不可逆的损坏，并且可能需要您进行恢复。只有当您确定您知道自己在做什么的时候才继续。";
 
 "Queue_Confirm_Button" = "确认";
 "Queue_Clear_Button" = "清除队列";
