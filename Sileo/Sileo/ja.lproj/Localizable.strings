@@ -165,6 +165,7 @@
 "Apply_Changes_Confirm" = "変更を保存するには、Sileoを再起動する必要があります。";
 "Help_Translate" = "Sileoの翻訳を助ける";
 "Always_Show_Install_Log" = "インストールのログを常に表示する";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "ライト";
 "Sileo_Dark" = "ダーク";
