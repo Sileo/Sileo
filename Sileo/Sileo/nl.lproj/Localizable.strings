@@ -112,6 +112,7 @@
 "Add_Source.Body" = "Voeg APT URL toe";
 "Add_Source.Button.Add" = "Voeg Bron Toe";
 "Add_Dist_Repo" = "Voeg Distributie Bron Toe";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
