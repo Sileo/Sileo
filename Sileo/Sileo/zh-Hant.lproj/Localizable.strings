@@ -65,7 +65,7 @@
 "Wishlist" = "願望清單";
 
 "No_New_Packages" = "沒有新套件";
-"News_Check_Later" = "還沒有新套件被索引。 等數個小時後再回來，隨著軟體來源更新，你應該會看到這裏開始出現套件。";
+"News_Check_Later" = "還沒有新套件被索引。 等數個小時後再回來，隨著來源更新，你應該會看到這裏開始出現套件。";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安裝";
@@ -165,7 +165,7 @@
 "Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
 "Help_Translate" = "幫助翻譯 Sileo";
 "Always_Show_Install_Log" = "總是顯示安裝詳情";
-"Auto_Show_Queue" = "在全部更新顯示佇列";
+"Auto_Show_Queue" = "在全部更新時顯示佇列";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
