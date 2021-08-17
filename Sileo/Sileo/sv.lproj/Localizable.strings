@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "Radera från Önskelistan";
 "Wishlist" = "Önskelista";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installera";
 "Queued_Uninstall_Heading" = "Avinstallera";
