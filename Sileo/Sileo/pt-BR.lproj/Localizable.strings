@@ -165,6 +165,7 @@
 "Apply_Changes_Confirm" = "A aplicação de alterações exigirá a reinicialização do Sileo";
 "Help_Translate" = "Ajude a traduzir Sileo";
 "Always_Show_Install_Log" = "Sempre mostrar o log de instalação";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
