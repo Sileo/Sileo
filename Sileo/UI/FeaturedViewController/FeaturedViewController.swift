@@ -17,7 +17,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = String(localizationKey: "Featured_Page")
         self.navigationController?.tabBarItem._setInternalTitle(String(localizationKey: "Featured_Page"))
         
@@ -213,6 +213,9 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         for viewController in tabBarController.viewControllers ?? [] {
             if viewController as? SileoNavigationController != nil { continue }
             if viewController as? SourcesSplitViewController != nil { continue }
+            tabBarController.viewControllers?.removeAll(where: { $0 == viewController })
+        }
+        if tabBarController.viewControllers?.count ?? 0 >= 6 {
             fatalError("Invalid View Controllers")
         }
     }
@@ -233,6 +236,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
         }
         button.tintColor = .tintColor
+        windowCheck()
         return button
     }
     

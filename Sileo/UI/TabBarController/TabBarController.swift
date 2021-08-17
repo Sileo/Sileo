@@ -78,6 +78,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             }
             fuckedUpSources = true
         }
+        if viewController as? SileoNavigationController != nil { return }
+        if viewController as? SourcesSplitViewController != nil { return }
+        fatalError("View Controller mismatch")
     }
     
     func presentPopup() {

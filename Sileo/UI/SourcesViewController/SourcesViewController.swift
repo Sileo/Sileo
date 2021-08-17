@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SourcesViewController: SileoViewController {
+final class SourcesViewController: SileoViewController {
     private var sortedRepoList: [Repo] = []
     var updatingRepoList: [Repo] = []
     
