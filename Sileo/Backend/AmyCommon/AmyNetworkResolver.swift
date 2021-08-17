@@ -277,6 +277,22 @@ final class AmyNetworkResolver {
         }
     }
     
+    class public func head(url: String?, _ completion: @escaping ((_ success: Bool) -> Void)) {
+        guard let surl = url,
+              let url = URL(string: surl) else { return completion(false) }
+        head(url: url, completion)
+    }
+    
+    class public func head(url: URL, _ completion: @escaping ((_ success: Bool) -> Void)) {
+        var request = URLRequest(url: url, timeoutInterval: 5)
+        request.httpMethod = "HEAD"
+        let task = URLSession.shared.dataTask(with: request) { _, response, _ -> Void in
+            if let response = response as? HTTPURLResponse,
+               response.statusCode == 200 { completion(true) } else { completion(false) }
+        }
+        task.resume()
+    }
+    
     class public func data(url: String?, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }

@@ -542,7 +542,7 @@ final class SourcesViewController: SileoViewController {
     }
     
     func handleSourceAdd(urls: [URL], bypassFlagCheck: Bool) {
-        if !bypassFlagCheck {
+        func handleAdd() {
             CanisterResolver.piracy(urls) { safe, piracy in
                 DispatchQueue.main.async {
                     if !safe.isEmpty {
@@ -556,6 +556,38 @@ final class SourcesViewController: SileoViewController {
                         self.showFlaggedSourceWarningController(urls: piracy)
                     }
                 }
+            }
+        }
+        if !bypassFlagCheck {
+            if urls.count == 1 {
+                let url = urls[0]
+                if url.host == "apt.bigboss.org"
+                    || url.host == "apt.thebigboss.org"
+                    || url.host == "thebigboss.org"
+                    || url.host == "bigboss.org"
+                    || url.host == "apt.procurs.us" {
+                    return handleAdd()
+                }
+                AmyNetworkResolver.head(url: url.appendingPathComponent("Release")) { success in
+                    if success {
+                        handleAdd()
+                    } else {
+                        DispatchQueue.main.async { [self] in
+                            let alert = UIAlertController(title: String(localizationKey: "Warning"),
+                                                          message: String(format: String(localizationKey: "Incorrect_Repo"), url.absoluteString),
+                                                          preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: String(localizationKey: "Add_Source.Title"), style: .default, handler: { _ in
+                                handleAdd()
+                            }))
+                            alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: { _ in
+                                alert.dismiss(animated: true)
+                            }))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            } else {
+                handleAdd()
             }
         } else {
             let repos = RepoManager.shared.addRepos(with: urls)
