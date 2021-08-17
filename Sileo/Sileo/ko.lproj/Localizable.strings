@@ -112,6 +112,7 @@
 "Add_Source.Body" = "APT 주소 추가";
 "Add_Source.Button.Add" = "소스 추가";
 "Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "직접 입력";
 
