@@ -24,6 +24,7 @@
 "Acknowledge" = "승인";
 "Remove" = "삭제";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
 
 // Popup messages
 "Background_App_Refresh" = "백그라운드 앱 새로 고침";
@@ -38,6 +39,8 @@
 "Removal_Queued_Package_Status" = "삭제 대기열에 추가됨";
 "Download_Starting" = "시작 중…";
 "Download_Progress" = "%@ 중 %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
 "Queue_Confirm_Button" = "확인";
 "Queue_Clear_Button" = "대기열 비우기";

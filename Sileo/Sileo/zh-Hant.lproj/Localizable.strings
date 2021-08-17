@@ -24,6 +24,7 @@
 "Acknowledge" = "明白";
 "Remove" = "移除";
 "Sileo_Team" = "Sileo 團隊";
+"Warning" = "警告";
 
 // Popup messages
 "Background_App_Refresh" = "背景 App 重新整理";
@@ -38,6 +39,9 @@
 "Removal_Queued_Package_Status" = "在移除的佇列中";
 "Download_Starting" = "正在開始...";
 "Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "以下的套件是被列為必需/必要的： %@\n 移除這些套件 
+可能會對你的裝置造成不可回復的傷害而且有可能需要你還原裝置。只有當你知道自己是在做什麼事時才繼續。";
 
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";

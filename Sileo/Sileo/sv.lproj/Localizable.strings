@@ -24,6 +24,7 @@
 "Acknowledge" = "Medge";
 "Remove" = "Radera";
 "Sileo_Team" = "Sileo Utvecklare";
+"Warning" = "Warning";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrund App Uppdatering";
@@ -38,6 +39,8 @@
 "Removal_Queued_Package_Status" = "Köad för Borttagning";
 "Download_Starting" = "Startar…";
 "Download_Progress" = "%@ av %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
 "Queue_Confirm_Button" = "Bekräfta";
 "Queue_Clear_Button" = "Rensa Kö";
