@@ -165,6 +165,7 @@
 "Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
 "Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
 "Always_Show_Install_Log" = "Her Zaman Yükleme Kaydını Göster";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";
