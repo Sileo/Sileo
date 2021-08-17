@@ -24,7 +24,7 @@
 "Acknowledge" = "Onayla";
 "Remove" = "Kaldır";
 "Sileo_Team" = "Sileo Ekibi";
-"Warning" = "Warning";
+"Warning" = "Uyarı";
 
 // Popup messages
 "Background_App_Refresh" = "Arka Planda Uygulama Yenile";
@@ -40,7 +40,7 @@
 "Download_Starting" = "Başlıyor…";
 "Download_Progress" = "%@ \\/ %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Şu paket(ler) jailbreak sistemi için gerekli olarak işaretlenmiştir: %@\n Bunları kaldırmak cihazınıza ciddi hasarlar verebilir ve cihazınızı sıfırlamak zorunda kalabilirsiniz. Lütfen yalnızca ne yaptığınızı iyi biliyorsanız devam ediniz.";
 
 "Queue_Confirm_Button" = "Kabul Et";
 "Queue_Clear_Button" = "Kuyruğu Temizle";
@@ -64,8 +64,8 @@
 "Package_Wishlist_Remove" = "İstek listesinden kaldır";
 "Wishlist" = "İstek Listesi";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Yeni Paket Yok";
+"News_Check_Later" = "Henüz dizine eklenmiş yeni paket yok. Birkaç saat sonra tekrar gelin ve kaynaklar güncellendikçe paketler burada görünmeye başlayacaktır.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Kur";
@@ -112,6 +112,7 @@
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
 "Add_Dist_Repo" = "Dağıtım Kaynağını Ekle";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
 
@@ -165,7 +166,7 @@
 "Apply_Changes_Confirm" = "Değişiklikleri Onaylamak İçin Sileo'nun Yeniden Başlatılması Gerekir";
 "Help_Translate" = "Sileo'yu Çevirmemize Yardım Et";
 "Always_Show_Install_Log" = "Her Zaman Yükleme Kaydını Göster";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Hepsini Güncellede Sırayı Göster";
 
 "Sileo_Light" = "Açık Sileo";
 "Sileo_Dark" = "Koyu Sileo";

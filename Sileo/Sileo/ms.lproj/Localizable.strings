@@ -112,6 +112,7 @@
 "Add_Source.Body" = "Tambah URL APT";
 "Add_Source.Button.Add" = "Tambah Sumber";
 "Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Tambah secara manual";
 
