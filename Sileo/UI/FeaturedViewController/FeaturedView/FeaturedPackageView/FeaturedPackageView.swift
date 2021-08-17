@@ -12,6 +12,8 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     let imageView: PackageIconView
     let titleLabel, authorLabel, versionLabel: UILabel
     
+    static let featuredPackageReload = Notification.Name("FeaturedPackageReload")
+    
     let repoName: String
     
     let packageButton: PackageQueueButton
@@ -154,6 +156,10 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(FeaturedPackageView.reloadPackage),
+                                               name: FeaturedPackageView.featuredPackageReload,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(FeaturedPackageView.reloadPackage),
                                                name: Notification.Name("ShowProvisional"),
                                                object: nil)
     }
@@ -231,35 +237,24 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc public func reloadPackage() {
-        self.packageObject = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil)
-        self.packageButton.package = self.packageObject
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
+        let package: Package? = {
+            if let holder = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
+                return holder
+            } else if let provisional = CanisterResolver.shared.package(for: self.package) {
+                return provisional
+            }
+            return nil
+        }()
+        
+        if let package = package {
             self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
-            return
-        }
-        if !PackageListManager.shared.isLoaded { return }
-        let canister = CanisterResolver.shared
-        func setPackage() -> Bool {
-            if let package = canister.package(for: self.package) {
-                self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
-                self.packageButton.package = package
-                self.packageButton.isEnabled = true
-                self.packageObject = package
-                return true
-            }
-            return false
-        }
-        if setPackage() { return }
-        if !canister.fetch(self.package, fetch: { change in
-            DispatchQueue.main.async {
-                guard change,
-                      setPackage() else {
-                    self.versionLabel.text = String(localizationKey: "Package_Unavailable")
-                    return
-                }
-            }
-        }) {
+            self.packageButton.package = package
+            self.packageButton.isEnabled = true
+            self.packageObject = package
+        } else {
             self.versionLabel.text = String(localizationKey: "Package_Unavailable")
+            self.packageButton.package = nil
+            self.packageButton.isEnabled = false
         }
     }
     

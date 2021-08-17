@@ -136,6 +136,45 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                     strong.versionTooLow()
                 }
                 
+                CanisterResolver.nistercanQueue.async {
+                    let packageMan = PackageListManager.shared
+                    packageMan.initWait()
+                    
+                    // Nistercan trolling
+                    var packages = [String]()
+                    func findPackageInDict(_ dict: [String: Any]) {
+                        for (key, value) in dict {
+                            if key == "package",
+                               let package = value as? String {
+                                packages.append(package)
+                            } else if let dict = value as? [String: Any] {
+                                findPackageInDict(dict)
+                            } else if let array = value as? [[String: Any]] {
+                                for view in array {
+                                    findPackageInDict(view)
+                                }
+                            }
+                        }
+                    }
+                    findPackageInDict(dict)
+                    
+                    var nonFound = [String]()
+                    let allPackages = packageMan.allPackagesArray
+                    for package in packages {
+                        if packageMan.newestPackage(identifier: package, repoContext: nil, packages: allPackages) == nil {
+                            nonFound.append(package)
+                        }
+                    }
+                
+                    CanisterResolver.shared.batchFetch(nonFound) { change in
+                        if change {
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: FeaturedPackageView.featuredPackageReload, object: nil)
+                            }
+                        }
+                    }
+                }
+                            
                 strong.featuredView?.removeFromSuperview()
                 if let featuredView = FeaturedBaseView.view(dictionary: dict,
                                                             viewController: strong,

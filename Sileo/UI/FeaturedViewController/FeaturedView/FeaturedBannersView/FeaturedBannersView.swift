@@ -89,15 +89,6 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             viewController.registerForPreviewing(with: bannerView, sourceView: bannerView)
             stackView.addArrangedSubview(bannerView)
         }
-        
-        let allPackages = PackageListManager.shared.allPackagesArray
-        for package in packages {
-            if PackageListManager.shared.newestPackage(identifier: package,
-                                                       repoContext: nil,
-                                                       packages: allPackages) == nil {
-                CanisterResolver.shared.fetch(package)
-            }
-        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -111,12 +102,15 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
     func viewController(bannerView: FeaturedBannerView) -> UIViewController? {
         let banner = bannerView.banner
         if let package = banner["package"] as? String {
-            if let pkg = PackageListManager.shared.newestPackage(identifier: package, repoContext: nil) {
-                let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-                packageViewController.package = pkg
-                return packageViewController
-            }
-            if let package = CanisterResolver.shared.package(for: package) {
+            let package: Package? = {
+                if let holder = PackageListManager.shared.newestPackage(identifier: package, repoContext: nil) {
+                    return holder
+                } else if let provisional = CanisterResolver.shared.package(for: package) {
+                    return provisional
+                }
+                return nil
+            }()
+            if let package = package {
                 let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
                 packageViewController.package = package
                 return packageViewController
