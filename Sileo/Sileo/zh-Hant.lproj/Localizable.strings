@@ -64,6 +64,9 @@
 "Package_Wishlist_Remove" = "從願望清單中移除";
 "Wishlist" = "願望清單";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安裝";
 "Queued_Uninstall_Heading" = "移除";
