@@ -16,6 +16,13 @@ final class RepoManager {
     #else
     public final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
     #endif
+    public final lazy var isProcursus: Bool = {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        return isMobileProcursus
+        #endif
+    }()
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
 
@@ -305,7 +312,9 @@ final class RepoManager {
             let repos = suites.map { (suite: String) -> Repo in
                 let repo = Repo()
                 repo.rawEntry = repoEntry
-                repo.rawURL = repoURL
+                repo.rawURL = {
+                    repoURL + (repoURL.last == "/" ? "" : "/")
+                }()
                 repo.suite = suite
                 repo.components = components ?? []
                 repo.entryFile = url.absoluteString
@@ -315,61 +324,6 @@ final class RepoManager {
             repoListLock.wait()
             repoList += repos
             repoListLock.signal()
-        }
-    }
-
-    private func parseListFile(at url: URL) {
-        guard url.lastPathComponent != "cydia.list",
-              let rawList = try? String(contentsOf: url)
-        else {
-            return
-        }
-
-        let repoEntries = rawList.components(separatedBy: "\n")
-        for repoEntry in repoEntries {
-            let parts = repoEntry.components(separatedBy: " ")
-            guard parts.count >= 3 else {
-                continue
-            }
-
-            let type = parts[0]
-            let uri = parts[1]
-            let suite = parts[2]
-            let components = (parts.count > 3) ? Array(parts[3...]) : nil
-
-            parseRepoEntry(repoEntry, at: url, withTypes: [type], uris: [uri], suites: [suite], components: components)
-        }
-    }
-
-    private func parseSourcesFile(at url: URL) {
-        guard let rawSources = try? String(contentsOf: url) else {
-            return
-        }
-        let repoEntries = rawSources.components(separatedBy: "\n\n")
-
-        for repoEntry in repoEntries {
-            guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
-                  let rawTypes = repoData["types"],
-                  let rawUris = repoData["uris"],
-                  let rawSuites = repoData["suites"],
-                  let rawComponents = repoData["components"]
-            else {
-                continue
-            }
-
-            let types = rawTypes.components(separatedBy: " ")
-            let uris = rawUris.components(separatedBy: " ")
-            let suites = rawSuites.components(separatedBy: " ")
-
-            let allComponents = rawComponents.components(separatedBy: " ")
-            let components: [String]?
-            if allComponents.count == 1 && allComponents[0] == "" {
-                components = nil
-            } else {
-                components = allComponents
-            }
-
-            parseRepoEntry(repoEntry, at: url, withTypes: types, uris: uris, suites: suites, components: components)
         }
     }
 
@@ -1203,52 +1157,135 @@ final class RepoManager {
                    components[2] == fileName
         }
     }
+    
+    private func parseListFile(at url: URL) {
+        if isMobileProcursus {
+            guard url.lastPathComponent != "cydia.list" else { return }
+        }
+        guard let rawList = try? String(contentsOf: url) else { return }
 
-    func writeListToFile() {
-        repoListLock.wait()
+        let repoEntries = rawList.components(separatedBy: "\n")
+        for repoEntry in repoEntries {
+            let parts = repoEntry.components(separatedBy: " ")
+            guard parts.count >= 3 else {
+                continue
+            }
 
-        var rawRepoList = ""
-        var added: Set<String> = []
-        for repo in repoList {
-            guard URL(fileURLWithPath: repo.entryFile).lastPathComponent == "sileo.sources",
-                  !added.contains(repo.rawEntry)
+            let type = parts[0]
+            let uri = parts[1]
+            let suite = parts[2]
+            let components = (parts.count > 3) ? Array(parts[3...]) : nil
+
+            parseRepoEntry(repoEntry, at: url, withTypes: [type], uris: [uri], suites: [suite], components: components)
+        }
+    }
+
+    private func parseSourcesFile(at url: URL) {
+        guard let rawSources = try? String(contentsOf: url) else {
+            return
+        }
+        let repoEntries = rawSources.components(separatedBy: "\n\n")
+
+        for repoEntry in repoEntries {
+            guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
+                  let rawTypes = repoData["types"],
+                  let rawUris = repoData["uris"],
+                  let rawSuites = repoData["suites"],
+                  let rawComponents = repoData["components"]
             else {
                 continue
             }
-            rawRepoList += "\(repo.rawEntry)\n\n"
-            added.insert(repo.rawEntry)
+
+            let types = rawTypes.components(separatedBy: " ")
+            let uris = rawUris.components(separatedBy: " ")
+            let suites = rawSuites.components(separatedBy: " ")
+
+            let allComponents = rawComponents.components(separatedBy: " ")
+            let components: [String]?
+            if allComponents.count == 1 && allComponents[0] == "" {
+                components = nil
+            } else {
+                components = allComponents
+            }
+
+            parseRepoEntry(repoEntry, at: url, withTypes: types, uris: uris, suites: suites, components: components)
         }
+    }
 
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
+    func writeListToFile() {
+        repoListLock.wait()
+        
+        if isProcursus {
+            var rawRepoList = ""
+            var added: Set<String> = []
+            for repo in repoList {
+                guard URL(fileURLWithPath: repo.entryFile).lastPathComponent == "sileo.sources",
+                      !added.contains(repo.rawEntry)
+                else {
+                    continue
+                }
+                rawRepoList += "\(repo.rawEntry)\n\n"
+                added.insert(repo.rawEntry)
+            }
 
-        try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
+            #if targetEnvironment(simulator) || TARGET_SANDBOX
 
-        #else
+            try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
 
-        var sileoList = ""
-        if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
-           FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
-           FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
-            sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
+            #else
+
+            var sileoList = ""
+
+            if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
+                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
+            } else {
+                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
+            }
+            
+            let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            do {
+                try rawRepoList.write(to: tempPath, atomically: true, encoding: .utf8)
+            } catch {
+                return
+            }
+            
+            #if targetEnvironment(macCatalyst)
+            spawnAsRoot(args: [CommandPath.cp, "-f", "\(tempPath.path)", "\(sileoList)"])
+            #else
+            spawnAsRoot(args: [CommandPath.cp, "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
+            #endif
+            spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
+
+            #endif
         } else {
-            sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
-        }
-
-        let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        do {
-            try rawRepoList.write(to: tempPath, atomically: true, encoding: .utf8)
-        } catch {
-            return
+            // > but if you wanted to, just edit the cydia file too and update cydia's prefs
+            let defaults = UserDefaults.init(suiteName: "com.saurik.Cydia")
+            var sourcesDict = [String: Any]()
+            var rawRepoList = ""
+            var added: Set<String> = []
+            
+            for repo in repoList {
+                let rawEntry = "deb \(repo.rawURL) \(repo.suite) \(repo.components.first ?? "")"
+                if added.contains(rawEntry) { continue }
+                rawRepoList += "\(rawEntry)\n"
+                added.insert(rawRepoList)
+                let dict: [String: Any] = [
+                    "Distribution": repo.suite,
+                    "Type": "deb",
+                    "Sections": repo.components,
+                    "URI": repo.rawURL
+                ]
+                sourcesDict["deb:\(repo.rawURL):\(repo.suite)"] = dict
+            }
+            defaults?.setValue(sourcesDict, forKey: "CydiaSources")
+            defaults?.synchronize()
+            
+            let cydiaList = URL(fileURLWithPath: "/var/mobile/Library/Caches/com.saurik.Cydia/sources.list")
+            try? rawRepoList.write(to: cydiaList, atomically: true, encoding: .utf8)
         }
         
-        #if targetEnvironment(macCatalyst)
-        spawnAsRoot(args: [CommandPath.cp, "-f", "\(tempPath.path)", "\(sileoList)"])
-        #else
-        spawnAsRoot(args: [CommandPath.cp, "--reflink=never", "-f", "\(tempPath.path)", "\(sileoList)"])
-        #endif
-        spawnAsRoot(args: [CommandPath.chmod, "0644", "\(sileoList)"])
-
-        #endif
 
         repoListLock.signal()
     }

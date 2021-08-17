@@ -33,7 +33,10 @@ class SourcesViewController: SileoViewController {
         }
         
         let repo = sortedRepoList[indexPath.row]
-        return repo.entryFile.hasSuffix("/sileo.sources")
+        if RepoManager.shared.isProcursus {
+            return repo.entryFile.hasSuffix("/sileo.sources")
+        }
+        return repo.url?.host != "apt.bingner.com"
     }
     
     func controller(indexPath: IndexPath) -> CategoryViewController {

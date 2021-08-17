@@ -342,9 +342,6 @@ public class CommandPath {
         return "/opt/procursus/etc/apt/sources.list.d"
         #else
         // Check for not Procursus so we can keep the check below
-        if !isMobileProcursus {
-            return "/etc/apt/sileo.list.d"
-        }
         return "/etc/apt/sources.list.d"
         #endif
     }()

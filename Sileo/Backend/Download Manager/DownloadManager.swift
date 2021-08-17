@@ -416,7 +416,6 @@ final class DownloadManager {
         #if TARGET_SANDBOX || targetEnvironment(simulator)
         return
         #endif
-        
         let aptOutput: APTOutput
         do {
             // Get the full list of packages to be installed and removed from apt
@@ -618,27 +617,7 @@ final class DownloadManager {
             }
         }
     }
-    /*
-     let actions = uninstallations + uninstalldeps
-     let essentialPackages = actions.map { $0.package }.filter { DownloadManager.shared.isEssential($0) }
-     if essentialPackages.isEmpty {
-         return confirmQueued(nil)
-     }
-     let formatPackages = essentialPackages.map { "\n\($0.name ?? $0.packageID)" }.joined()
-     let message = String(format: String(localizationKey: "Essential_Warning"), formatPackages)
-     let alert = UIAlertController(title: String(localizationKey: "Warning"),
-                                   message: message,
-                                   preferredStyle: .alert)
-     alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .default, handler: { _ in
-         alert.dismiss(animated: true)
-     }))
-     alert.addAction(UIAlertAction(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Continue"), style: .destructive, handler: { _ in
-         self.confirmQueued(nil)
-     }))
-     self.present(alert, animated: true, completion: nil)
-     return
-     */
-    
+  
     public func remove(package: Package, queue: DownloadManagerQueue) {
         let downloadPackage = DownloadPackage(package: package)
         remove(downloadPackage: downloadPackage, queue: queue)
