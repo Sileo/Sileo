@@ -19,41 +19,21 @@ finish() {
 
 case "$1" in
 	(configure)
-		if ! [ -f /.procursus_strapped ]; then
-			sourcesDir="/etc/apt/sileo.list.d"
-			mkdir -p $sourcesDir
-
-			if ! [ -s $sourcesDir/elucubratus.sources ]; then
-					echo "Installed Elucubratus Repo"
-					echo "" > $sourcesDir/elucubratus.sources
-					sed -i '1s;^;Types: deb\
-URIs: https://apt.bingner.com/\
-Suites: ./\
-Components:\
-\
-;' $sourcesDir/elucubratus.sources
-			fi
-		fi
-
-		touch $sourcesDir/sileo.sources
-
+		
 		cr="\n"
 
-		if ! [ -s "$sourcesDir/sileo.sources" ]; then
-			echo "" > $sourcesDir/sileo.sources
-		fi
-
-		if ! [ -f /.procursus_strapped ]; then
-			if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
-					then
-						echo "Installed BigBoss Repo"
-						sed -i '1s;^;Types: deb\
+		if [ -f /.procursus_strapped ]; then 
+		touch $sourcesDir/sileo.sources
+		echo "" > $sourcesDir/sileo.sources
+		if ! grep -Fxq "URIs: http://apt.thebigboss.org/repofiles/cydia/" $sourcesDir/sileo.sources ;
+			then
+				echo "Installed BigBoss Repo"
+				sed -i '1s;^;Types: deb\
 URIs: http://apt.thebigboss.org/repofiles/cydia/\
 Suites: stable\
 Components: main\
 \
 ;' $sourcesDir/sileo.sources
-			fi
 		fi
 
 		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
@@ -69,14 +49,16 @@ Components:\
 
 		if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
 		then
-			echo "Installed Packix Repo"
-			sed -i '1s;^;Types: deb\
+		echo "Installed Packix Repo"
+		sed -i '1s;^;Types: deb\
 URIs: https://repo.packix.com/\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
 		fi
+		fi
+		
 		rm -rf $sourcesDir/../preferences.d/checkra1n
 		exit 0
 		;;
