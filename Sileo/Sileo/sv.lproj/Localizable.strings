@@ -165,6 +165,7 @@
 "Apply_Changes_Confirm" = "Sileo behöver startas om efter tillämpning";
 "Help_Translate" = "Hjälp Och Översätta Sileo";
 "Always_Show_Install_Log" = "Visa Alltid Installerings Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
