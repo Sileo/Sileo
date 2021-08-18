@@ -35,15 +35,8 @@ class NewsResolver {
                 }
             }
             
-            var tma = DateComponents()
-            tma.month = -3
-            let threeMonthsAgo = Calendar.current.date(byAdding: tma, to: Date()) ?? Date()
-            strong.articles = strong.articles.filter({ $0.date > threeMonthsAgo })
-            
-            var twa = DateComponents()
-            twa.day = -14
-            let twoWeeksAgo = Calendar.current.date(byAdding: twa, to: Date()) ?? Date()
-            let shouldShow = strong.articles.contains(where: { $0.date > twoWeeksAgo })
+            strong.articles = strong.articles.filter({ $0.date > Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 7890000 ) })
+            let shouldShow = strong.articles.contains(where: { $0.date > Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 1209600 ) })
             if shouldShow {
                 DispatchQueue.main.async {
                     strong.showNews = true

@@ -55,14 +55,11 @@ final class AmyNetworkResolver {
         DispatchQueue.global(qos: .utility).async {
             if let contents = try? self.cacheDirectory.contents(),
                !contents.isEmpty {
-                var yes = DateComponents()
-                yes.day = -7
-                let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
                 for cached in contents {
                     if cached.path == self.downloadCache.path { continue }
                     guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
                           let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
-                    if weekOld > date {
+                    if Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 604800) > date {
                         try? FileManager.default.removeItem(atPath: cached.path)
                     }
                 }
