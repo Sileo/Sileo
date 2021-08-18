@@ -711,7 +711,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             } else {
                 packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
                                                       search: query,
-                                                      sortPackages: true,
+                                                      sortPackages: self.packagesLoadIdentifier == "--installed" ? false : true,
                                                       repoContext: self.repoContext,
                                                       lookupTable: self.searchCache)
             }
@@ -748,7 +748,8 @@ extension PackageListViewController: UISearchResultsUpdating {
                     })
                 case .size:
                     packages = packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
-                default: break
+                case .name:
+                    packages = packageManager.sortPackages(packages: packages, search: query)
                 }
             }
             

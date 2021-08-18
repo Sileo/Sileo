@@ -496,15 +496,15 @@ extension URL {
     }
 
     var size: UInt64 {
-        return attributes?[.size] as? UInt64 ?? UInt64(0)
+        attributes?[.size] as? UInt64 ?? UInt64(0)
     }
 
     var fileSizeString: String {
-        return ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+        ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
     }
 
     var creationDate: Date? {
-        return attributes?[.creationDate] as? Date
+        attributes?[.creationDate] as? Date
     }
 }
 
