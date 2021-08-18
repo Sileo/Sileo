@@ -50,6 +50,7 @@ class LanguageSelectionViewController: BaseSettingsViewController, LanguageSelec
             if let selectedLanguage = self.chosenCode {
                 UserDefaults.standard.setValue(selectedLanguage, forKey: "SelectedLanguage")
             }
+            UserDefaults.standard.synchronize()
             guard let window = UIApplication.shared.windows.first else { exit(0) }
             self.isFired = true
             self.setNeedsStatusBarAppearanceUpdate()

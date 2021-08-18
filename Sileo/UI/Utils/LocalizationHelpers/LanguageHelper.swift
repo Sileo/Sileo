@@ -52,6 +52,9 @@ final public class LanguageHelper {
             UIButton.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
             UITextView.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
             UITextField.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
+            UISwitch.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
+            UITableView.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
+            UILabel.appearance().semanticContentAttribute = isRtl ? .forceRightToLeft : .forceLeftToRight
             self.bundle = bundle
             self.locale = Locale(identifier: selectedLanguage)
             return
