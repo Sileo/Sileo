@@ -49,11 +49,12 @@ class FeaturedInfoFooterView: FeaturedBaseView {
     }
     
     override func depictionHeight(width: CGFloat) -> CGFloat {
-        15
+        24
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = self.bounds
+        label.frame = CGRect(origin: self.bounds.origin,
+                             size: CGSize(width: self.bounds.width, height: 15))
     }
 }
