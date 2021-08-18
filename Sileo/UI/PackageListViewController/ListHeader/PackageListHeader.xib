@@ -38,13 +38,13 @@
                     <rect key="frame" x="54" y="25" width="250" height="21"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cI-37-aEA" userLabel="SortHeader">
-                            <rect key="frame" x="0.0" y="0.0" width="229.5" height="21"/>
+                            <rect key="frame" x="0.0" y="0.0" width="231.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SortChevron" translatesAutoresizingMaskIntoConstraints="NO" id="oHz-JA-MSF" userLabel="SortIcon">
-                            <rect key="frame" x="232" y="1.5" width="18" height="18"/>
+                            <rect key="frame" x="234" y="2.5" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="oHz-JA-MSF" secondAttribute="height" id="KHh-Gb-e4E"/>
                             </constraints>
@@ -52,13 +52,13 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="oHz-JA-MSF" secondAttribute="bottom" constant="1.5" id="CLO-Cm-4We"/>
+                        <constraint firstAttribute="bottom" secondItem="oHz-JA-MSF" secondAttribute="bottom" constant="2.5" id="CLO-Cm-4We"/>
                         <constraint firstAttribute="width" constant="250" id="CeV-fF-I0O"/>
                         <constraint firstItem="oHz-JA-MSF" firstAttribute="leading" secondItem="0cI-37-aEA" secondAttribute="trailing" constant="2.5" id="OTE-kv-5pM"/>
                         <constraint firstAttribute="trailing" secondItem="oHz-JA-MSF" secondAttribute="trailing" id="P5R-t2-gWB"/>
                         <constraint firstAttribute="height" constant="21" id="gZ0-pt-ZMK"/>
                         <constraint firstItem="0cI-37-aEA" firstAttribute="leading" secondItem="1i8-qo-Aie" secondAttribute="leading" id="hw7-3u-GJP"/>
-                        <constraint firstItem="oHz-JA-MSF" firstAttribute="top" secondItem="1i8-qo-Aie" secondAttribute="top" constant="1.5" id="qL2-vd-lJ6"/>
+                        <constraint firstItem="oHz-JA-MSF" firstAttribute="top" secondItem="1i8-qo-Aie" secondAttribute="top" constant="2.5" id="qL2-vd-lJ6"/>
                         <constraint firstItem="0cI-37-aEA" firstAttribute="top" secondItem="1i8-qo-Aie" secondAttribute="top" id="uoP-rP-5Cz"/>
                         <constraint firstAttribute="bottom" secondItem="0cI-37-aEA" secondAttribute="bottom" id="wwT-kY-24o"/>
                     </constraints>
