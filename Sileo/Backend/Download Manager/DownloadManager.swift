@@ -178,6 +178,7 @@ final class DownloadManager {
             }
             let downloadURL = url ?? URL(string: filename)
             download.started = true
+            download.failureReason = nil
             download.task = RepoManager.shared.queue(from: downloadURL, progress: { progress in
                 download.message = nil
                 download.progress = CGFloat(progress.fractionCompleted)

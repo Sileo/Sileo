@@ -113,29 +113,11 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         retryButton.isHidden = true
         let downloadMan = DownloadManager.shared
         guard let package = package,
-              let download = downloadMan.downloads[package.package.package],
-              !download.success,
-              download.completed,
-              !download.queued else { return }
+              let download = downloadMan.downloads[package.package.packageID],
+              !download.success else { return }
         download.completed = false
-        download.queued = true
-        guard let task = download.task else {
-            downloadMan.startMoreDownloads()
-            return
-        }
-        if task.hasRetried {
-            download.task = nil
-        } else {
-            if task.shouldResume && task.resumeData != nil {
-                if !task.retry() {
-                    task.make()
-                }
-            } else {
-                task.make()
-            }
-            download.task = task
-        }
-        downloadMan.downloads[package.package.package] = download
+        download.task = nil
+        download.queued = false
         downloadMan.startMoreDownloads()
     }
     

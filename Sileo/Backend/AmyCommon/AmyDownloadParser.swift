@@ -176,7 +176,7 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     
     // The Download Finished
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let container = container(downloadTask.response?.url) else { return }
+        guard let container = container(downloadTask.response?.url ?? downloadTask.currentRequest?.url) else { return }
         if container.toBeTerminated {
             remove(container)
             downloadTask.cancel()
@@ -227,13 +227,14 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     
     // Checking for errors in the download
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        guard var container = container(task.response?.url) else { return }
+        guard var container = container(task.response?.url ?? task.currentRequest?.url) else { return }
         if container.toBeTerminated {
             remove(container)
             return
         }
         if let error = error {
             if (error as NSError).code == NSURLErrorCancelled || (error as NSError).code == NSFileWriteOutOfSpaceError { return }
+            container.shouldResume = true
             if container.shouldResume {
                 let userInfo = (error as NSError).userInfo
                 if let resumeData = userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
