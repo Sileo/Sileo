@@ -711,6 +711,20 @@ extension PackageListViewController: UISearchResultsUpdating {
             }
             
             if self.packagesLoadIdentifier == "--installed" {
+                var allPackages: [String: Package] = [:]
+                _ = packages.map { allPackages[$0.packageID] = $0 }
+                let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
+                for package in foundPackages {
+                    guard let existing = allPackages[package.packageID] else { continue }
+                    if existing.version == package.version {
+                        allPackages[package.packageID] = package
+                    } else {
+                        if let correct = package.allVersions.first(where: { $0.version == package.version }) {
+                            allPackages[package.packageID] = correct
+                        }
+                    }
+                }
+                packages = Array(allPackages.values)
                 switch SortMode() {
                 case .installdate:
                     packages = packages.sorted(by: { package1, package2 -> Bool in
