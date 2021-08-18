@@ -112,7 +112,7 @@
 "Add_Source.Body" = "新增软件源地址";
 "Add_Source.Button.Add" = "添加软件源";
 "Add_Dist_Repo" = "添加发行版软件源";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ 似乎不是有效的软件源⁉️ 软件源可能处于离线状态，或者您输入错误。是否继续添加？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
 

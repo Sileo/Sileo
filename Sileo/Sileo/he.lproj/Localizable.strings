@@ -23,8 +23,8 @@
 "Cancel" = "ביטול";
 "Acknowledge" = "אני מקבל";
 "Remove" = "מחיקה";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
+"Sileo_Team" = "צוות סילאו";
+"Warning" = "אזהרה";
 
 // Popup messages
 "Background_App_Refresh" = "רענון יישום ברקע";
@@ -40,11 +40,11 @@
 "Download_Starting" = "מתחיל…";
 "Download_Progress" = "%@ מתוך %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "החבילות הבאות מסומנות כהכרחיות: %@\n מחיקת החבילות יכולות לגרום לנזק בלתי הפיך למכשירך וייתכן שידרש אתחול מחדש. המשך/י אך ורק אם את/ה בטוח/ה במה שאת/ה עושה.";
 
 "Queue_Confirm_Button" = "אשר";
 "Queue_Clear_Button" = "נקה את התור";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "בטל הורדות";
 
 "Package_Upgrade_Action" = "שדרג";
 "Package_Reinstall_Action" = "התקן מחדש";
@@ -64,8 +64,8 @@
 "Package_Wishlist_Remove" = "הסר מרשימת המעקב";
 "Wishlist" = "רשימת מעקב";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "אין חבילות חדשות";
+"News_Check_Later" = "אין עדיין חבילות המוגדרות כחדשות. חזור/חזרי שוב בעוד כמה שעות ותוכל/י לראות שחבילות מתחילות להופיע כאן ככל שהמקורות מתעדכנים.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "התקן";
@@ -79,7 +79,7 @@
 "Package_Search.Placeholder" = "חפש חבילה";
 "Sort_Name" = "שם";
 "Sort_Date" = "תאריך";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "גודל ההתקנה";
 "Sort_By" = "סדר לפי:";
 
 "Package_Unavailable" = "חבילה אינה זמינה";
@@ -95,7 +95,7 @@
 "Refreshing_Sources_Page" = "מרענן מקורות";
 "Package_Installed_Files_Page" = "קבצים מותקנים";
 "Refresh" = "רענן";
-"Remove" = "Remove";
+"Remove" = "הסר";
 
 "All_Packages.Title" = "כל החבילות";
 "All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
@@ -106,13 +106,13 @@
 "Ignored Updates" = "שדרוגים בהתעלמות";
 
 "Repos" = "מאגרים";
-"Repo" = "Repository";
+"Repo" = "מקור";
 
 "Add_Source.Title" = "הוסף מקור";
 "Add_Source.Body" = "הוסף APT URL";
 "Add_Source.Button.Add" = "הוסף מקור";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "הוסף מקור";
+"Incorrect_Repo" = "נראה כי המקור %@ איננו תקף⁉️ יתכן והמקור לא זמין או שהוזן לא נכון. האם ברצנוך להוסיף אותו בכל זאת?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "הכנס ידנית";
 
@@ -128,7 +128,7 @@
 "Package_Changelogs_Unavailable" = "לוג השינויים האחרונים אינו זמין עבור חבילה זו.";
 
 "Installed_Package_Header" = "חבילות מותקנות";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "חבילות מותקנות";
 "Version" = "גירסא";
 "Show_Package_Contents_Button" = "הראה תוכן חבילה";
 
@@ -150,23 +150,23 @@
 "Auto_Complete_Queue" = "השלמה אוטומטית של התור";
 "Auto_Confirm_Upgrade_All_Shortcut" = "אישור אוטומטי ל\"עדכן הכל\"";
 "Swipe_Actions" = "פעולות בהחלקה";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "הצג חבילות מ-Canister";
 "Show_Ignored_Updates" = "הראה שדרוגים בהתעלמות";
 "Developer_Mode" = "מצב מפתח";
 "Pog_Developer" = "אתה כעת מפתח!";
 "Developer_Mode_Explain" = "מצב מפתח מבטל את הדרישה ל HTTPS של ממשק התשלום.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Refresh_Sources" = "רענן מקורות אוטומטית";
+"iCloud_Profile" = "הראה את תמונה ה-iCloud שלך במומלצים";
+"Cache_Size" = "גודל המטמון";
+"Clear_Cache" = "נקה מטמון רשת";
+"Clear_Cache_Message" = "האם ברצונך לנקות את מטמון הרשת? פעולה זו תפנה %@";
+"Language" = "שפה";
+"Use_System_Language" = "השתמש בשפת המכשיר";
+"Apply_Changes" = "ישם שינויים";
+"Apply_Changes_Confirm" = "סגירה ופתיחה מחדש של סילאו דרושה על מנת לישם את השינויים";
+"Help_Translate" = "עזור לתרגם את סילאו";
+"Always_Show_Install_Log" = "תמיד תראה את לוג ההתקנה";
+"Auto_Show_Queue" = "הראה תור בעדכון כל החבילות";
 
 "Sileo_Light" = "סילאו לייט";
 "Sileo_Dark" = "סילאו דארק";
@@ -183,8 +183,8 @@
 
 "Show_Install_Details" = "הצג פרטים";
 "Hide_Install_Details" = "החבא פרטים";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "פתח ב-Filza";
+"Copy_Path" = "העתק כתובת";
 
 "After_Install_Relaunch" = "הפעל מחדש את סילאו";
 "After_Install_Respring" = "רענן את SpringBoard";
