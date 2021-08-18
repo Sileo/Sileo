@@ -112,7 +112,7 @@
 "Add_Source.Body" = "Thêm liên kết APT";
 "Add_Source.Button.Add" = "Thêm nguồn";
 "Add_Dist_Repo" = "Thêm nguồn phân phối";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ không phải là nguồn chính xác!? Nguồn có thể không hoạt động hoặc bạn có thể đã nhập nó sai. Bạn có muốn thêm không?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Nhập thủ công";
 
@@ -166,7 +166,7 @@
 "Apply_Changes_Confirm" = "Áp dụng thay đổi sẽ khởi động lại Sileo";
 "Help_Translate" = "Giúp đỡ dịch Sileo";
 "Always_Show_Install_Log" = "Luôn hiện nhật ký cài đặt";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Hiện Hàng chờ khi Cập nhật tất cả";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
