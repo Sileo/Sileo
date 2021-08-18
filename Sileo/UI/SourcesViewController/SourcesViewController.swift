@@ -142,10 +142,10 @@ final class SourcesViewController: SileoViewController {
             
             if editing {
                 let exportTitle = String(localizationKey: "Export")
-                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toggleEditing(_:)))
+                nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"), style: .done, target: self, action: #selector(self.toggleEditing(_:)))
                 nav.rightBarButtonItem = UIBarButtonItem(title: exportTitle, style: .plain, target: self, action: #selector(self.exportSources(_:)))
             } else {
-                nav.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.toggleEditing(_:)))
+                nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Edit"), style: .done, target: self, action: #selector(self.toggleEditing(_:)))
                 nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
             }
             

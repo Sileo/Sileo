@@ -17,6 +17,10 @@
 @property (assign, setter=_setBlurEnabled:, nonatomic) BOOL _blurEnabled;
 @end
 
+@interface UIApplication (Private)
+-(void)_setForcedUserInterfaceLayoutDirection:(long long)arg1 ;
+@end
+
 @interface UITabBarItem (Private)
 - (UIView *)view;
 -(void)_setInternalTitle:(id)arg1 ;

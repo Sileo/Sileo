@@ -291,7 +291,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.addSubview(profileButton)
-            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if LanguageHelper.shared.isRtl {
                 profileButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 16).isActive = true
             } else {
                 profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true

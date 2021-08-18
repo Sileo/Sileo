@@ -134,6 +134,12 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.placeholder = String(localizationKey: "Package_Search.Placeholder")
+        if #available(iOS 13, *) {
+            searchController?.searchBar.searchTextField.semanticContentAttribute = LanguageHelper.shared.isRtl ? .forceRightToLeft : .forceLeftToRight
+        } else {
+            let textfieldOfSearchBar = searchController?.searchBar.value(forKey: "searchField") as? UITextField
+            textfieldOfSearchBar?.semanticContentAttribute = LanguageHelper.shared.isRtl ? .forceRightToLeft : .forceLeftToRight
+        }
         searchController?.searchBar.delegate = self
         searchController?.searchResultsUpdater = self
         searchController?.obscuresBackgroundDuringPresentation = false
