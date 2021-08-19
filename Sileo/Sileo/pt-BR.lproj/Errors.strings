@@ -12,7 +12,7 @@
 "Error_Indicator" = "Erro: %@";
 
 "No_Package.Title" = "Não foi possível encontrar o pacote %@ nos repositórios instalados.";
-"No_Package.Body" = "Se é novo, espere o Sileo terminar de atualizar, e depois tente de novo. Verifique online para mais ajuda.";
+"No_Package.Body" = "Se é novo, espere o Sileo terminar de atualizar, e depois tente de novo. Verifique online para obter ajuda.";
 
 "Invalid_URL.Title" = "URL inválido";
 
