@@ -4798,7 +4798,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4953,7 +4953,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4999,7 +4999,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",

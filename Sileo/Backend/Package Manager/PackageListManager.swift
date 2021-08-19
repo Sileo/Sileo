@@ -344,8 +344,9 @@ final class PackageListManager {
             let index = identifier.index(identifier.startIndex, offsetBy: 7)
             let authorEmail = String(identifier[index...]).lowercased()
             packageList = packageList.filter {
-                guard let lowercaseAuthor = $0.author?.lowercased() else {
-                    return true
+                guard let lowercaseAuthor = $0.author?.lowercased(),
+                      !lowercaseAuthor.isEmpty else {
+                    return false
                 }
                 return ControlFileParser.authorEmail(string: lowercaseAuthor) == authorEmail.lowercased()
             }
