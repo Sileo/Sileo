@@ -24,8 +24,8 @@
 "Acknowledge" = "Riconoscere";
 "Remove" = "Rimuovi";
 "Sileo_Team" = "Team di Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Attenzione";
+"Edit" = "Modificare";
 
 // Popup messages
 "Background_App_Refresh" = "Aggiornamento delle app in background";
