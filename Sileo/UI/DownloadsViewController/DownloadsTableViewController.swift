@@ -356,6 +356,10 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func transferToInstall() {
+        if isInstalling {
+            return
+        }
+        isInstalling = true
         tableView?.setEditing(false, animated: true)
         
         for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
@@ -363,7 +367,7 @@ class DownloadsTableViewController: SileoViewController {
         }
         
         detailsAttributedString = NSMutableAttributedString(string: "")
-        isInstalling = true
+        
         let installs = installations + upgrades + installdeps
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }

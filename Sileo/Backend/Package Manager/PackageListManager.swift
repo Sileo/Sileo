@@ -20,7 +20,7 @@ final class PackageListManager {
         }
     }
     
-    private(set) var localPackages = [String: Package]()
+    public var localPackages = [String: Package]()
     
     private let initSemphaore = DispatchSemaphore(value: 0)
     public var isLoaded = false
