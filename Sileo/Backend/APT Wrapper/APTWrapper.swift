@@ -154,6 +154,7 @@ class APTWrapper {
 
     public class func performOperations(installs: [DownloadPackage],
                                         removals: [DownloadPackage],
+                                        installDeps: [DownloadPackage],
                                         progressCallback: @escaping (Double, Bool, String, String) -> Void,
                                         outputCallback: @escaping (String, Int) -> Void,
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
@@ -266,7 +267,7 @@ class APTWrapper {
             }
 
             var pid: pid_t = 0
-
+            
             let spawnStatus = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
             if spawnStatus != 0 {
                 return
@@ -436,7 +437,6 @@ class APTWrapper {
 
             var status: Int32 = 0
             waitpid(pid, &status, 0)
-            
             var refreshSileo = false
             if runUICache {
                 outputCallback("Updating Icon Cache\n", debugFD)
@@ -463,6 +463,7 @@ class APTWrapper {
                     }
                 }
             }
+
             spawnAsRoot(args: [CommandPath.aptget, "clean"])
             for file in DownloadManager.shared.cachedFiles {
                 deleteFileAsRoot(file)

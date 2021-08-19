@@ -10,23 +10,23 @@ import Foundation
 import os
 
 class PackageListViewController: SileoViewController, UIGestureRecognizerDelegate {
-    @IBOutlet var collectionView: UICollectionView?
-    @IBOutlet var downloadsButton: UIBarButtonItem?
+    @IBOutlet final var collectionView: UICollectionView?
+    @IBOutlet final var downloadsButton: UIBarButtonItem?
     
-    @IBInspectable var showSearchField: Bool = false
-    @IBInspectable var showUpdates: Bool = false
-    @IBInspectable var showWishlist: Bool = false
-    @IBInspectable public var loadProvisional: Bool = false
+    @IBInspectable final var showSearchField: Bool = false
+    @IBInspectable final var showUpdates: Bool = false
+    @IBInspectable final var showWishlist: Bool = false
+    @IBInspectable final public var loadProvisional: Bool = false
      
-    @IBInspectable public var packagesLoadIdentifier: String = ""
-    public var repoContext: Repo?
-    private var showProvisional: Bool = false
+    @IBInspectable final public var packagesLoadIdentifier: String = ""
+    final public var repoContext: Repo?
+    final private var showProvisional: Bool = false
     
-    private var packages: [Package] = []
-    private var availableUpdates: [Package] = []
-    private var ignoredUpdates: [Package] = []
-    private var searchCache: [String: [Package]] = [:]
-    private var provisionalPackages: [ProvisionalPackage] = []
+    final private var packages: [Package] = []
+    final private var availableUpdates: [Package] = []
+    final private var ignoredUpdates: [Package] = []
+    final private var searchCache: [String: [Package]] = [:]
+    final private var provisionalPackages: [ProvisionalPackage] = []
     
     private var displaySettings = false
     

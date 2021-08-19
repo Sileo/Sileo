@@ -52,6 +52,7 @@ struct APTOperation: Decodable {
         case packageID = "Package"
         case version = "Version"
         case type = "Type"
+        case release = "Release"
     }
 
     enum OperationType: String, Decodable {
@@ -64,6 +65,7 @@ struct APTOperation: Decodable {
     let packageID: String
     let version: String
     let type: OperationType
+    let release: String?
 }
 
 struct APTBrokenPackage: Decodable {

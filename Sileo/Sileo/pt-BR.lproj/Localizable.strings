@@ -11,21 +11,21 @@
 
 "About" = "Sobre";
 "Close" = "Fechar";
-"Double tap to open." = "Duplo toque para abrir.";
+"Double tap to open." = "Toque duas vezes para abrir.";
 "Untitled_Repo" = "Repo sem título";
 "OK" = "Ok";
 "Done" = "Concluído";
 "Done_Editing" = "Concluído";
 "More_Info" = "Mais Informações";
-"Loading" = "A carregar…";
-"Share" = "Partilhar";
+"Loading" = "Carregando…";
+"Share" = "Compartilhar";
 "Delete" = "Apagar";
 "Cancel" = "Cancelar";
 "Acknowledge" = "Reconhecer";
 "Remove" = "Remover";
 "Sileo_Team" = "Equipe Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Aviso";
+"Edit" = "Editar";
 
 // Popup messages
 "Background_App_Refresh" = "Atualização do aplicativo em segundo plano";
@@ -33,15 +33,15 @@
 "Upgrade_All_Shortcut_Processing_Message" = "Atualizando todas as fontes e pacotes...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "A instalar";
-"Downloading_Package_Status" = "A efetuar o download";
+"Installing_Package_Status" = "Instalando";
+"Downloading_Package_Status" = "Baixando";
 "Queued_Package_Status" = "Na fila";
-"Ready_Status" = "Pronto";
+"Ready_Status" = "Preparar";
 "Removal_Queued_Package_Status" = "Na fila para remoção";
-"Download_Starting" = "A iniciar…";
+"Download_Starting" = "Iniciando…";
 "Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Os seguintes pacotes são listados como essenciais/obrigatórios: %@\n Removê-los pode causar danos irreversíveis ao seu dispositivo e pode exigir a restauração. Continue apenas se tiver certeza de que sabe o que está fazendo.";
 
 "Queue_Confirm_Button" = "Confirmar";
 "Queue_Clear_Button" = "Limpar fila";
@@ -56,8 +56,8 @@
 "Package_Cancel_Action" = "Cancelar";
 "Package_Paid" = "Pago";
 
-"Package_Share_Action" = "Partilhar pacote…";
-"Package_Developer_Find_Action" = "Mais por este desenvolvedor";
+"Package_Share_Action" = "Compartilhar pacote…";
+"Package_Developer_Find_Action" = "Mais deste desenvolvedor";
 "Package_Support_Action" = "Suporte";
 "Package_Hold_Enable_Action" = "Ignorar atualizações futuras";
 "Package_Hold_Disable_Action" = "Parar de ignorar atualizações";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "Remover da lista de desejos";
 "Wishlist" = "Lista de desejos";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Sem novos pacotes";
+"News_Check_Later" = "Não há novos pacotes indexados ainda. Volte em algumas horas e você verá os pacotes começarem a aparecer aqui conforme os repositórios são atualizados.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Instalar";
@@ -92,9 +92,9 @@
 "News_Page" = "Novidades";
 "Sources_Page" = "Fontes";
 "Packages_Page" = "Pacotes";
-"Search_Page" = "Procura";
-"Refreshing_Sources_Page" = "A atualizar Fontes";
-"Package_Installed_Files_Page" = "Ficheiros instalados";
+"Search_Page" = "Procurar";
+"Refreshing_Sources_Page" = "Atualizando Fontes";
+"Package_Installed_Files_Page" = "Arquivos instalados";
 "Refresh" = "Atualizar";
 "Remove" = "Remover";
 
@@ -113,18 +113,18 @@
 "Add_Source.Body" = "Adicionar URL APT";
 "Add_Source.Button.Add" = "Adicionar Fonte";
 "Add_Dist_Repo" = "Adicionar Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ não parece ser um repositório válido. O repositório pode estar offline ou você pode tê-lo inserido incorretamente. Quer adicionar mesmo assim?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Introduzir Manualmente";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Inserir Manualmente";
 
 "Untitled_Form" = "Formulário sem título";
 "Form_Submitted.Default_Title" = "Formulário submetido";
 "Form_Submitted.Default_Body" = "Formulário submetido com sucesso.";
 
-"Web_Depiction_Deprecated_Warning" = "Descrições em Web View foram deprecadas. Por favor contacte o maintainer da repo acerca de uma atualização para descrições nativas.";
+"Web_Depiction_Deprecated_Warning" = "As representações do Web View estão obsoletas. Entre em contato com o mantenedor da repo sobre a atualização para versões nativas.";
 
 "Package_Details_Tab" = "Detalhes";
-"Package_Changelog_Tab" = "Registo de Mudanças";
+"Package_Changelog_Tab" = "Mudanças";
 "Package_No_Description_Available" = "Nenhuma descrição disponível para este pacote.";
 "Package_Changelogs_Unavailable" = "Registo de Mudanças não disponível para este pacote.";
 
@@ -136,18 +136,18 @@
 "Licenses_Page_Title" = "Licenças";
 "Alternate_Icon_Title" = "Ícones Alternativos";
 
-"Settings_Payment_Provider_Heading" = "Fornecedores de Pagamento";
+"Settings_Payment_Provider_Heading" = "Provedores de pagamento";
 "Settings_Translations_Heading" = "Traduções";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Compras";
 "Settings_Payment_Provider.No_Purchases" = "Sem compras";
 
-"Settings" = "Definições";
-"Settings_Page_Title" = "Definições";
+"Settings" = "Configurações";
+"Settings_Page_Title" = "Configurações";
 "Dark_Mode_Toggle" = "Modo escuro";
 "Theme" = "Tema";
 "Tint_Color" = "Tom das cores";
-"Reset_Tint_Color" = "Repor tom das cores";
+"Reset_Tint_Color" = "Redefinir cores";
 "Auto_Complete_Queue" = "Completar fila automaticamente";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmação automática de atualização de todos os atalhos";
 "Swipe_Actions" = "Ações ao deslizar";
@@ -167,7 +167,7 @@
 "Apply_Changes_Confirm" = "A aplicação de alterações exigirá a reinicialização do Sileo";
 "Help_Translate" = "Ajude a traduzir Sileo";
 "Always_Show_Install_Log" = "Sempre mostrar o log de instalação";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Mostrar fila ao atualizar tudo";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Escuro";
@@ -180,7 +180,7 @@
 "Payment_Provider_Signed_In_With_Name" = "Sessão iniciada como %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Terminar sessão";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Terminar sessão de %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Não irá ser possível fazer download das suas compras até voltar a iniciar sessão.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Você não poderá mais baixar seus pacotes comprados até que faça login novamente.";
 
 "Show_Install_Details" = "Mais Detalhes";
 "Hide_Install_Details" = "Esconder Detalhes";
@@ -195,13 +195,13 @@
 "After_Install_Reboot_Later" = "Reiniciar dispositivo depois";
 
 "Dangerous_Repo.Title" = "Repo Perigosa";
-"Dangerous_Repo.Body" = "Está a tentar adicionar um repositório que é conhecido por ser nocivo por razões como pirataria, conteúdo ilegal, ou malware.\n\nRepositorios marcados como nocivos muitas vezes distribuem software com efeitos inesperados, seja sob a forma de pacotes pagos gratuitamente ou outros pacotes maliciosos. Isto pode ter efeitos duradouros no seu dispositivo e privacidade, chegando ao ponto de algumas vezes afetar a sua habilidade de fazer jailbreak. É recomendado ter extremo cuidado para evitar software malicioso.";
+"Dangerous_Repo.Body" = "Você está tentando adicionar um repositório que é conhecido por ser prejudicial por motivos como pirataria, conteúdo ilegal ou malware. \n\n Repositórios marcados como prejudiciais geralmente distribuem software com efeitos inesperados, seja na forma de pacotes pagos gratuitamente ou outros pacotes maliciosos. Isso pode ter efeitos duradouros em seu dispositivo e privacidade, às vezes afetando sua capacidade de fazer o jailbreak. Recomendamos que você tenha muito cuidado para evitar softwares prejudiciais.";
 "Dangerous_Repo.Continue" = "Aceito os riscos, continuar";
-"Dangerous_Repo.Cancel" = "Levar-me de volta à segurança";
+"Dangerous_Repo.Cancel" = "Levar-me de volta em segurança";
 "Dangerous_Repo.Last_Chance.Title" = "Adicionar repo nociva?";
-"Dangerous_Repo.Last_Chance.Body" = "Repositórios perigosos podem ter efeitos devastadores na sua habilidade de utilizar o seu dispositivo ou fazer jailbreak. É fortemente recomendado voltar atrás por motivos de segurança. Tem a certeza que deseja adicionar %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Repositórios perigosos podem ter efeitos devastadores em sua capacidade de usar seu dispositivo ou fazer o jailbreak. Recomendamos que você volte para sua própria segurança. Tem certeza que deseja adicionar %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Continuar";
-"Dangerous_Repo.Last_Chance.Cancel" = "Voltar atrás";
+"Dangerous_Repo.Last_Chance.Cancel" = "Volte";
 
 // All export-based strings
 "Export" = "Exportar";

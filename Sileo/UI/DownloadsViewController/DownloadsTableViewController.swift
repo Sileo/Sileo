@@ -356,6 +356,10 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     public func transferToInstall() {
+        if isInstalling {
+            return
+        }
+        isInstalling = true
         tableView?.setEditing(false, animated: true)
         
         for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
@@ -363,7 +367,7 @@ class DownloadsTableViewController: SileoViewController {
         }
         
         detailsAttributedString = NSMutableAttributedString(string: "")
-        isInstalling = true
+        
         let installs = installations + upgrades + installdeps
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }
@@ -528,9 +532,8 @@ class DownloadsTableViewController: SileoViewController {
         if let detailsAttributedString = self.detailsAttributedString {
             detailsTextView?.attributedText = self.transform(attributedString: detailsAttributedString)
         }
-        
-        let installs = installations + upgrades
-        APTWrapper.performOperations(installs: installs, removals: uninstallations, progressCallback: { _, statusValid, statusReadable, package in
+
+        APTWrapper.performOperations(installs: installations + upgrades, removals: uninstallations, installDeps: installdeps, progressCallback: { _, statusValid, statusReadable, package in
             if statusValid {
                 self.statusWork(package: package, status: statusReadable)
             }
