@@ -16,5 +16,18 @@ finish() {
 	echo "finish:${f}" >&"${fd}"
 }
 
-finish uicache
+case "$1" in
+	remove|deconfigure)
+		finish uicache
+		;;
+
+	upgrade|failed-upgrade)
+		;;
+
+	*)
+		echo "prerm called with unknown argument \`$1'" >&2
+		exit 0
+		;;
+esac
+
 exit 0

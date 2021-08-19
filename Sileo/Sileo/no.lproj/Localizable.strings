@@ -24,6 +24,8 @@
 "Acknowledge" = "Bekreft";
 "Remove" = "Fjern";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrunnsoppdatering";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Starter…";
 "Download_Progress" = "%@ av %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Bekreft";
 "Queue_Clear_Button" = "Tøm kø";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Oppgrader";
 "Package_Reinstall_Action" = "Installer på nytt";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Fjern fra ønskelisten";
 "Wishlist" = "Ønskeliste";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installer";
 "Queued_Uninstall_Heading" = "Avinstaller";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Søk etter pakker";
 "Sort_Name" = "Navn";
 "Sort_Date" = "Dato";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sorter etter:";
 
 "Package_Unavailable" = "Pakke utilgjengelig";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Fjern";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Ignorerte oppdateringer";
 
 "Repos" = "Kilder";
+"Repo" = "Kilde";
 
 "Add_Source.Title" = "Legg til kilde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
 "Add_Source.Button.Add" = "Legg til kilde";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Legg til manuelt";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Endringsloggen er ikke tilgjengelig for denne pakken.";
 
 "Installed_Package_Header" = "Installert pakke";
+"Installed_Packages" = "Installerte pakker";
 "Version" = "Versjon";
 "Show_Package_Contents_Button" = "Vis pakkeinnhold";
 
@@ -145,9 +158,16 @@
 "Developer_Mode_Explain" = "Utviklermodus deaktiverer HTTPS-kravet til betalings-APIet.";
 "Auto_Refresh_Sources" = "Automatisk oppdatering av kilder";
 "iCloud_Profile" = "Vis iCloud profilbilde på utvalgte";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Cache_Size" = "Hurtigbuffer størrelse";
+"Clear_Cache" = "Tøm nettverksbufferen";
+"Clear_Cache_Message" = "Vil du tømme nettverksbufferen? Dette vil frigjøre %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Vis detaljer";
 "Hide_Install_Details" = "Skjul detaljer";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Start Sileo på nytt";
 "After_Install_Respring" = "Start SpringBoard på nytt";

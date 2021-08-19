@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 3/1/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -21,6 +21,10 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
         didSet {
             titleLabel?.text = article?.title
             cardTitleLabel?.text = article?.title
+            let formatter = DateFormatter()
+            if let locale = LanguageHelper.shared.locale {
+                formatter.locale = locale
+            }
             let dateText = DateFormatter.localizedString(from: article?.date ?? Date(),
                                                          dateStyle: DateFormatter.Style.long,
                                                          timeStyle: DateFormatter.Style.none)

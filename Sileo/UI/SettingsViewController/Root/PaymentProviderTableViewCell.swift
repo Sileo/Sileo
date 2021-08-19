@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 1/26/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 class PaymentProviderTableViewCell: UITableViewCell {
     private var titleLabel: UILabel = UILabel()
     private var subtitleLabel: UILabel = UILabel()
-    private var iconView: UIImageView = UIImageView()
+    private var iconView: PackageIconView = PackageIconView()
     private var loadingView: UIActivityIndicatorView?
     public var isAuthenticated: Bool = false
     
@@ -33,12 +33,12 @@ class PaymentProviderTableViewCell: UITableViewCell {
         }
     }
     
-    override var imageView: UIImageView? {
+    override var imageView: PackageIconView? {
         get {
             iconView
         }
         set {
-            iconView = newValue ?? UIImageView()
+            iconView = newValue ?? PackageIconView()
         }
     }
     

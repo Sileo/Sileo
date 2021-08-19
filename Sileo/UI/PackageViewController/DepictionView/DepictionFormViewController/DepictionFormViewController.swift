@@ -78,8 +78,10 @@ class DepictionFormViewController: SileoTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(DepictionFormViewController.dismiss(_:)))
-        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Cancel"),
+                                                                style: .done,
+                                                                target: self,
+                                                                action: #selector(dismiss(_:)))
         
         let loadingView = UIActivityIndicatorView(style: .gray)
         loadingView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
@@ -107,38 +109,40 @@ class DepictionFormViewController: SileoTableViewController {
     
     private func loadForm() {
         let urlRequest = URLManager.urlRequest(formURL)
-        AmyNetworkResolver.dict(request: urlRequest) { success, dict in
+        AmyNetworkResolver.dict(request: urlRequest) { [weak self] success, dict in
+            guard let strong = self else { return }
             DispatchQueue.main.async {
-                self.loadingView?.stopAnimating()
+                strong.loadingView?.stopAnimating()
                 guard success,
                       let dict = dict else {
-                    self.presentErrorDialog(message: String(localizationKey: "Form_Load_Error"), mustCancel: true)
+                    strong.presentErrorDialog(message: String(localizationKey: "Form_Load_Error"), mustCancel: true)
                     return
                 }
                 guard let sections = dict["sections"] as? [[String: Any]] else {
-                    self.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)
+                    strong.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)
                     return
                 }
-                self.title = dict["title"] as? String ?? String(localizationKey: "Untitled_Form")
+                strong.title = dict["title"] as? String ?? String(localizationKey: "Untitled_Form")
                 if let action = dict["action"] as? String,
                    let url = URL(string: action),
                    url.isSecure {
-                    self.form.action = url
+                    strong.form.action = url
                     if let confirmButtonText = dict["confirmButtonText"] as? String {
-                        self.submitBarButtonItem = UIBarButtonItem(title: confirmButtonText,
-                                                                   style: .done,
-                                                                   target: self,
-                                                                   action: #selector(DepictionFormViewController.submit(_:)))
+                        strong.submitBarButtonItem = UIBarButtonItem(title: confirmButtonText,
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(DepictionFormViewController.submit(_:)))
                     } else {
-                        self.submitBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                                   target: self,
-                                                                   action: #selector(DepictionFormViewController.submit(_:)))
+                        strong.submitBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(DepictionFormViewController.submit(_:)))
                     }
-                    if url.host?.lowercased() != self.formURL.host?.lowercased() {
-                        self.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)
+                    if url.host?.lowercased() != strong.formURL.host?.lowercased() {
+                        strong.presentErrorDialog(message: String(localizationKey: "Invalid_Form_Data"), mustCancel: true)
                         return
                     }
-                    self.navigationItem.rightBarButtonItem = self.submitBarButtonItem
+                    strong.navigationItem.rightBarButtonItem = strong.submitBarButtonItem
                 }
                 for section in sections {
                     var formSection = DepictionFormSection()
@@ -153,9 +157,9 @@ class DepictionFormViewController: SileoTableViewController {
                             }
                         }
                     }
-                    self.form.sections.append(formSection)
+                    strong.form.sections.append(formSection)
                 }
-                self.tableView.reloadData()
+                strong.tableView.reloadData()
             }
         }
     }
@@ -177,18 +181,21 @@ class DepictionFormViewController: SileoTableViewController {
             provider.isAuthenticated {
             values["token"] = provider.authenticationToken
         }
-        AmyNetworkResolver.dict(url: action, method: "POST", json: values) { success, dict in
+        AmyNetworkResolver.dict(url: action, method: "POST", json: values) { [weak self] success, dict in
+            guard let strong = self else { return }
             DispatchQueue.main.async {
                 guard success,
                       let dict = dict else {
-                    self.presentErrorDialog(message: "An error occurred while submitting the form.", mustCancel: true)
+                    strong.presentErrorDialog(message: "An error occurred while submitting the form.", mustCancel: true)
                     return
                 }
                 guard dict["success"] as? Bool ?? false else {
                     let title = dict["title"] as? String
                     let message = dict["message"] as? String ?? String(localizationKey: "Unknown")
-                    self.presentErrorDialog(title: title, message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), message),
-                                            mustCancel: true, retry: true)
+                    strong.presentErrorDialog(title: title,
+                                              message: String(format: String(localizationKey: "Form_Submit_Failure", type: .error), message),
+                                              mustCancel: true,
+                                              retry: true)
                     return
                 }
                 let title = dict["title"] as? String
@@ -204,10 +211,10 @@ class DepictionFormViewController: SileoTableViewController {
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                     if success {
-                        self.dismiss(animated: true, completion: nil)
+                        strong.dismiss(animated: true, completion: nil)
                     }
                 }))
-                self.present(alert, animated: true, completion: nil)
+                strong.present(alert, animated: true, completion: nil)
             }
         }
     }

@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/6/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -29,16 +29,10 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         
-        if sileoVersion == "unknown" {
-            DispatchQueue.global(qos: .userInitiated).async {
-                PackageListManager.shared.waitForReady()
-            
-                DispatchQueue.main.async {
-                    let sileoPackage2 = FeaturedInfoFooterView.package
-                    let sileoVersion2 = sileoPackage2?.version ?? "Unknown"
-                    self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)"
-                }
-            }
+        if sileoVersion == "Unknown" {
+            let sileoPackage2 = FeaturedInfoFooterView.package
+            let sileoVersion2 = sileoPackage2?.version ?? Bundle.main.infoDictionary!["CFBundleShortVersionString"] ?? "Unknown"
+            self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)"
         }
     }
     
@@ -55,11 +49,12 @@ class FeaturedInfoFooterView: FeaturedBaseView {
     }
     
     override func depictionHeight(width: CGFloat) -> CGFloat {
-        15
+        24
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = self.bounds
+        label.frame = CGRect(origin: self.bounds.origin,
+                             size: CGSize(width: self.bounds.width, height: 15))
     }
 }

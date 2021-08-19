@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 8/2/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 func dynamicColor(default defaultColor: UIColor, dark: UIColor) -> UIColor {
@@ -130,6 +130,11 @@ class SileoThemeManager: NSObject {
                     window.overrideUserInterfaceStyle = .unspecified
                 }
             }
+        }
+        if let barButton = NSClassFromString("UICalloutBarButton") as? UIButton.Type {
+            let button = barButton.appearance()
+            button.setTitleColor(UIColor.isDarkModeEnabled ? .black : .white, for: .normal)
+            button.backgroundColor = UIColor.isDarkModeEnabled ? UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00) : UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
         }
     }
 }

@@ -24,6 +24,8 @@
 "Acknowledge" = "승인";
 "Remove" = "삭제";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "백그라운드 앱 새로 고침";
@@ -39,8 +41,11 @@
 "Download_Starting" = "시작 중…";
 "Download_Progress" = "%@ 중 %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "확인";
 "Queue_Clear_Button" = "대기열 비우기";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "업그레이드";
 "Package_Reinstall_Action" = "재설치";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "위시리스트에서 삭제";
 "Wishlist" = "위시리스트";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "설치";
 "Queued_Uninstall_Heading" = "삭제";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "패키지 검색";
 "Sort_Name" = "이름";
 "Sort_Date" = "날짜";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "분류:";
 
 "Package_Unavailable" = "패키지를 사용할 수 없음";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "소스 새로고침 중";
 "Package_Installed_Files_Page" = "파일 설치됨";
 "Refresh" = "새로고침";
-"Remove" = "삭제";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "모든 패키지";
 "All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "무시된 업데이트";
 
 "Repos" = "리포";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "소스 추가";
 "Add_Source.Body" = "APT 주소 추가";
 "Add_Source.Button.Add" = "소스 추가";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "직접 입력";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "이 패키지에 대한 변경점이 없습니다.";
 
 "Installed_Package_Header" = "설치된 패키지";
+"Installed_Packages" = "Installed Packages";
 "Version" = "버전";
 "Show_Package_Contents_Button" = "패키지 콘텐츠 보기";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "실리오 라이트";
 "Sileo_Dark" = "실리오 다크";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "자세히보기";
 "Hide_Install_Details" = "간략히";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo 재시작";
 "After_Install_Respring" = "SpringBoard 재시작";

@@ -3,12 +3,12 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/6/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
-protocol FeaturedBannerViewPreview: class {
+protocol FeaturedBannerViewPreview: AnyObject {
     func viewController(bannerView: FeaturedBannerView) -> UIViewController?
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     var parentViewController: UIViewController? { get }
@@ -20,12 +20,13 @@ class FeaturedBannerView: UIButton, UIViewControllerPreviewingDelegate {
     var banner: [String: Any] = [:] {
         didSet {
             if let bannerURL = banner["url"] as? String {
-                bannerImageView?.image = AmyNetworkResolver.shared.image(bannerURL) { refresh, image in
+                bannerImageView?.image = AmyNetworkResolver.shared.image(bannerURL) { [weak self] refresh, image in
                     if refresh,
+                          let strong = self,
                           let image = image,
-                          bannerURL == self.banner["url"] as? String {
+                          bannerURL == strong.banner["url"] as? String {
                         DispatchQueue.main.async {
-                            self.bannerImageView?.image = image
+                            strong.bannerImageView?.image = image
                         }
                     }
                 }

@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 4/20/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ class URLManager {
     }
     
     static func urlRequest(_ url: URL, includingDeviceInfo: Bool = true) -> URLRequest {
-        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 5)
         
         let cfVersion = String(format: "%.3f", kCFCoreFoundationVersionNumber)
         let bundleName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] ?? ""
@@ -46,7 +46,7 @@ class URLManager {
             return viewController
         } else if url.scheme == "sileo" {
             if url.host == "package" && url.pathComponents.count >= 2 {
-                if let package = PackageListManager.shared.newestPackage(identifier: url.pathComponents[1]) {
+                if let package = PackageListManager.shared.newestPackage(identifier: url.pathComponents[1], repoContext: nil) {
                     let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
                     packageVC.package = package
                     return isExternalOpen ? UINavigationController(rootViewController: packageVC) : packageVC

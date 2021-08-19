@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 2/1/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -18,16 +18,15 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     
+    static let reloadNotification = Notification.Name("SileoNewPageReload")
+    
     var gradientView: NewsGradientBackgroundView?
-    
-    var sortedSections: [Int64] = []
-    var sections: [Int64: [Package]] = [:]
-    var loadedPackages: Int = 0
-    
+
+    private var sections = [Int64: [Package]]()
+    private var timestamps = [Int64]()
+
     var dateFormatter: DateFormatter = DateFormatter()
-    var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
-    var updateLock = DispatchSemaphore(value: 1)
-    var isLoading: Bool = false
+    private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -35,15 +34,19 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         _ = NewsResolver.shared
         
         self.title = String(localizationKey: "News_Page")
         
         dateFormatter.dateStyle = DateFormatter.Style.long
         dateFormatter.timeStyle = DateFormatter.Style.short
+        if let locale = LanguageHelper.shared.locale {
+            dateFormatter.locale = locale
+        }
 
         collectionView.isHidden = true
+        self.activityIndicatorView.startAnimating()
         let flowLayout: UICollectionViewFlowLayout? = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.sectionHeadersPinToVisibleBounds = true
         
@@ -61,12 +64,19 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
                                 forCellWithReuseIdentifier: "NewsArticlesHeader")
 
         self.registerForPreviewing(with: self, sourceView: self.collectionView)
-
-        self.reloadData()
         
-        NotificationCenter.default.addObserver(self,
+        weak var weakSelf = self
+        NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(reloadData),
                                                name: PackageListManager.didUpdateNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(updateSileoColors),
+                                               name: SileoThemeManager.sileoChangedThemeNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(reloadData),
+                                               name: NewsViewController.reloadNotification,
                                                object: nil)
     }
     
@@ -81,27 +91,7 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        weak var weakSelf = self
-        NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(reloadData),
-                                               name: PackageListManager.didUpdateNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(updateSileoColors),
-                                               name: SileoThemeManager.sileoChangedThemeNotification,
-                                               object: nil)
-      
         updateSileoColors()
-
-        if collectionView.isHidden {
-            // Invoke a reload now.
-            self.reloadData()
-        } else {
-            // Reload visible items as the user may have switched tabs, marking items as read.
-            if self.isBeingPresented {
-                collectionView.reloadItems(at: collectionView?.indexPathsForVisibleItems ?? [IndexPath()])
-            }
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -117,95 +107,129 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         self.navigationController?.navigationBar._hidesShadow = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Mark any visible cells as seen
+        let visibleIndexes = collectionView.indexPathsForVisibleItems
+        for indexPath in visibleIndexes {
+            if currentSection(indexPath.section) == .packages {
+                markAsSeen(indexPath)
+            }
+        }
+    }
+    
+    /*
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
+    */
 }
 
 extension NewsViewController { // Get Data
     @objc func reloadData() {
-        updateLock.wait()
-        sortedSections = []
-        sections = [:]
-        loadedPackages = 0
-        isLoading = true
-        updateLock.signal()
-
-        updateQueue.async {
-            PackageListManager.shared.waitForChangesDatabaseReady()
-
-            self.updateLock.wait()
-            // Initialise the sections.
-            self.sortedSections = PackageStub.timestamps()
-            for key in self.sortedSections {
-                self.sections[key] = []
-            }
-
-            self.updateLock.signal()
-            self.isLoading = false
-            DispatchQueue.main.async {
-                // Scroll to top
-                self.collectionView.contentOffset = CGPoint(x: 0, y: -(self.collectionView.safeAreaInsets.top))
-                self.loadNextBatch()
+        DispatchQueue.main.async {
+            self.collectionView.isHidden = true
+            self.activityIndicatorView.startAnimating()
+            self.updateQueue.async {
+                DispatchQueue.main.async {
+                    // Reset all variables that may block the batch load
+                    self.sections = [:]
+                    self.timestamps.removeAll()
+                    // Empty collection view and scroll to top
+                    self.collectionView.reloadData()
+                    self.collectionView.contentOffset = CGPoint(x: 0, y: -(self.collectionView.safeAreaInsets.top))
+                    self.loadNextBatch()
+                }
             }
         }
     }
-
+    
     func loadNextBatch() {
-        if isLoading {
-            return
-        }
-        self.updateLock.wait()
-        isLoading = true
-        self.updateLock.signal()
-
         updateQueue.async {
-            self.updateLock.wait()
             let packageListManager = PackageListManager.shared
-            packageListManager.waitForChangesDatabaseReady()
-
-            let start = self.loadedPackages
-            var toLoad = 100
-
-            let seenPackages = PackageStub.stubs(limit: toLoad, offset: start)
-            toLoad = seenPackages.count
-                       
-            let packageIDs = seenPackages.map { $0.package }
-            let packages = packageListManager.packages(identifiers: packageIDs, sorted: false) // __block
-
-            var updatedIndexPaths: [IndexPath] = []
-
-            for (seenPackage, actualPackage) in zip(seenPackages, packages) {
-                if actualPackage.package != seenPackage.package {
-                    continue
+            let databaseManager = DatabaseManager.shared
+            let timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
+            if timestampsWeCareAbout.isEmpty {
+                DispatchQueue.main.async {
+                    if self.activityIndicatorView.isAnimating {
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.activityIndicatorView.alpha = 0
+                        }, completion: { _ in
+                            self.collectionView.isHidden = false
+                            self.activityIndicatorView.stopAnimating()
+                        })
+                    }
                 }
-                
-                let section = Int64(seenPackage.firstSeenDate.timeIntervalSince1970)
-                let itemIndex = self.sections[section]?.count ?? 0
-                let sectionIndex = (self.sortedSections.firstIndex(of: section) ?? 0) + 1
-                
-                actualPackage.userReadDate = seenPackage.userReadDate
-                self.sections[section]?.append(actualPackage)
-                
-                updatedIndexPaths.append(IndexPath(item: itemIndex, section: sectionIndex))
+                return
             }
-
-            if !updatedIndexPaths.isEmpty {
-                self.loadedPackages += toLoad
+            // Ok so we've got a list of timestamps we haven't bothered to load yet
+            // We're gonna load the batches, until we get to 100 or over
+            // Thanks to new repo contexts, loading packages is signifcantly faster anyway
+            var stubs = [PackageStub]()
+            for timestamp in timestampsWeCareAbout {
+                stubs += databaseManager.stubsAtTimestamp(timestamp)
             }
-            self.isLoading = false
-            self.updateLock.signal()
-
-            // Done. Update again so the new cells show up.
+            // Going to take advantage of those sweet contexts and dictionaries for super speedy package loads
+            var packages = [Int64: [Package]]()
+            var packageCache: [String: [(String, Int64, Bool)]] = [:]
+            for stub in stubs {
+                if var packages = packageCache[stub.repoURL] {
+                    packages.append((stub.package, stub.firstSeen ?? 0, stub.userReadDate == 1))
+                    packageCache[stub.repoURL] = packages
+                } else {
+                    packageCache[stub.repoURL] = [(stub.package, stub.firstSeen ?? 0, stub.userReadDate == 1)]
+                }
+            }
+            // Find each package and organise into a nice dictionary
+            for key in packageCache.keys {
+                let repo = RepoManager.shared.repoList.first(where: { RepoManager.shared.cacheFile(named: "Packages", for: $0).lastPathComponent == key })
+                let localPackages = packageCache[key] ?? []
+                for package in localPackages {
+                    if let package2 = repo?.packageDict[package.0] {
+                        package2.userRead = package.2
+                        if var packages2 = packages[package.1] {
+                            packages2.append(package2)
+                            packages[package.1] = packages2
+                        } else {
+                            packages[package.1] = [package2]
+                        }
+                    }
+                }
+            }
+            // Sort the packages array based on name and size
+            for timestamp in packages.keys {
+                let packageArray = packages[timestamp] ?? []
+                let sorted = packageListManager.sortPackages(packages: packageArray, search: nil)
+                packages[timestamp] = sorted
+            }
+            // Merge with the master array
+            // This is the dumbest shit ever, it's literally the master array that shows
+            // swiftlint:disable inclusive_language
+            var master = self.sections
+            for timestamp in packages.keys {
+                master[timestamp] = packages[timestamp]
+            }
+            // Remove any dead sections
+            var complete = [Int64: [Package]]()
+            for timestamp in master.keys {
+                if let packages = master[timestamp],
+                   !packages.isEmpty {
+                    complete[timestamp] = packages
+                }
+            }
             DispatchQueue.main.async {
-                // Does this still crash?
+                // Set our final new dictionary
+                // We do this on the main thread to avoid a mismatch somehow
+                self.sections = complete
+                self.timestamps = Array(complete.keys).sorted { $0 > $1 }
                 self.collectionView.reloadData()
 
                 // Hide spinner if necessary
                 if self.activityIndicatorView.isAnimating {
-                    UIView.animate(withDuration: 0.7, animations: {
+                    UIView.animate(withDuration: 0.3, animations: {
                         self.activityIndicatorView.alpha = 0
                     }, completion: { _ in
                         self.collectionView.isHidden = false
@@ -232,19 +256,20 @@ extension NewsViewController { // Get Data
 }
 
 extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection View Data Source
+    
+    private var newsBuffer: Int {
+        NewsResolver.shared.showNews ? 2 : 1
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sortedSections.count + (NewsResolver.shared.showNews ? 2 : 1)
+        timestamps.count + newsBuffer
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch currentSection(section) {
         case .news: return 1
-        case .placeholder: return sortedSections.isEmpty ? 1 : 0
-        case .packages:
-            updateLock.wait()
-            let itemsCount = sections[sortedSections[section - (NewsResolver.shared.showNews ? 2 : 1)]]?.count ?? 0
-            updateLock.signal()
-            return itemsCount
+        case .placeholder: return sections.isEmpty ? 1 : 0
+        case .packages: return sections[timestamps[section - newsBuffer]]?.count ?? 0
         }
     }
 
@@ -253,23 +278,11 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
         case .news: return collectionView.dequeueReusableCell(withReuseIdentifier: "NewsArticlesHeader", for: indexPath)
         case .placeholder: return collectionView.dequeueReusableCell(withReuseIdentifier: "NewsPlaceholderCell", for: indexPath)
         case .packages:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PackageCollectionViewCell",
-                                                          for: indexPath) as? PackageCollectionViewCell
-            if cell != nil {
-                var package: Package?
-                if sortedSections.count >= indexPath.section - (NewsResolver.shared.showNews ? 2 : 1) {
-                    updateLock.wait()
-                    let sortedSection = sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]
-                    if sections[sortedSection]?.count ?? 0 > indexPath.row {
-                        package = sections[sortedSection]?[indexPath.row]
-                    }
-                    if package != nil {
-                        cell?.setTargetPackage(package!, isUnread: package!.userReadDate == nil)
-                    }
-                    updateLock.signal()
-                }
-            }
-            return cell ?? PackageCollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PackageCollectionViewCell",
+                                                                for: indexPath) as? PackageCollectionViewCell,
+                  let package = sections[timestamps[indexPath.section - newsBuffer]]?[indexPath.row] else { return PackageCollectionViewCell() }
+            cell.setTargetPackage(package, isUnread: !package.userRead)
+            return cell
         }
     }
     
@@ -278,7 +291,7 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                              withReuseIdentifier: "NewsDateHeader",
                                                                              for: indexPath) as? PackageListHeader ?? PackageListHeader()
-            let date = NSDate(timeIntervalSince1970: TimeInterval(sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]))
+            let date = NSDate(timeIntervalSince1970: TimeInterval(timestamps[indexPath.section - newsBuffer]))
             headerView.label?.text = dateFormatter.string(from: date as Date).uppercased(with: Locale.current)
             return headerView
         }
@@ -314,40 +327,44 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if currentSection(indexPath.section) != .news { return }
-        let headerView = cell as? NewsArticlesHeader
-        if let viewController = headerView?.viewController {
-            self.addChild(viewController)
-            viewController.didMove(toParent: self)
+        let currentSection = currentSection(indexPath.section)
+        if currentSection == .news {
+            let headerView = cell as? NewsArticlesHeader
+            if let viewController = headerView?.viewController {
+                self.addChild(viewController)
+                viewController.didMove(toParent: self)
+            }
+            return
+        } else if currentSection == .packages {
+            markAsSeen(indexPath)
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if currentSection(indexPath.section) != .news { return }
-        let headerView = cell as? NewsArticlesHeader
-        if let viewController = headerView?.viewController {
-            viewController.removeFromParent()
-            viewController.didMove(toParent: nil)
+        let currentSection = currentSection(indexPath.section)
+        if currentSection == .news {
+            let headerView = cell as? NewsArticlesHeader
+            if let viewController = headerView?.viewController {
+                viewController.removeFromParent()
+                viewController.didMove(toParent: nil)
+            }
         }
     }
-}
-
-extension NewsViewController { // Scroll View Delegate
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetOffset = CGFloat(targetContentOffset.pointee.y)
-        // If reaching the bottom, load the next batch of updates
-        let distance = scrollView.contentSize.height - (targetOffset + scrollView.bounds.size.height)
-
-        if !isLoading && distance < scrollView.bounds.size.height {
-            self.loadNextBatch()
-        }
+    
+    private func markAsSeen(_ indexPath: IndexPath) {
+        guard let safe = timestamps.safe(indexPath.section - newsBuffer),
+              let section = sections[safe] else { return }
+        let package = section[indexPath.row]
+        DatabaseManager.shared.markAsSeen(package)
+        sections[timestamps[indexPath.section - newsBuffer]]?[indexPath.row].userRead = true
     }
 }
 
 extension NewsViewController { // 3D Touch
     func controller(indexPath: IndexPath) -> PackageViewController {
+        guard let package = sections[timestamps[indexPath.section - newsBuffer]]?[indexPath.row] else { fatalError("Something went wrong with indexxing") }
         let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = sections[sortedSections[indexPath.section - (NewsResolver.shared.showNews ? 2 : 1)]]?[indexPath.row]
+        packageViewController.package = package
         return packageViewController
     }
 
@@ -385,5 +402,12 @@ extension NewsViewController {
                 self.show(controller, sender: self)
             }
         }
+    }
+}
+
+extension Array {
+    func safe(_ index: Int) -> Element? {
+        if (self.count - 1) < index { return nil }
+        return self[index]
     }
 }

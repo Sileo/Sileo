@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/30/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -12,9 +12,9 @@ final class PaymentAuthenticationBannerView: UIView {
     private var stackView: UIStackView
     private var hairlineHeightConstraint: NSLayoutConstraint?
     private var provider: PaymentProvider
-    private var viewController: UIViewController
+    private weak var viewController: CategoryViewController?
     
-    init(provider: PaymentProvider, bannerDictionary: [String: String], viewController: UIViewController) {
+    init(provider: PaymentProvider, bannerDictionary: [String: String], viewController: CategoryViewController) {
         self.provider = provider
         self.viewController = viewController
         
@@ -87,12 +87,14 @@ final class PaymentAuthenticationBannerView: UIView {
     @objc func buttonTapped(_ selector: Any?) {
         PaymentAuthenticator.shared.authenticate(provider: provider, window: self.window) { error, success in
             if let error = error {
-                self.viewController.present(PaymentError.alert(for: error,
-                                                               title: String(localizationKey: "Provider_Auth_Fail.Title", type: .error)),
+                self.viewController?.present(PaymentError.alert(for: error,
+                                                                title: String(localizationKey: "Provider_Auth_Fail.Title", type: .error)),
                                             animated: true, completion: nil)
+                return
             }
             if success {
-                self.isHidden = true
+                self.removeFromSuperview()
+                self.viewController?.updateHeaderStackView()
             }
         }
     }

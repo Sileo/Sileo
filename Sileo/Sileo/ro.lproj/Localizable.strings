@@ -24,6 +24,8 @@
 "Acknowledge" = "Confirmați";
 "Remove" = "Ștergeți";
 "Sileo_Team" = "Echipa Sileo";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Reîmprospătare în fundal";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Începere…";
 "Download_Progress" = "%@ din %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Confirmați";
 "Queue_Clear_Button" = "Ștergeți coada";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Actualizați";
 "Package_Reinstall_Action" = "Reinstalați";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
 "Wishlist" = "Lista de dorințe";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "De instalat";
 "Queued_Uninstall_Heading" = "De dezinstalat";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Căutați pachete";
 "Sort_Name" = "Nume";
 "Sort_Date" = "Dată";
+"Sort_Install_Size" = "Mărimea instalată";
 "Sort_By" = "Sortează după:";
 
 "Package_Unavailable" = "Pachet nedisponibil";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Actualizări Dezactivate";
 
 "Repos" = "Repozitoriile";
+"Repo" = "Repozitoriu";
 
 "Add_Source.Title" = "Adăgați sursă";
 "Add_Source.Body" = "Adăugați URL APT";
 "Add_Source.Button.Add" = "Adăugați sursă";
+"Add_Dist_Repo" = "Adăgați repozitoriu dist.";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Schimbări nedisponibile pentru acest pachet.";
 
 "Installed_Package_Header" = "Pachet instalat";
+"Installed_Packages" = "Pachete instalate";
 "Version" = "Versiune";
 "Show_Package_Contents_Button" = "Priviți conținutul acest pachet";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Mărimea cache-ului";
 "Clear_Cache" = "Ștergeți cache-ul network";
 "Clear_Cache_Message" = "Doriți să ștergeți cache-ul network? Va elibera %@ din stocare";
+"Language" = "Limbă";
+"Use_System_Language" = "Folosiți limba sistemului";
+"Apply_Changes" = "Aplicați Schimbările";
+"Apply_Changes_Confirm" = "Pentru a aplica schimbările trebuie să reporniți Sileo";
+"Help_Translate" = "Ajutați cu localizarea pentru Sileo";
+"Always_Show_Install_Log" = "Afișați jurnalul de instalare întotdeauna";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Arătați Detalie";
 "Hide_Install_Details" = "Ascundeți Detalie";
+"Open_In_Filza" = "Deschide-ți în Filza";
+"Copy_Path" = "Copiați calea";
 
 "After_Install_Relaunch" = "Reporniți Sileo";
 "After_Install_Respring" = "Reporniți SpringBoard";

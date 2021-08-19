@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/3/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -22,8 +22,8 @@ class WishListManager {
             wishlist = []
             return
         }
-        let installedPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) ?? []
-        rawWishlist.removeAll { item in installedPackages.contains { $0.package == item } }
+        let installedPackages = PackageListManager.shared.installedPackages
+        rawWishlist.removeAll { item in installedPackages.contains { $0.key == item } }
         wishlist = rawWishlist
     }
     
@@ -32,9 +32,6 @@ class WishListManager {
     }
     
     func addPackageToWishList(_ package: String) -> Bool {
-        guard PackageListManager.shared.installedPackage(identifier: package) == nil else {
-            return false
-        }
         if self.isPackageInWishList(package) {
             return false
         }

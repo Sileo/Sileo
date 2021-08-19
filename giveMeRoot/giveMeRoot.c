@@ -1,14 +1,16 @@
-#include <stdio.h>
-#include <string.h>
-#include <sysexits.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+#import <stdio.h>
+#import <string.h>
+#import <sysexits.h>
+#import <sys/stat.h>
+#import <sys/types.h>
+#import <unistd.h>
 
 #define PROC_PIDPATHINFO_MAXSIZE (1024)
 int proc_pidpath(pid_t pid, void *buffer, uint32_t buffersize);
 
 int main(int argc, char *argv[]) {
+    #ifdef MAC
+    #else
     #ifdef NIGHTLY
     const char *sileoPath = "/Applications/Sileo-Nightly.app/Sileo";
     #elif BETA
@@ -16,7 +18,6 @@ int main(int argc, char *argv[]) {
     #else
     const char *sileoPath = "/Applications/Sileo.app/Sileo";
     #endif
-
     struct stat statBuffer;
     if (lstat(sileoPath, &statBuffer) == -1) {
         fprintf(stderr, "Cease your resistance!\n");
@@ -35,7 +36,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Stpuidity is not a right\n");
         return EX_NOPERM;
     }
-    
+    #endif
     setuid(0);
     setgid(0);
     if (getuid() != 0) {

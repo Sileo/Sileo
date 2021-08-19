@@ -24,6 +24,8 @@
 "Acknowledge" = "Megértettem";
 "Remove" = "Eltávolítás";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Alk.frissítés a háttérben";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Indítás…";
 "Download_Progress" = "%@ / %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Megerősítés";
 "Queue_Clear_Button" = "Várakozási sor törlése";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Frissítés";
 "Package_Reinstall_Action" = "Újratelepítés";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Eltávolítás a kívánságlistáról";
 "Wishlist" = "Kívánságlásta";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Telepítés";
 "Queued_Uninstall_Heading" = "Eltávolítás";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Csomagok keresése";
 "Sort_Name" = "Név";
 "Sort_Date" = "Dátum";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Rendezés:";
 
 "Package_Unavailable" = "Csomag nem elérhető";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "Források újratöltése";
 "Package_Installed_Files_Page" = "Telepített fájlok";
 "Refresh" = "Újratöltés";
-"Remove" = "Eltávolítás";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Összes csomag";
 "All_Packages.Cell_Subtitle" = "Nézd meg a forrásaidban lévő összes csomagot";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Figyelmen kívül hagyott frissítések";
 
 "Repos" = "Csomagtárolók";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Forrás hozzáadása";
 "Add_Source.Body" = "APT URL hozzáadása";
 "Add_Source.Button.Add" = "Forrás hozzáadása";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Kézi megadás";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Nem érhető el változási napló ehhez a csomaghoz.";
 
 "Installed_Package_Header" = "Telepített csomag";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Verzió";
 "Show_Package_Contents_Button" = "Csomag tartalmának megjelenítése";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Világos";
 "Sileo_Dark" = "Sileo Sötét";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Részletek megjelenítése";
 "Hide_Install_Details" = "Részletek elrejtése";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sleo újraindítása";
 "After_Install_Respring" = "SpringBoard újraindítása";

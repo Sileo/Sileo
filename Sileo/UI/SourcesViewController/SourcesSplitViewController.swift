@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 1/2/21.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
 import UIKit

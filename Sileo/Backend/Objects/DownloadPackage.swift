@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/2/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -21,5 +21,5 @@ final class DownloadPackage: Hashable {
 }
 
 func == (lhs: DownloadPackage, rhs: DownloadPackage) -> Bool {
-    lhs.package.package == rhs.package.package
+    lhs.package.packageID == rhs.package.packageID
 }

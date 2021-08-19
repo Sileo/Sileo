@@ -3,12 +3,15 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/27/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
 class SourcesTableViewCell: BaseSubtitleTableViewCell {
+    
+    static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
+    
     public var repo: Repo? = nil {
         didSet {
             if let repo = repo {
@@ -16,13 +19,13 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = repo.displayURL
                 self.progress = repo.totalProgress
                 self.image(repo)
-                installedLabel.text = "\(repo.installedCount)"
+                installedLabel.text = "\(repo.installed?.count ?? 0)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
                 self.icon = UIImage(named: "All Packages")
                 self.progress = 0
-                installedLabel.text = "\(PackageListManager.shared.installedPackages?.count ?? 0)"
+                installedLabel.text = "\(PackageListManager.shared.installedPackages.count)"
             }
         }
     }
@@ -49,8 +52,8 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
         super.prepareForReuse()
         self.repo = nil
     }
-    
-    private func image(_ repo: Repo) {
+
+    public func image(_ repo: Repo) {
         // Quite frankly the backend here sucks ass, so if you open the sources page too quick after launching the image will not be set
         // This will pull it from local cache in the event that we're too quick. If doesn't exist in Cache, show the default icon
         if repo.url?.host == "apt.thebigboss.org" {
@@ -63,7 +66,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
         }
         let scale = Int(UIScreen.main.scale)
         for i in (1...scale).reversed() {
-            let filename = i == 1 ? "CydiaIcon" : "CydiaIcon@\(i)x"
+            let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
             if let iconURL = URL(string: repo.repoURL)?
                 .appendingPathComponent(filename)
                 .appendingPathExtension("png") {

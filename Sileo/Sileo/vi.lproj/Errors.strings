@@ -23,10 +23,10 @@
 
 "Insecure_Paid_Download" = "Liên kết tải xuống gói được ủy quyền thanh toán phải an toàn (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "Nhà cung cấp thanh toán không hợp lệ.";
+"Invalid_Payment_Provider_Response" = "Nhà cung cấp thanh toán đã trả về dữ liệu không hợp lệ.";
 "No_Payment_Provider" = "Repo này không hỗ trợ mua Sileo. Nếu đây là gói Cydia Store mà bạn đã mua, bạn có thể liên kết tài khoản của mình để tải xuống.";
 
-"Package_Unavailable" = "Gói này không có sẵn từ các nguồn đã cài đặt của bạn. Vui lòng kiểm tra để đảm bảo rằng repo %@ có sẵn.";
+"Package_Unavailable" = "Gói này không có sẵn từ các nguồn đã cài đặt của bạn. Vui lòng kiểm tra để đảm bảo rằng nguồn %@ có sẵn.";
 
 "Installation_Error.Title" = "Lỗi cài đặt";
 "Installation_Error.Body" = "Sileo không có được quyền root. Vui lòng cài đặt lại Sileo bằng SSH.";
@@ -35,9 +35,9 @@
 "FixingDpkg.Body" = "Dpkg đã bị gián đoạn. Vui lòng đợi trong khi chúng tôi cố gắng khắc phục sự cố.";
 
 "Invalid_Data" = "Dữ liệu không hợp lệ";
-"Try_Later" = "Làm ơn thử lại sau.";
+"Try_Later" = "Vui lòng thử lại sau.";
 
-"Sileo_Update_Required.Title" = "Sileo đang yêu cầu cập nhật";
+"Sileo_Update_Required.Title" = "Yêu cầu cập nhật Sileo";
 "Featured_Requires_Sileo_Update" = "Cần có bản cập nhật Sileo để xem tab nổi bật. Tab nổi bật có thể được hiển thị không chính xác.";
 "Depiction_Requires_Sileo_Update" = "Cần có bản cập nhật Sileo để xem trang này. Trang có thể được hiển thị không chính xác.";
 

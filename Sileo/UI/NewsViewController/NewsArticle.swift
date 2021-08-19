@@ -3,13 +3,19 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/17/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
 class NewsArticle {
-    static let iso8601DateFormatter = DateFormatter()
+    static let iso8601DateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter
+    }()
     
     public var guid: String
     public var title: String
@@ -23,8 +29,6 @@ class NewsArticle {
     public var userReadDate: Date?
     
     init?(dict: [String: String?]) {
-        NewsArticle.iso8601DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
         guard let title = dict["title"] as? String,
             let body = dict["excerpt"] as? String,
             let type = dict["type"] as? String,

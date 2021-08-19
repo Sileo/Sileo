@@ -11,9 +11,19 @@ import Foundation
 final class CanisterResolver {
     
     static let RepoRefresh = Notification.Name("SileoRepoDidFinishUpdating")
+    public static let nistercanQueue = DispatchQueue(label: "Sileo.NisterCan", qos: .userInteractive)
     public static let shared = CanisterResolver()
     public var packages = [ProvisionalPackage]()
     private var cachedQueue = [Package]()
+    private var savedSearch = [String]()
+    
+    static let canisterQueue: DispatchQueue = {
+        let queue = DispatchQueue(label: "Sileo.CanisterQueue", qos: .userInitiated)
+        queue.setSpecific(key: CanisterResolver.queueKey, value: CanisterResolver.queueContext)
+        return queue
+    }()
+    public static let queueKey = DispatchSpecificKey<Int>()
+    public static var queueContext = unsafeBitCast(CanisterResolver.shared, to: Int.self)
     
     let filteredRepos = [
         "apt.elucubratus.com",
@@ -31,40 +41,67 @@ final class CanisterResolver {
                                                object: nil)
     }
     
-    public func fetch(_ query: String, fetch: @escaping () -> Void) {
-        if query.count <= 3 { return fetch() }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(query)&searchFields=packageId,name,author,maintainer&responseFields=packageId,name,description,icon,repositoryURI,author,latestVersion,nativeDepiction,depiction"
-        AmyNetworkResolver.dict(url: url) { success, dict in
+    @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        fetch?(false); return false
+        #endif
+        guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
+        guard query.count > 3,
+           !savedSearch.contains(query),
+           let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
+        AmyNetworkResolver.dict(url: url) { [self] success, dict in
             guard success,
                   let dict = dict,
-                  dict["status"] as? String == "Successful",
-                  let data = dict["data"] as? [[String: Any]] else { return fetch() }
+                  let data = dict["data"] as? [[String: Any]] else { return }
+            self.savedSearch.append(query)
+            var change = false
             for entry in data {
-                var package = ProvisionalPackage()
-                package.name = entry["name"] as? String
-                package.repo = entry["repositoryURI"] as? String
-                if self.filteredRepos.contains(where: { (package.repo?.contains($0) ?? false) }) { continue }
-                package.identifier = entry["packageId"] as? String
-                package.icon = entry["icon"] as? String
-                package.description = entry["description"] as? String
-                package.depiction = entry["nativeDepiction"] as? String
-                package.legacyDepiction = entry["depiction"] as? String
-                if var author = entry["author"] as? String,
-                   let range = author.range(of: "<") {
-                    author.removeSubrange(range.lowerBound..<author.endIndex)
-                    if author.last == " " { author = String(author.dropLast()) }
-                    package.author = author
-                } else {
-                    package.author = entry["author"] as? String
-                }
-                package.version = entry["latestVersion"] as? String
+                guard let package = ProvisionalPackage(entry) else { continue }
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
+                    change = true
                     self.packages.append(package)
                 }
             }
             
-            return fetch()
+            fetch?(change)
         }
+        return true
+    }
+    
+    @discardableResult public func batchFetch(_ packages: [String], fetch: ((Bool) -> Void)? = nil) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        fetch?(false); return false
+        #endif
+        var packages = packages
+        for package in packages {
+            if savedSearch.contains(package) {
+                packages.removeAll { package == $0 }
+            }
+        }
+        if packages.isEmpty { fetch?(false); return false }
+        let identifiers = packages.joined(separator: ",")
+        guard let formatted = identifiers.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
+        let url = "https://api.canister.me/v1/community/packages/lookup?packages=\(formatted)"
+        AmyNetworkResolver.dict(url: url) { [self] success, dict in
+            guard success,
+                  let dict = dict,
+                  let data = dict["data"] as? [[String: Any]] else { return }
+            self.savedSearch += packages
+            var change = false
+            for entry in data {
+                guard let fields = entry["fields"] as? [[String: Any]] else { continue }
+                for field in fields {
+                    guard let package = ProvisionalPackage(field) else { continue }
+                    if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
+                        change = true
+                        self.packages.append(package)
+                    }
+                }
+            }
+            fetch?(change)
+        }
+        return true
     }
     
     class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
@@ -132,7 +169,7 @@ final class CanisterResolver {
         var buffer = 0
         var refreshLists = false
         for (index, package) in cachedQueue.enumerated() {
-            if let pkg = plm.package(identifier: package.packageID, version: package.version) ?? plm.newestPackage(identifier: package.packageID) {
+            if let pkg = plm.package(identifier: package.packageID, version: package.version) ?? plm.newestPackage(identifier: package.packageID, repoContext: nil) {
                 let queueFound = DownloadManager.shared.find(package: pkg)
                 if queueFound == .none {
                     DownloadManager.shared.add(package: pkg, queue: .installations)
@@ -145,13 +182,13 @@ final class CanisterResolver {
         }
         if refreshLists {
             NotificationCenter.default.post(name: CanisterResolver.refreshList, object: nil)
+            DownloadManager.shared.reloadData(recheckPackages: true)
         }
     }
     
     public class func package(_ provisional: ProvisionalPackage) -> Package? {
-        guard let identifier = provisional.identifier,
-              let version = provisional.version else { return nil }
-        let package = Package(package: identifier, version: version)
+        guard let identifier = provisional.identifier else { return nil }
+        let package = Package(package: identifier, version: provisional.version ?? "Unknown")
         package.name = provisional.name
         package.source = provisional.repo
         package.icon = provisional.icon
@@ -161,6 +198,22 @@ final class CanisterResolver {
         package.legacyDepiction = provisional.legacyDepiction
         package.isProvisional = true
         return package
+    }
+    
+    public func package(for bundleID: String) -> Package? {
+        let temp = packages.filter { $0.identifier == bundleID }
+        var buffer: Package?
+        for provis in temp {
+            guard let package = CanisterResolver.package(provis) else { continue }
+            if let contained = buffer {
+                if DpkgWrapper.isVersion(package.version, greaterThan: contained.version) {
+                    buffer = package
+                }
+            } else {
+                buffer = package
+            }
+        }
+        return buffer
     }
     
     static let refreshList = Notification.Name("Canister.RefreshList")
@@ -176,4 +229,155 @@ struct ProvisionalPackage {
     var version: String?
     var legacyDepiction: String?
     var depiction: String?
+    
+    init?(_ entry: [String: Any]) {
+        self.name = entry["name"] as? String
+        
+        if let repo = entry["repository"] as? [String: String],
+           let url = repo["uri"] {
+            self.repo = url
+        } else if let repo = entry["repository.uri"] as? String {
+            self.repo = repo
+        } else {
+            return nil
+        }
+        if CanisterResolver.shared.filteredRepos.contains(where: { (self.repo?.contains($0) ?? false) }) { return nil }
+        self.identifier = entry["identifier"] as? String
+        self.icon = entry["packageIcon"] as? String
+        self.description = entry["description"] as? String
+        self.depiction = entry["nativeDepiction"] as? String
+        self.legacyDepiction = entry["depiction"] as? String
+        if var author = entry["author"] as? String,
+           let range = author.range(of: "<") {
+            author.removeSubrange(range.lowerBound..<author.endIndex)
+            if author.last == " " { author = String(author.dropLast()) }
+            self.author = author
+        } else if let author = entry["author"] as? String {
+            self.author = author
+        } else if var maintainer = entry["maintainer"] as? String,
+                  let range = maintainer.range(of: "<") {
+            maintainer.removeSubrange(range.lowerBound..<maintainer.endIndex)
+            if maintainer.last == " " { maintainer = String(maintainer.dropLast()) }
+            self.author = maintainer
+        } else if let maintainer = entry["maintainer"] as? String {
+            self.author = maintainer
+        } else {
+            self.author = "Unknown"
+        }
+        self.version = entry["latestVersion"] as? String ?? entry["version"] as? String
+    }
+}
+
+class SafeCanisterArray<Element> {
+    private var array = [Element]()
+    
+    public var isOnCanisterQueue: Bool {
+        DispatchQueue.getSpecific(key: CanisterResolver.queueKey) == CanisterResolver.queueContext
+    }
+            
+    public convenience init(_ array: [Element]) {
+        self.init()
+        self.array = array
+    }
+    
+    var count: Int {
+        if !isOnCanisterQueue {
+            var result = 0
+            CanisterResolver.canisterQueue.sync { result = self.array.count }
+            return result
+        }
+        return array.count
+    }
+    
+    var isEmpty: Bool {
+        if !isOnCanisterQueue {
+            var result = false
+            CanisterResolver.canisterQueue.sync { result = self.array.isEmpty }
+            return result
+        }
+        return array.isEmpty
+    }
+    
+    var raw: [Element] {
+        if !isOnCanisterQueue {
+            var result = [Element]()
+            CanisterResolver.canisterQueue.sync { result = self.array }
+            return result
+        }
+        return array
+    }
+    
+    func contains(where package: (Element) -> Bool) -> Bool {
+        if !isOnCanisterQueue {
+            var result = false
+            CanisterResolver.canisterQueue.sync { result = self.array.contains(where: package) }
+            return result
+        }
+        return array.contains(where: package)
+    }
+    
+    func setTo(_ packages: [Element]) {
+        if !isOnCanisterQueue {
+            CanisterResolver.canisterQueue.async(flags: .barrier) {
+                self.array = packages
+            }
+        } else {
+            self.array = packages
+        }
+    }
+    
+    func append(_ package: Element) {
+        if !isOnCanisterQueue {
+            CanisterResolver.canisterQueue.async(flags: .barrier) {
+                self.array.append(package)
+            }
+        } else {
+            self.array.append(package)
+        }
+    }
+    
+    func removeAll() {
+        if !isOnCanisterQueue {
+            CanisterResolver.canisterQueue.async(flags: .barrier) {
+                self.array.removeAll()
+            }
+        } else {
+            self.array.removeAll()
+        }
+    }
+    
+    func removeAll(package: @escaping (Element) -> Bool) {
+        if !isOnCanisterQueue {
+            CanisterResolver.canisterQueue.async(flags: .barrier) {
+                while let index = self.array.firstIndex(where: package) {
+                    self.array.remove(at: index)
+                }
+            }
+        } else {
+            while let index = self.array.firstIndex(where: package) {
+                self.array.remove(at: index)
+            }
+        }
+    }
+    
+    func map<ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> [ElementOfResult] {
+        if !isOnCanisterQueue {
+            var result = [ElementOfResult]()
+            CanisterResolver.canisterQueue.sync { result = self.array.map(transform) }
+            return result
+        } else {
+            return array.map(transform)
+        }
+    }
+}
+
+extension SafeCanisterArray where Element: Equatable {
+    func contains(_ element: Element) -> Bool {
+        if !isOnCanisterQueue {
+            var result = false
+            CanisterResolver.canisterQueue.sync { result = self.array.contains(element) }
+            return result
+        }
+        return self.array.contains(element)
+    }
 }

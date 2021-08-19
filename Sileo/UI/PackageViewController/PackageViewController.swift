@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/31/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -192,7 +192,8 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.navigationItem.titleView = packageNavBarIconViewController
 
         if self.isPresentedModally {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Done"),
+                                                                    style: .done,
                                                                     target: self,
                                                                     action: #selector(PackageViewController.dismissImmediately))
         }
@@ -220,9 +221,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         guard var package = package else {
             return
         }
-
+        
         if package.packageFileURL == nil {
-            if let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) {
+            if let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package, repoContext: nil) {
                 package = newestPackage
                 self.package = package
             }
@@ -305,71 +306,61 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 }
             }
             task.resume()
-        } else {
-            DispatchQueue.global(qos: .default).async {
-                if let url = URL(string: "https://coolstar.moe/sileoassets/depictionoverride.php?package=\(package.package)"),
-                    let data = try? Data(contentsOf: url) {
-                    self.parseNativeDepiction(data, host: url.host ?? "", failureCallback: {
-                        let scraper = HTMLDepictionScraper()
-                        if let legacyDepiction = package.legacyDepiction,
-                            let url = URL(string: legacyDepiction) {
-                            if let rawJSON = try? scraper.scrapeHTML(url: url),
-                                let data = rawJSON.data(using: .utf8) {
-                                self.parseNativeDepiction(data, host: "", failureCallback: {
-                                    os_log("Parsing Failed")
-                                })
-                            } else {
-                                os_log("Parsing Failed")
-                            }
-                        }
-                    })
-                }
-            }
         }
 
         depictionFooterView?.removeFromSuperview()
-        var footerDict = [
-            "class": "DepictionStackView",
-            "views": [
+        var footerDict: [String: Any] = [
+            "class": "DepictionStackView"
+        ]
+        var views = [[String: Any]]()
+        if installedPackage != nil {
+            views = [
                 [
-                    "class": "DepictionSubheaderView",
-                    "alignment": 1,
-                    "title": "\(package.package) (\(package.version))"
+                    "class": "DepictionSeparatorView"
+                ],
+                [
+                    "class": "DepictionHeaderView",
+                    "title": String(localizationKey: "Installed_Package_Header")
+                ],
+                [
+                    "class": "DepictionTableTextView",
+                    "title": String(localizationKey: "Version"),
+                    "text": installedPackage?.version ?? ""
+                ],
+                [
+                    "class": "DepictionTableButtonView",
+                    "title": String(localizationKey: "Show_Package_Contents_Button"),
+                    "action": "showInstalledContents"
+                ],
+                [
+                    "class": "DepictionSeparatorView"
                 ]
             ]
-        ] as [String: Any]
-        if installedPackage != nil {
-            footerDict = [
-                "class": "DepictionStackView",
-                "views": [
-                    [
-                        "class": "DepictionSeparatorView"
-                    ],
-                    [
-                        "class": "DepictionHeaderView",
-                        "title": String(localizationKey: "Installed_Package_Header")
-                    ],
-                    [
-                        "class": "DepictionTableTextView",
-                        "title": String(localizationKey: "Version"),
-                        "text": installedPackage?.version ?? ""
-                    ],
-                    [
-                        "class": "DepictionTableButtonView",
-                        "title": String(localizationKey: "Show_Package_Contents_Button"),
-                        "action": "showInstalledContents"
-                    ],
-                    [
-                        "class": "DepictionSeparatorView"
-                    ],
-                    [
-                        "class": "DepictionSubheaderView",
-                        "alignment": 1,
-                        "title": "\(package.package) (\(package.version))"
-                    ]
-                ]
-            ] as [String: Any]
         }
+        if let repo = package.sourceRepo {
+            views.insert([
+                "class": "DepictionSeparatorView"
+            ], at: 0)
+            views.insert([
+                "class": "DepictionHeaderView",
+                "title": String(localizationKey: "Repo")
+            ], at: 1)
+            views.insert([
+                "class": "DepictionTableButtonView",
+                "title": repo.displayName,
+                "action": "showRepoContext",
+                "_repo": repo.url?.absoluteString as Any
+            ], at: 2)
+        }
+        views.append([
+            "class": "DepictionSubheaderView",
+            "alignment": 1,
+            "title": "\(package.package) (\(package.version))"
+        ])
+        footerDict = [
+            "class": "DepictionStackView",
+            "views": views
+        ] as [String: Any]
 
         if let depictionFooterView = DepictionBaseView.view(dictionary: footerDict, viewController: self, tintColor: nil, isActionable: false) {
             depictionFooterView.delegate = self
@@ -573,8 +564,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         
         let sharePopup = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let shareAction = UIAlertAction(title: String(localizationKey: "Package_Share_Action"), style: .default) { _ in
-            let packageURL = URL(string: URLManager.url(package: package.package))
-            let activityViewController = UIActivityViewController(activityItems: [packageURL as Any], applicationActivities: nil)
+            var packageString = "\(package.name ?? package.package) - \(URLManager.url(package: package.package))"
+            if let repo = package.sourceRepo {
+                packageString += " - from \(repo.url?.absoluteString ?? repo.rawURL)"
+            }
+            let activityViewController = UIActivityViewController(activityItems: [packageString], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = shareButton
             self.present(activityViewController, animated: true, completion: nil)
         }
@@ -630,18 +624,18 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                 NotificationCenter.default.post(Notification(name: PackageListManager.prefsNotification))
             }
             sharePopup.addAction(ignoreUpdates)
-        } else {
-            let wishListText = WishListManager.shared.isPackageInWishList(package.package) ?
-                String(localizationKey: "Package_Wishlist_Remove") : String(localizationKey: "Package_Wishlist_Add")
-            let wishlist = UIAlertAction(title: wishListText, style: .default) { _ in
-                if WishListManager.shared.isPackageInWishList(package.package) {
-                    WishListManager.shared.removePackageFromWishList(package.package)
-                } else {
-                    _ = WishListManager.shared.addPackageToWishList(package.package)
-                }
-            }
-            sharePopup.addAction(wishlist)
         }
+        
+        let wishListText = WishListManager.shared.isPackageInWishList(package.package) ?
+            String(localizationKey: "Package_Wishlist_Remove") : String(localizationKey: "Package_Wishlist_Add")
+        let wishlist = UIAlertAction(title: wishListText, style: .default) { _ in
+            if WishListManager.shared.isPackageInWishList(package.package) {
+                WishListManager.shared.removePackageFromWishList(package.package)
+            } else {
+                _ = WishListManager.shared.addPackageToWishList(package.package)
+            }
+        }
+        sharePopup.addAction(wishlist)
         
         let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: nil)
         sharePopup.addAction(cancelAction)
@@ -679,12 +673,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         PaymentManager.shared.getPaymentProvider(for: sourceRepo) { error, provider in
             if error != nil {
-                self.checkLegacyPurchaseStatus(package)
+                return
             }
             provider?.getPackageInfo(forIdentifier: package.package) { error, info in
                 guard let info = info,
                     error == nil else {
-                    self.checkLegacyPurchaseStatus(package)
                     return
                 }
                 DispatchQueue.main.async {
@@ -695,45 +688,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             }
         }
     }
-
-    func checkLegacyPurchaseStatus(_ package: Package) {
-        let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String]
-        let isPurchased = existingPurchased?.contains(package.package) ?? false
-
-        if isPurchased {
-            let info = PaymentPackageInfo(dictionary: ["price": String(localizationKey: "Package_Paid"),
-                                                       "purchased": true,
-                                                       "available": true])
-            DispatchQueue.main.async {
-                self.isUpdatingPurchaseStatus = false
-                if let info = info {
-                    self.downloadButton.paymentInfo = info
-                    self.navBarDownloadButton?.paymentInfo = info
-                }
-            }
-        } else {
-            var price = String(localizationKey: "Package_Paid")
-            if let cydiaAPIURL = URL(string: "https://cydia.saurik.com/api/ibbignerd?query=\(package.package)"),
-                let jsonData = try? Data(contentsOf: cydiaAPIURL),
-                let rawObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),
-                let dictionary = rawObject as? [String: Any] {
-                if let msrp = dictionary["msrp"] as? NSNumber {
-                    price = String(format: "$%.2f", msrp.floatValue)
-                }
-            }
-            let info = PaymentPackageInfo(dictionary: ["price": price,
-                                                       "purchased": false,
-                                                       "available": false])
-            DispatchQueue.main.async {
-                self.isUpdatingPurchaseStatus = false
-                if let info = info {
-                    self.downloadButton.paymentInfo = info
-                    self.navBarDownloadButton?.paymentInfo = info
-                }
-            }
-        }
-    }
-
+    
     override var previewActionItems: [UIPreviewActionItem] {
         downloadButton.actionItems().map({ $0.previewAction() })
     }

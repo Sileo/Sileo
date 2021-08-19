@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -s /opt/procursus/Applications/Sileo.app /Applications/Sileo.app
+exit 0

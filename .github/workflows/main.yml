@@ -1,56 +1,103 @@
 on:
   push:
     branches:
-      - main
-      - amy
+      - dev
 name: Build
 jobs:
   make:
     name: Build and Upload Sileo
     runs-on: macos-latest
     steps:
+      - uses: actions/cache@v2
+        id: procache
+        with:
+          path: |
+            ~/__cache
+            /Applications/Xcode_12.4.app/Contents/Developer/Toolchains
+          key: ${{ runner.os }}-procursus
+          
       - name: Checkout
         uses: actions/checkout@master
         with:
           submodules: true
-      - name: Install ldid and dpkg
+      - name: Import all certificates
+        env: 
+          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+          DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
+          DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install ldid dpkg
-      - name: Build Sileo Nightly
+          security create-keychain -p "" build.keychain
+          security list-keychains -s build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "" build.keychain
+          security set-keychain-settings
+          security import <(echo $DEVELOPMENT_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -T /usr/bin/codesign
+          security import <(echo $DISTRIBUTION_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
+        
+      - name: Setup Procursus Bootstrap (install)
+        if: steps.procache.outputs.cache-hit != 'true'
         run: |
-         make clean package NIGHTLY=1 DEBUG=0
-      - name: Build Sileo Beta
+          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst https://apt.procurs.us/Toolchain12_5.tzst
+          rm -r /Applications/Xcode_12.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+          sudo gtar -xkf ./Toolchain12_5.tzst -C /Applications/Xcode_12.4.app/Contents/Developer/Toolchains
+          sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt install ldid -y
+          
+      - name: Add Procursus to PATH
         run: |
-          make clean package BETA=1 DEBUG=0
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          
+      - name: Setup Procursus Bootstrap (cache)
+        if: steps.procache.outputs.cache-hit == 'true'
+        run: |
+          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
+          sudo rsync -aP ~/__cache/procursus /opt
+          sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+
+      - name: Run Tests
+        run: xcodebuild test -scheme "Sileo (Test Handler)" -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
+      - name: Build Sileo Nightly (iphoneos-arm)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
+      - name: Build Sileo Nightly (darwin-amd64)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
+      - name: Build Sileo Nightly (darwin-arm64)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
       - name: Upload To Repo
         env: # 
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
-          package=$(ls -t packages | head -1)
-          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
-          package=$(ls -t packages | head -2 | tail -1)
-          curl -F deb="@./packages/${package}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/sileo
-      - name: Upload To GitHub Artifacts
-        uses: actions/upload-artifact@v2.2.2
-        with:
-          path: ./packages/*.deb
-  lint:
-    name: Lint Sileo
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - name: Run SwiftLint
-        uses: norio-nomura/action-swiftlint@3.2.1
-  test:
-    name: Run Unit Tests
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@master
-        with:
-          submodules: true
-      - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_12.4.app 
-      - name: Run Tests
-        run: xcodebuild test -scheme Sileo -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
+          package1=$(ls -t packages | head -1)
+          package2=$(ls -t packages | head -2 | tail -1)
+          package3=$(ls -t packages | head -3 | tail -1)
+          curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
+      - name: Wakeup Babe
+        run: |
+          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/756865973394472960/877340517178957834/Screen_Shot_2021-08-17_at_7.57.46_PM.png"}' "${{ secrets.WEBHOOK }}"
+      - name: Copy Procursus to Cache Location
+        run: |
+          sudo mkdir -p ~/__cache
+          sudo rsync -aP /opt/procursus ~/__cache
+          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
+

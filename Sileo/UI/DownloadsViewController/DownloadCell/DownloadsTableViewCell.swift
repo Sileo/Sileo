@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/27/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -11,19 +11,40 @@ import Foundation
 class DownloadsTableViewCell: BaseSubtitleTableViewCell {
     public var package: DownloadPackage? = nil {
         didSet {
-            self.title = package?.package.name
-            if let url = package?.package.icon {
+            internalPackage = package?.package
+        }
+    }
+    
+    public var internalPackage: Package? {
+        didSet {
+            self.title = internalPackage?.name
+            if let url = internalPackage?.icon {
                 self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
                     if refresh,
                        let strong = self,
                        let image = image,
-                       url == strong.package?.package.icon {
+                       url == strong.internalPackage?.icon {
                         DispatchQueue.main.async {
                             strong.icon = image
                         }
                     }
                 } ?? UIImage(named: "Tweak Icon")
+            } else {
+                self.icon = UIImage(named: "Tweak Icon")
             }
+        }
+    }
+    
+    public var operation: DownloadsTableViewController.InstallOperation? {
+        didSet {
+            internalPackage = operation?.package
+            var progress = operation?.progress ?? 0.0
+            progress = (progress / 1.0) * 0.3
+            self.progress = progress + 0.7
+            if let status = operation?.status {
+                subtitle = status
+            }
+            operation?.cell = self
         }
     }
     
@@ -33,11 +54,17 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        operation?.cell = nil
+    }
+    
     public func updateDownload() {
         retryButton.isHidden = true
         if let download = download {
-            self.progress = download.progress
-            if download.success {
+            self.progress = (download.progress / 1.0) * 0.7
+            if download.progress == 1.0 && download.failureReason == nil {
                 self.subtitle = String(localizationKey: "Ready_Status")
             } else if let message = download.message {
                 self.subtitle = message
@@ -45,13 +72,16 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
                 !failureReason.isEmpty {
                 retryButton.isHidden = false
                 self.subtitle = String(format: String(localizationKey: "Error_Indicator", type: .error), failureReason)
-            } else if download.queued {
-                self.subtitle = String(localizationKey: "Queued_Package_Status")
-            } else {
+            } else if download.started {
                 self.subtitle = String(format: String(localizationKey: "Download_Progress"),
                                        ByteCountFormatter.string(fromByteCount: Int64(download.totalBytesWritten), countStyle: .file),
                                        ByteCountFormatter.string(fromByteCount: Int64(download.totalBytesExpectedToWrite), countStyle: .file))
+            } else {
+                self.subtitle = String(localizationKey: "Queued_Package_Status")
             }
+        } else if shouldHaveDownload {
+            self.subtitle = String(localizationKey: "Queued_Package_Status")
+            self.progress = 0
         } else {
             self.progress = 0
             self.subtitle = String(localizationKey: errorDescription ?? (shouldHaveDownload ? "Download_Starting" : "Ready_Status"))
@@ -83,37 +113,20 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         retryButton.isHidden = true
         let downloadMan = DownloadManager.shared
         guard let package = package,
-              let download = downloadMan.downloads[package.package.package],
-              !download.success,
-              download.completed,
-              !download.queued else { return }
+              let download = downloadMan.downloads[package.package.packageID],
+              !download.success else { return }
         download.completed = false
-        download.queued = true
-        guard let task = download.task else {
-            downloadMan.startMoreDownloads()
-            return
-        }
-        if task.hasRetried {
-            download.task = nil
-        } else {
-            if task.shouldResume && task.resumeData != nil {
-                if !task.retry() {
-                    task.make()
-                }
-            } else {
-                task.make()
-            }
-            download.task = task
-        }
-        downloadMan.downloads[package.package.package] = download
+        download.task = nil
+        download.queued = false
         downloadMan.startMoreDownloads()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
         self.contentView.addSubview(retryButton)
+        self.detailTextLabel?.adjustsFontSizeToFitWidth = true
         retryButton.translatesAutoresizingMaskIntoConstraints = false
         retryButton.heightAnchor.constraint(equalToConstant: 17.5).isActive = true
         retryButton.widthAnchor.constraint(equalToConstant: 17.5).isActive = true

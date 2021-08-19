@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 4/20/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -23,5 +23,22 @@ extension URL {
         let expectedScheme = prefix.isEmpty ? "https" : String(format: "%@-https", prefix.lowercased())
         return expectedScheme == self.scheme?.lowercased()
         #endif
+    }
+    
+    // The Swift class `URL` automatically encodes this back to a _ which results in big fucky wucky
+    // with APT, this is the only way I could get it to work and I apologize
+    var aptPath: String {
+        self.path.replacingOccurrences(of: "big_sur", with: #"big%5fsur"#)
+    }
+
+    var aptUrl: URL {
+        URL(fileURLWithPath: self.aptPath)
+    }
+
+    var aptContents: String? {
+        if let handle = FileHandle(forReadingAtPath: self.aptPath) {
+            return String(decoding: handle.availableData, as: UTF8.self)
+        }
+        return nil
     }
 }

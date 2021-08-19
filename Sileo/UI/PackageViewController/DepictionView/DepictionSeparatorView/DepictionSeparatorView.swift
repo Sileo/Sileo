@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/6/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 // Make sure to also update FeaturedSeparatorView.swift
 

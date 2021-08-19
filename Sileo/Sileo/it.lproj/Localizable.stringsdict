@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Aggiungi automaticamente %lu %#@sources@</string>
+      <string>Aggiungi Automaticamente %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -21,7 +21,7 @@
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Aggiungi %lu %#@sources@</string>
+      <string>Aggiungere %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -37,7 +37,7 @@
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Aggiungi la seguente %#@urls@ che hai precedentemente copiato:</string>
+      <string>Aggiungere la seguente %#@urls@ che hai precedentemente copiato:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>

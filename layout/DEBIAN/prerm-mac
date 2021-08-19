@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm /Applications/Sileo.app
+exit 0

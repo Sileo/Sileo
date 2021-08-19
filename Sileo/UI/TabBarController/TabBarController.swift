@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 4/20/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -12,9 +12,10 @@ import LNPopupController
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     static var singleton: TabBarController?
     private var downloadsController: UINavigationController?
-    private var popupIsPresented = false
+    private(set) public var popupIsPresented = false
     private var popupLock = DispatchSemaphore(value: 1)
     private var shouldSelectIndex = -1
+    private var fuckedUpSources = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +55,32 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
         }
-        if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
-            if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
+        if tabBarController.selectedIndex == 4 && shouldSelectIndex == 4 {
+            if let navController = tabBarController.viewControllers?[4] as? SileoNavigationController,
                let packageList = navController.viewControllers[0] as? PackageListViewController {
-                packageList.collectionView?.setContentOffset(CGPoint.zero, animated: true)
+                packageList.searchController?.searchBar.becomeFirstResponder()
             }
         }
+        if tabBarController.selectedIndex == 3 && shouldSelectIndex == 3 {
+            if let navController = tabBarController.viewControllers?[3] as? SileoNavigationController,
+               let packageList = navController.viewControllers[0] as? PackageListViewController,
+               let collectionView = packageList.collectionView {
+                let yVal = -1 * collectionView.adjustedContentInset.top
+                collectionView.setContentOffset(CGPoint(x: 0, y: yVal), animated: true)
+            }
+        }
+        if tabBarController.selectedIndex ==  2 && !fuckedUpSources {
+            if let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+               let sourcesNaVC = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+                if sourcesNaVC.presentedViewController == nil {
+                    sourcesNaVC.popToRootViewController(animated: false)
+                }
+            }
+            fuckedUpSources = true
+        }
+        if viewController as? SileoNavigationController != nil { return }
+        if viewController as? SourcesSplitViewController != nil { return }
+        fatalError("View Controller mismatch")
     }
     
     func presentPopup() {
@@ -148,9 +169,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func dismissPopupController(completion: (() -> Void)?) {
         guard popupIsPresented else {
-            if let completion = completion {
-                completion()
-            }
+            completion?()
             return
         }
         
@@ -166,7 +185,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         updatePopup(completion: nil)
     }
     
-    func updatePopup(completion: (() -> Void)?) {
+    func updatePopup(completion: (() -> Void)? = nil, bypass: Bool = false) {
+        func hideRegardless() {
+            if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
+                downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
+                downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
+                self.presentPopup(completion: completion)
+            } else {
+                self.dismissPopup(completion: completion)
+            }
+        }
+        if bypass {
+            hideRegardless()
+            return
+        }
         let manager = DownloadManager.shared
         if manager.lockedForInstallation {
             downloadsController?.popupItem.title = String(localizationKey: "Installing_Package_Status")
@@ -178,9 +210,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.downloadingPackages())
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
-        } else if manager.queuedPackages() > 0 {
+        } else if manager.operationCount() > 0 {
             downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
-            downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.queuedPackages())
+            downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), manager.operationCount())
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
         } else if manager.readyPackages() > 0 {
@@ -194,13 +226,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             downloadsController?.popupItem.progress = 0
             self.presentPopup(completion: completion)
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 768 {
-                downloadsController?.popupItem.title = String(localizationKey: "Queued_Package_Status")
-                downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), 0)
-                self.presentPopup(completion: completion)
-            } else {
-                self.dismissPopup(completion: completion)
-            }
+            hideRegardless()
         }
     }
     
@@ -252,5 +278,17 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.updatePopup()
         }
+    }
+    
+    public func displayError(_ error: Error) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.displayError(error)
+            }
+            return
+        }
+        let alertController = UIAlertController(title: String(localizationKey: "Unknown", type: .error), message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

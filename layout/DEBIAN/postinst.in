@@ -19,41 +19,52 @@ finish() {
 
 case "$1" in
 	(configure)
-		touch $sourcesDir/sileo.sources
-
+		
 		cr="\n"
 
-		if ! [ -s "$sourcesDir/sileo.sources" ]; then
-			echo "" > $sourcesDir/sileo.sources
-		fi
+		if [ -f /.procursus_strapped ]; then 
+			 touch $sourcesDir/sileo.sources
+			 if ! [ -s "$sourcesDir/sileo.sources" ]; then
+ 				echo "" > $sourcesDir/sileo.sources
+ 			 fi
 
-		if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
-		then
-			echo "Installed Chariz Repo"
-			sed -i '1s;^;Types: deb\
+			 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
+			 then
+				 echo "Installed Chariz Repo"
+				 sed -i '1s;^;Types: deb\
 URIs: https://repo.chariz.com/\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
-		fi
+			 fi
 
-		if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
-		then
-			echo "Installed Packix Repo"
-			sed -i '1s;^;Types: deb\
+			 if ! grep -Fxq "URIs: https://repo.packix.com/" $sourcesDir/sileo.sources ;
+			 then
+			 echo "Installed Packix Repo"
+			 sed -i '1s;^;Types: deb\
 URIs: https://repo.packix.com/\
 Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
+			 fi
 		fi
+		
 		rm -rf $sourcesDir/../preferences.d/checkra1n
 		exit 0
 		;;
 	(triggered)
-		finish uicache
-		exit 0
+		if [ "$2" = "/Applications" ]; then
+			finish uicache
+			exit 0
+		fi
+		if ! [ -s /usr/lib/libblackjack.dylib ]; then
+			if [ "$2" = "/Library/MobileSubstrate/DynamicLibraries" ]; then
+				finish restart
+				exit 0
+			fi
+		fi
 		;;
 	(abort-upgrade|abort-remove|abort-deconfigure)
 		exit 0

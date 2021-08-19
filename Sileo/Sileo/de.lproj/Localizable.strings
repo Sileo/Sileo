@@ -24,6 +24,8 @@
 "Acknowledge" = "Verstanden";
 "Remove" = "Entfernen";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "App-Hintergrundaktualisierung";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Starte…";
 "Download_Progress" = "%@ von %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Bestätigen";
 "Queue_Clear_Button" = "Warteschlange leeren";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Aktualisieren";
 "Package_Reinstall_Action" = "Neu installieren";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Von Wunschliste entfernen";
 "Wishlist" = "Wunschliste";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installiere";
 "Queued_Uninstall_Heading" = "Entferne";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Pakete durchsuchen";
 "Sort_Name" = "Name";
 "Sort_Date" = "Datum";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sortieren nach:";
 
 "Package_Unavailable" = "Paket nicht verfügbar";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
-"Remove" = "Entfernen";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Ignorierte Updates";
 
 "Repos" = "Quellen";
+"Repo" = "Quelle";
 
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
 "Add_Source.Button.Add" = "Quelle hinzufügen";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuelle Eingabe";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Es sind keine Änderungen für dieses Paket bekannt.";
 
 "Installed_Package_Header" = "Installiertes Paket";
+"Installed_Packages" = "Installierte Pakete";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Paketinhalte anzeigen";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Zwischenspeicher-Größe";
 "Clear_Cache" = "Netzwerk-Zwischenspeicher leeren";
 "Clear_Cache_Message" = "Willst du den Netzwerk-Zwischenspeicher leeren? Das wird %@ freigeben";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Hell";
 "Sileo_Dark" = "Sileo Dunkel";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Details anzeigen";
 "Hide_Install_Details" = "Details ausblenden";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";

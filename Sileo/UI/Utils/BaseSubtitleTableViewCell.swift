@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/27/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -69,7 +69,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
         
         self.textLabel?.frame = textLabelFrame
         self.detailTextLabel?.frame = detailTextLabelFrame
-        progressView.frame = CGRect(x: progressX, y: self.contentView.bounds.height - 2, width: self.contentView.bounds.width - progressX, height: 2)
+        progressView.frame = CGRect(x: progressX, y: self.contentView.bounds.height - 2, width: self.contentView.bounds.width - (progressX * 2), height: 2)
     }
     
     public var title: String? = nil {
@@ -111,7 +111,10 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     
     public var progress: CGFloat = 0 {
         didSet {
-            progressView.progress = progress
+            UIView.animate(withDuration: 0.1) { [weak self] in
+                guard let strong = self else { return }
+                strong.progressView.progress = strong.progress
+            }
         }
     }
 }

@@ -3,13 +3,13 @@
 //  Sileo
 //
 //  Created by Skitty on 1/28/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
 class PaymentProfileHeaderView: UIView, SettingsHeaderViewDisplayable {
-    private var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    private var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     private var stackView: UIStackView = UIStackView()
     private var providerLabel: UILabel = UILabel()
     private var nameLabel: UILabel = UILabel()

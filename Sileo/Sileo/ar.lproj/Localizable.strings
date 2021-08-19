@@ -24,6 +24,8 @@
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
@@ -39,8 +41,11 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "ترقية";
 "Package_Reinstall_Action" = "إعادة التثبيت";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
 "Wishlist" = "قائمة الأمنيات";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
 "Queued_Uninstall_Heading" = "إلغاء التثبيت";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "ابحث عن حزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "إزالة";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "التحديثات المُتجاهلة";
 
 "Repos" = "المستودعات";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
 
 "Installed_Package_Header" = "حزمة مثبتة";
+"Installed_Packages" = "Installed Packages";
 "Version" = "الإصدار";
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "عرض التفاصيل";
 "Hide_Install_Details" = "إخفاء التفاصيل";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";

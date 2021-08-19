@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 21/03/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -20,13 +20,20 @@ class AltIconTableViewController: UITableViewController {
     public static let IconUpdate = Notification.Name("AlternateIconUpdate")
     
     public class func altImage(_ name: String) -> UIImage {
+        #if targetEnvironment(macCatalyst)
+        let path = Bundle.main.bundleURL.appendingPathComponent("Contents").appendingPathComponent("Resources").appendingPathComponent("AppIcon.icns")
+        #else
         let path = Bundle.main.bundleURL.appendingPathComponent(name + "@2x.png")
+        #endif
         return UIImage(contentsOfFile: path.path) ?? UIImage()
     }
     
     var icons = [
         AltIcon(displayName: "Stock", author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
         AltIcon(displayName: "OG", author: "Dennis Bednarz", key: "OG", image: altImage("OG")),
+        AltIcon(displayName: "Pride", author: "emiyl0", key: "Pride", image: altImage("Pride")),
+        AltIcon(displayName: "Mixture", author: "Doregon", key: "Mixture", image: altImage("Mixture")),
+        AltIcon(displayName: "Midnight", author: "Doregon", key: "Midnight", image: altImage("Midnight")),
         AltIcon(displayName: "Taurine", author: "Alpha_Stream", key: "Taurine", image: altImage("Taurine")),
         AltIcon(displayName: "Chimera", author: "Korfi", key: "Chimera", image: altImage("Chimera")),
         AltIcon(displayName: "Procursus", author: "Korfi", key: "Procursus", image: altImage("Procursus")),
@@ -94,7 +101,9 @@ class AltIconTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
-        UIApplication.shared.setAlternateIconName(altIcon.key) { _ in }
+        UIApplication.shared.setAlternateIconName(altIcon.key) { error in
+            NSLog("[Sileo] Failed to set icon with error \(error?.localizedDescription)")
+        }
         NotificationCenter.default.post(name: AltIconTableViewController.IconUpdate, object: nil)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)
     }

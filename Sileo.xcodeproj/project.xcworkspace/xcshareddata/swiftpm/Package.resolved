@@ -5,27 +5,9 @@
         "package": "Alderis",
         "repositoryURL": "https://github.com/elihwyma/Alderis",
         "state": {
-          "branch": "master",
-          "revision": "42c24e5cee43989952698374811a786c69f3c443",
+          "branch": "spm-fixes",
+          "revision": "1e5df800f14c9ba3523f3c6ca7b11e44f939a75a",
           "version": null
-        }
-      },
-      {
-        "package": "AUPickerCell",
-        "repositoryURL": "https://github.com/elihwyma/AUPickerCell",
-        "state": {
-          "branch": "master",
-          "revision": "a3135f3144bcd068fc0485957d4ad56fd41cb9c8",
-          "version": null
-        }
-      },
-      {
-        "package": "BitByteData",
-        "repositoryURL": "https://github.com/tsolomko/BitByteData",
-        "state": {
-          "branch": null,
-          "revision": "0969ebfb79ccbee05384249e818067a984337dc2",
-          "version": "1.4.4"
         }
       },
       {
@@ -39,7 +21,7 @@
       },
       {
         "package": "Down",
-        "repositoryURL": "https://github.com/johnxnguyen/Down.git",
+        "repositoryURL": "https://github.com/johnxnguyen/Down",
         "state": {
           "branch": null,
           "revision": "f34b166be1f1db4aa8f573067e901d72f2a6be57",
@@ -47,12 +29,12 @@
         }
       },
       {
-        "package": "KeychainAccess",
-        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "package": "LNPopupController",
+        "repositoryURL": "https://github.com/elihwyma/LNPopupController",
         "state": {
-          "branch": null,
-          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
-          "version": "4.2.2"
+          "branch": "main",
+          "revision": "7236d7677a4649d6cbfc0612c2c3cd44a95787b4",
+          "version": null
         }
       },
       {
@@ -60,7 +42,7 @@
         "repositoryURL": "https://github.com/elihwyma/LNZTreeView",
         "state": {
           "branch": "master",
-          "revision": "7de0df7a3f5cc6d16b4229fcf6d9a916a08d34e3",
+          "revision": "bb7f9b77989e1c07460319e7bd4d1fcbf7cb26ae",
           "version": null
         }
       },
@@ -71,15 +53,6 @@
           "branch": null,
           "revision": "0a9893ec030501a3956bee572d6b4fdd3ae158a1",
           "version": "0.12.2"
-        }
-      },
-      {
-        "package": "SWCompression",
-        "repositoryURL": "https://github.com/tsolomko/SWCompression",
-        "state": {
-          "branch": null,
-          "revision": "add1e6111fe411221bfa46bc5db792e35cd72768",
-          "version": "4.5.10"
         }
       },
       {

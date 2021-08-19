@@ -3,14 +3,14 @@
 //  Sileo
 //
 //  Created by Amy on 16/03/2021.
-//  Copyright © 2021 CoolStar. All rights reserved.
+//  Copyright © 2021 Sileo Team. All rights reserved.
 //
 
 import UIKit
 
 class SettingsSwitchTableViewCell: UITableViewCell {
     
-    private var control: UISwitch = UISwitch()
+    public var control: UISwitch = UISwitch()
     public var amyPogLabel: UILabel = UILabel()
     var viewControllerForPresentation: UIViewController?
     var fallback = false
@@ -56,7 +56,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
                                                object: nil)
     }
     
-    @objc private func didChange(sender: UISwitch!) {
+    @objc public func didChange(sender: UISwitch!) {
         if let key = defaultKey {
             if key == "DeveloperMode" && sender.isOn {
                 guard let view = viewControllerForPresentation else { return }
@@ -72,7 +72,8 @@ class SettingsSwitchTableViewCell: UITableViewCell {
                 })
                 view.present(alert, animated: true)
             } else {
-                UserDefaults.standard.setValue(sender.isOn, forKey: key); NotificationCenter.default.post(name: Notification.Name(key), object: nil)
+                UserDefaults.standard.setValue(sender.isOn, forKey: key)
+                NotificationCenter.default.post(name: Notification.Name(key), object: nil)
             }
         }
     }

@@ -3,12 +3,15 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/4/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
 class InstalledContentsTableViewCell: UITableViewCell {
+    
+    public var node: FileNode?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -49,5 +52,16 @@ class InstalledContentsTableViewCell: UITableViewCell {
         let offset = CGFloat(indentationLevel) * indentationWidth
         imageFrame.origin.x += offset
         imageView?.frame = imageFrame
+    }
+    
+    @objc public func openInFilza(_ sender: UIMenuController?) {
+        guard let node = node else { return }
+        let url = URL(string: "filza://\(node.path)")!
+        UIApplication.shared.open(url)
+    }
+    
+    @objc public func copyPath(_ sender: UIMenuController?) {
+        guard let node = node else { return }
+        UIPasteboard.general.string = node.path
     }
 }

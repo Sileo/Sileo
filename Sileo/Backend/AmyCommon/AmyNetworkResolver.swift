@@ -13,14 +13,15 @@ final class AmyNetworkResolver {
     static let shared = AmyNetworkResolver()
     
     var cacheDirectory: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo")
     }
     
     var downloadCache: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").appendingPathComponent("DownloadCache")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo").appendingPathComponent("DownloadCache")
     }
     
     var memoryCache = [String: UIImage]()
+    public var memoryCacheLock = NSLock()
     
     public func clearCache() {
         if cacheDirectory.dirExists {
@@ -33,52 +34,40 @@ final class AmyNetworkResolver {
     }
     
     public func setupCache() {
+        if FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").exists {
+            try? FileManager.default.moveItem(at: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache"), to: cacheDirectory)
+        }
         if !cacheDirectory.dirExists {
             do {
-                try FileManager.default.createDirectory(atPath: cacheDirectory.path, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: cacheDirectory.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print("Failed to create cache directory \(error.localizedDescription)")
             }
         }
         if !downloadCache.dirExists {
             do {
-                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print("Failed to create cache directory \(error.localizedDescription)")
-            }
-            
-        }
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: cacheDirectory.path),
-           !contents.isEmpty {
-            var yes = DateComponents()
-            yes.hour = -1
-            let weekOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
-            for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
-                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
-                if weekOld > date {
-                    try? FileManager.default.removeItem(atPath: cached)
-                }
             }
         }
         
-        if !downloadCache.dirExists {
-            do {
-                try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: false, attributes: nil)
-            } catch {
-                print("Failed to create cache directory \(error.localizedDescription)")
+        DispatchQueue.global(qos: .utility).async {
+            if let contents = try? self.cacheDirectory.contents(),
+               !contents.isEmpty {
+                for cached in contents {
+                    if cached.path == self.downloadCache.path { continue }
+                    guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
+                          let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
+                    if Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 604800) > date {
+                        try? FileManager.default.removeItem(atPath: cached.path)
+                    }
+                }
             }
-        }
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: downloadCache.path),
-           !contents.isEmpty {
-            var yes = DateComponents()
-            yes.hour = -1
-            let hourOld = Calendar.current.date(byAdding: yes, to: Date()) ?? Date()
-            for cached in contents {
-                guard let attr = try? FileManager.default.attributesOfItem(atPath: cached),
-                      let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
-                if hourOld > date {
-                    try? FileManager.default.removeItem(atPath: cached)
+            if let contents = try? self.downloadCache.contents(),
+               !contents.isEmpty {
+                for cached in contents {
+                    try? FileManager.default.removeItem(atPath: cached.path)
                 }
             }
         }
@@ -285,6 +274,22 @@ final class AmyNetworkResolver {
         }
     }
     
+    class public func head(url: String?, _ completion: @escaping ((_ success: Bool) -> Void)) {
+        guard let surl = url,
+              let url = URL(string: surl) else { return completion(false) }
+        head(url: url, completion)
+    }
+    
+    class public func head(url: URL, _ completion: @escaping ((_ success: Bool) -> Void)) {
+        var request = URLRequest(url: url, timeoutInterval: 5)
+        request.httpMethod = "HEAD"
+        let task = URLSession.shared.dataTask(with: request) { _, response, _ -> Void in
+            if let response = response as? HTTPURLResponse,
+               response.statusCode == 200 { completion(true) } else { completion(false) }
+        }
+        task.resume()
+    }
+    
     class public func data(url: String?, method: String = "GET", headers: [String: String] = [:], json: [String: AnyHashable] = [:], cache: Bool = false, _ completion: @escaping ((_ success: Bool, _ data: Data?) -> Void)) {
         guard let surl = url,
               let url = URL(string: surl) else { return completion(false, nil) }
@@ -350,25 +355,26 @@ final class AmyNetworkResolver {
         task.resume()
     }
     
-    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
-        guard let url = URL(string: url) else { completion(false, nil); return nil }
+    internal func image(_ url: String, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: ((_ refresh: Bool, _ image: UIImage?) -> Void)?) -> UIImage? {
+        guard let url = URL(string: url) else { return nil }
         return self.image(url, method: method, headers: headers, cache: cache, scale: scale, size: size) { refresh, image in
-            completion(refresh, image)
+            completion?(refresh, image)
         }
     }
     
-    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: @escaping ((_ refresh: Bool, _ image: UIImage?) -> Void)) -> UIImage? {
+    internal func image(_ url: URL, method: String = "GET", headers: [String: String] = [:], cache: Bool = true, scale: CGFloat? = nil, size: CGSize? = nil, _ completion: ((_ refresh: Bool, _ image: UIImage?) -> Void)?) -> UIImage? {
         if String(url.absoluteString.prefix(7)) == "file://" {
-            completion(false, nil)
             return nil
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
+        self.memoryCacheLock.lock()
         if cache,
            let memory = memoryCache[encoded] {
-            completion(false, nil)
+            self.memoryCacheLock.unlock()
             return memory
         }
+        self.memoryCacheLock.unlock()
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if path.exists {
             if let data = try? Data(contentsOf: path) {
@@ -377,13 +383,18 @@ final class AmyNetworkResolver {
                         image = downscaled
                     }
                     if cache {
+                        memoryCacheLock.lock()
                         memoryCache[encoded] = image
+                        memoryCacheLock.unlock()
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
-                            completion(false, nil)
+                            return image
+                        } else {
+                            completion?(true, image)
                         }
+                    } else {
+                        return image
                     }
-                    return image
                 }
             }
         }
@@ -398,17 +409,17 @@ final class AmyNetworkResolver {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
                     image = downscaled
                 }
-                completion(pastData != data, image)
+                completion?(pastData != data, image)
                 if cache {
+                    self?.memoryCacheLock.lock()
                     self?.memoryCache[encoded] = image
+                    self?.memoryCacheLock.unlock()
                     do {
                         try data.write(to: path, options: .atomic)
                     } catch {
                         print("Error saving to \(path.absoluteString) with error: \(error.localizedDescription)")
                     }
                 }
-            } else {
-                completion(false, nil)
             }
         }
         task.resume()
@@ -434,6 +445,12 @@ final class AmyNetworkResolver {
         }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
+        memoryCacheLock.lock()
+        if let memory = memoryCache[encoded] {
+            memoryCacheLock.unlock()
+            return (!AmyNetworkResolver.skipNetwork(path), memory)
+        }
+        memoryCacheLock.unlock()
         if let data = try? Data(contentsOf: path) {
             if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
@@ -457,32 +474,40 @@ extension FileManager {
         guard let enumerator = self.enumerator(at: dir, includingPropertiesForKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey]) else { return 0 }
         var bytes = 0
         for case let url as URL in enumerator {
-            bytes += url.size
+            bytes += Int(url.size)
         }
         return bytes
     }
     
     func sizeString(_ dir: URL) -> String {
-        let bytes = Float(directorySize(dir))
-        let kiloBytes = bytes / Float(1024)
-        if kiloBytes <= 1024 {
-            return "\(String(format: "%.1f", kiloBytes)) KB"
-        }
-        let megaBytes = kiloBytes / Float(1024)
-        if megaBytes <= 1024 {
-            return "\(String(format: "%.1f", megaBytes)) MB"
-        }
-        let gigaBytes = megaBytes / Float(1024)
-        return "\(String(format: "%.1f", gigaBytes)) GB"
+        let bytes = directorySize(dir)
+        return ByteCountFormatter.string(fromByteCount: Int64(bytes), countStyle: .file)
     }
 }
 
 extension URL {
-    var size: Int {
-        guard let values = try? self.resourceValues(forKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey]) else { return 0 }
-        return values.totalFileAllocatedSize ?? values.fileAllocatedSize ?? 0
+    var attributes: [FileAttributeKey: Any]? {
+        do {
+            return try FileManager.default.attributesOfItem(atPath: path)
+        } catch let error as NSError {
+            print("FileAttribute error: \(error)")
+        }
+        return nil
+    }
+
+    var size: UInt64 {
+        attributes?[.size] as? UInt64 ?? UInt64(0)
+    }
+
+    var fileSizeString: String {
+        ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+    }
+
+    var creationDate: Date? {
+        attributes?[.creationDate] as? Date
     }
 }
 
+typealias AmyObject = AnyObject
 // swiftlint:disable type_name
 public class Amy: Any {}

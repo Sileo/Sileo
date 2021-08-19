@@ -3,10 +3,10 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/3/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreSpotlight
 
 final class PackageListManager {
@@ -14,68 +14,119 @@ final class PackageListManager {
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
     static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
-    private(set) var installedPackages: [Package]? {
+    private(set) var installedPackages: [String: Package] {
         didSet {
-            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages?.count ?? 0)
+            NotificationCenter.default.post(name: RepoManager.progressNotification, object: installedPackages.count)
         }
     }
-    private(set) var allPackages: [Package]?
     
-    private var databaseLock = DispatchSemaphore(value: 1)
-    private var changesDatabaseLock = DispatchSemaphore(value: 1)
+    private(set) var localPackages = [String: Package]()
+    
+    private let initSemphaore = DispatchSemaphore(value: 0)
+    public var isLoaded = false
+    
+    public var allPackagesArray: [Package] {
+        var packages = [Package]()
+        var installedPackages = installedPackages
+        for repo in RepoManager.shared.repoList {
+            let repoPackageArray = repo.packageArray
+            packages += repo.packageArray
+            for package in repoPackageArray where installedPackages[package.packageID] != nil {
+                installedPackages.removeValue(forKey: package.packageID)
+            }
+        }
+        return packages + Array(installedPackages.values)
+    }
+
     private var databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
-    
-    private var isLoaded = false
-    
     public static let shared = PackageListManager()
     
-    public func waitForReady(_ completion: (() -> Void)? = nil) {
-        databaseLock.wait()
-        databaseLock.signal()
-        if !isLoaded {
-            self.loadAllPackages {
-                completion?()
+    init() {
+        self.installedPackages = PackageListManager.readPackages(installed: true)
+        DownloadManager.aptQueue.async {
+            DependencyResolverAccelerator.shared.preflightInstalled()
+        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            let repoMan = RepoManager.shared
+            var repoList = repoMan.repoList
+            let threadCount = ((ProcessInfo.processInfo.processorCount * 2) > repoList.count) ? repoList.count : (ProcessInfo.processInfo.processorCount * 2)
+            let loadGroup = DispatchGroup()
+            let loadLock = NSLock()
+            let updateLock = NSLock()
+            var loadedRepoList = [Repo]()
+            
+            for threadID in 0..<(threadCount) {
+                loadGroup.enter()
+                let repoQueue = DispatchQueue(label: "repo-init-queue-\(threadID)")
+                repoQueue.async {
+                    while true {
+                        loadLock.lock()
+                        guard !repoList.isEmpty else {
+                            loadLock.unlock()
+                            break
+                        }
+                        let repo = repoList.removeFirst()
+                        loadLock.unlock()
+                        repo.packageDict = PackageListManager.readPackages(repoContext: repo)
+                        
+                        updateLock.lock()
+                        loadedRepoList.append(repo)
+                        updateLock.unlock()
+                    }
+                    loadGroup.leave()
+                }
             }
-            return
+            repoMan.update(loadedRepoList)
+            loadGroup.notify(queue: .main) {
+                self.isLoaded = true
+                while true {
+                    if self.initSemphaore.signal() == 0 {
+                        break
+                    }
+                }
+                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
+                #if targetEnvironment(simulator)
+                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+                    return
+                }
+                #endif
+                if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
+                    // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
+                    if let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,
+                       let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+                       let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+                       let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                        sourcesVC.refreshSources(forceUpdate: false, forceReload: false, isBackground: true, useRefreshControl: false, useErrorScreen: false, completion: nil)
+                    }
+                }
+            }
         }
-        completion?()
     }
     
-    public func waitForChangesDatabaseReady() {
-        self.waitForReady()
-        changesDatabaseLock.wait()
-        changesDatabaseLock.signal()
+    public func initWait() {
+        if Thread.isMainThread {
+            fatalError("\(Thread.current.threadName) cannot be used to hold backend")
+        }
+        if isLoaded { return }
+        initSemphaore.wait()
     }
     
-    public func purgeCache() {
-        databaseLock.wait()
-        installedPackages = nil
-        
-        installedPackages = self.packagesList(loadIdentifier: "--installed", repoContext: nil)
+    public func repoInstallChange() {
         for repo in RepoManager.shared.repoList {
-            repo.packages = nil
-            repo.installedCount = 0
-            repo.packagesProvides = nil
-            repo.packagesDict = nil
-            repo.isLoaded = false
+            repo.reloadInstalled()
         }
-        allPackages = nil
-        isLoaded = false
-        
-        let semaphore = DispatchSemaphore(value: 0)
-        CSSearchableIndex.default().deleteAllSearchableItems { _ in
-            semaphore.signal()
-        }
-        semaphore.wait()
-        databaseLock.signal()
     }
     
+    public func installChange() {
+        installedPackages = PackageListManager.readPackages(installed: true)
+        repoInstallChange()
+    }
+
     public func availableUpdates() -> [(Package, Package?)] {
-        self.waitForReady()
-        	
         var updatesAvailable: [(Package, Package?)] = []
-        for package in installedPackages ?? [] {
-            guard let latestPackage = self.newestPackage(identifier: package.packageID) else {
+        for package in installedPackages.values {
+            guard let latestPackage = self.newestPackage(identifier: package.packageID, repoContext: nil) else {
                 continue
             }
             if latestPackage.version != package.version {
@@ -86,183 +137,8 @@ final class PackageListManager {
         }
         return updatesAvailable
     }
-    
-    private func checkHardcodedPolicy(_ package1: Package, package2: Package) -> Bool {
-        let sourceRepo1 = package1.sourceRepo?.url?.host
-        let sourceRepo2 = package2.sourceRepo?.url?.host
-        if sourceRepo1 == "apt.procurs.us" && sourceRepo2 != "apt.procurs.us" {
-            return true
-        } else if sourceRepo1 != "apt.procurs.us" && sourceRepo2 == "apt.procurs.us" {
-            return false
-        }
-        if sourceRepo1 == "repo.theodyssey.dev" && sourceRepo2 != "repo.theodyssey.dev" {
-            return true
-        } else if sourceRepo1 != "repo.theodyssey.dev" && sourceRepo2 == "repo.theodyssey.dev" {
-            return false
-        }
-        if sourceRepo1 == "repo.chimera.sh" && sourceRepo2 != "repo.chimera.sh" {
-            return true
-        } else if sourceRepo1 != "repo.chimera.sh" && sourceRepo2 == "repo.chimera.sh" {
-            return false
-        }
-        if sourceRepo1 == "repo.getsileo.app" && sourceRepo2 != "repo.getsileo.app" {
-            return true
-        } else if sourceRepo1 != "repo.getsileo.app" && sourceRepo2 == "repo.getsileo.app" {
-            return false
-        }
-        return DpkgWrapper.isVersion(package1.version,
-                                     greaterThan: package2.version)
-    }
-    
-    private func loadAllPackages(_ completion: (() -> Void)? = nil) {
-        databaseLock.wait()
-        defer {
-            databaseLock.signal()
-        }
-        
-        if isLoaded {
-            completion?()
-            return
-        }
-        
-        var repos = RepoManager.shared.repoList
-        let lock = DispatchSemaphore(value: 1)
-        let updateGroup = DispatchGroup()
-        
-        for threadID in 0..<(ProcessInfo.processInfo.processorCount) {
-            updateGroup.enter()
-            let repoLoadQueue = DispatchQueue(label: "repo-queue-\(threadID)")
-            repoLoadQueue.async {
-                while true {
-                    lock.wait()
-                    guard !repos.isEmpty else {
-                        lock.signal()
-                        break
-                    }
-                    let repo = repos.removeFirst()
-                    lock.signal()
-                    
-                    _ = self.packagesList(loadIdentifier: "", repoContext: repo)
-                }
-                updateGroup.leave()
-            }
-        }
-        updateGroup.wait()
-        var allPackagesTempDictionary: [String: Package] = [:]
-        allPackages = []
-        
-        for repo in RepoManager.shared.repoList {
-            for package in repo.packages ?? [] {
-                let packageID = package.package
-                if let otherPkg = allPackagesTempDictionary[packageID] {
-                    if (checkHardcodedPolicy(package, package2: otherPkg)
-                        && package.filename != nil) || otherPkg.filename == nil {
-                        allPackagesTempDictionary[packageID] = package
-                    }
-                } else {
-                    allPackagesTempDictionary[packageID] = package
-                }
-            }
-        }
-        
-        for package in installedPackages ?? [] {
-            let packageID = package.package
-            if let otherPkg = allPackagesTempDictionary[packageID] {
-                if (checkHardcodedPolicy(package, package2: otherPkg)
-                    && package.filename != nil) || otherPkg.filename == nil {
-                    allPackagesTempDictionary[packageID] = package
-                }
-            } else {
-                allPackagesTempDictionary[packageID] = package
-            }
-        }
-        
-        for (_, val) in allPackagesTempDictionary {
-            allPackages?.append(val)
-        }
-        
-        databaseUpdateQueue.async {
-            if let allPackages = self.allPackages {
-                self.changesDatabaseLock.wait()
-                
-                let newGuids = DatabaseManager.shared.serializePackages(allPackages)
-                let oldGuidsFile = DatabaseManager.shared.knownPackages()
-                
-                if !oldGuidsFile.isEmpty {
-                    let addedPackages = newGuids.filter({ !oldGuidsFile.contains($0) })
-                    for changedPackage in addedPackages {
-                        if let packageID = changedPackage["package"],
-                            let package = allPackagesTempDictionary[packageID] {
-                            let stub = PackageStub(from: package)
-                            stub.save()
-                        }
-                    }
-                    
-                    let removedPackages = oldGuidsFile.filter({ !newGuids.contains($0) })
-                    for removedPackage in removedPackages {
-                        if let packageID = removedPackage["package"] {
-                            if allPackagesTempDictionary[packageID] == nil {
-                                PackageStub.delete(packageName: packageID)
-                            }
-                        }
-                    }
-                }
-                DatabaseManager.shared.savePackages(newGuids)
-                allPackagesTempDictionary.removeAll()
-                self.changesDatabaseLock.signal()
-                DependencyResolverAccelerator.shared.preflightInstalled()
-                
-                let downloadMan = DownloadManager.shared
-                if downloadMan.operationCount() > 0 {
-                    let savedUpgrades: [(String, String)] = downloadMan.upgrades.map({
-                        let pkg = $0.package
-                        return (pkg.packageID, pkg.version)
-                    })
-                    let savedInstalls: [(String, String)] = downloadMan.installations.map({
-                        let pkg = $0.package
-                        return (pkg.packageID, pkg.version)
-                    })
-                    
-                    downloadMan.upgrades.removeAll()
-                    downloadMan.installations.removeAll()
-                    downloadMan.installdeps.removeAll()
-                    downloadMan.uninstalldeps.removeAll()
-                    
-                    for tuple in savedUpgrades {
-                        let id = tuple.0
-                        let version = tuple.1
-                        
-                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
-                            if downloadMan.find(package: pkg) == .none {
-                                downloadMan.add(package: pkg, queue: .upgrades)
-                            }
-                        }
-                    }
-                    
-                    for tuple in savedInstalls {
-                        let id = tuple.0
-                        let version = tuple.1
-                        
-                        if let pkg = self.package(identifier: id, version: version) ?? self.newestPackage(identifier: id) {
-                            if downloadMan.find(package: pkg) == .none {
-                                downloadMan.add(package: pkg, queue: .installations)
-                            }
-                        }
-                    }
-                    
-                    downloadMan.reloadData(recheckPackages: true)
-                }
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: PackageListManager.didUpdateNotification, object: nil)
-                    completion?()
-                }
-            }
-        }
-        
-        isLoaded = true
-    }
-    
-    public func humanReadableCategory(_ rawCategory: String?) -> String {
+
+    public class func humanReadableCategory(_ rawCategory: String?) -> String {
         let category = rawCategory ?? ""
         if category.isEmpty {
             return String(localizationKey: "No_Category", type: .categories)
@@ -270,7 +146,7 @@ final class PackageListManager {
         return String(localizationKey: category, type: .categories)
     }
     
-    func package(packageEnum: ([String: String], PackageTags)) -> Package? {
+    class func package(packageEnum: ([String: String], PackageTags)) -> Package? {
         let dictionary = packageEnum.0
         guard let packageID = dictionary["package"] else {
             return nil
@@ -294,320 +170,268 @@ final class PackageListManager {
                 package.author = dictionary["maintainer"]
             }
         }
-        package.section = dictionary["section"]
+        package.section = humanReadableCategory(dictionary["section"])
         
         package.packageDescription = dictionary["description"]
         package.legacyDepiction = dictionary["depiction"]
         package.depiction = dictionary["sileodepiction"]
         
+        if let installedSize = dictionary["installed-size"] {
+            package.installedSize = Int(installedSize)
+        }
+
         package.tags = packageEnum.1
         if package.tags.contains(.commercial) {
             package.commercial = true
         }
         
         package.filename = dictionary["filename"]
+        package.essential = dictionary["essential"]
         package.size = dictionary["size"]
         
         package.rawControl = dictionary
         return package
     }
-    
-    public var dpkgDir: URL {
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        return Bundle.main.bundleURL
-        #else
-        return URL(fileURLWithPath: "/var/lib/dpkg")
-        #endif
-    }
-    
-    public func packagesList(loadIdentifier: String, repoContext: Repo?) -> [Package]? {
-        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true, overridePackagesFile: nil, sortPackages: false, lookupTable: [:])
-    }
-    
-    public func packagesList(loadIdentifier: String, repoContext: Repo?, sortPackages: Bool, lookupTable: [String: [Package]]) -> [Package]? {
-        try? packagesList(loadIdentifier: loadIdentifier, repoContext: repoContext, useCache: true,
-                          overridePackagesFile: nil, sortPackages: sortPackages, lookupTable: lookupTable)
-    }
-    
-    // swiftlint:disable:next cyclomatic_complexity
-    public func packagesList(loadIdentifier: String, repoContext: Repo?, useCache: Bool, overridePackagesFile: URL?, sortPackages: Bool, lookupTable: [String: [Package]]) throws -> [Package] {
-        var packagesList: [Package]?
-        var packagesFile: URL?
-        if let repo = repoContext {
-            packagesFile = RepoManager.shared.cacheFile(named: "Packages", for: repo)
-            if useCache {
-                packagesList = repoContext?.packages
+
+    public class func readPackages(repoContext: Repo? = nil, packagesFile: URL? = nil, installed: Bool = false) -> [String: Package] {
+        var tmpPackagesFile: URL?
+        var toWrite: URL?
+        var dict = [String: Package]()
+        if installed {
+            tmpPackagesFile = CommandPath.dpkgDir.appendingPathComponent("status").resolvingSymlinksInPath()
+            toWrite = tmpPackagesFile
+        } else if let override = packagesFile {
+            tmpPackagesFile = override
+            if let repo = repoContext {
+                toWrite = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+            } else {
+                toWrite = override
             }
+        } else if let repo = repoContext {
+            tmpPackagesFile = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+            toWrite = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+        }
+        guard let packagesFile = tmpPackagesFile,
+              let rawPackagesData = try? Data(contentsOf: packagesFile.aptUrl) else { return dict }
+
+        var index = 0
+        var separator = "\n\n".data(using: .utf8)!
+        
+        guard let firstSeparator = rawPackagesData.range(of: "\n".data(using: .utf8)!, options: [], in: 0..<rawPackagesData.count) else {
+            return dict
+        }
+        if firstSeparator.lowerBound != 0 {
+            let subdata = rawPackagesData.subdata(in: firstSeparator.lowerBound-1..<firstSeparator.lowerBound)
+            let character = subdata.first
+            if character == 13 { // 13 means carriage return (\r, Windows line ending)
+                separator = "\r\n\r\n".data(using: .utf8)!
+            }
+        }
+        
+        let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
+        while index < rawPackagesData.count {
+            let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
+            var newIndex = 0
+            if range == nil {
+                newIndex = rawPackagesData.count
+            } else {
+                newIndex = range!.lowerBound + separator.count
+            }
+            
+            let subRange = index..<newIndex
+            let packageData = rawPackagesData.subdata(in: subRange)
+            
+            index = newIndex
+            
+            guard let rawPackageEnum = try? ControlFileParser.dictionary(controlData: packageData, isReleaseFile: false) else {
+                continue
+            }
+            let rawPackage = rawPackageEnum.0
+            guard let packageID = rawPackage["package"] else {
+                continue
+            }
+            if packageID.isEmpty {
+                continue
+            }
+            if packageID.hasPrefix("gsc.") {
+                continue
+            }
+            if packageID.hasPrefix("cy+") {
+                continue
+            }
+            if packageID == "firmware" {
+                continue
+            }
+            
+            guard let package = self.package(packageEnum: rawPackageEnum) else {
+                continue
+            }
+            package.sourceFile = repoContext?.rawEntry
+            package.sourceFileURL = toWrite
+            package.rawData = packageData
+            
+            if isStatusFile {
+                var wantInfo: pkgwant = .install
+                var eFlag: pkgeflag = .ok
+                var pkgStatus: pkgstatus = .installed
+            
+                let statusValid = DpkgWrapper.getValues(statusField: package.rawControl["status"],
+                                                        wantInfo: &wantInfo,
+                                                        eFlag: &eFlag,
+                                                        pkgStatus: &pkgStatus)
+                if !statusValid {
+                    continue
+                }
+            
+                package.wantInfo = wantInfo
+                package.eFlag = eFlag
+                package.status = pkgStatus
+            
+                if package.eFlag == .ok {
+                    if package.status == .notinstalled || package.status == .configfiles {
+                        continue
+                    }
+                }
+                dict[package.packageID] = package
+            } else {
+                if let otherPkg = dict[packageID] {
+                    if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
+                        package.addOld([otherPkg])
+                        dict[packageID] = package
+                    }
+                    otherPkg.addOldInternal(Array(package.allVersionsInternal.values))
+                    package.allVersionsInternal = otherPkg.allVersionsInternal
+                } else {
+                    dict[packageID] = package
+                }
+            }
+        }
+        return dict
+    }
+    
+    public func packageList(identifier: String = "", search: String? = nil, sortPackages sort: Bool = false, repoContext: Repo? = nil, lookupTable: [String: [Package]]? = nil, packagePrepend: [Package]? = nil) -> [Package] {
+        var packageList = [Package]()
+        if identifier == "--installed" {
+            packageList = Array(installedPackages.values)
+        } else if identifier == "--wishlist" {
+            packageList = packages(identifiers: WishListManager.shared.wishlist, sorted: sort)
+        } else if let prepend = packagePrepend {
+            packageList = prepend
         } else {
-            if loadIdentifier.hasPrefix("--installed") {
-                packagesFile = dpkgDir.appendingPathComponent("status").resolvingSymlinksInPath()
-                if useCache {
-                    packagesList = installedPackages
-                }
-            } else if loadIdentifier.hasPrefix("--wishlist") {
-                let wishlist = WishListManager.shared.wishlist
-                let idents = wishlist.joined(separator: " ")
-                
-                packagesList = try self.packagesList(loadIdentifier: String(format: "idents:%@", idents),
-                                                     repoContext: repoContext,
-                                                     useCache: useCache,
-                                                     overridePackagesFile: overridePackagesFile,
-                                                     sortPackages: sortPackages,
-                                                     lookupTable: [:])
-            } else if useCache {
-                if allPackages == nil {
-                    self.waitForReady()
-                }
-                packagesList = allPackages
-            }
-        }
-        if overridePackagesFile != nil {
-            packagesFile = overridePackagesFile
-        }
-        
-        let loadIdentifiers = loadIdentifier.components(separatedBy: ",")
-        var categorySearch: Substring?
-        var searchName: Substring?
-        var authorEmail: Substring?
-        var packageIdentifiers: [String]?
-        
-        for identifier in loadIdentifiers {
-            if identifier.hasPrefix("category:") {
-                let index = identifier.index(identifier.startIndex, offsetBy: 9)
-                categorySearch = identifier[index...]
-            }
-            if identifier.hasPrefix("search:") {
-                let index = identifier.index(identifier.startIndex, offsetBy: 7)
-                searchName = identifier[index...]
-                
-                if useCache && !loadIdentifier.contains(",") {
-                    let cacheKeys = lookupTable.keys.sorted { x, y -> Bool in
-                        y.count < x.count
-                    }
-                    for key in cacheKeys {
-                        if searchName?.hasPrefix(key) ?? false {
-                            packagesList = lookupTable[key]
-                            break
-                        }
-                    }
-                }
-            }
-            if identifier.hasPrefix("author:") {
-                let index = identifier.index(identifier.startIndex, offsetBy: 7)
-                authorEmail = identifier[index...]
-            }
-            if identifier.hasPrefix("idents:") {
-                let index = identifier.index(identifier.startIndex, offsetBy: 7)
-                packageIdentifiers = identifier[index...].components(separatedBy: CharacterSet(charactersIn: " "))
-            }
-        }
-        
-        var tempDictionary = [:] as [String: Package]
-        
-        if let packagesFileSafe = packagesFile {
-            if packagesList == nil {
-                packagesList = []
-                let rawPackagesData = try Data(contentsOf: packagesFileSafe)
-                
-                var index = 0
-                var separator = "\n\n".data(using: .utf8)!
-                
-                guard let firstSeparator = rawPackagesData.range(of: "\n".data(using: .utf8)!, options: [], in: 0..<rawPackagesData.count) else {
-                    return packagesList ?? []
-                }
-                if firstSeparator.lowerBound != 0 {
-                    let subdata = rawPackagesData.subdata(in: firstSeparator.lowerBound-1..<firstSeparator.lowerBound)
-                    let character = subdata.first
-                    if character == 13 { // 13 means carriage return (\r, Windows line ending)
-                        separator = "\r\n\r\n".data(using: .utf8)!
-                    }
-                }
-                
-                let isStatusFile = packagesFileSafe.absoluteString.hasSuffix("status")
-                
-                while index < rawPackagesData.count {
-                    let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
-                    var newIndex = 0
-                    if range == nil {
-                        newIndex = rawPackagesData.count
+            if var search = search?.lowercased(),
+               let lookupTable = lookupTable {
+                var isFound = false
+                while !search.isEmpty && !isFound {
+                    if let packages = lookupTable[search] {
+                        packageList = packages
+                        isFound = true
                     } else {
-                        newIndex = range!.lowerBound + separator.count
-                    }
-                    
-                    let subRange = index..<newIndex
-                    let packageData = rawPackagesData.subdata(in: subRange)
-                    
-                    index = newIndex
-                    
-                    guard let rawPackageEnum = try? ControlFileParser.dictionary(controlData: packageData, isReleaseFile: false) else {
-                        continue
-                    }
-                    let rawPackage = rawPackageEnum.0
-                    guard let packageID = rawPackage["package"] else {
-                        continue
-                    }
-                    if packageID.isEmpty {
-                        continue
-                    }
-                    if packageID.hasPrefix("gsc.") {
-                        continue
-                    }
-                    if packageID.hasPrefix("cy+") {
-                        continue
-                    }
-                    if packageID == "firmware" {
-                        continue
-                    }
-                    
-                    guard let package = self.package(packageEnum: rawPackageEnum) else {
-                        continue
-                    }
-                    package.sourceFile = repoContext?.rawEntry
-                    package.sourceFileURL = packagesFile
-                    package.rawData = packageData
-                    package.addOld([package])
-                    
-                    if isStatusFile {
-                        var wantInfo: pkgwant = .install
-                        var eFlag: pkgeflag = .ok
-                        var pkgStatus: pkgstatus = .installed
-                    
-                        let statusValid = DpkgWrapper.getValues(statusField: package.rawControl["status"],
-                                                                wantInfo: &wantInfo,
-                                                                eFlag: &eFlag,
-                                                                pkgStatus: &pkgStatus)
-                        if !statusValid {
-                            continue
-                        }
-                    
-                        package.wantInfo = wantInfo
-                        package.eFlag = eFlag
-                        package.status = pkgStatus
-                    
-                        if package.eFlag == .ok {
-                            if package.status == .notinstalled || package.status == .configfiles {
-                                continue
-                            }
-                        }
-                        packagesList?.append(package)
-                    } else {
-                        if let otherPkg = tempDictionary[packageID] {
-                            if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
-                                tempDictionary[packageID] = package
-                            }
-                            otherPkg.addOld(package.allVersions)
-                            package.allVersionsInternal = otherPkg.allVersionsInternal
-                        } else {
-                            tempDictionary[packageID] = package
-                        }
+                        search.removeLast()
                     }
                 }
+                if !isFound {
+                    packageList = repoContext?.packageArray ?? allPackagesArray
+                }
+            } else {
+                packageList = repoContext?.packageArray ?? allPackagesArray
             }
         }
-        
-        for (_, val) in tempDictionary {
-            packagesList?.append(val)
-        }
-        
-        var packageListFinal: [Package] = packagesList ?? []
-        if categorySearch != nil {
-            packageListFinal.removeAll { self.humanReadableCategory($0.section).lowercased() != categorySearch?.lowercased() }
-        }
-  
-        if let searchEmail = authorEmail {
-            packageListFinal.removeAll {
+        if identifier.hasPrefix("category:") {
+            let index = identifier.index(identifier.startIndex, offsetBy: 9)
+            let category = PackageListManager.humanReadableCategory(String(identifier[index...]))
+            packageList = packageList.filter({ $0.section == category })
+        } else if identifier.hasPrefix("author:") {
+            let index = identifier.index(identifier.startIndex, offsetBy: 7)
+            let authorEmail = String(identifier[index...]).lowercased()
+            packageList = packageList.filter {
                 guard let lowercaseAuthor = $0.author?.lowercased() else {
                     return true
                 }
-                return ControlFileParser.authorEmail(string: lowercaseAuthor) != searchEmail.lowercased()
+                return ControlFileParser.authorEmail(string: lowercaseAuthor) == authorEmail.lowercased()
             }
         }
-        if let searchIdentifiers = packageIdentifiers {
-            packageListFinal.removeAll {
-                !searchIdentifiers.contains($0.package)
-            }
-        }
-        
-        if let searchQuery = searchName {
+        if let searchQuery = search,
+           !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
-            packageListFinal.removeAll { package in
+            packageList.removeAll { package in
                 var shouldRemove = true
-                if package.package.lowercased().contains(search) { shouldRemove = false }
+                if package.package.lowercased().localizedCaseInsensitiveContains(search) { shouldRemove = false }
                 if let name = package.name?.lowercased() {
                     if !name.isEmpty {
-                        if name.contains(search) { shouldRemove = false }
+                        if name.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let description = package.packageDescription?.lowercased() {
                     if !description.isEmpty {
-                        if description.contains(search) { shouldRemove = false }
+                        if description.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let author = package.author?.lowercased() {
                     if !author.isEmpty {
-                        if author.contains(search) { shouldRemove = false }
+                        if author.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 if let maintainer = package.maintainer?.lowercased() {
                     if !maintainer.isEmpty {
-                        if maintainer.contains(search) { shouldRemove = false }
+                        if maintainer.localizedCaseInsensitiveContains(search) { shouldRemove = false }
                     }
                 }
                 return shouldRemove
             }
         }
-        
-        if sortPackages {
-            packageListFinal.sort { obj1, obj2 -> Bool in
-                if let pkg1 = obj1.name?.lowercased() {
-                    if let pkg2 = obj2.name?.lowercased() {
-                        if let searchQuery = searchName?.lowercased() {
-                            if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
-                                return true
-                            } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {
-                                return false
-                            }
-                            
-                            let diff1 = pkg1.count - searchQuery.count
-                            let diff2 = pkg2.count - searchQuery.count
-                            
-                            if diff1 < diff2 {
-                                return true
-                            } else if diff1 > diff2 {
-                                return false
-                            }
-                            return pkg1.compare(pkg2) != .orderedDescending
-                        } else {
-                            return pkg1.compare(pkg2) != .orderedDescending
-                        }
-                    } else {
-                        return true
-                    }
+        // Remove Any Duplicates
+        var temp = [String: Package]()
+        for package in packageList {
+            if let existing = temp[package.packageID] {
+                if DpkgWrapper.isVersion(package.version, greaterThan: existing.version) {
+                    temp[package.packageID] = package
                 }
-                return false
+            } else {
+                temp[package.packageID] = package
             }
         }
-        
-        if useCache {
-            if loadIdentifier.isEmpty {
-                if repoContext != nil && repoContext?.packages == nil {
-                    let installed = installedPackages ?? self.packagesList(loadIdentifier: "--installed", repoContext: nil) ?? []
-                    repoContext?.packages = packageListFinal
-                    repoContext?.installedCount = installed.filter({ packageListFinal.contains($0) }).count
-                    repoContext?.packagesProvides = packageListFinal.filter { $0.rawControl["provides"] != nil }
-                    repoContext?.packagesDict = tempDictionary
-                    if let repoContext = repoContext {
-                        RepoManager.shared.postProgressNotification(repoContext)
-                    }
-                }
-            } else if loadIdentifier == "--installed" {
-                installedPackages = packageListFinal
-            }
+        packageList = Array(temp.values)
+        if sort {
+            packageList = sortPackages(packages: packageList, search: search)
         }
-        return packageListFinal
+        return packageList
     }
-
-    public func newestPackage(identifier: String) -> Package? {
+    
+    public func sortPackages(packages: [Package], search: String?) -> [Package] {
+        var tmp = packages
+        tmp.sort { obj1, obj2 -> Bool in
+            if let pkg1 = obj1.name?.lowercased() {
+                if let pkg2 = obj2.name?.lowercased() {
+                    if let searchQuery = search?.lowercased(),
+                       !searchQuery.isEmpty {
+                        if pkg1.hasPrefix(searchQuery) && !pkg2.hasPrefix(searchQuery) {
+                            return true
+                        } else if !pkg1.hasPrefix(searchQuery) && pkg2.hasPrefix(searchQuery) {
+                            return false
+                        }
+                        
+                        let diff1 = pkg1.count - searchQuery.count
+                        let diff2 = pkg2.count - searchQuery.count
+                        
+                        if diff1 < diff2 {
+                            return true
+                        } else if diff1 > diff2 {
+                            return false
+                        }
+                        return pkg1.compare(pkg2) != .orderedDescending
+                    } else {
+                        return pkg1.compare(pkg2) != .orderedDescending
+                    }
+                } else {
+                    return true
+                }
+            }
+            return false
+        }
+        return tmp
+    }
+    
+    public func newestPackage(identifier: String, repoContext: Repo?, packages: [Package]? = nil) -> Package? {
         if identifier.contains("/") {
             let url = URL(fileURLWithPath: identifier)
             guard let rawPackageControl = try? DpkgWrapper.rawFields(packageURL: url) else {
@@ -616,41 +440,54 @@ final class PackageListManager {
             guard let rawPackage = try? ControlFileParser.dictionary(controlFile: rawPackageControl, isReleaseFile: true) else {
                 return nil
             }
-            guard let package = self.package(packageEnum: rawPackage) else {
+            guard let package = PackageListManager.package(packageEnum: rawPackage) else {
                 return nil
             }
             package.package = identifier
             package.packageFileURL = url
             return package
+        } else if let repoContext = repoContext {
+            return repoContext.packageDict[identifier.lowercased()]
         } else {
-            guard let allPackages = allPackages else {
-                return nil
+            var packages = packages ?? allPackagesArray
+            packages = packages.filter { $0.packageID == identifier }
+            var tmp: Package?
+            for package in packages {
+                if let old = tmp {
+                    if DpkgWrapper.isVersion(package.version, greaterThan: old.version) {
+                        tmp = package
+                    }
+                } else {
+                    tmp = package
+                }
             }
-            
-            let lowerIdentifier = identifier.lowercased()
-            return allPackages.first(where: { $0.packageID == lowerIdentifier })
+            return tmp
         }
     }
     
     public func installedPackage(identifier: String) -> Package? {
-        guard let installedPackages = installedPackages else {
-            return nil
-        }
-        
-        let lowerIdentifier = identifier.lowercased()
-        return installedPackages.first(where: { $0.packageID == lowerIdentifier })
+        installedPackages[identifier.lowercased()]
     }
     
     public func package(url: URL) -> Package? {
         let canonicalPath = (try? url.resourceValues(forKeys: [.canonicalPathKey]))?.canonicalPath
         let filePath = canonicalPath ?? url.path
-        return newestPackage(identifier: filePath)
+        let package = newestPackage(identifier: filePath, repoContext: nil)
+        if let package = package {
+            localPackages[package.packageID] = package
+        }
+        return package
     }
     
-    public func packages(identifiers: [String], sorted: Bool) -> [Package] {
-        let loadIdentifier = "idents: ".appending(identifiers.joined(separator: " "))
-        guard let rawPackages = self.packagesList(loadIdentifier: loadIdentifier, repoContext: nil) else {
-            return []
+    public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil) -> [Package] {
+        if identifiers.isEmpty { return [] }
+        let packages = (repoContext?.packageArray ?? allPackagesArray)
+        var rawPackages = [Package]()
+        for identifier in identifiers {
+            rawPackages += packages.filter { $0.packageID == identifier }
+            if let package = localPackages[identifier] {
+                rawPackages.append(package)
+            }
         }
         if sorted {
             return rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
@@ -665,7 +502,7 @@ final class PackageListManager {
         } else {
             var packagesMap: [String: Package] = [:]
             for package in rawPackages {
-                packagesMap[package.package] = package
+                packagesMap[package.packageID] = package
             }
             
             var packages: [Package] = []
@@ -679,17 +516,13 @@ final class PackageListManager {
         }
     }
     
-    public func package(identifier: String, version: String) -> Package? {
-        guard let allPackages = allPackages else {
-            return nil
-        }
+    public func package(identifier: String, version: String, packages: [Package]? = nil) -> Package? {
+        let allPackages = packages ?? allPackagesArray
         return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
     }
     
-    public func package(identifiersAndVersions: [(String, String)]) -> [Package]? {
-        guard let allPackages = allPackages else {
-            return nil
-        }
+    public func package(identifiersAndVersions: [(String, String)], repoContext: Repo?, packages: [Package]? = nil) -> [Package]? {
+        let allPackages = packages ?? allPackagesArray
         
         let filtered = allPackages.filter({
             let pkg = $0
@@ -717,7 +550,26 @@ final class PackageListManager {
             
             downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        
-        downloadMan.reloadData(recheckPackages: true, completion: completion)
+        downloadMan.reloadData(recheckPackages: true) {
+            completion?()
+            if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
+                TabBarController.singleton?.presentPopupController()
+            }
+        }
     }
+}
+
+extension Thread {
+
+    var threadName: String {
+        if let currentOperationQueue = OperationQueue.current?.name {
+            return "OperationQueue: \(currentOperationQueue)"
+        } else if let underlyingDispatchQueue = OperationQueue.current?.underlyingQueue?.label {
+            return "DispatchQueue: \(underlyingDispatchQueue)"
+        } else {
+            let name = __dispatch_queue_get_label(nil)
+            return String(cString: name, encoding: .utf8) ?? Thread.current.description
+        }
+    }
+    
 }

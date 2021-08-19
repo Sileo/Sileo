@@ -24,6 +24,8 @@
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Memulakan…";
 "Download_Progress" = "%@ daripada %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Sahkan";
 "Queue_Clear_Button" = "Kosongkan Aturan";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Kemas Kini";
 "Package_Reinstall_Action" = "Pasang Semula";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Keluarkan daripada Senarai Harapan";
 "Wishlist" = "Senarai Harapan";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Pasang";
 "Queued_Uninstall_Heading" = "Nyahpasang";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Cari pakej-pakej";
 "Sort_Name" = "Nama";
 "Sort_Date" = "Tarikh";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Susun mengikut:";
 
 "Package_Unavailable" = "Tiada Pakej";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositori";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Tambah Sumber";
 "Add_Source.Body" = "Tambah URL APT";
 "Add_Source.Button.Add" = "Tambah Sumber";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Tambah secara manual";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
 
 "Installed_Package_Header" = "Pakej Dipasang";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Versi";
 "Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Cerah";
 "Sileo_Dark" = "Sileo Gelap";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Tunjuk Butiran";
 "Hide_Install_Details" = "Sorok Butiran";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";

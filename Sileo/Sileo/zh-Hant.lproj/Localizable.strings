@@ -24,6 +24,8 @@
 "Acknowledge" = "明白";
 "Remove" = "移除";
 "Sileo_Team" = "Sileo 團隊";
+"Warning" = "警告";
+"Edit" = "編輯";
 
 // Popup messages
 "Background_App_Refresh" = "背景 App 重新整理";
@@ -39,8 +41,11 @@
 "Download_Starting" = "正在開始...";
 "Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "以下的套件是被列為重要/必需的：%@\n 移除這些套件可能會對您的裝置造成不可還原的傷害而且有可能需要您回復裝置。請僅在您了解並願意承擔風險的情況下繼續。";
+
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";
+"Queue_Cancel_Downloads" = "取消下載";
 
 "Package_Upgrade_Action" = "更新";
 "Package_Reinstall_Action" = "重新安裝";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "從願望清單中移除";
 "Wishlist" = "願望清單";
 
+"No_New_Packages" = "沒有新套件";
+"News_Check_Later" = "還沒有新套件被索引。 等數個小時後再回來，隨著來源更新，你應該會看到這裏開始出現套件。";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安裝";
 "Queued_Uninstall_Heading" = "移除";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
+"Sort_Install_Size" = "大小";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "已忽略更新";
 
 "Repos" = "套件來源";
+"Repo" = "套件來源";
 
 "Add_Source.Title" = "新增來源";
 "Add_Source.Body" = "新增套件來源網址";
 "Add_Source.Button.Add" = "新增來源";
+"Add_Dist_Repo" = "新增發行版來源";
+"Incorrect_Repo" = "%@ 似乎不是有效的來源⁉️ 來源可能處於離線狀態，或者您可能輸入了錯誤的網址。您仍要添加該來源嗎？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動輸入";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "無法取得此套件的更新記錄。";
 
 "Installed_Package_Header" = "已安裝套件";
+"Installed_Packages" = "已安裝套件";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "顯示套件內容";
 
@@ -142,12 +155,19 @@
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
 "Pog_Developer" = "您現在已成為開發者！";
-"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 需求。";
+"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 請求。";
 "Auto_Refresh_Sources" = "自動重新整理來源";
 "iCloud_Profile" = "在精選顯示 iCloud 個人檔案照片";
 "Cache_Size" = "快取大小";
 "Clear_Cache" = "清除網頁快取";
 "Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
+"Language" = "語言";
+"Use_System_Language" = "使用系統語言";
+"Apply_Changes" = "套用變更內容";
+"Apply_Changes_Confirm" = "套用變更內容將會重新啟動 Sileo";
+"Help_Translate" = "幫助翻譯 Sileo";
+"Always_Show_Install_Log" = "總是顯示安裝詳情";
+"Auto_Show_Queue" = "在全部更新時顯示佇列";
 
 "Sileo_Light" = "Sileo 淺色模式";
 "Sileo_Dark" = "Sileo 深色模式";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
+"Open_In_Filza" = "在 Filza 打開";
+"Copy_Path" = "拷貝目錄";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";

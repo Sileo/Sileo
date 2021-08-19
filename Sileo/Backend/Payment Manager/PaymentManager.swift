@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 6/29/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -67,7 +67,7 @@ class PaymentManager {
                 DownloadManager.shared.deregister(downloadOverrideProvider: self.paymentProvidersForURL[sourceRepo]!, repo: repo)
             }
             
-            let provider = self.paymentProvidersForEndpoint[endpointURL.absoluteString] ?? PaymentProvider(baseURL: endpointURL)
+            let provider = self.paymentProvidersForEndpoint[endpointURL.absoluteString] ?? PaymentProvider(baseURL: endpointURL, repoURL: repo.rawURL)
             self.paymentProvidersForEndpoint[endpointURL.absoluteString] = provider
             self.paymentProvidersForURL[sourceRepo] = provider
             DownloadManager.shared.register(downloadOverrideProvider: provider, repo: repo)

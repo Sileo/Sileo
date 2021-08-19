@@ -3,18 +3,19 @@
 //  Sileo
 //
 //  Created by Skitty on 1/26/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
-import AUPickerCell
 import Alderis
+import UIKit
 
-class SettingsViewController: BaseSettingsViewController, AUPickerCellDelegate {
+class SettingsViewController: BaseSettingsViewController, ThemeSelected {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
     private var hasLoadedOnce: Bool = false
     private var observer: Any?
+    public var themeExpanded = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -88,13 +89,13 @@ extension SettingsViewController { // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // Payment Providers section
-            return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1) + 1
+            return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1)
         case 1: // Themes
             return 4
         case 2:
-            return 7
+            return 8
         case 3: // About section
-            return 3
+            return 4
         default:
             return 0
         }
@@ -126,21 +127,20 @@ extension SettingsViewController { // UITableViewDataSource
                 let cellClass = SettingsLoadingTableViewCell.self
                 return self.reusableCell(withStyle: style, reuseIdentifier: id, cellClass: cellClass)
             }
-            let cell: UITableViewCell? = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "CydiaCellIdentifier")
-            cell?.textLabel?.text = String(localizationKey: "Cydia_Sign_In")
-            cell?.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            return cell ?? UITableViewCell()
+            return UITableViewCell()
         case 1: // Translation Credit Section OR Settings section
             switch indexPath.row {
             case 0:
-                let cell = AUPickerCell(type: .default, reuseIdentifier: "SettingsCellIdentifier")
-                cell.delegate = self
+                let cell = ThemePickerCell(style: .default, reuseIdentifier: "SettingsCellIdentifier")
                 cell.values = SileoThemeManager.shared.themeList.map({ $0.name })
-                cell.selectedRow = cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0
-                cell.leftLabel.text = String(localizationKey: "Theme")
+                cell.pickerView.selectRow(cell.values.firstIndex(of: SileoThemeManager.shared.currentTheme.name) ?? 0, inComponent: 0, animated: false)
+                cell.callback = self
+                cell.title.text = String(localizationKey: "Theme")
+                cell.subtitle.text = cell.values[cell.pickerView.selectedRow(inComponent: 0)]
                 cell.backgroundColor = .clear
-                cell.leftLabel.textColor = .tintColor
-                cell.rightLabel.textColor = .tintColor
+                cell.title.textColor = .tintColor
+                cell.subtitle.textColor = .tintColor
+                cell.pickerView.textColor = .sileoLabel
                 return cell
             case 1:
                 let cell = SettingsColorTableViewCell()
@@ -170,20 +170,31 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = true
                 cell.defaultKey = "ShowProvisional"
             case 2:
+                cell.amyPogLabel.text = String(localizationKey: "iCloud_Profile")
+                cell.fallback = true
+                cell.defaultKey = "iCloudProfile"
+            case 3:
                 cell.amyPogLabel.text = String(localizationKey: "Show_Ignored_Updates")
                 cell.fallback = true
                 cell.defaultKey = "ShowIgnoredUpdates"
-            case 3:
+            case 4:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Refresh_Sources")
                 cell.fallback = true
                 cell.defaultKey = "AutoRefreshSources"
-            case 4:
+            case 5:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Complete_Queue")
                 cell.defaultKey = "AutoComplete"
-            case 5:
+            case 6:
+                cell.amyPogLabel.text = String(localizationKey: "Auto_Show_Queue")
+                cell.fallback = true
+                cell.defaultKey = "UpgradeAllAutoQueue"
+            case 7:
+                cell.amyPogLabel.text = String(localizationKey: "Always_Show_Install_Log")
+                cell.defaultKey = "AlwaysShowLog"
+            case 8:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-            case 6:
+            case 9:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
@@ -209,6 +220,11 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
+            case 3:
+                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Language")
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                return cell
             default:
                 fatalError("You done goofed")
             }
@@ -219,10 +235,12 @@ extension SettingsViewController { // UITableViewDataSource
     }
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
-            cell.selectedInTableView(tableView)
+        if indexPath.row == 0 && indexPath.section == 1 {
+            themeExpanded = !themeExpanded
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
-        
+
         switch indexPath.section {
         case 0: // Payment Providers section
             if indexPath.row < authenticatedProviders.count {
@@ -239,12 +257,6 @@ extension SettingsViewController { // UITableViewDataSource
                         self.present(PaymentError.alert(for: error, title: title), animated: true)
                     }
                 }
-            } else if hasLoadedOnce || (indexPath.row - authenticatedProviders.count - unauthenticatedProviders.count) > 0 {
-                tableView.deselectRow(at: indexPath, animated: true)
-                let nibName = "CydiaAccountViewController"
-                let cydiaAccountViewController = CydiaAccountViewController(nibName: nibName, bundle: nil)
-                let navController: UINavigationController = UINavigationController(rootViewController: cydiaAccountViewController)
-                self.present(navController, animated: true)
             }
         case 1:
             if indexPath.row == 1 { // Tint color selector
@@ -252,8 +264,14 @@ extension SettingsViewController { // UITableViewDataSource
             } else if indexPath.row == 2 { // Tint color reset
                 SileoThemeManager.shared.resetTintColor()
             } else if indexPath.row == 3 {
+                #if targetEnvironment(macCatalyst)
+                let errorVC = UIAlertController(title: "Not Supported", message: "Alternate Icons are currently not supported in macOS", preferredStyle: .alert)
+                errorVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in errorVC.dismiss(animated: true) }))
+                self.present(errorVC, animated: true)
+                #else
                 let altVC = AltIconTableViewController()
                 self.navigationController?.pushViewController(altVC, animated: true)
+                #endif
             }
         case 3: // About section
             switch indexPath.row {
@@ -265,6 +283,9 @@ extension SettingsViewController { // UITableViewDataSource
             case 2:
                 let licensesViewController: LicensesTableViewController = LicensesTableViewController()
                 self.navigationController?.pushViewController(licensesViewController, animated: true)
+            case 3:
+                let languageSelection = LanguageSelectionViewController(style: .grouped)
+                self.navigationController?.pushViewController(languageSelection, animated: true)
             default: break
             }
         default:
@@ -301,30 +322,30 @@ extension SettingsViewController { // UITableViewDataSource
     }
     
     private func presentAlderis() {
-        if #available(iOS 13, *) {
+        if #available(iOS 14, *) {
+            let colorPickerViewController = UIColorPickerViewController()
+            colorPickerViewController.delegate = self
+            colorPickerViewController.supportsAlpha = false
+            colorPickerViewController.selectedColor = .tintColor
+            self.present(colorPickerViewController, animated: true)
+        } else {
             let colorPickerViewController = ColorPickerViewController()
             colorPickerViewController.delegate = self
             colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                // Ignore this warning, it's only temporary
                 if #available(iOS 13, *) {
                     colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
                 }
             }
             colorPickerViewController.modalPresentationStyle = .overFullScreen
             self.parent?.present(colorPickerViewController, animated: true, completion: nil)
-        } else {
-            let uiac = UIAlertController(title: "Crash Prevention",
-                                         message: "Alderis has a known bug on iOS 12 which will cause it to crash. To protect you from this it has been disabled in Sileo on iOS 12",
-                                         preferredStyle: .alert)
-            uiac.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
-            self.parent?.present(uiac, animated: true, completion: nil)
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
-            return cell.height
+        if indexPath.row == 0 && indexPath.section == 1 {
+            return !themeExpanded ? 44 : 160
         }
         
         let auth = authenticatedProviders.count
@@ -335,13 +356,23 @@ extension SettingsViewController { // UITableViewDataSource
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    func auPickerCell(_ cell: AUPickerCell, didPick row: Int, value: Any) {
-        SileoThemeManager.shared.activate(theme: SileoThemeManager.shared.themeList[row])
+    func themeSelected(_ index: Int) {
+        SileoThemeManager.shared.activate(theme: SileoThemeManager.shared.themeList[index])
     }
+
 }
 
 extension SettingsViewController: ColorPickerDelegate {
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect color: UIColor) {
         SileoThemeManager.shared.setTintColor(color)
     }
+}
+
+@available(iOS 14.0, *)
+extension SettingsViewController: UIColorPickerViewControllerDelegate {
+
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        SileoThemeManager.shared.setTintColor(viewController.selectedColor)
+    }
+    
 }

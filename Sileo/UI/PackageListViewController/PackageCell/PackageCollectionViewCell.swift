@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/30/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -113,14 +113,18 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
             }
         }
         
-        NotificationCenter.default.addObserver([self],
-                                               selector: #selector(PackageCollectionViewCell.refreshState),
-                                               name: DownloadManager.reloadNotification, object: nil)
-        
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(PackageCollectionViewCell.refreshState),
+                                               name: DownloadManager.lockStateChangeNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any,
+                                               selector: #selector(PackageCollectionViewCell.refreshState),
+                                               name: DownloadManager.reloadNotification,
                                                object: nil)
     }
     
@@ -227,8 +231,8 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                     }
                 }
             } else {
-                let allPkgs = PackageListManager.shared.allPackages
-                if let pkg = allPkgs?.first(where: { $0.version == package.version && $0.package == package.package }) {
+                let allPkgs = PackageListManager.shared.allPackagesArray
+                if let pkg = allPkgs.first(where: { $0.version == package.version && $0.package == package.package }) {
                     let queueFound = DownloadManager.shared.find(package: pkg)
                     if DpkgWrapper.isVersion(pkg.version, greaterThan: installedPackage.version) {
                         if queueFound != .upgrades {
@@ -385,18 +389,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         install.backgroundColor = .systemGreen
         return install
     }
-    
-    private func legacyGet(_ package: Package) -> Bool {
-        let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String]
-        let isPurchased = existingPurchased?.contains(package.package) ?? false
-        if isPurchased {
-            DownloadManager.shared.add(package: package, queue: .installations)
-            DownloadManager.shared.reloadData(recheckPackages: true)
-            return true
-        }
-        return false
-    }
-    
+        
     private func updatePurchaseStatus(_ package: Package, _ completion: ((PaymentError?, PaymentProvider?, Bool) -> Void)?) {
         guard let repo = package.sourceRepo else {
             return self.presentAlert(paymentError: .noPaymentProvider, title: String(localizationKey: "Purchase_Auth_Complete_Fail.Title",
@@ -407,16 +400,13 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                 if let completion = completion { completion(.noPaymentProvider, nil, false) }
                 return
             }
-            if error != nil { if self.legacyGet(package) { if let completion = completion { completion(nil, provider, true) } } }
+            if error != nil { if let completion = completion { completion(error, provider, false) }; return }
             provider.getPackageInfo(forIdentifier: package.package) { error, info in
                 guard let info = info else {
                     if let completion = completion { completion(error, provider, false) }
                     return
                 }
                 if error != nil {
-                    if self.legacyGet(package) {
-                        if let completion = completion { completion(nil, provider, true) }
-                    }
                     return
                 }
                 if info.purchased {

@@ -24,6 +24,8 @@
 "Acknowledge" = "收到";
 "Remove" = "移除";
 "Sileo_Team" = "Sileo 团队";
+"Warning" = "警告";
+"Edit" = "编辑";
 
 // Popup messages
 "Background_App_Refresh" = "后台App刷新";
@@ -39,8 +41,11 @@
 "Download_Starting" = "开始中…";
 "Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "下列软件包被列为必需的: %@\n 删除这些软件包可能会对您的设备造成不可逆的损坏，并且可能需要您进行恢复。只有当您确定您知道自己在做什么的时候才继续。";
+
 "Queue_Confirm_Button" = "确认";
 "Queue_Clear_Button" = "清除队列";
+"Queue_Cancel_Downloads" = "取消下载";
 
 "Package_Upgrade_Action" = "更新";
 "Package_Reinstall_Action" = "重新安装";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "从愿望清单中删除";
 "Wishlist" = "愿望清单";
 
+"No_New_Packages" = "没有新的软件包";
+"News_Check_Later" = "还没有新的软件包被列出。等数个小时后再回来，随着软件源更新，你应该会看到这里开始出现软件包。";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "安装";
 "Queued_Uninstall_Heading" = "移除";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "搜索软件包";
 "Sort_Name" = "名称";
 "Sort_Date" = "日期";
+"Sort_Install_Size" = "已安装大小";
 "Sort_By" = "排序方式:";
 
 "Package_Unavailable" = "软件包不可用";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "忽略的更新";
 
 "Repos" = "软件源";
+"Repo" = "软件源";
 
 "Add_Source.Title" = "添加软件源";
 "Add_Source.Body" = "新增软件源地址";
 "Add_Source.Button.Add" = "添加软件源";
+"Add_Dist_Repo" = "添加发行版软件源";
+"Incorrect_Repo" = "%@ 似乎不是有效的软件源⁉️ 软件源可能处于离线状态，或者您输入错误。是否继续添加？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "无法查看此软件包的更新日志。";
 
 "Installed_Package_Header" = "已安装的软件包";
+"Installed_Packages" = "已安装的软件包";
 "Version" = "版本";
 "Show_Package_Contents_Button" = "显示软件包内容";
 
@@ -138,7 +151,7 @@
 "Auto_Complete_Queue" = "自动完成队列";
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "搜索增强";
+"Show_Provisional" = "搜索增强 （Canister）";
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
 "Pog_Developer" = "您现在是开发者！";
@@ -148,6 +161,13 @@
 "Cache_Size" = "缓存";
 "Clear_Cache" = "清除网络缓存";
 "Clear_Cache_Message" = "您想清除网络缓存吗？这将节省 %@";
+"Language" = "语言";
+"Use_System_Language" = "使用系统语言";
+"Apply_Changes" = "应用更改";
+"Apply_Changes_Confirm" = "应用更改需要重启 Sileo";
+"Help_Translate" = "帮助翻译 Sileo";
+"Always_Show_Install_Log" = "总是显示安装详情";
+"Auto_Show_Queue" = "全部升级时显示队列";
 
 "Sileo_Light" = "Sileo浅色模式";
 "Sileo_Dark" = "Sileo深色模式";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
+"Open_In_Filza" = "在 Filza 打开";
+"Copy_Path" = "复制目录";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";

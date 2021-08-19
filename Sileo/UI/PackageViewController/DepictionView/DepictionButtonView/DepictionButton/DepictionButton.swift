@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 4/20/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -54,6 +54,26 @@ class DepictionButton: UIButton {
                 contentsViewController.packageId = packageViewController.package?.package ?? ""
                 
                 parentViewController?.navigationController?.pushViewController(contentsViewController, animated: true)
+                return true
+            }
+        } else if action == "showRepoContext" {
+            if let packageViewController = parentViewController as? PackageViewController,
+               let repo = packageViewController.package?.sourceRepo {
+                if let navController = packageViewController.navigationController as? SileoNavigationController {
+                    for viewController in navController.viewControllers {
+                        if viewController.isKind(of: CategoryViewController.self) {
+                            if let categoryVC = viewController as? CategoryViewController,
+                               categoryVC.repoContext?.rawURL == repo.rawURL {
+                                navController.popToViewController(categoryVC, animated: true)
+                                return true
+                            }
+                        }
+                    }
+                }
+                let categoryVC = CategoryViewController(style: .plain)
+                categoryVC.repoContext = repo
+                categoryVC.title = repo.repoName
+                parentViewController?.navigationController?.pushViewController(categoryVC, animated: true)
                 return true
             }
         } else if let url = URL(string: action) {

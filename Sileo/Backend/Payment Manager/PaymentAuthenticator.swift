@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 6/28/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -15,6 +15,9 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
     var lastWindow: UIWindow?
     
     func authenticate(provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
+        #if targetEnvironment(macCatalyst)
+        completion?(nil, false)
+        #else
         currentAuthenticationSession = SFAuthenticationSession(url: provider.authenticationURL, callbackURLScheme: "sileo") { url, error in
             if let error = error {
                 if let error = error as? SFAuthenticationError,
@@ -52,7 +55,7 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             }
             
             provider.authenticate(withToken: token!, paymentSecret: secret!)
-            completion?(nil, false)
+            completion?(nil, true)
         }
         /*
         if #available(iOS 13.0, *) {
@@ -61,9 +64,13 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
         }
         */
         currentAuthenticationSession?.start()
+        #endif
     }
     
     func handlePayment(actionURL url: URL, provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
+        #if targetEnvironment(macCatalyst)
+        completion?(nil, false)
+        #else
         currentAuthenticationSession = SFAuthenticationSession(url: url, callbackURLScheme: "sileo") { url, error in
             if let error = error {
                 if let error = error as? SFAuthenticationError,
@@ -82,26 +89,7 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             
             completion?(nil, false)
         }
-        /*
-        if #available(iOS 13.0, *) {
-            currentAuthenticationSession?.presentationContextProvider = self
-            if #available(iOS 13.4, *) {
-                for window in UIApplication.shared.windows {
-                    self.lastWindow = window
-                    if self.currentAuthenticationSession?.canStart ?? false {
-                        break
-                    }
-                }
-            } else {
-                self.lastWindow = window
-            }
-        }
-        */
         self.currentAuthenticationSession?.start()
+        #endif
     }
-    /*
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        lastWindow ?? ASPresentationAnchor()
-    }
-    */
 }

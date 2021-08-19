@@ -3,35 +3,36 @@
 //  Sileo
 //
 //  Created by CoolStar on 1/19/20.
-//  Copyright © 2020 CoolStar. All rights reserved.
+//  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
 class DependencyResolverAccelerator {
     public static let shared = DependencyResolverAccelerator()
-    private var dependencyLock = DispatchSemaphore(value: 1)
     private var partialRepoList: [URL: Set<Package>] = [:]
     private var packageList: Set<Package> = []
-    
-    private var preflightedRepoList: [URL: Set<Package>] = [:]
     private var preflightedRepos = false
     
     public func preflightInstalled() {
-        dependencyLock.wait()
-        
-        preflightedRepos = false
-        
+        if Thread.isMainThread {
+            fatalError("Don't call things that will block the UI from the main thread")
+        }
+        // Only call these once, waste of resources to constantly call
+        // If the user deletes sileolists while the app is open, they're dumb
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        #else
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
+        #endif
+                
         partialRepoList = [:]
-        for depPackage in PackageListManager.shared.installedPackages ?? [] {
+        for depPackage in Array(PackageListManager.shared.installedPackages.values) {
             getDependenciesInternal(package: depPackage)
         }
-        
-        preflightedRepoList = partialRepoList
-        partialRepoList = [:]
-        
+                
         preflightedRepos = true
-        dependencyLock.signal()
     }
     
     private var depResolverPrefix: URL {
@@ -42,24 +43,15 @@ class DependencyResolverAccelerator {
         }
         return listsURL
         #else
-        return URL(fileURLWithPath: "/var/lib/apt/sileolists")
+        return URL(fileURLWithPath: CommandPath.sileolists)
         #endif
     }
     
-    public func getDependencies(install: [DownloadPackage], remove: [DownloadPackage]) {
-        if !preflightedRepos {
-            preflightInstalled()
+    public func getDependencies(packages: [Package]) throws {
+        if Thread.isMainThread {
+            fatalError("Don't call things that will block the UI from the main thread")
         }
-        PackageListManager.shared.waitForReady()
-        dependencyLock.wait()
-        partialRepoList = preflightedRepoList
-        
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: ["/usr/bin/mkdir", "-p", "/var/lib/apt/sileolists"])
-        spawnAsRoot(args: ["/usr/bin/chown", "-R", "mobile:mobile", "/var/lib/apt/sileolists"])
-        spawnAsRoot(args: ["/usr/bin/chmod", "-R", "0755", "/var/lib/apt/sileolists"])
-        #endif
+        PackageListManager.shared.initWait()
         
         guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
             return
@@ -67,18 +59,9 @@ class DependencyResolverAccelerator {
         for filePath in filePaths {
             try? FileManager.default.removeItem(at: filePath)
         }
-        
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: ["/usr/bin/cp", "/var/lib/apt/lists/*Release", "/var/lib/apt/sileolists/"])
-        #endif
-        
-        for package in install {
-            getDependenciesInternal2(package: package.package)
-        }
-        
-        for package in remove {
-            getDependenciesInternal2(package: package.package)
+
+        for package in packages {
+            getDependenciesInternal2(package: package)
         }
         
         let resolverPrefix = depResolverPrefix
@@ -93,13 +76,23 @@ class DependencyResolverAccelerator {
                 guard let packageData = package.rawData else {
                     continue
                 }
-                sourcesData.append(packageData)
+                var string = String(decoding: packageData, as: UTF8.self)
+                if string.suffix(2) != "\n\n" {
+                    if string.last == "\n" {
+                        string += "\n"
+                    } else {
+                        string += "\n\n"
+                    }
+                }
+                guard let data = string.data(using: .utf8) else { continue }
+                sourcesData.append(data)
             }
-            try? sourcesData.write(to: newSourcesFile)
+            do {
+                try sourcesData.write(to: newSourcesFile.aptUrl)
+            } catch {
+                throw error
+            }
         }
-        
-        partialRepoList.removeAll()
-        dependencyLock.signal()
     }
     
     private func getDependenciesInternal(package: Package) {
@@ -109,7 +102,7 @@ class DependencyResolverAccelerator {
     }
     
     private func getDependenciesInternal2(package: Package) {
-        guard let sourceFileURL = package.sourceFileURL else {
+        guard let sourceFileURL = package.sourceFileURL?.aptUrl else {
             return
         }
         if partialRepoList[sourceFileURL] == nil {
@@ -120,14 +113,15 @@ class DependencyResolverAccelerator {
         }
         partialRepoList[sourceFileURL]?.insert(package)
         
-        let packageKeys = ["depends", "pre-depends", "conflicts", "replaces"]
+        // Depends, Pre-Depends, Recommends, Suggests, Breaks, Conflicts, Provides, Replaces, Enhance
+        let packageKeys = ["depends", "pre-depends", "conflicts", "replaces", "recommends", "provides", "breaks"]
         
         for packageKey in packageKeys {
             if let packagesData = package.rawControl[packageKey] {
                 let packageIds = parseDependsString(depends: packagesData)
                 for repo in RepoManager.shared.repoList {
-                    for packageId in packageIds {
-                        if let depPackage = repo.packagesDict?[packageId] {
+                    for packageID in packageIds {
+                        if let depPackage = repo.packageDict[packageID] {
                             getDependenciesInternal(package: depPackage)
                         }
                     }

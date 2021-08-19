@@ -27,6 +27,24 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>Mixture</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Mixture</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Midnight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Midnight</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -99,6 +117,15 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pride</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>Procursus</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -159,6 +186,24 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>Midnight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Midnight~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Mixture</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Mixture~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -227,6 +272,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>OceanicBlue~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pride~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -312,6 +366,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>filza</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -325,6 +383,11 @@
 	<string>Sileo uses Face ID to quickly authenticate purchases.</string>
 	<key>SBAppUsesLocalNotifications</key>
 	<true/>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>SileoRootDaemon</key>
+		<string>identifier &quot;SileoRootDaemon&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
@@ -363,6 +426,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>processing</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

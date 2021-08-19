@@ -24,6 +24,8 @@
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -39,8 +41,11 @@
 "Download_Starting" = "เริ่มต้น…";
 "Download_Progress" = "%@ จาก %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "ยืนยัน";
 "Queue_Clear_Button" = "ล้างคิว";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "อัพเกรด";
 "Package_Reinstall_Action" = "ติดตั้งใหม่";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "ลบออกจากรายการที่ต้องการ";
 "Wishlist" = "รายการที่ต้องการ";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "ติดตั้ง";
 "Queued_Uninstall_Heading" = "ถอนการติดตั้ง";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "ค้นหาแพ็คเกจ";
 "Sort_Name" = "ชื่อ";
 "Sort_Date" = "วันที่";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "จัดเรียงตาม :";
 
 "Package_Unavailable" = "แพ็คเกจไม่พร้อมใช้งาน";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "แหล่งจัดเก็บข้อมูล";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "เพิ่มแหล่ง";
 "Add_Source.Body" = "ป้อน APT URL";
 "Add_Source.Button.Add" = "เพิ่ม";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "ป้อนด้วยตนเอง";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "รายการเปลี่ยนแปลงไม่พร้อมสำหรับแพ็คเกจนี้";
 
 "Installed_Package_Header" = "แพ็คเกจที่ติดตั้งแล้ว";
+"Installed_Packages" = "Installed Packages";
 "Version" = "เวอร์ชั่น";
 "Show_Package_Contents_Button" = "เนื้อหาระบบไฟล์";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "แสดงรายละเอียด";
 "Hide_Install_Details" = "ซ่อนรายละเอียด";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "รีสตาร์ท Sileo";
 "After_Install_Respring" = "รีสปริง";

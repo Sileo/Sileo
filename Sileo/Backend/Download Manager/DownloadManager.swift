@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/2/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -20,10 +20,18 @@ public enum DownloadManagerQueue: Int {
 final class DownloadManager {
     static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
+    static let aptQueue: DispatchQueue = {
+        let queue = DispatchQueue(label: "Sileo.AptQueue", qos: .userInitiated)
+        queue.setSpecific(key: DownloadManager.queueKey, value: DownloadManager.queueContext)
+        return queue
+    }()
+    public static let queueKey = DispatchSpecificKey<Int>()
+    public static var queueContext = unsafeBitCast(DownloadManager.shared, to: Int.self)
     
     enum Error: LocalizedError {
         case hashMismatch(packageHash: String, refHash: String)
         case untrustedPackage(packageID: String)
+        case debugNotAllowed
         
         public var errorDescription: String? {
             switch self {
@@ -31,6 +39,8 @@ final class DownloadManager {
                 return String(format: String(localizationKey: "Download_Hash_Mismatch", type: .error), packageHash, refHash)
             case let .untrustedPackage(packageID):
                 return String(format: String(localizationKey: "Untrusted_Package", type: .error), packageID)
+            case .debugNotAllowed:
+                return "Packages cannot be added to the queue during install"
             }
         }
     }
@@ -56,22 +66,18 @@ final class DownloadManager {
     }
     public var totalProgress = CGFloat(0)
     
-    var upgrades: [DownloadPackage] = []
-    var installations: [DownloadPackage] = []
-    var uninstallations: [DownloadPackage] = []
-    var installdeps: [DownloadPackage] = []
-    var uninstalldeps: [DownloadPackage] = []
-    var errors: [[String: Any]] = []
+    var upgrades = SafePackageArray<DownloadPackage>()
+    var installations = SafePackageArray<DownloadPackage>()
+    var uninstallations = SafePackageArray<DownloadPackage>()
+    var installdeps = SafePackageArray<DownloadPackage>()
+    var uninstalldeps = SafePackageArray<DownloadPackage>()
+    var errors = SafePackageArray<APTBrokenPackage>()
     
-    var queued: [String: Download] = [:]
-    var queuedRemovals: [String] = []
-    var confirmedRemovals: [String] = []
+    private var currentDownloads = 0
+    public var queueStarted = false
     var downloads: [String: Download] = [:]
     var cachedFiles: [URL] = []
-    
-    private var queueLockCount = 0
-    private var queueLock = DispatchSemaphore(value: 1)
-    
+        
     var repoDownloadOverrideProviders: [String: Set<AnyHashable>] = [:]
     
     var viewController: DownloadsTableViewController
@@ -91,11 +97,7 @@ final class DownloadManager {
     public func operationCount() -> Int {
         upgrades.count + installations.count + uninstallations.count + installdeps.count + uninstalldeps.count
     }
-    
-    public func queuedPackages() -> Int {
-        queued.count + queuedRemovals.count
-    }
-    
+        
     public func downloadingPackages() -> Int {
         var downloadsCount = 0
         for keyValue in downloads where keyValue.value.progress < 1 {
@@ -112,260 +114,181 @@ final class DownloadManager {
                 readyCount += 1
             }
         }
-        readyCount += confirmedRemovals.count
         return readyCount
     }
     
-    private func addDownloadItemsIfNotPresent() {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
-        let allRawDownloads = upgrades + installations + installdeps
-        var allPackageIDs: [String] = []
-        
+    public func verifyComplete() -> Bool {
+        let allRawDownloads = upgrades.raw + installations.raw + installdeps.raw
         for dlPackage in allRawDownloads {
-            let packageID = dlPackage.package.package
-            allPackageIDs.append(packageID)
-            
-            if queued[packageID] == nil && downloads[packageID] == nil {
-                let download = Download(package: dlPackage.package)
-                queued[packageID] = download
-            }
+            guard let download = downloads[dlPackage.package.packageID],
+                  download.success else { return false }
         }
-        
-        for keyValue in queued {
-            let packageID = keyValue.key
-            if !allPackageIDs.contains(packageID) {
-                queued.removeValue(forKey: packageID)
-            }
-        }
-        
-        for keyValue in downloads {
-            let packageID = keyValue.key
-            let download = keyValue.value
-            if !allPackageIDs.contains(packageID) {
-                if download.progress > 0 || download.progress < 1 {
-                    download.task?.cancel()
-                }
-                downloads.removeValue(forKey: packageID)
-            }
-        }
-        
-        let allRawRemovals = uninstallations + uninstalldeps
-        
-        allPackageIDs.removeAll()
-        
-        for dlPackage in allRawRemovals {
-            let packageID = dlPackage.package.package
-            allPackageIDs.append(packageID)
-            
-            if !queuedRemovals.contains(packageID) && !confirmedRemovals.contains(packageID) {
-                queuedRemovals.append(packageID)
-            }
-        }
-        
-        queuedRemovals.removeAll { !allPackageIDs.contains($0) }
-        confirmedRemovals.removeAll { !allPackageIDs.contains($0) }
+        return true
     }
     
-    public func cancelUnqueuedDownloads() {
-        self.lockQueue()
-        defer {
-            self.addBrokenPackages()
-            self.unlockQueue()
+    func startPackageDownload(download: Download) {
+        let package = download.package
+        var filename = package.filename ?? ""
+        
+        var packageRepo: Repo?
+        for repo in RepoManager.shared.repoList where repo.rawEntry == package.sourceFile {
+            packageRepo = repo
         }
         
-        for keyVal in queued {
-            self.remove(package: keyVal.key)
-        }
-        queued.removeAll()
-        
-        for package in queuedRemovals {
-            self.remove(package: package)
-        }
-        queuedRemovals.removeAll()
-    }
-    
-    public func startUnqueuedDownloads() {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-            self.startMoreDownloads()
+        if package.package.contains("/") {
+            filename = URL(fileURLWithPath: package.package).absoluteString
+        } else if !filename.hasPrefix("https://") && !filename.hasPrefix("http://") {
+            filename = URL(string: packageRepo?.rawURL ?? "")?.appendingPathComponent(filename).absoluteString ?? ""
         }
         
-        let allRawDownloads = upgrades + installations + installdeps
-        for dlPackage in allRawDownloads {
-            let package = dlPackage.package
-            queued.removeValue(forKey: package.package)
-            
-            if downloads[package.package] == nil {
-                var filename = package.filename ?? ""
-                
-                var packageRepo: Repo?
-                for repo in RepoManager.shared.repoList where repo.rawEntry == package.sourceFile {
-                    packageRepo = repo
+        // If it's a local file we can verify it immediately
+        if self.verify(download: download) {
+            download.progress = 1
+            download.success = true
+            download.completed = true
+            Self.aptQueue.async { [self] in
+                if self.verifyComplete() {
+                    self.viewController.reloadControlsOnly()
+                } else {
+                    startMoreDownloads()
                 }
-                
-                if package.package.contains("/") {
-                    filename = URL(fileURLWithPath: package.package).absoluteString
-                } else if !filename.hasPrefix("https://") && !filename.hasPrefix("http://") {
-                    filename = URL(string: packageRepo?.rawURL ?? "")?.appendingPathComponent(filename).absoluteString ?? ""
+            }
+            return
+        }
+        
+        download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            download.task?.cancel()
+            if let backgroundTaskIdentifier = download.backgroundTask {
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+            download.backgroundTask = nil
+        })
+        
+        // See if theres an overriding web URL for downloading the package from
+        currentDownloads += 1
+        self.overrideDownloadURL(package: package, repo: packageRepo) { errorMessage, url in
+            if url == nil && errorMessage != nil {
+                self.currentDownloads -= 1
+                download.failureReason = errorMessage
+                DispatchQueue.main.async {
+                    self.viewController.reloadDownload(package: download.package)
+                    TabBarController.singleton?.updatePopup()
                 }
-                
-                let download = Download(package: package)
-                download.failureReason = ""
-                if self.verify(download: download) {
-                    download.progress = 1
-                    download.success = true
-                    download.queued = false
-                    download.completed = true
-                } else {                    
-                    self.overrideDownloadURL(package: package, repo: packageRepo) { errorMessage, url in
-                        if url == nil && errorMessage != nil {
-                            download.failureReason = errorMessage
-                            download.success = false
-                            download.progress = 0
-                            download.queued = false
-                            download.completed = true
-                            // this hurts :(
-                            DispatchQueue.main.async {
-                                self.viewController.reloadDownload(package: download.package)
-                                TabBarController.singleton?.updatePopup()
-                            }
-                            return
-                        }
-                        
-                        let downloadURL = url ?? URL(string: filename)
-                        download.task = RepoManager.shared.queue(from: downloadURL,
-                                                                 progress: { progress in
-                                                                    download.message = nil
-                                                                    download.progress = CGFloat(progress.fractionCompleted)
-                                                                    download.totalBytesWritten = progress.total
-                                                                    download.totalBytesExpectedToWrite = progress.expected
-                                                                    DispatchQueue.main.async {
-                                                                        self.viewController.reloadDownload(package: package)
-                                                                    }
-                        }, success: { fileURL in
-                            let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)
-                            let fileSize = attributes?[FileAttributeKey.size] as? Int
-                            let fileSizeStr = String(format: "%ld", fileSize ?? 0)
-                            download.completed = true
-                            download.message = nil
-                            if !package.package.contains("/") && (fileSizeStr != package.size) {
-                                download.failureReason = String(format: String(localizationKey: "Download_Size_Mismatch", type: .error),
-                                                                package.size ?? "nil", fileSizeStr)
-                                download.success = false
-                                download.progress = 0
-                            } else {
-                                do {
-                                    download.success = try self.verify(download: download, fileURL: fileURL)
-                                } catch let error {
-                                    download.success = false
-                                    download.failureReason = error.localizedDescription
-                                }
-                                if download.success {
-                                    download.progress = 1
-                                } else {
-                                    download.progress = 0
-                                }
-                                
-                                #if TARGET_SANDBOX || targetEnvironment(simulator)
-                                try? FileManager.default.removeItem(at: fileURL)
-                                #endif
-                                
-                                DispatchQueue.main.async {
-                                    self.viewController.reloadDownload(package: download.package)
-                                    self.viewController.reloadControlsOnly()
-                                    TabBarController.singleton?.updatePopup()
-                                }
-                            }
-                            if let backgroundTaskIdentifier = download.backgroundTask {
-                                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
-                            }
-                            download.backgroundTask = nil
-                            self.startMoreDownloads()
-                        }, failure: { statusCode, _ in
-                            download.message = nil
-                            download.success = false
-                            download.completed = true
-                            download.failureReason = String(format: String(localizationKey: "Download_Failing_Status_Code", type: .error), statusCode)
-                            DispatchQueue.main.async {
-                                self.viewController.reloadDownload(package: download.package)
-                                self.viewController.reloadControlsOnly()
-                                TabBarController.singleton?.updatePopup()
-                            }
-                            if let backgroundTaskIdentifier = download.backgroundTask {
-                                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
-                            }
-                            download.backgroundTask = nil
-                            self.startMoreDownloads()
-                        }, waiting: { message in
-                            download.message = message
-                            DispatchQueue.main.async {
-                                self.viewController.reloadDownload(package: package)
-                            }
-                        })
-                        download.task?.shouldResume = true
-                        self.downloads[package.package] = download
-                        self.startMoreDownloads()
+                return
+            }
+            let downloadURL = url ?? URL(string: filename)
+            download.started = true
+            download.failureReason = nil
+            download.task = RepoManager.shared.queue(from: downloadURL, progress: { progress in
+                download.message = nil
+                download.progress = CGFloat(progress.fractionCompleted)
+                download.totalBytesWritten = progress.total
+                download.totalBytesExpectedToWrite = progress.expected
+                DispatchQueue.main.async {
+                    self.viewController.reloadDownload(package: package)
+                }
+            }, success: { fileURL in
+                self.currentDownloads -= 1
+                let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)
+                let fileSize = attributes?[FileAttributeKey.size] as? Int
+                let fileSizeStr = String(format: "%ld", fileSize ?? 0)
+                download.message = nil
+                if let backgroundTaskIdentifier = download.backgroundTask {
+                    UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+                }
+                download.backgroundTask = nil
+                download.message = nil
+                if !package.package.contains("/") && (fileSizeStr != package.size) {
+                    download.failureReason = String(format: String(localizationKey: "Download_Size_Mismatch", type: .error),
+                                                    package.size ?? "nil", fileSizeStr)
+                    download.success = false
+                    download.progress = 0
+                } else {
+                    do {
+                        download.success = try self.verify(download: download, fileURL: fileURL)
+                    } catch let error {
+                        download.success = false
+                        download.failureReason = error.localizedDescription
                     }
+                    if download.success {
+                        download.progress = 1
+                    } else {
+                        download.progress = 0
+                    }
+                    
+                    #if TARGET_SANDBOX || targetEnvironment(simulator)
+                    try? FileManager.default.removeItem(at: fileURL)
+                    #endif
+                    
+                    Self.aptQueue.async { [self] in
+                        if self.verifyComplete() {
+                            DispatchQueue.main.async {
+                                self.viewController.reloadDownload(package: download.package)
+                                TabBarController.singleton?.updatePopup()
+                                self.viewController.reloadControlsOnly()
+                            }
+                            
+                        } else {
+                            startMoreDownloads()
+                        }
+                    }
+                    return
                 }
-                downloads[package.package] = download
-            }
+                self.startMoreDownloads()
+            }, failure: { statusCode, error in
+                self.currentDownloads -= 1
+                download.failureReason = error?.localizedDescription ?? String(format: String(localizationKey: "Download_Failing_Status_Code", type: .error), statusCode)
+                download.message = nil
+                if let backgroundTaskIdentifier = download.backgroundTask {
+                    UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+                }
+                download.backgroundTask = nil
+                DispatchQueue.main.async {
+                    self.viewController.reloadDownload(package: download.package)
+                    self.viewController.reloadControlsOnly()
+                    TabBarController.singleton?.updatePopup()
+                }
+                self.startMoreDownloads()
+            }, waiting: { message in
+                download.message = message
+                DispatchQueue.main.async {
+                    self.viewController.reloadDownload(package: package)
+                }
+            })
+            download.task?.resume()
+            
+            self.viewController.reloadDownload(package: package)
         }
-        
-        for package in queuedRemovals {
-            if !confirmedRemovals.contains(package) {
-                confirmedRemovals.append(package)
-            }
-        }
-        queuedRemovals.removeAll()
     }
     
     func startMoreDownloads() {
-        var downloadCount: [String: Int] = [:]
-        
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
-        let allRawDownloads = upgrades + installations + installdeps
-        
-        for dlPackage in allRawDownloads {
-            let package = dlPackage.package
-            if let download = downloads[package.package] {
-                if let host = download.task?.url?.host {
-                     let hostCount = downloadCount[host] ?? 0
-                     if download.queued && !download.completed {
-                         if hostCount < 2 {
-                             download.queued = false
-                             download.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-                                 download.task?.cancel()
-                                 if let backgroundTaskIdentifier = download.backgroundTask {
-                                     UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
-                                 }
-                                 download.backgroundTask = nil
-                             })
-                            download.failureReason = nil
-                            download.task?.resume()
-                            downloadCount[host] = hostCount + 1
-                         }
-                     } else if !download.queued && !download.completed {
-                         downloadCount[host] = hostCount + 1
-                     }
+        DownloadManager.aptQueue.async { [self] in
+            // We don't want more than one download at a time
+            guard currentDownloads <= 3 else { return }
+            
+            // Get a list of downloads that need to take place
+            let allRawDownloads = upgrades.raw + installations.raw + installdeps.raw
+            for dlPackage in allRawDownloads {
+                // Get the download object, we don't want to create multiple
+                let download: Download
+                let package = dlPackage.package
+                if let tmp = downloads[package.packageID] {
+                    download = tmp
+                } else {
+                    download = Download(package: package)
+                    downloads[package.packageID] = download
                 }
+                
+                // Means download has already started / completed
+                if download.queued { continue }
+                download.queued = true
+                startPackageDownload(download: download)
             }
         }
     }
-    
+ 
     public func download(package: String) -> Download? {
-        if let download = downloads[package] {
-            return download
-        }
-        return queued[package]
+        downloads[package]
     }
     
     private func aptEncoded(string: String, isArch: Bool) -> String {
@@ -384,7 +307,7 @@ final class DownloadManager {
         let version = aptEncoded(string: package.version, isArch: false)
         let architecture = aptEncoded(string: package.architecture ?? "", isArch: true)
         
-        let destFileName = "/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
+        let destFileName = "\(CommandPath.lazyPrefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
         if !FileManager.default.fileExists(atPath: destFileName) {
@@ -393,7 +316,6 @@ final class DownloadManager {
                 DownloadManager.shared.cachedFiles.append(URL(fileURLWithPath: package.package))
                 return FileManager.default.fileExists(atPath: destFileName)
             }
-            
             return false
         }
         
@@ -461,111 +383,100 @@ final class DownloadManager {
         let version = aptEncoded(string: package.version, isArch: false)
         let architecture = aptEncoded(string: package.architecture ?? "", isArch: true)
         
-        let destFileName = "/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
+        let destFileName = "\(CommandPath.lazyPrefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
         hardLinkAsRoot(from: fileURL, to: destURL)
-        DownloadManager.shared.cachedFiles.append(fileURL)
         #endif
+        DownloadManager.shared.cachedFiles.append(fileURL)
         return true
     }
     
-    private func recheckTotalOps() {
-        self.lockQueue()
-        
-        defer {
-            self.unlockQueue()
-            self.addDownloadItemsIfNotPresent()
+    private func recheckTotalOps() throws {
+        if Thread.isMainThread {
+            fatalError("This cannot be called from the main thread!")
         }
         
+        // Clear any current depends
         installdeps.removeAll()
         uninstalldeps.removeAll()
         errors.removeAll()
         
-        let installationsAndUpgrades = self.installations + self.upgrades
-        
-        DependencyResolverAccelerator.shared.getDependencies(install: installationsAndUpgrades, remove: uninstallations)
-       
-        #if !TARGET_SANDBOX && !targetEnvironment(simulator)
-        let depOperations = APTWrapper.packageOperations(installs: installationsAndUpgrades, removals: uninstallations)
-        
-        var installIdentifiers: [String] = []
-        if let installOperations = depOperations["Inst"] as? [[String: String]] {
-            for installEntry in installOperations {
-                if let packageID = installEntry["package"] {
-                    installIdentifiers.append(packageID)
-                }
-            }
-        }
-        
-        for package in installations where package.package.package.contains("/") {
-            installIdentifiers.removeAll { $0 == package.package.packageID }
-        }
-        
-        let rawInstalls = PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: true)
-        var installDeps: [DownloadPackage] = rawInstalls.compactMap { DownloadPackage(package: $0) }
-        
-        if depOperations["Err"]?.isEmpty ?? true {
-            var installationstemp = installations
-            installationstemp.removeAll { installDeps.contains($0) }
-            
-            for package in installations where package.package.package.contains("/") {
-                installationstemp.removeAll { $0 == package }
-            }
-            
-            installations.removeAll { installationstemp.contains($0) }
-            
-            var upgradestemp = upgrades
-            upgradestemp.removeAll { installDeps.contains($0) }
-            for package in installations where package.package.package.contains("/") {
-                upgradestemp.removeAll { $0 == package }
-            }
-            
-            upgrades.removeAll { upgradestemp.contains($0) }
-        }
-        
-        installDeps.removeAll { installationsAndUpgrades.contains($0) }
-        
-        var uninstallIdentifiers: [String] = []
-        if let removeOperations = depOperations["Remv"] as? [[String: String]] {
-            for uninstallEntry in removeOperations {
-                if let packageID = uninstallEntry["package"] {
-                    uninstallIdentifiers.append(packageID)
-                }
-            }
-        }
-        
-        let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: true)
-        var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
-        
-        if depOperations["Err"]?.isEmpty ?? true {
-            var uninstalltemp = uninstallations
-            uninstalltemp.removeAll { uninstallDeps.contains($0) }
-            uninstallations.removeAll { uninstalltemp.contains($0) }
-        }
-        
-        uninstallDeps.removeAll { uninstallations.contains($0) }
-        
-        installdeps.append(contentsOf: installDeps)
-        uninstalldeps.append(contentsOf: uninstallDeps)
-        
-        if let errorsList = depOperations["Err"] {
-            errors.append(contentsOf: errorsList)
-        }
-        #endif
-    }
-    
-    private func addBrokenPackages() {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
-        guard let statusPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) else {
+        // Get a total of depends to be installed and break if empty
+        let installationsAndUpgrades = self.installations.raw + self.upgrades.raw
+        guard !(installationsAndUpgrades.isEmpty && uninstallations.isEmpty) else {
             return
         }
-        for package in statusPackages {
-            guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package) else {
+        let all = (installationsAndUpgrades + uninstallations.raw).map { $0.package }
+        do {
+            // Run the dep accelerator for any packages that have not already been cared about
+            try DependencyResolverAccelerator.shared.getDependencies(packages: all)
+        } catch {
+            throw error
+        }
+        #if TARGET_SANDBOX || targetEnvironment(simulator)
+        return
+        #endif
+        let aptOutput: APTOutput
+        do {
+            // Get the full list of packages to be installed and removed from apt
+            aptOutput = try APTWrapper.operationList(installList: installationsAndUpgrades, removeList: uninstallations.raw)
+        } catch {
+            throw error
+        }
+        
+        // Get the list of packages to be installed, including depends
+        var installIdentifiers = [String]()
+        for operation in aptOutput.operations where operation.type == .install {
+            installIdentifiers.append(operation.packageID)
+        }
+
+        // Get every package to be uninstalled
+        var uninstallIdentifiers = [String]()
+        for operation in aptOutput.operations where operation.type == .remove {
+            uninstallIdentifiers.append(operation.packageID)
+        }
+        
+        var uninstallations = uninstallations.raw
+        let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false)
+        guard rawUninstalls.count == uninstallIdentifiers.count else {
+            throw APTParserErrors.blankJsonOutput
+        }
+        var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
+    
+        // Get the package objects for each
+        let rawInstalls = PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
+        guard rawInstalls.count == installIdentifiers.count else {
+            throw APTParserErrors.blankJsonOutput
+        }
+        var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
+        var installations = installations.raw
+        var upgrades = upgrades.raw
+
+        if aptOutput.conflicts.isEmpty {
+            installations.removeAll { uninstallDeps.contains($0) }
+            uninstallations.removeAll { installDeps.contains($0) }
+            
+            installations.removeAll { !installDeps.contains($0) }
+            upgrades.removeAll { !installDeps.contains($0) }
+            uninstallations.removeAll { !uninstallDeps.contains($0) }
+            uninstallDeps.removeAll { uninstallations.contains($0) }
+            installDeps.removeAll { installations.contains($0) }
+            installDeps.removeAll { upgrades.contains($0) }
+        }
+  
+        self.upgrades.setTo(upgrades)
+        self.installations.setTo(installations)
+        self.uninstallations.setTo(uninstallations)
+        self.uninstalldeps.setTo(uninstallDeps)
+        self.installdeps.setTo(installDeps)
+        self.errors.setTo(aptOutput.conflicts)
+    }
+    
+    private func checkInstalled() {
+        let installedPackages = PackageListManager.shared.installedPackages.values
+        for package in installedPackages {
+            guard let newestPackage = PackageListManager.shared.newestPackage(identifier: package.package, repoContext: nil) else {
                 continue
             }
             let downloadPackage = DownloadPackage(package: newestPackage)
@@ -583,23 +494,33 @@ final class DownloadManager {
         }
     }
     
-    public func removeAllItems() {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
+    public func cancelDownloads() {
+        for download in downloads.values {
+            download.task?.cancel()
+            if let backgroundTaskIdentifier = download.backgroundTask {
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
         }
-        
+        downloads.removeAll()
+        currentDownloads = 0
+    }
+    
+    public func removeAllItems() {
         upgrades.removeAll()
         installdeps.removeAll()
         installations.removeAll()
         uninstalldeps.removeAll()
         uninstallations.removeAll()
-        queuedRemovals.removeAll()
-        confirmedRemovals.removeAll()
         errors.removeAll()
-        
-        self.addBrokenPackages()
-        self.addDownloadItemsIfNotPresent()
+        for download in downloads.values {
+            download.task?.cancel()
+            if let backgroundTaskIdentifier = download.backgroundTask {
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+        }
+        downloads.removeAll()
+        currentDownloads = 0
+        self.checkInstalled()
     }
     
     public func reloadData(recheckPackages: Bool) {
@@ -607,42 +528,23 @@ final class DownloadManager {
     }
     
     public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
-        DispatchQueue.global(qos: .default).async {
-            if !self.lockedForInstallation && recheckPackages {
-                self.recheckTotalOps()
+        DownloadManager.aptQueue.async { [self] in
+            if recheckPackages {
+                do {
+                    try self.recheckTotalOps()
+                } catch {
+                    removeAllItems()
+                    viewController.cancelDownload(nil)
+                    TabBarController.singleton?.displayError(error)
+                }
             }
-            
-            self.queueLock.wait()
-            self.queueLock.signal()
-            
             DispatchQueue.main.async {
-                self.queueLock.wait()
-                let emptyLock = self.queueLockCount == 0
-                if emptyLock {
-                    self.viewController.reloadData()
-                    TabBarController.singleton?.updatePopup(completion: completion)
-                    NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
-                }
-                self.queueLock.signal()
-                
-                if !emptyLock, let completion = completion {
-                    completion()
-                }
+                self.viewController.reloadData()
+                TabBarController.singleton?.updatePopup(completion: completion)
+                NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
+                completion?()
             }
         }
-    }
-    
-    public func remove(package: String) {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
-        installations.removeAll { $0.package.package == package }
-        upgrades.removeAll { $0.package.package == package }
-        installdeps.removeAll { $0.package.package == package }
-        uninstallations.removeAll { $0.package.package == package }
-        uninstalldeps.removeAll { $0.package.package == package }
     }
     
     public func find(package: Package) -> DownloadManagerQueue {
@@ -661,13 +563,19 @@ final class DownloadManager {
         return .none
     }
     
-    public func add(package: Package, queue: DownloadManagerQueue) {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
+    public func remove(package: String) {
+        installations.removeAll { $0.package.package == package }
+        upgrades.removeAll { $0.package.package == package }
+        installdeps.removeAll { $0.package.package == package }
+        uninstallations.removeAll { $0.package.package == package }
+        uninstalldeps.removeAll { $0.package.package == package }
+    }
+    
+    public func add(package: Package, queue: DownloadManagerQueue, approved: Bool = false) {
         let downloadPackage = DownloadPackage(package: package)
+        let found = find(package: package)
+        remove(downloadPackage: downloadPackage, queue: found)
+    
         let package = downloadPackage.package.package
         switch queue {
         case .none:
@@ -678,6 +586,22 @@ final class DownloadManager {
             }
         case .uninstallations:
             if !uninstallations.map({ $0.package.package }).contains(package) {
+                if approved == false && isEssential(downloadPackage.package) {
+                    let message = String(format: String(localizationKey: "Essential_Warning"),
+                                         "\n\(downloadPackage.package.name ?? downloadPackage.package.packageID)")
+                    let alert = UIAlertController(title: String(localizationKey: "Warning"),
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .default, handler: { _ in
+                        alert.dismiss(animated: true)
+                    }))
+                    alert.addAction(UIAlertAction(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Continue"), style: .destructive, handler: { _ in
+                        self.add(package: downloadPackage.package, queue: .uninstallations, approved: true)
+                        self.reloadData(recheckPackages: true)
+                    }))
+                    TabBarController.singleton?.present(alert, animated: true)
+                    return
+                }
                 uninstallations.append(downloadPackage)
             }
         case .upgrades:
@@ -694,18 +618,13 @@ final class DownloadManager {
             }
         }
     }
-    
+  
     public func remove(package: Package, queue: DownloadManagerQueue) {
         let downloadPackage = DownloadPackage(package: package)
         remove(downloadPackage: downloadPackage, queue: queue)
     }
     
     public func remove(downloadPackage: DownloadPackage, queue: DownloadManagerQueue) {
-        self.lockQueue()
-        defer {
-            self.unlockQueue()
-        }
-        
         switch queue {
         case .none:
             return
@@ -721,19 +640,7 @@ final class DownloadManager {
             uninstalldeps.removeAll { $0 == downloadPackage }
         }
     }
-    
-    private func lockQueue() {
-        queueLock.wait()
-        queueLockCount += 1
-        queueLock.signal()
-    }
-    
-    private func unlockQueue() {
-        queueLock.wait()
-        queueLockCount -= 1
-        queueLock.signal()
-    }
-    
+
     public func register(downloadOverrideProvider: DownloadOverrideProviding, repo: Repo) {
         if repoDownloadOverrideProviders[repo.repoURL] == nil {
             repoDownloadOverrideProviders[repo.repoURL] = Set()
@@ -752,14 +659,12 @@ final class DownloadManager {
     }
     
     private func overrideDownloadURL(package: Package, repo: Repo?, completionHandler: @escaping (String?, URL?) -> Void) {
-        guard let repo = repo else {
+        guard let repo = repo,
+              let providers = repoDownloadOverrideProviders[repo.repoURL],
+              !providers.isEmpty else {
             return completionHandler(nil, nil)
         }
-        guard let providers = repoDownloadOverrideProviders[repo.repoURL],
-            !providers.isEmpty else {
-            return completionHandler(nil, nil)
-        }
-        
+
         // The number of providers checked so far
         var checked = 0
         let total = providers.count
@@ -782,6 +687,215 @@ final class DownloadManager {
                 completionHandler(nil, nil)
             }
         }
+    }
+    
+    public func repoRefresh() {
+        let plm = PackageListManager.shared
+        let allPackages = plm.allPackagesArray
+        var reloadNeeded = false
+        if operationCount() != 0 {
+            reloadNeeded = true
+            let savedUpgrades: [(String, String)] = upgrades.map({
+                let pkg = $0.package
+                return (pkg.packageID, pkg.version)
+            })
+            let savedInstalls: [(String, String)] = installations.map({
+                let pkg = $0.package
+                return (pkg.packageID, pkg.version)
+            })
+            
+            upgrades.removeAll()
+            installations.removeAll()
+            installdeps.removeAll()
+            uninstalldeps.removeAll()
+            
+            for tuple in savedUpgrades {
+                let id = tuple.0
+                let version = tuple.1
+                
+                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                    if find(package: pkg) == .none {
+                        add(package: pkg, queue: .upgrades)
+                    }
+                }
+            }
+            
+            for tuple in savedInstalls {
+                let id = tuple.0
+                let version = tuple.1
+                
+                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                    if find(package: pkg) == .none {
+                        add(package: pkg, queue: .installations)
+                    }
+                }
+            }
+        }
         
+        // Check for essential
+        var allowedHosts = [String]()
+        #if targetEnvironment(macCatalyst)
+        allowedHosts = ["apt.procurs.us"]
+        #else
+        if RepoManager.shared.isMobileProcursus {
+            allowedHosts = ["apt.procurs.us"]
+        } else {
+            allowedHosts = [
+                "apt.bingner.com",
+                "test.apt.bingner.com",
+                "apt.elucubratus.com"
+            ]
+        }
+        #endif
+        let installedPackages = plm.installedPackages
+        for repo in allowedHosts {
+            if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == repo }) {
+                for package in repo.packageArray where package.essential == "yes" &&
+                                                            installedPackages[package.packageID] == nil &&
+                                                            find(package: package) == .none {
+                    reloadNeeded = true
+                    add(package: package, queue: .installdeps)
+                }
+            }
+        }
+        // Don't bother to reloadData if there's nothing to reload, it's a waste of resources
+        if reloadNeeded {
+            reloadData(recheckPackages: true)
+        }
+    }
+    
+    public func isEssential(_ package: Package) -> Bool {
+        // Check for essential
+        var allowedHosts = [String]()
+        #if targetEnvironment(macCatalyst)
+        allowedHosts = ["apt.procurs.us"]
+        #else
+        if RepoManager.shared.isMobileProcursus {
+            allowedHosts = ["apt.procurs.us"]
+        } else {
+            allowedHosts = [
+                "apt.bingner.com",
+                "test.apt.bingner.com",
+                "apt.elucubratus.com"
+            ]
+        }
+        #endif
+        guard let sourceRepo = package.sourceRepo,
+              allowedHosts.contains(sourceRepo.url?.host ?? "") else { return false }
+        return package.essential == "yes"
+    }
+}
+
+class SafePackageArray<Element> {
+    private var array = [Element]()
+    
+    public var isOnAptQueue: Bool {
+        DispatchQueue.getSpecific(key: DownloadManager.queueKey) == DownloadManager.queueContext
+    }
+            
+    public convenience init(_ array: [Element]) {
+        self.init()
+        self.array = array
+    }
+    
+    var count: Int {
+        if !isOnAptQueue {
+            var result = 0
+            DownloadManager.aptQueue.sync { result = self.array.count }
+            return result
+        }
+        return array.count
+    }
+    
+    var isEmpty: Bool {
+        if !isOnAptQueue {
+            var result = false
+            DownloadManager.aptQueue.sync { result = self.array.isEmpty }
+            return result
+        }
+        return array.isEmpty
+    }
+    
+    var raw: [Element] {
+        if !isOnAptQueue {
+            var result = [Element]()
+            DownloadManager.aptQueue.sync { result = self.array }
+            return result
+        }
+        return array
+    }
+    
+    func contains(where package: (Element) -> Bool) -> Bool {
+        if !isOnAptQueue {
+            var result = false
+            DownloadManager.aptQueue.sync { result = self.array.contains(where: package) }
+            return result
+        }
+        return array.contains(where: package)
+    }
+    
+    func setTo(_ packages: [Element]) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array = packages
+            }
+        } else {
+            self.array = packages
+        }
+    }
+    
+    func append(_ package: Element) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array.append(package)
+            }
+        } else {
+            self.array.append(package)
+        }
+    }
+    
+    func removeAll() {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                self.array.removeAll()
+            }
+        } else {
+            self.array.removeAll()
+        }
+    }
+    
+    func removeAll(package: @escaping (Element) -> Bool) {
+        if !isOnAptQueue {
+            DownloadManager.aptQueue.async(flags: .barrier) {
+                while let index = self.array.firstIndex(where: package) {
+                    self.array.remove(at: index)
+                }
+            }
+        } else {
+            while let index = self.array.firstIndex(where: package) {
+                self.array.remove(at: index)
+            }
+        }
+    }
+    
+    func map<ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> [ElementOfResult] {
+        if !isOnAptQueue {
+            var result = [ElementOfResult]()
+            DownloadManager.aptQueue.sync { result = self.array.map(transform) }
+            return result
+        } else {
+            return array.map(transform)
+        }
+    }
+}
+
+extension SafePackageArray where Element: Equatable {
+    func contains(_ element: Element) -> Bool {
+        if !isOnAptQueue {
+            var result = false
+            DownloadManager.aptQueue.sync { result = self.array.contains(element) }
+            return result
+        }
+        return self.array.contains(element)
     }
 }

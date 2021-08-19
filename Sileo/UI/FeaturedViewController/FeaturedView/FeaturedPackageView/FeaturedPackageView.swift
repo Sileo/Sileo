@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/6/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,8 @@ import UIKit
 class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     let imageView: PackageIconView
     let titleLabel, authorLabel, versionLabel: UILabel
+    
+    static let featuredPackageReload = Notification.Name("FeaturedPackageReload")
     
     let repoName: String
     
@@ -23,6 +25,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     
     var isUpdatingPurchaseStatus: Bool = false
     var icon: String?
+    var packageObject: Package?
     
     required init?(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor, isActionable: Bool) {
         guard let package = dictionary["package"] as? String else {
@@ -151,6 +154,14 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
                                                selector: #selector(FeaturedPackageView.reloadPackage),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(FeaturedPackageView.reloadPackage),
+                                               name: FeaturedPackageView.featuredPackageReload,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(FeaturedPackageView.reloadPackage),
+                                               name: Notification.Name("ShowProvisional"),
+                                               object: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -189,7 +200,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc func openDepiction(_ : Any?) {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = packageObject {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
@@ -226,19 +237,24 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     }
     
     @objc public func reloadPackage() {
-        DispatchQueue.global(qos: .default).async {
-            PackageListManager.shared.waitForReady()
-            DispatchQueue.main.async {
-                self.packageButton.package = PackageListManager.shared.newestPackage(identifier: self.package)
-                if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
-                    self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
-                    if self.packageButton.package == nil {
-                        self.packageButton.package = package
-                    }
-                } else {
-                    self.versionLabel.text = String(localizationKey: "Package_Unavailable")
-                }
+        let package: Package? = {
+            if let holder = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
+                return holder
+            } else if let provisional = CanisterResolver.shared.package(for: self.package) {
+                return provisional
             }
+            return nil
+        }()
+        
+        if let package = package {
+            self.versionLabel.text = String(format: "%@ · %@", package.version, self.repoName)
+            self.packageButton.package = package
+            self.packageButton.isEnabled = true
+            self.packageObject = package
+        } else {
+            self.versionLabel.text = String(localizationKey: "Package_Unavailable")
+            self.packageButton.package = nil
+            self.packageButton.isEnabled = false
         }
     }
     
@@ -247,26 +263,18 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             return
         }
         
-        guard let package = PackageListManager.shared.newestPackage(identifier: self.package) else {
+        guard let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) else {
             return
         }
         isUpdatingPurchaseStatus = true
-        
-        var isPurchased = false
-        
-        if let existingPurchased = UserDefaults.standard.array(forKey: "cydia-purchased") as? [String] {
-            if existingPurchased.contains(package.package) {
-                isPurchased = true
-            }
-        }
-        
+            
         guard let repo = package.sourceRepo else {
             return
         }
         
         PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
             if error != nil {
-                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
+                let info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: false, available: true)
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false
                     self.packageButton.paymentInfo = info
@@ -275,7 +283,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             provider?.getPackageInfo(forIdentifier: self.package) { error, info in
                 var info = info
                 if error != nil {
-                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: isPurchased, available: true)
+                    info = PaymentPackageInfo(price: String(localizationKey: "Package_Paid"), purchased: false, available: true)
                 }
                 DispatchQueue.main.async {
                     self.isUpdatingPurchaseStatus = false
@@ -290,7 +298,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
 
 extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             return packageViewController
@@ -306,7 +314,7 @@ extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
 @available(iOS 13.0, *)
 extension FeaturedPackageView: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        if let package = PackageListManager.shared.newestPackage(identifier: self.package) {
+        if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
             let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageViewController.package = package
             

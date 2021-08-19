@@ -24,6 +24,8 @@
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 "Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Starting…";
 "Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
 "Queue_Confirm_Button" = "Confirm";
 "Queue_Clear_Button" = "Clear Queue";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
 
 "Package_Upgrade_Action" = "Upgrade";
 "Package_Reinstall_Action" = "Reinstall";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Remove from Wishlist";
 "Wishlist" = "Wishlist";
 
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Install";
 "Queued_Uninstall_Heading" = "Uninstall";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Search for Packages";
 "Sort_Name" = "Name";
 "Sort_Date" = "Date";
+"Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sort by:";
 
 "Package_Unavailable" = "Package Unavailable";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositories";
+"Repo" = "Repository";
 
 "Add_Source.Title" = "Add Source";
 "Add_Source.Body" = "Add APT URL";
 "Add_Source.Button.Add" = "Add Source";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
 "Installed_Package_Header" = "Installed Package";
+"Installed_Packages" = "Installed Packages";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Show Package Contents";
 
@@ -148,6 +161,13 @@
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Show Details";
 "Hide_Install_Details" = "Hide Details";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
 
 "After_Install_Relaunch" = "Restart Sileo";
 "After_Install_Respring" = "Restart SpringBoard";

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SMAuthorizedClients</key>
+	<array>
+		<string>identifier &quot;sileostore&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</array>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleVersion</key>
+	<string>2.2-40</string>
+	<key>CFBundleName</key>
+	<string>SileoRootDaemon</string>
+	<key>CFBundleIdentifier</key>
+	<string>SileoRootDaemon</string>
+</dict>
+</plist>

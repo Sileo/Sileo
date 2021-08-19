@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/6/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
@@ -67,6 +67,7 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
         centerX.priority = .defaultLow
         centerX.isActive = true
         
+        var packages = [String]()
         for banner in banners {
             guard (banner["url"] as? String) != nil else {
                 continue
@@ -78,6 +79,9 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             let bannerView = FeaturedBannerView()
             bannerView.layer.cornerRadius = itemCornerRadius
             bannerView.banner = banner
+            if let package = banner["package"] as? String {
+                packages.append(package)
+            }
             bannerView.addTarget(self, action: #selector(FeaturedBannersView.bannerTapped), for: .touchUpInside)
             bannerView.widthAnchor.constraint(equalToConstant: itemSize.width).isActive = true
             bannerView.previewDelegate = self
@@ -98,9 +102,17 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
     func viewController(bannerView: FeaturedBannerView) -> UIViewController? {
         let banner = bannerView.banner
         if let package = banner["package"] as? String {
-            if let pkg = PackageListManager.shared.newestPackage(identifier: package) {
+            let package: Package? = {
+                if let holder = PackageListManager.shared.newestPackage(identifier: package, repoContext: nil) {
+                    return holder
+                } else if let provisional = CanisterResolver.shared.package(for: package) {
+                    return provisional
+                }
+                return nil
+            }()
+            if let package = package {
                 let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-                packageViewController.package = pkg
+                packageViewController.package = package
                 return packageViewController
             }
         } else if let packages = banner["packages"] as? [String] {

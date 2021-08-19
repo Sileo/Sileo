@@ -3,7 +3,7 @@
 //  BigBossHTMLParse
 //
 //  Created by CoolStar on 8/27/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -19,12 +19,13 @@ import JavaScriptCore
     func text() -> String?
     func html() -> String?
     func id() -> String?
-    func className() -> String?
+    func className_() -> String?
     func tag() -> String?
     func attr(_ name: String) -> String?
 }
 
 @objc public class ScraperElement: NSObject, ScraperElementExports {
+
     private var rawElement: Element?
 
     public init(rawElement: Element) {
@@ -87,14 +88,14 @@ import JavaScriptCore
         rawElement?.id()
     }
 
-    func className() -> String? {
-        try? rawElement?.className()
-    }
-
     func tag() -> String? {
         rawElement?.tagName().lowercased()
     }
-
+    
+    func className_() -> String? {
+        try? rawElement?.className()
+    }
+    
     func attr(_ name: String) -> String? {
         try? rawElement?.attr(name)
     }

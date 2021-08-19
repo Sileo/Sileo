@@ -12,7 +12,7 @@
 "About" = "Xem Thêm";
 "Close" = "Đóng";
 "Double tap to open." = "Đúp 2 lần để mở.";
-"Untitled_Repo" = "Untitled Repo";
+"Untitled_Repo" = "Kho lưu trữ không tên";
 "OK" = "Đồng Ý";
 "Done" = "Hoàn Thành";
 "Done_Editing" = "Hoàn Thành";
@@ -23,7 +23,9 @@
 "Cancel" = "Huỷ";
 "Acknowledge" = "Chấp Nhận";
 "Remove" = "Xoá";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "Đội Sileo";
+"Warning" = "Cảnh báo";
+"Edit" = "Sửa đổi";
 
 // Popup messages
 "Background_App_Refresh" = "Làm mới ứng dụng nền";
@@ -39,8 +41,11 @@
 "Download_Starting" = "Đang bắt đầu…";
 "Download_Progress" = "%@ với %@"; // first %@ = amount downloaded, second %@ = total to download
 
+"Essential_Warning" = "Những gói sau đây được liệt kê là cần thiết: %@\n Loại bỏ chúng có thể gây hại không thể sửa chữa cho thiết bị của bạn và thiết bị của bạn có thể cần phải được khôi phục. Chỉ tiếp túc nếu như bạn chắc chắn bạn đang làm gì.";
+
 "Queue_Confirm_Button" = "Xác nhận";
 "Queue_Clear_Button" = "Xoá danh sách chờ";
+"Queue_Cancel_Downloads" = "Hủy tải về";
 
 "Package_Upgrade_Action" = "Nâng cấp";
 "Package_Reinstall_Action" = "Cài đặt lại";
@@ -60,6 +65,9 @@
 "Package_Wishlist_Remove" = "Xóa khỏi danh sách yêu thích";
 "Wishlist" = "Danh sách yêu thích";
 
+"No_New_Packages" = "Không có gói mới";
+"News_Check_Later" = "Không có gói mới nào được tìm thấy. Quay trở lại trong vài giờ và bạn sẽ thấy các gói hiện lên khi mà các nguồn được cập nhật.";
+
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Tải về";
 "Queued_Uninstall_Heading" = "Gỡ cài đặt";
@@ -72,6 +80,7 @@
 "Package_Search.Placeholder" = "Tìm kiếm các Gói";
 "Sort_Name" = "Tên";
 "Sort_Date" = "Ngày";
+"Sort_Install_Size" = "Kích cỡ";
 "Sort_By" = "Sắp xếp bởi:";
 
 "Package_Unavailable" = "Gói không khả dụng";
@@ -87,7 +96,7 @@
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Xoá";
+"Remove" = "Xóa";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
@@ -98,10 +107,13 @@
 "Ignored Updates" = "Bỏ qua Cập nhật";
 
 "Repos" = "Kho lưu trữ";
+"Repo" = "Kho lưu trữ";
 
 "Add_Source.Title" = "Thêm nguồn";
 "Add_Source.Body" = "Thêm liên kết APT";
 "Add_Source.Button.Add" = "Thêm nguồn";
+"Add_Dist_Repo" = "Thêm nguồn phân phối";
+"Incorrect_Repo" = "%@ không phải là nguồn chính xác!? Nguồn có thể không hoạt động hoặc bạn có thể đã nhập nó sai. Bạn có muốn thêm không?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Nhập thủ công";
 
@@ -117,6 +129,7 @@
 "Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
 
 "Installed_Package_Header" = "Gói đã cài đặt";
+"Installed_Packages" = "Các gói đã cài đặt";
 "Version" = "Phiên bản";
 "Show_Package_Contents_Button" = "Xem Nội dung đóng gói";
 
@@ -144,10 +157,17 @@
 "Pog_Developer" = "Bạn bây giờ là một nhà phát triển!";
 "Developer_Mode_Explain" = "Chế độ nhà phát triển vô hiệu hóa yêu cầu HTTPS của API thanh toán.";
 "Auto_Refresh_Sources" = "Tự động làm mới nguồn";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"iCloud_Profile" = "Hiện ảnh đại diện iCloud trong Đặc sắc";
+"Cache_Size" = "Kích thước bộ nhớ đệm";
+"Clear_Cache" = "Xóa bộ nhớ đệm mạng";
+"Clear_Cache_Message" = "Bạn có muốn xóa bộ nhớ đệm mạng? Sẽ làm trống %@";
+"Language" = "Ngôn ngữ";
+"Use_System_Language" = "Sử dụng ngôn ngữ hệ thống";
+"Apply_Changes" = "Áp dụng thay đổi";
+"Apply_Changes_Confirm" = "Áp dụng thay đổi sẽ khởi động lại Sileo";
+"Help_Translate" = "Giúp đỡ dịch Sileo";
+"Always_Show_Install_Log" = "Luôn hiện nhật ký cài đặt";
+"Auto_Show_Queue" = "Hiện Hàng chờ khi Cập nhật tất cả";
 
 "Sileo_Light" = "Sileo Sáng";
 "Sileo_Dark" = "Sileo Tối";
@@ -164,6 +184,8 @@
 
 "Show_Install_Details" = "Hiển thị chi tiết";
 "Hide_Install_Details" = "Ẩn chi tiết";
+"Open_In_Filza" = "Mở trong Filza";
+"Copy_Path" = "Sao chép đường dẫn";
 
 "After_Install_Relaunch" = "Khởi động lại Sileo";
 "After_Install_Respring" = "Khởi Động Lại SpringBoard";
@@ -173,7 +195,7 @@
 "After_Install_Reboot_Later" = "Khởi động lại thiết bị sau";
 
 "Dangerous_Repo.Title" = "Repo Nguy Hiểm";
-"Dangerous_Repo.Body" = "Bạn đang cố gắng thêm một kho lưu trữ được biết là có hại vì các lý do như vi phạm bản quyền, nội dung bất hợp pháp hoặc phần mềm độc hại. \n\n Các kho lưu trữ được đánh dấu là có hại thường phân phối phần mềm với các tác dụng không mong muốn, cho dù ở dạng gói trả phí miễn phí hay dạng khác các gói độc hại. Điều này có thể ảnh hưởng lâu dài đến thiết bị và quyền riêng tư của bạn, thậm chí đôi khi ảnh hưởng đến khả năng bẻ khóa của bạn. Chúng tôi khuyên bạn nên hết sức thận trọng để tránh phần mềm có hại.";
+"Dangerous_Repo.Body" = "Bạn đang cố gắng thêm một kho lưu trữ được biết là có hại vì các lý do như vi phạm bản quyền, nội dung bất hợp pháp hoặc phần mềm độc hại. \n\n Các kho lưu trữ được đánh dấu là có hại thường phân phối phần mềm với các tác dụng không mong muốn, cho dù ở dạng gói trả phí miễn phí hay các gói độc hại khác. Điều này có thể ảnh hưởng lâu dài đến thiết bị và quyền riêng tư của bạn, thậm chí đôi khi ảnh hưởng đến khả năng bẻ khóa của bạn. Chúng tôi khuyên bạn nên hết sức thận trọng để tránh phần mềm có hại.";
 "Dangerous_Repo.Continue" = "Tôi chấp nhận rủi ro, tiếp tục";
 "Dangerous_Repo.Cancel" = "Đưa tôi về nơi an toàn";
 "Dangerous_Repo.Last_Chance.Title" = "Thêm Repo có hại?";
@@ -183,10 +205,10 @@
 
 // All export-based strings
 "Export" = "Xuất";
-"Export_Packages" = "Bạn có muốn xuất danh sách gói hàng của mình không? Thao tác này sẽ sao chép tất cả tên gói và phiên bản của chúng vào khay nhớ tạm của bạn.";
+"Export_Packages" = "Bạn có muốn xuất danh sách các gói của mình không? Thao tác này sẽ sao chép tất cả tên gói và phiên bản của chúng vào khay nhớ tạm của bạn.";
 "Export_Sources" = "Bạn có muốn xuất danh sách nguồn của mình không? Thao tác này sẽ sao chép tất cả các liên kết nguồn vào khay nhớ tạm của bạn.";
 "Export_Yes" = "Đồng ý, sao chép.";
-"Export_No" = "Không, Huỷ.";
+"Export_No" = "Không, huỷ.";
 
 // Depcitions
 "View_Depiction" = "Xem mô tả";

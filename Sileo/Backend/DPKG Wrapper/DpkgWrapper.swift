@@ -3,7 +3,7 @@
 //  Anemone
 //
 //  Created by CoolStar on 6/23/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -69,7 +69,7 @@ class DpkgWrapper {
                                                            "installed": .installed]
     
     public class func dpkgInterrupted() -> Bool {
-        let updatesDir = PackageListManager.shared.dpkgDir.appendingPathComponent("updates/")
+        let updatesDir = CommandPath.dpkgDir.appendingPathComponent("updates/")
         var interrupted = false
         guard let contents = try? FileManager.default.contentsOfDirectory(atPath: updatesDir.absoluteURL.path) else {
             return interrupted
@@ -82,18 +82,24 @@ class DpkgWrapper {
         return interrupted
     }
     
-    public class func getArchitectures() -> [String] {
+    public static var getArchitectures: [String] = {
+        #if arch(x86_64) && !targetEnvironment(simulator)
+        let defaultArchitectures = ["darwin-amd64"]
+        #elseif arch(arm64) && os(macOS)
+        let defaultArchitectures = ["darwin-arm64"]
+        #else
         let defaultArchitectures = ["iphoneos-arm"]
+        #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
-        let (retVal, outputString, _) = spawn(command: "/usr/bin/dpkg", args: ["dpkg", "--print-architecture"])
-        guard retVal == 0 else {
+        let (status, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
+        guard status == 0 else {
             return defaultArchitectures
         }
         return outputString.components(separatedBy: CharacterSet(charactersIn: "\n"))
         #endif
-    }
+    }()
     
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
         guard let dpkgCmp = try? compareVersions(version, greaterThan) else {
@@ -131,7 +137,7 @@ class DpkgWrapper {
     
     public class func ignoreUpdates(_ ignoreUpdates: Bool, package: String) {
         let ignoreCommand = ignoreUpdates ? "hold" : "unhold"
-        let command = ["/usr/bin/apt-mark", "\(ignoreCommand)", "\(package)"]
+        let command = [CommandPath.aptmark, "\(ignoreCommand)", "\(package)"]
         spawnAsRoot(args: command)
     }
     
@@ -153,7 +159,7 @@ class DpkgWrapper {
         Name: Bourne-Again SHell
         """
         #else
-        let (_, outputString, _) = spawn(command: "/usr/bin/dpkg-deb", args: ["dpkg-deb", "--field", "\(packageURL.path)"])
+        let (_, outputString, _) = spawn(command: CommandPath.dpkgdeb, args: ["dpkg-deb", "--field", "\(packageURL.path)"])
         return outputString
         #endif
     }

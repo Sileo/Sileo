@@ -3,12 +3,12 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/18/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
 
-class FeaturedViewController: SileoViewController, UIScrollViewDelegate, FeaturedViewDelegate {
+final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, FeaturedViewDelegate {
     private var profileButton: UIButton?
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
@@ -17,8 +17,9 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = String(localizationKey: "Featured_Page")
+        self.navigationController?.tabBarItem._setInternalTitle(String(localizationKey: "Featured_Page"))
         
         self.setupProfileButton()
         
@@ -37,14 +38,12 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }, completion: { _ in
             self.activityIndicatorView?.isHidden = true
         })
-        DispatchQueue.global(qos: .userInitiated).async {
-            PackageListManager.shared.waitForReady()
-        }
-        
+
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
-            let (status, output, _) = spawnAsRoot(args: ["/usr/bin/whoami"])
+            let (status, output, _) = spawnAsRoot(args: [CommandPath.whoami])
+            print(status, output)
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
@@ -54,14 +53,11 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                 }
             }
             
-            PackageListManager.shared.waitForReady()
+            PackageListManager.shared.initWait()
             
             var foundBroken = false
-            
-            if let installedPackages = PackageListManager.shared.packagesList(loadIdentifier: "--installed", repoContext: nil) {
-                for package in installedPackages where package.status == .halfconfigured {
-                    foundBroken = true
-                }
+            for package in PackageListManager.shared.installedPackages.values where package.status == .halfconfigured {
+                foundBroken = true
             }
             
             if DpkgWrapper.dpkgInterrupted() || foundBroken {
@@ -73,11 +69,8 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
                 }
                 
                 DispatchQueue.global(qos: .default).async {
-                    let (status, output, errorOutput) = spawnAsRoot(args: ["/usr/bin/dpkg", "--configure", "-a"])
-                    
-                    PackageListManager.shared.purgeCache()
-                    PackageListManager.shared.waitForReady()
-                    
+                    let (status, output, errorOutput) = spawnAsRoot(args: [CommandPath.dpkg, "--configure", "-a"])
+                    PackageListManager.shared.installChange()
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {
                             if status != 0 {
@@ -118,36 +111,80 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         if UIApplication.shared.applicationState == .background {
             return
         }
+        #if targetEnvironment(macCatalyst)
+        let deviceName = "mac"
+        #else
         let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        #endif
         guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
             return
         }
         let agent = self.userAgent 
         let headers: [String: String] = ["User-Agent": agent]
-        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { success, dict in
+        AmyNetworkResolver.dict(url: jsonURL, headers: headers, cache: true) { [weak self] success, dict in
             guard success,
+                  let strong = self,
                   let dict = dict else { return }
-            if let cachedData = self.cachedData,
+            if let cachedData = strong.cachedData,
                NSDictionary(dictionary: cachedData).isEqual(to: dict) {
                 return
             }
-            self.cachedData = dict
+            strong.cachedData = dict
             DispatchQueue.main.async {
                 if let minVersion = dict["minVersion"] as? String,
                     minVersion.compare(StoreVersion) == .orderedDescending {
-                    self.versionTooLow()
+                    strong.versionTooLow()
                 }
                 
-                self.featuredView?.removeFromSuperview()
+                CanisterResolver.nistercanQueue.async {
+                    let packageMan = PackageListManager.shared
+                    packageMan.initWait()
+                    
+                    // Nistercan trolling
+                    var packages = [String]()
+                    func findPackageInDict(_ dict: [String: Any]) {
+                        for (key, value) in dict {
+                            if key == "package",
+                               let package = value as? String {
+                                packages.append(package)
+                            } else if let dict = value as? [String: Any] {
+                                findPackageInDict(dict)
+                            } else if let array = value as? [[String: Any]] {
+                                for view in array {
+                                    findPackageInDict(view)
+                                }
+                            }
+                        }
+                    }
+                    findPackageInDict(dict)
+                    
+                    var nonFound = [String]()
+                    let allPackages = packageMan.allPackagesArray
+                    for package in packages {
+                        if packageMan.newestPackage(identifier: package, repoContext: nil, packages: allPackages) == nil {
+                            nonFound.append(package)
+                        }
+                    }
+                
+                    CanisterResolver.shared.batchFetch(nonFound) { change in
+                        if change {
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: FeaturedPackageView.featuredPackageReload, object: nil)
+                            }
+                        }
+                    }
+                }
+                            
+                strong.featuredView?.removeFromSuperview()
                 if let featuredView = FeaturedBaseView.view(dictionary: dict,
-                                                            viewController: self,
+                                                            viewController: strong,
                                                             tintColor: nil, isActionable: false) as? FeaturedBaseView {
                     featuredView.delegate = self
-                    self.featuredView?.removeFromSuperview()
-                    self.scrollView?.addSubview(featuredView)
-                    self.featuredView = featuredView
+                    strong.featuredView?.removeFromSuperview()
+                    strong.scrollView?.addSubview(featuredView)
+                    strong.featuredView = featuredView
                 }
-                self.viewDidLayoutSubviews()
+                strong.viewDidLayoutSubviews()
             }
         }
     }
@@ -208,11 +245,37 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         }
     }
     
+    private func windowCheck() {
+        guard let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController else {
+            fatalError("Invalid Storyboard")
+        }
+        for viewController in tabBarController.viewControllers ?? [] {
+            if viewController as? SileoNavigationController != nil { continue }
+            if viewController as? SourcesSplitViewController != nil { continue }
+            tabBarController.viewControllers?.removeAll(where: { $0 == viewController })
+        }
+        if tabBarController.viewControllers?.count ?? 0 >= 6 {
+            fatalError("Invalid View Controllers")
+        }
+    }
+    
     func setPicture(_ button: UIButton) -> UIButton {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true),
+            let image = ICloudPFPHandler.refreshiCloudPicture({ image in
+                DispatchQueue.main.async {
+                    if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true) {
+                        button.setImage(image, for: .normal)
+                    }
+                }
+            }) {
+                button.setImage(image, for: .normal)
+        } else {
+            button.setImage(UIImage(named: "User")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
         button.tintColor = .tintColor
+        windowCheck()
         return button
     }
     
@@ -228,7 +291,7 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.addSubview(profileButton)
-            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if LanguageHelper.shared.isRtl {
                 profileButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 16).isActive = true
             } else {
                 profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true
@@ -244,6 +307,12 @@ class FeaturedViewController: SileoViewController, UIScrollViewDelegate, Feature
         let profileViewController = SettingsViewController(style: .grouped)
         let navController = SettingsNavigationController(rootViewController: profileViewController)
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    public func showPackage(_ package: Package?) {
+        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
+        packageViewController.package = package
+        self.navigationController?.pushViewController(packageViewController, animated: true)
     }
     
     func moveAndResizeProfile(height: CGFloat) {

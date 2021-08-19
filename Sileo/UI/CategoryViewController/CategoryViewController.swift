@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/31/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -16,6 +16,7 @@ class CategoryViewController: SileoTableViewController {
     
     private var featuredBannerData: [String: Any]?
     private var bannersView: FeaturedBannersView?
+    private var showInstalled = false
     
     private var headerStackView: UIStackView?
     private var authenticationBannerView: PaymentAuthenticationBannerView?
@@ -72,13 +73,23 @@ class CategoryViewController: SileoTableViewController {
     }
     
     @objc func reloadData() {
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             var categories: Set<String> = []
             var categoriesCountCache: [String: Int] = [:]
+            let packages: [Package]?
+            let installed: [Package]?
+            if let context = self.repoContext,
+                  let url = context.url {
+                let betterContext = RepoManager.shared.repo(with: url) ?? context
+                packages =  betterContext.packageArray
+                installed = betterContext.installed
+            } else {
+                packages = PackageListManager.shared.allPackagesArray
+                installed = nil
+            }
             
-            let packages = PackageListManager.shared.packagesList(loadIdentifier: "", repoContext: self.repoContext)
             for package in packages ?? [] {
-                let category = PackageListManager.shared.humanReadableCategory(package.section)
+                let category = PackageListManager.humanReadableCategory(package.section)
                 if !categories.contains(category) {
                     categories.insert(category)
                 }
@@ -86,7 +97,9 @@ class CategoryViewController: SileoTableViewController {
                 let count = categoriesCountCache[loadIdentifier] ?? 0
                 categoriesCountCache[loadIdentifier] = count + 1
             }
-            categoriesCountCache[""] = packages?.count ?? 0
+            categoriesCountCache["--allCategories"] = packages?.count ?? 0
+            categoriesCountCache["--contextInstalled"] = installed?.count ?? 0
+            self.showInstalled = !(installed?.isEmpty ?? true)
             self.categoriesCountCache = categoriesCountCache
             self.categories = categories.sorted(by: { str1, str2 -> Bool in
                 str1.compare(str2) != .orderedDescending
@@ -127,28 +140,23 @@ class CategoryViewController: SileoTableViewController {
             guard let featuredURL = repoContext.url?.appendingPathComponent("sileo-featured.json") else {
                 return
             }
-            URLSession.shared.dataTask(with: featuredURL) { data, _, error in
-                guard error == nil, let data = data else {
-                    return
-                }
-                guard let rawDepiction = try? JSONSerialization.jsonObject(with: data, options: []) else {
-                    return
-                }
-                guard let depiction = rawDepiction as? [String: Any],
-                    (depiction["class"] as? String) == "FeaturedBannersView" else {
-                        return
-                }
-                self.featuredBannerData = depiction
-                
+            AmyNetworkResolver.dict(url: featuredURL, cache: true) { [weak self] success, dict in
+                guard success,
+                      let depiction = dict,
+                      let strong = self,
+                      (depiction["class"] as? String) == "FeaturedBannersView" else { return }
+                strong.featuredBannerData = depiction
+                guard let banners = depiction["banners"] as? [[String: Any]],
+                      !banners.isEmpty else { return }
                 DispatchQueue.main.async {
-                    if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: self, tintColor: nil, isActionable: false) {
-                        let newHeight = headerView.depictionHeight(width: self.view.bounds.width)
+                    if let headerView = FeaturedBannersView.view(dictionary: depiction, viewController: strong, tintColor: nil, isActionable: false) {
+                        let newHeight = headerView.depictionHeight(width: strong.view.bounds.width)
                         headerView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                        self.headerStackView?.addArrangedSubview(headerView)
-                        self.updateHeaderStackView()
+                        strong.headerStackView?.addArrangedSubview(headerView)
+                        strong.updateHeaderStackView()
                     }
                 }
-            }.resume()
+            }
         }
     }
     
@@ -160,10 +168,14 @@ class CategoryViewController: SileoTableViewController {
         guard let headerStackView = self.tableView.tableHeaderView as? UIStackView else {
             return
         }
-        for subview in headerStackView.arrangedSubviews {
-            if let bannerView = subview as? FeaturedBannersView {
-                let newHeight = bannerView.depictionHeight(width: parentSize.width)
-                subview.frame = CGRect(x: subview.frame.minX, y: subview.frame.minY, width: subview.frame.width, height: newHeight)
+        if headerStackView.arrangedSubviews.isEmpty {
+            headerStackView.frame = CGRect(x: .zero, y: .zero, width: parentSize.width, height: 0)
+        } else {
+            for subview in headerStackView.arrangedSubviews {
+                if let bannerView = subview as? FeaturedBannersView {
+                    let newHeight = bannerView.depictionHeight(width: parentSize.width)
+                    subview.frame = CGRect(x: subview.frame.minX, y: subview.frame.minY, width: subview.frame.width, height: newHeight)
+                }
             }
         }
         self.headerStackView?.layoutIfNeeded()
@@ -184,25 +196,39 @@ class CategoryViewController: SileoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1 + (categories?.count ?? 0)
+        buffer + (categories?.count ?? 0)
     }
     
     func isAllCategories(indexPath: IndexPath) -> Bool {
         indexPath.row == 0
     }
     
+    func isInstalled(indexPath: IndexPath) -> Bool {
+        showInstalled && (indexPath.row == 1)
+    }
+    
     func categoryName(indexPath: IndexPath) -> String {
         if self.isAllCategories(indexPath: indexPath) {
             return String(localizationKey: "All_Categories")
         }
-        return categories?[indexPath.row  - 1] ?? ""
+        if self.isInstalled(indexPath: indexPath) {
+            return String(localizationKey: "Installed_Packages")
+        }
+        return categories?[indexPath.row  - buffer] ?? ""
     }
     
     func loadIdentifier(forCategoryAt indexPath: IndexPath) -> String {
         if self.isAllCategories(indexPath: indexPath) {
-            return ""
+            return "--allCategories"
+        }
+        if self.isInstalled(indexPath: indexPath) {
+            return "--contextInstalled"
         }
         return "category:\(self.categoryName(indexPath: indexPath))"
+    }
+
+    var buffer: Int {
+        showInstalled ? 2 : 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -213,7 +239,7 @@ class CategoryViewController: SileoTableViewController {
         let loadIdentifier = self.loadIdentifier(forCategoryAt: indexPath)
         let packageCount = categoriesCountCache?[loadIdentifier]
         
-        let weight: UIFont.Weight = self.isAllCategories(indexPath: indexPath) ? .semibold : .regular
+        let weight: UIFont.Weight = (self.isAllCategories(indexPath: indexPath) || self.isInstalled(indexPath: indexPath)) ? .semibold : .regular
         if let textLabel = cell.textLabel {
             textLabel.font = UIFont.systemFont(ofSize: textLabel.font.pointSize, weight: weight)
             textLabel.text = categoryName

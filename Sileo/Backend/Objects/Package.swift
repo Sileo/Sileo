@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/3/19.
-//  Copyright © 2019 CoolStar. All rights reserved.
+//  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
 final class Package: Hashable, Equatable {
@@ -25,13 +25,16 @@ final class Package: Hashable, Equatable {
     public var sourceFileURL: URL?
     public var rawControl: [String: String] = [:]
     public var rawData: Data?
-    public var essential: Bool = false
+    public var essential: String?
     public var commercial: Bool = false
+    public var installedSize: Int?
     public var tags: PackageTags = .none
     
-    public var allVersionsInternal = [PackageOld]()
+    public var allVersionsInternal = [String: PackageOld]()
     public var allVersions: [Package] {
-        return allVersionsInternal.map({ $0.packageNew })
+        var allVersionsInternal = allVersionsInternal.map { $1.packageNew }
+        allVersionsInternal.insert(self, at: 0)
+        return allVersionsInternal
     }
     
     public var fromStatusFile: Bool = false
@@ -42,7 +45,7 @@ final class Package: Hashable, Equatable {
     public var filename: String?
     public var size: String?
     public var packageFileURL: URL?
-    public var userReadDate: Date?
+    public var userRead = false
     
     var sourceRepo: Repo? {
         guard let sourceFileSafe = sourceFile else {
@@ -73,8 +76,13 @@ final class Package: Hashable, Equatable {
     public func addOld(_ packages: [Package]) {
         for package in packages {
             let packageOld = PackageOld(package: package)
-            allVersionsInternal.removeAll(where: { packageOld == $0 })
-            allVersionsInternal.append(packageOld)
+            allVersionsInternal[packageOld.version] = packageOld
+        }
+    }
+    
+    public func addOldInternal(_ packages: [PackageOld]) {
+        for package in packages {
+            allVersionsInternal[package.version] = package
         }
     }
 }
@@ -93,11 +101,13 @@ final class PackageOld: Hashable, Equatable {
     public var rawData: Data?
     public var sourceFileURL: URL?
     public var source: String?
+    public var essential: String?
     public var commercial: Bool = false
     public var filename: String?
     public var size: String?
     public var packageFileURL: URL?
     public var architecture: String?
+    public var installedSize: Int?
     
     init(package: Package) {
         self.sourceFile = package.sourceFile
@@ -109,11 +119,13 @@ final class PackageOld: Hashable, Equatable {
         self.rawData = package.rawData
         self.sourceFileURL = package.sourceFileURL
         self.source = package.source
+        self.essential = package.essential
         self.commercial = package.commercial
         self.filename = package.filename
         self.size = package.size
         self.packageFileURL = package.packageFileURL
         self.architecture = package.architecture
+        self.installedSize = package.installedSize
     }
     
     public var packageNew: Package {
@@ -124,11 +136,13 @@ final class PackageOld: Hashable, Equatable {
         package.rawData = self.rawData
         package.sourceFileURL = self.sourceFileURL
         package.source = self.source
+        package.essential = self.essential
         package.commercial = self.commercial
         package.filename = self.filename
         package.size = self.size
         package.packageFileURL = self.packageFileURL
         package.architecture = self.architecture
+        package.installedSize = self.installedSize
         return package
     }
     

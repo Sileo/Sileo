@@ -17,19 +17,21 @@ For localization, [join our Crowdin project](https://crowdin.com/project/sileo) 
 
 For code, make a pull request with your changes and our team will review it. 
 
-To set up development, follow these steps: 
+To set up development: 
 
 1. Clone this repository
     ```
-    git clone --recursive https://github.com/Sileo/Sileo.git ./Sileo
-    cd ./Sileo
+    git clone --recursive https://github.com/Sileo/Sileo
     ```
-2. Configure the `Config.xcconfig` file
-    * Open that file and set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
-    * Remove that file from source control with `git update-index --skip-worktree ./Config.xcconfig`
+2. Somehow set `DEVELOPMENT_TEAM` to your Apple Developer Team ID
+    
+    There are several different ways to do this: 
+    
+    * Using Xcode's Custom Paths: go to Xcode > Preferences > Locations > Custom Paths and add an entry with `Name` as `DEVELOPMENT_TEAM`, `Display Name` as `Development Team`, and `Path` as your Team ID
+    * Using Xcode's Build Settings: set the `Development Team` build setting, remembering to never commit that change
 3. Open `Sileo.xcodeproj` and have at it!
 
-If you have any questions, ask in the Sileo Discord server. Happy coding!
+If you have any questions, ask in the Sileo Discord server. Happy developing!
  
 #
 
