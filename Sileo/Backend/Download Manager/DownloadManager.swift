@@ -446,8 +446,8 @@ final class DownloadManager {
         
         var installDepOperation = [String: [(String, String)]]()
         for operation in aptOutput.operations where operation.type == .install {
-            let release = operation.release.split(separator: " ")
-            guard let host = release.first else { continue }
+            guard let release = operation.release?.split(separator: " "),
+                  let host = release.first else { continue }
             installIdentifiers.append(operation.packageID)
             if var hostArray = installDepOperation[String(host)] {
                 hostArray.append((operation.packageID, operation.version))

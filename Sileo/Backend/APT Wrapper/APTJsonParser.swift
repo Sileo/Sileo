@@ -65,7 +65,7 @@ struct APTOperation: Decodable {
     let packageID: String
     let version: String
     let type: OperationType
-    let release: String
+    let release: String?
 }
 
 struct APTBrokenPackage: Decodable {
