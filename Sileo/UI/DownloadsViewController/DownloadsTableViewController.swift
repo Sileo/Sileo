@@ -529,9 +529,8 @@ class DownloadsTableViewController: SileoViewController {
             detailsTextView?.attributedText = self.transform(attributedString: detailsAttributedString)
         }
         
-        let installs = installations + upgrades + installdeps
-        let removals = uninstallations + uninstalldeps
-        APTWrapper.performOperations(installs: installs, removals: removals, progressCallback: { _, statusValid, statusReadable, package in
+        let installs = installations + upgrades
+        APTWrapper.performOperations(installs: installs, removals: uninstallations, progressCallback: { _, statusValid, statusReadable, package in
             if statusValid {
                 self.statusWork(package: package, status: statusReadable)
             }

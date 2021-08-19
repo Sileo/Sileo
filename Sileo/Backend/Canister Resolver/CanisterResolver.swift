@@ -264,7 +264,7 @@ struct ProvisionalPackage {
         } else {
             self.author = "Unknown"
         }
-        self.version = entry["latestVersion"] as? String
+        self.version = entry["latestVersion"] as? String ?? entry["version"] as? String
     }
 }
 
