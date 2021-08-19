@@ -85,6 +85,10 @@ final class Package: Hashable, Equatable {
             allVersionsInternal[package.version] = package
         }
     }
+    
+    public func getVersion(_ version: String) -> Package? {
+        allVersions.first(where: { $0.version == version })
+    }
 }
 
 func == (lhs: Package, rhs: Package) -> Bool {

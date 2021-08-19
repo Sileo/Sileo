@@ -479,9 +479,9 @@ final class PackageListManager {
         return package
     }
     
-    public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil) -> [Package] {
+    public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil, packages: [Package]? = nil) -> [Package] {
         if identifiers.isEmpty { return [] }
-        let packages = (repoContext?.packageArray ?? allPackagesArray)
+        let packages = (repoContext?.packageArray ?? packages ?? allPackagesArray)
         var rawPackages = [Package]()
         for identifier in identifiers {
             rawPackages += packages.filter { $0.packageID == identifier }

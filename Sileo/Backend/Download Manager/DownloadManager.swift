@@ -430,7 +430,7 @@ final class DownloadManager {
         for operation in aptOutput.operations where operation.type == .install {
             installIdentifiers.append(operation.packageID)
         }
-
+        let installCopy = installIdentifiers
         // Get every package to be uninstalled
         var uninstallIdentifiers = [String]()
         for operation in aptOutput.operations where operation.type == .remove {
@@ -438,15 +438,43 @@ final class DownloadManager {
         }
         
         var uninstallations = uninstallations.raw
-        let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false)
+        let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false, packages: Array(PackageListManager.shared.installedPackages.values))
         guard rawUninstalls.count == uninstallIdentifiers.count else {
             throw APTParserErrors.blankJsonOutput
         }
         var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
-    
-        // Get the package objects for each
-        let rawInstalls = PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
-        guard rawInstalls.count == installIdentifiers.count else {
+        
+        var installDepOperation = [String: [(String, String)]]()
+        for operation in aptOutput.operations where operation.type == .install {
+            let release = operation.release.split(separator: " ")
+            guard let host = release.first else { continue }
+            installIdentifiers.append(operation.packageID)
+            if var hostArray = installDepOperation[String(host)] {
+                hostArray.append((operation.packageID, operation.version))
+                installDepOperation[String(host)] = hostArray
+            } else {
+                installDepOperation[String(host)] = [(operation.packageID, operation.version)]
+            }
+        }
+        var rawInstalls = [Package]()
+        for (host, packages) in installDepOperation {
+            if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == host }) {
+                for package in packages {
+                    if let repoPackage = repo.packageDict[package.0] {
+                        if repoPackage.version == package.1 {
+                            rawInstalls.append(repoPackage)
+                            installIdentifiers.removeAll { $0 == package.0 }
+                        } else if let version = repoPackage.getVersion(package.1) {
+                            rawInstalls.append(version)
+                            installIdentifiers.removeAll { $0 == package.0 }
+                        }
+                    }
+                }
+            }
+        }
+        
+        rawInstalls += PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
+        guard rawInstalls.count == installCopy.count else {
             throw APTParserErrors.blankJsonOutput
         }
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
