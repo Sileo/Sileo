@@ -24,7 +24,8 @@
 "Acknowledge" = "Я понял";
 "Remove" = "Удалить";
 "Sileo_Team" = "Команда Sileo";
-"Warning" = "Warning";
+"Warning" = "Предупреждение";
+"Edit" = "Изменить";
 
 // Popup messages
 "Background_App_Refresh" = "Обновление фоновых приложений";
@@ -40,11 +41,11 @@
 "Download_Starting" = "Начало...";
 "Download_Progress" = "%@ из %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Следующие пакеты указаны как необходимые/обязательные: %@\n Их удаление может привести к необратимому повреждению вашего устройства и может потребовать восстановления. Продолжайте, только если уверены, в том, что делаете.";
 
 "Queue_Confirm_Button" = "Подтвердить";
 "Queue_Clear_Button" = "Очистить очередь";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Отменить загрузки";
 
 "Package_Upgrade_Action" = "Обновить";
 "Package_Reinstall_Action" = "Переустановить";
@@ -64,8 +65,8 @@
 "Package_Wishlist_Remove" = "Удалить из списка желаний";
 "Wishlist" = "Список желаний";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Нет новых пакетов";
+"News_Check_Later" = "Еще нет новых проиндексированных пакетов. Вернитесь через несколько часов, и вы должны увидеть, как пакеты начинают появляться здесь по мере обновления репозиториев.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Установка";
@@ -112,7 +113,7 @@
 "Add_Source.Body" = "Добавить APT URL";
 "Add_Source.Button.Add" = "Добавить источник";
 "Add_Dist_Repo" = "Добавить репозиторий";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ Не является действительным репозиторием⁉️ Репозиторий может быть офлайн или вы ввели его неправильно. Вы все равно хотите его добавить?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Ввести вручную";
 
@@ -166,7 +167,7 @@
 "Apply_Changes_Confirm" = "Применение изменений потребует перезапуска Sileo";
 "Help_Translate" = "Помочь в переводе Sileo";
 "Always_Show_Install_Log" = "Всегда показывать логи установки";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Показать очередь при обновлении всего";
 
 "Sileo_Light" = "Светлый Sileo";
 "Sileo_Dark" = "Темный Sileo";

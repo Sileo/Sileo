@@ -25,6 +25,7 @@
 "Remove" = "Kaldır";
 "Sileo_Team" = "Sileo Ekibi";
 "Warning" = "Uyarı";
+"Edit" = "Düzenle";
 
 // Popup messages
 "Background_App_Refresh" = "Arka Planda Uygulama Yenile";
@@ -112,7 +113,7 @@
 "Add_Source.Body" = "Kaynak URL'sini Girin";
 "Add_Source.Button.Add" = "Kaynak Ekle";
 "Add_Dist_Repo" = "Dağıtım Kaynağını Ekle";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ geçerli bir kaynak gibi görünmüyor. Kaynak çevrimdışı olabilir veya URL'yi yanlış girmiş olabilirsiniz. Yine de eklemek istiyor musunuz?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Elle Gir";
 
