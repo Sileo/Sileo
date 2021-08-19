@@ -37,7 +37,7 @@
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Adicionar os seguintes %#@urls@ encontrados na sua área de transferência:</string>
+      <string>Adicionar as seguintes %#@urls@ encontradas na sua área de transferência:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>

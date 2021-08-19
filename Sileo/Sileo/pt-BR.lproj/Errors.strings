@@ -12,7 +12,7 @@
 "Error_Indicator" = "Erro: %@";
 
 "No_Package.Title" = "Não foi possível encontrar o pacote %@ nos repositórios instalados.";
-"No_Package.Body" = "Se é novo, espere o Sileo terminar de atualizar, e depois tente de novo. Verifique online para mais ajuda.";
+"No_Package.Body" = "Se for novo, espere o Sileo terminar de atualizar e tente novamente. Verifique online para obter ajuda.";
 
 "Invalid_URL.Title" = "URL inválido";
 
@@ -24,7 +24,7 @@
 "Insecure_Paid_Download" = "URLs de download de pacotes pagos devem ser seguros (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "O fornecedor de pagamento forneceu uma resposta inválida.";
-"No_Payment_Provider" = "Este repo não oferece suporte a compras do Sileo. Se este for um pacote Cydia Store que você já comprou, você pode vincular sua conta para baixá-lo.";
+"No_Payment_Provider" = "Esta repo não oferece suporte a compras do Sileo. Se este for um pacote Cydia Store que você já comprou, você pode vincular sua conta para baixá-lo.";
 
 "Package_Unavailable" = "Este pacote não está disponível nas suas fontes atualmente instaladas. Por favor verifique se a repo %@ está disponível.";
 
@@ -49,7 +49,7 @@
 "Form_Action_Host_Mismatch" = "O host do URL de ação do formulário não corresponde ao host de origem do formulário.";
 
 "Email_Unavailable.Title" = "Falha ao enviar email";
-"Email_Unavailable.Body" = "Os serviços Mail não se encontram disponíveis.";
+"Email_Unavailable.Body" = "Os serviços Mail não estão disponíveis.";
 
 "Settings_Payment_Provider.Profile.Title" = "Falha ao carregar Perfil";
 

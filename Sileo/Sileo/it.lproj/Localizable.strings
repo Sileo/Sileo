@@ -24,8 +24,8 @@
 "Acknowledge" = "Riconoscere";
 "Remove" = "Rimuovi";
 "Sileo_Team" = "Team di Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Attenzione";
+"Edit" = "Modifica";
 
 // Popup messages
 "Background_App_Refresh" = "Aggiornamento delle app in background";
@@ -41,37 +41,37 @@
 "Download_Starting" = "Avviando…";
 "Download_Progress" = "%@ di %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "I seguenti pacchetti sono essenziali/obbligatori: %@\n Rimuoverli potrebbe causare danni irreversibili al tuo dispositivo e potrebbe richiedere un ripristino. Continua soltanto se sei sicuro di sapere ciò che stai facendo.";
 
-"Queue_Confirm_Button" = "Confermare";
+"Queue_Confirm_Button" = "Conferma";
 "Queue_Clear_Button" = "Pulisci coda";
-"Queue_Cancel_Downloads" = "Cancellare i Download";
+"Queue_Cancel_Downloads" = "Cancella i Download";
 
-"Package_Upgrade_Action" = "Aggiornare";
-"Package_Reinstall_Action" = "Re-Installare";
-"Package_Uninstall_Action" = "Disinstallare";
-"Package_Modify_Action" = "Modificare";
-"Package_Get_Action" = "Ottenere";
+"Package_Upgrade_Action" = "Aggiorna";
+"Package_Reinstall_Action" = "Re-Installa";
+"Package_Uninstall_Action" = "Disinstalla";
+"Package_Modify_Action" = "Modifica";
+"Package_Get_Action" = "Ottieni";
 "Package_Queue_Action" = "Coda";
-"Package_Cancel_Action" = "Annullare";
+"Package_Cancel_Action" = "Annulla";
 "Package_Paid" = "A pagamento";
 
 "Package_Share_Action" = "Condividi Pacchetto…";
 "Package_Developer_Find_Action" = "Altro di questo Sviluppatore";
 "Package_Support_Action" = "Supporto";
 "Package_Hold_Enable_Action" = "Ignora Aggiornamenti Futuri";
-"Package_Hold_Disable_Action" = "Smettere di Ignorare gli Aggiornamenti";
+"Package_Hold_Disable_Action" = "Smetti di Ignorare gli Aggiornamenti";
 "Package_Wishlist_Add" = "Aggiungi alla Lista dei Desideri";
-"Package_Wishlist_Remove" = "Rimuovere dalla Lista dei Desideri";
+"Package_Wishlist_Remove" = "Rimuovi dalla Lista dei Desideri";
 "Wishlist" = "Lista dei Desideri";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Nessun Nuovo Pacchetto";
+"News_Check_Later" = "Non ci sono nuovi pacchetti al momento. Torna tra qualche ora e aggiornando le sorgenti, dovresti essere in grado di visualizzare i pacchetti.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Installare";
-"Queued_Uninstall_Heading" = "Disinstallare";
-"Queued_Update_Heading" = "Aggiornare";
+"Queued_Install_Heading" = "Installa";
+"Queued_Uninstall_Heading" = "Disinstalla";
+"Queued_Update_Heading" = "Aggiorna";
 "Download_Errors_Heading" = "Errori";
 
 "Installed_Heading" = "Installato";
@@ -96,10 +96,10 @@
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
 "Refresh" = "Aggiornare";
-"Remove" = "Rimuovere";
+"Remove" = "Rimuovi";
 
 "All_Packages.Title" = "Tutti i Pacchetti";
-"All_Packages.Cell_Subtitle" = "Vedere tutti i pacchetti delle tue sorgenti";
+"All_Packages.Cell_Subtitle" = "Visualizza tutti i pacchetti delle tue sorgenti";
 
 "All_Categories" = "Tutte le Categorie";
 "Internal_Repo" = "Sorgenti Interne";
@@ -109,13 +109,13 @@
 "Repos" = "Sorgenti";
 "Repo" = "Sorgente";
 
-"Add_Source.Title" = "Aggiungere Sorgente";
-"Add_Source.Body" = "Aggiungere APT URL";
-"Add_Source.Button.Add" = "Aggiungere Sorgente";
-"Add_Dist_Repo" = "Aggiungere Sorgente di Distribuzione";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Aggiungi Sorgente";
+"Add_Source.Body" = "Aggiungi URL APT";
+"Add_Source.Button.Add" = "Aggiungi Sorgente";
+"Add_Dist_Repo" = "Aggiungi Sorgente di Distribuzione";
+"Incorrect_Repo" = "%@ non sembra essere una sorgente valida!? La sorgente potrebbe essere offline o potresti averla digitata in modo errato. Vuoi aggiungerla lo stesso?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Inserire Manualmente";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Inserisci Manualmente";
 
 "Untitled_Form" = "Modulo Senza Titolo";
 "Form_Submitted.Default_Title" = "Modulo Inviato";
@@ -147,27 +147,27 @@
 "Dark_Mode_Toggle" = "Modalità Scura";
 "Theme" = "Tema";
 "Tint_Color" = "Colore del Testo";
-"Reset_Tint_Color" = "Ripristinare Colore del Testo";
-"Auto_Complete_Queue" = "Terminare la coda automaticamente";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Confermare Automaticamente \"Aggiorna Tutto\"";
+"Reset_Tint_Color" = "Ripristina il Colore del Testo";
+"Auto_Complete_Queue" = "Termina coda automaticamente";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Conferma Automaticamente \"Aggiorna Tutto\"";
 "Swipe_Actions" = "Azioni di Scorrimento";
-"Show_Provisional" = "Mostrare i Pacchetti del Canister";
-"Show_Ignored_Updates" = "Mostrare gli Aggiornamenti Ignorati";
+"Show_Provisional" = "Mostra i Pacchetti del Canister";
+"Show_Ignored_Updates" = "Mostra gli Aggiornamenti Ignorati";
 "Developer_Mode" = "Modalità Sviluppatore";
 "Pog_Developer" = "Ora sei uno sviluppatore!";
 "Developer_Mode_Explain" = "La Modalità Sviluppatore disabilita la necessità dell'HTTPS per l'API di pagamento.";
-"Auto_Refresh_Sources" = "Aggiornare le Sorgenti Automaticamente";
-"iCloud_Profile" = "Mostrare le Foto di iCloud nella sezione \"In Evidenza\"";
+"Auto_Refresh_Sources" = "Aggiorna le Sorgenti Automaticamente";
+"iCloud_Profile" = "Mostra le Foto di iCloud in \"In Evidenza\"";
 "Cache_Size" = "Dimensione della Cache";
-"Clear_Cache" = "Cancellare la Cache di Rete";
+"Clear_Cache" = "Cancella la Cache di Rete";
 "Clear_Cache_Message" = "Vuoi cancellare la cache di rete? Questo libererà %@";
 "Language" = "Lingua";
-"Use_System_Language" = "Usare la Lingua di Sistema";
-"Apply_Changes" = "Applicare le Modifiche";
+"Use_System_Language" = "Usa la Lingua di Sistema";
+"Apply_Changes" = "Applica le Modifiche";
 "Apply_Changes_Confirm" = "Applicare i Cambiamenti necessiterà il riavvio di Sileo";
-"Help_Translate" = "Aiutare a Tradurre Sileo";
-"Always_Show_Install_Log" = "Mostrare Sempre il Log d'Installazione";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Help_Translate" = "Aiuta a Tradurre Sileo";
+"Always_Show_Install_Log" = "Mostra Sempre il Log d'Installazione";
+"Auto_Show_Queue" = "Mostra la Coda su \"Aggiorna Tutto\"";
 
 "Sileo_Light" = "Sileo Chiaro";
 "Sileo_Dark" = "Sileo Scuro";
@@ -175,24 +175,24 @@
 "System" = "Sistema";
 "Theme_Settings" = "Impostazioni del Tema";
 
-"Cydia_Sign_In" = "Accedere allo Store di Cydia";
+"Cydia_Sign_In" = "Accedi allo Store di Cydia";
 "Payment_Provider_Signed_In" = "Accesso effettuato";
 "Payment_Provider_Signed_In_With_Name" = "Accesso effettuato come %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Uscire";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Uscire da %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out" = "Esci";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Esci da %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Non sarai più in grado di scaricare i pacchetti acquistati finché non effettui di nuovo l'accesso.";
 
-"Show_Install_Details" = "Mostrare i Dettagli";
-"Hide_Install_Details" = "Nascondere i Dettagli";
+"Show_Install_Details" = "Mostra i Dettagli";
+"Hide_Install_Details" = "Nascondi i Dettagli";
 "Open_In_Filza" = "Apri su Filza";
-"Copy_Path" = "Copiare il Percorso";
+"Copy_Path" = "Copia il Percorso";
 
-"After_Install_Relaunch" = "Riavviare Sileo";
-"After_Install_Respring" = "Riavviare la SpringBoard";
-"After_Install_Reboot" = "Riavviare il Dispositivo";
-"After_Install_Relaunch_Later" = "Riavviare Sileo più tardi";
-"After_Install_Respring_Later" = "Riavviare la SpringBoard più tardi";
-"After_Install_Reboot_Later" = "Riavviare il Dispositivo più tardi";
+"After_Install_Relaunch" = "Riavvia Sileo";
+"After_Install_Respring" = "Riavvia la SpringBoard";
+"After_Install_Reboot" = "Riavvia il Dispositivo";
+"After_Install_Relaunch_Later" = "Riavvia Sileo più tardi";
+"After_Install_Respring_Later" = "Riavvia la SpringBoard più tardi";
+"After_Install_Reboot_Later" = "Riavvia il Dispositivo più tardi";
 
 "Dangerous_Repo.Title" = "Sorgente Pericolosa";
 "Dangerous_Repo.Body" = "Stai tentando di aggiungere una sorgente che è nota per essere dannosa per motivi come pirateria, contenuti illegali o malware. \n\nLe Sorgenti contrassegnate come dannose spesso distribuiscono software con effetti imprevisti, sia sotto forma di pacchetti a pagamento messi a disposizione gratuitamente o altri pacchetti dannosi. Ciò può avere effetti duraturi sul dispositivo e sulla privacy, può anche compromettere la capacità di eseguire il jailbreak. Consigliamo di prestare la massima attenzione per evitare software dannosi.";
@@ -200,15 +200,15 @@
 "Dangerous_Repo.Cancel" = "Riportami al sicuro";
 "Dangerous_Repo.Last_Chance.Title" = "Aggiungere la Sorgente Dannosa?";
 "Dangerous_Repo.Last_Chance.Body" = "Le sorgenti pericolose possono avere effetti devastanti sulla tua capacità di usare il tuo dispositivo o di eseguire il jailbreak. Ti consigliamo vivamente di tornare indietro per la tua sicurezza. Sei sicuro di voler aggiungere %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continuare";
-"Dangerous_Repo.Last_Chance.Cancel" = "Tornare indietro";
+"Dangerous_Repo.Last_Chance.Continue" = "Continua";
+"Dangerous_Repo.Last_Chance.Cancel" = "Torna Indietro";
 
 // All export-based strings
-"Export" = "Esportare";
+"Export" = "Esporta";
 "Export_Packages" = "Desideri esportare la lista dei tuoi pacchetti? Ciò copierà tutti i nomi dei pacchetti e le loro versioni.";
 "Export_Sources" = "Desideri esportare la lista delle tue sorgenti? Ciò copierà tutti gli URL delle sorgenti.";
-"Export_Yes" = "Sì, copiare.";
-"Export_No" = "No, annullare.";
+"Export_Yes" = "Sì, copia.";
+"Export_No" = "No, annulla.";
 
 // Depcitions
-"View_Depiction" = "Visualizzare la Descrizione";
+"View_Depiction" = "Visualizza la Descrizione";
