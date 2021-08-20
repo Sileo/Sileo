@@ -1894,7 +1894,6 @@
 		CFBC7FD9221D88ED0066D501 /* Database Manager */ = {
 			isa = PBXGroup;
 			children = (
-				F172581E24EB8C12000F2FAF /* DatabaseManager.swift */,
 			);
 			path = "Database Manager";
 			sourceTree = "<group>";
@@ -2642,6 +2641,7 @@
 			children = (
 				F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */,
 				F1D6A62222E53E7000CBD045 /* Hash.swift */,
+				F172581E24EB8C12000F2FAF /* DatabaseManager.swift */,
 				F1D6A62122E53E6F00CBD045 /* Locks.swift */,
 				F1D6A62322E53E7000CBD045 /* String+Utilities.swift */,
 				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
@@ -4753,7 +4753,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -4798,7 +4798,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4953,7 +4953,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4999,7 +4999,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5167,7 +5167,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5217,7 +5217,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;

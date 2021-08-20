@@ -441,25 +441,28 @@ class APTWrapper {
             if runUICache {
                 outputCallback("Updating Icon Cache\n", debugFD)
 
-                var newApps = dictionaryOfScannedApps()
-
-                for key in oldApps.keys where oldApps[key] == newApps[key] {
-                    oldApps.removeValue(forKey: key)
-                    newApps.removeValue(forKey: key)
+                let newApps = dictionaryOfScannedApps()
+                var difference = Set<String>()
+                for (key, _) in oldApps where newApps[key] == nil {
+                    difference.insert(key)
                 }
-
-                for key in newApps.keys where oldApps[key] == newApps[key] {
-                    oldApps.removeValue(forKey: key)
-                    newApps.removeValue(forKey: key)
+                for (key, _) in newApps where oldApps[key] == nil {
+                    difference.insert(key)
                 }
-
-                let diff = newApps.merging(oldApps) { current, _ in current }
-                for appName in diff.keys {
+                for (key, value) in newApps where oldApps[key] != nil {
+                    guard let oldValue = oldApps[key] else { continue }
+                    if oldValue != value {
+                        difference.insert(key)
+                    }
+                }
+                NSLog("[Sileo] difference = \(difference)")
+                for appName in difference {
                     let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
                         spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                        NSLog("[Sileo] uicache \(appPath.path)")
                     }
                 }
             }
