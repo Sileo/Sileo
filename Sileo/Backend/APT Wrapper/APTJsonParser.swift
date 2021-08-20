@@ -175,6 +175,7 @@ extension APTWrapper {
         var aptStdout = ""
 
         (_, aptStdout, _) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        NSLog("[Sileo] aptStdout = \(aptStdout)")
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout)
 
         return aptJsonOutput

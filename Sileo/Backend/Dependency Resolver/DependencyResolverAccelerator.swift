@@ -100,7 +100,7 @@ class DependencyResolverAccelerator {
             getDependenciesInternal2(package: packageVersion)
         }
     }
-    
+   
     private func getDependenciesInternal2(package: Package) {
         guard let sourceFileURL = package.sourceFileURL?.aptUrl else {
             return
@@ -126,16 +126,12 @@ class DependencyResolverAccelerator {
                         }
                     }
                     
-                    for depPackage in repo.packagesProvides ?? [] {
-                        var matchedPkg = false
+                    for depPackage in repo.packagesProvides {
                         for packageId in packageIds {
                             if depPackage.rawControl["provides"]?.contains(packageId) ?? false {
-                                matchedPkg = true
+                                getDependenciesInternal(package: depPackage)
                                 break
                             }
-                        }
-                        if matchedPkg {
-                            getDependenciesInternal(package: depPackage)
                         }
                     }
                 }

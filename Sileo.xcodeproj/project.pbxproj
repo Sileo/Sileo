@@ -131,7 +131,6 @@
 		E128184426BBFAA500D2553B /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E128184526BBFAA500D2553B /* SettingsLoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40262F23DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift */; };
 		E128184626BBFAA500D2553B /* DepictionMinVersionForceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D99D22D1453A0021BD89 /* DepictionMinVersionForceView.swift */; };
-		E128184726BBFAA500D2553B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581E24EB8C12000F2FAF /* DatabaseManager.swift */; };
 		E128184826BBFAA500D2553B /* SettingsHeaderViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40263523DF404E002D97FE /* SettingsHeaderViewDisplayable.swift */; };
 		E128184926BBFAA500D2553B /* DepictionRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5D98822D133D00021BD89 /* DepictionRatingView.swift */; };
 		E128184A26BBFAA500D2553B /* PaymentProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40262B23DE8A60002D97FE /* PaymentProviderTableViewCell.swift */; };
@@ -438,6 +437,8 @@
 		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; platformFilter = ios; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1C4993926CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
+		E1C4993A26CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
 		E1C6C0D82677BFDE006228E0 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */; };
 		E1C6C0D92677BFDE006228E0 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */; };
 		E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
@@ -670,8 +671,6 @@
 		F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		F172581C24EB88E3000F2FAF /* PackageStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581B24EB88E3000F2FAF /* PackageStub.swift */; };
 		F172581D24EB88E3000F2FAF /* PackageStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581B24EB88E3000F2FAF /* PackageStub.swift */; };
-		F172581F24EB8C12000F2FAF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581E24EB8C12000F2FAF /* DatabaseManager.swift */; };
-		F172582024EB8C12000F2FAF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581E24EB8C12000F2FAF /* DatabaseManager.swift */; };
 		F178CD8921323E3800F927FA /* DownloadsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */; };
 		F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		F183CFB02318D1FF00D3AF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */; };
@@ -1216,6 +1215,7 @@
 		E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG~ipad@2x.png"; sourceTree = "<group>"; };
 		E1BB50DC260E913A00F870B8 /* OG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OG@3x.png"; sourceTree = "<group>"; };
 		E1C3B7DB26600852009175B6 /* LaunchAsRoot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAsRoot.m; sourceTree = "<group>"; };
+		E1C4993826CFED0A0093E290 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		E1C90256263C75B100569D1E /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
 		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
@@ -1336,7 +1336,6 @@
 		F170DD7C22CFE79800196FDA /* RootWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWrapper.swift; sourceTree = "<group>"; };
 		F172581824EB848E000F2FAF /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		F172581B24EB88E3000F2FAF /* PackageStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageStub.swift; sourceTree = "<group>"; };
-		F172581E24EB8C12000F2FAF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadsTableViewController.xib; sourceTree = "<group>"; };
 		F18383F420FBFFB700450EED /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1891,13 +1890,6 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
-		CFBC7FD9221D88ED0066D501 /* Database Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Database Manager";
-			sourceTree = "<group>";
-		};
 		E128199526BBFBA300D2553B /* Sileo Backend Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2037,6 +2029,14 @@
 				E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */,
 			);
 			path = OG;
+			sourceTree = "<group>";
+		};
+		E1C4993726CFECDF0093E290 /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				E1C4993826CFED0A0093E290 /* DatabaseManager.swift */,
+			);
+			path = DatabaseManager;
 			sourceTree = "<group>";
 		};
 		E1C90249263C74C400569D1E /* DepictionFormViewController */ = {
@@ -2602,13 +2602,13 @@
 		F1B99EE720DB671B00374C27 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				E1C4993726CFECDF0093E290 /* DatabaseManager */,
 				E14C5E63266547BC0080BFCE /* Compression */,
 				E1C90265263D794C00569D1E /* AmyCommon */,
 				F1D1140720DEE40C00C8F051 /* APT Wrapper */,
 				49618DD4260515A40046C094 /* Backend Wrapper */,
 				E166F6F7260A6F9800663FA1 /* Canister Resolver */,
 				F162CCAE20E82DFB00226F10 /* Control File Parser */,
-				CFBC7FD9221D88ED0066D501 /* Database Manager */,
 				F1FFE5D823D5142F00916364 /* Dependency Resolver */,
 				F162CCB120E82E1100226F10 /* Download Manager */,
 				F1D113F120DC52B000C8F051 /* DPKG Wrapper */,
@@ -2641,7 +2641,6 @@
 			children = (
 				F1D6A61F22E53E6F00CBD045 /* FileManager+Utilities.swift */,
 				F1D6A62222E53E7000CBD045 /* Hash.swift */,
-				F172581E24EB8C12000F2FAF /* DatabaseManager.swift */,
 				F1D6A62122E53E6F00CBD045 /* Locks.swift */,
 				F1D6A62322E53E7000CBD045 /* String+Utilities.swift */,
 				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
@@ -3634,7 +3633,6 @@
 				E128184426BBFAA500D2553B /* FolderFinder.swift in Sources */,
 				E128184526BBFAA500D2553B /* SettingsLoadingTableViewCell.swift in Sources */,
 				E128184626BBFAA500D2553B /* DepictionMinVersionForceView.swift in Sources */,
-				E128184726BBFAA500D2553B /* DatabaseManager.swift in Sources */,
 				E128184826BBFAA500D2553B /* SettingsHeaderViewDisplayable.swift in Sources */,
 				E128184926BBFAA500D2553B /* DepictionRatingView.swift in Sources */,
 				E128184A26BBFAA500D2553B /* PaymentProviderTableViewCell.swift in Sources */,
@@ -3847,7 +3845,6 @@
 				F139D0FD22EA9209007F5C0D /* DepictionLabelView.swift in Sources */,
 				F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */,
 				FB40263123DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
-				F172582024EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
 				F139D0D022EA9209007F5C0D /* DepictionMinVersionForceView.swift in Sources */,
 				FB40263723DF404E002D97FE /* SettingsHeaderViewDisplayable.swift in Sources */,
 				F139D10622EA9209007F5C0D /* DepictionRatingView.swift in Sources */,
@@ -3952,6 +3949,7 @@
 				F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				F1CA758E244CF813000BA15C /* String+Error.swift in Sources */,
 				F147E67722F021560048F868 /* PackageStateBadgeView.swift in Sources */,
+				E1C4993A26CFED0A0093E290 /* DatabaseManager.swift in Sources */,
 				FB40262A23DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
 				F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */,
 				F147E68122F164230048F868 /* PaymentAuthenticationBannerView.swift in Sources */,
@@ -4028,7 +4026,6 @@
 				E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */,
 				FB40263023DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F1C5D99E22D1453A0021BD89 /* DepictionMinVersionForceView.swift in Sources */,
-				F172581F24EB8C12000F2FAF /* DatabaseManager.swift in Sources */,
 				FB40263623DF404E002D97FE /* SettingsHeaderViewDisplayable.swift in Sources */,
 				F1C5D98922D133D00021BD89 /* DepictionRatingView.swift in Sources */,
 				FB40262C23DE8A60002D97FE /* PaymentProviderTableViewCell.swift in Sources */,
@@ -4118,6 +4115,7 @@
 				F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */,
 				E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F147E67922F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
+				E1C4993926CFED0A0093E290 /* DatabaseManager.swift in Sources */,
 				E14C5EE9266810A30080BFCE /* GZIP.swift in Sources */,
 				F1AB912722ED081E0054341B /* PackageIconView.swift in Sources */,
 				E1DDA6372630830300E889A5 /* AmyNetworkResolver.swift in Sources */,

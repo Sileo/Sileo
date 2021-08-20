@@ -2,10 +2,9 @@
 //  DatabaseManager.swift
 //  Sileo
 //
-//  Created by CoolStar on 8/17/20.
+//  Created by Andromeda on 8/17/20.
 //  Copyright © 2020 Sileo Team. All rights reserved.
 //
-
 import Foundation
 import SQLite
 
