@@ -455,14 +455,12 @@ class APTWrapper {
                         difference.insert(key)
                     }
                 }
-                NSLog("[Sileo] difference = \(difference)")
                 for appName in difference {
                     let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
                         spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
-                        NSLog("[Sileo] uicache \(appPath.path)")
                     }
                 }
             }
