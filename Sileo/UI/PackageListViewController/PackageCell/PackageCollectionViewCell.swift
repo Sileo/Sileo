@@ -219,7 +219,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                 actions.append(uninstallAction(package))
             }
             if package.filename != nil && repo != nil {
-                NSLog("[Sileo] package.filename = \(package.filename) and repo = \(repo)")
                 // Check if can be updated
                 if DpkgWrapper.isVersion(package.version, greaterThan: installedPackage.version) {
                     if queueFound != .upgrades {
