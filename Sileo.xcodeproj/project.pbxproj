@@ -439,6 +439,7 @@
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
 		E1C4993926CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
 		E1C4993A26CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
+		E1C4993B26D0064C0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
 		E1C6C0D82677BFDE006228E0 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */; };
 		E1C6C0D92677BFDE006228E0 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */; };
 		E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
@@ -3674,6 +3675,7 @@
 				E128186E26BBFAA500D2553B /* Dusk.swift in Sources */,
 				E128186F26BBFAA500D2553B /* KeychainManager.swift in Sources */,
 				E128187026BBFAA500D2553B /* EditableTableView.swift in Sources */,
+				E1C4993B26D0064C0093E290 /* DatabaseManager.swift in Sources */,
 				E128187126BBFAA500D2553B /* PaymentProfileViewController.swift in Sources */,
 				E128187226BBFAA500D2553B /* PaymentManager.swift in Sources */,
 				E128187326BBFAA500D2553B /* NewsArticlesHeader.swift in Sources */,
@@ -4751,7 +4753,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5165,7 +5167,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5215,7 +5217,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
