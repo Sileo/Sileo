@@ -725,7 +725,7 @@ extension PackageListViewController: UISearchResultsUpdating {
                     if existing.version == package.version {
                         allPackages[package.packageID] = package
                     } else {
-                        if let correct = package.allVersions.first(where: { $0.version == package.version }) {
+                        if let correct = package.getVersion(existing.version) {
                             allPackages[package.packageID] = correct
                         }
                     }
