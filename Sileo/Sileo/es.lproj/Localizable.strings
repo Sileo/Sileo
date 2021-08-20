@@ -24,8 +24,8 @@
 "Acknowledge" = "Comprendo";
 "Remove" = "Eliminar";
 "Sileo_Team" = "Equipo de Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Advertencia";
+"Edit" = "Editar";
 
 // Popup messages
 "Background_App_Refresh" = "Actualizar en segundo plano";
@@ -41,11 +41,11 @@
 "Download_Starting" = "Iniciando…";
 "Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Los siguientes paquetes han sido marcado como esenciales o requeridos: %@\n Remover estos paquetes puede causar daño irreversible a tu dispositivo y puede forzarte a restaurar. Procede solamente si sabes lo que estás haciendo.";
 
 "Queue_Confirm_Button" = "Confirmar";
 "Queue_Clear_Button" = "Borrar Cola";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Cancelar Descargas";
 
 "Package_Upgrade_Action" = "Actualizar";
 "Package_Reinstall_Action" = "Reinstalar";
@@ -59,14 +59,14 @@
 "Package_Share_Action" = "Compartir Paquete…";
 "Package_Developer_Find_Action" = "Más del Desarrollador";
 "Package_Support_Action" = "Soporte";
-"Package_Hold_Enable_Action" = "Ignorar Actualizaciónes Futuras";
-"Package_Hold_Disable_Action" = "Dejar de Ignorar Actualizaciónes";
+"Package_Hold_Enable_Action" = "Ignorar Actualizaciones Futuras";
+"Package_Hold_Disable_Action" = "Dejar de Ignorar Actualizaciones";
 "Package_Wishlist_Add" = "Añadir a la Lista de Deseos";
 "Package_Wishlist_Remove" = "Eliminar de la Lista de Deseos";
 "Wishlist" = "Lista de Deseos";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "No hay paquetes nuevos";
+"News_Check_Later" = "No hay nuevos paquetes indexados todavía. Vuelve en unas horas y deberías ver paquetes aquí en medida que tus repositorios se vayan actualizando.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Instalar";
@@ -113,7 +113,7 @@
 "Add_Source.Body" = "Añadir URL APT";
 "Add_Source.Button.Add" = "Añadir Fuente";
 "Add_Dist_Repo" = "Añadir repositorio de distribución";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ no parece ser un repositorio válido. Puede ser que esté fuera de línea o lo hayas escrito de manera incorrecta. ¿Añadir de todos modos?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Añadir Manualmente";
 
@@ -164,10 +164,10 @@
 "Language" = "Lenguaje";
 "Use_System_Language" = "Usar lenguaje del sistema";
 "Apply_Changes" = "Aplicar Cambios";
-"Apply_Changes_Confirm" = "Aplicar cambios requerirá reiniciar sileo";
+"Apply_Changes_Confirm" = "Aplicar cambios requerirá reiniciar Sileo";
 "Help_Translate" = "Ayuda a traducir Sileo";
 "Always_Show_Install_Log" = "Siempre mostrar registro de instalación";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Mostrar cola en \"Actualizar Todo\"";
 
 "Sileo_Light" = "Sileo Claro";
 "Sileo_Dark" = "Sileo Oscuro";

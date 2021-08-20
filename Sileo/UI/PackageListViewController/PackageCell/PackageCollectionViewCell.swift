@@ -230,21 +230,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                         actions.append(reinstallAction(package))
                     }
                 }
-            } else {
-                let allPkgs = PackageListManager.shared.allPackagesArray
-                if let pkg = allPkgs.first(where: { $0.version == package.version && $0.package == package.package }) {
-                    let queueFound = DownloadManager.shared.find(package: pkg)
-                    if DpkgWrapper.isVersion(pkg.version, greaterThan: installedPackage.version) {
-                        if queueFound != .upgrades {
-                            actions.append(upgradeAction(pkg))
-                        }
-                    } else {
-                        // Only add re-install if it can't be updated
-                        if queueFound != .installations {
-                            actions.append(reinstallAction(pkg))
-                        }
-                    }
-                }
             }
         } else {
             if queueFound != .installations {

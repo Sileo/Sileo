@@ -452,7 +452,6 @@ final class DownloadManager {
                 installDepOperation[String(host)] = [(operation.packageID, operation.version)]
             }
         }
-        let installCopy = installIdentifiers
         var rawInstalls = [Package]()
         for (host, packages) in installDepOperation {
             if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == host }) {
@@ -480,9 +479,6 @@ final class DownloadManager {
             }
         }
         rawInstalls += PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
-        guard rawInstalls.count == installCopy.count else {
-            throw APTParserErrors.blankJsonOutput
-        }
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
         var installations = installations.raw
         var upgrades = upgrades.raw
@@ -724,6 +720,7 @@ final class DownloadManager {
     }
     
     public func repoRefresh() {
+        if lockedForInstallation { return }
         let plm = PackageListManager.shared
         let allPackages = plm.allPackagesArray
         var reloadNeeded = false

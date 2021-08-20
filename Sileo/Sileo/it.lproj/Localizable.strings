@@ -157,7 +157,7 @@
 "Pog_Developer" = "Ora sei uno sviluppatore!";
 "Developer_Mode_Explain" = "La Modalità Sviluppatore disabilita la necessità dell'HTTPS per l'API di pagamento.";
 "Auto_Refresh_Sources" = "Aggiorna le Sorgenti Automaticamente";
-"iCloud_Profile" = "Mostra le Foto di iCloud in \"In Evidenza\"";
+"iCloud_Profile" = "Mostra la Foto iCloud in \"In Evidenza\"";
 "Cache_Size" = "Dimensione della Cache";
 "Clear_Cache" = "Cancella la Cache di Rete";
 "Clear_Cache_Message" = "Vuoi cancellare la cache di rete? Questo libererà %@";

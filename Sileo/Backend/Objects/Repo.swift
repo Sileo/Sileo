@@ -66,12 +66,13 @@ final class Repo: Equatable {
     var packageDict: [String: Package] = [:] {
         didSet {
             reloadInstalled()
+            packagesProvides = Array(packageDict.values).filter { $0.rawControl["provides"] != nil }
         }
     }
     var packageArray: [Package] {
         Array(packageDict.values)
     }
-    var packagesProvides: [Package]?
+    var packagesProvides = [Package]()
     var installed: [Package]?
     
     public func reloadInstalled() {
