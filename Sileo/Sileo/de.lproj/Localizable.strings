@@ -113,7 +113,7 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
 "Add_Source.Button.Add" = "Quelle hinzufügen";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "Vertriebs-Quelle hinzufügen";
 "Incorrect_Repo" = "%@ scheint keine gültige Quelle zu sein⁉️ 
 Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möchtest du sie trotzdem hinzufügen?";
 
