@@ -37,7 +37,7 @@
 "Downloading_Package_Status" = "Lade herunter";
 "Queued_Package_Status" = "In Warteschlange";
 "Ready_Status" = "Bereit";
-"Removal_Queued_Package_Status" = "In Warteschlange zum entfernen";
+"Removal_Queued_Package_Status" = "In Warteschlange zum Entfernen";
 "Download_Starting" = "Starte…";
 "Download_Progress" = "%@ von %@"; // first %@ = amount downloaded, second %@ = total to download
 
@@ -113,8 +113,9 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
 "Add_Source.Button.Add" = "Quelle hinzufügen";
-"Add_Dist_Repo" = "Dist-Repo hinzufügen";
-"Incorrect_Repo" = "%@ scheint keine gültige Quelle zu sein⁉️ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möchtest du sie trotzdem hinzufügen?";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ scheint keine gültige Quelle zu sein⁉️ 
+Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möchtest du sie trotzdem hinzufügen?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuell eingeben";
 
