@@ -148,8 +148,8 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "Settings_Page_Title" = "Einstellungen";
 "Dark_Mode_Toggle" = "Dunkelmodus";
 "Theme" = "Design";
-"Tint_Color" = "Primärfarbe";
-"Reset_Tint_Color" = "Primärfarbe zurücksetzen";
+"Tint_Color" = "Hauptfarbe";
+"Reset_Tint_Color" = "Hauptfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches Bestätigen beim Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
@@ -190,10 +190,10 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "Copy_Path" = "Pfad kopieren";
 
 "After_Install_Relaunch" = "Sileo neustarten";
-"After_Install_Respring" = "Springboard neustarten";
+"After_Install_Respring" = "SpringBoard neustarten";
 "After_Install_Reboot" = "Gerät neustarten";
 "After_Install_Relaunch_Later" = "Sileo später neu starten";
-"After_Install_Respring_Later" = "Springboard später neu starten";
+"After_Install_Respring_Later" = "SpringBoard später neu starten";
 "After_Install_Reboot_Later" = "Gerät später neu starten";
 
 "Dangerous_Repo.Title" = "Gefährliche Quelle";
