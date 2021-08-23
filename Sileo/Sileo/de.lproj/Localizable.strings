@@ -13,23 +13,23 @@
 "Close" = "Schließen";
 "Double tap to open." = "Doppelt tippen zum öffnen.";
 "Untitled_Repo" = "Unbenannte Quelle";
-"OK" = "Ok";
+"OK" = "Okay";
 "Done" = "Fertig";
 "Done_Editing" = "Fertig";
-"More_Info" = "Mehr infos";
+"More_Info" = "Mehr Infos";
 "Loading" = "Lade…";
 "Share" = "Teilen";
 "Delete" = "Löschen";
 "Cancel" = "Abbrechen";
-"Acknowledge" = "Verstanden";
+"Acknowledge" = "Anerkennung";
 "Remove" = "Entfernen";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Sileo_Team" = "Sileo-Team";
+"Warning" = "Warnung";
+"Edit" = "Bearbeiten";
 
 // Popup messages
 "Background_App_Refresh" = "App-Hintergrundaktualisierung";
-"Background_App_Refresh_Message" = "Für das beste und schnellste Erlebnis wird empfohlen, die App-Hintergrundaktualisierung zu aktivieren. Sie können auch Benachrichtigungen erhalten, wenn Ihre Tweaks aktualisiert wurden!";
+"Background_App_Refresh_Message" = "Für das beste und schnellste Erlebnis wird empfohlen, die App-Hintergrundaktualisierung zu aktivieren. Du kannst auch Benachrichtigungen erhalten, wenn deine Tweaks aktualisiert wurden!";
 "Upgrade_All_Shortcut_Processing_Message" = "Aktualisiere alle Quellen und Pakete...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -37,15 +37,16 @@
 "Downloading_Package_Status" = "Lade herunter";
 "Queued_Package_Status" = "In Warteschlange";
 "Ready_Status" = "Bereit";
-"Removal_Queued_Package_Status" = "In Warteschlange zum entfernen";
+"Removal_Queued_Package_Status" = "In Warteschlange zum Entfernen";
 "Download_Starting" = "Starte…";
 "Download_Progress" = "%@ von %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Die folgenden Pakete werden als erforderlich aufgeführt: %@\n
+Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führen und eine Wiederherstellung erforderlich machen. Fahre nur fort, wenn du sicher bist, was du tust.";
 
 "Queue_Confirm_Button" = "Bestätigen";
 "Queue_Clear_Button" = "Warteschlange leeren";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Downloads abbrechen";
 
 "Package_Upgrade_Action" = "Aktualisieren";
 "Package_Reinstall_Action" = "Neu installieren";
@@ -58,15 +59,15 @@
 
 "Package_Share_Action" = "Paket teilen…";
 "Package_Developer_Find_Action" = "Mehr von diesem Entwickler";
-"Package_Support_Action" = "Support";
+"Package_Support_Action" = "Unterstützung";
 "Package_Hold_Enable_Action" = "Zukünftige Updates ignorieren";
 "Package_Hold_Disable_Action" = "Updates nicht mehr ignorieren";
 "Package_Wishlist_Add" = "Zur Wunschliste hinzufügen";
 "Package_Wishlist_Remove" = "Von Wunschliste entfernen";
 "Wishlist" = "Wunschliste";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Keine neuen Pakete";
+"News_Check_Later" = "Es sind noch keine neuen Pakete indexiert. Komme in ein paar Stunden zurück und du solltest sehen, dass Pakete hier angezeigt werden, wenn die Quellen aktualisiert wurden.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installiere";
@@ -80,7 +81,7 @@
 "Package_Search.Placeholder" = "Pakete durchsuchen";
 "Sort_Name" = "Name";
 "Sort_Date" = "Datum";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Installierte Größe";
 "Sort_By" = "Sortieren nach:";
 
 "Package_Unavailable" = "Paket nicht verfügbar";
@@ -89,21 +90,21 @@
 "Packages_By_Author" = "Pakete von %@"; // %@ = author name
 
 "Featured_Page" = "Highlights";
-"News_Page" = "Neu";
+"News_Page" = "Neuigkeiten";
 "Sources_Page" = "Quellen";
 "Packages_Page" = "Pakete";
-"Search_Page" = "Suche";
+"Search_Page" = "Suchen";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
-"Remove" = "Remove";
+"Remove" = "Entfernen";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
 
 "All_Categories" = "Alle Kategorien";
 "Internal_Repo" = "Lokale Quellen";
-"External_Repo" = "Entfernte Quellen";
+"External_Repo" = "Externe Quellen";
 "Ignored Updates" = "Ignorierte Updates";
 
 "Repos" = "Quellen";
@@ -112,16 +113,17 @@
 "Add_Source.Title" = "Quelle hinzufügen";
 "Add_Source.Body" = "Adresse eingeben";
 "Add_Source.Button.Add" = "Quelle hinzufügen";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "Vertriebs-Quelle hinzufügen";
+"Incorrect_Repo" = "%@ scheint keine gültige Quelle zu sein⁉️ 
+Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möchtest du sie trotzdem hinzufügen?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuelle Eingabe";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Manuell eingeben";
 
 "Untitled_Form" = "Namenloses Formular";
 "Form_Submitted.Default_Title" = "Formular übermittelt";
 "Form_Submitted.Default_Body" = "Das Formular wurde erfolgreich übermittelt.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View-Darstellungen sind veraltet. Bitte wenden Sie sich an den Quellen-Betreiber, um Informationen zu nativen Darstellungen zu erhalten.";
+"Web_Depiction_Deprecated_Warning" = "Web View-Darstellungen sind veraltet. Bitte wende dich an den Quellen-Betreiber, um Informationen zu nativen Darstellungen zu erhalten.";
 
 "Package_Details_Tab" = "Details";
 "Package_Changelog_Tab" = "Änderungen";
@@ -146,10 +148,10 @@
 "Settings_Page_Title" = "Einstellungen";
 "Dark_Mode_Toggle" = "Dunkelmodus";
 "Theme" = "Design";
-"Tint_Color" = "Primärfarbe";
-"Reset_Tint_Color" = "Primärfarbe zurücksetzen";
+"Tint_Color" = "Hauptfarbe";
+"Reset_Tint_Color" = "Hauptfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches bestätigen bei dem Update aller Pakete";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches Bestätigen beim Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
 "Show_Ignored_Updates" = "Zeige ignorierte Updates";
@@ -159,19 +161,19 @@
 "Auto_Refresh_Sources" = "Quellen automatisch aktualisieren";
 "iCloud_Profile" = "iCloud-Foto in Highlights anzeigen";
 "Cache_Size" = "Zwischenspeicher-Größe";
-"Clear_Cache" = "Netzwerk-Zwischenspeicher leeren";
-"Clear_Cache_Message" = "Willst du den Netzwerk-Zwischenspeicher leeren? Das wird %@ freigeben";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Clear_Cache" = "Zwischenspeicher leeren";
+"Clear_Cache_Message" = "Willst du den Zwischenspeicher leeren? Damit werden %@ freigeben.";
+"Language" = "Sprache";
+"Use_System_Language" = "Systemsprache verwenden";
+"Apply_Changes" = "Änderungen übernehmen";
+"Apply_Changes_Confirm" = "Das Anwenden der Änderungen erfordert einen Neustart von Sileo";
+"Help_Translate" = "Helfe beim Übersetzen von Sileo";
+"Always_Show_Install_Log" = "Installationsprotokoll immer anzeigen";
+"Auto_Show_Queue" = "Warteschlange immer anzeigen";
 
-"Sileo_Light" = "Sileo Hell";
-"Sileo_Dark" = "Sileo Dunkel";
-"Sileo_Adaptive" = "Sileo Angepasst";
+"Sileo_Light" = "Hell";
+"Sileo_Dark" = "Dunkel";
+"Sileo_Adaptive" = "Anpassungsfähig";
 "System" = "System";
 "Theme_Settings" = "Design Einstellungen";
 
@@ -184,8 +186,8 @@
 
 "Show_Install_Details" = "Details anzeigen";
 "Hide_Install_Details" = "Details ausblenden";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "In Filza öffnen";
+"Copy_Path" = "Pfad kopieren";
 
 "After_Install_Relaunch" = "Sileo neustarten";
 "After_Install_Respring" = "SpringBoard neustarten";
@@ -199,7 +201,7 @@
 "Dangerous_Repo.Continue" = "Auf eigenes Risiko fortfahren! (unsicher)";
 "Dangerous_Repo.Cancel" = "Zurück";
 "Dangerous_Repo.Last_Chance.Title" = "Gefährliche Quelle hinzufügen?";
-"Dangerous_Repo.Last_Chance.Body" = "Gefährliche Quellen können verheerende Auswirkungen auf dein Gerät oder deinen Jailbreak haben. Wir empfehlen aus Sicherheitsgründen diese Aktion NICHT auszuführen, um dein Gerät oder Jailbreak nicht zu gefährden. Möchtest zu wirklich die Quelle %@ hinzufügen?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Gefährliche Quellen können verheerende Auswirkungen auf dein Gerät oder deinen Jailbreak haben. Wir empfehlen aus Sicherheitsgründen diese Aktion NICHT auszuführen, um dein Gerät oder Jailbreak nicht zu gefährden. Möchtest du wirklich die Quelle %@ hinzufügen?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Fortfahren";
 "Dangerous_Repo.Last_Chance.Cancel" = "Zurück";
 

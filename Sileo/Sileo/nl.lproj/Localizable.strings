@@ -25,7 +25,7 @@
 "Remove" = "Verwijder";
 "Sileo_Team" = "Sileo Team";
 "Warning" = "Waarschuwing";
-"Edit" = "Edit";
+"Edit" = "Wijzig";
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
@@ -167,7 +167,7 @@
 "Apply_Changes_Confirm" = "Voor het toepassen van aanpassingen is het herstarten van Sileo vereist";
 "Help_Translate" = "Help Met Het Vertalen Van Sileo";
 "Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Toon Wachtrij na Upgrade Alles";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
