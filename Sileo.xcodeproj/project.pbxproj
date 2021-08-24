@@ -67,7 +67,7 @@
 		49CE7CD92607F9A400A20711 /* SugarFree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC32607F9A400A20711 /* SugarFree@2x.png */; platformFilter = ios; };
 		49CE7CDA2607F9A400A20711 /* Taurine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC52607F9A400A20711 /* Taurine@3x.png */; platformFilter = ios; };
 		49CE7CDB2607F9A400A20711 /* Taurine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC62607F9A400A20711 /* Taurine@2x.png */; platformFilter = ios; };
-		49CE7CDC2607F9A400A20711 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC72607F9A400A20711 /* Taurine~ipad@3x.png */; };
+		49CE7CDC2607F9A400A20711 /* Taurine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC72607F9A400A20711 /* Taurine~ipad@3x.png */; platformFilter = ios; };
 		49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC82607F9A400A20711 /* Taurine~ipad@2x.png */; platformFilter = ios; };
 		49CE7CDE2607F9A400A20711 /* CoolBreeze~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCA2607F9A400A20711 /* CoolBreeze~ipad@3x.png */; platformFilter = ios; };
 		49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCB2607F9A400A20711 /* CoolBreeze@3x.png */; platformFilter = ios; };
