@@ -56,15 +56,6 @@
         }
       },
       {
-        "package": "SwiftSoup",
-        "repositoryURL": "https://github.com/scinfu/SwiftSoup.git",
-        "state": {
-          "branch": null,
-          "revision": "774dc9c7213085db8aa59595e27c1cd22e428904",
-          "version": "2.3.2"
-        }
-      },
-      {
         "package": "SwipeCellKit",
         "repositoryURL": "https://github.com/SwipeCellKit/SwipeCellKit.git",
         "state": {

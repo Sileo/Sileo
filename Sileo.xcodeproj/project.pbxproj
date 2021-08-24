@@ -201,8 +201,6 @@
 		E128188B26BBFAA500D2553B /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954126B981E4000DB10E /* LanguageHelper.swift */; };
 		E128188C26BBFAA500D2553B /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		E128188D26BBFAA500D2553B /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */; };
-		E128188E26BBFAA500D2553B /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
-		E128188F26BBFAA500D2553B /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
 		E128189026BBFAA500D2553B /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6A62222E53E7000CBD045 /* Hash.swift */; };
 		E128189126BBFAA500D2553B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBD0035240C31B3008E11B2 /* NewsViewController.swift */; };
 		E128189226BBFAA500D2553B /* DepictionMarkdownViewFast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116AA23834AF900B6F408 /* DepictionMarkdownViewFast.swift */; };
@@ -360,7 +358,6 @@
 		E128193226BBFAA500D2553B /* CoolBreeze@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CCC2607F9A400A20711 /* CoolBreeze@2x.png */; };
 		E128193326BBFAA500D2553B /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */; };
 		E128193426BBFAA500D2553B /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; };
-		E128193526BBFAA500D2553B /* RepoScraper in Resources */ = {isa = PBXBuildFile; fileRef = F183CFC22318F48600D3AF3B /* RepoScraper */; };
 		E128193626BBFAA500D2553B /* SugarFree~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CC02607F9A400A20711 /* SugarFree~ipad@3x.png */; };
 		E128193726BBFAA500D2553B /* SourcesErrorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B4B57B216197DD004F160E /* SourcesErrorsViewController.xib */; };
 		E128193826BBFAA500D2553B /* StrawberrySunset~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F726098169007D605F /* StrawberrySunset~ipad@3x.png */; };
@@ -372,7 +369,6 @@
 		E12819A026BC16ED00D2553B /* status in Resources */ = {isa = PBXBuildFile; fileRef = E128199F26BC16ED00D2553B /* status */; };
 		E12FC0D5269A3F7D008A0A36 /* liblz4.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FC0D3269A3F7D008A0A36 /* liblz4.1.tbd */; platformFilter = ios; };
 		E13638CA2614F53400698D55 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E13638C92614F53400698D55 /* Cosmos */; };
-		E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E13638D82614F5AA00698D55 /* SwiftSoup */; };
 		E13638F22614F6C000698D55 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F12614F6C000698D55 /* SQLite */; };
 		E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E13638F62614F6E300698D55 /* SwipeCellKit */; };
 		E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E13BD7752645E1AA006A5EF2 /* Nightly~ipad@2x.png */; platformFilter = ios; };
@@ -418,7 +414,6 @@
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
-		E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53472617439700BB8A69 /* SwiftSoup */; };
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
 		E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5355261743BD00BB8A69 /* LNZTreeView */; };
@@ -678,8 +673,6 @@
 		F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */; };
 		F183CFB32318EA6800D3AF3B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFB22318EA6800D3AF3B /* main.swift */; };
 		F183CFB42318EA6800D3AF3B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFB22318EA6800D3AF3B /* main.swift */; };
-		F183CFC32318F48600D3AF3B /* RepoScraper in Resources */ = {isa = PBXBuildFile; fileRef = F183CFC22318F48600D3AF3B /* RepoScraper */; };
-		F183CFC42318F48600D3AF3B /* RepoScraper in Resources */ = {isa = PBXBuildFile; fileRef = F183CFC22318F48600D3AF3B /* RepoScraper */; };
 		F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
@@ -769,10 +762,6 @@
 		F1DB3BCF22D58200008FCFA1 /* SourceErrorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB3BCE22D58200008FCFA1 /* SourceErrorsViewController.swift */; };
 		F1DD3CCD231118A500D86A52 /* APTWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCC231118A500D86A52 /* APTWrapper.swift */; };
 		F1DD3CD023132D1F00D86A52 /* APTWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCC231118A500D86A52 /* APTWrapper.swift */; };
-		F1DD3D1B2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
-		F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */; };
-		F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
-		F1DD3D1E2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */; };
 		F1FCE02B213A0BE400D4697A /* InstalledContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FCE029213A0BE400D4697A /* InstalledContentsViewController.xib */; };
 		F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
 		F1FF7A6424FAEE5E0088F88B /* DepictionLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF7A6224FAEE5E0088F88B /* DepictionLayerView.swift */; };
@@ -1341,7 +1330,6 @@
 		F18383F420FBFFB700450EED /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F183CFB22318EA6800D3AF3B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		F183CFC22318F48600D3AF3B /* RepoScraper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RepoScraper; sourceTree = "<group>"; };
 		F183CFC6231A563500D3AF3B /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		F18B58472581A7E90064CD71 /* CSActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSActionItem.swift; sourceTree = "<group>"; };
 		F1974938213695660065E630 /* PackageListHeaderBlank.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeaderBlank.xib; sourceTree = "<group>"; };
@@ -1413,8 +1401,6 @@
 		F1DB3BCB22D57BD9008FCFA1 /* PackageListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListHeader.swift; sourceTree = "<group>"; };
 		F1DB3BCE22D58200008FCFA1 /* SourceErrorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceErrorsViewController.swift; sourceTree = "<group>"; };
 		F1DD3CCC231118A500D86A52 /* APTWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTWrapper.swift; sourceTree = "<group>"; };
-		F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDepictionScraper.swift; sourceTree = "<group>"; };
-		F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLScraperJSInterface.swift; sourceTree = "<group>"; };
 		F1EC3E5422767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F1EC3E5522767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = Sileo/it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		F1EC3E5622767B0D00BEC825 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Sileo/it.lproj/Categories.strings; sourceTree = "<group>"; };
@@ -1509,7 +1495,6 @@
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
-				E19A53482617439700BB8A69 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,7 +1518,6 @@
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E14897E2269B64B60061A301 /* Alderis in Frameworks */,
-				E13638D92614F5AA00698D55 /* SwiftSoup in Frameworks */,
 				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2720,7 +2704,6 @@
 			children = (
 				F1CB2EF3214650C000641808 /* DepictionSubpageViewController */,
 				F100C2FC210D5E1E00A9B7D8 /* DepictionView */,
-				F1DD3D182316EFF700D86A52 /* HTMLDepictionScraper */,
 				F1FCE026213A0BCD00D4697A /* InstalledContentsViewController */,
 				F1D113FF20DD7A9300C8F051 /* PackageButton */,
 				F183CFC6231A563500D3AF3B /* PackageViewController.swift */,
@@ -2867,16 +2850,6 @@
 				E18CD2D0262C8E7500FF499C /* NewsResolver.swift */,
 			);
 			path = NewsViewController;
-			sourceTree = "<group>";
-		};
-		F1DD3D182316EFF700D86A52 /* HTMLDepictionScraper */ = {
-			isa = PBXGroup;
-			children = (
-				F183CFC22318F48600D3AF3B /* RepoScraper */,
-				F1DD3D192316F00400D86A52 /* HTMLDepictionScraper.swift */,
-				F1DD3D1A2316F00500D86A52 /* HTMLScraperJSInterface.swift */,
-			);
-			path = HTMLDepictionScraper;
 			sourceTree = "<group>";
 		};
 		F1E287B22225DE1000603B3E /* Wish List Manager */ = {
@@ -3040,7 +3013,6 @@
 			name = "Sileo Demo";
 			packageProductDependencies = (
 				E19A53412617438700BB8A69 /* Cosmos */,
-				E19A53472617439700BB8A69 /* SwiftSoup */,
 				E19A5351261743B300BB8A69 /* SwipeCellKit */,
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
@@ -3075,7 +3047,6 @@
 			name = Sileo;
 			packageProductDependencies = (
 				E13638C92614F53400698D55 /* Cosmos */,
-				E13638D82614F5AA00698D55 /* SwiftSoup */,
 				E13638F12614F6C000698D55 /* SQLite */,
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
@@ -3165,7 +3136,6 @@
 			mainGroup = F149E0A420B6040B005CA30B;
 			packageReferences = (
 				E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */,
-				E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
@@ -3274,7 +3244,6 @@
 				E128193226BBFAA500D2553B /* CoolBreeze@2x.png in Resources */,
 				E128193326BBFAA500D2553B /* BlueLemonade@2x.png in Resources */,
 				E128193426BBFAA500D2553B /* OG~ipad@3x.png in Resources */,
-				E128193526BBFAA500D2553B /* RepoScraper in Resources */,
 				E128193626BBFAA500D2553B /* SugarFree~ipad@3x.png in Resources */,
 				E128193726BBFAA500D2553B /* SourcesErrorsViewController.xib in Resources */,
 				E128193826BBFAA500D2553B /* StrawberrySunset~ipad@3x.png in Resources */,
@@ -3338,7 +3307,6 @@
 				E1DC861526697EF100B3DC42 /* OceanicBlue@2x.png in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
-				F183CFC42318F48600D3AF3B /* RepoScraper in Resources */,
 				E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */,
 				E1BB50DE260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
 				E1D2E2DC26C3383D00444437 /* Mixture~ipad@3x.png in Resources */,
@@ -3432,7 +3400,6 @@
 				49CE7CD02607F9A400A20711 /* BlueLemonade@2x.png in Resources */,
 				E1D2E2CF26C3383D00444437 /* Midnight@2x.png in Resources */,
 				E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */,
-				F183CFC32318F48600D3AF3B /* RepoScraper in Resources */,
 				49CE7CD62607F9A400A20711 /* SugarFree~ipad@3x.png in Resources */,
 				F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */,
 				493B240426098169007D605F /* StrawberrySunset~ipad@3x.png in Resources */,
@@ -3705,8 +3672,6 @@
 				E128188B26BBFAA500D2553B /* LanguageHelper.swift in Sources */,
 				E128188C26BBFAA500D2553B /* FlaggedSourceWarningViewController.swift in Sources */,
 				E128188D26BBFAA500D2553B /* LanguageSelectionViewController.swift in Sources */,
-				E128188E26BBFAA500D2553B /* HTMLDepictionScraper.swift in Sources */,
-				E128188F26BBFAA500D2553B /* HTMLScraperJSInterface.swift in Sources */,
 				E128189026BBFAA500D2553B /* Hash.swift in Sources */,
 				E128189126BBFAA500D2553B /* NewsViewController.swift in Sources */,
 				E128189226BBFAA500D2553B /* DepictionMarkdownViewFast.swift in Sources */,
@@ -3919,8 +3884,6 @@
 				FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */,
 				E1F10B1F2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */,
 				F170605D24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
-				F1DD3D1C2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */,
-				F1DD3D1E2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F139D0B022EA9209007F5C0D /* Hash.swift in Sources */,
 				FBBD003D240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				E13BD78A2646C706006A5EF2 /* GithubSocialCell.swift in Sources */,
@@ -4098,8 +4061,6 @@
 				E15A954226B981E4000DB10E /* LanguageHelper.swift in Sources */,
 				172B2ED722F09E8F000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
 				E15A954926B99104000DB10E /* LanguageSelectionViewController.swift in Sources */,
-				F1DD3D1B2316F00500D86A52 /* HTMLDepictionScraper.swift in Sources */,
-				F1DD3D1D2316F00500D86A52 /* HTMLScraperJSInterface.swift in Sources */,
 				F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */,
 				FBBD003C240C31B4008E11B2 /* NewsViewController.swift in Sources */,
 				F1A116AB23834AF900B6F408 /* DepictionMarkdownViewFast.swift in Sources */,
@@ -4476,7 +4437,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4526,7 +4487,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4575,7 +4536,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -4753,7 +4714,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.3;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -4798,7 +4759,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4953,7 +4914,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -4999,7 +4960,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5167,7 +5128,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.3;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5217,7 +5178,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.3;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5382,14 +5343,6 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.2;
-			};
-		};
 		E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
@@ -5486,11 +5439,6 @@
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
 		};
-		E13638D82614F5AA00698D55 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
 		E13638F12614F6C000698D55 /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638F02614F6C000698D55 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
@@ -5515,11 +5463,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
-		};
-		E19A53472617439700BB8A69 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13638D72614F5AA00698D55 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
 		};
 		E19A5351261743B300BB8A69 /* SwipeCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
