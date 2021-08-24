@@ -99,6 +99,8 @@ Depends: mobilesubstrate (>= 0.9.5000)
 Description: NFC Fuckery
 Name: Aemulo
 Author: Amy While
+Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
+Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
 
 Package: com.amywhile.signalreborn
 Status: install ok installed

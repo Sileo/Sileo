@@ -280,7 +280,6 @@
 		E12818E026BBFAA500D2553B /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		E12818E126BBFAA500D2553B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E128181126BBFAA500D2553B /* SwipeCellKit */; };
 		E12818E326BBFAA500D2553B /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E128181726BBFAA500D2553B /* Alderis */; };
-		E12818E426BBFAA500D2553B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E128180D26BBFAA500D2553B /* SwiftSoup */; };
 		E12818E526BBFAA500D2553B /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E128181526BBFAA500D2553B /* LNPopupController-Static */; };
 		E12818E726BBFAA500D2553B /* SileoRootWrapper.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 49FB388B2660745F0029CAFF /* SileoRootWrapper.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E12818E926BBFAA500D2553B /* Chimera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23D126098104007D605F /* Chimera@3x.png */; };
@@ -1460,7 +1459,6 @@
 				E12818E026BBFAA500D2553B /* libiconv.tbd in Frameworks */,
 				E12818E126BBFAA500D2553B /* SwipeCellKit in Frameworks */,
 				E12818E326BBFAA500D2553B /* Alderis in Frameworks */,
-				E12818E426BBFAA500D2553B /* SwiftSoup in Frameworks */,
 				E12818E526BBFAA500D2553B /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2946,7 +2944,6 @@
 			name = "Sileo (Test Handler)";
 			packageProductDependencies = (
 				E128180B26BBFAA500D2553B /* Cosmos */,
-				E128180D26BBFAA500D2553B /* SwiftSoup */,
 				E128180F26BBFAA500D2553B /* SQLite */,
 				E128181126BBFAA500D2553B /* SwipeCellKit */,
 				E128181326BBFAA500D2553B /* LNZTreeView */,
@@ -5279,14 +5276,6 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		E128180E26BBFAA500D2553B /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.2;
-			};
-		};
 		E128181026BBFAA500D2553B /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
@@ -5398,11 +5387,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E128180C26BBFAA500D2553B /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
-		};
-		E128180D26BBFAA500D2553B /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E128180E26BBFAA500D2553B /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
 		};
 		E128180F26BBFAA500D2553B /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
