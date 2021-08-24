@@ -13,6 +13,9 @@ ALL_BOOTSTRAPS     ?= 0
 
 TARGET_CODESIGN = $(shell which ldid)
 
+SILEOTMP = $(TMPDIR)/sileo
+SILEO_STAGE_DIR = $(SILEOTMP)/stage
+
 # Platform to build for.
 SILEO_PLATFORM ?= iphoneos-arm64
 ifeq ($(SILEO_PLATFORM),iphoneos-arm64)
@@ -22,6 +25,15 @@ DEB_ARCH        = iphoneos-arm
 PREFIX          =
 DESTINATION     =
 CONTENTS        =
+
+
+ifneq ($(DEBUG),0)
+BUILD_CONFIG  := Debug
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Debug-iphoneos/Sileo.app
+else
+BUILD_CONFIG  := Release
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Release-iphoneos/Sileo.app
+endif
 
 ifeq ($(ALL_BOOTSTRAPS), 1)
 DEB_DEPENDS     = firmware (>= 12.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
@@ -39,6 +51,21 @@ PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
+
+ifneq ($(DEBUG),0)
+BUILD_CONFIG  := Debug
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Debug-maccatalyst/Sileo.app
+else
+BUILD_CONFIG  := Release
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Release-maccatalyst/Sileo.app
+endif
+
+ifeq ($(AUTOMATION),1)
+BUILD_CONFIG  := Mac_Automations
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Mac_Automations-maccatalyst/Sileo.app
+endif
+
+
 else ifeq ($(SILEO_PLATFORM),darwin-amd64)
 # These trues are temporary
 ARCH            = x86_64
@@ -49,6 +76,20 @@ PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
+
+ifneq ($(DEBUG),0)
+BUILD_CONFIG  := Debug
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Debug-maccatalyst/Sileo.app
+else
+BUILD_CONFIG  := Release
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Release-maccatalyst/Sileo.app
+endif
+
+ifeq ($(AUTOMATION),1)
+BUILD_CONFIG  := Mac_Automations
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Mac_Automations-maccatalyst/Sileo.app
+endif
+
 else
 $(error Unknown platform $(SILEO_PLATFORM))
 endif
@@ -107,24 +148,9 @@ SILEO_ID   = org.coolstar.sileonightly
 SILEO_APP  = Sileo-Nightly.app
 endif
 export DISPLAY_NAME = "Sileo Nightly"
-ICON = https:\/\/github.com\/Sileo\/Sileo\/raw\/stable\/Icons\/Nightly.png
+ICON = https:\/\/github.com\/Sileo\/Sileo\/raw\/stable\/Icons\/Nightly\/Nightly_iOS.png
 SILEO_NAME = Sileo (Nightly Channel)
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)+$$(git show -s --format=%cd --date=short HEAD | sed s/-//g).$$(git show -s --format=%cd --date=unix HEAD | sed s/-//g).$$(git rev-parse --short=7 HEAD)
-endif
-
-
-SILEOTMP = $(TMPDIR)/sileo
-SILEO_STAGE_DIR = $(SILEOTMP)/stage
-SILEO_APP_DIR = $(SILEOTMP)/install/Applications/Sileo.app
-
-ifneq ($(DEBUG),0)
-BUILD_CONFIG  := Debug
-else
-BUILD_CONFIG  := Release
-endif
-
-ifeq ($(AUTOMATION),1)
-BUILD_CONFIG  := Mac_Automations
 endif
 
 ifeq ($(ALL_BOOTSTRAPS), 1)
@@ -139,17 +165,16 @@ giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 	$(MAKE) -C giveMeRoot \
 		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)"
 
-ifeq ($(MAC), 1)
-$(SILEO_APP_DIR):
-	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' $(DESTINATION) -configuration $(BUILD_CONFIG) ARCHS=$(ARCH) -derivedDataPath $(SILEOTMP) \
-		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" DISPLAY_NAME=$(DISPLAY_NAME) \
-		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+ifneq ($(MAC), 1)
+all:: giveMeRoot/bin/giveMeRoot
 else
-$(SILEO_APP_DIR):
+all ::
+endif
+
+ifneq ($(MAC),1)
+stage: all
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
-		archive -archivePath="$(SILEOTMP)/Sileo.xcarchive" \
 		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
 		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@function process_exec { \
@@ -162,18 +187,8 @@ $(SILEO_APP_DIR):
 	find $(SILEO_APP_DIR) -name '*.dylib' -print0 | xargs -I{} -0 bash -c 'process_exec "$$@"' _ {}; \
 	find $(SILEO_APP_DIR) \( -name '*.framework' -or -name '*.appex' \) -print0 | xargs -I{} -0 bash -c 'process_bundle "$$@"' _ {}; \
 	process_bundle $(SILEO_APP_DIR)
-endif
-
-ifneq ($(MAC), 1)
-all:: $(SILEO_APP_DIR) giveMeRoot/bin/giveMeRoot
-else
-all:: $(SILEO_APP_DIR)
-endif
-
-ifneq ($(MAC),1)
-stage: all
+	@rm -rf $(SILEO_STAGE_DIR)/
 	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
-	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/_CodeSignature
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Frameworks
@@ -183,6 +198,10 @@ stage: all
 	@chmod 4755 $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/giveMeRoot
 else
 stage: all
+	@set -o pipefail; \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' $(DESTINATION) -configuration $(BUILD_CONFIG) ARCHS=$(ARCH) -derivedDataPath $(SILEOTMP) \
+		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+	@rm -rf $(SILEO_STAGE_DIR)
 	@mkdir -p $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
 	@mv $(SILEO_APP_DIR) $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)
@@ -225,6 +244,7 @@ package: stage
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac
+	@rm -rf "$(SILEO_STAGE_DIR)/Applications/$(SILEO_APP)/Down_Down.bundle/DownView (macOS).bundle"
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
 endif
