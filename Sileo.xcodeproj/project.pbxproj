@@ -1054,20 +1054,6 @@
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		492923702663362700B5B37A /* Sus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sus.png; sourceTree = "<group>"; };
-		492923712663362700B5B37A /* Procursus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Procursus.png; sourceTree = "<group>"; };
-		492923722663362700B5B37A /* Taurine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taurine.png; sourceTree = "<group>"; };
-		492923732663362700B5B37A /* SugarFree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SugarFree.png; sourceTree = "<group>"; };
-		492923742663362700B5B37A /* OceanicBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OceanicBlue.png; sourceTree = "<group>"; };
-		492923752663362700B5B37A /* CottonCandy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CottonCandy.png; sourceTree = "<group>"; };
-		492923762663362700B5B37A /* Stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stock.png; sourceTree = "<group>"; };
-		492923772663362700B5B37A /* CoolBreeze.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoolBreeze.PNG; sourceTree = "<group>"; };
-		492923782663362700B5B37A /* MangoCrazy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MangoCrazy.png; sourceTree = "<group>"; };
-		492923792663362700B5B37A /* Nightly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nightly.png; sourceTree = "<group>"; };
-		4929237A2663362700B5B37A /* Chimera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chimera.png; sourceTree = "<group>"; };
-		4929237B2663362700B5B37A /* BlueLemonade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueLemonade.png; sourceTree = "<group>"; };
-		4929237C2663362700B5B37A /* StrawberrySunset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberrySunset.png; sourceTree = "<group>"; };
-		4929237D2663362700B5B37A /* OG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OG.png; sourceTree = "<group>"; };
 		4929237E2663376600B5B37A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		493B23BF260979DD007D605F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493B23CE26098104007D605F /* Chimera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chimera@2x.png"; sourceTree = "<group>"; };
@@ -1564,27 +1550,6 @@
 				E14C5E6726659CCA0080BFCE /* libzstd */,
 			);
 			name = Deps;
-			sourceTree = "<group>";
-		};
-		4929236F2663362700B5B37A /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				4929237B2663362700B5B37A /* BlueLemonade.png */,
-				4929237A2663362700B5B37A /* Chimera.png */,
-				492923772663362700B5B37A /* CoolBreeze.PNG */,
-				492923752663362700B5B37A /* CottonCandy.png */,
-				492923782663362700B5B37A /* MangoCrazy.png */,
-				492923792663362700B5B37A /* Nightly.png */,
-				492923742663362700B5B37A /* OceanicBlue.png */,
-				4929237D2663362700B5B37A /* OG.png */,
-				492923712663362700B5B37A /* Procursus.png */,
-				492923762663362700B5B37A /* Stock.png */,
-				4929237C2663362700B5B37A /* StrawberrySunset.png */,
-				492923732663362700B5B37A /* SugarFree.png */,
-				492923702663362700B5B37A /* Sus.png */,
-				492923722663362700B5B37A /* Taurine.png */,
-			);
-			path = Icons;
 			sourceTree = "<group>";
 		};
 		493B23BE260979AF007D605F /* Sileo Demo */ = {
@@ -2292,7 +2257,6 @@
 				E1D338FF269C3ECB00933AA5 /* SileoRootDaemon */,
 				E19CC2D7269C7D550059251F /* Scripts */,
 				4975C4FB2647758600D344B0 /* Make */,
-				4929236F2663362700B5B37A /* Icons */,
 				4929237E2663376600B5B37A /* README.md */,
 				4929234E2663353700B5B37A /* Deps */,
 				E128199526BBFBA300D2553B /* Sileo Backend Tests */,
@@ -3025,7 +2989,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F149E0DC20B6040B005CA30B /* Build configuration list for PBXNativeTarget "Sileo" */;
 			buildPhases = (
-				E19CC2D9269C7DC10059251F /* ShellScript */,
 				F149E0A920B6040B005CA30B /* Sources */,
 				F149E0AA20B6040B005CA30B /* Frameworks */,
 				E177780F266005DF0091AFAB /* Embed PlugIns */,
@@ -3475,23 +3438,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\ncp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\n";
-		};
-		E19CC2D9269C7DC10059251F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"${PLATFORM_NAME}\" == \"macosx\" ] \nthen \n    export MAIN_BUNDLE_ID=\"sileostore\"\n    export HELPER_BUNDLE_ID=\"SileoRootDaemon\"\n    #swift \"${SRCROOT}\"/Scripts/CodeSignUpdate.swift\nfi\n";
 		};
 		F1144EFE20FC636C001FF36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
