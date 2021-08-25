@@ -449,9 +449,8 @@ final class PackageListManager {
             return package
         } else if let repoContext = repoContext {
             return repoContext.packageDict[identifier.lowercased()]
-        } else {
-            var packages = packages ?? allPackagesArray
-            packages = packages.filter { $0.packageID == identifier }
+        } else if let packages = packages {
+            let packages = packages.filter { $0.packageID == identifier }
             var tmp: Package?
             for package in packages {
                 if let old = tmp {
@@ -462,6 +461,23 @@ final class PackageListManager {
                     tmp = package
                 }
             }
+            return tmp
+        } else {
+            var tmp: Package?
+            for repo in RepoManager.shared.repoList {
+                guard let pkg = repo.packageDict[identifier] else {
+                    continue
+                }
+
+                if let old = tmp {
+                    if DpkgWrapper.isVersion(pkg.version, greaterThan: old.version) {
+                        tmp = pkg
+                    }
+                } else {
+                    tmp = pkg
+                }
+            }
+
             return tmp
         }
     }
@@ -482,10 +498,19 @@ final class PackageListManager {
     
     public func packages(identifiers: [String], sorted: Bool, repoContext: Repo? = nil, packages: [Package]? = nil) -> [Package] {
         if identifiers.isEmpty { return [] }
-        let packages = (repoContext?.packageArray ?? packages ?? allPackagesArray)
+        let packages = repoContext?.packageArray ?? packages
         var rawPackages = [Package]()
         for identifier in identifiers {
-            rawPackages += packages.filter { $0.packageID == identifier }
+            if let packages = packages {
+                rawPackages += packages.filter { $0.packageID == identifier }
+            } else {
+                for repo in RepoManager.shared.repoList {
+                    if let repoVersion = repo.packageDict[identifier] {
+                        rawPackages.append(repoVersion)
+                    }
+                }
+            }
+
             if let package = localPackages[identifier] {
                 rawPackages.append(package)
             }
@@ -518,8 +543,17 @@ final class PackageListManager {
     }
     
     public func package(identifier: String, version: String, packages: [Package]? = nil) -> Package? {
-        let allPackages = packages ?? allPackagesArray
-        return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
+        if let allPackages = packages {
+            return allPackages.first(where: { $0.packageID == identifier && $0.version == version })
+        }
+
+        for repo in RepoManager.shared.repoList {
+            if let namedPackage = repo.packageDict[identifier], namedPackage.version == version {
+                return namedPackage
+            }
+        }
+
+        return nil
     }
     
     public func package(identifiersAndVersions: [(String, String)], repoContext: Repo?, packages: [Package]? = nil) -> [Package]? {

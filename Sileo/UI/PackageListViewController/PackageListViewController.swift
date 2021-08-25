@@ -620,7 +620,6 @@ extension PackageListViewController: UISearchBarDelegate {
            return isEmpty ? .nothing : .delete
        }
        
-       let all = PackageListManager.shared.allPackagesArray
        let oldEmpty = provisionalPackages.isEmpty
        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
            let search = (package.name?.lowercased().contains(text) ?? false) ||
@@ -630,10 +629,14 @@ extension PackageListViewController: UISearchBarDelegate {
            if !search {
                return false
            }
+
+            var newestLocal: Package? = nil
+            if let ppid = package.identifier {
+                newestLocal = PackageListManager.shared.newestPackage(identifier: ppid, repoContext: nil)
+            }
+            let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: newestLocal?.version ?? "")
            
-           let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
-           
-           let localRepo = all.contains(where: { package.identifier == $0.packageID })
+           let localRepo = newestLocal != nil
            if localRepo {
                return newer
            }
