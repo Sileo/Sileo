@@ -452,6 +452,7 @@ final class DownloadManager {
                 installDepOperation[String(host)] = [(operation.packageID, operation.version)]
             }
         }
+        let installIndentifiersReference = installIdentifiers
         var rawInstalls = [Package]()
         for (host, packages) in installDepOperation {
             if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == host }) {
@@ -479,6 +480,9 @@ final class DownloadManager {
             }
         }
         rawInstalls += PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
+        guard rawInstalls.count == installIndentifiersReference.count else {
+            throw APTParserErrors.blankJsonOutput(error: "Install Identifier Mismatch for Identifiers:\n \(installIdentifiers.map { "\($0)\n" })")
+        }
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
         var installations = installations.raw
         var upgrades = upgrades.raw
