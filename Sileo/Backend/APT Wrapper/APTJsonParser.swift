@@ -10,11 +10,11 @@ enum APTParserErrors: LocalizedError {
     case missingSileoConf
     case blankRequest
     case failedDataEncoding
-    case blankJsonOutput
+    case blankJsonOutput(error: String)
     
     var errorDescription: String? {
         switch self {
-        case .blankJsonOutput: return "APT was unable to find this package. Please try refreshing your sources"
+        case .blankJsonOutput(let error): return "APT was unable to find this package. Please try refreshing your sources\n \(error)"
         case .failedDataEncoding: return "APT returned an invalid response that cannot be parsed."
         case .missingSileoConf: return "Your Sileo install is incomplete. Please reinstall"
         case .blankRequest: return "Internal Error: Blank Request sent for packages"
@@ -173,16 +173,16 @@ extension APTWrapper {
 
         // APT spawn stuff
         var aptStdout = ""
+        var aptError = ""
 
-        (_, aptStdout, _) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
-        NSLog("[Sileo] aptStdout = \(aptStdout)")
-        let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout)
-
+        (_, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
+        
         return aptJsonOutput
     }
 
     // We need to take multiple outputs and make it a full JSON object in some cases, while others we can just serialize the full struct
-    private class func normalizeAptOutput(rawOutput: String) throws -> APTOutput {
+    private class func normalizeAptOutput(rawOutput: String, error: String) throws -> APTOutput {
         let decoder = JSONDecoder()
         var aptOutput = APTOutput()
 
@@ -217,7 +217,7 @@ extension APTWrapper {
             // We need a substring of the JSON object only
             guard let openingBracket = cleanOutput.firstIndex(of: "{"),
                   let closingBracket = cleanOutput.lastIndex(of: "}") else {
-                throw APTParserErrors.blankJsonOutput
+                throw APTParserErrors.blankJsonOutput(error: error)
             }
 
             let jsonObject = cleanOutput[openingBracket..<closingBracket]

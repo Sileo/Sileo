@@ -425,16 +425,9 @@ class DownloadsTableViewController: SileoViewController {
                 exit(0)
             case .restart, .reload:
                 if self.refreshSileo {
-                    spawn(command: CommandPath.uicache, args: ["uicache", "-rp", "\(Bundle.main.bundlePath)"])
-                } else {
-                    let (respone, _, _) = spawnAsRoot(args: ["/usr/bin/sbreload"])
-                    if respone != 0 {
-                        while true {
-                            // Exploit a bug in UIKit to crash Springboard in the event of sbreload failing for some reason
-                           window.snapshotView(afterScreenUpdates: false)
-                        }
-                    }
+                    spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"])
                 }
+                spawn(command: "/usr/bin/sbreload", args: ["sbreload"])
             case .reboot:
                 spawnAsRoot(args: ["/usr/bin/sync"])
                 spawnAsRoot(args: ["/usr/bin/ldrestart"])

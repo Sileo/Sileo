@@ -434,7 +434,7 @@ final class DownloadManager {
         var uninstallations = uninstallations.raw
         let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false, packages: Array(PackageListManager.shared.installedPackages.values))
         guard rawUninstalls.count == uninstallIdentifiers.count else {
-            throw APTParserErrors.blankJsonOutput
+            throw APTParserErrors.blankJsonOutput(error: "Uninstall Identifiers Mismatch")
         }
         var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
         
@@ -565,7 +565,7 @@ final class DownloadManager {
                 } catch {
                     removeAllItems()
                     viewController.cancelDownload(nil)
-                    TabBarController.singleton?.displayError(error)
+                    TabBarController.singleton?.displayError(error.localizedDescription)
                 }
             }
             DispatchQueue.main.async {

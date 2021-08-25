@@ -43,9 +43,6 @@ final class PackageListManager {
     
     init() {
         self.installedPackages = PackageListManager.readPackages(installed: true)
-        DownloadManager.aptQueue.async {
-            DependencyResolverAccelerator.shared.preflightInstalled()
-        }
         DispatchQueue.global(qos: .userInitiated).async {
             let repoMan = RepoManager.shared
             var repoList = repoMan.repoList
@@ -83,6 +80,9 @@ final class PackageListManager {
                     if self.initSemphaore.signal() == 0 {
                         break
                     }
+                }
+                DownloadManager.aptQueue.async {
+                    DependencyResolverAccelerator.shared.preflightInstalled()
                 }
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                 NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)

@@ -211,7 +211,7 @@ class APTWrapper {
             fatalError("Unable to find giveMeRoot")
         }
         DispatchQueue.global(qos: .default).async {
-            var oldApps = APTWrapper.dictionaryOfScannedApps()
+            let oldApps = APTWrapper.dictionaryOfScannedApps()
 
             var pipestatusfd: [Int32] = [0, 0]
             var pipestdout: [Int32] = [0, 0]

@@ -22,6 +22,7 @@ class DependencyResolverAccelerator {
         // If the user deletes sileolists while the app is open, they're dumb
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
+        spawnAsRoot(args: [CommandPath.rm, "-rf", CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
