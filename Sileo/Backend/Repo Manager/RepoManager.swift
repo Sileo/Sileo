@@ -629,10 +629,6 @@ final class RepoManager {
 
                             guard let releaseContents = fileURL.aptContents else {
                                 log("Could not parse release file from \(releaseURL)", type: .error)
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
                                 errorsFound = true
                                 return
                             }
@@ -643,10 +639,6 @@ final class RepoManager {
                             } catch {
                                 log("Could not parse release file: \(error)", type: .error)
                                 errorsFound = true
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
                                 return
                             }
 
@@ -656,10 +648,6 @@ final class RepoManager {
                             guard preferredArch != nil else {
                                 log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
                                 errorsFound = true
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
                                 return
                             }
 
@@ -667,10 +655,6 @@ final class RepoManager {
                                 try? FileManager.default.removeItem(at: fileURL)
                                 log("Could not parse release file.", type: .error)
                                 errorsFound = true
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
                                 return
                             }
 
@@ -686,10 +670,6 @@ final class RepoManager {
 
                             log("\(releaseURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                             errorsFound = true
-                            if !repo.packageDict.isEmpty {
-                                repo.packageDict = [:]
-                                reposUpdated += 1
-                            }
                             repo.releaseProgress = 1
                             self.postProgressNotification(repo)
                         }
@@ -771,10 +751,6 @@ final class RepoManager {
                             }
                             log("\(url) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                             errorsFound = true
-                            if !repo.packageDict.isEmpty {
-                                repo.packageDict = [:]
-                                reposUpdated += 1
-                            }
                             repo.packagesProgress = 1
                             self.postProgressNotification(repo)
                         }
@@ -804,10 +780,6 @@ final class RepoManager {
                             if FileManager.default.fileExists(atPath: releaseGPGFileDst.aptPath) {
                                 log("\(releaseGPGURL) returned status \(status). \(error?.localizedDescription ?? "")", type: .error)
                                 errorsFound = true
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
                             }
                             repo.releaseGPGProgress = 1
                             self.postProgressNotification(repo)
@@ -896,10 +868,6 @@ final class RepoManager {
                     guard let releaseFile = optReleaseFile else {
                         log("Could not find release file for \(repo.repoURL)", type: .error)
                         errorsFound = true
-                        if !repo.packageDict.isEmpty {
-                            repo.packageDict = [:]
-                            reposUpdated += 1
-                        }
                         reposUpdated += 1
                         self.checkUpdatesInBackground()
                         continue
@@ -913,10 +881,8 @@ final class RepoManager {
                                 log("Invalid GPG signature at \(releaseGPGURL)", type: .error)
                                 errorsFound = true
                                 #if targetEnvironment(macCatalyst)
-                                if !repo.packageDict.isEmpty {
-                                    repo.packageDict = [:]
-                                    reposUpdated += 1
-                                }
+                                repo.packageDict = [:]
+                                reposUpdated += 1
                                 self.checkUpdatesInBackground()
                                 continue
                                 #endif
@@ -928,12 +894,10 @@ final class RepoManager {
 
                     #if targetEnvironment(macCatalyst)
                     if !isReleaseGPGValid {
-                        if !repo.packageDict.isEmpty {
-                            repo.packageDict = [:]
-                            reposUpdated += 1
-                        }
+                        repo.packageDict = [:]
                         errorsFound = true
                         log("\(repo.repoURL) had no valid GPG signature", type: .error)
+                        reposUpdated += 1
                         self.checkUpdatesInBackground()
                         continue
                     }
@@ -945,10 +909,7 @@ final class RepoManager {
                         guard let packagesFile = optPackagesFile else {
                             log("Could not find packages file for \(repo.repoURL)", type: .error)
                             errorsFound = true
-                            if !repo.packageDict.isEmpty {
-                                repo.packageDict = [:]
-                                reposUpdated += 1
-                            }
+                            reposUpdated += 1
                             self.checkUpdatesInBackground()
                             continue
                         }
@@ -962,10 +923,6 @@ final class RepoManager {
                             ? .sha512 : .sha256
                         if releaseFileContainsHashes && !isPackagesFileValid {
                             log("Hash for \(packagesFile.name) from \(repo.repoURL) is invalid!", type: .error)
-                            if !repo.packageDict.isEmpty {
-                                repo.packageDict = [:]
-                                reposUpdated += 1
-                            }
                             errorsFound = true
                         }
 
@@ -1027,10 +984,6 @@ final class RepoManager {
                                         log("Could not decompress packages from \(repo.repoURL) (\(succeededExtension)): \(error.localizedDescription)", type: .error)
                                         isPackagesFileValid = false
                                         errorsFound = true
-                                        if !repo.packageDict.isEmpty {
-                                            repo.packageDict = [:]
-                                            reposUpdated += 1
-                                        }
                                     }
                                 }
                             }
