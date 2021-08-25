@@ -175,7 +175,6 @@ class APTWrapper {
             arguments.append(packageStr)
         }
         var finish = FINISH.back
-        var runUICache = false
         #if targetEnvironment(macCatalyst)
         arguments[0] = "apt-get"
         DispatchQueue.global(qos: .default).async {
@@ -399,7 +398,6 @@ class APTWrapper {
                             }
                             if sileoLine.hasPrefix("finish:uicache") {
                                 newFinish = .uicache
-                                runUICache = true
                             }
                             if sileoLine.hasPrefix("finish:reopen") {
                                 newFinish = .reopen
@@ -438,23 +436,23 @@ class APTWrapper {
             var status: Int32 = 0
             waitpid(pid, &status, 0)
             var refreshSileo = false
-            if runUICache {
+            
+            let newApps = dictionaryOfScannedApps()
+            var difference = Set<String>()
+            for (key, _) in oldApps where newApps[key] == nil {
+                difference.insert(key)
+            }
+            for (key, _) in newApps where oldApps[key] == nil {
+                difference.insert(key)
+            }
+            for (key, value) in newApps where oldApps[key] != nil {
+                guard let oldValue = oldApps[key] else { continue }
+                if oldValue != value {
+                    difference.insert(key)
+                }
+            }
+            if !difference.isEmpty {
                 outputCallback("Updating Icon Cache\n", debugFD)
-
-                let newApps = dictionaryOfScannedApps()
-                var difference = Set<String>()
-                for (key, _) in oldApps where newApps[key] == nil {
-                    difference.insert(key)
-                }
-                for (key, _) in newApps where oldApps[key] == nil {
-                    difference.insert(key)
-                }
-                for (key, value) in newApps where oldApps[key] != nil {
-                    guard let oldValue = oldApps[key] else { continue }
-                    if oldValue != value {
-                        difference.insert(key)
-                    }
-                }
                 for appName in difference {
                     let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
                     if appPath.path == Bundle.main.bundlePath {

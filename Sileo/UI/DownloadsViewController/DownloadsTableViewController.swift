@@ -415,7 +415,7 @@ class DownloadsTableViewController: SileoViewController {
             window.alpha = 0
             window.transform = .init(scaleX: 0.9, y: 0.9)
         }
-        let refreshSileo = refreshSileo
+
         // When the animation has finished, fire the dumb respring code
         animator.addCompletion { _ in
             switch self.returnButtonAction {
@@ -424,15 +424,17 @@ class DownloadsTableViewController: SileoViewController {
             case .reopen:
                 exit(0)
             case .restart, .reload:
-                if refreshSileo {
-                    spawnAsRoot(args: [CommandPath.uicache, "-rp", "\(Bundle.main.bundlePath)"])
-                } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
-                let args: [String]
-                if refreshSileo {
-                    args = [CommandPath.uicache, "-rp", Bundle.main.bundlePath]
+                if self.refreshSileo {
+                    spawn(command: CommandPath.uicache, args: ["uicache", "-rp", "\(Bundle.main.bundlePath)"])
                 } else {
-                    args = ["/usr/bin/sbreload"] }
-                spawnAsRoot(args: args)
+                    let (respone, _, _) = spawnAsRoot(args: ["/usr/bin/sbreload"])
+                    if respone != 0 {
+                        while true {
+                            // Exploit a bug in UIKit to crash Springboard in the event of sbreload failing for some reason
+                           window.snapshotView(afterScreenUpdates: false)
+                        }
+                    }
+                }
             case .reboot:
                 spawnAsRoot(args: ["/usr/bin/sync"])
                 spawnAsRoot(args: ["/usr/bin/ldrestart"])
