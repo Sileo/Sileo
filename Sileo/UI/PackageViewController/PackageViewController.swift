@@ -45,6 +45,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     private var price = ""
     private var purchased = false
     private var available = false
+    private var headerURL: String?
 
     private var installedPackage: Package?
 
@@ -88,12 +89,16 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             newDepictView.delegate = self
             
             if let imageURL = rawDepict["headerImage"] as? String {
-                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
-                    if refresh,
-                       let strong = self,
-                       let image = image {
-                        DispatchQueue.main.async {
-                            strong.depictionBackgroundView.image = image
+                if imageURL != headerURL {
+                    self.headerURL = imageURL
+                    self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
+                        if refresh,
+                           let strong = self,
+                           imageURL == strong.headerURL,
+                           let image = image {
+                            DispatchQueue.main.async {
+                                strong.depictionBackgroundView.image = image
+                            }
                         }
                     }
                 }
@@ -237,7 +242,23 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         downloadButton.package = package
         navBarDownloadButton?.package = package
-
+        
+        if let imageURL = package.rawControl["header"] {
+            if imageURL != headerURL {
+                self.headerURL = imageURL
+                self.depictionBackgroundView.image = AmyNetworkResolver.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
+                    if refresh,
+                       let strong = self,
+                       imageURL == strong.headerURL,
+                       let image = image {
+                        DispatchQueue.main.async {
+                            strong.depictionBackgroundView.image = image
+                        }
+                    }
+                }
+            }
+        }
+        
         if package.hasIcon(),
             let rawIcon = package.icon {
             let image = AmyNetworkResolver.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
