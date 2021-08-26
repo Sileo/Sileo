@@ -562,6 +562,14 @@ final class DownloadManager {
     }
     
     public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
+        if recheckPackages {
+            let opCount = self.operationCount()
+            // this will probably not race the real updatePopup as main is a serial queue
+            DispatchQueue.main.async {
+                TabBarController.singleton?.downloadManagerWillReload(provisionalOperationCount: opCount)
+            }
+        }
+
         DownloadManager.aptQueue.async { [self] in
             if recheckPackages {
                 do {

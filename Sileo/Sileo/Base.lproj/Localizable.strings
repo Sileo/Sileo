@@ -37,6 +37,7 @@
 "Downloading_Package_Status" = "Downloading";
 "Queued_Package_Status" = "Queued";
 "Ready_Status" = "Ready";
+"Reloading_Status" = "Queuing";
 "Removal_Queued_Package_Status" = "Queued for Removal";
 "Download_Starting" = "Starting…";
 "Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download

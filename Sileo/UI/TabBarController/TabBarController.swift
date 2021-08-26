@@ -180,7 +180,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.closePopup(animated: true, completion: completion)
     }
-    
+
+    func downloadManagerWillReload(provisionalOperationCount: Int) {
+        // Very important: this method cannot call into DownloadManager or else
+        // you may be killed instantly (and dispatch_sync'ing onto a blocked
+        // aptQueue)
+        if provisionalOperationCount <= 0 {
+            updatePopup(completion: nil, bypass: true)
+            return
+        }
+
+        downloadsController?.popupItem.title = String(localizationKey: "Reloading_Status")
+        downloadsController?.popupItem.subtitle = String(format: String(localizationKey: "Package_Queue_Count"), provisionalOperationCount)
+        downloadsController?.popupItem.progress = 0
+        self.presentPopup(completion: nil)
+    }
+
     func updatePopup() {
         updatePopup(completion: nil)
     }
