@@ -45,24 +45,20 @@ final class RepoManager {
 
     public func update(_ repo: Repo) {
         repoDatabase.async(flags: .barrier) {
-            guard let index = self.repoList.lastIndex(where: { $0.rawURL == repo.rawURL }) else { return }
             repo.releaseProgress = 0
             repo.packagesProgress = 0
             repo.releaseGPGProgress = 0
             repo.startedRefresh = false
-            self.repoList[index] = repo
         }
     }
 
     public func update(_ repos: [Repo]) {
         repoDatabase.sync(flags: .barrier) {
             for repo in repos {
-                guard let index = self.repoList.lastIndex(where: { $0.rawURL == repo.rawURL }) else { return }
                 repo.releaseProgress = 0
                 repo.packagesProgress = 0
                 repo.releaseGPGProgress = 0
                 repo.startedRefresh = false
-                self.repoList[index] = repo
             }
         }
     }

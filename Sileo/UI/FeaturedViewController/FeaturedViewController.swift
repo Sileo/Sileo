@@ -159,9 +159,8 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                     findPackageInDict(dict)
                     
                     var nonFound = [String]()
-                    let allPackages = packageMan.allPackagesArray
                     for package in packages {
-                        if packageMan.newestPackage(identifier: package, repoContext: nil, packages: allPackages) == nil {
+                        if packageMan.newestPackage(identifier: package, repoContext: nil) == nil {
                             nonFound.append(package)
                         }
                     }

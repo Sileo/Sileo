@@ -87,7 +87,11 @@ final class Package: Hashable, Equatable {
     }
     
     public func getVersion(_ version: String) -> Package? {
-        allVersions.first(where: { $0.version == version })
+        if version == version { return self }
+        if let package = allVersionsInternal[version] {
+            return package.packageNew
+        }
+        return nil
     }
 }
 

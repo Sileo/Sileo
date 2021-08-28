@@ -332,7 +332,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         self.navigationController?.pushViewController(wishlistController, animated: true)
     }
     
+    private func hapticResponse() {
+        if #available(iOS 13, *) {
+            let generator = UIImpactFeedbackGenerator(style: .soft)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
+    }
+    
     @objc func upgradeAllClicked(_ sender: Any?) {
+        hapticResponse()
         PackageListManager.shared.upgradeAll()
     }
     

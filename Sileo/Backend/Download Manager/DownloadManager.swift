@@ -726,7 +726,6 @@ final class DownloadManager {
     public func repoRefresh() {
         if lockedForInstallation { return }
         let plm = PackageListManager.shared
-        let allPackages = plm.allPackagesArray
         var reloadNeeded = false
         if operationCount() != 0 {
             reloadNeeded = true
@@ -748,7 +747,7 @@ final class DownloadManager {
                 let id = tuple.0
                 let version = tuple.1
                 
-                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                     if find(package: pkg) == .none {
                         add(package: pkg, queue: .upgrades)
                     }
@@ -759,7 +758,7 @@ final class DownloadManager {
                 let id = tuple.0
                 let version = tuple.1
                 
-                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                     if find(package: pkg) == .none {
                         add(package: pkg, queue: .installations)
                     }
