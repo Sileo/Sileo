@@ -11,12 +11,22 @@ int proc_pidpath(pid_t pid, void *buffer, uint32_t buffersize);
 int main(int argc, char *argv[]) {
     #ifdef MAC
     #else
+    #ifdef PREBOOT
+    #ifdef NIGHTLY
+    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo-Nightly.app/Sileo-Preboot";
+    #elif BETA
+    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo-Beta.app/Sileo-Preboot";
+    #else
+    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo.app/Sileo-Preboot";
+    #endif
+    #else
     #ifdef NIGHTLY
     const char *sileoPath = "/Applications/Sileo-Nightly.app/Sileo";
     #elif BETA
     const char *sileoPath = "/Applications/Sileo-Beta.app/Sileo";
     #else
     const char *sileoPath = "/Applications/Sileo.app/Sileo";
+    #endif
     #endif
     struct stat statBuffer;
     if (lstat(sileoPath, &statBuffer) == -1) {

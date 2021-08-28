@@ -14,7 +14,7 @@ final class RepoManager {
     #if targetEnvironment(simulator)
     public final let isMobileProcursus = true
     #else
-    public final let isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    public final let isMobileProcursus = FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/.procursus_strapped")
     #endif
     public final lazy var isProcursus: Bool = {
         #if targetEnvironment(macCatalyst)

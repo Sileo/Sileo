@@ -1,7 +1,5 @@
 # See if we want verbose make.
 V                  ?= 0
-# Debug build or not?
-DEBUG              ?= 0
 # Beta build or not?
 BETA               ?= 0
 # Build Nightly or not?
@@ -10,6 +8,8 @@ NIGHTLY            ?= 0
 AUTOMATION         ?= 0
 # Build for all bootstraps or not
 ALL_BOOTSTRAPS     ?= 0
+# Build with /private/preboot/procursus in mind 
+PREBOOT            ?= 0
 
 TARGET_CODESIGN = $(shell which ldid)
 
@@ -22,17 +22,18 @@ ifeq ($(SILEO_PLATFORM),iphoneos-arm64)
 ARCH            = arm64
 PLATFORM        = iphoneos
 DEB_ARCH        = iphoneos-arm
-PREFIX          =
 DESTINATION     =
 CONTENTS        =
 
-
-ifneq ($(DEBUG),0)
-BUILD_CONFIG  := Debug
-SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Debug-iphoneos/Sileo.app
-else
 BUILD_CONFIG  := Release
+ifneq ($(PREBOOT),1)
+SCHEME = Sileo
+PREFIX          =
 SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Release-iphoneos/Sileo.app
+else
+SCHEME = Sileo-Preboot
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Release-iphoneos/Sileo-Preboot.app
+PREFIX          = /private/preboot/procursus
 endif
 
 ifeq ($(ALL_BOOTSTRAPS), 1)
@@ -51,6 +52,7 @@ PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
+SCHEME = Sileo
 
 ifneq ($(DEBUG),0)
 BUILD_CONFIG  := Debug
@@ -76,6 +78,7 @@ PREFIX          = /opt/procursus
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
+SCHEME = Sileo
 
 ifneq ($(DEBUG),0)
 BUILD_CONFIG  := Debug
@@ -174,7 +177,7 @@ endif
 ifneq ($(MAC),1)
 stage: all
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme 'Sileo' -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Sileo.xcodeproj' -scheme "$(SCHEME)" -configuration $(BUILD_CONFIG) -arch $(ARCH) -sdk $(PLATFORM) -derivedDataPath $(SILEOTMP) \
 		CODE_SIGNING_ALLOWED=NO PRODUCT_BUNDLE_IDENTIFIER=$(PRODUCT_BUNDLE_IDENTIFIER) DISPLAY_NAME=$(DISPLAY_NAME) \
 		DSTROOT=$(SILEOTMP)/install $(XCPRETTY) ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf $(SILEO_STAGE_DIR)/

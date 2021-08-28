@@ -427,10 +427,10 @@ class DownloadsTableViewController: SileoViewController {
                 if self.refreshSileo {
                     spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"])
                 }
-                spawn(command: "/usr/bin/sbreload", args: ["sbreload"])
+                spawn(command: "\(CommandPath.prefix)/usr/bin/sbreload", args: ["sbreload"])
             case .reboot:
-                spawnAsRoot(args: ["/usr/bin/sync"])
-                spawnAsRoot(args: ["/usr/bin/ldrestart"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/ldrestart"])
             }
         }
         // Fire the animation

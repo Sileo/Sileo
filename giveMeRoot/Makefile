@@ -18,9 +18,10 @@ CFLAGS         ?= -Wall
 
 all: $(OUTDIR)/$(TARGET)
 
-DEBUG ?= 0
+
 NIGHTLY ?= 0
 BETA ?= 0
+PREBOOT ?= 0
 
 ifeq ($(DEBUG), 1)
     CFLAGS += 
@@ -36,6 +37,10 @@ endif
 
 ifeq ($(MAC), 1)
 	CFLAGS += -D MAC
+endif
+
+ifeq ($(PREBOOT), 1)
+	CFLAGS += -D PREBOOT
 endif
 
 $(OUTDIR):

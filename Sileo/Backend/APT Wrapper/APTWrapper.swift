@@ -65,12 +65,12 @@ class APTWrapper {
         var dictionary: [String: Int64] = [:]
         let fileManager = FileManager.default
 
-        guard let apps = try? fileManager.contentsOfDirectory(atPath: "/Applications") else {
+        guard let apps = try? fileManager.contentsOfDirectory(atPath: "\(CommandPath.prefix)/Applications") else {
             return dictionary
         }
 
         for app in apps {
-            let infoPlist = String(format: "/Applications/%@/Info.plist", app)
+            let infoPlist = String(format: "\(CommandPath.prefix)/Applications/%@/Info.plist", app)
 
             guard let attr = try? fileManager.attributesOfItem(atPath: infoPlist) else {
                 continue
@@ -454,11 +454,11 @@ class APTWrapper {
             if !difference.isEmpty {
                 outputCallback("Updating Icon Cache\n", debugFD)
                 for appName in difference {
-                    let appPath = URL(fileURLWithPath: "/Applications/").appendingPathComponent(appName)
+                    let appPath = URL(fileURLWithPath: "\(CommandPath.prefix)/Applications/").appendingPathComponent(appName)
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
-                        spawn(command: "/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                        spawn(command: "\(CommandPath.prefix)/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
                     }
                 }
             }

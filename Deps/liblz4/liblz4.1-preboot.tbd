@@ -1,0 +1,64 @@
+--- !tapi-tbd-v2
+archs:                 [ arm64-ios, arm64 ]
+uuids:                 [ 'arm64-ios: 8D88994E-CA4A-318B-8CB7-07D85AB675A0' ]
+platform:              ios
+flags:                 [ flat_namespace, not_app_extension_safe ]
+install-name:          /private/preboot/procursus/usr/lib/liblz4.1.dylib
+current-version:       1.9.2
+compatibility-version: 1
+exports:
+  - archs:                [ arm64-ios, arm64 ]
+    symbols:              [ _LZ4F_compressBegin, _LZ4F_compressBound,
+                            _LZ4F_compressEnd, _LZ4F_compressFrame,
+                            _LZ4F_compressFrameBound, _LZ4F_compressUpdate,
+                            _LZ4F_compressionLevel_max,
+                            _LZ4F_createCompressionContext,
+                            _LZ4F_createDecompressionContext, _LZ4F_decompress,
+                            _LZ4F_flush, _LZ4F_freeCompressionContext,
+                            _LZ4F_freeDecompressionContext, _LZ4F_getErrorName,
+                            _LZ4F_getFrameInfo, _LZ4F_getVersion, _LZ4F_isError,
+                            _LZ4F_resetDecompressionContext, _LZ4_compress,
+                            _LZ4_compressBound, _LZ4_compressHC, _LZ4_compressHC2,
+                            _LZ4_compressHC2_continue,
+                            _LZ4_compressHC2_limitedOutput,
+                            _LZ4_compressHC2_limitedOutput_continue,
+                            _LZ4_compressHC2_limitedOutput_withStateHC,
+                            _LZ4_compressHC2_withStateHC,
+                            _LZ4_compressHC_continue,
+                            _LZ4_compressHC_limitedOutput,
+                            _LZ4_compressHC_limitedOutput_continue,
+                            _LZ4_compressHC_limitedOutput_withStateHC,
+                            _LZ4_compressHC_withStateHC, _LZ4_compress_HC,
+                            _LZ4_compress_HC_continue,
+                            _LZ4_compress_HC_continue_destSize,
+                            _LZ4_compress_HC_destSize,
+                            _LZ4_compress_HC_extStateHC, _LZ4_compress_continue,
+                            _LZ4_compress_default, _LZ4_compress_destSize,
+                            _LZ4_compress_fast, _LZ4_compress_fast_continue,
+                            _LZ4_compress_fast_extState,
+                            _LZ4_compress_limitedOutput,
+                            _LZ4_compress_limitedOutput_continue,
+                            _LZ4_compress_limitedOutput_withState,
+                            _LZ4_compress_withState, _LZ4_create, _LZ4_createHC,
+                            _LZ4_createStream, _LZ4_createStreamDecode,
+                            _LZ4_createStreamHC, _LZ4_decoderRingBufferSize,
+                            _LZ4_decompress_fast, _LZ4_decompress_fast_continue,
+                            _LZ4_decompress_fast_usingDict,
+                            _LZ4_decompress_fast_withPrefix64k,
+                            _LZ4_decompress_safe, _LZ4_decompress_safe_continue,
+                            _LZ4_decompress_safe_partial,
+                            _LZ4_decompress_safe_usingDict,
+                            _LZ4_decompress_safe_withPrefix64k, _LZ4_freeHC,
+                            _LZ4_freeStream, _LZ4_freeStreamDecode,
+                            _LZ4_freeStreamHC, _LZ4_initStream, _LZ4_initStreamHC,
+                            _LZ4_loadDict, _LZ4_loadDictHC, _LZ4_resetStream,
+                            _LZ4_resetStreamHC, _LZ4_resetStreamHC_fast,
+                            _LZ4_resetStreamState, _LZ4_resetStreamStateHC,
+                            _LZ4_resetStream_fast, _LZ4_saveDict, _LZ4_saveDictHC,
+                            _LZ4_setStreamDecode, _LZ4_sizeofState,
+                            _LZ4_sizeofStateHC, _LZ4_sizeofStreamState,
+                            _LZ4_sizeofStreamStateHC, _LZ4_slideInputBuffer,
+                            _LZ4_slideInputBufferHC, _LZ4_uncompress,
+                            _LZ4_uncompress_unknownOutputSize,
+                            _LZ4_versionNumber, _LZ4_versionString ]
+...
