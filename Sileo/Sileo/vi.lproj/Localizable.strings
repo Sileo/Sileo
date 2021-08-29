@@ -126,7 +126,7 @@
 "Package_Details_Tab" = "Chi tiết";
 "Package_Changelog_Tab" = "Thay đổi nhật ký";
 "Package_No_Description_Available" = "Không có mô tả có sẵn cho gói này.";
-"Package_Changelogs_Unavailable" = "Nhật ký không có sẵn cho gói này.";
+"Package_Changelogs_Unavailable" = "Nhật ký cập nhật không có sẵn cho gói này.";
 
 "Installed_Package_Header" = "Gói đã cài đặt";
 "Installed_Packages" = "Các gói đã cài đặt";
