@@ -116,6 +116,8 @@ final class PackageOld: Hashable, Equatable {
     public var packageFileURL: URL?
     public var architecture: String?
     public var installedSize: Int?
+    public var author: String?
+    public var maintainer: String?
     
     init(package: Package) {
         self.sourceFile = package.sourceFile
@@ -134,6 +136,8 @@ final class PackageOld: Hashable, Equatable {
         self.packageFileURL = package.packageFileURL
         self.architecture = package.architecture
         self.installedSize = package.installedSize
+        self.author = package.author
+        self.maintainer = package.maintainer
     }
     
     public var packageNew: Package {
@@ -151,6 +155,8 @@ final class PackageOld: Hashable, Equatable {
         package.packageFileURL = self.packageFileURL
         package.architecture = self.architecture
         package.installedSize = self.installedSize
+        package.maintainer = self.maintainer
+        package.author = self.author
         return package
     }
     

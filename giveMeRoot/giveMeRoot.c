@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     const char *sileoPath = "/Applications/Sileo.app/Sileo";
     #endif
     #endif
-    struct stat statBuffer;
+    struct stat statBuffer = {0};
     if (lstat(sileoPath, &statBuffer) == -1) {
         fprintf(stderr, "Cease your resistance!\n");
         return EX_NOPERM;
@@ -59,6 +59,11 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    if (strcmp(argv[1], "whoami") == 0) {
+        printf("root\n");
+        return 0;
+    }
+    
     execv(argv[1], &argv[1]);
     
     return EX_UNAVAILABLE;

@@ -428,7 +428,11 @@ public class CommandPath {
     }()
 
     static var whoami: String = {
+        #if targetEnvironment(macCatalyst)
         "\(prefix)/usr/bin/whoami"
+        #else
+        "whoami"
+        #endif
     }()
 
     static var uicache: String = {
