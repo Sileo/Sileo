@@ -311,6 +311,10 @@ final class RepoManager {
                 repo.rawURL = {
                     repoURL + (repoURL.last == "/" ? "" : "/")
                 }()
+                var suite = suite
+                if suite.isEmpty {
+                    suite = "./"
+                }
                 repo.suite = suite
                 repo.components = components ?? []
                 repo.entryFile = url.absoluteString

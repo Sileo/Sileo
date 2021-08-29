@@ -59,11 +59,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    if (strcmp(argv[1], "whoami") == 0) {
-        printf("root\n");
-        return 0;
-    }
-    
     execv(argv[1], &argv[1]);
     
     return EX_UNAVAILABLE;

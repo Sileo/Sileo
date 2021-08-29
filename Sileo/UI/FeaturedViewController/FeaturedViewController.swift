@@ -47,7 +47,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
-                                                            message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n\(output)\(status)",
+                                                            message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n Output = \(output)\n Status = \(status)",
                                                             preferredStyle: .alert)
                     self.present(alertController, animated: true, completion: nil)
                 }
