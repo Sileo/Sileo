@@ -18,21 +18,9 @@ class DependencyResolverAccelerator {
         if Thread.isMainThread {
             fatalError("Don't call things that will block the UI from the main thread")
         }
-        // Only call these once, waste of resources to constantly call
-        // If the user deletes sileolists while the app is open, they're dumb
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        #else
-        spawnAsRoot(args: [CommandPath.rm, "-rf", CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
-        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
-        #endif
-                
+       
         partialRepoList = [:]
-        for depPackage in Array(PackageListManager.shared.installedPackages.values) {
-            getDependenciesInternal(package: depPackage)
-        }
-                
+        try? getDependencies(packages: Array(PackageListManager.shared.installedPackages.values))
         preflightedRepos = true
     }
     
@@ -53,18 +41,18 @@ class DependencyResolverAccelerator {
             fatalError("Don't call things that will block the UI from the main thread")
         }
         PackageListManager.shared.initWait()
-        
-        guard let filePaths = try? FileManager.default.contentsOfDirectory(at: depResolverPrefix, includingPropertiesForKeys: nil, options: []) else {
-            return
-        }
-        for filePath in filePaths {
-            try? FileManager.default.removeItem(at: filePath)
-        }
 
         for package in packages {
             getDependenciesInternal2(package: package)
         }
         
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        #else
+        spawnAsRoot(args: [CommandPath.rm, "-rf", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
+        spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
+        #endif
         let resolverPrefix = depResolverPrefix
         for (sourcesFile, packages) in partialRepoList {
             if sourcesFile.lastPathComponent == "status" {

@@ -729,7 +729,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             if self.packagesLoadIdentifier == "--installed" {
                 var allPackages: [String: Package] = [:]
-                _ = packages.map { allPackages[$0.packageID] = $0 }
+                packages.forEach { allPackages[$0.packageID] = $0 }
                 let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
                 for package in foundPackages {
                     guard let existing = allPackages[package.packageID] else { continue }
