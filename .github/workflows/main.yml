@@ -92,7 +92,7 @@ jobs:
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
       - name: Wakeup Babe
         run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/756865973394472960/877340517178957834/Screen_Shot_2021-08-17_at_7.57.46_PM.png"}' "${{ secrets.WEBHOOK }}"
+          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
       - name: Copy Procursus to Cache Location
         run: |
           sudo mkdir -p ~/__cache
