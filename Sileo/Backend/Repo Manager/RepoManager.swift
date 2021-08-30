@@ -220,6 +220,10 @@ final class RepoManager {
 
         repoListLock.wait()
         let repo = Repo()
+        var suites = suites
+        if suites.isEmpty {
+            suites = "./"
+        }
         repo.rawURL = normalizedStr
         repo.suite = suites
         repo.components = components.split(separator: " ") as? [String] ?? [components]
