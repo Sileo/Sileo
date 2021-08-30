@@ -150,10 +150,10 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
         queue.async(flags: .barrier) { [self] in
             var container = container
             let oldUrl = container.url
-            if let url = newRequest?.url {
-                container.url = url
-            }
-            containers[oldUrl] = container
+            let newUrl = newRequest?.url ?? oldUrl
+            container.url = newUrl
+            containers.removeValue(forKey: oldUrl)
+            containers[newUrl] = container
             if let request = newRequest {
                 container.urlChange(request)
             }
