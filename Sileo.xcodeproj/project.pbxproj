@@ -1933,7 +1933,7 @@
 			path = Chimera;
 			sourceTree = "<group>";
 		};
-		493B23D826098116007D605F /* Cotton Candy  */ = {
+		493B23D826098116007D605F /* Cotton Candy */ = {
 			isa = PBXGroup;
 			children = (
 				493B23DC26098116007D605F /* CottonCandy@2x.png */,
@@ -1941,7 +1941,7 @@
 				493B23DA26098116007D605F /* CottonCandy~ipad@2x.png */,
 				493B23DB26098116007D605F /* CottonCandy~ipad@3x.png */,
 			);
-			path = "Cotton Candy ";
+			path = "Cotton Candy";
 			sourceTree = "<group>";
 		};
 		493B23E326098132007D605F /* Oceanic Blue */ = {
@@ -2051,7 +2051,7 @@
 				49CE7CB52607F9A400A20711 /* Blue Lemonade */,
 				493B23CD26098104007D605F /* Chimera */,
 				49CE7CC92607F9A400A20711 /* Cool Breeze */,
-				493B23D826098116007D605F /* Cotton Candy  */,
+				493B23D826098116007D605F /* Cotton Candy */,
 				49CE7CBA2607F9A400A20711 /* Mango Crazy */,
 				E13BD7742645E114006A5EF2 /* Nightly */,
 				493B23E326098132007D605F /* Oceanic Blue */,
