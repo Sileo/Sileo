@@ -24,8 +24,8 @@
 "Acknowledge" = "Confirmați";
 "Remove" = "Ștergeți";
 "Sileo_Team" = "Echipa Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Avertisment";
+"Edit" = "Editați";
 
 // Popup messages
 "Background_App_Refresh" = "Reîmprospătare în fundal";
@@ -41,11 +41,11 @@
 "Download_Starting" = "Începere…";
 "Download_Progress" = "%@ din %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Acestea pachete sunt considerate ca esențiale/necesare: %@\n Ștergând acestea pachete puteți să faceți probleme pe aparatul vostru și în unei chestii necesite reinstalrea iOS. Continuați numai dacă sunteți sigur că înțelegeți ce faceți.";
 
 "Queue_Confirm_Button" = "Confirmați";
 "Queue_Clear_Button" = "Ștergeți coada";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Anulați descărcări";
 
 "Package_Upgrade_Action" = "Actualizați";
 "Package_Reinstall_Action" = "Reinstalați";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
 "Wishlist" = "Lista de dorințe";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Niciun Pachet Nou";
+"News_Check_Later" = "Încă nu sunt pachete noi indexate. Veniți înapoi mai târziu și în cursul actualizarea repozitorile va vedeți pachete noi.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "De instalat";
@@ -113,7 +113,7 @@
 "Add_Source.Body" = "Adăugați URL APT";
 "Add_Source.Button.Add" = "Adăugați sursă";
 "Add_Dist_Repo" = "Adăgați repozitoriu dist.";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ nu apare ca un repo valid. Să poate că repozitoriu este offline sau ați tastat greșit. Totuși doriți să adăugați?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
 
@@ -167,7 +167,7 @@
 "Apply_Changes_Confirm" = "Pentru a aplica schimbările trebuie să reporniți Sileo";
 "Help_Translate" = "Ajutați cu localizarea pentru Sileo";
 "Always_Show_Install_Log" = "Afișați jurnalul de instalare întotdeauna";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Afișați Coada când faceți Actualizare Completă";
 
 "Sileo_Light" = "Sileo deschis";
 "Sileo_Dark" = "Sileo închis";
