@@ -19,7 +19,7 @@ public protocol DepictionViewProtocol: DepictionViewDelegate {
 }
 
 open class DepictionBaseView: UIView, DepictionViewProtocol {
-    internal var parentViewController: UIViewController?
+    internal weak var parentViewController: UIViewController?
     public weak var delegate: DepictionViewDelegate?
     internal var defaultTintColor: UIColor?
     private(set) var isActionable: Bool
