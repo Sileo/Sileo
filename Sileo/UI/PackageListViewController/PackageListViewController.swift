@@ -332,7 +332,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         self.navigationController?.pushViewController(wishlistController, animated: true)
     }
     
+    private func hapticResponse() {
+        if #available(iOS 13, *) {
+            let generator = UIImpactFeedbackGenerator(style: .soft)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
+    }
+    
     @objc func upgradeAllClicked(_ sender: Any?) {
+        hapticResponse()
         PackageListManager.shared.upgradeAll()
     }
     
@@ -718,7 +729,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             
             if self.packagesLoadIdentifier == "--installed" {
                 var allPackages: [String: Package] = [:]
-                _ = packages.map { allPackages[$0.packageID] = $0 }
+                packages.forEach { allPackages[$0.packageID] = $0 }
                 let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
                 for package in foundPackages {
                     guard let existing = allPackages[package.packageID] else { continue }

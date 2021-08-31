@@ -69,9 +69,7 @@ jobs:
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
-
-      - name: Run Tests
-        run: xcodebuild test -scheme "Sileo (Test Handler)" -project Sileo.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' | xcpretty && exit ${PIPESTATUS[0]}
+          
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
@@ -94,7 +92,7 @@ jobs:
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
       - name: Wakeup Babe
         run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/756865973394472960/877340517178957834/Screen_Shot_2021-08-17_at_7.57.46_PM.png"}' "${{ secrets.WEBHOOK }}"
+          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
       - name: Copy Procursus to Cache Location
         run: |
           sudo mkdir -p ~/__cache

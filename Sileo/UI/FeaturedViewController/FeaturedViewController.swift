@@ -47,7 +47,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             if status != 0 || output != "root\n" {
                 DispatchQueue.main.sync {
                     let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
-                                                            message: String(localizationKey: "Installation_Error.Body", type: .error),
+                                                            message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n Output = \(output)\n Status = \(status)",
                                                             preferredStyle: .alert)
                     self.present(alertController, animated: true, completion: nil)
                 }
@@ -159,9 +159,8 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                     findPackageInDict(dict)
                     
                     var nonFound = [String]()
-                    let allPackages = packageMan.allPackagesArray
                     for package in packages {
-                        if packageMan.newestPackage(identifier: package, repoContext: nil, packages: allPackages) == nil {
+                        if packageMan.newestPackage(identifier: package, repoContext: nil) == nil {
                             nonFound.append(package)
                         }
                     }

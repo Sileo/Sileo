@@ -25,7 +25,7 @@
 "Remove" = "Verwijder";
 "Sileo_Team" = "Sileo Team";
 "Warning" = "Waarschuwing";
-"Edit" = "Edit";
+"Edit" = "Wijzig";
 
 // Popup messages
 "Background_App_Refresh" = "Achtergrond App Ververs";
@@ -41,7 +41,7 @@
 "Download_Starting" = "Starten…";
 "Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "De volgende pakketten zijn vermeld als essentieel/vereist: %@\n Het verwijderen van deze pakketten kan onherstelbare schade veroorzaken op je apparaat en kan ervoor zorgen dat je je apparaat moet herstellen. Ga alleen verder als je weet wat je doet.";
 
 "Queue_Confirm_Button" = "Bevestig";
 "Queue_Clear_Button" = "Leeg Wachtrij";
@@ -113,7 +113,7 @@
 "Add_Source.Body" = "Voeg APT URL toe";
 "Add_Source.Button.Add" = "Voeg Bron Toe";
 "Add_Dist_Repo" = "Voeg Distributie Bron Toe";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ lijkt geen geldige bron⁉️ De bron zou offline kunnen zijn of je zou het verkeerd ingevuld kunnen hebben. Wil je het toch toevoegen?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig In";
 
@@ -167,7 +167,7 @@
 "Apply_Changes_Confirm" = "Voor het toepassen van aanpassingen is het herstarten van Sileo vereist";
 "Help_Translate" = "Help Met Het Vertalen Van Sileo";
 "Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Toon Wachtrij na Upgrade Alles";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";

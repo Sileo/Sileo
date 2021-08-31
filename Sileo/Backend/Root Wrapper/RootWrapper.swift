@@ -283,12 +283,24 @@ func moveFileAsRoot(from: URL, to: URL) {
 public class CommandPath {
     // Certain paths need to check for either Procursus mobile or Elucubratus as a fallback option
     // Every method that uses this check already accounts for macCatalyst paths still resolving too
+    #if PREBOOT
+    private static var isMobileProcursus = FileManager.default.fileExists(atPath: "/private/preboot/procursus/.procursus_strapped")
+    #else
     private static var isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    #endif
+    
+    static let prefix: String = {
+        #if PREBOOT
+        return "/private/preboot/procursus"
+        #else
+        return ""
+        #endif
+    }()
 
     // swiftlint:disable identifier_name
     static var mv: String = {
         if isMobileProcursus {
-            return "/usr/bin/mv"
+            return "\(prefix)/usr/bin/mv"
         }
 
         return "/bin/mv"
@@ -296,7 +308,7 @@ public class CommandPath {
 
     static var chmod: String = {
         if isMobileProcursus {
-            return "/usr/bin/chmod"
+            return "\(prefix)/usr/bin/chmod"
         }
 
         return "/bin/chmod"
@@ -305,7 +317,7 @@ public class CommandPath {
     // swiftlint:disable identifier_name
     static var ln: String = {
         if isMobileProcursus {
-            return "/usr/bin/ln"
+            return "\(prefix)/usr/bin/ln"
         }
 
         return "/bin/ln"
@@ -314,7 +326,7 @@ public class CommandPath {
     // swiftlint:disable identifier_name
     static var rm: String = {
         if isMobileProcursus {
-            return "/usr/bin/rm"
+            return "\(prefix)/usr/bin/rm"
         }
 
         return "/bin/rm"
@@ -322,7 +334,7 @@ public class CommandPath {
 
     static var mkdir: String = {
         if isMobileProcursus {
-            return "/usr/bin/mkdir"
+            return "\(prefix)/usr/bin/mkdir"
         }
 
         return "/bin/mkdir"
@@ -331,7 +343,7 @@ public class CommandPath {
     // swiftlint:disable identifier_name
     static var cp: String = {
         if isMobileProcursus {
-            return "/usr/bin/cp"
+            return "\(prefix)/usr/bin/cp"
         }
 
         return "/bin/cp"
@@ -342,7 +354,7 @@ public class CommandPath {
         return "/opt/procursus/etc/apt/sources.list.d"
         #else
         // Check for not Procursus so we can keep the check below
-        return "/etc/apt/sources.list.d"
+        return "\(prefix)/etc/apt/sources.list.d"
         #endif
     }()
 
@@ -350,7 +362,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/usr/sbin/chown"
         #else
-        return "/usr/bin/chown"
+        return "\(prefix)/usr/bin/chown"
         #endif
     }()
 
@@ -358,7 +370,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-mark"
         #else
-        return "/usr/bin/apt-mark"
+        return "\(prefix)/usr/bin/apt-mark"
         #endif
     }()
 
@@ -366,7 +378,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg-deb"
         #else
-        return "/usr/bin/dpkg-deb"
+        return "\(prefix)/usr/bin/dpkg-deb"
         #endif
     }()
 
@@ -374,7 +386,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/dpkg"
         #else
-        return "/usr/bin/dpkg"
+        return "\(prefix)/usr/bin/dpkg"
         #endif
     }()
 
@@ -382,7 +394,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-get"
         #else
-        return "/usr/bin/apt-get"
+        return "\(prefix)/usr/bin/apt-get"
         #endif
     }()
 
@@ -390,20 +402,20 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/bin/apt-key"
         #else
-        return "/usr/bin/apt-key"
+        return "\(prefix)/usr/bin/apt-key"
         #endif
     }()
 
     // swiftlint:disable identifier_name
     static var sh: String = {
-        "/bin/sh"
+        "\(prefix)/bin/sh"
     }()
 
     static var sileolists: String = {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/sileolists"
         #else
-        return "/var/lib/apt/sileolists"
+        return "\(prefix)/var/lib/apt/sileolists"
         #endif
     }()
 
@@ -411,16 +423,20 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus/var/lib/apt/lists"
         #else
-        return "/var/lib/apt/lists"
+        return "\(prefix)/var/lib/apt/lists"
         #endif
     }()
 
     static var whoami: String = {
-        "/usr/bin/whoami"
+        #if targetEnvironment(macCatalyst)
+        "\(prefix)/usr/bin/whoami"
+        #else
+        "whoami"
+        #endif
     }()
 
     static var uicache: String = {
-        "/usr/bin/uicache"
+        "\(prefix)/usr/bin/uicache"
     }()
 
     static var dpkgDir: URL = {
@@ -429,7 +445,7 @@ public class CommandPath {
         #elseif targetEnvironment(simulator) || TARGET_SANDBOX
         return Bundle.main.bundleURL
         #else
-        return URL(fileURLWithPath: "/Library/dpkg")
+        return URL(fileURLWithPath: "\(prefix)/Library/dpkg")
         #endif
     }()
 
@@ -446,7 +462,7 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus"
         #else
-        return ""
+        return prefix
         #endif
     }()
 

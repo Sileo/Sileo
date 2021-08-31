@@ -434,7 +434,7 @@ final class DownloadManager {
         var uninstallations = uninstallations.raw
         let rawUninstalls = PackageListManager.shared.packages(identifiers: uninstallIdentifiers, sorted: false, packages: Array(PackageListManager.shared.installedPackages.values))
         guard rawUninstalls.count == uninstallIdentifiers.count else {
-            throw APTParserErrors.blankJsonOutput
+            throw APTParserErrors.blankJsonOutput(error: "Uninstall Identifiers Mismatch")
         }
         var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
         
@@ -452,6 +452,7 @@ final class DownloadManager {
                 installDepOperation[String(host)] = [(operation.packageID, operation.version)]
             }
         }
+        let installIndentifiersReference = installIdentifiers
         var rawInstalls = [Package]()
         for (host, packages) in installDepOperation {
             if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == host }) {
@@ -479,6 +480,9 @@ final class DownloadManager {
             }
         }
         rawInstalls += PackageListManager.shared.packages(identifiers: installIdentifiers, sorted: false)
+        guard rawInstalls.count == installIndentifiersReference.count else {
+            throw APTParserErrors.blankJsonOutput(error: "Install Identifier Mismatch for Identifiers:\n \(installIdentifiers.map { "\($0)\n" })")
+        }
         var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
         var installations = installations.raw
         var upgrades = upgrades.raw
@@ -565,7 +569,7 @@ final class DownloadManager {
                 } catch {
                     removeAllItems()
                     viewController.cancelDownload(nil)
-                    TabBarController.singleton?.displayError(error)
+                    TabBarController.singleton?.displayError(error.localizedDescription)
                 }
             }
             DispatchQueue.main.async {
@@ -722,7 +726,6 @@ final class DownloadManager {
     public func repoRefresh() {
         if lockedForInstallation { return }
         let plm = PackageListManager.shared
-        let allPackages = plm.allPackagesArray
         var reloadNeeded = false
         if operationCount() != 0 {
             reloadNeeded = true
@@ -744,7 +747,7 @@ final class DownloadManager {
                 let id = tuple.0
                 let version = tuple.1
                 
-                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                     if find(package: pkg) == .none {
                         add(package: pkg, queue: .upgrades)
                     }
@@ -755,7 +758,7 @@ final class DownloadManager {
                 let id = tuple.0
                 let version = tuple.1
                 
-                if let pkg = plm.package(identifier: id, version: version, packages: allPackages) ?? plm.newestPackage(identifier: id, repoContext: nil, packages: allPackages) {
+                if let pkg = plm.package(identifier: id, version: version) ?? plm.newestPackage(identifier: id, repoContext: nil) {
                     if find(package: pkg) == .none {
                         add(package: pkg, queue: .installations)
                     }

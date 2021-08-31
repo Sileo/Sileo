@@ -280,14 +280,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    public func displayError(_ error: Error) {
+    public func displayError(_ string: String) {
         if !Thread.isMainThread {
             DispatchQueue.main.async {
-                self.displayError(error)
+                self.displayError(string)
             }
             return
         }
-        let alertController = UIAlertController(title: String(localizationKey: "Unknown", type: .error), message: error.localizedDescription, preferredStyle: .alert)
+        let alertController = UIAlertController(title: String(localizationKey: "Unknown", type: .error), message: string, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }

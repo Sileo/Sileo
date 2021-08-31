@@ -21,7 +21,7 @@
 "Share" = "Condividi";
 "Delete" = "Elimina";
 "Cancel" = "Annulla";
-"Acknowledge" = "Riconoscere";
+"Acknowledge" = "Riconosci";
 "Remove" = "Rimuovi";
 "Sileo_Team" = "Team di Sileo";
 "Warning" = "Attenzione";
@@ -95,7 +95,7 @@
 "Search_Page" = "Cerca";
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
-"Refresh" = "Aggiornare";
+"Refresh" = "Aggiorna";
 "Remove" = "Rimuovi";
 
 "All_Packages.Title" = "Tutti i Pacchetti";

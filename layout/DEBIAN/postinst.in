@@ -75,4 +75,7 @@ Components:\
 		;;
 esac
 
+if [ -z "${SILEO}" ]; then echo "Not running in Sileo. Trigger UICache"; fi
+if [ -z "${SILEO}" ]; then uicache -p /Applications/@@SILEO_APP@@; fi
+
 exit 0

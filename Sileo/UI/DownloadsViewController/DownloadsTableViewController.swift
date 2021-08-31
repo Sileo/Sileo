@@ -415,7 +415,7 @@ class DownloadsTableViewController: SileoViewController {
             window.alpha = 0
             window.transform = .init(scaleX: 0.9, y: 0.9)
         }
-        let refreshSileo = refreshSileo
+
         // When the animation has finished, fire the dumb respring code
         animator.addCompletion { _ in
             switch self.returnButtonAction {
@@ -424,18 +424,13 @@ class DownloadsTableViewController: SileoViewController {
             case .reopen:
                 exit(0)
             case .restart, .reload:
-                if refreshSileo {
-                    spawnAsRoot(args: [CommandPath.uicache, "-rp", "\(Bundle.main.bundlePath)"])
-                } else { spawnAsRoot(args: ["/usr/bin/sbreload"]) }
-                let args: [String]
-                if refreshSileo {
-                    args = [CommandPath.uicache, "-rp", Bundle.main.bundlePath]
-                } else {
-                    args = ["/usr/bin/sbreload"] }
-                spawnAsRoot(args: args)
+                if self.refreshSileo {
+                    spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"])
+                }
+                spawn(command: "\(CommandPath.prefix)/usr/bin/sbreload", args: ["sbreload"])
             case .reboot:
-                spawnAsRoot(args: ["/usr/bin/sync"])
-                spawnAsRoot(args: ["/usr/bin/ldrestart"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/ldrestart"])
             }
         }
         // Fire the animation
