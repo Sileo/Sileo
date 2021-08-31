@@ -29,6 +29,7 @@ final class Package: Hashable, Equatable {
     public var commercial: Bool = false
     public var installedSize: Int?
     public var tags: PackageTags = .none
+    public var nativeDepiction: String?
     
     public var allVersionsInternal = [String: PackageOld]()
     public var allVersions: [Package] {
@@ -118,6 +119,7 @@ final class PackageOld: Hashable, Equatable {
     public var installedSize: Int?
     public var author: String?
     public var maintainer: String?
+    public var nativeDepiction: String?
     
     init(package: Package) {
         self.sourceFile = package.sourceFile
@@ -138,6 +140,7 @@ final class PackageOld: Hashable, Equatable {
         self.installedSize = package.installedSize
         self.author = package.author
         self.maintainer = package.maintainer
+        self.nativeDepiction = package.nativeDepiction
     }
     
     public var packageNew: Package {
@@ -157,6 +160,7 @@ final class PackageOld: Hashable, Equatable {
         package.installedSize = self.installedSize
         package.maintainer = self.maintainer
         package.author = self.author
+        package.nativeDepiction = self.nativeDepiction
         return package
     }
     

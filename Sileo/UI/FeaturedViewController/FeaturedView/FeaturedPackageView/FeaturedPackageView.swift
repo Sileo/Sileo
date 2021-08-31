@@ -201,9 +201,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
     
     @objc func openDepiction(_ : Any?) {
         if let package = packageObject {
-            let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-            packageViewController.package = package
-            self.parentViewController?.navigationController?.pushViewController(packageViewController, animated: true)
+            self.parentViewController?.navigationController?.pushViewController(NativePackageViewController.viewController(for: package), animated: true)
         } else {
             let title = String(localizationKey: "Package_Unavailable")
             let message = String(format: String(localizationKey: "Package_Unavailable"), repoName)
@@ -299,9 +297,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
 extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
-            let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-            packageViewController.package = package
-            return packageViewController
+            return NativePackageViewController.viewController(for: package)
         }
         return nil
     }
@@ -315,8 +311,7 @@ extension FeaturedPackageView: UIViewControllerPreviewingDelegate {
 extension FeaturedPackageView: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         if let package = PackageListManager.shared.newestPackage(identifier: self.package, repoContext: nil) {
-            let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-            packageViewController.package = package
+            let packageViewController = NativePackageViewController.viewController(for: package)
             
             let actions = packageViewController.actions()
             

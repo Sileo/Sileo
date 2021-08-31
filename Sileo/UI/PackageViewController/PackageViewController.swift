@@ -13,7 +13,7 @@ import MessageUI
 import os.log
 
 class PackageViewController: SileoViewController, PackageQueueButtonDataProvider,
-    UIScrollViewDelegate, DepictionViewDelegate, MFMailComposeViewControllerDelegate {
+    UIScrollViewDelegate, DepictionViewDelegate, MFMailComposeViewControllerDelegate, PackageActions {
     public var package: Package?
     public var depictionHeight = CGFloat(0)
 

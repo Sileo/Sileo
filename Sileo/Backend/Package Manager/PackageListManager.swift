@@ -175,6 +175,7 @@ final class PackageListManager {
         package.packageDescription = dictionary["description"]
         package.legacyDepiction = dictionary["depiction"]
         package.depiction = dictionary["sileodepiction"]
+        package.nativeDepiction = dictionary["native-depiction"]
         
         if let installedSize = dictionary["installed-size"] {
             package.installedSize = Int(installedSize)

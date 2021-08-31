@@ -361,11 +361,9 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout { // Collection
 }
 
 extension NewsViewController { // 3D Touch
-    func controller(indexPath: IndexPath) -> PackageViewController {
+    func controller(indexPath: IndexPath) -> PackageActions {
         guard let package = sections[timestamps[indexPath.section - newsBuffer]]?[indexPath.row] else { fatalError("Something went wrong with indexxing") }
-        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = package
-        return packageViewController
+        return NativePackageViewController.viewController(for: package)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {

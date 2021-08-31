@@ -228,13 +228,7 @@ extension PaymentProfileViewController { // Collection View Delegate
         cell?.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let packageViewController: PackageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = packages[indexPath.row]
-        self.navigationController?.pushViewController(packageViewController, animated: true)
-        
-        /*UIView.animate(withDuration: 0.25) {
-            cell?.backgroundColor = UIColor.white
-        }*/
+        self.navigationController?.pushViewController(NativePackageViewController.viewController(for: packages[indexPath.row]), animated: true)
     }
 }
 

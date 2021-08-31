@@ -309,9 +309,8 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     }
     
     public func showPackage(_ package: Package?) {
-        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = package
-        self.navigationController?.pushViewController(packageViewController, animated: true)
+        guard let package = package else { return }
+        self.navigationController?.pushViewController(NativePackageViewController.viewController(for: package), animated: true)
     }
     
     func moveAndResizeProfile(height: CGFloat) {

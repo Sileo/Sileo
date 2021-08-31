@@ -111,9 +111,7 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
                 return nil
             }()
             if let package = package {
-                let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-                packageViewController.package = package
-                return packageViewController
+                return NativePackageViewController.viewController(for: package)
             }
         } else if let packages = banner["packages"] as? [String] {
             if let controllerName = banner["controllerName"] as? String {

@@ -217,13 +217,11 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         searchController?.searchBar.isFirstResponder ?? false
     }
     
-    func controller(package: Package) -> PackageViewController {
-        let packageViewController = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageViewController.package = package
-        return packageViewController
+    func controller(package: Package) -> PackageActions {
+        NativePackageViewController.viewController(for: package)
     }
     
-    func controller(indexPath: IndexPath) -> PackageViewController? {
+    func controller(indexPath: IndexPath) -> PackageActions? {
         switch findWhatFuckingSectionThisIs(indexPath.section) {
         case .canister:
             let pro = provisionalPackages[indexPath.row]

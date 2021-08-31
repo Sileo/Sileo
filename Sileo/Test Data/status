@@ -94,13 +94,14 @@ Section: Tweaks
 Installed-Size: 2948
 Maintainer: Amy While
 Architecture: iphoneos-arm
-Version: 0.1-430+debug
+Version: 0.1-Gay+debug
 Depends: mobilesubstrate (>= 0.9.5000)
 Description: NFC Fuckery
 Name: Aemulo
 Author: Amy While
 Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
 Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
+Native-Depiction: https://pastebin.com/raw/YhYxBbAm
 
 Package: com.amywhile.signalreborn
 Status: install ok installed

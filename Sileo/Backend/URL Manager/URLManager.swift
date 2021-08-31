@@ -47,8 +47,7 @@ class URLManager {
         } else if url.scheme == "sileo" {
             if url.host == "package" && url.pathComponents.count >= 2 {
                 if let package = PackageListManager.shared.newestPackage(identifier: url.pathComponents[1], repoContext: nil) {
-                    let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
-                    packageVC.package = package
+                    let packageVC = NativePackageViewController.viewController(for: package)
                     return isExternalOpen ? UINavigationController(rootViewController: packageVC) : packageVC
                 } else {
                     presentModally = true

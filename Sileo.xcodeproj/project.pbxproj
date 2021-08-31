@@ -689,6 +689,10 @@
 		E14E4D5C26DEBFD9002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5B26DEBFD9002AE3B4 /* DepictionKit */; };
 		E14E4D5E26DEBFED002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5D26DEBFED002AE3B4 /* DepictionKit */; };
 		E14E4D6026DEBFF9002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5F26DEBFF9002AE3B4 /* DepictionKit */; };
+		E14E4D6326DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
+		E14E4D6426DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
+		E14E4D6526DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
+		E14E4D6626DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
 		E15A953F26B9817A000DB10E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A953E26B9817A000DB10E /* Language.swift */; };
 		E15A954026B9817A000DB10E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A953E26B9817A000DB10E /* Language.swift */; };
 		E15A954226B981E4000DB10E /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954126B981E4000DB10E /* LanguageHelper.swift */; };
@@ -1508,6 +1512,7 @@
 		E14E4D4D26DAD5CD002AE3B4 /* liblzma.5-preboot.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "liblzma.5-preboot.tbd"; sourceTree = "<group>"; };
 		E14E4D4F26DAD5DC002AE3B4 /* libzstd.1-preboot.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libzstd.1-preboot.tbd"; sourceTree = "<group>"; };
 		E14E4D5826DEBFB1002AE3B4 /* DepictionKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DepictionKit; path = Deps/DepictionKit; sourceTree = "<group>"; };
+		E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePackageViewController.swift; sourceTree = "<group>"; };
 		E15A953E26B9817A000DB10E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E15A954126B981E4000DB10E /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -2300,6 +2305,14 @@
 			path = lzma;
 			sourceTree = "<group>";
 		};
+		E14E4D6126DED566002AE3B4 /* NativePackageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */,
+			);
+			path = NativePackageViewController;
+			sourceTree = "<group>";
+		};
 		E15A953D26B98163000DB10E /* LocalizationHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2898,6 +2911,7 @@
 		F1B99EE620DB671300374C27 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E14E4D6126DED566002AE3B4 /* NativePackageViewController */,
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
 				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
 				F16C967220B7649E001408E9 /* FeaturedViewController */,
@@ -4191,6 +4205,7 @@
 				E12818BF26BBFAA500D2553B /* RepoManager.swift in Sources */,
 				E12818C026BBFAA500D2553B /* SourceErrorsViewController.swift in Sources */,
 				E12818C126BBFAA500D2553B /* SourceLicense.swift in Sources */,
+				E14E4D6526DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
 				E12818C226BBFAA500D2553B /* SourceProgressIndicatorView.swift in Sources */,
 				E12818C326BBFAA500D2553B /* SourcesTableViewCell.swift in Sources */,
 				E12818C426BBFAA500D2553B /* SourcesSplitViewController.swift in Sources */,
@@ -4385,6 +4400,7 @@
 				E14E4CBD26DAD572002AE3B4 /* RepoManager.swift in Sources */,
 				E14E4CBE26DAD572002AE3B4 /* SourceErrorsViewController.swift in Sources */,
 				E14E4CBF26DAD572002AE3B4 /* SourceLicense.swift in Sources */,
+				E14E4D6626DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
 				E14E4CC026DAD572002AE3B4 /* SourceProgressIndicatorView.swift in Sources */,
 				E14E4CC126DAD572002AE3B4 /* SourcesTableViewCell.swift in Sources */,
 				E14E4CC226DAD572002AE3B4 /* SourcesSplitViewController.swift in Sources */,
@@ -4493,6 +4509,7 @@
 				F147E68722F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
 				F139D0B522EA9209007F5C0D /* DepictionTabControl.swift in Sources */,
 				F139D0E722EA9209007F5C0D /* DepictionTabView.swift in Sources */,
+				E14E4D6426DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
 				E1EB0369268BA4B00097CEE1 /* DownloadManager.swift in Sources */,
 				F139D0C922EA9209007F5C0D /* DepictionTableButtonView.swift in Sources */,
 				F139D0B422EA9209007F5C0D /* DepictionTableTextView.swift in Sources */,
@@ -4767,6 +4784,7 @@
 				F1D6A62F22E53EF900CBD045 /* RepoManager.swift in Sources */,
 				F1DB3BCF22D58200008FCFA1 /* SourceErrorsViewController.swift in Sources */,
 				172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */,
+				E14E4D6326DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
 				F1AB912A22ED09AE0054341B /* SourceProgressIndicatorView.swift in Sources */,
 				F1AB913022ED12070054341B /* SourcesTableViewCell.swift in Sources */,
 				F12652D625A165340094E446 /* SourcesSplitViewController.swift in Sources */,
