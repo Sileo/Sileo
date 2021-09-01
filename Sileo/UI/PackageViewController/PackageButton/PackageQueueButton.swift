@@ -13,7 +13,7 @@ protocol PackageQueueButtonDataProvider {
 }
 
 class PackageQueueButton: PackageButton {
-    public var viewControllerForPresentation: UIViewController?
+    public weak var viewControllerForPresentation: UIViewController?
     public var package: Package? {
         didSet {
             if package?.isProvisional ?? false {

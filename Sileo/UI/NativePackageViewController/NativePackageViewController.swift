@@ -8,6 +8,7 @@
 
 import UIKit
 import DepictionKit
+import MessageUI
 
 protocol PackageActions: UIViewController {
     @available (iOS 13.0, *)
@@ -28,6 +29,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         let button = PackageQueueButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.dataProvider = self
+        button.viewControllerForPresentation = self
         button.setContentHuggingPriority(UILayoutPriority(252), for: .horizontal)
         button.setContentCompressionResistancePriority(UILayoutPriority(752), for: .horizontal)
         
@@ -115,6 +117,15 @@ class NativePackageViewController: SileoViewController, PackageActions {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private lazy var shareButton: UIButton = {
+        let shareButton = UIButton(type: .custom)
+        shareButton.setImage(UIImage(named: "More"), for: .normal)
+        shareButton.addTarget(self, action: #selector(sharePackage), for: .touchUpInside)
+        shareButton.accessibilityIgnoresInvertColors = true
+        return shareButton
+    }()
+    private lazy var navBarShareButtonItem = UIBarButtonItem(customView: shareButton)
 
     public var theme: Theme {
         Theme(text_color: .sileoLabel,
@@ -192,6 +203,8 @@ class NativePackageViewController: SileoViewController, PackageActions {
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         
+        navigationItem.rightBarButtonItems = [navBarShareButtonItem]
+        
         updateSileoColors()
         reloadPackage()
     }
@@ -264,10 +277,104 @@ class NativePackageViewController: SileoViewController, PackageActions {
         view.backgroundColor = .sileoBackgroundColor
     }
     
+    override var previewActionItems: [UIPreviewActionItem] {
+        downloadButton.actionItems().map({ $0.previewAction() })
+    }
+    
     @available (iOS 13.0, *)
     func actions() -> [UIAction] {
         _ = self.view
         return downloadButton.actionItems().map({ $0.action() })
+    }
+    
+    @objc func sharePackage(_ sender: Any?) {
+        let sharePopup = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let shareAction = UIAlertAction(title: String(localizationKey: "Package_Share_Action"), style: .default) { [weak self] _ in
+            guard let `self` = self else { return }
+            let package = self.package
+            var packageString = "\(package.name ?? package.package) - \(URLManager.url(package: package.package))"
+            if let repo = package.sourceRepo {
+                packageString += " - from \(repo.url?.absoluteString ?? repo.rawURL)"
+            }
+            let activityViewController = UIActivityViewController(activityItems: [packageString], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.shareButton
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        sharePopup.addAction(shareAction)
+        
+        if let author = package.author,
+            let email = ControlFileParser.authorEmail(string: author) {
+            let moreByDeveloper = UIAlertAction(title: String(localizationKey: "Package_Developer_Find_Action"
+            ), style: .default) { _ in
+                let packagesListController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
+                packagesListController.packagesLoadIdentifier = "author:\(email)"
+                packagesListController.title = String(format: String(localizationKey: "Packages_By_Author"),
+                                                      ControlFileParser.authorName(string: author))
+                self.navigationController?.pushViewController(packagesListController, animated: true)
+            }
+            sharePopup.addAction(moreByDeveloper)
+        
+            let packageSupport = UIAlertAction(title: String(localizationKey: "Package_Support_Action"), style: .default) { [weak self] _ in
+                guard let `self` = self else { return }
+                let package = self.package
+                if !MFMailComposeViewController.canSendMail() {
+                    let alertController = UIAlertController(title: String(localizationKey: "Email_Unavailable.Title", type: .error),
+                                                            message: String(localizationKey: "Email_Unavailable.Body", type: .error),
+                                                            preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let composeVC = MFMailComposeViewController()
+                    composeVC.setToRecipients([email])
+                    composeVC.setSubject("Sileo/APT(M): \(String(describing: package.name))")
+                    composeVC.setMessageBody("", isHTML: false)
+                    composeVC.mailComposeDelegate = self
+                    self.present(composeVC, animated: true, completion: nil)
+                }
+            }
+            sharePopup.addAction(packageSupport)
+        }
+        
+        if installedPackage != nil {
+            let ignoreUpdatesText = installedPackage?.wantInfo == .hold ?
+                String(localizationKey: "Package_Hold_Disable_Action") : String(localizationKey: "Package_Hold_Enable_Action")
+            let ignoreUpdates = UIAlertAction(title: ignoreUpdatesText, style: .default) { _ in
+                if self.installedPackage?.wantInfo == .hold {
+                    self.installedPackage?.wantInfo = .install
+                    #if !targetEnvironment(simulator) && !TARGET_SIMULATOR
+                    DpkgWrapper.ignoreUpdates(false, package: packageID)
+                    #endif
+                } else {
+                    self.installedPackage?.wantInfo = .hold
+                    #if !targetEnvironment(simulator) && !TARGET_SIMULATOR
+                    DpkgWrapper.ignoreUpdates(true, package: packageID)
+                    #endif
+                }
+                NotificationCenter.default.post(Notification(name: PackageListManager.prefsNotification))
+            }
+            sharePopup.addAction(ignoreUpdates)
+        }
+        
+        let wishListText = WishListManager.shared.isPackageInWishList(package.package) ?
+            String(localizationKey: "Package_Wishlist_Remove") : String(localizationKey: "Package_Wishlist_Add")
+        let wishlist = UIAlertAction(title: wishListText, style: .default) { [weak package] _ in
+            guard let package = package else { return }
+            if WishListManager.shared.isPackageInWishList(package.package) {
+                WishListManager.shared.removePackageFromWishList(package.package)
+            } else {
+                _ = WishListManager.shared.addPackageToWishList(package.package)
+            }
+        }
+        sharePopup.addAction(wishlist)
+        
+        let cancelAction = UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel, handler: nil)
+        sharePopup.addAction(cancelAction)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            sharePopup.popoverPresentationController?.sourceView = shareButton
+        }
+        sharePopup.view.tintColor = depiction.effectiveTintColor
+        self.present(sharePopup, animated: true)
     }
 
 }
@@ -280,6 +387,13 @@ extension NativePackageViewController: DepictionDelegate {
     
     func handleAction(action: String, external: Bool) {
         
+    }
+    
+    func depictionError(error: Error) {
+        let alert = UIAlertController(title: "Error Loading Depiction",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        self.present(alert, animated: true)
     }
 
 }
@@ -309,4 +423,13 @@ extension NativePackageViewController: PackageQueueButtonDataProvider {
         }
     }
 
+}
+
+extension NativePackageViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        // Check the result or perform other tasks.
+
+        // Dismiss the mail compose view controller.
+        self.dismiss(animated: true, completion: nil)
+    }
 }
