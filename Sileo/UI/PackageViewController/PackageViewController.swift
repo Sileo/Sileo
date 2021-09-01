@@ -18,7 +18,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     public var depictionHeight = CGFloat(0)
 
     public var isPresentedModally = false
-    public var packageAdvertisementCount = Double(0)
 
     private weak var weakNavController: UINavigationController?
 
@@ -315,8 +314,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             contentView.addSubview(depictionView)
             self.depictionView = depictionView
         }
-
-        self.packageAdvertisementCount = 0
 
         if let depiction = package.depiction,
             let depictionURL = URL(string: depiction) {

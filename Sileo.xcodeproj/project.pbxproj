@@ -5113,7 +5113,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5163,7 +5163,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5212,7 +5212,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5339,7 +5339,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5389,7 +5389,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5438,7 +5438,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5542,7 +5542,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.2.4-1";
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5587,7 +5587,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5742,7 +5742,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5788,7 +5788,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.2.4;
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5956,7 +5956,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.2.4-1";
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -6006,7 +6006,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.2.4-1";
+				MARKETING_VERSION = 2.3;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
