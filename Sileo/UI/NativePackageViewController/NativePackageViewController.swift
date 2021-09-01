@@ -338,16 +338,17 @@ class NativePackageViewController: SileoViewController, PackageActions {
         if installedPackage != nil {
             let ignoreUpdatesText = installedPackage?.wantInfo == .hold ?
                 String(localizationKey: "Package_Hold_Disable_Action") : String(localizationKey: "Package_Hold_Enable_Action")
-            let ignoreUpdates = UIAlertAction(title: ignoreUpdatesText, style: .default) { _ in
-                if self.installedPackage?.wantInfo == .hold {
-                    self.installedPackage?.wantInfo = .install
+            let ignoreUpdates = UIAlertAction(title: ignoreUpdatesText, style: .default) { [weak self] _ in
+                guard let installedPackage = self?.installedPackage else { return }
+                if installedPackage.wantInfo == .hold {
+                    installedPackage.wantInfo = .install
                     #if !targetEnvironment(simulator) && !TARGET_SIMULATOR
-                    DpkgWrapper.ignoreUpdates(false, package: packageID)
+                    DpkgWrapper.ignoreUpdates(false, package: installedPackage.packageID)
                     #endif
                 } else {
-                    self.installedPackage?.wantInfo = .hold
+                    installedPackage.wantInfo = .hold
                     #if !targetEnvironment(simulator) && !TARGET_SIMULATOR
-                    DpkgWrapper.ignoreUpdates(true, package: packageID)
+                    DpkgWrapper.ignoreUpdates(true, package: installedPackage.packageID)
                     #endif
                 }
                 NotificationCenter.default.post(Notification(name: PackageListManager.prefsNotification))
