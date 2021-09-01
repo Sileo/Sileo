@@ -227,7 +227,6 @@
 		E12818A826BBFAA500D2553B /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D82F1723050FED00EECCAE /* PackageListViewController.swift */; };
 		E12818A926BBFAA500D2553B /* CSTextRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D58240A766D00062310 /* CSTextRenderView.swift */; };
 		E12818AA26BBFAA500D2553B /* DepictionColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */; };
-		E12818AB26BBFAA500D2553B /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
 		E12818AC26BBFAA500D2553B /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		E12818AD26BBFAA500D2553B /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
 		E12818AE26BBFAA500D2553B /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
@@ -538,7 +537,6 @@
 		E14E4CA626DAD572002AE3B4 /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D82F1723050FED00EECCAE /* PackageListViewController.swift */; };
 		E14E4CA726DAD572002AE3B4 /* CSTextRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14F7D58240A766D00062310 /* CSTextRenderView.swift */; };
 		E14E4CA826DAD572002AE3B4 /* DepictionColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A116B62384D49500B6F408 /* DepictionColorCollection.swift */; };
-		E14E4CA926DAD572002AE3B4 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
 		E14E4CAA26DAD572002AE3B4 /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F172581824EB848E000F2FAF /* NewsArticle.swift */; };
 		E14E4CAB26DAD572002AE3B4 /* AltIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */; };
 		E14E4CAC26DAD572002AE3B4 /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
@@ -1033,8 +1031,6 @@
 		F1C85B48232574F70064D3A2 /* SileoSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */; };
 		F1C85B4D2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */; };
 		F1C85B4E2325835D0064D3A2 /* SileoSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */; };
-		F1CA758D244CF813000BA15C /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
-		F1CA758E244CF813000BA15C /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA758C244CF813000BA15C /* String+Error.swift */; };
 		F1CB2EFB2146511100641808 /* DepictionSubpageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CB2EF92146511100641808 /* DepictionSubpageViewController.xib */; };
 		F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D113F820DC608900C8F051 /* PackageViewController.xib */; };
 		F1D349102118CADD00CADF87 /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */; };
@@ -1714,7 +1710,6 @@
 		F1C85B432325707A0064D3A2 /* SileoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableViewCell.swift; sourceTree = "<group>"; };
 		F1C85B46232574F70064D3A2 /* SileoSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSelectionView.swift; sourceTree = "<group>"; };
 		F1C85B4C2325835D0064D3A2 /* SileoSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoSeparatorView.swift; sourceTree = "<group>"; };
-		F1CA758C244CF813000BA15C /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
 		F1CB2EF92146511100641808 /* DepictionSubpageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepictionSubpageViewController.xib; sourceTree = "<group>"; };
 		F1D113F820DC608900C8F051 /* PackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageViewController.xib; sourceTree = "<group>"; };
 		F1D3490E2118CADD00CADF87 /* FeaturedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedViewController.xib; sourceTree = "<group>"; };
@@ -2889,7 +2884,6 @@
 				F107EB61230D195A002B8C20 /* Dusk.swift */,
 				F13AEE6222F69C47004BAA05 /* EditableTableView.swift */,
 				F1705FF324CA16DD001596A0 /* Store.swift */,
-				F1CA758C244CF813000BA15C /* String+Error.swift */,
 				F120234021470F69005EAFAC /* UIColor+HTMLColors.h */,
 				F120233F21470F69005EAFAC /* UIColor+HTMLColors.m */,
 				499162C22607C06500D09BE7 /* UIView+FromNib.swift */,
@@ -4182,7 +4176,6 @@
 				E12818A826BBFAA500D2553B /* PackageListViewController.swift in Sources */,
 				E12818A926BBFAA500D2553B /* CSTextRenderView.swift in Sources */,
 				E12818AA26BBFAA500D2553B /* DepictionColorCollection.swift in Sources */,
-				E12818AB26BBFAA500D2553B /* String+Error.swift in Sources */,
 				E12818AC26BBFAA500D2553B /* NewsArticle.swift in Sources */,
 				E12818AD26BBFAA500D2553B /* AltIconTableViewCell.swift in Sources */,
 				E12818AE26BBFAA500D2553B /* APTJsonParser.swift in Sources */,
@@ -4377,7 +4370,6 @@
 				E14E4CA626DAD572002AE3B4 /* PackageListViewController.swift in Sources */,
 				E14E4CA726DAD572002AE3B4 /* CSTextRenderView.swift in Sources */,
 				E14E4CA826DAD572002AE3B4 /* DepictionColorCollection.swift in Sources */,
-				E14E4CA926DAD572002AE3B4 /* String+Error.swift in Sources */,
 				E14E4CAA26DAD572002AE3B4 /* NewsArticle.swift in Sources */,
 				E14E4CAB26DAD572002AE3B4 /* AltIconTableViewCell.swift in Sources */,
 				E14E4CAC26DAD572002AE3B4 /* APTJsonParser.swift in Sources */,
@@ -4585,7 +4577,6 @@
 				F14F7D5A240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B82384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F172581A24EB848E000F2FAF /* NewsArticle.swift in Sources */,
-				F1CA758E244CF813000BA15C /* String+Error.swift in Sources */,
 				F147E67722F021560048F868 /* PackageStateBadgeView.swift in Sources */,
 				E1C4993A26CFED0A0093E290 /* DatabaseManager.swift in Sources */,
 				FB40262A23DE87F8002D97FE /* SettingsIconHeaderView.swift in Sources */,
@@ -4761,7 +4752,6 @@
 				F1D82F1823050FED00EECCAE /* PackageListViewController.swift in Sources */,
 				F14F7D59240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
-				F1CA758D244CF813000BA15C /* String+Error.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
 				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
 				E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */,
