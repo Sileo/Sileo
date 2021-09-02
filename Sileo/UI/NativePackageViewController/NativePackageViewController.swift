@@ -442,7 +442,7 @@ extension NativePackageViewController: DepictionDelegate {
         completionHandler(false)
     }
     
-    func handleAction(action: String, external: Bool) {
+    func handleAction(action: DepictionAction) {
         
     }
     
