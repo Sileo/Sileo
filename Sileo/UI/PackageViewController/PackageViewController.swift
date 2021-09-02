@@ -146,12 +146,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = [.top, .bottom]
 
-        scrollView.contentInset = UIEdgeInsets(top: self.navigationController?.navigationBar.bounds.height ?? 0 +
-            UIApplication.shared.statusBarFrame.height,
-                                               left: 0,
-                                               bottom: self.tabBarController?.tabBar.bounds.height ?? 0,
-                                               right: 0)
-
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.tabBarController?.tabBar.bounds.height ?? 0, right: 0)
 
