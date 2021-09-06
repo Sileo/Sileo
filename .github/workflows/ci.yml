@@ -2,6 +2,9 @@ name: CI
 
 on:
   push:
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
     branches:
       - dev
   workflow_dispatch:
