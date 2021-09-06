@@ -103,7 +103,7 @@ jobs:
         run: |
           make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
   # Upload builds to the repo
-  upload:
+  finish:
     needs:
       - iphoneos-arm
       - darwin-amd64
@@ -121,11 +121,7 @@ jobs:
           curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-  # We do a little trolling...
-  wakeup-babe:
-    needs: upload
-    runs-on: macos-latest
-    steps:
+      # We do a little trolling...
       - name: Send message to Sileo Discord Server
         run: |
           curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
