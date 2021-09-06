@@ -108,7 +108,7 @@
 
 /**
  * Scan a CSS3/SVG named color. These are similar to the X11 named colors.
- * See: http://www.w3.org/TR/css3-color/#svg-color 
+ * See: http://www.w3.org/TR/css3-color/#svg-color
  */
 - (BOOL)scanW3CNamedColor:(UIColor *_Nullable * _Nonnull)color;
 
