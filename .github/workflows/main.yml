@@ -1,29 +1,28 @@
-name: CI
-
 on:
   push:
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.txt'
     branches:
       - dev
-  workflow_dispatch:
-
+name: Build
 jobs:
-  # Setup Procursus, other things, and cache
-  setup:
+  make:
+    name: Build and Upload Sileo
     runs-on: macos-latest
     steps:
-      - name: Obtain Procursus cache
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
         id: procache
         with:
           path: |
             ~/__cache
             /Applications/Xcode_12.4.app/Contents/Developer/Toolchains
           key: ${{ runner.os }}-procursus
+          
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          submodules: recursive
+          token: ${{ secrets.SILEO_PAT }}
       - name: Import all certificates
-        env:
+        env: 
           SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
           DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
           DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
@@ -44,7 +43,8 @@ jobs:
                           -k build.keychain \
                           -P $SIGNING_CERTIFICATE_PASSWORD \
                           -T /usr/bin/codesign
-          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain 
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
+        
       - name: Setup Procursus Bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
@@ -57,9 +57,11 @@ jobs:
           sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt install ldid -y
+          
       - name: Add Procursus to PATH
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
@@ -68,51 +70,19 @@ jobs:
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
-      - name: Copy Procursus to cache location
-        run: |
-          sudo mkdir -p ~/__cache
-          sudo rsync -aP /opt/procursus ~/__cache
-          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
-      - name: Checkout repository code
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          token: ${{ secrets.SILEO_PAT }}
-  # Build Sileo Nightly for iphoneos-arm
-  iphoneos-arm:
-    needs: setup
-    runs-on: macos-latest
-    steps:
+          
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
-  # Build Sileo Nightly for darwin-amd64
-  darwin-amd64:
-    needs: setup
-    runs-on: macos-latest
-    steps:
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
-  # Build Sileo Nightly for darwin-arm64
-  darwin-arm64:
-    needs: setup
-    runs-on: macos-latest
-    steps:
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
       - name: Build Sileo Nightly (darwin-arm64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
-  # Upload builds to the repo
-  finish:
-    needs:
-      - iphoneos-arm
-      - darwin-amd64
-      - darwin-arm64
-    runs-on: macos-latest
-    steps:
-      - name: Upload builds to repo
-        env:
-          token: ${{ secrets.AMY_REPO_SECRET }} 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
+      - name: Upload To Repo
+        env: # 
+          token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package1=$(ls -t packages | head -1)
           package2=$(ls -t packages | head -2 | tail -1)
@@ -121,7 +91,12 @@ jobs:
           curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-      # We do a little trolling...
-      - name: Send message to Sileo Discord Server
+      - name: Wakeup Babe
         run: |
           curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
+      - name: Copy Procursus to Cache Location
+        run: |
+          sudo mkdir -p ~/__cache
+          sudo rsync -aP /opt/procursus ~/__cache
+          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
+
