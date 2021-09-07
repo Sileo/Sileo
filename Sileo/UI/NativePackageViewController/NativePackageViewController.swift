@@ -443,7 +443,20 @@ extension NativePackageViewController: DepictionDelegate {
     }
     
     func handleAction(action: DepictionAction) {
-        
+        switch action {
+        case let .openURL(url: url, external: external):
+            print("open url \(url) \(external)")
+        case let .openDepiction(url: url):
+            print("open depiction \(url)")
+        case let .openPackage(bundle: bundle):
+            print("open package \(bundle)")
+        case let .addRepo(url: url):
+            print("add repo \(url)")
+        case let .custom(action: action):
+            print("custom \(action)")
+        case let .actionError(error: error, action: action):
+            print("action error \(error) \(action)")
+        }
     }
     
     func depictionError(error: Error) {
