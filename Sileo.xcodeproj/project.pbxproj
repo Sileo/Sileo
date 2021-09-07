@@ -740,6 +740,10 @@
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
+		E1CECD4726E80B65009FCF27 /* SafeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CECD4626E80B65009FCF27 /* SafeContainer.swift */; };
+		E1CECD4826E80B65009FCF27 /* SafeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CECD4626E80B65009FCF27 /* SafeContainer.swift */; };
+		E1CECD4926E80B65009FCF27 /* SafeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CECD4626E80B65009FCF27 /* SafeContainer.swift */; };
+		E1CECD4A26E80B65009FCF27 /* SafeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CECD4626E80B65009FCF27 /* SafeContainer.swift */; };
 		E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; platformFilter = ios; };
 		E1D2E2CE26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; };
 		E1D2E2CF26C3383D00444437 /* Midnight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C526C3383D00444437 /* Midnight@2x.png */; platformFilter = ios; };
@@ -1538,6 +1542,7 @@
 		E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTPipe.swift; sourceTree = "<group>"; };
 		E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesignCheck.swift; sourceTree = "<group>"; };
 		E1CDA8C426BB508A001813BD /* FolderFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFinder.swift; sourceTree = "<group>"; };
+		E1CECD4626E80B65009FCF27 /* SafeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeContainer.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
 		E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Midnight~ipad@2x.png"; sourceTree = "<group>"; };
 		E1D2E2C526C3383D00444437 /* Midnight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Midnight@2x.png"; sourceTree = "<group>"; };
@@ -2377,6 +2382,7 @@
 				E1DDA6362630830300E889A5 /* AmyNetworkResolver.swift */,
 				E1C9026F263D847D00569D1E /* AmyDownloadParser.swift */,
 				E1DC86052669673600B3DC42 /* AmyLogManager.swift */,
+				E1CECD4626E80B65009FCF27 /* SafeContainer.swift */,
 			);
 			path = AmyCommon;
 			sourceTree = "<group>";
@@ -4177,6 +4183,7 @@
 				E12818A926BBFAA500D2553B /* CSTextRenderView.swift in Sources */,
 				E12818AA26BBFAA500D2553B /* DepictionColorCollection.swift in Sources */,
 				E12818AC26BBFAA500D2553B /* NewsArticle.swift in Sources */,
+				E1CECD4926E80B65009FCF27 /* SafeContainer.swift in Sources */,
 				E12818AD26BBFAA500D2553B /* AltIconTableViewCell.swift in Sources */,
 				E12818AE26BBFAA500D2553B /* APTJsonParser.swift in Sources */,
 				E12818AF26BBFAA500D2553B /* PackageStateBadgeView.swift in Sources */,
@@ -4371,6 +4378,7 @@
 				E14E4CA726DAD572002AE3B4 /* CSTextRenderView.swift in Sources */,
 				E14E4CA826DAD572002AE3B4 /* DepictionColorCollection.swift in Sources */,
 				E14E4CAA26DAD572002AE3B4 /* NewsArticle.swift in Sources */,
+				E1CECD4A26E80B65009FCF27 /* SafeContainer.swift in Sources */,
 				E14E4CAB26DAD572002AE3B4 /* AltIconTableViewCell.swift in Sources */,
 				E14E4CAC26DAD572002AE3B4 /* APTJsonParser.swift in Sources */,
 				E14E4CAD26DAD572002AE3B4 /* PackageStateBadgeView.swift in Sources */,
@@ -4531,6 +4539,7 @@
 				F172581D24EB88E3000F2FAF /* PackageStub.swift in Sources */,
 				F139D0BA22EA9209007F5C0D /* FeaturedBannersView.swift in Sources */,
 				F170606024CF50C7001596A0 /* SileoNavigationController.swift in Sources */,
+				E1CECD4826E80B65009FCF27 /* SafeContainer.swift in Sources */,
 				F139D0FE22EA9209007F5C0D /* FeaturedBaseView.swift in Sources */,
 				F139D0E022EA9209007F5C0D /* FeaturedButtonView.swift in Sources */,
 				F139D0B322EA9209007F5C0D /* FeaturedHeaderView.swift in Sources */,
@@ -4753,6 +4762,7 @@
 				F14F7D59240A766D00062310 /* CSTextRenderView.swift in Sources */,
 				F1A116B72384D49500B6F408 /* DepictionColorCollection.swift in Sources */,
 				F172581924EB848E000F2FAF /* NewsArticle.swift in Sources */,
+				E1CECD4726E80B65009FCF27 /* SafeContainer.swift in Sources */,
 				49CE7CB02607F97C00A20711 /* AltIconTableViewCell.swift in Sources */,
 				E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */,
 				F147E67622F021560048F868 /* PackageStateBadgeView.swift in Sources */,
