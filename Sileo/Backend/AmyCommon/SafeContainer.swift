@@ -253,6 +253,7 @@ extension SafeContiguousArray where Element: Equatable {
 final public class SafeDictionary<Key: Hashable, Value> {
     public typealias Element = (key: Key, value: Value)
     
+    // swiftlint:disable:next syntactic_sugar
     private var dict: Dictionary<Key, Value>
     private var queue: DispatchQueue
     private var key: DispatchSpecificKey<Int>
@@ -262,10 +263,38 @@ final public class SafeDictionary<Key: Hashable, Value> {
         DispatchQueue.getSpecific(key: key) == context
     }
     
+    // swiftlint:disable:next syntactic_sugar
     public init(_ dict: Dictionary<Key, Value> = [:], queue: DispatchQueue, key: DispatchSpecificKey<Int>, context: Int) {
         self.dict = dict
         self.queue = queue
         self.key = key
         self.context = context
+    }
+    
+    public subscript(key: Key) -> Value? {
+        get {
+            if !isOnQueue {
+                var result: Value?
+                queue.sync { result = dict[key] }
+                return result
+            } else {
+                return dict[key]
+            }
+        }
+        set {
+            if !isOnQueue {
+                queue.async(flags: .barrier) { [self] in dict[key] = newValue }
+            } else {
+                dict[key] = newValue
+            }
+        }
+    }
+    
+    func removeValue(forKey key: Key) {
+        if !isOnQueue {
+            queue.async(flags: .barrier) { [self] in dict.removeValue(forKey: key) }
+        } else {
+            dict.removeValue(forKey: key)
+        }
     }
 }
