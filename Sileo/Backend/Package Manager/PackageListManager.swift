@@ -300,7 +300,7 @@ final class PackageListManager {
                         package.addOld([otherPkg])
                         dict[packageID] = package
                     }
-                    otherPkg.addOldInternal(Array(package.allVersionsInternal.values))
+                    otherPkg.addOld(Array(package.allVersionsInternal.values))
                     package.allVersionsInternal = otherPkg.allVersionsInternal
                 } else {
                     dict[packageID] = package
