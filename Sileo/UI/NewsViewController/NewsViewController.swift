@@ -26,7 +26,7 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
     private var timestamps = [Int64]()
 
     var dateFormatter: DateFormatter = DateFormatter()
-    private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue")
+    private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-update-queue", qos: .userInitiated)
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -133,17 +133,9 @@ extension NewsViewController { // Get Data
         DispatchQueue.main.async {
             self.collectionView.isHidden = true
             self.activityIndicatorView.startAnimating()
-            self.updateQueue.async {
-                DispatchQueue.main.async {
-                    // Reset all variables that may block the batch load
-                    self.sections = [:]
-                    self.timestamps.removeAll()
-                    // Empty collection view and scroll to top
-                    self.collectionView.reloadData()
-                    self.collectionView.contentOffset = CGPoint(x: 0, y: -(self.collectionView.safeAreaInsets.top))
-                    self.loadNextBatch()
-                }
-            }
+            self.activityIndicatorView.isHidden = false
+            self.activityIndicatorView.alpha = 1.0
+            self.loadNextBatch()
         }
     }
     
@@ -151,6 +143,7 @@ extension NewsViewController { // Get Data
         updateQueue.async {
             let packageListManager = PackageListManager.shared
             let databaseManager = DatabaseManager.shared
+            
             let timestampsWeCareAbout = PackageStub.timestamps().sorted { $0 > $1 }
             if timestampsWeCareAbout.isEmpty {
                 DispatchQueue.main.async {
@@ -168,12 +161,13 @@ extension NewsViewController { // Get Data
             // Ok so we've got a list of timestamps we haven't bothered to load yet
             // We're gonna load the batches, until we get to 100 or over
             // Thanks to new repo contexts, loading packages is signifcantly faster anyway
-            var stubs = [PackageStub]()
+            var stubs = ContiguousArray<PackageStub>()
             for timestamp in timestampsWeCareAbout {
                 stubs += databaseManager.stubsAtTimestamp(timestamp)
             }
+            
             // Going to take advantage of those sweet contexts and dictionaries for super speedy package loads
-            var packages = [Int64: [Package]]()
+            var packages = [Int64: ContiguousArray<Package>]()
             var packageCache: [String: [(String, Int64, Bool)]] = [:]
             for stub in stubs {
                 if var packages = packageCache[stub.repoURL] {
@@ -183,6 +177,7 @@ extension NewsViewController { // Get Data
                     packageCache[stub.repoURL] = [(stub.package, stub.firstSeen ?? 0, stub.userReadDate == 1)]
                 }
             }
+
             // Find each package and organise into a nice dictionary
             for key in packageCache.keys {
                 let repo = RepoManager.shared.repoList.first(where: { RepoManager.shared.cacheFile(named: "Packages", for: $0).lastPathComponent == key })
@@ -202,29 +197,25 @@ extension NewsViewController { // Get Data
             // Sort the packages array based on name and size
             for timestamp in packages.keys {
                 let packageArray = packages[timestamp] ?? []
-                let sorted = packageListManager.sortPackages(packages: packageArray, search: nil)
-                packages[timestamp] = sorted
+                let sorted = packageListManager.sortPackages(packages: Array(packageArray), search: nil)
+                packages[timestamp] = ContiguousArray(sorted)
             }
             // Merge with the master array
             // This is the dumbest shit ever, it's literally the master array that shows
             // swiftlint:disable inclusive_language
             var master = self.sections
+            master.removeAll()
             for timestamp in packages.keys {
-                master[timestamp] = packages[timestamp]
-            }
-            // Remove any dead sections
-            var complete = [Int64: [Package]]()
-            for timestamp in master.keys {
-                if let packages = master[timestamp],
-                   !packages.isEmpty {
-                    complete[timestamp] = packages
+                if let packages = packages[timestamp],
+                      !packages.isEmpty {
+                    master[timestamp] = Array(packages)
                 }
             }
             DispatchQueue.main.async {
                 // Set our final new dictionary
                 // We do this on the main thread to avoid a mismatch somehow
-                self.sections = complete
-                self.timestamps = Array(complete.keys).sorted { $0 > $1 }
+                self.sections = master
+                self.timestamps = Array(master.keys).sorted { $0 > $1 }
                 self.collectionView.reloadData()
 
                 // Hide spinner if necessary
