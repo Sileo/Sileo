@@ -683,10 +683,6 @@
 		E14E4D4C26DAD5BC002AE3B4 /* liblz4.1-preboot.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14E4D4B26DAD5BC002AE3B4 /* liblz4.1-preboot.tbd */; platformFilter = ios; };
 		E14E4D4E26DAD5CD002AE3B4 /* liblzma.5-preboot.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14E4D4D26DAD5CD002AE3B4 /* liblzma.5-preboot.tbd */; platformFilter = ios; };
 		E14E4D5026DAD5DC002AE3B4 /* libzstd.1-preboot.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14E4D4F26DAD5DC002AE3B4 /* libzstd.1-preboot.tbd */; platformFilter = ios; };
-		E14E4D5A26DEBFC0002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5926DEBFC0002AE3B4 /* DepictionKit */; };
-		E14E4D5C26DEBFD9002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5B26DEBFD9002AE3B4 /* DepictionKit */; };
-		E14E4D5E26DEBFED002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5D26DEBFED002AE3B4 /* DepictionKit */; };
-		E14E4D6026DEBFF9002AE3B4 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E14E4D5F26DEBFF9002AE3B4 /* DepictionKit */; };
 		E14E4D6326DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
 		E14E4D6426DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
 		E14E4D6526DED58F002AE3B4 /* NativePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */; };
@@ -701,6 +697,10 @@
 		E15A954D26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E1685AC526E953F500F31B71 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E1685AC426E953F500F31B71 /* Down */; };
+		E1685AC726E9540000F31B71 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E1685AC626E9540000F31B71 /* Down */; };
+		E1685AC926E9540C00F31B71 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E1685AC826E9540C00F31B71 /* Down */; };
+		E1685ACB26E9541200F31B71 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E1685ACA26E9541200F31B71 /* Down */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
@@ -1511,7 +1511,6 @@
 		E14E4D4B26DAD5BC002AE3B4 /* liblz4.1-preboot.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "liblz4.1-preboot.tbd"; sourceTree = "<group>"; };
 		E14E4D4D26DAD5CD002AE3B4 /* liblzma.5-preboot.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "liblzma.5-preboot.tbd"; sourceTree = "<group>"; };
 		E14E4D4F26DAD5DC002AE3B4 /* libzstd.1-preboot.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libzstd.1-preboot.tbd"; sourceTree = "<group>"; };
-		E14E4D5826DEBFB1002AE3B4 /* DepictionKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DepictionKit; path = Deps/DepictionKit; sourceTree = "<group>"; };
 		E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePackageViewController.swift; sourceTree = "<group>"; };
 		E15A953E26B9817A000DB10E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E15A954126B981E4000DB10E /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
@@ -1778,10 +1777,10 @@
 				E12818D526BBFAA500D2553B /* liblzma.5-mac.tbd in Frameworks */,
 				E12818D626BBFAA500D2553B /* liblz4.1-mac.tbd in Frameworks */,
 				E12818D826BBFAA500D2553B /* libz.tbd in Frameworks */,
-				E14E4D5E26DEBFED002AE3B4 /* DepictionKit in Frameworks */,
 				E12818D926BBFAA500D2553B /* libbz2.tbd in Frameworks */,
 				E12818DA26BBFAA500D2553B /* SQLite in Frameworks */,
 				E12818DB26BBFAA500D2553B /* LNZTreeView in Frameworks */,
+				E1685AC926E9540C00F31B71 /* Down in Frameworks */,
 				E12818DD26BBFAA500D2553B /* Security.framework in Frameworks */,
 				E12818DE26BBFAA500D2553B /* libzstd.1-mac.tbd in Frameworks */,
 				E12818DF26BBFAA500D2553B /* Cosmos in Frameworks */,
@@ -1803,7 +1802,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E14E4D6026DEBFF9002AE3B4 /* DepictionKit in Frameworks */,
+				E1685ACB26E9541200F31B71 /* Down in Frameworks */,
 				E14E4CD326DAD572002AE3B4 /* liblzma.5-mac.tbd in Frameworks */,
 				E14E4CD426DAD572002AE3B4 /* liblz4.1-mac.tbd in Frameworks */,
 				E14E4CD626DAD572002AE3B4 /* libz.tbd in Frameworks */,
@@ -1841,8 +1840,8 @@
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
-				E14E4D5C26DEBFD9002AE3B4 /* DepictionKit in Frameworks */,
 				E14897DF269B4D3B0061A301 /* liblz4.1-mac.tbd in Frameworks */,
+				E1685AC726E9540000F31B71 /* Down in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
@@ -1853,8 +1852,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1685AC526E953F500F31B71 /* Down in Frameworks */,
 				E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */,
-				E14E4D5A26DEBFC0002AE3B4 /* DepictionKit in Frameworks */,
 				E1EB035F268BA3D40097CEE1 /* liblzma.5-mac.tbd in Frameworks */,
 				E14897DE269B4D3B0061A301 /* liblz4.1-mac.tbd in Frameworks */,
 				E12FC0D5269A3F7D008A0A36 /* liblz4.1.tbd in Frameworks */,
@@ -1912,7 +1911,6 @@
 		4929234E2663353700B5B37A /* Deps */ = {
 			isa = PBXGroup;
 			children = (
-				E14E4D5826DEBFB1002AE3B4 /* DepictionKit */,
 				E12FC0D2269A3F7D008A0A36 /* liblz4 */,
 				E14C5ED626680F340080BFCE /* liblzma */,
 				E14C5E6726659CCA0080BFCE /* libzstd */,
@@ -3294,7 +3292,7 @@
 				E128181326BBFAA500D2553B /* LNZTreeView */,
 				E128181526BBFAA500D2553B /* LNPopupController-Static */,
 				E128181726BBFAA500D2553B /* Alderis */,
-				E14E4D5D26DEBFED002AE3B4 /* DepictionKit */,
+				E1685AC826E9540C00F31B71 /* Down */,
 			);
 			productName = iTweak;
 			productReference = E128194526BBFAA500D2553B /* Sileo (Test Handler).app */;
@@ -3345,7 +3343,7 @@
 				E14E4C1526DAD572002AE3B4 /* LNZTreeView */,
 				E14E4C1726DAD572002AE3B4 /* LNPopupController-Static */,
 				E14E4C1926DAD572002AE3B4 /* Alderis */,
-				E14E4D5F26DEBFF9002AE3B4 /* DepictionKit */,
+				E1685ACA26E9541200F31B71 /* Down */,
 			);
 			productName = iTweak;
 			productReference = E14E4D4926DAD572002AE3B4 /* Sileo-Preboot.app */;
@@ -3393,7 +3391,7 @@
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19F95A1269245EB002ABB8C /* LNPopupController-Static */,
 				E14897E3269B64C90061A301 /* Alderis */,
-				E14E4D5B26DEBFD9002AE3B4 /* DepictionKit */,
+				E1685AC626E9540000F31B71 /* Down */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3426,7 +3424,7 @@
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E19F959F269245E4002ABB8C /* LNPopupController-Static */,
 				E14897E1269B64B60061A301 /* Alderis */,
-				E14E4D5926DEBFC0002AE3B4 /* DepictionKit */,
+				E1685AC426E953F500F31B71 /* Down */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -3515,6 +3513,7 @@
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */,
 				E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */,
+				E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -6247,6 +6246,14 @@
 				kind = branch;
 			};
 		};
+		E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 		E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/LNPopupController";
@@ -6351,21 +6358,25 @@
 			package = E14E4C1A26DAD572002AE3B4 /* XCRemoteSwiftPackageReference "Alderis" */;
 			productName = Alderis;
 		};
-		E14E4D5926DEBFC0002AE3B4 /* DepictionKit */ = {
+		E1685AC426E953F500F31B71 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
+			package = E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
-		E14E4D5B26DEBFD9002AE3B4 /* DepictionKit */ = {
+		E1685AC626E9540000F31B71 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
+			package = E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
-		E14E4D5D26DEBFED002AE3B4 /* DepictionKit */ = {
+		E1685AC826E9540C00F31B71 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
+			package = E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
-		E14E4D5F26DEBFF9002AE3B4 /* DepictionKit */ = {
+		E1685ACA26E9541200F31B71 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
+			package = E1685AC326E953F500F31B71 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
 		E19A53412617438700BB8A69 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;

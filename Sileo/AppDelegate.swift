@@ -10,6 +10,10 @@ import Foundation
 import UserNotifications
 import BackgroundTasks
 
+extension String: LocalizedError {
+    public var errorDescription: String? { self }
+}
+
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     

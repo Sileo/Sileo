@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import DepictionKit
-import MessageUI
+//import DepictionKit
+//import MessageUI
 
 protocol PackageActions: UIViewController {
     @available (iOS 13.0, *)
@@ -17,6 +17,13 @@ protocol PackageActions: UIViewController {
 
 class NativePackageViewController: SileoViewController, PackageActions {
     
+    @available (iOS 13.0, *)
+    func actions() -> [UIAction] {
+        []
+    }
+    
+    
+    /*
     public var package: Package
     public var installedPackage: Package?
     private var depictionLink: URL?
@@ -158,16 +165,23 @@ class NativePackageViewController: SileoViewController, PackageActions {
               separator_color: .sileoSeparatorColor,
               dark_mode: UIColor.isDarkModeEnabled)
     }
-    
+    */
     public class func viewController(for package: Package) -> PackageActions {
+        /*
         if package.nativeDepiction == nil {
             let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageVC.package = package
             return packageVC
         }
+        
         return NativePackageViewController(package: package)
+        */
+        let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
+        packageVC.package = package
+        return packageVC
     }
     
+    /*
     init(package: Package) {
         self.package = package
         super.init(nibName: nil, bundle: nil)
@@ -546,4 +560,6 @@ extension NativePackageViewController {
         return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
     
+}
+*/
 }
