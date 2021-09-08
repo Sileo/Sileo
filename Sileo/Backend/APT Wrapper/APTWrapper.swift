@@ -152,9 +152,9 @@ class APTWrapper {
         #endif
     }
 
-    public class func performOperations(installs: ContiguousArray<DownloadPackage>,
-                                        removals: ContiguousArray<DownloadPackage>,
-                                        installDeps: ContiguousArray<DownloadPackage>,
+    public class func performOperations(installs: [DownloadPackage],
+                                        removals: [DownloadPackage],
+                                        installDeps: [DownloadPackage],
                                         progressCallback: @escaping (Double, Bool, String, String) -> Void,
                                         outputCallback: @escaping (String, Int) -> Void,
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
