@@ -13,8 +13,8 @@ final class CanisterResolver {
     static let RepoRefresh = Notification.Name("SileoRepoDidFinishUpdating")
     public static let nistercanQueue = DispatchQueue(label: "Sileo.NisterCan", qos: .userInteractive)
     public static let shared = CanisterResolver()
-    public var packages = [ProvisionalPackage]()
-    private var cachedQueue = [Package]()
+    public var packages = SafeArray<ProvisionalPackage>(queue: canisterQueue, key: queueKey, context: queueContext)
+    private var cachedQueue = SafeArray<Package>(queue: canisterQueue, key: queueKey, context: queueContext)
     private var savedSearch = [String]()
     
     static let canisterQueue: DispatchQueue = {
@@ -23,7 +23,7 @@ final class CanisterResolver {
         return queue
     }()
     public static let queueKey = DispatchSpecificKey<Int>()
-    public static var queueContext = unsafeBitCast(CanisterResolver.shared, to: Int.self)
+    public static var queueContext = 50
     
     let filteredRepos = [
         "apt.elucubratus.com",
@@ -201,6 +201,7 @@ final class CanisterResolver {
     }
     
     public func package(for bundleID: String) -> Package? {
+        
         let temp = packages.filter { $0.identifier == bundleID }
         var buffer: Package?
         for provis in temp {
@@ -268,116 +269,3 @@ struct ProvisionalPackage {
     }
 }
 
-class SafeCanisterArray<Element> {
-    private var array = [Element]()
-    
-    public var isOnCanisterQueue: Bool {
-        DispatchQueue.getSpecific(key: CanisterResolver.queueKey) == CanisterResolver.queueContext
-    }
-            
-    public convenience init(_ array: [Element]) {
-        self.init()
-        self.array = array
-    }
-    
-    var count: Int {
-        if !isOnCanisterQueue {
-            var result = 0
-            CanisterResolver.canisterQueue.sync { result = self.array.count }
-            return result
-        }
-        return array.count
-    }
-    
-    var isEmpty: Bool {
-        if !isOnCanisterQueue {
-            var result = false
-            CanisterResolver.canisterQueue.sync { result = self.array.isEmpty }
-            return result
-        }
-        return array.isEmpty
-    }
-    
-    var raw: [Element] {
-        if !isOnCanisterQueue {
-            var result = [Element]()
-            CanisterResolver.canisterQueue.sync { result = self.array }
-            return result
-        }
-        return array
-    }
-    
-    func contains(where package: (Element) -> Bool) -> Bool {
-        if !isOnCanisterQueue {
-            var result = false
-            CanisterResolver.canisterQueue.sync { result = self.array.contains(where: package) }
-            return result
-        }
-        return array.contains(where: package)
-    }
-    
-    func setTo(_ packages: [Element]) {
-        if !isOnCanisterQueue {
-            CanisterResolver.canisterQueue.async(flags: .barrier) {
-                self.array = packages
-            }
-        } else {
-            self.array = packages
-        }
-    }
-    
-    func append(_ package: Element) {
-        if !isOnCanisterQueue {
-            CanisterResolver.canisterQueue.async(flags: .barrier) {
-                self.array.append(package)
-            }
-        } else {
-            self.array.append(package)
-        }
-    }
-    
-    func removeAll() {
-        if !isOnCanisterQueue {
-            CanisterResolver.canisterQueue.async(flags: .barrier) {
-                self.array.removeAll()
-            }
-        } else {
-            self.array.removeAll()
-        }
-    }
-    
-    func removeAll(package: @escaping (Element) -> Bool) {
-        if !isOnCanisterQueue {
-            CanisterResolver.canisterQueue.async(flags: .barrier) {
-                while let index = self.array.firstIndex(where: package) {
-                    self.array.remove(at: index)
-                }
-            }
-        } else {
-            while let index = self.array.firstIndex(where: package) {
-                self.array.remove(at: index)
-            }
-        }
-    }
-    
-    func map<ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> [ElementOfResult] {
-        if !isOnCanisterQueue {
-            var result = [ElementOfResult]()
-            CanisterResolver.canisterQueue.sync { result = self.array.map(transform) }
-            return result
-        } else {
-            return array.map(transform)
-        }
-    }
-}
-
-extension SafeCanisterArray where Element: Equatable {
-    func contains(_ element: Element) -> Bool {
-        if !isOnCanisterQueue {
-            var result = false
-            CanisterResolver.canisterQueue.sync { result = self.array.contains(element) }
-            return result
-        }
-        return self.array.contains(element)
-    }
-}

@@ -26,7 +26,7 @@ final class DownloadManager {
         return queue
     }()
     public static let queueKey = DispatchSpecificKey<Int>()
-    public static var queueContext = unsafeBitCast(DownloadManager.shared, to: Int.self)
+    public static let queueContext = 50
     
     enum Error: LocalizedError {
         case hashMismatch(packageHash: String, refHash: String)
@@ -66,12 +66,12 @@ final class DownloadManager {
     }
     public var totalProgress = CGFloat(0)
     
-    var upgrades = SafePackageArray<DownloadPackage>()
-    var installations = SafePackageArray<DownloadPackage>()
-    var uninstallations = SafePackageArray<DownloadPackage>()
-    var installdeps = SafePackageArray<DownloadPackage>()
-    var uninstalldeps = SafePackageArray<DownloadPackage>()
-    var errors = SafePackageArray<APTBrokenPackage>()
+    var upgrades: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var installations: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var uninstallations: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var installdeps: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var uninstalldeps: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var errors: SafeContiguousArray<APTBrokenPackage> = SafeContiguousArray<APTBrokenPackage>(queue: aptQueue, key: queueKey, context: queueContext)
     
     private var currentDownloads = 0
     public var queueStarted = false
@@ -265,7 +265,6 @@ final class DownloadManager {
         DownloadManager.aptQueue.async { [self] in
             // We don't want more than one download at a time
             guard currentDownloads <= 3 else { return }
-            
             // Get a list of downloads that need to take place
             let allRawDownloads = upgrades.raw + installations.raw + installdeps.raw
             for dlPackage in allRawDownloads {
@@ -283,6 +282,8 @@ final class DownloadManager {
                 if download.queued { continue }
                 download.queued = true
                 startPackageDownload(download: download)
+                
+                guard currentDownloads <= 3 else { break }
             }
         }
     }
@@ -453,7 +454,7 @@ final class DownloadManager {
             }
         }
         let installIndentifiersReference = installIdentifiers
-        var rawInstalls = [Package]()
+        var rawInstalls = ContiguousArray<Package>()
         for (host, packages) in installDepOperation {
             if let repo = RepoManager.shared.repoList.first(where: { $0.url?.host == host }) {
                 for package in packages {
@@ -817,119 +818,5 @@ final class DownloadManager {
         guard let sourceRepo = package.sourceRepo,
               allowedHosts.contains(sourceRepo.url?.host ?? "") else { return false }
         return package.essential == "yes"
-    }
-}
-
-class SafePackageArray<Element> {
-    private var array = [Element]()
-    
-    public var isOnAptQueue: Bool {
-        DispatchQueue.getSpecific(key: DownloadManager.queueKey) == DownloadManager.queueContext
-    }
-            
-    public convenience init(_ array: [Element]) {
-        self.init()
-        self.array = array
-    }
-    
-    var count: Int {
-        if !isOnAptQueue {
-            var result = 0
-            DownloadManager.aptQueue.sync { result = self.array.count }
-            return result
-        }
-        return array.count
-    }
-    
-    var isEmpty: Bool {
-        if !isOnAptQueue {
-            var result = false
-            DownloadManager.aptQueue.sync { result = self.array.isEmpty }
-            return result
-        }
-        return array.isEmpty
-    }
-    
-    var raw: [Element] {
-        if !isOnAptQueue {
-            var result = [Element]()
-            DownloadManager.aptQueue.sync { result = self.array }
-            return result
-        }
-        return array
-    }
-    
-    func contains(where package: (Element) -> Bool) -> Bool {
-        if !isOnAptQueue {
-            var result = false
-            DownloadManager.aptQueue.sync { result = self.array.contains(where: package) }
-            return result
-        }
-        return array.contains(where: package)
-    }
-    
-    func setTo(_ packages: [Element]) {
-        if !isOnAptQueue {
-            DownloadManager.aptQueue.async(flags: .barrier) {
-                self.array = packages
-            }
-        } else {
-            self.array = packages
-        }
-    }
-    
-    func append(_ package: Element) {
-        if !isOnAptQueue {
-            DownloadManager.aptQueue.async(flags: .barrier) {
-                self.array.append(package)
-            }
-        } else {
-            self.array.append(package)
-        }
-    }
-    
-    func removeAll() {
-        if !isOnAptQueue {
-            DownloadManager.aptQueue.async(flags: .barrier) {
-                self.array.removeAll()
-            }
-        } else {
-            self.array.removeAll()
-        }
-    }
-    
-    func removeAll(package: @escaping (Element) -> Bool) {
-        if !isOnAptQueue {
-            DownloadManager.aptQueue.async(flags: .barrier) {
-                while let index = self.array.firstIndex(where: package) {
-                    self.array.remove(at: index)
-                }
-            }
-        } else {
-            while let index = self.array.firstIndex(where: package) {
-                self.array.remove(at: index)
-            }
-        }
-    }
-    
-    func map<ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> [ElementOfResult] {
-        if !isOnAptQueue {
-            var result = [ElementOfResult]()
-            DownloadManager.aptQueue.sync { result = self.array.map(transform) }
-            return result
-        } else {
-            return array.map(transform)
-        }
-    }
-}
-
-extension SafePackageArray where Element: Equatable {
-    func contains(_ element: Element) -> Bool {
-        if !isOnAptQueue {
-            var result = false
-            DownloadManager.aptQueue.sync { result = self.array.contains(element) }
-            return result
-        }
-        return self.array.contains(element)
     }
 }

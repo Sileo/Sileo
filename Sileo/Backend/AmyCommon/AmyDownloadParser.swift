@@ -73,11 +73,7 @@ final class AmyDownloadParser: NSObject {
         }
         self.request = request
         super.init()
-        let container = AmyDownloadParserContainer(url: url) { [weak self] request in
-            guard let strong = self else { return }
-            strong.request = request
-            strong.resume()
-        }
+        let container = AmyDownloadParserContainer(url: url)
         AmyDownloadParserDelegate.shared.addContainer(container)
     }
     
@@ -85,11 +81,7 @@ final class AmyDownloadParser: NSObject {
         self.request = request
         guard let url = request.url else { return nil }
         super.init()
-        let container = AmyDownloadParserContainer(url: url) { [weak self] request in
-            guard let strong = self else { return }
-            strong.request = request
-            strong.resume()
-        }
+        let container = AmyDownloadParserContainer(url: url)
         AmyDownloadParserDelegate.shared.addContainer(container)
     }
     
@@ -129,10 +121,23 @@ final class AmyDownloadParser: NSObject {
 final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     static let shared = AmyDownloadParserDelegate()
     public var containers = [URL: AmyDownloadParserContainer]()
-    private let queue = DispatchQueue(label: "AmyDownloadParserDelegate.ContainerQueue", attributes: .concurrent)
+    
+    private lazy var queue: DispatchQueue = {
+        let queue = DispatchQueue(label: "AmyDownloadParserDelegate.ContainerQueue")
+        queue.setSpecific(key: queueKey, value: queueContext)
+        return queue
+    }()
+    private let queueKey = DispatchSpecificKey<Int>()
+    public let queueContext = 50
+    public var isOnQueue: Bool {
+        DispatchQueue.getSpecific(key: queueKey) == queueContext
+    }
     
     public func container(_ url: URL?) -> AmyDownloadParserContainer? {
         guard let url = url else { return nil }
+        if isOnQueue {
+            return containers[url]
+        }
         var container: AmyDownloadParserContainer?
         queue.sync { [self] in
             container = containers[url]
@@ -141,35 +146,53 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     }
 
     public func addContainer(_ container: AmyDownloadParserContainer) {
-        queue.async(flags: .barrier) { [self] in
+        if isOnQueue {
             containers[container.url] = container
+        } else {
+            queue.async(flags: .barrier) { [self] in
+                containers[container.url] = container
+            }
         }
     }
     
     public func update(_ container: AmyDownloadParserContainer, newRequest: URLRequest? = nil) {
-        queue.async(flags: .barrier) { [self] in
-            var container = container
-            let oldUrl = container.url
-            let newUrl = newRequest?.url ?? oldUrl
-            container.url = newUrl
+        var container = container
+        let oldUrl = container.url
+        let newUrl = newRequest?.url ?? oldUrl
+        container.url = newUrl
+        if isOnQueue {
             containers.removeValue(forKey: oldUrl)
             containers[newUrl] = container
-            if let request = newRequest {
-                container.urlChange(request)
+        } else {
+            queue.async(flags: .barrier) { [self] in
+                var container = container
+                let oldUrl = container.url
+                let newUrl = newRequest?.url ?? oldUrl
+                container.url = newUrl
+                containers.removeValue(forKey: oldUrl)
+                containers[newUrl] = container
             }
         }
     }
     
     public func remove(_ container: AmyDownloadParserContainer?) {
-        queue.async(flags: .barrier) { [self] in
-            guard let container = container else { return }
+        guard let container = container else { return }
+        if isOnQueue {
             containers.removeValue(forKey: container.url)
+        } else {
+            queue.async(flags: .barrier) { [self] in
+                containers.removeValue(forKey: container.url)
+            }
         }
     }
     
     public func terminate(_ url: URL) {
-        queue.sync { [self] in
+        if isOnQueue {
             containers[url]?.toBeTerminated = true
+        } else {
+            queue.sync { [self] in
+                containers[url]?.toBeTerminated = true
+            }
         }
     }
     
@@ -284,7 +307,6 @@ struct AmyDownloadParserContainer {
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
     public var waitingCallback: ((_ message: String) -> Void)?
-    public var urlChange: ((_ request: URLRequest) -> Void)
     
     public var toBeTerminated = false
 }

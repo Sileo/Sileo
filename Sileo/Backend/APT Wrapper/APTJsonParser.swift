@@ -134,7 +134,7 @@ struct ErrorParserWrapper: Decodable {
 
 extension APTWrapper {
     // APT syntax: a- = remove a; b = install b
-    public class func operationList(installList: [DownloadPackage], removeList: [DownloadPackage]) throws -> APTOutput {
+    public class func operationList(installList: ContiguousArray<DownloadPackage>, removeList: ContiguousArray<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
         guard let configPath = Bundle.main.path(forResource: "sileo-apt", ofType: "conf") else {
             throw APTParserErrors.missingSileoConf

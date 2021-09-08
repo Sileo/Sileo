@@ -33,7 +33,7 @@ class DownloadsTableViewController: SileoViewController {
     var uninstallations: [DownloadPackage] = []
     var installdeps: [DownloadPackage] = []
     var uninstalldeps: [DownloadPackage] = []
-    var errors: [APTBrokenPackage] = []
+    var errors: ContiguousArray<APTBrokenPackage> = []
     
     private var actions = [InstallOperation]()
     private var isFired = false
@@ -279,7 +279,7 @@ class DownloadsTableViewController: SileoViewController {
         guard let cell = self.tableView?.cellForRow(at: indexPath) as? DownloadsTableViewCell else {
             return
         }
-        cell.updateDownload()
+        cell.download = DownloadManager.shared.download(package: package.packageID)
         cell.layoutSubviews()
     }
     

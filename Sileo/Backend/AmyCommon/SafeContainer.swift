@@ -8,13 +8,12 @@
 
 import Foundation
 
-
 // MARK: SafeArray
 final public class SafeArray<Element> {
     private var array: [Element]
-    private var queue: DispatchQueue
-    private var key: DispatchSpecificKey<Int>
-    private var context: Int
+    private let queue: DispatchQueue
+    private let key: DispatchSpecificKey<Int>
+    private let context: Int
     
     public var isOnQueue: Bool {
         DispatchQueue.getSpecific(key: key) == context
@@ -73,6 +72,10 @@ final public class SafeArray<Element> {
         }
     }
     
+    func enumerated() -> EnumeratedSequence<[Element]> {
+        raw.enumerated()
+    }
+    
     func append(_ package: Element) {
         if !isOnQueue {
             queue.async(flags: .barrier) {
@@ -93,7 +96,7 @@ final public class SafeArray<Element> {
         }
     }
     
-    func removeAll(package: @escaping (Element) -> Bool) {
+    func removeAll(_ package: @escaping (Element) -> Bool) {
         if !isOnQueue {
             queue.async(flags: .barrier) {
                 while let index = self.array.firstIndex(where: package) {
@@ -116,6 +119,26 @@ final public class SafeArray<Element> {
             return array.map(transform)
         }
     }
+    
+    func remove(at index: Int) {
+        if !isOnQueue {
+            queue.async(flags: .barrier) { [self] in array.remove(at: index) }
+        } else {
+            array.remove(at: index)
+        }
+    }
+    
+    func removeAll(where shouldBeRemoved: (Element) throws -> Bool) rethrows {
+        if !isOnQueue {
+            queue.sync { [self] in try? array.removeAll(where: shouldBeRemoved) }
+        } else {
+            try array.removeAll(where: shouldBeRemoved)
+        }
+    }
+    
+    func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> [Element] {
+        try raw.filter(isIncluded)
+    }
 }
 
 extension SafeArray where Element: Equatable {
@@ -132,9 +155,9 @@ extension SafeArray where Element: Equatable {
 // MARK: SafeContiguousArray
 final public class SafeContiguousArray<Element> {
     private var array: ContiguousArray<Element>
-    private var queue: DispatchQueue
-    private var key: DispatchSpecificKey<Int>
-    private var context: Int
+    private let queue: DispatchQueue
+    private let key: DispatchSpecificKey<Int>
+    private let context: Int
     
     public var isOnQueue: Bool {
         DispatchQueue.getSpecific(key: key) == context
@@ -193,6 +216,20 @@ final public class SafeContiguousArray<Element> {
         }
     }
     
+    func enumerated() -> EnumeratedSequence<ContiguousArray<Element>> {
+        raw.enumerated()
+    }
+    
+    func setTo(_ packages: [Element]) {
+        if !isOnQueue {
+            queue.async(flags: .barrier) {
+                self.array = ContiguousArray<Element>(packages)
+            }
+        } else {
+            self.array = ContiguousArray<Element>(packages)
+        }
+    }
+    
     func append(_ package: Element) {
         if !isOnQueue {
             queue.async(flags: .barrier) {
@@ -213,7 +250,7 @@ final public class SafeContiguousArray<Element> {
         }
     }
     
-    func removeAll(package: @escaping (Element) -> Bool) {
+    func removeAll(_ package: @escaping (Element) -> Bool) {
         if !isOnQueue {
             queue.async(flags: .barrier) {
                 while let index = self.array.firstIndex(where: package) {
@@ -236,6 +273,27 @@ final public class SafeContiguousArray<Element> {
             return array.map(transform)
         }
     }
+    
+    func remove(at index: Int) {
+        if !isOnQueue {
+            queue.async(flags: .barrier) { [self] in array.remove(at: index) }
+        } else {
+            array.remove(at: index)
+        }
+    }
+    
+    func removeAll(where shouldBeRemoved: (Element) throws -> Bool) rethrows {
+        if !isOnQueue {
+            queue.sync { [self] in try? array.removeAll(where: shouldBeRemoved) }
+        } else {
+            try array.removeAll(where: shouldBeRemoved)
+        }
+    }
+    
+    func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> ContiguousArray<Element> {
+        try raw.filter(isIncluded)
+    }
+
 }
 
 extension SafeContiguousArray where Element: Equatable {
@@ -255,9 +313,9 @@ final public class SafeDictionary<Key: Hashable, Value> {
     
     // swiftlint:disable:next syntactic_sugar
     private var dict: Dictionary<Key, Value>
-    private var queue: DispatchQueue
-    private var key: DispatchSpecificKey<Int>
-    private var context: Int
+    private let queue: DispatchQueue
+    private let key: DispatchSpecificKey<Int>
+    private let context: Int
     
     public var isOnQueue: Bool {
         DispatchQueue.getSpecific(key: key) == context
