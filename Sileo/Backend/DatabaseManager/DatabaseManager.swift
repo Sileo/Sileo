@@ -21,7 +21,7 @@ class DatabaseManager {
     
     let database: Connection
     
-    private var packages = [Package]()
+    private var packages = ContiguousArray<Package>()
     private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-seen-update")
     
     init() {
@@ -82,10 +82,8 @@ class DatabaseManager {
         try? database.transaction {
             for tmp in packages {
                 let stub = PackageStub(from: tmp)
-                let count = try? database.scalar(table.filter(guid == "\(stub.package)-\(stub.version)").count)
-                if count ?? 0 > 0 { continue }
-                let deleteQuery = table.filter(guid == "\(stub.package)-\(stub.version)")
-                _ = try? database.run(deleteQuery.delete())
+                let count = try? database.scalar(table.filter(guid == stub.guid).count)
+                guard count ?? 0 == 0 else { continue }
                 _ = try? database.run(table.insert(
                     guid <- "\(stub.package)-\(stub.version)",
                     package <- stub.package,
@@ -111,10 +109,8 @@ class DatabaseManager {
 
         try? database.transaction {
             for stub in stubs {
-                let count = try? database.scalar(table.filter(guid == "\(stub.package)-\(stub.version)").count)
-                if count ?? 0 > 0 { continue }
-                let deleteQuery = table.filter(guid == "\(stub.package)-\(stub.version)")
-                _ = try? database.run(deleteQuery.delete())
+                let count = try? database.scalar(table.filter(guid == stub.guid).count)
+                guard count ?? 0 == 0 else { continue }
                 _ = try? database.run(table.insert(
                     guid <- "\(stub.package)-\(stub.version)",
                     package <- stub.package,

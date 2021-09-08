@@ -123,6 +123,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         weakNavController = self.navigationController
         
         weak var weakSelf = self
@@ -135,7 +136,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
         self.navigationItem.largeTitleDisplayMode = .never
         scrollView.delegate = self
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageViewController.reloadData),
                                                name: PackageListManager.reloadNotification,
@@ -154,11 +155,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.navigationController?.navigationBar._backgroundOpacity = 0
         self.navigationController?.navigationBar.tintColor = .white
         self.statusBarStyle = .lightContent
-
+        
         self.navigationController?.navigationBar.isTranslucent = true
-
+        
+        
         downloadButton.viewControllerForPresentation = self
         downloadButton.dataProvider = self
+        
         let navBarDownloadButton = PackageQueueButton()
         navBarDownloadButton.viewControllerForPresentation = self
         navBarDownloadButton.dataProvider = self

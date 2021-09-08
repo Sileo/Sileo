@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PackageQueueButtonDataProvider {
+protocol PackageQueueButtonDataProvider: AnyObject {
     func updatePurchaseStatus()
 }
 
@@ -35,7 +35,7 @@ class PackageQueueButton: PackageButton {
         }
     }
     
-    public var dataProvider: PackageQueueButtonDataProvider? {
+    public weak var dataProvider: PackageQueueButtonDataProvider? {
         didSet {
             self.updatePurchaseStatus()
         }

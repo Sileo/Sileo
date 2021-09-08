@@ -66,4 +66,8 @@ class PackageStub {
         self.version = version
         self.repoURL = source
     }
+    
+    public var guid: String {
+        "\(package)-\(version)"
+    }
 }

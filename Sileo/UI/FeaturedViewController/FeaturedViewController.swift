@@ -38,7 +38,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         }, completion: { _ in
             self.activityIndicatorView?.isHidden = true
         })
-
+        
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
