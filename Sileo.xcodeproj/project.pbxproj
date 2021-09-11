@@ -4007,7 +4007,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n";
 		};
 		F1CA042822DA824A00CED7A9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5122,7 +5122,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5172,7 +5172,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5221,7 +5221,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5335,6 +5335,7 @@
 					"\"$(SRCROOT)/Deps/liblz4",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5348,7 +5349,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5385,6 +5386,7 @@
 					"\"$(SRCROOT)/Deps/liblz4",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5398,7 +5400,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5434,6 +5436,7 @@
 					"\"$(SRCROOT)/Deps/liblz4",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sileo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5447,7 +5450,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5551,7 +5554,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5596,7 +5599,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5751,7 +5754,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5797,7 +5800,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5965,7 +5968,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -6015,7 +6018,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.6;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;

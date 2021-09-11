@@ -123,7 +123,8 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     public var containers = [URL: AmyDownloadParserContainer]()
     
     private lazy var queue: DispatchQueue = {
-        let queue = DispatchQueue(label: "AmyDownloadParserDelegate.ContainerQueue")
+        let queue = DispatchQueue(label: "AmyDownloadParserDelegate.ContainerQueue",
+                                  attributes: .concurrent)
         queue.setSpecific(key: queueKey, value: queueContext)
         return queue
     }()
@@ -149,6 +150,7 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
         if isOnQueue {
             containers[container.url] = container
         } else {
+            let container = container
             queue.async(flags: .barrier) { [self] in
                 containers[container.url] = container
             }
