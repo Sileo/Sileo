@@ -24,8 +24,8 @@
 "Acknowledge" = "Bekreft";
 "Remove" = "Fjern";
 "Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Advarsel";
+"Edit" = "Rediger";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrunnsoppdatering";
