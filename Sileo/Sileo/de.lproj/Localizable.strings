@@ -143,6 +143,7 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 
 "Settings_Payment_Provider.Purchases_Heading" = "Käufe";
 "Settings_Payment_Provider.No_Purchases" = "Keine Käufe";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Einstellungen";
 "Settings_Page_Title" = "Einstellungen";
