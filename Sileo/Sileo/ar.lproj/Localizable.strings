@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "المشتريات";
 "Settings_Payment_Provider.No_Purchases" = "لا توجد مشتريات";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
