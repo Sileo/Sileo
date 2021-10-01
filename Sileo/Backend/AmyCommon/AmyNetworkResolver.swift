@@ -12,31 +12,28 @@ final class AmyNetworkResolver {
     
     static let shared = AmyNetworkResolver()
     
-    var cacheDirectory: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo")
-    }
+    // swiftlint:disable force_cast
+    lazy var cacheDirectory: URL = {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent((Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String).replacingOccurrences(of: " ", with: ""))
+    }()
+    // swiftlint:enable force_cast
     
-    var downloadCache: URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Sileo").appendingPathComponent("DownloadCache")
-    }
+    lazy var downloadCache: URL = {
+        cacheDirectory.appendingPathComponent("DownloadCache")
+    }()
     
-    var memoryCache = [String: UIImage]()
-    public var memoryCacheLock = NSLock()
+    var memoryCache = NSCache<NSString, UIImage>()
+
     
     public func clearCache() {
         if cacheDirectory.dirExists {
             try? FileManager.default.removeItem(at: cacheDirectory)
         }
-        if downloadCache.dirExists {
-            try? FileManager.default.removeItem(at: downloadCache)
-        }
         setupCache()
     }
     
     public func setupCache() {
-        if FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache").exists {
-            try? FileManager.default.moveItem(at: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("AmyCache"), to: cacheDirectory)
-        }
         if !cacheDirectory.dirExists {
             do {
                 try FileManager.default.createDirectory(atPath: cacheDirectory.path, withIntermediateDirectories: true, attributes: nil)
@@ -52,16 +49,23 @@ final class AmyNetworkResolver {
             }
         }
         
-        DispatchQueue.global(qos: .utility).async {
-            if let contents = try? self.cacheDirectory.contents(),
+        DispatchQueue.global(qos: .utility).async { [self] in
+            if let contents = try? cacheDirectory.contents(),
                !contents.isEmpty {
                 for cached in contents {
-                    if cached.path == self.downloadCache.path { continue }
+                    if cached == downloadCache { continue }
                     guard let attr = try? FileManager.default.attributesOfItem(atPath: cached.path),
                           let date = attr[FileAttributeKey.modificationDate] as? Date else { continue }
                     if Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 604800) > date {
                         try? FileManager.default.removeItem(atPath: cached.path)
                     }
+                }
+            }
+            if !downloadCache.dirExists {
+                do {
+                    try FileManager.default.createDirectory(atPath: downloadCache.path, withIntermediateDirectories: true, attributes: nil)
+                } catch {
+                    print("Failed to create cache directory \(error.localizedDescription)")
                 }
             }
             if let contents = try? self.downloadCache.contents(),
@@ -368,13 +372,10 @@ final class AmyNetworkResolver {
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
-        self.memoryCacheLock.lock()
         if cache,
-           let memory = memoryCache[encoded] {
-            self.memoryCacheLock.unlock()
-            return memory
+           let image = memoryCache.object(forKey: encoded as NSString) {
+            return image
         }
-        self.memoryCacheLock.unlock()
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
         if path.exists {
             if let data = try? Data(contentsOf: path) {
@@ -383,9 +384,7 @@ final class AmyNetworkResolver {
                         image = downscaled
                     }
                     if cache {
-                        memoryCacheLock.lock()
-                        memoryCache[encoded] = image
-                        memoryCacheLock.unlock()
+                        memoryCache.setObject(image, forKey: encoded as NSString)
                         pastData = data
                         if AmyNetworkResolver.skipNetwork(path) {
                             return image
@@ -403,7 +402,7 @@ final class AmyNetworkResolver {
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ -> Void in
+        let task = URLSession.shared.dataTask(with: request) { [self] data, _, _ -> Void in
             if let data = data,
                var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
@@ -411,9 +410,7 @@ final class AmyNetworkResolver {
                 }
                 completion?(pastData != data, image)
                 if cache {
-                    self?.memoryCacheLock.lock()
-                    self?.memoryCache[encoded] = image
-                    self?.memoryCacheLock.unlock()
+                    memoryCache.setObject(image, forKey: encoded as NSString)
                     do {
                         try data.write(to: path, options: .atomic)
                     } catch {
@@ -445,12 +442,9 @@ final class AmyNetworkResolver {
         }
         let encoded = url.absoluteString.toBase64
         let path = cacheDirectory.appendingPathComponent("\(encoded).png")
-        memoryCacheLock.lock()
-        if let memory = memoryCache[encoded] {
-            memoryCacheLock.unlock()
+        if let memory = memoryCache.object(forKey: encoded as NSString) {
             return (!AmyNetworkResolver.skipNetwork(path), memory)
         }
-        memoryCacheLock.unlock()
         if let data = try? Data(contentsOf: path) {
             if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
                 if let downscaled = GifController.downsample(image: image, to: size, scale: scale) {
@@ -507,7 +501,3 @@ extension URL {
         attributes?[.creationDate] as? Date
     }
 }
-
-typealias AmyObject = AnyObject
-// swiftlint:disable type_name
-public class Amy: Any {}

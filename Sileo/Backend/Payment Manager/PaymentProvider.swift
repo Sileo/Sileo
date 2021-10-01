@@ -266,6 +266,25 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
         request.httpMethod = "POST"
         
         var body = originalBody ?? [:]
+        func makeRequest() {
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            } catch {
+                return completion(PaymentError(error: error), nil, false)
+            }
+            
+            PaymentProvider.makeRequest(request) { error, data in
+                if let error = error {
+                    if error.shouldInvalidate && self.isAuthenticated {
+                        self.invalidateSavedToken()
+                    }
+                }
+                completion(error, data, false)
+            }
+        }
+        body["udid"] = UIDevice.current.uniqueIdentifier as AnyObject
+        body["device"] = UIDevice.current.platform as AnyObject
         if includeToken {
             if let token = authenticationToken {
                 body["token"] = token as AnyObject
@@ -274,31 +293,43 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
                 // This is my really *clever* way to check if user pressed cancel or not
                 let context = LAContext()
                 if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: nil) {
-                    if let secret = KeychainManager.shared.secret(key: baseURL.absoluteString) {
-                        body["payment_secret"] = secret as AnyObject
-                    } else {
-                        return completion(nil, nil, true)
+                    KeychainManager.shared.secret(key: baseURL.absoluteString) { string in
+                        if let string = string {
+                            body["payment_secret"] = string as AnyObject
+                        }
+                        if #available(iOS 13, *) {
+                            if UIWindow.presentable != nil {
+                                makeRequest()
+                            } else {
+                                // This is god awful solution but it works, fuck you Apple / UISCene
+                                var hasFired = false
+                                var observer: Any?
+                                observer = NotificationCenter.default.addObserver(forName: UIScene.didActivateNotification, object: nil, queue: nil) { _ in
+                                    defer {
+                                        NotificationCenter.default.removeObserver(observer as Any)
+                                    }
+                                    guard !hasFired else { return }
+                                    makeRequest()
+                                    hasFired = true
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    defer {
+                                        NotificationCenter.default.removeObserver(observer as Any)
+                                    }
+                                    guard !hasFired else { return }
+                                    makeRequest()
+                                    hasFired = true
+                                }
+                            }
+                        } else {
+                            makeRequest()
+                        }
                     }
+                    return
                 }
             }
         }
-        body["udid"] = UIDevice.current.uniqueIdentifier as AnyObject
-        body["device"] = UIDevice.current.platform as AnyObject
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        } catch {
-            return completion(PaymentError(error: error), nil, false)
-        }
-        
-        PaymentProvider.makeRequest(request) { error, data in
-            if let error = error {
-                if error.shouldInvalidate && self.isAuthenticated {
-                    self.invalidateSavedToken()
-                }
-            }
-            completion(error, data, false)
-        }
+        makeRequest()
     }
     
     static func makeRequest(_ request: URLRequest, completion: @escaping (PaymentError?, [String: AnyObject]?) -> Void) {

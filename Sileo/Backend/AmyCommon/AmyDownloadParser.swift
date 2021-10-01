@@ -26,45 +26,33 @@ final class AmyDownloadParser: NSObject {
     
     public var progressCallback: ((_ progress: Progress) -> Void)? {
         didSet {
-            guard var container = container else { return }
-            container.progressCallback = progressCallback
-            AmyDownloadParserDelegate.shared.update(container)
+            container?.progressCallback = progressCallback
         }
     }
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)? {
         didSet {
-            guard var container = container else { return }
-            container.didFinishCallback = didFinishCallback
-            AmyDownloadParserDelegate.shared.update(container)
+            container?.didFinishCallback = didFinishCallback
         }
     }
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)? {
         didSet {
-            guard var container = container else { return }
-            container.errorCallback = errorCallback
-            AmyDownloadParserDelegate.shared.update(container)
+            container?.errorCallback = errorCallback
         }
     }
     public var waitingCallback: ((_ message: String) -> Void)? {
         didSet {
-            guard var container = container else { return }
-            container.waitingCallback = waitingCallback
-            AmyDownloadParserDelegate.shared.update(container)
+            container?.waitingCallback = waitingCallback
         }
     }
 
     public var url: URL? { request.url }
     public var hasRetried = false
     public var container: AmyDownloadParserContainer? {
-        AmyDownloadParserDelegate.shared.container(url)
+        guard let url = url,
+              let container = AmyDownloadParserDelegate.shared.containers[url] else { return nil }
+        return container
     }
-    public var resumeData: Data? {
-        container?.resumeData
-    }
-    public var shouldResume: Bool {
-        container?.shouldResume ?? false
-    }
-    
+
     init(url: URL, method: String = "GET", headers: [String: String] = [:]) {
         var request = URLRequest(url: url, timeoutInterval: 5)
         request.httpMethod = method
@@ -74,7 +62,7 @@ final class AmyDownloadParser: NSObject {
         self.request = request
         super.init()
         let container = AmyDownloadParserContainer(url: url)
-        AmyDownloadParserDelegate.shared.addContainer(container)
+        AmyDownloadParserDelegate.shared.containers[url] = container
     }
     
     init?(request: URLRequest) {
@@ -82,35 +70,20 @@ final class AmyDownloadParser: NSObject {
         guard let url = request.url else { return nil }
         super.init()
         let container = AmyDownloadParserContainer(url: url)
-        AmyDownloadParserDelegate.shared.addContainer(container)
+        AmyDownloadParserDelegate.shared.containers[url] = container
     }
     
     public func cancel() {
         killed = true
         task?.cancel()
-        AmyDownloadParserDelegate.shared.remove(container)
+        guard let url = url else { return }
+        AmyDownloadParserDelegate.shared.containers[url] = nil
     }
     
     public func resume() {
         task?.resume()
     }
-    
-    public func setShouldResume(_ should: Bool) {
-        guard var container = container else { return }
-        container.shouldResume = should
-        AmyDownloadParserDelegate.shared.update(container)
-    }
-    
-    public func retry() -> Bool {
-        guard let container = container,
-              container.shouldResume,
-              let resumeData = container.resumeData else { return false }
-        let task = AmyDownloadParser.sessionManager.downloadTask(withResumeData: resumeData)
-        self.task = task
-        hasRetried = true
-        return true
-    }
-    
+
     public func make() {
         let task = AmyDownloadParser.sessionManager.downloadTask(with: request)
         self.task = task
@@ -120,8 +93,8 @@ final class AmyDownloadParser: NSObject {
 
 final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     static let shared = AmyDownloadParserDelegate()
-    public var containers = [URL: AmyDownloadParserContainer]()
     
+    public lazy var containers: SafeDictionary = SafeDictionary<URL, AmyDownloadParserContainer>(queue: queue, key: queueKey, context: queueContext)
     private lazy var queue: DispatchQueue = {
         let queue = DispatchQueue(label: "AmyDownloadParserDelegate.ContainerQueue",
                                   attributes: .concurrent)
@@ -130,79 +103,19 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     }()
     private let queueKey = DispatchSpecificKey<Int>()
     public let queueContext = 50
-    public var isOnQueue: Bool {
-        DispatchQueue.getSpecific(key: queueKey) == queueContext
-    }
-    
-    public func container(_ url: URL?) -> AmyDownloadParserContainer? {
-        guard let url = url else { return nil }
-        if isOnQueue {
-            return containers[url]
-        }
-        var container: AmyDownloadParserContainer?
-        queue.sync { [self] in
-            container = containers[url]
-        }
-        return container
-    }
 
-    public func addContainer(_ container: AmyDownloadParserContainer) {
-        if isOnQueue {
-            containers[container.url] = container
-        } else {
-            let container = container
-            queue.async(flags: .barrier) { [self] in
-                containers[container.url] = container
-            }
-        }
-    }
-    
-    public func update(_ container: AmyDownloadParserContainer, newRequest: URLRequest? = nil) {
-        var container = container
-        let oldUrl = container.url
-        let newUrl = newRequest?.url ?? oldUrl
-        container.url = newUrl
-        if isOnQueue {
-            containers.removeValue(forKey: oldUrl)
-            containers[newUrl] = container
-        } else {
-            queue.async(flags: .barrier) { [self] in
-                var container = container
-                let oldUrl = container.url
-                let newUrl = newRequest?.url ?? oldUrl
-                container.url = newUrl
-                containers.removeValue(forKey: oldUrl)
-                containers[newUrl] = container
-            }
-        }
-    }
-    
-    public func remove(_ container: AmyDownloadParserContainer?) {
-        guard let container = container else { return }
-        if isOnQueue {
-            containers.removeValue(forKey: container.url)
-        } else {
-            queue.async(flags: .barrier) { [self] in
-                containers.removeValue(forKey: container.url)
-            }
-        }
-    }
-    
     public func terminate(_ url: URL) {
-        if isOnQueue {
-            containers[url]?.toBeTerminated = true
-        } else {
-            queue.sync { [self] in
-                containers[url]?.toBeTerminated = true
-            }
-        }
+        containers[url]?.toBeTerminated = true
     }
     
     // The Download Finished
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let container = container(downloadTask.response?.url ?? downloadTask.currentRequest?.url) else { return }
+        guard let url = downloadTask.response?.url ?? downloadTask.currentRequest?.url,
+              let container = containers[url] else { return }
+        defer {
+            containers[url] = nil
+        }
         if container.toBeTerminated {
-            remove(container)
             downloadTask.cancel()
             return
         }
@@ -223,7 +136,6 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
                 container.didFinishCallback?(statusCode, destination)
             } else {
                 container.errorCallback?(statusCode, nil, destination)
-                remove(container)
             }
             return
         }
@@ -234,11 +146,10 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     
     // The Download has made Progress
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        guard var container = container(downloadTask.response?.url) else {
-            return
-        }
+        guard let url = downloadTask.response?.url ?? downloadTask.currentRequest?.url,
+              let container = containers[url] else { return }
         if container.toBeTerminated {
-            remove(container)
+            containers[url] = nil
             downloadTask.cancel()
             return
         }
@@ -246,26 +157,18 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
         container.progress.total = totalBytesWritten
         container.progress.expected = totalBytesExpectedToWrite
         container.progressCallback?(container.progress)
-        update(container)
     }
     
     // Checking for errors in the download
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        guard var container = container(task.response?.url ?? task.currentRequest?.url) else { return }
+        guard let url = task.response?.url ?? task.currentRequest?.url,
+              let container = containers[url] else { return }
         if container.toBeTerminated {
-            remove(container)
+            containers[url] = nil
+            task.cancel()
             return
         }
         if let error = error {
-            if (error as NSError).code == NSURLErrorCancelled || (error as NSError).code == NSFileWriteOutOfSpaceError { return }
-            container.shouldResume = true
-            if container.shouldResume {
-                let userInfo = (error as NSError).userInfo
-                if let resumeData = userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
-                    container.resumeData = resumeData
-                    update(container)
-                }
-            }
             let statusCode = (task.response as? HTTPURLResponse)?.statusCode ?? 522
             container.errorCallback?(statusCode, error, nil)
         }
@@ -273,44 +176,55 @@ final class AmyDownloadParserDelegate: NSObject, URLSessionDownloadDelegate {
     
     // Tell the caller that the download is waiting for network
     func urlSession(_ session: URLSession, taskIsWaitingForConnectivity task: URLSessionTask) {
-        guard let container = container(task.response?.url) else { return }
+        guard let url = task.response?.url,
+              let container = containers[url] else { return }
         container.waitingCallback?("Waiting For Connection")
     }
     
     // The Download started again with some progress
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        guard var container = container(downloadTask.response?.url) else { return }
+        guard let url = downloadTask.response?.url,
+              let container = containers[url] else { return }
         if container.toBeTerminated {
-            remove(container)
+            containers[url] = nil
             downloadTask.cancel()
             return
         }
         container.progress.period = 0
         container.progress.total = fileOffset
         container.progress.expected = expectedTotalBytes
-        update(container)
         container.progressCallback?(container.progress)
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        guard let container = container(task.currentRequest?.url) else { return }
-        update(container, newRequest: request)
-        completionHandler(request)
+        defer {
+            completionHandler(request)
+        }
+        guard let url = task.currentRequest?.url,
+              let container = containers[url],
+              let newURL = request.url else {
+            return
+        }
+        container.url = newURL
+        containers[newURL] = container
+        containers[url] = nil
     }
 }
 
-struct AmyDownloadParserContainer {
+class AmyDownloadParserContainer {
     public var url: URL
     public var progress = Progress()
     public var killed = false
-    public var shouldResume = false
-    public var resumeData: Data?
     public var progressCallback: ((_ progress: Progress) -> Void)?
     public var didFinishCallback: ((_ status: Int, _ url: URL) -> Void)?
     public var errorCallback: ((_ status: Int, _ error: Error?, _ url: URL?) -> Void)?
     public var waitingCallback: ((_ message: String) -> Void)?
     
     public var toBeTerminated = false
+    
+    init(url: URL) {
+        self.url = url
+    }
 }
 
 struct Progress {

@@ -7,21 +7,18 @@
 //
 
 import Foundation
-import SafariServices
+import AuthenticationServices
 
-class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextProviding*/ {
+class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProviding {
     public static let shared = PaymentAuthenticator()
-    var currentAuthenticationSession: SFAuthenticationSession?
-    var lastWindow: UIWindow?
+    private var currentAuthenticationSession: ASWebAuthenticationSession?
+    private var lastWindow: UIWindow?
     
     func authenticate(provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
-        #if targetEnvironment(macCatalyst)
-        completion?(nil, false)
-        #else
-        currentAuthenticationSession = SFAuthenticationSession(url: provider.authenticationURL, callbackURLScheme: "sileo") { url, error in
+        currentAuthenticationSession = ASWebAuthenticationSession(url: provider.authenticationURL, callbackURLScheme: "sileo") { url, error in
             if let error = error {
-                if let error = error as? SFAuthenticationError,
-                    error.code == SFAuthenticationError.canceledLogin {
+                if let error = error as? ASWebAuthenticationSessionError,
+                    error.code == ASWebAuthenticationSessionError.canceledLogin {
                     completion?(nil, false)
                     return
                 }
@@ -55,30 +52,23 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             }
             
             provider.authenticate(withToken: token!, paymentSecret: secret!)
-            completion?(nil, true)
+            completion?(nil, false)
         }
-        /*
         if #available(iOS 13.0, *) {
-            self.lastWindow = window
             currentAuthenticationSession?.presentationContextProvider = self
         }
-        */
         currentAuthenticationSession?.start()
-        #endif
     }
     
     func handlePayment(actionURL url: URL, provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
-        #if targetEnvironment(macCatalyst)
-        completion?(nil, false)
-        #else
-        currentAuthenticationSession = SFAuthenticationSession(url: url, callbackURLScheme: "sileo") { url, error in
+        currentAuthenticationSession = ASWebAuthenticationSession(url: url, callbackURLScheme: "sileo") { url, error in
             if let error = error {
-                if let error = error as? SFAuthenticationError,
-                    error.code == SFAuthenticationError.canceledLogin {
+                if let error = error as? ASWebAuthenticationSessionError,
+                    error.code == ASWebAuthenticationSessionError.canceledLogin {
                     completion?(nil, false)
                     return
                 }
-                completion?(PaymentError(error: error), false)
+                completion?(PaymentError(error: "\(String(describing: error))"), false)
                 return
             }
             guard let url = url,
@@ -89,7 +79,30 @@ class PaymentAuthenticator: NSObject/*, ASWebAuthenticationPresentationContextPr
             
             completion?(nil, false)
         }
-        self.currentAuthenticationSession?.start()
-        #endif
+        if #available(iOS 13.0, *) {
+            currentAuthenticationSession?.presentationContextProvider = self
+        }
+        currentAuthenticationSession?.start()
     }
+    
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        UIWindow.presentable ?? ASPresentationAnchor()
+    }
+}
+
+extension UIWindow {
+    
+    public static var presentable: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication
+                .shared
+                .connectedScenes
+                .filter { $0.activationState == .foregroundActive }
+                .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                .first
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+    
 }

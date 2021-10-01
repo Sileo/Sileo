@@ -8,6 +8,7 @@
 
 import Foundation
 import Security
+import LocalAuthentication
 
 final class KeychainManager {
     
@@ -18,13 +19,13 @@ final class KeychainManager {
         case secret = "SileoPaymentSecret"
         case token = "SileoPaymentToken"
     }
-    
-    private var accessControl: SecAccessControl {
+
+    private var accessControl: SecAccessControl = {
         SecAccessControlCreateWithFlags(kCFAllocatorDefault,
                                         kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
                                         .userPresence,
                                         nil)!
-    }
+    }()
     
     public func clearKeys(_ key: String) {
         for service in SileoService.allCases {
@@ -86,22 +87,28 @@ final class KeychainManager {
         return String(decoding: data, as: UTF8.self)
     }
     
-    public func secret(key: String) -> String? {
-        let query = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: key,
-            kSecAttrAccessGroup: accessGroup,
-            kSecAttrService as String: SileoService.secret.rawValue,
-            kSecReturnData as String: kCFBooleanTrue!,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrAccessControl as String: accessControl,
-            kSecUseOperationPrompt as String: "Authenticate to complete your purchase"
-        ] as [AnyHashable: Any]
-        
-        var dataRef: AnyObject?
-        let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataRef)
-        guard status == noErr,
-              let data = dataRef as? Data else { return nil }
-        return String(decoding: data, as: UTF8.self)
+    public func secret(key: String, _ completion: @escaping (String?) -> ()) {
+        let authContext = LAContext()
+        authContext.evaluateAccessControl(accessControl,
+                                          operation: .useItem,
+                                          localizedReason: String(localizationKey: "Authenticate to complete your purchase")) { [self] (success, error) in
+            guard success else { return completion(nil) }
+            let query = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: key,
+                kSecAttrAccessGroup: accessGroup,
+                kSecAttrService as String: SileoService.secret.rawValue,
+                kSecReturnData as String: kCFBooleanTrue!,
+                kSecMatchLimit as String: kSecMatchLimitOne,
+                kSecAttrAccessControl as String: accessControl,
+                kSecUseAuthenticationContext as String: authContext,
+                kSecUseAuthenticationUI as String: kSecUseAuthenticationUIFail
+            ] as [AnyHashable: Any]
+            var dataRef: AnyObject?
+            let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataRef)
+            guard status == noErr,
+                  let data = dataRef as? Data else { return completion(nil) }
+            completion(String(decoding: data, as: UTF8.self))
+        }
     }
 }

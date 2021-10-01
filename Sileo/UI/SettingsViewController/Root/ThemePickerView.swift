@@ -76,6 +76,6 @@ class ThemePickerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
     }
 }
 
-protocol ThemeSelected: AmyObject {
+protocol ThemeSelected: AnyObject {
     func themeSelected(_ index: Int)
 }

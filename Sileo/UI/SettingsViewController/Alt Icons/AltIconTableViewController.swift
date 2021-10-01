@@ -102,7 +102,7 @@ class AltIconTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let altIcon = icons[indexPath.row]
         UIApplication.shared.setAlternateIconName(altIcon.key) { error in
-            NSLog("[Sileo] Failed to set icon with error \(error?.localizedDescription)")
+            NSLog("[Sileo] Failed to set icon with error \(error?.localizedDescription ?? "Unknown Error")")
         }
         NotificationCenter.default.post(name: AltIconTableViewController.IconUpdate, object: nil)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [IndexPath](), with: .none)

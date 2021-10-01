@@ -3370,7 +3370,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F139D14922EA9209007F5C0D /* Build configuration list for PBXNativeTarget "Sileo Demo" */;
 			buildPhases = (
-				F139D12922EA9209007F5C0D /* ShellScript */,
 				F139D09722EA9209007F5C0D /* Sources */,
 				F139D11F22EA9209007F5C0D /* Frameworks */,
 				E177781F266006070091AFAB /* Embed PlugIns */,
@@ -3405,8 +3404,6 @@
 				F149E0AA20B6040B005CA30B /* Frameworks */,
 				E177780F266005DF0091AFAB /* Embed PlugIns */,
 				F149E0AB20B6040B005CA30B /* Resources */,
-				F1144EFE20FC636C001FF36C /* ShellScript */,
-				F1CA042822DA824A00CED7A9 /* Run Script */,
 				E1AA47B7268DF3CD00D87E5E /* Embed Frameworks */,
 				E19CC2D3269C6DAB0059251F /* Copy Files */,
 			);
@@ -3962,54 +3959,6 @@
 			shellScript = "if [ \"${PLATFORM_NAME}\" == *\"simulator\" ]\nthen\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
 		};
 		E14E4D4026DAD572002AE3B4 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not installed, run 'brew install swiftlint'\"\nfi\n";
-		};
-		F1144EFE20FC636C001FF36C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"${PLATFORM_NAME}\" == *\"simulator\" ]\nthen\n    cp $SRCROOT/Sileo/Test\\ Data/status \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/status\"\n    cp $SRCROOT/Sileo/Test\\ Data/dpkg.list \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/dpkg.list\"\nfi\n";
-		};
-		F139D12922EA9209007F5C0D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if test -d \"/opt/homebrew/bin\"; then\n    export PATH=\"${PATH}:/opt/homebrew/bin\"\nfi\n";
-		};
-		F1CA042822DA824A00CED7A9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -5576,7 +5525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Sileo/Sileo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				ENABLE_BITCODE = NO;
@@ -5727,7 +5676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Sileo/Sileo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
@@ -5777,7 +5726,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/Entitlements.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Sileo/Sileo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				ENABLE_BITCODE = NO;
