@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Evander
 
 open class BaseSubtitleTableViewCell: UITableViewCell {
     let iconView: PackageIconView
@@ -97,7 +98,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
         guard let url = url else {
             return
         }
-        self.icon = AmyNetworkResolver.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
+        self.icon = EvanderNetworking.shared.image(url, size: iconView.frame.size) { [weak self] refresh, image in
             if refresh,
                let strong = self,
                let image = image,

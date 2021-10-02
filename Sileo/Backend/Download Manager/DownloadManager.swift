@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 public enum DownloadManagerQueue: Int {
     case upgrades

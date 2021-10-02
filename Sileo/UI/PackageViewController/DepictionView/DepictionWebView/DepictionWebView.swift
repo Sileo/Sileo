@@ -9,6 +9,7 @@
 import Foundation
 import SafariServices
 import WebKit
+import Evander
 
 class DepictionWebView: DepictionBaseView {
     let alignment: Int

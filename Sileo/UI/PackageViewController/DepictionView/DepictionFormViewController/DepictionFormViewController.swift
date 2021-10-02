@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Evander
 
 class DepictionFormViewController: SileoTableViewController {
     
@@ -109,7 +110,7 @@ class DepictionFormViewController: SileoTableViewController {
     
     private func loadForm() {
         let urlRequest = URLManager.urlRequest(formURL)
-        AmyNetworkResolver.dict(request: urlRequest) { [weak self] success, dict in
+        EvanderNetworking.dict(request: urlRequest) { [weak self] success, dict in
             guard let strong = self else { return }
             DispatchQueue.main.async {
                 strong.loadingView?.stopAnimating()
@@ -181,7 +182,7 @@ class DepictionFormViewController: SileoTableViewController {
             provider.isAuthenticated {
             values["token"] = provider.authenticationToken
         }
-        AmyNetworkResolver.dict(url: action, method: "POST", json: values) { [weak self] success, dict in
+        EvanderNetworking.dict(url: action, method: "POST", json: values) { [weak self] success, dict in
             guard let strong = self else { return }
             DispatchQueue.main.async {
                 guard success,

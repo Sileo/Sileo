@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension UIView {
-    class func fromNib<T: UIView>() -> T {
-        (Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as? T)!
-    }
-}
-
 extension UITextView {
     #if targetEnvironment(macCatalyst)
     @objc(_focusRingType)

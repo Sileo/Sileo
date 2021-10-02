@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class DepictionMarkdownViewSlow: DepictionBaseView, CSTextViewActionHandler {
     var attributedString: NSMutableAttributedString?

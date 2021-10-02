@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
     private var selectionView: UIView
@@ -76,7 +77,7 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
             if let iconURL = URL(string: repo)?
                 .appendingPathComponent(filename)
                 .appendingPathExtension("png") {
-                let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                let cache = EvanderNetworking.shared.imageCache(iconURL, scale: CGFloat(i))
                 if let image = cache.1 {
                     repoIcon?.image = image
                     return

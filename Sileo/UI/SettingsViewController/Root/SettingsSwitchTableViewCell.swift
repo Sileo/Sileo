@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Evander
 
 class SettingsSwitchTableViewCell: UITableViewCell {
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Evander
 
 class SileoTeamViewController: UITableViewController {
     
@@ -48,7 +49,7 @@ class SileoTeamViewController: UITableViewController {
         guard let jsonURL = StoreURL("sileo-team.json") else {
             return
         }
-        AmyNetworkResolver.array(url: jsonURL, cache: true) { success, array in
+        EvanderNetworking.array(url: jsonURL, cache: true) { success, array in
             guard success,
                   let array = array else { return }
             DispatchQueue.main.async {

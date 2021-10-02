@@ -8,12 +8,8 @@
 
 import Foundation
 import UserNotifications
-import BackgroundTasks
-
-extension String: LocalizedError {
-    public var errorDescription: String? { self }
-}
-
+import Evander
+	
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     
@@ -29,7 +25,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
-        _ = AmyNetworkResolver.shared
+        _ = EvanderNetworking.shared
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
 

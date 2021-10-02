@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class DependencyResolverAccelerator {
     public static let shared = DependencyResolverAccelerator()

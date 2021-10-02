@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Evander
 
 class DepictionImageView: DepictionBaseView {
     let alignment: Int
@@ -37,7 +38,7 @@ class DepictionImageView: DepictionBaseView {
         imageView = UIImageView(frame: .zero)
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        if let image = AmyNetworkResolver.shared.image(url, { [weak self] refresh, image in
+        if let image = EvanderNetworking.shared.image(url, { [weak self] refresh, image in
             if refresh,
                let strong = self,
                let image = image {

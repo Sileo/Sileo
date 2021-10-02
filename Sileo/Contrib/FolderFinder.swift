@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 final class ICloudPFPHandler {
     
@@ -54,7 +55,7 @@ final class ICloudPFPHandler {
         #endif
         let scale = Int(UIScreen.main.scale)
         let filename = scale == 1 ? "AppleAccountIcon": "AppleAccountIcon@\(scale)x"
-        let toPath = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("png")
+        let toPath = EvanderNetworking.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("png")
         
         func image() -> UIImage? {
             if let data = try? Data(contentsOf: toPath),

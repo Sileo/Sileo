@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class SourcesTableViewCell: BaseSubtitleTableViewCell {
     
@@ -70,7 +71,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
             if let iconURL = URL(string: repo.repoURL)?
                 .appendingPathComponent(filename)
                 .appendingPathExtension("png") {
-                let cache = AmyNetworkResolver.shared.imageCache(iconURL, scale: CGFloat(i))
+                let cache = EvanderNetworking.shared.imageCache(iconURL, scale: CGFloat(i))
                 if let image = cache.1 {
                     self.icon = image
                     return

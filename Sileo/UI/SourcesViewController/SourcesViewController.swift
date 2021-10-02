@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 final class SourcesViewController: SileoViewController {
     private var sortedRepoList: [Repo] = []
@@ -568,7 +569,7 @@ final class SourcesViewController: SileoViewController {
                     || url.host == "apt.procurs.us" {
                     return handleAdd()
                 }
-                AmyNetworkResolver.head(url: url.appendingPathComponent("Release")) { success in
+                EvanderNetworking.head(url: url.appendingPathComponent("Release")) { success in
                     if success {
                         handleAdd()
                     } else {

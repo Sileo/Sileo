@@ -10,9 +10,5 @@
 	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>org.coolstar.Sileo</string>
-	</array>
 </dict>
 </plist>

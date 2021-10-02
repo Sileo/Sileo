@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class NewsArticleCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool {
@@ -70,7 +71,7 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
         
         if self.article != nil && self.article?.imageURL != nil {
             if let url = article?.imageURL {
-                imageView?.image = AmyNetworkResolver.shared.image(url, size: imageView?.frame.size) { [weak self] refresh, image in
+                imageView?.image = EvanderNetworking.shared.image(url, size: imageView?.frame.size) { [weak self] refresh, image in
                     if refresh,
                         let strong = self,
                         let image = image,

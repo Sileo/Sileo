@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class CategoryViewController: SileoTableViewController {
     public var repoContext: Repo?
@@ -140,7 +141,7 @@ class CategoryViewController: SileoTableViewController {
             guard let featuredURL = repoContext.url?.appendingPathComponent("sileo-featured.json") else {
                 return
             }
-            AmyNetworkResolver.dict(url: featuredURL, cache: true) { [weak self] success, dict in
+            EvanderNetworking.dict(url: featuredURL, cache: true) { [weak self] success, dict in
                 guard success,
                       let depiction = dict,
                       let strong = self,

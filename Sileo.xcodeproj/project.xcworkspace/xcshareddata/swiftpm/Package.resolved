@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "Evander",
+        "repositoryURL": "https://github.com/elihwyma/Evander",
+        "state": {
+          "branch": "main",
+          "revision": "2e4f20b1027f672e6e91fd8eb9adaaf6a998fa0d",
+          "version": null
+        }
+      },
+      {
         "package": "LNPopupController",
         "repositoryURL": "https://github.com/elihwyma/LNPopupController",
         "state": {

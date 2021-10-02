@@ -7,6 +7,7 @@
 //  Copyright © 2021 Amy While. All rights reserved.
 
 import UIKit
+import Evander
 
 class GithubSocialCell: UITableViewCell {
     
@@ -24,7 +25,7 @@ class GithubSocialCell: UITableViewCell {
     
     private func pullImage() {
         guard let url = social?.url else { return }
-        self.profilePicture.image = AmyNetworkResolver.shared.image(url, size: profilePicture.frame.size) { [weak self] refresh, image in
+        self.profilePicture.image = EvanderNetworking.shared.image(url, size: profilePicture.frame.size) { [weak self] refresh, image in
             if refresh,
                let strong = self,
                let image = image,

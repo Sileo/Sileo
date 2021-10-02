@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 struct DpkgVersion {
     var epoch: UInt

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 final class CanisterResolver {
     
@@ -50,7 +51,7 @@ final class CanisterResolver {
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
-        AmyNetworkResolver.dict(url: url) { [self] success, dict in
+        EvanderNetworking.dict(url: url) { [self] success, dict in
             guard success,
                   let dict = dict,
                   let data = dict["data"] as? [[String: Any]] else { return }
@@ -83,7 +84,7 @@ final class CanisterResolver {
         let identifiers = packages.joined(separator: ",")
         guard let formatted = identifiers.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v1/community/packages/lookup?packages=\(formatted)"
-        AmyNetworkResolver.dict(url: url) { [self] success, dict in
+        EvanderNetworking.dict(url: url) { [self] success, dict in
             guard success,
                   let dict = dict,
                   let data = dict["data"] as? [[String: Any]] else { return }
@@ -106,7 +107,7 @@ final class CanisterResolver {
     
     class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
         let url2 = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
-        AmyNetworkResolver.dict(url: url2) { success, dict in
+        EvanderNetworking.dict(url: url2) { success, dict in
             guard success,
                   let dict = dict,
                   (dict["status"] as? String) == "Successful",
@@ -135,7 +136,7 @@ final class CanisterResolver {
             let suffix = (index == urls.count - 1) ? "" : ","
             url += (url2.absoluteString  + suffix)
         }
-        AmyNetworkResolver.dict(url: url) { success, dict in
+        EvanderNetworking.dict(url: url) { success, dict in
             guard success,
                   let dict = dict,
                   (dict["status"] as? String) == "Successful",

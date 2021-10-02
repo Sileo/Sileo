@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 import AVKit
 
 class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
@@ -102,7 +103,7 @@ class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
                 let screenshotView = UIButton(frame: .zero)
                 if (viewController as? DepictionScreenshotsViewController) != nil && screenshot["fullSizeURL"] as? String != nil {
                     if let fullSizeURL = screenshot["fullSizeURL"] as? String {
-                        if let image = AmyNetworkResolver.shared.image(fullSizeURL, { [weak self] refresh, image in
+                        if let image = EvanderNetworking.shared.image(fullSizeURL, { [weak self] refresh, image in
                             if refresh,
                                let strong = self,
                                let image = image {
@@ -117,7 +118,7 @@ class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
                         }
                     }
                 } else {
-                    if let image = AmyNetworkResolver.shared.image(url, { [weak self] refresh, image in
+                    if let image = EvanderNetworking.shared.image(url, { [weak self] refresh, image in
                         if refresh,
                            let strong = self,
                            let image = image {

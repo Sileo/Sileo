@@ -288,7 +288,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         if let headerURL = package.rawControl["header"],
            let header = URL(string: headerURL) {
             if header != depictionHeader {
-                if let image = AmyNetworkResolver.shared.image(header, { [weak self] refresh, image in
+                if let image = EvanderNetworking.shared.image(header, { [weak self] refresh, image in
                     guard let `self` = self,
                           refresh,
                           let image = image else { return }
@@ -301,12 +301,12 @@ class NativePackageViewController: SileoViewController, PackageActions {
             }
         } else {
             if var image = UIImage(named: "Background Placeholder") {
-                image = GifController.downsample(image: image) ?? image
+                image = ImageProcessing.downsample(image: image) ?? image
                 headerImageView.image = image
             }
         }
         if let depiction = package.nativeDepiction {
-            AmyNetworkResolver.dict(url: depiction, cache: true) { [weak self] refresh, dict in
+            EvanderNetworking.dict(url: depiction, cache: true) { [weak self] refresh, dict in
                 guard let `self` = self,
                       refresh,
                       let dict = dict else { return }
@@ -317,7 +317,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         }
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let image = AmyNetworkResolver.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
+            let image = EvanderNetworking.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
                 if refresh,
                     let strong = self,
                     let image = image,

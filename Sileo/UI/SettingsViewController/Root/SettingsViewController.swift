@@ -6,9 +6,9 @@
 //  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
-import Foundation
 import Alderis
 import UIKit
+import Evander
 
 class SettingsViewController: BaseSettingsViewController, ThemeSelected {
     private var authenticatedProviders: [PaymentProvider] = Array()
@@ -208,7 +208,7 @@ extension SettingsViewController { // UITableViewDataSource
             case 0:
                 let cell = self.reusableCell(withStyle: .value1, reuseIdentifier: "CacheSizeIdenitifer")
                 cell.textLabel?.text = String(localizationKey: "Cache_Size")
-                cell.detailTextLabel?.text = FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)
+                cell.detailTextLabel?.text = FileManager.default.sizeString(EvanderNetworking.shared.cacheDirectory)
                 return cell
             case 1:
                 let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
@@ -311,10 +311,10 @@ extension SettingsViewController { // UITableViewDataSource
     
     private func cacheClear() {
         let alert = UIAlertController(title: String(localizationKey: "Clear_Cache"),
-                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(AmyNetworkResolver.shared.cacheDirectory)),
+                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(EvanderNetworking.shared.cacheDirectory)),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .destructive) { _ in
-            AmyNetworkResolver.shared.clearCache()
+            EvanderNetworking.shared.clearCache()
             self.tableView.reloadData()
         })
         alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel))
