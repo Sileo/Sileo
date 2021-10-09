@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "購入済み";
 "Settings_Payment_Provider.No_Purchases" = "購入したパッケージはありません。";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "設定";
 "Settings_Page_Title" = "設定";

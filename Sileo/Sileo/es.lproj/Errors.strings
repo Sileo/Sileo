@@ -53,7 +53,7 @@
 
 "Settings_Payment_Provider.Profile.Title" = "Imposible Cargar el Perfil";
 
-"Provider_Auth_Fail.Title" = "Imposible Autenticar el Proovedor";
+"Provider_Auth_Fail.Title" = "Imposible Autenticar el Proveedor";
 "Purchase_Initiate_Fail.Title" = "Imposible Iniciar la Compra";
 "Purchase_Complete_Fail.Title" = "Imposible Completar la Compra";
 "Purchase_Auth_Complete_Fail.Title" = "Imposible Completar la Autenticación";

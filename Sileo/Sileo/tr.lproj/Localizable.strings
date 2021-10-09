@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Satın Al";
 "Settings_Payment_Provider.No_Purchases" = "Satın Alınmadı";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Ayarlar";
 "Settings_Page_Title" = "Ayarlar";

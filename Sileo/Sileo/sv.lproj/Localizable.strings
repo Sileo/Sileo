@@ -24,8 +24,8 @@
 "Acknowledge" = "Medge";
 "Remove" = "Radera";
 "Sileo_Team" = "Sileo Utvecklare";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Varning";
+"Edit" = "Redigera";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrund App Uppdatering";
@@ -41,7 +41,7 @@
 "Download_Starting" = "Startar…";
 "Download_Progress" = "%@ av %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Följande paket listas som viktiga/obligatoriska: %@\n Om du tar bort dessa kan det orsaka irreversibel skada på din enhet och kan kräva att du återställer. Fortsätt bara om du är säker på att du vet vad du gör.";
 
 "Queue_Confirm_Button" = "Bekräfta";
 "Queue_Clear_Button" = "Rensa Kö";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "Radera från Önskelistan";
 "Wishlist" = "Önskelista";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Inga Nya Paket";
+"News_Check_Later" = "Det finns inga nya paket indexerade än. Kom tillbaka om några timmar och du borde se paket börja dyka upp här när källorna uppdateras.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installera";
@@ -113,7 +113,7 @@
 "Add_Source.Body" = "Lägg Till APT URL";
 "Add_Source.Button.Add" = "Lägg Till Källa";
 "Add_Dist_Repo" = "Lägg Till Dist Källa";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ verkar inte vara en giltig källa⁉️ Källan kanske är off-line eller så har du skrivit fel. Vill du lägga till den ändå?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Skriv In Manuellt";
 
@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Köp";
 "Settings_Payment_Provider.No_Purchases" = "Inga köp";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Inställningar";
 "Settings_Page_Title" = "Inställningar";
@@ -167,7 +168,7 @@
 "Apply_Changes_Confirm" = "Sileo behöver startas om efter tillämpning";
 "Help_Translate" = "Hjälp Och Översätta Sileo";
 "Always_Show_Install_Log" = "Visa Alltid Installerings Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Auto_Show_Queue" = "Visa Kö vid Uppgradering Av Allt";
 
 "Sileo_Light" = "Sileo Ljust";
 "Sileo_Dark" = "Sileo Mörkt";
