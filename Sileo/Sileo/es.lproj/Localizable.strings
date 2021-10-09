@@ -117,11 +117,11 @@
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Añadir Manualmente";
 
-"Untitled_Form" = "Formulario Sín Título";
-"Form_Submitted.Default_Title" = "Formulario Enviada";
+"Untitled_Form" = "Formulario Sin Título";
+"Form_Submitted.Default_Title" = "Formulario Enviado";
 "Form_Submitted.Default_Body" = "El formulario fue enviado con éxito.";
 
-"Web_Depiction_Deprecated_Warning" = "Las representaciónes Web View están deprecadas. Por favor contacte al administrador del repositorio acerca de actualizar a representaciónes nativas.";
+"Web_Depiction_Deprecated_Warning" = "Las representaciones Web View están deprecadas. Por favor contacte al administrador del repositorio acerca de actualizar a representaciones nativas.";
 
 "Package_Details_Tab" = "Detalles";
 "Package_Changelog_Tab" = "Lista de Cambios";
@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Compras";
 "Settings_Payment_Provider.No_Purchases" = "Sin Compras";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Ajustes";
 "Settings_Page_Title" = "Ajustes";
@@ -197,7 +198,7 @@
 "Dangerous_Repo.Title" = "Repositorio Riesgoso";
 "Dangerous_Repo.Body" = "Está intentando añadir un repositorio previamente identificado como nocivo por razones como piratería, contenido ilícito, ó malware.\n\nRepositorios identificados como nocivos suelen distribuir software con efectos inesperados, ya sea en la forma de paquetes de paga sin costo, u otros paquetes maliciosos. Esto puede tener repercusiones negativas en su dispositivo y su privacidad, incluso algunas veces afectando su capacidad para hacer jailbreak en el futuro. Recomendamos que tenga extremada precaución para evitar instalar software malicioso.";
 "Dangerous_Repo.Continue" = "Acepto los riesgos, continuar";
-"Dangerous_Repo.Cancel" = "Regresar a la seguridad";
+"Dangerous_Repo.Cancel" = "Regresar";
 "Dangerous_Repo.Last_Chance.Title" = "Añadir Repo Riesgosa?";
 "Dangerous_Repo.Last_Chance.Body" = "Los repositorios riesgosos pueden tener repercusiones negativas en su capacidad para utilizar el dispositivo ó hacer jailbreak. Recomendamos fuertemente que regrese por su propia seguridad. %@"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Continuar";

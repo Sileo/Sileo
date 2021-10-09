@@ -23,9 +23,9 @@
 "Cancel" = "Kanseller";
 "Acknowledge" = "Bekreft";
 "Remove" = "Fjern";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Sileo_Team" = "Sileo utviklere";
+"Warning" = "Advarsel";
+"Edit" = "Rediger";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrunnsoppdatering";
@@ -41,11 +41,11 @@
 "Download_Starting" = "Starter…";
 "Download_Progress" = "%@ av %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Følgende pakker er oppført som viktige/påkrevde: %@\n Hvis du fjerner disse, kan det forårsake irreversibel skade på enheten din og kan føre til at du må gjenopprette den. Fortsett kun hvis du er sikker på at du vet hva du gjør.";
 
 "Queue_Confirm_Button" = "Bekreft";
 "Queue_Clear_Button" = "Tøm kø";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Avbryt nedlastinger";
 
 "Package_Upgrade_Action" = "Oppgrader";
 "Package_Reinstall_Action" = "Installer på nytt";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "Fjern fra ønskelisten";
 "Wishlist" = "Ønskeliste";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Ingen nye pakker";
+"News_Check_Later" = "Det er ingen nye pakker indeksert enda. Kom tilbake hit om noen timer, og pakker bør begynne å dukke opp etter hvert som kilder blir oppdatert.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installer";
@@ -80,7 +80,7 @@
 "Package_Search.Placeholder" = "Søk etter pakker";
 "Sort_Name" = "Navn";
 "Sort_Date" = "Dato";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Installert størrelse";
 "Sort_By" = "Sorter etter:";
 
 "Package_Unavailable" = "Pakke utilgjengelig";
@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Remove";
+"Remove" = "Fjern";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -112,8 +112,8 @@
 "Add_Source.Title" = "Legg til kilde";
 "Add_Source.Body" = "Legg til APT-nettadresse";
 "Add_Source.Button.Add" = "Legg til kilde";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "Legg til Dist-kilde";
+"Incorrect_Repo" = "%@ ser ikke ut til å være en gyldig kilde⁉️ Kilden kan være nede, eller du kan ha skrevet feil. Vil du fortsatt legge den til?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Legg til manuelt";
 
@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Kjøp";
 "Settings_Payment_Provider.No_Purchases" = "Ingen kjøp";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Innstillinger";
 "Settings_Page_Title" = "Innstillinger";
@@ -161,13 +162,13 @@
 "Cache_Size" = "Hurtigbuffer størrelse";
 "Clear_Cache" = "Tøm nettverksbufferen";
 "Clear_Cache_Message" = "Vil du tømme nettverksbufferen? Dette vil frigjøre %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Language" = "Språk";
+"Use_System_Language" = "Bruk enhetens språk";
+"Apply_Changes" = "Bruk endringer";
+"Apply_Changes_Confirm" = "Bruk av endringer krever en omstart av Sileo";
+"Help_Translate" = "Hjelp til med å oversette Sileo";
+"Always_Show_Install_Log" = "Vis alltid installasjonslogg";
+"Auto_Show_Queue" = "Vis kø på oppgrader alle";
 
 "Sileo_Light" = "Sileo lys";
 "Sileo_Dark" = "Sileo mørk";
@@ -184,8 +185,8 @@
 
 "Show_Install_Details" = "Vis detaljer";
 "Hide_Install_Details" = "Skjul detaljer";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Åpne i Filza";
+"Copy_Path" = "Kopier filbanen";
 
 "After_Install_Relaunch" = "Start Sileo på nytt";
 "After_Install_Respring" = "Start SpringBoard på nytt";

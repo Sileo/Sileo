@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Achats";
 "Settings_Payment_Provider.No_Purchases" = "Aucun achat";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Paramètres";
 "Settings_Page_Title" = "Paramètres";

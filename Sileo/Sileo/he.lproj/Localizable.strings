@@ -112,8 +112,8 @@
 "Add_Source.Title" = "הוסף מקור";
 "Add_Source.Body" = "הוסף APT URL";
 "Add_Source.Button.Add" = "הוסף מקור";
-"Add_Dist_Repo" = "הוסף מקור";
-"Incorrect_Repo" = "נראה כי המקור %@ איננו תקף⁉️ יתכן והמקור לא זמין או שהוזן לא נכון. האם ברצנוך להוסיף אותו בכל זאת?";
+"Add_Dist_Repo" = "הוסף מקור הפצה";
+"Incorrect_Repo" = "נראה כי המקור %@ איננו תקף⁉️ יתכן והמקור לא זמין או שהוזן לא נכון. האם ברצונך להוסיף אותו בכל זאת?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "הכנס ידנית";
 
@@ -141,6 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "רכישות";
 "Settings_Payment_Provider.No_Purchases" = "אין רכישות";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "הגדרות";
 "Settings_Page_Title" = "הגדרות";
@@ -194,7 +195,7 @@
 "After_Install_Respring_Later" = "רענן את SpringBoard מאוחר יותר";
 "After_Install_Reboot_Later" = "אתחל את המכשיר מאוחר יותר";
 
-"Dangerous_Repo.Title" = "סורס מסוכן";
+"Dangerous_Repo.Title" = "מקור מסוכן";
 "Dangerous_Repo.Body" = "זוהה ניסיון להוסיף מקור שנודע כמסוכן העלול להכיל תכנים פיראטיים או תכנים לא חוקיים וכן גם נוזקות.\n\n מקורות שסומנו כזדוניים בדרך כלל מפיצים חבילות וטוויקים שעלולים להוביל לתוצאות לא צפויות, בין אם בתצורה של חבילה בתשלום, בחינם או אף חבילות זדוניות. הוספה של מקור זה עלולה לפגוע בפרטיות המכשיר שלך וכן גם ביציבות הפריצה שלך. אנו ממליצים לנקוט אמצעי זהירות מחמירים ביותר על מנת להימנע מחבילות מזיקות אלה.";
 "Dangerous_Repo.Continue" = "אני מקבל את הסיכונים, המשך";
 "Dangerous_Repo.Cancel" = "קח אותי בחזרה למקום בטוח";
