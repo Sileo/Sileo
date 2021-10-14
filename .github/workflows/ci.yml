@@ -1,32 +1,43 @@
+name: CI
+
 on:
   push:
     branches:
       - dev
-name: Build
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - 'LICENSE'
+      - '.gitignore'
+  workflow_dispatch:
+
+env:
+  AMY_REPO_SECRET: ${{ secrets.AMY_REPO_SECRET }}
+  SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+  DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
+  DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+  KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+  BASE_UPLOAD_URL: https://api.anamy.gay/private/repo
+
 jobs:
-  make:
-    name: Build and Upload Sileo
+  build:
+    name: Build Sileo
     runs-on: macos-latest
     steps:
-      - uses: actions/cache@v2
+      - name: Get Procursus cache
+        uses: actions/cache@v2
         id: procache
         with:
           path: |
             ~/__cache
             /Applications/Xcode_12.4.app/Contents/Developer/Toolchains
           key: ${{ runner.os }}-procursus
-          
-      - name: Checkout
-        uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           submodules: recursive
           token: ${{ secrets.SILEO_PAT }}
       - name: Import all certificates
-        env: 
-          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
-          DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
-          DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
-          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           security create-keychain -p "" build.keychain
           security list-keychains -s build.keychain
@@ -44,8 +55,15 @@ jobs:
                           -P $SIGNING_CERTIFICATE_PASSWORD \
                           -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
-        
-      - name: Setup Procursus Bootstrap (install)
+      - name: Setup Procursus bootstrap (cache)
+        if: steps.procache.outputs.cache-hit == 'true'
+        run: |
+          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
+          sudo rsync -aP ~/__cache/procursus /apt
+          sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+      - name: Setup Procursus bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
           wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst https://apt.procurs.us/Toolchain12_5.tzst
@@ -57,46 +75,35 @@ jobs:
           sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt install ldid -y
-          
-      - name: Add Procursus to PATH
+      - name: Copy Procursus to Cache Location
+        if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
-          
-      - name: Setup Procursus Bootstrap (cache)
-        if: steps.procache.outputs.cache-hit == 'true'
-        run: |
-          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
-          sudo rsync -aP ~/__cache/procursus /opt
-          sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
-          
+          sudo mkdir -p ~/__cache
+          sudo rsync -aP /opt/procursus ~/__cache
+          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
       - name: Build Sileo Nightly (darwin-arm64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
-      - name: Upload To Repo
-        env: # 
-          token: ${{ secrets.AMY_REPO_SECRET }}
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
+      - name: Upload to Repo
         run: |
           package1=$(ls -t packages | head -1)
           package2=$(ls -t packages | head -2 | tail -1)
           package3=$(ls -t packages | head -3 | tail -1)
-          curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-      - name: Wakeup Babe
+          curl -F deb="@./packages/${package1}" -H "Auth: ${{ env.AMY_REPO_SECRET }}" ${{ env.BASE_UPLOAD_URL }}/upload
+          curl -F deb="@./packages/${package2}" -H "Auth: ${{ env.AMY_REPO_SECRET }}" ${{ env.BASE_UPLOAD_URL }}/upload
+          curl -F deb="@./packages/${package3}" -H "Auth: ${{ env.AMY_REPO_SECRET }}" ${{ env.BASE_UPLOAD_URL }}/upload
+          curl -H "Auth: ${{ env.AMY_REPO_SECRET }}" ${{ env.BASE_UPLOAD_URL }}/repackage
+  wakeup-babe:
+    name: Wakeup Babe
+    needs: build
+    runs-on: macos-latest
+    steps:
+      - name: Send message to Discord Nightly Channel
         run: |
           curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
-      - name: Copy Procursus to Cache Location
-        run: |
-          sudo mkdir -p ~/__cache
-          sudo rsync -aP /opt/procursus ~/__cache
-          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
-
