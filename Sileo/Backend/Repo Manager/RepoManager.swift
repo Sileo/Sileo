@@ -451,7 +451,7 @@ final class RepoManager {
     @discardableResult
     func queue(
         from url: URL?,
-        progress: ((Evander.Progress) -> Void)?,
+        progress: ((DownloadProgress) -> Void)?,
         success: @escaping (URL) -> Void,
         failure: @escaping (Int, Error?) -> Void,
         waiting: ((String) -> Void)? = nil
@@ -485,7 +485,7 @@ final class RepoManager {
     func fetch(
         from url: URL,
         withExtensionsUntilSuccess extensions: [String],
-        progress: ((Evander.Progress) -> Void)?,
+        progress: ((DownloadProgress) -> Void)?,
         success: @escaping (URL, URL) -> Void,
         failure: @escaping (Int, Error?) -> Void
     ) {

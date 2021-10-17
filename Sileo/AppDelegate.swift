@@ -28,7 +28,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = EvanderNetworking.shared
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
-
+        
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             fatalError("Invalid Storyboard")
         }
