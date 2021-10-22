@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DepictionKit
 import Evander
 
 final class CanisterResolver {
@@ -267,6 +268,15 @@ struct ProvisionalPackage {
             self.author = "Unknown"
         }
         self.version = entry["latestVersion"] as? String ?? entry["version"] as? String
+    }
+    
+    init(package: DepictionPackage) {
+        self.name = package.name
+        self.repo = package.repo_link.absoluteString
+        self.icon = package.icon?.absoluteString
+        self.author = package.author
+        self.identifier = package.identifier
+        self.description = repo
     }
 }
 

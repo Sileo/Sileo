@@ -1,1 +1,4 @@
 
+[submodule "Deps/DepictionKit"]
+	path = Deps/DepictionKit
+	url = https://github.com/RepositoryStandards/DepictionKit.git

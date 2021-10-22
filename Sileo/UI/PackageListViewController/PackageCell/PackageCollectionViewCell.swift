@@ -65,7 +65,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let provisionalTarget = provisionalTarget {
                 titleLabel?.text = provisionalTarget.name ?? ""
-                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "")"
+                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "Unknown")"
                 descriptionLabel?.text = provisionalTarget.description
             
                 let url = provisionalTarget.icon ?? ""

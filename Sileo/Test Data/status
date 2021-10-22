@@ -90,18 +90,18 @@ Name: Chariz APT Keyring
 
 Package: com.amywhile.aemulo
 Status: install ok installed
-Section: Tweaks
 Installed-Size: 2948
-Maintainer: Amy While
-Architecture: iphoneos-arm
-Version: 0.1-Gay+debug
-Depends: mobilesubstrate (>= 0.9.5000)
-Description: NFC Fuckery
 Name: Aemulo
-Author: Amy While
+Version: 1.0
+Architecture: iphoneos-arm
+Description: NFC Frickery
+Maintainer: Amy While <support@anamy.gay>
+Author: Amy While <support@anamy.gay>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 13.0), ws.hbang.alderis (>= 1.1)
 Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
 Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
-Native-Depiction: https://pastebin.com/raw/YhYxBbAm
+Native-Depiction: https://elihwyma.github.io/Aemulo/NativeDepiction.json
 
 Package: com.amywhile.signalreborn
 Status: install ok installed

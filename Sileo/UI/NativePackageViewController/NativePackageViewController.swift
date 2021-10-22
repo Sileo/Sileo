@@ -7,8 +7,9 @@
 //
 
 import UIKit
-//import DepictionKit
-//import MessageUI
+import DepictionKit
+import MessageUI
+import Evander
 
 protocol PackageActions: UIViewController {
     @available (iOS 13.0, *)
@@ -17,13 +18,6 @@ protocol PackageActions: UIViewController {
 
 class NativePackageViewController: SileoViewController, PackageActions {
     
-    @available (iOS 13.0, *)
-    func actions() -> [UIAction] {
-        []
-    }
-    
-    
-    /*
     public var package: Package
     public var installedPackage: Package?
     private var depictionLink: URL?
@@ -102,9 +96,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
     }()
     
     public lazy var depiction: DepictionContainer = {
-        let depiction = DepictionContainer(presentationController: self, theme: theme)
-        depiction.delegate = self
-        return depiction
+        DepictionContainer(presentationController: self, theme: theme, delegate: self)
     }()
 
     public lazy var headerImageViewTopAnchor = contentView.topAnchor.constraint(equalTo: headerImageView.topAnchor)
@@ -165,23 +157,16 @@ class NativePackageViewController: SileoViewController, PackageActions {
               separator_color: .sileoSeparatorColor,
               dark_mode: UIColor.isDarkModeEnabled)
     }
-    */
+    
     public class func viewController(for package: Package) -> PackageActions {
-        /*
         if package.nativeDepiction == nil {
             let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
             packageVC.package = package
             return packageVC
         }
-        
         return NativePackageViewController(package: package)
-        */
-        let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageVC.package = package
-        return packageVC
     }
     
-    /*
     init(package: Package) {
         self.package = package
         super.init(nibName: nil, bundle: nil)
@@ -311,6 +296,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
                       refresh,
                       let dict = dict else { return }
                 DispatchQueue.main.async { [weak self] in
+                    NSLog("[Aemulo] Calling setDepiction")
                     self?.depiction.setDepiction(dict: dict)
                 }
             }
@@ -451,35 +437,46 @@ class NativePackageViewController: SileoViewController, PackageActions {
 }
 
 extension NativePackageViewController: DepictionDelegate {
-    
-    func openURL(_ url: URL, completionHandler: @escaping (Bool) -> Void) {
-        completionHandler(false)
-    }
-    
+
+
     func handleAction(action: DepictionAction) {
-        switch action {
-        case let .openURL(url: url, external: external):
-            print("open url \(url) \(external)")
-        case let .openDepiction(url: url):
-            print("open depiction \(url)")
-        case let .openPackage(bundle: bundle):
-            print("open package \(bundle)")
-        case let .addRepo(url: url):
-            print("add repo \(url)")
-        case let .custom(action: action):
-            print("custom \(action)")
-        case let .actionError(error: error, action: action):
-            print("action error \(error) \(action)")
-        }
+        
     }
     
-    func depictionError(error: Error) {
-        let alert = UIAlertController(title: "Error Loading Depiction",
-                                      message: error.localizedDescription,
-                                      preferredStyle: .alert)
+    func depictionError(error: String) {
+        let alert = UIAlertController(title: "Depiction Error", message: error, preferredStyle: .alert)
+        alert.view.tintColor = .tintColor
+        alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default, handler: { _ in
+            alert.dismiss(animated: true)
+        }))
         self.present(alert, animated: true)
     }
-
+    
+    func packageView(for package: DepictionPackage) -> UIView {
+        let cell: PackageCollectionViewCell = Bundle.main.loadNibNamed("PackageCollectionViewCell", owner: self, options: nil)?[0] as! PackageCollectionViewCell
+        cell.separatorView?.isHidden = true
+        let view = cell.contentView
+        view.heightAnchor.constraint(equalToConstant: 73).isActive = true
+        let packages = PackageListManager.shared.packages(identifiers: [package.identifier], sorted: false)
+        if packages.count == 1 {
+            cell.targetPackage = packages[0]
+            return view
+        }
+        let provisional = ProvisionalPackage(package: package)
+        cell.provisionalTarget = provisional
+        return view
+    }
+    
+    func image(for url: URL, completion: @escaping ((UIImage?) -> Void)) -> Bool {
+        if let image = EvanderNetworking.shared.image(url, { refresh, image in
+            guard refresh,
+                  let image = image else { return }
+            completion(image)
+        }) {
+            completion(image)
+        }
+        return true
+    }
 }
 
 extension NativePackageViewController: PackageQueueButtonDataProvider {
@@ -559,7 +556,5 @@ extension NativePackageViewController {
 
         return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
-    
-}
-*/
+
 }
