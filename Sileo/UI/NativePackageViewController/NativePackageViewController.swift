@@ -10,6 +10,7 @@ import UIKit
 import DepictionKit
 import MessageUI
 import Evander
+import SafariServices
 
 protocol PackageActions: UIViewController {
     @available (iOS 13.0, *)
@@ -186,9 +187,9 @@ class NativePackageViewController: SileoViewController, PackageActions {
         scrollView.addSubview(contentView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
             headerImageViewTopAnchor,
             headerImageViewLeadingAnchor,
@@ -210,7 +211,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
         ])
-        
+
         allowNavbarUpdates = true
         navigationController?.navigationBar._backgroundOpacity = 0
         navigationController?.navigationBar.tintColor = .white
@@ -437,10 +438,36 @@ class NativePackageViewController: SileoViewController, PackageActions {
 }
 
 extension NativePackageViewController: DepictionDelegate {
-
-
+    
     func handleAction(action: DepictionAction) {
-        
+        switch action {
+        case .openURL(url: let url, external: let external):
+            if !external {
+                UIApplication.shared.open(url)
+            } else {
+                let view = SFSafariViewController(url: url)
+                self.navigationController?.pushViewController(view, animated: true)
+            }
+            break
+        case .openDepiction(url: let url):
+            break
+        case .openPackage(bundle: let bundle):
+            break
+        case .addRepo(url: let url):
+            let delegate = UIApplication.shared.delegate as! SileoAppDelegate
+            if let tabBarController = delegate.window?.rootViewController as? UITabBarController,
+                let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+                  let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
+                  tabBarController.selectedViewController = sourcesSVC
+                  if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
+                    sourcesVC.presentAddSourceEntryField(url: url)
+                  }
+            }
+        case .custom(action: let action):
+            break
+        case .actionError(error: let error, action: let action):
+            depictionError(error: "\(error) for \(action)")
+        }
     }
     
     func depictionError(error: String) {
@@ -454,21 +481,37 @@ extension NativePackageViewController: DepictionDelegate {
     
     func packageView(for package: DepictionPackage) -> UIView {
         let cell: PackageCollectionViewCell = Bundle.main.loadNibNamed("PackageCollectionViewCell", owner: self, options: nil)?[0] as! PackageCollectionViewCell
+        let action: PackageControlView = {
+            let action = PackageControlView()
+            action.backgroundColor = .clear
+            action.translatesAutoresizingMaskIntoConstraints = false
+            action.addTarget(self, action: #selector(didSelectPackage(_:)), for: .touchUpInside)
+            return action
+        }()
+        cell.contentView.addSubview(action)
+        cell.contentView.addConstraints([
+            action.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
+            action.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor),
+            action.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
+            action.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
+        ])
         cell.separatorView?.isHidden = true
         let view = cell.contentView
         view.heightAnchor.constraint(equalToConstant: 73).isActive = true
         let packages = PackageListManager.shared.packages(identifiers: [package.identifier], sorted: false)
         if packages.count == 1 {
             cell.targetPackage = packages[0]
-            return view
+            action.package = packages[0]
+        } else {
+            let provisional = ProvisionalPackage(package: package)
+            cell.provisionalTarget = provisional
+            action.package = CanisterResolver.package(provisional)
         }
-        let provisional = ProvisionalPackage(package: package)
-        cell.provisionalTarget = provisional
         return view
     }
     
     func image(for url: URL, completion: @escaping ((UIImage?) -> Void)) -> Bool {
-        if let image = EvanderNetworking.shared.image(url, { refresh, image in
+        if let image = EvanderNetworking.shared.image(url, cache: true, { refresh, image in
             guard refresh,
                   let image = image else { return }
             completion(image)
@@ -477,6 +520,16 @@ extension NativePackageViewController: DepictionDelegate {
         }
         return true
     }
+    
+    @objc private func didSelectPackage(_ cell: PackageControlView) {
+        guard let package = cell.package else { return }
+        let viewController = NativePackageViewController.viewController(for: package)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+@objc private class PackageControlView: UIControl {
+    public var package: Package?
 }
 
 extension NativePackageViewController: PackageQueueButtonDataProvider {
@@ -517,6 +570,7 @@ extension NativePackageViewController: MFMailComposeViewControllerDelegate {
 
 extension NativePackageViewController: UIScrollViewDelegate {
     
+    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let bounds = headerImageView.bounds
         let offset = scrollView.contentOffset.y
@@ -544,7 +598,7 @@ extension NativePackageViewController: UIScrollViewDelegate {
             scrollView.setContentOffset(CGPoint(x: 0, y: 156 - UIApplication.shared.statusBarFrame.height), animated: true)
         }
     }
-    
+    */
 }
 
 extension NativePackageViewController {
