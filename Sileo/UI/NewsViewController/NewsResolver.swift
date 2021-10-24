@@ -21,7 +21,7 @@ class NewsResolver {
     
     public func getArticles() {
         if !articles.isEmpty { return }
-        EvanderNetworking.dict(url: "https://getsileo.app/api/new.json", cache: true) { [weak self] success, dict in
+        EvanderNetworking.request(url: "https://getsileo.app/api/new.json", type: [String: Any].self) { [weak self] success, _, _, dict in
             guard success,
                   let strong = self,
                   let dict = dict,

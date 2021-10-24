@@ -711,9 +711,9 @@
 		E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */; };
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1CB21FA27236BAA00B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21F927236BAA00B3141C /* DepictionKit */; };
-		E1CB21FC27236BB100B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21FB27236BB100B3141C /* DepictionKit */; };
 		E1CB21FE27236BB700B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21FD27236BB700B3141C /* DepictionKit */; };
 		E1CB220027236BBE00B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21FF27236BBE00B3141C /* DepictionKit */; };
+		E1CB6D542725A9D3001B349C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB6D532725A9D3001B349C /* DepictionKit */; };
 		E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; platformFilter = ios; };
@@ -1793,10 +1793,10 @@
 				E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
+				E1CB6D542725A9D3001B349C /* DepictionKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
-				E1CB21FC27236BB100B3141C /* DepictionKit in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3329,7 +3329,7 @@
 				E19F95A1269245EB002ABB8C /* LNPopupController-Static */,
 				E14897E3269B64C90061A301 /* Alderis */,
 				E10C545A2707DC9C008BD0AA /* Evander */,
-				E1CB21FB27236BB100B3141C /* DepictionKit */,
+				E1CB6D532725A9D3001B349C /* DepictionKit */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -6268,15 +6268,15 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DepictionKit;
 		};
-		E1CB21FB27236BB100B3141C /* DepictionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
-		};
 		E1CB21FD27236BB700B3141C /* DepictionKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DepictionKit;
 		};
 		E1CB21FF27236BBE00B3141C /* DepictionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DepictionKit;
+		};
+		E1CB6D532725A9D3001B349C /* DepictionKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DepictionKit;
 		};

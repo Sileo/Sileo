@@ -31,29 +31,29 @@ class SileoTeamViewController: UITableViewController {
                                                object: nil)
     }
     
-    private func loadSocials() {
-        func render(_ arr: [[String: Any]]) {
-            socials.removeAll()
-            for item in arr {
-                guard let github = item["github"] as? String,
-                      let author = item["author"] as? String,
-                      let role = item["role"] as? String,
-                      let url = item["twitter"] as? String,
-                      let twitter = URL(string: url) else { continue }
-                let social = GithubSocial(githubProfile: github, author: author, role: role, twitter: twitter)
-                socials.append(social)
-            }
-            self.tableView.reloadData()
+    func render(_ arr: [[String: Any]]) {
+        socials.removeAll()
+        for item in arr {
+            guard let github = item["github"] as? String,
+                  let author = item["author"] as? String,
+                  let role = item["role"] as? String,
+                  let url = item["twitter"] as? String,
+                  let twitter = URL(string: url) else { continue }
+            let social = GithubSocial(githubProfile: github, author: author, role: role, twitter: twitter)
+            socials.append(social)
         }
-        
+        self.tableView.reloadData()
+    }
+    
+    private func loadSocials() {
         guard let jsonURL = StoreURL("sileo-team.json") else {
             return
         }
-        EvanderNetworking.array(url: jsonURL, cache: true) { success, array in
+        EvanderNetworking.request(url: jsonURL, type: [[String: Any]].self) { [weak self] success, _, _, array in
             guard success,
                   let array = array else { return }
             DispatchQueue.main.async {
-                render(array)
+                self?.render(array)
             }
         }
     }

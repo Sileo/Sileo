@@ -110,7 +110,7 @@ class DepictionFormViewController: SileoTableViewController {
     
     private func loadForm() {
         let urlRequest = URLManager.urlRequest(formURL)
-        EvanderNetworking.dict(request: urlRequest) { [weak self] success, dict in
+        EvanderNetworking.request(request: urlRequest, type: [String: Any].self, cache: .init(localCache: false)) { [weak self] success, _, _, dict in
             guard let strong = self else { return }
             DispatchQueue.main.async {
                 strong.loadingView?.stopAnimating()
@@ -182,7 +182,7 @@ class DepictionFormViewController: SileoTableViewController {
             provider.isAuthenticated {
             values["token"] = provider.authenticationToken
         }
-        EvanderNetworking.dict(url: action, method: "POST", json: values) { [weak self] success, dict in
+        EvanderNetworking.request(url: action, type: [String: Any].self, method: "POST", json: values, cache: .init(localCache: false)) { [weak self] success, _, _, dict in
             guard let strong = self else { return }
             DispatchQueue.main.async {
                 guard success,

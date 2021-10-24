@@ -70,55 +70,60 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             failureCallback?()
             return
         }
-        DispatchQueue.main.sync {
-            if let rawTintColor = rawDepict["tintColor"] as? String, let tintColor = UIColor(css: rawTintColor) {
-                self.depictionFooterView?.tintColor = tintColor
-                self.downloadButton.tintColor = tintColor
-                self.downloadButton.updateStyle()
-                self.navBarDownloadButton?.tintColor = tintColor
-                self.navBarDownloadButton?.updateStyle()
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.parseNativeDepiction(data, host: host, failureCallback: failureCallback)
             }
-            
-            let oldDepictView = self.depictionView
-            guard let newDepictView = DepictionBaseView.view(dictionary: rawDepict, viewController: self, tintColor: nil, isActionable: false) else {
-                return
-            }
-            
-            oldDepictView?.delegate = nil
-            newDepictView.delegate = self
-            
-            if let imageURL = rawDepict["headerImage"] as? String {
-                if imageURL != headerURL {
-                    self.headerURL = imageURL
-                    self.depictionBackgroundView.image = EvanderNetworking.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
-                        if refresh,
-                           let strong = self,
-                           imageURL == strong.headerURL,
-                           let image = image {
-                            DispatchQueue.main.async {
-                                strong.depictionBackgroundView.image = image
-                            }
+            return
+        }
+        
+        if let rawTintColor = rawDepict["tintColor"] as? String, let tintColor = UIColor(css: rawTintColor) {
+            self.depictionFooterView?.tintColor = tintColor
+            self.downloadButton.tintColor = tintColor
+            self.downloadButton.updateStyle()
+            self.navBarDownloadButton?.tintColor = tintColor
+            self.navBarDownloadButton?.updateStyle()
+        }
+        
+        let oldDepictView = self.depictionView
+        guard let newDepictView = DepictionBaseView.view(dictionary: rawDepict, viewController: self, tintColor: nil, isActionable: false) else {
+            return
+        }
+        
+        oldDepictView?.delegate = nil
+        newDepictView.delegate = self
+        
+        if let imageURL = rawDepict["headerImage"] as? String {
+            if imageURL != headerURL {
+                self.headerURL = imageURL
+                self.depictionBackgroundView.image = EvanderNetworking.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
+                    if refresh,
+                       let strong = self,
+                       imageURL == strong.headerURL,
+                       let image = image {
+                        DispatchQueue.main.async {
+                            strong.depictionBackgroundView.image = image
                         }
                     }
                 }
             }
-            
-            newDepictView.alpha = 0.1
-            self.depictionView = newDepictView
-            self.contentView.addSubview(newDepictView)
-            self.viewDidLayoutSubviews()
-            
-            UIView.animate(withDuration: 0.25, animations: {
-                oldDepictView?.alpha = 0
-                newDepictView.alpha = 1
-            }, completion: { _ in
-                oldDepictView?.removeFromSuperview()
-                if let minVersion = rawDepict["minVersion"] as? String,
-                    minVersion.compare(StoreVersion) == .orderedDescending {
-                    self.versionTooLow()
-                }
-            })
         }
+        
+        newDepictView.alpha = 0.1
+        self.depictionView = newDepictView
+        self.contentView.addSubview(newDepictView)
+        self.viewDidLayoutSubviews()
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            oldDepictView?.alpha = 0
+            newDepictView.alpha = 1
+        }, completion: { _ in
+            oldDepictView?.removeFromSuperview()
+            if let minVersion = rawDepict["minVersion"] as? String,
+                minVersion.compare(StoreVersion) == .orderedDescending {
+                self.versionTooLow()
+            }
+        })
     }
 
     override func viewDidLoad() {
@@ -315,12 +320,12 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let depiction = package.depiction,
             let depictionURL = URL(string: depiction) {
             let urlRequest = URLManager.urlRequest(depictionURL)
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, _, _ in
-                if let data = data {
-                    self.parseNativeDepiction(data, host: depictionURL.host ?? "", failureCallback: nil)
-                }
+            EvanderNetworking.request(request: urlRequest, type: Data.self) { [weak self] success, _, _, data in
+                guard success,
+                      let data = data,
+                      let `self` = self else { return }
+                self.parseNativeDepiction(data, host: depictionURL.host ?? "", failureCallback: nil)
             }
-            task.resume()
         }
 
         depictionFooterView?.removeFromSuperview()

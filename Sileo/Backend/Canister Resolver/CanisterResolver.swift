@@ -52,7 +52,7 @@ final class CanisterResolver {
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
-        EvanderNetworking.dict(url: url) { [self] success, dict in
+        EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
             guard success,
                   let dict = dict,
                   let data = dict["data"] as? [[String: Any]] else { return }
@@ -85,7 +85,7 @@ final class CanisterResolver {
         let identifiers = packages.joined(separator: ",")
         guard let formatted = identifiers.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v1/community/packages/lookup?packages=\(formatted)"
-        EvanderNetworking.dict(url: url) { [self] success, dict in
+        EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
             guard success,
                   let dict = dict,
                   let data = dict["data"] as? [[String: Any]] else { return }
@@ -108,7 +108,7 @@ final class CanisterResolver {
     
     class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
         let url2 = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
-        EvanderNetworking.dict(url: url2) { success, dict in
+        EvanderNetworking.request(url: url2, type: [String: Any].self, cache: .init(localCache: false)) { success, _, _, dict in
             guard success,
                   let dict = dict,
                   (dict["status"] as? String) == "Successful",
@@ -137,7 +137,7 @@ final class CanisterResolver {
             let suffix = (index == urls.count - 1) ? "" : ","
             url += (url2.absoluteString  + suffix)
         }
-        EvanderNetworking.dict(url: url) { success, dict in
+        EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { success, _, _, dict in
             guard success,
                   let dict = dict,
                   (dict["status"] as? String) == "Successful",

@@ -292,9 +292,9 @@ class NativePackageViewController: SileoViewController, PackageActions {
             }
         }
         if let depiction = package.nativeDepiction {
-            EvanderNetworking.dict(url: depiction, cache: true) { [weak self] refresh, dict in
+            EvanderNetworking.request(url: depiction, type: [String: Any].self) { [weak self] success, _, _, dict in
                 guard let `self` = self,
-                      refresh,
+                      success,
                       let dict = dict else { return }
                 DispatchQueue.main.async { [weak self] in
                     NSLog("[Aemulo] Calling setDepiction")

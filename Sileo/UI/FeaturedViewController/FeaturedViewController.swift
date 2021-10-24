@@ -122,7 +122,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         }
         let agent = self.userAgent 
         let headers: [String: String] = ["User-Agent": agent]
-        EvanderNetworking.dict(url: jsonURL, headers: headers, cache: true) { [weak self] success, dict in
+        EvanderNetworking.request(url: jsonURL, type: [String: Any].self, headers: headers) { [weak self] success, _, _, dict in
             guard success,
                   let strong = self,
                   let dict = dict else { return }
