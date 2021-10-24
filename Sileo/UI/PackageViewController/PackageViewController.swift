@@ -138,6 +138,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                                                object: nil)
         
         packageName.textColor = .sileoLabel
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
+        navController?.setNavigationBarHidden(true, animated: true)
 
         self.navigationItem.largeTitleDisplayMode = .never
         scrollView.delegate = self
@@ -492,7 +495,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         
         let collapsed = splitViewController?.isCollapsed ?? false
         let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
-        
+        navController?.setNavigationBarHidden(false, animated: true)
         if navBarAlphaOffset < 1 {
             var tintColor = UINavigationBar.appearance().tintColor
             if let color = self.depictionView?.tintColor {
