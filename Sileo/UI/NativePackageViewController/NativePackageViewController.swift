@@ -297,7 +297,6 @@ class NativePackageViewController: SileoViewController, PackageActions {
                       success,
                       let dict = dict else { return }
                 DispatchQueue.main.async { [weak self] in
-                    NSLog("[Aemulo] Calling setDepiction")
                     self?.depiction.setDepiction(dict: dict)
                 }
             }
