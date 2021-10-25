@@ -21,7 +21,7 @@ class FeaturedBannerView: UIButton, UIViewControllerPreviewingDelegate {
     var banner: [String: Any] = [:] {
         didSet {
             if let bannerURL = banner["url"] as? String {
-                bannerImageView?.image = EvanderNetworking.shared.image(bannerURL, size: frame.size) { [weak self] refresh, image in
+                bannerImageView?.image = EvanderNetworking.shared.image(bannerURL, size: itemSize) { [weak self] refresh, image in
                     if refresh,
                           let strong = self,
                           let image = image,
@@ -50,6 +50,7 @@ class FeaturedBannerView: UIButton, UIViewControllerPreviewingDelegate {
     var highlightView: UIView?
     var bannerImageView: UIImageView?
     var bannerTitleLabel: UILabel?
+    var itemSize: CGSize?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -77,8 +77,9 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             }
             
             let bannerView = FeaturedBannerView()
-            bannerView.layer.cornerRadius = itemCornerRadius
+            bannerView.itemSize = itemSize
             bannerView.banner = banner
+            bannerView.layer.cornerRadius = itemCornerRadius
             if let package = banner["package"] as? String {
                 packages.append(package)
             }
@@ -87,7 +88,7 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
             bannerView.previewDelegate = self
             
             viewController.registerForPreviewing(with: bannerView, sourceView: bannerView)
-            stackView.addArrangedSubview(bannerView)
+            stackView.addArrangedSubview(bannerView)            
         }
     }
     
