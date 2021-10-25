@@ -61,7 +61,6 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
         
-        imageView.image = UIImage(named: "Tweak Icon")
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         if !packageIcon.isEmpty {
             imageView.image = EvanderNetworking.shared.image(packageIcon, size: imageView.frame.size) { [weak self] refresh, image in
@@ -73,10 +72,10 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
                         strong.imageView.image = image
                     }
                 }
-                   
             } ?? UIImage(named: "Tweak Icon")
+        } else {
+            imageView.image = UIImage(named: "Tweak Icon")
         }
-        
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         titleLabel.text = packageName
         
