@@ -96,7 +96,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let imageURL = rawDepict["headerImage"] as? String {
             if imageURL != headerURL {
                 self.headerURL = imageURL
-                NSLog("[Sileo] \(depictionBackgroundView.frame.size) \(depictionBackgroundView.bounds.size)")
                 self.depictionBackgroundView.image = EvanderNetworking.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
                     if refresh,
                        let strong = self,

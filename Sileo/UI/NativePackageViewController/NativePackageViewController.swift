@@ -180,6 +180,10 @@ class NativePackageViewController: SileoViewController, PackageActions {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
+        navController?.setNavigationBarHidden(true, animated: true)
+        
         view.addSubview(scrollView)
         contentView.addSubview(headerImageView)
         contentView.addSubview(depiction)
@@ -298,6 +302,10 @@ class NativePackageViewController: SileoViewController, PackageActions {
                       let dict = dict else { return }
                 DispatchQueue.main.async { [weak self] in
                     self?.depiction.setDepiction(dict: dict)
+                    self?.downloadButton.tintColor = self?.depiction.effectiveTintColor
+                    self?.downloadButton.updateStyle()
+                    self?.navBarDownloadButton.tintColor = self?.depiction.effectiveTintColor
+                    self?.navBarDownloadButton.updateStyle()
                 }
             }
         }
@@ -322,10 +330,25 @@ class NativePackageViewController: SileoViewController, PackageActions {
         authorLabel.text = ControlFileParser.authorName(string: package.author ?? "")
         downloadButton.package = package
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.statusBarStyle = .default
+        
+        self.navigationController?.navigationBar._backgroundOpacity = currentNavBarOpacity
+        self.navigationController?.navigationBar.tintColor = .white
+        allowNavbarUpdates = true
+        self.scrollViewDidScroll(self.scrollView)
+    }
 
     @objc func updateSileoColors() {
         depiction.theme = theme
         view.backgroundColor = .sileoBackgroundColor
+        downloadButton.tintColor = depiction.effectiveTintColor
+        downloadButton.updateStyle()
+        navBarDownloadButton.tintColor = depiction.effectiveTintColor
+        navBarDownloadButton.updateStyle()
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
@@ -555,6 +578,12 @@ extension NativePackageViewController: PackageQueueButtonDataProvider {
             }
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.scrollViewDidScroll(self.scrollView)
+    }
 
 }
 
@@ -569,19 +598,93 @@ extension NativePackageViewController: MFMailComposeViewControllerDelegate {
 
 extension NativePackageViewController: UIScrollViewDelegate {
     
-    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let bounds = headerImageView.bounds
-        let offset = scrollView.contentOffset.y
-        
-        if offset <= 0 {
-            NSLog("[Sileo] Offset = \(offset)")
-            //headerImageViewTopAnchor.constant = -offset
-            //headerImageViewLeadingAnchor.constant = -offset
-            //headerImageViewTrailingAnchor.constant = offset
-            //headerImageViewHeightAnchor.constant = 200 + -offset
+        let headerBounds = headerImageView.bounds
+        /*
+        var aspectRatio = headerBounds.width / headerBounds.height
+        if headerBounds.height == 0 {
+            aspectRatio = 0
+        }
+        */
+        var offset = scrollView.contentOffset.y
+        if offset > 0 {
+            offset = 0
         }
         
+        // doing the magic on the nav bar "GET" button and package icon
+        let downloadButtonPos = downloadButton.convert(downloadButton.bounds, to: scrollView)
+        let container = CGRect(origin: CGPoint(x: scrollView.contentOffset.x,
+                                               y: scrollView.contentOffset.y + 106 - UIApplication.shared.statusBarFrame.height),
+                               size: scrollView.frame.size)
+        // TLDR: magic starts when scrolling out the lower half of the button so we don't have duplicated button too early
+        var navBarAlphaOffset = scrollView.contentOffset.y * 1.75 / headerImageViewHeightAnchor.constant
+        if headerImageViewHeightAnchor.constant == 0 {
+            navBarAlphaOffset = 0
+        }
+
+        if navBarAlphaOffset > 1 {
+            navBarAlphaOffset = 1
+        } else if navBarAlphaOffset < 0 {
+            navBarAlphaOffset = 0
+        }
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            self.shareButton.alpha = 1 - navBarAlphaOffset
+
+            if (self.shareButton.alpha ) > 0 {
+                self.packageNavBarIconView.alpha = 0
+            } else {
+                self.packageNavBarIconView.alpha = downloadButtonPos.intersects(container) ? 0 : 1
+            }
+            self.navBarDownloadButton.customAlpha = self.packageNavBarIconView.alpha
+
+            if (self.shareButton.alpha) > 0 {
+                self.navigationItem.rightBarButtonItems = [self.navBarShareButtonItem]
+            } else {
+                self.navigationItem.rightBarButtonItems = [self.navBarDownloadButtonItem]
+            }
+        }
+        
+        scrollView.scrollIndicatorInsets.top = max(headerBounds.maxY - scrollView.contentOffset.y, self.view.safeAreaInsets.top)
+        
+        guard allowNavbarUpdates else {
+            return
+        }
+        let collapsed = splitViewController?.isCollapsed ?? false
+        let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
+        navController?.setNavigationBarHidden(false, animated: true)
+        if navBarAlphaOffset < 1 {
+            var tintColor = self.depiction.effectiveTintColor
+            var red: CGFloat = 0
+            var green: CGFloat = 0
+            var blue: CGFloat = 0
+            tintColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
+
+            if UIAccessibility.isInvertColorsEnabled {
+                red -= red * (1.0 - navBarAlphaOffset)
+                green -= green * (1.0 - navBarAlphaOffset)
+                blue -= blue * (1.0 - navBarAlphaOffset)
+            } else {
+                red += (1.0 - red) * (1.0 - navBarAlphaOffset)
+                green += (1.0 - green) * (1.0 - navBarAlphaOffset)
+                blue += (1.0 - blue) * (1.0 - navBarAlphaOffset)
+            }
+            tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+
+            navController?.navigationBar.tintColor = tintColor
+            navController?.navigationBar._backgroundOpacity = navBarAlphaOffset
+            if navBarAlphaOffset < 0.75 {
+                self.statusBarStyle = .lightContent
+            } else {
+                self.statusBarStyle = .default
+            }
+        } else {
+            navController?.navigationBar.tintColor = self.depiction.effectiveTintColor
+            navController?.navigationBar._backgroundOpacity = 1
+            self.statusBarStyle = .default
+        }
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -597,7 +700,6 @@ extension NativePackageViewController: UIScrollViewDelegate {
             scrollView.setContentOffset(CGPoint(x: 0, y: 156 - UIApplication.shared.statusBarFrame.height), animated: true)
         }
     }
-    */
 }
 
 extension NativePackageViewController {
