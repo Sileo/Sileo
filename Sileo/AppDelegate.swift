@@ -25,7 +25,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Will delete anything cached older than 7 days
-        _ = EvanderNetworking.shared
+        _ = Evander.prepare()
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
         

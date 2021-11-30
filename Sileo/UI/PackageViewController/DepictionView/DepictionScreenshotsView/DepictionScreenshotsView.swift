@@ -103,7 +103,7 @@ class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
                 let screenshotView = UIButton(frame: .zero)
                 if (viewController as? DepictionScreenshotsViewController) != nil && screenshot["fullSizeURL"] as? String != nil {
                     if let fullSizeURL = screenshot["fullSizeURL"] as? String {
-                        if let image = EvanderNetworking.shared.image(fullSizeURL, size: itemSize, { [weak self] refresh, image in
+                        if let image = EvanderNetworking.image(fullSizeURL, size: itemSize, { [weak self] refresh, image in
                             if refresh,
                                let strong = self,
                                let image = image {
@@ -118,7 +118,7 @@ class DepictionScreenshotsView: DepictionBaseView, UIScrollViewDelegate {
                         }
                     }
                 } else {
-                    if let image = EvanderNetworking.shared.image(url, size: itemSize, { [weak self] refresh, image in
+                    if let image = EvanderNetworking.image(url, size: itemSize, { [weak self] refresh, image in
                         if refresh,
                            let strong = self,
                            let image = image {

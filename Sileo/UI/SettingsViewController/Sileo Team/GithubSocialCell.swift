@@ -25,7 +25,7 @@ class GithubSocialCell: UITableViewCell {
     
     private func pullImage() {
         guard let url = social?.url else { return }
-        self.profilePicture.image = EvanderNetworking.shared.image(url, size: profilePicture.frame.size) { [weak self] refresh, image in
+        self.profilePicture.image = EvanderNetworking.image(url, size: profilePicture.frame.size) { [weak self] refresh, image in
             if refresh,
                let strong = self,
                let image = image,

@@ -77,7 +77,7 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
             if let iconURL = URL(string: repo)?
                 .appendingPathComponent(filename)
                 .appendingPathExtension("png") {
-                let cache = EvanderNetworking.shared.imageCache(iconURL, scale: CGFloat(i))
+                let cache = EvanderNetworking.imageCache(iconURL, scale: CGFloat(i))
                 if let image = cache.1 {
                     repoIcon?.image = image
                     return

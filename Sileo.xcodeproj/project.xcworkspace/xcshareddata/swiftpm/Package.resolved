@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/elihwyma/Evander",
         "state": {
           "branch": "main",
-          "revision": "45d428917e8a72a0cad4d98fa46c8ab3b5fa3d83",
+          "revision": "909a3a075a9b560d49c845a36f37434596bad349",
           "version": null
         }
       },
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {
           "branch": null,
-          "revision": "9af51e2edf491c0ea632e369a6566e09b65aa333",
-          "version": "0.13.0"
+          "revision": "60a65015f6402b7c34b9a924f755ca0a73afeeaa",
+          "version": "0.13.1"
         }
       },
       {

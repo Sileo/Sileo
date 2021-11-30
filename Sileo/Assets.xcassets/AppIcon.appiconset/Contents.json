@@ -47,7 +47,6 @@
       "size" : "60x60"
     },
     {
-      "filename" : "AppIcon20x20.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
@@ -69,7 +68,6 @@
       "size" : "29x29"
     },
     {
-      "filename" : "AppIcon40x40.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
@@ -81,7 +79,6 @@
       "size" : "40x40"
     },
     {
-      "filename" : "AppIcon76x76.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"

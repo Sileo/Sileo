@@ -62,7 +62,7 @@ class PaymentProviderTableViewCell: UITableViewCell {
                     self.setImage(nil)
                     let url = info["icon"] as? String ?? ""
                     if !url.isEmpty {
-                        if let image = EvanderNetworking.shared.image(url, size: self.imageView?.frame.size, { [weak self] refresh, image in
+                        if let image = EvanderNetworking.image(url, size: self.imageView?.frame.size, { [weak self] refresh, image in
                             if refresh,
                                let strong = self,
                                let image = image,

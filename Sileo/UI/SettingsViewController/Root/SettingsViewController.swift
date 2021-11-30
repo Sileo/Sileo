@@ -208,7 +208,7 @@ extension SettingsViewController { // UITableViewDataSource
             case 0:
                 let cell = self.reusableCell(withStyle: .value1, reuseIdentifier: "CacheSizeIdenitifer")
                 cell.textLabel?.text = String(localizationKey: "Cache_Size")
-                cell.detailTextLabel?.text = FileManager.default.sizeString(EvanderNetworking.shared.cacheDirectory)
+                cell.detailTextLabel?.text = FileManager.default.sizeString(EvanderNetworking._cacheDirectory)
                 return cell
             case 1:
                 let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
@@ -311,10 +311,10 @@ extension SettingsViewController { // UITableViewDataSource
     
     private func cacheClear() {
         let alert = UIAlertController(title: String(localizationKey: "Clear_Cache"),
-                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(EvanderNetworking.shared.cacheDirectory)),
+                                      message: String(format: String(localizationKey: "Clear_Cache_Message"), FileManager.default.sizeString(EvanderNetworking._cacheDirectory)),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .destructive) { _ in
-            EvanderNetworking.shared.clearCache()
+            EvanderNetworking.clearCache()
             self.tableView.reloadData()
         })
         alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel))

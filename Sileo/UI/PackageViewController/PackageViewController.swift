@@ -96,7 +96,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let imageURL = rawDepict["headerImage"] as? String {
             if imageURL != headerURL {
                 self.headerURL = imageURL
-                self.depictionBackgroundView.image = EvanderNetworking.shared.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
+                self.depictionBackgroundView.image = EvanderNetworking.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
                     if refresh,
                        let strong = self,
                        imageURL == strong.headerURL,
@@ -250,7 +250,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let imageURL = package.rawControl["header"] {
             if imageURL != headerURL {
                 self.headerURL = imageURL
-                self.depictionBackgroundView.image = EvanderNetworking.shared.image(imageURL, size: CGSize(width: depictionBackgroundView.frame.width, height: 200)) { [weak self] refresh, image in
+                self.depictionBackgroundView.image = EvanderNetworking.image(imageURL, size: CGSize(width: depictionBackgroundView.frame.width, height: 200)) { [weak self] refresh, image in
                     if refresh,
                        let strong = self,
                        imageURL == strong.headerURL,
@@ -265,7 +265,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let image = EvanderNetworking.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
+            let image = EvanderNetworking.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
                 if refresh,
                     let strong = self,
                     let image = image,

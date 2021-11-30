@@ -412,7 +412,7 @@ final class RepoManager {
                         if let iconURL = URL(string: repo.repoURL)?
                             .appendingPathComponent(filename)
                             .appendingPathExtension("png") {
-                            let cache = EvanderNetworking.shared.imageCache(iconURL, scale: CGFloat(i))
+                            let cache = EvanderNetworking.imageCache(iconURL, scale: CGFloat(i))
                             if let image = cache.1 {
                                 DispatchQueue.main.async {
                                     repo.repoIcon = image
@@ -424,7 +424,7 @@ final class RepoManager {
                             if let iconData = try? Data(contentsOf: iconURL) {
                                 DispatchQueue.main.async {
                                     repo.repoIcon = UIImage(data: iconData, scale: CGFloat(i))
-                                    EvanderNetworking.shared.saveCache(iconURL, data: iconData)
+                                    EvanderNetworking.saveCache(iconURL, data: iconData)
                                 }
                                 break
                             }
@@ -813,7 +813,7 @@ final class RepoManager {
                         } else if let tmp = supportedHashTypes.first(where: { $0.0 == RepoHashType.sha512 }) {
                             hashes = tmp
                         } else { return }
-                        let jsonPath = EvanderNetworking.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
+                        let jsonPath = EvanderNetworking._cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
                         guard let url = URL(string: repo.repoURL),
                               let cachedData = try? Data(contentsOf: jsonPath),
                               let cacheTmp = (try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers)) as? [String: [String: String]],
@@ -1106,7 +1106,7 @@ final class RepoManager {
     private func ignorePackage(repo: String, type: String, hash: String, hashtype: RepoHashType) {
         guard let repo = URL(string: repo) else { return }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
-        let jsonPath = EvanderNetworking.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
+        let jsonPath = EvanderNetworking._cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
         var dict = [String: [String: String]]()
         if let cachedData = try? Data(contentsOf: jsonPath),
            let tmp = try? JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers) as? [String: [String: String]] {
@@ -1130,7 +1130,7 @@ final class RepoManager {
             return (false, hash)
         }
         let repoPath = repo.appendingPathComponent("Packages").appendingPathExtension(type)
-        let jsonPath = EvanderNetworking.shared.cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
+        let jsonPath = EvanderNetworking._cacheDirectory.appendingPathComponent("RepoHashCache").appendingPathExtension("json")
         let cachedData = try? Data(contentsOf: jsonPath)
         let dict = (try? JSONSerialization.jsonObject(with: cachedData ?? Data(), options: .mutableContainers) as? [String: [String: String]]) ?? [String: [String: String]]()
         let hashDict = dict[hashtype.rawValue] ?? [:]

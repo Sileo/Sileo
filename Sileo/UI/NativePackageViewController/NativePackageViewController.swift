@@ -278,7 +278,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         if let headerURL = package.rawControl["header"],
            let header = URL(string: headerURL) {
             if header != depictionHeader {
-                if let image = EvanderNetworking.shared.image(header, { [weak self] refresh, image in
+                if let image = EvanderNetworking.image(header, { [weak self] refresh, image in
                     guard let `self` = self,
                           refresh,
                           let image = image else { return }
@@ -311,7 +311,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         }
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let image = EvanderNetworking.shared.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
+            let image = EvanderNetworking.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
                 if refresh,
                     let strong = self,
                     let image = image,
@@ -533,7 +533,7 @@ extension NativePackageViewController: DepictionDelegate {
     }
     
     func image(for url: URL, completion: @escaping ((UIImage?) -> Void)) -> Bool {
-        if let image = EvanderNetworking.shared.image(url, cache: true, { refresh, image in
+        if let image = EvanderNetworking.image(url, cache: true, { refresh, image in
             guard refresh,
                   let image = image else { return }
             completion(image)

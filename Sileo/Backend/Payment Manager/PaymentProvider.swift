@@ -66,7 +66,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
     var cache: URL {
         let encodedURL = baseURL.absoluteString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.alphanumerics)
         let filename = String(format: "payment_provider_%@", encodedURL ?? "default")
-        return EvanderNetworking.shared.cacheDirectory.appendingPathComponent(filename).appendingPathExtension("json")
+        return EvanderNetworking.networkCache.appendingPathComponent(filename).appendingPathExtension("json")
     }
     
     var isAuthenticated: Bool {
