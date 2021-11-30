@@ -141,7 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Покупки";
 "Settings_Payment_Provider.No_Purchases" = "Нет покупок";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "Авторизуйтесь, чтобы завершить покупку";
 
 "Settings" = "Настройки";
 "Settings_Page_Title" = "Настройки";

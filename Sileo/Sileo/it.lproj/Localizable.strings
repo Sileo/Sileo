@@ -141,7 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Acquisti";
 "Settings_Payment_Provider.No_Purchases" = "Nessun Acquisto";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "Autenticati per completare l’acquisto";
 
 "Settings" = "Impostazioni";
 "Settings_Page_Title" = "Impostazioni";
@@ -150,7 +150,7 @@
 "Tint_Color" = "Colore del Testo";
 "Reset_Tint_Color" = "Ripristina il Colore del Testo";
 "Auto_Complete_Queue" = "Termina coda automaticamente";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Conferma Automaticamente \"Aggiorna Tutto\"";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Conferma In Automatico \"Aggiorna Tutto\"";
 "Swipe_Actions" = "Azioni di Scorrimento";
 "Show_Provisional" = "Mostra i Pacchetti del Canister";
 "Show_Ignored_Updates" = "Mostra gli Aggiornamenti Ignorati";
