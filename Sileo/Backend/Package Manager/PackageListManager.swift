@@ -135,6 +135,7 @@ final class PackageListManager {
                 }
             }
         }
+        NSLog("[Sileo] Six")
         return updatesAvailable
     }
 
@@ -556,13 +557,16 @@ final class PackageListManager {
         self.upgradeAll(completion: nil)
     }
     
-    public func upgradeAll(completion: (() -> Void)?) {
+    public func upgradeAll(backgroundBypass: Bool = false, completion: (() -> Void)?) {
         let packagePairs = self.availableUpdates()
+        NSLog("[Sileo] Got Pairs")
         let updatesNotIgnored = packagePairs.filter({ $0.1?.wantInfo != .hold })
+        NSLog("[Sileo] Got not Ignored")
         if updatesNotIgnored.isEmpty {
             completion?()
             return
         }
+        NSLog("[Sileo] Got DownloadMan")
         let downloadMan = DownloadManager.shared
         
         for packagePair in updatesNotIgnored {
@@ -574,7 +578,9 @@ final class PackageListManager {
             
             downloadMan.add(package: newestPkg, queue: .upgrades)
         }
-        downloadMan.reloadData(recheckPackages: true) {
+        NSLog("[Sileo] Added Everything")
+        downloadMan.reloadData(recheckPackages: true, backgroundBypass: backgroundBypass) {
+            NSLog("[Sileo] Reloaded Data")
             completion?()
             if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
                 TabBarController.singleton?.presentPopupController()

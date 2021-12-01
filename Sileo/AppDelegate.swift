@@ -102,15 +102,19 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     private func backgroundRepoRefreshTask(_ completion: @escaping () -> Void) {
+        NSLog("[Sileo] Starting Refersh FUnction")
         DispatchQueue.global(qos: .userInitiated).async {
             PackageListManager.shared.initWait()
-            
+            NSLog("[Sileo] Init wait")
             let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
             let currentPackages = PackageListManager.shared.allPackagesArray
             if currentUpdates.isEmpty { return completion() }
             RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
+                NSLog("[Sileo] Finished update")
                 let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
+                NSLog("[Sileo] Loadede new Updates")
                 let newPackages = PackageListManager.shared.allPackagesArray
+                NSLog("[Sileo] Loaded New Packages")
                 if newPackages.isEmpty { return completion() }
                 
                 let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
@@ -143,10 +147,12 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                     }
                 }
-                
+                NSLog("[Sileo] Scheduled Notifications")
+                return completion()
                 let diffPackages = newPackages.filter { !currentPackages.contains($0) }
-                
+                NSLog("[Sileo] Diffed")
                 let wishlist = WishListManager.shared.wishlist
+                NSLog("[Sileo] Wishlist")
                 for package in diffPackages {
                     if wishlist.contains(package.package) {
                         let content = UNMutableNotificationContent()
@@ -166,6 +172,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                     }
                 }
+                NSLog("[Sileo] Completion")
                 completion()
             }
         }
@@ -297,6 +304,8 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         
         if #available(iOS 13.0, *) {
             scheduleTasks()
+
+            NSLog("[Sileo] Has shceduled tasks")
         }
     }
     
@@ -306,36 +315,36 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     
     @available(iOS 13.0, *)
     private func handleRefreshTask(_ task: BGAppRefreshTask) {
-        defer {
+        func _return() {
+            task.setTaskCompleted(success: true)
             scheduleRefreshTask()
         }
         backgroundRepoRefreshTask {
-            task.setTaskCompleted(success: true)
+            return _return()
         }
     }
     
     @available(iOS 13.0, *)
     private func handleUpdateTask(_ task: BGProcessingTask) {
-        defer {
+        func _return() {
             task.setTaskCompleted(success: true)
             scheduleUpdateTask()
         }
-        guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return }
-        backgroundRepoRefreshTask {
-            DispatchQueue.global(qos: .userInitiated).async {
-                PackageListManager.shared.upgradeAll {
-                    let upgrades = DownloadManager.shared.upgrades.raw
-                    if upgrades.isEmpty { return }
+        guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return _return() }
+        NSLog("[Sileo] Starting Refresh Task")
+        DispatchQueue.global(qos: .userInitiated).async {
+            NSLog("[Sileo] Refresh finished")
+            PackageListManager.shared.upgradeAll(backgroundBypass: true) {
+                NSLog("[Sileo] Upgrade All")
+                let upgrades = DownloadManager.shared.upgrades.raw
+                if upgrades.isEmpty { return _return() }
+                DownloadManager.shared.viewController.backgroundCallback = {
                     DownloadManager.shared.performOperations { _, _, _, _ in
                         
                     } outputCallback: { _, _ in
                         
                     } completionCallback: { _, finish, refresh in
-                        PackageListManager.shared.installChange()
-                        let rawUpdates = PackageListManager.shared.availableUpdates()
-                        let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
-                        UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
-                        
+                        NSLog("[Sileo] Output Callback")
                         let content = UNMutableNotificationContent()
                         content.title = "Updates Completed"
                         content.body = "\(upgrades.count) packages have been updated to the latest version"
@@ -345,7 +354,21 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                                                             content: content,
                                                             trigger: trigger)
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                        UIApplication.shared.applicationIconBadgeNumber = 0
+                        
+                        PackageListManager.shared.installChange()
+                        DownloadManager.shared.viewController.completeLaterButtonTapped(nil)
+                        return _return()
                     }
+                    DownloadManager.shared.viewController.backgroundCallback = nil
+                }
+                if DownloadManager.shared.viewController.errors.count == 0 {
+                    DownloadManager.shared.viewController.isDownloading = true
+                    DownloadManager.shared.startMoreDownloads()
+                    DownloadManager.shared.reloadData(recheckPackages: false)
+                    DownloadManager.shared.queueStarted = true
+                } else {
+                    return _return()
                 }
             }
         }

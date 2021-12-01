@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DownloadsTableViewController: SileoViewController {
     @IBOutlet var footerView: UIView?
@@ -38,12 +39,13 @@ class DownloadsTableViewController: SileoViewController {
     private var actions = [InstallOperation]()
     private var isFired = false
     private var isInstalling = false
-    private var isDownloading = false
+    public var isDownloading = false
     private var isFinishedInstalling = false
     private var returnButtonAction: APTWrapper.FINISH = .back
     private var refreshSileo = false
     private var hasErrored = false
     private var detailsAttributedString: NSMutableAttributedString?
+    public var backgroundCallback: (() -> Void)?
     
     public class InstallOperation {
         
@@ -182,6 +184,7 @@ class DownloadsTableViewController: SileoViewController {
             }
             return
         }
+        NSLog("[Sileo] Reload Controls Only")
         cancelDownload?.isHidden = !isDownloading
         if isFinishedInstalling {
             cancelButton?.isHidden = true
@@ -234,16 +237,19 @@ class DownloadsTableViewController: SileoViewController {
                 self.footerView?.alpha = 0
             }
         }
-        
+        NSLog("[Sileo] Madae it this far")
         if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted && manager.errors.isEmpty {
+            NSLog("[Sileo] Now thats epic")
             manager.lockedForInstallation = true
             isDownloading = false
             cancelDownload?.isHidden = true
+            NSLog("[Sileo] Now this is poggers")
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 0
                 self.footerView?.alpha = 0
             }
             transferToInstall()
+            NSLog("[Sileo] Transfer")
             TabBarController.singleton?.presentPopupController()
         }
         if manager.errors.isEmpty {
@@ -359,7 +365,14 @@ class DownloadsTableViewController: SileoViewController {
         if isInstalling {
             return
         }
+        NSLog("[Sileo] Transfer To Install")
         isInstalling = true
+        var earlyBreak = false
+        if UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive,
+           let completion = backgroundCallback {
+            earlyBreak = true
+            completion()
+        }
         tableView?.setEditing(false, animated: true)
         
         for cell in tableView?.visibleCells as? [DownloadsTableViewCell] ?? [] {
@@ -367,7 +380,7 @@ class DownloadsTableViewController: SileoViewController {
         }
         
         detailsAttributedString = NSMutableAttributedString(string: "")
-        
+        NSLog("[Sileo] Get ops")
         let installs = installations + upgrades + installdeps
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }
@@ -382,11 +395,9 @@ class DownloadsTableViewController: SileoViewController {
             cell.operation = action
             cell.setEditing(false, animated: true)
         }
-        
-        if UserDefaults.standard.bool(forKey: "AlwaysShowLog") {
-            showDetails(nil)
+        if !earlyBreak {
+            startInstall()
         }
-        startInstall()
     }
     
     public func statusWork(package: String, status: String) {
