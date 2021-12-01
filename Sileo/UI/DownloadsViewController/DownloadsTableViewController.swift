@@ -517,9 +517,7 @@ class DownloadsTableViewController: SileoViewController {
                 if !(TabBarController.singleton?.popupIsPresented ?? false) {
                     self.completeButtonTapped(nil)
                 }
-                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-                    NotificationCenter.default.post(name: NSNotification.Name("SileoTests.CompleteInstall"), object: nil)
-                }
+                NotificationCenter.default.post(name: NSNotification.Name("Sileo.CompleteInstall"), object: nil)
             }
         }
         #else
@@ -580,6 +578,7 @@ class DownloadsTableViewController: SileoViewController {
                 if (UserDefaults.standard.bool(forKey: "AutoComplete") && !self.hasErrored) || !(TabBarController.singleton?.popupIsPresented ?? false) {
                     self.completeButtonTapped(nil)
                 }
+                NotificationCenter.default.post(name: NSNotification.Name("Sileo.CompleteInstall"), object: nil)
             }
         })
         #endif

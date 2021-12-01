@@ -119,7 +119,7 @@ class SileoBackendTests: XCTestCase {
         
         downloadMan.viewController.confirmQueued(nil)
         
-        self.observer = NotificationCenter.default.addObserver(forName: NSNotification.Name("SileoTests.CompleteInstall"), object: nil, queue: nil) { _ in
+        self.observer = NotificationCenter.default.addObserver(forName: NSNotification.Name("Sileo.CompleteInstall"), object: nil, queue: nil) { _ in
             promise.fulfill()
             return
         }

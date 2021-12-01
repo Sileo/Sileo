@@ -158,6 +158,9 @@ class APTWrapper {
                                         progressCallback: @escaping (Double, Bool, String, String) -> Void,
                                         outputCallback: @escaping (String, Int) -> Void,
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        return completionCallback(0, .back, true)
+        #endif
         var arguments = [CommandPath.aptget, "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
                         "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",

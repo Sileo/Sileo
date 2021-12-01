@@ -559,6 +559,10 @@ final class PackageListManager {
     public func upgradeAll(completion: (() -> Void)?) {
         let packagePairs = self.availableUpdates()
         let updatesNotIgnored = packagePairs.filter({ $0.1?.wantInfo != .hold })
+        if updatesNotIgnored.isEmpty {
+            completion?()
+            return
+        }
         let downloadMan = DownloadManager.shared
         
         for packagePair in updatesNotIgnored {

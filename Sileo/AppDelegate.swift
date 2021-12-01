@@ -9,6 +9,10 @@
 import Foundation
 import UserNotifications
 import Evander
+
+#if canImport(BackgroundTasks)
+import BackgroundTasks
+#endif
 	
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
@@ -24,8 +28,8 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = PackageListManager.shared
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
-        // Will delete anything cached older than 7 days
-        _ = Evander.prepare()
+        // Prepare the Evander manifest
+        Evander.prepare()
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
         
@@ -57,7 +61,19 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             }
         }
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(4 * 3600)
+        if #available(iOS 13.0, *) {
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: "sileo.backgroundupdate",
+                                            using: nil) { [weak self] task in
+                self?.handleUpdateTask(task as! BGProcessingTask)
+            }
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: "sileo.backgroundrefresh",
+                                            using: nil) { [weak self] task in
+                self?.handleRefreshTask(task as! BGAppRefreshTask)
+            }
+        } else {
+            UIApplication.shared.setMinimumBackgroundFetchInterval(4 * 3600)
+        }
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {_, _ in
             
         }
@@ -85,17 +101,17 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         }
     }
     
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    private func backgroundRepoRefreshTask(_ completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             PackageListManager.shared.initWait()
             
             let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
             let currentPackages = PackageListManager.shared.allPackagesArray
-            if currentUpdates.isEmpty { return completionHandler(.newData) }
+            if currentUpdates.isEmpty { return completion() }
             RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
                 let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
                 let newPackages = PackageListManager.shared.allPackagesArray
-                if newPackages.isEmpty { return completionHandler(.newData) }
+                if newPackages.isEmpty { return completion() }
                 
                 let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
                 if diffUpdates.count > 3 {
@@ -150,10 +166,15 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                     }
                 }
-                completionHandler(.newData)
+                completion()
             }
         }
-        
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        backgroundRepoRefreshTask {
+            completionHandler(.newData)
+        }
     }
     
     func updateTintColor() {
@@ -273,9 +294,89 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         UIColor.isTransitionLockedForiOS13Bug = true
+        
+        if #available(iOS 13.0, *) {
+            scheduleTasks()
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         UIColor.isTransitionLockedForiOS13Bug = false
+    }
+    
+    @available(iOS 13.0, *)
+    private func handleRefreshTask(_ task: BGAppRefreshTask) {
+        defer {
+            scheduleRefreshTask()
+        }
+        backgroundRepoRefreshTask {
+            task.setTaskCompleted(success: true)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func handleUpdateTask(_ task: BGProcessingTask) {
+        defer {
+            task.setTaskCompleted(success: true)
+            scheduleUpdateTask()
+        }
+        backgroundRepoRefreshTask {
+            DispatchQueue.global(qos: .userInitiated).async {
+                PackageListManager.shared.upgradeAll {
+                    let upgrades = DownloadManager.shared.upgrades.raw
+                    if upgrades.isEmpty { return }
+                    DownloadManager.shared.performOperations { _, _, _, _ in
+                        
+                    } outputCallback: { _, _ in
+                        
+                    } completionCallback: { _, finish, refresh in
+                        PackageListManager.shared.installChange()
+                        let rawUpdates = PackageListManager.shared.availableUpdates()
+                        let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
+                        UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count
+                        
+                        let content = UNMutableNotificationContent()
+                        content.title = "Updates Completed"
+                        content.body = "\(upgrades.count) packages have been updated to the latest version"
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                        
+                        let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                                            content: content,
+                                                            trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func scheduleRefreshTask() {
+        let fetchTask = BGAppRefreshTaskRequest(identifier: "sileo.backgroundrefresh")
+        fetchTask.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 3600)
+        do {
+            try BGTaskScheduler.shared.submit(fetchTask)
+        } catch {
+            NSLog("[Sileo] Unable to submit task: \(error.localizedDescription)")
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func scheduleUpdateTask() {
+        let updateTask = BGProcessingTaskRequest(identifier: "sileo.backgroundupdate")
+        updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 3600)
+        updateTask.requiresExternalPower = true
+        updateTask.requiresNetworkConnectivity = true
+        do {
+            try BGTaskScheduler.shared.submit(updateTask)
+        } catch {
+            NSLog("[Sileo] Unable to submit task: \(error.localizedDescription)")
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func scheduleTasks() {
+        scheduleUpdateTask()
+        scheduleRefreshTask()
     }
 }
