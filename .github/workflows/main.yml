@@ -13,7 +13,6 @@ jobs:
         with:
           path: |
             ~/__cache
-            /Applications/Xcode_12.4.app/Contents/Developer/Toolchains
           key: ${{ runner.os }}-procursus
           
       - name: Checkout
@@ -68,9 +67,9 @@ jobs:
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
       
-      - name: Select Correct Xcode (12.5.1)
+      - name: Select Correct Xcode (13.1)
         run: |
-          sudo xcode-select --switch /Applications/Xcode_12.5.1.app
+          sudo xcode-select --switch /Applications/Xcode_13.1.app
           
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
