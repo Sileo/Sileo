@@ -48,14 +48,6 @@ extension UIDevice {
         return String(cString: ostype)
     }
     
-    public var uniqueIdentifierUUID: UUID {
-        randomUUID
-    }
-    
-    public var jailbroken: Bool {
-        false
-    }
-    
     var cfMajorVersion: String {
         let cfVersionRaw = kCFCoreFoundationVersionNumber
         let cfVersionRawFloored = floor(cfVersionRaw)
