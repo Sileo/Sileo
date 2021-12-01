@@ -389,7 +389,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     private func scheduleUpdateTask() {
         guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return }
         let updateTask = BGProcessingTaskRequest(identifier: "sileo.backgroundupdate")
-        updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 3600)
+        updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 300)
         updateTask.requiresExternalPower = true
         updateTask.requiresNetworkConnectivity = true
         do {
