@@ -320,6 +320,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             task.setTaskCompleted(success: true)
             scheduleUpdateTask()
         }
+        guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return }
         backgroundRepoRefreshTask {
             DispatchQueue.global(qos: .userInitiated).async {
                 PackageListManager.shared.upgradeAll {
@@ -363,6 +364,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     
     @available(iOS 13.0, *)
     private func scheduleUpdateTask() {
+        guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return }
         let updateTask = BGProcessingTaskRequest(identifier: "sileo.backgroundupdate")
         updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 3600)
         updateTask.requiresExternalPower = true
