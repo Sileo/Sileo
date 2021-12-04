@@ -5,6 +5,7 @@
 //  Created by CoolStar on 7/3/19.
 //  Copyright © 2019 Sileo Team. All rights reserved.
 //
+import UIKit
 
 final class Package: Hashable, Equatable {
     public var package: String
@@ -15,6 +16,7 @@ final class Package: Hashable, Equatable {
     public var author: String?
     public var maintainer: String?
     public var section: String?
+    public var rawSection: String?
     public var packageDescription: String?
     public var legacyDepiction: String?
     public var depiction: String?
@@ -47,6 +49,13 @@ final class Package: Hashable, Equatable {
     public var size: String?
     public var packageFileURL: URL?
     public var userRead = false
+    
+    public var defaultIcon: UIImage {
+        if let rawSection = rawSection {
+            return UIImage(named: "Category_\(rawSection)") ?? UIImage(named: "Category_tweak")!
+        }
+        return UIImage(named: "Category_tweak")!
+    }
     
     var sourceRepo: Repo? {
         guard let sourceFileSafe = sourceFile else {
@@ -109,6 +118,8 @@ final class PackageOld: Hashable, Equatable {
     public var rawControl: [String: String] = [:]
     public var rawData: Data?
     public var sourceFileURL: URL?
+    public var rawSection: String?
+    public var section: String?
     public var source: String?
     public var essential: String?
     public var commercial: Bool = false
@@ -141,6 +152,8 @@ final class PackageOld: Hashable, Equatable {
         self.author = package.author
         self.maintainer = package.maintainer
         self.nativeDepiction = package.nativeDepiction
+        self.section = package.section
+        self.rawSection = package.rawSection
     }
     
     public var packageNew: Package {
@@ -161,12 +174,21 @@ final class PackageOld: Hashable, Equatable {
         package.maintainer = self.maintainer
         package.author = self.author
         package.nativeDepiction = self.nativeDepiction
+        package.section = self.section
+        package.rawSection = self.rawSection
         return package
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(package)
         hasher.combine(version)
+    }
+    
+    public var defaultIcon: UIImage {
+        if let rawSection = rawSection {
+            return UIImage(named: "Category_\(rawSection)") ?? UIImage(named: "Category_tweak")!
+        }
+        return UIImage(named: "Category_tweak")!
     }
 }
 

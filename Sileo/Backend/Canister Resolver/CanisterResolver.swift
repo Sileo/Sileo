@@ -51,7 +51,7 @@ final class CanisterResolver {
         guard query.count > 3,
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer"
+        let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer,section"
         EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
             guard success,
                   let dict = dict,
@@ -199,6 +199,8 @@ final class CanisterResolver {
         package.depiction = provisional.depiction
         package.legacyDepiction = provisional.legacyDepiction
         package.isProvisional = true
+        package.rawSection = provisional.section
+        package.section = PackageListManager.humanReadableCategory(package.rawSection)
         return package
     }
     
@@ -232,6 +234,7 @@ struct ProvisionalPackage {
     var version: String?
     var legacyDepiction: String?
     var depiction: String?
+    var section: String?
     
     init?(_ entry: [String: Any]) {
         self.name = entry["name"] as? String
@@ -268,6 +271,7 @@ struct ProvisionalPackage {
             self.author = "Unknown"
         }
         self.version = entry["latestVersion"] as? String ?? entry["version"] as? String
+        self.section = entry["section"] as? String
     }
     
     init(package: DepictionPackage) {
@@ -277,6 +281,13 @@ struct ProvisionalPackage {
         self.author = package.author
         self.identifier = package.identifier
         self.description = repo
+    }
+    
+    public var defaultIcon: UIImage {
+        if let section = section {
+            return UIImage(named: "Category_\(section.lowercased())") ?? UIImage(named: "Category_tweak")!
+        }
+        return UIImage(named: "Category_tweak")!
     }
 }
 

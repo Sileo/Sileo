@@ -330,12 +330,24 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             task.setTaskCompleted(success: true)
             scheduleUpdateTask()
         }
+        func sendNotification(_ title: String, _ message: String) {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = message
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                                content: content,
+                                                trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+        sendNotification("0", "[Sileo] Update Task Called")
         guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return _return() }
-        NSLog("[Sileo] Starting Refresh Task")
+        sendNotification("1", "[Sileo] Starting Update Task")
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("[Sileo] Refresh finished")
+            sendNotification("2", "[Sileo] Refresh finished")
             PackageListManager.shared.upgradeAll(backgroundBypass: true) {
-                NSLog("[Sileo] Upgrade All")
+                sendNotification("3", "[Sileo] Upgrade all")
                 let upgrades = DownloadManager.shared.upgrades.raw
                 if upgrades.isEmpty { return _return() }
                 DownloadManager.shared.viewController.backgroundCallback = {
@@ -344,7 +356,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                     } outputCallback: { _, _ in
                         
                     } completionCallback: { _, finish, refresh in
-                        NSLog("[Sileo] Output Callback")
+                        sendNotification("4", "[Sileo] Output Callback")
                         let content = UNMutableNotificationContent()
                         content.title = "Updates Completed"
                         content.body = "\(upgrades.count) packages have been updated to the latest version"
@@ -362,7 +374,9 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                     }
                     DownloadManager.shared.viewController.backgroundCallback = nil
                 }
+                sendNotification("5", "[Sileo] Errors = \(DownloadManager.shared.viewController.errors.count)")
                 if DownloadManager.shared.viewController.errors.count == 0 {
+                    sendNotification("6", "[Sileo] Starting Downloads")
                     DownloadManager.shared.viewController.isDownloading = true
                     DownloadManager.shared.startMoreDownloads()
                     DownloadManager.shared.reloadData(recheckPackages: false)

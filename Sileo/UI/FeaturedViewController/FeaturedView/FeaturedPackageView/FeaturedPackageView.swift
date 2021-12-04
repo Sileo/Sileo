@@ -72,9 +72,9 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
                         strong.imageView.image = image
                     }
                 }
-            } ?? UIImage(named: "Tweak Icon")
+            } ?? UIImage(named: "Category_tweak")
         } else {
-            imageView.image = UIImage(named: "Tweak Icon")
+            imageView.image = UIImage(named: "Category_tweak")
         }
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         titleLabel.text = packageName

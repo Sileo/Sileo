@@ -194,7 +194,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         let packageNavBarIconView = PackageIconView(frame: CGRect(origin: .zero, size: CGSize(width: 32, height: 32)))
         packageNavBarIconView.center = packageNavBarIconViewController.center
         packageNavBarIconView.alpha = 0
-        packageNavBarIconView.image = UIImage(named: "Tweak Icon")
         self.packageNavBarIconView = packageNavBarIconView
 
         packageNavBarIconViewController.addSubview(packageNavBarIconView)
@@ -275,9 +274,12 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                             strong.packageNavBarIconView?.image = image
                         }
                 }
-            } ?? UIImage(named: "Tweak Icon")
+            } ?? package.defaultIcon
             packageIconView.image = image
             packageNavBarIconView?.image = image
+        } else {
+            packageNavBarIconView?.image = package.defaultIcon
+            packageIconView.image = package.defaultIcon
         }
 
         var rawDescription: [[String: Any]] = [

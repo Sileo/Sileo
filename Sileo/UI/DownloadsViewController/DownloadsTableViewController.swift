@@ -737,7 +737,6 @@ extension DownloadsTableViewController: UITableViewDataSource {
         let cellIdentifier = "DownloadsTableViewCell"
         // swiftlint:disable force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DownloadsTableViewCell
-        cell.icon = UIImage(named: "Tweak Icon")
         if indexPath.section == 3 {
             // Error listing
             let error = errors[indexPath.row]

@@ -171,6 +171,7 @@ final class PackageListManager {
                 package.author = dictionary["maintainer"]
             }
         }
+        package.rawSection = dictionary["section"]?.lowercased()
         package.section = humanReadableCategory(dictionary["section"])
         
         package.packageDescription = dictionary["description"]

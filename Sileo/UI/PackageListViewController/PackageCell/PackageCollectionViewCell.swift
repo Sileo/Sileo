@@ -48,7 +48,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                             strong.imageView?.image = image
                         }
                     }
-                } ?? UIImage(named: "Tweak Icon")
+                } ?? targetPackage.defaultIcon
                         
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
             }
@@ -78,7 +78,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                             strong.imageView?.image = image
                         }
                     }
-                } ?? UIImage(named: "Tweak Icon")
+                } ?? provisionalTarget.defaultIcon
             
                 titleLabel?.textColor = .sileoLabel
             }

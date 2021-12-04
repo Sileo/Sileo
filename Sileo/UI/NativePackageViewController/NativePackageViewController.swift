@@ -321,7 +321,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
                             strong.packageNavBarIconView.image = image
                         }
                 }
-            } ?? UIImage(named: "Tweak Icon")
+            } ?? UIImage(named: "Category_tweak")
             packageIconView.image = image
             packageNavBarIconView.image = image
         }

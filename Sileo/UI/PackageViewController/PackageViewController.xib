@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -56,9 +55,9 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9KR-N9-2NP">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tweak Icon" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-sc-iBf" customClass="PackageIconView" customModule="Sileo" customModuleProvider="target">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category_tweak" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-sc-iBf" customClass="PackageIconView" customModule="Sileo" customModuleProvider="target">
                                             <rect key="frame" x="16" y="16" width="60" height="60"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="backgroundColor" systemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="8Vu-sc-iBf" secondAttribute="height" multiplier="1:1" id="FnY-fP-p1f"/>
                                                 <constraint firstAttribute="height" constant="60" id="yMy-nR-CVF"/>
@@ -81,7 +80,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTh-dk-4bs" customClass="PackageQueueButton" customModule="Sileo" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTh-dk-4bs" customClass="PackageQueueButton" customModule="Sileo" customModuleProvider="target">
                                             <rect key="frame" x="327" y="30" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.027450980392156862" green="0.47450980392156861" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -93,7 +92,7 @@
                                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="8" right="16"/>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="667" id="ANL-42-W9g"/>
                                 <constraint firstItem="9KR-N9-2NP" firstAttribute="top" secondItem="brI-JL-hYQ" secondAttribute="bottom" id="HAF-xP-VnL"/>
@@ -115,7 +114,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
             <constraints>
                 <constraint firstItem="2Ap-EX-FdS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="64Q-Tb-Ls0"/>
                 <constraint firstItem="2Ap-EX-FdS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="73E-YR-SfP"/>
@@ -130,6 +129,12 @@
     <resources>
         <image name="Background" width="375" height="86"/>
         <image name="Background Placeholder" width="375" height="195"/>
-        <image name="Tweak Icon" width="40" height="40"/>
+        <image name="Category_tweak" width="40" height="40"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

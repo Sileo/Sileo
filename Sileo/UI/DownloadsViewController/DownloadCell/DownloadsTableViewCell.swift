@@ -29,9 +29,9 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
                             strong.icon = image
                         }
                     }
-                } ?? UIImage(named: "Tweak Icon")
+                } ?? internalPackage?.defaultIcon
             } else {
-                self.icon = UIImage(named: "Tweak Icon")
+                self.icon = internalPackage?.defaultIcon
             }
         }
     }
