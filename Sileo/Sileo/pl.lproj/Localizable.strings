@@ -118,8 +118,8 @@
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
 "Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Form_Submitted.Default_Title" = "Zatwierdzony formularz";
+"Form_Submitted.Default_Body" = "Formularz zatwierdzono poprawnie.";
 
 "Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
