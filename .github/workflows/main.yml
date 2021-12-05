@@ -87,10 +87,10 @@ jobs:
           package1=$(ls -t packages | head -1)
           package2=$(ls -t packages | head -2 | tail -1)
           package3=$(ls -t packages | head -3 | tail -1)
-          curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://sandbox.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://sandbox.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://sandbox.anamy.gay/private/repo/upload
-          curl -H "Auth: ${token}" https://sandbox.anamy.gay/private/repo/repackage
+          curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
       - name: Wakeup Babe
         run: |
           curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
