@@ -64,6 +64,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         if #available(iOS 13.0, *) {
             BGTaskScheduler.shared.register(forTaskWithIdentifier: "sileo.backgroundupdate",
                                             using: nil) { [weak self] task in
+                self?.sendNotification("Recieved Task", "Zoo-Wee-Mama")
                 self?.handleUpdateTask(task as! BGProcessingTask)
             }
             BGTaskScheduler.shared.register(forTaskWithIdentifier: "sileo.backgroundrefresh",
@@ -324,30 +325,31 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         }
     }
     
+    func sendNotification(_ title: String, _ message: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = message
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                            content: content,
+                                            trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
     @available(iOS 13.0, *)
     private func handleUpdateTask(_ task: BGProcessingTask) {
         func _return() {
             task.setTaskCompleted(success: true)
             scheduleUpdateTask()
         }
-        func sendNotification(_ title: String, _ message: String) {
-            let content = UNMutableNotificationContent()
-            content.title = title
-            content.body = message
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString,
-                                                content: content,
-                                                trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }
         sendNotification("0", "[Sileo] Update Task Called")
         guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return _return() }
         sendNotification("1", "[Sileo] Starting Update Task")
         DispatchQueue.global(qos: .userInitiated).async {
-            sendNotification("2", "[Sileo] Refresh finished")
+            self.sendNotification("2", "[Sileo] Refresh finished")
             PackageListManager.shared.upgradeAll(backgroundBypass: true) {
-                sendNotification("3", "[Sileo] Upgrade all")
+                self.sendNotification("3", "[Sileo] Upgrade all")
                 let upgrades = DownloadManager.shared.upgrades.raw
                 if upgrades.isEmpty { return _return() }
                 DownloadManager.shared.viewController.backgroundCallback = {
@@ -356,7 +358,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                     } outputCallback: { _, _ in
                         
                     } completionCallback: { _, finish, refresh in
-                        sendNotification("4", "[Sileo] Output Callback")
+                        self.sendNotification("4", "[Sileo] Output Callback")
                         let content = UNMutableNotificationContent()
                         content.title = "Updates Completed"
                         content.body = "\(upgrades.count) packages have been updated to the latest version"
@@ -374,9 +376,9 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                     }
                     DownloadManager.shared.viewController.backgroundCallback = nil
                 }
-                sendNotification("5", "[Sileo] Errors = \(DownloadManager.shared.viewController.errors.count)")
+                self.sendNotification("5", "[Sileo] Errors = \(DownloadManager.shared.viewController.errors.count)")
                 if DownloadManager.shared.viewController.errors.count == 0 {
-                    sendNotification("6", "[Sileo] Starting Downloads")
+                    self.sendNotification("6", "[Sileo] Starting Downloads")
                     DownloadManager.shared.viewController.isDownloading = true
                     DownloadManager.shared.startMoreDownloads()
                     DownloadManager.shared.reloadData(recheckPackages: false)
@@ -401,14 +403,18 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     
     @available(iOS 13.0, *)
     private func scheduleUpdateTask() {
+        sendNotification("Trying to Schedule Task", "Checking Defaults now")
         guard UserDefaults.standard.bool(forKey: "BackgroundUpdate") else { return }
         let updateTask = BGProcessingTaskRequest(identifier: "sileo.backgroundupdate")
-        updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 300)
+        updateTask.earliestBeginDate = Date(timeIntervalSinceNow: 5)
         updateTask.requiresExternalPower = true
         updateTask.requiresNetworkConnectivity = true
         do {
+            sendNotification("Submitting Task", "Pray?")
             try BGTaskScheduler.shared.submit(updateTask)
+            sendNotification("Task Submitted!", "Now hope it runs at some point")
         } catch {
+            sendNotification("Error Submitting Task", "[Sileo] Unable to submit task: \(error.localizedDescription)")
             NSLog("[Sileo] Unable to submit task: \(error.localizedDescription)")
         }
     }
