@@ -17,10 +17,16 @@ final class ZSTD {
         return false
     }()
     
-    class func decompress(path: String) -> (String?, Data?) {
-        guard let fin = fopen(path, "rb") else { return (ZSTDError.fileLoad.rawValue, nil) }
+    class func decompress(path: URL) -> (String?, URL?) {
+        guard let fin = fopen(path.path, "rb") else { return (ZSTDError.fileLoad.rawValue, nil) }
         defer {
             fclose(fin)
+            try? FileManager.default.removeItem(at: path)
+        }
+        let destinationURL = path.appendingPathExtension("clean")
+        guard let fout = fopen(destinationURL.path, "wb") else { return (ZSTDError.fileLoad.rawValue, nil) }
+        defer {
+            fclose(fout)
         }
         let buffInSize = ZSTD_DStreamInSize()
         let buffOutSize = ZSTD_DStreamOutSize()
@@ -37,7 +43,6 @@ final class ZSTD {
         var read: size_t = 0
         var lastRet: size_t = 0
         var isEmpty = true
-        let data = NSMutableData()
         while true {
             read = fread(inBuf, 1, buffInSize, fin)
             if read == 0 { break }
@@ -54,7 +59,8 @@ final class ZSTD {
                         return (ZSTDError.unknown.rawValue, nil)
                     }
                 }
-                data.append(Data(bytes: outBuf, count: output.pos))
+                let written = fwrite(outBuf, 1, output.pos, fout)
+                guard written == output.pos else { return (ZSTDError.failedWrite.rawValue, nil) }
                 lastRet = ret
             }
         }
@@ -64,8 +70,7 @@ final class ZSTD {
         if lastRet != 0 {
             return (ZSTDError.midFrame.rawValue, nil)
         }
-        
-        return (nil, data as Data)
+        return (nil, destinationURL)
     }
 }
 
@@ -77,5 +82,6 @@ enum ZSTDError: String {
     case unknown = "Unknown Error"
     case empty = "Input File was Empty"
     case midFrame = "Data finished mid-frame"
+    case failedWrite = "Failed to write data"
 }
 #endif

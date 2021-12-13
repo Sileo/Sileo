@@ -10,35 +10,77 @@ import Foundation
 import CommonCrypto
 
 enum HashType {
-    fileprivate typealias HashFunction = (UnsafeRawPointer?, CC_LONG, UnsafeMutablePointer<UInt8>?) -> UnsafeMutablePointer<UInt8>?
-    
     case sha256
     case sha512
+}
+
+extension URL {
     
-    fileprivate var info: (Int32, HashFunction) {
-        switch self {
-        case .sha256:
-            return (CC_SHA256_DIGEST_LENGTH, CC_SHA256)
-        case .sha512:
-            return (CC_SHA512_DIGEST_LENGTH, CC_SHA512)
-        }
+    func hash(ofType type: HashType) -> String? {
+        do {
+            let bufferSize = 1024 * 1024
+            let file = try FileHandle(forReadingFrom: self)
+            defer {
+                file.closeFile()
+            }
+            switch type {
+            case .sha256:
+                var context = CC_SHA256_CTX()
+                CC_SHA256_Init(&context)
+                
+                while autoreleasepool(invoking: {
+                    let data = file.readData(ofLength: bufferSize)
+                    if data.count > 0 {
+                        _ = data.withUnsafeBytes { bytesFromBuffer -> Int32 in
+                            guard let rawBytes = bytesFromBuffer.bindMemory(to: UInt8.self).baseAddress else {
+                                return Int32(kCCMemoryFailure)
+                            }
+                            return CC_SHA256_Update(&context, rawBytes, numericCast(data.count))
+                        }
+                        return true
+                    } else {
+                        return false
+                    }
+                }) { }
+                
+                var digestData = Data(count: Int(CC_SHA256_DIGEST_LENGTH))
+                _ = digestData.withUnsafeMutableBytes { bytesFromDigest -> Int32 in
+                    guard let rawBytes = bytesFromDigest.bindMemory(to: UInt8.self).baseAddress else {
+                        return Int32(kCCMemoryFailure)
+                    }
+                    return CC_SHA256_Final(rawBytes, &context)
+                }
+                return digestData.compactMap { String(format: "%02x", $0) }.joined()
+            case .sha512:
+                var context = CC_SHA512_CTX()
+                CC_SHA512_Init(&context)
+                
+                while autoreleasepool(invoking: {
+                    let data = file.readData(ofLength: bufferSize)
+                    if data.count > 0 {
+                        _ = data.withUnsafeBytes { bytesFromBuffer -> Int32 in
+                            guard let rawBytes = bytesFromBuffer.bindMemory(to: UInt8.self).baseAddress else {
+                                return Int32(kCCMemoryFailure)
+                            }
+                            return CC_SHA512_Update(&context, rawBytes, numericCast(data.count))
+                        }
+                        return true
+                    } else {
+                        return false
+                    }
+                }) { }
+                
+                var digestData = Data(count: Int(CC_SHA512_DIGEST_LENGTH))
+                _ = digestData.withUnsafeMutableBytes { bytesFromDigest -> Int32 in
+                    guard let rawBytes = bytesFromDigest.bindMemory(to: UInt8.self).baseAddress else {
+                        return Int32(kCCMemoryFailure)
+                    }
+                    return CC_SHA512_Final(rawBytes, &context)
+                }
+                return digestData.compactMap { String(format: "%02x", $0) }.joined()
+            }
+        } catch {}
+        return nil
     }
-}
-
-extension Data {
-    // based on https://stackoverflow.com/a/55356729/3769927
-    func hash(ofType type: HashType) -> String {
-        let info = type.info
-        return withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
-            var hash = [UInt8](repeating: 0, count: Int(info.0))
-            _ = info.1(bytes.baseAddress, CC_LONG(bytes.count), &hash)
-            return hash
-        }.map { String(format: "%02x", $0) }.joined()
-    }
-}
-
-extension String {
-    func hash(ofType type: HashType) -> String {
-        Data(utf8).hash(ofType: type)
-    }
+    
 }

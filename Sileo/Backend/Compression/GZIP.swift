@@ -10,10 +10,16 @@ import Foundation
 
 final class GZIP {
 
-    class func decompress(path: String) -> (String?, Data?) {
-        guard let fin = fopen(path, "rb") else { return (GZIPError.fileLoad.rawValue, nil) }
+    class func decompress(path: URL) -> (String?, URL?) {
+        guard let fin = fopen(path.path, "rb") else { return (GZIPError.fileLoad.rawValue, nil) }
         defer {
             fclose(fin)
+            try? FileManager.default.removeItem(at: path)
+        }
+        let destinationURL = path.appendingPathExtension("clean")
+        guard let fout = fopen(destinationURL.path, "wb") else { return (GZIPError.fileLoad.rawValue, nil) }
+        defer {
+            fclose(fout)
         }
         
         let inBuf = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(16384))
@@ -31,7 +37,6 @@ final class GZIP {
         if status != Z_OK {
             return (GZIPError.inflate.rawValue, nil)
         }
-        let data = NSMutableData()
         repeat {
             stream.avail_in = uInt(fread(inBuf, 1, 16384, fin))
             if ferror(fin) != 0 {
@@ -57,14 +62,15 @@ final class GZIP {
                 default: break
                 }
                 have = 16384 - stream.avail_out
-                data.append(Data(bytes: outBuf, count: Int(have)))
+                let written = fwrite(outBuf, 1, Int(have), fout)
+                guard written == Int(have) else { return (GZIPError.failedWrite.rawValue, nil) }
             } while stream.avail_out == 0
         } while status != Z_STREAM_END
         
         if status != Z_STREAM_END {
             return (GZIPError.unknown.rawValue, nil)
         }
-        return (nil, data as Data)
+        return (nil, destinationURL)
     }
 }
 
@@ -73,4 +79,5 @@ enum GZIPError: String {
     case inflate = "Error starting inflate"
     case fileRead = "Failed to Read File"
     case unknown = "Unknown Error"
+    case failedWrite = "Failed to write data"
 }

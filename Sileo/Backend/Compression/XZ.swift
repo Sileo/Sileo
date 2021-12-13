@@ -25,10 +25,11 @@ final class XZ {
         return false
     }()
     
-    class func decompress(path: String, type: XZType) -> (String?, Data?) {
+    class func decompress(path: URL, type: XZType) -> (String?, URL?) {
         var strm = lzma_stream()
         defer {
             lzma_end(&strm)
+            try? FileManager.default.removeItem(at: path)
         }
         let ret = type == .xz ? lzma_stream_decoder(&strm, UINT64_MAX, 8) : lzma_alone_decoder(&strm, UINT64_MAX)
         switch ret {
@@ -37,11 +38,16 @@ final class XZ {
         case LZMA_OPTIONS_ERROR: return (XZError.unsupportedFlags.rawValue, nil)
         default: return (XZError.unknown.rawValue, nil)
         }
-        guard let infile = fopen(path, "rb") else {
+        guard let infile = fopen(path.path, "rb") else {
             return (XZError.fileLoad.rawValue, nil)
         }
         defer {
             fclose(infile)
+        }
+        let destinationURL = path.appendingPathExtension("clean")
+        guard let fout = fopen(destinationURL.path, "wb") else { return (XZError.fileLoad.rawValue, nil) }
+        defer {
+            fclose(fout)
         }
         var action = LZMA_RUN
         
@@ -51,7 +57,6 @@ final class XZ {
             inbuf.deallocate()
             outbuf.deallocate()
         }
-        let data = NSMutableData()
         
         strm.next_in = nil
         strm.avail_in = 0
@@ -73,14 +78,15 @@ final class XZ {
             let ret = lzma_code(&strm, action)
             if strm.avail_out == 0 || ret == LZMA_STREAM_END {
                 let writeSize = MemoryLayout.size(ofValue: outbuf) - strm.avail_out
-                data.append(Data(bytes: outbuf, count: writeSize))
+                let written = fwrite(outbuf, 1, writeSize, fout)
+                guard written == writeSize else { return (ZSTDError.failedWrite.rawValue, nil) }
                 strm.next_out = outbuf
                 strm.avail_out = MemoryLayout.size(ofValue: outbuf)
             }
             
             switch ret {
             case LZMA_OK: break
-            case LZMA_STREAM_END: return (nil, data as Data)
+            case LZMA_STREAM_END: return (nil, destinationURL)
             case LZMA_MEM_ERROR: return (XZError.allocation.rawValue, nil)
             case LZMA_FORMAT_ERROR: return (XZError.formatError.rawValue, nil)
             case LZMA_DATA_ERROR, LZMA_BUF_ERROR: return (XZError.corrupt.rawValue, nil)

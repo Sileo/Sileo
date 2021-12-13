@@ -327,16 +327,13 @@ final class DownloadManager {
             let supportedHashTypes = PackageHashType.allCases.compactMap { type in packageControl[type.rawValue].map { (type, $0) } }
             let packageContainsHashes = !supportedHashTypes.isEmpty
             
-            guard packageContainsHashes,
-            let packageData = try? Data(contentsOf: destURL) else {
-                return false
-            }
+            guard packageContainsHashes else { return false }
             
             let packageIsValid = supportedHashTypes.allSatisfy {
                 let hash = packageControl[$1]
-                let refhash = packageData.hash(ofType: $0.hashType)
-                
-                return hash == refhash
+                guard let refHash = destURL.hash(ofType: $0.hashType),
+                      refHash == hash else { return false }
+                return true
             }
             guard packageIsValid else {
                 return false
@@ -358,18 +355,16 @@ final class DownloadManager {
                 throw Error.untrustedPackage(packageID: package.package)
             }
             
-            let packageData = try Data(contentsOf: fileURL)
-            
             var badHash = ""
             var badRefHash = ""
             
             let packageIsValid = supportedHashTypes.allSatisfy {
                 let hash = $1
-                let refhash = packageData.hash(ofType: $0.hashType)
-                
-                if hash != refhash {
+                guard let refHash = fileURL.hash(ofType: $0.hashType) else { return false }
+              
+                if hash != refHash {
                     badHash = hash
-                    badRefHash = refhash
+                    badRefHash = refHash
                     return false
                 } else {
                     return true
