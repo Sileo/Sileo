@@ -398,18 +398,18 @@ final class SourcesViewController: SileoViewController {
             textField.addTarget(self, action: #selector(Self.textFieldDidChange(_:)), for: .editingChanged)
         }
         
-        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { _ in
+        let addAction = UIAlertAction(title: String(localizationKey: "Add_Source.Button.Add"), style: .default, handler: { [weak alert] _ in
             self.dismiss(animated: true, completion: nil)
-            if let repoURL = alert.textFields?[0].text,
+            if let repoURL = alert?.textFields?[0].text,
                 let url = URL(string: repoURL) {
                 self.handleSourceAdd(urls: [url], bypassFlagCheck: false)
             }
         })
         alert.addAction(addAction)
         
-        let distRepoAction = UIAlertAction(title: String(localizationKey: "Add_Dist_Repo"), style: .default, handler: { _ in
+        let distRepoAction = UIAlertAction(title: String(localizationKey: "Add_Dist_Repo"), style: .default, handler: { [weak alert]  _ in
             self.dismiss(animated: true, completion: nil)
-            self.addDistRepo(string: alert.textFields?[0].text)
+            self.addDistRepo(string: alert?.textFields?[0].text)
         })
         alert.addAction(distRepoAction)
         
@@ -418,7 +418,7 @@ final class SourcesViewController: SileoViewController {
         })
         alert.addAction(cancelAcction)
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func presentAddClipBoardPrompt(sources: [URL]) {
