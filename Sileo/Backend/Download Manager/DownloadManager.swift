@@ -558,7 +558,7 @@ final class DownloadManager {
         reloadData(recheckPackages: recheckPackages, completion: nil)
     }
     
-    public func reloadData(recheckPackages: Bool, backgroundBypass: Bool = false, completion: (() -> Void)?) {
+    public func reloadData(recheckPackages: Bool, completion: (() -> Void)?) {
         DownloadManager.aptQueue.async { [self] in
             if recheckPackages {
                 do {
@@ -571,9 +571,6 @@ final class DownloadManager {
             }
             DispatchQueue.main.async {
                 self.viewController.reloadData()
-                if backgroundBypass {
-                    completion?()
-                }
                 TabBarController.singleton?.updatePopup(completion: completion)
                 NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
             }

@@ -149,30 +149,40 @@ class DownloadsTableViewController: SileoViewController {
         hideDetailsButton?.isHighlighted = hideDetailsButton?.isHighlighted ?? false
     }
     
-    public func loadData() {
+    public func loadData(_ main: @escaping () -> Void) {
         if Thread.isMainThread {
             fatalError("Wtf are you doing")
         }
         if !isInstalling {
             let manager = DownloadManager.shared
-            upgrades = manager.upgrades.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-            installations = manager.installations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-            uninstallations = manager.uninstallations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-            installdeps = manager.installdeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-            uninstalldeps = manager.uninstalldeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-            errors = manager.errors.raw
+            let upgrades = manager.upgrades.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+            let installations = manager.installations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+            let uninstallations = manager.uninstallations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+            let installdeps = manager.installdeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+            let uninstalldeps = manager.uninstalldeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+            let errors = manager.errors.raw
+            DispatchQueue.main.async { [self] in
+                self.upgrades = upgrades
+                self.installations = installations
+                self.uninstallations = uninstallations
+                self.installdeps = installdeps
+                self.uninstalldeps = uninstalldeps
+                self.errors = errors
+                main()
+            }
+            return
         }
+        DispatchQueue.main.async { main() }
     }
     
     public func reloadData() {
         DownloadManager.aptQueue.async { [self] in
-            self.loadData()
-            if isDownloading {
-                DownloadManager.shared.startMoreDownloads()
-            }
-            DispatchQueue.main.async {
+            self.loadData() {
                 self.tableView?.reloadData()
                 self.reloadControlsOnly()
+            }
+            if isDownloading {
+                DownloadManager.shared.startMoreDownloads()
             }
         }
     }
@@ -184,7 +194,6 @@ class DownloadsTableViewController: SileoViewController {
             }
             return
         }
-        NSLog("[Sileo] Reload Controls Only")
         cancelDownload?.isHidden = !isDownloading
         if isFinishedInstalling {
             cancelButton?.isHidden = true
@@ -237,19 +246,15 @@ class DownloadsTableViewController: SileoViewController {
                 self.footerView?.alpha = 0
             }
         }
-        NSLog("[Sileo] Madae it this far")
         if manager.operationCount() > 0 && manager.verifyComplete() && manager.queueStarted && manager.errors.isEmpty {
-            NSLog("[Sileo] Now thats epic")
             manager.lockedForInstallation = true
             isDownloading = false
             cancelDownload?.isHidden = true
-            NSLog("[Sileo] Now this is poggers")
             UIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 0
                 self.footerView?.alpha = 0
             }
             transferToInstall()
-            NSLog("[Sileo] Transfer")
             TabBarController.singleton?.presentPopupController()
         }
         if manager.errors.isEmpty {
@@ -365,7 +370,6 @@ class DownloadsTableViewController: SileoViewController {
         if isInstalling {
             return
         }
-        NSLog("[Sileo] Transfer To Install")
         isInstalling = true
         var earlyBreak = false
         if UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive,
@@ -380,7 +384,6 @@ class DownloadsTableViewController: SileoViewController {
         }
         
         detailsAttributedString = NSMutableAttributedString(string: "")
-        NSLog("[Sileo] Get ops")
         let installs = installations + upgrades + installdeps
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }

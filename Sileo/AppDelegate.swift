@@ -98,19 +98,14 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     private func backgroundRepoRefreshTask(_ completion: @escaping () -> Void) {
-        NSLog("[Sileo] Starting Refersh FUnction")
         DispatchQueue.global(qos: .userInitiated).async {
             PackageListManager.shared.initWait()
-            NSLog("[Sileo] Init wait")
             let currentUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
             let currentPackages = PackageListManager.shared.allPackagesArray
             if currentUpdates.isEmpty { return completion() }
             RepoManager.shared.update(force: false, forceReload: false, isBackground: true) { _, _ in
-                NSLog("[Sileo] Finished update")
                 let newUpdates = PackageListManager.shared.availableUpdates().filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-                NSLog("[Sileo] Loadede new Updates")
                 let newPackages = PackageListManager.shared.allPackagesArray
-                NSLog("[Sileo] Loaded New Packages")
                 if newPackages.isEmpty { return completion() }
                 
                 let diffUpdates = newUpdates.filter { !currentUpdates.contains($0) }
@@ -143,11 +138,9 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                     }
                 }
-                NSLog("[Sileo] Scheduled Notifications")
+
                 let diffPackages = newPackages.filter { !currentPackages.contains($0) }
-                NSLog("[Sileo] Diffed")
                 let wishlist = WishListManager.shared.wishlist
-                NSLog("[Sileo] Wishlist")
                 for package in diffPackages {
                     if wishlist.contains(package.package) {
                         let content = UNMutableNotificationContent()
