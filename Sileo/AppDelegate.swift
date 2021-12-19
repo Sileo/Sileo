@@ -29,6 +29,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
         // Prepare the Evander manifest
+        EvanderNetworking.CACHE_FORCE = .libraryDirectory
         Evander.prepare()
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared

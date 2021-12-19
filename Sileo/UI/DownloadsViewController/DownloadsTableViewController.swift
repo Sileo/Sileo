@@ -442,6 +442,9 @@ class DownloadsTableViewController: SileoViewController {
                     spawn(command: CommandPath.uicache, args: ["uicache", "-p", "\(Bundle.main.bundlePath)"])
                 }
                 spawn(command: "\(CommandPath.prefix)/usr/bin/sbreload", args: ["sbreload"])
+                while true {
+                   window.snapshotView(afterScreenUpdates: false)
+                }
             case .reboot:
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/ldrestart"])
