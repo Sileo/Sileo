@@ -13,8 +13,9 @@ import LocalAuthentication
 final class KeychainManager {
     
     static let shared = KeychainManager()
+    #if !targetEnvironment(simulator) && !TARGET_SANDBOX
     let accessGroup = "org.coolstar.Sileo"
-    
+    #endif
     enum SileoService: String, CaseIterable {
         case secret = "SileoPaymentSecret"
         case token = "SileoPaymentToken"
@@ -29,25 +30,30 @@ final class KeychainManager {
     
     public func clearKeys(_ key: String) {
         for service in SileoService.allCases {
-            let query = [
+            var query = [
                 kSecClass as String: kSecClassGenericPassword as String,
-                kSecAttrAccessGroup: accessGroup,
                 kSecAttrAccount as String: key,
                 kSecAttrService as String: service.rawValue
             ] as [AnyHashable: String]
+            #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+            query[kSecAttrAccessGroup] = accessGroup
+            #endif
+            
             SecItemDelete(query as CFDictionary)
         }
     }
     
     @discardableResult public func saveToken(key: String, data: String) -> OSStatus {
-        let query = [
+        var query = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
-            kSecAttrAccessGroup: accessGroup,
             kSecAttrService as String: SileoService.token.rawValue,
             kSecValueData as String: data.data(using: .utf8) as Any,
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
+        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+        query[kSecAttrAccessGroup] = accessGroup
+        #endif
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
@@ -55,30 +61,35 @@ final class KeychainManager {
     }
     
     @discardableResult public func saveSecret(key: String, data: String) -> OSStatus {
-        let query = [
+        var query = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
-            kSecAttrAccessGroup: accessGroup,
             kSecAttrService as String: SileoService.secret.rawValue,
             kSecValueData as String: data.data(using: .utf8) as Any,
             kSecAttrAccessControl as String: accessControl,
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
+        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+        query[kSecAttrAccessGroup] = accessGroup
+        #endif
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
+        NSLog("[Sileo] Response is \(SecCopyErrorMessageString(response, nil))")
         return response
     }
     
     public func token(key: String) -> String? {
-        let query = [
+        var query = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
-            kSecAttrAccessGroup: accessGroup,
             kSecAttrService as String: SileoService.token.rawValue,
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne
         ] as [AnyHashable: Any]
+        #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+        query[kSecAttrAccessGroup] = accessGroup
+        #endif
         
         var dataRef: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataRef)
@@ -93,10 +104,9 @@ final class KeychainManager {
                                           operation: .useItem,
                                           localizedReason: String(localizationKey: "Authenticate to complete your purchase")) { [self] (success, error) in
             guard success else { return completion(nil) }
-            let query = [
+            var query = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrAccount as String: key,
-                kSecAttrAccessGroup: accessGroup,
                 kSecAttrService as String: SileoService.secret.rawValue,
                 kSecReturnData as String: kCFBooleanTrue!,
                 kSecMatchLimit as String: kSecMatchLimitOne,
@@ -104,6 +114,10 @@ final class KeychainManager {
                 kSecUseAuthenticationContext as String: authContext,
                 kSecUseAuthenticationUI as String: kSecUseAuthenticationUIFail
             ] as [AnyHashable: Any]
+            #if !targetEnvironment(simulator) && !TARGET_SANDBOX
+            query[kSecAttrAccessGroup] = accessGroup
+            #endif
+            
             var dataRef: AnyObject?
             let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataRef)
             guard status == noErr,

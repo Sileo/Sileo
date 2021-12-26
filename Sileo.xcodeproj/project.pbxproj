@@ -373,6 +373,10 @@
 		E13BD7902646CFC1006A5EF2 /* SileoTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */; };
 		E13F31C72677E71E00AB8932 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F31C62677E71D00AB8932 /* ThemePickerView.swift */; };
 		E13F31C82677E71E00AB8932 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F31C62677E71D00AB8932 /* ThemePickerView.swift */; };
+		E1428E632778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
+		E1428E642778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
+		E1428E652778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
+		E1428E662778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
 		E14897E2269B64B60061A301 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E14897E1269B64B60061A301 /* Alderis */; };
 		E14897E4269B64C90061A301 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E14897E3269B64C90061A301 /* Alderis */; };
 		E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
@@ -1440,6 +1444,7 @@
 		E13BD7882646C706006A5EF2 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
 		E13BD78E2646CFC1006A5EF2 /* SileoTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTeamViewController.swift; sourceTree = "<group>"; };
 		E13F31C62677E71D00AB8932 /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
+		E1428E622778E17D005B0885 /* Thread+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+Extensions.swift"; sourceTree = "<group>"; };
 		E14897DD269B4D3B0061A301 /* liblz4.1-mac.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "liblz4.1-mac.tbd"; sourceTree = "<group>"; };
 		E14C5E64266547D10080BFCE /* ZSTD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZSTD.swift; sourceTree = "<group>"; };
 		E14C5EBC266687C80080BFCE /* XZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZ.swift; sourceTree = "<group>"; };
@@ -2906,6 +2911,7 @@
 				F1705FF024CA1657001596A0 /* UIDevice+Private.swift */,
 				F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */,
 				F16115D3244D8ABF003BF1E6 /* URL+Secure.swift */,
+				E1428E622778E17D005B0885 /* Thread+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4033,6 +4039,7 @@
 				E128188826BBFAA500D2553B /* DepictionFormTextView.swift in Sources */,
 				E128188926BBFAA500D2553B /* FileNode.swift in Sources */,
 				E128188A26BBFAA500D2553B /* SileoViewController.swift in Sources */,
+				E1428E652778E17E005B0885 /* Thread+Extensions.swift in Sources */,
 				E128188B26BBFAA500D2553B /* LanguageHelper.swift in Sources */,
 				E128188C26BBFAA500D2553B /* FlaggedSourceWarningViewController.swift in Sources */,
 				E128188D26BBFAA500D2553B /* LanguageSelectionViewController.swift in Sources */,
@@ -4218,6 +4225,7 @@
 				E14E4C8926DAD572002AE3B4 /* FileNode.swift in Sources */,
 				E14E4C8A26DAD572002AE3B4 /* SileoViewController.swift in Sources */,
 				E14E4C8B26DAD572002AE3B4 /* LanguageHelper.swift in Sources */,
+				E1428E662778E17E005B0885 /* Thread+Extensions.swift in Sources */,
 				E14E4C8C26DAD572002AE3B4 /* FlaggedSourceWarningViewController.swift in Sources */,
 				E14E4C8D26DAD572002AE3B4 /* LanguageSelectionViewController.swift in Sources */,
 				E14E4C8E26DAD572002AE3B4 /* Hash.swift in Sources */,
@@ -4386,6 +4394,7 @@
 				E1C6C0D92677BFDE006228E0 /* KeychainManager.swift in Sources */,
 				F16115D2244D87CD003BF1E6 /* FeaturedButton.swift in Sources */,
 				E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */,
+				E1428E642778E17E005B0885 /* Thread+Extensions.swift in Sources */,
 				F139D0CC22EA9209007F5C0D /* DpkgWrapper.swift in Sources */,
 				F1A4D8DC231C25FA00149DDF /* Dusk.swift in Sources */,
 				F13AEE6422F69C47004BAA05 /* EditableTableView.swift in Sources */,
@@ -4582,6 +4591,7 @@
 				F13AEE7C22F76DE6004BAA05 /* FileNode.swift in Sources */,
 				F170605C24CF4DFD001596A0 /* SileoViewController.swift in Sources */,
 				E15A954226B981E4000DB10E /* LanguageHelper.swift in Sources */,
+				E1428E632778E17E005B0885 /* Thread+Extensions.swift in Sources */,
 				172B2ED722F09E8F000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
 				E15A954926B99104000DB10E /* LanguageSelectionViewController.swift in Sources */,
 				F1D6A62A22E53E7000CBD045 /* Hash.swift in Sources */,

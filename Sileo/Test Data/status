@@ -4711,7 +4711,7 @@ Status: install ok installed
 Section: Packaging
 Maintainer: Hayden Seay <me@diatr.us>
 Architecture: iphoneos-arm
-Version: 2.1.2
+Version: 2.3
 Depends: firmware (>= 11.0), firmware (>= 12.2) | org.swift.libswift (>= 5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0)
 Description: A modern APT package manager frontend
 Name: Sileo

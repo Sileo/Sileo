@@ -295,35 +295,29 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
                 let context = LAContext()
                 if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: nil) {
                     KeychainManager.shared.secret(key: baseURL.absoluteString) { string in
-                        if let string = string {
-                            body["payment_secret"] = string as AnyObject
-                        }
-                        if #available(iOS 13, *) {
-                            if UIWindow.presentable != nil {
-                                makeRequest()
-                            } else {
-                                // This is god awful solution but it works, fuck you Apple / UISCene
-                                var hasFired = false
-                                var observer: Any?
-                                observer = NotificationCenter.default.addObserver(forName: UIScene.didActivateNotification, object: nil, queue: nil) { _ in
-                                    defer {
-                                        NotificationCenter.default.removeObserver(observer as Any)
-                                    }
-                                    guard !hasFired else { return }
-                                    makeRequest()
-                                    hasFired = true
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    defer {
-                                        NotificationCenter.default.removeObserver(observer as Any)
-                                    }
-                                    guard !hasFired else { return }
-                                    makeRequest()
-                                    hasFired = true
-                                }
+                        Thread.mainBlock {
+                            if let string = string {
+                                body["payment_secret"] = string as AnyObject
                             }
-                        } else {
-                            makeRequest()
+                            if #available(iOS 13, *) {
+                                if UIWindow.presentable != nil {
+                                    makeRequest()
+                                } else {
+                                    // This is god awful solution but it works, fuck you Apple / UISCene
+                                    var hasFired = false
+                                    var observer: Any?
+                                    observer = NotificationCenter.default.addObserver(forName: UIScene.didActivateNotification, object: nil, queue: nil) { _ in
+                                        defer {
+                                            NotificationCenter.default.removeObserver(observer as Any)
+                                        }
+                                        guard !hasFired else { return }
+                                        makeRequest()
+                                        hasFired = true
+                                    }
+                                }
+                            } else {
+                                makeRequest()
+                            }
                         }
                     }
                     return
