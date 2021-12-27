@@ -71,16 +71,7 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
         
         if self.article != nil && self.article?.imageURL != nil {
             if let url = article?.imageURL {
-                imageView?.image = EvanderNetworking.image(url, size: imageView?.frame.size) { [weak self] refresh, image in
-                    if refresh,
-                        let strong = self,
-                        let image = image,
-                        url == strong.article?.imageURL {
-                            DispatchQueue.main.async {
-                                strong.imageView?.image = image
-                            }
-                    }
-                }
+                EvanderNetworking.image(url: url, condition: ({ [weak self] in self?.article?.imageURL == url}), imageView: imageView)
             }
             cardView?.isHidden = false
             

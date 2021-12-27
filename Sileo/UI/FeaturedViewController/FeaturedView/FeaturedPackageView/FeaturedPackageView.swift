@@ -63,16 +63,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
         
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         if !packageIcon.isEmpty {
-            imageView.image = EvanderNetworking.image(packageIcon, size: CGSize(width: 128, height: 128)) { [weak self] refresh, image in
-                if refresh,
-                   let strong = self,
-                   let image = image,
-                   strong.icon == packageIcon {
-                    DispatchQueue.main.async {
-                        strong.imageView.image = image
-                    }
-                }
-            } ?? UIImage(named: "Category_tweak")
+            EvanderNetworking.image(url: packageIcon, size: CGSize(width: 128, height: 128), condition: { [weak self] in self?.icon == packageIcon }, imageView: imageView, fallback: UIImage(named: "Category_tweak"))
         } else {
             imageView.image = UIImage(named: "Category_tweak")
         }

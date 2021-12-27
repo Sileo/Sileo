@@ -96,16 +96,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let imageURL = rawDepict["headerImage"] as? String {
             if imageURL != headerURL {
                 self.headerURL = imageURL
-                self.depictionBackgroundView.image = EvanderNetworking.image(imageURL, size: depictionBackgroundView.frame.size) { [weak self] refresh, image in
-                    if refresh,
-                       let strong = self,
-                       imageURL == strong.headerURL,
-                       let image = image {
-                        DispatchQueue.main.async {
-                            strong.depictionBackgroundView.image = image
-                        }
-                    }
-                }
+                EvanderNetworking.image(url: imageURL, condition: ({ [weak self] in self?.headerURL == imageURL}), imageView: depictionBackgroundView)
             }
         }
         
@@ -249,34 +240,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         if let imageURL = package.rawControl["header"] {
             if imageURL != headerURL {
                 self.headerURL = imageURL
-                self.depictionBackgroundView.image = EvanderNetworking.image(imageURL, size: CGSize(width: depictionBackgroundView.frame.width, height: 200)) { [weak self] refresh, image in
-                    if refresh,
-                       let strong = self,
-                       imageURL == strong.headerURL,
-                       let image = image {
-                        DispatchQueue.main.async {
-                            strong.depictionBackgroundView.image = image
-                        }
-                    }
-                }
+                EvanderNetworking.image(url: imageURL, size: CGSize(width: depictionBackgroundView.frame.width, height: 200), condition: ({ [weak self] in self?.headerURL == imageURL }), imageView: depictionBackgroundView)
             }
         }
         
         if package.hasIcon(),
             let rawIcon = package.icon {
-            let image = EvanderNetworking.image(rawIcon, size: packageIconView.frame.size) { [weak self] refresh, image in
-                if refresh,
-                    let strong = self,
-                    let image = image,
-                    strong.package?.icon == rawIcon {
-                        DispatchQueue.main.async {
-                            strong.packageIconView.image = image
-                            strong.packageNavBarIconView?.image = image
-                        }
-                }
-            } ?? package.defaultIcon
-            packageIconView.image = image
-            packageNavBarIconView?.image = image
+            EvanderNetworking.image(url: rawIcon, size: packageIconView.frame.size, condition: ({ [weak self] in self?.package?.icon == rawIcon}), imageViews: [packageIconView, packageNavBarIconView], fallback: package.defaultIcon)
         } else {
             packageNavBarIconView?.image = package.defaultIcon
             packageIconView.image = package.defaultIcon

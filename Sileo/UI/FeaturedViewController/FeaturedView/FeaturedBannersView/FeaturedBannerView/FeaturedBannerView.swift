@@ -21,16 +21,7 @@ class FeaturedBannerView: UIButton, UIViewControllerPreviewingDelegate {
     var banner: [String: Any] = [:] {
         didSet {
             if let bannerURL = banner["url"] as? String {
-                bannerImageView?.image = EvanderNetworking.image(bannerURL, size: itemSize) { [weak self] refresh, image in
-                    if refresh,
-                          let strong = self,
-                          let image = image,
-                          bannerURL == strong.banner["url"] as? String {
-                        DispatchQueue.main.async {
-                            strong.bannerImageView?.image = image
-                        }
-                    }
-                }
+                EvanderNetworking.image(url: bannerURL, size: itemSize, condition: ({ [weak self] in bannerURL == self?.banner["url"] as? String }), imageView: bannerImageView)
             }
             
             if let bannerTitle = banner["title"] as? String {

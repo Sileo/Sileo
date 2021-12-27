@@ -98,14 +98,11 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
         guard let url = url else {
             return
         }
-        self.icon = EvanderNetworking.image(url, size: iconView.frame.size) { [weak self] refresh, image in
-            if refresh,
-               let strong = self,
-               let image = image,
-               url == strong.iconURL {
-                DispatchQueue.main.async {
-                    strong.icon = image
-                }
+        self.icon = EvanderNetworking.image(url: url, size: iconView.frame.size) { [weak self] image in
+            guard let self = self,
+                  url == self.iconURL else { return }
+            DispatchQueue.main.async {
+                self.icon = image
             }
         } ?? placeholderIcon
     }

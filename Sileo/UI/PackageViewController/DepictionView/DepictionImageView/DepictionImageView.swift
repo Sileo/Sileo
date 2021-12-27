@@ -38,10 +38,8 @@ class DepictionImageView: DepictionBaseView {
         imageView = UIImageView(frame: .zero)
 
         super.init(dictionary: dictionary, viewController: viewController, tintColor: tintColor, isActionable: isActionable)
-        if let image = EvanderNetworking.image(url, { [weak self] refresh, image in
-            if refresh,
-               let strong = self,
-               let image = image {
+        if let image = EvanderNetworking.image(url: url, { [weak self] image in
+            if let strong = self {
                 DispatchQueue.main.async {
                     strong.imageView?.image = image
                     let size = image.size

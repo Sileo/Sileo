@@ -20,10 +20,8 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
         didSet {
             self.title = internalPackage?.name
             if let url = internalPackage?.icon {
-                self.icon = EvanderNetworking.image(url, size: iconView.frame.size) { [weak self] refresh, image in
-                    if refresh,
-                       let strong = self,
-                       let image = image,
+                self.icon = EvanderNetworking.image(url: url, size: iconView.frame.size) { [weak self] image in
+                    if let strong = self,
                        url == strong.internalPackage?.icon {
                         DispatchQueue.main.async {
                             strong.icon = image
