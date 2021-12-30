@@ -38,7 +38,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
                 descriptionLabel?.text = targetPackage.packageDescription
                 
-                let url = targetPackage.icon ?? ""
+                let url = targetPackage.icon
                 EvanderNetworking.image(url: url, condition: { [weak self] in self?.targetPackage?.icon == url }, imageView: imageView, fallback: targetPackage.defaultIcon)
                         
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
@@ -59,7 +59,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "Unknown")"
                 descriptionLabel?.text = provisionalTarget.description
             
-                let url = provisionalTarget.icon ?? ""
+                let url = provisionalTarget.icon
                 EvanderNetworking.image(url: url, condition: { [weak self] in self?.provisionalTarget?.icon == url }, imageView: imageView, fallback: provisionalTarget.defaultIcon)
 
                 titleLabel?.textColor = .sileoLabel
