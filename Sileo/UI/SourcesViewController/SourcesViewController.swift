@@ -138,7 +138,7 @@ final class SourcesViewController: SileoViewController {
         super.setEditing(editing, animated: animated)
         self.tableView?.setEditing(editing, animated: animated)
         
-        UIView.animate(withDuration: animated ? 0.2 : 0.0) {
+        FRUIView.animate(withDuration: animated ? 0.2 : 0.0) {
             let nav = self.navigationItem
             
             if editing {

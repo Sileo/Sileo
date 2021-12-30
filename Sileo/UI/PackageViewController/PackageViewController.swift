@@ -105,7 +105,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.contentView.addSubview(newDepictView)
         self.viewDidLayoutSubviews()
         
-        UIView.animate(withDuration: 0.25, animations: {
+        FRUIView.animate(withDuration: 0.25, animations: {
             oldDepictView?.alpha = 0
             newDepictView.alpha = 1
         }, completion: { _ in
@@ -394,7 +394,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         allowNavbarUpdates = false
         currentNavBarOpacity = navController?.navigationBar._backgroundOpacity ?? 1
         
-        UIView.animate(withDuration: 0.8) {
+        FRUIView.animate(withDuration: 0.8) {
             navController?.navigationBar.tintColor = UINavigationBar.appearance().tintColor
             navController?.navigationBar._backgroundOpacity = 1
         }
@@ -439,7 +439,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             navBarAlphaOffset = 0
         }
 
-        UIView.animate(withDuration: 0.3) {
+        FRUIView.animate(withDuration: 0.3) {
             self.shareButton?.alpha = 1 - navBarAlphaOffset
 
             if (self.shareButton?.alpha ?? 0) > 0 {

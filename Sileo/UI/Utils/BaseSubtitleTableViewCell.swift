@@ -109,7 +109,7 @@ open class BaseSubtitleTableViewCell: UITableViewCell {
     
     public var progress: CGFloat = 0 {
         didSet {
-            UIView.animate(withDuration: 0.1) { [weak self] in
+            FRUIView.animate(withDuration: 0.1) { [weak self] in
                 guard let strong = self else { return }
                 strong.progressView.progress = strong.progress
             }

@@ -34,7 +34,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                                                name: Notification.Name("iCloudProfile"),
                                                object: nil)
         
-        UIView.animate(withDuration: 0.7, animations: {
+        FRUIView.animate(withDuration: 0.7, animations: {
             self.activityIndicatorView?.alpha = 0
         }, completion: { _ in
             self.activityIndicatorView?.isHidden = true
@@ -224,7 +224,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         self.navigationController?.navigationBar._hidesShadow = true
         
-        UIView.animate(withDuration: 0.2) {
+        FRUIView.animate(withDuration: 0.2) {
             self.profileButton?.alpha = 1.0
         }
     }
@@ -234,7 +234,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         
         self.navigationController?.navigationBar._hidesShadow = false
         
-        UIView.animate(withDuration: 0.2) {
+        FRUIView.animate(withDuration: 0.2) {
             self.profileButton?.alpha = 0
         }
     }

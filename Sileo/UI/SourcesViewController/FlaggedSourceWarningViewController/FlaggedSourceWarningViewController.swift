@@ -6,8 +6,8 @@
 //  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Evander
 
 class FlaggedSourceWarningViewController: SileoViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -69,7 +69,7 @@ class FlaggedSourceWarningViewController: SileoViewController {
     }
     
     func determineScrollHairlineAnimated(animated: Bool) {
-        UIView.animate(withDuration: animated ? 0.2 : 0, delay: 0, options: .beginFromCurrentState,
+        FRUIView.animate(withDuration: animated ? 0.2 : 0, delay: 0, options: .beginFromCurrentState,
                        animations: {
                         self.scrollHairlineView.alpha = self.scrollView.contentOffset.y >= self.scrollView.contentSize.height -
                             self.scrollView.bounds.size.height ? 0 : 1

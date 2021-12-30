@@ -13,7 +13,7 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             unreadView?.backgroundColor = tintColor
-            UIView.animate(withDuration: 0.3, animations: {
+            FRUIView.animate(withDuration: 0.3, animations: {
                 self.contentView.alpha = self.isHighlighted ? 0.7 : 1
             })
         }

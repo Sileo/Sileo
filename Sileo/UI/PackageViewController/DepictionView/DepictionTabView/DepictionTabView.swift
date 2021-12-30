@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class DepictionTabView: DepictionBaseView, DepictionTabControlContainer {
     var tabViews: [DepictionTabControl] = []
@@ -113,7 +114,7 @@ class DepictionTabView: DepictionBaseView, DepictionTabControlContainer {
     }
 
     func tabTapped(_ tab: DepictionTabControl) {
-        UIView.animate(withDuration: 0.25) {
+        FRUIView.animate(withDuration: 0.25) {
             self.activeTab = self.tabViews.firstIndex(of: tab) ?? 0
         }
     }

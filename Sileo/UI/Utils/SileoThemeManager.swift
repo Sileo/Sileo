@@ -6,6 +6,8 @@
 //  Copyright © 2020 Sileo Team. All rights reserved.
 //
 
+import Evander
+
 func dynamicColor(default defaultColor: UIColor, dark: UIColor) -> UIColor {
     if #available(iOS 13.0, *) {
         return UIColor(dynamicProvider: { traitCollection in
@@ -97,7 +99,7 @@ class SileoThemeManager: NSObject {
     func activate(theme: SileoTheme) {
         currentTheme = theme
         UserDefaults.standard.set(theme.name, forKey: "currentTheme")
-        UIView.animate(withDuration: 0.25) {
+        FRUIView.animate(withDuration: 0.25) {
             NotificationCenter.default.post(name: SileoThemeManager.sileoChangedThemeNotification, object: nil)
         }
         updateUserInterface()
@@ -114,7 +116,7 @@ class SileoThemeManager: NSObject {
             UserDefaults.standard.set(archivedData, forKey: "tintColor")
         }
         
-        UIView.animate(withDuration: 0.25) {
+        FRUIView.animate(withDuration: 0.25) {
             NotificationCenter.default.post(name: SileoThemeManager.sileoChangedThemeNotification, object: nil)
         }
     }

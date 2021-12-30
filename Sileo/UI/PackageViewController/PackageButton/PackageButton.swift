@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Evander
 
 class PackageButton: UIButton {
     required init?(coder: NSCoder) {
@@ -50,7 +51,7 @@ class PackageButton: UIButton {
     
     public var isProminent: Bool = false {
         didSet {
-            UIView.animate(withDuration: self.window != nil ? 0.3 : 0) {
+            FRUIView.animate(withDuration: self.window != nil ? 0.3 : 0) {
                 self.updateStyle()
             }
         }
@@ -100,7 +101,7 @@ class PackageButton: UIButton {
         if title == self.title(for: state) || self.window == nil {
             return super.setTitle(title, for: state)
         } else {
-            UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: .calculationModeCubicPaced, animations: {
+            FRUIView.animateKeyframes(withDuration: 0.25, delay: 0, options: .calculationModeCubicPaced, animations: {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
                     self.titleLabel?.alpha = 0
                 }

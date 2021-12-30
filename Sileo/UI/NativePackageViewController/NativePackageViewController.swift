@@ -259,7 +259,7 @@ class NativePackageViewController: SileoViewController, PackageActions {
         allowNavbarUpdates = false
         currentNavBarOpacity = navController?.navigationBar._backgroundOpacity ?? 1
         
-        UIView.animate(withDuration: 0.8) {
+        FRUIView.animate(withDuration: 0.8) {
             navController?.navigationBar.tintColor = UINavigationBar.appearance().tintColor
             navController?.navigationBar._backgroundOpacity = 1
         }
@@ -605,7 +605,7 @@ extension NativePackageViewController: UIScrollViewDelegate {
             navBarAlphaOffset = 0
         }
         
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        FRUIView.animate(withDuration: 0.3) { [weak self] in
             guard let `self` = self else { return }
             self.shareButton.alpha = 1 - navBarAlphaOffset
 

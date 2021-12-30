@@ -6,8 +6,8 @@
 //  Copyright © 2019 Sileo Team. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Evander
 
 class DownloadsTableViewController: SileoViewController {
     @IBOutlet var footerView: UIView?
@@ -204,14 +204,14 @@ class DownloadsTableViewController: SileoViewController {
             if completeLaterButton?.alpha == 0 {
                 doneToTop?.constant = 0
                 laterHeight?.constant = 0
-                UIView.animate(withDuration: 0.25) {
+                FRUIView.animate(withDuration: 0.25) {
                     self.footerViewHeight?.constant = 125
                     self.footerView?.alpha = 1
                 }
             } else {
                 doneToTop?.constant = 15
                 laterHeight?.constant = 50
-                UIView.animate(withDuration: 0.25) {
+                FRUIView.animate(withDuration: 0.25) {
                     self.footerViewHeight?.constant = 190
                     self.footerView?.alpha = 1
                 }
@@ -226,7 +226,7 @@ class DownloadsTableViewController: SileoViewController {
         }
         let manager = DownloadManager.shared
         if manager.operationCount() > 0 && !manager.queueStarted && manager.errors.isEmpty {
-            UIView.animate(withDuration: 0.25) {
+            FRUIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 128
                 self.footerView?.alpha = 1
             }
@@ -236,12 +236,12 @@ class DownloadsTableViewController: SileoViewController {
             showDetailsButton?.isHidden = true
             completeButton?.isHidden = true
             completeLaterButton?.isHidden = true
-            UIView.animate(withDuration: 0.25) {
+            FRUIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 90
                 self.footerView?.alpha = 1
             }
         } else {
-            UIView.animate(withDuration: 0.25) {
+            FRUIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 0
                 self.footerView?.alpha = 0
             }
@@ -250,7 +250,7 @@ class DownloadsTableViewController: SileoViewController {
             manager.lockedForInstallation = true
             isDownloading = false
             cancelDownload?.isHidden = true
-            UIView.animate(withDuration: 0.25) {
+            FRUIView.animate(withDuration: 0.25) {
                 self.footerViewHeight?.constant = 0
                 self.footerView?.alpha = 0
             }
@@ -639,7 +639,7 @@ class DownloadsTableViewController: SileoViewController {
         self.view.addSubview(detailsView)
         
         self.view.bringSubviewToFront(detailsView)
-        UIView.animate(withDuration: 0.25) {
+        FRUIView.animate(withDuration: 0.25) {
             self.detailsView?.alpha = 1
             
             self.statusBarStyle = .lightContent
@@ -647,7 +647,7 @@ class DownloadsTableViewController: SileoViewController {
     }
     
     @IBAction func hideDetails(_ sender: Any?) {
-        UIView.animate(withDuration: 0.25, animations: {
+        FRUIView.animate(withDuration: 0.25, animations: {
             self.detailsView?.alpha = 0
             
             self.statusBarStyle = UIDevice.current.userInterfaceIdiom == .pad ? .default : .lightContent

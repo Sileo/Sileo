@@ -149,7 +149,7 @@ extension NewsViewController { // Get Data
             if timestampsWeCareAbout.isEmpty {
                 DispatchQueue.main.async {
                     if self.activityIndicatorView.isAnimating {
-                        UIView.animate(withDuration: 0.3, animations: {
+                        FRUIView.animate(withDuration: 0.3, animations: {
                             self.activityIndicatorView.alpha = 0
                         }, completion: { _ in
                             self.collectionView.isHidden = false
@@ -221,7 +221,7 @@ extension NewsViewController { // Get Data
 
                 // Hide spinner if necessary
                 if self.activityIndicatorView.isAnimating {
-                    UIView.animate(withDuration: 0.3, animations: {
+                    FRUIView.animate(withDuration: 0.3, animations: {
                         self.activityIndicatorView.alpha = 0
                     }, completion: { _ in
                         self.collectionView.isHidden = false
