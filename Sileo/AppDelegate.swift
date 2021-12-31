@@ -21,6 +21,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         #if targetEnvironment(macCatalyst)
         _ = MacRootWrapper.shared
         #endif
+        _ = LogStreamViewController.shared
         SileoThemeManager.shared.updateUserInterface()
         // Begin parsing sources files
         _ = RepoManager.shared

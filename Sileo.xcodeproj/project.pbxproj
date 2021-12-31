@@ -688,6 +688,10 @@
 		E19CC2DE269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
 		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
 		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
+		E1A2352B277F888C004563C9 /* LogStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2352A277F888C004563C9 /* LogStreamViewController.swift */; };
+		E1A2352C277F888C004563C9 /* LogStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2352A277F888C004563C9 /* LogStreamViewController.swift */; };
+		E1A2352D277F888C004563C9 /* LogStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2352A277F888C004563C9 /* LogStreamViewController.swift */; };
+		E1A2352E277F888C004563C9 /* LogStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2352A277F888C004563C9 /* LogStreamViewController.swift */; };
 		E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1B3FBCF2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */; };
 		E1BB50DD260E913A00F870B8 /* OG~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50D9260E913A00F870B8 /* OG~ipad@3x.png */; platformFilter = ios; };
@@ -1486,6 +1490,7 @@
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignUpdate.swift; sourceTree = "<group>"; };
 		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
+		E1A2352A277F888C004563C9 /* LogStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogStreamViewController.swift; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -2300,6 +2305,14 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		E1A23529277F8872004563C9 /* Log Stream */ = {
+			isa = PBXGroup;
+			children = (
+				E1A2352A277F888C004563C9 /* LogStreamViewController.swift */,
+			);
+			path = "Log Stream";
+			sourceTree = "<group>";
+		};
 		E1BB50D8260E912000F870B8 /* OG */ = {
 			isa = PBXGroup;
 			children = (
@@ -2851,6 +2864,7 @@
 		F1B99EE620DB671300374C27 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E1A23529277F8872004563C9 /* Log Stream */,
 				E14E4D6126DED566002AE3B4 /* NativePackageViewController */,
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
 				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
@@ -4093,6 +4107,7 @@
 				E12818C226BBFAA500D2553B /* SourceProgressIndicatorView.swift in Sources */,
 				E12818C326BBFAA500D2553B /* SourcesTableViewCell.swift in Sources */,
 				E12818C426BBFAA500D2553B /* SourcesSplitViewController.swift in Sources */,
+				E1A2352D277F888C004563C9 /* LogStreamViewController.swift in Sources */,
 				E12818C526BBFAA500D2553B /* CSActionItem.swift in Sources */,
 				E12818C626BBFAA500D2553B /* APTPipe.swift in Sources */,
 				E12818C726BBFAA500D2553B /* String+Utilities.swift in Sources */,
@@ -4279,6 +4294,7 @@
 				E14E4CC026DAD572002AE3B4 /* SourceProgressIndicatorView.swift in Sources */,
 				E14E4CC126DAD572002AE3B4 /* SourcesTableViewCell.swift in Sources */,
 				E14E4CC226DAD572002AE3B4 /* SourcesSplitViewController.swift in Sources */,
+				E1A2352E277F888C004563C9 /* LogStreamViewController.swift in Sources */,
 				E14E4CC326DAD572002AE3B4 /* CSActionItem.swift in Sources */,
 				E14E4CC426DAD572002AE3B4 /* APTPipe.swift in Sources */,
 				E14E4CC526DAD572002AE3B4 /* String+Utilities.swift in Sources */,
@@ -4473,6 +4489,7 @@
 				F139D0CE22EA9209007F5C0D /* String+Utilities.swift in Sources */,
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
+				E1A2352C277F888C004563C9 /* LogStreamViewController.swift in Sources */,
 				F13AEE6D22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
 				F139D0E222EA9209007F5C0D /* WhiteBlur.m in Sources */,
 				F139D0FF22EA9209007F5C0D /* WishListManager.swift in Sources */,
@@ -4645,6 +4662,7 @@
 				F1AB912A22ED09AE0054341B /* SourceProgressIndicatorView.swift in Sources */,
 				F1AB913022ED12070054341B /* SourcesTableViewCell.swift in Sources */,
 				F12652D625A165340094E446 /* SourcesSplitViewController.swift in Sources */,
+				E1A2352B277F888C004563C9 /* LogStreamViewController.swift in Sources */,
 				F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */,
 				E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */,
 				F1D6A62C22E53E7000CBD045 /* String+Utilities.swift in Sources */,
