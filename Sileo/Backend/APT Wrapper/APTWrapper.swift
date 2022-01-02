@@ -326,6 +326,7 @@ class APTWrapper {
                 let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
                 array.withUnsafeBufferPointer { ptr in
                     let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    NSLog("[APT] [STDOUT] \(str)")
                     outputCallback(str, Int(STDOUT_FILENO))
                 }
             }
@@ -346,6 +347,7 @@ class APTWrapper {
                 let array = Array(UnsafeBufferPointer(start: buffer, count: bytesRead)) + [UInt8(0)]
                 array.withUnsafeBufferPointer { ptr in
                     let str = String(cString: unsafeBitCast(ptr.baseAddress, to: UnsafePointer<CChar>.self))
+                    NSLog("[APT] [STDERR] \(str)")
                     outputCallback(str, Int(STDERR_FILENO))
                 }
             }
@@ -420,6 +422,7 @@ class APTWrapper {
                             }
                         }
                     }
+                    NSLog("[APT] [SILEOFD] \(str)")
                 }
             }
 
