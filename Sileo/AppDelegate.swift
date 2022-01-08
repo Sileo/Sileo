@@ -318,7 +318,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         do {
             try BGTaskScheduler.shared.submit(fetchTask)
         } catch {
-            NSLog("[Sileo] Unable to submit task: \(error.localizedDescription)")
+            print("Unable to submit task: \(error.localizedDescription)")
         }
     }
     

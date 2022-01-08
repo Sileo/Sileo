@@ -5,6 +5,7 @@
 //  Created by Aarnav Tale on 6/28/21.
 //  Copyright © 2021 Sileo Team. All rights reserved.
 //
+import Evander
 
 enum APTParserErrors: LocalizedError {
     case missingSileoConf
@@ -177,10 +178,10 @@ extension APTWrapper {
         var status = 0
 
         (status, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
-        NSLog("[Sileo] Ran the command \(queryArguments)")
-        NSLog("[Sileo] Status = \(status)")
-        NSLog("[Sileo] aptStdout = \(aptStdout)")
-        NSLog("[Sileo] aptError = \(aptError)")
+        print("Ran the command \(queryArguments)")
+        print("Status = \(status)")
+        print("aptStdout = \(aptStdout)")
+        print("aptError = \(aptError)")
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
         
         return aptJsonOutput

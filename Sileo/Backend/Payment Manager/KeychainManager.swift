@@ -9,6 +9,7 @@
 import Foundation
 import Security
 import LocalAuthentication
+import Evander
 
 final class KeychainManager {
     
@@ -75,7 +76,7 @@ final class KeychainManager {
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
-        NSLog("[Sileo] Response is \(SecCopyErrorMessageString(response, nil))")
+        print("Response is \(SecCopyErrorMessageString(response, nil))")
         return response
     }
     

@@ -53,7 +53,7 @@ class DependencyResolverAccelerator {
         spawnAsRoot(args: [CommandPath.mkdir, "-p", CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chown, "-R", CommandPath.group, CommandPath.sileolists])
         spawnAsRoot(args: [CommandPath.chmod, "-R", "0755", CommandPath.sileolists])
-        NSLog("[Sileo] Created and platformatised \(CommandPath.sileolists)")
+        print("Created and platformatised \(CommandPath.sileolists)")
         #endif
         let resolverPrefix = depResolverPrefix
         for (sourcesFile, packages) in partialRepoList {
@@ -80,7 +80,7 @@ class DependencyResolverAccelerator {
             }
             do {
                 try sourcesData.write(to: newSourcesFile.aptUrl)
-                NSLog("[Sileo] Wrote to \(newSourcesFile.aptUrl.path)")
+                print("Wrote to \(newSourcesFile.aptUrl.path)")
             } catch {
                 throw error
             }
