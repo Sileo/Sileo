@@ -41,8 +41,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     @objc private func showLog(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .ended {
-            self.present(LogStreamViewController.shared, animated: true)
+        if #available(iOS 13.0, *) {
+            if gesture.state == .began && !LogStreamViewController.shared.isModalInPresentation {
+                self.present(LogStreamViewController.shared, animated: true)
+            }
+        } else {
+            if gesture.state == .began && !LogStreamViewController.shared.isBeingPresented {
+                self.present(LogStreamViewController.shared, animated: true)
+            }
         }
     }
     
