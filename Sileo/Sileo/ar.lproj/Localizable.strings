@@ -41,7 +41,7 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@\n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
+"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
@@ -113,7 +113,7 @@
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
 "Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح، قد يكون المستودع غير متصل ب الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
+"Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح⁉️، قد يكون المستودع غير متصل بـ الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -158,11 +158,11 @@
 "Pog_Developer" = "أنت الآن مطور!";
 "Developer_Mode_Explain" = "يقوم وضع المطور بتعطيل متطلبات HTTPS لواجهة برمجة تطبيقات الدفع.";
 "Auto_Refresh_Sources" = "تحديث تلقائي للمصادر";
-"iCloud_Profile" = "إظهار صورة iCloud في البروفايل";
+"iCloud_Profile" = "إظهار صورة iCloud في المميز";
 "Cache_Size" = "حجم ذاكرة التخزين المؤقت";
 "Clear_Cache" = "تنظيف ذاكرة التخزين المؤقت للشبكة";
 "Clear_Cache_Message" = "هل تريد مسح ذاكرة التخزين المؤقت للشبكة؟ هذا سوف يحرر %@";
-"Language" = "الغة";
+"Language" = "الُغة";
 "Use_System_Language" = "استخدم لغة النظام";
 "Apply_Changes" = "تطبيق التغييرات";
 "Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل سيلو";
@@ -170,11 +170,11 @@
 "Always_Show_Install_Log" = "إظهار سجل التثبيت دائمًا";
 "Auto_Show_Queue" = "إظهار قائمة الانتظار عند ترقية الكل";
 
-"Sileo_Light" = "Sileo فاتح";
+"Sileo_Light" = "سيلو فاتح";
 "Sileo_Dark" = "سيلو داكن";
-"Sileo_Adaptive" = "تكيُّف Sileo";
+"Sileo_Adaptive" = "تكيُّف سيلو";
 "System" = "النظام";
-"Theme_Settings" = "اعدادات السمه";
+"Theme_Settings" = "إعدادات السمة";
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
