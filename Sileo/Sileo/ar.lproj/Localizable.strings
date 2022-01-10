@@ -23,7 +23,7 @@
 "Cancel" = "إلغاء";
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
-"Sileo_Team" = "Sileo Team";
+"Sileo_Team" = "فريق سيلو";
 "Warning" = "تحذير";
 "Edit" = "تعديل";
 
@@ -41,11 +41,11 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@\n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "إلغاء التنزيلات";
 
 "Package_Upgrade_Action" = "ترقية";
 "Package_Reinstall_Action" = "إعادة التثبيت";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
 "Wishlist" = "قائمة الأمنيات";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "لا توجد حزم جديدة";
+"News_Check_Later" = "لا توجد حزم جديدة مفهرسة حتى الآن. عُدّ في غضون ساعات قليله,  ويجب أن تشاهد الحزم تبدأ تظهر هنا كما الحصول على تحديث الريبو.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
@@ -80,7 +80,7 @@
 "Package_Search.Placeholder" = "ابحث عن حزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "حجم المثبت";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "Remove";
+"Remove" = "حذف";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -107,13 +107,13 @@
 "Ignored Updates" = "التحديثات المُتجاهلة";
 
 "Repos" = "المستودعات";
-"Repo" = "Repository";
+"Repo" = "مستودع";
 
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "إضافة ديست ريبو";
+"Incorrect_Repo" = "%@ لا يبدو أن الريبو صالح، قد يكون الريبو دون اتصال أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -129,7 +129,7 @@
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
 
 "Installed_Package_Header" = "حزمة مثبتة";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "الحزم المثبتة";
 "Version" = "الإصدار";
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
@@ -141,7 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "المشتريات";
 "Settings_Payment_Provider.No_Purchases" = "لا توجد مشتريات";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "المصادقة لإتمام عملية الشراء";
 
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
@@ -152,12 +152,12 @@
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Swipe_Actions" = "إجراءات السحب";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "إظهار الحزم من Canister";
 "Show_Ignored_Updates" = "إظهار التحديثات المُتجاهلة";
 "Developer_Mode" = "وضع المطور";
 "Pog_Developer" = "أنت الآن مطور!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"Developer_Mode_Explain" = "يقوم وضع المطور بتعطيل متطلبات HTTPS لواجهة برمجة تطبيقات الدفع.";
+"Auto_Refresh_Sources" = "تحديث تلقائي للمصادر";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
 "Cache_Size" = "Cache Size";
 "Clear_Cache" = "Clear Network Cache";
