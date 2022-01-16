@@ -20,9 +20,7 @@ func isBlank(char: CChar) -> Bool {
 }
 
 func parseversion(version: String) throws -> DpkgVersion {
-    let strArr = version.utf8.map { Int8($0) } + [0]
-
-    var version = ArraySlice<CChar>(strArr)
+    var version = ArraySlice(version.utf8CString)
     var searchIdx = 0
     var found = false
     for char in version {
