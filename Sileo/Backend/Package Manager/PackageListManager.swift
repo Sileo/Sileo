@@ -298,11 +298,11 @@ final class PackageListManager {
             } else {
                 if let otherPkg = dict[packageID] {
                     if DpkgWrapper.isVersion(package.version, greaterThan: otherPkg.version) {
-                        package.addOld([otherPkg])
+                        package.addOld(from: otherPkg)
                         dict[packageID] = package
+                    } else {
+                        otherPkg.addOld(from: package)
                     }
-                    otherPkg.addOldInternal(Array(package.allVersionsInternal.values))
-                    package.allVersionsInternal = otherPkg.allVersionsInternal
                 } else {
                     dict[packageID] = package
                 }

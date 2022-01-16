@@ -33,11 +33,9 @@ final class Package: Hashable, Equatable {
     public var tags: PackageTags = .none
     public var nativeDepiction: String?
     
-    public var allVersionsInternal = [String: PackageOld]()
+    public var allVersionsInternal = [String: Package]()
     public var allVersions: [Package] {
-        var allVersionsInternal = allVersionsInternal.map { $1.packageNew }
-        allVersionsInternal.insert(self, at: 0)
-        return allVersionsInternal
+        [self] + Array(allVersionsInternal.values)
     }
     
     public var fromStatusFile: Bool = false
@@ -85,113 +83,24 @@ final class Package: Hashable, Equatable {
     
     public func addOld(_ packages: [Package]) {
         for package in packages {
-            let packageOld = PackageOld(package: package)
-            allVersionsInternal[packageOld.version] = packageOld
+            if package == self { continue }
+            allVersionsInternal[package.version] = package
         }
     }
     
-    public func addOldInternal(_ packages: [PackageOld]) {
-        for package in packages {
+    public func addOld(from package: Package) {
+        for package in package.allVersions {
+            if package == self { continue }
             allVersionsInternal[package.version] = package
         }
     }
     
     public func getVersion(_ version: String) -> Package? {
         if version == self.version { return self }
-        if let package = allVersionsInternal[version] {
-            return package.packageNew
-        }
-        return nil
+        return allVersionsInternal[version]
     }
 }
 
 func == (lhs: Package, rhs: Package) -> Bool {
-    lhs.package == rhs.package && lhs.version == rhs.version
-}
-
-final class PackageOld: Hashable, Equatable {
-    public var sourceFile: String?
-    public var package: String
-    public var packageID: String
-    public var name: String?
-    public var version: String
-    public var rawControl: [String: String] = [:]
-    public var rawData: Data?
-    public var sourceFileURL: URL?
-    public var rawSection: String?
-    public var section: String?
-    public var source: String?
-    public var essential: String?
-    public var commercial: Bool = false
-    public var filename: String?
-    public var size: String?
-    public var packageFileURL: URL?
-    public var architecture: String?
-    public var installedSize: Int?
-    public var author: String?
-    public var maintainer: String?
-    public var nativeDepiction: String?
-    
-    init(package: Package) {
-        self.sourceFile = package.sourceFile
-        self.package = package.package
-        self.packageID = package.packageID
-        self.name = package.name
-        self.version = package.version
-        self.rawControl = package.rawControl
-        self.rawData = package.rawData
-        self.sourceFileURL = package.sourceFileURL
-        self.source = package.source
-        self.essential = package.essential
-        self.commercial = package.commercial
-        self.filename = package.filename
-        self.size = package.size
-        self.packageFileURL = package.packageFileURL
-        self.architecture = package.architecture
-        self.installedSize = package.installedSize
-        self.author = package.author
-        self.maintainer = package.maintainer
-        self.nativeDepiction = package.nativeDepiction
-        self.section = package.section
-        self.rawSection = package.rawSection
-    }
-    
-    public var packageNew: Package {
-        let package = Package(package: self.package, version: self.version)
-        package.sourceFile = self.sourceFile
-        package.name = self.name
-        package.rawControl = self.rawControl
-        package.rawData = self.rawData
-        package.sourceFileURL = self.sourceFileURL
-        package.source = self.source
-        package.essential = self.essential
-        package.commercial = self.commercial
-        package.filename = self.filename
-        package.size = self.size
-        package.packageFileURL = self.packageFileURL
-        package.architecture = self.architecture
-        package.installedSize = self.installedSize
-        package.maintainer = self.maintainer
-        package.author = self.author
-        package.nativeDepiction = self.nativeDepiction
-        package.section = self.section
-        package.rawSection = self.rawSection
-        return package
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(package)
-        hasher.combine(version)
-    }
-    
-    public var defaultIcon: UIImage {
-        if let rawSection = rawSection {
-            return UIImage(named: "Category_\(rawSection)") ?? UIImage(named: "Category_tweak")!
-        }
-        return UIImage(named: "Category_tweak")!
-    }
-}
-
-func == (lhs: PackageOld, rhs: PackageOld) -> Bool {
     lhs.package == rhs.package && lhs.version == rhs.version
 }

@@ -677,6 +677,10 @@
 		E15A954D26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
+		E172ACE7279490DF0066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACE6279490DF0066933E /* Down */; };
+		E172ACE9279490E40066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACE8279490E40066933E /* Down */; };
+		E172ACEB279490E90066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACEA279490E90066933E /* Down */; };
+		E172ACED279490EF0066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACEC279490EF0066933E /* Down */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
@@ -714,10 +718,6 @@
 		E1C960A7269E0D1F00F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */; };
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
-		E1CB21FA27236BAA00B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21F927236BAA00B3141C /* DepictionKit */; };
-		E1CB21FE27236BB700B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21FD27236BB700B3141C /* DepictionKit */; };
-		E1CB220027236BBE00B3141C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB21FF27236BBE00B3141C /* DepictionKit */; };
-		E1CB6D542725A9D3001B349C /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB6D532725A9D3001B349C /* DepictionKit */; };
 		E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; platformFilter = ios; };
@@ -1743,13 +1743,13 @@
 				E12818D926BBFAA500D2553B /* libbz2.tbd in Frameworks */,
 				E12818DA26BBFAA500D2553B /* SQLite in Frameworks */,
 				E12818DB26BBFAA500D2553B /* LNZTreeView in Frameworks */,
+				E172ACEB279490E90066933E /* Down in Frameworks */,
 				E12818DD26BBFAA500D2553B /* Security.framework in Frameworks */,
 				E12818DE26BBFAA500D2553B /* libzstd.1-mac.tbd in Frameworks */,
 				E12818DF26BBFAA500D2553B /* Cosmos in Frameworks */,
 				E12818E026BBFAA500D2553B /* libiconv.tbd in Frameworks */,
 				E12818E126BBFAA500D2553B /* SwipeCellKit in Frameworks */,
 				E12818E326BBFAA500D2553B /* Alderis in Frameworks */,
-				E1CB21FE27236BB700B3141C /* DepictionKit in Frameworks */,
 				E12818E526BBFAA500D2553B /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1765,7 +1765,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CB220027236BBE00B3141C /* DepictionKit in Frameworks */,
 				E14E4CD326DAD572002AE3B4 /* liblzma.5-mac.tbd in Frameworks */,
 				E14E4CD626DAD572002AE3B4 /* libz.tbd in Frameworks */,
 				E14E4CD726DAD572002AE3B4 /* libbz2.tbd in Frameworks */,
@@ -1778,6 +1777,7 @@
 				E14E4CDD26DAD572002AE3B4 /* Cosmos in Frameworks */,
 				E14E4CDE26DAD572002AE3B4 /* libiconv.tbd in Frameworks */,
 				E10C545F2707DCAB008BD0AA /* Evander in Frameworks */,
+				E172ACED279490EF0066933E /* Down in Frameworks */,
 				E14E4CDF26DAD572002AE3B4 /* SwipeCellKit in Frameworks */,
 				E14E4CE126DAD572002AE3B4 /* Alderis in Frameworks */,
 				E14E4CE226DAD572002AE3B4 /* LNPopupController-Static in Frameworks */,
@@ -1802,8 +1802,8 @@
 				E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
-				E1CB6D542725A9D3001B349C /* DepictionKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
+				E172ACE9279490E40066933E /* Down in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
@@ -1814,7 +1814,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CB21FA27236BAA00B3141C /* DepictionKit in Frameworks */,
 				E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */,
 				E1EB035F268BA3D40097CEE1 /* liblzma.5-mac.tbd in Frameworks */,
 				E14C5ED126680E030080BFCE /* libz.tbd in Frameworks */,
@@ -1827,6 +1826,7 @@
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				E10C54592707DC92008BD0AA /* Evander in Frameworks */,
+				E172ACE7279490DF0066933E /* Down in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E14897E2269B64B60061A301 /* Alderis in Frameworks */,
 				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
@@ -3247,7 +3247,7 @@
 				E128181526BBFAA500D2553B /* LNPopupController-Static */,
 				E128181726BBFAA500D2553B /* Alderis */,
 				E10C545C2707DCA5008BD0AA /* Evander */,
-				E1CB21FD27236BB700B3141C /* DepictionKit */,
+				E172ACEA279490E90066933E /* Down */,
 			);
 			productName = iTweak;
 			productReference = E128194526BBFAA500D2553B /* Sileo (Test Handler).app */;
@@ -3299,7 +3299,7 @@
 				E14E4C1726DAD572002AE3B4 /* LNPopupController-Static */,
 				E14E4C1926DAD572002AE3B4 /* Alderis */,
 				E10C545E2707DCAB008BD0AA /* Evander */,
-				E1CB21FF27236BBE00B3141C /* DepictionKit */,
+				E172ACEC279490EF0066933E /* Down */,
 			);
 			productName = iTweak;
 			productReference = E14E4D4926DAD572002AE3B4 /* Sileo-Preboot.app */;
@@ -3347,7 +3347,7 @@
 				E19F95A1269245EB002ABB8C /* LNPopupController-Static */,
 				E14897E3269B64C90061A301 /* Alderis */,
 				E10C545A2707DC9C008BD0AA /* Evander */,
-				E1CB6D532725A9D3001B349C /* DepictionKit */,
+				E172ACE8279490E40066933E /* Down */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3379,7 +3379,7 @@
 				E19F959F269245E4002ABB8C /* LNPopupController-Static */,
 				E14897E1269B64B60061A301 /* Alderis */,
 				E10C54582707DC92008BD0AA /* Evander */,
-				E1CB21F927236BAA00B3141C /* DepictionKit */,
+				E172ACE6279490DF0066933E /* Down */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -3470,6 +3470,7 @@
 				E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */,
 				E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E10C54572707DC92008BD0AA /* XCRemoteSwiftPackageReference "Evander" */,
+				E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -5002,7 +5003,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5053,7 +5054,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5103,7 +5104,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5231,7 +5232,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5286,7 +5287,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5343,7 +5344,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5453,7 +5454,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5504,7 +5505,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5663,7 +5664,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5712,7 +5713,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5884,7 +5885,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -5937,7 +5938,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.2.7;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -6180,6 +6181,14 @@
 				kind = branch;
 			};
 		};
+		E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 		E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/LNPopupController";
@@ -6304,6 +6313,26 @@
 			package = E14E4C1A26DAD572002AE3B4 /* XCRemoteSwiftPackageReference "Alderis" */;
 			productName = Alderis;
 		};
+		E172ACE6279490DF0066933E /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E172ACE8279490E40066933E /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E172ACEA279490E90066933E /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		E172ACEC279490EF0066933E /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
 		E19A53412617438700BB8A69 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13638C82614F53400698D55 /* XCRemoteSwiftPackageReference "Cosmos" */;
@@ -6333,22 +6362,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */;
 			productName = "LNPopupController-Static";
-		};
-		E1CB21F927236BAA00B3141C /* DepictionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
-		};
-		E1CB21FD27236BB700B3141C /* DepictionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
-		};
-		E1CB21FF27236BBE00B3141C /* DepictionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
-		};
-		E1CB6D532725A9D3001B349C /* DepictionKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DepictionKit;
 		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;
