@@ -252,6 +252,7 @@ final class RepoManager {
         writeListToFile()
         for repo in repos {
             DatabaseManager.shared.deleteRepo(repo: repo)
+            PaymentManager.shared.removeProviders(for: repo)
         }
         NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }

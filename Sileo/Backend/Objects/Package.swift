@@ -80,7 +80,7 @@ final class Package: Hashable, Equatable {
     public func hasIcon() -> Bool {
         icon?.isEmpty == false
     }
-    
+
     public func addOld(_ packages: [Package]) {
         for package in packages {
             if package == self { continue }

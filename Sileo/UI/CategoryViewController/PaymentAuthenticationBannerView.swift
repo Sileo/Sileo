@@ -11,7 +11,7 @@ import Foundation
 final class PaymentAuthenticationBannerView: UIView {
     private var stackView: UIStackView
     private var hairlineHeightConstraint: NSLayoutConstraint?
-    private var provider: PaymentProvider
+    private weak var provider: PaymentProvider?
     private weak var viewController: CategoryViewController?
     
     init(provider: PaymentProvider, bannerDictionary: [String: String], viewController: CategoryViewController) {
@@ -85,7 +85,9 @@ final class PaymentAuthenticationBannerView: UIView {
     }
     
     @objc func buttonTapped(_ selector: Any?) {
-        PaymentAuthenticator.shared.authenticate(provider: provider, window: self.window) { error, success in
+        guard let provider = provider else { return }
+        PaymentAuthenticator.shared.authenticate(provider: provider, window: self.window) { [weak self] error, success in
+            guard let self = self else { return }
             if let error = error {
                 self.viewController?.present(PaymentError.alert(for: error,
                                                                 title: String(localizationKey: "Provider_Auth_Fail.Title", type: .error)),

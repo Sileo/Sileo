@@ -14,6 +14,16 @@ class PaymentManager {
     var paymentProvidersForURL = [String: PaymentProvider]()
     var paymentProvidersForEndpoint = [String: PaymentProvider]()
     
+    func removeProviders(for repo: Repo) {
+        print("Providers for URL = \(paymentProvidersForURL)\nProviders for Endpoint = \(paymentProvidersForEndpoint)\nDownload Provider = \(DownloadManager.shared.repoDownloadOverrideProviders)")
+        guard let sourceRepo = repo.url?.absoluteString.lowercased() else { return }
+        if let provider = paymentProvidersForURL[sourceRepo] {
+            paymentProvidersForURL[sourceRepo] = nil
+            paymentProvidersForEndpoint[provider.baseURL.absoluteString] = nil
+        }
+        DownloadManager.shared.repoDownloadOverrideProviders[sourceRepo] = nil
+    }
+    
     func getAllPaymentProviders(completion: @escaping (Set<PaymentProvider>) -> Void) {
         let group = DispatchGroup()
         var providers = Set<PaymentProvider>()

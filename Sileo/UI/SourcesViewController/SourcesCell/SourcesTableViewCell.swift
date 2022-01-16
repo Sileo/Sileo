@@ -13,7 +13,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     
     static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
     
-    public var repo: Repo? = nil {
+    public weak var repo: Repo? = nil {
         didSet {
             if let repo = repo {
                 self.title = repo.displayName

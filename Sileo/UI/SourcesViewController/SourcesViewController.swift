@@ -325,6 +325,16 @@ final class SourcesViewController: SileoViewController {
         })
     }
     
+    private func deleteRepo(at indexPath: IndexPath) {
+        let repo = self.sortedRepoList[indexPath.row]
+        RepoManager.shared.remove(repo: repo)
+        tableView?.deleteRows(at: [indexPath], with: .fade)
+        self.reSortList()
+        updatingRepoList.removeAll { $0 == repo }
+        self.updateFooterCount()
+        NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+    }
+    
     @objc func reloadRepo(_ notification: NSNotification) {
         if !Thread.isMainThread {
             DispatchQueue.main.async {
@@ -730,12 +740,7 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
             }
             let deleteAction = UIAction(title: "Remove") { [weak self] _ in
                 guard let strong = self else { return }
-                let repo = strong.sortedRepoList[indexPath.row]
-                RepoManager.shared.remove(repo: repo)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                strong.reSortList()
-                strong.updateFooterCount()
-                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                strong.deleteRepo(at: indexPath)
             }
             let refreshAction = UIAction(title: "Refresh") { [weak self] _ in
                 guard let strong = self else { return }
@@ -786,13 +791,8 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
         if !self.canEditRow(indexPath: indexPath) {
             return UISwipeActionsConfiguration(actions: [refresh])
         }
-        let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _, completionHandler in
-            let repo = self.sortedRepoList[indexPath.row]
-            repoManager.remove(repo: repo)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            self.reSortList()
-            self.updateFooterCount()
-            NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+        let remove = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { [weak self] _, _, completionHandler in
+            self?.deleteRepo(at: indexPath)
             completionHandler(true)
         }
         return UISwipeActionsConfiguration(actions: [remove, refresh])
