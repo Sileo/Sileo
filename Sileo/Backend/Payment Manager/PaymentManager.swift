@@ -54,10 +54,14 @@ class PaymentManager {
                     return completion(PaymentError(error: error), nil)
             }
             // Decode response
-            guard let endpoint = String(data: data, encoding: .utf8) else {
+            guard var endpoint = String(data: data, encoding: .utf8) else {
                 return completion(PaymentError.noPaymentProvider, nil)
             }
-            guard let endpointURL = URL(string: endpoint.trimmingCharacters(in: .whitespacesAndNewlines)),
+            endpoint = endpoint.trimmingCharacters(in: .whitespacesAndNewlines)
+            if endpoint.last != "/" {
+                endpoint += "/"
+            }
+            guard let endpointURL = URL(string: endpoint),
                 endpointURL.isSecure else {
                     return completion(PaymentError.noPaymentProvider, nil)
             }
