@@ -18,10 +18,13 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
+        _ = LogStreamViewController.shared
+        // Prepare the Evander manifest
+        EvanderNetworking.CACHE_FORCE = .libraryDirectory
+        Evander.prepare()
         #if targetEnvironment(macCatalyst)
         _ = MacRootWrapper.shared
         #endif
-        _ = LogStreamViewController.shared
         SileoThemeManager.shared.updateUserInterface()
         // Begin parsing sources files
         _ = RepoManager.shared
@@ -29,9 +32,6 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         _ = PackageListManager.shared
         _ = DatabaseManager.shared
         _ = DownloadManager.shared
-        // Prepare the Evander manifest
-        EvanderNetworking.CACHE_FORCE = .libraryDirectory
-        Evander.prepare()
         // Start the language helper for customised localizations
         _ = LanguageHelper.shared
         
