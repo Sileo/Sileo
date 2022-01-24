@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
+"No_Category" = "(Без Категорії)";
+"Tweaks" = "Зміни";
 "Themes" = "Теми";
 "Utilities" = "Утиліти";
-"Applications" = "Applications";
-"Addons" = "Addons";
+"Applications" = "Програми";
+"Addons" = "Добавки";
 "Games" = "Ігри";
-"Developer" = "Developer";
+"Developer" = "Виробник";
 "Data_Storage" = "Data Storage";
 "Terminal_Support" = "Terminal Support";
 "Text_Editors" = "Text Editors";
