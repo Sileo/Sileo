@@ -72,27 +72,27 @@
 "Queued_Install_Heading" = "Інсталювати";
 "Queued_Uninstall_Heading" = "Uninstall";
 "Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Download_Errors_Heading" = "Помилки";
 
 "Installed_Heading" = "Installed";
 "Updates_Heading" = "Updates";
 "Upgrade_All_Button" = "Upgrade All";
 "Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
+"Sort_Name" = "Ім'я";
+"Sort_Date" = "Дата";
 "Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Sort_By" = "Сортувати по:";
 
 "Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
+"Package_By_Author" = "%@ від %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "від %@"; // %@ = author name
 "Packages_By_Author" = "Packages by %@"; // %@ = author name
 
 "Featured_Page" = "Featured";
-"News_Page" = "New";
+"News_Page" = "Нові";
 "Sources_Page" = "Sources";
 "Packages_Page" = "Packages";
-"Search_Page" = "Search";
+"Search_Page" = "Пошук";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
 "Refresh" = "Refresh";
@@ -101,7 +101,7 @@
 "All_Packages.Title" = "All Packages";
 "All_Packages.Cell_Subtitle" = "See all packages from your sources";
 
-"All_Categories" = "All Categories";
+"All_Categories" = "Всі Категорії";
 "Internal_Repo" = "Internal Repos";
 "External_Repo" = "External Repos";
 "Ignored Updates" = "Ignored Updates";
