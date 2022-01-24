@@ -9,23 +9,23 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
+"About" = "Про Програму";
+"Close" = "Закрити";
 "Double tap to open." = "Double tap to open.";
 "Untitled_Repo" = "Untitled Repo";
-"OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"OK" = "ОК";
+"Done" = "Готово";
+"Done_Editing" = "Готово";
+"More_Info" = "Більше Інформації";
+"Loading" = "Завантаження…";
+"Share" = "Поділитись";
+"Delete" = "Видалити";
+"Cancel" = "Скасувати";
+"Acknowledge" = "Все Ясно";
+"Remove" = "Видалити";
+"Sileo_Team" = "Команда Sileo";
+"Warning" = "Попередження";
+"Edit" = "Змінити";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -34,31 +34,31 @@
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Downloading_Package_Status" = "Завантаження";
+"Queued_Package_Status" = "В черзі";
+"Ready_Status" = "Готово";
+"Removal_Queued_Package_Status" = "В черзі для видалення";
+"Download_Starting" = "Запуск завантаження…";
+"Download_Progress" = "%@ від %@"; // first %@ = amount downloaded, second %@ = total to download
 
 "Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
 "Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
+"Queue_Clear_Button" = "Почистити Чергу";
 "Queue_Cancel_Downloads" = "Cancel Downloads";
 
-"Package_Upgrade_Action" = "Upgrade";
+"Package_Upgrade_Action" = "Оновити";
 "Package_Reinstall_Action" = "Reinstall";
 "Package_Uninstall_Action" = "Uninstall";
 "Package_Modify_Action" = "Modify";
 "Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Queue_Action" = "Черга";
+"Package_Cancel_Action" = "Скасувати";
+"Package_Paid" = "Оплачений";
 
 "Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
+"Package_Developer_Find_Action" = "Більше від цього Виробника";
+"Package_Support_Action" = "Підтримка";
 "Package_Hold_Enable_Action" = "Ignore Future Updates";
 "Package_Hold_Disable_Action" = "Stop Ignoring Updates";
 "Package_Wishlist_Add" = "Add to Wishlist";
@@ -69,7 +69,7 @@
 "News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
+"Queued_Install_Heading" = "Інсталювати";
 "Queued_Uninstall_Heading" = "Uninstall";
 "Queued_Update_Heading" = "Update";
 "Download_Errors_Heading" = "Errors";
@@ -123,30 +123,30 @@
 
 "Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
 
-"Package_Details_Tab" = "Details";
+"Package_Details_Tab" = "Деталі";
 "Package_Changelog_Tab" = "Changelog";
 "Package_No_Description_Available" = "No description is available for this package.";
 "Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
 
 "Installed_Package_Header" = "Installed Package";
 "Installed_Packages" = "Installed Packages";
-"Version" = "Version";
+"Version" = "Версія";
 "Show_Package_Contents_Button" = "Show Package Contents";
 
-"Licenses_Page_Title" = "Licenses";
+"Licenses_Page_Title" = "Ліцензії";
 "Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "Payment Providers";
 "Settings_Translations_Heading" = "Translations";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Покупки";
 "Settings_Payment_Provider.No_Purchases" = "No purchases";
 "Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
+"Settings" = "Настройки";
+"Settings_Page_Title" = "Настройки";
+"Dark_Mode_Toggle" = "Темний режим";
+"Theme" = "Тема";
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
 "Auto_Complete_Queue" = "Auto Complete Queue";
@@ -160,9 +160,9 @@
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
 "Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache" = "Очистити Мережний Кеш";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
+"Language" = "Мова";
 "Use_System_Language" = "Use System Language";
 "Apply_Changes" = "Apply Changes";
 "Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
