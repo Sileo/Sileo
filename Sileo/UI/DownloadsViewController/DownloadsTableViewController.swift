@@ -370,7 +370,6 @@ class DownloadsTableViewController: SileoViewController {
         if isInstalling {
             return
         }
-        print("Contents = \(URL(fileURLWithPath: ("\(CommandPath.lazyPrefix)/var/cache/apt/archives/")).implicitContents.map { $0.absoluteString })")
         isInstalling = true
         var earlyBreak = false
         if UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive,

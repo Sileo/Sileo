@@ -178,7 +178,6 @@ final class DownloadManager {
                 return
             }
             let downloadURL = url ?? URL(string: filename)
-            print("Downloading \(package.name ?? package.packageID) from \(downloadURL?.absoluteString ?? "Nil")")
             download.started = true
             download.failureReason = nil
             download.task = RepoManager.shared.queue(from: downloadURL, progress: { progress in
