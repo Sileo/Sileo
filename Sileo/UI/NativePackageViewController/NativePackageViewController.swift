@@ -468,6 +468,8 @@ extension NativePackageViewController: DepictionDelegate {
             break
         case .actionError(error: let error, action: let action):
             depictionError(error: "\(error) for \(action)")
+        case .openPackage(package: let package):
+            break
         }
     }
     
