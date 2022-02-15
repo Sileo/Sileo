@@ -58,8 +58,12 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
         // Quite frankly the backend here sucks ass, so if you open the sources page too quick after launching the image will not be set
         // This will pull it from local cache in the event that we're too quick. If doesn't exist in Cache, show the default icon
         if repo.url?.host == "apt.thebigboss.org" {
-            self.icon = UIImage(named: "BigBoss")
-            return
+            let url = StoreURL("deprecatedicons/BigBoss@\(Int(UIScreen.main.scale)).png")!
+            let cache = EvanderNetworking.imageCache(url, scale: UIScreen.main.scale)
+            if let image = cache.1 {
+                self.icon = image
+                return
+            }
         }
         if let icon = repo.repoIcon {
             self.icon = icon

@@ -403,34 +403,42 @@ final class RepoManager {
             } else {
                 repo.isIconLoaded = true
                 DispatchQueue.global().async {
-                    if repo.url?.host == "apt.thebigboss.org" {
-                        repo.repoIcon = UIImage(named: "BigBoss")
-                        return
-                    }
-                    let scale = Int(UIScreen.main.scale)
-                    for i in (1...scale).reversed() {
-                        let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
-                        if let iconURL = URL(string: repo.repoURL)?
-                            .appendingPathComponent(filename)
-                            .appendingPathExtension("png") {
-                            let cache = EvanderNetworking.imageCache(iconURL, scale: CGFloat(i))
-                            if let image = cache.1 {
-                                DispatchQueue.main.async {
-                                    repo.repoIcon = image
-                                }
-                                if !cache.0 {
-                                    break
-                                }
+                    @discardableResult func image(for url: URL, scale: CGFloat) -> Bool {
+                        let cache = EvanderNetworking.imageCache(url, scale: scale)
+                        if let image = cache.1 {
+                            DispatchQueue.main.async {
+                                repo.repoIcon = image
                             }
-                            if let iconData = try? Data(contentsOf: iconURL) {
-                                DispatchQueue.main.async {
-                                    repo.repoIcon = UIImage(data: iconData, scale: CGFloat(i))
-                                    EvanderNetworking.saveCache(iconURL, data: iconData)
-                                }
-                                break
+                            if !cache.0 {
+                                return true
+                            }
+                        }
+                        if let iconData = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                repo.repoIcon = UIImage(data: iconData, scale: scale)
+                                EvanderNetworking.saveCache(url, data: iconData)
+                            }
+                            return true
+                        }
+                        return false
+                    }
+                    if repo.url?.host == "apt.thebigboss.org" {
+                        let url = StoreURL("deprecatedicons/BigBoss@\(Int(UIScreen.main.scale)).png")!
+                        image(for: url, scale: UIScreen.main.scale)
+                    } else {
+                        let scale = Int(UIScreen.main.scale)
+                        var shouldBreak = false
+                        for i in (1...scale).reversed() {
+                            guard !shouldBreak else { continue }
+                            let filename = i == 1 ? CommandPath.RepoIcon : "\(CommandPath.RepoIcon)@\(i)x"
+                            if let iconURL = URL(string: repo.repoURL)?
+                                .appendingPathComponent(filename)
+                                .appendingPathExtension("png") {
+                                shouldBreak = image(for: iconURL, scale: CGFloat(scale))
                             }
                         }
                     }
+                    
                     metadataUpdateGroup.leave()
                 }
             }

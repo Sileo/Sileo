@@ -68,7 +68,11 @@ class DepictionTableButtonView: DepictionBaseView, UIGestureRecognizerDelegate {
     private func loadRepoImage(_ repo: String) {
         guard let url = URL(string: repo) else { return }
         if url.host == "apt.thebigboss.org" {
-            self.repoIcon?.image = UIImage(named: "BigBoss")
+            let url = StoreURL("deprecatedicons/BigBoss@\(Int(UIScreen.main.scale)).png")!
+            let cache = EvanderNetworking.imageCache(url, scale: UIScreen.main.scale)
+            if let image = cache.1 {
+                repoIcon?.image = image
+            }
             return
         }
         let scale = Int(UIScreen.main.scale)
