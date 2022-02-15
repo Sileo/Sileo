@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import DepictionKit
+// import DepictionKit
 import Evander
 
 final class CanisterResolver {
@@ -274,6 +274,7 @@ struct ProvisionalPackage {
         self.section = entry["section"] as? String
     }
     
+    /*
     init(package: DepictionPackage) {
         self.name = package.name
         self.repo = package.repo_link.absoluteString
@@ -282,7 +283,7 @@ struct ProvisionalPackage {
         self.identifier = package.identifier
         self.description = repo
     }
-    
+    */
     public var defaultIcon: UIImage {
         if let section = section {
             return UIImage(named: "Category_\(section.lowercased())") ?? UIImage(named: "Category_tweak")!
