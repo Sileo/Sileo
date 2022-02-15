@@ -706,6 +706,10 @@
 		E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DB260E913A00F870B8 /* OG~ipad@2x.png */; };
 		E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; platformFilter = ios; };
 		E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BB50DC260E913A00F870B8 /* OG@3x.png */; };
+		E1C0113227BC322E00DC7B61 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1C0113127BC322E00DC7B61 /* DepictionKit */; };
+		E1C0113427BC323500DC7B61 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1C0113327BC323500DC7B61 /* DepictionKit */; };
+		E1C0113627BC323B00DC7B61 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1C0113527BC323B00DC7B61 /* DepictionKit */; };
+		E1C0113827BC324100DC7B61 /* DepictionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1C0113727BC324100DC7B61 /* DepictionKit */; };
 		E1C4993926CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
 		E1C4993A26CFED0A0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
 		E1C4993B26D0064C0093E290 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C4993826CFED0A0093E290 /* DatabaseManager.swift */; };
@@ -1750,6 +1754,7 @@
 				E12818E026BBFAA500D2553B /* libiconv.tbd in Frameworks */,
 				E12818E126BBFAA500D2553B /* SwipeCellKit in Frameworks */,
 				E12818E326BBFAA500D2553B /* Alderis in Frameworks */,
+				E1C0113627BC323B00DC7B61 /* DepictionKit in Frameworks */,
 				E12818E526BBFAA500D2553B /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1765,6 +1770,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C0113827BC324100DC7B61 /* DepictionKit in Frameworks */,
 				E14E4CD326DAD572002AE3B4 /* liblzma.5-mac.tbd in Frameworks */,
 				E14E4CD626DAD572002AE3B4 /* libz.tbd in Frameworks */,
 				E14E4CD726DAD572002AE3B4 /* libbz2.tbd in Frameworks */,
@@ -1806,6 +1812,7 @@
 				E172ACE9279490E40066933E /* Down in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
+				E1C0113427BC323500DC7B61 /* DepictionKit in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1814,6 +1821,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C0113227BC322E00DC7B61 /* DepictionKit in Frameworks */,
 				E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */,
 				E1EB035F268BA3D40097CEE1 /* liblzma.5-mac.tbd in Frameworks */,
 				E14C5ED126680E030080BFCE /* libz.tbd in Frameworks */,
@@ -3248,6 +3256,7 @@
 				E128181726BBFAA500D2553B /* Alderis */,
 				E10C545C2707DCA5008BD0AA /* Evander */,
 				E172ACEA279490E90066933E /* Down */,
+				E1C0113527BC323B00DC7B61 /* DepictionKit */,
 			);
 			productName = iTweak;
 			productReference = E128194526BBFAA500D2553B /* Sileo (Test Handler).app */;
@@ -3300,6 +3309,7 @@
 				E14E4C1926DAD572002AE3B4 /* Alderis */,
 				E10C545E2707DCAB008BD0AA /* Evander */,
 				E172ACEC279490EF0066933E /* Down */,
+				E1C0113727BC324100DC7B61 /* DepictionKit */,
 			);
 			productName = iTweak;
 			productReference = E14E4D4926DAD572002AE3B4 /* Sileo-Preboot.app */;
@@ -3348,6 +3358,7 @@
 				E14897E3269B64C90061A301 /* Alderis */,
 				E10C545A2707DC9C008BD0AA /* Evander */,
 				E172ACE8279490E40066933E /* Down */,
+				E1C0113327BC323500DC7B61 /* DepictionKit */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3380,6 +3391,7 @@
 				E14897E1269B64B60061A301 /* Alderis */,
 				E10C54582707DC92008BD0AA /* Evander */,
 				E172ACE6279490DF0066933E /* Down */,
+				E1C0113127BC322E00DC7B61 /* DepictionKit */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -6362,6 +6374,22 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */;
 			productName = "LNPopupController-Static";
+		};
+		E1C0113127BC322E00DC7B61 /* DepictionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DepictionKit;
+		};
+		E1C0113327BC323500DC7B61 /* DepictionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DepictionKit;
+		};
+		E1C0113527BC323B00DC7B61 /* DepictionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DepictionKit;
+		};
+		E1C0113727BC324100DC7B61 /* DepictionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DepictionKit;
 		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;

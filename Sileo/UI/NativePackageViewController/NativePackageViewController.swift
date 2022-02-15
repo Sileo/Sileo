@@ -7,28 +7,15 @@
 //
 
 import UIKit
-
-protocol PackageActions: UIViewController {
-    @available (iOS 13.0, *)
-    func actions() -> [UIAction]
-}
-
-class NativePackageViewController {
-    public class func viewController(for package: Package) -> PackageActions {
-        let packageVC = PackageViewController(nibName: "PackageViewController", bundle: nil)
-        packageVC.package = package
-        return packageVC
-    }
-}
-
-/*
-import UIKit
 import DepictionKit
 import MessageUI
 import Evander
 import SafariServices
 
-
+protocol PackageActions: UIViewController {
+    @available (iOS 13.0, *)
+    func actions() -> [UIAction]
+}
 
 class NativePackageViewController: SileoViewController, PackageActions {
     
@@ -703,4 +690,4 @@ extension NativePackageViewController {
     }
 
 }
-*/
+
