@@ -22,9 +22,10 @@ jobs:
           token: ${{ secrets.SILEO_PAT }}
       - name: Import all certificates
         env: 
-          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+          DEVELOPMENT_PASSWORD: ${{ secrets.DEVELOPMENT_PASSWORD }}
           DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
           DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+          DISTRIBUTION_PASSWORD: ${{ secrets.DISTRIBUTION_PASSWORD }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           security create-keychain -p "" build.keychain
@@ -35,12 +36,12 @@ jobs:
           security import <(echo $DEVELOPMENT_CERTIFICATE | base64 --decode) \
                           -f pkcs12 \
                           -k build.keychain \
-                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -P $DEVELOPMENT_PASSWORD \
                           -T /usr/bin/codesign
           security import <(echo $DISTRIBUTION_CERTIFICATE | base64 --decode) \
                           -f pkcs12 \
                           -k build.keychain \
-                          -P $SIGNING_CERTIFICATE_PASSWORD \
+                          -P $DISTRIBUTION_PASSWORD \
                           -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
         
