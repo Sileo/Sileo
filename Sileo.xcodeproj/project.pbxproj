@@ -377,8 +377,6 @@
 		E1428E642778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
 		E1428E652778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
 		E1428E662778E17E005B0885 /* Thread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1428E622778E17D005B0885 /* Thread+Extensions.swift */; };
-		E14897E2269B64B60061A301 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E14897E1269B64B60061A301 /* Alderis */; };
-		E14897E4269B64C90061A301 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E14897E3269B64C90061A301 /* Alderis */; };
 		E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
 		E14C5E66266547D10080BFCE /* ZSTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5E64266547D10080BFCE /* ZSTD.swift */; };
 		E14C5EBD266687C80080BFCE /* XZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EBC266687C80080BFCE /* XZ.swift */; };
@@ -675,6 +673,8 @@
 		E15A954A26B99104000DB10E /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954826B99104000DB10E /* LanguageSelectionViewController.swift */; };
 		E15A954C26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
 		E15A954D26B99408000DB10E /* LanguageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A954B26B99408000DB10E /* LanguageSelectionCell.swift */; };
+		E162DA0627BE78CF00DDD3E4 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E162DA0527BE78CF00DDD3E4 /* Alderis */; };
+		E162DA0827BE78E100DDD3E4 /* Alderis in Frameworks */ = {isa = PBXBuildFile; productRef = E162DA0727BE78E100DDD3E4 /* Alderis */; };
 		E166F6F9260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E166F6FA260A6FFF00663FA1 /* CanisterResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */; };
 		E172ACE7279490DF0066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACE6279490DF0066933E /* Down */; };
@@ -1798,6 +1798,7 @@
 				E10C545B2707DC9C008BD0AA /* Evander in Frameworks */,
 				E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC8266803F30080BFCE /* libbz2.tbd in Frameworks */,
+				E162DA0827BE78E100DDD3E4 /* Alderis in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
 				E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */,
 				E19A53422617438700BB8A69 /* Cosmos in Frameworks */,
@@ -1805,7 +1806,6 @@
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E172ACE9279490E40066933E /* Down in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
-				E14897E4269B64C90061A301 /* Alderis in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1825,10 +1825,10 @@
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
+				E162DA0627BE78CF00DDD3E4 /* Alderis in Frameworks */,
 				E10C54592707DC92008BD0AA /* Evander in Frameworks */,
 				E172ACE7279490DF0066933E /* Down in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
-				E14897E2269B64B60061A301 /* Alderis in Frameworks */,
 				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3345,9 +3345,9 @@
 				E19A5353261743BA00BB8A69 /* SQLite */,
 				E19A5355261743BD00BB8A69 /* LNZTreeView */,
 				E19F95A1269245EB002ABB8C /* LNPopupController-Static */,
-				E14897E3269B64C90061A301 /* Alderis */,
 				E10C545A2707DC9C008BD0AA /* Evander */,
 				E172ACE8279490E40066933E /* Down */,
+				E162DA0727BE78E100DDD3E4 /* Alderis */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3377,9 +3377,9 @@
 				E13638F62614F6E300698D55 /* SwipeCellKit */,
 				E1EA1CFE2615008100E56882 /* LNZTreeView */,
 				E19F959F269245E4002ABB8C /* LNPopupController-Static */,
-				E14897E1269B64B60061A301 /* Alderis */,
 				E10C54582707DC92008BD0AA /* Evander */,
 				E172ACE6279490DF0066933E /* Down */,
+				E162DA0527BE78CF00DDD3E4 /* Alderis */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -3468,9 +3468,9 @@
 				E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 				E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */,
 				E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */,
-				E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E10C54572707DC92008BD0AA /* XCRemoteSwiftPackageReference "Evander" */,
 				E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */,
+				E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -6125,14 +6125,6 @@
 				minimumVersion = 2.7.1;
 			};
 		};
-		E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elihwyma/Alderis";
-			requirement = {
-				branch = "spm-fixes";
-				kind = branch;
-			};
-		};
 		E14E4C1026DAD572002AE3B4 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -6178,6 +6170,14 @@
 			repositoryURL = "https://github.com/elihwyma/Alderis";
 			requirement = {
 				branch = "spm-fixes";
+				kind = branch;
+			};
+		};
+		E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/Alderis.git";
+			requirement = {
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -6273,16 +6273,6 @@
 			package = E13638F52614F6E300698D55 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
 		};
-		E14897E1269B64B60061A301 /* Alderis */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */;
-			productName = Alderis;
-		};
-		E14897E3269B64C90061A301 /* Alderis */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E14897E0269B64B60061A301 /* XCRemoteSwiftPackageReference "Alderis" */;
-			productName = Alderis;
-		};
 		E14E4C0F26DAD572002AE3B4 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E14E4C1026DAD572002AE3B4 /* XCRemoteSwiftPackageReference "Cosmos" */;
@@ -6311,6 +6301,16 @@
 		E14E4C1926DAD572002AE3B4 /* Alderis */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E14E4C1A26DAD572002AE3B4 /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E162DA0527BE78CF00DDD3E4 /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */;
+			productName = Alderis;
+		};
+		E162DA0727BE78E100DDD3E4 /* Alderis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */;
 			productName = Alderis;
 		};
 		E172ACE6279490DF0066933E /* Down */ = {
