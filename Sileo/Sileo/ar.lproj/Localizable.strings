@@ -23,9 +23,9 @@
 "Cancel" = "إلغاء";
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Sileo_Team" = "فريق سيلو";
+"Warning" = "تحذير";
+"Edit" = "تعديل";
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
@@ -41,11 +41,11 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "إلغاء التنزيلات";
 
 "Package_Upgrade_Action" = "ترقية";
 "Package_Reinstall_Action" = "إعادة التثبيت";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "إزالة من قائمة الأمنيات";
 "Wishlist" = "قائمة الأمنيات";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "لا توجد حزم جديدة";
+"News_Check_Later" = "لا توجد حزم جديدة مفهرسة حتى الآن. عُدّ في غضون ساعات قليله, ويجب أن تشاهد الحزم تبدأ تظهر هنا كما الحصول على تحديث المستودعات.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
@@ -74,13 +74,13 @@
 "Queued_Update_Heading" = "تحديث";
 "Download_Errors_Heading" = "أخطاء";
 
-"Installed_Heading" = "مثبت";
+"Installed_Heading" = "المثبتة";
 "Updates_Heading" = "التحديثات";
 "Upgrade_All_Button" = "ترقية الكل";
-"Package_Search.Placeholder" = "ابحث عن حزم";
+"Package_Search.Placeholder" = "ابحث عن الحزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "خجم المثبت";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -92,11 +92,11 @@
 "News_Page" = "جديد";
 "Sources_Page" = "المصادر";
 "Packages_Page" = "الحزم";
-"Search_Page" = "بحث";
+"Search_Page" = "البحث";
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "Remove";
+"Remove" = "إزالة";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -107,13 +107,13 @@
 "Ignored Updates" = "التحديثات المُتجاهلة";
 
 "Repos" = "المستودعات";
-"Repo" = "Repository";
+"Repo" = "مستودع";
 
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
 "Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح⁉️، قد يكون المستودع غير متصل بـ الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -129,7 +129,7 @@
 "Package_Changelogs_Unavailable" = "سجل التغييرات غير متاح لهذه الحزمة.";
 
 "Installed_Package_Header" = "حزمة مثبتة";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "الحزم المثبتة";
 "Version" = "الإصدار";
 "Show_Package_Contents_Button" = "عرض محتويات الحزمة";
 
@@ -141,7 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "المشتريات";
 "Settings_Payment_Provider.No_Purchases" = "لا توجد مشتريات";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "المصادقة لإكمال عملية الشراء";
 
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
@@ -152,29 +152,29 @@
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Swipe_Actions" = "إجراءات السحب";
-"Show_Provisional" = "Show Packages From Canister";
+"Show_Provisional" = "إظهار الحزم من Canister";
 "Show_Ignored_Updates" = "إظهار التحديثات المُتجاهلة";
 "Developer_Mode" = "وضع المطور";
 "Pog_Developer" = "أنت الآن مطور!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Developer_Mode_Explain" = "يقوم وضع المطور بتعطيل متطلبات HTTPS لواجهة برمجة تطبيقات الدفع.";
+"Auto_Refresh_Sources" = "تحديث تلقائي للمصادر";
+"iCloud_Profile" = "إظهار صورة iCloud في المميز";
+"Cache_Size" = "حجم ذاكرة التخزين المؤقت";
+"Clear_Cache" = "تنظيف ذاكرة التخزين المؤقت للشبكة";
+"Clear_Cache_Message" = "هل تريد مسح ذاكرة التخزين المؤقت للشبكة؟ هذا سوف يحرر %@";
+"Language" = "الُغة";
+"Use_System_Language" = "استخدم لغة النظام";
+"Apply_Changes" = "تطبيق التغييرات";
+"Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل سيلو";
+"Help_Translate" = "ساعد في ترجمة سيلو";
+"Always_Show_Install_Log" = "إظهار سجل التثبيت دائمًا";
+"Auto_Show_Queue" = "إظهار قائمة الانتظار عند ترقية الكل";
 
-"Sileo_Light" = "Sileo فاتح";
-"Sileo_Dark" = "Sileo داكن";
-"Sileo_Adaptive" = "تكيُّف Sileo";
+"Sileo_Light" = "سيلو فاتح";
+"Sileo_Dark" = "سيلو داكن";
+"Sileo_Adaptive" = "تكيُّف سيلو";
 "System" = "النظام";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "إعدادات السمة";
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";
@@ -185,20 +185,20 @@
 
 "Show_Install_Details" = "عرض التفاصيل";
 "Hide_Install_Details" = "إخفاء التفاصيل";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "فتح في Filza";
+"Copy_Path" = "نسخ المسار";
 
-"After_Install_Relaunch" = "إعادة تشغيل Sileo";
+"After_Install_Relaunch" = "إعادة تشغيل سيلو";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";
 "After_Install_Reboot" = "إعادة تشغيل الجهاز";
-"After_Install_Relaunch_Later" = "إعادة تشغيل Sileo لاحقًا";
+"After_Install_Relaunch_Later" = "إعادة تشغيل سيلو لاحقًا";
 "After_Install_Respring_Later" = "إعادة تشغيل واجهة النظام لاحقًا";
 "After_Install_Reboot_Later" = "إعادة تشغيل الجهاز لاحقًا";
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
-"Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
-"Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
+"Dangerous_Repo.Continue" = "أنا أقبل المخاطره، استمرار";
+"Dangerous_Repo.Cancel" = "الغاء اضافه المستودع";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
 "Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";

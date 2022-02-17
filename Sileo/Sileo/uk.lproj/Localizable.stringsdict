@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Automatically Add %#@sources@</string>
+      <string>Автоматично Додати %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -25,7 +25,7 @@
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>Додати %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -45,7 +45,7 @@
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>Додати знайдені %#@urls@ в буфері обміну:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d пакет</string>
         <key>few</key>
-        <string>%d Packages</string>
+        <string>%d пакетів</string>
         <key>many</key>
         <string>%d Packages</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d пакетів</string>
       </dict>
     </dict>
   </dict>

@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(Без Категорії)";
+"Tweaks" = "Зміни";
+"Themes" = "Теми";
+"Utilities" = "Утиліти";
+"Applications" = "Програми";
+"Addons" = "Добавки";
+"Games" = "Ігри";
+"Developer" = "Виробник";
+"Data_Storage" = "Зберігання Даних";
+"Terminal_Support" = "Підтримка Термінала";
+"Text_Editors" = "Редагувачі Тексту";
