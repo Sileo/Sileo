@@ -781,8 +781,6 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // We don't want to be able to delete the top section so we just return early here
         if indexPath.section == 0 { return nil }
-        // We're using this a bunch, best just keep it here
-        let repoManager = RepoManager.shared
         let refresh = UIContextualAction(style: .normal, title: String(localizationKey: "Refresh")) { _, _, completionHandler in
             self.updateSingleRepo(self.sortedRepoList[indexPath.row])
             completionHandler(true)

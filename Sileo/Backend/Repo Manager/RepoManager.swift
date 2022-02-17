@@ -423,7 +423,7 @@ final class RepoManager {
                         return false
                     }
                     if repo.url?.host == "apt.thebigboss.org" {
-                        let url = StoreURL("deprecatedicons/BigBoss@\(Int(UIScreen.main.scale)).png")!
+                        let url = StoreURL("deprecatedicons/BigBoss@\(Int(UIScreen.main.scale))x.png")!
                         image(for: url, scale: UIScreen.main.scale)
                     } else {
                         let scale = Int(UIScreen.main.scale)
