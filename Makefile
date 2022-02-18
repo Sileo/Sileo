@@ -166,7 +166,7 @@ endif
 
 giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 	$(MAKE) -C giveMeRoot \
-		CC="xcrun -sdk $(PLATFORM) cc -arch $(ARCH)"
+		CC="xcrun -sdk $(PLATFORM) clang -arch $(ARCH) -mios-version-min=12.0"
 
 ifneq ($(MAC), 1)
 all:: giveMeRoot/bin/giveMeRoot
