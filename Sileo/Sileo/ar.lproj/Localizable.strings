@@ -66,7 +66,9 @@
 "Wishlist" = "قائمة الأمنيات";
 
 "No_New_Packages" = "لا توجد حزم جديدة";
-"News_Check_Later" = "لا توجد حزم جديدة مفهرسة حتى الآن. عُدّ في غضون ساعات قليله, ويجب أن تشاهد الحزم تبدأ تظهر هنا كما الحصول على تحديث المستودعات.";
+"News_Check_Later" = "لا توجد حزم جديدة مجدولة حتى الآن. عُد في غضون بضعة ساعات وسترى أن الحزم بدأت تظهر هنا طالما أن المستودعات قد تم تحديثها.
+
+لا توجد حزم جديدة مجدولة حتى الآن. عُد في غضون ساعات قليله, ويجب أن تشاهد الحزم تبدأ تظهر هنا كما الحصول على تحديث المستودعات.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "تثبيت";
@@ -74,13 +76,13 @@
 "Queued_Update_Heading" = "تحديث";
 "Download_Errors_Heading" = "أخطاء";
 
-"Installed_Heading" = "المثبتة";
+"Installed_Heading" = "مثبت";
 "Updates_Heading" = "التحديثات";
 "Upgrade_All_Button" = "ترقية الكل";
-"Package_Search.Placeholder" = "ابحث عن الحزم";
+"Package_Search.Placeholder" = "ابحث عن حزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
-"Sort_Install_Size" = "خجم المثبت";
+"Sort_Install_Size" = "حجم التثبيت";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -92,7 +94,7 @@
 "News_Page" = "جديد";
 "Sources_Page" = "المصادر";
 "Packages_Page" = "الحزم";
-"Search_Page" = "البحث";
+"Search_Page" = "بحث";
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
@@ -112,8 +114,8 @@
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح⁉️، قد يكون المستودع غير متصل بـ الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
+"Add_Dist_Repo" = "إضافة مستودع ضار";
+"Incorrect_Repo" = "لا يبدو أن مستودع %@ صالح؟! قد يكون المستودع غير متوفر أو أنك أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -147,8 +149,8 @@
 "Settings_Page_Title" = "الإعدادات";
 "Dark_Mode_Toggle" = "الوضع الداكن";
 "Theme" = "السمة";
-"Tint_Color" = "لون الصبغة";
-"Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
+"Tint_Color" = "اللون الثانوي";
+"Reset_Tint_Color" = "إعادة تعيين اللون الثانوي";
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Swipe_Actions" = "إجراءات السحب";
@@ -162,17 +164,17 @@
 "Cache_Size" = "حجم ذاكرة التخزين المؤقت";
 "Clear_Cache" = "تنظيف ذاكرة التخزين المؤقت للشبكة";
 "Clear_Cache_Message" = "هل تريد مسح ذاكرة التخزين المؤقت للشبكة؟ هذا سوف يحرر %@";
-"Language" = "الُغة";
-"Use_System_Language" = "استخدم لغة النظام";
+"Language" = "اللغة";
+"Use_System_Language" = "استخدام لغة النظام";
 "Apply_Changes" = "تطبيق التغييرات";
-"Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل سيلو";
-"Help_Translate" = "ساعد في ترجمة سيلو";
+"Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل Sileo";
+"Help_Translate" = "ساعد في ترجمة Sileo";
 "Always_Show_Install_Log" = "إظهار سجل التثبيت دائمًا";
 "Auto_Show_Queue" = "إظهار قائمة الانتظار عند ترقية الكل";
 
-"Sileo_Light" = "سيلو فاتح";
-"Sileo_Dark" = "سيلو داكن";
-"Sileo_Adaptive" = "تكيُّف سيلو";
+"Sileo_Light" = "Sileo فاتح";
+"Sileo_Dark" = "Sileo داكن";
+"Sileo_Adaptive" = "تكيُّف Sileo";
 "System" = "النظام";
 "Theme_Settings" = "إعدادات السمة";
 
@@ -188,17 +190,17 @@
 "Open_In_Filza" = "فتح في Filza";
 "Copy_Path" = "نسخ المسار";
 
-"After_Install_Relaunch" = "إعادة تشغيل سيلو";
+"After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";
 "After_Install_Reboot" = "إعادة تشغيل الجهاز";
-"After_Install_Relaunch_Later" = "إعادة تشغيل سيلو لاحقًا";
+"After_Install_Relaunch_Later" = "إعادة تشغيل Sileo لاحقًا";
 "After_Install_Respring_Later" = "إعادة تشغيل واجهة النظام لاحقًا";
 "After_Install_Reboot_Later" = "إعادة تشغيل الجهاز لاحقًا";
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
-"Dangerous_Repo.Continue" = "أنا أقبل المخاطره، استمرار";
-"Dangerous_Repo.Cancel" = "الغاء اضافه المستودع";
+"Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
+"Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
 "Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
