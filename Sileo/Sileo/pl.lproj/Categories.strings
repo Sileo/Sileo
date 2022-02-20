@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
+"No_Category" = "(Brak kategorii)";
+"Tweaks" = "Ulepszenia";
+"Themes" = "Motywy";
+"Utilities" = "Narzędzia";
+"Applications" = "Aplikacje";
+"Addons" = "Dodatki";
+"Games" = "Gry";
+"Developer" = "Deweloper";
+"Data_Storage" = "Pamięć";
+"Terminal_Support" = "Wsparcie dla terminala";
 "Text_Editors" = "Edytory tekstu";
