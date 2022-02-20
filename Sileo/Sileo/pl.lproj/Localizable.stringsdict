@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Automatically Add %#@sources@</string>
+      <string>Automatycznie dodaj %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -19,13 +19,13 @@
         <key>many</key>
         <string>Sources</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Źródła</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>Dodaj %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -35,17 +35,17 @@
         <key>one</key>
         <string>Source</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Źródła</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>Dodaj %#@urls@ znalezione w twoim schowku:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -59,7 +59,7 @@
         <key>many</key>
         <string>URLs</string>
         <key>other</key>
-        <string>URLs</string>
+        <string>adresy URL</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
@@ -79,7 +79,7 @@
         <key>many</key>
         <string>%d Packages</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d paczek</string>
       </dict>
     </dict>
   </dict>
