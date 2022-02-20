@@ -16,19 +16,19 @@
 
 "Invalid_URL.Title" = "Niepoprawny adres URL";
 
-"Download_Size_Mismatch" = "Niezgodny rozmiar %@, a %@.";
+"Download_Size_Mismatch" = "Niezgodny rozmiar %@, otrzymano wzamian %@.";
 "Download_Failing_Status_Code" = "Popieranie nie powiodło się %ld";
-"Download_Hash_Mismatch" = "Niezgodna suma kontrolna %@, a %@.";
+"Download_Hash_Mismatch" = "Niezgodna suma kontrolna %@, otrzymano wzamian %@.";
 "Untrusted_Package" = "Paczka %@ jest niezaufana, i nie może zostać zweryfikowana";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Paczka z płatnościami musi być zabezpieczona (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
+"Invalid_Payment_Provider_Response" = "Dostawca płatności dostarczył nieprawidłową odpowiedź.";
 "No_Payment_Provider" = "To repozytorium nie wspiera płatności Sileo. Jeżeli jest to paczka z Cydia Store którą kiedyś zakupiłeś, połącz swoje konto aby pobrać.";
 
 "Package_Unavailable" = "Ta paczka nie jest dostępna w twoich źródłach. Upewnij się że repozytorium %@ jest dostępne.";
 
-"Installation_Error.Title" = "Błąd przy instalacji";
+"Installation_Error.Title" = "Wystąpił błąd przy instalacji";
 "Installation_Error.Body" = "Sileo nie może uzyskać uprawnień roota. Przeinstaluj Sileo przy użyciu SSH.";
 
 "FixingDpkg.Title" = "Naruszono Dpkg";
@@ -38,22 +38,22 @@
 "Try_Later" = "Spróbuj ponownie później.";
 
 "Sileo_Update_Required.Title" = "Wymagana aktualizacja Sileo";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Featured_Requires_Sileo_Update" = "Aktualizacja Sileo jest wymagana aby wyświetlić zakładkę wyróżnione. Może ona być wyświetlana nieprawidłowo.";
+"Depiction_Requires_Sileo_Update" = "Aktualizacja Sileo jest wymagana aby wyświetlić tą zakładkę. Może ona być wyświetlana nieprawidłowo.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Form_Error.Title" = "Wczytywanie formularza nie powiodło się";
+"Form_Load_Error" = "Pobieranie formularza z serwera nie powiodło się.";
+"Invalid_Form_Data" = "Serwer dostarczył nieprawidłowe dane.";
+"Form_Submit_Failure" = "Wystąpił błąd podczas próby wysłania formularza: %@";
+"Form_Submit_Error.Title" = "Wysłanie formularza nie powiodło się";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "Wysłanie emaila nie powiodło się";
+"Email_Unavailable.Body" = "Usługa email nie jest dostępna.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "Wczytanie profilu płatności nie powiodło się";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "Autoryzacja dostawcy nie powiodła się";
+"Purchase_Initiate_Fail.Title" = "Przetwarzanie płatności nie powiodło się";
+"Purchase_Complete_Fail.Title" = "Ukończenie płatności nie powiodło się";
+"Purchase_Auth_Complete_Fail.Title" = "Autentyfikacja nie mogła zostać ukończona";
