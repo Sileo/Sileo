@@ -8,36 +8,36 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "Wystąpił nieznany błąd.";
+"Error_Indicator" = "Błąd: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "Nie znaleziono paczki %@ w twoich repozytoriach.";
+"No_Package.Body" = "Jeżeli ta paczka jest nowa, zaczekaj aż Sileo skończy aktualizować i spróbuj ponownie. Przeszukaj internet by otrzymać pomoc.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Niepoprawny adres URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "Niezgodny rozmiar %@, a %@.";
+"Download_Failing_Status_Code" = "Popieranie nie powiodło się %ld";
+"Download_Hash_Mismatch" = "Niezgodna suma kontrolna %@, a %@.";
+"Untrusted_Package" = "Paczka %@ jest niezaufana, i nie może zostać zweryfikowana";
 
 "Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"No_Payment_Provider" = "To repozytorium nie wspiera płatności Sileo. Jeżeli jest to paczka z Cydia Store którą kiedyś zakupiłeś, połącz swoje konto aby pobrać.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Ta paczka nie jest dostępna w twoich źródłach. Upewnij się że repozytorium %@ jest dostępne.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "Błąd przy instalacji";
+"Installation_Error.Body" = "Sileo nie może uzyskać uprawnień roota. Przeinstaluj Sileo przy użyciu SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
+"FixingDpkg.Title" = "Naruszono Dpkg";
 "FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Niepoprawne dane";
+"Try_Later" = "Spróbuj ponownie później.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
+"Sileo_Update_Required.Title" = "Wymagana aktualizacja Sileo";
 "Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
 "Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
 
