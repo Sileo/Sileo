@@ -9,67 +9,67 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"About" = "O Sileo";
+"Close" = "Zamknij";
+"Double tap to open." = "Stuknij dwukrotnie aby otworzyć.";
+"Untitled_Repo" = "Repozytorium bez nazwy";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
+"Done" = "Gotowe";
+"Done_Editing" = "Gotowe";
+"More_Info" = "Więcej informacji";
+"Loading" = "Wczytywanie…";
+"Share" = "Udostępnij";
+"Delete" = "Usuń";
+"Cancel" = "Anuluj";
 "Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Remove" = "Usunąć";
+"Sileo_Team" = "Zespół Sileo";
+"Warning" = "Ostrzeżenie";
+"Edit" = "Edytuj";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Odświeżanie aplikacji w tle";
+"Background_App_Refresh_Message" = "Dla najlepszego działania, rekomendujemy włączenie odświeżania aplikacji w tle. Możesz otrzymywać powiadomienia, gdy ulepszania mają aktualizację!";
+"Upgrade_All_Shortcut_Processing_Message" = "Odświeżam źródła i aktualizuję paczki...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Instaluję";
+"Downloading_Package_Status" = "Pobieram";
+"Queued_Package_Status" = "Kolejka";
+"Ready_Status" = "Gotowe";
+"Removal_Queued_Package_Status" = "W kolejce do usunięcia";
+"Download_Starting" = "Zaczynam…";
+"Download_Progress" = "%@ z %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Podane paczki są oznaczone jako konieczne: %@\n Usunięcie ich może spowodować nieodwracalne zmiany w twoim urządzeniu lub zmusić cię do odtworzenia systemu. Kontynuuj tylko gdy wiesz co robisz.";
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Confirm_Button" = "Potwierdź";
+"Queue_Clear_Button" = "Wyczyść kolejkę";
+"Queue_Cancel_Downloads" = "Anuluj pobieranie";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "Aktualizuj";
+"Package_Reinstall_Action" = "Reinstaluj";
+"Package_Uninstall_Action" = "Odinstaluj";
+"Package_Modify_Action" = "Zmodyfikuj";
+"Package_Get_Action" = "Pobierz";
+"Package_Queue_Action" = "Kolejka";
+"Package_Cancel_Action" = "Anuluj";
+"Package_Paid" = "Płatne";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Udostępnij paczkę…";
+"Package_Developer_Find_Action" = "Więcej od tego dewelopera";
+"Package_Support_Action" = "Wsparcie";
+"Package_Hold_Enable_Action" = "Ignoruj przyszłe aktualizacje";
+"Package_Hold_Disable_Action" = "Przestań ignorować aktualizacje";
+"Package_Wishlist_Add" = "Dodaj do listy życzeń";
+"Package_Wishlist_Remove" = "Usuń z listy życzeń";
+"Wishlist" = "Lista życzeń";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Brak nowych paczek";
+"News_Check_Later" = "Nie zaindeksowano nowych paczek. Wróć tu za parę godzin, powinieneś zobaczyć tu nowe paczki po aktualizacjach repozytoriów.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
+"Queued_Install_Heading" = "Instaluj";
 "Queued_Uninstall_Heading" = "Uninstall";
 "Queued_Update_Heading" = "Update";
 "Download_Errors_Heading" = "Errors";
@@ -134,63 +134,63 @@
 "Show_Package_Contents_Button" = "Show Package Contents";
 
 "Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Alternatywne ikony";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Dostawcy płatności";
+"Settings_Translations_Heading" = "Tłumaczenia";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Settings_Payment_Provider.Purchases_Heading" = "Zakupione";
+"Settings_Payment_Provider.No_Purchases" = "Brak zakupionych";
+"Authenticate_To_Purchase" = "Autoryzuj by ukończyć płatność";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
+"Settings" = "Ustawienia";
+"Settings_Page_Title" = "Ustawienia";
+"Dark_Mode_Toggle" = "Tryb ciemny";
+"Theme" = "Motyw";
+"Tint_Color" = "Kolor odcienia";
+"Reset_Tint_Color" = "Zresetuj kolor odcienia";
 "Auto_Complete_Queue" = "Auto Complete Queue";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Swipe_Actions" = "Gesty";
+"Show_Provisional" = "Pokaż paczki z Canister";
+"Show_Ignored_Updates" = "Pokaż zingnorowane aktualizacje";
+"Developer_Mode" = "Tryb dewelopera";
+"Pog_Developer" = "Właśnie zostałeś deweloperem!";
+"Developer_Mode_Explain" = "Tryb deweloperski wyłącza protokół HTTPS, wymagany przez API płatności.";
+"Auto_Refresh_Sources" = "Automatycznie odświerz źródła";
+"iCloud_Profile" = "Pokaż zdjęcie z iCloud w wyróżnionych";
+"Cache_Size" = "Rozmiar pamięci podręcznej";
+"Clear_Cache" = "Wyczyść pamięć podręczną sieci";
+"Clear_Cache_Message" = "Czy chcesz wyczyścić pamięć podręczną sieci? Zwolni to %@";
+"Language" = "Język";
+"Use_System_Language" = "Używaj języka systemowego";
+"Apply_Changes" = "Zatwierdź zmiany";
+"Apply_Changes_Confirm" = "Zatwierdzanie zmian wymaga restartu Sileo";
+"Help_Translate" = "Pomóż przetłumaczyć Sileo";
+"Always_Show_Install_Log" = "Zawsze pokazuj log instalacji";
+"Auto_Show_Queue" = "Pokaż kolejke w Zaaktualizuj wszystkie";
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
 "Sileo_Adaptive" = "Sileo Adaptive";
 "System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Ustawienia motywów";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Zaloguj się do Cydia Store";
+"Payment_Provider_Signed_In" = "Zalogowano";
+"Payment_Provider_Signed_In_With_Name" = "Zalogowano jako %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Wyloguj";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Wylogowano z %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Nie będziesz mógł pobrać zakupionych paczek, dopóki nie zalogujesz się ponownie.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Show_Install_Details" = "Pokaż szczegóły";
+"Hide_Install_Details" = "Ukryj szczegóły";
+"Open_In_Filza" = "Otwórz w Filza";
+"Copy_Path" = "Kopiuj ścieżkę";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch" = "Zresetuj Sileo";
+"After_Install_Respring" = "Zresetuj SpringBoard";
+"After_Install_Reboot" = "Uruchom ponownie";
 "After_Install_Relaunch_Later" = "Restart Sileo Later";
 "After_Install_Respring_Later" = "Zrestartuj SpringBoard później";
 "After_Install_Reboot_Later" = "Uruchom urządzenie ponownie później";
