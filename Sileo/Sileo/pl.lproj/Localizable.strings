@@ -149,8 +149,8 @@
 "Theme" = "Motyw";
 "Tint_Color" = "Kolor odcienia";
 "Reset_Tint_Color" = "Zresetuj kolor odcienia";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Auto_Complete_Queue" = "Automatycznie ukończ kolejkę";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Skrót automatycznego potwierdzania \"Zaaktualizuj wszystko\"";
 "Swipe_Actions" = "Gesty";
 "Show_Provisional" = "Pokaż paczki z Canister";
 "Show_Ignored_Updates" = "Pokaż zingnorowane aktualizacje";
@@ -172,7 +172,7 @@
 
 "Sileo_Light" = "Sileo Light";
 "Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
+"Sileo_Adaptive" = "Motyw adaptywny";
 "System" = "System";
 "Theme_Settings" = "Ustawienia motywów";
 
@@ -191,7 +191,7 @@
 "After_Install_Relaunch" = "Zresetuj Sileo";
 "After_Install_Respring" = "Zresetuj SpringBoard";
 "After_Install_Reboot" = "Uruchom ponownie";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Relaunch_Later" = "Zrestartuj Sileo później";
 "After_Install_Respring_Later" = "Zrestartuj SpringBoard później";
 "After_Install_Reboot_Later" = "Uruchom urządzenie ponownie później";
 
