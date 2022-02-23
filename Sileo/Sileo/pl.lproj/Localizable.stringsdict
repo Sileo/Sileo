@@ -13,11 +13,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Źródło</string>
         <key>few</key>
         <string>Źródła</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>other</key>
         <string>Źródła</string>
       </dict>
@@ -33,7 +33,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Źródło</string>
         <key>few</key>
         <string>Źródła</string>
         <key>many</key>
@@ -53,11 +53,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>URL</string>
+        <string>adres URL</string>
         <key>few</key>
-        <string>URLs</string>
+        <string>adresy URL</string>
         <key>many</key>
-        <string>URLs</string>
+        <string>adresy URL</string>
         <key>other</key>
         <string>adresy URL</string>
       </dict>
@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d Paczka</string>
         <key>few</key>
-        <string>%d Packages</string>
+        <string>%d Paczek</string>
         <key>many</key>
-        <string>%d Packages</string>
+        <string>%d Paczek</string>
         <key>other</key>
-        <string>%d paczek</string>
+        <string>%d Paczek</string>
       </dict>
     </dict>
   </dict>
