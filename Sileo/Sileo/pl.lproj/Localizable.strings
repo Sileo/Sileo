@@ -21,7 +21,7 @@
 "Share" = "Udostępnij";
 "Delete" = "Usuń";
 "Cancel" = "Anuluj";
-"Acknowledge" = "Acknowledge";
+"Acknowledge" = "Uznawać";
 "Remove" = "Usunąć";
 "Sileo_Team" = "Zespół Sileo";
 "Warning" = "Ostrzeżenie";
@@ -70,70 +70,70 @@
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Instaluj";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Uninstall_Heading" = "Odinstaluj";
+"Queued_Update_Heading" = "Zaaktualizuj";
+"Download_Errors_Heading" = "Błędy";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Zainstalowano";
+"Updates_Heading" = "Aktualizacje";
+"Upgrade_All_Button" = "Zaktualizuj wszystkie";
+"Package_Search.Placeholder" = "Wyszukaj pakiety";
+"Sort_Name" = "Nazwa";
+"Sort_Date" = "Data";
+"Sort_Install_Size" = "Rozmiar po zainstalowaniu";
+"Sort_By" = "Sortuj po:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "Pakiet niedostępny";
+"Package_By_Author" = "%@ autorstwa %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "autorstwa %@"; // %@ = author name
+"Packages_By_Author" = "Pakiet autorstwa %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "Wyróżnione";
+"News_Page" = "Nowości";
+"Sources_Page" = "Źródła";
+"Packages_Page" = "Pakiety";
+"Search_Page" = "Szukaj";
+"Refreshing_Sources_Page" = "Odświeżam źródła";
+"Package_Installed_Files_Page" = "Zainstalowane pliki";
+"Refresh" = "Odśwież";
+"Remove" = "Usuń";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Wszsytkie pakiety";
+"All_Packages.Cell_Subtitle" = "Pokaż wszystkie pakiety ze swoich źródeł";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "Wszystkie kategorie";
+"Internal_Repo" = "Wewnętrzne repozytoria";
+"External_Repo" = "Zewnętrzne repozytoria";
+"Ignored Updates" = "Zignorowane aktualizacje";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Repozytoria";
+"Repo" = "Repozytorium";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Dodaj źródło";
+"Add_Source.Body" = "Dodaj adres URL APT";
+"Add_Source.Button.Add" = "Dodaj źródło";
+"Add_Dist_Repo" = "Dodaj repozytorium dystrybucyjne";
+"Incorrect_Repo" = "%@ zdaje się nie być poprawnym repozytorium⁉️ Może ono być offline, lub wprowadziłeś adres niepoprawnie. Czy mimo to chcesz je dodać?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Wprowadź ręcznie";
 
-"Untitled_Form" = "Untitled Form";
+"Untitled_Form" = "Formularz bez nazwy";
 "Form_Submitted.Default_Title" = "Zatwierdzony formularz";
 "Form_Submitted.Default_Body" = "Formularz zatwierdzono poprawnie.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Widok internetowy jest przestarzały. Skontaktuj się z opiekunem repozytorium o zaktualizowaniu opisów do natywnych.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Szczegóły";
+"Package_Changelog_Tab" = "Historia zmian";
+"Package_No_Description_Available" = "Opis nie jest dostępny dla tego pakietu.";
+"Package_Changelogs_Unavailable" = "Historia zmian nie jest dostępna dla tego pakietu.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Zainstalowany pakiet";
+"Installed_Packages" = "Zainstalowane pakiety";
+"Version" = "Wersja";
+"Show_Package_Contents_Button" = "Pokaż zawartość pakietu";
 
-"Licenses_Page_Title" = "Licenses";
+"Licenses_Page_Title" = "Licencje";
 "Alternate_Icon_Title" = "Alternatywne ikony";
 
 "Settings_Payment_Provider_Heading" = "Dostawcy płatności";
