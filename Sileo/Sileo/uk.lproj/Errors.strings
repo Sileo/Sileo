@@ -8,7 +8,7 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
+"Unknown" = "Відбулася невідома помилка.";
 "Error_Indicator" = "Помилка: %@";
 
 "No_Package.Title" = "Не вдалося знайти пакет %@ в доданих репозиторіїв.";
@@ -16,9 +16,9 @@
 
 "Invalid_URL.Title" = "Недійсний URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
+"Download_Size_Mismatch" = "Очікуваний розмір %@, утрималось %@.";
 "Download_Failing_Status_Code" = "Провалився зі статусом %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
+"Download_Hash_Mismatch" = "Очікуваний хеш %@, утрималось %@.";
 "Untrusted_Package" = "Пакет %@ не довірений і не може бути перевірений";
 
 "Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
