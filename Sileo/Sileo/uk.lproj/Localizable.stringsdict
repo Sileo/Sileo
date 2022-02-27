@@ -13,13 +13,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Джерело</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Джерело</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Джерело</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Джерело</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
@@ -33,13 +33,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Джерело</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Джерело</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Джерело</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Джерело</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
@@ -77,7 +77,7 @@
         <key>few</key>
         <string>%d пакетів</string>
         <key>many</key>
-        <string>%d Packages</string>
+        <string>%d пакетів</string>
         <key>other</key>
         <string>%d пакетів</string>
       </dict>
