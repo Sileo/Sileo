@@ -14,16 +14,16 @@
 "No_Package.Title" = "Не вдалося знайти пакет %@ в доданих репозиторіїв.";
 "No_Package.Body" = "Як що нове, почекайте кінець оновлення Sileo і повторити пізніше. Для допомоги, пошукайте онлайн.";
 
-"Invalid_URL.Title" = "Недійсний URL";
+"Invalid_URL.Title" = "Інвалідний URL";
 
 "Download_Size_Mismatch" = "Очікуваний розмір %@, утрималось %@.";
 "Download_Failing_Status_Code" = "Провалився зі статусом %ld";
 "Download_Hash_Mismatch" = "Очікуваний хеш %@, утрималось %@.";
 "Untrusted_Package" = "Пакет %@ не довірений і не може бути перевірений";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "URL завантаження від платні пакети мають бути захищені (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
+"Invalid_Payment_Provider_Response" = "Платіжний провайдер вернув інвалідну відповідь.";
 "No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
 
 "Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
@@ -34,26 +34,26 @@
 "FixingDpkg.Title" = "Dpkg Interrupted";
 "FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
 
-"Invalid_Data" = "Недійсні Дані";
+"Invalid_Data" = "Інвалідні Дані";
 "Try_Later" = "Попробуйте ще раз пізніше.";
 
 "Sileo_Update_Required.Title" = "Обов'язкове Оновлення Sileo";
 "Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
 "Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
 
-"Form_Error.Title" = "Couldn't Load Form";
+"Form_Error.Title" = "Не вдалося завантажити форму";
 "Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
+"Invalid_Form_Data" = "Сервер вернув інвалідну форму дані.";
 "Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Form_Submit_Error.Title" = "Не вдалось відправити форму";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
 "Email_Unavailable.Title" = "Не можливо відіслати електронну пошту";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Body" = "Сервіси пошти недоступні.";
 
 "Settings_Payment_Provider.Profile.Title" = "Не вдалося завантажити профіль";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
+"Provider_Auth_Fail.Title" = "Не вдалось аутентифікувати провайдера";
 "Purchase_Initiate_Fail.Title" = "Не вдалося почати покупку";
 "Purchase_Complete_Fail.Title" = "Не вдалося закінчити покупку";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Purchase_Auth_Complete_Fail.Title" = "Не вдалось закінчити автентифікацію";
