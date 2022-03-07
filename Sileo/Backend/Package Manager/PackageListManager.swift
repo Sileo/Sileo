@@ -196,6 +196,7 @@ final class PackageListManager {
     }
 
     public class func readPackages(repoContext: Repo? = nil, packagesFile: URL? = nil, installed: Bool = false) -> [String: Package] {
+        let archs = DpkgWrapper.getArchitectures
         var tmpPackagesFile: URL?
         var toWrite: URL?
         var dict = [String: Package]()
@@ -266,6 +267,9 @@ final class PackageListManager {
             }
             
             guard let package = self.package(packageEnum: rawPackageEnum) else {
+                continue
+            }
+            if !archs.contains(package.architecture ?? "nil") && package.architecture != "all" {
                 continue
             }
             package.sourceFile = repoContext?.rawEntry

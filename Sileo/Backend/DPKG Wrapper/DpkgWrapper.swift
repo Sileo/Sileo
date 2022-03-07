@@ -82,13 +82,13 @@ class DpkgWrapper {
         return interrupted
     }
     
-    public static var getArchitectures: [String] = {
+    public static var getArchitectures: Set<String> = {
         #if arch(x86_64) && !targetEnvironment(simulator)
-        let defaultArchitectures = ["darwin-amd64"]
+        let defaultArchitectures: Set<String> = ["darwin-amd64"]
         #elseif arch(arm64) && os(macOS)
-        let defaultArchitectures = ["darwin-arm64"]
+        let defaultArchitectures: Set<String> = ["darwin-arm64"]
         #else
-        let defaultArchitectures = ["iphoneos-arm"]
+        let defaultArchitectures: Set<String> = ["iphoneos-arm"]
         #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
@@ -97,7 +97,7 @@ class DpkgWrapper {
         guard status == 0 else {
             return defaultArchitectures
         }
-        return outputString.components(separatedBy: CharacterSet(charactersIn: "\n"))
+        return Set(outputString.components(separatedBy: CharacterSet(charactersIn: "\n")))
         #endif
     }()
     
