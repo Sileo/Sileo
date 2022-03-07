@@ -50,7 +50,7 @@ final class Package: Hashable, Equatable {
     
     public var defaultIcon: UIImage {
         if let rawSection = rawSection {
-            return UIImage(named: "Category_\(rawSection)") ?? UIImage(named: "Category_tweak")!
+            return UIImage(named: "Category_\(rawSection)") ?? UIImage(named: "Category_\(rawSection)s") ?? UIImage(named: "Category_tweak")!
         }
         return UIImage(named: "Category_tweak")!
     }
