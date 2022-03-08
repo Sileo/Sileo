@@ -582,19 +582,22 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             sharePopup.addAction(moreByDeveloper)
         
             let packageSupport = UIAlertAction(title: String(localizationKey: "Package_Support_Action"), style: .default) { _ in
-                if !MFMailComposeViewController.canSendMail() {
+                func unavailable() {
                     let alertController = UIAlertController(title: String(localizationKey: "Email_Unavailable.Title", type: .error),
                                                             message: String(localizationKey: "Email_Unavailable.Body", type: .error),
                                                             preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
-                } else {
-                    let composeVC = MFMailComposeViewController()
-                    composeVC.setToRecipients([email])
-                    composeVC.setSubject("Sileo/APT(M): \(String(describing: package.name))")
-                    composeVC.setMessageBody("", isHTML: false)
-                    composeVC.mailComposeDelegate = self
-                    self.present(composeVC, animated: true, completion: nil)
+                }
+                guard let subject = "Sileo/APT(M): \(package.name ?? package.package)".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                      let email = email.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                      let url = URL(string: "mailto:\(email)?subject=\(subject)") else {
+                    return unavailable()
+                }
+                UIApplication.shared.open(url) { success in
+                    if !success {
+                        unavailable()
+                    }
                 }
             }
             sharePopup.addAction(packageSupport)
