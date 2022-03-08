@@ -11,17 +11,11 @@ import Evander
 
 // swiftlint:disable:next type_body_length
 final class RepoManager {
-    // This check is here because it's used in multiple places throughout the code
-    #if targetEnvironment(simulator)
-    public final let isMobileProcursus = true
-    #else
-    public final let isMobileProcursus = FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/.procursus_strapped")
-    #endif
     public final lazy var isProcursus: Bool = {
         #if targetEnvironment(macCatalyst)
         return true
         #else
-        return isMobileProcursus
+        return CommandPath.isMobileProcursus
         #endif
     }()
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
@@ -197,7 +191,7 @@ final class RepoManager {
         #if targetEnvironment(macCatalyst)
         return true
         #else
-        if isMobileProcursus {
+        if CommandPath.isMobileProcursus {
             guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") ?? false) else { return false }
@@ -1164,7 +1158,7 @@ final class RepoManager {
     }
     
     private func parseListFile(at url: URL) {
-        if isMobileProcursus {
+        if CommandPath.isMobileProcursus {
             guard url.lastPathComponent != "cydia.list" else { return }
         }
         guard let rawList = try? String(contentsOf: url) else { return }
@@ -1234,9 +1228,7 @@ final class RepoManager {
             }
 
             #if targetEnvironment(simulator) || TARGET_SANDBOX
-
             try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
-
             #else
 
             var sileoList = ""

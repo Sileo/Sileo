@@ -767,7 +767,7 @@ final class DownloadManager {
         #if targetEnvironment(macCatalyst)
         allowedHosts = ["apt.procurs.us"]
         #else
-        if RepoManager.shared.isMobileProcursus {
+        if CommandPath.isMobileProcursus {
             allowedHosts = ["apt.procurs.us"]
         } else {
             allowedHosts = [
@@ -800,7 +800,7 @@ final class DownloadManager {
         #if targetEnvironment(macCatalyst)
         allowedHosts = ["apt.procurs.us"]
         #else
-        if RepoManager.shared.isMobileProcursus {
+        if CommandPath.isMobileProcursus {
             allowedHosts = ["apt.procurs.us"]
         } else {
             allowedHosts = [

@@ -283,10 +283,12 @@ func moveFileAsRoot(from: URL, to: URL) {
 public class CommandPath {
     // Certain paths need to check for either Procursus mobile or Elucubratus as a fallback option
     // Every method that uses this check already accounts for macCatalyst paths still resolving too
-    #if PREBOOT
-    private static var isMobileProcursus = FileManager.default.fileExists(atPath: "/private/preboot/procursus/.procursus_strapped")
+    #if targetEnvironment(simulator) || TARGET_SANDBOX
+    public static var isMobileProcursus = true
+    #elseif PREBOOT
+    public static var isMobileProcursus = FileManager.default.fileExists(atPath: "/private/preboot/procursus/.procursus_strapped")
     #else
-    private static var isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    public static var isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
     #endif
     
     static let prefix: String = {
