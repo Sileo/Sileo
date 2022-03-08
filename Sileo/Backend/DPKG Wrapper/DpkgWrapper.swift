@@ -93,11 +93,17 @@ class DpkgWrapper {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
-        let (status, outputString, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
-        guard status == 0 else {
+        let (localStatus, localArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
+        guard localStatus == 0 else {
             return defaultArchitectures
         }
-        return Set(outputString.components(separatedBy: CharacterSet(charactersIn: "\n")))
+        let localSet = Set(localArchs.components(separatedBy: CharacterSet(charactersIn: "\n")))
+        let (foreignStatus, foreignArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-foreign-architectures"])
+        guard foreignStatus == 0 else {
+            return localSet
+        }
+        let foreignSet = Set(foreignArchs.components(separatedBy: CharacterSet(charactersIn: "\n")))
+        return localSet.union(foreignSet)
         #endif
     }()
     
