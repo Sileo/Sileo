@@ -8,8 +8,8 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
+"No_Category" = "(Δε βρέθηκε κατηγορία)";
+"Tweaks" = "Τροποποιήσεις";
 "Themes" = "Θέματα";
 "Utilities" = "Βοηθητικά προγράμματα";
 "Applications" = "Εφαρμογές";
@@ -18,4 +18,4 @@
 "Developer" = "Προγραμματιστής";
 "Data_Storage" = "Αποθήκευση δεδομένων";
 "Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"Text_Editors" = "Προγράμματα επεξεργασίας κειμένου";
