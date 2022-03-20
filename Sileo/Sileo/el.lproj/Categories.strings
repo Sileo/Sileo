@@ -10,12 +10,12 @@
 
 "No_Category" = "(No Category)";
 "Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
+"Themes" = "Θέματα";
+"Utilities" = "Βοηθητικά προγράμματα";
+"Applications" = "Εφαρμογές";
+"Addons" = "Πρόσθετα";
+"Games" = "Παιχνίδια";
+"Developer" = "Προγραμματιστής";
+"Data_Storage" = "Αποθήκευση δεδομένων";
 "Terminal_Support" = "Terminal Support";
 "Text_Editors" = "Text Editors";
