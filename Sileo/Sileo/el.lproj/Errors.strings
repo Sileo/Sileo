@@ -38,7 +38,7 @@
 "Try_Later" = "Παρακαλώ προσπαθήστε ξανά αργότερα.";
 
 "Sileo_Update_Required.Title" = "Απαιτείται ενημέρωση για το Sileo";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
+"Featured_Requires_Sileo_Update" = "Απαιτείται ενημέρωση για το Sileo για την προβολή της καρτέλας προτεινόμενα. Η καρτέλα προτεινόμενα ενδέχεται να μήν αποδοθεί σωστά.";
 "Depiction_Requires_Sileo_Update" = "Απαιτείται ενημέρωση για το Sileo για την προβολή της καρτέλας προτεινόμενα. Η καρτέλα ενδέχεται να μην αποδοθεί σωστά.";
 
 "Form_Error.Title" = "Δεν μπορούσε να φορτώσει η φόρμα";
