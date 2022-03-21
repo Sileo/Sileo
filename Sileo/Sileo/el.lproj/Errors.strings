@@ -43,17 +43,17 @@
 
 "Form_Error.Title" = "Δεν μπορούσε να φορτώσει η φόρμα";
 "Form_Load_Error" = "Η φόρμα δεν μπορούσε να φορτώσει από το server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Invalid_Form_Data" = "Το server παρείχε μη έγκυρα δεδομένα φόρμας.";
+"Form_Submit_Failure" = "Παρουσιάστηκε σφάλμα κατά την προσπάθεια υποβολής της φόρμας: %@";
+"Form_Submit_Error.Title" = "Δεν μπορούσε να γίνει υποβολή της φόρμας";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "Δεν είναι δυνατή η αποστολή Email";
+"Email_Unavailable.Body" = "Η υπηρεσίες email δεν είναι διαθέσιμες.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "Δεν μπορούσε να φορτώσει το προφίλ";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
+"Provider_Auth_Fail.Title" = "Δεν μπορούσε να γίνει έλεγχος ταυτοποίησης της υπηρεσίας παροχής";
 "Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
 "Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
 "Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
