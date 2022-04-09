@@ -369,6 +369,10 @@ final class SourcesViewController: SileoViewController {
         let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
             let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
             let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = self.view.bounds
+            
             self.present(activityVC, animated: true, completion: nil)
         })
         alert.addAction(yesAction)

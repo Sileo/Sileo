@@ -278,6 +278,10 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
             let pkgs = self.getPackages()
             let activityVC = UIActivityViewController(activityItems: [pkgs], applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = self.view.bounds
+            
             self.present(activityVC, animated: true, completion: nil)
         })
         alert.addAction(defaultAction)
