@@ -367,7 +367,9 @@ final class SourcesViewController: SileoViewController {
         
         let yesString = String(localizationKey: "Export_Yes")
         let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
-            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
         })
         alert.addAction(yesAction)
         
