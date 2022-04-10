@@ -371,7 +371,7 @@ final class SourcesViewController: SileoViewController {
             let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
             
             activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = self.view.bounds
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
             
             self.present(activityVC, animated: true, completion: nil)
         })
