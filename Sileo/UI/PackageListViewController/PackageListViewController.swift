@@ -273,24 +273,13 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     }
     
     @objc func exportButtonClicked(_ button: UIButton?) {
-        let alert = UIAlertController(title: String(localizationKey: "Export"), message: String(localizationKey: "Export_Packages"), preferredStyle: .alert)
+        let pkgs = self.getPackages()
+        let activityVC = UIActivityViewController(activityItems: [pkgs], applicationActivities: nil)
         
-        let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
-            let pkgs = self.getPackages()
-            let activityVC = UIActivityViewController(activityItems: [pkgs], applicationActivities: nil)
-            
-            activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-            
-            self.present(activityVC, animated: true, completion: nil)
-        })
-        alert.addAction(defaultAction)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
         
-        let cancelAction = UIAlertAction(title: String(localizationKey: "Export_No"), style: .cancel, handler: { _ in
-        })
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true)
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     func getPackages() -> String {

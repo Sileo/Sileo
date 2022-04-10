@@ -361,29 +361,13 @@ final class SourcesViewController: SileoViewController {
     }
     
     @objc func exportSources(_ sender: Any?) {
-        let titleString = String(localizationKey: "Export")
-        let msgString = String(localizationKey: "Export_Sources")
-        let alert = UIAlertController(title: titleString, message: msgString, preferredStyle: .alert)
+        let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+        let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
         
-        let yesString = String(localizationKey: "Export_Yes")
-        let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
-            let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
-            let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
-            
-            activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-            
-            self.present(activityVC, animated: true, completion: nil)
-        })
-        alert.addAction(yesAction)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
         
-        let noString = String(localizationKey: "Export_No")
-        let noAction = UIAlertAction(title: noString, style: .cancel, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(noAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     public func presentAddSourceEntryField(url: URL?) {
