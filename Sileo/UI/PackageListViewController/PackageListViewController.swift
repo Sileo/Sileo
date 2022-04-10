@@ -275,8 +275,16 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         let alert = UIAlertController(title: String(localizationKey: "Export"), message: String(localizationKey: "Export_Packages"), preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: String(localizationKey: "Export_Yes"), style: .default, handler: { _ in
-            self.copyPackages()
+            let pkgs = self.getPackages()
+            let activityVC = UIActivityViewController(activityItems: [pkgs], applicationActivities: nil)
+
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = self.view.bounds
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+
+            self.present(activityVC, animated: true, completion: nil)
         })
+        
         alert.addAction(defaultAction)
         
         let cancelAction = UIAlertAction(title: String(localizationKey: "Export_No"), style: .cancel, handler: { _ in
@@ -286,7 +294,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         self.present(alert, animated: true)
     }
     
-    func copyPackages() {
+    func getPackages() -> String {
         var bodyFromArray = ""
         let packages = self.packages
         for package in packages {
@@ -302,8 +310,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             bodyFromArray.removeSubrange(subRange)
         }
         
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = bodyFromArray
+        return bodyFromArray
     }
     
     enum SortMode {

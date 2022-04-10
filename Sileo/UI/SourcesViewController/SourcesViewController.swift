@@ -378,8 +378,16 @@ final class SourcesViewController: SileoViewController {
         
         let yesString = String(localizationKey: "Export_Yes")
         let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
-            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = self.view.bounds
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
+            self.present(activityVC, animated: true, completion: nil)
         })
+        
         alert.addAction(yesAction)
         
         let noString = String(localizationKey: "Export_No")
