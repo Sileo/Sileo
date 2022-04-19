@@ -1179,8 +1179,9 @@ final class RepoManager {
         }
     }
 
-    private func parseSourcesFile(at url: URL) {
+    public func parseSourcesFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
+            print("\(#function): couldn't get rawSources. we are out of here!")
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
@@ -1192,6 +1193,7 @@ final class RepoManager {
                   let rawSuites = repoData["suites"],
                   let rawComponents = repoData["components"]
             else {
+                print("\(#function): Couldn't parse repo data for Entry \(repoEntry)")
                 continue
             }
 
