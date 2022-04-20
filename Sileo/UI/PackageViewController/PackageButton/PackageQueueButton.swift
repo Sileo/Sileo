@@ -255,6 +255,11 @@ class PackageQueueButton: PackageButton {
                 actionItems.append(action)
             }
         }
+        let copyBundleIDAction = CSActionItem(title: "Copy ID", image: .init(systemNameOrNil: "doc.fill"), style: .default) {
+            UIPasteboard.general.string = package.packageID
+        }
+        actionItems.append(copyBundleIDAction)
+        
         return actionItems
     }
     
