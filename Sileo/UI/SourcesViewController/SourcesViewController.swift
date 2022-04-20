@@ -189,7 +189,7 @@ final class SourcesViewController: SileoViewController {
             
             let _tmpManager = RepoManager()
             _tmpManager.parseSourcesFile(at: firstURL)
-            let URLs = _tmpManager.repoList.compactMap { $0.url }
+            let URLs = _tmpManager.repoList.compactMap(\.url)
             sourcesVC?.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
             sourcesVC?.refreshSources(forceUpdate: true, forceReload: true)
         }
