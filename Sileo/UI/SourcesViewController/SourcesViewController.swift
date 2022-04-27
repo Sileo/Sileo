@@ -147,13 +147,54 @@ final class SourcesViewController: SileoViewController {
                 nav.rightBarButtonItem = UIBarButtonItem(title: exportTitle, style: .plain, target: self, action: #selector(self.exportSources(_:)))
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Edit"), style: .done, target: self, action: #selector(self.toggleEditing(_:)))
-                nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
+                if #available(iOS 14.0, *) {
+                    let promptAddRepoAction = UIAction(title: "Add Repo", image: .init(systemName: "plus.circle")) { _ in
+                        self.addSource(nil)
+                    }
+                    
+                    let importReposAction = UIAction(title: "Import Repos", image: .init(systemName: "archivebox")) { _ in
+                        self.importRepos()
+                    }
+                    
+                    let menu = UIMenu(title: "Add Repos", children: [promptAddRepoAction, importReposAction])
+                    nav.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: promptAddRepoAction, menu: menu)
+                } else {
+                    nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
+                }
             }
             
         }
     }
     #endif
     
+    @available(iOS 14.0, *)
+    private func importRepos() {
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.item], asCopy: true)
+        let delegate = SourcesPickerImporterDelegate.shared
+        delegate.sourcesVC = self
+        controller.delegate = delegate
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    class SourcesPickerImporterDelegate: NSObject, UIDocumentPickerDelegate {
+        var sourcesVC: SourcesViewController? = nil
+        
+        static var shared = SourcesPickerImporterDelegate()
+        
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+            guard let firstURL = urls.first else {
+                print("Couldn't pick a file? shame on you")
+                return
+            }
+            
+            let _tmpManager = RepoManager()
+            _tmpManager.parseSourcesFile(at: firstURL)
+            let URLs = _tmpManager.repoList.compactMap(\.url)
+            sourcesVC?.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
+            sourcesVC?.refreshSources(forceUpdate: true, forceReload: true)
+        }
+    }
+     
     @objc private func handleImageUpdate(_ notification: Notification) {
         if !Thread.isMainThread {
             DispatchQueue.main.async {

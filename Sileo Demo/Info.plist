@@ -172,6 +172,29 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>$(PRODUCT_NAME) Sources File</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.sileo.sources</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>sources</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-sources-file</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
