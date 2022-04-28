@@ -188,7 +188,19 @@ final class SourcesViewController: SileoViewController {
             }
             
             let _tmpManager = RepoManager()
-            _tmpManager.parseSourcesFile(at: firstURL)
+            
+            if firstURL.pathExtension == "list" {
+                print("detected list file.")
+                _tmpManager.parseListFile(at: firstURL, isImporting: true)
+            } else if firstURL.pathExtension == "sources" {
+                print("detected sources file")
+                _tmpManager.parseSourcesFile(at: firstURL)
+            } else {
+                // support for URLs in plaintext files
+                print("detected plaintext file")
+                _tmpManager.parsePlainTextFile(at: firstURL)
+            }
+            
             let URLs = _tmpManager.repoList.compactMap(\.url)
             sourcesVC?.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
             sourcesVC?.refreshSources(forceUpdate: true, forceReload: true)

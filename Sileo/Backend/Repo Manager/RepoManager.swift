@@ -1157,9 +1157,13 @@ final class RepoManager {
         }
     }
     
-    private func parseListFile(at url: URL) {
-        if CommandPath.isMobileProcursus {
-            guard url.lastPathComponent != "cydia.list" else { return }
+    public func parseListFile(at url: URL, isImporting: Bool = false) {
+        // if we're importing, then it doesn't matter if the file is a cydia.list
+        // otherwise, don't parse the file
+        if CommandPath.isMobileProcursus, !isImporting {
+            guard url.lastPathComponent != "cydia.list" else {
+                return
+            }
         }
         guard let rawList = try? String(contentsOf: url) else { return }
 
@@ -1179,6 +1183,17 @@ final class RepoManager {
         }
     }
 
+    public func parsePlainTextFile(at url: URL) {
+        guard let rawSources = try? String(contentsOf: url) else {
+            print("couldn't get rawSources. we are out of here!")
+            return
+        }
+        let urlsString = rawSources.components(separatedBy: "\n").filter { URL(string: $0) != nil }
+        print("urls to add: \(urlsString)")
+        
+        parseRepoEntry(rawSources, at: url, withTypes: ["deb"], uris: urlsString, suites: ["./"], components: [])
+    }
+    
     public func parseSourcesFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
             print("\(#function): couldn't get rawSources. we are out of here!")
