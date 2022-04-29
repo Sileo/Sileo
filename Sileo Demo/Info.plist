@@ -176,6 +176,7 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.content</string>
+				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>$(PRODUCT_NAME) Sources File</string>
@@ -192,6 +193,25 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/x-sources-file</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>$(PRODUCT_NAME) List File</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.sileo.list</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>list</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-list-file</string>
 				</array>
 			</dict>
 		</dict>
