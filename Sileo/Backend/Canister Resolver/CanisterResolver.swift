@@ -286,6 +286,15 @@ struct ProvisionalPackage {
     */
     public var defaultIcon: UIImage {
         if let section = section {
+            // we have to do this because some repos have various Addons sections
+            // ie, Addons (activator), Addons (youtube), etc
+            if section.lowercased().contains("addons") {
+                return UIImage(named: "Category_addons") ?? UIImage(named: "Category_tweak")!
+            } else if section.lowercased().contains("themes") {
+                // same case for themes
+                return UIImage(named: "Category_themes") ?? UIImage(named: "Category_tweak")!
+            }
+            
             return UIImage(named: "Category_\(section.lowercased())") ?? UIImage(named: "Category_tweak")!
         }
         return UIImage(named: "Category_tweak")!
