@@ -27,6 +27,26 @@
 				<string>org.debian.deb-archive</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>$(PRODUCT_NAME) Sources File</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.sileo.sources</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>$(PRODUCT_NAME) List File</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.sileo.list</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -197,6 +217,11 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.content</string>
+				<string>public.data</string>
+			</array>
 			<key>UTTypeDescription</key>
 			<string>$(PRODUCT_NAME) List File</string>
 			<key>UTTypeIconFiles</key>
