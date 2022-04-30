@@ -188,7 +188,7 @@ final class SourcesViewController: SileoViewController {
     }
     
     @available(iOS 14.0, *)
-    private func importRepos() {
+    private func promptImportRepos() {
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.item], asCopy: true)
         let delegate = SourcesPickerImporterDelegate.shared
         delegate.sourcesVC = self
