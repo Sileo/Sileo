@@ -210,18 +210,31 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        print("Recieved URL \(url)")
         DispatchQueue.global(qos: .default).async {
             PackageListManager.shared.initWait()
             DispatchQueue.main.async {
                 if url.scheme == "file" {
-                    // The file is a deb. Open the package view controller to that file.
-                    guard let tabBarController = self.window?.rootViewController as? UITabBarController,
-                        let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController?,
-                        let featuredView = featuredVc?.viewControllers[0] as? FeaturedViewController else {
-                        return
+                    if url.pathExtension == "deb" {
+                        // The file is a deb. Open the package view controller to that file.
+                        guard let tabBarController = self.window?.rootViewController as? UITabBarController,
+                              let featuredVc = tabBarController.viewControllers?[0] as? UINavigationController?,
+                              let featuredView = featuredVc?.viewControllers[0] as? FeaturedViewController else {
+                                  return
+                              }
+                        featuredView.showPackage(PackageListManager.shared.package(url: url))
+                        tabBarController.selectedIndex = 0
+                    } else {
+                        guard let tabBarController = self.window?.rootViewController as? UITabBarController,
+                              let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
+                              let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController,
+                              let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController,
+                              url.startAccessingSecurityScopedResource() else {
+                                  return
+                              }
+                        sourcesVC.importRepos(fromURL: url)
+                        url.stopAccessingSecurityScopedResource()
                     }
-                    featuredView.showPackage(PackageListManager.shared.package(url: url))
-                    tabBarController.selectedIndex = 0
                 } else {
                     // presentModally ignored; we always present modally for an external URL open.
                     var presentModally = false

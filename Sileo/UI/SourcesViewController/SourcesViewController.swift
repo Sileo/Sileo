@@ -153,7 +153,7 @@ final class SourcesViewController: SileoViewController {
                     }
                     
                     let importReposAction = UIAction(title: "Import Repos", image: .init(systemName: "archivebox")) { _ in
-                        self.importRepos()
+                        self.promptImportRepos()
                     }
                     
                     let menu = UIMenu(title: "Add Repos", children: [promptAddRepoAction, importReposAction])
@@ -167,8 +167,28 @@ final class SourcesViewController: SileoViewController {
     }
     #endif
     
+    func importRepos(fromURL url: URL) {
+        let _tmpManager = RepoManager()
+        
+        print("Will now import URL \(url)")
+        if url.pathExtension == "list" {
+            print("detected list file.")
+            _tmpManager.parseListFile(at: url, isImporting: true)
+        } else if url.pathExtension == "sources" {
+            print("detected sources file")
+            _tmpManager.parseSourcesFile(at: url)
+        } else {
+            print("detected plaintext file")
+            _tmpManager.parsePlainTextFile(at: url)
+        }
+        
+        let URLs = _tmpManager.repoList.compactMap(\.url)
+        self.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
+        self.refreshSources(forceUpdate: true, forceReload: true)
+    }
+    
     @available(iOS 14.0, *)
-    private func importRepos() {
+    private func promptImportRepos() {
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.item], asCopy: true)
         let delegate = SourcesPickerImporterDelegate.shared
         delegate.sourcesVC = self
@@ -187,11 +207,7 @@ final class SourcesViewController: SileoViewController {
                 return
             }
             
-            let _tmpManager = RepoManager()
-            _tmpManager.parseSourcesFile(at: firstURL)
-            let URLs = _tmpManager.repoList.compactMap(\.url)
-            sourcesVC?.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
-            sourcesVC?.refreshSources(forceUpdate: true, forceReload: true)
+            sourcesVC?.importRepos(fromURL: firstURL)
         }
     }
      
