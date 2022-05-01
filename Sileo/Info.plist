@@ -34,6 +34,33 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -193,6 +220,33 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -393,7 +447,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>SileoRootDaemon</key>
-		<string>identifier "SileoRootDaemon" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Charlie While (B2TU49334J)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier &quot;SileoRootDaemon&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>
