@@ -45,48 +45,25 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
                 
                 #if os(iOS)
-
-                //get firmware depends in targetPackage.depends and conflicts in targetPackage.conflicts getFirmwareFromConflicts
                 
-                var deponfw = "\(getFirmwareFromDepends(conflicts: targetPackage.depends ?? "firmware (>= 0.0)"))"
-                if(deponfw == "0.0") {
-                    deponfw = "\(getFirmwareFromConflicts(conflicts: targetPackage.conflicts ?? "firmware (<= 9999999.0)"))"
-                    if(getConflictFirmwareIsEqual(conflicts: targetPackage.conflicts ?? "firmware (>= 0.0)")) {
-                    if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) == .orderedAscending)) { //does < to handle Depends >=, <= if specified in Conflicts
-                        titleLabel?.textColor = UIColor.red
-                    }
-                    } else if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) != .orderedDescending)) { //does <= to handle Depends >, < if specified in Conflicts
-                        titleLabel?.textColor = UIColor.red
-                    }
-                } else {
-                    if(getConflictFirmwareIsEqual(conflicts: targetPackage.depends ?? "firmware (>= 0.0)")) {
-                    if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) == .orderedAscending)) { //does < to handle Depends >=, <= if specified in Conflicts
-                        titleLabel?.textColor = UIColor.red
-                    }
-                    } else if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) != .orderedDescending)) { //does <= to handle Depends >, < if specified in Conflicts
-                        titleLabel?.textColor = UIColor.red
-                    }
-                    print(deponfw)
-                    print(UIDevice.current.systemVersion.compare(deponfw, options: .numeric) != .orderedAscending)
+                var deponfw = "\(targetPackage.conflicts ?? "Depends: firmware (>= 0.0)"),"
+                
+                if (!(deponfw.contains("firmware"))) {
+                    deponfw = "Depends: firmware (>= 0.0),"
                 }
-                var conflictwithfw = "\(getFirmwareFromDepends(conflicts: targetPackage.conflicts ?? "firmware (>= 0.0)"))"
-                if(conflictwithfw == "0.0") {
-                    conflictwithfw = "\(getFirmwareFromConflicts(conflicts: targetPackage.depends ?? "firmware (<= 9999999.0)"))"
-                    if(getConflictFirmwareIsEqual(conflicts: targetPackage.depends ?? "firmware (>= 0.0)")) {
-                    if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedAscending)) { //>=, <= if specified in Depends
-                        titleLabel?.textColor = UIColor.red
-                    }
-                    } else if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedDescending)) { //>, < if specified in Depends
-                        titleLabel?.textColor = UIColor.red
-                    }
-                } else {
-                    if(getConflictFirmwareIsEqual(conflicts: targetPackage.conflicts ?? "firmware (>= 0.0)")) {
-                    if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedAscending)) { //>=, <= if specified in Depends
-                        titleLabel?.textColor = UIColor.red
-                    }
-                    } else if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedDescending)) { //>, < if specified in Depends
-                        titleLabel?.textColor = UIColor.red
-                    }
+                
+                if (doesConflict(confOrDependString: deponfw, forVersion: (UIDevice.current.systemVersion as NSString).floatValue)) {
+                    titleLabel?.textColor = UIColor.red
+                }
+                
+                var conflictwithfw = "\(targetPackage.conflicts ?? "Conflicts: firmware (>= 9999999.0)"),"
+                
+                if (!(conflictwithfw.contains("firmware"))) {
+                    conflictwithfw = "Conflicts: firmware (>= 9999999.0),"
+                }
+                
+                if (!(doesConflict(confOrDependString: conflictwithfw, forVersion: (UIDevice.current.systemVersion as NSString).floatValue))) {
+                    titleLabel?.textColor = UIColor.red
                 }
                 
                 #endif
@@ -501,51 +478,34 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         }
     }
     
-    //prob shit code but works anyway
-    private func getFirmwareFromDepends(conflicts: String) -> Float {
-            if let range: Range<String.Index> = conflicts.range(of: "firmware") {
-            let newconflicts = conflicts[(range.lowerBound ..< conflicts.endIndex)]
-            if let range2: Range<String.Index> = newconflicts.range(of: ">") {
-                if let rangeofendfirmware: Range<String.Index> = newconflicts.range(of: ")") {
-                var firmwareinconflict = String(newconflicts[(range2.lowerBound ..< rangeofendfirmware.lowerBound)])
-                firmwareinconflict = firmwareinconflict.replacingOccurrences(of: ">",with: "").replacingOccurrences(of: "=",with: "")
-                let number = (firmwareinconflict as NSString).floatValue
-                return number
-                }
+    //thanks to Serena for this
+    func doesConflict(confOrDependString: String, forVersion ver: Float) -> Bool {
+            if ((!((confOrDependString.contains(", firmware")) || (confOrDependString.contains(",firmware")) || (confOrDependString.contains(": firmware")) || (confOrDependString.contains(":firmware")))) && (!(confOrDependString.contains("firmware")))) {
+                return false //we don't actually want to mark as red if something other than the firmware conflicts, so somelibrary | firmware (>= 13.0) gets marked as false even if firmware is lower than 13.0, since somedeb isn't firmware
+            }
+            guard let startIndex = confOrDependString.range(of: "firmware")?.upperBound, let endIndex = confOrDependString.range(of: ",", options: .init(rawValue: 0), range: startIndex..<confOrDependString.endIndex, locale: nil)?.lowerBound else { return false }
+            if String(confOrDependString[startIndex..<endIndex]).replacingOccurrences(of: "| firmware", with: "").contains("|") {
+                return false //we don't actually want to mark as red if something other than the firmware conflicts, so firmware (>= 13.0) | somedeb gets marked as false even if firmware is lower than 13.0, since somedeb isn't firmware
+            }
+            let baseString = String(confOrDependString[startIndex..<endIndex])
+                .replacingOccurrences(of: "(", with: "")
+                .replacingOccurrences(of: ")", with: "")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            let components = baseString.components(separatedBy: " ")
+            let _operator = components[0]
+            guard let versionParsed = Float(components[1]) else {
+                print("versionParsed couldn't be converted to float.")
+                print("versionParsed: \(components[1])")
+                return false
+            }
+            print("versionParsed: \(versionParsed)")
+            switch _operator {
+            case ">", ">>": return versionParsed > ver
+            case "<", "<<": return versionParsed < ver
+            case ">=": return versionParsed >= ver
+            case "<=": return versionParsed <= ver
+            case "=": return versionParsed != ver
+            default: return false
             }
         }
-    return 0.0
-    }
-    
-    private func getFirmwareFromConflicts(conflicts: String) -> Float { //looking at this now, could have prob just used getFirmwareFromDepends and passed >/< into it but I already did this so eh
-            if let range: Range<String.Index> = conflicts.range(of: "firmware") {
-            let newconflicts = conflicts[(range.lowerBound ..< conflicts.endIndex)]
-            if let range2: Range<String.Index> = newconflicts.range(of: "<") {
-                if let rangeofendfirmware: Range<String.Index> = newconflicts.range(of: ")") {
-                var firmwareinconflict = String(newconflicts[(range2.lowerBound ..< rangeofendfirmware.lowerBound)])
-                firmwareinconflict = firmwareinconflict.replacingOccurrences(of: "<",with: "").replacingOccurrences(of: "=",with: "")
-                let number = (firmwareinconflict as NSString).floatValue
-                return number
-                }
-            }
-        }
-    return 0.0
-    }
-    
-    private func getConflictFirmwareIsEqual(conflicts: String) -> Bool {
-        guard let range = conflicts.range(of: "firmware") else {
-            return true
-        }
-        let newConflicts = conflicts[(range.lowerBound ..< conflicts.endIndex)]
-        
-        guard let secondRange = newConflicts.range(of: "("), let endRangeOfFirmware = newConflicts.range(of: ")") else {
-            return true
-        }
-        
-        if (String(newConflicts[(secondRange.lowerBound ..< endRangeOfFirmware.lowerBound)]).contains("=")) {
-            return true
-        } else {
-            return false
-        }
-    }
 }
