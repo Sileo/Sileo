@@ -18,41 +18,25 @@ class ThemesSectionViewController: BaseSettingsViewController {
     
     
     func importThemes(fromURL url: URL) {
-        guard let data = try? Data(contentsOf: url) else {
-            return
-        }
-        
-        // if an array of SileoCodableTheme is provided, import all of the themes
-        // otherwise if only one theme is given, import that one only
-        if let decoded = try? JSONDecoder().decode([SileoCodableTheme].self, from: data) {
+        do {
+            let data = try Data(contentsOf: url)
+            let decoded = try JSONDecoder().decode([SileoCodableTheme].self, from: data)
             userThemes.append(contentsOf: decoded.map(\.sileoTheme))
-        } else if let decoded = try? JSONDecoder().decode(SileoCodableTheme.self, from: data) {
-            userThemes.append(decoded.sileoTheme)
-        } else {
-            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes", type: .error), message: nil, preferredStyle: .alert)
-            controller.addAction(.init(title: "OK", style: .cancel, handler: nil))
+            tableView?.reloadData()
+            print("Imported theme(s)")
+        } catch {
+            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes"), message: "Error: \(error.localizedDescription)", preferredStyle: .alert)
             self.present(controller, animated: true, completion: nil)
-            return
         }
         
-        tableView?.reloadData()
-        print("imported theme(s)")
     }
     
     func exportThemes(_ themes: [SileoCodableTheme]) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let themesString: String
-
-        // if there is just one element, export only that
-        if themes.count == 1 {
-            guard let encoded = try? JSONEncoder().encode(themes[0]), let string = String(data: encoded, encoding: .utf8) else { return }
-            themesString = string
-        } else {
-            guard let encoded = try? JSONEncoder().encode(themes), let string = String(data: encoded, encoding: .utf8) else { return }
-            themesString = string
-        }
         
+        guard let encoded = try? JSONEncoder().encode(themes), let themesString = String(data: encoded, encoding: .utf8) else { return }
+
         let activityVC = UIActivityViewController(activityItems: [themesString], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
