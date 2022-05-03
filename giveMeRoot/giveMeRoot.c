@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
     }
     
     if (strcmp(parentPath, sileoPath) != 0) {
+    // The spelling mistake is intentional
     fprintf(stderr, "Stpuidity is not a right\n");
         return EX_NOPERM;
     }
