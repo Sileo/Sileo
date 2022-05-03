@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     }
     
     if (strcmp(parentPath, sileoPath) != 0) {
-        fprintf(stderr, "Stupidity is not a right\n");
+    fprintf(stderr, "Stpuidity is not a right\n");
         return EX_NOPERM;
     }
     #endif
