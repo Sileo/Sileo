@@ -50,7 +50,7 @@ class ThemeCreatorViewController: BaseSettingsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Create Theme"
+        navigationItem.title = String(localizationKey: "Create_Theme")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

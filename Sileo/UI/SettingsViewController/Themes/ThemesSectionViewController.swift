@@ -16,6 +16,50 @@ class ThemesSectionViewController: BaseSettingsViewController {
         navigationItem.title = String(localizationKey: "Manage_Themes")
     }
     
+    
+    func importThemes(fromURL url: URL) {
+        guard let data = try? Data(contentsOf: url) else {
+            return
+        }
+        
+        // if an array of SileoCodableTheme is provided, import all of the themes
+        // otherwise if only one theme is given, import that one only
+        if let decoded = try? JSONDecoder().decode([SileoCodableTheme].self, from: data) {
+            userThemes.append(contentsOf: decoded.map(\.sileoTheme))
+        } else if let decoded = try? JSONDecoder().decode(SileoCodableTheme.self, from: data) {
+            userThemes.append(decoded.sileoTheme)
+        } else {
+            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes", type: .error), message: nil, preferredStyle: .alert)
+            controller.addAction(.init(title: "OK", style: .cancel, handler: nil))
+            self.present(controller, animated: true, completion: nil)
+            return
+        }
+        
+        tableView?.reloadData()
+        print("imported theme(s)")
+    }
+    
+    func exportThemes(_ themes: [SileoCodableTheme]) {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let themesString: String
+
+        // if there is just one element, export only that
+        if themes.count == 1 {
+            guard let encoded = try? JSONEncoder().encode(themes[0]), let string = String(data: encoded, encoding: .utf8) else { return }
+            themesString = string
+        } else {
+            guard let encoded = try? JSONEncoder().encode(themes), let string = String(data: encoded, encoding: .utf8) else { return }
+            themesString = string
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: [themesString], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     @objc
     func promptController() {
         let controller = UIAlertController(title: "Add Theme", message: nil, preferredStyle: .actionSheet)
@@ -40,18 +84,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
         }))
         
         controller.addAction(.init(title: String(localizationKey: "Export_Themes"), style: .default, handler: { _ in
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            guard let encoded = try? encoder.encode(self.userThemes.map(\.codable)), let stringThemes = String(data: encoded, encoding: .utf8) else {
-                print("Couldn't encode and convert themes to string. we out.")
-                return
-            }
-            let activityVC = UIActivityViewController(activityItems: [stringThemes], applicationActivities: nil)
-
-            activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-
-            self.present(activityVC, animated: true, completion: nil)
+            self.exportThemes(self.userThemes.map(\.codable))
         }))
         
         
@@ -103,7 +136,12 @@ class ThemesSectionViewController: BaseSettingsViewController {
             handler(true)
         }
         
-        return UISwipeActionsConfiguration(actions: [removeAction])
+        let exportAction = UIContextualAction(style: .normal, title: String(localizationKey: "Export")) { _, _, handler in
+            self.exportThemes([self.userThemes[indexPath.row].codable])
+            handler(true)
+        }
+        exportAction.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [removeAction, exportAction])
     }
     
     
@@ -113,24 +151,12 @@ class ThemesSectionViewController: BaseSettingsViewController {
         static let shared = ThemesImporterDelegate()
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            print("URLs: \(urls)")
-            guard let firstURL = urls.first, let data = try? Data(contentsOf: firstURL) else {
-                print("couldn't access firstURL or data. rip")
+            guard let firstURL = urls.first else {
+                print("couldn't access URL. rip")
                 return
             }
             
-            do {
-                let decoded = try JSONDecoder().decode([SileoCodableTheme].self, from: data)
-                parent?.userThemes.append(contentsOf: decoded.map(\.sileoTheme))
-                parent?.tableView?.reloadData()
-                print("imported themes")
-            } catch {
-                print("Failed to import themes from JSON. error: \(error)")
-                let controller = UIAlertController(title: "Error while importing Themes: \(error)", message: nil, preferredStyle: .alert)
-                controller.addAction(.init(title: "OK", style: .cancel, handler: nil))
-                parent?.present(controller, animated: true, completion: nil)
-                parent?.tableView?.reloadData()
-            }
+            parent?.importThemes(fromURL: firstURL)
         }
     }
 }
