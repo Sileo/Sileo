@@ -12,7 +12,7 @@ import Evander
 
 class PackageCollectionViewCell: SwipeCollectionViewCell {
     @IBOutlet var imageView: UIImageView?
-    @IBOutlet var titleLabel: UILabel?
+    @IBOutlet var titleLabel: UILabel? //make this red if firmware not compatible
     @IBOutlet var authorLabel: UILabel?
     @IBOutlet var descriptionLabel: UILabel?
     @IBOutlet var separatorView: UIView?
@@ -40,8 +40,25 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 
                 let url = targetPackage.icon
                 EvanderNetworking.image(url: url, condition: { [weak self] in self?.targetPackage?.icon == url }, imageView: imageView, fallback: targetPackage.defaultIcon)
-                        
+                
+                
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
+                
+                #if os(iOS)
+
+                //get firmware depends in targetPackage.depends and conflicts in targetPackage.conflicts
+                
+                let deponfw = "\(getFirmwareFromDepends(conflicts: targetPackage.depends ?? "firmware (>= 0.0)"))"
+                let conflictwithfw = "\(getFirmwareFromDepends(conflicts: targetPackage.conflicts ?? "firmware (>= 0.0)"))"
+
+                if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) != .orderedDescending)) {
+                    titleLabel?.textColor = UIColor.red
+                }
+                if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedAscending)) {
+                    titleLabel?.textColor = UIColor.red
+                }
+                #endif
+
             }
             unreadView?.isHidden = true
             
@@ -450,5 +467,21 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
         }
+    }
+    
+    //prob shit code but works anyway
+    private func getFirmwareFromDepends(conflicts: String) -> Float {
+        if let range: Range<String.Index> = conflicts.range(of: "firmware") {
+        let newconflicts = conflicts[(range.lowerBound ..< conflicts.endIndex)]
+        if let range2: Range<String.Index> = newconflicts.range(of: ">=") {
+            if let rangeofendfirmware: Range<String.Index> = newconflicts.range(of: ")") {
+            var firmwareinconflict = String(newconflicts[(range2.lowerBound ..< rangeofendfirmware.lowerBound)])
+            firmwareinconflict = firmwareinconflict.replacingOccurrences(of: ">=",with: "")
+            let number = (firmwareinconflict as NSString).floatValue
+            return number
+            }
+        }
+    }
+        return 0.0
     }
 }

@@ -32,6 +32,8 @@ final class Package: Hashable, Equatable {
     public var installedSize: Int?
     public var tags: PackageTags = .none
     public var nativeDepiction: String?
+    public var depends: String?
+    public var conflicts: String?
     
     public var allVersionsInternal = [String: Package]()
     public var allVersions: [Package] {

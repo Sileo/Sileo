@@ -129,6 +129,20 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                                                object: nil)
         
         packageName.textColor = .sileoLabel
+        
+        #if os(iOS)
+
+        let deponfw = "\(getFirmwareFromDepends(conflicts: package?.depends ?? "firmware (>= 0.0)"))"
+        let conflictwithfw = "\(getFirmwareFromDepends(conflicts: package?.conflicts ?? "firmware (>= 0.0)"))"
+
+        if (deponfw != "0.0" && (UIDevice.current.systemVersion.compare(deponfw, options: .numeric) != .orderedDescending)) {
+            packageName?.textColor = UIColor.red
+        }
+        if (conflictwithfw != "0.0" && (UIDevice.current.systemVersion.compare(conflictwithfw, options: .numeric) != .orderedAscending)) {
+            packageName?.textColor = UIColor.red
+        }
+        #endif
+        
         let collapsed = splitViewController?.isCollapsed ?? false
         let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
         navController?.setNavigationBarHidden(true, animated: true)
@@ -689,6 +703,21 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     
     override var previewActionItems: [UIPreviewActionItem] {
         downloadButton.actionItems().map({ $0.previewAction() })
+    }
+    
+    private func getFirmwareFromDepends(conflicts: String) -> Float {
+        if let range: Range<String.Index> = conflicts.range(of: "firmware") {
+        let newconflicts = conflicts[(range.lowerBound ..< conflicts.endIndex)]
+        if let range2: Range<String.Index> = newconflicts.range(of: ">=") {
+            if let rangeofendfirmware: Range<String.Index> = newconflicts.range(of: ")") {
+            var firmwareinconflict = String(newconflicts[(range2.lowerBound ..< rangeofendfirmware.lowerBound)])
+            firmwareinconflict = firmwareinconflict.replacingOccurrences(of: ">=",with: "")
+            let number = (firmwareinconflict as NSString).floatValue
+            return number
+            }
+        }
+    }
+        return 0.0
     }
     
     @available (iOS 13.0, *)
