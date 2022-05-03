@@ -135,12 +135,15 @@ class ThemesSectionViewController: BaseSettingsViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             handler(true)
         }
+        removeAction.image = UIImage(systemNameOrNil: "trash")
         
         let exportAction = UIContextualAction(style: .normal, title: String(localizationKey: "Export")) { _, _, handler in
             self.exportThemes([self.userThemes[indexPath.row].codable])
             handler(true)
         }
         exportAction.backgroundColor = .systemBlue
+        exportAction.image = UIImage(systemNameOrNil: "square.and.arrow.up")
+        
         return UISwipeActionsConfiguration(actions: [removeAction, exportAction])
     }
     
