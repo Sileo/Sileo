@@ -1,5 +1,5 @@
 TARGET  = giveMeRoot
-OUTDIR ?= bin
+OUTDIR ?= bin/
 
 ifeq ($(SILEO_PLATFORM),darwin-arm64)
 CC             ?= xcrun -sdk macosx cc -arch arm64
