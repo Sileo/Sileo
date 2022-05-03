@@ -91,7 +91,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 0: // Payment Providers section
             return authenticatedProviders.count + unauthenticatedProviders.count + (hasLoadedOnce ? 0 : 1)
         case 1: // Themes
-            return 4
+            return 5
         case 2:
             return 11
         case 3: // About section
@@ -153,6 +153,11 @@ extension SettingsViewController { // UITableViewDataSource
             case 3:
                 let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
                 cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            case 4:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "CreateTheme")
+                cell.textLabel?.text = String(localizationKey: "Manage_Themes")
                 cell.accessoryType = .disclosureIndicator
                 return cell
             default:
@@ -264,19 +269,22 @@ extension SettingsViewController { // UITableViewDataSource
                 }
             }
         case 1:
-            if indexPath.row == 1 { // Tint color selector
-                self.presentAlderis()
-            } else if indexPath.row == 2 { // Tint color reset
-                SileoThemeManager.shared.resetTintColor()
-            } else if indexPath.row == 3 {
-                #if targetEnvironment(macCatalyst)
+            switch indexPath.row {
+            case 1: self.presentAlderis() // Tint color selector
+            case 2: SileoThemeManager.shared.resetTintColor() // Tint color reset
+            case 3:
+#if targetEnvironment(macCatalyst)
                 let errorVC = UIAlertController(title: "Not Supported", message: "Alternate Icons are currently not supported in macOS", preferredStyle: .alert)
                 errorVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in errorVC.dismiss(animated: true) }))
                 self.present(errorVC, animated: true)
-                #else
+#else
                 let altVC = AltIconTableViewController()
                 self.navigationController?.pushViewController(altVC, animated: true)
-                #endif
+#endif
+            case 4:
+                let menuSettingsVC = ThemesSectionViewController(style: .grouped)
+                self.navigationController?.pushViewController(menuSettingsVC, animated: true)
+            default: break
             }
         case 3: // About section
             switch indexPath.row {

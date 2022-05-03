@@ -17,6 +17,12 @@
 		172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED222F08D31000155B9 /* LicenseViewController.swift */; };
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
+		370531DD2820599600B67743 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		370531DE2820599800B67743 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370531DF282059BB00B67743 /* ThemesSectionViewController.swift */; };
+		370531E128207C8D00B67743 /* ThemesSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370531DF282059BB00B67743 /* ThemesSectionViewController.swift */; };
+		37F307DC281F6B9300A361A3 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		37F307DD281F6CF700A361A3 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
 		493B23D226098104007D605F /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CE26098104007D605F /* Chimera@2x.png */; platformFilter = ios; };
 		493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; platformFilter = ios; };
@@ -1446,6 +1452,8 @@
 		36A4572024CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
+		370531DF282059BB00B67743 /* ThemesSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesSectionViewController.swift; sourceTree = "<group>"; };
+		37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCreatorViewController.swift; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4929237E2663376600B5B37A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		493B23BF260979DD007D605F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1971,6 +1979,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		370531DC2820597F00B67743 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				E13F31C62677E71D00AB8932 /* ThemePickerView.swift */,
+				37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */,
+				370531DF282059BB00B67743 /* ThemesSectionViewController.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		4929234E2663353700B5B37A /* Deps */ = {
 			isa = PBXGroup;
 			children = (
@@ -2265,7 +2283,6 @@
 				FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */,
 				FB40262823DE87F8002D97FE /* SettingsIconHeaderView.swift */,
 				E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */,
-				E13F31C62677E71D00AB8932 /* ThemePickerView.swift */,
 				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
 			);
 			path = Root;
@@ -2893,6 +2910,7 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				370531DC2820597F00B67743 /* Themes */,
 				E15A954426B990B1000DB10E /* Language */,
 				E13BD7872646C692006A5EF2 /* Sileo Team */,
 				49CE7CAD2607F97C00A20711 /* Alt Icons */,
@@ -4194,6 +4212,7 @@
 				E128182A26BBFAA500D2553B /* SileoLabelView.swift in Sources */,
 				E128182B26BBFAA500D2553B /* DepictionLayerView.swift in Sources */,
 				E128182C26BBFAA500D2553B /* SileoRootView.swift in Sources */,
+				370531DD2820599600B67743 /* ThemeCreatorViewController.swift in Sources */,
 				E128182D26BBFAA500D2553B /* ControlFileParser.swift in Sources */,
 				E128182E26BBFAA500D2553B /* BaseSettingsViewController.swift in Sources */,
 				E128182F26BBFAA500D2553B /* ZSTD.swift in Sources */,
@@ -4381,6 +4400,7 @@
 				E14E4C2B26DAD572002AE3B4 /* SileoLabelView.swift in Sources */,
 				E14E4C2C26DAD572002AE3B4 /* DepictionLayerView.swift in Sources */,
 				E14E4C2D26DAD572002AE3B4 /* SileoRootView.swift in Sources */,
+				370531DE2820599800B67743 /* ThemeCreatorViewController.swift in Sources */,
 				E14E4C2E26DAD572002AE3B4 /* ControlFileParser.swift in Sources */,
 				E14E4C2F26DAD572002AE3B4 /* BaseSettingsViewController.swift in Sources */,
 				E14E4C3026DAD572002AE3B4 /* ZSTD.swift in Sources */,
@@ -4719,10 +4739,12 @@
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
 				E1A2352C277F888C004563C9 /* LogStreamViewController.swift in Sources */,
+				370531E128207C8D00B67743 /* ThemesSectionViewController.swift in Sources */,
 				F13AEE6D22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
 				F139D0E222EA9209007F5C0D /* WhiteBlur.m in Sources */,
 				F139D0FF22EA9209007F5C0D /* WishListManager.swift in Sources */,
 				E14C5EBE266687C80080BFCE /* XZ.swift in Sources */,
+				37F307DD281F6CF700A361A3 /* ThemeCreatorViewController.swift in Sources */,
 				F139D0DC22EA9209007F5C0D /* ZKSwizzle.m in Sources */,
 				FBBD003B240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB42318EA6800D3AF3B /* main.swift in Sources */,
@@ -4749,6 +4771,7 @@
 				F1330EB42325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
 				F1330EAE23250CC200971073 /* SileoRootView.swift in Sources */,
+				37F307DC281F6B9300A361A3 /* ThemeCreatorViewController.swift in Sources */,
 				F19FB39D22BF50D3008E986B /* ControlFileParser.swift in Sources */,
 				FB40263923DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
 				E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */,
@@ -4903,6 +4926,7 @@
 				56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */,
 				E14C5EBD266687C80080BFCE /* XZ.swift in Sources */,
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
+				370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */,
 				F183CFB32318EA6800D3AF3B /* main.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
 				F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */,
