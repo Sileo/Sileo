@@ -25,7 +25,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
             tableView?.reloadData()
             print("Imported theme(s)")
         } catch {
-            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes"), message: "Error: \(error.localizedDescription)", preferredStyle: .alert)
+            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes", type: .error), message: "Error: \(error.localizedDescription)", preferredStyle: .alert)
             self.present(controller, animated: true, completion: nil)
         }
         
