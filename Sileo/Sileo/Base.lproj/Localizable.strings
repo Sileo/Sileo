@@ -94,6 +94,7 @@
 "Packages_Page" = "Packages";
 "Search_Page" = "Search";
 "Search_History" = "Search History";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
 "Refresh" = "Refresh";

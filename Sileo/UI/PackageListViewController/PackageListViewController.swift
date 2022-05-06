@@ -415,6 +415,14 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @objc
+    func clearHistory() {
+        searchHistory.removeAll()
+        collectionView?.performBatchUpdates({
+            collectionView?.deleteSections(.init(integer: 0))
+        }, completion: nil)
+    }
 }
 
 extension PackageListViewController: UICollectionViewDataSource {
@@ -550,10 +558,11 @@ extension PackageListViewController: UICollectionViewDataSource {
             }
         case .reallyBoringList: fatalError("Literally impossible to be here")
         case .searchHistoryList:
-            headerView.actionText = nil
+            headerView.actionText = String(localizationKey: "Clear_Search_History")
             headerView.separatorView?.isHidden = false
             headerView.sortContainer?.isHidden = true
-            headerView.upgradeButton?.isHidden = true
+            headerView.upgradeButton?.isHidden = false
+            headerView.upgradeButton?.addTarget(nil, action: #selector(clearHistory), for: .touchUpInside)
             headerView.label?.text = String(localizationKey: "Search_History")
             return headerView
         }
@@ -906,7 +915,7 @@ extension HistoryViewCell: SwipeCollectionViewCellDelegate {
             searchHistory.remove(at: indexPath.row)
             
             // if the search history is empty, we just reload the data
-            // otherwise, calling deleteItems when the array is empty will crash the app 
+            // otherwise, calling deleteItems when the array is empty will crash the app
             searchHistory.isEmpty ? self.listVC?.collectionView?.reloadData() : self.listVC?.collectionView?.deleteItems(at: [indexPath])
         }
         
