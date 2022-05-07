@@ -857,6 +857,10 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
             self?.deleteRepo(at: indexPath)
             completionHandler(true)
         }
+        
+        // on iOS 12, the icons won't display and instead the text will be displayed
+        refresh.image = .init(systemNameOrNil: "arrow.clockwise")
+        remove.image = .init(systemNameOrNil: "trash")
         return UISwipeActionsConfiguration(actions: [remove, refresh])
     }
 }
