@@ -1,5 +1,5 @@
 TARGET  = giveMeRoot
-OUTDIR ?= bin
+OUTDIR ?= bin/
 CC             ?= xcrun -sdk iphoneos clang -arch arm64 -mios-version-min=12.0
 
 TAGET_CODESIGN ?= ldid
