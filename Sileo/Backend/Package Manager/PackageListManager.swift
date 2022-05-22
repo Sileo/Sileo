@@ -361,9 +361,9 @@ final class PackageListManager {
            !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
             packageList.removeAll { package in
-                return [package.package, package.packageDescription, package.author, package.maintainer]
-                    .filter { $0?.lowercased().contains(search) ?? false }
-                    .isEmpty
+                // check if the user search term is in the package ID, description or in the author / maintainer name
+                let searchFields = [package.package, package.packageDescription, package.author, package.maintainer]
+                return !searchFields.contains { $0?.lowercased().localizedCaseInsensitiveContains(search) ?? false }
             }
         }
         // Remove Any Duplicates
