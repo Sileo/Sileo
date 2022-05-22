@@ -362,8 +362,7 @@ final class PackageListManager {
             let search = searchQuery.lowercased()
             packageList.removeAll { package in
                 return [package.package, package.packageDescription, package.author, package.maintainer]
-                    .compactMap { $0 }
-                    .filter { $0.lowercased().contains(search) }
+                    .filter { $0?.lowercased().contains(search) ?? false }
                     .isEmpty
             }
         }
