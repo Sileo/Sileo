@@ -233,12 +233,11 @@ final class PackageListManager {
         
         let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
         while index < rawPackagesData.count {
-            let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
-            var newIndex = 0
-            if range == nil {
-                newIndex = rawPackagesData.count
+            let newIndex: Int
+            if let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count) {
+                newIndex = range.lowerBound + separator.count
             } else {
-                newIndex = range!.lowerBound + separator.count
+                newIndex = rawPackagesData.count
             }
             
             let subRange = index..<newIndex
