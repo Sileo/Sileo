@@ -361,29 +361,10 @@ final class PackageListManager {
            !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
             packageList.removeAll { package in
-                var shouldRemove = true
-                if package.package.lowercased().localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                if let name = package.name?.lowercased() {
-                    if !name.isEmpty {
-                        if name.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let description = package.packageDescription?.lowercased() {
-                    if !description.isEmpty {
-                        if description.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let author = package.author?.lowercased() {
-                    if !author.isEmpty {
-                        if author.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let maintainer = package.maintainer?.lowercased() {
-                    if !maintainer.isEmpty {
-                        if maintainer.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                return shouldRemove
+                return [package.package, package.packageDescription, package.author, package.maintainer]
+                    .compactMap { $0 }
+                    .filter { $0.lowercased().contains(search) }
+                    .isEmpty
             }
         }
         // Remove Any Duplicates
