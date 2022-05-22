@@ -253,16 +253,8 @@ final class PackageListManager {
             guard let packageID = rawPackage["package"] else {
                 continue
             }
-            if packageID.isEmpty {
-                continue
-            }
-            if packageID.hasPrefix("gsc.") {
-                continue
-            }
-            if packageID.hasPrefix("cy+") {
-                continue
-            }
-            if packageID == "firmware" {
+            
+            guard !packageID.isEmpty, !packageID.hasPrefix("gsc."), !packageID.hasPrefix("cy+"), packageID != "firmware" else {
                 continue
             }
             
