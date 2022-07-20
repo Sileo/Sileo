@@ -233,12 +233,11 @@ final class PackageListManager {
         
         let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
         while index < rawPackagesData.count {
-            let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
-            var newIndex = 0
-            if range == nil {
-                newIndex = rawPackagesData.count
+            let newIndex: Int
+            if let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count) {
+                newIndex = range.lowerBound + separator.count
             } else {
-                newIndex = range!.lowerBound + separator.count
+                newIndex = rawPackagesData.count
             }
             
             let subRange = index..<newIndex
@@ -253,16 +252,8 @@ final class PackageListManager {
             guard let packageID = rawPackage["package"] else {
                 continue
             }
-            if packageID.isEmpty {
-                continue
-            }
-            if packageID.hasPrefix("gsc.") {
-                continue
-            }
-            if packageID.hasPrefix("cy+") {
-                continue
-            }
-            if packageID == "firmware" {
+            
+            guard !packageID.isEmpty, !packageID.hasPrefix("gsc."), !packageID.hasPrefix("cy+"), packageID != "firmware" else {
                 continue
             }
             
@@ -361,29 +352,9 @@ final class PackageListManager {
            !searchQuery.isEmpty {
             let search = searchQuery.lowercased()
             packageList.removeAll { package in
-                var shouldRemove = true
-                if package.package.lowercased().localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                if let name = package.name?.lowercased() {
-                    if !name.isEmpty {
-                        if name.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let description = package.packageDescription?.lowercased() {
-                    if !description.isEmpty {
-                        if description.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let author = package.author?.lowercased() {
-                    if !author.isEmpty {
-                        if author.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let maintainer = package.maintainer?.lowercased() {
-                    if !maintainer.isEmpty {
-                        if maintainer.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                return shouldRemove
+                // check if the user search term is in the package ID, description or in the author / maintainer name
+                let searchFields = [package.package, package.packageDescription, package.author, package.maintainer]
+                return !searchFields.contains { $0?.lowercased().localizedCaseInsensitiveContains(search) ?? false }
             }
         }
         // Remove Any Duplicates
