@@ -23,7 +23,6 @@ int validate(char *string, int *length) {
     for (int i = 0; i < *length; i++) {
         char character = string[i];
         if (!(isdigit(character) || isalpha(character) || strrchr(".-+~:", character))) {
-            printf("Character that failed is %c at index %d", character, i);
             return 1;
         }
     }
