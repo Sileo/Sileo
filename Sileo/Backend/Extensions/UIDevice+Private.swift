@@ -22,6 +22,7 @@ final class PrivateIdentifiers {
         #if TARGET_SANDBOX || targetEnvironment(simulator)
         uniqueIdentifier = TEST_UDID
         platform = TEST_DEVICE
+        var size: Int = 256
         #else
         let gestalt = dlopen("/usr/lib/libMobileGestalt.dylib", RTLD_GLOBAL | RTLD_LAZY)
         typealias MGCopyAnswerFunc = @convention(c) (CFString) -> CFString
@@ -33,9 +34,10 @@ final class PrivateIdentifiers {
         var machine = [UInt8](repeating: 0, count: size)
         _ = machine.withUnsafeMutableBufferPointer { sysctlbyname("hw.machine", $0.baseAddress, &size, nil, 0) }
         platform = String(cString: machine)
-        #endif
         
-        var size: Int = 256
+        size = 256
+        #endif
+
         var ostype = [UInt8](repeating: 0, count: 256)
         _ = ostype.withUnsafeMutableBufferPointer { sysctlbyname("kern.ostype", $0.baseAddress, &size, nil, 0) }
         kernOSType = String(cString: ostype)
