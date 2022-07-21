@@ -67,12 +67,12 @@ final class DownloadManager {
     }
     public var totalProgress = CGFloat(0)
     
-    var upgrades: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
-    var installations: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
-    var uninstallations: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
-    var installdeps: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
-    var uninstalldeps: SafeContiguousArray<DownloadPackage> = SafeContiguousArray<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
-    var errors: SafeContiguousArray<APTBrokenPackage> = SafeContiguousArray<APTBrokenPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var upgrades = SafeSet<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var installations = SafeSet<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var uninstallations = SafeSet<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var installdeps = SafeSet<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var uninstalldeps = SafeSet<DownloadPackage>(queue: aptQueue, key: queueKey, context: queueContext)
+    var errors = SafeSet<APTBrokenPackage>(queue: aptQueue, key: queueKey, context: queueContext)
     
     private var currentDownloads = 0
     public var queueStarted = false
@@ -119,7 +119,7 @@ final class DownloadManager {
     }
     
     public func verifyComplete() -> Bool {
-        let allRawDownloads = upgrades.raw + installations.raw + installdeps.raw
+        let allRawDownloads = upgrades.raw.union(installations.raw).union(installdeps.raw)
         for dlPackage in allRawDownloads {
             guard let download = downloads[dlPackage.package.packageID],
                   download.success else { return false }
@@ -267,7 +267,7 @@ final class DownloadManager {
             // We don't want more than one download at a time
             guard currentDownloads <= 3 else { return }
             // Get a list of downloads that need to take place
-            let allRawDownloads = upgrades.raw + installations.raw + installdeps.raw
+            let allRawDownloads = upgrades.raw.union(installations.raw).union(installdeps.raw)
             for dlPackage in allRawDownloads {
                 // Get the download object, we don't want to create multiple
                 let download: Download
@@ -400,11 +400,11 @@ final class DownloadManager {
         errors.removeAll()
         
         // Get a total of depends to be installed and break if empty
-        let installationsAndUpgrades = self.installations.raw + self.upgrades.raw
+        let installationsAndUpgrades = self.installations.raw.union(self.upgrades.raw)
         guard !(installationsAndUpgrades.isEmpty && uninstallations.isEmpty) else {
             return
         }
-        let all = (installationsAndUpgrades + uninstallations.raw).map { $0.package }
+        let all = (installationsAndUpgrades.union(uninstallations.raw)).map { $0.package }
         do {
             // Run the dep accelerator for any packages that have not already been cared about
             try DependencyResolverAccelerator.shared.getDependencies(packages: all)
@@ -433,7 +433,7 @@ final class DownloadManager {
         guard rawUninstalls.count == uninstallIdentifiers.count else {
             throw APTParserErrors.blankJsonOutput(error: "Uninstall Identifiers Mismatch")
         }
-        var uninstallDeps: [DownloadPackage] = rawUninstalls.compactMap { DownloadPackage(package: $0) }
+        var uninstallDeps = Set<DownloadPackage>(rawUninstalls.compactMap { DownloadPackage(package: $0) })
         
         // Get the list of packages to be installed, including depends
         var installIdentifiers = [String]()
@@ -480,7 +480,7 @@ final class DownloadManager {
         guard rawInstalls.count == installIndentifiersReference.count else {
             throw APTParserErrors.blankJsonOutput(error: "Install Identifier Mismatch for Identifiers:\n \(installIdentifiers.map { "\($0)\n" })")
         }
-        var installDeps = rawInstalls.compactMap { DownloadPackage(package: $0) }
+        var installDeps = Set<DownloadPackage>(rawInstalls.compactMap { DownloadPackage(package: $0) })
         var installations = installations.raw
         var upgrades = upgrades.raw
 
@@ -501,7 +501,7 @@ final class DownloadManager {
         self.uninstallations.setTo(uninstallations)
         self.uninstalldeps.setTo(uninstallDeps)
         self.installdeps.setTo(installDeps)
-        self.errors.setTo(aptOutput.conflicts)
+        self.errors.setTo(Set<APTBrokenPackage>(aptOutput.conflicts))
     }
     
     private func checkInstalled() {
@@ -513,12 +513,12 @@ final class DownloadManager {
             let downloadPackage = DownloadPackage(package: newestPackage)
             if package.eFlag == .reinstreq {
                 if !installations.contains(downloadPackage) && !uninstallations.contains(downloadPackage) {
-                    installations.append(downloadPackage)
+                    installations.insert(downloadPackage)
                 }
             } else if package.eFlag == .ok {
                 if package.wantInfo == .deinstall || package.wantInfo == .purge || package.status == .halfconfigured {
                     if !installations.contains(downloadPackage) && !uninstallations.contains(downloadPackage) {
-                        uninstallations.append(downloadPackage)
+                        uninstallations.insert(downloadPackage)
                     }
                 }
             }
@@ -593,17 +593,33 @@ final class DownloadManager {
         return .none
     }
     
+    public func find(package: String) -> DownloadManagerQueue {
+        if installations.contains(where: { $0.package.package == package }) {
+            return .installations
+        } else if uninstallations.contains(where: { $0.package.package == package }) {
+            return .uninstallations
+        } else if upgrades.contains(where: { $0.package.package == package }) {
+            return .upgrades
+        } else if installdeps.contains(where: { $0.package.package == package }) {
+            return .installdeps
+        } else if uninstalldeps.contains(where: { $0.package.package == package }) {
+            return .uninstalldeps
+        }
+        return .none
+    }
+    
     public func remove(package: String) {
-        installations.removeAll { $0.package.package == package }
-        upgrades.removeAll { $0.package.package == package }
-        installdeps.removeAll { $0.package.package == package }
-        uninstallations.removeAll { $0.package.package == package }
-        uninstalldeps.removeAll { $0.package.package == package }
+        installations.remove { $0.package.package == package }
+        upgrades.remove { $0.package.package == package }
+        installdeps.remove { $0.package.package == package }
+        uninstallations.remove { $0.package.package == package }
+        uninstalldeps.remove { $0.package.package == package }
     }
     
     public func add(package: Package, queue: DownloadManagerQueue, approved: Bool = false) {
         let downloadPackage = DownloadPackage(package: package)
-        let found = find(package: package)
+        let found = find(package: package.package)
+        if found == queue { return }
         remove(downloadPackage: downloadPackage, queue: found)
     
         let package = downloadPackage.package.package
@@ -611,41 +627,47 @@ final class DownloadManager {
         case .none:
             return
         case .installations:
-            if !installations.map({ $0.package.package }).contains(package) {
-                installations.append(downloadPackage)
-            }
+            installations.insert(downloadPackage)
         case .uninstallations:
-            if !uninstallations.map({ $0.package.package }).contains(package) {
-                if approved == false && isEssential(downloadPackage.package) {
-                    let message = String(format: String(localizationKey: "Essential_Warning"),
-                                         "\n\(downloadPackage.package.name ?? downloadPackage.package.packageID)")
-                    let alert = UIAlertController(title: String(localizationKey: "Warning"),
-                                                  message: message,
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .default, handler: { _ in
-                        alert.dismiss(animated: true)
-                    }))
-                    alert.addAction(UIAlertAction(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Continue"), style: .destructive, handler: { _ in
-                        self.add(package: downloadPackage.package, queue: .uninstallations, approved: true)
-                        self.reloadData(recheckPackages: true)
-                    }))
-                    TabBarController.singleton?.present(alert, animated: true)
-                    return
-                }
-                uninstallations.append(downloadPackage)
+            if approved == false && isEssential(downloadPackage.package) {
+                let message = String(format: String(localizationKey: "Essential_Warning"),
+                                     "\n\(downloadPackage.package.name ?? downloadPackage.package.packageID)")
+                let alert = UIAlertController(title: String(localizationKey: "Warning"),
+                                              message: message,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .default, handler: { _ in
+                    alert.dismiss(animated: true)
+                }))
+                alert.addAction(UIAlertAction(title: String(localizationKey: "Dangerous_Repo.Last_Chance.Continue"), style: .destructive, handler: { _ in
+                    self.add(package: downloadPackage.package, queue: .uninstallations, approved: true)
+                    self.reloadData(recheckPackages: true)
+                }))
+                TabBarController.singleton?.present(alert, animated: true)
+                return
             }
+            uninstallations.insert(downloadPackage)
         case .upgrades:
-            if !upgrades.map({ $0.package.package }).contains(package) {
-                upgrades.append(downloadPackage)
-            }
+            upgrades.insert(downloadPackage)
         case .installdeps:
-            if !installdeps.map({ $0.package.package }).contains(package) {
-                installdeps.append(downloadPackage)
-            }
+            installdeps.insert(downloadPackage)
         case .uninstalldeps:
-            if !uninstalldeps.map({ $0.package.package }).contains(package) {
-                uninstalldeps.append(downloadPackage)
+            uninstalldeps.insert(downloadPackage)
+        }
+    }
+    
+    public func upgradeAll(packages: Set<Package>, _ completion: @escaping () -> ()) {
+        Self.aptQueue.async { [self] in
+            var packages = packages
+            let mapped = upgrades.map { $0.package.package }
+            packages.removeAll { mapped.contains($0.package) }
+            for package in packages {
+                let downloadPackage = DownloadPackage(package: package)
+                let found = find(package: package.package)
+                if found == .upgrades { continue }
+                remove(downloadPackage: downloadPackage, queue: found)
+                upgrades.insert(downloadPackage)
             }
+            completion()
         }
     }
   
@@ -659,15 +681,15 @@ final class DownloadManager {
         case .none:
             return
         case .installations:
-            installations.removeAll { $0 == downloadPackage }
+            installations.remove(downloadPackage)
         case .uninstallations:
-            uninstallations.removeAll { $0 == downloadPackage }
+            uninstallations.remove(downloadPackage)
         case .upgrades:
-            upgrades.removeAll { $0 == downloadPackage }
+            upgrades.remove(downloadPackage)
         case .installdeps:
-            installdeps.removeAll { $0 == downloadPackage }
+            installdeps.remove(downloadPackage)
         case .uninstalldeps:
-            uninstalldeps.removeAll { $0 == downloadPackage }
+            uninstalldeps.remove(downloadPackage)
         }
     }
 

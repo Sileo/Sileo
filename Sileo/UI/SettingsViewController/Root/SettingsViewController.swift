@@ -93,7 +93,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 11
+            return 10
         case 3: // About section
             return 4
         default:
@@ -199,11 +199,6 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
-            case 10:
-                cell.amyPogLabel.text = "Background Package Update"
-                cell.amyPogLabel.textColor = .systemRed
-                cell.fallback = false
-                cell.defaultKey = "BackgroundUpdate"
             default:
                 fatalError("You done goofed")
             }

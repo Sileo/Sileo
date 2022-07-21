@@ -60,6 +60,8 @@ public class LogStreamViewController: UIViewController {
     private let outputSource: DispatchSourceRead
     private let errorSource: DispatchSourceRead
     
+    private var text = ""
+    
     public var textView: UITextView = {
         let textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -179,6 +181,12 @@ public class LogStreamViewController: UIViewController {
         ])
     }
     
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        textView.text = text
+    }
+    
     @objc private func pop() {
         self.dismiss(animated: true)
     }
@@ -186,7 +194,7 @@ public class LogStreamViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func add(text: String) {
         if !Thread.isMainThread {
             DispatchQueue.main.async {
@@ -194,9 +202,10 @@ public class LogStreamViewController: UIViewController {
             }
             return
         }
-        textView.text = (textView.text ?? "") + "\(text)\n"
-        let point = CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.size.height)
-        textView.setContentOffset(point, animated: false)
+        self.text += text + "\n"
+        if self.isBeingPresented {
+            textView.text = self.text
+        }
     }
     
 }

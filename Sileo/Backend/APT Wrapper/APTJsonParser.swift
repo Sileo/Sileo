@@ -69,8 +69,13 @@ struct APTOperation: Decodable {
     let release: String?
 }
 
-struct APTBrokenPackage: Decodable {
-    struct ConflictingPackage: Decodable {
+struct APTBrokenPackage: Decodable, Hashable {
+    
+    static func == (lhs: APTBrokenPackage, rhs: APTBrokenPackage) -> Bool {
+        lhs.packageID == rhs.packageID && lhs.conflictingPackages == rhs.conflictingPackages
+    }
+    
+    struct ConflictingPackage: Decodable, Hashable {
 
         // swiftlint:disable nesting
         enum Conflict: String, Decodable {
@@ -89,10 +94,24 @@ struct APTBrokenPackage: Decodable {
 
         let package: String
         let conflict: Conflict
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(package)
+            hasher.combine(conflict)
+        }
+        
+        static func == (lhs: ConflictingPackage, rhs: ConflictingPackage) -> Bool {
+            lhs.package == rhs.package && lhs.conflict == rhs.conflict
+        }
     }
 
     let packageID: String
     let conflictingPackages: [ConflictingPackage]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(packageID)
+        hasher.combine(conflictingPackages)
+    }
 }
 
 struct ErrorParserWrapper: Decodable {
@@ -135,7 +154,7 @@ struct ErrorParserWrapper: Decodable {
 
 extension APTWrapper {
     // APT syntax: a- = remove a; b = install b
-    public class func operationList(installList: ContiguousArray<DownloadPackage>, removeList: ContiguousArray<DownloadPackage>) throws -> APTOutput {
+    public class func operationList(installList: Set<DownloadPackage>, removeList: Set<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
         guard let configPath = Bundle.main.path(forResource: "sileo-apt", ofType: "conf") else {
             throw APTParserErrors.missingSileoConf

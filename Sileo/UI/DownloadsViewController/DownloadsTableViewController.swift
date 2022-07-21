@@ -167,7 +167,7 @@ class DownloadsTableViewController: SileoViewController {
                 self.uninstallations = uninstallations
                 self.installdeps = installdeps
                 self.uninstalldeps = uninstalldeps
-                self.errors = errors
+                self.errors = ContiguousArray<APTBrokenPackage>(errors)
                 main()
             }
             return

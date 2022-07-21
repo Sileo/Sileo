@@ -210,7 +210,6 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        print("Recieved URL \(url)")
         DispatchQueue.global(qos: .default).async {
             PackageListManager.shared.initWait()
             DispatchQueue.main.async {

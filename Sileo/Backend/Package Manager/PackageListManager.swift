@@ -231,6 +231,7 @@ final class PackageListManager {
             }
         }
         
+        var savedCount = 0
         let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
         while index < rawPackagesData.count {
             let newIndex: Int
@@ -265,6 +266,7 @@ final class PackageListManager {
             }
             package.sourceFile = repoContext?.rawEntry
             package.sourceFileURL = toWrite
+            savedCount += packageData.count
             package.rawData = packageData
             
             if isStatusFile {
@@ -303,6 +305,7 @@ final class PackageListManager {
                 }
             }
         }
+
         return dict
     }
     
@@ -350,11 +353,20 @@ final class PackageListManager {
         }
         if let searchQuery = search,
            !searchQuery.isEmpty {
-            let search = searchQuery.lowercased()
+            let lowercased = searchQuery.lowercased()
             packageList.removeAll { package in
                 // check if the user search term is in the package ID, description or in the author / maintainer name
-                let searchFields = [package.package, package.packageDescription, package.author, package.maintainer]
-                return !searchFields.contains { $0?.lowercased().localizedCaseInsensitiveContains(search) ?? false }
+                var searchFields = Set<String?>([package.package, package.packageDescription, package.author])
+                if package.maintainer != package.author {
+                    searchFields.insert(package.maintainer)
+                }
+                let _searchFields = searchFields.compactMap { $0?.lowercased() }
+                for searchField in _searchFields {
+                    if strstr(searchField, lowercased) != nil {
+                        return false
+                    }
+                }
+                return true
             }
         }
         // Remove Any Duplicates
@@ -482,7 +494,7 @@ final class PackageListManager {
             }
             
             if sorted {
-                return rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
+                return Array(Set(rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
                     guard let package1 = pkg1.name else {
                         return false
                     }
@@ -490,21 +502,9 @@ final class PackageListManager {
                         return false
                     }
                     return package1.compare(package2) != .orderedDescending
-                })
+                })))
             } else {
-                var packagesMap: [String: Package] = [:]
-                for package in rawPackages {
-                    packagesMap[package.packageID] = package
-                }
-                
-                var packages: [Package] = []
-                for identifier in identifiers {
-                    guard let package = packagesMap[identifier] else {
-                        continue
-                    }
-                    packages.append(package)
-                }
-                return packages
+                return Array(Set(rawPackages))
             }
         }
         
@@ -541,6 +541,7 @@ final class PackageListManager {
         }
 
         let downloadMan = DownloadManager.shared
+        var upgrades = Set<Package>()
         
         for packagePair in updatesNotIgnored {
             let newestPkg = packagePair.0
@@ -548,13 +549,15 @@ final class PackageListManager {
             if let installedPkg = packagePair.1, installedPkg == newestPkg {
                 continue
             }
-            downloadMan.add(package: newestPkg, queue: .upgrades)
+            upgrades.insert(newestPkg)
         }
-
-        downloadMan.reloadData(recheckPackages: true) {
-            completion?()
-            if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
-                TabBarController.singleton?.presentPopupController()
+        
+        downloadMan.upgradeAll(packages: upgrades) {
+            downloadMan.reloadData(recheckPackages: true) {
+                completion?()
+                if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
+                    TabBarController.singleton?.presentPopupController()
+                }
             }
         }
     }

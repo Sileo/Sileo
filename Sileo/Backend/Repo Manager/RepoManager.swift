@@ -86,7 +86,7 @@ final class RepoManager {
         repoListLock.wait()
         let jailbreakRepo = Repo()
         jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
+        jailbreakRepo.suite = "iphoneos-arm64/1800"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
@@ -1200,8 +1200,7 @@ final class RepoManager {
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
-
-        for repoEntry in repoEntries {
+        for repoEntry in repoEntries where !repoEntry.isEmpty {
             guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
                   let rawTypes = repoData["types"],
                   let rawUris = repoData["uris"],

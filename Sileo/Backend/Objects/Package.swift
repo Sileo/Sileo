@@ -38,7 +38,7 @@ final class Package: Hashable, Equatable {
         [self] + Array(allVersionsInternal.values)
     }
     
-    public var fromStatusFile: Bool = false
+    public var fromStatusFile = false
     public var wantInfo: pkgwant = .unknown
     public var eFlag: pkgeflag = .ok
     public var status: pkgstatus = .installed

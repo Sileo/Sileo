@@ -170,15 +170,11 @@ final class SourcesViewController: SileoViewController {
     func importRepos(fromURL url: URL) {
         let _tmpManager = RepoManager()
         
-        print("Will now import URL \(url)")
         if url.pathExtension == "list" {
-            print("detected list file.")
             _tmpManager.parseListFile(at: url, isImporting: true)
         } else if url.pathExtension == "sources" {
-            print("detected sources file")
             _tmpManager.parseSourcesFile(at: url)
         } else {
-            print("detected plaintext file")
             _tmpManager.parsePlainTextFile(at: url)
         }
         
@@ -203,7 +199,6 @@ final class SourcesViewController: SileoViewController {
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
             guard let firstURL = urls.first else {
-                print("Couldn't pick a file? shame on you")
                 return
             }
             

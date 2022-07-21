@@ -8,66 +8,44 @@
 
 import Foundation
 
-enum pkgwant {
-    case unknown,
-    install,
-    hold,
-    deinstall,
-    purge,
-    sentinel // Not allowed except as special sentinel value in some places
+enum pkgwant: String {
+    case unknown = "unknown"
+    case install = "install"
+    case hold = "hold"
+    case deinstall = "deinstall"
+    case purge = "purge"
+    case sentinel
 }
 
-enum pkgeflag {
-    case ok,
-    reinstreq
+enum pkgeflag: String {
+    case ok = "ok"
+    case reinstreq = "reinstreq"
 }
 
-enum pkgstatus {
-    case notinstalled,
-    configfiles,
-    halfinstalled,
-    unpacked,
-    halfconfigured,
-    triggersawaited,
-    triggerspending,
-    installed
+enum pkgstatus: String {
+    case notinstalled = "not-installed"
+    case configfiles = "config-files"
+    case halfinstalled = "half-installed"
+    case unpacked = "unpackad"
+    case halfconfigured = "half-configured"
+    case triggersawaited = "triggers-awaited"
+    case triggerspending = "triggers-pending"
+    case installed = "installed"
 }
 
-enum pkgpriority {
-    case required,
-    important,
-    standard,
-    optional,
-    extra,
-    other,
-    unknown,
-    unset
+enum pkgpriority: String {
+    case required = "required"
+    case important = "important"
+    case standard = "standard"
+    case optional = "optional"
+    case extra = "extra"
+    case other
+    case unknown = "unknown"
+    case unset
 }
 
 class DpkgWrapper {
-    private static let priorityinfos: [String: pkgpriority] = ["required": .required,
-                                                               "important": .important,
-                                                               "standard": .standard,
-                                                               "optional": .optional,
-                                                               "extra": .extra,
-                                                               "unknown": .unknown]
-    private static let wantinfos: [String: pkgwant] = ["unknown": .unknown,
-                                                       "install": .install,
-                                                       "hold": .hold,
-                                                       "deinstall": .deinstall,
-                                                       "purge": .purge]
-    private static let eflaginfos: [String: pkgeflag] = ["ok": .ok,
-                                                         "reinstreq": .reinstreq]
-    
-    private static let statusinfos: [String: pkgstatus] = ["not-installed": .notinstalled,
-                                                           "config-files": .configfiles,
-                                                           "half-installed": .halfinstalled,
-                                                           "unpackad": .unpacked,
-                                                           "half-configured": .halfconfigured,
-                                                           "triggers-awaited": .triggersawaited,
-                                                           "triggers-pending": .triggerspending,
-                                                           "installed": .installed]
-    
+
     public class func dpkgInterrupted() -> Bool {
         let updatesDir = CommandPath.dpkgDir.appendingPathComponent("updates/")
         var interrupted = false
@@ -108,14 +86,7 @@ class DpkgWrapper {
     }()
     
     public class func isVersion(_ version: String, greaterThan: String) -> Bool {
-        guard let dpkgCmp = try? compareVersions(version, greaterThan) else {
-            return false
-        }
-        
-        if dpkgCmp > 0 {
-            return true
-        }
-        return false
+        compareVersion(version, Int32(version.count + 1), greaterThan, Int32(greaterThan.count + 1)) > 0
     }
     
     public class func getValues(statusField: String?, wantInfo : inout pkgwant, eFlag : inout pkgeflag, pkgStatus : inout pkgstatus) -> Bool {
@@ -126,16 +97,13 @@ class DpkgWrapper {
             return false
         }
         wantInfo = .unknown
-        
-        for (name, wantValue) in wantinfos where name == statusParts[0] {
+        if let wantValue = pkgwant(rawValue: statusParts[0]) {
             wantInfo = wantValue
         }
-        
-        for (name, eflagValue) in eflaginfos where name == statusParts[1] {
+        if let eflagValue = pkgeflag(rawValue: statusParts[1]) {
             eFlag = eflagValue
         }
-        
-        for (name, statusValue) in statusinfos where name == statusParts[2] {
+        if let statusValue = pkgstatus(rawValue: statusParts[2]) {
             pkgStatus = statusValue
         }
         return true
