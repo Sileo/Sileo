@@ -1082,19 +1082,24 @@ final class RepoManager {
             files.forEach(deleteFileAsRoot)
             #endif
             self.postProgressNotification(nil)
-            DatabaseManager.shared.saveQueue()
-
+            
+            if reposUpdated > 0 {
+                DownloadManager.aptQueue.async {
+                    DatabaseManager.shared.saveQueue()
+                    DownloadManager.shared.repoRefresh()
+                    DependencyResolverAccelerator.shared.preflightInstalled()
+                    CanisterResolver.shared.queueCache()
+                }
+            }
+            
+            // This method can be safely called on a non-main thread.
+            backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
+            
             DispatchQueue.main.async {
                 if reposUpdated > 0 {
-                    DownloadManager.aptQueue.async {
-                        DownloadManager.shared.repoRefresh()
-                        DependencyResolverAccelerator.shared.preflightInstalled()
-                    }
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                     NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 }
-                backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
-                NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
                 completion(errorsFound, errorOutput)
             }
         }
