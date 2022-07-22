@@ -217,5 +217,7 @@ void parseControlFile(const uint8_t *rawControlData, size_t controlDataSize, boo
     
     if (lastMultlineKey && lastMultilineValue) {
         controlFileSetSwiftValue(lastMultlineKey, lastMultilineValue, callback, tagCallback);
+    } else if (lastMultlineKey && !lastMultilineValue) {
+        free(lastMultlineKey);
     }
 }
