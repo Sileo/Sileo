@@ -3,7 +3,7 @@
 //  Sileo Backend Tests
 //
 //  Created by Andromeda on 05/08/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import XCTest

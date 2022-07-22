@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Aarnav Tale on 6/28/21.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 import Evander
 
