@@ -84,6 +84,10 @@ void parseVersion(char *version, int *length, char **error, struct DpkgVersion *
     
     long epochNum = 0;
     if (found) {
+        if (searchIdx == 0) {
+            *error = "epoch cannot be blank";
+            return;
+        }
         char epochString[searchIdx];
         memcpy(epochString, version, searchIdx);
         
@@ -142,8 +146,6 @@ void parseVersion(char *version, int *length, char **error, struct DpkgVersion *
         memcpy(revisionStr, version + searchIdx + 1, revisionStrCount);
         
         dpkgVersion->requiresFree = 1;
-    } else {
-        dpkgVersion->requiresFree = 0;
     }
 
     if (validate(versionStr, &versionStrCount) || validate(revisionStr, &revisionStrCount)) {
@@ -170,6 +172,9 @@ int compareVersion(const char *version1, int version1Count, const char *version2
 
     struct DpkgVersion *package1 = malloc(sizeof(struct DpkgVersion));
     struct DpkgVersion *package2 = malloc(sizeof(struct DpkgVersion));
+    package1->requiresFree = 0;
+    package2->requiresFree = 0;
+    
     char *error = NULL;
     
     int cmp = 0;

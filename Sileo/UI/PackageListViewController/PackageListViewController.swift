@@ -124,10 +124,12 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadStates(_:)), name: PackageListManager.stateChange, object: nil)
         if self.showUpdates {
             NotificationCenter.default.addObserver(self, selector: #selector(self.reloadUpdates),
                                                    name: PackageListManager.prefsNotification,
                                                    object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reloadUpdates), name: PackageListManager.installChange, object: nil)
         }
         if loadProvisional {
             NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
@@ -253,6 +255,19 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
+    @objc func reloadStates(_ notification: Notification) {
+        let wasInstall = notification.object as? Bool ?? false
+        Thread.mainBlock { [weak self] in
+            guard let self = self else { return }
+            let packageCells = self.collectionView?.visibleCells.compactMap { $0 as? PackageCollectionViewCell } ?? []
+            if wasInstall {
+                packageCells.forEach { $0.stateBadgeView?.isHidden = true }
+            } else {
+                packageCells.forEach { $0.refreshState() }
+            }
+        }
+    }
+        
     @objc func reloadUpdates() {
         if showUpdates {
             DispatchQueue.global(qos: .userInteractive).async {
@@ -271,6 +286,8 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                         self.navigationController?.tabBarItem.badgeValue = nil
                         UIApplication.shared.applicationIconBadgeNumber = 0
                     }
+                    self.cachedInstalled = nil
+                    self.searchCache = [:]
                     if let searchController = self.searchController {
                         self.updateSearchResults(for: searchController)
                     }

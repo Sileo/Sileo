@@ -56,7 +56,7 @@ class PackageQueueButton: PackageButton {
         self.addTarget(self, action: #selector(PackageQueueButton.buttonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),
-                                               name: DownloadManager.reloadNotification,
+                                               name: PackageListManager.stateChange,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),

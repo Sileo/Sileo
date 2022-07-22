@@ -68,10 +68,6 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(reloadData),
-                                               name: PackageListManager.didUpdateNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)

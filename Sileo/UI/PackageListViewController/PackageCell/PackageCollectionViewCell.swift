@@ -101,14 +101,6 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
-        NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(PackageCollectionViewCell.refreshState),
-                                               name: DownloadManager.lockStateChangeNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(weakSelf as Any,
-                                               selector: #selector(PackageCollectionViewCell.refreshState),
-                                               name: DownloadManager.reloadNotification,
-                                               object: nil)
     }
     
     @objc func updateSileoColors() {
@@ -154,15 +146,16 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         }
         stateBadgeView?.isHidden = false
         let queueState = DownloadManager.shared.find(package: targetPackage)
-        let isInstalled = PackageListManager.shared.installedPackage(identifier: targetPackage.package) != nil
         switch queueState {
         case .installations:
+            let isInstalled = PackageListManager.shared.installedPackage(identifier: targetPackage.package) != nil
             stateBadgeView?.state = isInstalled ? .reinstallQueued : .installQueued
         case .upgrades:
             stateBadgeView?.state = .updateQueued
         case .uninstallations:
             stateBadgeView?.state = .deleteQueued
         default:
+            let isInstalled = PackageListManager.shared.installedPackage(identifier: targetPackage.package) != nil
             stateBadgeView?.state = .installed
             stateBadgeView?.isHidden = !isInstalled
         }

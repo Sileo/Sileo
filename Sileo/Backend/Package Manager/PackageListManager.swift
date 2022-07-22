@@ -11,8 +11,9 @@ import UIKit
 
 final class PackageListManager {
     static let reloadNotification = Notification.Name("SileoPackageCacheReloaded")
+    static let installChange = Notification.Name("SileoInstallChanged")
+    static let stateChange = Notification.Name("SileoStateChanged")
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
-    static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
     private(set) var installedPackages: [String: Package] {
         didSet {

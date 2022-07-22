@@ -510,7 +510,8 @@ class DownloadsTableViewController: SileoViewController {
             }
             PackageListManager.shared.installChange()
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                NotificationCenter.default.post(name: PackageListManager.stateChange, object: nil)
+                NotificationCenter.default.post(name: PackageListManager.installChange, object: nil)
                 
                 let rawUpdates = PackageListManager.shared.availableUpdates()
                 let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
@@ -570,9 +571,11 @@ class DownloadsTableViewController: SileoViewController {
                 self.detailsTextView?.scrollRangeToVisible(NSRange(location: detailsAttributedString.string.count - 1, length: 1))
             }
         }, completionCallback: { _, finish, refresh in
+            PackageListManager.shared.installChange()
             DispatchQueue.main.async {
-                PackageListManager.shared.installChange()
-                NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
+                
+                NotificationCenter.default.post(name: PackageListManager.stateChange, object: nil)
+                NotificationCenter.default.post(name: PackageListManager.installChange, object: nil)
                 let rawUpdates = PackageListManager.shared.availableUpdates()
                 let updatesNotIgnored = rawUpdates.filter({ $0.1?.wantInfo != .hold })
                 UIApplication.shared.applicationIconBadgeNumber = updatesNotIgnored.count

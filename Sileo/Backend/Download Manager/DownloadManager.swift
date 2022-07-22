@@ -19,7 +19,6 @@ public enum DownloadManagerQueue: Int {
 }
 
 final class DownloadManager {
-    static let reloadNotification = Notification.Name("SileoDownloadManagerReloaded")
     static let lockStateChangeNotification = Notification.Name("SileoDownloadManagerLockStateChanged")
     static let aptQueue: DispatchQueue = {
         let queue = DispatchQueue(label: "Sileo.AptQueue", qos: .userInitiated)
@@ -62,7 +61,7 @@ final class DownloadManager {
     
     public var lockedForInstallation = false {
         didSet {
-            NotificationCenter.default.post(name: DownloadManager.lockStateChangeNotification, object: nil)
+            // NotificationCenter.default.post(name: DownloadManager.lockStateChangeNotification, object: nil)
         }
     }
     public var totalProgress = CGFloat(0)
@@ -572,7 +571,7 @@ final class DownloadManager {
             DispatchQueue.main.async {
                 self.viewController.reloadData()
                 TabBarController.singleton?.updatePopup(completion: completion)
-                NotificationCenter.default.post(name: DownloadManager.reloadNotification, object: nil)
+                NotificationCenter.default.post(name: PackageListManager.stateChange, object: nil)
             }
         }
     }
@@ -621,8 +620,7 @@ final class DownloadManager {
         let found = find(package: package.package)
         if found == queue { return }
         remove(downloadPackage: downloadPackage, queue: found)
-    
-        let package = downloadPackage.package.package
+
         switch queue {
         case .none:
             return
