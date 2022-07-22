@@ -6,7 +6,7 @@ name: Build
 jobs:
   make:
     name: Build and Upload Sileo
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/cache@v2
         id: procache
@@ -70,7 +70,7 @@ jobs:
       
       - name: Select Correct Xcode (13.1)
         run: |
-          sudo xcode-select --switch /Applications/Xcode_13.1.app
+          sudo xcode-select --switch /Applications/Xcode_13.4.1.app
           
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
