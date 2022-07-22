@@ -75,6 +75,20 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
                                                selector: #selector(reloadData),
                                                name: NewsViewController.reloadNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(self.reloadStates(_:)), name: PackageListManager.stateChange, object: nil)
+    }
+    
+    @objc func reloadStates(_ notification: Notification) {
+        let wasInstall = notification.object as? Bool ?? false
+        Thread.mainBlock { [weak self] in
+            guard let self = self else { return }
+            let packageCells = self.collectionView?.visibleCells.compactMap { $0 as? PackageCollectionViewCell } ?? []
+            if wasInstall {
+                packageCells.forEach { $0.stateBadgeView?.isHidden = true }
+            } else {
+                packageCells.forEach { $0.refreshState() }
+            }
+        }
     }
     
     @objc func updateSileoColors() {
