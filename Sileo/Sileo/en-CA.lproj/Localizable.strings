@@ -1,0 +1,217 @@
+/* 
+  Localizable.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-27.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+*/
+// Common Prompts
+
+"About" = "About";
+"Close" = "Close";
+"Double tap to open." = "Double tap to open.";
+"Untitled_Repo" = "Untitled Repo";
+"OK" = "OK";
+"Done" = "Done";
+"Done_Editing" = "Done";
+"More_Info" = "More Info";
+"Loading" = "Loading…";
+"Share" = "Share";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Acknowledge" = "Acknowledge";
+"Remove" = "Remove";
+"Sileo_Team" = "Sileo Team";
+"Warning" = "Warning";
+"Edit" = "Edit";
+
+// Popup messages
+"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+
+// Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
+"Installing_Package_Status" = "Installing";
+"Downloading_Package_Status" = "Downloading";
+"Queued_Package_Status" = "Queued";
+"Ready_Status" = "Ready";
+"Removal_Queued_Package_Status" = "Queued for Removal";
+"Download_Starting" = "Starting…";
+"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+
+"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+
+"Queue_Confirm_Button" = "Confirm";
+"Queue_Clear_Button" = "Clear Queue";
+"Queue_Cancel_Downloads" = "Cancel Downloads";
+
+"Package_Upgrade_Action" = "Upgrade";
+"Package_Reinstall_Action" = "Reinstall";
+"Package_Uninstall_Action" = "Uninstall";
+"Package_Modify_Action" = "Modify";
+"Package_Get_Action" = "Get";
+"Package_Queue_Action" = "Queue";
+"Package_Cancel_Action" = "Cancel";
+"Package_Paid" = "Paid";
+
+"Package_Share_Action" = "Share Package…";
+"Package_Developer_Find_Action" = "More by this Developer";
+"Package_Support_Action" = "Support";
+"Package_Hold_Enable_Action" = "Ignore Future Updates";
+"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
+"Package_Wishlist_Add" = "Add to Wishlist";
+"Package_Wishlist_Remove" = "Remove from Wishlist";
+"Wishlist" = "Wishlist";
+
+"No_New_Packages" = "No New Packages";
+"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+
+// Headings for sections in the queue/status popup.
+"Queued_Install_Heading" = "Install";
+"Queued_Uninstall_Heading" = "Uninstall";
+"Queued_Update_Heading" = "Update";
+"Download_Errors_Heading" = "Errors";
+
+"Installed_Heading" = "Installed";
+"Updates_Heading" = "Updates";
+"Upgrade_All_Button" = "Upgrade All";
+"Package_Search.Placeholder" = "Search for Packages";
+"Sort_Name" = "Name";
+"Sort_Date" = "Date";
+"Sort_Install_Size" = "Installed Size";
+"Sort_By" = "Sort by:";
+
+"Package_Unavailable" = "Package Unavailable";
+"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "by %@"; // %@ = author name
+"Packages_By_Author" = "Packages by %@"; // %@ = author name
+
+"Featured_Page" = "Featured";
+"News_Page" = "New";
+"Sources_Page" = "Sources";
+"Packages_Page" = "Packages";
+"Search_Page" = "Search";
+"Refreshing_Sources_Page" = "Refreshing Sources";
+"Package_Installed_Files_Page" = "Installed Files";
+"Refresh" = "Refresh";
+"Remove" = "Remove";
+
+"All_Packages.Title" = "All Packages";
+"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+
+"All_Categories" = "All Categories";
+"Internal_Repo" = "Internal Repos";
+"External_Repo" = "External Repos";
+"Ignored Updates" = "Ignored Updates";
+
+"Repos" = "Repositories";
+"Repo" = "Repository";
+
+"Add_Source.Title" = "Add Source";
+"Add_Source.Body" = "Add APT URL";
+"Add_Source.Button.Add" = "Add Source";
+"Add_Dist_Repo" = "Add Dist Repo";
+"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+
+"Untitled_Form" = "Untitled Form";
+"Form_Submitted.Default_Title" = "Submitted Form";
+"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+
+"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+
+"Package_Details_Tab" = "Details";
+"Package_Changelog_Tab" = "Changelog";
+"Package_No_Description_Available" = "No description is available for this package.";
+"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+
+"Installed_Package_Header" = "Installed Package";
+"Installed_Packages" = "Installed Packages";
+"Version" = "Version";
+"Show_Package_Contents_Button" = "Show Package Contents";
+
+"Licenses_Page_Title" = "Licenses";
+"Alternate_Icon_Title" = "Alternate Icons";
+
+"Settings_Payment_Provider_Heading" = "Payment Providers";
+"Settings_Translations_Heading" = "Translations";
+
+"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+
+"Settings" = "Settings";
+"Settings_Page_Title" = "Settings";
+"Dark_Mode_Toggle" = "Dark Mode";
+"Theme" = "Theme";
+"Tint_Color" = "Tint Color";
+"Reset_Tint_Color" = "Reset Tint Color";
+"Auto_Complete_Queue" = "Auto Complete Queue";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
+"Swipe_Actions" = "Swipe Actions";
+"Show_Provisional" = "Show Packages From Canister";
+"Show_Ignored_Updates" = "Show Ignored Updates";
+"Developer_Mode" = "Developer Mode";
+"Pog_Developer" = "You are now a developer!";
+"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
+"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"iCloud_Profile" = "Show iCloud Picture in Featured";
+"Cache_Size" = "Cache Size";
+"Clear_Cache" = "Clear Network Cache";
+"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Language" = "Language";
+"Use_System_Language" = "Use System Language";
+"Apply_Changes" = "Apply Changes";
+"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Help_Translate" = "Help Translate Sileo";
+"Always_Show_Install_Log" = "Always Show Install Log";
+"Auto_Show_Queue" = "Show Queue on Upgrade All";
+
+"Sileo_Light" = "Sileo Light";
+"Sileo_Dark" = "Sileo Dark";
+"Sileo_Adaptive" = "Sileo Adaptive";
+"System" = "System";
+"Theme_Settings" = "Theme Settings";
+
+"Cydia_Sign_In" = "Sign in to Cydia Store";
+"Payment_Provider_Signed_In" = "Signed in";
+"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Sign out";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+
+"Show_Install_Details" = "Show Details";
+"Hide_Install_Details" = "Hide Details";
+"Open_In_Filza" = "Open in Filza";
+"Copy_Path" = "Copy Path";
+
+"After_Install_Relaunch" = "Restart Sileo";
+"After_Install_Respring" = "Restart SpringBoard";
+"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Reboot_Later" = "Reboot Device Later";
+
+"Dangerous_Repo.Title" = "Dangerous Repo";
+"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
+"Dangerous_Repo.Continue" = "I accept the risks, continue";
+"Dangerous_Repo.Cancel" = "Take me back to safety";
+"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continue";
+"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+
+// All export-based strings
+"Export" = "Export";
+"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
+"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
+"Export_Yes" = "Yes, copy.";
+"Export_No" = "No, cancel.";
+
+// Depcitions
+"View_Depiction" = "View Depiction";
+
+"Copy_ID" = "Copy ID";
