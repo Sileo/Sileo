@@ -13,14 +13,14 @@
 "Close" = "Затвори";
 "Double tap to open." = "Double tap to open.";
 "Untitled_Repo" = "Untitled Repo";
-"OK" = "OK";
+"OK" = "Добро";
 "Done" = "Done";
 "Done_Editing" = "Done";
-"More_Info" = "More Info";
+"More_Info" = "Повеќе Iнформации";
 "Loading" = "Loading…";
 "Share" = "Share";
 "Delete" = "Delete";
-"Cancel" = "Cancel";
+"Cancel" = "Откажи";
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
 "Sileo_Team" = "Sileo Team";
@@ -50,11 +50,11 @@
 "Package_Upgrade_Action" = "Upgrade";
 "Package_Reinstall_Action" = "Reinstall";
 "Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
+"Package_Modify_Action" = "Измени";
+"Package_Get_Action" = "Земи";
 "Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Cancel_Action" = "Откажи";
+"Package_Paid" = "Платено";
 
 "Package_Share_Action" = "Share Package…";
 "Package_Developer_Find_Action" = "More by this Developer";
@@ -65,11 +65,11 @@
 "Package_Wishlist_Remove" = "Remove from Wishlist";
 "Wishlist" = "Wishlist";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Нема нови пакети";
+"News_Check_Later" = "Уште нема нови пакети. Дојди после и ке видеш пакети кoга sources update.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
+"Queued_Install_Heading" = "Инсталирај";
 "Queued_Uninstall_Heading" = "Uninstall";
 "Queued_Update_Heading" = "Update";
 "Download_Errors_Heading" = "Errors";
