@@ -8,13 +8,13 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
+"No_Category" = "(Нема Категорија)";
+"Tweaks" = "Модификатцја";
 "Themes" = "Themes";
 "Utilities" = "Utilities";
-"Applications" = "Applications";
+"Applications" = "Аплкации";
 "Addons" = "Addons";
-"Games" = "Games";
+"Games" = "Игри";
 "Developer" = "Developer";
 "Data_Storage" = "Data Storage";
 "Terminal_Support" = "Terminal Support";
