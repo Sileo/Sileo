@@ -56,7 +56,7 @@ class DependencyResolverAccelerator {
         #endif
         let resolverPrefix = depResolverPrefix
         for (sourcesFile, packages) in partialRepoList {
-            if sourcesFile.lastPathComponent == "status" {
+            if sourcesFile.lastPathComponent == "status" || sourceFile.scheme == "local" {
                 continue
             }
             let newSourcesFile = resolverPrefix.appendingPathComponent(sourcesFile.lastPathComponent)
@@ -92,9 +92,7 @@ class DependencyResolverAccelerator {
     }
    
     private func getDependenciesInternal2(package: Package) {
-        guard let sourceFileURL = package.sourceFileURL?.aptUrl else {
-            return
-        }
+        let sourceFileURL = package.sourceFileURL?.aptUrl ?? URL(string: "local://")!
         if partialRepoList[sourceFileURL] == nil {
             partialRepoList[sourceFileURL] = Set<Package>()
         }
