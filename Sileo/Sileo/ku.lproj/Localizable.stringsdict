@@ -15,13 +15,13 @@
         <key>one</key>
         <string>Source</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>سۆرسەکان</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>زیادکردنی%lu%#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -29,15 +29,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>سۆرس</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>سۆرسەکان</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>%#@urls@ دۆزرایەوە لە بەشی پەیستەکانت:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d پاکێج</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d پاکێجەکان</string>
       </dict>
     </dict>
   </dict>
