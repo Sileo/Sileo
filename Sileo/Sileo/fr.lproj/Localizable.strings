@@ -24,8 +24,8 @@
 "Acknowledge" = "J'ai compris";
 "Remove" = "Supprimer";
 "Sileo_Team" = "Équipe Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "Avertissement";
+"Edit" = "Modifier";
 
 // Popup messages
 "Background_App_Refresh" = "Actualiser (arrière-plan)";
@@ -41,11 +41,11 @@
 "Download_Starting" = "Le téléchargement commence…";
 "Download_Progress" = "%@ sur %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Les paquets suivants sont essentiels/obligatoires : %@\n. Les retirer pourrait causer des dommages irréversibles à votre appareil et vous obliger à le restaurer. Ne continuez que si vous êtes certain de bien comprendre ce que vous faites.";
 
 "Queue_Confirm_Button" = "Confirmer";
 "Queue_Clear_Button" = "Supprimer la file d'attente";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Annuler les téléchargements";
 
 "Package_Upgrade_Action" = "Mettre à jour";
 "Package_Reinstall_Action" = "Réinstaller";
@@ -65,8 +65,8 @@
 "Package_Wishlist_Remove" = "Enlever de la liste d'intérêt";
 "Wishlist" = "Liste d'intérêt";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Aucun nouveau paquet";
+"News_Check_Later" = "Il n'y a pas encore de nouveaux paquets indexés. Veuillez revenir dans quelques heures et vous verrez les paquets commencer à apparaître lorsque les dépôts seront mis à jour.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installer";
@@ -80,7 +80,7 @@
 "Package_Search.Placeholder" = "Chercher un paquet";
 "Sort_Name" = "Nom";
 "Sort_Date" = "Date";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Taille installée";
 "Sort_By" = "Trier par :";
 
 "Package_Unavailable" = "Paquet indisponible";
@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Mise à jour des sources";
 "Package_Installed_Files_Page" = "Fichiers installés";
 "Refresh" = "Rafraîchir";
-"Remove" = "Remove";
+"Remove" = "Supprimer";
 
 "All_Packages.Title" = "Tous les paquets";
 "All_Packages.Cell_Subtitle" = "Voir tous les paquets de vos sources";
@@ -107,13 +107,13 @@
 "Ignored Updates" = "Mises à jour ignorées";
 
 "Repos" = "Sources";
-"Repo" = "Repository";
+"Repo" = "Dépôt";
 
 "Add_Source.Title" = "Ajouter la source";
 "Add_Source.Body" = "Ajouter l'addresse APT";
 "Add_Source.Button.Add" = "Ajouter la source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "Ajouter un dépôt Dist";
+"Incorrect_Repo" = "%@ ne semble pas être un dépôt valide⁉️ Le dépôt est peut-être hors ligne ou vous l'avez peut-être entré de manière incorrecte. Voulez-vous quand même l'ajouter ?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Entrer manuellement";
 
@@ -129,7 +129,7 @@
 "Package_Changelogs_Unavailable" = "Les changements ne sont pas disponibles pour ce paquet.";
 
 "Installed_Package_Header" = "Paquet installé";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Paquets installés";
 "Version" = "Version";
 "Show_Package_Contents_Button" = "Afficher le contenu du paquet";
 
@@ -141,7 +141,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Achats";
 "Settings_Payment_Provider.No_Purchases" = "Aucun achat";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "Authentifiez-vous pour compléter votre achat";
 
 "Settings" = "Paramètres";
 "Settings_Page_Title" = "Paramètres";
@@ -162,13 +162,13 @@
 "Cache_Size" = "Taille du cache";
 "Clear_Cache" = "Vider le cache réseau";
 "Clear_Cache_Message" = "Voulez-vous vider le cache réseau ? Cela libérera %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Language" = "Langue";
+"Use_System_Language" = "Utiliser la langue du système";
+"Apply_Changes" = "Appliquer les modifications";
+"Apply_Changes_Confirm" = "Appliquer les modifications nécessitera un redémarrage de Sileo";
+"Help_Translate" = "Aidez-nous à traduire Sileo";
+"Always_Show_Install_Log" = "Toujours afficher les journaux d'installation";
+"Auto_Show_Queue" = "Afficher la file d'attente lors de la mise à niveau de tout";
 
 "Sileo_Light" = "Clair";
 "Sileo_Dark" = "Sombre";
@@ -185,8 +185,8 @@
 
 "Show_Install_Details" = "Afficher les détails";
 "Hide_Install_Details" = "Masquer les détails";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Ouvrir dans Filza";
+"Copy_Path" = "Copier le chemin";
 
 "After_Install_Relaunch" = "Relancer Sileo";
 "After_Install_Respring" = "Relancer le SpringBoard";
@@ -214,4 +214,4 @@
 // Depcitions
 "View_Depiction" = "Voir la description";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Copier l'ID";
