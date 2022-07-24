@@ -29,7 +29,7 @@
 "Package_Unavailable" = "Acest pachet nu e disponibil din sursele voastre instalate. Vă rugăm să verificați că repo-ul %@ este disponibil.";
 
 "Installation_Error.Title" = "Eroare de instalare";
-"Installation_Error.Body" = "Sileo nu a reușit să primească permisiuni root. Vă rugăm să reinstalați Sileo folosind SSH.";
+"Installation_Error.Body" = "Sileo nu a putut obține permisiuni root. Vă rugăm să reinstalați Sileo folosind SSH.";
 
 "FixingDpkg.Title" = "Dpkg întrerupt";
 "FixingDpkg.Body" = "Dpkg a fost întrerupt. Vă rugăm să așteptați cât timp noi încercăm să rezolvăm problema.";
