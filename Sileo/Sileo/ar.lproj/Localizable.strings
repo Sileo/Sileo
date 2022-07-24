@@ -16,7 +16,7 @@
 "OK" = "حسنًا";
 "Done" = "تم";
 "Done_Editing" = "تم";
-"More_Info" = "المزيد من العلومات";
+"More_Info" = "المزيد من المعلومات";
 "Loading" = "جارِ التحميل...";
 "Share" = "مشاركة";
 "Delete" = "حذف";
@@ -28,7 +28,7 @@
 "Edit" = "تعديل";
 
 // Popup messages
-"Background_App_Refresh" = "تحديث التطبيق في الخلفية";
+"Background_App_Refresh" = "تحديث التطبيقات في الخلفية";
 "Background_App_Refresh_Message" = "للحصول على أسرع وأفضل تجربة، يوصى بتفعيل تحديث التطبيق في الخلفية. يمكنك أيضًا تلقي الإشعارات عندما تصدر تحديثات لأدواتك!";
 "Upgrade_All_Shortcut_Processing_Message" = "جارِ تحديث كل المصادر وترقية كل الحزم...";
 
@@ -143,7 +143,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "المشتريات";
 "Settings_Payment_Provider.No_Purchases" = "لا توجد مشتريات";
-"Authenticate_To_Purchase" = "المصادقة لإكمال عملية الشراء";
+"Authenticate_To_Purchase" = "المصادقة لمتابعة الشراء";
 
 "Settings" = "الإعدادات";
 "Settings_Page_Title" = "الإعدادات";
@@ -174,7 +174,7 @@
 
 "Sileo_Light" = "Sileo فاتح";
 "Sileo_Dark" = "Sileo داكن";
-"Sileo_Adaptive" = "تكيُّف Sileo";
+"Sileo_Adaptive" = "استخدام إعدادات مظهر الجهاز";
 "System" = "النظام";
 "Theme_Settings" = "إعدادات السمة";
 
@@ -199,8 +199,8 @@
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
-"Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
-"Dangerous_Repo.Cancel" = "أعدني إلى بر الأمان";
+"Dangerous_Repo.Continue" = "قبول المخاطر والاستمرار";
+"Dangerous_Repo.Cancel" = "الرجوع";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
 "Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
@@ -216,4 +216,4 @@
 // Depcitions
 "View_Depiction" = "عرض الوصف";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "نسخ ID";
