@@ -8,13 +8,13 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
+"No_Category" = "(Sense categoria)";
 "Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
+"Themes" = "Temes";
+"Utilities" = "Utilitats";
+"Applications" = "Aplicacions";
+"Addons" = "Complements";
+"Games" = "Jocs";
 "Developer" = "Developer";
 "Data_Storage" = "Data Storage";
 "Terminal_Support" = "Terminal Support";
