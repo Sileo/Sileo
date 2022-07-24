@@ -8,40 +8,40 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
+"Unknown" = "S'ha produït un error desconegut.";
 "Error_Indicator" = "Error: %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "No s'ha pogut trobar el paquet %@ en els repositoris que tens a Sileo.";
+"No_Package.Body" = "Si es nou, espera a que sileo acabi d' Actualitzar-se. Despres torna-ho a probar. Pots mirar online per trobar ajuda.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Adreça URL no vàlida";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "espai esperar %@, pero hi ha %@.";
+"Download_Failing_Status_Code" = "Ha fallat amb el estat %ld";
+"Download_Hash_Mismatch" = "hash esperat %@, pero hi ha %@.";
+"Untrusted_Package" = "El paquet %@ no es de fiar i no es pot verificar ";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Els paquets que requereixen pagament requereixen de ser segurs.";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "El servidor de pagament ha fallat amb una resposta invalida.";
+"No_Payment_Provider" = "Aquest repositori no admet compres de Sileo. Si aquest és un paquet de Cydia Store que ja heu comprat, podeu enllaçar el vostre compte per descarregar-lo.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Aquest paquet no està disponible a les vostres fonts instal·lades. Si us plau, comproveu que el repo %@ estigui disponible.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "Error en la instalació";
+"Installation_Error.Body" = "Sileo no ha pogut obtenir permisos D administrador. Torneu a instal·lar Sileo mitjançant SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dkpg interromput";
+"FixingDpkg.Body" = "Dpkg ha sigut interromput. Espereu mentre intentem solucionar el problema.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Dades no vàlides";
+"Try_Later" = "Si us plau, prova-ho més tard.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Actualització requerida de sileo";
+"Featured_Requires_Sileo_Update" = "Cal una actualització de Sileo per veure la pestanya destacada. És possible que la pestanya destacada es mostri incorrectament.";
+"Depiction_Requires_Sileo_Update" = "Cal una actualització de Sileo per veure aquesta pàgina. És possible que la pàgina estigui representada incorrectament.";
 
-"Form_Error.Title" = "Couldn't Load Form";
+"Form_Error.Title" = "No s ha pogut carregar desde";
 "Form_Load_Error" = "The form could not be loaded from the server.";
 "Invalid_Form_Data" = "The server provided invalid form data.";
 "Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
