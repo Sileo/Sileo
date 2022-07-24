@@ -11,14 +11,14 @@
 
 "About" = "Despre";
 "Close" = "Închideți";
-"Double tap to open." = "Apăsați dublu a deschide";
+"Double tap to open." = "Apăsați dublu pentru a deschide.";
 "Untitled_Repo" = "Repo fără titlu";
 "OK" = "OK";
 "Done" = "Gata";
 "Done_Editing" = "Gata";
 "More_Info" = "Mai multe";
-"Loading" = "Încârcare…";
-"Share" = "Partajați";
+"Loading" = "Încărcare…";
+"Share" = "Distribuiți";
 "Delete" = "Ștergeți";
 "Cancel" = "Anulați";
 "Acknowledge" = "Confirmați";
@@ -29,19 +29,19 @@
 
 // Popup messages
 "Background_App_Refresh" = "Reîmprospătare în fundal";
-"Background_App_Refresh_Message" = "Pentru experiența cea mai bună și repede, recomandăm să activați reîmprospătare în fundal pentru Sileo. Puteți să primiți notificări când tweakurile voastre au actualizări disponibile!";
-"Upgrade_All_Shortcut_Processing_Message" = "Reîmprospătare de toate surselor și actualizare de toate pachetelor...";
+"Background_App_Refresh_Message" = "Pentru cea mai bună și rapidă experiență, recomandăm să activați reîmprospătarea în fundal pentru Sileo. De asemenea, puteți primi notificări când tweakurile voastre sunt actualizate!";
+"Upgrade_All_Shortcut_Processing_Message" = "Reîmprospătăm toate sursele și actualizăm toate pachetele...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Instalare";
-"Downloading_Package_Status" = "Descărcare";
-"Queued_Package_Status" = "În rând";
-"Ready_Status" = "Pregâtit";
-"Removal_Queued_Package_Status" = "În rând pentru ștergere";
+"Installing_Package_Status" = "Se instalează";
+"Downloading_Package_Status" = "Se descarcă";
+"Queued_Package_Status" = "În lista de așteptare";
+"Ready_Status" = "Pregătit";
+"Removal_Queued_Package_Status" = "În așteptare pentru ștergere";
 "Download_Starting" = "Începere…";
 "Download_Progress" = "%@ din %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "Acestea pachete sunt considerate ca esențiale/necesare: %@\n Ștergând acestea pachete puteți să faceți probleme pe aparatul vostru și în unei chestii necesite reinstalrea iOS. Continuați numai dacă sunteți sigur că înțelegeți ce faceți.";
+"Essential_Warning" = "Următoarele pachete sunt considerate esențiale/necesare: %@\n Ștergând aceste pachete pot cauza daune ireversibile dispozitivului dvs. și ar putea necesita restaurarea. Continuați doar dacă sunteți siguri că știți ce faceți.";
 
 "Queue_Confirm_Button" = "Confirmați";
 "Queue_Clear_Button" = "Ștergeți coada";
@@ -56,17 +56,17 @@
 "Package_Cancel_Action" = "Anulați";
 "Package_Paid" = "Plătit";
 
-"Package_Share_Action" = "Partajați pachetul…";
-"Package_Developer_Find_Action" = "Mai multe pachete de acest dezvoltator";
+"Package_Share_Action" = "Distribuiți pachetul…";
+"Package_Developer_Find_Action" = "Mai multe pachete de la acest dezvoltator";
 "Package_Support_Action" = "Ajutor";
-"Package_Hold_Enable_Action" = "Dezactivați actualizări";
-"Package_Hold_Disable_Action" = "Reactivați actualizări";
+"Package_Hold_Enable_Action" = "Ignorați viitoarele actualizări";
+"Package_Hold_Disable_Action" = "Opriți ignorarea actualizărilor";
 "Package_Wishlist_Add" = "Adăugați pe Lista de dorințe";
 "Package_Wishlist_Remove" = "Ștergeți de pe Lista de dorințe";
 "Wishlist" = "Lista de dorințe";
 
 "No_New_Packages" = "Niciun Pachet Nou";
-"News_Check_Later" = "Încă nu sunt pachete noi indexate. Veniți înapoi mai târziu și în cursul actualizarea repozitorile va vedeți pachete noi.";
+"News_Check_Later" = "Încă nu sunt pachete noi indexate. Reveniți în câteva ore și ar trebui să vedeți ca pachetele încep să apară aici cât timp repo-urile sunt actualizate.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "De instalat";
@@ -214,4 +214,4 @@
 // Depcitions
 "View_Depiction" = "Deschideți descrierea";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Copiază ID";
