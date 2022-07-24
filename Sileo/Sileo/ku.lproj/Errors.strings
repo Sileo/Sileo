@@ -45,16 +45,16 @@
 "Form_Error.Title" = "ناتواندرێت فۆڕمەکە لۆد بکرێت";
 "Form_Load_Error" = "فۆڕمەکە ناتواندرێت لۆد بکرێت لەلایەن سێرڤەرەکەوە.";
 "Invalid_Form_Data" = "سێرڤەرەکە داتای فۆرمی نادروستی دابین کرد.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Form_Submit_Failure" = "هەڵەیەک ڕوویدا لەکاتی هەوڵدان بۆ ناردنی فۆڕمی:%@";
+"Form_Submit_Error.Title" = "نەتواندرا فۆڕمەکە بنێردرێت";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "ناتواندرێت ئیمەیڵەکە بنێردرێت";
+"Email_Unavailable.Body" = "خزمەتگوزاری ئیمەیڵ بەردەست نیە.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "نەتواندرا پرۆفایل بار بکات";
 
 "Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
+"Purchase_Initiate_Fail.Title" = "ناتوانێت دەست بکات بە کڕین";
+"Purchase_Complete_Fail.Title" = "نەتواندرا کڕینەکە کۆتایی پێ بهێندرێت";
 "Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
