@@ -24,29 +24,29 @@
 "Insecure_Paid_Download" = "URL завантаження від платні пакети мають бути захищені (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Платіжний провайдер вернув інвалідну відповідь.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"No_Payment_Provider" = "Це репо не підтримує покупки Sileo. Якщо це пакет Cydia Store, який ви вже придбали, ви можете пов’язати свій обліковий запис, щоб завантажити його.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Цей пакет недоступний із встановлених джерел. Будь ласка, переконайтеся, що репо %@ доступне.";
 
 "Installation_Error.Title" = "Помилка Інсталяції";
 "Installation_Error.Body" = "Sileo не міг дістати root-права. Переінсталюйте Sileo з допомогою SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg перервано";
+"FixingDpkg.Body" = "Dpkg було перервано. Зачекайте, поки ми спробуємо розв'язати проблему.";
 
 "Invalid_Data" = "Інвалідні Дані";
 "Try_Later" = "Попробуйте ще раз пізніше.";
 
 "Sileo_Update_Required.Title" = "Обов'язкове Оновлення Sileo";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Featured_Requires_Sileo_Update" = "Для перегляду пропонованої вкладки потрібне оновлення Sileo. Пропонована вкладка може бути показано неправильно.";
+"Depiction_Requires_Sileo_Update" = "Для перегляду цієї сторінки потрібне оновлення Sileo. Сторінка може бути показано неправильно.";
 
 "Form_Error.Title" = "Не вдалося завантажити форму";
-"Form_Load_Error" = "The form could not be loaded from the server.";
+"Form_Load_Error" = "Не вдалося завантажити форму з сервера.";
 "Invalid_Form_Data" = "Сервер вернув інвалідну форму дані.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
+"Form_Submit_Failure" = "Під час спроби надіслати форму сталася помилка: %@";
 "Form_Submit_Error.Title" = "Не вдалось відправити форму";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Action_Host_Mismatch" = "Хост URL-адреси дії форми не збігається з хостом джерела форми.";
 
 "Email_Unavailable.Title" = "Не можливо відіслати електронну пошту";
 "Email_Unavailable.Body" = "Сервіси пошти недоступні.";
