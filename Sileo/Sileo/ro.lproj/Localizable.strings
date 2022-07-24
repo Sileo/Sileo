@@ -66,17 +66,17 @@
 "Wishlist" = "Lista de dorințe";
 
 "No_New_Packages" = "Niciun Pachet Nou";
-"News_Check_Later" = "Încă nu sunt pachete noi indexate. Reveniți în câteva ore și ar trebui să vedeți ca pachetele încep să apară aici cât timp repo-urile sunt actualizate.";
+"News_Check_Later" = "Încă nu sunt pachete noi indexate. Reveniți în câteva ore și ar trebui să vedeți că pachetele încep să apară aici cât timp repo-urile sunt actualizate.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "De instalat";
-"Queued_Uninstall_Heading" = "De dezinstalat";
-"Queued_Update_Heading" = "De actualiza";
+"Queued_Install_Heading" = "Instalare";
+"Queued_Uninstall_Heading" = "Dezinstalare";
+"Queued_Update_Heading" = "Actualizare";
 "Download_Errors_Heading" = "Erori";
 
-"Installed_Heading" = "Instalat";
+"Installed_Heading" = "Instalate";
 "Updates_Heading" = "Actualizări";
-"Upgrade_All_Button" = "Actualizare complet";
+"Upgrade_All_Button" = "Actualizează toate";
 "Package_Search.Placeholder" = "Căutați pachete";
 "Sort_Name" = "Nume";
 "Sort_Date" = "Dată";
@@ -98,24 +98,24 @@
 "Refresh" = "Reîmprospătați";
 "Remove" = "Ștergeți";
 
-"All_Packages.Title" = "Toate pachete";
-"All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
+"All_Packages.Title" = "Toate pachetele";
+"All_Packages.Cell_Subtitle" = "Vedeți toate pachetele din sursele dvs";
 
 "All_Categories" = "Toate categoriile";
 "Internal_Repo" = "Repozitorii Interne";
 "External_Repo" = "Repozitorii Externe";
-"Ignored Updates" = "Actualizări Dezactivate";
+"Ignored Updates" = "Actualizări Ignorate";
 
-"Repos" = "Repozitoriile";
+"Repos" = "Repozitorii";
 "Repo" = "Repozitoriu";
 
 "Add_Source.Title" = "Adăgați sursă";
 "Add_Source.Body" = "Adăugați URL APT";
 "Add_Source.Button.Add" = "Adăugați sursă";
-"Add_Dist_Repo" = "Adăgați repozitoriu dist.";
-"Incorrect_Repo" = "%@ nu apare ca un repo valid. Să poate că repozitoriu este offline sau ați tastat greșit. Totuși doriți să adăugați?";
+"Add_Dist_Repo" = "Adăugați repo Dist";
+"Incorrect_Repo" = "%@ nu pare a fi un repo valid!? Repo-ul poate fi offline sau poate l-ați introdus incorect. Doriți să îl adăugați oricum?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Tastați manual";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Introduceți manual";
 
 "Untitled_Form" = "Formular fără titlu";
 "Form_Submitted.Default_Title" = "Formular trimis";
