@@ -73,6 +73,18 @@ class DependencyResolverAccelerator {
         #endif
     }
     
+    public func removeRepo(repo: Repo) {
+        let url = RepoManager.shared.cacheFile(named: "Packages", for: repo)
+        let newSourcesFile = depResolverPrefix.appendingPathComponent(url.lastPathComponent)
+        toBePreflighted.removeValue(forKey: url)
+        preflightedPackages.removeValue(forKey: url)
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
+        try? FileManager.default.removeItem(at: newSourcesFile)
+        #else
+        spawnAsRoot(args: [CommandPath.rm, "-rf", newSourcesFile.aptPath])
+        #endif
+    }
+    
     public func getDependencies(packages: [Package]) throws {
         if Thread.isMainThread {
             fatalError("Don't call things that will block the UI from the main thread")
