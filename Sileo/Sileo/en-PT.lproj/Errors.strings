@@ -8,18 +8,24 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "this is the day you almost caught jack sparrow.";
+"Error_Indicator" = "Error: penis penis penis penis";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "this is the day you almost caught %@";
+"No_Package.Body" = "Cydia couldnt be installed,bootlooping";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "Do what you want cause a pirate is free, you are a pirate!
+Yarr har fiddle dee dee
+Being a pirate is alright to be
+Do what you want cause a pirate is free
+You are a pirate!
+You are a pirate!
+Yeah!";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "Yarrrrrrrrrrr the size is wrong dumbass";
+"Download_Failing_Status_Code" = "failed with status \"Failed to pirate unc0ver,bootlooping\"";
+"Download_Hash_Mismatch" = "Ahoy! your hash is fucked ";
+"Untrusted_Package" = "%@ is garbage,cant be verified,bootloop";
 
 "Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
 
