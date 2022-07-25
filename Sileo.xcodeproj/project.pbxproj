@@ -851,6 +851,10 @@
 		E1EB036C268BA4C30097CEE1 /* DependencyResolverAccelerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */; };
 		E1F10B1E2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
 		E1F10B1F2663A60100DA726E /* SourcesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */; };
+		E1F4B966288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */; };
+		E1F4B967288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */; };
+		E1F4B968288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */; };
+		E1F4B969288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */; };
 		F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E222CD514C00A4C9BA /* WishListManager.swift */; };
 		F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1E422CD7DE300A4C9BA /* Package.swift */; };
 		F102D1EE22CEA23400A4C9BA /* PackageListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */; };
@@ -1632,6 +1636,7 @@
 		E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		E1EB036A268BA4C30097CEE1 /* DependencyResolverAccelerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyResolverAccelerator.swift; sourceTree = "<group>"; };
 		E1F10B1D2663A60100DA726E /* SourcesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewFooter.swift; sourceTree = "<group>"; };
+		E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		F102D1E222CD514C00A4C9BA /* WishListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListManager.swift; sourceTree = "<group>"; };
 		F102D1E422CD7DE300A4C9BA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F102D1ED22CEA23400A4C9BA /* PackageListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListManager.swift; sourceTree = "<group>"; };
@@ -3046,6 +3051,7 @@
 				F13AEE6B22F75913004BAA05 /* UIPasteboard+Sources.swift */,
 				F16115D3244D8ABF003BF1E6 /* URL+Secure.swift */,
 				E163BEB42889E5B9004A20CC /* Set+Extensions.swift */,
+				E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4218,6 +4224,7 @@
 				E128185826BBFAA500D2553B /* DepictionSubpageViewController.swift in Sources */,
 				E128185926BBFAA500D2553B /* SettingsSwitchTableViewCell.swift in Sources */,
 				E128185A26BBFAA500D2553B /* DepictionTabControl.swift in Sources */,
+				E1F4B968288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */,
 				E128185B26BBFAA500D2553B /* DepictionTabView.swift in Sources */,
 				E128185C26BBFAA500D2553B /* DepictionTableButtonView.swift in Sources */,
 				E128185D26BBFAA500D2553B /* ThemePickerView.swift in Sources */,
@@ -4403,6 +4410,7 @@
 				E14E4C5826DAD572002AE3B4 /* DepictionSubpageViewController.swift in Sources */,
 				E14E4C5926DAD572002AE3B4 /* SettingsSwitchTableViewCell.swift in Sources */,
 				E14E4C5A26DAD572002AE3B4 /* DepictionTabControl.swift in Sources */,
+				E1F4B969288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */,
 				E14E4C5B26DAD572002AE3B4 /* DepictionTabView.swift in Sources */,
 				E14E4C5C26DAD572002AE3B4 /* DepictionTableButtonView.swift in Sources */,
 				E14E4C5D26DAD572002AE3B4 /* ThemePickerView.swift in Sources */,
@@ -4685,6 +4693,7 @@
 				F16115D5244D8ABF003BF1E6 /* URL+Secure.swift in Sources */,
 				F1FF7A6824FAF0310088F88B /* FeaturedLayerView.swift in Sources */,
 				F139D0D322EA9209007F5C0D /* Repo.swift in Sources */,
+				E1F4B967288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */,
 				F139D11422EA9209007F5C0D /* RepoManager.swift in Sources */,
 				F139D0D222EA9209007F5C0D /* SourceErrorsViewController.swift in Sources */,
 				172B2ED822F0A351000155B9 /* SourceLicense.swift in Sources */,
@@ -4767,6 +4776,7 @@
 				F147E68622F2354B0048F868 /* DepictionSubpageViewController.swift in Sources */,
 				E1B3FBCE2601467500F2E07F /* SettingsSwitchTableViewCell.swift in Sources */,
 				F1C5D99522D13F480021BD89 /* DepictionTabControl.swift in Sources */,
+				E1F4B966288E8F3500E0C6E8 /* Data+Extensions.swift in Sources */,
 				F1C5D99822D141FF0021BD89 /* DepictionTabView.swift in Sources */,
 				F1C5D9BA22D16B7F0021BD89 /* DepictionTableButtonView.swift in Sources */,
 				E13F31C72677E71E00AB8932 /* ThemePickerView.swift in Sources */,
