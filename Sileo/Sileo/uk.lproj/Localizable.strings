@@ -113,80 +113,80 @@
 "Add_Source.Body" = "Додати посилання APT";
 "Add_Source.Button.Add" = "Додати джерело";
 "Add_Dist_Repo" = "Додати репозиторій";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Incorrect_Repo" = "%@ не є дійсним репозиторієм⁉️ Репозиторій може бути офлайн або ви ввели його неправильно. Ви все одно хочете його додати?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Ввести вручну";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Форма без назви";
+"Form_Submitted.Default_Title" = "Надіслана форма";
+"Form_Submitted.Default_Body" = "Форму успішно надіслано.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Зображення Web View застаріли. Будь ласка, зв’яжіться з розробником репозиторій щодо оновлення до нативних зображень.";
 
 "Package_Details_Tab" = "Деталі";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Changelog_Tab" = "Список змін";
+"Package_No_Description_Available" = "Для цього пакету немає опису.";
+"Package_Changelogs_Unavailable" = "Список змін недоступний для цього пакета.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
+"Installed_Package_Header" = "Встановлений пакет";
+"Installed_Packages" = "Встановлені пакети";
 "Version" = "Версія";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Show_Package_Contents_Button" = "Показати вміст пакета";
 
 "Licenses_Page_Title" = "Ліцензії";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Альтернативні значки";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Постачальники платежів";
+"Settings_Translations_Heading" = "Переклади";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Покупки";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Settings_Payment_Provider.No_Purchases" = "Немає покупок";
+"Authenticate_To_Purchase" = "Пройдіть автентифікацію, щоб завершити покупку";
 
 "Settings" = "Настройки";
 "Settings_Page_Title" = "Настройки";
 "Dark_Mode_Toggle" = "Темний режим";
 "Theme" = "Тема";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
+"Tint_Color" = "Колір відтінку";
+"Reset_Tint_Color" = "Скинути колір відтінку";
+"Auto_Complete_Queue" = "Автоматично завершувати черги";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Автоматичне підтвердження оновлення всіх ярликів";
+"Swipe_Actions" = "Проведіть";
+"Show_Provisional" = "Показати попередній пакет";
+"Show_Ignored_Updates" = "Показати ігноровані оновлення";
+"Developer_Mode" = "Режим розробника";
+"Pog_Developer" = "Ви тепер розробник!";
+"Developer_Mode_Explain" = "Режим розробника вимикає вимогу HTTPS для Payment API.";
+"Auto_Refresh_Sources" = "Автоматичне оновлення джерел";
+"iCloud_Profile" = "Показати зображення iCloud у розділі \"Рекомендовані\"";
+"Cache_Size" = "Розмір кешу";
 "Clear_Cache" = "Очистити Мережний Кеш";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Clear_Cache_Message" = "Бажаєте очистити мережевий кеш? Це звільнить %@";
 "Language" = "Мова";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Use_System_Language" = "Використовувати мову системи";
+"Apply_Changes" = "Застосувати зміни";
+"Apply_Changes_Confirm" = "Застосування змін потребує перезапуску Sileo";
+"Help_Translate" = "Допомога в перекладі Sileo";
+"Always_Show_Install_Log" = "Завжди показувати журнал встановлення";
+"Auto_Show_Queue" = "Показати чергу при оновленні всього";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Sileo_Light" = "Світлий Sileo";
+"Sileo_Dark" = "Темний Sileo";
+"Sileo_Adaptive" = "Адаптивний Sileo";
+"System" = "Система";
+"Theme_Settings" = "Налаштування теми";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Увійти в Cydia Store";
+"Payment_Provider_Signed_In" = "Вхід виконано";
+"Payment_Provider_Signed_In_With_Name" = "Ви увійшли як %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Вийти з облікового запису";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Вийти з %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Ви більше не зможете завантажувати придбані пакети, доки не ввійдете знову.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Show_Install_Details" = "Показати деталі";
+"Hide_Install_Details" = "Приховати деталі";
+"Open_In_Filza" = "Відкрити в Filza";
+"Copy_Path" = "Копіювати шлях";
 
 "After_Install_Relaunch" = "Перезапустити Sileo";
 "After_Install_Respring" = "Перезапустити SpringBoard";
