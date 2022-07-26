@@ -11,8 +11,8 @@
 
 "About" = "Про Програму";
 "Close" = "Закрити";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"Double tap to open." = "Двічі натисніть, щоб відкрити.";
+"Untitled_Repo" = "Репо без назви";
 "OK" = "ОК";
 "Done" = "Готово";
 "Done_Editing" = "Готово";
@@ -28,12 +28,12 @@
 "Edit" = "Змінити";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Фонове оновлення програми";
+"Background_App_Refresh_Message" = "Для найкращої та найшвидшої роботи рекомендується ввімкнути фонове оновлення програми. Ви також можете отримувати сповіщення, коли ваші налаштування оновлюються!";
+"Upgrade_All_Shortcut_Processing_Message" = "Оновлення всіх джерел і оновлення всіх пакетів...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
+"Installing_Package_Status" = "Встановлення";
 "Downloading_Package_Status" = "Завантаження";
 "Queued_Package_Status" = "В черзі";
 "Ready_Status" = "Готово";
@@ -41,78 +41,78 @@
 "Download_Starting" = "Запуск завантаження…";
 "Download_Progress" = "%@ від %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Наступні пакети вказані як необхідні або обов’язкові: %@\n Їх видалення може призвести до незворотної шкоди вашому пристрою та потребуватиме відновлення. Продовжуйте, лише якщо ви впевнені, що знаєте, що робите.";
 
-"Queue_Confirm_Button" = "Confirm";
+"Queue_Confirm_Button" = "Підтвердити";
 "Queue_Clear_Button" = "Почистити Чергу";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Скасувати завантаження";
 
 "Package_Upgrade_Action" = "Оновити";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
+"Package_Reinstall_Action" = "Перевстановити";
+"Package_Uninstall_Action" = "Видалити";
+"Package_Modify_Action" = "Змінити";
+"Package_Get_Action" = "Завантажити";
 "Package_Queue_Action" = "Черга";
 "Package_Cancel_Action" = "Скасувати";
 "Package_Paid" = "Оплачений";
 
-"Package_Share_Action" = "Share Package…";
+"Package_Share_Action" = "Поділитися пакетом…";
 "Package_Developer_Find_Action" = "Більше від цього Виробника";
 "Package_Support_Action" = "Підтримка";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Hold_Enable_Action" = "Ігнорувати майбутні оновлення";
+"Package_Hold_Disable_Action" = "Припинити ігнорувати оновлення";
+"Package_Wishlist_Add" = "Додати до списку бажань";
+"Package_Wishlist_Remove" = "Видалити зі списку бажань";
+"Wishlist" = "Список бажань";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Немає нових пакетів";
+"News_Check_Later" = "Ще немає нових проіндексованих пакетів. Поверніться за кілька годин, і ви побачите, що пакети почнуть з’являтися тут, коли репозиторії будуть оновлені.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Інсталювати";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
+"Queued_Uninstall_Heading" = "Видалення";
+"Queued_Update_Heading" = "Оновлення";
 "Download_Errors_Heading" = "Помилки";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
+"Installed_Heading" = "Встановлено";
+"Updates_Heading" = "Оновлення";
+"Upgrade_All_Button" = "Оновити все";
+"Package_Search.Placeholder" = "Пошук в пакетах";
 "Sort_Name" = "Ім'я";
 "Sort_Date" = "Дата";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Встановлений розмір";
 "Sort_By" = "Сортувати по:";
 
-"Package_Unavailable" = "Package Unavailable";
+"Package_Unavailable" = "Пакет недоступний";
 "Package_By_Author" = "%@ від %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "від %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Packages_By_Author" = "Пакети від %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
+"Featured_Page" = "Рекомендовані";
 "News_Page" = "Нові";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
+"Sources_Page" = "Джерела";
+"Packages_Page" = "Пакети";
 "Search_Page" = "Пошук";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refreshing_Sources_Page" = "Оновлення джерел";
+"Package_Installed_Files_Page" = "Встановлені файли";
+"Refresh" = "Оновити";
+"Remove" = "Видалити";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Всі пакети";
+"All_Packages.Cell_Subtitle" = "Переглянути всі пакети з ваших джерел";
 
 "All_Categories" = "Всі Категорії";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Внутрішні репозиторії";
+"External_Repo" = "Зовнішні репозиторії";
+"Ignored Updates" = "Ігноровані оновлення";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Репозиторії";
+"Repo" = "Репозиторій";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Source.Title" = "Додати джерело";
+"Add_Source.Body" = "Додати посилання APT";
+"Add_Source.Button.Add" = "Додати джерело";
+"Add_Dist_Repo" = "Додати репозиторій";
 "Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
