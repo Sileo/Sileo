@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Automatically Add %#@sources@</string>
+      <string>∀nʇoɯɐʇᴉɔɐllʎ ∀pp %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -13,15 +13,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Sonɹɔǝ</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Sonɹɔǝs</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>∀pp %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -29,15 +29,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Sonɹɔǝ</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Sonɹɔǝs</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>∀pp ʇɥǝ ɟolloʍᴉuƃ %#@urls@ ɟonup ou ʎonɹ dɐsʇǝqoɐɹp:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -45,9 +45,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>URL</string>
+        <string>∩ɹ˥</string>
         <key>other</key>
-        <string>URLs</string>
+        <string>∩ɹ˥s</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d Ԁɐɔʞɐƃǝ</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d Ԁɐɔʞɐƃǝs</string>
       </dict>
     </dict>
   </dict>
