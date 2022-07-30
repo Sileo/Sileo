@@ -8,52 +8,52 @@
  LOCALISATIONS
  */
 
-"Unknown" = "Il y a eu une erreur inconnu.";
-"Error_Indicator" = "Erreur: %@";
+"Unknown" = "Une erreur inconnue est survenue.";
+"Error_Indicator" = "Erreur : %@";
 
-"No_Package.Title" = "Impossible de trouver %@ dans les sources actuellement installées";
-"No_Package.Body" = "Si c'est nouveau, veuillez attendre que Sileo finisse sa mise à jour, et re-essayez. Pour plus d'aide, recherchez en ligne.";
+"No_Package.Title" = "Impossible de trouver %@ dans les sources que vous avez actuellement d'installées.";
+"No_Package.Body" = "Si c'est nouveau, attendez que Sileo termine la mise à jour, puis réessayez. Allez voir en ligne pour plus d'aide.";
 
-"Invalid_URL.Title" = "Adresse invalide.";
+"Invalid_URL.Title" = "URL invalide";
 
-"Download_Size_Mismatch" = "Taille attendue était %@, reçu %@ au lieu.";
-"Download_Failing_Status_Code" = "Échec avec état %ld";
-"Download_Hash_Mismatch" = "Hachage attendu était %@, reçu %@ au lieu.";
-"Untrusted_Package" = "Le paquet %@ ne peut pas être vérifié.";
+"Download_Size_Mismatch" = "Taille attendue de %@, %@ ont été reçus à la place.";
+"Download_Failing_Status_Code" = "Échec avec statut %ld";
+"Download_Hash_Mismatch" = "Hash de %@ attendu, obtenu %@ à la place.";
+"Untrusted_Package" = "Le paquet %@ n'est pas approuvé et ne peut pas être vérifié";
 
-"Insecure_Paid_Download" = "Les adresses de téléchargement pour les paquets payants doivent être sécurisées (HTTPS).";
+"Insecure_Paid_Download" = "Les URL de téléchargement pour les paquets payants doivent être sécurisées (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Le fournisseur de paiement a délivré une réponse invalide.";
-"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez attacher votre compte pour le télécharger.";
+"No_Payment_Provider" = "Ce dépôt ne prend pas en charge les achats avec Sileo. Si c'est un package du Cydia Store que vous avez déjà acheté, vous pouvez lier votre compte pour le télécharger.";
 
 "Package_Unavailable" = "Ce paquet n'est pas disponible dans vos sources installés. Veuillez vérifier que la source %@ est disponible.";
 
-"Installation_Error.Title" = "Erreur d'Installation";
+"Installation_Error.Title" = "Erreur d’installation";
 "Installation_Error.Body" = "Sileo n'a pas été capable d'obtenir des permissions root. Veuillez réinstaller Sileo en utilisant le SSH.";
 
-"FixingDpkg.Title" = "Intérruption de Dpkg";
+"FixingDpkg.Title" = "Dpkg interrompu";
 "FixingDpkg.Body" = "Dpkg a été interrompu. Veuillez patienter pendant que nous essayons de réparer le problème.";
 
-"Invalid_Data" = "Données non valides";
-"Try_Later" = "Réessayer plus tard, s'il vous plaît.";
+"Invalid_Data" = "Données invalides";
+"Try_Later" = "Veuillez réessayer plus tard.";
 
-"Sileo_Update_Required.Title" = "Une mise à jour de Sileo est requise";
-"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet de paquets mise en vedette. Cet onglet sera possiblement rendu incorrectement.";
-"Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. La page sera possiblement rendu incorrectement.";
+"Sileo_Update_Required.Title" = "Mise à jour de Sileo requise";
+"Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet des paquets mis en vedette. Cet onglet sera possiblement affiché incorrectement.";
+"Depiction_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir cette page. La page sera possiblement affichée incorrectement.";
 
-"Form_Error.Title" = "Impossible de charger le formulaire";
+"Form_Error.Title" = "Échec du chargement du formulaire";
 "Form_Load_Error" = "Le formulaire n'a pas pu être chargé depuis le serveur.";
-"Invalid_Form_Data" = "Le serveur a renvoyé des données invalides.";
+"Invalid_Form_Data" = "Le serveur a fourni des données de formulaire invalides.";
 "Form_Submit_Failure" = "Une erreur s'est produit en essayant de soumettre le formulaire: %@";
-"Form_Submit_Error.Title" = "Impossible de soumettre le formulaire";
-"Form_Action_Host_Mismatch" = "L'URL hôte de l'action du formulaire ne correspond pas à celle de ce même formulaire.";
+"Form_Submit_Error.Title" = "Échec de l'envoi du formulaire";
+"Form_Action_Host_Mismatch" = "L'URL hôte de l'action du formulaire ne correspond pas à l'hôte d'origine de ce même formulaire.";
 
-"Email_Unavailable.Title" = "Impossible d'envoyer le mail";
+"Email_Unavailable.Title" = "Impossible d’envoyer l’e-mail";
 "Email_Unavailable.Body" = "Les services de courriel ne sont pas disponibles.";
 
 "Settings_Payment_Provider.Profile.Title" = "Impossible de charger le profil";
 
-"Provider_Auth_Fail.Title" = "Impossible de vérifier le fournisseur";
+"Provider_Auth_Fail.Title" = "Échec de l'authentification du fournisseur";
 "Purchase_Initiate_Fail.Title" = "Impossible d'initier l'achat";
 "Purchase_Complete_Fail.Title" = "Impossible de compléter l'achat";
-"Purchase_Auth_Complete_Fail.Title" = "Impossible de compléter la vérification";
+"Purchase_Auth_Complete_Fail.Title" = "Impossible de compléter l'authentification";
