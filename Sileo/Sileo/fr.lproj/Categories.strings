@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(Aucune Catégorie)";
-"Tweaks" = "Modifications";
+"No_Category" = "(Aucune catégorie)";
+"Tweaks" = "Tweaks";
 "Themes" = "Thèmes";
-"Utilities" = "Outils";
+"Utilities" = "Utilitaires";
 "Applications" = "Applications";
-"Addons" = "Ajouts";
+"Addons" = "Extensions";
 "Games" = "Jeux";
 "Developer" = "Développeur";
 "Data_Storage" = "Hébergement de Données";
 "Terminal_Support" = "Support de Terminal";
-"Text_Editors" = "Éditeurs de Texte";
+"Text_Editors" = "Éditeurs de texte";
