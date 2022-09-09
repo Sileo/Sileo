@@ -283,6 +283,7 @@ extension SettingsViewController { // UITableViewDataSource
 #endif
             case 4:
                 let menuSettingsVC = ThemesSectionViewController(style: .grouped)
+                menuSettingsVC.settingsSender = self
                 self.navigationController?.pushViewController(menuSettingsVC, animated: true)
             default: break
             }

@@ -9,13 +9,15 @@
 import Foundation
 
 class ThemesSectionViewController: BaseSettingsViewController {
+    
+    var settingsSender: SettingsViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .add, target: self, action: #selector(promptController))
         navigationItem.title = String(localizationKey: "Manage_Themes")
     }
-    
     
     func importThemes(fromURL url: URL) {
         do {
@@ -117,6 +119,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
             print("Removing \(self.userThemes[indexPath.row].name)")
             self.userThemes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.settingsSender?.tableView.reloadData()
             handler(true)
         }
         removeAction.image = UIImage(systemNameOrNil: "trash")

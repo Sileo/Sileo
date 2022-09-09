@@ -11,20 +11,7 @@ import Alderis
 
 fileprivate let defaultTheme = SileoThemeManager.shared.themeList.first(where: { $0.name == String(localizationKey: "Sileo_Adaptive") } )
 class ThemeCreatorViewController: BaseSettingsViewController {
-    var themeName: String? {
-        let name = nameAlert.textFields?[safe: 0]?.text
-        if name?.isEmpty ?? true {
-            return nil
-        }
-        
-        return name
-    }
-    
-    var currentThemeComponentSelection: ThemeComponents? = nil // gets set, but only later
-    
-    // Contains the colors, the below are the defaults
-    // they get set later
-    var dict: [ThemeComponents: UIColor?] = [
+    static let defaultComponents: [ThemeComponents: UIColor?] = [
         .backgroundColor: defaultTheme?.backgroundColor,
         .secondaryBgColor: defaultTheme?.secondaryBackgroundColor,
         .bannerColor: defaultTheme?.bannerColor,
@@ -34,23 +21,38 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         .seperatorColor: defaultTheme?.seperatorColor
     ]
     
+    var themeName: String? {
+        guard let name = nameTextField.text, !name.isEmpty else {
+            return nil
+        }
+        
+        return name
+    }
+    
+    var currentThemeComponentSelection: ThemeComponents? = nil // gets set, but only later
+    var nameTextField: UITextField!
+    
+    // Contains the colors, the below are the defaults
+    // they get set later
+    var dict: [ThemeComponents: UIColor?] = ThemeCreatorViewController.defaultComponents
+    
     var colorDictMapped: [ThemeComponents: UIColor] {
         dict.compactMapValues { $0 }
     }
     
-    var nameAlert: UIAlertController = {
-        let alert = UIAlertController(title: "Theme name", message: nil, preferredStyle: .alert)
-        alert.addTextField { field in
-            field.placeholder = "name"
-        }
-        alert.addAction(.init(title: "Set", style: .cancel, handler: nil))
-        return alert
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTextField = UITextField()
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.placeholder = "name.."
+        nameTextField.returnKeyType = .done
+        nameTextField.addTarget(self, action: #selector(nameTextFieldDone), for: .primaryActionTriggered)
         navigationItem.title = String(localizationKey: "Create_Theme")
+    }
+    
+    @objc func nameTextFieldDone() {
+        nameTextField.resignFirstResponder()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,15 +67,16 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         3
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCreatorCell") ?? UITableViewCell(style: .default, reuseIdentifier: "ThemeCreatorCell")
-            if let themeName = themeName {
-                cell.textLabel?.text = "Name: \(themeName)"
-            } else {
-                cell.textLabel?.text = "Set name"
-            }
+            cell.textLabel?.text = "Theme Name"
+            cell.contentView.addSubview(nameTextField)
+            
+            NSLayoutConstraint.activate([
+                nameTextField.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
+                nameTextField.trailingAnchor.constraint(equalTo: cell.layoutMarginsGuide.trailingAnchor)
+            ])
             
             cell.backgroundColor = .clear
             return cell
@@ -85,64 +88,70 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         }
         
         let rowComponent = ThemeComponents(rawValue: indexPath.row) ?? .highlightColor
+        let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
+        cell.bgClr = colorDictMapped[rowComponent]
+        
         switch indexPath.row {
         case 0:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Background_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 1:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Secondary_Background_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 2:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Label_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 3:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Highlight_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 4:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Seperator_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 5:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Header_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
         case 6:
-            let cell = SettingsColorTableViewCell(style: .default, reuseIdentifier: "ColorPickerCell")
             cell.textLabel?.text = String(localizationKey: "Banner_Color")
-            cell.bgClr = colorDictMapped[rowComponent]
-            
-            return cell
-            
         default: fatalError("What have you done?!, we got row: \(indexPath.row)")
         }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: NSInteger) -> UIView? {
+        guard let original = super.tableView(tableView, viewForHeaderInSection: section) else {
+            return nil
+        }
+        
+        if section != 1 {
+            return original
+        }
+        
+        let resetButton = UIButton(type: .system)
+        resetButton.setTitle("Reset", for: .normal)
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
+        resetButton.addTarget(self, action: #selector(resetToDefaults), for: .touchUpInside)
+        original.addSubview(resetButton)
+        
+        NSLayoutConstraint.activate([
+            resetButton.centerYAnchor.constraint(equalTo: original.centerYAnchor),
+            resetButton.trailingAnchor.constraint(equalTo: original.layoutMarginsGuide.trailingAnchor)
+        ])
+        return original
     }
     
     var sectionVC: ThemesSectionViewController? = nil
     
+    @objc func resetToDefaults() {
+        self.dict = ThemeCreatorViewController.defaultComponents
+        tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section != 0
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
-            self.present(nameAlert, animated: true, completion: nil)
         case 1:
             currentThemeComponentSelection = .init(rawValue: indexPath.row)
-            print("presenting color controller..")
             presentColorController()
+            tableView.deselectRow(at: indexPath, animated: true)
         case 2:
             guard let themeName = themeName else {
                 let controller = UIAlertController(title: "Please set a name.", message: nil, preferredStyle: .alert)
@@ -150,13 +159,13 @@ class ThemeCreatorViewController: BaseSettingsViewController {
                 return
             }
             
-            guard !SileoThemeManager.shared.themeList.map({ $0.name }).contains(themeName) else {
+            // make sure the name isn't already being used
+            guard !SileoThemeManager.shared.themeList.contains(where: { $0.name == themeName }) else {
                 let controller = UIAlertController(title: "Cannot use name", message: "The name \"\(themeName)\" is already being used", preferredStyle: .alert)
                 controller.addAction(.init(title: "OK", style: .cancel, handler: nil))
                 self.present(controller, animated: true, completion: nil)
                 return
             }
-            print("theme name: \(themeName)")
             
             let themeInstance = SileoTheme(name: themeName, interfaceStyle: .system)
             let compactDict = dict.compactMapValues { $0 }
@@ -172,13 +181,10 @@ class ThemeCreatorViewController: BaseSettingsViewController {
             var themes = (try? JSONDecoder().decode([SileoCodableTheme].self, from: userSavedThemesData)) ?? []
             themes.append(themeInstance.codable)
             guard let encoded = try? JSONEncoder().encode(themes) else {
-                print("couldn't encode themes.")
-                print("themes: \(themes)")
                 return
             }
             
             UserDefaults.standard.set(encoded, forKey: "userSavedThemes")
-            print("themes should now be: \(themes)")
             sectionVC?.tableView.reloadData()
             self.navigationController?.popViewController(animated: true)
         default: break
@@ -196,11 +202,7 @@ class ThemeCreatorViewController: BaseSettingsViewController {
             let colorPickerViewController = ColorPickerViewController()
             colorPickerViewController.delegate = self
             colorPickerViewController.configuration = ColorPickerConfiguration(color: .tintColor)
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                if #available(iOS 13, *) {
-                    colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
-                }
-            }
+            colorPickerViewController.popoverPresentationController?.sourceView = self.navigationController?.view
             colorPickerViewController.modalPresentationStyle = .overFullScreen
             self.parent?.present(colorPickerViewController, animated: true, completion: nil)
         }

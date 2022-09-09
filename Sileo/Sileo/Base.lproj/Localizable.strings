@@ -179,6 +179,7 @@
 "Manage_Themes" = "Manage Themes";
 "Create_Theme" = "Create Theme";
 "Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
 "Export_Themes" = "Export Themes";
 
 "Background_Color" = "Background Color";

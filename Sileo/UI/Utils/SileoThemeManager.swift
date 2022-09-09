@@ -91,7 +91,6 @@ class SileoThemeManager: NSObject {
         }
         
         if let userSavedThemesData = UserDefaults.standard.data(forKey: "userSavedThemes"), let userSavedThemes = try? JSONDecoder().decode([SileoCodableTheme].self, from: userSavedThemesData) {
-            print("user saved themes: \(userSavedThemes)")
             themeList.append(contentsOf: Array(Set(userSavedThemes.map { $0.sileoTheme })))
         }
         
