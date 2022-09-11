@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 4/20/20.
-//  Copyright © 2020 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -56,7 +56,7 @@ class PackageQueueButton: PackageButton {
         self.addTarget(self, action: #selector(PackageQueueButton.buttonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),
-                                               name: DownloadManager.reloadNotification,
+                                               name: PackageListManager.stateChange,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PackageQueueButton.updateInfo),
@@ -255,6 +255,11 @@ class PackageQueueButton: PackageButton {
                 actionItems.append(action)
             }
         }
+        let copyBundleIDAction = CSActionItem(title: String(localizationKey: "Copy_ID"), image: .init(systemNameOrNil: "doc.on.doc"), style: .default) {
+            UIPasteboard.general.string = package.packageID
+        }
+        actionItems.append(copyBundleIDAction)
+        
         return actionItems
     }
     

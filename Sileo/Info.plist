@@ -27,6 +27,26 @@
 				<string>org.debian.deb-archive</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>$(PRODUCT_NAME) Sources File</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.sileo.sources</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>$(PRODUCT_NAME) List File</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.sileo.list</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -34,6 +54,33 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -193,6 +240,33 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -483,6 +557,54 @@
 					<string>application/x-debian-package</string>
 					<string>application/x-deb</string>
 					<string>application/vnd.debian.binary-package</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.content</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>$(PRODUCT_NAME) Sources File</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.sileo.sources</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>sources</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-sources-file</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.content</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>$(PRODUCT_NAME) List File</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.sileo.list</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>list</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-list-file</string>
 				</array>
 			</dict>
 		</dict>

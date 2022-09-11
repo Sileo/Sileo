@@ -17,6 +17,6 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2021 Sileo Team. All rights reserved.</string>
+	<string>Copyright © 2022 Sileo Team. All rights reserved.</string>
 </dict>
 </plist>

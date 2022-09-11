@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 9/22/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -147,13 +147,65 @@ final class SourcesViewController: SileoViewController {
                 nav.rightBarButtonItem = UIBarButtonItem(title: exportTitle, style: .plain, target: self, action: #selector(self.exportSources(_:)))
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Edit"), style: .done, target: self, action: #selector(self.toggleEditing(_:)))
-                nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
+                if #available(iOS 14.0, *) {
+                    let promptAddRepoAction = UIAction(title: "Add Repo", image: .init(systemName: "plus.circle")) { _ in
+                        self.addSource(nil)
+                    }
+                    
+                    let importReposAction = UIAction(title: "Import Repos", image: .init(systemName: "archivebox")) { _ in
+                        self.promptImportRepos()
+                    }
+                    
+                    let menu = UIMenu(title: "Add Repos", children: [promptAddRepoAction, importReposAction])
+                    nav.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: promptAddRepoAction, menu: menu)
+                } else {
+                    nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
+                }
             }
             
         }
     }
     #endif
     
+    func importRepos(fromURL url: URL) {
+        let _tmpManager = RepoManager()
+        
+        if url.pathExtension == "list" {
+            _tmpManager.parseListFile(at: url, isImporting: true)
+        } else if url.pathExtension == "sources" {
+            _tmpManager.parseSourcesFile(at: url)
+        } else {
+            _tmpManager.parsePlainTextFile(at: url)
+        }
+        
+        let URLs = _tmpManager.repoList.compactMap(\.url)
+        self.handleSourceAdd(urls: URLs, bypassFlagCheck: false)
+        self.refreshSources(forceUpdate: true, forceReload: true)
+    }
+    
+    @available(iOS 14.0, *)
+    private func promptImportRepos() {
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.item], asCopy: true)
+        let delegate = SourcesPickerImporterDelegate.shared
+        delegate.sourcesVC = self
+        controller.delegate = delegate
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    class SourcesPickerImporterDelegate: NSObject, UIDocumentPickerDelegate {
+        var sourcesVC: SourcesViewController? = nil
+        
+        static var shared = SourcesPickerImporterDelegate()
+        
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+            guard let firstURL = urls.first else {
+                return
+            }
+            
+            sourcesVC?.importRepos(fromURL: firstURL)
+        }
+    }
+     
     @objc private func handleImageUpdate(_ notification: Notification) {
         if !Thread.isMainThread {
             DispatchQueue.main.async {
@@ -378,8 +430,15 @@ final class SourcesViewController: SileoViewController {
         
         let yesString = String(localizationKey: "Export_Yes")
         let yesAction = UIAlertAction(title: yesString, style: .default, handler: { _ in
-            UIPasteboard.general.string = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let repos = self.sortedRepoList.map({ $0.rawURL }).joined(separator: "\n")
+            let activityVC = UIActivityViewController(activityItems: [repos], applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
+            self.present(activityVC, animated: true, completion: nil)
         })
+        
         alert.addAction(yesAction)
         
         let noString = String(localizationKey: "Export_No")

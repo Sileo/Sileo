@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/3/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -11,8 +11,9 @@ import UIKit
 
 final class PackageListManager {
     static let reloadNotification = Notification.Name("SileoPackageCacheReloaded")
+    static let installChange = Notification.Name("SileoInstallChanged")
+    static let stateChange = Notification.Name("SileoStateChanged")
     static let prefsNotification = Notification.Name("SileoPackagePrefsChanged")
-    static let didUpdateNotification = Notification.Name("SileoDatabaseDidUpdateNotification")
     
     private(set) var installedPackages: [String: Package] {
         didSet {
@@ -231,14 +232,14 @@ final class PackageListManager {
             }
         }
         
+        var savedCount = 0
         let isStatusFile = packagesFile.absoluteString.hasSuffix("status")
         while index < rawPackagesData.count {
-            let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count)
-            var newIndex = 0
-            if range == nil {
-                newIndex = rawPackagesData.count
+            let newIndex: Int
+            if let range = rawPackagesData.range(of: separator, options: [], in: index..<rawPackagesData.count) {
+                newIndex = range.lowerBound + separator.count
             } else {
-                newIndex = range!.lowerBound + separator.count
+                newIndex = rawPackagesData.count
             }
             
             let subRange = index..<newIndex
@@ -253,16 +254,8 @@ final class PackageListManager {
             guard let packageID = rawPackage["package"] else {
                 continue
             }
-            if packageID.isEmpty {
-                continue
-            }
-            if packageID.hasPrefix("gsc.") {
-                continue
-            }
-            if packageID.hasPrefix("cy+") {
-                continue
-            }
-            if packageID == "firmware" {
+            
+            guard !packageID.isEmpty, !packageID.hasPrefix("gsc."), !packageID.hasPrefix("cy+"), packageID != "firmware" else {
                 continue
             }
             
@@ -274,6 +267,7 @@ final class PackageListManager {
             }
             package.sourceFile = repoContext?.rawEntry
             package.sourceFileURL = toWrite
+            savedCount += packageData.count
             package.rawData = packageData
             
             if isStatusFile {
@@ -312,6 +306,7 @@ final class PackageListManager {
                 }
             }
         }
+
         return dict
     }
     
@@ -359,31 +354,20 @@ final class PackageListManager {
         }
         if let searchQuery = search,
            !searchQuery.isEmpty {
-            let search = searchQuery.lowercased()
+            let lowercased = searchQuery.lowercased()
             packageList.removeAll { package in
-                var shouldRemove = true
-                if package.package.lowercased().localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                if let name = package.name?.lowercased() {
-                    if !name.isEmpty {
-                        if name.localizedCaseInsensitiveContains(search) { shouldRemove = false }
+                // check if the user search term is in the package ID, description or in the author / maintainer name
+                var searchFields = Set<String?>([package.package, package.packageDescription, package.author])
+                if package.maintainer != package.author {
+                    searchFields.insert(package.maintainer)
+                }
+                let _searchFields = searchFields.compactMap { $0?.lowercased() }
+                for searchField in _searchFields {
+                    if strstr(searchField, lowercased) != nil {
+                        return false
                     }
                 }
-                if let description = package.packageDescription?.lowercased() {
-                    if !description.isEmpty {
-                        if description.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let author = package.author?.lowercased() {
-                    if !author.isEmpty {
-                        if author.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                if let maintainer = package.maintainer?.lowercased() {
-                    if !maintainer.isEmpty {
-                        if maintainer.localizedCaseInsensitiveContains(search) { shouldRemove = false }
-                    }
-                }
-                return shouldRemove
+                return true
             }
         }
         // Remove Any Duplicates
@@ -511,7 +495,7 @@ final class PackageListManager {
             }
             
             if sorted {
-                return rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
+                return Array(Set(rawPackages.sorted(by: { pkg1, pkg2 -> Bool in
                     guard let package1 = pkg1.name else {
                         return false
                     }
@@ -519,21 +503,9 @@ final class PackageListManager {
                         return false
                     }
                     return package1.compare(package2) != .orderedDescending
-                })
+                })))
             } else {
-                var packagesMap: [String: Package] = [:]
-                for package in rawPackages {
-                    packagesMap[package.packageID] = package
-                }
-                
-                var packages: [Package] = []
-                for identifier in identifiers {
-                    guard let package = packagesMap[identifier] else {
-                        continue
-                    }
-                    packages.append(package)
-                }
-                return packages
+                return Array(Set(rawPackages))
             }
         }
         
@@ -570,6 +542,7 @@ final class PackageListManager {
         }
 
         let downloadMan = DownloadManager.shared
+        var upgrades = Set<Package>()
         
         for packagePair in updatesNotIgnored {
             let newestPkg = packagePair.0
@@ -577,13 +550,15 @@ final class PackageListManager {
             if let installedPkg = packagePair.1, installedPkg == newestPkg {
                 continue
             }
-            downloadMan.add(package: newestPkg, queue: .upgrades)
+            upgrades.insert(newestPkg)
         }
-
-        downloadMan.reloadData(recheckPackages: true) {
-            completion?()
-            if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
-                TabBarController.singleton?.presentPopupController()
+        
+        downloadMan.upgradeAll(packages: upgrades) {
+            downloadMan.reloadData(recheckPackages: true) {
+                completion?()
+                if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
+                    TabBarController.singleton?.presentPopupController()
+                }
             }
         }
     }

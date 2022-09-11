@@ -9,6 +9,7 @@
 #import "ControlFileParserFast.h"
 
 #include <spawn.h>
+#import "dpkgversion.h"
 
 #if TARGET_OS_MACCATALYST
 #import "LaunchAsRoot.h"

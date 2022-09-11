@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 21/03/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import UIKit
@@ -38,6 +38,9 @@ class AltIconTableViewController: UITableViewController {
         AltIcon(displayName: "Taurine", author: "Alpha_Stream", key: "Taurine", image: altImage("Taurine")),
         AltIcon(displayName: "Chimera", author: "Korfi", key: "Chimera", image: altImage("Chimera")),
         AltIcon(displayName: "Procursus", author: "Korfi", key: "Procursus", image: altImage("Procursus")),
+        AltIcon(displayName: "Dark Magic", author: "flowerible", key: "DarkMagic", image: altImage("DarkMagic")),
+        AltIcon(displayName: "Hazel", author: "flowerible", key: "Hazel", image: altImage("Hazel")),
+        AltIcon(displayName: "Stardust", author: "flowerible", key: "Stardust", image: altImage("Stardust")),
         AltIcon(displayName: "Sugar Free", author: "Alpha_Stream", key: "SugarFree", image: altImage("SugarFree")),
         AltIcon(displayName: "Mango Crazy", author: "Alpha_Stream", key: "MangoCrazy", image: altImage("MangoCrazy")),
         AltIcon(displayName: "Cool Breeze", author: "Alpha_Stream", key: "CoolBreeze", image: altImage("CoolBreeze")),

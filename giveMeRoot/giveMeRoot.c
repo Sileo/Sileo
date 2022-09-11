@@ -1,70 +1,148 @@
+#import <stdint.h>
+#import <stdlib.h>
 #import <stdio.h>
-#import <string.h>
-#import <sysexits.h>
-#import <sys/stat.h>
-#import <sys/types.h>
 #import <unistd.h>
+#import <string.h>
+#import <sys/syslimits.h>
+#import <sys/stat.h>
+#import <sysexits.h>
 
-#define PROC_PIDPATHINFO_MAXSIZE (1024)
-int proc_pidpath(pid_t pid, void *buffer, uint32_t buffersize);
+extern int proc_pidpath(int pid, void *buffer, uint32_t buffersize);
 
-int main(int argc, char *argv[]) {
-    #ifdef MAC
-    #else
-    #ifdef PREBOOT
-    #ifdef NIGHTLY
-    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo-Nightly.app/Sileo-Preboot";
-    #elif BETA
-    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo-Beta.app/Sileo-Preboot";
-    #else
-    const char *sileoPath = "/private/preboot/procursus/Applications/Sileo.app/Sileo-Preboot";
-    #endif
-    #else
-    #ifdef NIGHTLY
-    const char *sileoPath = "/Applications/Sileo-Nightly.app/Sileo";
-    #elif BETA
-    const char *sileoPath = "/Applications/Sileo-Beta.app/Sileo";
-    #else
-    const char *sileoPath = "/Applications/Sileo.app/Sileo";
-    #endif
-    #endif
-    struct stat statBuffer = {0};
-    if (lstat(sileoPath, &statBuffer) == -1) {
-        fprintf(stderr, "Cease your resistance!\n");
-        return EX_NOPERM;
+const char *getBuildtimeAppPath(void) {
+    const char *path = NULL;
+    
+#ifndef MAC
+    
+#ifdef PREBOOT
+    
+#ifdef NIGHTLY
+    path = "/var/jb/Applications/Sileo-Nightly.app/Sileo-Preboot";
+#elif BETA
+    path = "/var/jb/Applications/Sileo-Beta.app/Sileo-Preboot";
+#else
+    path = "/var/jb/Applications/Sileo.app/Sileo-Preboot";
+#endif
+    
+#else
+    
+#ifdef NIGHTLY
+    path = "/Applications/Sileo-Nightly.app/Sileo";
+#elif BETA
+    path = "/Applications/Sileo-Beta.app/Sileo";
+#else
+    path = "/Applications/Sileo.app/Sileo";
+#endif
+    
+#endif
+    
+#endif
+    
+    return path;
+}
+
+char *copyRuntimeAppPath(void) {
+    const char *buildtimePath = getBuildtimeAppPath();
+    if (buildtimePath == NULL) {
+        return NULL;
+    }
+    
+    char *runtimePath = realpath(buildtimePath, NULL);
+    if (runtimePath == NULL) {
+        return NULL;
+    }
+    
+    return runtimePath;
+}
+
+int main(int argc, const char *argv[]) {
+    int retval = EX_SOFTWARE;
+    
+    int err = 0;
+    
+    char *sileoAppPath = NULL;
+    char *parentPath = NULL;
+    
+#ifndef MAC
+    
+    sileoAppPath = copyRuntimeAppPath();
+    if (sileoAppPath == NULL) {
+        fprintf(stderr, "Error: failed to retrieve Sileo app path");
+        retval = EX_OSFILE;
+        goto end;
+    }
+    
+    struct stat sileoAppStat = {};
+    err = lstat(sileoAppPath, &sileoAppStat);
+    if (err == -1) {
+        fprintf(stderr, "Error: failed to stat Sileo app path");
+        retval = EX_OSFILE;
+        goto end;
     }
     
     pid_t parentPID = getppid();
-    char parentPath[PROC_PIDPATHINFO_MAXSIZE] = {0};
-    int status = proc_pidpath(parentPID, parentPath, sizeof(parentPath));
-    if (status <= 0) {
-        fprintf(stderr, "Ice wall, coming up\n");
-        return EX_NOPERM;
+    
+    size_t parentPathSize = PATH_MAX;
+    parentPath = malloc(parentPathSize);
+    if (parentPath == NULL) {
+        fprintf(stderr, "Error: failed to malloc");
+        retval = EX_OSERR;
+        goto end;
     }
     
-    if (strcmp(parentPath, sileoPath) != 0) {
-        fprintf(stderr, "Stpuidity is not a right\n");
-        return EX_NOPERM;
+    memset(parentPath, 0, parentPathSize);
+    
+    int parentPathLength = proc_pidpath(parentPID, parentPath, parentPathSize);
+    if (parentPathLength <= 0) {
+        fprintf(stderr, "Error: failed to retrieve parent process path");
+        retval = EX_OSERR;
+        goto end;
     }
-    #endif
+    
+    if (strcmp(parentPath, sileoAppPath) != 0) {
+        fprintf(stderr, "Error: permission denied, parent process is not Sileo");
+        retval = EX_NOPERM;
+        goto end;
+    }
+    
+#endif
+    
     setuid(0);
     setgid(0);
+    
     if (getuid() != 0) {
-        fprintf(stderr, "Area denied\n");
-        return EX_NOPERM;
+        fprintf(stderr, "Error: failed to obtain root");
+        retval = EX_OSERR;
+        goto end;
     }
     
-    if (argc < 2) {
-        fprintf(stderr, "Reality bends to my will!\n");
-        return 0;
+    retval = 0;
+    
+end:
+    if (sileoAppPath != NULL) {
+        free(sileoAppPath);
     }
-
-    if (strcmp(argv[1], "whoami") == 0) {
-        printf("root\n");
-        return 0;
+    if (parentPath != NULL) {
+        free(parentPath);
     }
     
-    execv(argv[1], &argv[1]);
-    
-    return EX_UNAVAILABLE;
+    if (retval == 0) {
+        if (argc < 2) {
+            return 0;
+        }
+        
+        if (strcmp(argv[1], "whoami") == 0) {
+            printf("root\n");
+            return 0;
+        }
+        
+        const char **remainingArgs = (const char **)((uintptr_t)argv + (1 * sizeof(char *)));
+        execv(remainingArgs[0], (char **)remainingArgs);
+        
+        fprintf(stderr, "Error: failed to execv specified task");
+        return EX_OSERR;
+    }
+    else {
+        return retval;
+    }
 }
