@@ -393,7 +393,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>SileoRootDaemon</key>
-		<string>identifier "SileoRootDaemon" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Charlie While (B2TU49334J)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier "SileoRootDaemon" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Amelia While (B2TU49334J)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>

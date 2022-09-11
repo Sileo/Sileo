@@ -76,7 +76,6 @@ final class KeychainManager {
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
-        print("Response is \(SecCopyErrorMessageString(response, nil))")
         return response
     }
     

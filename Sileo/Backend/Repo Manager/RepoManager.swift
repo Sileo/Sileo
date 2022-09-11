@@ -1233,12 +1233,12 @@ final class RepoManager {
 
             var sileoList = ""
 
-            if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
+            if FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/procursus.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/chimera.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/electra.list") {
+                sileoList = "\(CommandPath.prefix)/etc/apt/sources.list.d/sileo.sources"
             } else {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
+                sileoList = "\(CommandPath.prefix)/etc/apt/sileo.list.d/sileo.sources"
             }
             
             let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

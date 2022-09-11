@@ -1,13 +1,13 @@
 --- !tapi-tbd-v2
-archs:                 [ arm64-ios, arm64 ]
+archs:                 [ arm64-ios, arm64, x86_64-macos, x86_64-maccatalyst, arm64-macos, arm64-maccatalyst, arm64e-macos, arm64e-maccatalyst ]
 uuids:                 [ 'arm64-ios: 8D88994E-CA4A-318B-8CB7-07D85AB675A0' ]
 platform:              ios
 flags:                 [ flat_namespace, not_app_extension_safe ]
-install-name:          /usr/lib/liblz4.1.dylib
+install-name:          '@rpath/liblz4.1.dylib'
 current-version:       1.9.2
 compatibility-version: 1
 exports:
-  - archs:                [ arm64-ios, arm64 ]
+  - archs:                [ arm64-ios, arm64, x86_64-macos, x86_64-maccatalyst, arm64-macos, arm64-maccatalyst, arm64e-macos, arm64e-maccatalyst ]
     symbols:              [ _LZ4F_compressBegin, _LZ4F_compressBound,
                             _LZ4F_compressEnd, _LZ4F_compressFrame,
                             _LZ4F_compressFrameBound, _LZ4F_compressUpdate,

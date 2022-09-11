@@ -309,7 +309,7 @@ final class DownloadManager {
         let version = aptEncoded(string: package.version, isArch: false)
         let architecture = aptEncoded(string: package.architecture ?? "", isArch: true)
         
-        let destFileName = "\(CommandPath.lazyPrefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
+        let destFileName = "\(CommandPath.prefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
         if !FileManager.default.fileExists(atPath: destFileName) {
@@ -380,7 +380,7 @@ final class DownloadManager {
         let version = aptEncoded(string: package.version, isArch: false)
         let architecture = aptEncoded(string: package.architecture ?? "", isArch: true)
         
-        let destFileName = "\(CommandPath.lazyPrefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
+        let destFileName = "\(CommandPath.prefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
         
         hardLinkAsRoot(from: fileURL, to: destURL)

@@ -41,6 +41,9 @@
     CFErrorRef error;
     BOOL success = SMJobBless(kSMDomainSystemLaunchd, str, authRef, &error);
     if (!success) {
+        NSError *nsError = (__bridge NSError *)error;
+        NSLog(@"[Sileo] Failed with error %@", nsError);
+        sleep(100);
         exit(0);
     }
     free(error);
