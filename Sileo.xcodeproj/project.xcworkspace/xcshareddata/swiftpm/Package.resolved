@@ -1,77 +1,79 @@
 {
-  "pins" : [
-    {
-      "identity" : "alderis",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elihwyma/Alderis.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "1537ccab5671084cb7e1b661c1e41dbdd4976bbb"
+  "object": {
+    "pins": [
+      {
+        "package": "Alderis",
+        "repositoryURL": "https://github.com/elihwyma/Alderis.git",
+        "state": {
+          "branch": "master",
+          "revision": "1537ccab5671084cb7e1b661c1e41dbdd4976bbb",
+          "version": null
+        }
+      },
+      {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "Down",
+        "repositoryURL": "https://github.com/johnxnguyen/Down.git",
+        "state": {
+          "branch": null,
+          "revision": "f34b166be1f1db4aa8f573067e901d72f2a6be57",
+          "version": "0.11.0"
+        }
+      },
+      {
+        "package": "Evander",
+        "repositoryURL": "https://github.com/elihwyma/Evander",
+        "state": {
+          "branch": "main",
+          "revision": "94ed6586634f9f93a30adb804f5d6ec118418534",
+          "version": null
+        }
+      },
+      {
+        "package": "LNPopupController",
+        "repositoryURL": "https://github.com/elihwyma/LNPopupController",
+        "state": {
+          "branch": "main",
+          "revision": "3681692077781f56b7ac291416d2f29f5939dc75",
+          "version": null
+        }
+      },
+      {
+        "package": "LNZTreeView",
+        "repositoryURL": "https://github.com/elihwyma/LNZTreeView",
+        "state": {
+          "branch": "master",
+          "revision": "bb7f9b77989e1c07460319e7bd4d1fcbf7cb26ae",
+          "version": null
+        }
+      },
+      {
+        "package": "SQLite.swift",
+        "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "4d543d811ee644fa4cc4bfa0be996b4dd6ba0f54",
+          "version": "0.13.3"
+        }
+      },
+      {
+        "package": "SwipeCellKit",
+        "repositoryURL": "https://github.com/SwipeCellKit/SwipeCellKit.git",
+        "state": {
+          "branch": null,
+          "revision": "7219cad3098637176ace311510d11467dbfb9bb0",
+          "version": "2.7.1"
+        }
       }
-    },
-    {
-      "identity" : "cosmos",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/evgenyneu/Cosmos.git",
-      "state" : {
-        "revision" : "cce521e734d0090494bd4afab5fd2e2f2465c1af",
-        "version" : "23.0.0"
-      }
-    },
-    {
-      "identity" : "down",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/johnxnguyen/Down",
-      "state" : {
-        "revision" : "f34b166be1f1db4aa8f573067e901d72f2a6be57",
-        "version" : "0.11.0"
-      }
-    },
-    {
-      "identity" : "evander",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elihwyma/Evander",
-      "state" : {
-        "branch" : "main",
-        "revision" : "e263e25558150a79884960b8264373a51096038b"
-      }
-    },
-    {
-      "identity" : "lnpopupcontroller",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elihwyma/LNPopupController",
-      "state" : {
-        "branch" : "main",
-        "revision" : "3681692077781f56b7ac291416d2f29f5939dc75"
-      }
-    },
-    {
-      "identity" : "lnztreeview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elihwyma/LNZTreeView",
-      "state" : {
-        "branch" : "master",
-        "revision" : "bb7f9b77989e1c07460319e7bd4d1fcbf7cb26ae"
-      }
-    },
-    {
-      "identity" : "sqlite.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/stephencelis/SQLite.swift.git",
-      "state" : {
-        "revision" : "4d543d811ee644fa4cc4bfa0be996b4dd6ba0f54",
-        "version" : "0.13.3"
-      }
-    },
-    {
-      "identity" : "swipecellkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwipeCellKit/SwipeCellKit.git",
-      "state" : {
-        "revision" : "7219cad3098637176ace311510d11467dbfb9bb0",
-        "version" : "2.7.1"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
