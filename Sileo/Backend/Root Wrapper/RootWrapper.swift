@@ -303,6 +303,8 @@ public class CommandPath {
     // Every method that uses this check already accounts for macCatalyst paths still resolving too
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     public static let isMobileProcursus = true
+    #elseif targetEnvironment(macCatalyst)
+    public static let isMobileProcursus = false
     #else
     public static let isMobileProcursus = FileManager.default.fileExists(atPath: "\(prefix)/.procursus_strapped")
     #endif
