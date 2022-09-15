@@ -3,7 +3,7 @@
 //  SileoRootWrapper
 //
 //  Created by Sileo Team on 27/05/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

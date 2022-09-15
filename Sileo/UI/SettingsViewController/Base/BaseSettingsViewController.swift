@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 1/27/20.
-//  Copyright © 2020 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation

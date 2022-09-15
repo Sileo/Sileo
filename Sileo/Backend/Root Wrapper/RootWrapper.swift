@@ -1,4 +1,5 @@
 import Foundation
+import Darwin
 
 #if targetEnvironment(macCatalyst)
 final public class MacRootWrapper {
@@ -115,7 +116,7 @@ final public class MacRootWrapper {
 }
 #endif
 
-@discardableResult func spawn(command: String, args: [String]) -> (Int, String, String) {
+@discardableResult func spawn(command: String, args: [String], root: Bool = false) -> (Int, String, String) {
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
 
@@ -151,7 +152,17 @@ final public class MacRootWrapper {
     defer { for case let pro? in proenv { free(pro) } }
     let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
     #else
-    let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
+    let spawnStatus: Int32
+    if #available(iOS 13, *) {
+        var attr: posix_spawnattr_t?
+        posix_spawnattr_init(&attr)
+        posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE));
+        posix_spawnattr_set_persona_uid_np(&attr, 0);
+        posix_spawnattr_set_persona_gid_np(&attr, 0);
+        spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], environ)
+    } else {
+        spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
+    }
     #endif
     if spawnStatus != 0 {
         return (-1, "", "")
@@ -241,10 +252,17 @@ final public class MacRootWrapper {
     #elseif targetEnvironment(macCatalyst)
     MacRootWrapper.shared.spawn(args: args, outputCallback: outputCallback)
     #else
-    guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
-        return (-1, "", "")
+    if #available(iOS 13, *) {
+        var args = args
+        let command = args.first!
+        args[0] = String(command.split(separator: "/").last!)
+        return spawn(command:command, args: args, root: true)
+    } else {
+        guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
+            return (-1, "", "")
+        }
+        return spawn(command: giveMeRootPath, args: ["giveMeRoot"] + args)
     }
-    return spawn(command: giveMeRootPath, args: ["giveMeRoot"] + args)
     #endif
 }
 
@@ -284,17 +302,20 @@ public class CommandPath {
     // Certain paths need to check for either Procursus mobile or Elucubratus as a fallback option
     // Every method that uses this check already accounts for macCatalyst paths still resolving too
     #if targetEnvironment(simulator) || TARGET_SANDBOX
-    public static var isMobileProcursus = true
-    #elseif PREBOOT
-    public static var isMobileProcursus = FileManager.default.fileExists(atPath: "/private/preboot/procursus/.procursus_strapped")
+    public static let isMobileProcursus = true
+    #elseif targetEnvironment(macCatalyst)
+    public static let isMobileProcursus = false
     #else
-    public static var isMobileProcursus = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+    public static let isMobileProcursus = FileManager.default.fileExists(atPath: "\(prefix)/.procursus_strapped")
     #endif
     
     static let prefix: String = {
-        #if PREBOOT
-        return "/private/preboot/procursus"
+        #if targetEnvironment(macCatalyst)
+        return "/opt/procursus"
         #else
+        if #available(iOS 15, *) {
+            return "/var/jb"
+        }
         return ""
         #endif
     }()
@@ -352,12 +373,7 @@ public class CommandPath {
     }()
 
     static var sourcesListD: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/etc/apt/sources.list.d"
-        #else
-        // Check for not Procursus so we can keep the check below
-        return "\(prefix)/etc/apt/sources.list.d"
-        #endif
+        "\(prefix)/etc/apt/sources.list.d"
     }()
 
     static var chown: String = {
@@ -370,7 +386,7 @@ public class CommandPath {
 
     static var aptmark: String = {
         #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/bin/apt-mark"
+        return "\(prefix)/bin/apt-mark"
         #else
         return "\(prefix)/usr/bin/apt-mark"
         #endif
@@ -378,7 +394,7 @@ public class CommandPath {
 
     static var dpkgdeb: String = {
         #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/bin/dpkg-deb"
+        return "\(prefix)/bin/dpkg-deb"
         #else
         return "\(prefix)/usr/bin/dpkg-deb"
         #endif
@@ -386,7 +402,7 @@ public class CommandPath {
 
     static var dpkg: String = {
         #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/bin/dpkg"
+        return "\(prefix)/bin/dpkg"
         #else
         return "\(prefix)/usr/bin/dpkg"
         #endif
@@ -394,7 +410,7 @@ public class CommandPath {
 
     static var aptget: String = {
         #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/bin/apt-get"
+        return "\(prefix)/bin/apt-get"
         #else
         return "\(prefix)/usr/bin/apt-get"
         #endif
@@ -402,7 +418,7 @@ public class CommandPath {
 
     static var aptkey: String = {
         #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/bin/apt-key"
+        return "\(prefix)/bin/apt-key"
         #else
         return "\(prefix)/usr/bin/apt-key"
         #endif
@@ -414,26 +430,21 @@ public class CommandPath {
     }()
 
     static var sileolists: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/var/lib/apt/sileolists"
-        #else
-        return "\(prefix)/var/lib/apt/sileolists"
-        #endif
+        "\(prefix)/var/lib/apt/sileolists"
     }()
 
     static var lists: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus/var/lib/apt/lists"
-        #else
-        return "\(prefix)/var/lib/apt/lists"
-        #endif
+        "\(prefix)/var/lib/apt/lists"
     }()
 
     static var whoami: String = {
         #if targetEnvironment(macCatalyst)
-        "\(prefix)/usr/bin/whoami"
+        "/usr/bin/whoami"
         #else
-        "whoami"
+        if #available(iOS 13, *) {
+            return "\(prefix)/usr/bin/whoami"
+        }
+        return "whoami"
         #endif
     }()
 
@@ -442,9 +453,7 @@ public class CommandPath {
     }()
 
     static var dpkgDir: URL = {
-        #if targetEnvironment(macCatalyst)
-        return URL(fileURLWithPath: "/opt/procursus/Library/dpkg")
-        #elseif targetEnvironment(simulator) || TARGET_SANDBOX
+        #if targetEnvironment(simulator) || TARGET_SANDBOX
         return Bundle.main.bundleURL
         #else
         return URL(fileURLWithPath: "\(prefix)/Library/dpkg")
@@ -456,15 +465,6 @@ public class CommandPath {
         return "RepoIcon"
         #else
         return "CydiaIcon"
-        #endif
-    }()
-
-    // This is only important for macOS
-    static var lazyPrefix: String = {
-        #if targetEnvironment(macCatalyst)
-        return "/opt/procursus"
-        #else
-        return prefix
         #endif
     }()
 

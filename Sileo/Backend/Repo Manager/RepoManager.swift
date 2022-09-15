@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Kabir Oberai on 11/07/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -86,7 +86,7 @@ final class RepoManager {
         repoListLock.wait()
         let jailbreakRepo = Repo()
         jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
+        jailbreakRepo.suite = "iphoneos-arm64/1800"
         jailbreakRepo.components = ["main"]
         jailbreakRepo.rawEntry = """
         Types: deb
@@ -247,6 +247,7 @@ final class RepoManager {
         for repo in repos {
             DatabaseManager.shared.deleteRepo(repo: repo)
             PaymentManager.shared.removeProviders(for: repo)
+            DependencyResolverAccelerator.shared.removeRepo(repo: repo)
         }
         NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }
@@ -1082,19 +1083,24 @@ final class RepoManager {
             files.forEach(deleteFileAsRoot)
             #endif
             self.postProgressNotification(nil)
-            DatabaseManager.shared.saveQueue()
-
+            
+            if reposUpdated > 0 {
+                DownloadManager.aptQueue.async {
+                    DatabaseManager.shared.saveQueue()
+                    DownloadManager.shared.repoRefresh()
+                    DependencyResolverAccelerator.shared.preflightInstalled()
+                    CanisterResolver.shared.queueCache()
+                }
+            }
+            
+            // This method can be safely called on a non-main thread.
+            backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
+            
             DispatchQueue.main.async {
                 if reposUpdated > 0 {
-                    DownloadManager.aptQueue.async {
-                        DownloadManager.shared.repoRefresh()
-                        DependencyResolverAccelerator.shared.preflightInstalled()
-                    }
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                     NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 }
-                backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
-                NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
                 completion(errorsFound, errorOutput)
             }
         }
@@ -1200,8 +1206,7 @@ final class RepoManager {
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
-
-        for repoEntry in repoEntries {
+        for repoEntry in repoEntries where !repoEntry.isEmpty {
             guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
                   let rawTypes = repoData["types"],
                   let rawUris = repoData["uris"],
@@ -1250,12 +1255,12 @@ final class RepoManager {
 
             var sileoList = ""
 
-            if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
+            if FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/procursus.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/chimera.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/electra.list") {
+                sileoList = "\(CommandPath.prefix)/etc/apt/sources.list.d/sileo.sources"
             } else {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
+                sileoList = "\(CommandPath.prefix)/etc/apt/sileo.list.d/sileo.sources"
             }
             
             let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
