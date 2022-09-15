@@ -9,7 +9,7 @@
 import Foundation
 import Alderis
 
-fileprivate let defaultTheme = SileoThemeManager.shared.themeList.first(where: { $0.name == String(localizationKey: "Sileo_Adaptive") } )
+fileprivate let defaultTheme = SileoThemeManager.shared.themeList.first
 class ThemeCreatorViewController: BaseSettingsViewController {
     static let defaultComponents: [ThemeComponents: UIColor?] = [
         .backgroundColor: defaultTheme?.backgroundColor,
