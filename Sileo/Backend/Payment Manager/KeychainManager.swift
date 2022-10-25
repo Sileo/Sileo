@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 14/06/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -76,7 +76,6 @@ final class KeychainManager {
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
-        print("Response is \(SecCopyErrorMessageString(response, nil))")
         return response
     }
     

@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
             uuid = "14211DF2-EC10-46F8-B845-3EF6C3966462"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             nameForDebugger = "ViewControllerPop"
             condition = "!(BOOL)([[$arg1 description] containsString:@&quot;Input&quot;])"
             ignoreCount = "0"

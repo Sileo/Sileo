@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/24/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -211,9 +211,6 @@ class APTWrapper {
             helper.spawnAsRoot(command: CommandPath.aptget, args: arguments)
         }
         #else
-        guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
-            fatalError("Unable to find giveMeRoot")
-        }
         DispatchQueue.global(qos: .default).async {
             let oldApps = APTWrapper.dictionaryOfScannedApps()
 
@@ -251,9 +248,14 @@ class APTWrapper {
             posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
             posix_spawn_file_actions_addclose(&fileActions, pipestatusfd[1])
             posix_spawn_file_actions_addclose(&fileActions, pipesileo[1])
-
-            arguments.insert("giveMeRoot", at: 0)
-
+        
+            let command = arguments.first!
+            if #available(iOS 13, *) {
+                arguments[0] = String(command.split(separator: "/").last!)
+            } else {
+                arguments.insert("giveMeRoot", at: 0)
+            }
+            
             let argv: [UnsafeMutablePointer<CChar>?] = arguments.map { $0.withCString(strdup) }
             defer {
                 for case let arg? in argv {
@@ -271,7 +273,21 @@ class APTWrapper {
 
             var pid: pid_t = 0
             
-            let spawnStatus = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
+            let spawnStatus: Int32
+            if #available(iOS 13, *) {
+                var attr: posix_spawnattr_t?
+                posix_spawnattr_init(&attr)
+                posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE));
+                posix_spawnattr_set_persona_uid_np(&attr, 0);
+                posix_spawnattr_set_persona_gid_np(&attr, 0);
+                spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], env + [nil])
+            } else {
+                guard let giveMeRootPath = Bundle.main.path(forAuxiliaryExecutable: "giveMeRoot") else {
+                    fatalError("Unable to find giveMeRoot")
+                }
+                spawnStatus = posix_spawn(&pid, giveMeRootPath, &fileActions, nil, argv + [nil], env + [nil])
+            }
+            
             if spawnStatus != 0 {
                 return
             }

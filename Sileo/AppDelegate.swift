@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/29/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -210,7 +210,6 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        print("Recieved URL \(url)")
         DispatchQueue.global(qos: .default).async {
             PackageListManager.shared.initWait()
             DispatchQueue.main.async {

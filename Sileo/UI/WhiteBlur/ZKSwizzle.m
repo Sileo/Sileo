@@ -61,15 +61,13 @@ static Class classFromInfo(const char *info) {
  */
 ZKIMP ZKOriginalImplementation(id self, SEL sel, const char *info) {
     if (sel == NULL || self == NULL || info == NULL) {
-        [NSException raise:@"Invalid Arguments" format:@"One of self: %@, self: %@, or info: %s is NULL", self, NSStringFromSelector(sel), info];
         return NULL;
     }
-    
+
     Class cls = classFromInfo(info);
     Class dest = object_getClass(self);
     
     if (cls == NULL || dest == NULL) {
-        [NSException raise:@"Failed obtain class pair" format:@"src: %@ | dst: %@ | sel: %@", NSStringFromClass(cls), NSStringFromClass(dest), NSStringFromSelector(sel)];
         return NULL;
     }
     

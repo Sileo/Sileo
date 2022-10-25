@@ -12,7 +12,6 @@ import Evander
 
 final class CanisterResolver {
     
-    static let RepoRefresh = Notification.Name("SileoRepoDidFinishUpdating")
     public static let nistercanQueue = DispatchQueue(label: "Sileo.NisterCan", qos: .userInteractive)
     public static let shared = CanisterResolver()
     public var packages = SafeArray<ProvisionalPackage>(queue: canisterQueue, key: queueKey, context: queueContext)
@@ -35,14 +34,7 @@ final class CanisterResolver {
         "apt.saurik.com",
         "repo.theodyssey.dev"
     ]
-    
-    init() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(CanisterResolver.queueCache),
-                                               name: CanisterResolver.RepoRefresh,
-                                               object: nil)
-    }
-    
+
     @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
         #if targetEnvironment(macCatalyst)
         fetch?(false); return false
@@ -166,7 +158,7 @@ final class CanisterResolver {
         cachedQueue.append(package)
     }
     
-    @objc private func queueCache() {
+    public func queueCache() {
         let plm = PackageListManager.shared
         var buffer = 0
         var refreshLists = false

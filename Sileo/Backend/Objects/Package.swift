@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 7/3/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 import UIKit
 
@@ -38,7 +38,7 @@ final class Package: Hashable, Equatable {
         [self] + Array(allVersionsInternal.values)
     }
     
-    public var fromStatusFile: Bool = false
+    public var fromStatusFile = false
     public var wantInfo: pkgwant = .unknown
     public var eFlag: pkgeflag = .ok
     public var status: pkgstatus = .installed

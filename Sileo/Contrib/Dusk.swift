@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/20/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation

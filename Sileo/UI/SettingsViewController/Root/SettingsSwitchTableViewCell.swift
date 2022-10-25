@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 16/03/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import UIKit

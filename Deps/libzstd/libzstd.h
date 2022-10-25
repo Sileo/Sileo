@@ -1,12 +1,3 @@
-//
-//  libzstd.h
-//  Sileo
-//
-//  Created by Amy on 31/05/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
-//
-
-
 #include <stdlib.h>    // malloc, free, exit
 #include <stdio.h>     // fprintf, perror, fopen, etc.
 #include <string.h>    // strerror
