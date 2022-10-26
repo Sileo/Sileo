@@ -19,7 +19,7 @@
 "Download_Size_Mismatch" = "Forventet størrelse %@, fikk %@ istedenfor.";
 "Download_Failing_Status_Code" = "Feilet med status %ld";
 "Download_Hash_Mismatch" = "Forventet nøkkel %@, fikk %@ istedenfor.";
-"Untrusted_Package" = "Pakke %@ er ikke verifisert og kan ikke bekreftes.";
+"Untrusted_Package" = "Pakke %@ er ikke verifisert og kan ikke bekreftes";
 
 "Insecure_Paid_Download" = "Betalingsautoriserte-nedlastingsadresser for pakker må være sikre (HTTPS).";
 
