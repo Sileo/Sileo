@@ -357,16 +357,10 @@ final class PackageListManager {
             let lowercased = searchQuery.lowercased()
             packageList.removeAll { package in
                 // check if the user search term is in the package ID, description or in the author / maintainer name
-                var searchFields = Set<String?>([package.package, package.packageDescription, package.author])
-                if package.maintainer != package.author {
-                    searchFields.insert(package.maintainer)
+                for field in [package.package, package.package, package.author, package.maintainer] {
+                    if field?.localizedStandardContains(search) ?? false { return false }
                 }
-                let _searchFields = searchFields.compactMap { $0?.lowercased() }
-                for searchField in _searchFields {
-                    if strstr(searchField, lowercased) != nil {
-                        return false
-                    }
-                }
+                
                 return true
             }
         }
