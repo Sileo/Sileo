@@ -699,8 +699,14 @@ extension PackageListViewController: UISearchBarDelegate {
 }
 
 extension PackageListViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.updateSearchResults(for: searchController)
+            }
+            return
+        }
         func handleResponse(_ response: UpdateType) {
             switch response {
             case .nothing: return
