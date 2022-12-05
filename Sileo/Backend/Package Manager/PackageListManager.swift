@@ -181,6 +181,8 @@ final class PackageListManager {
         
         package.depends = dictionary["depends"]
         package.conflicts = dictionary["conflicts"]
+        package.preDepends = dictionary["pre-depends"]
+        package.breaks = dictionary["breaks"]
         
         if let installedSize = dictionary["installed-size"] {
             package.installedSize = Int(installedSize)
@@ -560,4 +562,3 @@ final class PackageListManager {
         }
     }
 }
-
