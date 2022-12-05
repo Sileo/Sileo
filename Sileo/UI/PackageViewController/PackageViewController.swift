@@ -128,7 +128,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         
-        packageName.textColor = .sileoLabel
+        if (package?.isFirmwareConflict ?? false) {
+            packageName.textColor = UIColor.red
+        } else {
+            packageName.textColor = .sileoLabel
+        }
         let collapsed = splitViewController?.isCollapsed ?? false
         let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
         navController?.setNavigationBarHidden(true, animated: true)
@@ -203,7 +207,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     @objc func updateSileoColors() {
-        packageName.textColor = .sileoLabel
+        if (package?.isFirmwareConflict ?? false) {
+            packageName.textColor = UIColor.red
+        } else {
+            packageName.textColor = .sileoLabel
+        }
     }
     
     @objc func reloadData() {
