@@ -9,6 +9,7 @@
 import Foundation
 import SwipeCellKit
 import Evander
+import UIKit
 
 class PackageCollectionViewCell: SwipeCollectionViewCell {
     @IBOutlet var imageView: UIImageView?
@@ -43,34 +44,129 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                         
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
                 
-                //#if os(iOS)
-
-                let deponfw = (targetPackage.depends ?? "Depends: firmware (>= 0.0)") + ","
-
+                #if os(iOS)
+                
+                let deponfw = "Depends: " + (targetPackage.depends ?? "boobs") + ","
                 if deponfw.contains("firmware") {
                     if doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                         titleLabel?.textColor = UIColor.red
                         targetPackage.isFirmwareConflict = true
                     } else {
-                        let conflictwithfw = (targetPackage.conflicts ?? "Conflicts: firmware (>= 9999999.0)") + ","
+                        let conflictwithfw = (targetPackage.conflicts ?? "cock") + ","
                         if conflictwithfw.contains("firmware") {
                             if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                                 titleLabel?.textColor = UIColor.red
                                 targetPackage.isFirmwareConflict = true
+                            } else {
+                                let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "boobies") + ","
+                                if preDepends.contains("firmware") {
+                                    if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                        titleLabel?.textColor = UIColor.red
+                                        targetPackage.isFirmwareConflict = true
+                                    } else {
+                                        let breaks = "Breaks: " + (targetPackage.conflicts ?? "cock") + ","
+                                        if breaks.contains("firmware") {
+                                            if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                                titleLabel?.textColor = UIColor.red
+                                                targetPackage.isFirmwareConflict = true
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    let breaks = "Breaks: " + (targetPackage.breaks ?? "cock") + ","
+                                    if breaks.contains("firmware") {
+                                        if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                            titleLabel?.textColor = UIColor.red
+                                            targetPackage.isFirmwareConflict = true
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "boobies") + ","
+                            if preDepends.contains("firmware") {
+                                if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                    titleLabel?.textColor = UIColor.red
+                                    targetPackage.isFirmwareConflict = true
+                                } else {
+                                    let breaks = "Breaks: " + (targetPackage.conflicts ?? "cock") + ","
+                                    if breaks.contains("firmware") {
+                                        if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                            titleLabel?.textColor = UIColor.red
+                                            targetPackage.isFirmwareConflict = true
+                                        }
+                                    }
+                                }
+                            } else {
+                                let breaks = "Breaks: " + (targetPackage.breaks ?? "cock") + ","
+                                if breaks.contains("firmware") {
+                                    if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                        titleLabel?.textColor = UIColor.red
+                                        targetPackage.isFirmwareConflict = true
+                                    }
+                                }
                             }
                         }
                     }
                 } else {
-                    let conflictwithfw = (targetPackage.conflicts ?? "Conflicts: firmware (>= 9999999.0)") + ","
+                    let conflictwithfw = "Conflicts: " + (targetPackage.conflicts ?? "cock") + ","
                     if conflictwithfw.contains("firmware") {
                         if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                             titleLabel?.textColor = UIColor.red
                             targetPackage.isFirmwareConflict = true
+                        } else {
+                            let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "boobies") + ","
+                            if preDepends.contains("firmware") {
+                                if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                    titleLabel?.textColor = UIColor.red
+                                    targetPackage.isFirmwareConflict = true
+                                } else {
+                                    let breaks = "Breaks: " + (targetPackage.conflicts ?? "cock") + ","
+                                    if breaks.contains("firmware") {
+                                        if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                            titleLabel?.textColor = UIColor.red
+                                            targetPackage.isFirmwareConflict = true
+                                        }
+                                    }
+                                }
+                            } else {
+                                let breaks = "Breaks: " + (targetPackage.breaks ?? "cock") + ","
+                                if breaks.contains("firmware") {
+                                    if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                        titleLabel?.textColor = UIColor.red
+                                        targetPackage.isFirmwareConflict = true
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "boobies") + ","
+                        if preDepends.contains("firmware") {
+                            if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                titleLabel?.textColor = UIColor.red
+                                targetPackage.isFirmwareConflict = true
+                            } else {
+                                let breaks = "Breaks: " + (targetPackage.conflicts ?? "cock") + ","
+                                if breaks.contains("firmware") {
+                                    if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                        titleLabel?.textColor = UIColor.red
+                                        targetPackage.isFirmwareConflict = true
+                                    }
+                                }
+                            }
+                        } else {
+                            let breaks = "Breaks: " + (targetPackage.breaks ?? "cock") + ","
+                            if breaks.contains("firmware") {
+                                if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
+                                    titleLabel?.textColor = UIColor.red
+                                    targetPackage.isFirmwareConflict = true
+                                }
+                            }
                         }
                     }
                 }
 
-                //#endif
+                #endif
             }
             unreadView?.isHidden = true
             
@@ -502,7 +598,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             }
             let baseString = String(noSpace[startIndex..<endIndex]).replacingOccurrences(of: ")", with: "") //we shouldn't need to remove (, only )
             if baseString.contains("|") {
-                print("something other than firmware")
+                //something other than firmware
                 noSpaceIter += 1
                 continue //we don't actually want to mark as red if something other than the firmware conflicts, so firmware (>= 13.0) | somedeb gets marked as false even if firmware is lower than 13.0, since somedeb isn't firmware
             }
@@ -530,9 +626,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             }
             if versionParsed == -1 {
                 print("COULD NOT FIND VERSIONPARSED")
-                print(confOrDependString)
-                print(baseString)
-                print(noSpaceIter)
                 noSpaceIter += 1
                 continue
             }
