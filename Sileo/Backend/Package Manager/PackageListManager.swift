@@ -179,6 +179,9 @@ final class PackageListManager {
         package.depiction = dictionary["sileodepiction"]
         package.nativeDepiction = dictionary["native-depiction"]
         
+        package.depends = dictionary["depends"]
+        package.conflicts = dictionary["conflicts"]
+        
         if let installedSize = dictionary["installed-size"] {
             package.installedSize = Int(installedSize)
         }
@@ -358,7 +361,7 @@ final class PackageListManager {
             packageList.removeAll { package in
                 // check if the user search term is in the package ID, description or in the author / maintainer name
                 for field in [package.package, package.package, package.author, package.maintainer] {
-                    if field?.localizedStandardContains(search) ?? false { return false }
+                    if field?.localizedStandardContains(search!) ?? false { return false }
                 }
                 
                 return true
@@ -557,3 +560,4 @@ final class PackageListManager {
         }
     }
 }
+
