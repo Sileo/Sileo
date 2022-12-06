@@ -36,7 +36,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let targetPackage = targetPackage {
                 titleLabel?.text = targetPackage.name
-                authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
+                authorLabel?.text = ControlFileParser.authorName(string: targetPackage.author ?? "") + " • " + targetPackage.version
                 descriptionLabel?.text = targetPackage.packageDescription
                 
                 let url = targetPackage.icon
@@ -85,7 +85,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let provisionalTarget = provisionalTarget {
                 titleLabel?.text = provisionalTarget.name ?? ""
-                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "Unknown")"
+                authorLabel?.text = (provisionalTarget.author ?? "") + " • " + (provisionalTarget.version ?? "Unknown")
                 descriptionLabel?.text = provisionalTarget.description
             
                 let url = provisionalTarget.icon
