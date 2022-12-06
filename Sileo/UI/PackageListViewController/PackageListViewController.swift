@@ -327,7 +327,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             }
             let packageVersion = package.version
             
-            bodyFromArray += "\(packageName): \(packageVersion)\n"
+            bodyFromArray += (packageName + ": " + packageVersion + "\n")
         }
         
         if let subRange = Range<String.Index>(NSRange(location: bodyFromArray.count - 1, length: 1), in: bodyFromArray) {
