@@ -52,7 +52,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                         titleLabel?.textColor = UIColor.red
                         targetPackage.isFirmwareConflict = true
                     } else {
-                        let conflictwithfw = (targetPackage.conflicts ?? "abcd") + "," + (targetPackage.breaks ?? "abcd")
+                        let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd") + "," + (targetPackage.breaks ?? "abcd")
                         if conflictwithfw.contains("firmware") {
                             if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                                 titleLabel?.textColor = UIColor.red
