@@ -46,7 +46,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 
                 #if os(iOS)
                 
-                let deponfw = "Depends: " + (targetPackage.depends ?? "abcd") + ","
+                let deponfw = "," + (targetPackage.depends ?? "abcd") + ","
                 if deponfw.contains("firmware") {
                     if doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                         titleLabel?.textColor = UIColor.red
@@ -58,13 +58,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                 titleLabel?.textColor = UIColor.red
                                 targetPackage.isFirmwareConflict = true
                             } else {
-                                let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "abcd") + ","
+                                let preDepends = "," + (targetPackage.preDepends ?? "abcd") + ","
                                 if preDepends.contains("firmware") {
                                     if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
                                         titleLabel?.textColor = UIColor.red
                                         targetPackage.isFirmwareConflict = true
                                     } else {
-                                        let breaks = "Breaks: " + (targetPackage.conflicts ?? "abcd") + ","
+                                        let breaks = "," + (targetPackage.conflicts ?? "abcd") + ","
                                         if breaks.contains("firmware") {
                                             if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                                 titleLabel?.textColor = UIColor.red
@@ -73,7 +73,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                         }
                                     }
                                 } else {
-                                    let breaks = "Breaks: " + (targetPackage.breaks ?? "abcd") + ","
+                                    let breaks = "," + (targetPackage.breaks ?? "abcd") + ","
                                     if breaks.contains("firmware") {
                                         if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                             titleLabel?.textColor = UIColor.red
@@ -83,13 +83,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                 }
                             }
                         } else {
-                            let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "abcd") + ","
+                            let preDepends = "," + (targetPackage.preDepends ?? "abcd") + ","
                             if preDepends.contains("firmware") {
                                 if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
                                     titleLabel?.textColor = UIColor.red
                                     targetPackage.isFirmwareConflict = true
                                 } else {
-                                    let breaks = "Breaks: " + (targetPackage.conflicts ?? "abcd") + ","
+                                    let breaks = "," + (targetPackage.conflicts ?? "abcd") + ","
                                     if breaks.contains("firmware") {
                                         if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                             titleLabel?.textColor = UIColor.red
@@ -98,7 +98,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                     }
                                 }
                             } else {
-                                let breaks = "Breaks: " + (targetPackage.breaks ?? "abcd") + ","
+                                let breaks = "," + (targetPackage.breaks ?? "abcd") + ","
                                 if breaks.contains("firmware") {
                                     if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                         titleLabel?.textColor = UIColor.red
@@ -109,19 +109,19 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                         }
                     }
                 } else {
-                    let conflictwithfw = "Conflicts: " + (targetPackage.conflicts ?? "abcd") + ","
+                    let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd") + ","
                     if conflictwithfw.contains("firmware") {
                         if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                             titleLabel?.textColor = UIColor.red
                             targetPackage.isFirmwareConflict = true
                         } else {
-                            let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "abcd") + ","
+                            let preDepends = "," + (targetPackage.preDepends ?? "abcd") + ","
                             if preDepends.contains("firmware") {
                                 if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
                                     titleLabel?.textColor = UIColor.red
                                     targetPackage.isFirmwareConflict = true
                                 } else {
-                                    let breaks = "Breaks: " + (targetPackage.conflicts ?? "abcd") + ","
+                                    let breaks = "," + (targetPackage.conflicts ?? "abcd") + ","
                                     if breaks.contains("firmware") {
                                         if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                             titleLabel?.textColor = UIColor.red
@@ -130,7 +130,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                     }
                                 }
                             } else {
-                                let breaks = "Breaks: " + (targetPackage.breaks ?? "abcd") + ","
+                                let breaks = "," + (targetPackage.breaks ?? "abcd") + ","
                                 if breaks.contains("firmware") {
                                     if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                         titleLabel?.textColor = UIColor.red
@@ -140,13 +140,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                             }
                         }
                     } else {
-                        let preDepends = "Pre-Depends: " + (targetPackage.preDepends ?? "abcd") + ","
+                        let preDepends = "," + (targetPackage.preDepends ?? "abcd") + ","
                         if preDepends.contains("firmware") {
                             if doesNotDepend(confOrDependString: preDepends, forVersion: Float(UIDevice.current.systemVersion)!) {
                                 titleLabel?.textColor = UIColor.red
                                 targetPackage.isFirmwareConflict = true
                             } else {
-                                let breaks = "Breaks: " + (targetPackage.conflicts ?? "abcd") + ","
+                                let breaks = "," + (targetPackage.conflicts ?? "abcd") + ","
                                 if breaks.contains("firmware") {
                                     if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                         titleLabel?.textColor = UIColor.red
@@ -155,7 +155,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                                 }
                             }
                         } else {
-                            let breaks = "Breaks: " + (targetPackage.breaks ?? "abcd") + ","
+                            let breaks = "," + (targetPackage.breaks ?? "abcd") + ","
                             if breaks.contains("firmware") {
                                 if !doesNotDepend(confOrDependString: breaks, forVersion: Float(UIDevice.current.systemVersion)!) {
                                     titleLabel?.textColor = UIColor.red
@@ -580,23 +580,16 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     private func doesNotDepend(confOrDependString: String, forVersion ver: Float) -> Bool {
         let noSpaceFull = confOrDependString.replacingOccurrences(of: " ", with: "");
         var noSpaceIter = 0
-        for noSpacet in noSpaceFull.components(separatedBy: ",firmware")  { //support for two firmware depends in one field
-            var noSpace = ""
+        for noSpace in noSpaceFull.components(separatedBy: ",firmware")  { //support for two firmware depends in one field
             if noSpaceIter == 0 {
-                if !noSpaceFull.contains(":firmware") { //handle if :firmware
-                    noSpaceIter += 1
-                    continue;
-                } else {
-                    noSpace = noSpacet
-                }
-            } else {
-                noSpace = "firmware" + noSpacet
+                noSpaceIter += 1
+                continue;
             }
-            guard let startIndex = noSpace.range(of: "firmware")?.upperBound, let endIndex = noSpace.range(of: ",", options: .init(rawValue: 0), range: startIndex..<noSpace.endIndex, locale: nil)?.lowerBound else {
+            guard let endIndex = noSpace.range(of: ",", options: .init(rawValue: 0), range: noSpace.startIndex..<noSpace.endIndex, locale: nil)?.lowerBound else {
                 noSpaceIter += 1
                 continue
             }
-            let baseString = String(noSpace[startIndex..<endIndex])
+            let baseString = String(noSpace[..<endIndex])
             if baseString.contains("|") {
                 //something other than firmware
                 noSpaceIter += 1
