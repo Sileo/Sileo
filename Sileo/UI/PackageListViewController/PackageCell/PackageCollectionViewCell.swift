@@ -596,7 +596,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                 noSpaceIter += 1
                 continue
             }
-            let baseString = String(noSpace[startIndex..<endIndex]).replacingOccurrences(of: ")", with: "") //we shouldn't need to remove (, only )
+            let baseString = String(noSpace[startIndex..<endIndex])
             if baseString.contains("|") {
                 //something other than firmware
                 noSpaceIter += 1
@@ -613,7 +613,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             var versionParsed = Float(-1)
             for i in baseString {
                 if i.isWholeNumber {
-                    versionParsed = Float(baseString.dropFirst(iterator)) ?? Float(-1)
+                    versionParsed = Float(baseString.dropFirst(iterator).replacingOccurrences(of: ")", with: "") /*we shouldn't need to remove (, only )*/) ?? Float(-1)
                     break; //we found the char
                 } else if i == ">" {
                     operatorType = 1
