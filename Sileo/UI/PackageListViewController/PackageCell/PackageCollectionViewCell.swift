@@ -491,10 +491,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             }
             let endIndex = (noSpace.range(of: "),", options: .init(rawValue: 0), range: noSpace.startIndex..<noSpace.endIndex, locale: nil)?.lowerBound) ?? noSpace.endIndex
             let baseString = String(noSpace[..<endIndex])
-            if baseString.count < 1 {
-                noSpaceIter += 1
-                continue
-            } //if baseString is blank, next one. you could also do same thing by checking if first character of baseString is "," or checking if endIndex is 0, not sure which one is faster, just went with this
             if baseString.contains("|") {
                 //something other than firmware
                 noSpaceIter += 1
