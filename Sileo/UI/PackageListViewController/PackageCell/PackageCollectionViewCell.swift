@@ -46,13 +46,13 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 
                 #if os(iOS)
                 
-                let deponfw = targetPackage.depends ?? "abcd"
+                let deponfw = "," + (targetPackage.depends ?? "abcd")
                 if deponfw.contains("firmware") {
                     if doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                         titleLabel?.textColor = UIColor.red
                         targetPackage.isFirmwareConflict = true
                     } else {
-                        let conflictwithfw = targetPackage.conflicts ?? "abcd"
+                        let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                         if conflictwithfw.contains("firmware") {
                             if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                                 titleLabel?.textColor = UIColor.red
@@ -61,7 +61,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                         }
                     }
                 } else {
-                    let conflictwithfw = targetPackage.conflicts ?? "abcd"
+                    let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                     if conflictwithfw.contains("firmware") {
                         if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                             titleLabel?.textColor = UIColor.red
@@ -484,12 +484,12 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     private func doesNotDepend(confOrDependString: String, forVersion ver: Float) -> Bool {
         let noSpaceFull = confOrDependString.replacingOccurrences(of: " ", with: "");
         var noSpaceIter = 0
-        for noSpace in noSpaceFull.components(separatedBy: "firmware(")  { //support for two firmware depends in one field
+        for noSpace in noSpaceFull.components(separatedBy: ",firmware(")  { //support for two firmware depends in one field
             if noSpaceIter == 0 {
                 noSpaceIter += 1
                 continue;
             }
-            let endIndex = (noSpace.range(of: ",", options: .init(rawValue: 0), range: noSpace.startIndex..<noSpace.endIndex, locale: nil)?.lowerBound) ?? noSpace.endIndex
+            let endIndex = (noSpace.range(of: "),", options: .init(rawValue: 0), range: noSpace.startIndex..<noSpace.endIndex, locale: nil)?.lowerBound) ?? noSpace.endIndex
             let baseString = String(noSpace[..<endIndex])
             if baseString.count < 1 {
                 noSpaceIter += 1
@@ -511,7 +511,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             var versionParsed = Float(-1)
             for i in baseString {
                 if i.isWholeNumber {
-                    versionParsed = Float(baseString.dropFirst(iterator).replacingOccurrences(of: ")", with: "") /*we shouldn't need to remove (, only )*/) ?? Float(-1)
+                    versionParsed = Float(baseString.dropFirst(iterator) ?? Float(-1)
                     break; //we found the char
                 } else if i == ">" {
                     operatorType = 1
