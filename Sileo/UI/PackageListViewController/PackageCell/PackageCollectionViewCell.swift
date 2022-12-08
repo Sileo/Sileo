@@ -45,10 +45,12 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 
                 #if os(iOS)
                 
+                DispatchQueue.main.async {
+                let ver = (UIDevice.current.systemVersion as NSString).floatValue
                 DispatchQueue.global(qos: .userInitiated).async {
                 let deponfw = "," + (targetPackage.depends ?? "abcd")
                 if deponfw.contains("firmware") {
-                    if self.doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
+                    if self.doesNotDepend(confOrDependString: deponfw, forVersion: ver) {
                         targetPackage.isFirmwareConflict = true
                         DispatchQueue.main.async {
                             self.titleLabel?.textColor = UIColor.red
@@ -56,7 +58,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                     } else {
                         let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                         if conflictwithfw.contains("firmware") {
-                            if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
+                            if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: ver) {
                                 targetPackage.isFirmwareConflict = true
                                 DispatchQueue.main.async {
                                     self.titleLabel?.textColor = UIColor.red
@@ -67,13 +69,14 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 } else {
                     let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                     if conflictwithfw.contains("firmware") {
-                        if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
+                        if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: ver) {
                             targetPackage.isFirmwareConflict = true
                             DispatchQueue.main.async {
                                 self.titleLabel?.textColor = UIColor.red
                             }
                         }
                     }
+                }
                 }
                 }
 
@@ -496,7 +499,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
                 noSpaceIter += 1
                 continue;
             }
-            let endIndex = (noSpace.range(of: "),", options: .init(rawValue: 0), range: noSpace.startIndex..<noSpace.endIndex, locale: nil)?.lowerBound) ?? noSpace.endIndex
+            let endIndex = (noSpace.range(of: ",")?.lowerBound) ?? noSpace.endIndex
             let baseString = String(noSpace[..<endIndex])
             if baseString.contains("|") {
                 //something other than firmware
@@ -513,7 +516,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             var versionParsed = Float(-1)
             for i in baseString {
                 if i.isWholeNumber {
-                    versionParsed = Float(baseString.dropFirst(iterator)) ?? Float(-1)
+                    versionParsed = Float(baseString.dropFirst(iterator).replacingOccurrences(of: ")", with: "")) ?? Float(-1)
                     break; //we found the char
                 } else if i == ">" {
                     operatorType = 1
