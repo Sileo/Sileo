@@ -5,7 +5,6 @@
 //  Created by CoolStar on 7/30/19.
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
-
 import Foundation
 import SwipeCellKit
 import Evander
@@ -46,28 +45,36 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
                 
                 #if os(iOS)
                 
+                DispatchQueue.global(qos: .userInitiated).async {
                 let deponfw = "," + (targetPackage.depends ?? "abcd")
                 if deponfw.contains("firmware") {
-                    if doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
-                        titleLabel?.textColor = UIColor.red
+                    if self.doesNotDepend(confOrDependString: deponfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                         targetPackage.isFirmwareConflict = true
+                        DispatchQueue.main.async {
+                            self.titleLabel?.textColor = UIColor.red
+                        }
                     } else {
                         let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                         if conflictwithfw.contains("firmware") {
-                            if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
-                                titleLabel?.textColor = UIColor.red
+                            if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                                 targetPackage.isFirmwareConflict = true
+                                DispatchQueue.main.async {
+                                    self.titleLabel?.textColor = UIColor.red
+                                }
                             }
                         }
                     }
                 } else {
                     let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
                     if conflictwithfw.contains("firmware") {
-                        if !doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
-                            titleLabel?.textColor = UIColor.red
+                        if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: Float(UIDevice.current.systemVersion)!) {
                             targetPackage.isFirmwareConflict = true
+                            DispatchQueue.main.async {
+                                self.titleLabel?.textColor = UIColor.red
+                            }
                         }
                     }
+                }
                 }
 
                 #endif
@@ -506,7 +513,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             var versionParsed = Float(-1)
             for i in baseString {
                 if i.isWholeNumber {
-                    versionParsed = Float(baseString.dropFirst(iterator) ?? Float(-1)
+                    versionParsed = Float(baseString.dropFirst(iterator)) ?? Float(-1)
                     break; //we found the char
                 } else if i == ">" {
                     operatorType = 1
