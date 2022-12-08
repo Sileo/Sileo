@@ -493,7 +493,6 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             let baseString = String(noSpace[..<endIndex])
             if baseString.contains("|") {
                 //something other than firmware
-                noSpaceIter += 1
                 continue //we don't actually want to mark as red if something other than the firmware conflicts, so firmware (>= 13.0) | somedeb gets marked as false even if firmware is lower than 13.0, since somedeb isn't firmware
             }
             var operatorType = 0
@@ -520,10 +519,8 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             }
             if versionParsed == -1 {
                 print("COULD NOT FIND VERSIONPARSED")
-                noSpaceIter += 1
                 continue
             }
-            noSpaceIter += 1
             switch operatorType {
                 case 1: if (versionParsed >= ver) {return versionParsed >= ver}
                 case 2: if (versionParsed <= ver) {return versionParsed <= ver}
