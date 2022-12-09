@@ -48,7 +48,7 @@ jobs:
       - name: Setup Procursus Bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          curl -L https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst -o bootstrap.tar.zst
+          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
           sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
