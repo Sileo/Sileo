@@ -314,7 +314,9 @@ public class CommandPath {
         return "/opt/procursus"
         #else
         if #available(iOS 15, *) {
-            return "/var/jb"
+            if URL(fileURLWithPath: "/var/jb").dirExists {
+                return "/var/jb"
+            }
         }
         return ""
         #endif
