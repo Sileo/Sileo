@@ -247,7 +247,6 @@ final class RepoManager {
         for repo in repos {
             DatabaseManager.shared.deleteRepo(repo: repo)
             PaymentManager.shared.removeProviders(for: repo)
-            DependencyResolverAccelerator.shared.removeRepo(repo: repo)
         }
         NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }
