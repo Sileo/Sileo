@@ -52,8 +52,7 @@ jobs:
           sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt -V full-upgrade -y || :
           sudo /opt/procursus/bin/apt install ldid -y
       - name: Add Procursus to PATH
         run: |
