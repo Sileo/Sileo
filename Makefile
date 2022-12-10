@@ -253,6 +253,8 @@ package: stage
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
 	@sed -e s/@@SILEO_APP@@/$(SILEO_APP)/ \
 		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
+	@sed -e s/@@PREFIX@@/$(PREFIX)/ \
+		$(SILEO_STAGE_DIR)/DEBIAN/triggers.in > $(SILEO_STAGE_DIR)/DEBIAN/triggers
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in

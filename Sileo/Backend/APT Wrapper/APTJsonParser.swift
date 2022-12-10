@@ -175,6 +175,7 @@ extension APTWrapper {
         ]
         if CommandPath.requiresDumbWorkaround {
             queryArguments.insert("-oDir::Etc=/var/Liy/etc/apt", at: 5)
+            queryArguments.insert("-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/", at: 5)
         }
         var packageOperations: [String] = []
         for downloadPackage in installList {
