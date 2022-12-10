@@ -378,7 +378,7 @@ final class DownloadManager {
         let packageID = aptEncoded(string: package.packageID, isArch: false)
         let version = aptEncoded(string: package.version, isArch: false)
         let architecture = aptEncoded(string: package.architecture ?? "", isArch: true)
-        	
+        
         let destFileName = "\(CommandPath.prefix)/var/cache/apt/archives/\(packageID)_\(version)_\(architecture).deb"
         let destURL = URL(fileURLWithPath: destFileName)
 

@@ -156,6 +156,7 @@ extension APTWrapper {
     // APT syntax: a- = remove a; b = install b
     public class func operationList(installList: Set<DownloadPackage>, removeList: Set<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
+        NSLog("[Sileo] Asking for operation list")
         guard let configPath = Bundle.main.path(forResource: "sileo-apt", ofType: "conf") else {
             throw APTParserErrors.missingSileoConf
         }
@@ -164,15 +165,17 @@ extension APTWrapper {
             // What the hell are you passing, requesting an operationList without any packages?
             throw APTParserErrors.blankRequest
         }
-
-        let queryArguments = [
+        
+        var queryArguments = [
             "-sqf", "--allow-remove-essential", "--allow-change-held-packages",
             "--allow-downgrades", "-oquiet::NoUpdate=true", "-oApt::Get::HideAutoRemove=true",
             "-oquiet::NoProgress=true", "-oquiet::NoStatistic=true", "-c", configPath,
             "-oAcquire::AllowUnsizedPackages=true", "-oAPT::Get::Show-User-Simulation-Note=False",
             "-oAPT::Format::for-sileo=true", "-oAPT::Format::JSON=true", "install", "--reinstall"
         ]
-
+        if CommandPath.requiresDumbWorkaround {
+            queryArguments.insert("-oDir::Etc=/var/Liy/etc/apt", at: 5)
+        }
         var packageOperations: [String] = []
         for downloadPackage in installList {
             // The downloadPackage.package.package is the deb path on local installs
@@ -194,8 +197,15 @@ extension APTWrapper {
         // APT spawn stuff
         var aptStdout = ""
         var aptError = ""
+        var status = 0
 
-        (_, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        (status, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        NSLog("[Sileo] status = \(status) stdout=\(aptStdout) stderr=\(aptError)")
+        NSLog("[Sileo] Args = \(queryArguments) \(packageOperations)")
+        if status != 0 {
+            NSLog("[Sileo] I FUCKING HATE THIS JAILBREAK IT CAN GO SUCK A DEADMANS BALLS")
+            NSLog("[Sileo] Prefix = \(CommandPath.prefix) \(URL(fileURLWithPath: "/var/jb").dirExists) \(URL(fileURLWithPath: "/var/jb").exists)")
+        }
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
         
         return aptJsonOutput

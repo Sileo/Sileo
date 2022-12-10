@@ -155,17 +155,19 @@ final public class MacRootWrapper {
     let spawnStatus: Int32
     if #available(iOS 13, *) {
         var attr: posix_spawnattr_t?
-        posix_spawnattr_init(&attr)
-        posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE));
-        posix_spawnattr_set_persona_uid_np(&attr, 0);
-        posix_spawnattr_set_persona_gid_np(&attr, 0);
+        if root {
+            posix_spawnattr_init(&attr)
+            posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE));
+            posix_spawnattr_set_persona_uid_np(&attr, 0);
+            posix_spawnattr_set_persona_gid_np(&attr, 0);
+        }
         spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], environ)
     } else {
         spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
     }
     #endif
     if spawnStatus != 0 {
-        return (-1, "", "")
+        return (Int(spawnStatus), "ITS FAILING HERE", "Error = \(errno)  \(String(cString: strerror(spawnStatus))) \(String(cString: strerror(errno)))\n\(command)")
     }
 
     close(pipestdout[1])
@@ -314,6 +316,9 @@ public class CommandPath {
         return "/opt/procursus"
         #else
         if #available(iOS 15, *) {
+            if URL(fileURLWithPath: "/var/Liy").dirExists {
+                return "/var/Liy"
+            }
             if URL(fileURLWithPath: "/var/jb").dirExists {
                 return "/var/jb"
             }
@@ -375,7 +380,10 @@ public class CommandPath {
     }()
 
     static var sourcesListD: String = {
-        "\(prefix)/etc/apt/sources.list.d"
+        if requiresDumbWorkaround {
+            return "/var/Liy/etc/apt/sources.list.d"
+        }
+        return "\(prefix)/etc/apt/sources.list.d"
     }()
 
     static var chown: String = {
@@ -432,11 +440,11 @@ public class CommandPath {
     }()
 
     static var sileolists: String = {
-        "\(prefix)/var/lib/apt/sileolists"
+        return "\(prefix)/var/lib/apt/sileolists"
     }()
 
     static var lists: String = {
-        "\(prefix)/var/lib/apt/lists"
+        return "\(prefix)/var/lib/apt/lists"
     }()
 
     static var whoami: String = {
@@ -477,4 +485,19 @@ public class CommandPath {
         return "mobile:mobile"
         #endif
     }()
+    
+    static var requiresDumbWorkaround: Bool = {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
+        if #available(iOS 15.0, *) {
+            let archs = DpkgWrapper.getArchitectures
+            if !archs.contains("iphoneos-arm64") && URL(fileURLWithPath: "/var/Liy").dirExists {
+                return true
+            }
+        }
+        return false
+        #endif
+    }()
+    
 }

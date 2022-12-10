@@ -167,6 +167,9 @@ class APTWrapper {
                          "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
                          "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
                          "-o", "Acquire::AllowUnsizedPackages=true", "-o", "APT::Sandbox::User=root", "-o", "Dpkg::Options::=--force-confdef", "-o", "Dpkg::Options::=--force-confnew"]
+        if CommandPath.requiresDumbWorkaround {
+            arguments += ["-oDpkg::Options::=--root=/var/Liy", "-oDpkg::Options::=--force-script-chrootless", "-oDir::Etc=/var/Liy/etc/apt"]
+        }
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version
             if package.package.package.contains("/") {

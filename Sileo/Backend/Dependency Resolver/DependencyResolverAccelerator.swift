@@ -129,7 +129,6 @@ class DependencyResolverAccelerator {
     private func getDependenciesInternal(package: Package) {
         let url = package.sourceFileURL?.aptUrl ?? URL(string: "local://")!
         if preflightedPackages[url]?.contains(where: { $0 == package }) ?? false {
-            NSLog("[Sileo] Booping on \(package.package)")
             return
         }
         for packageVersion in package.allVersions {

@@ -1191,18 +1191,18 @@ final class RepoManager {
 
     public func parsePlainTextFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
-            print("couldn't get rawSources. we are out of here!")
+            NSLog("[Sileo] couldn't get rawSources. we are out of here!")
             return
         }
         let urlsString = rawSources.components(separatedBy: "\n").filter { URL(string: $0) != nil }
-        print("urls to add: \(urlsString)")
+        NSLog("[Sileo] urls to add: \(urlsString)")
         
         parseRepoEntry(rawSources, at: url, withTypes: ["deb"], uris: urlsString, suites: ["./"], components: [])
     }
     
     public func parseSourcesFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
-            print("\(#function): couldn't get rawSources. we are out of here!")
+            NSLog("[Sileo] \(#function): couldn't get rawSources. we are out of here!")
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
