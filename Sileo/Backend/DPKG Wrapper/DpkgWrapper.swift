@@ -66,7 +66,12 @@ class DpkgWrapper {
         #elseif arch(arm64) && os(macOS)
         let defaultArchitectures: Set<String> = ["darwin-arm64"]
         #else
-        let defaultArchitectures: Set<String> = ["iphoneos-arm"]
+        let defaultArchitectures: Set<String>
+        let prefix = CommandPath.prefix
+        switch prefix {
+        case "/var/jb": defaultArchitectures = ["iphoneos-arm64"]
+        default: defaultArchitectures = ["iphoneos-arm"]
+        }
         #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
@@ -81,7 +86,11 @@ class DpkgWrapper {
             return localSet
         }
         let foreignSet = Set(foreignArchs.components(separatedBy: CharacterSet(charactersIn: "\n")))
-        return localSet.union(foreignSet)
+        let archs = localSet.union(foreignSet).filter { $0 != "" }
+        if archs.isEmpty {
+            return defaultArchitectures
+        }
+        return archs
         #endif
     }()
     
