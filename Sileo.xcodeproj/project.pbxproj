@@ -301,7 +301,6 @@
 		E128190D26BBFAA500D2553B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F149E0B920B6040B005CA30B /* Main.storyboard */; };
 		E128190E26BBFAA500D2553B /* NewsArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */; };
 		E128190F26BBFAA500D2553B /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; };
-		E128191026BBFAA500D2553B /* sileo-apt.conf in Resources */ = {isa = PBXBuildFile; fileRef = F13AD30E23F9306F0035986E /* sileo-apt.conf */; };
 		E128191126BBFAA500D2553B /* Procursus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F926098169007D605F /* Procursus@3x.png */; };
 		E128191226BBFAA500D2553B /* Pride@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860C26697CD600B3DC42 /* Pride@3x.png */; };
 		E128191326BBFAA500D2553B /* StrawberrySunset@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23F526098169007D605F /* StrawberrySunset@3x.png */; };
@@ -702,7 +701,6 @@
 		F139D14422EA9209007F5C0D /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C373925721D60B2600E6F704 /* Localizable.stringsdict */; };
 		F139D14622EA9209007F5C0D /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
-		F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */ = {isa = PBXBuildFile; fileRef = F13AD30E23F9306F0035986E /* sileo-apt.conf */; };
 		F13AEE5322F52F98004BAA05 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */; };
 		F13AEE5B22F62B9D004BAA05 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5A22F62B9D004BAA05 /* Download.swift */; };
 		F13AEE5C22F62B9D004BAA05 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AEE5A22F62B9D004BAA05 /* Download.swift */; };
@@ -1369,7 +1367,6 @@
 		F1330EB02325644700971073 /* SileoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoContentView.swift; sourceTree = "<group>"; };
 		F1330EB32325673100971073 /* SileoLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoLabelView.swift; sourceTree = "<group>"; };
 		F139D14C22EA9209007F5C0D /* Sileo Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sileo Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F13AD30E23F9306F0035986E /* sileo-apt.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sileo-apt.conf"; sourceTree = "<group>"; };
 		F13AEE5222F52F98004BAA05 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
 		F13AEE5A22F62B9D004BAA05 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		F13AEE6222F69C47004BAA05 /* EditableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableView.swift; sourceTree = "<group>"; };
@@ -2497,7 +2494,6 @@
 				C373924521D5F80300E6F704 /* Errors.strings */,
 				C373923421D5E46900E6F704 /* Localizable.strings */,
 				C373925721D60B2600E6F704 /* Localizable.stringsdict */,
-				F13AD30E23F9306F0035986E /* sileo-apt.conf */,
 				F1B99EF720DBE56100374C27 /* Test Data */,
 			);
 			path = Sileo;
@@ -3375,7 +3371,6 @@
 				E128190E26BBFAA500D2553B /* NewsArticleCollectionViewCell.xib in Resources */,
 				E155D4A728CE5A1900AC7AE0 /* Odyssey@3x.png in Resources */,
 				E128190F26BBFAA500D2553B /* Chimera~ipad@2x.png in Resources */,
-				E128191026BBFAA500D2553B /* sileo-apt.conf in Resources */,
 				E128191126BBFAA500D2553B /* Procursus@3x.png in Resources */,
 				E128191226BBFAA500D2553B /* Pride@3x.png in Resources */,
 				E128191326BBFAA500D2553B /* StrawberrySunset@3x.png in Resources */,
@@ -3626,7 +3621,6 @@
 				F149E0BB20B6040B005CA30B /* Main.storyboard in Resources */,
 				C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */,
 				493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */,
-				F13AD30F23F9306F0035986E /* sileo-apt.conf in Resources */,
 				493B240526098169007D605F /* Procursus@3x.png in Resources */,
 				E1DC861326697CD600B3DC42 /* Pride@3x.png in Resources */,
 				E1D2E2D326C3383D00444437 /* Midnight~ipad@3x.png in Resources */,

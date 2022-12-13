@@ -162,13 +162,26 @@ class APTWrapper {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return completionCallback(0, .back, true)
         #endif
-        var arguments = [CommandPath.aptget, "install", "--reinstall", "--allow-unauthenticated", "--allow-downgrades",
-                        "--no-download", "--allow-remove-essential", "--allow-change-held-packages",
-                         "-c", Bundle.main.path(forResource: "sileo-apt", ofType: "conf") ?? "",
-                         "-y", "-f", "-o", "APT::Status-Fd=5", "-o", "APT::Keep-Fds::=6",
-                         "-o", "Acquire::AllowUnsizedPackages=true", "-o", "APT::Sandbox::User=root", "-o", "Dpkg::Options::=--force-confdef", "-o", "Dpkg::Options::=--force-confnew"]
+        var arguments = [CommandPath.aptget,
+                         "install", "--reinstall",
+                         "--allow-unauthenticated",
+                         "--allow-downgrades",
+                         "--no-download",
+                         "--allow-remove-essential",
+                         "--allow-change-held-packages",
+                         "-oDir::State::lists=sileolists/",
+                         "-y", "-f",
+                         "-oAPT::Status-Fd=5",
+                         "-oAPT::Keep-Fds::=6",
+                         "-oAcquire::AllowUnsizedPackages=true",
+                         "-oAPT::Sandbox::User=root",
+                         "-oDpkg::Options::=--force-confdef",
+                         "-oDpkg::Options::=--force-confnew"]
         if CommandPath.requiresDumbWorkaround {
-            arguments += ["-oDpkg::Options::=--root=/var/Liy", "-oDpkg::Options::=--force-script-chrootless", "-oDir::Etc=/var/Liy/etc/apt", "-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/"]
+            arguments += ["-oDpkg::Options::=--root=/var/Liy",
+                          "-oDpkg::Options::=--force-script-chrootless",
+                          "-oDir::Etc=/var/Liy/etc/apt",
+                          "-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/"]
         }
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version

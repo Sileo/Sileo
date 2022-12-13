@@ -157,25 +157,30 @@ extension APTWrapper {
     public class func operationList(installList: Set<DownloadPackage>, removeList: Set<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
         NSLog("[Sileo] Asking for operation list")
-        guard let configPath = Bundle.main.path(forResource: "sileo-apt", ofType: "conf") else {
-            throw APTParserErrors.missingSileoConf
-        }
-
         guard !(installList.isEmpty && removeList.isEmpty) else {
             // What the hell are you passing, requesting an operationList without any packages?
             throw APTParserErrors.blankRequest
         }
         
         var queryArguments = [
-            "-sqf", "--allow-remove-essential", "--allow-change-held-packages",
-            "--allow-downgrades", "-oquiet::NoUpdate=true", "-oApt::Get::HideAutoRemove=true",
-            "-oquiet::NoProgress=true", "-oquiet::NoStatistic=true", "-c", configPath,
-            "-oAcquire::AllowUnsizedPackages=true", "-oAPT::Get::Show-User-Simulation-Note=False",
-            "-oAPT::Format::for-sileo=true", "-oAPT::Format::JSON=true", "install", "--reinstall"
+            "-sqf",
+            "--allow-remove-essential",
+            "--allow-change-held-packages",
+            "--allow-downgrades",
+            "-oquiet::NoUpdate=true",
+            "-oApt::Get::HideAutoRemove=true",
+            "-oquiet::NoProgress=true",
+            "-oquiet::NoStatistic=true",
+            "-oDir::State::lists=sileolists/",
+            "-oAcquire::AllowUnsizedPackages=true",
+            "-oAPT::Get::Show-User-Simulation-Note=False",
+            "-oAPT::Format::for-sileo=true",
+            "-oAPT::Format::JSON=true",
+            "install", "--reinstall"
         ]
         if CommandPath.requiresDumbWorkaround {
-            queryArguments.insert("-oDir::Etc=/var/Liy/etc/apt", at: 5)
-            queryArguments.insert("-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/", at: 5)
+            queryArguments.append("-oDir::Etc=/var/Liy/etc/apt")
+            queryArguments.append("-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/")
         }
         var packageOperations: [String] = []
         for downloadPackage in installList {
