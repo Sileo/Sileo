@@ -1182,7 +1182,6 @@
 		4975C4F22647750D00D344B0 /* giveMeRoot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = giveMeRoot.c; sourceTree = "<group>"; };
 		4975C4FE2647758E00D344B0 /* control.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = control.in; sourceTree = "<group>"; };
 		4975C4FF2647758E00D344B0 /* prerm */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = prerm; sourceTree = "<group>"; };
-		4975C5002647758E00D344B0 /* triggers */ = {isa = PBXFileReference; lastKnownFileType = text; path = triggers; sourceTree = "<group>"; };
 		4975C5012647758E00D344B0 /* postinst.in */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinst.in; sourceTree = "<group>"; };
 		499162C22607C06500D09BE7 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		49CE7CAE2607F97C00A20711 /* AltIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltIconTableViewCell.swift; sourceTree = "<group>"; };
@@ -1340,6 +1339,7 @@
 		E1D33906269C40C200933AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D33907269C41F900933AA5 /* RootHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHelper.swift; sourceTree = "<group>"; };
 		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
+		E1D64F4C2948F8720012DE0A /* triggers.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = triggers.in; sourceTree = "<group>"; };
 		E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APTJsonParser.swift; sourceTree = "<group>"; };
 		E1DC860926697CD600B3DC42 /* Pride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@2x.png"; sourceTree = "<group>"; };
 		E1DC860A26697CD600B3DC42 /* Pride~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride~ipad@2x.png"; sourceTree = "<group>"; };
@@ -1772,7 +1772,7 @@
 			children = (
 				4975C4FE2647758E00D344B0 /* control.in */,
 				4975C4FF2647758E00D344B0 /* prerm */,
-				4975C5002647758E00D344B0 /* triggers */,
+				E1D64F4C2948F8720012DE0A /* triggers.in */,
 				4975C5012647758E00D344B0 /* postinst.in */,
 			);
 			path = DEBIAN;

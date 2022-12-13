@@ -1,2 +1,2 @@
-interest @@DEB_DEPENDS@@/Applications
-interest @@DEB_DEPENDS@@/Library/MobileSubstrate/DynamicLibraries
+interest @@PREFIX@@/Applications
+interest @@PREFIX@@/Library/MobileSubstrate/DynamicLibraries

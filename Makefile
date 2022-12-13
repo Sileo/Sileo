@@ -16,7 +16,9 @@ SILEO_STAGE_DIR = $(SILEOTMP)/stage
 
 # Platform to build for.
 SILEO_PLATFORM ?= iphoneos-arm
-PREFIX ?= 
+PREFIX ?=
+SEDFIX =
+
 ifeq ($(SILEO_PLATFORM),iphoneos-arm)
 ARCH            = arm64
 PLATFORM        = iphoneos
@@ -33,6 +35,7 @@ DEB_ARCH        = iphoneos-arm64
 DESTINATION     =
 CONTENTS        =
 PREFIX          = /var/jb
+SEDFIX			= "\/var\/jb"
 SCHEME 			= Sileo
 BUILD_CONFIG	= Release
 SILEO_APP_DIR 	= $(SILEOTMP)/Build/Products/Release-iphoneos/Sileo.app
@@ -44,6 +47,7 @@ PLATFORM        = macosx
 DEB_ARCH        = darwin-arm64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
 PREFIX          = /opt/procursus
+SEDFIX			= "\/opt\/procursus"
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
@@ -55,6 +59,7 @@ PLATFORM        = macosx
 DEB_ARCH        = darwin-amd64
 DEB_DEPENDS     = coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
 PREFIX          = /opt/procursus
+SEDFIX			= "\/opt\/procursus"
 MAC             = 1
 DESTINATION     = -destination "generic/platform=macOS,variant=Mac Catalyst,name=Any Mac"
 CONTENTS        = Contents/
@@ -170,7 +175,7 @@ endif
 giveMeRoot/bin/giveMeRoot: giveMeRoot/giveMeRoot.c
 	$(MAKE) -C giveMeRoot \
 		CC="xcrun -sdk $(PLATFORM) clang -arch $(ARCH) -mios-version-min=12.0"
-
+		
 ifneq ($(MAC), 1)
 all:: giveMeRoot/bin/giveMeRoot
 else
@@ -232,10 +237,11 @@ package: stage
 		-e 's/@@DEB_DEPENDS@@/$(DEB_DEPENDS)/' $(SILEO_STAGE_DIR)/DEBIAN/control.in > $(SILEO_STAGE_DIR)/DEBIAN/control
 	@mv $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
-	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in	
+	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/triggers.in
 	@rm -rf $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/Contents/PkgInfo
 	@mv $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac $(SILEO_STAGE_DIR)/DEBIAN/prerm
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/prerm
@@ -253,12 +259,13 @@ package: stage
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/control.in
 	@sed -e s/@@SILEO_APP@@/$(SILEO_APP)/ \
 		$(SILEO_STAGE_DIR)/DEBIAN/postinst.in > $(SILEO_STAGE_DIR)/DEBIAN/postinst
-	@sed -e s/@@PREFIX@@/$(PREFIX)/ \
+	@sed -e s/@@PREFIX@@/$(SEDFIX)/ \
 		$(SILEO_STAGE_DIR)/DEBIAN/triggers.in > $(SILEO_STAGE_DIR)/DEBIAN/triggers
 	@chmod 0755 $(SILEO_STAGE_DIR)/DEBIAN/postinst
 	@rm -f $(SILEO_STAGE_DIR)/DEBIAN/postinst.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/postinst-mac.in
 	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/prerm-mac
+	@rm -rf $(SILEO_STAGE_DIR)/DEBIAN/triggers.in
 	@rm -rf "$(SILEO_STAGE_DIR)/Applications/$(SILEO_APP)/Down_Down.bundle/DownView (macOS).bundle"
 	@mkdir -p ./packages
 	@dpkg-deb -Z$(DPKG_TYPE) --root-owner-group -b $(SILEO_STAGE_DIR) ./packages/$(SILEO_ID)_$(SILEO_VERSION)_$(DEB_ARCH).deb
