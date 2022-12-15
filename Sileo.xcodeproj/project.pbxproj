@@ -558,6 +558,7 @@
 		E1C90258263C75B100569D1E /* DepictionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C90256263C75B100569D1E /* DepictionFormViewController.swift */; };
 		E1C9025D263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
 		E1C9025E263C852100569D1E /* DepictionFormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9025C263C852100569D1E /* DepictionFormTextView.swift */; };
+		E1C92EE5294B5B8B007079E8 /* liblzma.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C92EE4294B5B84007079E8 /* liblzma.5.tbd */; };
 		E1C960A7269E0D1F00F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1C960A9269E178A00F4BF34 /* CodesignCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */; };
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
@@ -594,7 +595,6 @@
 		E1DC861326697CD600B3DC42 /* Pride@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860C26697CD600B3DC42 /* Pride@3x.png */; platformFilter = ios; };
 		E1DC861426697CD600B3DC42 /* Pride@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860C26697CD600B3DC42 /* Pride@3x.png */; };
 		E1EA1CFF2615008100E56882 /* LNZTreeView in Frameworks */ = {isa = PBXBuildFile; productRef = E1EA1CFE2615008100E56882 /* LNZTreeView */; };
-		E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EB035E268BA3C30097CEE1 /* liblzma.5.tbd */; };
 		E1EB0362268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */; };
 		E1EB0363268BA45C0097CEE1 /* DownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0361268BA45C0097CEE1 /* DownloadsTableViewCell.swift */; };
 		E1EB0365268BA4690097CEE1 /* DownloadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB0364268BA4690097CEE1 /* DownloadsTableViewController.swift */; };
@@ -1320,6 +1320,7 @@
 		E1C6C0D72677BFDE006228E0 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		E1C90256263C75B100569D1E /* DepictionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormViewController.swift; sourceTree = "<group>"; };
 		E1C9025C263C852100569D1E /* DepictionFormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepictionFormTextView.swift; sourceTree = "<group>"; };
+		E1C92EE4294B5B84007079E8 /* liblzma.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.5.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/liblzma.5.tbd; sourceTree = DEVELOPER_DIR; };
 		E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTPipe.swift; sourceTree = "<group>"; };
 		E1C960A8269E178A00F4BF34 /* CodesignCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesignCheck.swift; sourceTree = "<group>"; };
 		E1CB21F827236B7D00B3141C /* DepictionKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DepictionKit; path = Deps/DepictionKit; sourceTree = "<group>"; };
@@ -1601,7 +1602,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EB0360268BA3D70097CEE1 /* liblzma.5.tbd in Frameworks */,
 				E14C5ED126680E030080BFCE /* libz.tbd in Frameworks */,
 				E14C5EC7266803EA0080BFCE /* libbz2.tbd in Frameworks */,
 				E13638F22614F6C000698D55 /* SQLite in Frameworks */,
@@ -1613,6 +1613,7 @@
 				E162DA0627BE78CF00DDD3E4 /* Alderis in Frameworks */,
 				E10C54592707DC92008BD0AA /* Evander in Frameworks */,
 				E172ACE7279490DF0066933E /* Down in Frameworks */,
+				E1C92EE5294B5B8B007079E8 /* liblzma.5.tbd in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
 			);
@@ -1644,6 +1645,7 @@
 		33F3CD3020E059ED00B3A1D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1C92EE4294B5B84007079E8 /* liblzma.5.tbd */,
 				E14C5ED026680E030080BFCE /* libz.tbd */,
 				E14C5ECE26680DF40080BFCE /* libz.1.tbd */,
 				E14C5EC5266803DA0080BFCE /* libbz2.1.0.5.tbd */,

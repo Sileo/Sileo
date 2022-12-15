@@ -98,7 +98,6 @@ final class RepoManager {
             UserDefaults.standard.set(true, forKey: "Sileo.DefaultRepo")
             addRepos(with: [
                 URL(string: "https://havoc.app")!,
-                URL(string: "https://apt.procurs.us")!,
                 URL(string: "https://repo.chariz.com")!
             ])
         }
