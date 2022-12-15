@@ -42,6 +42,7 @@ final class Package: Hashable, Equatable {
     public var wantInfo: pkgwant = .unknown
     public var eFlag: pkgeflag = .ok
     public var status: pkgstatus = .installed
+    public var installDate: Date?
     
     public var filename: String?
     public var size: String?

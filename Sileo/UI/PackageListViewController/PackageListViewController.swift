@@ -772,12 +772,12 @@ extension PackageListViewController: UISearchResultsUpdating {
             }
             
             if self.packagesLoadIdentifier == "--installed" {
-                var packages = [Package]()
+                var _packages = [Package]()
                 if let cachedInstalled = self.cachedInstalled {
-                    packages = cachedInstalled
+                    _packages = cachedInstalled
                 } else {
                     var allPackages: [String: Package] = [:]
-                    packages.forEach { allPackages[$0.packageID] = $0 }
+                    _packages.forEach { allPackages[$0.packageID] = $0 }
                     let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
                     for package in foundPackages {
                         guard let existing = allPackages[package.packageID] else { continue }
@@ -789,30 +789,24 @@ extension PackageListViewController: UISearchResultsUpdating {
                             }
                         }
                     }
-                    packages = Array(allPackages.values)
-                    self.cachedInstalled = packages
+                    _packages = Array(allPackages.values)
+                    _packages = Array(Set<Package>(_packages).union(packages))
+                    self.cachedInstalled = _packages
                 }
                 
                 switch SortMode() {
                 case .installdate:
-                    packages = packages.sorted(by: { package1, package2 -> Bool in
-                        let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
-                        let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
-                        let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
-                        let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
-                        
-                        if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
-                            let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
-                            return date2.compare(date1) == .orderedAscending
-                        }
-                        
-                        return true
+                    _packages = _packages.sorted(by: { package1, package2 -> Bool in
+                        guard let date1 = package1.installDate,
+                              let date2 = package2.installDate else { return true }
+                        return date2.compare(date1) == .orderedAscending
                     })
                 case .size:
-                    packages = packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
+                    _packages = _packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
                 case .name:
-                    packages = packageManager.sortPackages(packages: packages, search: query)
+                    _packages = packageManager.sortPackages(packages: _packages, search: query)
                 }
+                packages = _packages
             }
             
             self.updatingCount -= 1
@@ -820,11 +814,11 @@ extension PackageListViewController: UISearchResultsUpdating {
                 return
             }
             DispatchQueue.main.async {
+                self.packages = packages
                 self.updateProvisional()
                 
                 if self.updatingCount == 0 {
                     UIView.performWithoutAnimation {
-                        self.packages = packages
                         self.collectionView?.reloadData()
                     }
                 }

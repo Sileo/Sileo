@@ -292,6 +292,9 @@ final class PackageListManager {
                         continue
                     }
                 }
+                let packageInstallPath = CommandPath.dpkgDir.appendingPathComponent("info/\(packageID).list")
+                let attr = try? FileManager.default.attributesOfItem(atPath: packageInstallPath.path)
+                package.installDate = attr?[FileAttributeKey.modificationDate] as? Date
                 dict[package.packageID] = package
             } else {
                 if let otherPkg = dict[packageID] {
