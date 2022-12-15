@@ -87,9 +87,9 @@
         <key>zero</key>
         <string>لا توجد حزم</string>
         <key>one</key>
-        <string>%d حزمة</string>
+        <string>%d حُزْمَة</string>
         <key>two</key>
-        <string>%d حزمة</string>
+        <string>%d حُزْمَة</string>
         <key>few</key>
         <string>%d حزمة</string>
         <key>many</key>
