@@ -153,7 +153,7 @@ void parseVersion(char *version, int *length, char **error, struct DpkgVersion *
         return;
     }
     
-    if (versionStr[versionStrCount - 1] || revisionStr[revisionStrCount - 1]) {
+    if ((versionStrCount && versionStr[versionStrCount - 1]) || (revisionStrCount && revisionStr[revisionStrCount - 1])) {
         *error = "needs null termination";
         return;
     }
