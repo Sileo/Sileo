@@ -83,26 +83,6 @@ final class RepoManager {
         #endif
 
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        repoListLock.wait()
-        let jailbreakRepo = Repo()
-        jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/1800"
-        jailbreakRepo.components = ["main"]
-        jailbreakRepo.rawEntry = """
-        Types: deb
-        URIs: https://apt.procurs.us/
-        Suites: iphoneos-arm64/\(UIDevice.current.cfMajorVersion)
-        Components: main
-        """
-        jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
-        repoList.append(jailbreakRepo)
-        repoListLock.signal()
-
-        if sourcesURL.exists {
-            parseSourcesFile(at: sourcesURL)
-        } else {
-            writeListToFile()
-        }
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
@@ -114,6 +94,14 @@ final class RepoManager {
             }
         }
         #endif
+        if !UserDefaults.standard.bool(forKey: "Sileo.DefaultRepo") {
+            UserDefaults.standard.set(true, forKey: "Sileo.DefaultRepo")
+            addRepos(with: [
+                URL(string: "https://havoc.app")!,
+                URL(string: "https://apt.procurs.us")!,
+                URL(string: "https://repo.chariz.com")!
+            ])
+        }
     }
 
     @discardableResult func addRepos(with urls: [URL]) -> [Repo] {
