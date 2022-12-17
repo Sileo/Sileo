@@ -49,7 +49,7 @@
 
 "Package_Upgrade_Action" = "Upgrade";
 "Package_Reinstall_Action" = "Herinstalleer";
-"Package_Uninstall_Action" = "Deinstalleer";
+"Package_Uninstall_Action" = "Verwijder";
 "Package_Modify_Action" = "Bewerk";
 "Package_Get_Action" = "Verkrijg";
 "Package_Queue_Action" = "Wachtrij";
