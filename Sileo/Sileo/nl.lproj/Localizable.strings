@@ -51,7 +51,7 @@
 "Package_Reinstall_Action" = "Herinstalleer";
 "Package_Uninstall_Action" = "Verwijder";
 "Package_Modify_Action" = "Bewerk";
-"Package_Get_Action" = "Verkrijg";
+"Package_Get_Action" = "Download";
 "Package_Queue_Action" = "Wachtrij";
 "Package_Cancel_Action" = "Annuleer";
 "Package_Paid" = "Betaald";
@@ -136,7 +136,7 @@
 "Licenses_Page_Title" = "Licenties";
 "Alternate_Icon_Title" = "Alternatieve Iconen";
 
-"Settings_Payment_Provider_Heading" = "Betaling Providers";
+"Settings_Payment_Provider_Heading" = "Betalingsproviders";
 "Settings_Translations_Heading" = "Vertalingen";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Aankopen";
@@ -151,7 +151,7 @@
 "Reset_Tint_Color" = "Reset Tint Kleur";
 "Auto_Complete_Queue" = "Wachtrij Automatisch Voltooien";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
-"Swipe_Actions" = "Sleep Acties";
+"Swipe_Actions" = "Swipe-acties";
 "Show_Provisional" = "Toon Pakketten Van Canister";
 "Show_Ignored_Updates" = "Toon Genegeerde Updates";
 "Developer_Mode" = "Ontwikkelaar Modus";
@@ -159,29 +159,29 @@
 "Developer_Mode_Explain" = "Ontwikkelaars Modus schakelt de HTTPS vereiste uit van de Betalings API.";
 "Auto_Refresh_Sources" = "Ververs Bronnen Automatisch";
 "iCloud_Profile" = "Toon iCloud Profielfoto in Uitgelicht";
-"Cache_Size" = "Cache Grootte";
+"Cache_Size" = "Cache-grootte";
 "Clear_Cache" = "Verwijder Netwerk Cache";
 "Clear_Cache_Message" = "Wil je de netwerk cache verwijderen? Dit zal %@ vrijmaken";
 "Language" = "Taal";
-"Use_System_Language" = "Gebruik Systeem Taal";
-"Apply_Changes" = "Pas Aanpassingen Toe";
-"Apply_Changes_Confirm" = "Voor het toepassen van aanpassingen is het herstarten van Sileo vereist";
-"Help_Translate" = "Help Met Het Vertalen Van Sileo";
-"Always_Show_Install_Log" = "Laat Installeer Log Altijd Zien";
+"Use_System_Language" = "Gebruik Systeemtaal";
+"Apply_Changes" = "Veranderingen toepassen";
+"Apply_Changes_Confirm" = "Voor het toepassen van veranderingen is het herstarten van Sileo vereist";
+"Help_Translate" = "Helpen met vertalen";
+"Always_Show_Install_Log" = "Laat Installatielogboek Altijd Zien";
 "Auto_Show_Queue" = "Toon Wachtrij na Upgrade Alles";
 
 "Sileo_Light" = "Sileo Licht";
 "Sileo_Dark" = "Sileo Donker";
 "Sileo_Adaptive" = "Sileo Adaptief";
 "System" = "Systeem";
-"Theme_Settings" = "Thema Instellingen";
+"Theme_Settings" = "Thema-instellingen";
 
 "Cydia_Sign_In" = "Inloggen bij Cydia Store";
 "Payment_Provider_Signed_In" = "Ingelogd";
 "Payment_Provider_Signed_In_With_Name" = "Ingelogd als %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Log uit";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Log uit bij %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "Je kan gekochte pakketten niet meer downloaden totdat je weer inlogt.";
+"Payment_Provider_Sign_Out_Confirm.Body" = "Je kan je gekochte pakketten niet meer downloaden totdat je weer inlogt.";
 
 "Show_Install_Details" = "Toon Details";
 "Hide_Install_Details" = "Verberg Details";
@@ -196,17 +196,17 @@
 "After_Install_Reboot_Later" = "Herstart Apparaat Later";
 
 "Dangerous_Repo.Title" = "Gevaarlijke Bron";
-"Dangerous_Repo.Body" = "Je probeert een bron toe te voegen die bekend staat als gevaarlijk voor redenen als piracy, illegale inhoud of malware.\n\nBronnen die gemarkeerd zijn als schadelijk verspreiden vaak software met onverwachte gevolgen, als betaalde software of andere schadelijke pakketten. Dit kan blijvende gevolgen hebben op jouw apparaat en privacy, en kan soms effect hebben op jouw mogelijkheid om te jailbreaken. Wij raden je aan dat je met uiterste voorzichtigheid handelt om schadelijke software te vermijden.";
+"Dangerous_Repo.Body" = "Je probeert een bron toe te voegen die bekend staat als gevaarlijk voor redenen als piracy, illegale inhoud of malware.\n\nBronnen die gemarkeerd zijn als schadelijk verspreiden vaak software met onverwachte gevolgen, als betaalde software of andere schadelijke pakketten. Dit kan blijvende gevolgen hebben op jouw apparaat en privacy, en kan soms effect hebben op jouw mogelijkheid om te jailbreaken. We raden je aan dat je met uiterste voorzichtigheid handelt om schadelijke software te vermijden.";
 "Dangerous_Repo.Continue" = "Ik accepteer de risico's, ga verder";
 "Dangerous_Repo.Cancel" = "Breng me terug naar veiligheid";
 "Dangerous_Repo.Last_Chance.Title" = "Voeg Schadelijke Bron Toe?";
-"Dangerous_Repo.Last_Chance.Body" = "Gevaarlijke bronnen kunnen verwoestende gevolgen hebben op gebruik van jouw apparaat of jailbreaks. We raden je sterk aan dat je terug gaat voor je eigen veiligheid. Weet je zeker dat je %@ toe wilt voegen?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Gevaarlijke bronnen kunnen verwoestende gevolgen hebben op gebruik van jouw apparaat of jailbreak. We raden je sterk aan dat je terug gaat voor je eigen veiligheid. Weet je zeker dat je %@ toe wilt voegen?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Ga verder";
 "Dangerous_Repo.Last_Chance.Cancel" = "Ga terug";
 
 // All export-based strings
 "Export" = "Exporteer";
-"Export_Packages" = "Wil je je pakketten lijst exporteren? Dit kopieert alle pakket namen en hun versies naar jouw klembord.";
+"Export_Packages" = "Wil je je lijst met pakketten exporteren? Dit kopieert alle pakketnamen en hun versies naar jouw klembord.";
 "Export_Sources" = "Wil je je bronnenlijst exporteren? Dit kopieert de URL van elke bron naar jouw klembord.";
 "Export_Yes" = "Ja, kopieer.";
 "Export_No" = "Nee, annuleer.";
