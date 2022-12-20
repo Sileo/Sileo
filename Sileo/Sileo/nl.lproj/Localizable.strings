@@ -192,7 +192,7 @@
 "After_Install_Respring" = "Herstart SpringBoard";
 "After_Install_Reboot" = "Herstart Apparaat";
 "After_Install_Relaunch_Later" = "Herstart Sileo Later";
-"After_Install_Respring_Later" = "Herstart Springboard Later";
+"After_Install_Respring_Later" = "Herstart SpringBoard Later";
 "After_Install_Reboot_Later" = "Herstart Apparaat Later";
 
 "Dangerous_Repo.Title" = "Gevaarlijke Bron";
