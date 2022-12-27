@@ -32,7 +32,8 @@ final class CanisterResolver {
         "apt.bingner.com",
         "apt.procurs.us",
         "apt.saurik.com",
-        "repo.theodyssey.dev"
+        "repo.theodyssey.dev",
+        "repo.chimera.sh"
     ]
 
     @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
@@ -43,7 +44,7 @@ final class CanisterResolver {
         guard query.count > 3,
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
-        let url = "https://api.canister.me/v1/community/packages/search?query=\(formatted)&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,author,latestVersion,nativeDepiction,depiction,maintainer,section"
+        let url = "https://api.canister.me/v2/jailbreak/package/search?q=\(formatted)"
         EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
             guard success,
                   let dict = dict,
@@ -51,7 +52,10 @@ final class CanisterResolver {
             self.savedSearch.append(query)
             var change = false
             for entry in data {
-                guard let package = ProvisionalPackage(entry) else { continue }
+                print(entry)
+                guard let package = ProvisionalPackage(entry) else {
+                    continue
+                }
                 if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
                     change = true
                     self.packages.append(package)
@@ -76,7 +80,7 @@ final class CanisterResolver {
         if packages.isEmpty { fetch?(false); return false }
         let identifiers = packages.joined(separator: ",")
         guard let formatted = identifiers.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
-        let url = "https://api.canister.me/v1/community/packages/lookup?packages=\(formatted)"
+        let url = "https://api.canister.me/v2/jailbreak/package/multi?ids=\(formatted)"
         EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
             guard success,
                   let dict = dict,
@@ -84,13 +88,10 @@ final class CanisterResolver {
             self.savedSearch += packages
             var change = false
             for entry in data {
-                guard let fields = entry["fields"] as? [[String: Any]] else { continue }
-                for field in fields {
-                    guard let package = ProvisionalPackage(field) else { continue }
-                    if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
-                        change = true
-                        self.packages.append(package)
-                    }
+                guard let package = ProvisionalPackage(entry) else { continue }
+                if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
+                    change = true
+                    self.packages.append(package)
                 }
             }
             fetch?(change)
@@ -98,33 +99,8 @@ final class CanisterResolver {
         return true
     }
     
-    class private func piracy(_ url: URL, response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
-        let url2 = "https://api.canister.me/v1/community/repositories/check?query=\(url.absoluteString)"
-        EvanderNetworking.request(url: url2, type: [String: Any].self, cache: .init(localCache: false)) { success, _, _, dict in
-            guard success,
-                  let dict = dict,
-                  (dict["status"] as? String) == "Successful",
-                  let data = dict["data"] as? [String: String],
-                  let repoURI = data["repositoryURI"],
-                  let url3 = URL(string: repoURI) else {
-                return response([url], [URL]())
-            }
-            let safe = data["status"] == "safe"
-            if !safe {
-                return response([URL](), [url3])
-            }
-            return response([url3], [URL]())
-        }
-    }
-    
     class public func piracy(_ urls: [URL], response: @escaping (_ safe: [URL], _ piracy: [URL]) -> Void) {
-        if urls.count == 1 {
-            CanisterResolver.piracy(urls[0]) { safe, piracy in
-                response(safe, piracy)
-            }
-            return
-        }
-        var url = "https://api.canister.me/v1/community/repositories/check?queries="
+        var url = "https://api.canister.me/v2/jailbreak/repository/safety?uris="
         for (index, url2) in urls.enumerated() {
             let suffix = (index == urls.count - 1) ? "" : ","
             url += (url2.absoluteString  + suffix)
@@ -132,18 +108,17 @@ final class CanisterResolver {
         EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { success, _, _, dict in
             guard success,
                   let dict = dict,
-                  (dict["status"] as? String) == "Successful",
-                  let data = dict["data"] as? [[String: String]] else {
+                  let data = dict["data"] as? [[String: Any]] else {
                 return response(urls, [URL]())
             }
             var safe = [URL]()
             var piracy = [URL]()
             for repo in data {
-                guard let repoURI = repo["repositoryURI"],
+                guard let repoURI = repo["uri"] as? String,
                       let url3 = URL(string: repoURI) else {
                     continue
                 }
-                if repo["status"] == "safe" {
+                if repo["safe"] as? Bool == true {
                     safe.append(url3)
                 } else {
                     piracy.append(url3)
@@ -226,24 +201,24 @@ struct ProvisionalPackage {
     var version: String?
     var legacyDepiction: String?
     var depiction: String?
+    var depictionV2: String?
     var section: String?
     
     init?(_ entry: [String: Any]) {
         self.name = entry["name"] as? String
         
-        if let repo = entry["repository"] as? [String: String],
-           let url = repo["uri"] {
+        if let repo = entry["repository"] as? [String: Any],
+           let url = repo["uri"] as? String {
             self.repo = url
-        } else if let repo = entry["repository.uri"] as? String {
-            self.repo = repo
         } else {
             return nil
         }
         if CanisterResolver.shared.filteredRepos.contains(where: { (self.repo?.contains($0) ?? false) }) { return nil }
-        self.identifier = entry["identifier"] as? String
-        self.icon = entry["packageIcon"] as? String
+        self.identifier = entry["package"] as? String
+        self.icon = entry["icon"] as? String
         self.description = entry["description"] as? String
-        self.depiction = entry["nativeDepiction"] as? String
+        self.depiction = entry["sileoDepiction"] as? String
+        self.depictionV2 = entry["nativeDepiction"] as? String
         self.legacyDepiction = entry["depiction"] as? String
         if var author = entry["author"] as? String,
            let range = author.range(of: "<") {
@@ -262,7 +237,7 @@ struct ProvisionalPackage {
         } else {
             self.author = "Unknown"
         }
-        self.version = entry["latestVersion"] as? String ?? entry["version"] as? String
+        self.version = entry["version"] as? String
         self.section = entry["section"] as? String
     }
     
