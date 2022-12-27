@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - dev
+      - main
 name: Build
 jobs:
   make:
@@ -14,14 +14,14 @@ jobs:
           path: |
             ~/__cache
           key: ${{ runner.os }}-procursus
-          
+
       - name: Checkout
         uses: actions/checkout@master
         with:
           submodules: recursive
           token: ${{ secrets.SILEO_PAT }}
       - name: Import all certificates
-        env: 
+        env:
           DEVELOPMENT_PASSWORD: ${{ secrets.DEVELOPMENT_PASSWORD }}
           DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
           DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
@@ -44,11 +44,11 @@ jobs:
                           -P $DISTRIBUTION_PASSWORD \
                           -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
-        
+
       - name: Setup Procursus Bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
+          wget https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-amd64.tar.zst
           sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
@@ -57,7 +57,7 @@ jobs:
       - name: Add Procursus to PATH
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
-          
+
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
@@ -66,11 +66,11 @@ jobs:
           sudo /opt/procursus/bin/apt update
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
           sudo /opt/procursus/bin/apt -V dist-upgrade -y
-      
+
       - name: Select Correct Xcode (13.1)
         run: |
           sudo xcode-select --switch /Applications/Xcode_13.4.1.app
-          
+
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
@@ -79,12 +79,12 @@ jobs:
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1 SILEO_PLATFORM=iphoneos-arm64
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
       - name: Build Sileo Nightly (darwin-arm64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
       - name: Upload To Repo
-        env: # 
+        env: #
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package1=$(ls -t packages | head -1)
