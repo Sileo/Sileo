@@ -14,7 +14,7 @@
 "No_Package.Title" = "Не вдалося знайти пакет %@ в доданих репозиторіїв.";
 "No_Package.Body" = "Як що нове, почекайте кінець оновлення Sileo і повторити пізніше. Для допомоги, пошукайте онлайн.";
 
-"Invalid_URL.Title" = "Інвалідний URL";
+"Invalid_URL.Title" = "Недійсний URL";
 
 "Download_Size_Mismatch" = "Очікуваний розмір %@, утрималось %@.";
 "Download_Failing_Status_Code" = "Провалився зі статусом %ld";
@@ -34,7 +34,7 @@
 "FixingDpkg.Title" = "Dpkg перервано";
 "FixingDpkg.Body" = "Dpkg було перервано. Зачекайте, поки ми спробуємо розв'язати проблему.";
 
-"Invalid_Data" = "Інвалідні Дані";
+"Invalid_Data" = "Недійсні Дані";
 "Try_Later" = "Попробуйте ще раз пізніше.";
 
 "Sileo_Update_Required.Title" = "Обов'язкове Оновлення Sileo";
