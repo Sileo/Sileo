@@ -1,5 +1,3 @@
-# This repository has moved to [elihwyma/sileo](https://github.com/elihwyma/sileo)
-
 # Sileo
 [![Build](https://github.com/Sileo/Sileo/actions/workflows/main.yml/badge.svg)](https://github.com/Sileo/Sileo/actions/workflows/main.yml)
 
