@@ -33,7 +33,9 @@ For software, make a Pull Request with your changes and our team will review it.
     * Using Xcode Build Settings
         * Set the `Development Team` Build Setting
         * Remember to never commit this change
-3. Open `Sileo.xcodeproj` and have at it!
+        
+3. Apply our git hooks by running: `git config core.hooksPath .githooks`
+4. Open `Sileo.xcodeproj` and have at it!
 
 If you have questions, ask in the Sileo Discord server.
 
