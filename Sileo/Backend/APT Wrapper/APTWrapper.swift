@@ -161,7 +161,7 @@ class APTWrapper {
                                         completionCallback: @escaping (Int, FINISH, Bool) -> Void) {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return completionCallback(0, .back, true)
-        #endif
+        #else
         var arguments = [CommandPath.aptget,
                          "install", "--reinstall",
                          "--allow-unauthenticated",
@@ -432,9 +432,6 @@ class APTWrapper {
                             if sileoLine.hasPrefix("finish:return") {
                                 newFinish = .back
                             }
-                            if sileoLine.hasPrefix("finish:uicache") {
-                                newFinish = .uicache
-                            }
                             if sileoLine.hasPrefix("finish:reopen") {
                                 newFinish = .reopen
                             }
@@ -505,6 +502,7 @@ class APTWrapper {
             }
             completionCallback(Int(status), finish, refreshSileo)
         }
+        #endif
         #endif
     }
 }

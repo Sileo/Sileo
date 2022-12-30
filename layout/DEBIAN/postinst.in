@@ -23,14 +23,6 @@ case "$1" in
 		exit 0
 		;;
 	(triggered)
-		if [ "$2" = "/Applications" ]; then
-			finish uicache
-			exit 0
-		fi
-		if [ "$2" = "/var/jb/Applications" ]; then
-			finish uicache
-			exit 0
-		fi
 		if ! [ -s /usr/lib/libblackjack.dylib ]; then
 			if [ "$2" = "/Library/MobileSubstrate/DynamicLibraries" ]; then
 				finish restart

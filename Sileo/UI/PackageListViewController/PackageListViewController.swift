@@ -772,41 +772,18 @@ extension PackageListViewController: UISearchResultsUpdating {
             }
             
             if self.packagesLoadIdentifier == "--installed" {
-                var _packages = [Package]()
-                if let cachedInstalled = self.cachedInstalled {
-                    _packages = cachedInstalled
-                } else {
-                    var allPackages: [String: Package] = [:]
-                    _packages.forEach { allPackages[$0.packageID] = $0 }
-                    let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
-                    for package in foundPackages {
-                        guard let existing = allPackages[package.packageID] else { continue }
-                        if existing.version == package.version {
-                            allPackages[package.packageID] = package
-                        } else {
-                            if let correct = package.getVersion(existing.version) {
-                                allPackages[package.packageID] = correct
-                            }
-                        }
-                    }
-                    _packages = Array(allPackages.values)
-                    _packages = Array(Set<Package>(_packages).union(packages))
-                    self.cachedInstalled = _packages
-                }
-                
                 switch SortMode() {
                 case .installdate:
-                    _packages = _packages.sorted(by: { package1, package2 -> Bool in
+                    packages = packages.sorted(by: { package1, package2 -> Bool in
                         guard let date1 = package1.installDate,
                               let date2 = package2.installDate else { return true }
                         return date2.compare(date1) == .orderedAscending
                     })
                 case .size:
-                    _packages = _packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
+                    packages = packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
                 case .name:
-                    _packages = packageManager.sortPackages(packages: _packages, search: query)
+                    packages = packageManager.sortPackages(packages: packages, search: query)
                 }
-                packages = _packages
             }
             
             self.updatingCount -= 1
