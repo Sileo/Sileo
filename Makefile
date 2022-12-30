@@ -9,6 +9,8 @@ AUTOMATION         ?= 0
 # Build for all bootstraps or not
 ALL_BOOTSTRAPS     ?= 0
 
+DEBUG              ?= 0
+
 TARGET_CODESIGN = $(shell which ldid)
 
 SILEOTMP = $(TMPDIR)/sileo
