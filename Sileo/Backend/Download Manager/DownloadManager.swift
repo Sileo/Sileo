@@ -838,10 +838,10 @@ final class DownloadManager {
     public func performOperations(progressCallback: @escaping (Double, Bool, String, String) -> Void,
                                   outputCallback: @escaping (String, Int) -> Void,
                                   completionCallback: @escaping (Int, APTWrapper.FINISH, Bool) -> Void) {
-        var installs: [DownloadPackage] = installations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        installs += upgrades.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        let removals: [DownloadPackage] = uninstallations.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
-        let installdeps = installdeps.raw.sorted(by: { $0.package.name?.lowercased() ?? "" < $1.package.name?.lowercased() ?? "" })
+        var installs = Array(installations.raw)
+        installs += upgrades.raw
+        let removals = Array(uninstallations.raw) + Array(uninstalldeps.raw)
+        let installdeps = Array(installdeps.raw)
         APTWrapper.performOperations(installs: installs,
                                      removals: removals,
                                      installDeps: installdeps,

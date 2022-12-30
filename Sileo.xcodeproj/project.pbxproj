@@ -1261,6 +1261,7 @@
 		E14C5EE726680F350080BFCE /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		E14C5EE8266810A30080BFCE /* GZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GZIP.swift; sourceTree = "<group>"; };
 		E14E4D6226DED58F002AE3B4 /* NativePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePackageViewController.swift; sourceTree = "<group>"; };
+		E154A60F295F5A0B00752110 /* triggers */ = {isa = PBXFileReference; lastKnownFileType = text; path = triggers; sourceTree = "<group>"; };
 		E155D48328CE5A1900AC7AE0 /* Cheyote~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cheyote~ipad@2x.png"; sourceTree = "<group>"; };
 		E155D48428CE5A1900AC7AE0 /* Cheyote~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cheyote~ipad@3x.png"; sourceTree = "<group>"; };
 		E155D48528CE5A1900AC7AE0 /* Cheyote@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cheyote@3x.png"; sourceTree = "<group>"; };
@@ -1340,7 +1341,6 @@
 		E1D33906269C40C200933AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D33907269C41F900933AA5 /* RootHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHelper.swift; sourceTree = "<group>"; };
 		E1D44BB72665093A00A12A77 /* SileoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileoTableView.swift; sourceTree = "<group>"; };
-		E1D64F4C2948F8720012DE0A /* triggers.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = triggers.in; sourceTree = "<group>"; };
 		E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APTJsonParser.swift; sourceTree = "<group>"; };
 		E1DC860926697CD600B3DC42 /* Pride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@2x.png"; sourceTree = "<group>"; };
 		E1DC860A26697CD600B3DC42 /* Pride~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride~ipad@2x.png"; sourceTree = "<group>"; };
@@ -1774,7 +1774,7 @@
 			children = (
 				4975C4FE2647758E00D344B0 /* control.in */,
 				4975C4FF2647758E00D344B0 /* prerm */,
-				E1D64F4C2948F8720012DE0A /* triggers.in */,
+				E154A60F295F5A0B00752110 /* triggers */,
 				4975C5012647758E00D344B0 /* postinst.in */,
 			);
 			path = DEBIAN;

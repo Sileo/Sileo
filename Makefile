@@ -77,6 +77,11 @@ BUILD_CONFIG  := Mac_Automations
 SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Mac_Automations-maccatalyst/Sileo.app
 endif
 
+else
+ifneq ($(DEBUG),0)
+BUILD_CONFIG  := Debug
+SILEO_APP_DIR = $(SILEOTMP)/Build/Products/Debug-iphoneos/Sileo.app
+endif
 endif
 
 ifeq ($(PLATFORM),iphoneos-arm)

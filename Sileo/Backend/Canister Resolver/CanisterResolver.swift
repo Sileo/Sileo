@@ -52,7 +52,6 @@ final class CanisterResolver {
             self.savedSearch.append(query)
             var change = false
             for entry in data {
-                print(entry)
                 guard let package = ProvisionalPackage(entry) else {
                     continue
                 }
