@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
+"No_Category" = "(Geen Kategorie)";
 "Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"Themes" = "Temas";
+"Utilities" = "Nutsmiddels";
+"Applications" = "Toepassings";
+"Addons" = "Byvoegings";
+"Games" = "Speletjies";
+"Developer" = "Ontwikkelaar";
+"Data_Storage" = "Data Stoor";
+"Terminal_Support" = "Terminaal Ondersteuning";
+"Text_Editors" = "Teksredakteurs";
