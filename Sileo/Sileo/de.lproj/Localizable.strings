@@ -97,7 +97,7 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
-"Remove" = "Entfernen";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
@@ -215,3 +215,5 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 
 // Depcitions
 "View_Depiction" = "Paketbeschreibung anzeigen";
+
+"Copy_ID" = "Copy ID";

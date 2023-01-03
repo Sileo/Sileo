@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Package_Installed_Files_Page" = "已安装的文件";
 "Refresh" = "刷新";
-"Remove" = "移除";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "所有软件包";
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "查看介绍";
+
+"Copy_ID" = "Copy ID";

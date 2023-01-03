@@ -22,7 +22,7 @@
 "Delete" = "Xoá";
 "Cancel" = "Huỷ";
 "Acknowledge" = "Chấp Nhận";
-"Remove" = "Xoá";
+"Remove" = "Xóa";
 "Sileo_Team" = "Đội Sileo";
 "Warning" = "Cảnh báo";
 "Edit" = "Sửa đổi";
@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Xóa";
+"Remove" = "Loại bỏ";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Xem mô tả";
+
+"Copy_ID" = "Sao chép ID";

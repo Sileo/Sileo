@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Uppdaterar Källor";
 "Package_Installed_Files_Page" = "Installerade Filer";
 "Refresh" = "Uppdatera";
-"Remove" = "Radera";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alla Paket";
 "All_Packages.Cell_Subtitle" = "Se alla paket från dina källor";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Visa Skildring";
+
+"Copy_ID" = "Copy ID";
