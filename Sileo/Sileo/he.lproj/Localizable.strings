@@ -22,7 +22,7 @@
 "Delete" = "מחק";
 "Cancel" = "ביטול";
 "Acknowledge" = "אני מקבל";
-"Remove" = "מחיקה";
+"Remove" = "הסר";
 "Sileo_Team" = "צוות סילאו";
 "Warning" = "אזהרה";
 "Edit" = "ערוך";
@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "מרענן מקורות";
 "Package_Installed_Files_Page" = "קבצים מותקנים";
 "Refresh" = "רענן";
-"Remove" = "הסר";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "כל החבילות";
 "All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "הצג תיאור";
+
+"Copy_ID" = "Copy ID";
