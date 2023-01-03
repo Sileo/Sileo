@@ -1,0 +1,59 @@
+/*
+  Errors.strings
+  Sileo
+
+  Created by AppleBetas on 2018-12-28.
+  Copyright © 2018 CoolStar. All rights reserved.
+ 
+ LOCALISATIONS
+ */
+
+"Unknown" = "An unknown error occurred.";
+"Error_Indicator" = "Error: %@";
+
+"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
+"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+
+"Invalid_URL.Title" = "Invalid URL";
+
+"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
+"Download_Failing_Status_Code" = "Failed with status %ld";
+"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
+"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+
+"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+
+"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
+"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+
+"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+
+"Installation_Error.Title" = "Installation Error";
+"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+
+"FixingDpkg.Title" = "Dpkg Interrupted";
+"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+
+"Invalid_Data" = "Invalid Data";
+"Try_Later" = "Please try again later.";
+
+"Sileo_Update_Required.Title" = "Sileo Update Required";
+"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
+"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+
+"Form_Error.Title" = "Couldn't Load Form";
+"Form_Load_Error" = "The form could not be loaded from the server.";
+"Invalid_Form_Data" = "The server provided invalid form data.";
+"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
+"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+
+"Email_Unavailable.Title" = "Cannot Send Email";
+"Email_Unavailable.Body" = "Mail services are not available.";
+
+"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+
+"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
+"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
+"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
+"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
