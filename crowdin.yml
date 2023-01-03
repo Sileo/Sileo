@@ -1,4 +1,4 @@
-commit_message: '[Localization] Update %language% translations'
+commit_message: 'feat(lang): Update %language% translations'
 append_commit_message: false
 files:
   - source: /Sileo/Sileo/Base.lproj/*
