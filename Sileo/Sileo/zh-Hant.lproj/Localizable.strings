@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "正在重新整理來源";
 "Package_Installed_Files_Page" = "已安裝檔案";
 "Refresh" = "重新整理";
-"Remove" = "移除";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "所有套件";
 "All_Packages.Cell_Subtitle" = "查看已新增來源的所有套件";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "查看敘述";
+
+"Copy_ID" = "Copy ID";
