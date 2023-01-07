@@ -69,20 +69,6 @@ final class RepoManager {
 
     init() {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let containerURL = FileManager.default.documentDirectory.deletingLastPathComponent()
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: containerURL.path) {
-            for path in contents {
-                if path.starts(with: "(A Document Being Saved By Sileo") {
-                    let fullURL = containerURL.appendingPathComponent(path)
-                    try? FileManager.default.removeItem(at: fullURL)
-                }
-            }
-        }
-        #else
-        spawnAsRoot(args: [CommandPath.rm, "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
-        #endif
-
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
@@ -178,6 +164,12 @@ final class RepoManager {
         #if targetEnvironment(macCatalyst)
         return true
         #else
+        if CommandPath.requiresDumbWorkaround {
+            if url.host?.localizedCaseInsensitiveContains("apt.procurs.us") ?? false {
+                DownloadManager.showXinaWarning()
+                return false
+            }
+        }
         if CommandPath.isMobileProcursus {
             guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
@@ -290,6 +282,10 @@ final class RepoManager {
             guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
                   !hasRepo(with: URL(string: repoURL)!)
             else {
+                continue
+            }
+            
+            if CommandPath.requiresDumbWorkaround && repoURL.localizedCaseInsensitiveContains("apt.procurs.us") {
                 continue
             }
 
@@ -1182,8 +1178,7 @@ final class RepoManager {
             return
         }
         let urlsString = rawSources.components(separatedBy: "\n").filter { URL(string: $0) != nil }
-        NSLog("[Sileo] urls to add: \(urlsString)")
-        
+
         parseRepoEntry(rawSources, at: url, withTypes: ["deb"], uris: urlsString, suites: ["./"], components: [])
     }
     

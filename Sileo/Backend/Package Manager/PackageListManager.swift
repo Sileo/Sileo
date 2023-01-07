@@ -67,6 +67,14 @@ final class PackageListManager {
                         loadLock.unlock()
                         repo.packageDict = PackageListManager.readPackages(repoContext: repo)
                         
+                        if CommandPath.requiresDumbWorkaround && repo.url?.host == "apt.procurs.us" {
+                            for package in self.installedPackages.keys {
+                                if repo.packageDict[package] != nil {
+                                    DpkgWrapper.ignoreUpdates(true, package: package)
+                                }
+                            }
+                        }
+                        
                         updateLock.lock()
                         loadedRepoList.append(repo)
                         updateLock.unlock()

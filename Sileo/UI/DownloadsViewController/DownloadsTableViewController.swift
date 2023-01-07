@@ -558,6 +558,10 @@ class DownloadsTableViewController: SileoViewController {
                 textColor = Dusk.debugColor
             }
             
+            if output.prefix(2) == "W:" || output.contains("dpkg: warning") {
+                textColor = Dusk.warningColor
+            }
+            
             let substring = NSMutableAttributedString(string: output, attributes: [NSAttributedString.Key.foregroundColor: textColor])
             DispatchQueue.main.async {
                 self.detailsAttributedString?.append(substring)
