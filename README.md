@@ -13,6 +13,13 @@ Our official Twitter is [@GetSileo](https://twitter.com/getsileo).
 
 For support, ask in the [Sileo Discord server](https://discord.com/invite/Udn4kQg) or contact [@SileoSupport on Twitter](https://twitter.com/sileosupport).
 
+# Support the project 
+
+If you would like to help support the development of Sileo, consider donating at the following links:
+
+* Amy (Sileo Developer): [Patreon](https://www.patreon.com/elihwyma), [Paypal](https://paypal.me/anamy1024)
+* Aarnav (Canister Developer/Maintainer): [Github Sponsors](https://github.com/sponsors/tale), [Patreon](https://www.patreon.com/aarnavtale), [Paypal](https://paypal.me/aatale)
+
 # Contribute
 
 For localization, [join our Crowdin project](https://crowdin.com/project/sileo) and submit your translations there.
