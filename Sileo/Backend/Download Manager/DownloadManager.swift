@@ -315,6 +315,7 @@ final class DownloadManager {
             if package.package.contains("/") {
                 moveFileAsRoot(from: URL(fileURLWithPath: package.package), to: URL(fileURLWithPath: destFileName))
                 DownloadManager.shared.cachedFiles.append(URL(fileURLWithPath: package.package))
+                package.debPath = destFileName
                 return FileManager.default.fileExists(atPath: destFileName)
             }
             return false

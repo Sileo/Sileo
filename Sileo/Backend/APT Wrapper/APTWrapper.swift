@@ -186,7 +186,7 @@ class APTWrapper {
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version
             if package.package.package.contains("/") {
-                packagesStr = package.package.package
+                packagesStr = package.package.debPath ?? package.package.package
             }
             arguments.append(packagesStr)
         }
@@ -279,7 +279,7 @@ class APTWrapper {
                 }
             }
 
-            let environment = ["SILEO=6 1", "CYDIA=6 1"]
+            let environment = ["SILEO=6 1", "CYDIA=6 1", "PATH=\(CommandPath.prefix)/usr/bin:\(CommandPath.prefix)/usr/local/bin:\(CommandPath.prefix)/bin:\(CommandPath.prefix)/usr/sbin"]
             let env: [UnsafeMutablePointer<CChar>?] = environment.map { $0.withCString(strdup) }
             defer {
                 for case let key? in env {

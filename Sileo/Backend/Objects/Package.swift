@@ -43,6 +43,7 @@ final class Package: Hashable, Equatable {
     public var eFlag: pkgeflag = .ok
     public var status: pkgstatus = .installed
     public var installDate: Date?
+    public var debPath: String?
     
     public var filename: String?
     public var size: String?

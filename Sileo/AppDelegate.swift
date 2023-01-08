@@ -221,7 +221,13 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                               let featuredView = featuredVc?.viewControllers[0] as? FeaturedViewController else {
                                   return
                               }
-                        featuredView.showPackage(PackageListManager.shared.package(url: url))
+                        guard let package = PackageListManager.shared.package(url: url) else {
+                            let alert = UIAlertController(title: "Bad Deb", message: "The provided deb file could not be read", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                            featuredView.present(alert, animated: true)
+                            return
+                        }
+                        featuredView.showPackage(package)
                         tabBarController.selectedIndex = 0
                     } else {
                         guard let tabBarController = self.window?.rootViewController as? UITabBarController,

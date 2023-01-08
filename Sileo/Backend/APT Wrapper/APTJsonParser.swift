@@ -156,7 +156,6 @@ extension APTWrapper {
     // APT syntax: a- = remove a; b = install b
     public class func operationList(installList: Set<DownloadPackage>, removeList: Set<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
-        NSLog("[Sileo] Asking for operation list")
         guard !(installList.isEmpty && removeList.isEmpty) else {
             // What the hell are you passing, requesting an operationList without any packages?
             throw APTParserErrors.blankRequest
@@ -188,7 +187,7 @@ extension APTWrapper {
             // if it has a / that means it's the path which is a local install
             if downloadPackage.package.package.contains("/") {
                 // APT will take the raw package path for install
-                packageOperations.append(downloadPackage.package.package)
+                packageOperations.append(downloadPackage.package.debPath ?? downloadPackage.package.package)
             } else {
                 // Force the exact version of the package we downloaded from the repository
                 packageOperations.append("\(downloadPackage.package.packageID)=\(downloadPackage.package.version)")
@@ -206,12 +205,6 @@ extension APTWrapper {
         var status = 0
 
         (status, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
-        NSLog("[Sileo] status = \(status) stdout=\(aptStdout) stderr=\(aptError)")
-        NSLog("[Sileo] Args = \(queryArguments) \(packageOperations)")
-        if status != 0 {
-            NSLog("[Sileo] I FUCKING HATE THIS JAILBREAK IT CAN GO SUCK A DEADMANS BALLS")
-            NSLog("[Sileo] Prefix = \(CommandPath.prefix) \(URL(fileURLWithPath: "/var/jb").dirExists) \(URL(fileURLWithPath: "/var/jb").exists)")
-        }
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
         
         return aptJsonOutput
