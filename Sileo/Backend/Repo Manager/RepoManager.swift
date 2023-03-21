@@ -338,7 +338,8 @@ final class RepoManager {
     }
 
     func cacheFile(named name: String, for repo: Repo) -> URL {
-        let arch = DpkgWrapper.getArchitectures.first ?? ""
+        let arch = DpkgWrapper.architecture?
+            .primary.rawValue ?? ""
         let prefix = cachePrefix(for: repo)
         if !repo.isFlat && name == "Packages" {
             return prefix
@@ -519,7 +520,31 @@ final class RepoManager {
             NotificationCenter.default.post(name: RepoManager.progressNotification, object: repo)
         }
     }
+    
+    enum LogType: CustomStringConvertible {
+        case error
+        case warning
 
+        var description: String {
+            switch self {
+            case .error:
+                return "Error"
+            case .warning:
+                return "Warning"
+            }
+        }
+
+        var color: UIColor {
+            switch self {
+            case .error:
+                return UIColor(red: 219/255, green: 44/255, blue: 56/255, alpha: 1)
+            case .warning:
+                return UIColor(red: 1, green: 231/255, blue: 146/255, alpha: 1)
+            }
+        }
+    }
+    
+  
     // swiftlint:disable function_body_length
     private func _update (
         force: Bool,
@@ -533,8 +558,21 @@ final class RepoManager {
         if !exists ||  !directory.boolValue {
             fixLists()
         }
+        
+        let errorOutput = NSMutableAttributedString()
+        func log(_ message: String, type: LogType) {
+            errorOutput.append(NSAttributedString(
+                string: "\(type): \(message)\n",
+                attributes: [.foregroundColor: type.color])
+            )
+        }
+
+        
         var reposUpdated = 0
-        let dpkgArchitectures = DpkgWrapper.getArchitectures
+        guard let dpkgArchitectures = DpkgWrapper.architecture else {
+            log("Failed to get DPKG Archiectures", type: .error)
+            return completion(true, errorOutput)
+        }
         let updateGroup = DispatchGroup()
 
         var backgroundIdentifier: UIBackgroundTaskIdentifier?
@@ -544,7 +582,6 @@ final class RepoManager {
         }
 
         var errorsFound = false
-        let errorOutput = NSMutableAttributedString()
         var repos = repos
         let lock = NSLock()
 
@@ -572,35 +609,6 @@ final class RepoManager {
                     }
 
                     let semaphore = DispatchSemaphore(value: 0)
-
-                    enum LogType: CustomStringConvertible {
-                        case error
-                        case warning
-
-                        var description: String {
-                            switch self {
-                            case .error:
-                                return "Error"
-                            case .warning:
-                                return "Warning"
-                            }
-                        }
-
-                        var color: UIColor {
-                            switch self {
-                            case .error:
-                                return UIColor(red: 219/255, green: 44/255, blue: 56/255, alpha: 1)
-                            case .warning:
-                                return UIColor(red: 1, green: 231/255, blue: 146/255, alpha: 1)
-                            }
-                        }
-                    }
-                    func log(_ message: String, type: LogType) {
-                        errorOutput.append(NSAttributedString(
-                            string: "\(type): \(message)\n",
-                            attributes: [.foregroundColor: type.color])
-                        )
-                    }
 
                     var preferredArch: String?
                     var optReleaseFile: (url: URL, dict: [String: String])?
@@ -634,9 +642,23 @@ final class RepoManager {
                                 return
                             }
 
-                            let repoArchs = releaseDict["architectures"]?.components(separatedBy: " ") ?? releaseDict["architecture"].map { [$0] }
-                            preferredArch = repoArchs.flatMap { dpkgArchitectures.first(where: $0.contains) }
-
+                            guard let repoArchs = (releaseDict["architectures"]?.components(separatedBy: " ") ?? releaseDict["architecture"].map { [$0] }) else {
+                                log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
+                                errorsFound = true
+                                return
+                            }
+                            var preferredArch: String?
+                            if repoArchs.contains(dpkgArchitectures.primary.rawValue) {
+                                preferredArch = dpkgArchitectures.primary.rawValue
+                            } else {
+                                for arch in repoArchs {
+                                    if dpkgArchitectures.foreign.contains(where: { $0.rawValue == arch } ) {
+                                        preferredArch = arch
+                                        break
+                                    }
+                                }
+                            }
+                            
                             guard preferredArch != nil else {
                                 log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
                                 errorsFound = true
@@ -685,19 +707,10 @@ final class RepoManager {
                     }
 
                     var succeededExtension = ""
-                    var extensions = ["bz2", "gz", ""]
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-                    if ZSTD.available {
-                        extensions.insert("zst", at: 0)
-                    }
-                    if XZ.available {
-                        var buffer = 0
-                        if extensions.count == 3 {
-                            buffer = 1
-                        }
-                        extensions.insert("xz", at: 1 - buffer)
-                        extensions.insert("lzma", at: 2 - buffer)
-                    }
+                    let extensions = ["zst", "xz", "lzma", "bz2", "gz", ""]
+                    #else
+                    let extensions = ["bz2", "gz", ""]
                     #endif
                     var breakOff = false
                     packages.map { url in self.fetch(

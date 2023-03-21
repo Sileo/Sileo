@@ -81,7 +81,7 @@ class DatabaseManager {
         
         try? database.transaction {
             for tmp in packages {
-                let stub = PackageStub(from: tmp)
+                var stub = PackageStub(from: tmp)
                 let count = try? database.scalar(table.filter(guid == stub.guid).count)
                 guard count ?? 0 == 0 else { continue }
                 _ = try? database.run(table.insert(
@@ -109,6 +109,7 @@ class DatabaseManager {
 
         try? database.transaction {
             for stub in stubs {
+                var stub = stub
                 let count = try? database.scalar(table.filter(guid == stub.guid).count)
                 guard count ?? 0 == 0 else { continue }
                 _ = try? database.run(table.insert(
@@ -144,7 +145,7 @@ class DatabaseManager {
                                         repoURL)
                 .filter(firstSeen == timestamp)
             for stub in try database.prepare(query) {
-                let stubObj = PackageStub(packageName: stub[package], version: stub[version], source: stub[repoURL])
+                var stubObj = PackageStub(packageName: stub[package], version: stub[version], source: stub[repoURL])
                 stubObj.firstSeenDate = Date(timeIntervalSince1970: TimeInterval(stub[firstSeen]))
                 stubObj.firstSeen = stub[firstSeen]
                 stubObj.repoURL = stub[repoURL]

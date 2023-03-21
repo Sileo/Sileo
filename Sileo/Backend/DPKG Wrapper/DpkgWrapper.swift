@@ -59,38 +59,44 @@ class DpkgWrapper {
         }
         return interrupted
     }
-    
-    public static var getArchitectures: Set<String> = {
+ 
+    public static var architecture: DPKGArchitecture? = {
         #if arch(x86_64) && !targetEnvironment(simulator)
-        let defaultArchitectures: Set<String> = ["darwin-amd64"]
+        let defaultArchitectures: DPKGArchitecture = DPKGArchitecture(primary: .intel, foreign: [])
         #elseif arch(arm64) && os(macOS)
-        let defaultArchitectures: Set<String> = ["darwin-arm64"]
+        let defaultArchitectures: DPKGArchitecture = DPKGArchitecture(primary: .applesilicon, foreign: [])
         #else
-        let defaultArchitectures: Set<String>
+        let defaultArchitectures: DPKGArchitecture
         let prefix = CommandPath.prefix
         switch prefix {
-        case "/var/jb": defaultArchitectures = ["iphoneos-arm64"]
-        default: defaultArchitectures = ["iphoneos-arm"]
+        case "/var/jb": defaultArchitectures = DPKGArchitecture(primary: .rootless, foreign: [])
+        default: defaultArchitectures = DPKGArchitecture(primary: .rootful, foreign: [])
         }
         #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         return defaultArchitectures
         #else
+        
         let (localStatus, localArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
         guard localStatus == 0 else {
-            return defaultArchitectures
+            return nil
         }
-        let localSet = Set(localArchs.components(separatedBy: CharacterSet(charactersIn: "\n")))
+        let primary = localArchs.replacingOccurrences(of: "\n", with: "")
+        guard let arch = DPKGArchitecture.Architecture(rawValue: primary) else {
+            return nil
+        }
         let (foreignStatus, foreignArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-foreign-architectures"])
         guard foreignStatus == 0 else {
-            return localSet
+            return nil
         }
-        let foreignSet = Set(foreignArchs.components(separatedBy: CharacterSet(charactersIn: "\n")))
-        let archs = localSet.union(foreignSet).filter { $0 != "" }
-        if archs.isEmpty {
-            return defaultArchitectures
+        let foreignSet = foreignArchs.components(separatedBy: "\n")
+        var _foreign = Set<DPKGArchitecture.Architecture>()
+        for component in foreignSet {
+            if let arch = DPKGArchitecture.Architecture(rawValue: component) {
+                _foreign.insert(arch)
+            }
         }
-        return archs
+        return DPKGArchitecture(primary: arch, foreign: _foreign)
         #endif
     }()
     

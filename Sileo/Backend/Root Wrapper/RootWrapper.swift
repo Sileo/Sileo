@@ -437,6 +437,10 @@ public class CommandPath {
         return "\(prefix)/usr/bin/apt-key"
         #endif
     }()
+    
+    static var gpg: String = {
+        "\(prefix)/etc/apt/trusted.gpg.d/"
+    }()
 
     // swiftlint:disable identifier_name
     static var sh: String = {
@@ -495,8 +499,8 @@ public class CommandPath {
         return false
         #else
         if #available(iOS 15.0, *) {
-            let archs = DpkgWrapper.getArchitectures
-            if !archs.contains("iphoneos-arm64") && URL(fileURLWithPath: "/var/Liy").dirExists {
+            let archs = DpkgWrapper.architecture
+            if archs?.primary == .rootful && URL(fileURLWithPath: "/var/Liy").dirExists {
                 return true
             }
         }

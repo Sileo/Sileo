@@ -564,6 +564,9 @@
 		E1C960AA269E1F5400F4BF34 /* APTPipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C960A6269E0D1F00F4BF34 /* APTPipe.swift */; };
 		E1CDA8C526BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
 		E1CDA8C626BB508A001813BD /* FolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CDA8C426BB508A001813BD /* FolderFinder.swift */; };
+		E1D2C8B829C8E899004641E5 /* DPKGArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D2C8B729C8E899004641E5 /* DPKGArchitecture.swift */; };
+		E1D2C8B929C8E899004641E5 /* DPKGArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D2C8B729C8E899004641E5 /* DPKGArchitecture.swift */; };
+		E1D2C8BA29C8E899004641E5 /* DPKGArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D2C8B729C8E899004641E5 /* DPKGArchitecture.swift */; };
 		E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; platformFilter = ios; };
 		E1D2E2CE26C3383D00444437 /* Midnight~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */; };
 		E1D2E2CF26C3383D00444437 /* Midnight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2E2C526C3383D00444437 /* Midnight@2x.png */; platformFilter = ios; };
@@ -1327,6 +1330,7 @@
 		E1CB21F827236B7D00B3141C /* DepictionKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DepictionKit; path = Deps/DepictionKit; sourceTree = "<group>"; };
 		E1CDA8C426BB508A001813BD /* FolderFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFinder.swift; sourceTree = "<group>"; };
 		E1D28C762660018100DACF31 /* Sileo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sileo.entitlements; sourceTree = "<group>"; };
+		E1D2C8B729C8E899004641E5 /* DPKGArchitecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPKGArchitecture.swift; sourceTree = "<group>"; };
 		E1D2E2C426C3383C00444437 /* Midnight~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Midnight~ipad@2x.png"; sourceTree = "<group>"; };
 		E1D2E2C526C3383D00444437 /* Midnight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Midnight@2x.png"; sourceTree = "<group>"; };
 		E1D2E2C626C3383D00444437 /* Midnight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Midnight@3x.png"; sourceTree = "<group>"; };
@@ -2849,6 +2853,7 @@
 			isa = PBXGroup;
 			children = (
 				F1A7051222D0359900F602DA /* DpkgWrapper.swift */,
+				E1D2C8B729C8E899004641E5 /* DPKGArchitecture.swift */,
 			);
 			path = "DPKG Wrapper";
 			sourceTree = "<group>";
@@ -3893,6 +3898,7 @@
 				E128189B26BBFAA500D2553B /* LicensesTableViewController.swift in Sources */,
 				E128189D26BBFAA500D2553B /* TabBarController.swift in Sources */,
 				E128189E26BBFAA500D2553B /* SettingsNavigationController.swift in Sources */,
+				E1D2C8BA29C8E899004641E5 /* DPKGArchitecture.swift in Sources */,
 				E128189F26BBFAA500D2553B /* Package.swift in Sources */,
 				E12818A026BBFAA500D2553B /* DepictionFormViewController.swift in Sources */,
 				E12818A126BBFAA500D2553B /* PackageCollectionViewCell.swift in Sources */,
@@ -4099,6 +4105,7 @@
 				F139D0EF22EA9209007F5C0D /* Package.swift in Sources */,
 				F147E67A22F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				FB6F3D3224AA635F00E941F8 /* PaymentError.swift in Sources */,
+				E1D2C8B929C8E899004641E5 /* DPKGArchitecture.swift in Sources */,
 				F1AB912822ED081E0054341B /* PackageIconView.swift in Sources */,
 				F139D0DD22EA9209007F5C0D /* PackageListHeader.swift in Sources */,
 				E1D6DFB8268BA730005BF9EA /* APTJsonParser.swift in Sources */,
@@ -4267,6 +4274,7 @@
 				F1705FEB24CA1465001596A0 /* TabBarController.swift in Sources */,
 				FB40262023DE2B9C002D97FE /* SettingsNavigationController.swift in Sources */,
 				F102D1E522CD7DE300A4C9BA /* Package.swift in Sources */,
+				E1D2C8B829C8E899004641E5 /* DPKGArchitecture.swift in Sources */,
 				E1C90257263C75B100569D1E /* DepictionFormViewController.swift in Sources */,
 				F147E67922F0253A0048F868 /* PackageCollectionViewCell.swift in Sources */,
 				E1C4993926CFED0A0093E290 /* DatabaseManager.swift in Sources */,
@@ -4918,7 +4926,8 @@
 				MARKETING_VERSION = 2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = sileo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -4972,7 +4981,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "-flto";
-				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -5134,7 +5143,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "-flto";
-				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -5183,7 +5192,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "-flto";
-				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -5356,7 +5365,8 @@
 				MARKETING_VERSION = 2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = sileo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				SDKROOT = iphoneos;
@@ -5413,7 +5423,8 @@
 				MARKETING_VERSION = 2.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = sileo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = Sileo;
 				RUN_CLANG_STATIC_ANALYZER = YES;
