@@ -33,7 +33,7 @@ int verrevcmp(const char *val, const char *ref) {
     int firstDiff = 0;
     if (!val)
         val = "";
-    if (!ref)
+    if (!ref || !(*ref))
         ref = "";
     while (*val || *ref) {
         // If not a digit, assume parenthesis
@@ -144,20 +144,27 @@ void parseVersion(char *version, int *length, char **error, struct DpkgVersion *
         revisionStrCount = *length - (searchIdx + 1);
         revisionStr = malloc(revisionStrCount);
         memcpy(revisionStr, version + searchIdx + 1, revisionStrCount);
-        
-        dpkgVersion->requiresFree = 1;
     }
 
     if (validate(versionStr, &versionStrCount) || validate(revisionStr, &revisionStrCount)) {
         *error = "invalid character in version number";
+        if (found) {
+            free(versionStr);
+            free(revisionStr);
+        }
         return;
     }
     
     if ((versionStrCount && versionStr[versionStrCount - 1]) || (revisionStrCount && revisionStr[revisionStrCount - 1])) {
         *error = "needs null termination";
+        if (found) {
+            free(versionStr);
+            free(revisionStr);
+        }
         return;
     }
-    
+
+    dpkgVersion->requiresFree = found;
     dpkgVersion->epoch = (unsigned int)epochNum;
     dpkgVersion->version = versionStr;
     dpkgVersion->revision = revisionStr;
