@@ -9,9 +9,9 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
+"About" = "Sobre";
+"Close" = "Tancar";
+"Double tap to open." = "Toqueu dues vegades per obrir.";
 "Untitled_Repo" = "Untitled Repo";
 "OK" = "D'acord";
 "Done" = "Fet";
