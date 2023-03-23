@@ -17,6 +17,12 @@
 		172B2EDA22F0A356000155B9 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED222F08D31000155B9 /* LicenseViewController.swift */; };
 		172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED622F09E8F000155B9 /* FlaggedSourceWarningViewController.swift */; };
 		1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1761F826227B5ADD00E03DC3 /* Licenses.plist */; };
+		370531DD2820599600B67743 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		370531DE2820599800B67743 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370531DF282059BB00B67743 /* ThemesSectionViewController.swift */; };
+		370531E128207C8D00B67743 /* ThemesSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370531DF282059BB00B67743 /* ThemesSectionViewController.swift */; };
+		37F307DC281F6B9300A361A3 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
+		37F307DD281F6CF700A361A3 /* ThemeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */; };
 		461FC22820ED7A48001EA199 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461FC22720ED7A48001EA199 /* Security.framework */; };
 		493B23D226098104007D605F /* Chimera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CE26098104007D605F /* Chimera@2x.png */; platformFilter = ios; };
 		493B23D326098104007D605F /* Chimera~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B23CF26098104007D605F /* Chimera~ipad@2x.png */; platformFilter = ios; };
@@ -1151,6 +1157,8 @@
 		36A4572024CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		36A4572124CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Categories.strings"; sourceTree = "<group>"; };
 		36A4572224CAA74600390334 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
+		370531DF282059BB00B67743 /* ThemesSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesSectionViewController.swift; sourceTree = "<group>"; };
+		37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCreatorViewController.swift; sourceTree = "<group>"; };
 		461FC22720ED7A48001EA199 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4929237E2663376600B5B37A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		493B23BF260979DD007D605F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1660,6 +1668,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		370531DC2820597F00B67743 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				E13F31C62677E71D00AB8932 /* ThemePickerView.swift */,
+				37F307DB281F6B9300A361A3 /* ThemeCreatorViewController.swift */,
+				370531DF282059BB00B67743 /* ThemesSectionViewController.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		4929234E2663353700B5B37A /* Deps */ = {
 			isa = PBXGroup;
 			children = (
@@ -1950,7 +1968,6 @@
 				FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */,
 				FB40262823DE87F8002D97FE /* SettingsIconHeaderView.swift */,
 				E1B3FBCD2601467500F2E07F /* SettingsSwitchTableViewCell.swift */,
-				E13F31C62677E71D00AB8932 /* ThemePickerView.swift */,
 				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
 			);
 			path = Root;
@@ -2618,6 +2635,7 @@
 		F17772DE20EC5221004C3CA5 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				370531DC2820597F00B67743 /* Themes */,
 				E15A954426B990B1000DB10E /* Language */,
 				E13BD7872646C692006A5EF2 /* Sileo Team */,
 				49CE7CAD2607F97C00A20711 /* Alt Icons */,
@@ -3792,6 +3810,7 @@
 				E128182A26BBFAA500D2553B /* SileoLabelView.swift in Sources */,
 				E128182B26BBFAA500D2553B /* DepictionLayerView.swift in Sources */,
 				E128182C26BBFAA500D2553B /* SileoRootView.swift in Sources */,
+				370531DD2820599600B67743 /* ThemeCreatorViewController.swift in Sources */,
 				E128182D26BBFAA500D2553B /* ControlFileParser.swift in Sources */,
 				E128182E26BBFAA500D2553B /* BaseSettingsViewController.swift in Sources */,
 				E128182F26BBFAA500D2553B /* ZSTD.swift in Sources */,
@@ -3957,6 +3976,186 @@
 			buildActionMask = 2147483647;
 			files = (
 				E128199726BBFBA300D2553B /* SileoBackendTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E14E4C1D26DAD572002AE3B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14E4C1F26DAD572002AE3B4 /* APTWrapper.swift in Sources */,
+				E14E4C2026DAD572002AE3B4 /* AppDelegate.swift in Sources */,
+				E14E4C2126DAD572002AE3B4 /* SileoSeparatorView.swift in Sources */,
+				E14E4C2226DAD572002AE3B4 /* DepictionButton.swift in Sources */,
+				E14E4C2326DAD572002AE3B4 /* LanguageSelectionCell.swift in Sources */,
+				E14E4C2426DAD572002AE3B4 /* BaseSubtitleTableViewCell.swift in Sources */,
+				E14E4C2526DAD572002AE3B4 /* PaymentProfileHeaderView.swift in Sources */,
+				E14E4C2626DAD572002AE3B4 /* SileoTableView.swift in Sources */,
+				E14E4C2726DAD572002AE3B4 /* PaymentError.swift in Sources */,
+				E14E4C2826DAD572002AE3B4 /* CSGradientView.swift in Sources */,
+				E14E4C2926DAD572002AE3B4 /* NewsResolver.swift in Sources */,
+				E14E4C2A26DAD572002AE3B4 /* CategoryViewController.swift in Sources */,
+				E14E4C2B26DAD572002AE3B4 /* SileoLabelView.swift in Sources */,
+				E14E4C2C26DAD572002AE3B4 /* DepictionLayerView.swift in Sources */,
+				E14E4C2D26DAD572002AE3B4 /* SileoRootView.swift in Sources */,
+				370531DE2820599800B67743 /* ThemeCreatorViewController.swift in Sources */,
+				E14E4C2E26DAD572002AE3B4 /* ControlFileParser.swift in Sources */,
+				E14E4C2F26DAD572002AE3B4 /* BaseSettingsViewController.swift in Sources */,
+				E14E4C3026DAD572002AE3B4 /* ZSTD.swift in Sources */,
+				E14E4C3226DAD572002AE3B4 /* PackageButton.swift in Sources */,
+				E14E4C3326DAD572002AE3B4 /* ControlFileParserFast.c in Sources */,
+				E14E4C3526DAD572002AE3B4 /* SourcesViewController.swift in Sources */,
+				E14E4C3626DAD572002AE3B4 /* DepictionAutoStackView.swift in Sources */,
+				E14E4C3726DAD572002AE3B4 /* DepictionBaseView.swift in Sources */,
+				E14E4C3926DAD572002AE3B4 /* DepictionButtonView.swift in Sources */,
+				E14E4C3A26DAD572002AE3B4 /* SettingsHeaderContainerView.swift in Sources */,
+				E14E4C3B26DAD572002AE3B4 /* URLManager.swift in Sources */,
+				E14E4C3C26DAD572002AE3B4 /* BZIP.swift in Sources */,
+				E14E4C3D26DAD572002AE3B4 /* DepictionHeaderView.swift in Sources */,
+				E14E4C3E26DAD572002AE3B4 /* SileoThemeManager.swift in Sources */,
+				E14E4C3F26DAD572002AE3B4 /* UIDevice+Private.swift in Sources */,
+				E14E4C4026DAD572002AE3B4 /* SettingsColorTableViewCell.swift in Sources */,
+				E14E4C4126DAD572002AE3B4 /* DepictionImageView.swift in Sources */,
+				E14E4C4226DAD572002AE3B4 /* DepictionLabelView.swift in Sources */,
+				E14E4C4326DAD572002AE3B4 /* DepictionMarkdownViewSlow.swift in Sources */,
+				E14E4C4426DAD572002AE3B4 /* SileoTeamViewController.swift in Sources */,
+				E14E4C4526DAD572002AE3B4 /* FolderFinder.swift in Sources */,
+				E14E4C4626DAD572002AE3B4 /* SettingsLoadingTableViewCell.swift in Sources */,
+				E14E4C4726DAD572002AE3B4 /* DepictionMinVersionForceView.swift in Sources */,
+				E14E4C4826DAD572002AE3B4 /* SettingsHeaderViewDisplayable.swift in Sources */,
+				E14E4C4926DAD572002AE3B4 /* DepictionRatingView.swift in Sources */,
+				E14E4C4A26DAD572002AE3B4 /* PaymentProviderTableViewCell.swift in Sources */,
+				E14E4C4B26DAD572002AE3B4 /* DepictionReviewView.swift in Sources */,
+				E14E4C4C26DAD572002AE3B4 /* DepictionScreenshotsView.swift in Sources */,
+				E14E4C4D26DAD572002AE3B4 /* DepictionScreenshotsViewController.swift in Sources */,
+				E14E4C4E26DAD572002AE3B4 /* NewsGradientBackgroundView.swift in Sources */,
+				E14E4C4F26DAD572002AE3B4 /* SettingsViewController.swift in Sources */,
+				E14E4C5026DAD572002AE3B4 /* DepictionSeparatorView.swift in Sources */,
+				E14E4C5126DAD572002AE3B4 /* SileoSelectionView.swift in Sources */,
+				E14E4C5226DAD572002AE3B4 /* SileoTableViewController.swift in Sources */,
+				E14E4C5326DAD572002AE3B4 /* SileoTableViewCell.swift in Sources */,
+				E14E4C5426DAD572002AE3B4 /* DependencyResolverAccelerator.swift in Sources */,
+				E14E4C5526DAD572002AE3B4 /* DepictionSpacerView.swift in Sources */,
+				E14E4C5626DAD572002AE3B4 /* DepictionStackView.swift in Sources */,
+				E14E4C5726DAD572002AE3B4 /* DepictionSubheaderView.swift in Sources */,
+				E14E4C5826DAD572002AE3B4 /* DepictionSubpageViewController.swift in Sources */,
+				E14E4C5926DAD572002AE3B4 /* SettingsSwitchTableViewCell.swift in Sources */,
+				E14E4C5A26DAD572002AE3B4 /* DepictionTabControl.swift in Sources */,
+				E14E4C5B26DAD572002AE3B4 /* DepictionTabView.swift in Sources */,
+				E14E4C5C26DAD572002AE3B4 /* DepictionTableButtonView.swift in Sources */,
+				E14E4C5D26DAD572002AE3B4 /* ThemePickerView.swift in Sources */,
+				E14E4C5E26DAD572002AE3B4 /* DepictionTableTextView.swift in Sources */,
+				E14E4C6026DAD572002AE3B4 /* PaymentProvider.swift in Sources */,
+				E14E4C6126DAD572002AE3B4 /* PackageQueueButton.swift in Sources */,
+				E14E4C6226DAD572002AE3B4 /* DepictionVideoView.swift in Sources */,
+				E14E4C6326DAD572002AE3B4 /* DepictionWebView.swift in Sources */,
+				E14E4C6426DAD572002AE3B4 /* DownloadManager.swift in Sources */,
+				E14E4C6526DAD572002AE3B4 /* Download.swift in Sources */,
+				E14E4C6626DAD572002AE3B4 /* PaymentPackageInfo.swift in Sources */,
+				E14E4C6726DAD572002AE3B4 /* CSTextView.swift in Sources */,
+				E14E4C6826DAD572002AE3B4 /* DownloadConfirmButton.swift in Sources */,
+				E14E4C6926DAD572002AE3B4 /* SileoContentView.swift in Sources */,
+				E14E4C6A26DAD572002AE3B4 /* DownloadPackage.swift in Sources */,
+				E14E4C6B26DAD572002AE3B4 /* FeaturedButton.swift in Sources */,
+				E14E4C6D26DAD572002AE3B4 /* DpkgWrapper.swift in Sources */,
+				E14E4C6E26DAD572002AE3B4 /* Dusk.swift in Sources */,
+				E14E4C6F26DAD572002AE3B4 /* KeychainManager.swift in Sources */,
+				E14E4C7026DAD572002AE3B4 /* EditableTableView.swift in Sources */,
+				E14E4C7126DAD572002AE3B4 /* PaymentProfileViewController.swift in Sources */,
+				E14E4C7226DAD572002AE3B4 /* PaymentManager.swift in Sources */,
+				E14E4C7326DAD572002AE3B4 /* NewsArticlesHeader.swift in Sources */,
+				E14E4C7426DAD572002AE3B4 /* FeaturedAutoStackView.swift in Sources */,
+				E14E4C7526DAD572002AE3B4 /* FeaturedBannerView.swift in Sources */,
+				E14E4C7626DAD572002AE3B4 /* PackageStub.swift in Sources */,
+				E14E4C7726DAD572002AE3B4 /* NewsArticlesViewController.swift in Sources */,
+				E14E4C7826DAD572002AE3B4 /* SileoNavigationController.swift in Sources */,
+				E14E4C7926DAD572002AE3B4 /* DepictionFontCollection.swift in Sources */,
+				E14E4C7A26DAD572002AE3B4 /* FeaturedBannersView.swift in Sources */,
+				E14E4C7B26DAD572002AE3B4 /* FeaturedBaseView.swift in Sources */,
+				E14E4C7C26DAD572002AE3B4 /* RootDaemonProtocol.swift in Sources */,
+				E14E4C7D26DAD572002AE3B4 /* DownloadsTableViewController.swift in Sources */,
+				E14E4C7E26DAD572002AE3B4 /* FeaturedButtonView.swift in Sources */,
+				E14E4C7F26DAD572002AE3B4 /* FeaturedHeaderView.swift in Sources */,
+				E14E4C8026DAD572002AE3B4 /* FeaturedInfoFooterView.swift in Sources */,
+				E14E4C8126DAD572002AE3B4 /* dpkgversion.swift in Sources */,
+				E14E4C8226DAD572002AE3B4 /* FeaturedPackageView.swift in Sources */,
+				E14E4C8326DAD572002AE3B4 /* FeaturedSeparatorView.swift in Sources */,
+				E14E4C8426DAD572002AE3B4 /* FeaturedSpacerView.swift in Sources */,
+				E14E4C8526DAD572002AE3B4 /* FeaturedStackView.swift in Sources */,
+				E14E4C8626DAD572002AE3B4 /* FeaturedViewController.swift in Sources */,
+				E14E4C8826DAD572002AE3B4 /* DepictionFormTextView.swift in Sources */,
+				E14E4C8926DAD572002AE3B4 /* FileNode.swift in Sources */,
+				E14E4C8A26DAD572002AE3B4 /* SileoViewController.swift in Sources */,
+				E14E4C8B26DAD572002AE3B4 /* LanguageHelper.swift in Sources */,
+				E1428E662778E17E005B0885 /* Thread+Extensions.swift in Sources */,
+				E14E4C8C26DAD572002AE3B4 /* FlaggedSourceWarningViewController.swift in Sources */,
+				E14E4C8D26DAD572002AE3B4 /* LanguageSelectionViewController.swift in Sources */,
+				E14E4C8E26DAD572002AE3B4 /* Hash.swift in Sources */,
+				E14E4C8F26DAD572002AE3B4 /* NewsViewController.swift in Sources */,
+				E14E4C9026DAD572002AE3B4 /* DepictionMarkdownViewFast.swift in Sources */,
+				E14E4C9126DAD572002AE3B4 /* SourcesTableViewFooter.swift in Sources */,
+				E14E4C9226DAD572002AE3B4 /* CanisterResolver.swift in Sources */,
+				E14E4C9326DAD572002AE3B4 /* InstalledContentsTableViewCell.swift in Sources */,
+				E14E4C9426DAD572002AE3B4 /* InstalledContentsViewController.swift in Sources */,
+				E14E4C9526DAD572002AE3B4 /* DownloadOverrideProviding.swift in Sources */,
+				E14E4C9626DAD572002AE3B4 /* LicenseViewController.swift in Sources */,
+				E14E4C9726DAD572002AE3B4 /* GithubSocialCell.swift in Sources */,
+				E14E4C9826DAD572002AE3B4 /* LicensesTableViewController.swift in Sources */,
+				E14E4C9A26DAD572002AE3B4 /* TabBarController.swift in Sources */,
+				E14E4C9B26DAD572002AE3B4 /* SettingsNavigationController.swift in Sources */,
+				E14E4C9C26DAD572002AE3B4 /* Package.swift in Sources */,
+				E14E4C9D26DAD572002AE3B4 /* DepictionFormViewController.swift in Sources */,
+				E14E4C9E26DAD572002AE3B4 /* PackageCollectionViewCell.swift in Sources */,
+				E14E4C9F26DAD572002AE3B4 /* DatabaseManager.swift in Sources */,
+				E14E4CA026DAD572002AE3B4 /* GZIP.swift in Sources */,
+				E14E4CA126DAD572002AE3B4 /* PackageIconView.swift in Sources */,
+				E14E4CA326DAD572002AE3B4 /* BackendWrapper.swift in Sources */,
+				E14E4CA426DAD572002AE3B4 /* PackageListHeader.swift in Sources */,
+				E14E4CA526DAD572002AE3B4 /* PackageListManager.swift in Sources */,
+				E14E4CA626DAD572002AE3B4 /* PackageListViewController.swift in Sources */,
+				E14E4CA726DAD572002AE3B4 /* CSTextRenderView.swift in Sources */,
+				E14E4CA826DAD572002AE3B4 /* DepictionColorCollection.swift in Sources */,
+				E14E4CAA26DAD572002AE3B4 /* NewsArticle.swift in Sources */,
+				E14E4CAB26DAD572002AE3B4 /* AltIconTableViewCell.swift in Sources */,
+				E14E4CAC26DAD572002AE3B4 /* APTJsonParser.swift in Sources */,
+				E14E4CAD26DAD572002AE3B4 /* PackageStateBadgeView.swift in Sources */,
+				E14E4CAE26DAD572002AE3B4 /* SettingsIconHeaderView.swift in Sources */,
+				E14E4CAF26DAD572002AE3B4 /* DownloadsTableViewCell.swift in Sources */,
+				E14E4CB026DAD572002AE3B4 /* PackageViewController.swift in Sources */,
+				E14E4CB126DAD572002AE3B4 /* PaymentAuthenticationBannerView.swift in Sources */,
+				E14E4CB226DAD572002AE3B4 /* UIColor-ThemeColors.swift in Sources */,
+				E14E4CB326DAD572002AE3B4 /* CollectionViewTableViewCell.swift in Sources */,
+				E14E4CB426DAD572002AE3B4 /* Store.swift in Sources */,
+				E14E4CB526DAD572002AE3B4 /* SileoTheme.swift in Sources */,
+				E14E4CB626DAD572002AE3B4 /* AltIconTableViewController.swift in Sources */,
+				E14E4CB726DAD572002AE3B4 /* verrevcmp.swift in Sources */,
+				E14E4CB826DAD572002AE3B4 /* NewsPlaceholderCollectionViewCell.swift in Sources */,
+				E14E4CB926DAD572002AE3B4 /* URL+Secure.swift in Sources */,
+				E14E4CBA26DAD572002AE3B4 /* Repo.swift in Sources */,
+				E14E4CBB26DAD572002AE3B4 /* FeaturedLayerView.swift in Sources */,
+				E14E4CBC26DAD572002AE3B4 /* UITextView+Extensions.swift in Sources */,
+				E14E4CBD26DAD572002AE3B4 /* RepoManager.swift in Sources */,
+				E14E4CBE26DAD572002AE3B4 /* SourceErrorsViewController.swift in Sources */,
+				E14E4CBF26DAD572002AE3B4 /* SourceLicense.swift in Sources */,
+				E14E4D6626DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
+				E14E4CC026DAD572002AE3B4 /* SourceProgressIndicatorView.swift in Sources */,
+				E14E4CC126DAD572002AE3B4 /* SourcesTableViewCell.swift in Sources */,
+				E14E4CC226DAD572002AE3B4 /* SourcesSplitViewController.swift in Sources */,
+				E1A2352E277F888C004563C9 /* LogStreamViewController.swift in Sources */,
+				E14E4CC326DAD572002AE3B4 /* CSActionItem.swift in Sources */,
+				E14E4CC426DAD572002AE3B4 /* APTPipe.swift in Sources */,
+				E14E4CC526DAD572002AE3B4 /* String+Utilities.swift in Sources */,
+				E14E4CC626DAD572002AE3B4 /* TabBar.swift in Sources */,
+				E14E4CC726DAD572002AE3B4 /* UIColor+HTMLColors.m in Sources */,
+				E14E4CC826DAD572002AE3B4 /* UIPasteboard+Sources.swift in Sources */,
+				E14E4CC926DAD572002AE3B4 /* WhiteBlur.m in Sources */,
+				E14E4CCA26DAD572002AE3B4 /* WishListManager.swift in Sources */,
+				E14E4CCB26DAD572002AE3B4 /* ZKSwizzle.m in Sources */,
+				E14E4CCC26DAD572002AE3B4 /* XZ.swift in Sources */,
+				E14E4CCD26DAD572002AE3B4 /* NewsArticleCollectionViewCell.swift in Sources */,
+				E14E4CCE26DAD572002AE3B4 /* main.swift in Sources */,
+				E14E4CCF26DAD572002AE3B4 /* PaymentAuthenticator.swift in Sources */,
+				E14E4CD026DAD572002AE3B4 /* RootWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4137,10 +4336,12 @@
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
 				E1A2352C277F888C004563C9 /* LogStreamViewController.swift in Sources */,
+				370531E128207C8D00B67743 /* ThemesSectionViewController.swift in Sources */,
 				F13AEE6D22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
 				F139D0E222EA9209007F5C0D /* WhiteBlur.m in Sources */,
 				F139D0FF22EA9209007F5C0D /* WishListManager.swift in Sources */,
 				E14C5EBE266687C80080BFCE /* XZ.swift in Sources */,
+				37F307DD281F6CF700A361A3 /* ThemeCreatorViewController.swift in Sources */,
 				F139D0DC22EA9209007F5C0D /* ZKSwizzle.m in Sources */,
 				FBBD003B240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				F183CFB42318EA6800D3AF3B /* main.swift in Sources */,
@@ -4168,6 +4369,7 @@
 				F1330EB42325673100971073 /* SileoLabelView.swift in Sources */,
 				F1FF7A6324FAEE5E0088F88B /* DepictionLayerView.swift in Sources */,
 				F1330EAE23250CC200971073 /* SileoRootView.swift in Sources */,
+				37F307DC281F6B9300A361A3 /* ThemeCreatorViewController.swift in Sources */,
 				F19FB39D22BF50D3008E986B /* ControlFileParser.swift in Sources */,
 				FB40263923DF40CB002D97FE /* BaseSettingsViewController.swift in Sources */,
 				E14C5E65266547D10080BFCE /* ZSTD.swift in Sources */,
@@ -4322,6 +4524,7 @@
 				56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */,
 				E14C5EBD266687C80080BFCE /* XZ.swift in Sources */,
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
+				370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */,
 				F183CFB32318EA6800D3AF3B /* main.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
 				F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */,
