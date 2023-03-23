@@ -93,10 +93,12 @@
 "Sources_Page" = "소스";
 "Packages_Page" = "패키지";
 "Search_Page" = "검색";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "소스 새로고침 중";
 "Package_Installed_Files_Page" = "파일 설치됨";
 "Refresh" = "새로고침";
-"Remove" = "Remove";
+"Remove" = "삭제";
 
 "All_Packages.Title" = "모든 패키지";
 "All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
@@ -150,6 +152,7 @@
 "Tint_Color" = "배경색상";
 "Reset_Tint_Color" = "배경색상 초기화";
 "Auto_Complete_Queue" = "대기열 자동완성";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "모든 바로가기 업데이트 자동확인";
 "Swipe_Actions" = "스와이프 동작";
 "Show_Provisional" = "Canister에서 패키지를 확인하기";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "실리오 어댑티브";
 "System" = "시스템";
 "Theme_Settings" = "테마 설정";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Cydia Store에 로그인";
 "Payment_Provider_Signed_In" = "로그인 됨";
