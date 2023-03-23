@@ -9,6 +9,18 @@
 import Foundation
 import Evander
 import os
+import SwipeCellKit
+
+
+fileprivate var searchHistory: [String] {
+    get {
+        return UserDefaults.standard.stringArray(forKey: "UserSearchHistory") ?? []
+    }
+    
+    set {
+        UserDefaults.standard.set(Array(Set(newValue)), forKey: "UserSearchHistory")
+    }
+}
 
 class PackageListViewController: SileoViewController, UIGestureRecognizerDelegate {
     @IBOutlet final var collectionView: UICollectionView?
@@ -43,6 +55,14 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     private var canisterHeartbeat: Timer?
     
     @IBInspectable var localizableTitle: String = ""
+    
+    var showSearchHistory: Bool {
+        // make sure we're on the search page
+        guard let title = navigationItem.title, title == String(localizationKey: "Search_Page") else {
+            return false
+        }
+        return !searchHistory.isEmpty && (searchController?.searchBar.text?.isEmpty ?? false)
+    }
     
     var searchController: UISearchController?
     
@@ -187,7 +207,8 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             collectionView.register(UINib(nibName: "PackageListHeaderBlank", bundle: nil),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                     withReuseIdentifier: "PackageListHeaderBlank")
-        
+            collectionView.register(HistoryViewCell.self, forCellWithReuseIdentifier: "HistoryViewCellIdentifier")
+            
             self.registerForPreviewing(with: self, sourceView: collectionView)
         }
         DispatchQueue.global(qos: .userInteractive).async {
@@ -240,6 +261,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         case .ignoredUpdates: return controller(package: ignoredUpdates[indexPath.row])
         case .packages, .reallyBoringList: return controller(package: packages[indexPath.row])
         case .updates: return controller(package: availableUpdates[indexPath.row])
+        case .searchHistoryList:
+            searchController?.searchBar.text = searchHistory[safe: indexPath.row]
+            return nil
         }
     }
 
@@ -423,10 +447,19 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @objc
+    func clearHistory() {
+        searchHistory.removeAll()
+        collectionView?.performBatchUpdates({
+            collectionView?.deleteSections(.init(integer: 0))
+        }, completion: nil)
+    }
 }
 
 extension PackageListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if showSearchHistory { return 1 }
         var count = 0
         if !packages.isEmpty { count += 1 }
         if showUpdates {
@@ -440,6 +473,10 @@ extension PackageListViewController: UICollectionViewDataSource {
     }
     
     private func findWhatFuckingSectionThisIs(_ section: Int) -> PackageListSection {
+        if showSearchHistory {
+            return .searchHistoryList
+        }
+        
         if showUpdates {
             if !availableUpdates.isEmpty && section == 0 {
                 return .updates
@@ -469,6 +506,7 @@ extension PackageListViewController: UICollectionViewDataSource {
         case .ignoredUpdates: return ignoredUpdates.count
         case .packages, .reallyBoringList: return packages.count
         case .updates: return availableUpdates.count
+        case .searchHistoryList: return searchHistory.count
         }
     }
     
@@ -482,6 +520,11 @@ extension PackageListViewController: UICollectionViewDataSource {
         case .ignoredUpdates: cell.targetPackage = ignoredUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
         case .packages, .reallyBoringList: cell.targetPackage = packages[safe: indexPath.row]; cell.provisionalTarget = nil
         case .updates: cell.targetPackage = availableUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
+        case .searchHistoryList:
+            let _cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoryViewCellIdentifier", for: indexPath) as! HistoryViewCell
+            _cell.setupCell(historyItem: searchHistory[safe: indexPath.row])
+            _cell.listVC = self
+            return _cell
         }
         return cell
     }
@@ -546,6 +589,14 @@ extension PackageListViewController: UICollectionViewDataSource {
                 return headerView
             }
         case .reallyBoringList: fatalError("Literally impossible to be here")
+        case .searchHistoryList:
+            headerView.actionText = String(localizationKey: "Clear_Search_History")
+            headerView.separatorView?.isHidden = false
+            headerView.sortContainer?.isHidden = true
+            headerView.upgradeButton?.isHidden = false
+            headerView.upgradeButton?.addTarget(nil, action: #selector(clearHistory), for: .touchUpInside)
+            headerView.label?.text = String(localizationKey: "Search_History")
+            return headerView
         }
         return UICollectionReusableView()
     }
@@ -564,7 +615,7 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
         switch findWhatFuckingSectionThisIs(section) {
         case .reallyBoringList: return .zero
         case .ignoredUpdates, .updates, .canister: return CGSize(width: collectionView.bounds.width, height: 65)
-        case .packages:
+        case .packages, .searchHistoryList:
             return (showUpdates && displaySettings) ? CGSize(width: collectionView.bounds.width, height: 109) : CGSize(width: collectionView.bounds.width, height: 65)
         }
     }
@@ -576,6 +627,10 @@ extension PackageListViewController: UICollectionViewDelegateFlowLayout {
                 width = 330
             }
         }
+        if findWhatFuckingSectionThisIs(indexPath.section) == .searchHistoryList {
+            return CGSize(width: width, height: 50)
+        }
+        
         return CGSize(width: width, height: 73)
     }
     
@@ -641,6 +696,11 @@ extension PackageListViewController: UISearchBarDelegate {
         else {
             return
         }
+        
+        if UserDefaults.standard.optionalBool("ShowSearchHistory", fallback: true) {
+            searchHistory.append(text)
+        }
+        
         CanisterResolver.shared.fetch(text) { change in
             guard change else { return }
             DispatchQueue.main.async {
@@ -816,4 +876,68 @@ enum PackageListSection {
     case packages
     case canister
     case reallyBoringList
+    case searchHistoryList
+}
+
+class HistoryViewCell: SwipeCollectionViewCell {
+    let historyItemLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        return label
+    }()
+    
+    var listVC: PackageListViewController? = nil
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.delegate = self
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func setupView() {
+        contentView.addSubview(historyItemLabel)
+        
+        let inset = CGFloat(10)
+        NSLayoutConstraint.activate([
+            historyItemLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
+            historyItemLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
+            historyItemLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+            historyItemLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: inset + 5)
+        ])
+    }
+    
+    func setupCell(historyItem: String?) {
+        let textAttachment = NSTextAttachment()
+        if #available(iOS 13.0, *) { // .withintColor requires iOS 13+
+            textAttachment.image = .init(systemNameOrNil: "magnifyingglass")?.withTintColor(.systemGray)
+        }
+        let mutAttrString = NSMutableAttributedString(attachment: textAttachment)
+        mutAttrString.append(.init(string: "\t\(historyItem ?? "")", attributes: [.foregroundColor: UIColor.tintColor]))
+        historyItemLabel.attributedText = mutAttrString
+        
+        historyItemLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+extension HistoryViewCell: SwipeCollectionViewCellDelegate {
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        let deleteAction = SwipeAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _ in
+            searchHistory.remove(at: indexPath.row)
+            
+            // if the search history is empty, we just reload the data
+            // otherwise, calling deleteItems when the array is empty will crash the app
+            searchHistory.isEmpty ? self.listVC?.collectionView?.reloadData() : self.listVC?.collectionView?.deleteItems(at: [indexPath])
+        }
+        
+        return [deleteAction]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .selection
+        return options
+    }
 }
