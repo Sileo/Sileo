@@ -93,10 +93,12 @@
 "Sources_Page" = "Kilder";
 "Packages_Page" = "Pakker";
 "Search_Page" = "Søk";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Remove";
+"Remove" = "Fjern";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Fargetone";
 "Reset_Tint_Color" = "Nullstill fargetone";
 "Auto_Complete_Queue" = "Automatisk gjennomføring av handlinger i køen";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisk Bekreft Oppgrader Alle Snarvei";
 "Swipe_Actions" = "Sveipe-handlinger";
 "Show_Provisional" = "Vis pakker fra Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo adaptiv";
 "System" = "System";
 "Theme_Settings" = "Temainnstillinger";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Logg på Cydia Store";
 "Payment_Provider_Signed_In" = "Innlogget";
