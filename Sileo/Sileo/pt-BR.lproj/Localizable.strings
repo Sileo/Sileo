@@ -93,10 +93,12 @@
 "Sources_Page" = "Fontes";
 "Packages_Page" = "Pacotes";
 "Search_Page" = "Procurar";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Atualizando Fontes";
 "Package_Installed_Files_Page" = "Arquivos instalados";
 "Refresh" = "Atualizar";
-"Remove" = "Remove";
+"Remove" = "Remover";
 
 "All_Packages.Title" = "Todos os pacotes";
 "All_Packages.Cell_Subtitle" = "Ver todos os pacotes das suas fontes";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Tom das cores";
 "Reset_Tint_Color" = "Redefinir cores";
 "Auto_Complete_Queue" = "Completar fila automaticamente";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmação automática de atualização de todos os atalhos";
 "Swipe_Actions" = "Ações ao deslizar";
 "Show_Provisional" = "Mostrar pacotes do Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo Adaptativo";
 "System" = "Sistema";
 "Theme_Settings" = "Configurações de tema";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Entrar na loja da Cydia";
 "Payment_Provider_Signed_In" = "Sessão iniciada";
