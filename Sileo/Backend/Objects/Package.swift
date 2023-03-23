@@ -114,6 +114,3 @@ final class Package: PackageProtocol {
     }
 }
 
-func == (lhs: Package, rhs: Package) -> Bool {
-    lhs.package == rhs.package && lhs.version == rhs.version
-}
