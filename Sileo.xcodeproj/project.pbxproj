@@ -501,9 +501,9 @@
 		E19CC2D4269C6DFA0059251F /* SileoRootDaemon in Copy Files */ = {isa = PBXBuildFile; fileRef = E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E19CC2DD269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
 		E19CC2DE269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
-		E19E230429CC9921004A52FA /* Decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* Decompression.c */; };
-		E19E230529CC9921004A52FA /* Decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* Decompression.c */; };
-		E19E230629CC9921004A52FA /* Decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* Decompression.c */; };
+		E19E230429CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
+		E19E230529CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
+		E19E230629CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
 		E19E230929CCA9D5004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230829CCA9D5004A52FA /* ZippyJSON */; };
 		E19E230B29CCA9E0004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230A29CCA9E0004A52FA /* ZippyJSON */; };
 		E19E230D29CCA9E7004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230C29CCA9E7004A52FA /* ZippyJSON */; };
@@ -1325,8 +1325,8 @@
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignUpdate.swift; sourceTree = "<group>"; };
 		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
-		E19E230229CC985D004A52FA /* Decompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Decompression.h; sourceTree = "<group>"; };
-		E19E230329CC9921004A52FA /* Decompression.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Decompression.c; sourceTree = "<group>"; };
+		E19E230229CC985D004A52FA /* decompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decompression.h; sourceTree = "<group>"; };
+		E19E230329CC9921004A52FA /* decompression.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = decompression.c; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -2031,8 +2031,6 @@
 				E14C5EBC266687C80080BFCE /* XZ.swift */,
 				E14C5EC9266804120080BFCE /* BZIP.swift */,
 				E14C5EE8266810A30080BFCE /* GZIP.swift */,
-				E19E230229CC985D004A52FA /* Decompression.h */,
-				E19E230329CC9921004A52FA /* Decompression.c */,
 			);
 			path = Decompression;
 			sourceTree = "<group>";
@@ -2190,6 +2188,8 @@
 			children = (
 				E163BE9B28896E46004A20CC /* dpkgversion.h */,
 				E163BE9C28896E46004A20CC /* dpkgversion.c */,
+				E19E230229CC985D004A52FA /* decompression.h */,
+				E19E230329CC9921004A52FA /* decompression.c */,
 			);
 			path = "C Contrib";
 			sourceTree = "<group>";
@@ -3971,7 +3971,7 @@
 				E12818C626BBFAA500D2553B /* APTPipe.swift in Sources */,
 				E12818C726BBFAA500D2553B /* String+Utilities.swift in Sources */,
 				E12818C826BBFAA500D2553B /* TabBar.swift in Sources */,
-				E19E230629CC9921004A52FA /* Decompression.c in Sources */,
+				E19E230629CC9921004A52FA /* decompression.c in Sources */,
 				E12818C926BBFAA500D2553B /* UIColor+HTMLColors.m in Sources */,
 				E12818CA26BBFAA500D2553B /* UIPasteboard+Sources.swift in Sources */,
 				E12818CB26BBFAA500D2553B /* WhiteBlur.m in Sources */,
@@ -4088,7 +4088,7 @@
 				F1AB912522ED05B90054341B /* DownloadConfirmButton.swift in Sources */,
 				F1330EB22325644700971073 /* SileoContentView.swift in Sources */,
 				F13AEE6022F64A86004BAA05 /* DownloadPackage.swift in Sources */,
-				E19E230529CC9921004A52FA /* Decompression.c in Sources */,
+				E19E230529CC9921004A52FA /* decompression.c in Sources */,
 				E1C6C0D92677BFDE006228E0 /* KeychainManager.swift in Sources */,
 				F16115D2244D87CD003BF1E6 /* FeaturedButton.swift in Sources */,
 				E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */,
@@ -4353,7 +4353,7 @@
 				F1D6A62C22E53E7000CBD045 /* String+Utilities.swift in Sources */,
 				F1AB911E22ED02900054341B /* TabBar.swift in Sources */,
 				F120234121470F69005EAFAC /* UIColor+HTMLColors.m in Sources */,
-				E19E230429CC9921004A52FA /* Decompression.c in Sources */,
+				E19E230429CC9921004A52FA /* decompression.c in Sources */,
 				F13AEE6C22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
 				56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */,
 				F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */,

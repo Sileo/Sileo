@@ -1,11 +1,10 @@
-#include "Backend/Decompression/Decompression.h"
-
 #import "UIColor+HTMLColors.h"
 #import "WhiteBlur.h"
 #import "ControlFileParserFast.h"
 
 #include <spawn.h>
 #import "dpkgversion.h"
+#import "decompression.h"
 
 #if TARGET_OS_MACCATALYST
 #import "LaunchAsRoot.h"
