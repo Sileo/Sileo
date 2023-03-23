@@ -510,6 +510,9 @@
 		E19E230929CCA9D5004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230829CCA9D5004A52FA /* ZippyJSON */; };
 		E19E230B29CCA9E0004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230A29CCA9E0004A52FA /* ZippyJSON */; };
 		E19E230D29CCA9E7004A52FA /* ZippyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E19E230C29CCA9E7004A52FA /* ZippyJSON */; };
+		E19E231829CCC832004A52FA /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = E19E231729CCC832004A52FA /* Atomics */; };
+		E19E231A29CCC83C004A52FA /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = E19E231929CCC83C004A52FA /* Atomics */; };
+		E19E231C29CCC843004A52FA /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = E19E231B29CCC843004A52FA /* Atomics */; };
 		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
 		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
 		E1A2D118281F30C70006411B /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */; };
@@ -1588,6 +1591,7 @@
 				E12818E326BBFAA500D2553B /* Alderis in Frameworks */,
 				E12818E526BBFAA500D2553B /* LNPopupController-Static in Frameworks */,
 				E19E230D29CCA9E7004A52FA /* ZippyJSON in Frameworks */,
+				E19E231C29CCC843004A52FA /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1622,6 +1626,7 @@
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 				E19E230B29CCA9E0004A52FA /* ZippyJSON in Frameworks */,
+				E19E231A29CCC83C004A52FA /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,6 +1641,7 @@
 				461FC22820ED7A48001EA199 /* Security.framework in Frameworks */,
 				E19E230929CCA9D5004A52FA /* ZippyJSON in Frameworks */,
 				E13638CA2614F53400698D55 /* Cosmos in Frameworks */,
+				E19E231829CCC832004A52FA /* Atomics in Frameworks */,
 				F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */,
 				E13638F72614F6E300698D55 /* SwipeCellKit in Frameworks */,
 				E162DA0627BE78CF00DDD3E4 /* Alderis in Frameworks */,
@@ -3143,6 +3149,7 @@
 				E10C545C2707DCA5008BD0AA /* Evander */,
 				E172ACEA279490E90066933E /* Down */,
 				E19E230C29CCA9E7004A52FA /* ZippyJSON */,
+				E19E231B29CCC843004A52FA /* Atomics */,
 			);
 			productName = iTweak;
 			productReference = E128194526BBFAA500D2553B /* Sileo (Test Handler).app */;
@@ -3210,6 +3217,7 @@
 				E172ACE8279490E40066933E /* Down */,
 				E162DA0727BE78E100DDD3E4 /* Alderis */,
 				E19E230A29CCA9E0004A52FA /* ZippyJSON */,
+				E19E231929CCC83C004A52FA /* Atomics */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3243,6 +3251,7 @@
 				E172ACE6279490DF0066933E /* Down */,
 				E162DA0527BE78CF00DDD3E4 /* Alderis */,
 				E19E230829CCA9D5004A52FA /* ZippyJSON */,
+				E19E231729CCC832004A52FA /* Atomics */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -3335,6 +3344,7 @@
 				E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */,
 				E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E19E230729CCA9D5004A52FA /* XCRemoteSwiftPackageReference "ZippyJSON" */,
+				E19E231629CCC832004A52FA /* XCRemoteSwiftPackageReference "swift-atomics" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -5676,6 +5686,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E19E231629CCC832004A52FA /* XCRemoteSwiftPackageReference "swift-atomics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-atomics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/LNPopupController";
@@ -5814,6 +5832,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E19E230729CCA9D5004A52FA /* XCRemoteSwiftPackageReference "ZippyJSON" */;
 			productName = ZippyJSON;
+		};
+		E19E231729CCC832004A52FA /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19E231629CCC832004A52FA /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+		E19E231929CCC83C004A52FA /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19E231629CCC832004A52FA /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+		E19E231B29CCC843004A52FA /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19E231629CCC832004A52FA /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
 		};
 		E19F959F269245E4002ABB8C /* LNPopupController-Static */ = {
 			isa = XCSwiftPackageProductDependency;
