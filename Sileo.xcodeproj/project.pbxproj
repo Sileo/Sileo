@@ -85,6 +85,9 @@
 		C373924A21D5F80300E6F704 /* Categories.strings in Resources */ = {isa = PBXBuildFile; fileRef = C373924721D5F80300E6F704 /* Categories.strings */; };
 		C373925921D60B2600E6F704 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C373925721D60B2600E6F704 /* Localizable.stringsdict */; };
 		C3D58BDA21D728BD001E0ABE /* NewsArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */; };
+		CEDEBA6C29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEBA6B29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift */; };
+		CEDEBA6D29CC93A80096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEBA6B29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift */; };
+		CEDEBA6E29CC93A90096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEBA6B29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift */; };
 		CFBC7FDF2220412A0066D501 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC7FDE222041290066D501 /* NewsViewController.xib */; };
 		CFE8CB14227433700066D501 /* NewsDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB13227433700066D501 /* NewsDateHeader.xib */; };
 		CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */; };
@@ -1237,6 +1240,7 @@
 		C373924821D5F80300E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Sileo/Base.lproj/Categories.strings; sourceTree = "<group>"; };
 		C373925821D60B2600E6F704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Sileo/Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C3D58BD821D728BD001E0ABE /* NewsArticleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticleCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEDEBA6B29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFBC7FDE222041290066D501 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
@@ -2842,6 +2846,7 @@
 				F139F11B20EEF7D90004E17B /* ListHeader */,
 				F11CD90A20DBF74A000C62C3 /* PackageCell */,
 				F1D82F1723050FED00EECCAE /* PackageListViewController.swift */,
+				CEDEBA6B29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift */,
 				F1B99F0520DBE64700374C27 /* PackageListViewController.xib */,
 			);
 			path = PackageListViewController;
@@ -3850,6 +3855,7 @@
 				E128184626BBFAA500D2553B /* DepictionMinVersionForceView.swift in Sources */,
 				E128184826BBFAA500D2553B /* SettingsHeaderViewDisplayable.swift in Sources */,
 				E128184926BBFAA500D2553B /* DepictionRatingView.swift in Sources */,
+				CEDEBA6E29CC93A90096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */,
 				E128184A26BBFAA500D2553B /* PaymentProviderTableViewCell.swift in Sources */,
 				E128184B26BBFAA500D2553B /* DepictionReviewView.swift in Sources */,
 				E128184C26BBFAA500D2553B /* DepictionScreenshotsView.swift in Sources */,
@@ -4117,6 +4123,7 @@
 				F139D0A822EA9209007F5C0D /* FeaturedSpacerView.swift in Sources */,
 				F139D09B22EA9209007F5C0D /* FeaturedStackView.swift in Sources */,
 				F1D82F7D230959D400EECCAE /* FeaturedViewController.swift in Sources */,
+				CEDEBA6D29CC93A80096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */,
 				F13AEE7D22F76DE6004BAA05 /* FileNode.swift in Sources */,
 				172B2EDC22F0A35D000155B9 /* FlaggedSourceWarningViewController.swift in Sources */,
 				FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */,
@@ -4212,6 +4219,7 @@
 				F1A4D8DF231DA96700149DDF /* ControlFileParserFast.c in Sources */,
 				F1A23FAC23383E6A00C71D8E /* SourcesViewController.swift in Sources */,
 				F1C5D9B122D15B680021BD89 /* DepictionAutoStackView.swift in Sources */,
+				CEDEBA6C29CC93A00096ACF0 /* SearchHistoryCollectionViewCell.swift in Sources */,
 				F1C5D98622D123FA0021BD89 /* DepictionBaseView.swift in Sources */,
 				F1C5D9C322D1847F0021BD89 /* DepictionButtonView.swift in Sources */,
 				FB40263323DF30FF002D97FE /* SettingsHeaderContainerView.swift in Sources */,
