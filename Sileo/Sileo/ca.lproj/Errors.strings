@@ -18,44 +18,44 @@
 
 "Download_Size_Mismatch" = "Espai esperar %@, pero hi ha %@.";
 "Download_Failing_Status_Code" = "Ha fallat amb el estat %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Hash_Mismatch" = "S'esperava hash %@, en lloc d'haver obtingut %@.";
+"Untrusted_Package" = "El paquet %@ no es de fiar i no es pot verificar ";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "Els paquets que requereixen pagament requereixen ser segurs (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
+"Invalid_Payment_Provider_Response" = "El servidor de pagament ha fallat amb una resposta invàlida.";
 "No_Payment_Provider" = "Aquest repositori no admet compres de Sileo. Si aquest és un paquet de Cydia Store que ja heu comprat, podeu enllaçar el vostre compte per descarregar-lo.";
 
 "Package_Unavailable" = "Aquest paquet no està disponible a les vostres fonts instal·lades. Si us plau, comproveu que el repositori %@ estigui disponible.";
 
 "Installation_Error.Title" = "Error en la instal·lació";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Body" = "Sileo no ha pogut obtenir permisos d'administrador. Torneu a instal·lar Sileo mitjançant SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dkpg interromput";
+"FixingDpkg.Body" = "El paquet dpkg ha sigut interromput. Espereu mentre intentem solucionar el problema.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "Dades no vàlides";
+"Try_Later" = "Si us plau, prova-ho més tard.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Actualització requerida de Sileo";
+"Featured_Requires_Sileo_Update" = "Cal una actualització de Sileo per veure la pestanya destacada. És possible que la pestanya destacada es mostri incorrectament.";
+"Depiction_Requires_Sileo_Update" = "Cal una actualització de Sileo per veure aquesta pàgina. És possible que la pàgina estigui representada incorrectament.";
 
 "Form_Error.Title" = "No s'ha pogut carregar des de";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Load_Error" = "No s'ha pogut carregar el formulari des del servidor.";
+"Invalid_Form_Data" = "El servidor ha retornat dades no vàlides.";
+"Form_Submit_Failure" = "S'ha produït un error en la pujada del formulari: %@";
+"Form_Submit_Error.Title" = "No s'ha pogut enviar el formulari";
+"Form_Action_Host_Mismatch" = "L'URL del formulari no coincideix amb el formulari d'origen.";
 
 "Email_Unavailable.Title" = "No s'ha pogut enviar el correu";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Body" = "Els serveis de correu no estan disponibles.";
 
 "Settings_Payment_Provider.Profile.Title" = "No s'ha pogut carregar el perfil";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
+"Provider_Auth_Fail.Title" = "No s'ha pogut autenticar el proveïdor";
 "Purchase_Initiate_Fail.Title" = "No s'ha pogut iniciar la compra";
 "Purchase_Complete_Fail.Title" = "No s'ha pogut completar la compra";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Purchase_Auth_Complete_Fail.Title" = "No s'ha pogut completar l'autenticació";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "No s'han pogut importar el(s) tema(es)";
