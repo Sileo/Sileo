@@ -6,12 +6,16 @@
 #import <sys/syslimits.h>
 #import <sys/stat.h>
 #import <sysexits.h>
+#include <dlfcn.h>
 
 extern int proc_pidpath(int pid, void *buffer, uint32_t buffersize);
+#define PROC_PIDPATHINFO_MAXSIZE  (1024)
+/* Set platform binary flag */
+#define FLAG_PLATFORMIZE (1 << 1)
+
 
 const char *getBuildtimeAppPath(void) {
     const char *path = NULL;
-    
 #ifndef MAC
     
 #ifdef PREBOOT
@@ -39,6 +43,21 @@ const char *getBuildtimeAppPath(void) {
 #endif
     
     return path;
+}
+
+void patch_setuid() {
+    void* handle = dlopen("/usr/lib/libjailbreak.dylib", RTLD_LAZY);
+    if (!handle) return;
+    
+    // Reset errors
+    dlerror();
+    
+    typedef void (*fix_setuid_prt_t)(pid_t pid);
+    fix_setuid_prt_t ptr = (fix_setuid_prt_t)dlsym(handle, "jb_oneshot_fix_setuid_now");
+    
+    ptr(getpid());
+    
+    setuid(0);
 }
 
 char *copyRuntimeAppPath(void) {
@@ -106,6 +125,8 @@ int main(int argc, const char *argv[]) {
     }
     
 #endif
+    
+    patch_setuid();
     
     setuid(0);
     setgid(0);
