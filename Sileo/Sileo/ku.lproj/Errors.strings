@@ -16,8 +16,8 @@
 
 "Invalid_URL.Title" = "URL هەڵەیە";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
+"Download_Size_Mismatch" = "قەبارەی چاوەڕوانکراو %@، لەجیاتی %@";
+"Download_Failing_Status_Code" = "سەرکەوتوو نەبوو لەگەڵ دۆخی%ld";
 "Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
 "Untrusted_Package" = "Package %@ is untrusted and can not be verified";
 
