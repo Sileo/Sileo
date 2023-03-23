@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Vásárlás kezdeményezése sikertelen";
 "Purchase_Complete_Fail.Title" = "Vásárlás befejezése sikertelen";
 "Purchase_Auth_Complete_Fail.Title" = "Hitelesítés befejezése sikertelen";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
