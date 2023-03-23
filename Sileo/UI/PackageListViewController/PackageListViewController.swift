@@ -730,7 +730,7 @@ extension PackageListViewController: UISearchBarDelegate {
        
        let all = packages
        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
-           let searchTerms = [package.name, package.identifier, package.description, package.author].compactMap { $0?.lowercased() }
+           let searchTerms = [package.name, package.package, package.description, package.author?.name].compactMap { $0?.lowercased() }
            var contains = false
            for term in searchTerms {
                if strstr(term, text) != nil {
@@ -740,9 +740,8 @@ extension PackageListViewController: UISearchBarDelegate {
            }
            if !contains { return false }
            
-           if let existingPackage = all.first(where: { $0.packageID == package.identifier }) {
-               guard let version = package.version else { return false }
-               return DpkgWrapper.isVersion(version, greaterThan: existingPackage.version)
+           if let existingPackage = all.first(where: { $0.packageID == package.package }) {
+               return DpkgWrapper.isVersion(package.version, greaterThan: existingPackage.version)
            }
            return true
        }

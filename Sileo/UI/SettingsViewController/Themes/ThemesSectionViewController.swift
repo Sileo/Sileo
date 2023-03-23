@@ -7,6 +7,7 @@
 	
 
 import Foundation
+import ZippyJSON
 
 class ThemesSectionViewController: BaseSettingsViewController {
     
@@ -22,7 +23,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
     func importThemes(fromURL url: URL) {
         do {
             let data = try Data(contentsOf: url)
-            let decoded = try JSONDecoder().decode([SileoCodableTheme].self, from: data)
+            let decoded = try ZippyJSONDecoder().decode([SileoCodableTheme].self, from: data)
             userThemes.append(contentsOf: decoded.map(\.sileoTheme))
             tableView?.reloadData()
             print("Imported theme(s)")
@@ -84,7 +85,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
     var userThemes: [SileoTheme] {
         get {
             let data = UserDefaults.standard.data(forKey: "userSavedThemes") ?? Data()
-            return ((try? JSONDecoder().decode([SileoCodableTheme].self, from: data)) ?? []).map { $0.sileoTheme }
+            return ((try? ZippyJSONDecoder().decode([SileoCodableTheme].self, from: data)) ?? []).map { $0.sileoTheme }
         } set {
             let encoded = (try? JSONEncoder().encode(newValue.map(\.codable))) ?? Data()
             UserDefaults.standard.set(encoded, forKey: "userSavedThemes")

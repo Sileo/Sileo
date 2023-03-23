@@ -38,11 +38,20 @@
         }
       },
       {
+        "package": "JJLISO8601DateFormatter",
+        "repositoryURL": "https://github.com/michaeleisel/JJLISO8601DateFormatter",
+        "state": {
+          "branch": null,
+          "revision": "de422afd9a47b72703c30a81423c478337191390",
+          "version": "0.1.6"
+        }
+      },
+      {
         "package": "LNPopupController",
         "repositoryURL": "https://github.com/elihwyma/LNPopupController",
         "state": {
           "branch": "main",
-          "revision": "3681692077781f56b7ac291416d2f29f5939dc75",
+          "revision": "6cdb4a977b8e0253305cd5009e33028d90631788",
           "version": null
         }
       },
@@ -71,6 +80,24 @@
           "branch": null,
           "revision": "7219cad3098637176ace311510d11467dbfb9bb0",
           "version": "2.7.1"
+        }
+      },
+      {
+        "package": "ZippyJSON",
+        "repositoryURL": "https://github.com/michaeleisel/ZippyJSON.git",
+        "state": {
+          "branch": null,
+          "revision": "c4ab804780b64979f19268619dfa563b6be58f7d",
+          "version": "1.2.10"
+        }
+      },
+      {
+        "package": "ZippyJSONCFamily",
+        "repositoryURL": "https://github.com/michaeleisel/ZippyJSONCFamily",
+        "state": {
+          "branch": null,
+          "revision": "8abdd7a5e943afe68e7b03fdaa63b21c042a3893",
+          "version": "1.2.9"
         }
       }
     ]

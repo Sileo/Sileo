@@ -32,10 +32,3 @@ extension String {
         }
     }
 }
-
-extension UIView {
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        self.semanticContentAttribute = LanguageHelper.shared.isRtl ? .forceRightToLeft : .forceLeftToRight
-    }
-}

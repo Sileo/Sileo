@@ -6,7 +6,7 @@
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Evander
 
 // swiftlint:disable:next type_body_length
@@ -938,11 +938,12 @@ final class RepoManager {
                                 do {
                                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
                                     if succeededExtension == "zst" {
-                                        let (error, url) = ZSTD.decompress(path: packagesFile.url)
-                                        if let url = url {
+                                        let ret = ZSTD.decompress(path: packagesFile.url)
+                                        switch ret {
+                                        case .success(let url):
                                             packagesFile.url = url
-                                        } else {
-                                            throw error ?? "Unknown Error"
+                                        case .failure(let error):
+                                            throw error
                                         }
                                         if let hash = hash {
                                             self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash, hashtype: hashToSave)
@@ -951,11 +952,12 @@ final class RepoManager {
                                     }
 
                                     if succeededExtension == "xz" || succeededExtension == "lzma" {
-                                        let (error, url) = XZ.decompress(path: packagesFile.url, type: succeededExtension == "xz" ? .xz : .lzma)
-                                        if let url = url {
+                                        let ret = XZ.decompress(path: packagesFile.url, type: succeededExtension == "xz" ? .xz : .lzma)
+                                        switch ret {
+                                        case .success(let url):
                                             packagesFile.url = url
-                                        } else {
-                                            throw error ?? "Unknown Error"
+                                        case .failure(let error):
+                                            throw error
                                         }
                                         if let hash = hash {
                                             self.ignorePackage(repo: repo.repoURL, type: succeededExtension, hash: hash, hashtype: hashToSave)
@@ -964,18 +966,20 @@ final class RepoManager {
                                     }
                                     #endif
                                     if succeededExtension == "bz2" {
-                                        let (error, url) = BZIP.decompress(path: packagesFile.url)
-                                        if let url = url {
+                                        let ret = BZIP.decompress(path: packagesFile.url)
+                                        switch ret {
+                                        case .success(let url):
                                             packagesFile.url = url
-                                        } else {
-                                            throw error ?? "Unknown Error"
+                                        case .failure(let error):
+                                            throw error
                                         }
                                     } else if succeededExtension == "gz" {
-                                        let (error, url) = GZIP.decompress(path: packagesFile.url)
-                                        if let url = url {
+                                        let ret = GZIP.decompress(path: packagesFile.url)
+                                        switch ret {
+                                        case .success(let url):
                                             packagesFile.url = url
-                                        } else {
-                                            throw error ?? "Unknown Error"
+                                        case .failure(let error):
+                                            throw error
                                         }
                                     }
                                     if let hash = hash {

@@ -1,9 +1,5 @@
-#import <bzlib.h>
-#import <stdint.h>
-#import <zlib.h>
+#include "Backend/Decompression/Decompression.h"
 
-#import "libzstd.h"
-#import "lzma.h"
 #import "UIColor+HTMLColors.h"
 #import "WhiteBlur.h"
 #import "ControlFileParserFast.h"

@@ -13,27 +13,20 @@ class DependencyResolverAccelerator {
     public static let shared = DependencyResolverAccelerator()
     private var preflightedRepos = false
     
-    struct PreflightedPackage: Hashable {
+    struct PreflightedPackage: PackageProtocol {
+
         let version: String
-        let bundleID: String
+        let package: String
         let data: Data
         
         init(package: Package) {
             self.version = package.version
-            self.bundleID = package.packageID
+            self.package = package.packageID
             self.data = package.rawData ?? Data()
         }
-        
-        static func ==(lhs: PreflightedPackage, rhs: PreflightedPackage) -> Bool {
-            lhs.version == rhs.version && lhs.bundleID == rhs.bundleID
-        }
-        
-        static func ==(lhs: PreflightedPackage, rhs: Package) -> Bool {
-            lhs.bundleID == rhs.packageID && lhs.version == rhs.version
-        }
-        
+
         func hash(into hasher: inout Hasher) {
-            hasher.combine(bundleID)
+            hasher.combine(package)
             hasher.combine(version)
         }
     }
@@ -128,8 +121,10 @@ class DependencyResolverAccelerator {
     
     private func getDependenciesInternal(package: Package) {
         let url = package.sourceFileURL?.aptUrl ?? URL(string: "local://")!
-        if preflightedPackages[url]?.contains(where: { $0 == package }) ?? false {
-            return
+        if let preflighted = preflightedPackages[url] {
+            if preflighted.contains(where: { $0 == package }) {
+                return
+            }
         }
         for packageVersion in package.allVersions {
             getDependenciesInternal2(package: packageVersion, sourceFileURL: url)
@@ -137,10 +132,11 @@ class DependencyResolverAccelerator {
     }
    
     private func getDependenciesInternal2(package: Package, sourceFileURL: URL) {
-
-        if toBePreflighted[sourceFileURL]?.contains(where: { $0 == package }) ?? false {
-            return
-        } else if toBePreflighted[sourceFileURL] == nil {
+        if let preflighted = toBePreflighted[sourceFileURL] {
+            if preflighted.contains(where: { $0 == package }) {
+                return
+            }
+        } else {
             toBePreflighted[sourceFileURL] = Set<PreflightedPackage>()
         }
         toBePreflighted[sourceFileURL]?.insert(PreflightedPackage(package: package))
@@ -180,4 +176,5 @@ class DependencyResolverAccelerator {
         }
         return packageIds
     }
+    
 }

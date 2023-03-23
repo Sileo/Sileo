@@ -232,7 +232,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         self.installedPackage = installedPackage
 
         packageName.text = package.name
-        packageAuthor.text = ControlFileParser.authorName(string: package.author ?? "")
+        packageAuthor.text = package.author?.name ?? ""
 
         downloadButton.package = package
         navBarDownloadButton?.package = package
@@ -292,14 +292,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             self.depictionView = depictionView
         }
 
-        if let depiction = package.depiction,
-            let depictionURL = URL(string: depiction) {
-            let urlRequest = URLManager.urlRequest(depictionURL)
+        if let depiction = package.depiction {
+            let urlRequest = URLManager.urlRequest(depiction)
             EvanderNetworking.request(request: urlRequest, type: Data.self) { [weak self] success, _, _, data in
                 guard success,
                       let data = data,
                       let `self` = self else { return }
-                self.parseNativeDepiction(data, host: depictionURL.host ?? "", failureCallback: nil)
+                self.parseNativeDepiction(data, host: depiction.host ?? "", failureCallback: nil)
             }
         }
 
@@ -570,13 +569,13 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         sharePopup.addAction(shareAction)
         
         if let author = package.author,
-            let email = ControlFileParser.authorEmail(string: author) {
+           let email = author.email {
             let moreByDeveloper = UIAlertAction(title: String(localizationKey: "Package_Developer_Find_Action"
             ), style: .default) { _ in
                 let packagesListController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
                 packagesListController.packagesLoadIdentifier = "author:\(email)"
                 packagesListController.title = String(format: String(localizationKey: "Packages_By_Author"),
-                                                      ControlFileParser.authorName(string: author))
+                                                      author.name ?? "")
                 self.navigationController?.pushViewController(packagesListController, animated: true)
             }
             sharePopup.addAction(moreByDeveloper)

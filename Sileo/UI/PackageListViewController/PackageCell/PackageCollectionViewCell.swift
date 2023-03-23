@@ -6,7 +6,7 @@
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwipeCellKit
 import Evander
 
@@ -35,7 +35,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let targetPackage = targetPackage {
                 titleLabel?.text = targetPackage.name
-                authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
+                authorLabel?.text = "\(targetPackage.author?.name ?? "Unknown") • \(targetPackage.version)"
                 descriptionLabel?.text = targetPackage.packageDescription
                 
                 let url = targetPackage.icon
@@ -56,7 +56,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let provisionalTarget = provisionalTarget {
                 titleLabel?.text = provisionalTarget.name ?? ""
-                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "Unknown")"
+                authorLabel?.text = "\(provisionalTarget.author?.name ?? "") • \(provisionalTarget.version)"
                 descriptionLabel?.text = provisionalTarget.description
             
                 let url = provisionalTarget.icon
@@ -168,10 +168,9 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         // Different actions depending on where we are headed
         // Also making sure that the set package actually exists
         if let provisionalPackage = provisionalTarget {
-            guard let repo = provisionalPackage.repo,
-                  let url = URL(string: repo),
-                  orientation == .right else { return nil }
-            if !RepoManager.shared.hasRepo(with: url) {
+            let repo = provisionalPackage.repository
+            guard orientation == .right else { return nil }
+            if !RepoManager.shared.hasRepo(with: repo.uri) {
                 return [addRepo(provisionalPackage)]
             }
             return nil
@@ -223,15 +222,13 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
     
     private func addRepo(_ package: ProvisionalPackage) -> SwipeAction {
         let addRepo = SwipeAction(style: .default, title: String(localizationKey: "Add_Source.Title")) { _, _ in
-            if let repo = package.repo,
-               let url = URL(string: repo),
-               let tabBarController = self.window?.rootViewController as? UITabBarController,
+            if let tabBarController = self.window?.rootViewController as? UITabBarController,
                let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
                let sourcesNavNV = sourcesSVC.viewControllers[0] as? SileoNavigationController {
                     tabBarController.selectedViewController = sourcesSVC
                     if let sourcesVC = sourcesNavNV.viewControllers[0] as? SourcesViewController {
-                            sourcesVC.presentAddSourceEntryField(url: url)
-                        }
+                        sourcesVC.presentAddSourceEntryField(url: package.repository.uri)
+                    }
             }
             if let package = CanisterResolver.package(package) {
                 CanisterResolver.shared.queuePackage(package)
@@ -239,7 +236,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             self.hapticResponse()
             self.hideSwipe(animated: true)
         }
-        addRepo.backgroundColor = .systemPink
+        addRepo.backgroundColor = UIColor.systemPink
         addRepo.image = UIImage(systemNameOrNil: "plus.app")
         return addRepo
     }

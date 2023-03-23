@@ -41,4 +41,9 @@ extension URL {
         }
         return nil
     }
+    
+    init?(string: String?) {
+        guard let string else { return nil }
+        self.init(string: string)
+    }
 }

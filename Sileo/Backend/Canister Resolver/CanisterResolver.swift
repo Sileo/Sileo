@@ -9,6 +9,7 @@
 import Foundation
 // import DepictionKit
 import Evander
+import ZippyJSON
 
 final class CanisterResolver {
     
@@ -45,17 +46,16 @@ final class CanisterResolver {
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v2/jailbreak/package/search?q=\(formatted)"
-        EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
+        EvanderNetworking.request(url: url, type: Data.self, cache: .init(localCache: false)) { [self] success, _, _, data in
             guard success,
-                  let dict = dict,
-                  let data = dict["data"] as? [[String: Any]] else { return }
+                  let data,
+                  let response = try? ZippyJSONDecoder().decode(PackageSearchResponse.self, from: data) else {
+                return
+            }
             self.savedSearch.append(query)
             var change = false
-            for entry in data {
-                guard let package = ProvisionalPackage(entry) else {
-                    continue
-                }
-                if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
+            for package in response.data ?? [] {
+                if !self.packages.contains(where: { $0.package == package.package }) && !self.filteredRepos.contains(package.repository.uri.baseURL?.absoluteString ?? "") {
                     change = true
                     self.packages.append(package)
                 }
@@ -80,20 +80,25 @@ final class CanisterResolver {
         let identifiers = packages.joined(separator: ",")
         guard let formatted = identifiers.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v2/jailbreak/package/multi?ids=\(formatted)"
-        EvanderNetworking.request(url: url, type: [String: Any].self, cache: .init(localCache: false)) { [self] success, _, _, dict in
+        EvanderNetworking.request(url: url, type: Data.self, cache: .init(localCache: false)) { [self] success, _, _, data in
             guard success,
-                  let dict = dict,
-                  let data = dict["data"] as? [[String: Any]] else { return }
-            self.savedSearch += packages
-            var change = false
-            for entry in data {
-                guard let package = ProvisionalPackage(entry) else { continue }
-                if !self.packages.contains(where: { $0.identifier == package.identifier }) && !self.filteredRepos.contains(package.repo ?? "") {
-                    change = true
-                    self.packages.append(package)
-                }
+                  let data else {
+                return
             }
-            fetch?(change)
+            do {
+                let response = try ZippyJSONDecoder().decode(PackageSearchResponse.self, from: data)
+                self.savedSearch += packages
+                var change = false
+                for package in response.data ?? [] {
+                    if !self.packages.contains(where: { $0.package == package.package }) && !self.filteredRepos.contains(package.repository.uri.baseURL?.absoluteString ?? "") {
+                        change = true
+                        self.packages.append(package)
+                    }
+                }
+                fetch?(change)
+            } catch {
+                print(error)
+            }
         }
         return true
     }
@@ -144,7 +149,7 @@ final class CanisterResolver {
                 }
                 cachedQueue.remove(at: index - buffer)
                 buffer += 1
-                self.packages.removeAll(where: { $0.identifier == package.packageID })
+                self.packages.removeAll(where: { $0.package == package.packageID })
                 refreshLists = true
             }
         }
@@ -155,15 +160,13 @@ final class CanisterResolver {
     }
     
     public class func package(_ provisional: ProvisionalPackage) -> Package? {
-        guard let identifier = provisional.identifier else { return nil }
-        let package = Package(package: identifier, version: provisional.version ?? "Unknown")
+        let package = Package(package: provisional.package, version: provisional.version)
         package.name = provisional.name
-        package.source = provisional.repo
+        package.source = provisional.repository.uri
         package.icon = provisional.icon
         package.packageDescription = provisional.description
         package.author = provisional.author
-        package.depiction = provisional.depiction
-        package.legacyDepiction = provisional.legacyDepiction
+        package.depiction = provisional.sileoDepiction
         package.isProvisional = true
         package.rawSection = provisional.section
         package.section = PackageListManager.humanReadableCategory(package.rawSection)
@@ -172,12 +175,12 @@ final class CanisterResolver {
     
     public func package(for bundleID: String) -> Package? {
         
-        let temp = packages.filter { $0.identifier == bundleID }
+        let temp = packages.filter { $0.package == bundleID }
         var buffer: Package?
         for provis in temp {
             guard let package = CanisterResolver.package(provis) else { continue }
             if let contained = buffer {
-                if DpkgWrapper.isVersion(package.version, greaterThan: contained.version) {
+                if package > contained {
                     buffer = package
                 }
             } else {
@@ -190,66 +193,28 @@ final class CanisterResolver {
     static let refreshList = Notification.Name("Canister.RefreshList")
 }
 
-struct ProvisionalPackage {
-    var name: String?
-    var repo: String?
-    var identifier: String?
-    var icon: String?
-    var description: String?
-    var author: String?
-    var version: String?
-    var legacyDepiction: String?
-    var depiction: String?
-    var depictionV2: String?
-    var section: String?
+struct ProvisionalPackage: PackageProtocol, Decodable {
     
-    init?(_ entry: [String: Any]) {
-        self.name = entry["name"] as? String
-        
-        if let repo = entry["repository"] as? [String: Any],
-           let url = repo["uri"] as? String {
-            self.repo = url
-        } else {
-            return nil
-        }
-        if CanisterResolver.shared.filteredRepos.contains(where: { (self.repo?.contains($0) ?? false) }) { return nil }
-        self.identifier = entry["package"] as? String
-        self.icon = entry["icon"] as? String
-        self.description = entry["description"] as? String
-        self.depiction = entry["sileoDepiction"] as? String
-        self.depictionV2 = entry["nativeDepiction"] as? String
-        self.legacyDepiction = entry["depiction"] as? String
-        if var author = entry["author"] as? String,
-           let range = author.range(of: "<") {
-            author.removeSubrange(range.lowerBound..<author.endIndex)
-            if author.last == " " { author = String(author.dropLast()) }
-            self.author = author
-        } else if let author = entry["author"] as? String {
-            self.author = author
-        } else if var maintainer = entry["maintainer"] as? String,
-                  let range = maintainer.range(of: "<") {
-            maintainer.removeSubrange(range.lowerBound..<maintainer.endIndex)
-            if maintainer.last == " " { maintainer = String(maintainer.dropLast()) }
-            self.author = maintainer
-        } else if let maintainer = entry["maintainer"] as? String {
-            self.author = maintainer
-        } else {
-            self.author = "Unknown"
-        }
-        self.version = entry["version"] as? String
-        self.section = entry["section"] as? String
+    static func ==(lhs: ProvisionalPackage, rhs: ProvisionalPackage) -> Bool {
+        lhs.package == rhs.package && lhs.version == rhs.version
     }
     
-    /*
-    init(package: DepictionPackage) {
-        self.name = package.name
-        self.repo = package.repo_link.absoluteString
-        self.icon = package.icon?.absoluteString
-        self.author = package.author
-        self.identifier = package.identifier
-        self.description = repo
-    }
-    */
+    let package: String
+    let version: String
+    
+    let name: String?
+    let maintainer: Maintainer?
+    let author: Maintainer?
+    let architecture: DPKGArchitecture.Architecture?
+    let section: String?
+    let description: String?
+    
+    let icon: URL?
+    let sileoDepiction: URL?
+    let header: URL?
+    
+    let repository: ProvisionalRepo
+
     public var defaultIcon: UIImage {
         if let section = section {
             // we have to do this because some repos have various Addons sections
@@ -265,5 +230,32 @@ struct ProvisionalPackage {
         }
         return UIImage(named: "Category_tweak")!
     }
+    
 }
 
+struct ProvisionalRepo: Decodable, Equatable, Hashable {
+    
+    let uri: URL
+    let slug: String
+    let tier: Int
+    
+    let suite: String
+    
+    static func ==(lhs: ProvisionalRepo, rhs: ProvisionalRepo) -> Bool {
+        lhs.slug == rhs.slug
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(slug)
+    }
+    
+}
+
+struct PackageSearchResponse: Decodable {
+    
+    let message: String
+    let count: UInt
+    let data: [ProvisionalPackage]?
+    let error: String?
+    
+}

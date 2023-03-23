@@ -8,6 +8,7 @@
 
 import Foundation
 import Alderis
+import ZippyJSON
 
 fileprivate let defaultTheme = SileoThemeManager.shared.themeList.first
 class ThemeCreatorViewController: BaseSettingsViewController {
@@ -178,7 +179,7 @@ class ThemeCreatorViewController: BaseSettingsViewController {
             themeInstance.bannerColor = compactDict[.bannerColor]
             themeInstance.headerColor = compactDict[.headerColor]
             let userSavedThemesData = UserDefaults.standard.data(forKey: "userSavedThemes") ?? Data()
-            var themes = (try? JSONDecoder().decode([SileoCodableTheme].self, from: userSavedThemesData)) ?? []
+            var themes = (try? ZippyJSONDecoder().decode([SileoCodableTheme].self, from: userSavedThemesData)) ?? []
             themes.append(themeInstance.codable)
             guard let encoded = try? JSONEncoder().encode(themes) else {
                 return
