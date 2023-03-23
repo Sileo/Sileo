@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Kon Betaling Niet Starten";
 "Purchase_Complete_Fail.Title" = "Kon Betaling Niet Afmaken";
 "Purchase_Auth_Complete_Fail.Title" = "Kon Authenticatie Niet Voltooien";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
