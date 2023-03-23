@@ -93,8 +93,8 @@
 "Sources_Page" = "Źródła";
 "Packages_Page" = "Pakiety";
 "Search_Page" = "Szukaj";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Ostatnio wyszukiwane";
+"Clear_Search_History" = "Wyczyść";
 "Refreshing_Sources_Page" = "Odświeżanie źródeł";
 "Package_Installed_Files_Page" = "Zainstalowane pliki";
 "Refresh" = "Odśwież";
@@ -152,7 +152,7 @@
 "Tint_Color" = "Odcień Koloru";
 "Reset_Tint_Color" = "Zresetuj Odcień Koloru";
 "Auto_Complete_Queue" = "Automatycznie Ukończ Kolejkę";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Pokaż historię wyszukiwania";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Skrót automatycznego potwierdzania \"Zaaktualizuj wszystko\"";
 "Swipe_Actions" = "Gesty";
 "Show_Provisional" = "Pokaż Pakiety z Canister";
@@ -179,14 +179,14 @@
 "System" = "System";
 "Theme_Settings" = "Ustawienia motywu";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Zarządzaj motywami";
+"Create_Theme" = "Stwórz motyw";
+"Import_Themes" = "Importuj motywy";
+"Theme_Name" = "Nazwa motywu";
+"Export_Themes" = "Eksportuj motyw";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
+"Background_Color" = "Kolor tła";
+"Secondary_Background_Color" = "Kolor dodatkowego tła";
 "Label_Color" = "Label Color";
 "Highlight_Color" = "Highlight Color";
 "Seperator_Color" = "Seperator Color";
