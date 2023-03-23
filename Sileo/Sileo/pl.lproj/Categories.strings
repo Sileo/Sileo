@@ -9,13 +9,13 @@
 */
 
 "No_Category" = "(Brak kategorii)";
-"Tweaks" = "Tweaki";
+"Tweaks" = "Ulepszenia";
 "Themes" = "Motywy";
 "Utilities" = "Narzędzia";
 "Applications" = "Aplikacje";
 "Addons" = "Dodatki";
 "Games" = "Gry";
-"Developer" = "Deweloper";
-"Data_Storage" = "Przechowywanie Danych";
+"Developer" = "Narzędzia deweloperskie";
+"Data_Storage" = "Pamięć";
 "Terminal_Support" = "Obsługa Terminala";
 "Text_Editors" = "Edytory tekstu";
