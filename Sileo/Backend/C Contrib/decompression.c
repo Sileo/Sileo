@@ -24,6 +24,8 @@ uint8_t decompressGzip(FILE *input, FILE *output) {
     uint32_t have = 0;
     
     z_stream stream;
+    memset(&stream, 0, sizeof(stream));
+    
     int32_t status = inflateInit2_(&stream, MAX_WBITS + 32, ZLIB_VERSION, sizeof(stream));
     if (status != Z_OK) {
         return 2;
@@ -78,6 +80,8 @@ cleanup:
 #if !TARGET_SANDBOX
 uint8_t decompressXz(FILE *input, FILE *output, uint8_t type) {
     lzma_stream strm;
+    memset(&strm, 0, sizeof(strm));
+    
     uint8_t error = 0;
     int ret = (type == 0) ? lzma_stream_decoder(&strm, UINT64_MAX, 8) : lzma_alone_decoder(&strm, UINT64_MAX);
     switch (ret) {
