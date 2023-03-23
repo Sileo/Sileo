@@ -128,7 +128,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         
-        packageName.textColor = .sileoLabel
+        if (package?.isFirmwareConflict ?? false) {
+            packageName.textColor = UIColor.red
+        } else {
+            packageName.textColor = .sileoLabel
+        }
         let collapsed = splitViewController?.isCollapsed ?? false
         let navController = collapsed ? (splitViewController?.viewControllers[0] as? UINavigationController) : self.navigationController
         navController?.setNavigationBarHidden(true, animated: true)
@@ -203,7 +207,11 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     }
 
     @objc func updateSileoColors() {
-        packageName.textColor = .sileoLabel
+        if (package?.isFirmwareConflict ?? false) {
+            packageName.textColor = UIColor.red
+        } else {
+            packageName.textColor = .sileoLabel
+        }
     }
     
     @objc func reloadData() {
@@ -559,9 +567,9 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
         
         let sharePopup = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let shareAction = UIAlertAction(title: String(localizationKey: "Package_Share_Action"), style: .default) { _ in
-            var packageString = "\(package.name ?? package.package) - \(URLManager.url(package: package.package))"
+            var packageString = (package.name ?? package.package) + " - " + URLManager.url(package: package.package)
             if let repo = package.sourceRepo {
-                packageString += " - from \(repo.url?.absoluteString ?? repo.rawURL)"
+                packageString += " - from " + (repo.url?.absoluteString ?? repo.rawURL)
             }
             let activityViewController = UIActivityViewController(activityItems: [packageString], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = shareButton
@@ -574,7 +582,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
             let moreByDeveloper = UIAlertAction(title: String(localizationKey: "Package_Developer_Find_Action"
             ), style: .default) { _ in
                 let packagesListController = PackageListViewController(nibName: "PackageListViewController", bundle: nil)
-                packagesListController.packagesLoadIdentifier = "author:\(email)"
+                packagesListController.packagesLoadIdentifier = "author:" + email
                 packagesListController.title = String(format: String(localizationKey: "Packages_By_Author"),
                                                       ControlFileParser.authorName(string: author))
                 self.navigationController?.pushViewController(packagesListController, animated: true)

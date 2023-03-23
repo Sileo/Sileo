@@ -5,10 +5,10 @@
 //  Created by CoolStar on 7/30/19.
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
-
 import Foundation
 import SwipeCellKit
 import Evander
+import UIKit
 
 class PackageCollectionViewCell: SwipeCollectionViewCell {
     @IBOutlet var imageView: UIImageView?
@@ -35,13 +35,52 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let targetPackage = targetPackage {
                 titleLabel?.text = targetPackage.name
-                authorLabel?.text = "\(ControlFileParser.authorName(string: targetPackage.author ?? "")) • \(targetPackage.version)"
+                authorLabel?.text = ControlFileParser.authorName(string: targetPackage.author ?? "") + " • " + targetPackage.version
                 descriptionLabel?.text = targetPackage.packageDescription
                 
                 let url = targetPackage.icon
                 EvanderNetworking.image(url: url, condition: { [weak self] in self?.targetPackage?.icon == url }, imageView: imageView, fallback: targetPackage.defaultIcon)
                         
                 titleLabel?.textColor = targetPackage.commercial ? self.tintColor : .sileoLabel
+                
+                #if os(iOS)
+                
+                DispatchQueue.main.async {
+                let ver = (UIDevice.current.systemVersion as NSString).floatValue
+                DispatchQueue.global(qos: .userInitiated).async {
+                let deponfw = "," + (targetPackage.depends ?? "abcd")
+                if deponfw.contains("firmware") {
+                    if self.doesNotDepend(confOrDependString: deponfw, forVersion: ver) {
+                        targetPackage.isFirmwareConflict = true
+                        DispatchQueue.main.async {
+                            self.titleLabel?.textColor = UIColor.red
+                        }
+                    } else {
+                        let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
+                        if conflictwithfw.contains("firmware") {
+                            if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: ver) {
+                                targetPackage.isFirmwareConflict = true
+                                DispatchQueue.main.async {
+                                    self.titleLabel?.textColor = UIColor.red
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    let conflictwithfw = "," + (targetPackage.conflicts ?? "abcd")
+                    if conflictwithfw.contains("firmware") {
+                        if !self.doesNotDepend(confOrDependString: conflictwithfw, forVersion: ver) {
+                            targetPackage.isFirmwareConflict = true
+                            DispatchQueue.main.async {
+                                self.titleLabel?.textColor = UIColor.red
+                            }
+                        }
+                    }
+                }
+                }
+                }
+
+                #endif
             }
             unreadView?.isHidden = true
             
@@ -56,7 +95,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
         didSet {
             if let provisionalTarget = provisionalTarget {
                 titleLabel?.text = provisionalTarget.name ?? ""
-                authorLabel?.text = "\(provisionalTarget.author ?? "") • \(provisionalTarget.version ?? "Unknown")"
+                authorLabel?.text = (provisionalTarget.author ?? "") + " • " + (provisionalTarget.version ?? "Unknown")
                 descriptionLabel?.text = provisionalTarget.description
             
                 let url = provisionalTarget.icon
@@ -104,7 +143,7 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
     }
     
     @objc func updateSileoColors() {
-        if !(targetPackage?.commercial ?? false) {
+        if !(targetPackage?.commercial ?? false) && !(targetPackage?.isFirmwareConflict ?? false) {
             titleLabel?.textColor = .sileoLabel
         }
     }
@@ -132,8 +171,12 @@ class PackageCollectionViewCell: SwipeCollectionViewCell {
     override func tintColorDidChange() {
         super.tintColorDidChange()
         
-        if targetPackage?.commercial ?? false {
-            titleLabel?.textColor = self.tintColor
+        if targetPackage?.isFirmwareConflict ?? false {
+            titleLabel?.textColor = UIColor.red
+        } else {
+            if targetPackage?.commercial ?? false {
+                titleLabel?.textColor = self.tintColor
+            }
         }
         
         unreadView?.backgroundColor = self.tintColor
@@ -443,5 +486,60 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
         }
+    }
+    
+    //Thanks to Serena for original function, this is changed by me (Snoolie/0xilis) from the original to fix some bugs and make it slightly faster.
+    //This function is licensed under MIT at https://github.com/0xilis/SileoRedLabelFirmwareConflict
+    //It take in a Depends (or Pre-Depends) and will return true if the firmware is in regards
+    private func doesNotDepend(confOrDependString: String, forVersion ver: Float) -> Bool {
+        let noSpaceFull = confOrDependString.replacingOccurrences(of: " ", with: "");
+        var noSpaceIter = 0
+        for noSpace in noSpaceFull.components(separatedBy: ",firmware(")  { //support for two firmware depends in one field
+            if noSpaceIter == 0 {
+                noSpaceIter += 1
+                continue;
+            }
+            let endIndex = (noSpace.range(of: ",")?.lowerBound) ?? noSpace.endIndex
+            let baseString = String(noSpace[..<endIndex])
+            if baseString.contains("|") {
+                //something other than firmware
+                continue //we don't actually want to mark as red if something other than the firmware conflicts, so firmware (>= 13.0) | somedeb gets marked as false even if firmware is lower than 13.0, since somedeb isn't firmware
+            }
+            var operatorType = 0
+            //operatorTypes:
+            //> / >> are 1
+            //< / << are 2
+            //= is 3
+            //>= is 4
+            //<= is 5
+            var iterator = 0
+            var versionParsed = Float(-1)
+            for i in baseString {
+                if i.isWholeNumber {
+                    versionParsed = Float(baseString.dropFirst(iterator).replacingOccurrences(of: ")", with: "")) ?? Float(-1)
+                    break; //we found the char
+                } else if i == ">" {
+                    operatorType = 1
+                } else if i == "<" {
+                    operatorType = 2
+                } else if i == "=" {
+                    operatorType += 3
+                }
+                iterator += 1
+            }
+            if versionParsed == -1 {
+                print("COULD NOT FIND VERSIONPARSED")
+                continue
+            }
+            switch operatorType {
+                case 1: if (versionParsed >= ver) {return versionParsed >= ver}
+                case 2: if (versionParsed <= ver) {return versionParsed <= ver}
+                case 4: if (versionParsed > ver) {return versionParsed > ver}
+                case 5: if (versionParsed < ver) {return versionParsed < ver}
+                case 3: if (versionParsed != ver) {return versionParsed != ver}
+                default: continue;
+            }
+        }
+        return false
     }
 }
