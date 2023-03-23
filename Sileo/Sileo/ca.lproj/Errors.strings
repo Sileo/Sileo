@@ -24,11 +24,11 @@
 "Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"No_Payment_Provider" = "Aquest repositori no admet compres de Sileo. Si aquest és un paquet de Cydia Store que ja heu comprat, podeu enllaçar el vostre compte per descarregar-lo.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Aquest paquet no està disponible a les vostres fonts instal·lades. Si us plau, comproveu que el repositori %@ estigui disponible.";
 
-"Installation_Error.Title" = "Installation Error";
+"Installation_Error.Title" = "Error en la instal·lació";
 "Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
 
 "FixingDpkg.Title" = "Dpkg Interrupted";
@@ -41,21 +41,21 @@
 "Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
 "Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
 
-"Form_Error.Title" = "Couldn't Load Form";
+"Form_Error.Title" = "No s'ha pogut carregar des de";
 "Form_Load_Error" = "The form could not be loaded from the server.";
 "Invalid_Form_Data" = "The server provided invalid form data.";
 "Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
 "Form_Submit_Error.Title" = "Couldn't Submit Form";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
+"Email_Unavailable.Title" = "No s'ha pogut enviar el correu";
 "Email_Unavailable.Body" = "Mail services are not available.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "No s'ha pogut carregar el perfil";
 
 "Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
+"Purchase_Initiate_Fail.Title" = "No s'ha pogut iniciar la compra";
+"Purchase_Complete_Fail.Title" = "No s'ha pogut completar la compra";
 "Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
 
 "Couldnt_Import_Themes" = "Couldn't Import theme(s)";
