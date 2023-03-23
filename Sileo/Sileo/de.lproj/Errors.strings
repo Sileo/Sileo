@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Kauf konnte nicht gestartet werden";
 "Purchase_Complete_Fail.Title" = "Kauf konnte nicht abgeschlossen werden";
 "Purchase_Auth_Complete_Fail.Title" = "Authentifizierung konnte nicht durchgeführt werden";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
