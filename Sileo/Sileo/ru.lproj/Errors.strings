@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Не удалось инициировать покупку";
 "Purchase_Complete_Fail.Title" = "Не удалось завершить покупку";
 "Purchase_Auth_Complete_Fail.Title" = "Не удалось завершить аутентифицирование";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
