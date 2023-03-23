@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "無法初始購買";
 "Purchase_Complete_Fail.Title" = "無法完成購買";
 "Purchase_Auth_Complete_Fail.Title" = "無法完成驗證";
+
+"Couldnt_Import_Themes" = "無法滙入主題";
