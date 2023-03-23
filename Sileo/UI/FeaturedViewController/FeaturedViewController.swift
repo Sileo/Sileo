@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/18/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -43,14 +43,17 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
-            let (status, output, _) = spawnAsRoot(args: [CommandPath.whoami])
-            print(status, output)
-            if status != 0 || output != "root\n" {
-                DispatchQueue.main.sync {
-                    let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
-                                                            message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n Output = \(output)\n Status = \(status)",
-                                                            preferredStyle: .alert)
-                    self.present(alertController, animated: true, completion: nil)
+            if #available(iOS 13, *) {
+                
+            } else {
+                let (status, output, _) = spawnAsRoot(args: [CommandPath.whoami])
+                if status != 0 || output != "root\n" {
+                    DispatchQueue.main.sync {
+                        let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
+                                                                message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n Output = \(output)\n Status = \(status)",
+                                                                preferredStyle: .alert)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
             }
             

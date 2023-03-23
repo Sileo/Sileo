@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 14/06/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -37,9 +37,10 @@ final class KeychainManager {
                 kSecAttrService as String: service.rawValue
             ] as [AnyHashable: String]
             #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-            query[kSecAttrAccessGroup] = accessGroup
+            if !CommandPath.requiresDumbWorkaround {
+                query[kSecAttrAccessGroup] = accessGroup
+            }
             #endif
-            
             SecItemDelete(query as CFDictionary)
         }
     }
@@ -53,7 +54,9 @@ final class KeychainManager {
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        query[kSecAttrAccessGroup] = accessGroup
+        if !CommandPath.requiresDumbWorkaround {
+            query[kSecAttrAccessGroup] = accessGroup
+        }
         #endif
         
         SecItemDelete(query as CFDictionary)
@@ -71,12 +74,13 @@ final class KeychainManager {
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        query[kSecAttrAccessGroup] = accessGroup
+        if !CommandPath.requiresDumbWorkaround {
+            query[kSecAttrAccessGroup] = accessGroup
+        }
         #endif
         
         SecItemDelete(query as CFDictionary)
         let response = SecItemAdd(query as CFDictionary, nil)
-        print("Response is \(SecCopyErrorMessageString(response, nil))")
         return response
     }
     
@@ -89,9 +93,11 @@ final class KeychainManager {
             kSecMatchLimit as String: kSecMatchLimitOne
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        query[kSecAttrAccessGroup] = accessGroup
+        if !CommandPath.requiresDumbWorkaround {
+            query[kSecAttrAccessGroup] = accessGroup
+        }
         #endif
-        
+                
         var dataRef: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataRef)
         guard status == noErr,
@@ -116,7 +122,9 @@ final class KeychainManager {
                 kSecUseAuthenticationUI as String: kSecUseAuthenticationUIFail
             ] as [AnyHashable: Any]
             #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-            query[kSecAttrAccessGroup] = accessGroup
+            if !CommandPath.requiresDumbWorkaround {
+                query[kSecAttrAccessGroup] = accessGroup
+            }
             #endif
             
             var dataRef: AnyObject?

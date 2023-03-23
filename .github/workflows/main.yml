@@ -1,12 +1,12 @@
 on:
   push:
     branches:
-      - dev
+      - main
 name: Build
 jobs:
   make:
     name: Build and Upload Sileo
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/cache@v2
         id: procache
@@ -14,14 +14,14 @@ jobs:
           path: |
             ~/__cache
           key: ${{ runner.os }}-procursus
-          
+
       - name: Checkout
         uses: actions/checkout@master
         with:
           submodules: recursive
           token: ${{ secrets.SILEO_PAT }}
       - name: Import all certificates
-        env: 
+        env:
           DEVELOPMENT_PASSWORD: ${{ secrets.DEVELOPMENT_PASSWORD }}
           DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
           DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
@@ -44,53 +44,57 @@ jobs:
                           -P $DISTRIBUTION_PASSWORD \
                           -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
-        
+
       - name: Setup Procursus Bootstrap (install)
         if: steps.procache.outputs.cache-hit != 'true'
         run: |
-          wget https://apt.procurs.us/bootstrap_darwin-amd64.tar.zst
-          sudo gtar --preserve-permissions -xkf ./bootstrap_darwin-amd64.tar.zst -C /
+          wget https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-amd64.tar.zst
+          sudo gtar --preserve-permissions -xkf ./bootstrap-darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y || :
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt -V full-upgrade -y || :
           sudo /opt/procursus/bin/apt install ldid -y
       - name: Add Procursus to PATH
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
-          
+
       - name: Setup Procursus Bootstrap (cache)
         if: steps.procache.outputs.cache-hit == 'true'
         run: |
           sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
           sudo rsync -aP ~/__cache/procursus /opt
           sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
-          sudo /opt/procursus/bin/apt -V dist-upgrade -y
-      
+          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
+          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
+
       - name: Select Correct Xcode (13.1)
         run: |
-          sudo xcode-select --switch /Applications/Xcode_13.1.app
-          
+          sudo xcode-select --switch /Applications/Xcode_13.4.1.app
+
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
+      - name: Build Sileo Nightly (iphoneos-arm64)
+        run: |
+          make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1 SILEO_PLATFORM=iphoneos-arm64
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
       - name: Build Sileo Nightly (darwin-arm64)
         run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64 
+          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
       - name: Upload To Repo
-        env: # 
+        env: #
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package1=$(ls -t packages | head -1)
           package2=$(ls -t packages | head -2 | tail -1)
           package3=$(ls -t packages | head -3 | tail -1)
+          package4=$(ls -t packages | head -4 | tail -1)
           curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
+          curl -F deb="@./packages/${package4}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
           curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
       - name: Wakeup Babe
         run: |

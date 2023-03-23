@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
 "Refresh" = "Aggiorna";
-"Remove" = "Rimuovi";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tutti i Pacchetti";
 "All_Packages.Cell_Subtitle" = "Visualizza tutti i pacchetti delle tue sorgenti";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Visualizza la Descrizione";
+
+"Copy_ID" = "Copy ID";

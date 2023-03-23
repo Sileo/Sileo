@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Skitty on 1/26/20.
-//  Copyright © 2020 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Alderis
@@ -93,7 +93,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 1: // Themes
             return 4
         case 2:
-            return 12
+            return 11
         case 3: // About section
             return 4
         default:
@@ -203,11 +203,6 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
                 cell.viewControllerForPresentation = self
-            case 11:
-                cell.amyPogLabel.text = "Background Package Update"
-                cell.amyPogLabel.textColor = .systemRed
-                cell.fallback = false
-                cell.defaultKey = "BackgroundUpdate"
             default:
                 fatalError("You done goofed")
             }

@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 9/2/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 #import "ControlFileParserFast.h"
@@ -217,5 +217,7 @@ void parseControlFile(const uint8_t *rawControlData, size_t controlDataSize, boo
     
     if (lastMultlineKey && lastMultilineValue) {
         controlFileSetSwiftValue(lastMultlineKey, lastMultilineValue, callback, tagCallback);
+    } else if (lastMultlineKey && !lastMultilineValue) {
+        free(lastMultlineKey);
     }
 }

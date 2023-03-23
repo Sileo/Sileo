@@ -5,7 +5,7 @@
     <key>Auto_Add_Pasteboard_Sources.Title</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Automatically Add %#@sources@</string>
+      <string>Automatycznie Dodaj %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -13,19 +13,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Źródło</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Źródła</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add %lu %#@sources@</string>
+      <string>Dodaj %lu %#@sources@</string>
       <key>sources</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -33,19 +33,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Źródło</string>
         <key>few</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>many</key>
-        <string>Sources</string>
+        <string>Źródła</string>
         <key>other</key>
-        <string>Sources</string>
+        <string>Źródła</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Add the following %#@urls@ found on your pasteboard:</string>
+      <string>Dodaj te źródła %#@urls@ znalezione w Twoim schowku:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -53,13 +53,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>URL</string>
+        <string>Adres URL</string>
         <key>few</key>
-        <string>URLs</string>
+        <string>Adresy URL</string>
         <key>many</key>
-        <string>URLs</string>
+        <string>Adresy URL</string>
         <key>other</key>
-        <string>URLs</string>
+        <string>Adresy URL</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Package</string>
+        <string>%d Pakiet</string>
         <key>few</key>
-        <string>%d Packages</string>
+        <string>%d Pakiety</string>
         <key>many</key>
-        <string>%d Packages</string>
+        <string>%d Pakietów</string>
         <key>other</key>
-        <string>%d Packages</string>
+        <string>%d Pakietów</string>
       </dict>
     </dict>
   </dict>

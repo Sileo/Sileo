@@ -19,51 +19,25 @@ finish() {
 
 case "$1" in
 	(configure)
-		
-		cr="\n"
-
-		if [ -f /.procursus_strapped ]; then 
-			 touch $sourcesDir/sileo.sources
-			 if ! [ -s "$sourcesDir/sileo.sources" ]; then
- 				echo "" > $sourcesDir/sileo.sources
- 			 fi
-
-			 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
-			 then
-				 echo "Installed Chariz Repo"
-				 sed -i '1s;^;Types: deb\
-URIs: https://repo.chariz.com/\
-Suites: ./\
-Components:\
-\
-;' $sourcesDir/sileo.sources
-			 fi
-
-			 if ! grep -Fxq "URIs: https://havoc.app/" $sourcesDir/sileo.sources ;
-			 then
-			 echo "Installed Havoc Repo"
-			 sed -i '1s;^;Types: deb\
-URIs: https://havoc.app/\
-Suites: ./\
-Components:\
-\
-;' $sourcesDir/sileo.sources
-			 fi
-		fi
-		
 		rm -rf $sourcesDir/../preferences.d/checkra1n
 		exit 0
 		;;
 	(triggered)
-		if [ "$2" = "/Applications" ]; then
-			finish uicache
-			exit 0
-		fi
 		if ! [ -s /usr/lib/libblackjack.dylib ]; then
 			if [ "$2" = "/Library/MobileSubstrate/DynamicLibraries" ]; then
 				finish restart
 				exit 0
 			fi
+		fi
+		if [ -d "/var/jb" ]; then 
+			if [ "$2" = "/Library/MobileSubstrate/DynamicLibraries" ]; then
+				finish restart
+				exit 0
+			fi
+		fi
+		if [ "$2" = "/var/jb/Library/MobileSubstrate/DynamicLibraries" ]; then
+			finish restart
+			exit 0
 		fi
 		;;
 	(abort-upgrade|abort-remove|abort-deconfigure)

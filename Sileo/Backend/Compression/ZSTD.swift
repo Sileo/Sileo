@@ -3,20 +3,13 @@
 //  Sileo
 //
 //  Created by Amy on 31/05/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 #if !targetEnvironment(simulator) && !TARGET_SANDBOX
 import Foundation
 
 final class ZSTD {
-    
-    static var available: Bool = {
-        if let contents = try? URL(fileURLWithPath: "/usr/lib/").contents() {
-            return contents.contains(where: { $0.absoluteString.contains("libzstd") })
-        }
-        return false
-    }()
-    
+
     class func decompress(path: URL) -> (String?, URL?) {
         guard let fin = fopen(path.path, "rb") else { return (ZSTDError.fileLoad.rawValue, nil) }
         defer {

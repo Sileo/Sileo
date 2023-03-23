@@ -9,189 +9,189 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"About" = "O Sileo";
+"Close" = "Zamknij";
+"Double tap to open." = "Dotknij dwukrotnie aby otworzyć.";
+"Untitled_Repo" = "Repozytorium Bez Nazwy";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Done" = "Gotowe";
+"Done_Editing" = "Gotowe";
+"More_Info" = "Więcek informacji";
+"Loading" = "Ładowanie…";
+"Share" = "Udostępnij";
+"Delete" = "Usuń";
+"Cancel" = "Anuluj";
+"Acknowledge" = "Potwierdź";
+"Remove" = "Usuń";
+"Sileo_Team" = "Zespół Sileo";
+"Warning" = "Uwaga";
+"Edit" = "Edytuj";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Odświeżanie Aplikacji w Tle";
+"Background_App_Refresh_Message" = "Dla najlepszego i najszybszego doświadczenia z użytkowania zalecane jest włączenie odświeżania aplikacji w tle. Możesz wtedy otrzymywać powiadomienia o dostępnych aktualizacjach!";
+"Upgrade_All_Shortcut_Processing_Message" = "Odświeżam wszystkie źródła i aktualizuję wszystkie pakiety...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
-"Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Installing_Package_Status" = "Instaluję";
+"Downloading_Package_Status" = "Pobieram";
+"Queued_Package_Status" = "W kolejce";
+"Ready_Status" = "Gotowy";
+"Removal_Queued_Package_Status" = "W kolejce do usunięcia";
+"Download_Starting" = "Uruchamiam…";
+"Download_Progress" = "%@ z %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Te paczki są wymagane do prawidłowego funkcjonowania urządzenia: %@\n Usunięcie ich może spowodować nieodwracalne problemy z funkcjonowaniem Twojego urządzenia i może wymagać, aby było ono odtworzone (zresetowane). Kontynuuj, jeżeli jesteś pewien, że wiesz, co robisz.";
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Confirm_Button" = "Potwierdź";
+"Queue_Clear_Button" = "Wyczyść Kolejkę";
+"Queue_Cancel_Downloads" = "Anuluj Pobieranie";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "Aktualizuj";
+"Package_Reinstall_Action" = "Zainstaluj ponownie";
+"Package_Uninstall_Action" = "Odinstaluj";
+"Package_Modify_Action" = "Modyfikuj";
+"Package_Get_Action" = "Pobierz";
+"Package_Queue_Action" = "Kolejka";
+"Package_Cancel_Action" = "Anuluj";
+"Package_Paid" = "Płatne";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Udostępnij Pakiet…";
+"Package_Developer_Find_Action" = "Więcej od tego Dewelopera";
+"Package_Support_Action" = "Wsparcie";
+"Package_Hold_Enable_Action" = "Ignoruj przyszłe aktualizacje";
+"Package_Hold_Disable_Action" = "Przestań ignorować aktualizacje";
+"Package_Wishlist_Add" = "Dodaj do listy życzeń";
+"Package_Wishlist_Remove" = "Usuń z listy życzeń";
+"Wishlist" = "Lista życzeń";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Brak Nowych Pakietów";
+"News_Check_Later" = "Nie zindeksowano nowych pakietów. Wróć tu za parę godzin, a zobaczysz jak nowe pakiety pojawiają się wraz z aktualizacją repozytoriów.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "Zainstaluj";
+"Queued_Uninstall_Heading" = "Odinstaluj";
+"Queued_Update_Heading" = "Zaktualizuj";
+"Download_Errors_Heading" = "Błędy";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Zainstalowane";
+"Updates_Heading" = "Aktualizacje";
+"Upgrade_All_Button" = "Zaktualizuj wszystkie";
+"Package_Search.Placeholder" = "Wyszukaj pakiety";
+"Sort_Name" = "Nazwa";
+"Sort_Date" = "Data";
+"Sort_Install_Size" = "Rozmiar po instalacji";
+"Sort_By" = "Sortuj według:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "Pakiet niedostępny";
+"Package_By_Author" = "%@ autorstwa %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "autorstwa %@"; // %@ = author name
+"Packages_By_Author" = "Pakiety autorstwa %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "Polecane";
+"News_Page" = "Nowości";
+"Sources_Page" = "Źródła";
+"Packages_Page" = "Pakiety";
+"Search_Page" = "Szukaj";
+"Refreshing_Sources_Page" = "Odświeżanie źródeł";
+"Package_Installed_Files_Page" = "Zainstalowane pliki";
+"Refresh" = "Odśwież";
+"Remove" = "Usuń";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Wszsytkie pakiety";
+"All_Packages.Cell_Subtitle" = "Pokaż wszystkie pakiety ze swoich źródeł";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "Wszystkie kategorie";
+"Internal_Repo" = "Wewnętrzne repozytoria";
+"External_Repo" = "Zewnętrzne repozytoria";
+"Ignored Updates" = "Zignorowane aktualizacje";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Repozytoria";
+"Repo" = "Repozytorium";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Dodaj źródło";
+"Add_Source.Body" = "Dodaj adres URL APT";
+"Add_Source.Button.Add" = "Dodaj źródło";
+"Add_Dist_Repo" = "Dodaj repozytorium dystrybucyjne";
+"Incorrect_Repo" = "%@ nie jest poprawnym adresem repozytorium!? Repozytorium może być offline, bądź adres został wprowadzony z literówką. Czy chcesz je na pewno dodać?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Wprowadź ręcznie";
 
-"Untitled_Form" = "Untitled Form";
+"Untitled_Form" = "Formularz bez nazwy";
 "Form_Submitted.Default_Title" = "Zatwierdzony formularz";
 "Form_Submitted.Default_Body" = "Formularz zatwierdzono poprawnie.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Widok internetowy jest przestarzały. Poproś opiekuna repozytorium o zaktualizowanie go do natywnych opisów pakietów.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Szczegóły";
+"Package_Changelog_Tab" = "Historia zmian";
+"Package_No_Description_Available" = "Ten pakiet nie ma dostępnego opisu.";
+"Package_Changelogs_Unavailable" = "Ten pakiet nie ma dostępnej historii zmian.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Zainstalowany Pakiet";
+"Installed_Packages" = "Zainstalowane Pakiety";
+"Version" = "Wersja";
+"Show_Package_Contents_Button" = "Pokaż Zawartość Pakietu";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "Licencje";
+"Alternate_Icon_Title" = "Alternatywne ikony";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Dostawcy płatności";
+"Settings_Translations_Heading" = "Tłumaczenia";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Settings_Payment_Provider.Purchases_Heading" = "Zakupy";
+"Settings_Payment_Provider.No_Purchases" = "Brak zakupów";
+"Authenticate_To_Purchase" = "Uwierzytelnij, aby dokończyć zakup";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Settings" = "Ustawienia";
+"Settings_Page_Title" = "Ustawienia";
+"Dark_Mode_Toggle" = "Ciemny motyw";
+"Theme" = "Motyw";
+"Tint_Color" = "Odcień Koloru";
+"Reset_Tint_Color" = "Zresetuj Odcień Koloru";
+"Auto_Complete_Queue" = "Automatycznie Ukończ Kolejkę";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Skrót automatycznego potwierdzania \"Zaaktualizuj wszystko\"";
+"Swipe_Actions" = "Gesty";
+"Show_Provisional" = "Pokaż Pakiety z Canister";
+"Show_Ignored_Updates" = "Pokaż Ignorowane Aktualizacje";
+"Developer_Mode" = "Tryb Dewelopera";
+"Pog_Developer" = "Jesteś teraz deweloperem!";
+"Developer_Mode_Explain" = "Tryb deweloperski wyłącza wymóg HTTPS przez API płatności.";
+"Auto_Refresh_Sources" = "Automatycznie odświeżaj źródła";
+"iCloud_Profile" = "Pokaż zdjęcie profilowe z iCloud w Polecanych";
+"Cache_Size" = "Rozmiar pamięci podręcznej";
+"Clear_Cache" = "Wyczyść pamięć podręczną sieci";
+"Clear_Cache_Message" = "Czy chcesz wyczyścić pamięć podręczną sieci? Zwolni to %@";
+"Language" = "Język";
+"Use_System_Language" = "Używaj języka systemowego";
+"Apply_Changes" = "Zastosuj zmiany";
+"Apply_Changes_Confirm" = "Zatwierdzanie zmian wymaga restartu Sileo";
+"Help_Translate" = "Pomóż tłumaczyć Sileo";
+"Always_Show_Install_Log" = "Zawsze pokazuj dziennik instalacji";
+"Auto_Show_Queue" = "Pokaż kolejkę przy uaktualnieniu wszystkich";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
+"Sileo_Light" = "Jasne Sileo";
+"Sileo_Dark" = "Ciemne Sileo";
+"Sileo_Adaptive" = "Automatyczny Motyw Sileo";
 "System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Ustawienia motywu";
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Zaloguj się do Sklepu Cydia";
+"Payment_Provider_Signed_In" = "Zalogowano";
+"Payment_Provider_Signed_In_With_Name" = "Zalogowano jako %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Wyloguj się";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Wyloguj się z %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Nie będziesz mógł pobrać zakupionych pakietów, dopóki nie zalogujesz się ponownie.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Show_Install_Details" = "Pokaż szczegóły";
+"Hide_Install_Details" = "Ukryj szczegóły";
+"Open_In_Filza" = "Otwórz w Filza";
+"Copy_Path" = "Kopiuj ścieżkę";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
+"After_Install_Relaunch" = "Uruchom ponownie Sileo";
+"After_Install_Respring" = "Uruchom ponownie SpringBoard";
+"After_Install_Reboot" = "Uruchom ponownie urządzenie";
+"After_Install_Relaunch_Later" = "Uruchom ponownie Sileo później";
 "After_Install_Respring_Later" = "Zrestartuj SpringBoard później";
 "After_Install_Reboot_Later" = "Uruchom urządzenie ponownie później";
 
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Wyświetl opis";
+
+"Copy_ID" = "Kopiuj ID";

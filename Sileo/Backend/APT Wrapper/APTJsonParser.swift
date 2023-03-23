@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Aarnav Tale on 6/28/21.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 import Evander
 
@@ -69,8 +69,13 @@ struct APTOperation: Decodable {
     let release: String?
 }
 
-struct APTBrokenPackage: Decodable {
-    struct ConflictingPackage: Decodable {
+struct APTBrokenPackage: Decodable, Hashable {
+    
+    static func == (lhs: APTBrokenPackage, rhs: APTBrokenPackage) -> Bool {
+        lhs.packageID == rhs.packageID && lhs.conflictingPackages == rhs.conflictingPackages
+    }
+    
+    struct ConflictingPackage: Decodable, Hashable {
 
         // swiftlint:disable nesting
         enum Conflict: String, Decodable {
@@ -89,10 +94,24 @@ struct APTBrokenPackage: Decodable {
 
         let package: String
         let conflict: Conflict
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(package)
+            hasher.combine(conflict)
+        }
+        
+        static func == (lhs: ConflictingPackage, rhs: ConflictingPackage) -> Bool {
+            lhs.package == rhs.package && lhs.conflict == rhs.conflict
+        }
     }
 
     let packageID: String
     let conflictingPackages: [ConflictingPackage]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(packageID)
+        hasher.combine(conflictingPackages)
+    }
 }
 
 struct ErrorParserWrapper: Decodable {
@@ -135,32 +154,40 @@ struct ErrorParserWrapper: Decodable {
 
 extension APTWrapper {
     // APT syntax: a- = remove a; b = install b
-    public class func operationList(installList: ContiguousArray<DownloadPackage>, removeList: ContiguousArray<DownloadPackage>) throws -> APTOutput {
+    public class func operationList(installList: Set<DownloadPackage>, removeList: Set<DownloadPackage>) throws -> APTOutput {
         // Error check stuff
-        guard let configPath = Bundle.main.path(forResource: "sileo-apt", ofType: "conf") else {
-            throw APTParserErrors.missingSileoConf
-        }
-
         guard !(installList.isEmpty && removeList.isEmpty) else {
             // What the hell are you passing, requesting an operationList without any packages?
             throw APTParserErrors.blankRequest
         }
-
-        let queryArguments = [
-            "-sqf", "--allow-remove-essential", "--allow-change-held-packages",
-            "--allow-downgrades", "-oquiet::NoUpdate=true", "-oApt::Get::HideAutoRemove=true",
-            "-oquiet::NoProgress=true", "-oquiet::NoStatistic=true", "-c", configPath,
-            "-oAcquire::AllowUnsizedPackages=true", "-oAPT::Get::Show-User-Simulation-Note=False",
-            "-oAPT::Format::for-sileo=true", "-oAPT::Format::JSON=true", "install", "--reinstall"
+        
+        var queryArguments = [
+            "-sqf",
+            "--allow-remove-essential",
+            "--allow-change-held-packages",
+            "--allow-downgrades",
+            "-oquiet::NoUpdate=true",
+            "-oApt::Get::HideAutoRemove=true",
+            "-oquiet::NoProgress=true",
+            "-oquiet::NoStatistic=true",
+            "-oDir::State::lists=sileolists/",
+            "-oAcquire::AllowUnsizedPackages=true",
+            "-oAPT::Get::Show-User-Simulation-Note=False",
+            "-oAPT::Format::for-sileo=true",
+            "-oAPT::Format::JSON=true",
+            "install", "--reinstall"
         ]
-
+        if CommandPath.requiresDumbWorkaround {
+            queryArguments.append("-oDir::Etc=/var/Liy/etc/apt")
+            queryArguments.append("-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/")
+        }
         var packageOperations: [String] = []
         for downloadPackage in installList {
             // The downloadPackage.package.package is the deb path on local installs
             // if it has a / that means it's the path which is a local install
             if downloadPackage.package.package.contains("/") {
                 // APT will take the raw package path for install
-                packageOperations.append(downloadPackage.package.package)
+                packageOperations.append(downloadPackage.package.debPath ?? downloadPackage.package.package)
             } else {
                 // Force the exact version of the package we downloaded from the repository
                 packageOperations.append("\(downloadPackage.package.packageID)=\(downloadPackage.package.version)")
@@ -175,8 +202,9 @@ extension APTWrapper {
         // APT spawn stuff
         var aptStdout = ""
         var aptError = ""
+        var status = 0
 
-        (_, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        (status, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
         
         return aptJsonOutput

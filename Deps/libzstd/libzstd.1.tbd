@@ -1,14 +1,14 @@
 --- !tapi-tbd
 tbd-version:     4
-targets:         [ arm64-ios ]
+targets:         [ arm64-ios, x86_64-macos, x86_64-maccatalyst, arm64-macos, arm64-maccatalyst, arm64e-macos, arm64e-maccatalyst ]
 uuids:
   - target:          arm64-ios
     value:           5CC62662-32C9-33E9-941F-E883E685FB07
 flags:           [ not_app_extension_safe ]
-install-name:    '/usr/lib/libzstd.1.dylib'
+install-name:    '@rpath/libzstd.1.dylib'
 current-version: 1.4.9
 exports:
-  - targets:         [ arm64-ios ]
+  - targets:         [ arm64-ios, x86_64-macos, x86_64-maccatalyst, arm64-macos, arm64-maccatalyst, arm64e-macos, arm64e-maccatalyst ]
     symbols:         [ _ZBUFF_compressContinue, _ZBUFF_compressEnd, _ZBUFF_compressFlush, 
                        _ZBUFF_compressInit, _ZBUFF_compressInitDictionary, _ZBUFF_compressInit_advanced, 
                        _ZBUFF_createCCtx, _ZBUFF_createCCtx_advanced, _ZBUFF_createDCtx, 

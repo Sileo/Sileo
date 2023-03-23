@@ -54,38 +54,20 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>DarkMagic</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>DarkMagic</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>Hazel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Hazel</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>Stardust</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Stardust</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>BlueLemonade</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Cheyote</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Cheyote</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -113,6 +95,42 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>CottonCandy</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Electra</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Electra</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>FlowerSileo</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>FlowerSileo</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -171,6 +189,15 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Odyssey</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Odyssey</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>Pride</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -185,6 +212,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Procursus</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -240,38 +276,20 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>DarkMagic</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>DarkMagic~ipad</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>Hazel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Hazel~ipad</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
-			<key>Stardust</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Stardust~ipad</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<true/>
-			</dict>
 			<key>BlueLemonade</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>BlueLemonade~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Cheyote</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Cheyote~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -299,6 +317,42 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>CottonCandy~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>DarkMagic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DarkMagic~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Electra</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Electra~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>FlowerSileo</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>FlowerSileo~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Hazel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hazel~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -357,6 +411,15 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Odyssey</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Odyssey~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 			<key>Pride</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -371,6 +434,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Procursus~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Stardust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Stardust~ipad</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<true/>
@@ -467,7 +539,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>SileoRootDaemon</key>
-		<string>identifier &quot;SileoRootDaemon&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Charlie While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier "SileoRootDaemon" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Amelia While (B2TU49334J)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>

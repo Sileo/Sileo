@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/elihwyma/Alderis.git",
         "state": {
           "branch": "master",
-          "revision": "1537ccab5671084cb7e1b661c1e41dbdd4976bbb",
+          "revision": "95030bfc6afc5d58a22aaa013e0f4c77317b57a1",
           "version": null
         }
       },
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/elihwyma/Evander",
         "state": {
           "branch": "main",
-          "revision": "c664e3ec96b3f05447c9e9033abb8a8bf6045c12",
+          "revision": "de358e813dc199a79b1599669905476f678df02d",
           "version": null
         }
       },
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {
           "branch": null,
-          "revision": "5f5ad81ac0d0a0f3e56e39e646e8423c617df523",
-          "version": "0.13.2"
+          "revision": "7a2e3cd27de56f6d396e84f63beefd0267b55ccb",
+          "version": "0.14.1"
         }
       },
       {

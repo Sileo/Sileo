@@ -3,10 +3,11 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/3/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
-import Foundation
+import Evander
+import UIKit
 
 class EditableTableView: UITableView {
     override var isEditing: Bool {
@@ -20,7 +21,9 @@ class EditableTableView: UITableView {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(true, animated: animated)
+        Thread.mainBlock {
+            super.setEditing(true, animated: animated)
+        }
     }
     
     override func accessibilityPerformEscape() -> Bool {

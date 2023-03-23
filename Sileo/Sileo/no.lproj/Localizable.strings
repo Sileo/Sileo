@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Fjern";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Vis beskrivelse";
+
+"Copy_ID" = "Copy ID";

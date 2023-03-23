@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/14/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -40,11 +40,18 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
     final private var ignoredUpdates: [Package] = []
     final private var searchCache: [String: [Package]] = [:]
     final private var provisionalPackages: [ProvisionalPackage] = []
+    final private var cachedInstalled: [Package]?
     
     private var displaySettings = false
     
-    private let mutexLock = DispatchSemaphore(value: 1)
-    private var updatingCount = 0
+    private let searchingQueue = DispatchQueue(label: "Sileo.PackageList.Searching", qos: .userInitiated)
+    private var updatingCount = 0 {
+        didSet {
+            if updatingCount < 0 {
+                updatingCount = 0
+            }
+        }
+    }
     private var canisterHeartbeat: Timer?
     
     @IBInspectable var localizableTitle: String = ""
@@ -137,10 +144,12 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
                                                name: PackageListManager.reloadNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadStates(_:)), name: PackageListManager.stateChange, object: nil)
         if self.showUpdates {
             NotificationCenter.default.addObserver(self, selector: #selector(self.reloadUpdates),
                                                    name: PackageListManager.prefsNotification,
                                                    object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reloadUpdates), name: PackageListManager.installChange, object: nil)
         }
         if loadProvisional {
             NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData),
@@ -260,6 +269,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
 
     @objc func reloadData() {
         self.searchCache = [:]
+        self.cachedInstalled = nil
         if showUpdates {
             self.reloadUpdates()
         } else {
@@ -269,6 +279,19 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
+    @objc func reloadStates(_ notification: Notification) {
+        let wasInstall = notification.object as? Bool ?? false
+        Thread.mainBlock { [weak self] in
+            guard let self = self else { return }
+            let packageCells = self.collectionView?.visibleCells.compactMap { $0 as? PackageCollectionViewCell } ?? []
+            if wasInstall {
+                packageCells.forEach { $0.stateBadgeView?.isHidden = true }
+            } else {
+                packageCells.forEach { $0.refreshState() }
+            }
+        }
+    }
+        
     @objc func reloadUpdates() {
         if showUpdates {
             DispatchQueue.global(qos: .userInteractive).async {
@@ -287,6 +310,8 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
                         self.navigationController?.tabBarItem.badgeValue = nil
                         UIApplication.shared.applicationIconBadgeNumber = 0
                     }
+                    self.cachedInstalled = nil
+                    self.searchCache = [:]
                     if let searchController = self.searchController {
                         self.updateSearchResults(for: searchController)
                     }
@@ -371,9 +396,16 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         }
     }
     
+    var isEnabled = true
     @objc func upgradeAllClicked(_ sender: Any?) {
+        guard isEnabled else { return }
+        isEnabled = false
         hapticResponse()
-        PackageListManager.shared.upgradeAll()
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            PackageListManager.shared.upgradeAll {
+                self?.isEnabled = true
+            }
+        }
     }
     
     @objc func sortPopup(sender: UIView?) {
@@ -690,28 +722,27 @@ extension PackageListViewController: UISearchBarDelegate {
        }
        
        let text = (searchController?.searchBar.text ?? "").lowercased()
-       if text.isEmpty {
-           let isEmpty = provisionalPackages.isEmpty
+       let oldEmpty = provisionalPackages.isEmpty
+       if text.count < 3 {
            self.provisionalPackages.removeAll()
-           return isEmpty ? .nothing : .delete
+           return oldEmpty ? .nothing : .delete
        }
        
-       let all = PackageListManager.shared.allPackagesArray
-       let oldEmpty = provisionalPackages.isEmpty
+       let all = packages
        self.provisionalPackages = CanisterResolver.shared.packages.filter {(package: ProvisionalPackage) -> Bool in
-           let search = (package.name?.lowercased().contains(text) ?? false) ||
-               (package.identifier?.lowercased().contains(text) ?? false) ||
-               (package.description?.lowercased().contains(text) ?? false) ||
-               (package.author?.lowercased().contains(text) ?? false)
-           if !search {
-               return false
+           let searchTerms = [package.name, package.identifier, package.description, package.author].compactMap { $0?.lowercased() }
+           var contains = false
+           for term in searchTerms {
+               if strstr(term, text) != nil {
+                   contains = true
+                   break
+               }
            }
+           if !contains { return false }
            
-           let newer = DpkgWrapper.isVersion(package.version ?? "", greaterThan: all.first(where: { $0.packageID == package.identifier })?.version ?? "")
-           
-           let localRepo = all.contains(where: { package.identifier == $0.packageID })
-           if localRepo {
-               return newer
+           if let existingPackage = all.first(where: { $0.packageID == package.identifier }) {
+               guard let version = package.version else { return false }
+               return DpkgWrapper.isVersion(version, greaterThan: existingPackage.version)
            }
            return true
        }
@@ -728,8 +759,14 @@ extension PackageListViewController: UISearchBarDelegate {
 }
 
 extension PackageListViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.updateSearchResults(for: searchController)
+            }
+            return
+        }
         func handleResponse(_ response: UpdateType) {
             switch response {
             case .nothing: return
@@ -743,7 +780,6 @@ extension PackageListViewController: UISearchResultsUpdating {
         self.canisterHeartbeat?.invalidate()
     
         if searchBar.text?.isEmpty ?? true {
-            self.searchCache = [:]
             if showSearchField {
                 packages = []
                 provisionalPackages = []
@@ -765,14 +801,17 @@ extension PackageListViewController: UISearchResultsUpdating {
             collectionView?.reloadData()
             return
         }
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.mutexLock.wait()
+        searchingQueue.async {
             self.updatingCount += 1
             
             let packageManager = PackageListManager.shared
             var packages: [Package] = []
+
+            self.showUpdates = query.isEmpty
             
-            if self.packagesLoadIdentifier == "--contextInstalled" {
+            if let cachedPackages = self.searchCache[query.lowercased()] {
+                packages = cachedPackages
+            } else if self.packagesLoadIdentifier == "--contextInstalled" {
                 guard let context = self.repoContext,
                       let url = context.url else { return }
                 let betterContext = RepoManager.shared.repo(with: url) ?? context
@@ -782,45 +821,23 @@ extension PackageListViewController: UISearchResultsUpdating {
                                                       repoContext: nil,
                                                       lookupTable: self.searchCache,
                                                       packagePrepend: betterContext.installed ?? [])
-            } else if let cachedPackages = self.searchCache[query] {
-                packages = cachedPackages
+                self.searchCache[query.lowercased()] = packages
             } else {
                 packages = packageManager.packageList(identifier: self.packagesLoadIdentifier,
                                                       search: query,
-                                                      sortPackages: self.packagesLoadIdentifier == "--installed" ? false : true,
+                                                      sortPackages: self.packagesLoadIdentifier != "--installed",
                                                       repoContext: self.repoContext,
                                                       lookupTable: self.searchCache)
+                self.searchCache[query.lowercased()] = packages
             }
             
             if self.packagesLoadIdentifier == "--installed" {
-                var allPackages: [String: Package] = [:]
-                packages.forEach { allPackages[$0.packageID] = $0 }
-                let foundPackages = packageManager.packages(identifiers: Array(allPackages.keys), sorted: false)
-                for package in foundPackages {
-                    guard let existing = allPackages[package.packageID] else { continue }
-                    if existing.version == package.version {
-                        allPackages[package.packageID] = package
-                    } else {
-                        if let correct = package.getVersion(existing.version) {
-                            allPackages[package.packageID] = correct
-                        }
-                    }
-                }
-                packages = Array(allPackages.values)
                 switch SortMode() {
                 case .installdate:
                     packages = packages.sorted(by: { package1, package2 -> Bool in
-                        let packageURL1 = CommandPath.dpkgDir.appendingPathComponent("info/\(package1.package).list")
-                        let packageURL2 = CommandPath.dpkgDir.appendingPathComponent("info/\(package2.package).list")
-                        let attributes1 = try? FileManager.default.attributesOfItem(atPath: packageURL1.path)
-                        let attributes2 = try? FileManager.default.attributesOfItem(atPath: packageURL2.path)
-                        
-                        if let date1 = attributes1?[FileAttributeKey.modificationDate] as? Date,
-                            let date2 = attributes2?[FileAttributeKey.modificationDate] as? Date {
-                            return date2.compare(date1) == .orderedAscending
-                        }
-                        
-                        return true
+                        guard let date1 = package1.installDate,
+                              let date2 = package2.installDate else { return true }
+                        return date2.compare(date1) == .orderedAscending
                     })
                 case .size:
                     packages = packages.sorted { $0.installedSize ?? 0 > $1.installedSize ?? 0 }
@@ -829,23 +846,19 @@ extension PackageListViewController: UISearchResultsUpdating {
                 }
             }
             
-            self.mutexLock.signal()
-            self.mutexLock.wait()
             self.updatingCount -= 1
-            self.mutexLock.signal()
-            
+            if self.updatingCount != 0 {
+                return
+            }
             DispatchQueue.main.async {
+                self.packages = packages
                 self.updateProvisional()
-                self.mutexLock.wait()
                 
                 if self.updatingCount == 0 {
                     UIView.performWithoutAnimation {
-                        self.packages = packages
                         self.collectionView?.reloadData()
                     }
                 }
-                
-                self.mutexLock.signal()
             }
         }
     }

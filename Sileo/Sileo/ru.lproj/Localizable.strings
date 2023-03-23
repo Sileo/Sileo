@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
 "Refresh" = "Обновить";
-"Remove" = "Удалить";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "Посмотреть описание";
+
+"Copy_ID" = "Copy ID";

@@ -96,7 +96,7 @@
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "削除";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "詳細を見る";
+
+"Copy_ID" = "Copy ID";

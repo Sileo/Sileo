@@ -9,22 +9,22 @@
 */
 // Common Prompts
 
-"About" = "About";
-"Close" = "Close";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"About" = "Oor";
+"Close" = "Sluit";
+"Double tap to open." = "Dubbel tik om oop te maak.";
+"Untitled_Repo" = "Ongetitelde Repo";
 "OK" = "OK";
-"Done" = "Done";
-"Done_Editing" = "Done";
-"More_Info" = "More Info";
-"Loading" = "Loading…";
-"Share" = "Share";
-"Delete" = "Delete";
-"Cancel" = "Cancel";
+"Done" = "Klaar";
+"Done_Editing" = "Klaar";
+"More_Info" = "Meer Inligting";
+"Loading" = "Laai…";
+"Share" = "Deel";
+"Delete" = "Skraap";
+"Cancel" = "Kanselleer";
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
+"Sileo_Team" = "Sileo Span";
+"Warning" = "Waarskuwing";
 "Edit" = "Edit";
 
 // Popup messages
@@ -34,12 +34,12 @@
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "Installing";
-"Downloading_Package_Status" = "Downloading";
+"Downloading_Package_Status" = "Aflaai";
 "Queued_Package_Status" = "Queued";
-"Ready_Status" = "Ready";
+"Ready_Status" = "Gereed";
 "Removal_Queued_Package_Status" = "Queued for Removal";
 "Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
 "Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
 
@@ -47,13 +47,13 @@
 "Queue_Clear_Button" = "Clear Queue";
 "Queue_Cancel_Downloads" = "Cancel Downloads";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
+"Package_Upgrade_Action" = "Gradeer Op";
+"Package_Reinstall_Action" = "Herinstalleer";
 "Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
+"Package_Modify_Action" = "Verander";
+"Package_Get_Action" = "Kry";
 "Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
+"Package_Cancel_Action" = "Kanselleer";
 "Package_Paid" = "Paid";
 
 "Package_Share_Action" = "Share Package…";
@@ -213,3 +213,5 @@
 
 // Depcitions
 "View_Depiction" = "View Depiction";
+
+"Copy_ID" = "Copy ID";

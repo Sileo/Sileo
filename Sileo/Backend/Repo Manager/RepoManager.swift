@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Kabir Oberai on 11/07/19.
-//  Copyright © 2019 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
@@ -69,40 +69,6 @@ final class RepoManager {
 
     init() {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
-        let containerURL = FileManager.default.documentDirectory.deletingLastPathComponent()
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: containerURL.path) {
-            for path in contents {
-                if path.starts(with: "(A Document Being Saved By Sileo") {
-                    let fullURL = containerURL.appendingPathComponent(path)
-                    try? FileManager.default.removeItem(at: fullURL)
-                }
-            }
-        }
-        #else
-        spawnAsRoot(args: [CommandPath.rm, "-rf", "/var/tmp/\\(A\\ Document\\ Being\\ Saved\\ By\\ Sileo*"])
-        #endif
-
-        #if targetEnvironment(simulator) || TARGET_SANDBOX
-        repoListLock.wait()
-        let jailbreakRepo = Repo()
-        jailbreakRepo.rawURL = "https://apt.procurs.us/"
-        jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
-        jailbreakRepo.components = ["main"]
-        jailbreakRepo.rawEntry = """
-        Types: deb
-        URIs: https://apt.procurs.us/
-        Suites: iphoneos-arm64/\(UIDevice.current.cfMajorVersion)
-        Components: main
-        """
-        jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
-        repoList.append(jailbreakRepo)
-        repoListLock.signal()
-
-        if sourcesURL.exists {
-            parseSourcesFile(at: sourcesURL)
-        } else {
-            writeListToFile()
-        }
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
@@ -114,6 +80,13 @@ final class RepoManager {
             }
         }
         #endif
+        if !UserDefaults.standard.bool(forKey: "Sileo.DefaultRepo") {
+            UserDefaults.standard.set(true, forKey: "Sileo.DefaultRepo")
+            addRepos(with: [
+                URL(string: "https://havoc.app")!,
+                URL(string: "https://repo.chariz.com")!
+            ])
+        }
     }
 
     @discardableResult func addRepos(with urls: [URL]) -> [Repo] {
@@ -191,6 +164,12 @@ final class RepoManager {
         #if targetEnvironment(macCatalyst)
         return true
         #else
+        if CommandPath.requiresDumbWorkaround {
+            if url.host?.localizedCaseInsensitiveContains("apt.procurs.us") ?? false {
+                DownloadManager.showXinaWarning()
+                return false
+            }
+        }
         if CommandPath.isMobileProcursus {
             guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
@@ -247,6 +226,7 @@ final class RepoManager {
         for repo in repos {
             DatabaseManager.shared.deleteRepo(repo: repo)
             PaymentManager.shared.removeProviders(for: repo)
+            DependencyResolverAccelerator.shared.removeRepo(repo: repo)
         }
         NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
     }
@@ -304,6 +284,10 @@ final class RepoManager {
             else {
                 continue
             }
+            
+            if CommandPath.requiresDumbWorkaround && repoURL.localizedCaseInsensitiveContains("apt.procurs.us") {
+                continue
+            }
 
             let repos = suites.map { (suite: String) -> Repo in
                 let repo = Repo()
@@ -354,7 +338,8 @@ final class RepoManager {
     }
 
     func cacheFile(named name: String, for repo: Repo) -> URL {
-        let arch = DpkgWrapper.getArchitectures.first ?? ""
+        let arch = DpkgWrapper.architecture?
+            .primary.rawValue ?? ""
         let prefix = cachePrefix(for: repo)
         if !repo.isFlat && name == "Packages" {
             return prefix
@@ -535,7 +520,31 @@ final class RepoManager {
             NotificationCenter.default.post(name: RepoManager.progressNotification, object: repo)
         }
     }
+    
+    enum LogType: CustomStringConvertible {
+        case error
+        case warning
 
+        var description: String {
+            switch self {
+            case .error:
+                return "Error"
+            case .warning:
+                return "Warning"
+            }
+        }
+
+        var color: UIColor {
+            switch self {
+            case .error:
+                return UIColor(red: 219/255, green: 44/255, blue: 56/255, alpha: 1)
+            case .warning:
+                return UIColor(red: 1, green: 231/255, blue: 146/255, alpha: 1)
+            }
+        }
+    }
+    
+  
     // swiftlint:disable function_body_length
     private func _update (
         force: Bool,
@@ -549,8 +558,21 @@ final class RepoManager {
         if !exists ||  !directory.boolValue {
             fixLists()
         }
+        
+        let errorOutput = NSMutableAttributedString()
+        func log(_ message: String, type: LogType) {
+            errorOutput.append(NSAttributedString(
+                string: "\(type): \(message)\n",
+                attributes: [.foregroundColor: type.color])
+            )
+        }
+
+        
         var reposUpdated = 0
-        let dpkgArchitectures = DpkgWrapper.getArchitectures
+        guard let dpkgArchitectures = DpkgWrapper.architecture else {
+            log("Failed to get DPKG Archiectures", type: .error)
+            return completion(true, errorOutput)
+        }
         let updateGroup = DispatchGroup()
 
         var backgroundIdentifier: UIBackgroundTaskIdentifier?
@@ -560,7 +582,6 @@ final class RepoManager {
         }
 
         var errorsFound = false
-        let errorOutput = NSMutableAttributedString()
         var repos = repos
         let lock = NSLock()
 
@@ -588,35 +609,6 @@ final class RepoManager {
                     }
 
                     let semaphore = DispatchSemaphore(value: 0)
-
-                    enum LogType: CustomStringConvertible {
-                        case error
-                        case warning
-
-                        var description: String {
-                            switch self {
-                            case .error:
-                                return "Error"
-                            case .warning:
-                                return "Warning"
-                            }
-                        }
-
-                        var color: UIColor {
-                            switch self {
-                            case .error:
-                                return UIColor(red: 219/255, green: 44/255, blue: 56/255, alpha: 1)
-                            case .warning:
-                                return UIColor(red: 1, green: 231/255, blue: 146/255, alpha: 1)
-                            }
-                        }
-                    }
-                    func log(_ message: String, type: LogType) {
-                        errorOutput.append(NSAttributedString(
-                            string: "\(type): \(message)\n",
-                            attributes: [.foregroundColor: type.color])
-                        )
-                    }
 
                     var preferredArch: String?
                     var optReleaseFile: (url: URL, dict: [String: String])?
@@ -650,9 +642,23 @@ final class RepoManager {
                                 return
                             }
 
-                            let repoArchs = releaseDict["architectures"]?.components(separatedBy: " ") ?? releaseDict["architecture"].map { [$0] }
-                            preferredArch = repoArchs.flatMap { dpkgArchitectures.first(where: $0.contains) }
-
+                            guard let repoArchs = (releaseDict["architectures"]?.components(separatedBy: " ") ?? releaseDict["architecture"].map { [$0] }) else {
+                                log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
+                                errorsFound = true
+                                return
+                            }
+                            var preferredArch: String?
+                            if repoArchs.contains(dpkgArchitectures.primary.rawValue) {
+                                preferredArch = dpkgArchitectures.primary.rawValue
+                            } else {
+                                for arch in repoArchs {
+                                    if dpkgArchitectures.foreign.contains(where: { $0.rawValue == arch } ) {
+                                        preferredArch = arch
+                                        break
+                                    }
+                                }
+                            }
+                            
                             guard preferredArch != nil else {
                                 log("Didn't find architectures \(dpkgArchitectures) in \(releaseURL)", type: .error)
                                 errorsFound = true
@@ -701,19 +707,10 @@ final class RepoManager {
                     }
 
                     var succeededExtension = ""
-                    var extensions = ["bz2", "gz", ""]
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-                    if ZSTD.available {
-                        extensions.insert("zst", at: 0)
-                    }
-                    if XZ.available {
-                        var buffer = 0
-                        if extensions.count == 3 {
-                            buffer = 1
-                        }
-                        extensions.insert("xz", at: 1 - buffer)
-                        extensions.insert("lzma", at: 2 - buffer)
-                    }
+                    let extensions = ["zst", "xz", "lzma", "bz2", "gz", ""]
+                    #else
+                    let extensions = ["bz2", "gz", ""]
                     #endif
                     var breakOff = false
                     packages.map { url in self.fetch(
@@ -1082,19 +1079,24 @@ final class RepoManager {
             files.forEach(deleteFileAsRoot)
             #endif
             self.postProgressNotification(nil)
-            DatabaseManager.shared.saveQueue()
-
+            
+            if reposUpdated > 0 {
+                DownloadManager.aptQueue.async {
+                    DatabaseManager.shared.saveQueue()
+                    DownloadManager.shared.repoRefresh()
+                    DependencyResolverAccelerator.shared.preflightInstalled()
+                    CanisterResolver.shared.queueCache()
+                }
+            }
+            
+            // This method can be safely called on a non-main thread.
+            backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
+            
             DispatchQueue.main.async {
                 if reposUpdated > 0 {
-                    DownloadManager.aptQueue.async {
-                        DownloadManager.shared.repoRefresh()
-                        DependencyResolverAccelerator.shared.preflightInstalled()
-                    }
                     NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                     NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
                 }
-                backgroundIdentifier.map(UIApplication.shared.endBackgroundTask)
-                NotificationCenter.default.post(name: CanisterResolver.RepoRefresh, object: nil)
                 completion(errorsFound, errorOutput)
             }
         }
@@ -1185,23 +1187,21 @@ final class RepoManager {
 
     public func parsePlainTextFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
-            print("couldn't get rawSources. we are out of here!")
+            NSLog("[Sileo] couldn't get rawSources. we are out of here!")
             return
         }
         let urlsString = rawSources.components(separatedBy: "\n").filter { URL(string: $0) != nil }
-        print("urls to add: \(urlsString)")
-        
+
         parseRepoEntry(rawSources, at: url, withTypes: ["deb"], uris: urlsString, suites: ["./"], components: [])
     }
     
     public func parseSourcesFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
-            print("\(#function): couldn't get rawSources. we are out of here!")
+            NSLog("[Sileo] \(#function): couldn't get rawSources. we are out of here!")
             return
         }
         let repoEntries = rawSources.components(separatedBy: "\n\n")
-
-        for repoEntry in repoEntries {
+        for repoEntry in repoEntries where !repoEntry.isEmpty {
             guard let repoData = try? ControlFileParser.dictionary(controlFile: repoEntry, isReleaseFile: false).0,
                   let rawTypes = repoData["types"],
                   let rawUris = repoData["uris"],
@@ -1250,12 +1250,12 @@ final class RepoManager {
 
             var sileoList = ""
 
-            if FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/procursus.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/chimera.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/electra.list") {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sources.list.d/sileo.sources"
+            if FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/procursus.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/chimera.sources") ||
+               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/electra.list") {
+                sileoList = "\(CommandPath.prefix)/etc/apt/sources.list.d/sileo.sources"
             } else {
-                sileoList = "\(CommandPath.lazyPrefix)/etc/apt/sileo.list.d/sileo.sources"
+                sileoList = "\(CommandPath.prefix)/etc/apt/sileo.list.d/sileo.sources"
             }
             
             let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

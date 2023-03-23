@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+swift ./Scripts/CommitLint.swift "$(cat "$1")"

@@ -3,7 +3,7 @@
 //  Sileo
 //
 //  Created by Amy on 01/06/2021.
-//  Copyright © 2021 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 #if !TARGET_SANDBOX && !targetEnvironment(simulator)
@@ -17,14 +17,7 @@ public enum XZType {
 
 // swiftlint:disable type_name
 final class XZ {
-    
-    static var available: Bool = {
-        if let contents = try? URL(fileURLWithPath: "/usr/local/lib/").contents() {
-            return contents.contains(where: { $0.absoluteString.contains("liblzma") })
-        }
-        return false
-    }()
-    
+
     class func decompress(path: URL, type: XZType) -> (String?, URL?) {
         var strm = lzma_stream()
         defer {

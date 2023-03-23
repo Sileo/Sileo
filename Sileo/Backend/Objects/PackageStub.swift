@@ -3,16 +3,18 @@
 //  Sileo
 //
 //  Created by CoolStar on 8/17/20.
-//  Copyright © 2020 Sileo Team. All rights reserved.
+//  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
 import Foundation
 import SQLite
 
-class PackageStub {
+struct PackageStub: Codable {
+    
     public var package: String
     public var version: String
     public var repoURL: String
+    public var guid: String
     
     public var firstSeenDate = Date()
     public var userReadDate: Int64?
@@ -59,15 +61,14 @@ class PackageStub {
         self.package = package.package
         self.version = package.version
         self.repoURL = package.sourceFileURL?.lastPathComponent ?? "status"
+        self.guid = "\(self.package)-\(self.version)"
     }
     
     public init(packageName: String, version: String, source: String) {
         self.package = packageName
         self.version = version
         self.repoURL = source
+        self.guid = "\(self.package)-\(self.version)"
     }
-    
-    public var guid: String {
-        "\(package)-\(version)"
-    }
+
 }
