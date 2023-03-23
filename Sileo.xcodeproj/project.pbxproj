@@ -254,7 +254,6 @@
 		E12818CD26BBFAA500D2553B /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5989A214657A700677FCA /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E12818CE26BBFAA500D2553B /* XZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C5EBC266687C80080BFCE /* XZ.swift */; };
 		E12818CF26BBFAA500D2553B /* NewsArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBD0034240C31B3008E11B2 /* NewsArticleCollectionViewCell.swift */; };
-		E12818D026BBFAA500D2553B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFB22318EA6800D3AF3B /* main.swift */; };
 		E12818D126BBFAA500D2553B /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
 		E12818D226BBFAA500D2553B /* RootWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170DD7C22CFE79800196FDA /* RootWrapper.swift */; };
 		E12818D826BBFAA500D2553B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E14C5ED026680E030080BFCE /* libz.tbd */; };
@@ -777,8 +776,6 @@
 		F18383F520FBFFB700450EED /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F18383F420FBFFB700450EED /* libiconv.tbd */; };
 		F183CFB02318D1FF00D3AF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */; };
 		F183CFB12318D1FF00D3AF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */; };
-		F183CFB32318EA6800D3AF3B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFB22318EA6800D3AF3B /* main.swift */; };
-		F183CFB42318EA6800D3AF3B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFB22318EA6800D3AF3B /* main.swift */; };
 		F183CFC7231A563500D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F183CFCC231C246600D3AF3B /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFC6231A563500D3AF3B /* PackageViewController.swift */; };
 		F18B58482581A7E90064CD71 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
@@ -1447,7 +1444,6 @@
 		F178CD8821323E3800F927FA /* DownloadsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadsTableViewController.xib; sourceTree = "<group>"; };
 		F18383F420FBFFB700450EED /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F183CFB22318EA6800D3AF3B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F183CFC6231A563500D3AF3B /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		F18B58472581A7E90064CD71 /* CSActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSActionItem.swift; sourceTree = "<group>"; };
 		F1974938213695660065E630 /* PackageListHeaderBlank.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListHeaderBlank.xib; sourceTree = "<group>"; };
@@ -2500,7 +2496,6 @@
 		F149E0AF20B6040B005CA30B /* Sileo */ = {
 			isa = PBXGroup;
 			children = (
-				F183CFB22318EA6800D3AF3B /* main.swift */,
 				F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */,
 				F1B99EE720DB671B00374C27 /* Backend */,
 				F1B3960420E5AFCE00AF3D04 /* Contrib */,
@@ -3966,7 +3961,6 @@
 				E12818CD26BBFAA500D2553B /* ZKSwizzle.m in Sources */,
 				E12818CE26BBFAA500D2553B /* XZ.swift in Sources */,
 				E12818CF26BBFAA500D2553B /* NewsArticleCollectionViewCell.swift in Sources */,
-				E12818D026BBFAA500D2553B /* main.swift in Sources */,
 				E12818D126BBFAA500D2553B /* PaymentAuthenticator.swift in Sources */,
 				E12818D226BBFAA500D2553B /* RootWrapper.swift in Sources */,
 			);
@@ -4165,7 +4159,6 @@
 				37F307DD281F6CF700A361A3 /* ThemeCreatorViewController.swift in Sources */,
 				F139D0DC22EA9209007F5C0D /* ZKSwizzle.m in Sources */,
 				FBBD003B240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
-				F183CFB42318EA6800D3AF3B /* main.swift in Sources */,
 				F139D11B22EA9209007F5C0D /* RootWrapper.swift in Sources */,
 				E163BE9E28896E46004A20CC /* dpkgversion.c in Sources */,
 			);
@@ -4346,7 +4339,6 @@
 				E14C5EBD266687C80080BFCE /* XZ.swift in Sources */,
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */,
-				F183CFB32318EA6800D3AF3B /* main.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
 				F170DD7D22CFE79800196FDA /* RootWrapper.swift in Sources */,
 			);

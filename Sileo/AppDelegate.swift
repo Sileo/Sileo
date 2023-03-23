@@ -13,7 +13,8 @@ import Evander
 #if canImport(BackgroundTasks)
 import BackgroundTasks
 #endif
-	
+
+@main
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     
