@@ -20,13 +20,13 @@ final class XZ {
 
     class func decompress(path: URL, type: XZType) -> Result<URL, XZError> {
         guard let infile = fopen(path.path, "rb") else {
-            return (XZError.fileLoad.rawValue, nil)
+            return .failure(.fileLoad)
         }
         defer {
             fclose(infile)
         }
         let destinationURL = path.appendingPathExtension("clean")
-        guard let fout = fopen(destinationURL.path, "wb") else { return (XZError.fileLoad.rawValue, nil) }
+        guard let fout = fopen(destinationURL.path, "wb") else { return .failure(.fileLoad) }
         defer {
             fclose(fout)
         }
@@ -58,6 +58,7 @@ enum XZError: String, Error {
         case 5: self = .fileWrite
         case 8: self = .formatError
         case 9: self = .corrupt
+        default: self = .unknown
         }
     }
 }
