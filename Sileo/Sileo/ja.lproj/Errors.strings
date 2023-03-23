@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "購入処理を開始できません。";
 "Purchase_Complete_Fail.Title" = "購入を完了できませんでした。";
 "Purchase_Auth_Complete_Fail.Title" = "認証に失敗しました。";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

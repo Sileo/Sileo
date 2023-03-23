@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Kunde Ej Inleda Köp";
 "Purchase_Complete_Fail.Title" = "Kunde Ej Genomföra Köp";
 "Purchase_Auth_Complete_Fail.Title" = "Kunde Ej Genomföra Autentisering";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

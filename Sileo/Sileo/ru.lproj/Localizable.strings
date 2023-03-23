@@ -93,10 +93,12 @@
 "Sources_Page" = "Источники";
 "Packages_Page" = "Пакеты";
 "Search_Page" = "Поиск";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
 "Refresh" = "Обновить";
-"Remove" = "Remove";
+"Remove" = "Удалить";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Цвет оттенка";
 "Reset_Tint_Color" = "Сбросить цвет оттенка";
 "Auto_Complete_Queue" = "Автоматически завершать очередь";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Автоматическое подтверждение обновления всех ярлыков";
 "Swipe_Actions" = "Смахнуть";
 "Show_Provisional" = "Показать предварительный пакет";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Адаптивный Sileo";
 "System" = "Система";
 "Theme_Settings" = "Настройки темы";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Войти в Cydia Store";
 "Payment_Provider_Signed_In" = "Выполнен вход";

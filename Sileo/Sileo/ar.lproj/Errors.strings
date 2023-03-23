@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "تعذر إكمال الشراء";
 "Purchase_Complete_Fail.Title" = "تعذر إكمال الشراء";
 "Purchase_Auth_Complete_Fail.Title" = "تعذر إكمال المصادقة";
+
+"Couldnt_Import_Themes" = "\"تعذر استيراد (الثيم)\"";

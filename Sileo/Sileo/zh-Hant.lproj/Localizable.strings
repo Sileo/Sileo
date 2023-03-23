@@ -93,10 +93,12 @@
 "Sources_Page" = "來源";
 "Packages_Page" = "套件";
 "Search_Page" = "搜尋";
+"Search_History" = "最近搜尋";
+"Clear_Search_History" = "清除";
 "Refreshing_Sources_Page" = "正在重新整理來源";
 "Package_Installed_Files_Page" = "已安裝檔案";
 "Refresh" = "重新整理";
-"Remove" = "Remove";
+"Remove" = "移除";
 
 "All_Packages.Title" = "所有套件";
 "All_Packages.Cell_Subtitle" = "查看已新增來源的所有套件";
@@ -150,6 +152,7 @@
 "Tint_Color" = "自定義顏色";
 "Reset_Tint_Color" = "重置顏色";
 "Auto_Complete_Queue" = "自動完成佇列";
+"Show_Search_History" = "顯示搜尋記錄";
 "Auto_Confirm_Upgrade_All_Shortcut" = "自動確認更新所有捷徑";
 "Swipe_Actions" = "滑動動作";
 "Show_Provisional" = "顯示來自 Canister 的套件";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo 自適應";
 "System" = "跟隨系統";
 "Theme_Settings" = "主題設定";
+
+"Manage_Themes" = "管理主題";
+"Create_Theme" = "創建主題";
+"Import_Themes" = "匯入主題";
+"Theme_Name" = "主題名稱";
+"Export_Themes" = "匯出主題";
+
+"Background_Color" = "背景顏色";
+"Secondary_Background_Color" = "次要背景顏色";
+"Label_Color" = "標籤顏色";
+"Highlight_Color" = "突顯顏色";
+"Seperator_Color" = "分隔符顏色";
+"Header_Color" = "標題顏色";
+"Banner_Color" = "橫幅顏色";
+
 
 "Cydia_Sign_In" = "登入 Cydia Store";
 "Payment_Provider_Signed_In" = "已登入";

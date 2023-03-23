@@ -93,10 +93,12 @@
 "Sources_Page" = "リポジトリ";
 "Packages_Page" = "パッケージ";
 "Search_Page" = "検索";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "Remove";
+"Remove" = "削除";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -150,6 +152,7 @@
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
 "Auto_Complete_Queue" = "オートコンプリートキュー";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "すべてのアップデートを自動的に実行する3D touch ショートカット";
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canisterからのパッケージを表示";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "自動";
 "System" = "システム";
 "Theme_Settings" = "テーマの設定";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Cydia Store へサインイン";
 "Payment_Provider_Signed_In" = "サインイン";

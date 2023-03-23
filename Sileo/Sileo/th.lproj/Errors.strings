@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "ไม่สามารถเริ่มการซื้อได้";
 "Purchase_Complete_Fail.Title" = "ไม่สามารถทำการซื้อให้เสร็จสมบูรณ์ได้";
 "Purchase_Auth_Complete_Fail.Title" = "ไม่สามารถตรวจสอบสิทธิ์ให้เสร็จสมบูรณ์ได้";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

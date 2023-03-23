@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Satın Alma İşlemi Başlatılamadı";
 "Purchase_Complete_Fail.Title" = "Satın Alma İşlemi Tamamlanamadı";
 "Purchase_Auth_Complete_Fail.Title" = "Kimlik Doğrulama Tamamlanamadı";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

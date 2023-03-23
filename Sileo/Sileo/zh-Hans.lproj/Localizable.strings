@@ -93,10 +93,12 @@
 "Sources_Page" = "软件源";
 "Packages_Page" = "软件包";
 "Search_Page" = "搜索";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Package_Installed_Files_Page" = "已安装的文件";
 "Refresh" = "刷新";
-"Remove" = "Remove";
+"Remove" = "移除";
 
 "All_Packages.Title" = "所有软件包";
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
@@ -150,6 +152,7 @@
 "Tint_Color" = "自定义颜色";
 "Reset_Tint_Color" = "重置颜色";
 "Auto_Complete_Queue" = "自动完成队列";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Swipe_Actions" = "滑动动作";
 "Show_Provisional" = "搜索增强 （Canister）";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo自适配";
 "System" = "跟随系统";
 "Theme_Settings" = "主题设置";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "登陆 Cydia Store";
 "Payment_Provider_Signed_In" = "登陆";

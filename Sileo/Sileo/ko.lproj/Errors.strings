@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "구매를 시작할 수 없습니다";
 "Purchase_Complete_Fail.Title" = "구매를 완료할 수 없습니다";
 "Purchase_Auth_Complete_Fail.Title" = "인증을 완료할 수 없습니다";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

@@ -94,10 +94,12 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Sources_Page" = "Quellen";
 "Packages_Page" = "Pakete";
 "Search_Page" = "Suchen";
+"Search_History" = "Kürzlich gesucht";
+"Clear_Search_History" = "Löschen";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
-"Remove" = "Remove";
+"Remove" = "Entfernen";
 
 "All_Packages.Title" = "Alle Pakete";
 "All_Packages.Cell_Subtitle" = "Zeige alle Pakete meiner Quellen";
@@ -152,6 +154,7 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "Tint_Color" = "Hauptfarbe";
 "Reset_Tint_Color" = "Hauptfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
+"Show_Search_History" = "Suchverlauf anzeigen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches Bestätigen beim Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
@@ -177,6 +180,21 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "Sileo_Adaptive" = "Anpassungsfähig";
 "System" = "System";
 "Theme_Settings" = "Design Einstellungen";
+
+"Manage_Themes" = "Themes verwalten";
+"Create_Theme" = "Theme erstellen";
+"Import_Themes" = "Themes importieren";
+"Theme_Name" = "Theme-Name";
+"Export_Themes" = "Themes exportieren";
+
+"Background_Color" = "Hintergrundfarbe";
+"Secondary_Background_Color" = "Sekundäre Hintergrundfarbe";
+"Label_Color" = "Schriftfarbe";
+"Highlight_Color" = "Highlight-Farbe";
+"Seperator_Color" = "Trennzeichen-Farbe";
+"Header_Color" = "Kopfzeilen-Farbe";
+"Banner_Color" = "Banner-Farbe";
+
 
 "Cydia_Sign_In" = "In den Cydia Store einloggen";
 "Payment_Provider_Signed_In" = "Eingeloggt";
@@ -216,4 +234,4 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 // Depcitions
 "View_Depiction" = "Paketbeschreibung anzeigen";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "ID kopieren";

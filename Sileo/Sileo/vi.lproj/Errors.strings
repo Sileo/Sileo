@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Không thể bắt đầu mua hàng";
 "Purchase_Complete_Fail.Title" = "Không thể hoàn tất mua hàng";
 "Purchase_Auth_Complete_Fail.Title" = "Không thể hoàn thành xác thực";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

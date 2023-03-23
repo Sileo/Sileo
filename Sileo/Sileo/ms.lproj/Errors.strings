@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Tidak Dapat Memulakan Pembelian";
 "Purchase_Complete_Fail.Title" = "Tidak Dapat Menyiapkan Pembelian";
 "Purchase_Auth_Complete_Fail.Title" = "Tidak Dapat Menyiapkan Pengesahan";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

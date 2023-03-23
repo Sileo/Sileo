@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Kunne ikke starte kjøp";
 "Purchase_Complete_Fail.Title" = "Kunne ikke fullføre kjøpet";
 "Purchase_Auth_Complete_Fail.Title" = "Kunne ikke fullføre autentiseringen";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
