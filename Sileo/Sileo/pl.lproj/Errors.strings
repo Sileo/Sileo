@@ -11,7 +11,7 @@
 "Unknown" = "Wystąpił nieznany błąd.";
 "Error_Indicator" = "Błąd: %@";
 
-"No_Package.Title" = "Nie można znaleźć pakietu %@ w obecnie zainstalowanych repozytoriach.";
+"No_Package.Title" = "Nie udało się znaleść pakietu %@ w obecnie zainstalowanych repozytoriach.";
 "No_Package.Body" = "Jeżeli ten pakiet jest nowy, poczekaj aż Sileo zakończy aktualizację, a wtedy spróbuj ponownie. Więcej informacji dostępnie online.";
 
 "Invalid_URL.Title" = "Niepoprawny adres URL";
@@ -31,8 +31,8 @@
 "Installation_Error.Title" = "Wystąpił błąd przy instalacji";
 "Installation_Error.Body" = "Sileo nie może uzyskać uprawnień roota. Zainstaluj Sileo ponownie za pomocą SSH.";
 
-"FixingDpkg.Title" = "Dkpg zostało przedwcześnie zakończone";
-"FixingDpkg.Body" = "Dkpg zostało przedwcześnie zakończone. Poczekaj, a my spróbujemy to naprawić.";
+"FixingDpkg.Title" = "Przerwano działanie Dpkg";
+"FixingDpkg.Body" = "Przerwano działanie Dpkg. Poczekaj, próbujemy to naprawić.";
 
 "Invalid_Data" = "Nieprawidłowe dane";
 "Try_Later" = "Spróbuj ponownie później.";
@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Ukończenie płatności nie powiodło się";
 "Purchase_Auth_Complete_Fail.Title" = "Uwierzytelnianie płatności nie powiodło się";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Nie udało się zaimportować motywu(ów)";
