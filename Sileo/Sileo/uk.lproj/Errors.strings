@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Не вдалося почати покупку";
 "Purchase_Complete_Fail.Title" = "Не вдалося закінчити покупку";
 "Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
