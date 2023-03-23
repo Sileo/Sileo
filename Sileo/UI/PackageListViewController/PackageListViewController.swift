@@ -11,8 +11,7 @@ import Evander
 import os
 import SwipeCellKit
 
-
-fileprivate var searchHistory: [String] {
+var searchHistory: [String] {
     get {
         return UserDefaults.standard.stringArray(forKey: "UserSearchHistory") ?? []
     }
@@ -207,7 +206,8 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             collectionView.register(UINib(nibName: "PackageListHeaderBlank", bundle: nil),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                     withReuseIdentifier: "PackageListHeaderBlank")
-            collectionView.register(HistoryViewCell.self, forCellWithReuseIdentifier: "HistoryViewCellIdentifier")
+            collectionView.register(SearchHistoryCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: "HistoryViewCellIdentifier")
             
             self.registerForPreviewing(with: self, sourceView: collectionView)
         }
@@ -511,21 +511,27 @@ extension PackageListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let section = findWhatFuckingSectionThisIs(indexPath.section)
+        if section == .searchHistoryList {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoryViewCellIdentifier", for: indexPath) as! SearchHistoryCollectionViewCell
+            cell.label.text = searchHistory[indexPath.row]
+            return cell
+        }
+        
         let cellIdentifier = "PackageListViewCellIdentifier"
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? PackageCollectionViewCell else {
             fatalError("This is what we call a pro gamer move, where we fatalError because of something horrendous")
         }
-        switch findWhatFuckingSectionThisIs(indexPath.section) {
+        
+        switch section {
         case .canister: cell.provisionalTarget = provisionalPackages[safe: indexPath.row]; cell.targetPackage = nil
         case .ignoredUpdates: cell.targetPackage = ignoredUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
         case .packages, .reallyBoringList: cell.targetPackage = packages[safe: indexPath.row]; cell.provisionalTarget = nil
         case .updates: cell.targetPackage = availableUpdates[safe: indexPath.row]; cell.provisionalTarget = nil
         case .searchHistoryList:
-            let _cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoryViewCellIdentifier", for: indexPath) as! HistoryViewCell
-            _cell.setupCell(historyItem: searchHistory[safe: indexPath.row])
-            _cell.listVC = self
-            return _cell
+            fatalError("Shouldn't have gotten here!")
         }
+        
         return cell
     }
     
@@ -657,6 +663,16 @@ extension PackageListViewController: UIViewControllerPreviewingDelegate {
 @available(iOS 13.0, *)
 extension PackageListViewController {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if findWhatFuckingSectionThisIs(indexPath.section) == .searchHistoryList {
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+                let copyItemAction = UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc")) { _ in
+                    UIPasteboard.general.string = searchHistory[safe: indexPath.row]
+                }
+                
+                return UIMenu(children: [copyItemAction])
+            }
+        }
+        
         guard let pvc = self.controller(indexPath: indexPath) else {
             return nil
         }
@@ -877,67 +893,4 @@ enum PackageListSection {
     case canister
     case reallyBoringList
     case searchHistoryList
-}
-
-class HistoryViewCell: SwipeCollectionViewCell {
-    let historyItemLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        return label
-    }()
-    
-    var listVC: PackageListViewController? = nil
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.delegate = self
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func setupView() {
-        contentView.addSubview(historyItemLabel)
-        
-        let inset = CGFloat(10)
-        NSLayoutConstraint.activate([
-            historyItemLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            historyItemLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
-            historyItemLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
-            historyItemLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: inset + 5)
-        ])
-    }
-    
-    func setupCell(historyItem: String?) {
-        let textAttachment = NSTextAttachment()
-        if #available(iOS 13.0, *) { // .withintColor requires iOS 13+
-            textAttachment.image = .init(systemNameOrNil: "magnifyingglass")?.withTintColor(.systemGray)
-        }
-        let mutAttrString = NSMutableAttributedString(attachment: textAttachment)
-        mutAttrString.append(.init(string: "\t\(historyItem ?? "")", attributes: [.foregroundColor: UIColor.tintColor]))
-        historyItemLabel.attributedText = mutAttrString
-        
-        historyItemLabel.translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
-extension HistoryViewCell: SwipeCollectionViewCellDelegate {
-    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        let deleteAction = SwipeAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _ in
-            searchHistory.remove(at: indexPath.row)
-            
-            // if the search history is empty, we just reload the data
-            // otherwise, calling deleteItems when the array is empty will crash the app
-            searchHistory.isEmpty ? self.listVC?.collectionView?.reloadData() : self.listVC?.collectionView?.deleteItems(at: [indexPath])
-        }
-        
-        return [deleteAction]
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .selection
-        return options
-    }
 }
