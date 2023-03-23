@@ -93,10 +93,12 @@
 "Sources_Page" = "Kaynaklar";
 "Packages_Page" = "Paketler";
 "Search_Page" = "Arama";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
-"Remove" = "Remove";
+"Remove" = "Kaldır";
 
 "All_Packages.Title" = "Tüm Paketler";
 "All_Packages.Cell_Subtitle" = "Kaynaklarınızdaki tüm paketleri görüntüleyin.";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Renk Tonu";
 "Reset_Tint_Color" = "Rengi Sıfırla";
 "Auto_Complete_Queue" = "Sırayı Otomatik Tamamla";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Otomatik Hepsini Güncelleme Kestirmesi";
 "Swipe_Actions" = "Kaydırma İşlemleri";
 "Show_Provisional" = "Canister'dan Paketleri Göster";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Adaptif Sileo";
 "System" = "Sistem";
 "Theme_Settings" = "Tema Ayarları";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Cydia Store’a Giriş Yap";
 "Payment_Provider_Signed_In" = "Giriş Yapıldı";
