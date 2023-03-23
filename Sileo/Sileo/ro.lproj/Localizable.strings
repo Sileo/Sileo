@@ -93,10 +93,12 @@
 "Sources_Page" = "Surse";
 "Packages_Page" = "Pachete";
 "Search_Page" = "Căutare";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Reîmprospătare de surse";
 "Package_Installed_Files_Page" = "Fișiere instalate";
 "Refresh" = "Reîmprospătați";
-"Remove" = "Remove";
+"Remove" = "Ștergeți";
 
 "All_Packages.Title" = "Toate pachete";
 "All_Packages.Cell_Subtitle" = "Deschideți lista de toate pachetele din sursele voastre";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Culoarea tentei";
 "Reset_Tint_Color" = "Restabiliți culoarea tentei";
 "Auto_Complete_Queue" = "Completați coade automatic";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmare automatică de actualizare completă";
 "Swipe_Actions" = "Acțiuni glisare";
 "Show_Provisional" = "Arătați pachete de la Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo Adaptiv";
 "System" = "Culoare sistem";
 "Theme_Settings" = "Setări temei";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Conectați-vă la Cydia Store";
 "Payment_Provider_Signed_In" = "Cont conectat";
