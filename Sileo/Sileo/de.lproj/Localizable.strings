@@ -95,7 +95,7 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Packages_Page" = "Pakete";
 "Search_Page" = "Suchen";
 "Search_History" = "Kürzlich gesucht";
-"Clear_Search_History" = "Clear";
+"Clear_Search_History" = "Löschen";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
 "Refresh" = "Aktualisieren";
@@ -154,7 +154,7 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "Tint_Color" = "Hauptfarbe";
 "Reset_Tint_Color" = "Hauptfarbe zurücksetzen";
 "Auto_Complete_Queue" = "Warteschlange automatisch durchführen";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Suchverlauf anzeigen";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Automatisches Bestätigen beim Update aller Pakete";
 "Swipe_Actions" = "Wischgesten";
 "Show_Provisional" = "Pakete von Canister anzeigen";
@@ -181,19 +181,19 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "System" = "System";
 "Theme_Settings" = "Design Einstellungen";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Themes verwalten";
+"Create_Theme" = "Theme erstellen";
+"Import_Themes" = "Themes importieren";
+"Theme_Name" = "Theme-Name";
+"Export_Themes" = "Themes exportieren";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Hintergrundfarbe";
+"Secondary_Background_Color" = "Sekundäre Hintergrundfarbe";
+"Label_Color" = "Schriftfarbe";
+"Highlight_Color" = "Highlight-Farbe";
+"Seperator_Color" = "Trennzeichen-Farbe";
+"Header_Color" = "Kopfzeilen-Farbe";
+"Banner_Color" = "Banner-Farbe";
 
 
 "Cydia_Sign_In" = "In den Cydia Store einloggen";
@@ -234,4 +234,4 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 // Depcitions
 "View_Depiction" = "Paketbeschreibung anzeigen";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "ID kopieren";
