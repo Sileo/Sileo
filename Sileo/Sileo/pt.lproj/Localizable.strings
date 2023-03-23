@@ -93,6 +93,8 @@
 "Sources_Page" = "Fontes";
 "Packages_Page" = "Pacotes";
 "Search_Page" = "Procura";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "A atualizar Fontes";
 "Package_Installed_Files_Page" = "Ficheiros instalados";
 "Refresh" = "Refresh";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Tom das cores";
 "Reset_Tint_Color" = "Repor tom das cores";
 "Auto_Complete_Queue" = "Completar fila automaticamente";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages From Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo Adaptativo";
 "System" = "Sistema";
 "Theme_Settings" = "Theme Settings";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Entrar na loja da Cydia";
 "Payment_Provider_Signed_In" = "Sessão iniciada";
