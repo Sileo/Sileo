@@ -12,7 +12,7 @@
 "About" = "Sobre";
 "Close" = "Tancar";
 "Double tap to open." = "Toqueu dues vegades per obrir.";
-"Untitled_Repo" = "Untitled Repo";
+"Untitled_Repo" = "Repositori sense títol";
 "OK" = "D'acord";
 "Done" = "Fet";
 "Done_Editing" = "Fet";
@@ -22,26 +22,26 @@
 "Delete" = "Esborra";
 "Cancel" = "Cancel·lar";
 "Acknowledge" = "Reconeixement";
-"Remove" = "Remove";
+"Remove" = "Suprimeix";
 "Sileo_Team" = "Equip Sileo";
 "Warning" = "Advertència";
 "Edit" = "Editar";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Actualització de l'aplicació en segon pla";
+"Background_App_Refresh_Message" = "Per obtenir la millor i més ràpida experiència, es recomana activar l'actualització de l'aplicació en segon pla. També podeu rebre notificacions quan s'actualitzin els vostres tweaks!";
+"Upgrade_All_Shortcut_Processing_Message" = "Actualitzant totes les fonts i actualitzant tots els paquets...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
 "Installing_Package_Status" = "S'està instal·lant";
 "Downloading_Package_Status" = "S’està baixant";
 "Queued_Package_Status" = "A la cua";
 "Ready_Status" = "A punt";
-"Removal_Queued_Package_Status" = "Queued for Removal";
+"Removal_Queued_Package_Status" = "En cua per a l'eliminació";
 "Download_Starting" = "S'està iniciant…";
 "Download_Progress" = "%@ de %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Els paquets següents s'enumeren com a essencials/obligatoris: %@\n L'eliminació d'aquests podria causar danys irreversibles al vostre dispositiu i és possible que hagis de restaurar el dispositiu. Continueu només si esteu segur de saber el que esteu fent.";
 
 "Queue_Confirm_Button" = "Confirma-ho";
 "Queue_Clear_Button" = "Esborrar la cua";
@@ -54,7 +54,7 @@
 "Package_Get_Action" = "Obté";
 "Package_Queue_Action" = "Cua";
 "Package_Cancel_Action" = "Cancel·lar";
-"Package_Paid" = "Paid";
+"Package_Paid" = "De pagament";
 
 "Package_Share_Action" = "Compartir paquet ";
 "Package_Developer_Find_Action" = "Més d'aquest desenvolupador";
@@ -66,89 +66,90 @@
 "Wishlist" = "Llista de desitjos";
 
 "No_New_Packages" = "No hi ha paquets nous";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"News_Check_Later" = "Encara no hi ha paquets nous indexats. Torna d'aquí a unes hores i hauríeu de veure que els paquets comencen a aparèixer aquí a mesura que s'actualitzen els repositoris.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Instal·lar";
 "Queued_Uninstall_Heading" = "Desinstal·lar";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Update_Heading" = "Actualitzar";
+"Download_Errors_Heading" = "Error";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Instal·lat";
+"Updates_Heading" = "Actualitzacions";
+"Upgrade_All_Button" = "Actualitzar tot";
+"Package_Search.Placeholder" = "Cerca paquets";
+"Sort_Name" = "Nom";
+"Sort_Date" = "Data";
+"Sort_Install_Size" = "Tamany";
+"Sort_By" = "Ordena per:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "Paquet no disponible";
+"Package_By_Author" = "%@ per %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "per %@"; // %@ = author name
+"Packages_By_Author" = "Paquets per %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "Destacat";
+"News_Page" = "Nou";
+"Sources_Page" = "Fonts";
+"Packages_Page" = "Paquets";
+"Search_Page" = "Cercar";
+"Search_History" = "Cerques recents";
+"Clear_Search_History" = "Esborrar";
+"Refreshing_Sources_Page" = "Actualitzar les fonts";
+"Package_Installed_Files_Page" = "Arxius instal·lats";
+"Refresh" = "Refrescar";
+"Remove" = "Suprimeix";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Tots els paquets";
+"All_Packages.Cell_Subtitle" = "Consulteu tots els paquets de les vostres fonts";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "Totes les categories";
+"Internal_Repo" = "Repositoris interns";
+"External_Repo" = "Repositoris externs";
+"Ignored Updates" = "Actualitzacions ignorades";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Repositoris";
+"Repo" = "Repositori";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Afegir fonts";
+"Add_Source.Body" = "Afegir APT URL
+";
+"Add_Source.Button.Add" = "Afegir fonts";
+"Add_Dist_Repo" = "Afegeix dist repositori";
+"Incorrect_Repo" = "Sembla que %@ no és un repositori vàlid⁉️ És possible que el repositori estigui fora de línia o que l'hagueu introduït incorrectament. El voleu afegir de totes maneres?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Introduïu manualment";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Formulari sense títol";
+"Form_Submitted.Default_Title" = "Formulari enviat";
+"Form_Submitted.Default_Body" = "El formulari s'ha enviat correctament.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Les representacions de Web View estan obsoletes. Si us plau, poseu-vos en contacte amb el responsable del repositori sobre l'actualització a representacions natives.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Detalls";
+"Package_Changelog_Tab" = "Historial de canvis";
+"Package_No_Description_Available" = "No disposem de descripció per aquest ítem.";
+"Package_Changelogs_Unavailable" = "Els registres de canvis no estan disponibles per a aquest paquet.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Paquets instal•lats";
+"Installed_Packages" = "Paquets instal•lats";
+"Version" = "Versió";
+"Show_Package_Contents_Button" = "Mostra el contingut del paquet";
 
-"Licenses_Page_Title" = "Licenses";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Licenses_Page_Title" = "Llicències";
+"Alternate_Icon_Title" = "Icones alternatives";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Proveïdors de pagament";
+"Settings_Translations_Heading" = "Traduccions";
 
-"Settings_Payment_Provider.Purchases_Heading" = "Purchases";
+"Settings_Payment_Provider.Purchases_Heading" = "Compres";
 "Settings_Payment_Provider.No_Purchases" = "No purchases";
 "Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
-"Settings" = "Settings";
-"Settings_Page_Title" = "Settings";
-"Dark_Mode_Toggle" = "Dark Mode";
-"Theme" = "Theme";
+"Settings" = "Paràmetres";
+"Settings_Page_Title" = "Paràmetres";
+"Dark_Mode_Toggle" = "Dark mode";
+"Theme" = "Tema";
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
 "Auto_Complete_Queue" = "Auto Complete Queue";
@@ -203,12 +204,12 @@
 
 "Show_Install_Details" = "Show Details";
 "Hide_Install_Details" = "Hide Details";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Obrir en Filza";
+"Copy_Path" = "Copiar ruta";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
+"After_Install_Relaunch" = "Reiniciar Sileo";
+"After_Install_Respring" = "Reiniciar SpringBoard";
+"After_Install_Reboot" = "Reinicia el dispositiu";
 "After_Install_Relaunch_Later" = "Restart Sileo Later";
 "After_Install_Respring_Later" = "Restart SpringBoard Later";
 "After_Install_Reboot_Later" = "Reboot Device Later";
