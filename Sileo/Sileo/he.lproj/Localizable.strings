@@ -93,10 +93,12 @@
 "Sources_Page" = "מקורות";
 "Packages_Page" = "חבילות";
 "Search_Page" = "חיפוש";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "מרענן מקורות";
 "Package_Installed_Files_Page" = "קבצים מותקנים";
 "Refresh" = "רענן";
-"Remove" = "Remove";
+"Remove" = "הסר";
 
 "All_Packages.Title" = "כל החבילות";
 "All_Packages.Cell_Subtitle" = "ראה את כלל החבילות מכל המקורות שלך";
@@ -150,6 +152,7 @@
 "Tint_Color" = "גוון";
 "Reset_Tint_Color" = "אפס גוון";
 "Auto_Complete_Queue" = "השלמה אוטומטית של התור";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "אישור אוטומטי ל\"עדכן הכל\"";
 "Swipe_Actions" = "פעולות בהחלקה";
 "Show_Provisional" = "הצג חבילות מ-Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "סילאו מותאם";
 "System" = "מערכת";
 "Theme_Settings" = "הגדרות ערכות נושא";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "התחבר לחנות הסידיה";
 "Payment_Provider_Signed_In" = "מחובר";
