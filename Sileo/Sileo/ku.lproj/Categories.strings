@@ -8,14 +8,14 @@
  LOCALISATIONS
 */
 
-"No_Category" = "(No Category)";
-"Tweaks" = "Tweaks";
-"Themes" = "Themes";
-"Utilities" = "Utilities";
-"Applications" = "Applications";
-"Addons" = "Addons";
-"Games" = "Games";
-"Developer" = "Developer";
-"Data_Storage" = "Data Storage";
-"Terminal_Support" = "Terminal Support";
-"Text_Editors" = "Text Editors";
+"No_Category" = "(هیچ پۆلێک نییە)";
+"Tweaks" = "تویکەکان";
+"Themes" = "ڕووکارەکان";
+"Utilities" = "خزمەتگوزارییەکان";
+"Applications" = "بەرنامەکان";
+"Addons" = "ئەدۆنەکان";
+"Games" = "یارییەکان";
+"Developer" = "گەشەپێدەر";
+"Data_Storage" = "بیرگەی داتا";
+"Terminal_Support" = "پاڵپشتی تێرمیناڵ";
+"Text_Editors" = "دەستکاریکەرانی دەق";
