@@ -94,7 +94,7 @@ Das Entfernen dieser Daten kann zu irreversiblen Schäden an Ihrem Gerät führe
 "Sources_Page" = "Quellen";
 "Packages_Page" = "Pakete";
 "Search_Page" = "Suchen";
-"Search_History" = "Recently Searched";
+"Search_History" = "Kürzlich gesucht";
 "Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Quellen neu laden";
 "Package_Installed_Files_Page" = "Installierte Dateien";
