@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "Nie można zainicjować zakupu";
 "Purchase_Complete_Fail.Title" = "Ukończenie płatności nie powiodło się";
 "Purchase_Auth_Complete_Fail.Title" = "Uwierzytelnianie płatności nie powiodło się";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
