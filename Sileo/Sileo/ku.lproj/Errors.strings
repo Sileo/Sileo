@@ -8,13 +8,13 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "هەڵەیەکی نەناسراو ڕوویدا.";
+"Error_Indicator" = "هەڵە %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "نەیتوانی پاکێجەکە بدۆزێتەوە %@ لەو کۆگایانەی ئێستا داتمەزراندووە.";
+"No_Package.Body" = "‎ئەگەر نوێیە ، چاوەڕێی سیلیۆ بکە بۆ تەواوکردنی نوێکردنەوە، پاشان دووبارە هەوڵ بدە. پشکنینی ئۆنلاین بۆ یارمەتی زیاتر.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "URL هەڵەیە";
 
 "Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
 "Download_Failing_Status_Code" = "Failed with status %ld";
