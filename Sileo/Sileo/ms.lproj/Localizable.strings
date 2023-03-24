@@ -23,9 +23,9 @@
 "Cancel" = "Batal";
 "Acknowledge" = "Acknowledge";
 "Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Sileo_Team" = "Pasukan Sileo";
+"Warning" = "Amaran";
+"Edit" = "Sunting";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
