@@ -22,7 +22,7 @@
 "Delete" = "Padam";
 "Cancel" = "Batal";
 "Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Remove" = "Buang";
 "Sileo_Team" = "Pasukan Sileo";
 "Warning" = "Amaran";
 "Edit" = "Sunting";
@@ -45,7 +45,7 @@
 
 "Queue_Confirm_Button" = "Sahkan";
 "Queue_Clear_Button" = "Kosongkan Aturan";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Batal muat turun";
 
 "Package_Upgrade_Action" = "Kemas Kini";
 "Package_Reinstall_Action" = "Pasang Semula";
@@ -93,12 +93,12 @@
 "Sources_Page" = "Sumber";
 "Packages_Page" = "Pakej";
 "Search_Page" = "Cari";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Carian Terkini";
+"Clear_Search_History" = "Padam";
 "Refreshing_Sources_Page" = "Mengemaskini Sumber";
 "Package_Installed_Files_Page" = "Fail Dipasang";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Segar semula";
+"Remove" = "Buang";
 
 "All_Packages.Title" = "Semua Pakej";
 "All_Packages.Cell_Subtitle" = "Lihat semua pakej daripada sumber-sumber anda";
