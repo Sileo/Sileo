@@ -143,7 +143,7 @@
 "Settings_Translations_Heading" = "Traduccions";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Compres";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
+"Settings_Payment_Provider.No_Purchases" = "Cap compres";
 "Authenticate_To_Purchase" = "Authenticate to complete your purchase";
 
 "Settings" = "Paràmetres";
