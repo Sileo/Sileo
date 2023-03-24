@@ -38,48 +38,48 @@
 "Queued_Package_Status" = "لە نۆرەدایە";
 "Ready_Status" = "ئامادەیە";
 "Removal_Queued_Package_Status" = "لە نۆرەدایە بۆ لابردن";
-"Download_Starting" = "Starting…";
-"Download_Progress" = "%@ of %@"; // first %@ = amount downloaded, second %@ = total to download
+"Download_Starting" = "دەستپێدەکات…";
+"Download_Progress" = "%@ لە %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "ئەم پاکێجانەی خوارەوە وەک پێویست/ ڕیزکراون: %@\n لابردنی ئەمانە دەتوانێت ببێتە هۆی زیانێکی نەگەڕاوە بە ئامێرەکەت و لەوانەیە پێویستت بە گەڕاندنەوەی هەبێت. تەنها بەردەوام بە ئەگەر دڵنیا بیت کە دەزانیت چی دەکەیت.";
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Confirm_Button" = "دڵنیابوون";
+"Queue_Clear_Button" = "پاککردنەوەی ڕیزبەندییەکە";
+"Queue_Cancel_Downloads" = "پاشگەزبوونەوە لە دابەزاندن";
 
-"Package_Upgrade_Action" = "Upgrade";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
-"Package_Queue_Action" = "Queue";
-"Package_Cancel_Action" = "Cancel";
-"Package_Paid" = "Paid";
+"Package_Upgrade_Action" = "نوێکردنەوە";
+"Package_Reinstall_Action" = "دووبارە دامەزراندنەوە";
+"Package_Uninstall_Action" = "سڕینەوە";
+"Package_Modify_Action" = "دەستکاری بکە";
+"Package_Get_Action" = "بەدەستهێنان";
+"Package_Queue_Action" = "ڕیزبەند";
+"Package_Cancel_Action" = "پاشگەزبوونەوە";
+"Package_Paid" = "پارە پێدراو";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "هاوبەشی پاکێج…";
+"Package_Developer_Find_Action" = "زیاتر لەلایەن ئەم گەشەپێدەرە";
+"Package_Support_Action" = "پاڵپشتی";
+"Package_Hold_Enable_Action" = "گوێپێنەدان بە وەشانی داهاتوو";
+"Package_Hold_Disable_Action" = "وەستاندنی گوێپێنەدان بە وەشانەکان";
+"Package_Wishlist_Add" = "زیادکردن بۆ لیستی هیوا";
+"Package_Wishlist_Remove" = "لابردنی لە لیستی هیوا";
+"Wishlist" = "لیستی هیوا";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "هیچ پاکێجێکی نوێ نییە";
+"News_Check_Later" = "هێشتا هیچ پاکێجێکی نوێ ئیندێکس نەکراوە. چەند کاتژمێرێکی تر وەرەوە و پێویستە ببینیت پاکێجەکان لێرە دەست دەکەن بە دەرکەوتن لەگەڵ نوێکردنەوەی کۆگاکان.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "دامەزراندن";
+"Queued_Uninstall_Heading" = "سڕینەوە";
+"Queued_Update_Heading" = "نوێکردنەوە";
+"Download_Errors_Heading" = "هەڵەکان";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
+"Installed_Heading" = "دامەزرا";
+"Updates_Heading" = "نوێکردنەوەکان";
+"Upgrade_All_Button" = "نوێکردنەوەی هەموو";
+"Package_Search.Placeholder" = "گەڕان بەدوای پاکێجەکان";
+"Sort_Name" = "ناو";
+"Sort_Date" = "بەروار";
 "Sort_Install_Size" = "Installed Size";
 "Sort_By" = "Sort by:";
 
