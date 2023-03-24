@@ -80,24 +80,24 @@
 "Package_Search.Placeholder" = "گەڕان بەدوای پاکێجەکان";
 "Sort_Name" = "ناو";
 "Sort_Date" = "بەروار";
-"Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Sort_Install_Size" = "قەبارەی دامەزێندراو";
+"Sort_By" = "ڕیزکردن بە:";
 
-"Package_Unavailable" = "Package Unavailable";
-"Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
-"By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Package_Unavailable" = "پاکێج بەردەست نییە";
+"Package_By_Author" = "%@ تا %@"; // first %@ = package name, second %@ = author name
+"By_Author" = "تا %@"; // %@ = author name
+"Packages_By_Author" = "پاکێجەکان بە %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
+"Featured_Page" = "تایبەتمەندی";
+"News_Page" = "نوێ";
+"Sources_Page" = "سەرچاوەکان";
+"Packages_Page" = "پاکێجەکان";
+"Search_Page" = "گەڕان";
+"Search_History" = "گەڕانەکانی ئەمدوایە";
+"Clear_Search_History" = "سڕینەوە";
+"Refreshing_Sources_Page" = "نوێکردنەوەی سەرچاوەکان";
+"Package_Installed_Files_Page" = "فایلە دامەزرێندراوەکان";
+"Refresh" = "نوێکردنەوە";
 "Remove" = "Remove";
 
 "All_Packages.Title" = "All Packages";
@@ -161,37 +161,37 @@
 "Pog_Developer" = "You are now a developer!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
-"Clear_Cache" = "Clear Network Cache";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"iCloud_Profile" = "وێنەی ئایکلاود لە تایبەتمەندیدا پیشان بدە";
+"Cache_Size" = "قەبارەی کەیچ";
+"Clear_Cache" = "پاک کردنەوەی کەیچی تۆڕ";
+"Clear_Cache_Message" = "دەتەوێت کەیچی تۆڕەکە پاک بکەیتەوە؟ بەم شێوەیە %@ ئازاد دەبێت";
+"Language" = "زمان";
+"Use_System_Language" = "بەکارهێنانی زمانی سیستمەکە";
+"Apply_Changes" = "گۆڕانکارییەکان جێبەجێ بکە";
+"Apply_Changes_Confirm" = "جێبەجێکردنی گۆڕانکارییەکان پێویستی بە دووبارە دەستپێکردنەوەی بەرنامەی سیلیۆ دەبێت";
+"Help_Translate" = "یارمەتی بدە بۆ وەرگێڕانی سیلیۆ";
+"Always_Show_Install_Log" = "هەمیشە نیشاندانی لۆگی دامەزراندن";
+"Auto_Show_Queue" = "نیشاندانی نۆرە بۆ نوێکردنەوەی هەموو";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Sileo_Light" = "سیلیۆ ڕوناکی";
+"Sileo_Dark" = "سیلیۆ تاریک";
+"Sileo_Adaptive" = "سیلیۆ گونجاوە";
+"System" = "سیستەم";
+"Theme_Settings" = "ڕێکخستنەکانی ڕوکار";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "بەڕێوەبردنی ڕوکارەکان";
+"Create_Theme" = "دروستکردنی ڕوکار";
+"Import_Themes" = "هاوردەکردنی ڕوکارەکان";
+"Theme_Name" = "ناوی ڕوکار";
+"Export_Themes" = "هەناردەی ڕوکارەکان";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "ڕەنگی پشت شاشە";
+"Secondary_Background_Color" = "ڕەنگی دووەمی پشت شاشە";
+"Label_Color" = "ڕەنگی نازناو";
+"Highlight_Color" = "بەرزترین ڕەنگ";
+"Seperator_Color" = "ڕەنگی جیاکەرەوە";
+"Header_Color" = "ڕەنگی سەردێڕ";
+"Banner_Color" = "ڕەنگی بانەر";
 
 
 "Cydia_Sign_In" = "Sign in to Cydia Store";
