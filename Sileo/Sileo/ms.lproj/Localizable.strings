@@ -28,7 +28,7 @@
 "Edit" = "Sunting";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
+"Background_App_Refresh" = "Segar Semula Aplikasi Latar";
 "Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
@@ -65,7 +65,7 @@
 "Package_Wishlist_Remove" = "Keluarkan daripada Senarai Harapan";
 "Wishlist" = "Senarai Harapan";
 
-"No_New_Packages" = "No New Packages";
+"No_New_Packages" = "Tiada Pakej Baharu";
 "News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
 
 // Headings for sections in the queue/status popup.
@@ -109,7 +109,7 @@
 "Ignored Updates" = "Ignored Updates";
 
 "Repos" = "Repositori";
-"Repo" = "Repository";
+"Repo" = "Repositori";
 
 "Add_Source.Title" = "Tambah Sumber";
 "Add_Source.Body" = "Tambah URL APT";
@@ -157,18 +157,18 @@
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
+"Developer_Mode" = "Mod Pembangun";
 "Pog_Developer" = "You are now a developer!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
 "Auto_Refresh_Sources" = "Auto Refresh Sources";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
+"Cache_Size" = "Saiz cache";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
 "Language" = "Bahasa";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
+"Use_System_Language" = "Gunakan Bahasa Sistem";
+"Apply_Changes" = "Terapkan Perubahan";
+"Apply_Changes_Confirm" = "Penerapan Perubahan memerlukan mula semula Sileo";
 "Help_Translate" = "Help Translate Sileo";
 "Always_Show_Install_Log" = "Always Show Install Log";
 "Auto_Show_Queue" = "Show Queue on Upgrade All";
