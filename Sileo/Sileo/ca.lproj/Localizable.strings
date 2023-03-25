@@ -144,14 +144,14 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "Compres";
 "Settings_Payment_Provider.No_Purchases" = "Cap compres";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "Autentificar_Per_Comprar";
 
 "Settings" = "Paràmetres";
 "Settings_Page_Title" = "Paràmetres";
 "Dark_Mode_Toggle" = "Dark mode";
 "Theme" = "Tema";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
+"Tint_Color" = "Tint_Color";
+"Reset_Tint_Color" = "Restableix_El_Color_Del_Tint";
 "Auto_Complete_Queue" = "Auto Complete Queue";
 "Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
