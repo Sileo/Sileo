@@ -169,7 +169,7 @@
 "Use_System_Language" = "Gunakan Bahasa Sistem";
 "Apply_Changes" = "Terapkan Perubahan";
 "Apply_Changes_Confirm" = "Penerapan Perubahan memerlukan mula semula Sileo";
-"Help_Translate" = "Help Translate Sileo";
+"Help_Translate" = "Bantu Terjemahkan Sileo";
 "Always_Show_Install_Log" = "Always Show Install Log";
 "Auto_Show_Queue" = "Show Queue on Upgrade All";
 
@@ -177,16 +177,16 @@
 "Sileo_Dark" = "Sileo Gelap";
 "Sileo_Adaptive" = "Sileo Adaptif";
 "System" = "Sistem";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Tetapan Tema";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Mengurus Tema";
+"Create_Theme" = "Cipta Tema Baharu";
+"Import_Themes" = "Import Tema";
+"Theme_Name" = "Nama Tema";
+"Export_Themes" = "Eksport Tema";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
+"Background_Color" = "Warna Latar Belakang";
+"Secondary_Background_Color" = "Warna Latar Belakang Sekunder";
 "Label_Color" = "Label Color";
 "Highlight_Color" = "Highlight Color";
 "Seperator_Color" = "Seperator Color";
