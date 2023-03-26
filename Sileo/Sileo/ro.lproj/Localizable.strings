@@ -93,8 +93,8 @@
 "Sources_Page" = "Surse";
 "Packages_Page" = "Pachete";
 "Search_Page" = "Căutare";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Căutări recente";
+"Clear_Search_History" = "Șterge";
 "Refreshing_Sources_Page" = "Reîmprospătare de surse";
 "Package_Installed_Files_Page" = "Fișiere instalate";
 "Refresh" = "Reîmprospătați";
@@ -179,13 +179,13 @@
 "System" = "Culoare sistem";
 "Theme_Settings" = "Setări temei";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Gestionează Temele";
+"Create_Theme" = "Creează o nouă temă";
+"Import_Themes" = "Importați teme";
+"Theme_Name" = "Numele temei";
+"Export_Themes" = "Exportați teme";
 
-"Background_Color" = "Background Color";
+"Background_Color" = "Culoare fundal";
 "Secondary_Background_Color" = "Secondary Background Color";
 "Label_Color" = "Label Color";
 "Highlight_Color" = "Highlight Color";
