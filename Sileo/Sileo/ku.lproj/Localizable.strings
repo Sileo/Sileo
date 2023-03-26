@@ -22,7 +22,7 @@
 "Delete" = "سڕینەوە";
 "Cancel" = "پاشگەزبوونەوە";
 "Acknowledge" = "دان پێدانان";
-"Remove" = "Remove";
+"Remove" = "لابردن";
 "Sileo_Team" = "تیمی sileo";
 "Warning" = "ئاگاداری";
 "Edit" = "دەستکاری کردن";
@@ -98,22 +98,22 @@
 "Refreshing_Sources_Page" = "نوێکردنەوەی سەرچاوەکان";
 "Package_Installed_Files_Page" = "فایلە دامەزرێندراوەکان";
 "Refresh" = "نوێکردنەوە";
-"Remove" = "Remove";
+"Remove" = "لابردن";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "هەموو پاکێجەکان";
+"All_Packages.Cell_Subtitle" = "بینینی هەموو ئەو پاکێجانەی لە سەرچاوەکانت هەیە";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "هەموو پۆلەکان";
+"Internal_Repo" = "کۆگا ناوەکییەکان";
+"External_Repo" = "کۆگا دەرەکییەکان";
+"Ignored Updates" = "ئەپدەیتە گوێپێنەدراوەکان";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "کۆگاکان";
+"Repo" = "کۆگا";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
+"Add_Source.Title" = "زیادکردنی سەرچاوە";
+"Add_Source.Body" = "زیادکردنی APT URL";
+"Add_Source.Button.Add" = "زیادکردنی سەرچاوە";
 "Add_Dist_Repo" = "Add Dist Repo";
 "Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
 
