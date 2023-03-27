@@ -190,47 +190,47 @@
 "Secondary_Background_Color" = "Color de fons secundari";
 "Label_Color" = "Color de l'etiqueta";
 "Highlight_Color" = "Color destacat";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Seperator_Color" = "Color del separador";
+"Header_Color" = "Color de la capçalera";
+"Banner_Color" = "Color del banner";
 
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Inicieu la sessió a Cydia Store";
+"Payment_Provider_Signed_In" = "S'ha iniciat la sessió";
+"Payment_Provider_Signed_In_With_Name" = "Sessió iniciada com a %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Tanca la sessió";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Tancar la sessió de %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Ja no podreu baixar els vostres paquets comprats fins que torneu a iniciar la sessió.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
+"Show_Install_Details" = "Mostra els detalls";
+"Hide_Install_Details" = "Amaga els detalls";
 "Open_In_Filza" = "Obrir en Filza";
 "Copy_Path" = "Copiar ruta";
 
 "After_Install_Relaunch" = "Reiniciar Sileo";
 "After_Install_Respring" = "Reiniciar SpringBoard";
 "After_Install_Reboot" = "Reinicia el dispositiu";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Reinicieu Sileo més tard";
+"After_Install_Respring_Later" = "Reinicieu SpringBoard més tard";
+"After_Install_Reboot_Later" = "Reinicieu el dispositiu més tard";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "Repo perillós";
+"Dangerous_Repo.Body" = "Esteu intentant afegir un repositori que se sap que és perjudicial per motius com ara la pirateria, el contingut il·legal o el programari maliciós.\n\nEls repositoris marcats com a nocius solen distribuir programari amb efectes inesperats, ja sigui en forma de paquets de pagament gratuïts o d'altres paquets maliciosos. Això pot tenir efectes duradors en el vostre dispositiu i privadesa, fins i tot afectant de vegades la vostra capacitat de fer jailbreak. Us recomanem que extremeu la precaució per evitar programari nociu.";
+"Dangerous_Repo.Continue" = "Accepto els riscos, segueix";
+"Dangerous_Repo.Cancel" = "Anar enrere";
+"Dangerous_Repo.Last_Chance.Title" = "Vols afegir un repo perjudicial?";
+"Dangerous_Repo.Last_Chance.Body" = "Els repos perillosos poden tenir efectes devastadors en la vostra capacitat d'utilitzar el vostre dispositiu o jailbreak. Us recomanem que torneu per la vostra seguretat. Esteu segur que voleu afegir %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Continua";
+"Dangerous_Repo.Last_Chance.Cancel" = "Torna enrere";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "Exportar";
+"Export_Packages" = "Voleu exportar la vostra llista de paquets? Això copiarà tots els noms de paquets i les seves versions al porta-retalls.";
+"Export_Sources" = "Voleu exportar la vostra llista d'origen? Això copiarà tots els URL d'origen al porta-retalls.";
+"Export_Yes" = "Sí, còpia.";
+"Export_No" = "No, anul·lar.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Veure representació";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "còpia l'identificador";
