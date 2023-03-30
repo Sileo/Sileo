@@ -54,7 +54,7 @@
 "Package_Get_Action" = "Dapatkan";
 "Package_Queue_Action" = "Atur";
 "Package_Cancel_Action" = "Batal";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Dibayar";
 
 "Package_Share_Action" = "Kongsi pakej…";
 "Package_Developer_Find_Action" = "Lebih dari pemaju ini";
@@ -80,7 +80,7 @@
 "Package_Search.Placeholder" = "Cari pakej-pakej";
 "Sort_Name" = "Nama";
 "Sort_Date" = "Tarikh";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Saiz Dipasang";
 "Sort_By" = "Susun mengikut:";
 
 "Package_Unavailable" = "Tiada Pakej";
@@ -106,7 +106,7 @@
 "All_Categories" = "Semua Kategori";
 "Internal_Repo" = "Internal Repos";
 "External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Ignored Updates" = "Kemas Kini Terabai";
 
 "Repos" = "Repositori";
 "Repo" = "Repositori";
@@ -131,7 +131,7 @@
 "Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
 
 "Installed_Package_Header" = "Pakej Dipasang";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Pakej Dipasang";
 "Version" = "Versi";
 "Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
 
@@ -152,11 +152,11 @@
 "Tint_Color" = "Warna Rona";
 "Reset_Tint_Color" = "Tetapkan Semula Warna Rona";
 "Auto_Complete_Queue" = "Auto-Selesaikan Aturan";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Tunjuk Sejarah Carian";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
+"Show_Ignored_Updates" = "Tunjuk Kemas Kini Terabai";
 "Developer_Mode" = "Mod Pembangun";
 "Pog_Developer" = "You are now a developer!";
 "Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
@@ -170,7 +170,7 @@
 "Apply_Changes" = "Terapkan Perubahan";
 "Apply_Changes_Confirm" = "Penerapan Perubahan memerlukan mula semula Sileo";
 "Help_Translate" = "Bantu Terjemahkan Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Always_Show_Install_Log" = "Sentiasa Tunjuk Log Pasang";
 "Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Cerah";
@@ -187,11 +187,11 @@
 
 "Background_Color" = "Warna Latar Belakang";
 "Secondary_Background_Color" = "Warna Latar Belakang Sekunder";
-"Label_Color" = "Label Color";
+"Label_Color" = "Warna Label";
 "Highlight_Color" = "Highlight Color";
 "Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Header_Color" = "Warna Pengepala";
+"Banner_Color" = "Warna Sepanduk";
 
 
 "Cydia_Sign_In" = "Log masuk ke dalam Cydia Store";
@@ -211,7 +211,7 @@
 "After_Install_Reboot" = "Mula-semulakan Peranti";
 "After_Install_Relaunch_Later" = "Restart Sileo Later";
 "After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Reboot_Later" = "But Semula Peranti Kemudian";
 
 "Dangerous_Repo.Title" = "Repo Berbahaya";
 "Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan seperti pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadangkala mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";
@@ -232,4 +232,4 @@
 // Depcitions
 "View_Depiction" = "Lihat Penggambaran";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Salin ID";
