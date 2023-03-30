@@ -29,7 +29,7 @@
 
 // Popup messages
 "Background_App_Refresh" = "Segar Semula Aplikasi Latar";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Background_App_Refresh_Message" = "Untuk pengalaman yang lebih pantas dan terbaik, ia adalah disarankan untuk membolehkan segar semula aplikasi latar. Anda juga boleh mendapatkan notifikasi apabila pakej tweaks telah dikemas kini!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -45,7 +45,7 @@
 
 "Queue_Confirm_Button" = "Sahkan";
 "Queue_Clear_Button" = "Kosongkan Aturan";
-"Queue_Cancel_Downloads" = "Batal muat turun";
+"Queue_Cancel_Downloads" = "Batal Muat Turun";
 
 "Package_Upgrade_Action" = "Kemas Kini";
 "Package_Reinstall_Action" = "Pasang Semula";
@@ -158,9 +158,9 @@
 "Show_Provisional" = "Show Packages From Canister";
 "Show_Ignored_Updates" = "Tunjuk Kemas Kini Terabai";
 "Developer_Mode" = "Mod Pembangun";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"Pog_Developer" = "Anda telah menjadi pembangun!";
+"Developer_Mode_Explain" = "Mod Pembangun nyahaktifkan keperluan HTTPS bagi API Pembayaran.";
+"Auto_Refresh_Sources" = "Segar Semula Sumber Automatik";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
 "Cache_Size" = "Saiz cache";
 "Clear_Cache" = "Clear Network Cache";
@@ -203,14 +203,14 @@
 
 "Show_Install_Details" = "Tunjuk Butiran";
 "Hide_Install_Details" = "Sorok Butiran";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Buka dalam Filza";
+"Copy_Path" = "Salin Laluan";
 
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";
 "After_Install_Reboot" = "Mula-semulakan Peranti";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
+"After_Install_Relaunch_Later" = "Mula Semula Sileo Kemudian";
+"After_Install_Respring_Later" = "Mula Semula Springboard Kemudian";
 "After_Install_Reboot_Later" = "But Semula Peranti Kemudian";
 
 "Dangerous_Repo.Title" = "Repo Berbahaya";
