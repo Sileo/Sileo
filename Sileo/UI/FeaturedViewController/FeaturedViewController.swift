@@ -214,6 +214,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("View DId Appear")
         self.reloadData()
         updateSileoColors()
     }

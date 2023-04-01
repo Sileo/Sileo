@@ -13,6 +13,12 @@ class SettingsColorTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var bgClr: UIColor? = nil {
+        willSet {
+            accessoryView?.backgroundColor = newValue
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -30,6 +36,6 @@ class SettingsColorTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        accessoryView?.backgroundColor = .tintColor
+        accessoryView?.backgroundColor = bgClr ?? .tintColor
     }
 }

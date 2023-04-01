@@ -93,10 +93,12 @@
 "Sources_Page" = "المصادر";
 "Packages_Page" = "الحزم";
 "Search_Page" = "البحث";
+"Search_History" = "عمليات البحث الاخيرة";
+"Clear_Search_History" = "مسح";
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "Remove";
+"Remove" = "إزالة";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
@@ -150,6 +152,7 @@
 "Tint_Color" = "لون الصبغة";
 "Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
+"Show_Search_History" = "اظهار سجل البحث";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Swipe_Actions" = "إجراءات السحب";
 "Show_Provisional" = "إظهار الحزم من Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "تكيُّف سيلو";
 "System" = "النظام";
 "Theme_Settings" = "إعدادات السمة";
+
+"Manage_Themes" = "ادارة الثيمات";
+"Create_Theme" = "انشاء ثيم";
+"Import_Themes" = "استيراد ثيم";
+"Theme_Name" = "اسم الثيم";
+"Export_Themes" = "تصدير الثيم";
+
+"Background_Color" = "لون الخلفية";
+"Secondary_Background_Color" = "لون الخلفية الثانوي";
+"Label_Color" = "لون الزر";
+"Highlight_Color" = "لون الضوء ";
+"Seperator_Color" = "لون المقسم";
+"Header_Color" = "لون المقدمة";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
 "Payment_Provider_Signed_In" = "تم تسجيل الدخول";

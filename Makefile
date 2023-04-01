@@ -88,9 +88,9 @@ endif
 
 ifeq ($(PLATFORM),iphoneos-arm)
 ifeq ($(ALL_BOOTSTRAPS), 1)
-DEB_DEPENDS     = firmware (>= 12.2), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
+DEB_DEPENDS     = firmware (>= 11.0), firmware(>=12.2) | org.swift.libswift (>=5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
 else
-DEB_DEPENDS     = firmware (>= 12.2), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
+DEB_DEPENDS     = firmware (>= 11.0), firmware(>=12.2) | org.swift.libswift (>=5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
 endif
 endif
 
@@ -102,9 +102,9 @@ endif
 
 ifeq ($(PLATFORM),iphoneos-arm64)
 ifeq ($(ALL_BOOTSTRAPS), 1)
-DEB_DEPENDS     = firmware (>= 12.2), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
+DEB_DEPENDS     = firmware (>= 11.0), firmware(>=12.2) | org.swift.libswift (>=5.0), coreutils (>= 8.31-1), dpkg (>= 1.19.7-2), apt (>= 1.8.2), libzstd1
 else
-DEB_DEPENDS     = firmware (>= 12.2), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
+DEB_DEPENDS     = firmware (>= 11.0), firmware(>=12.2) | org.swift.libswift (>=5.0), coreutils (>= 8.32-4), dpkg (>= 1.20.0), apt (>= 2.3.0), libzstd1
 endif
 endif
 

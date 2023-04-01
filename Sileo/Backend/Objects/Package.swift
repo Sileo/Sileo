@@ -7,22 +7,23 @@
 //
 import UIKit
 
-final class Package: Hashable, Equatable {
+final class Package: PackageProtocol {
+    
     public var package: String
     public var packageID: String
     public var name: String?
     public var version: String
     public var architecture: String?
-    public var author: String?
-    public var maintainer: String?
+    public var author: Maintainer?
+    public var maintainer: Maintainer?
     public var section: String?
     public var rawSection: String?
     public var packageDescription: String?
-    public var legacyDepiction: String?
-    public var depiction: String?
-    public var icon: String?
+    public var legacyDepiction: URL?
+    public var depiction: URL?
+    public var icon: URL?
     public var sourceFile: String?
-    public var source: String?
+    public var source: URL?
     public var isProvisional: Bool?
     public var sourceFileURL: URL?
     public var rawControl: [String: String] = [:]
@@ -31,7 +32,7 @@ final class Package: Hashable, Equatable {
     public var commercial: Bool = false
     public var installedSize: Int?
     public var tags: PackageTags = .none
-    public var nativeDepiction: String?
+    public var nativeDepiction: URL?
     
     public var allVersionsInternal = [String: Package]()
     public var allVersions: [Package] {
@@ -90,7 +91,7 @@ final class Package: Hashable, Equatable {
     }
     
     public func hasIcon() -> Bool {
-        icon?.isEmpty == false
+        icon != nil
     }
 
     public func addOld(_ packages: [Package]) {
@@ -113,6 +114,3 @@ final class Package: Hashable, Equatable {
     }
 }
 
-func == (lhs: Package, rhs: Package) -> Bool {
-    lhs.package == rhs.package && lhs.version == rhs.version
-}

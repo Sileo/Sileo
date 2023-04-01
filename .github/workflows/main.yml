@@ -69,7 +69,7 @@ jobs:
 
       - name: Select Correct Xcode (13.1)
         run: |
-          sudo xcode-select --switch /Applications/Xcode_13.4.1.app
+          sudo xcode-select --switch /Applications/Xcode_14.2.app
 
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |

@@ -34,22 +34,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
         updateSileoColors()
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(showLog))
-        longPressRecognizer.minimumPressDuration = 5
-        tabBar.addGestureRecognizer(longPressRecognizer)
-    }
-    
-    @objc private func showLog(_ gesture: UILongPressGestureRecognizer) {
-        if #available(iOS 13.0, *) {
-            if gesture.state == .began && !LogStreamViewController.shared.isModalInPresentation {
-                self.present(LogStreamViewController.shared, animated: true)
-            }
-        } else {
-            if gesture.state == .began && !LogStreamViewController.shared.isBeingPresented {
-                self.present(LogStreamViewController.shared, animated: true)
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

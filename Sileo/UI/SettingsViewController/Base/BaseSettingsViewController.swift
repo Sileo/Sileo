@@ -143,7 +143,7 @@ extension BaseSettingsViewController { // Data Source Overrides
         let label: UILabel = SileoLabelView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = UIFont.systemFont(ofSize: 19, weight: UIFont.Weight.semibold)
+        label.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
         
         labelContainer.addSubview(label)
         label.topAnchor.constraint(equalTo: labelContainer.layoutMarginsGuide.topAnchor).isActive = true

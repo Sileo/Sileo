@@ -7,6 +7,7 @@
 //
 
 import Evander
+import ZippyJSON
 
 func dynamicColor(default defaultColor: UIColor, dark: UIColor) -> UIColor {
     if #available(iOS 13.0, *) {
@@ -89,6 +90,12 @@ class SileoThemeManager: NSObject {
         } else {
             self.tintColor = fallbackColor
         }
+        
+        if let userSavedThemesData = UserDefaults.standard.data(forKey: "userSavedThemes"), let userSavedThemes = try? ZippyJSONDecoder().decode([SileoCodableTheme].self, from: userSavedThemesData) {
+            themeList.append(contentsOf: Array(Set(userSavedThemes.map { $0.sileoTheme })))
+        }
+        
+        themeList = Array(Set(themeList)) // duplicate removal
         
         let strings = themeList.map({ $0.name })
         currentTheme = themeList[strings.firstIndex(of: UserDefaults.standard.value(forKey: "currentTheme") as? String ?? defaultTheme) ?? 0]

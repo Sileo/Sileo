@@ -93,10 +93,12 @@
 "Sources_Page" = "Források";
 "Packages_Page" = "Csomagok";
 "Search_Page" = "Keresés";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Források újratöltése";
 "Package_Installed_Files_Page" = "Telepített fájlok";
 "Refresh" = "Újratöltés";
-"Remove" = "Remove";
+"Remove" = "Eltávolítás";
 
 "All_Packages.Title" = "Összes csomag";
 "All_Packages.Cell_Subtitle" = "Nézd meg a forrásaidban lévő összes csomagot";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Tónus";
 "Reset_Tint_Color" = "Tónus visszaállítása";
 "Auto_Complete_Queue" = "Várakozási sor automatikus befejezése";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "\"Összes frissítése\" automatikus megerősítése";
 "Swipe_Actions" = "Csúsztató műveletek";
 "Show_Provisional" = "Canister csomagok megjelenítése";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo Adaptív";
 "System" = "Rendszer";
 "Theme_Settings" = "Témabeállítások";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Bejelentkezés a Cydia Store-ba";
 "Payment_Provider_Signed_In" = "Belépve";

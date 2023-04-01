@@ -93,10 +93,12 @@
 "Sources_Page" = "Nguồn";
 "Packages_Page" = "Gói";
 "Search_Page" = "Tìm Kiếm";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Loại bỏ";
+"Remove" = "Xóa";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Màu sắc";
 "Reset_Tint_Color" = "Đặt lại màu sắc";
 "Auto_Complete_Queue" = "Tự động hoàn thành danh sách chờ";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Tự động xác nhận nâng cấp tất cả lối tắt";
 "Swipe_Actions" = "Thao tác vuốt";
 "Show_Provisional" = "Hiển thị các Gói hàng từ Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo thích ứng";
 "System" = "Hệ thống";
 "Theme_Settings" = "Cài đặt chủ đề";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Đăng nhập vào Cydia Store";
 "Payment_Provider_Signed_In" = "Đã đăng nhập";

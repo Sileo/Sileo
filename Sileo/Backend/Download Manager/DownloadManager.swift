@@ -631,10 +631,10 @@ final class DownloadManager {
                 "me@diatr.us"
             ]
             for email in blockedEmails {
-                if package.author?.contains(email) ?? false {
+                if package.author?.email?.contains(email) ?? false {
                     return true
                 }
-                if package.maintainer?.contains(email) ?? false {
+                if package.maintainer?.email?.contains(email) ?? false {
                     return true
                 }
             }

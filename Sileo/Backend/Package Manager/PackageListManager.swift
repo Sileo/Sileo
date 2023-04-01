@@ -169,23 +169,23 @@ final class PackageListManager {
         if package.name == nil {
             package.name = package.package
         }
-        package.icon = dictionary["icon"]
+        package.icon = URL(string: dictionary["icon"])
         package.architecture = dictionary["architecture"]
-        package.maintainer = dictionary["maintainer"]
+        package.maintainer = Maintainer(string: dictionary["maintainer"])
         if package.maintainer != nil {
             if dictionary["author"] != nil {
-                package.author = dictionary["author"]
+                package.author = Maintainer(string: dictionary["author"])
             } else {
-                package.author = dictionary["maintainer"]
+                package.author = package.maintainer
             }
         }
         package.rawSection = dictionary["section"]?.lowercased()
         package.section = humanReadableCategory(dictionary["section"])
         
         package.packageDescription = dictionary["description"]
-        package.legacyDepiction = dictionary["depiction"]
-        package.depiction = dictionary["sileodepiction"]
-        package.nativeDepiction = dictionary["native-depiction"]
+        package.legacyDepiction = URL(string: dictionary["depiction"])
+        package.depiction = URL(string: dictionary["sileodepiction"])
+        package.nativeDepiction = URL(string: dictionary["native-depiction"])
         
         if let installedSize = dictionary["installed-size"] {
             package.installedSize = Int(installedSize)
@@ -205,7 +205,7 @@ final class PackageListManager {
     }
 
     public class func readPackages(repoContext: Repo? = nil, packagesFile: URL? = nil, installed: Bool = false) -> [String: Package] {
-        let archs = DpkgWrapper.getArchitectures
+        let archs = DpkgWrapper.architecture
         var tmpPackagesFile: URL?
         var toWrite: URL?
         var dict = [String: Package]()
@@ -270,7 +270,7 @@ final class PackageListManager {
             guard let package = self.package(packageEnum: rawPackageEnum) else {
                 continue
             }
-            if !archs.contains(package.architecture ?? "nil") && package.architecture != "all" {
+            guard archs?.valid(arch: package.architecture) ?? false else {
                 continue
             }
             package.sourceFile = repoContext?.rawEntry
@@ -354,13 +354,12 @@ final class PackageListManager {
             packageList = packageList.filter({ $0.section == category })
         } else if identifier.hasPrefix("author:") {
             let index = identifier.index(identifier.startIndex, offsetBy: 7)
-            let authorEmail = String(identifier[index...]).lowercased()
+            let authorEmail = String(identifier[index...])
             packageList = packageList.filter {
-                guard let lowercaseAuthor = $0.author?.lowercased(),
-                      !lowercaseAuthor.isEmpty else {
+                guard let authorEmail = $0.author?.email else {
                     return false
                 }
-                return ControlFileParser.authorEmail(string: lowercaseAuthor) == authorEmail.lowercased()
+                return authorEmail == authorEmail
             }
         }
         if let searchQuery = search,
@@ -368,7 +367,7 @@ final class PackageListManager {
             let lowercased = searchQuery.lowercased()
             packageList.removeAll { package in
                 // check if the user search term is in the package ID, description or in the author / maintainer name
-                for field in [package.package, package.name, package.author, package.maintainer] {
+                for field in [package.package, package.name, package.author?.name, package.maintainer?.name] {
                     if field?.localizedStandardContains(lowercased) ?? false { return false }
                 }
                 

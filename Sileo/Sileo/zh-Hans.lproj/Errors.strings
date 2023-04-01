@@ -57,3 +57,5 @@
 "Purchase_Initiate_Fail.Title" = "无法初始化付款";
 "Purchase_Complete_Fail.Title" = "无法完成付款";
 "Purchase_Auth_Complete_Fail.Title" = "无法完成验证";
+
+"Couldnt_Import_Themes" = "Couldn't Import theme(s)";

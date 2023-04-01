@@ -93,10 +93,12 @@
 "Sources_Page" = "Bronnen";
 "Packages_Page" = "Pakketten";
 "Search_Page" = "Zoek";
+"Search_History" = "Recently Searched";
+"Clear_Search_History" = "Clear";
 "Refreshing_Sources_Page" = "Bronnen Verversen";
 "Package_Installed_Files_Page" = "Geïnstalleerde Bestanden";
 "Refresh" = "Ververs";
-"Remove" = "Remove";
+"Remove" = "Verwijder";
 
 "All_Packages.Title" = "Alle Pakketten";
 "All_Packages.Cell_Subtitle" = "Zie alle pakketten van je bronnen";
@@ -150,6 +152,7 @@
 "Tint_Color" = "Tint Kleur";
 "Reset_Tint_Color" = "Reset Tint Kleur";
 "Auto_Complete_Queue" = "Wachtrij Automatisch Voltooien";
+"Show_Search_History" = "Show Search History";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Bevestig Automatisch Upgrade Alles Snelkoppeling";
 "Swipe_Actions" = "Sleep Acties";
 "Show_Provisional" = "Toon Pakketten Van Canister";
@@ -175,6 +178,21 @@
 "Sileo_Adaptive" = "Sileo Adaptief";
 "System" = "Systeem";
 "Theme_Settings" = "Thema Instellingen";
+
+"Manage_Themes" = "Manage Themes";
+"Create_Theme" = "Create Theme";
+"Import_Themes" = "Import Themes";
+"Theme_Name" = "Theme name";
+"Export_Themes" = "Export Themes";
+
+"Background_Color" = "Background Color";
+"Secondary_Background_Color" = "Secondary Background Color";
+"Label_Color" = "Label Color";
+"Highlight_Color" = "Highlight Color";
+"Seperator_Color" = "Seperator Color";
+"Header_Color" = "Header Color";
+"Banner_Color" = "Banner Color";
+
 
 "Cydia_Sign_In" = "Inloggen bij Cydia Store";
 "Payment_Provider_Signed_In" = "Ingelogd";

@@ -162,13 +162,14 @@ class PackageQueueButton: PackageButton {
                 return []
         }
         if package.isProvisional ?? false {
-            guard let source = package.source,
-                  let url = URL(string: source) else { return [] }
+            guard let source = package.source else {
+                return []
+            }
             let action = CSActionItem(title: String(localizationKey: "Add_Source.Title"),
                                       image: UIImage(systemNameOrNil: "square.and.arrow.down"),
                                       style: .default) {
                 self.hapticResponse()
-                self.addRepo(url)
+                self.addRepo(source)
                 CanisterResolver.shared.queuePackage(package)
             }
             return [action]
@@ -277,9 +278,8 @@ class PackageQueueButton: PackageButton {
     private func handleButtonPress(_ package: Package, _ check: Bool = true) {
         if check {
             if package.isProvisional ?? false {
-                guard let source = package.source,
-                      let url = URL(string: source) else { return }
-                self.addRepo(url)
+                guard let source = package.source else { return }
+                self.addRepo(source)
                 CanisterResolver.shared.queuePackage(package)
                 return
             }

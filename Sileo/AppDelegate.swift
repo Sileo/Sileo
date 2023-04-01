@@ -13,12 +13,12 @@ import Evander
 #if canImport(BackgroundTasks)
 import BackgroundTasks
 #endif
-	
+
+@main
 class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        _ = LogStreamViewController.shared
         // Prepare the Evander manifest
         EvanderNetworking.CACHE_FORCE = .libraryDirectory
         Evander.prepare()
@@ -127,7 +127,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         content.title = String(localizationKey: "New Update")
                         content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
                                               package.name ?? "",
-                                              ControlFileParser.authorName(string: package.author ?? ""),
+                                              package.author?.name ?? "",
                                               package.version,
                                               package.sourceRepo?.displayName ?? "")
                         content.badge = newUpdates.count as NSNumber
@@ -149,7 +149,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         content.title = String(localizationKey: "New Update")
                         content.body = String(format: String(localizationKey: "%@ by %@ has been updated to version %@ on %@"),
                                               package.name ?? "",
-                                              ControlFileParser.authorName(string: package.author ?? ""),
+                                              package.author?.name ?? "",
                                               package.version,
                                               package.sourceRepo?.displayName ?? "")
                         content.badge = newUpdates.count as NSNumber

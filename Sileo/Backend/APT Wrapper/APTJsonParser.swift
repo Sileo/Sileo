@@ -6,6 +6,7 @@
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
 import Evander
+import ZippyJSON
 
 enum APTParserErrors: LocalizedError {
     case missingSileoConf
@@ -212,7 +213,7 @@ extension APTWrapper {
 
     // We need to take multiple outputs and make it a full JSON object in some cases, while others we can just serialize the full struct
     private class func normalizeAptOutput(rawOutput: String, error: String) throws -> APTOutput {
-        let decoder = JSONDecoder()
+        let decoder = ZippyJSONDecoder()
         var aptOutput = APTOutput()
 
         // Detect what type of JSON output we are working with
