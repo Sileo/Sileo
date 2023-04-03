@@ -34,7 +34,8 @@ final class CanisterResolver {
         "apt.procurs.us",
         "apt.saurik.com",
         "repo.theodyssey.dev",
-        "repo.chimera.sh"
+        "repo.chimera.sh",
+        "repo.palera.in"
     ]
 
     @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
