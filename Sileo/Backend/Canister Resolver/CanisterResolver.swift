@@ -27,22 +27,12 @@ final class CanisterResolver {
     public static let queueKey = DispatchSpecificKey<Int>()
     public static var queueContext = 50
     
-    let filteredRepos = [
-        "apt.elucubratus.com",
-        "test.apt.bingner.com",
-        "apt.bingner.com",
-        "apt.procurs.us",
-        "apt.saurik.com",
-        "repo.theodyssey.dev",
-        "repo.chimera.sh"
-    ]
-
     @discardableResult public func fetch(_ query: String, fetch: ((Bool) -> Void)? = nil) -> Bool {
         #if targetEnvironment(macCatalyst)
         fetch?(false); return false
         #endif
         guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
-        guard query.count > 3,
+        guard query.count >= 2,
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
         let url = "https://api.canister.me/v2/jailbreak/package/search?q=\(formatted)"
@@ -55,7 +45,7 @@ final class CanisterResolver {
             self.savedSearch.append(query)
             var change = false
             for package in response.data ?? [] {
-                if !self.packages.contains(where: { $0.package == package.package }) && !self.filteredRepos.contains(package.repository.uri.baseURL?.absoluteString ?? "") {
+                if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false {
                     change = true
                     self.packages.append(package)
                 }
@@ -90,7 +80,7 @@ final class CanisterResolver {
                 self.savedSearch += packages
                 var change = false
                 for package in response.data ?? [] {
-                    if !self.packages.contains(where: { $0.package == package.package }) && !self.filteredRepos.contains(package.repository.uri.baseURL?.absoluteString ?? "") {
+                    if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false {
                         change = true
                         self.packages.append(package)
                     }
@@ -240,6 +230,7 @@ struct ProvisionalRepo: Decodable, Equatable, Hashable {
     let tier: Int
     
     let suite: String
+    let isBootstrap: Bool
     
     static func ==(lhs: ProvisionalRepo, rhs: ProvisionalRepo) -> Bool {
         lhs.slug == rhs.slug
