@@ -491,7 +491,15 @@ class APTWrapper {
                     if appPath.path == Bundle.main.bundlePath {
                         refreshSileo = true
                     } else {
-                        spawn(command: "\(CommandPath.prefix)/usr/bin/uicache", args: ["uicache", "-p", "\(appPath.path)"])
+                        let res = spawn(command: "\(CommandPath.prefix)/bin/readlink", args: ["readlink", "-f", "\(appPath.path)"])
+                        let realPath = (res.1).trimmingCharacters(in: .whitespacesAndNewlines)
+                        outputCallback(realPath + "\n", debugFD)
+                        if FileManager.default.fileExists(atPath: realPath) {
+                            spawn(command: "\(CommandPath.prefix)/usr/bin/uicache", args: ["uicache", "-p", "\(realPath)"])
+                        } else {
+                            spawn(command: "\(CommandPath.prefix)/usr/bin/uicache", args: ["uicache", "-u", "\(realPath)"])
+                            
+                        }
                     }
                 }
             }
