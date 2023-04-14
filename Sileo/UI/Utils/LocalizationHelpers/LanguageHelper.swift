@@ -25,7 +25,7 @@ extension String {
     /// Creates a localized string from the provided key.
     init(localizationKey: String, type: LocalizedStringType = .general) {
         // swiftlint:disable nslocalizedstring_key
-        if let bundle = LanguageHelper.shared.primaryBundle ?? LanguageHelper.shared.alternateBundle {
+        if let bundle = LanguageHelper.shared.primaryBundle {
             self = NSLocalizedString(localizationKey, tableName: type.tableName, bundle: bundle, comment: "")
         } else {
             self = NSLocalizedString(localizationKey, tableName: type.tableName, comment: "")

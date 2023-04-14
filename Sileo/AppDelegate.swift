@@ -286,7 +286,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             
             sourcesVC.refreshSources(forceUpdate: true, forceReload: true, isBackground: false, useRefreshControl: true, useErrorScreen: true, completion: { _, _ in
                 PackageListManager.shared.upgradeAll(completion: {
-                    if UserDefaults.standard.optionalBool("AutoConfirmUpgradeAllShortcut", fallback: false) {
+                    if UserDefaults.standard.bool(forKey: "AutoConfirmUpgradeAllShortcut", fallback: false) {
                         let downloadMan = DownloadManager.shared
                         downloadMan.reloadData(recheckPackages: false)
                     }

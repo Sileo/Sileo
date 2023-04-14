@@ -176,7 +176,7 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
             return nil
         }
         guard let package = targetPackage,
-              UserDefaults.standard.optionalBool("SwipeActions", fallback: true)  else { return nil }
+              UserDefaults.standard.bool(forKey: "SwipeActions", fallback: true)  else { return nil }
         var actions = [SwipeAction]()
         let queueFound = DownloadManager.shared.find(package: package)
         // We only want delete if we're going left, and only if it's in the queue

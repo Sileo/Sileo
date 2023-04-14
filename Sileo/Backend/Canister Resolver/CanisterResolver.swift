@@ -31,7 +31,7 @@ final class CanisterResolver {
         #if targetEnvironment(macCatalyst)
         fetch?(false); return false
         #endif
-        guard UserDefaults.standard.optionalBool("ShowProvisional", fallback: true) else { fetch?(false); return false }
+        guard UserDefaults.standard.bool(forKey: "ShowProvisional", fallback: true) else { fetch?(false); return false }
         guard query.count >= 2,
            !savedSearch.contains(query),
            let formatted = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fetch?(false); return false }
