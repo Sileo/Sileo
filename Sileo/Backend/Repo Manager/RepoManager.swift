@@ -112,15 +112,15 @@ final class RepoManager {
                 return true
             case "apt.procurs.us":
                 let arch = DpkgWrapper.architecture
-                let suite = arch?.primary == .rootless ? "iphoneos-arm64-rootless" : "iphoneos-arm64"
+                let suite = arch?.primary == .rootless ? "" : "iphoneos-arm64/"
                 let jailbreakRepo = Repo()
                 jailbreakRepo.rawURL = "https://apt.procurs.us/"
-                jailbreakRepo.suite = "\(suite)/\(UIDevice.current.cfMajorVersion)"
+                jailbreakRepo.suite = "\(suite)\(UIDevice.current.cfMajorVersion)"
                 jailbreakRepo.components = ["main"]
                 jailbreakRepo.rawEntry = """
                 Types: deb
                 URIs: https://apt.procurs.us/
-                Suites: \(suite)/\(UIDevice.current.cfMajorVersion)
+                Suites: \(suite)\(UIDevice.current.cfMajorVersion)
                 Components: main
                 """
                 jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
