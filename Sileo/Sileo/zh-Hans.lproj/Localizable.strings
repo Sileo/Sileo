@@ -190,8 +190,8 @@
 "Label_Color" = "Label Color";
 "Highlight_Color" = "Highlight Color";
 "Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Header_Color" = "标题颜色";
+"Banner_Color" = "横幅颜色";
 
 
 "Cydia_Sign_In" = "登陆 Cydia Store";
@@ -232,4 +232,4 @@
 // Depcitions
 "View_Depiction" = "查看介绍";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "复制 ID";
