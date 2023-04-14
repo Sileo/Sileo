@@ -77,7 +77,6 @@ cleanup:
     return error;
 }
 
-#if !TARGET_SANDBOX
 uint8_t decompressXz(FILE *input, FILE *output, uint8_t type) {
     lzma_stream strm;
     memset(&strm, 0, sizeof(strm));
@@ -138,7 +137,7 @@ uint8_t decompressXz(FILE *input, FILE *output, uint8_t type) {
             case LZMA_OK:
                 break;
             case LZMA_STREAM_END:
-                error = 6;
+                error = 0;
                 goto cleanup;
             case LZMA_MEM_ERROR:
                 error = 1;
@@ -162,7 +161,6 @@ cleanup:
     lzma_end(&strm);
     return error;
 }
-#endif
 
 uint8_t decompressBzip(FILE *input, FILE *output) {
     uint8_t error = 0;

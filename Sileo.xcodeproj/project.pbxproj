@@ -518,6 +518,7 @@
 		E19E231C29CCC843004A52FA /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = E19E231B29CCC843004A52FA /* Atomics */; };
 		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
 		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
+		E1A0645829E9D41600B9E0B1 /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E16BFFDA29E9D2940033C971 /* liblzma.tbd */; };
 		E1A2D118281F30C70006411B /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */; };
 		E1A2D119281F30C70006411B /* BlueLemonade~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */; };
 		E1A2D11A281F30C70006411B /* BlueLemonade~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB72607F9A400A20711 /* BlueLemonade~ipad@3x.png */; };
@@ -1331,6 +1332,8 @@
 		E163BE9C28896E46004A20CC /* dpkgversion.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dpkgversion.c; sourceTree = "<group>"; };
 		E163BEB42889E5B9004A20CC /* Set+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Extensions.swift"; sourceTree = "<group>"; };
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
+		E16BFFD929E9D24C0033C971 /* liblzma.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.5.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/lib/liblzma.5.tbd; sourceTree = DEVELOPER_DIR; };
+		E16BFFDA29E9D2940033C971 /* liblzma.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/lib/liblzma.tbd; sourceTree = DEVELOPER_DIR; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
 		E191837B29CF5F48009AA62E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -1627,6 +1630,7 @@
 				E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */,
 				F139D12522EA9209007F5C0D /* Security.framework in Frameworks */,
 				E172ACE9279490E40066933E /* Down in Frameworks */,
+				E1A0645829E9D41600B9E0B1 /* liblzma.tbd in Frameworks */,
 				E19A5356261743BD00BB8A69 /* LNZTreeView in Frameworks */,
 				F139D12322EA9209007F5C0D /* libiconv.tbd in Frameworks */,
 				E19E230B29CCA9E0004A52FA /* ZippyJSON in Frameworks */,
@@ -1683,7 +1687,9 @@
 		33F3CD3020E059ED00B3A1D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E16BFFDA29E9D2940033C971 /* liblzma.tbd */,
 				E1C92EE4294B5B84007079E8 /* liblzma.5.tbd */,
+				E16BFFD929E9D24C0033C971 /* liblzma.5.tbd */,
 				E14C5ED026680E030080BFCE /* libz.tbd */,
 				E14C5ECE26680DF40080BFCE /* libz.1.tbd */,
 				E14C5EC5266803DA0080BFCE /* libbz2.1.0.5.tbd */,

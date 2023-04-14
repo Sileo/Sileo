@@ -711,7 +711,7 @@ final class RepoManager {
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
                     let extensions = ["zst", "xz", "lzma", "bz2", "gz", ""]
                     #else
-                    let extensions = ["bz2", "gz", ""]
+                    let extensions = ["xz", "lzma", "bz2", "gz", ""]
                     #endif
                     var breakOff = false
                     packages.map { url in self.fetch(
