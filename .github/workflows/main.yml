@@ -8,12 +8,6 @@ jobs:
     name: Build and Upload Sileo
     runs-on: macos-12
     steps:
-      - uses: actions/cache@v2
-        id: procache
-        with:
-          path: |
-            ~/__cache
-          key: ${{ runner.os }}-procursus
 
       - name: Checkout
         uses: actions/checkout@master
@@ -46,7 +40,6 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
 
       - name: Setup Procursus Bootstrap (install)
-        if: steps.procache.outputs.cache-hit != 'true'
         run: |
           wget https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-amd64.tar.zst
           sudo gtar --preserve-permissions -xkf ./bootstrap-darwin-amd64.tar.zst -C /
@@ -58,18 +51,9 @@ jobs:
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
 
-      - name: Setup Procursus Bootstrap (cache)
-        if: steps.procache.outputs.cache-hit == 'true'
+      - name: Select Correct Xcode (14.3)
         run: |
-          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
-          sudo rsync -aP ~/__cache/procursus /opt
-          sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
-          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
-
-      - name: Select Correct Xcode (13.1)
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_14.2.app
+          sudo xcode-select --switch /Applications/Xcode_14.3.app
 
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
@@ -104,10 +88,3 @@ jobs:
           git add . 
           git commit -m "build: sileo"
           git push
-
-      - name: Copy Procursus to Cache Location
-        run: |
-          sudo mkdir -p ~/__cache
-          sudo rsync -aP /opt/procursus ~/__cache
-          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
-
