@@ -497,6 +497,9 @@
 		E172ACEB279490E90066933E /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = E172ACEA279490E90066933E /* Down */; };
 		E18CD2D1262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
 		E18CD2D2262C8E7500FF499C /* NewsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CD2D0262C8E7500FF499C /* NewsResolver.swift */; };
+		E191837C29CF5F48009AA62E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191837B29CF5F48009AA62E /* ImageLoader.swift */; };
+		E191837D29CF5F48009AA62E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191837B29CF5F48009AA62E /* ImageLoader.swift */; };
+		E191837E29CF5F48009AA62E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191837B29CF5F48009AA62E /* ImageLoader.swift */; };
 		E19A53422617438700BB8A69 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = E19A53412617438700BB8A69 /* Cosmos */; };
 		E19A5352261743B300BB8A69 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5351261743B300BB8A69 /* SwipeCellKit */; };
 		E19A5354261743BA00BB8A69 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = E19A5353261743BA00BB8A69 /* SQLite */; };
@@ -1330,6 +1333,7 @@
 		E166F6F8260A6FFF00663FA1 /* CanisterResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanisterResolver.swift; sourceTree = "<group>"; };
 		E1777824266006290091AFAB /* LaunchAsRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAsRoot.h; sourceTree = "<group>"; };
 		E18CD2D0262C8E7500FF499C /* NewsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResolver.swift; sourceTree = "<group>"; };
+		E191837B29CF5F48009AA62E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignUpdate.swift; sourceTree = "<group>"; };
 		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
 		E19E230229CC985D004A52FA /* decompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decompression.h; sourceTree = "<group>"; };
@@ -1959,6 +1963,7 @@
 				F170605B24CF4DFD001596A0 /* SileoViewController.swift */,
 				F1AB912922ED09AE0054341B /* SourceProgressIndicatorView.swift */,
 				F1330EA82324F76C00971073 /* UIColor-ThemeColors.swift */,
+				E191837B29CF5F48009AA62E /* ImageLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3901,6 +3906,7 @@
 				E128186A26BBFAA500D2553B /* DownloadPackage.swift in Sources */,
 				E128186B26BBFAA500D2553B /* FeaturedButton.swift in Sources */,
 				E128186D26BBFAA500D2553B /* DpkgWrapper.swift in Sources */,
+				E191837E29CF5F48009AA62E /* ImageLoader.swift in Sources */,
 				E128186E26BBFAA500D2553B /* Dusk.swift in Sources */,
 				E128186F26BBFAA500D2553B /* KeychainManager.swift in Sources */,
 				E128187026BBFAA500D2553B /* EditableTableView.swift in Sources */,
@@ -4066,6 +4072,7 @@
 				F139D10122EA9209007F5C0D /* DepictionImageView.swift in Sources */,
 				F139D0FD22EA9209007F5C0D /* DepictionLabelView.swift in Sources */,
 				F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */,
+				E191837D29CF5F48009AA62E /* ImageLoader.swift in Sources */,
 				FB40263123DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F139D0D022EA9209007F5C0D /* DepictionMinVersionForceView.swift in Sources */,
 				FB40263723DF404E002D97FE /* SettingsHeaderViewDisplayable.swift in Sources */,
@@ -4285,6 +4292,7 @@
 				F1A7051322D0359900F602DA /* DpkgWrapper.swift in Sources */,
 				F107EB62230D195A002B8C20 /* Dusk.swift in Sources */,
 				E1C6C0D82677BFDE006228E0 /* KeychainManager.swift in Sources */,
+				E191837C29CF5F48009AA62E /* ImageLoader.swift in Sources */,
 				F13AEE6322F69C47004BAA05 /* EditableTableView.swift in Sources */,
 				FB40263C23DF478B002D97FE /* PaymentProfileViewController.swift in Sources */,
 				FB6F3D2E24AA501000E941F8 /* PaymentManager.swift in Sources */,
@@ -4969,11 +4977,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
 					/opt/procursus/lib,
 					/var/jb/usr/local/lib,
 					/var/jb/usr/lib,
 					"$(inherited)",
+					/usr/lib/libswift/stable,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5413,11 +5421,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
 					/opt/procursus/lib,
 					/var/jb/usr/local/lib,
 					/var/jb/usr/lib,
 					"$(inherited)",
+					/usr/lib/libswift/stable,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5471,11 +5479,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
 					/opt/procursus/lib,
 					/var/jb/usr/local/lib,
 					/var/jb/usr/lib,
 					"$(inherited)",
+					/usr/lib/libswift/stable,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

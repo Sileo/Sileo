@@ -69,6 +69,7 @@ final class RepoManager {
 
     init() {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
+        parseSourcesFile(at: sourcesURL)
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
@@ -1249,7 +1250,12 @@ final class RepoManager {
             }
 
             #if targetEnvironment(simulator) || TARGET_SANDBOX
-            try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
+            do {
+                try rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
+            } catch {
+                print("Couldn't save with \(error)")
+            }
+            
             #else
 
             var sileoList = ""

@@ -203,9 +203,8 @@ extension APTWrapper {
         // APT spawn stuff
         var aptStdout = ""
         var aptError = ""
-        var status = 0
 
-        (status, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
+        (_, aptStdout, aptError) = spawn(command: CommandPath.aptget, args: ["apt-get"] + queryArguments + packageOperations)
         let aptJsonOutput = try normalizeAptOutput(rawOutput: aptStdout, error: aptError)
         
         return aptJsonOutput

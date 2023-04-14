@@ -46,23 +46,5 @@ final class ControlFileParser {
         // self.dispatchLock.signal()
         return (dictionary, tags)
     }
-    
-    class func authorName(string: String) -> String {
-        guard let emailIndex = string.firstIndex(of: "<") else {
-            return string.trimmingCharacters(in: .whitespaces)
-        }
-        return string[..<emailIndex].trimmingCharacters(in: .whitespaces)
-    }
-    
-    class func authorEmail(string: String) -> String? {
-        guard let emailIndex = string.firstIndex(of: "<") else {
-            return nil
-        }
-        var email = string[emailIndex...]
-        email.removeFirst()
-        guard let emailLastIndex = email.firstIndex(of: ">") else {
-            return nil
-        }
-        return String(email[..<emailLastIndex])
-    }
+
 }

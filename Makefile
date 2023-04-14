@@ -7,7 +7,7 @@ NIGHTLY            ?= 0
 # Build from automation or not
 AUTOMATION         ?= 0
 # Build for all bootstraps or not
-ALL_BOOTSTRAPS     ?= 0
+ALL_BOOTSTRAPS     ?= 1
 
 DEBUG              ?= 0
 
