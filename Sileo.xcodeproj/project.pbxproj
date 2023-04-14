@@ -516,6 +516,10 @@
 		E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F959F269245E4002ABB8C /* LNPopupController-Static */; };
 		E19F95A2269245EB002ABB8C /* LNPopupController-Static in Frameworks */ = {isa = PBXBuildFile; productRef = E19F95A1269245EB002ABB8C /* LNPopupController-Static */; };
 		E1A0645829E9D41600B9E0B1 /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E16BFFDA29E9D2940033C971 /* liblzma.tbd */; };
+		E1A0645A29E9E97500B9E0B1 /* OperationQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */; };
+		E1A0645B29E9E97800B9E0B1 /* OperationQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */; };
+		E1A0645D29E9E97900B9E0B1 /* OperationQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */; };
+		E1A0645E29E9EB7D00B9E0B1 /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E16BFFDA29E9D2940033C971 /* liblzma.tbd */; };
 		E1A2D118281F30C70006411B /* BlueLemonade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB82607F9A400A20711 /* BlueLemonade@2x.png */; };
 		E1A2D119281F30C70006411B /* BlueLemonade~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB62607F9A400A20711 /* BlueLemonade~ipad@2x.png */; };
 		E1A2D11A281F30C70006411B /* BlueLemonade~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CE7CB72607F9A400A20711 /* BlueLemonade~ipad@3x.png */; };
@@ -1338,6 +1342,7 @@
 		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
 		E19E230229CC985D004A52FA /* decompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decompression.h; sourceTree = "<group>"; };
 		E19E230329CC9921004A52FA /* decompression.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = decompression.c; sourceTree = "<group>"; };
+		E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+Extensions.swift"; sourceTree = "<group>"; };
 		E1ADDD1C2643145B00E94655 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		E1B3FBBA2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E1B3FBBB2601256500F2E07F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "Sileo/pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -1590,6 +1595,7 @@
 				E172ACEB279490E90066933E /* Down in Frameworks */,
 				E12818DD26BBFAA500D2553B /* Security.framework in Frameworks */,
 				E12818DF26BBFAA500D2553B /* Cosmos in Frameworks */,
+				E1A0645E29E9EB7D00B9E0B1 /* liblzma.tbd in Frameworks */,
 				E12818E026BBFAA500D2553B /* libiconv.tbd in Frameworks */,
 				E12818E126BBFAA500D2553B /* SwipeCellKit in Frameworks */,
 				E12818E326BBFAA500D2553B /* Alderis in Frameworks */,
@@ -2829,6 +2835,7 @@
 				F16115D3244D8ABF003BF1E6 /* URL+Secure.swift */,
 				E163BEB42889E5B9004A20CC /* Set+Extensions.swift */,
 				E1F4B965288E8F3500E0C6E8 /* Data+Extensions.swift */,
+				E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3995,6 +4002,7 @@
 				E12818CB26BBFAA500D2553B /* WhiteBlur.m in Sources */,
 				E12818CC26BBFAA500D2553B /* WishListManager.swift in Sources */,
 				E12818CD26BBFAA500D2553B /* ZKSwizzle.m in Sources */,
+				E1A0645B29E9E97800B9E0B1 /* OperationQueue+Extensions.swift in Sources */,
 				E12818CE26BBFAA500D2553B /* XZ.swift in Sources */,
 				E12818CF26BBFAA500D2553B /* NewsArticleCollectionViewCell.swift in Sources */,
 				E12818D126BBFAA500D2553B /* PaymentAuthenticator.swift in Sources */,
@@ -4069,6 +4077,7 @@
 				F139D0FD22EA9209007F5C0D /* DepictionLabelView.swift in Sources */,
 				F139D0C322EA9209007F5C0D /* DepictionMarkdownViewSlow.swift in Sources */,
 				E191837D29CF5F48009AA62E /* ImageLoader.swift in Sources */,
+				E1A0645D29E9E97900B9E0B1 /* OperationQueue+Extensions.swift in Sources */,
 				FB40263123DF2ED3002D97FE /* SettingsLoadingTableViewCell.swift in Sources */,
 				F139D0D022EA9209007F5C0D /* DepictionMinVersionForceView.swift in Sources */,
 				FB40263723DF404E002D97FE /* SettingsHeaderViewDisplayable.swift in Sources */,
@@ -4381,6 +4390,7 @@
 				F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */,
 				56A5989B214657A700677FCA /* ZKSwizzle.m in Sources */,
 				E14C5EBD266687C80080BFCE /* XZ.swift in Sources */,
+				E1A0645A29E9E97500B9E0B1 /* OperationQueue+Extensions.swift in Sources */,
 				FBBD003A240C31B4008E11B2 /* NewsArticleCollectionViewCell.swift in Sources */,
 				370531E0282059BB00B67743 /* ThemesSectionViewController.swift in Sources */,
 				FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */,
@@ -4674,10 +4684,7 @@
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_SANDBOX=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SCRROOT)/Deps/lliblzma\"",
@@ -4699,7 +4706,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4730,6 +4737,7 @@
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_SANDBOX=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SCRROOT)/Deps/lliblzma\"",
@@ -4751,7 +4759,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4781,6 +4789,7 @@
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_SANDBOX=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SCRROOT)/Deps/lliblzma\"",
@@ -4802,7 +4811,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
