@@ -650,7 +650,6 @@ final class RepoManager {
                                 errorsFound = true
                                 return
                             }
-                            var preferredArch: String?
                             if repoArchs.contains(dpkgArchitectures.primary.rawValue) {
                                 preferredArch = dpkgArchitectures.primary.rawValue
                             } else {
