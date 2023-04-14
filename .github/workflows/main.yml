@@ -51,9 +51,9 @@ jobs:
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
 
-      - name: Select Correct Xcode (14.3)
+      - name: Select Correct Xcode (14.2)
         run: |
-          sudo xcode-select --switch /Applications/Xcode_14.3.app
+          sudo xcode-select --switch /Applications/Xcode_14.2.app
 
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
