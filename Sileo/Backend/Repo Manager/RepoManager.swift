@@ -11,13 +11,7 @@ import Evander
 
 // swiftlint:disable:next type_body_length
 final class RepoManager {
-    public final lazy var isProcursus: Bool = {
-        #if targetEnvironment(macCatalyst)
-        return true
-        #else
-        return CommandPath.isMobileProcursus
-        #endif
-    }()
+
     static let progressNotification = Notification.Name("SileoRepoManagerProgress")
     private var repoDatabase = DispatchQueue(label: "org.coolstar.SileoStore.repo-database")
 
@@ -112,7 +106,7 @@ final class RepoManager {
                 return true
             case "apt.procurs.us":
                 let arch = DpkgWrapper.architecture
-                let suite = arch?.primary == .rootless ? "" : "iphoneos-arm64/"
+                let suite = arch.primary == .rootless ? "" : "iphoneos-arm64/"
                 let jailbreakRepo = Repo()
                 jailbreakRepo.rawURL = "https://apt.procurs.us/"
                 jailbreakRepo.suite = "\(suite)\(UIDevice.current.cfMajorVersion)"
@@ -173,7 +167,7 @@ final class RepoManager {
                 return false
             }
         }
-        if CommandPath.isMobileProcursus {
+        if Jailbreak.bootstrap == .procursus {
             guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("apt.elucubratus.com") ?? false) else { return false }
@@ -341,8 +335,8 @@ final class RepoManager {
     }
 
     func cacheFile(named name: String, for repo: Repo) -> URL {
-        let arch = DpkgWrapper.architecture?
-            .primary.rawValue ?? ""
+        let arch = DpkgWrapper.architecture
+            .primary.rawValue
         let prefix = cachePrefix(for: repo)
         if !repo.isFlat && name == "Packages" {
             return prefix
@@ -572,10 +566,7 @@ final class RepoManager {
 
         
         var reposUpdated = 0
-        guard let dpkgArchitectures = DpkgWrapper.architecture else {
-            log("Failed to get DPKG Archiectures", type: .error)
-            return completion(true, errorOutput)
-        }
+        let dpkgArchitectures = DpkgWrapper.architecture
         let updateGroup = DispatchGroup()
 
         var backgroundIdentifier: UIBackgroundTaskIdentifier?
@@ -1168,7 +1159,7 @@ final class RepoManager {
     public func parseListFile(at url: URL, isImporting: Bool = false) {
         // if we're importing, then it doesn't matter if the file is a cydia.list
         // otherwise, don't parse the file
-        if CommandPath.isMobileProcursus, !isImporting {
+        if Jailbreak.bootstrap == .procursus, !isImporting {
             guard url.lastPathComponent != "cydia.list" else {
                 return
             }
@@ -1237,7 +1228,7 @@ final class RepoManager {
     func writeListToFile() {
         repoListLock.wait()
         
-        if isProcursus {
+        if Jailbreak.bootstrap != .elucubratus || Jailbreak.bootstrap != .unc0ver {
             var rawRepoList = ""
             var added: Set<String> = []
             for repo in repoList {

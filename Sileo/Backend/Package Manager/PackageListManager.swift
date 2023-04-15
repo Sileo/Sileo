@@ -244,7 +244,7 @@ final class PackageListManager {
             guard let package = self.package(packageEnum: rawPackageEnum) else {
                 continue
             }
-            guard archs?.valid(arch: package.architecture) ?? false else {
+            guard archs.valid(arch: package.architecture) else {
                 continue
             }
             package.sourceFile = repoContext?.rawEntry

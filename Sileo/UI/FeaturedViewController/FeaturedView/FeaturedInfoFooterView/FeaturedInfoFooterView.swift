@@ -24,15 +24,16 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         
         let platform = UIDevice.current.platform
         let systemVersion = UIDevice.current.systemVersion
-        
-        label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion)"
+
+        label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
+        label.numberOfLines = 2
         
         if sileoVersion == "Unknown" {
             let sileoPackage2 = FeaturedInfoFooterView.package
             let sileoVersion2 = sileoPackage2?.version ?? Bundle.main.infoDictionary!["CFBundleShortVersionString"] ?? "Unknown"
-            self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)"
+            self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
         }
     }
     
@@ -49,12 +50,12 @@ class FeaturedInfoFooterView: FeaturedBaseView {
     }
     
     override func depictionHeight(width: CGFloat) -> CGFloat {
-        24
+        48
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = CGRect(origin: self.bounds.origin,
-                             size: CGSize(width: self.bounds.width, height: 15))
+                             size: CGSize(width: self.bounds.width, height: 30))
     }
 }

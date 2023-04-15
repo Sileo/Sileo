@@ -57,6 +57,7 @@ final class PrivateIdentifiers {
 }
 
 extension UIDevice {
+    
     @objc public var uniqueIdentifier: String {
         PrivateIdentifiers.shared.uniqueIdentifier
     }

@@ -60,10 +60,10 @@ class DpkgWrapper {
         return interrupted
     }
  
-    public static var architecture: DPKGArchitecture? = {
+    public static var architecture: DPKGArchitecture = {
         #if arch(x86_64) && !targetEnvironment(simulator)
         let defaultArchitectures: DPKGArchitecture = DPKGArchitecture(primary: .intel, foreign: [])
-        #elseif arch(arm64) && os(macOS)
+        #elseif arch(arm64) && os(macOS) && !targetEnvironment(simulator)
         let defaultArchitectures: DPKGArchitecture = DPKGArchitecture(primary: .applesilicon, foreign: [])
         #else
         let defaultArchitectures: DPKGArchitecture
@@ -74,20 +74,21 @@ class DpkgWrapper {
         }
         #endif
         #if targetEnvironment(simulator) || TARGET_SANDBOX
+        print("Default Archs: \(defaultArchitectures)")
         return defaultArchitectures
         #else
         
         let (localStatus, localArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-architecture"])
         guard localStatus == 0 else {
-            return nil
+            return defaultArchitectures
         }
         let primary = localArchs.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").lowercased()
         guard let arch = DPKGArchitecture.Architecture(rawValue: primary) else {
-            return nil
+            return defaultArchitectures
         }
         let (foreignStatus, foreignArchs, _) = spawn(command: CommandPath.dpkg, args: ["dpkg", "--print-foreign-architectures"])
         guard foreignStatus == 0 else {
-            return nil
+            return defaultArchitectures
         }
         let foreignSet = foreignArchs.replacingOccurrences(of: " ", with: "").lowercased().components(separatedBy: "\n")
         var _foreign = Set<DPKGArchitecture.Architecture>()

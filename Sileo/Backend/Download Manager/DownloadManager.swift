@@ -831,7 +831,7 @@ final class DownloadManager {
         #if targetEnvironment(macCatalyst)
         allowedHosts = ["apt.procurs.us"]
         #else
-        if CommandPath.isMobileProcursus {
+        if Jailbreak.bootstrap == .procursus {
             allowedHosts = ["apt.procurs.us"]
         } else {
             allowedHosts = [
@@ -864,7 +864,7 @@ final class DownloadManager {
         #if targetEnvironment(macCatalyst)
         allowedHosts = ["apt.procurs.us"]
         #else
-        if CommandPath.isMobileProcursus {
+        if Jailbreak.bootstrap == .procursus {
             allowedHosts = ["apt.procurs.us"]
         } else {
             allowedHosts = [

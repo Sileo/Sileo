@@ -34,7 +34,7 @@ final class SourcesViewController: SileoViewController {
         }
         
         let repo = sortedRepoList[indexPath.row]
-        if RepoManager.shared.isProcursus {
+        if Jailbreak.bootstrap == .procursus {
             return repo.entryFile.hasSuffix("/sileo.sources")
         }
         return repo.url?.host != "apt.bingner.com"

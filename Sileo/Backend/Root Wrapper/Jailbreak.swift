@@ -1,0 +1,201 @@
+//
+//  File.swift
+//  Sileo
+//
+//  Created by Amy While on 15/04/2023.
+//  Copyright © 2023 Sileo Team. All rights reserved.
+//
+
+import Foundation
+import MachO
+
+enum Jailbreak: String, Codable {
+    
+    static let current = Jailbreak()
+    static let bootstrap = Bootstrap(jailbreak: current)
+    
+    // Coolstar
+    case electra = "Electra (iOS 11)"
+    case chimera = "Chimera (iOS 12)"
+    case odyssey = "Odyssey (iOS 13)"
+    case taurine = "Taurine (iOS 14)"
+    
+    // unc0ver
+    case unc0ver11 = "unc0ver (iOS 11)"
+    case unc0ver12 = "unc0ver (iOS 12)"
+    case unc0ver13 = "unc0ver (iOS 13)"
+    case unc0ver14 = "unc0ver (iOS 14)"
+    
+    // checkra1n
+    case checkra1n12 = "checkra1n (iOS 12)"
+    case checkra1n13 = "checkra1n (iOS 13)"
+    case checkra1n14 = "checkra1n (iOS 14)"
+    
+    // Odysseyra1n
+    case odysseyra1n12 = "Odysseyra1n (iOS 12)"
+    case odysseyra1n13 = "Odysseyra1n (iOS 13)"
+    case odysseyra1n14 = "Odysseyra1n (iOS 14)"
+    
+    // Palera1n
+    case palera1n_rootless15 = "Palera1n Rootless (iOS 15)"
+    case palera1n_rootless16 = "Palera1n Rootless (iOS 16)"
+    case palera1n_rootful15 = "Palera1n Rootful (iOS 15)"
+    case palera1n_rootful16 = "Palera1n Rootful (iOS 16)"
+    
+    // Xina
+    case xina15 = "XinaA15 (iOS 15)"
+    
+    // Fugu15
+    case fugu15 = "Fugu15 (iOS 15)"
+    
+    // Bakera1n
+    case bakera1n_rootless15 = "Bakera1n Rootless (iOS 15)"
+    case bakera1n_rootless16 = "Bakera1n Rootless (iOS 16)"
+    case bakera1n_rootful15 = "Bakera1n Rootful (iOS 15)"
+    case bakera1n_rootful16 = "Bakera1n Rootful (iOS 16)"
+    
+    case mac = "macOS"
+    case other = "Other"
+    
+    fileprivate static func arch() -> String {
+        guard let archRaw = NXGetLocalArchInfo().pointee.name else {
+            return "arm64"
+        }
+        return String(cString: archRaw)
+    }
+    
+    private init() {
+        let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
+        let procursus = URL(fileURLWithPath: "/.procursus_strapped")
+        let rootless_procursus = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
+        let elu = URL(fileURLWithPath: "/.bootstrapped")
+        let checkra1n = URL(fileURLWithPath: "/var/checkra1n.dmg")
+        
+        let bakera1n_rootful = URL(fileURLWithPath: "/fs")
+        let bakera1n = URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
+        
+        
+        let arm64e = Self.arch() == "arm64e"
+        
+        if #available(iOS 16.0, *) {
+            if palecursus.exists {
+                self = .palera1n_rootful16
+                return
+            } else if bakera1n.exists && rootless_procursus.dirExists {
+                self = .bakera1n_rootful16
+                return
+            } else if bakera1n.exists && rootless_procursus.exists {
+                self = .bakera1n_rootless16
+                return
+            } else if rootless_procursus.exists {
+                self = .palera1n_rootless16
+                return
+            }
+        } else if #available(iOS 15.0, *) {
+            if arm64e {
+                let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
+                if xina.exists {
+                    self = .xina15
+                    return
+                }
+                
+                let fugu = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
+                if fugu.exists {
+                    self = .fugu15
+                    return
+                }
+            } else {
+                if palecursus.exists {
+                    self = .palera1n_rootful15
+                    return
+                } else if bakera1n.exists && rootless_procursus.dirExists {
+                    self = .bakera1n_rootful16
+                    return
+                } else if bakera1n.exists && rootless_procursus.exists {
+                    self = .bakera1n_rootless16
+                    return
+                } else if rootless_procursus.exists {
+                    self = .palera1n_rootless15
+                    return
+                }
+            }
+        } else if #available(iOS 14.0, *) {
+            if procursus.exists {
+                if checkra1n.exists {
+                    self = .odysseyra1n14
+                    return
+                }
+                let taurine = URL(fileURLWithPath: "/taurine/jailbreakd")
+                if taurine.exists {
+                    self = .taurine
+                    return
+                }
+            } else if elu.exists {
+                if checkra1n.exists {
+                    self = .checkra1n14
+                    return
+                } else {
+                    self = .unc0ver14
+                    return
+                }
+            }
+        } else if #available(iOS 13.0, *) {
+            if procursus.exists {
+                if checkra1n.exists {
+                    self = .odysseyra1n13
+                    return
+                }
+                let taurine = URL(fileURLWithPath: "/odyssey/jailbreakd")
+                if taurine.exists {
+                    self = .odyssey
+                    return
+                }
+            } else if elu.exists {
+                if checkra1n.exists {
+                    self = .checkra1n13
+                    return
+                } else {
+                    self = .unc0ver13
+                    return
+                }
+            }
+        } else if #available(iOS 12.0, *) {
+            if procursus.exists {
+                if checkra1n.exists {
+                    self = .odysseyra1n12
+                    return
+                }
+                let taurine = URL(fileURLWithPath: "/chimera/jailbreakd")
+                if taurine.exists {
+                    self = .chimera
+                    return
+                }
+            } else if elu.exists {
+                if checkra1n.exists {
+                    self = .checkra1n12
+                    return
+                } else {
+                    self = .unc0ver12
+                    return
+                }
+            }
+        } else if #available(iOS 11.0, *) {
+            let electra = URL(fileURLWithPath: "/electra/jailbreakd")
+            if electra.exists {
+                self = .electra
+                return
+            } else {
+                self = .unc0ver11
+                return
+            }
+        } else {
+            #if targetEnvironment(macCatalyst)
+            self = .mac
+            return
+            #endif
+        }
+        self = .other
+    }
+
+    
+}
