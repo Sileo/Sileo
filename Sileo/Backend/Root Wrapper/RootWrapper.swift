@@ -319,8 +319,8 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus"
         #else
-        let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
-        if xina.exists {
+        let xina = URL(fileURLWithPath: "/var/Liy/")
+        if xina.dirExists {
             return "/var/Liy"
         }
         let rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
