@@ -85,7 +85,7 @@ jobs:
           git config --global user.email "26681721+elihwyma@users.noreply.github.com"
           git config --global credential.helper cache 
 
-          git clone https://${secrets.GITHUB_TOKEN}@github.com/elihwyma/amy-repo.git
+          git clone https://${{secrets.GITHUB_TOKEN}}@github.com/elihwyma/amy-repo.git
           mv packages/* amy-repo/pool/
           cd amy-repo
           ./repo.sh
