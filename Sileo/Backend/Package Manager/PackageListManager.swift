@@ -100,7 +100,7 @@ final class PackageListManager {
                     return
                 }
                 #endif
-                if UserDefaults.standard.optionalBool("AutoRefreshSources", fallback: true) {
+                if UserDefaults.standard.bool(forKey: "AutoRefreshSources", fallback: true) {
                     // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
                     if let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,
                        let sourcesSVC = tabBarController.viewControllers?[2] as? UISplitViewController,
@@ -560,7 +560,7 @@ final class PackageListManager {
         downloadMan.upgradeAll(packages: upgrades) {
             downloadMan.reloadData(recheckPackages: true) {
                 completion?()
-                if UserDefaults.standard.optionalBool("UpgradeAllAutoQueue", fallback: true) {
+                if UserDefaults.standard.bool(forKey: "UpgradeAllAutoQueue", fallback: true) {
                     TabBarController.singleton?.presentPopupController()
                 }
             }

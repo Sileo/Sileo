@@ -1,6 +1,6 @@
 TARGET  = giveMeRoot
 OUTDIR ?= bin
-CC             ?= xcrun -sdk iphoneos clang -arch arm64 -mios-version-min=12.0
+CC             ?= xcrun -sdk iphoneos clang -arch arm64 -mios-version-min=11.0
 
 TAGET_CODESIGN ?= ldid
 CFLAGS         ?= -Wall

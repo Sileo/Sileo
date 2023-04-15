@@ -266,10 +266,10 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     func setPicture(_ button: UIButton) -> UIButton {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true),
+        if UserDefaults.standard.bool(forKey: "iCloudProfile", fallback: true),
             let image = ICloudPFPHandler.refreshiCloudPicture({ image in
                 DispatchQueue.main.async {
-                    if UserDefaults.standard.optionalBool("iCloudProfile", fallback: true) {
+                    if UserDefaults.standard.bool(forKey: "iCloudProfile", fallback: true) {
                         button.setImage(image, for: .normal)
                     }
                 }
@@ -295,7 +295,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.addSubview(profileButton)
-            if LanguageHelper.shared.isRtl {
+            if LanguageHelper.shared.isRtl ?? false {
                 profileButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 16).isActive = true
             } else {
                 profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16).isActive = true

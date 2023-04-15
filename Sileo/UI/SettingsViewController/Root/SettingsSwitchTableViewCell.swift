@@ -18,7 +18,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     var defaultKey: String? {
         didSet {
-            if let key = defaultKey { control.isOn = UserDefaults.standard.optionalBool(key, fallback: fallback) }
+            if let key = defaultKey { control.isOn = UserDefaults.standard.bool(forKey: key, fallback: fallback) }
         }
     }
     

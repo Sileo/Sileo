@@ -12,40 +12,38 @@ struct Maintainer: Decodable {
     
     let name: String?
     let email: String?
-    
+
     init(string: String?) {
-        guard var string else {
+        guard let inputString = string else {
             self.name = nil
             self.email = nil
             return
         }
-        if let range = string.range(of: "<") {
-            var name = string[string.startIndex..<range.lowerBound]
-            if name.last == " " {
-                name.removeLast()
-            }
-            string.removeSubrange(string.startIndex..<range.lowerBound)
-            string.removeFirst()
-            if let endRange = string.range(of: ">") {
-                let email = string[string.startIndex..<endRange.lowerBound]
-                self.email = String(email).lowercased()
+        
+        if let emailStartIndex = inputString.range(of: "<")?.lowerBound {
+            let nameRange = inputString.startIndex..<emailStartIndex
+            let name = inputString[nameRange].trimmingCharacters(in: .whitespaces)
+            
+            if let emailEndIndex = inputString.range(of: ">")?.lowerBound {
+                let emailRange = inputString.index(after: emailStartIndex)..<emailEndIndex
+                let email = inputString[emailRange].lowercased()
+                
+                self.name = name.isEmpty ? nil : name
+                self.email = email.isEmpty ? nil : email
             } else {
+                self.name = name.isEmpty ? nil : name
                 self.email = nil
             }
-            self.name = String(name)
         } else {
-            self.name = string
+            self.name = inputString.isEmpty ? nil : inputString
             self.email = nil
         }
     }
-    
+
     init(from decoder: Decoder) throws {
-        guard let container = try? decoder.singleValueContainer(),
-              let str = try? container.decode(String.self) else {
-            self.init(string: nil)
-            return
-        }
-        self.init(string: str)
+        let container = try decoder.singleValueContainer()
+        let stringValue = try? container.decode(String.self)
+        self.init(string: stringValue)
     }
     
 }

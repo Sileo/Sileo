@@ -228,7 +228,7 @@ class PaymentProvider: Hashable, Equatable, DownloadOverrideProviding {
         
         let encodedIdentifier = package.package.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? package.package
         let path = String(format: "package/%@/authorize_download", encodedIdentifier)
-        let body = ["version": package.version as AnyObject, "repo": repo.repoURL as AnyObject]
+        let body = ["version": package.version as AnyObject, "repo": repo.repoURL as AnyObject, "architecture": (package.architecture ?? "iphoneos-arm") as AnyObject]
         postRequest(withPath: path, includeToken: true, includePaymentSecret: false, body: body) { error, data, _ in
             guard error == nil,
                 let data = data else {

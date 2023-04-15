@@ -8,12 +8,6 @@ jobs:
     name: Build and Upload Sileo
     runs-on: macos-12
     steps:
-      - uses: actions/cache@v2
-        id: procache
-        with:
-          path: |
-            ~/__cache
-          key: ${{ runner.os }}-procursus
 
       - name: Checkout
         uses: actions/checkout@master
@@ -46,7 +40,6 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
 
       - name: Setup Procursus Bootstrap (install)
-        if: steps.procache.outputs.cache-hit != 'true'
         run: |
           wget https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-amd64.tar.zst
           sudo gtar --preserve-permissions -xkf ./bootstrap-darwin-amd64.tar.zst -C /
@@ -58,50 +51,44 @@ jobs:
         run: |
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
 
-      - name: Setup Procursus Bootstrap (cache)
-        if: steps.procache.outputs.cache-hit == 'true'
-        run: |
-          sudo mkdir -p ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial
-          sudo rsync -aP ~/__cache/procursus /opt
-          sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
-          sudo /opt/procursus/bin/apt --allow-downgrades -V dist-upgrade -y
-
-      - name: Select Correct Xcode (13.1)
+      - name: Select Correct Xcode (14.2)
         run: |
           sudo xcode-select --switch /Applications/Xcode_14.2.app
 
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
+
       - name: Build Sileo Nightly (iphoneos-arm64)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1 SILEO_PLATFORM=iphoneos-arm64
+
       - name: Build Sileo Nightly (darwin-amd64)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
+
       - name: Build Sileo Nightly (darwin-arm64)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
-      - name: Upload To Repo
-        env: #
-          token: ${{ secrets.AMY_REPO_SECRET }}
-        run: |
-          package1=$(ls -t packages | head -1)
-          package2=$(ls -t packages | head -2 | tail -1)
-          package3=$(ls -t packages | head -3 | tail -1)
-          package4=$(ls -t packages | head -4 | tail -1)
-          curl -F deb="@./packages/${package1}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package2}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package3}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -F deb="@./packages/${package4}" -H "Auth: ${token}" https://api.anamy.gay/private/repo/upload
-          curl -H "Auth: ${token}" https://api.anamy.gay/private/repo/repackage
-      - name: Wakeup Babe
-        run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Nightly Bot", "content": "https://cdn.discordapp.com/attachments/863878431166169100/881714407313375282/image0.jpg"}' "${{ secrets.WEBHOOK }}"
-      - name: Copy Procursus to Cache Location
-        run: |
-          sudo mkdir -p ~/__cache
-          sudo rsync -aP /opt/procursus ~/__cache
-          sudo rm -rf ~/__cache/procursus/var/cache/apt/archives/partial ~/__cache/procursus/var/lib/apt/lists/partial ~/__cache/procursus/Library/dpkg/triggers/Lock
+      
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
 
+      - name: Push To Repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.AMY_GITHUB }}
+        run: |
+          git config --global user.name "Amy While (Automated)"
+          git config --global user.email "26681721+elihwyma@users.noreply.github.com"
+          git config --global credential.helper cache 
+
+          git clone https://${{secrets.GITHUB_TOKEN}}@github.com/elihwyma/amy-repo.git
+          mv packages/* amy-repo/pool/
+          cd amy-repo
+          ./repo.sh
+          git add . 
+          git commit -m "build: sileo"
+          git push

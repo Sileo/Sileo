@@ -17,6 +17,7 @@ enum DatabaseSchemaVersion: Int {
 }
 
 class DatabaseManager {
+    
     static let shared = DatabaseManager()
     
     let database: Connection
@@ -180,4 +181,5 @@ class DatabaseManager {
         let packages = Table("Packages")
         _ = try? database.run(packages.filter(repoURL == file).delete())
     }
+    
 }

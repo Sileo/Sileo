@@ -17,7 +17,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
     
     func authenticate(provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
         let callback: (URL?, Error?) -> Void = { url, error in
-            if #available(iOS 12, *) {
+            if #available(iOS 12, macCatalyst 12, *) {
                 if let error = error {
                     if let error = error as? ASWebAuthenticationSessionError,
                         error.code == ASWebAuthenticationSessionError.canceledLogin {
@@ -28,6 +28,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
                     return
                 }
             } else {
+                #if !targetEnvironment(macCatalyst)
                 if let error = error {
                     if let error = error as? SFAuthenticationError,
                        error.code == SFAuthenticationError.canceledLogin {
@@ -37,6 +38,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
                     completion?(PaymentError(error: error), false)
                     return
                 }
+                #endif
             }
             
             guard let url = url,
@@ -69,7 +71,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
             completion?(nil, false)
         }
         
-        if #available(iOS 12, *) {
+        if #available(iOS 12, macCatalyst 12, *) {
             let currentSession = ASWebAuthenticationSession(url: provider.authenticationURL, callbackURLScheme: "sileo", completionHandler: callback)
             if #available(iOS 13, *) {
                 currentSession.presentationContextProvider = self
@@ -86,7 +88,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
     
     func handlePayment(actionURL url: URL, provider: PaymentProvider, window: UIWindow?, completion: ((PaymentError?, Bool) -> Void)?) {
         let callback: (URL?, Error?) -> Void = { url, error in
-            if #available(iOS 12, *) {
+            if #available(iOS 12, macCatalyst 12, *) {
                 if let error = error {
                     if let error = error as? ASWebAuthenticationSessionError,
                        error.code == ASWebAuthenticationSessionError.canceledLogin {
@@ -97,6 +99,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
                     return
                 }
             } else {
+                #if !targetEnvironment(macCatalyst)
                 if let error = error {
                     if let error = error as? SFAuthenticationError,
                        error.code == SFAuthenticationError.canceledLogin {
@@ -106,6 +109,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
                     completion?(PaymentError(error: error), false)
                     return
                 }
+                #endif
             }
             guard let url = url,
                 url.host == "payment_completed" else {
@@ -115,7 +119,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
             
             completion?(nil, false)
         }
-        if #available(iOS 12, *) {
+        if #available(iOS 12, macCatalyst 12, *) {
             let currentSession = ASWebAuthenticationSession(url: url, callbackURLScheme: "sileo", completionHandler: callback)
             if #available(iOS 13, *) {
                 currentSession.presentationContextProvider = self
@@ -130,7 +134,7 @@ class PaymentAuthenticator: NSObject, ASWebAuthenticationPresentationContextProv
         
     }
     
-    @available(iOS 12, *)
+    @available(iOS 12, macCatalyst 12, *)
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         UIWindow.presentable ?? ASPresentationAnchor()
     }

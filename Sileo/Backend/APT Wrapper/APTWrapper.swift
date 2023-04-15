@@ -315,7 +315,7 @@ class APTWrapper {
 
             let mutex = DispatchSemaphore(value: 0)
 
-            let readQueue = DispatchQueue(label: "org.coolstar.sileo.command",
+            let readQueue = DispatchQueue(label: "sileo.command",
                                           qos: .userInitiated,
                                           attributes: .concurrent,
                                           autoreleaseFrequency: .inherit,

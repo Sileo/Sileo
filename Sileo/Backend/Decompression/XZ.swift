@@ -6,7 +6,6 @@
 //  Copyright © 2022 Sileo Team. All rights reserved.
 //
 
-#if !TARGET_SANDBOX && !targetEnvironment(simulator)
 import Foundation
 
 public enum XZType: UInt8 {
@@ -62,4 +61,4 @@ enum XZError: String, Error {
         }
     }
 }
-#endif
+

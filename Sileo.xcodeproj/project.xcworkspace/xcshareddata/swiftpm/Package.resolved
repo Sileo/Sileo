@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/elihwyma/Evander",
         "state": {
           "branch": "main",
-          "revision": "de358e813dc199a79b1599669905476f678df02d",
+          "revision": "dbfff312f2cd4ddbbe2344bb0dc655a9e09fa7ff",
           "version": null
         }
       },
@@ -71,15 +71,6 @@
           "branch": null,
           "revision": "7a2e3cd27de56f6d396e84f63beefd0267b55ccb",
           "version": "0.14.1"
-        }
-      },
-      {
-        "package": "swift-atomics",
-        "repositoryURL": "https://github.com/apple/swift-atomics.git",
-        "state": {
-          "branch": null,
-          "revision": "ff3d2212b6b093db7f177d0855adbc4ef9c5f036",
-          "version": "1.0.3"
         }
       },
       {

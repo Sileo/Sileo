@@ -111,9 +111,9 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         super.viewDidLoad()
         
         if loadProvisional {
-            showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
+            showProvisional = UserDefaults.standard.bool(forKey: "ShowProvisional", fallback: true)
             _ = NotificationCenter.default.addObserver(forName: Notification.Name("ShowProvisional"), object: nil, queue: nil) { _ in
-                self.showProvisional = UserDefaults.standard.optionalBool("ShowProvisional", fallback: true)
+                self.showProvisional = UserDefaults.standard.bool(forKey: "ShowProvisional", fallback: true)
                 self.collectionView?.reloadData()
             }
         }
@@ -164,10 +164,10 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.placeholder = String(localizationKey: "Package_Search.Placeholder")
         if #available(iOS 13, *) {
-            searchController?.searchBar.searchTextField.semanticContentAttribute = LanguageHelper.shared.isRtl ? .forceRightToLeft : .forceLeftToRight
+            searchController?.searchBar.searchTextField.semanticContentAttribute = (LanguageHelper.shared.isRtl ?? false) ? .forceRightToLeft : .forceLeftToRight
         } else {
             let textfieldOfSearchBar = searchController?.searchBar.value(forKey: "searchField") as? UITextField
-            textfieldOfSearchBar?.semanticContentAttribute = LanguageHelper.shared.isRtl ? .forceRightToLeft : .forceLeftToRight
+            textfieldOfSearchBar?.semanticContentAttribute = (LanguageHelper.shared.isRtl ?? false) ? .forceRightToLeft : .forceLeftToRight
         }
         searchController?.searchBar.delegate = self
         searchController?.searchResultsUpdater = self
@@ -225,7 +225,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             if self.showUpdates {
                 let updates = packageMan.availableUpdates()
                 self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-                if UserDefaults.standard.optionalBool("ShowIgnoredUpdates", fallback: true) {
+                if UserDefaults.standard.bool(forKey: "ShowIgnoredUpdates", fallback: true) {
                     self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
                 }
             }
@@ -297,7 +297,7 @@ class PackageListViewController: SileoViewController, UIGestureRecognizerDelegat
             DispatchQueue.global(qos: .userInteractive).async {
                 let updates = PackageListManager.shared.availableUpdates()
                 self.availableUpdates = updates.filter({ $0.1?.wantInfo != .hold }).map({ $0.0 })
-                if UserDefaults.standard.optionalBool("ShowIgnoredUpdates", fallback: true) {
+                if UserDefaults.standard.bool(forKey: "ShowIgnoredUpdates", fallback: true) {
                     self.ignoredUpdates = updates.filter({ $0.1?.wantInfo == .hold }).map({ $0.0 })
                 } else {
                     self.ignoredUpdates.removeAll()
@@ -713,7 +713,7 @@ extension PackageListViewController: UISearchBarDelegate {
             return
         }
         
-        if UserDefaults.standard.optionalBool("ShowSearchHistory", fallback: true) {
+        if UserDefaults.standard.bool(forKey: "ShowSearchHistory", fallback: true) {
             searchHistory.append(text)
         }
         

@@ -69,6 +69,7 @@ final class RepoManager {
 
     init() {
         #if targetEnvironment(simulator) || TARGET_SANDBOX
+        parseSourcesFile(at: sourcesURL)
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
@@ -110,14 +111,16 @@ final class RepoManager {
                 repos.append(bigBoss)
                 return true
             case "apt.procurs.us":
+                let arch = DpkgWrapper.architecture
+                let suite = arch?.primary == .rootless ? "" : "iphoneos-arm64/"
                 let jailbreakRepo = Repo()
                 jailbreakRepo.rawURL = "https://apt.procurs.us/"
-                jailbreakRepo.suite = "iphoneos-arm64/\(UIDevice.current.cfMajorVersion)"
+                jailbreakRepo.suite = "\(suite)\(UIDevice.current.cfMajorVersion)"
                 jailbreakRepo.components = ["main"]
                 jailbreakRepo.rawEntry = """
                 Types: deb
                 URIs: https://apt.procurs.us/
-                Suites: iphoneos-arm64/\(UIDevice.current.cfMajorVersion)
+                Suites: \(suite)\(UIDevice.current.cfMajorVersion)
                 Components: main
                 """
                 jailbreakRepo.entryFile = "\(CommandPath.sourcesListD)/procursus.sources"
@@ -647,7 +650,6 @@ final class RepoManager {
                                 errorsFound = true
                                 return
                             }
-                            var preferredArch: String?
                             if repoArchs.contains(dpkgArchitectures.primary.rawValue) {
                                 preferredArch = dpkgArchitectures.primary.rawValue
                             } else {
@@ -710,7 +712,7 @@ final class RepoManager {
                     #if !targetEnvironment(simulator) && !TARGET_SANDBOX
                     let extensions = ["zst", "xz", "lzma", "bz2", "gz", ""]
                     #else
-                    let extensions = ["bz2", "gz", ""]
+                    let extensions = ["xz", "lzma", "bz2", "gz", ""]
                     #endif
                     var breakOff = false
                     packages.map { url in self.fetch(
@@ -1249,7 +1251,12 @@ final class RepoManager {
             }
 
             #if targetEnvironment(simulator) || TARGET_SANDBOX
-            try? rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
+            do {
+                try rawRepoList.write(to: sourcesURL, atomically: true, encoding: .utf8)
+            } catch {
+                print("Couldn't save with \(error)")
+            }
+            
             #else
 
             var sileoList = ""
