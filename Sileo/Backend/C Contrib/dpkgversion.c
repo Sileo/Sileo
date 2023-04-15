@@ -177,48 +177,46 @@ int compareVersion(const char *version1, int version1Count, const char *version2
     char *_version1 = (char *)version1;
     char *_version2 = (char *)version2;
 
-    struct DpkgVersion *package1 = malloc(sizeof(struct DpkgVersion));
-    struct DpkgVersion *package2 = malloc(sizeof(struct DpkgVersion));
-    package1->requiresFree = 0;
-    package2->requiresFree = 0;
+    struct DpkgVersion package1 = { 0 };
+    struct DpkgVersion package2 = { 0 };
+    package1.requiresFree = 0;
+    package2.requiresFree = 0;
     
     char *error = NULL;
     
     int cmp = 0;
     
-    parseVersion(_version1, &version1Count, &error, package1);
+    parseVersion(_version1, &version1Count, &error, &package1);
     if (error)
         goto cleanup;
-    parseVersion(_version2, &version2Count, &error, package2);
+    parseVersion(_version2, &version2Count, &error, &package2);
     if (error)
         goto cleanup;
-    if (package1->epoch > package2->epoch) {
+    if (package1.epoch > package2.epoch) {
         cmp = 1;
         goto cleanup;
     }
         
-    if (package1->epoch < package2->epoch) {
+    if (package1.epoch < package2.epoch) {
         cmp = -1;
         goto cleanup;
     }
     
-    int retVal = verrevcmp(package1->version, package2->version);
+    int retVal = verrevcmp(package1.version, package2.version);
     if (retVal) {
         cmp = retVal;
         goto cleanup;
     }
-    cmp = verrevcmp(package1->revision, package2->revision);
+    cmp = verrevcmp(package1.revision, package2.revision);
     
 cleanup:
-    if (package1->requiresFree) {
-        free(package1->version);
-        free(package1->revision);
+    if (package1.requiresFree) {
+        free(package1.version);
+        free(package1.revision);
     }
-    if (package2->requiresFree) {
-        free(package2->version);
-        free(package2->revision);
+    if (package2.requiresFree) {
+        free(package2.version);
+        free(package2.revision);
     }
-    free(package1);
-    free(package2);
     return cmp;
 }

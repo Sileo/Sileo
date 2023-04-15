@@ -65,13 +65,7 @@ char *copyRuntimeAppPath(void) {
     if (buildtimePath == NULL) {
         return NULL;
     }
-    
-    char *runtimePath = realpath(buildtimePath, NULL);
-    if (runtimePath == NULL) {
-        return NULL;
-    }
-    
-    return runtimePath;
+    return realpath(buildtimePath, NULL);
 }
 
 int main(int argc, const char *argv[]) {
@@ -102,14 +96,12 @@ int main(int argc, const char *argv[]) {
     pid_t parentPID = getppid();
     
     size_t parentPathSize = PATH_MAX;
-    parentPath = malloc(parentPathSize);
+    parentPath = calloc(parentPathSize, sizeof(char));
     if (parentPath == NULL) {
         fprintf(stderr, "Error: failed to malloc");
         retval = EX_OSERR;
         goto end;
     }
-    
-    memset(parentPath, 0, parentPathSize);
     
     int parentPathLength = proc_pidpath(parentPID, parentPath, parentPathSize);
     if (parentPathLength <= 0) {

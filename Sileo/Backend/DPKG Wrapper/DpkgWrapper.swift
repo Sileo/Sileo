@@ -81,7 +81,7 @@ class DpkgWrapper {
         guard localStatus == 0 else {
             return nil
         }
-        let primary = localArchs.replacingOccurrences(of: "\n", with: "")
+        let primary = localArchs.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").lowercased()
         guard let arch = DPKGArchitecture.Architecture(rawValue: primary) else {
             return nil
         }
@@ -89,7 +89,7 @@ class DpkgWrapper {
         guard foreignStatus == 0 else {
             return nil
         }
-        let foreignSet = foreignArchs.components(separatedBy: "\n")
+        let foreignSet = foreignArchs.replacingOccurrences(of: " ", with: "").lowercased().components(separatedBy: "\n")
         var _foreign = Set<DPKGArchitecture.Architecture>()
         for component in foreignSet {
             if let arch = DPKGArchitecture.Architecture(rawValue: component) {

@@ -10,6 +10,7 @@ import UIKit
 
 
 final class PackageListManager {
+    
     static let reloadNotification = Notification.Name("SileoPackageCacheReloaded")
     static let installChange = Notification.Name("SileoInstallChanged")
     static let stateChange = Notification.Name("SileoStateChanged")
@@ -39,51 +40,29 @@ final class PackageListManager {
         return packages + Array(installedPackages.values)
     }
 
-    private var databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
+    private let databaseUpdateQueue = DispatchQueue(label: "org.coolstar.SileoStore.database-queue")
+    private let packageListQueue = DispatchQueue(label: "sileo.package-list-queue")
+    private let operationQueue = OperationQueue()
+
     public static let shared = PackageListManager()
     
     init() {
         self.installedPackages = PackageListManager.readPackages(installed: true)
-        DispatchQueue.global(qos: .userInitiated).async {
+        operationQueue.maxConcurrentOperationCount = (ProcessInfo.processInfo.processorCount * 2)
+        
+        packageListQueue.async { [self] in
             let repoMan = RepoManager.shared
-            var repoList = repoMan.repoList
-            let threadCount = ((ProcessInfo.processInfo.processorCount * 2) > repoList.count) ? repoList.count : (ProcessInfo.processInfo.processorCount * 2)
-            let loadGroup = DispatchGroup()
-            let loadLock = NSLock()
-            let updateLock = NSLock()
-            var loadedRepoList = [Repo]()
+            let repoList = repoMan.repoList
             
-            for threadID in 0..<(threadCount) {
-                loadGroup.enter()
-                let repoQueue = DispatchQueue(label: "repo-init-queue-\(threadID)")
-                repoQueue.async {
-                    while true {
-                        loadLock.lock()
-                        guard !repoList.isEmpty else {
-                            loadLock.unlock()
-                            break
-                        }
-                        let repo = repoList.removeFirst()
-                        loadLock.unlock()
-                        repo.packageDict = PackageListManager.readPackages(repoContext: repo)
-                        
-                        if CommandPath.requiresDumbWorkaround && repo.url?.host == "apt.procurs.us" {
-                            for package in self.installedPackages.keys {
-                                if repo.packageDict[package] != nil {
-                                    DpkgWrapper.ignoreUpdates(true, package: package)
-                                }
-                            }
-                        }
-                        
-                        updateLock.lock()
-                        loadedRepoList.append(repo)
-                        updateLock.unlock()
-                    }
-                    loadGroup.leave()
+            let operations: [BlockOperation] = repoList.map { repo in
+                return BlockOperation {
+                    repo.packageDict = PackageListManager.readPackages(repoContext: repo)
                 }
             }
-            repoMan.update(loadedRepoList)
-            loadGroup.notify(queue: .main) {
+            self.operationQueue.addOperations(operations, waitUntilFinished: true)
+            repoMan.update(repoList)
+            
+            DispatchQueue.main.async {
                 self.isLoaded = true
                 while true {
                     if self.initSemphaore.signal() == 0 {
@@ -95,11 +74,6 @@ final class PackageListManager {
                 }
                 NotificationCenter.default.post(name: PackageListManager.reloadNotification, object: nil)
                 NotificationCenter.default.post(name: NewsViewController.reloadNotification, object: nil)
-                #if targetEnvironment(simulator)
-                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-                    return
-                }
-                #endif
                 if UserDefaults.standard.bool(forKey: "AutoRefreshSources", fallback: true) {
                     // Start a background repo refresh here instead because it doesn't like it in the Source View Controller
                     if let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController,

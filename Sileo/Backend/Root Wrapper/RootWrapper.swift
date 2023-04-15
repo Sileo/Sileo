@@ -319,13 +319,13 @@ public class CommandPath {
         #if targetEnvironment(macCatalyst)
         return "/opt/procursus"
         #else
-        if #available(iOS 15, *) {
-            if URL(fileURLWithPath: "/var/Liy").dirExists {
-                return "/var/Liy"
-            }
-            if URL(fileURLWithPath: "/var/jb").dirExists {
-                return "/var/jb"
-            }
+        let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
+        if xina.exists {
+            return "/var/Liy"
+        }
+        let rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
+        if rootless.exists {
+            return "/var/jb"
         }
         return ""
         #endif
