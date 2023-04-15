@@ -45,16 +45,16 @@ jobs:
           sudo gtar --preserve-permissions -xkf ./bootstrap-darwin-amd64.tar.zst -C /
           echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
           PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
-          sudo /opt/procursus/bin/apt -V full-upgrade -y
+          sudo /opt/procursus/bin/apt -V full-upgrade -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew 
         continue-on-error: true
       
       - name: Upgrade
         run: |
-          sudo /opt/procursus/bin/apt -V upgrade -y
+          sudo /opt/procursus/bin/apt -V upgrade -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew
     
       - name: Upgrade and install
         run: |
-          sudo /opt/procursus/bin/apt install zstd apt-utils ldid xz-utils bzip2 lz4 -y
+          sudo /opt/procursus/bin/apt install zstd apt-utils ldid xz-utils bzip2 lz4 -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew
         
       - name: Add Procursus to PATH
         run: |
