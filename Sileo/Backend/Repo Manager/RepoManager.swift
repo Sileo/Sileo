@@ -271,8 +271,7 @@ final class RepoManager {
         }
 
         for repoURL in uris {
-            guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
-                  !hasRepo(with: URL(string: repoURL)!)
+            guard !hasRepo(with: URL(string: repoURL)!)
             else {
                 continue
             }
@@ -1175,7 +1174,6 @@ final class RepoManager {
 
     public func parsePlainTextFile(at url: URL) {
         guard let rawSources = try? String(contentsOf: url) else {
-            NSLog("[Sileo] couldn't get rawSources. we are out of here!")
             return
         }
         let urlsString = rawSources.components(separatedBy: "\n").filter { URL(string: $0) != nil }
