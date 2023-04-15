@@ -219,7 +219,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     }
     
     private class func showXinaWarning() {
-        let alert = UIAlertController(title: "Xina Not Supported", message: "Xina jailbreak is both deprecated and not at all in a usable state. The recent changes have made it impossible for Sileo to support in a proper way. Please migrate to Fugu15Max.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "XinaA15 no longer supported", message: "XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Guide", style: .default) { _ in
             UIApplication.shared.open(URL(string: "https://ios.cfw.guide/installing-fugu15max/")!)
             exit(0)
