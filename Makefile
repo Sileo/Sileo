@@ -133,7 +133,7 @@ ICON = https:\/\/getsileo.app\/img\/icon.png
 SILEO_NAME = Sileo
 SILEO_APP  = Sileo.app
 SILEO_VERSION = $$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" $(SILEO_STAGE_DIR)/$(PREFIX)/Applications/$(SILEO_APP)/$(CONTENTS)Info.plist)
-
+SILEO_VERSION = 2.4.2.1
 
 ifeq ($(BETA), 1)
 ifeq ($(MAC), 1)
