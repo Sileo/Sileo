@@ -178,10 +178,6 @@ extension APTWrapper {
             "-oAPT::Format::JSON=true",
             "install", "--reinstall"
         ]
-        if CommandPath.requiresDumbWorkaround {
-            queryArguments.append("-oDir::Etc=/var/Liy/etc/apt")
-            queryArguments.append("-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/")
-        }
         var packageOperations: [String] = []
         for downloadPackage in installList {
             // The downloadPackage.package.package is the deb path on local installs

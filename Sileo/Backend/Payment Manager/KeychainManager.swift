@@ -37,9 +37,7 @@ final class KeychainManager {
                 kSecAttrService as String: service.rawValue
             ] as [AnyHashable: String]
             #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-            if !CommandPath.requiresDumbWorkaround {
-                query[kSecAttrAccessGroup] = accessGroup
-            }
+            query[kSecAttrAccessGroup] = accessGroup
             #endif
             SecItemDelete(query as CFDictionary)
         }
@@ -54,9 +52,7 @@ final class KeychainManager {
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        if !CommandPath.requiresDumbWorkaround {
-            query[kSecAttrAccessGroup] = accessGroup
-        }
+        query[kSecAttrAccessGroup] = accessGroup
         #endif
         
         SecItemDelete(query as CFDictionary)
@@ -74,9 +70,7 @@ final class KeychainManager {
             kSecAttrSynchronizable as String: kCFBooleanFalse!
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        if !CommandPath.requiresDumbWorkaround {
-            query[kSecAttrAccessGroup] = accessGroup
-        }
+        query[kSecAttrAccessGroup] = accessGroup
         #endif
         
         SecItemDelete(query as CFDictionary)
@@ -93,9 +87,7 @@ final class KeychainManager {
             kSecMatchLimit as String: kSecMatchLimitOne
         ] as [AnyHashable: Any]
         #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-        if !CommandPath.requiresDumbWorkaround {
-            query[kSecAttrAccessGroup] = accessGroup
-        }
+        query[kSecAttrAccessGroup] = accessGroup
         #endif
                 
         var dataRef: AnyObject?
@@ -122,9 +114,7 @@ final class KeychainManager {
                 kSecUseAuthenticationUI as String: kSecUseAuthenticationUIFail
             ] as [AnyHashable: Any]
             #if !targetEnvironment(simulator) && !TARGET_SANDBOX
-            if !CommandPath.requiresDumbWorkaround {
-                query[kSecAttrAccessGroup] = accessGroup
-            }
+            query[kSecAttrAccessGroup] = accessGroup
             #endif
             
             var dataRef: AnyObject?

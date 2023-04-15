@@ -615,47 +615,8 @@ final class DownloadManager {
         uninstallations.remove { $0.package.package == package }
         uninstalldeps.remove { $0.package.package == package }
     }
-    
-    private func shouldBlockDownload(package: Package) -> Bool {
-        if !CommandPath.requiresDumbWorkaround {
-            return false
-        }
-        if let sourceRepo = package.sourceRepo {
-            if sourceRepo.url?.host == "apt.procurs.us" {
-                return true
-            }
-        } else {
-            let blockedEmails = [
-                "support@procurs.us",
-                "me@cameronkatri.com",
-                "me@diatr.us"
-            ]
-            for email in blockedEmails {
-                if package.author?.email?.contains(email) ?? false {
-                    return true
-                }
-                if package.maintainer?.email?.contains(email) ?? false {
-                    return true
-                }
-            }
-        }
-        return false
-    }
-    
-    public class func showXinaWarning() {
-        let alert = UIAlertController(title: "No Can Do", message: "Xina is very broken and attemping to install or remove ANYTHING from Procursus will probably break your install. I've blocked you from doing this for now, don't shout at me", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ":(", style: .cancel))
-        Thread.mainBlock {
-            TabBarController.singleton?.present(alert, animated: true)
-        }
-    }
-    
+
     public func add(package: Package, queue: DownloadManagerQueue, approved: Bool = false) {
-        if shouldBlockDownload(package: package) {
-            Self.showXinaWarning()
-            return
-        }
-        
         let downloadPackage = DownloadPackage(package: package)
         let found = find(package: package.package)
         if found == queue { return }
@@ -715,10 +676,6 @@ final class DownloadManager {
     }
     
     public func remove(downloadPackage: DownloadPackage, queue: DownloadManagerQueue) {
-        if shouldBlockDownload(package: downloadPackage.package) {
-            Self.showXinaWarning()
-            return
-        }
         switch queue {
         case .none:
             return

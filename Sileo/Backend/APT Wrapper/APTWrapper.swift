@@ -177,12 +177,6 @@ class APTWrapper {
                          "-oAPT::Sandbox::User=root",
                          "-oDpkg::Options::=--force-confdef",
                          "-oDpkg::Options::=--force-confnew"]
-        if CommandPath.requiresDumbWorkaround {
-            arguments += ["-oDpkg::Options::=--root=/var/Liy",
-                          "-oDpkg::Options::=--force-script-chrootless",
-                          "-oDir::Etc=/var/Liy/etc/apt",
-                          "-oDir::Etc::Parts=/var/Liy/etc/apt/apt.conf.d/"]
-        }
         for package in installs {
             var packagesStr = package.package.package + "=" + package.package.version
             if package.package.package.contains("/") {

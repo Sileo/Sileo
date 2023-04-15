@@ -75,10 +75,11 @@ public class CommandPath {
     }()
 
     static var sourcesListD: String = {
-        if requiresDumbWorkaround {
-            return "/var/Liy/etc/apt/sources.list.d"
-        }
-        return "\(prefix)/etc/apt/sources.list.d"
+        "\(prefix)/etc/apt/sources.list.d"
+    }()
+    
+    static var alternativeSources: String = {
+        "\(prefix)/etc/apt/sileo.list.d"
     }()
 
     static var chown: String = {
@@ -182,20 +183,6 @@ public class CommandPath {
         return "\(NSUserName()):staff"
         #else
         return "mobile:mobile"
-        #endif
-    }()
-    
-    static var requiresDumbWorkaround: Bool = {
-        #if targetEnvironment(macCatalyst)
-        return false
-        #else
-        if #available(iOS 15.0, *) {
-            let archs = DpkgWrapper.architecture
-            if archs.primary == .rootful && URL(fileURLWithPath: "/var/Liy").dirExists {
-                return true
-            }
-        }
-        return false
         #endif
     }()
     

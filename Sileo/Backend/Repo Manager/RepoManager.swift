@@ -67,7 +67,8 @@ final class RepoManager {
         #else
         fixLists()
         let directory = URL(fileURLWithPath: CommandPath.sourcesListD)
-        for item in directory.implicitContents {
+        let alternative = URL(fileURLWithPath: CommandPath.alternativeSources)
+        for item in (directory.implicitContents + alternative.implicitContents)  {
             if item.pathExtension == "list" {
                 parseListFile(at: item)
             } else if item.pathExtension == "sources" {
@@ -161,12 +162,6 @@ final class RepoManager {
         #if targetEnvironment(macCatalyst)
         return true
         #else
-        if CommandPath.requiresDumbWorkaround {
-            if url.host?.localizedCaseInsensitiveContains("apt.procurs.us") ?? false {
-                DownloadManager.showXinaWarning()
-                return false
-            }
-        }
         if Jailbreak.bootstrap == .procursus {
             guard !(url.host?.localizedCaseInsensitiveContains("apt.bingner.com") ?? false),
                   !(url.host?.localizedCaseInsensitiveContains("test.apt.bingner.com") ?? false),
@@ -279,10 +274,6 @@ final class RepoManager {
             guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
                   !hasRepo(with: URL(string: repoURL)!)
             else {
-                continue
-            }
-            
-            if CommandPath.requiresDumbWorkaround && repoURL.localizedCaseInsensitiveContains("apt.procurs.us") {
                 continue
             }
 
@@ -1250,16 +1241,7 @@ final class RepoManager {
             
             #else
 
-            var sileoList = ""
-
-            if FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/procursus.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/chimera.sources") ||
-               FileManager.default.fileExists(atPath: "\(CommandPath.prefix)/etc/apt/sources.list.d/electra.list") {
-                sileoList = "\(CommandPath.prefix)/etc/apt/sources.list.d/sileo.sources"
-            } else {
-                sileoList = "\(CommandPath.prefix)/etc/apt/sileo.list.d/sileo.sources"
-            }
-            
+            let sileoList = "\(CommandPath.prefix)/etc/apt/sources.list.d/sileo.sources"
             let tempPath = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
             do {
                 try rawRepoList.write(to: tempPath, atomically: true, encoding: .utf8)
