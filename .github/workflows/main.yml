@@ -58,18 +58,6 @@ jobs:
       - name: Build Sileo Nightly (iphoneos-arm)
         run: |
           make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1
-
-      - name: Build Sileo Nightly (iphoneos-arm64)
-        run: |
-          make clean package NIGHTLY=1 DEBUG=0 ALL_BOOTSTRAPS=1 SILEO_PLATFORM=iphoneos-arm64
-
-      - name: Build Sileo Nightly (darwin-amd64)
-        run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
-
-      - name: Build Sileo Nightly (darwin-arm64)
-        run: |
-          make clean package NIGHTLY=1 DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
       
       - name: Import GPG key
         id: import_gpg
