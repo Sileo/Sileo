@@ -93,8 +93,8 @@
 "Sources_Page" = "Kaynaklar";
 "Packages_Page" = "Paketler";
 "Search_Page" = "Arama";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Son Arananlar";
+"Clear_Search_History" = "Temizle";
 "Refreshing_Sources_Page" = "Kaynaklar Yenileniyor";
 "Package_Installed_Files_Page" = "Kurulu Dosyalar";
 "Refresh" = "Yenile";
@@ -152,7 +152,7 @@
 "Tint_Color" = "Renk Tonu";
 "Reset_Tint_Color" = "Rengi Sıfırla";
 "Auto_Complete_Queue" = "Sırayı Otomatik Tamamla";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Arama Geçmişini Göster";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Otomatik Hepsini Güncelleme Kestirmesi";
 "Swipe_Actions" = "Kaydırma İşlemleri";
 "Show_Provisional" = "Canister'dan Paketleri Göster";
@@ -179,19 +179,19 @@
 "System" = "Sistem";
 "Theme_Settings" = "Tema Ayarları";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Temaları Yönet";
+"Create_Theme" = "Tema Oluştur";
+"Import_Themes" = "Temaları İçe Aktar";
+"Theme_Name" = "Tema adı";
+"Export_Themes" = "Temaları Dışarı Aktar";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Arka Plan Rengi";
+"Secondary_Background_Color" = "İkincil Arka Plan Rengi";
+"Label_Color" = "Etiket Rengi";
+"Highlight_Color" = "Vurgu Rengi";
+"Seperator_Color" = "Ayırıcı Rengi";
+"Header_Color" = "Başlık Rengi";
+"Banner_Color" = "Afiş Rengi";
 
 
 "Cydia_Sign_In" = "Cydia Store’a Giriş Yap";
@@ -232,4 +232,4 @@
 // Depcitions
 "View_Depiction" = "Açıklamaları Göster";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "ID'yi Kopyala";

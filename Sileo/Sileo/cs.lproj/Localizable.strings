@@ -93,8 +93,8 @@
 "Sources_Page" = "Sources";
 "Packages_Page" = "Packages";
 "Search_Page" = "Search";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Nedávno hledané";
+"Clear_Search_History" = "Vymazat";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
 "Refresh" = "Refresh";
@@ -152,7 +152,7 @@
 "Tint_Color" = "Tint Color";
 "Reset_Tint_Color" = "Reset Tint Color";
 "Auto_Complete_Queue" = "Auto Complete Queue";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Zobrazit historii vyhledávání";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages From Canister";

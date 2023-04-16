@@ -8,54 +8,55 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
-"Error_Indicator" = "Error: %@";
+"Unknown" = "هەڵەیەکی نەناسراو ڕوویدا.";
+"Error_Indicator" = "هەڵە %@";
 
-"No_Package.Title" = "Couldn’t find the package %@ in the repositories you currently have installed.";
-"No_Package.Body" = "If it’s new, wait for Sileo to finish updating, then try again. Check online for more help.";
+"No_Package.Title" = "نەیتوانی پاکێجەکە بدۆزێتەوە %@ لەو کۆگایانەی ئێستا داتمەزراندووە.";
+"No_Package.Body" = "‎ئەگەر نوێیە ، چاوەڕێی سیلیۆ بکە بۆ تەواوکردنی نوێکردنەوە، پاشان دووبارە هەوڵ بدە. پشکنینی ئۆنلاین بۆ یارمەتی زیاتر.";
 
-"Invalid_URL.Title" = "Invalid URL";
+"Invalid_URL.Title" = "URL هەڵەیە";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
-"Download_Failing_Status_Code" = "Failed with status %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
-"Untrusted_Package" = "Package %@ is untrusted and can not be verified";
+"Download_Size_Mismatch" = "قەبارەی چاوەڕوانکراو %@، لەجیاتی %@";
+"Download_Failing_Status_Code" = "سەرکەوتوو نەبوو لەگەڵ دۆخی%ld";
+"Download_Hash_Mismatch" = "پێشبینی دەکرێت هاش %@%@ لە جیاتی ئەوە وەربگرەوە.";
+"Untrusted_Package" = "پاکێجی%@ متمانە پێ نەکراوە وە ناتوانترێت بسەلمێندرێت";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "URLی دابەزاندنی پاکێجەکانی ڕێگەپێدراوی پارەدان دەبێت پارێزراو بن (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "دابینکەری پارەدانەکە وەڵامێکی نادروستی دەرکرد.";
+"No_Payment_Provider" = "ئەم کۆگایە پاڵپشتی بەشی کڕینی سیلیۆ ناکات. ئەگەر ئەمە پاکێجێکی سیدیایە کە پێشتر کڕیوتە دەتوانیت ئەکاونتەکەت ببەستیت بۆ دابەزاندنی.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "ئەم پاکێجە بەردەست نییە لەو سەرچاوە دابەزێندراوەکانتەوە.
+تکایە دڵنیا ببەوە کە کۆگای %@ بەردەستەو لە کارادایە.";
 
-"Installation_Error.Title" = "Installation Error";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Title" = "هەڵەی دابەزاندن";
+"Installation_Error.Body" = "سیلیۆ نەیتوانی ڕێپێدانی ڕووت بەدەست بهێنێت. تکایە سیلیۆ دووبارە دامەزرێنەرەوە بە بەکارهێنانی SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg پچڕاوە";
+"FixingDpkg.Body" = "Dpkg پچڕا تکایە چاوەڕێبە تا هەوڵ دەدەین کێشەکە چارەسەر بکەین.";
 
-"Invalid_Data" = "Invalid Data";
-"Try_Later" = "Please try again later.";
+"Invalid_Data" = "داتای هەڵە";
+"Try_Later" = "تکایە دواتر هەوڵبدەوە.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "پێویستە سیلیۆ وەشانی نوێ بکرێتەوە";
+"Featured_Requires_Sileo_Update" = "نوێکردنەوەی سیلیۆ پێویستە بۆ بینینی تابی تایبەت. تابی تایبەتکراو لەوانەیە بە هەڵە دەربکرێت.";
+"Depiction_Requires_Sileo_Update" = "نوێکردنەوەی سیلیۆ پێویستە بۆ بینینی ئەم لاپەڕەیە. پەڕەکە لەوانەیە بە هەڵە دەربکرێت.";
 
-"Form_Error.Title" = "Couldn't Load Form";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Error.Title" = "ناتواندرێت فۆڕمەکە بار بکرێت";
+"Form_Load_Error" = "فۆڕمەکە ناتواندرێت بار بکرێت لەلایەن سێرڤەرەکەوە.";
+"Invalid_Form_Data" = "سێرڤەرەکە داتای فۆرمی نادروستی دابین کرد.";
+"Form_Submit_Failure" = "هەڵەیەک ڕوویدا لەکاتی هەوڵدان بۆ ناردنی فۆڕمی:%@";
+"Form_Submit_Error.Title" = "نەتواندرا فۆڕمەکە پێشکەشبکرێت";
+"Form_Action_Host_Mismatch" = "هۆستی URL ی کرداری فۆڕمەکە لەگەڵ هۆستی سەرچاوەی فۆڕمەکەدا ناگونجێت.";
 
-"Email_Unavailable.Title" = "Cannot Send Email";
-"Email_Unavailable.Body" = "Mail services are not available.";
+"Email_Unavailable.Title" = "ناتواندرێت ئیمەیڵەکە بنێردرێت";
+"Email_Unavailable.Body" = "خزمەتگوزاری ئیمەیڵ بەردەست نیە.";
 
-"Settings_Payment_Provider.Profile.Title" = "Couldn't Load Profile";
+"Settings_Payment_Provider.Profile.Title" = "نەتوانرا پڕۆفایلی باربکرێت";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
-"Purchase_Initiate_Fail.Title" = "Couldn't Initiate Purchase";
-"Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Provider_Auth_Fail.Title" = "نەیتوانی دابینکەر ڕەسەنایەتی بکات";
+"Purchase_Initiate_Fail.Title" = "نەیتوانی دەست بە کڕین بکات";
+"Purchase_Complete_Fail.Title" = "نەیتوانی کڕین تەواو بکات";
+"Purchase_Auth_Complete_Fail.Title" = "نەیتوانی ڕەسەنایەتی تەواو بکات";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "نەتوانرا ڕوکارەکان هاوردە بکرێت";

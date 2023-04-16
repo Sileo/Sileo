@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Couldn't Complete Purchase";
 "Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Nelze importovat motiv(y)";
