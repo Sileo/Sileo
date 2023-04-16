@@ -283,7 +283,7 @@ class APTWrapper {
 
             var pid: pid_t = 0
             
-            let spawnStatus: Int32
+            let spawnStatus: Int32 
             if #available(iOS 13, *) {
                 var attr: posix_spawnattr_t?
                 posix_spawnattr_init(&attr)
