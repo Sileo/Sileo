@@ -22,14 +22,14 @@
 "Delete" = "Padam";
 "Cancel" = "Batal";
 "Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
-"Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Remove" = "Buang";
+"Sileo_Team" = "Pasukan Sileo";
+"Warning" = "Amaran";
+"Edit" = "Sunting";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
+"Background_App_Refresh" = "Segar Semula Aplikasi Latar";
+"Background_App_Refresh_Message" = "Untuk pengalaman yang lebih pantas dan terbaik, ia adalah disarankan untuk membolehkan segar semula aplikasi latar. Anda juga boleh mendapatkan notifikasi apabila pakej tweaks telah dikemas kini!";
 "Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -45,7 +45,7 @@
 
 "Queue_Confirm_Button" = "Sahkan";
 "Queue_Clear_Button" = "Kosongkan Aturan";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Batal Muat Turun";
 
 "Package_Upgrade_Action" = "Kemas Kini";
 "Package_Reinstall_Action" = "Pasang Semula";
@@ -54,7 +54,7 @@
 "Package_Get_Action" = "Dapatkan";
 "Package_Queue_Action" = "Atur";
 "Package_Cancel_Action" = "Batal";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Dibayar";
 
 "Package_Share_Action" = "Kongsi pakej…";
 "Package_Developer_Find_Action" = "Lebih dari pemaju ini";
@@ -65,7 +65,7 @@
 "Package_Wishlist_Remove" = "Keluarkan daripada Senarai Harapan";
 "Wishlist" = "Senarai Harapan";
 
-"No_New_Packages" = "No New Packages";
+"No_New_Packages" = "Tiada Pakej Baharu";
 "News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
 
 // Headings for sections in the queue/status popup.
@@ -80,7 +80,7 @@
 "Package_Search.Placeholder" = "Cari pakej-pakej";
 "Sort_Name" = "Nama";
 "Sort_Date" = "Tarikh";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Saiz Dipasang";
 "Sort_By" = "Susun mengikut:";
 
 "Package_Unavailable" = "Tiada Pakej";
@@ -93,12 +93,12 @@
 "Sources_Page" = "Sumber";
 "Packages_Page" = "Pakej";
 "Search_Page" = "Cari";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Carian Terkini";
+"Clear_Search_History" = "Padam";
 "Refreshing_Sources_Page" = "Mengemaskini Sumber";
 "Package_Installed_Files_Page" = "Fail Dipasang";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Refresh" = "Segar semula";
+"Remove" = "Buang";
 
 "All_Packages.Title" = "Semua Pakej";
 "All_Packages.Cell_Subtitle" = "Lihat semua pakej daripada sumber-sumber anda";
@@ -106,10 +106,10 @@
 "All_Categories" = "Semua Kategori";
 "Internal_Repo" = "Internal Repos";
 "External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Ignored Updates" = "Kemas Kini Terabai";
 
 "Repos" = "Repositori";
-"Repo" = "Repository";
+"Repo" = "Repositori";
 
 "Add_Source.Title" = "Tambah Sumber";
 "Add_Source.Body" = "Tambah URL APT";
@@ -131,7 +131,7 @@
 "Package_Changelogs_Unavailable" = "Tiada log penukaran untuk pakej ini.";
 
 "Installed_Package_Header" = "Pakej Dipasang";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "Pakej Dipasang";
 "Version" = "Versi";
 "Show_Package_Contents_Button" = "Tunjukkan Isi Pakej";
 
@@ -152,46 +152,46 @@
 "Tint_Color" = "Warna Rona";
 "Reset_Tint_Color" = "Tetapkan Semula Warna Rona";
 "Auto_Complete_Queue" = "Auto-Selesaikan Aturan";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Tunjuk Sejarah Carian";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
 "Swipe_Actions" = "Swipe Actions";
 "Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
+"Show_Ignored_Updates" = "Tunjuk Kemas Kini Terabai";
+"Developer_Mode" = "Mod Pembangun";
+"Pog_Developer" = "Anda telah menjadi pembangun!";
+"Developer_Mode_Explain" = "Mod Pembangun nyahaktifkan keperluan HTTPS bagi API Pembayaran.";
+"Auto_Refresh_Sources" = "Segar Semula Sumber Automatik";
 "iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
+"Cache_Size" = "Saiz cache";
 "Clear_Cache" = "Clear Network Cache";
 "Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
-"Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
+"Language" = "Bahasa";
+"Use_System_Language" = "Gunakan Bahasa Sistem";
+"Apply_Changes" = "Terapkan Perubahan";
+"Apply_Changes_Confirm" = "Penerapan Perubahan memerlukan mula semula Sileo";
+"Help_Translate" = "Bantu Terjemahkan Sileo";
+"Always_Show_Install_Log" = "Sentiasa Tunjuk Log Pasang";
 "Auto_Show_Queue" = "Show Queue on Upgrade All";
 
 "Sileo_Light" = "Sileo Cerah";
 "Sileo_Dark" = "Sileo Gelap";
 "Sileo_Adaptive" = "Sileo Adaptif";
 "System" = "Sistem";
-"Theme_Settings" = "Theme Settings";
+"Theme_Settings" = "Tetapan Tema";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Mengurus Tema";
+"Create_Theme" = "Cipta Tema Baharu";
+"Import_Themes" = "Import Tema";
+"Theme_Name" = "Nama Tema";
+"Export_Themes" = "Eksport Tema";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
+"Background_Color" = "Warna Latar Belakang";
+"Secondary_Background_Color" = "Warna Latar Belakang Sekunder";
+"Label_Color" = "Warna Label";
 "Highlight_Color" = "Highlight Color";
 "Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Header_Color" = "Warna Pengepala";
+"Banner_Color" = "Warna Sepanduk";
 
 
 "Cydia_Sign_In" = "Log masuk ke dalam Cydia Store";
@@ -203,15 +203,15 @@
 
 "Show_Install_Details" = "Tunjuk Butiran";
 "Hide_Install_Details" = "Sorok Butiran";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Buka dalam Filza";
+"Copy_Path" = "Salin Laluan";
 
 "After_Install_Relaunch" = "Mula-semulakan Sileo";
 "After_Install_Respring" = "Mula-semulakan SpringBoard";
 "After_Install_Reboot" = "Mula-semulakan Peranti";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch_Later" = "Mula Semula Sileo Kemudian";
+"After_Install_Respring_Later" = "Mula Semula Springboard Kemudian";
+"After_Install_Reboot_Later" = "But Semula Peranti Kemudian";
 
 "Dangerous_Repo.Title" = "Repo Berbahaya";
 "Dangerous_Repo.Body" = "Anda sedang mencuba untuk menambahkan repositori yang diketahui sebagai berbahaya dengan alasan seperti pakej cetak rompak, kandungan haram atau perisian hasad.\n\nRepositori yang dilabelkan sebagai berbahaya selalunya mengedar perisian dengan kesan sampingan, sama ada dalam bentuk pakej dibayar dalam bentuk percuma atau pakej berbahaya yang lain. Ini boleh mengadakan penukaran kekal atas peranti dan privasi anda, kadangkala mempengaruhi kemampuan anda untuk menjailbreak. Kami mengesyorkan anda berhati-hati untuk mengelakkan perisian berbahaya.";
@@ -232,4 +232,4 @@
 // Depcitions
 "View_Depiction" = "Lihat Penggambaran";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Salin ID";
