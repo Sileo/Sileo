@@ -68,8 +68,8 @@ enum Jailbreak: String, Codable {
         let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
         let procursus = URL(fileURLWithPath: "/.procursus_strapped")
         let rootless_procursus = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
-        let elu = URL(fileURLWithPath: "/.bootstrapped")
         let checkra1n = URL(fileURLWithPath: "/var/checkra1n.dmg")
+        let unc0ver = URL(fileURLWithPath: "/.installed_unc0ver")
         
         let bakera1n_rootful = URL(fileURLWithPath: "/fs")
         let bakera1n = URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
@@ -130,12 +130,12 @@ enum Jailbreak: String, Codable {
                     self = .taurine
                     return
                 }
-            } else if elu.exists {
-                if checkra1n.exists {
-                    self = .checkra1n14
+            } else {
+                if unc0ver.exists {
+                    self = .unc0ver14
                     return
                 } else {
-                    self = .unc0ver14
+                    self = .checkra1n14
                     return
                 }
             }
@@ -150,12 +150,12 @@ enum Jailbreak: String, Codable {
                     self = .odyssey
                     return
                 }
-            } else if elu.exists {
-                if checkra1n.exists {
-                    self = .checkra1n13
+            } else {
+                if unc0ver.exists {
+                    self = .unc0ver13
                     return
                 } else {
-                    self = .unc0ver13
+                    self = .checkra1n13
                     return
                 }
             }
@@ -170,12 +170,12 @@ enum Jailbreak: String, Codable {
                     self = .chimera
                     return
                 }
-            } else if elu.exists {
-                if checkra1n.exists {
-                    self = .checkra1n12
+            } else {
+                if unc0ver.exists {
+                    self = .unc0ver12
                     return
                 } else {
-                    self = .unc0ver12
+                    self = .checkra1n12
                     return
                 }
             }
