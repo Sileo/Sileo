@@ -56,6 +56,6 @@ class FeaturedInfoFooterView: FeaturedBaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = CGRect(origin: self.bounds.origin,
-                             size: CGSize(width: self.bounds.width, height: 30))
+                             size: CGSize(width: self.bounds.width, height: 39.5))
     }
 }
