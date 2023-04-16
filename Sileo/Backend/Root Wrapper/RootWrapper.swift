@@ -152,22 +152,20 @@ final public class MacRootWrapper {
     defer { for case let pro? in proenv { free(pro) } }
     let spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], proenv + [nil])
     #else
-    // Weird problem with a weird workaround
-    let env = [ "PATH=\(CommandPath.prefix)/usr/bin:\(CommandPath.prefix)/usr/local/bin:\(CommandPath.prefix)/bin:\(CommandPath.prefix)/usr/sbin" ]
-    let envp: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
-    defer { for case let env? in envp { free(env) } }
     let spawnStatus: Int32
     if #available(iOS 13, *) {
-        var attr: posix_spawnattr_t?
         if root {
+            var attr: posix_spawnattr_t?
             posix_spawnattr_init(&attr)
-            posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE));
-            posix_spawnattr_set_persona_uid_np(&attr, 0);
-            posix_spawnattr_set_persona_gid_np(&attr, 0);
+            posix_spawnattr_set_persona_np(&attr, 99, UInt32(POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE))
+            posix_spawnattr_set_persona_uid_np(&attr, 0)
+            posix_spawnattr_set_persona_gid_np(&attr, 0)
+            spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], environ)
+        } else {
+            spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
         }
-        spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], envp + [nil])
     } else {
-        spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], envp)
+        spawnStatus = posix_spawn(&pid, command, &fileActions, nil, argv + [nil], environ)
     }
     #endif
     if spawnStatus != 0 {
