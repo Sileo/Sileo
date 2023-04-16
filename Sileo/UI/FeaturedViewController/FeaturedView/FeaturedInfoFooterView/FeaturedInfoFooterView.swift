@@ -28,7 +28,8 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
-        label.numberOfLines = 0
+        label.numberOfLines = 3
+        label.adjustsFontSizeToFitWidth = true
         
         if sileoVersion == "Unknown" {
             let sileoPackage2 = FeaturedInfoFooterView.package
