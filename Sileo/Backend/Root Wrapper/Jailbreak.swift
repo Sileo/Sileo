@@ -37,10 +37,10 @@ enum Jailbreak: String, Codable {
     case odysseyra1n14 = "Odysseyra1n (iOS 14)"
     
     // Palera1n
-    case palera1n_rootless15 = "Palera1n Rootless (iOS 15)"
-    case palera1n_rootless16 = "Palera1n Rootless (iOS 16)"
-    case palera1n_rootful15 = "Palera1n Rootful (iOS 15)"
-    case palera1n_rootful16 = "Palera1n Rootful (iOS 16)"
+    case palera1n_rootless15 = "palera1n Rootless (iOS 15)"
+    case palera1n_rootless16 = "palera1n Rootless (iOS 16)"
+    case palera1n_rootful15 = "palera1n Rootful (iOS 15)"
+    case palera1n_rootful16 = "palera1n Rootful (iOS 16)"
     
     // Xina
     case xina15 = "XinaA15 (iOS 15)"
@@ -49,10 +49,10 @@ enum Jailbreak: String, Codable {
     case fugu15 = "Fugu15 (iOS 15)"
     
     // Bakera1n
-    case bakera1n_rootless15 = "Bakera1n Rootless (iOS 15)"
-    case bakera1n_rootless16 = "Bakera1n Rootless (iOS 16)"
-    case bakera1n_rootful15 = "Bakera1n Rootful (iOS 15)"
-    case bakera1n_rootful16 = "Bakera1n Rootful (iOS 16)"
+    case bakera1n_rootless15 = "bakera1n Rootless (iOS 15)"
+    case bakera1n_rootless16 = "bakera1n Rootless (iOS 16)"
+    case bakera1n_rootful15 = "bakera1n Rootful (iOS 15)"
+    case bakera1n_rootful16 = "bakera1n Rootful (iOS 16)"
     
     case mac = "macOS"
     case other = "Other"
