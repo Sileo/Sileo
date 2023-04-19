@@ -79,7 +79,7 @@ enum Jailbreak: String, Codable {
             if palecursus.exists {
                 self = .palera1n_rootful16
                 return
-            } else if bakera1n.exists && procursus.dirExists {
+            } else if bakera1n.exists && procursus.exists {
                 self = .bakera1n_rootful16
                 return
             } else if bakera1n.exists && rootless_procursus.exists {
@@ -106,7 +106,7 @@ enum Jailbreak: String, Codable {
                 if palecursus.exists {
                     self = .palera1n_rootful15
                     return
-                } else if bakera1n.exists && procursus.dirExists {
+                } else if bakera1n.exists && procursus.exists {
                     self = .bakera1n_rootful15
                     return
                 } else if bakera1n.exists && rootless_procursus.exists {
