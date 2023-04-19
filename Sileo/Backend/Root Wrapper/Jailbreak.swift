@@ -70,8 +70,6 @@ enum Jailbreak: String, Codable {
         let rootless_procursus = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
         let checkra1n = URL(fileURLWithPath: "/var/checkra1n.dmg")
         let unc0ver = URL(fileURLWithPath: "/.installed_unc0ver")
-        
-        let bakera1n_rootful = URL(fileURLWithPath: "/fs")
         let bakera1n = URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
         
         
@@ -81,7 +79,7 @@ enum Jailbreak: String, Codable {
             if palecursus.exists {
                 self = .palera1n_rootful16
                 return
-            } else if bakera1n.exists && rootless_procursus.dirExists {
+            } else if bakera1n.exists && procursus.dirExists {
                 self = .bakera1n_rootful16
                 return
             } else if bakera1n.exists && rootless_procursus.exists {
@@ -108,11 +106,11 @@ enum Jailbreak: String, Codable {
                 if palecursus.exists {
                     self = .palera1n_rootful15
                     return
-                } else if bakera1n.exists && rootless_procursus.dirExists {
-                    self = .bakera1n_rootful16
+                } else if bakera1n.exists && procursus.dirExists {
+                    self = .bakera1n_rootful15
                     return
                 } else if bakera1n.exists && rootless_procursus.exists {
-                    self = .bakera1n_rootless16
+                    self = .bakera1n_rootless15
                     return
                 } else if rootless_procursus.exists {
                     self = .palera1n_rootless15
