@@ -47,6 +47,7 @@ enum Jailbreak: String, Codable {
     
     // Fugu15
     case fugu15 = "Fugu15 (iOS 15)"
+    case dopamine = "Dopamine (iOS 15)"
     
     // Bakera1n
     case bakera1n_rootless15 = "bakera1n Rootless (iOS 15)"
@@ -100,6 +101,12 @@ enum Jailbreak: String, Codable {
                 let fugu = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
                 if fugu.exists {
                     self = .fugu15
+                    return
+                }
+                
+                let dopamine = URL(fileURLWithPath: "/var/jb/.installed_dopamine")
+                if dopamine.exists {
+                    self = .dopamine
                     return
                 }
             } else {
