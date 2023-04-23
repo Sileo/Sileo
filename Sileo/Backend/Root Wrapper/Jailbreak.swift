@@ -42,9 +42,6 @@ enum Jailbreak: String, Codable {
     case palera1n_rootful15 = "palera1n Rootful (iOS 15)"
     case palera1n_rootful16 = "palera1n Rootful (iOS 16)"
     
-    // Xina
-    case xina15 = "XinaA15 (iOS 15)"
-    
     // Fugu15
     case fugu15 = "Fugu15 (iOS 15)"
     case dopamine = "Dopamine (iOS 15)"
@@ -92,12 +89,6 @@ enum Jailbreak: String, Codable {
             }
         } else if #available(iOS 15.0, *) {
             if arm64e {
-                let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
-                if xina.exists {
-                    self = .xina15
-                    return
-                }
-                
                 let fugu = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
                 if fugu.exists {
                     self = .fugu15
