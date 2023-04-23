@@ -21,6 +21,7 @@ class APTWrapper {
         case restart = 3
         case reload = 4
         case reboot = 5
+        case usreboot = 6
     }
 
     static let GNUPGPREFIX = "[GNUPG:]"
@@ -437,6 +438,9 @@ class APTWrapper {
                             }
                             if sileoLine.hasPrefix("finish:reboot") {
                                 newFinish = .reboot
+                            }
+                            if sileoLine.hasPrefix("finish:usreboot") {
+                                newFinish = .usreboot
                             }
 
                             if newFinish.rawValue > finish.rawValue {

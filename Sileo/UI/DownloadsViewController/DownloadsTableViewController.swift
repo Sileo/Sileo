@@ -448,6 +448,9 @@ class DownloadsTableViewController: SileoViewController {
             case .reboot:
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/ldrestart"])
+            case .usreboot:
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/launchctl", "reboot", "userspace"])
             }
         }
         // Fire the animation
