@@ -448,6 +448,9 @@ class DownloadsTableViewController: SileoViewController {
             case .reboot:
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
                 spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/ldrestart"])
+            case .usreboot:
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/sync"])
+                spawnAsRoot(args: ["\(CommandPath.prefix)/usr/bin/launchctl", "reboot", "userspace"])
             }
         }
         // Fire the animation
@@ -623,6 +626,9 @@ class DownloadsTableViewController: SileoViewController {
             completeButton?.setTitle(String(localizationKey: "After_Install_Respring"), for: .normal)
             completeLaterButton?.setTitle(String(localizationKey: "After_Install_Respring_Later"), for: .normal)
         case .reboot:
+            completeButton?.setTitle(String(localizationKey: "After_Install_Reboot"), for: .normal)
+            completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
+        case .usreboot:
             completeButton?.setTitle(String(localizationKey: "After_Install_Reboot"), for: .normal)
             completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
         case .uicache:
