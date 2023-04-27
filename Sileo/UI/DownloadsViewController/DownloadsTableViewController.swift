@@ -628,6 +628,9 @@ class DownloadsTableViewController: SileoViewController {
         case .reboot:
             completeButton?.setTitle(String(localizationKey: "After_Install_Reboot"), for: .normal)
             completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
+        case .usreboot:
+            completeButton?.setTitle(String(localizationKey: "After_Install_Reboot"), for: .normal)
+            completeLaterButton?.setTitle(String(localizationKey: "After_Install_Reboot_Later"), for: .normal)
         case .uicache:
             if refreshSileo {
                 completeButton?.setTitle(String(localizationKey: "After_Install_Relaunch"), for: .normal)
