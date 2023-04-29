@@ -19,8 +19,14 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
     public var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        // Prepare the Evander manifest
         EvanderNetworking.CACHE_FORCE = .libraryDirectory
+        let prefix = CommandPath.prefix
+        let old = EvanderNetworking._cacheDirectory
+        EvanderNetworking._cacheDirectory = URL(fileURLWithPath: prefix + old.absoluteString)
+        if prefix != "" && old.dirExists {
+            deleteFileAsRoot(old)
+        }
+        // Prepare the Evander manifest
         Evander.prepare()
         #if targetEnvironment(macCatalyst)
         _ = MacRootWrapper.shared

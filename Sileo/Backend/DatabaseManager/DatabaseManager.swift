@@ -7,6 +7,7 @@
 //
 import Foundation
 import SQLite
+import Evander
 
 enum DatabaseSchemaVersion: Int {
     case versionNil = 0
@@ -26,10 +27,7 @@ class DatabaseManager {
     private var updateQueue: DispatchQueue = DispatchQueue(label: "org.coolstar.SileoStore.news-seen-update")
     
     init() {
-        guard let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-                fatalError("Unable to get Sileo container!")
-        }
-        let sileoURL = libraryURL.appendingPathComponent("Sileo")
+        let sileoURL = EvanderNetworking._cacheDirectory.appendingPathComponent("Database")
         try? FileManager.default.createDirectory(at: sileoURL,
                                                  withIntermediateDirectories: true,
                                                  attributes: [
@@ -53,10 +51,12 @@ class DatabaseManager {
     }
     
     private var schemaVersion: Int32 {
-        // swiftlint:disable:next force_cast force_try
-        get { Int32(try! database.scalar("PRAGMA user_version") as! Int64) }
-        // swiftlint:disable:next force_try
-        set { try! database.run("PRAGMA user_version = \(newValue)") }
+        get {
+            database.userVersion ?? 0
+        }
+        set {
+            database.userVersion = newValue
+        }
     }
     
     public func serializePackages(_ packages: [Package]) -> Set<[String: String]> {

@@ -279,7 +279,7 @@ func deleteFileAsRoot(_ url: URL) {
     #if targetEnvironment(simulator) || TARGET_SANDBOX
     try? FileManager.default.removeItem(at: url)
     #else
-    spawnAsRoot(args: [CommandPath.rm, "-f", "\(url.path)"])
+    spawnAsRoot(args: [CommandPath.rm, "-rf", "\(url.path)"])
     #endif
 }
 
