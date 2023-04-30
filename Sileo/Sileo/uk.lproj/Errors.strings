@@ -38,10 +38,10 @@
 "Try_Later" = "Попробуйте ще раз пізніше.";
 
 "Sileo_Update_Required.Title" = "Обов'язкове Оновлення Sileo";
-"Featured_Requires_Sileo_Update" = "Для перегляду вкладки \"Обране\" потрібне оновлення Sileo. Вкладка може відображатися некоректно.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Featured_Requires_Sileo_Update" = "Для перегляду вкладки \"Обране\" потрібне оновлення Sileo. Вкладка може відображатися неправильно.";
+"Depiction_Requires_Sileo_Update" = "Для перегляду цієї сторінки потрібне оновлення Sileo. Сторінка може відображатися неправильно.";
 
-"Form_Error.Title" = "Couldn't Load Form";
+"Form_Error.Title" = "Не вдалося завантажити форму";
 "Form_Load_Error" = "The form could not be loaded from the server.";
 "Invalid_Form_Data" = "The server provided invalid form data.";
 "Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
