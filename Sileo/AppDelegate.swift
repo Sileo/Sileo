@@ -22,7 +22,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         EvanderNetworking.CACHE_FORCE = .libraryDirectory
         let prefix = CommandPath.prefix
         let old = EvanderNetworking._cacheDirectory
-        EvanderNetworking._cacheDirectory = URL(fileURLWithPath: prefix + old.absoluteString)
+        EvanderNetworking._cacheDirectory = URL(fileURLWithPath: prefix + old.path)
         if prefix != "" && old.dirExists {
             deleteFileAsRoot(old)
         }
