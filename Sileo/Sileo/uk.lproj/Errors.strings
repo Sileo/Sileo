@@ -8,7 +8,7 @@
  LOCALISATIONS
  */
 
-"Unknown" = "An unknown error occurred.";
+"Unknown" = "Виникла невідома помилка.";
 "Error_Indicator" = "Помилка: %@";
 
 "No_Package.Title" = "Не вдалося знайти пакет %@ в доданих репозиторіїв.";
@@ -16,29 +16,29 @@
 
 "Invalid_URL.Title" = "Недійсний URL";
 
-"Download_Size_Mismatch" = "Expected size %@, got %@ instead.";
+"Download_Size_Mismatch" = "Очікуваний розмір %@, отримано %@.";
 "Download_Failing_Status_Code" = "Провалився зі статусом %ld";
-"Download_Hash_Mismatch" = "Expected hash %@, got %@ instead.";
+"Download_Hash_Mismatch" = "Очікуваний хеш %@, отримано %@.";
 "Untrusted_Package" = "Пакет %@ не довірений і не може бути перевірений";
 
-"Insecure_Paid_Download" = "Payment-authorized package download URLs must be secure (HTTPS).";
+"Insecure_Paid_Download" = "URL-адреси для завантаження пакетів з авторизацією платежу повинні бути захищеними (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "The payment provider issued an invalid response.";
-"No_Payment_Provider" = "This repo does not support Sileo purchases. If this is a Cydia Store package that you have already purchased, you may link your account to download it.";
+"Invalid_Payment_Provider_Response" = "Постачальник платежу надав неправильну відповідь.";
+"No_Payment_Provider" = "Цей репозиторій не підтримує покупки в Sileo. Якщо це пакет з Cydia Store, який ви вже придбали, ви можете прив'язати свій обліковий запис, щоб завантажити його.";
 
-"Package_Unavailable" = "This package is not available from your installed sources. Please check to make sure that the %@ repo is available.";
+"Package_Unavailable" = "Цей пакунок недоступний у встановлених вами джерелах. Будь ласка, перевірте, чи доступний репозиторій %@.";
 
 "Installation_Error.Title" = "Помилка Інсталяції";
 "Installation_Error.Body" = "Sileo не міг дістати root-права. Переінсталюйте Sileo з допомогою SSH.";
 
-"FixingDpkg.Title" = "Dpkg Interrupted";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Title" = "Dpkg перервано";
+"FixingDpkg.Body" = "Dpkg було перервано. Будь ласка, зачекайте, поки ми спробуємо виправити проблему.";
 
 "Invalid_Data" = "Недійсні Дані";
 "Try_Later" = "Попробуйте ще раз пізніше.";
 
 "Sileo_Update_Required.Title" = "Обов'язкове Оновлення Sileo";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
+"Featured_Requires_Sileo_Update" = "Для перегляду вкладки \"Обране\" потрібне оновлення Sileo. Вкладка може відображатися некоректно.";
 "Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
 
 "Form_Error.Title" = "Couldn't Load Form";
