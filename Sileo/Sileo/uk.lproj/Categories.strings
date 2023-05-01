@@ -13,9 +13,9 @@
 "Themes" = "Теми";
 "Utilities" = "Утиліти";
 "Applications" = "Програми";
-"Addons" = "Добавки";
+"Addons" = "Додатки";
 "Games" = "Ігри";
-"Developer" = "Виробник";
-"Data_Storage" = "Зберігання Даних";
-"Terminal_Support" = "Підтримка Термінала";
-"Text_Editors" = "Редагувачі Тексту";
+"Developer" = "Розробник";
+"Data_Storage" = "Дані та сховище";
+"Terminal_Support" = "Підтримка терміналу";
+"Text_Editors" = "Текстові редактори";
