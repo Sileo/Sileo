@@ -65,6 +65,11 @@ enum Jailbreak: String, Codable {
         return String(cString: archRaw)
     }
     
+    static private let supported: Set<Jailbreak> = [.chimera, .odyssey, .taurine, .odysseyra1n12, .odysseyra1n13, .odysseyra1n14, .palera1n_rootful15, .palera1n_rootful16, .palera1n_rootless15, .palera1n_rootless16, .fugu15, .dopamine]
+    public var supportsUserspaceReboot: Bool {
+        Self.supported.contains(self)
+    }
+    
     private init() {
         let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
         let procursus = URL(fileURLWithPath: "/.procursus_strapped")
