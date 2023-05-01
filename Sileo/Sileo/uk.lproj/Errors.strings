@@ -42,8 +42,8 @@
 "Depiction_Requires_Sileo_Update" = "Для перегляду цієї сторінки потрібне оновлення Sileo. Сторінка може відображатися неправильно.";
 
 "Form_Error.Title" = "Не вдалося завантажити форму";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
+"Form_Load_Error" = "Не вдалося завантажити форму з сервера.";
+"Invalid_Form_Data" = "Сервер надав неприпустимі дані форми.";
 "Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
 "Form_Submit_Error.Title" = "Couldn't Submit Form";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
