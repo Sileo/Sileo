@@ -11,8 +11,8 @@
 
 "About" = "Про Програму";
 "Close" = "Закрити";
-"Double tap to open." = "Double tap to open.";
-"Untitled_Repo" = "Untitled Repo";
+"Double tap to open." = "Двічі натисніть, щоб відкрити.";
+"Untitled_Repo" = "Безіменний репозиторій";
 "OK" = "ОК";
 "Done" = "Готово";
 "Done_Editing" = "Готово";
@@ -28,12 +28,12 @@
 "Edit" = "Змінити";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Фонове оновлення програми";
+"Background_App_Refresh_Message" = "Для найкращої та найшвидшої роботи рекомендується ввімкнути фонове оновлення програми. Ви також можете отримувати сповіщення, коли ваші твіки оновлюються!";
+"Upgrade_All_Shortcut_Processing_Message" = "Оновлення всіх джерел і пакетів...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
+"Installing_Package_Status" = "Встановлення";
 "Downloading_Package_Status" = "Завантаження";
 "Queued_Package_Status" = "В черзі";
 "Ready_Status" = "Готово";
@@ -41,195 +41,195 @@
 "Download_Starting" = "Запуск завантаження…";
 "Download_Progress" = "%@ від %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Наступні пакети вказані як необхідні або обов’язкові: %@\n Їхнє видалення може призвести до незворотного пошкодження вашого пристрою та потребуватиме відновлення. Продовжуйте, лише якщо ви впевнені, що знаєте, що робите.";
 
-"Queue_Confirm_Button" = "Confirm";
+"Queue_Confirm_Button" = "Підтвердити";
 "Queue_Clear_Button" = "Почистити Чергу";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "Скасувати завантаження";
 
 "Package_Upgrade_Action" = "Оновити";
-"Package_Reinstall_Action" = "Reinstall";
-"Package_Uninstall_Action" = "Uninstall";
-"Package_Modify_Action" = "Modify";
-"Package_Get_Action" = "Get";
+"Package_Reinstall_Action" = "Перевстановити";
+"Package_Uninstall_Action" = "Видалити";
+"Package_Modify_Action" = "Змінити";
+"Package_Get_Action" = "Завантажити";
 "Package_Queue_Action" = "Черга";
 "Package_Cancel_Action" = "Скасувати";
 "Package_Paid" = "Оплачений";
 
-"Package_Share_Action" = "Share Package…";
+"Package_Share_Action" = "Поділитися пакетом…";
 "Package_Developer_Find_Action" = "Більше від цього Виробника";
 "Package_Support_Action" = "Підтримка";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Hold_Enable_Action" = "Ігнорувати майбутні оновлення";
+"Package_Hold_Disable_Action" = "Припинити ігнорувати оновлення";
+"Package_Wishlist_Add" = "Додати до списку бажань";
+"Package_Wishlist_Remove" = "Видалити зі списку бажань";
+"Wishlist" = "Список бажань";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Немає нових пакетів";
+"News_Check_Later" = "Наразі не проіндексовано жодного нового пакунка. Поверніться через кілька годин і ви побачите, що пакунки почнуть з'являтися тут по мірі оновлення репозиторіїв.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Інсталювати";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
+"Queued_Uninstall_Heading" = "Видалити";
+"Queued_Update_Heading" = "Оновити";
 "Download_Errors_Heading" = "Помилки";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
+"Installed_Heading" = "Встановлено";
+"Updates_Heading" = "Оновлення";
+"Upgrade_All_Button" = "Оновити все";
+"Package_Search.Placeholder" = "Пошук пакетів";
 "Sort_Name" = "Ім'я";
 "Sort_Date" = "Дата";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "Встановлений розмір";
 "Sort_By" = "Сортувати по:";
 
-"Package_Unavailable" = "Package Unavailable";
+"Package_Unavailable" = "Пакет недоступний";
 "Package_By_Author" = "%@ від %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "від %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Packages_By_Author" = "Пакети від %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
+"Featured_Page" = "Рекомендоване";
 "News_Page" = "Нові";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
+"Sources_Page" = "Джерела";
+"Packages_Page" = "Пакети";
 "Search_Page" = "Пошук";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
+"Search_History" = "Нещодавні пошуки";
+"Clear_Search_History" = "Очистити";
+"Refreshing_Sources_Page" = "Оновлення джерел";
+"Package_Installed_Files_Page" = "Встановлені файли";
+"Refresh" = "Оновити";
 "Remove" = "Видалити";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Всі пакети";
+"All_Packages.Cell_Subtitle" = "Переглянути всі пакети з ваших джерел";
 
 "All_Categories" = "Всі Категорії";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"Internal_Repo" = "Внутрішні репозиторії";
+"External_Repo" = "Зовнішні репозиторії";
+"Ignored Updates" = "Ігноровані оновлення";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Репозиторії";
+"Repo" = "Репозиторій";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Додати джерело";
+"Add_Source.Body" = "Додати посилання APT";
+"Add_Source.Button.Add" = "Додати джерело";
+"Add_Dist_Repo" = "Додати Dist-репозиторій";
+"Incorrect_Repo" = "%@ не є дійсним репозиторієм. Можливо, репозиторій не працює або ви ввели його неправильно. Ви все одно хочете його додати?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Ввести вручну";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Форма без назви";
+"Form_Submitted.Default_Title" = "Надіслана форма";
+"Form_Submitted.Default_Body" = "Форма була успішно надіслана.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Зображення для веб-перегляду застаріли. Будь ласка, зверніться до адміністратора репозиторію щодо оновлення до нативних зображень.";
 
 "Package_Details_Tab" = "Деталі";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Changelog_Tab" = "Список змін";
+"Package_No_Description_Available" = "Для цього пакету немає опису.";
+"Package_Changelogs_Unavailable" = "Список змін недоступний для цього пакета.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
+"Installed_Package_Header" = "Встановлений пакет";
+"Installed_Packages" = "Встановлені пакети";
 "Version" = "Версія";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Show_Package_Contents_Button" = "Показати вміст пакета";
 
 "Licenses_Page_Title" = "Ліцензії";
-"Alternate_Icon_Title" = "Alternate Icons";
+"Alternate_Icon_Title" = "Альтернативні значки";
 
-"Settings_Payment_Provider_Heading" = "Payment Providers";
-"Settings_Translations_Heading" = "Translations";
+"Settings_Payment_Provider_Heading" = "Постачальники платежів";
+"Settings_Translations_Heading" = "Переклади";
 
 "Settings_Payment_Provider.Purchases_Heading" = "Покупки";
-"Settings_Payment_Provider.No_Purchases" = "No purchases";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Settings_Payment_Provider.No_Purchases" = "Покупки відсутні";
+"Authenticate_To_Purchase" = "Пройдіть автентифікацію, щоб завершити покупку";
 
 "Settings" = "Настройки";
 "Settings_Page_Title" = "Настройки";
 "Dark_Mode_Toggle" = "Темний режим";
 "Theme" = "Тема";
-"Tint_Color" = "Tint Color";
-"Reset_Tint_Color" = "Reset Tint Color";
-"Auto_Complete_Queue" = "Auto Complete Queue";
-"Show_Search_History" = "Show Search History";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Auto Confirm Upgrade All Shortcut";
-"Swipe_Actions" = "Swipe Actions";
-"Show_Provisional" = "Show Packages From Canister";
-"Show_Ignored_Updates" = "Show Ignored Updates";
-"Developer_Mode" = "Developer Mode";
-"Pog_Developer" = "You are now a developer!";
-"Developer_Mode_Explain" = "Developer Mode disables the HTTPS requirement of the Payment API.";
-"Auto_Refresh_Sources" = "Auto Refresh Sources";
-"iCloud_Profile" = "Show iCloud Picture in Featured";
-"Cache_Size" = "Cache Size";
+"Tint_Color" = "Колір відтінку";
+"Reset_Tint_Color" = "Скинути колір відтінку";
+"Auto_Complete_Queue" = "Автоматично завершувати черги";
+"Show_Search_History" = "Показати історію пошуку";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Автоматично підтверджувати шорткат \"Оновити все\"";
+"Swipe_Actions" = "Дії по свайпу";
+"Show_Provisional" = "Показувати пакети з Canister";
+"Show_Ignored_Updates" = "Показувати ігноровані оновлення";
+"Developer_Mode" = "Режим розробника";
+"Pog_Developer" = "Ви тепер розробник!";
+"Developer_Mode_Explain" = "Режим розробника вимикає вимогу HTTPS для платіжного API.";
+"Auto_Refresh_Sources" = "Автоматично оновлювати джерела";
+"iCloud_Profile" = "Показати зображення iCloud у розділі \"Рекомендовані\"";
+"Cache_Size" = "Розмір кешу";
 "Clear_Cache" = "Очистити Мережний Кеш";
-"Clear_Cache_Message" = "Do you want to clear the network cache? This will free %@";
+"Clear_Cache_Message" = "Бажаєте очистити мережевий кеш? Це звільнить %@";
 "Language" = "Мова";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Use_System_Language" = "Використовувати мову системи";
+"Apply_Changes" = "Застосувати зміни";
+"Apply_Changes_Confirm" = "Застосування змін потребує перезапуску Sileo";
+"Help_Translate" = "Допомога в перекладі Sileo";
+"Always_Show_Install_Log" = "Завжди показувати журнал встановлення";
+"Auto_Show_Queue" = "Показувати чергу при Оновленні всього";
 
-"Sileo_Light" = "Sileo Light";
-"Sileo_Dark" = "Sileo Dark";
-"Sileo_Adaptive" = "Sileo Adaptive";
-"System" = "System";
-"Theme_Settings" = "Theme Settings";
+"Sileo_Light" = "Sileo Світла";
+"Sileo_Dark" = "Sileo Темна";
+"Sileo_Adaptive" = "Sileo Адаптивна";
+"System" = "Системна";
+"Theme_Settings" = "Налаштування теми";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Керування темами";
+"Create_Theme" = "Створити тему";
+"Import_Themes" = "Імпортувати теми";
+"Theme_Name" = "Назва теми";
+"Export_Themes" = "Експортувати теми";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Колір фону";
+"Secondary_Background_Color" = "Вторинний колір фону";
+"Label_Color" = "Колір напису";
+"Highlight_Color" = "Колір виділення";
+"Seperator_Color" = "Колір розділювача";
+"Header_Color" = "Колір заголовку";
+"Banner_Color" = "Колір банера";
 
 
-"Cydia_Sign_In" = "Sign in to Cydia Store";
-"Payment_Provider_Signed_In" = "Signed in";
-"Payment_Provider_Signed_In_With_Name" = "Signed in as %@"; // %@ = user's name
-"Payment_Provider_Sign_Out" = "Sign out";
-"Payment_Provider_Sign_Out_Confirm.Title" = "Sign out of %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "You will no longer be able to download your purchased packages until you sign back in.";
+"Cydia_Sign_In" = "Увійти в Cydia Store";
+"Payment_Provider_Signed_In" = "Вхід виконано";
+"Payment_Provider_Signed_In_With_Name" = "Ви увійшли як %@"; // %@ = user's name
+"Payment_Provider_Sign_Out" = "Вийти";
+"Payment_Provider_Sign_Out_Confirm.Title" = "Вийти з %@"; // %@ = payment provider name
+"Payment_Provider_Sign_Out_Confirm.Body" = "Ви більше не зможете завантажувати придбані пакети, доки не ввійдете знову.";
 
-"Show_Install_Details" = "Show Details";
-"Hide_Install_Details" = "Hide Details";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Show_Install_Details" = "Показати деталі";
+"Hide_Install_Details" = "Приховати деталі";
+"Open_In_Filza" = "Відкрити в Filza";
+"Copy_Path" = "Копіювати шлях";
 
-"After_Install_Relaunch" = "Restart Sileo";
-"After_Install_Respring" = "Restart SpringBoard";
-"After_Install_Reboot" = "Reboot Device";
-"After_Install_Relaunch_Later" = "Restart Sileo Later";
-"After_Install_Respring_Later" = "Restart SpringBoard Later";
-"After_Install_Reboot_Later" = "Reboot Device Later";
+"After_Install_Relaunch" = "Перезапустити Sileo";
+"After_Install_Respring" = "Перезапустити SpringBoard";
+"After_Install_Reboot" = "Перезавантажити пристрій";
+"After_Install_Relaunch_Later" = "Перезапустити Sileo пізніше";
+"After_Install_Respring_Later" = "Перезапустити SpringBoard пізніше";
+"After_Install_Reboot_Later" = "Перезавантажити пристрій пізніше";
 
-"Dangerous_Repo.Title" = "Dangerous Repo";
-"Dangerous_Repo.Body" = "You are attempting to add a repository that is known to be harmful for reasons such as piracy, illegal content, or malware.\n\nRepositories marked as harmful often distribute software with unexpected effects, whether in the form of paid packages for free or other malicious packages. This can have lasting effects on your device and privacy, even sometimes affecting your ability to jailbreak. We recommend that you exercise extreme caution to avoid harmful software.";
-"Dangerous_Repo.Continue" = "I accept the risks, continue";
-"Dangerous_Repo.Cancel" = "Take me back to safety";
-"Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Title" = "Небезпечний репозиторій";
+"Dangerous_Repo.Body" = "Ви намагаєтеся додати сховище, яке, як відомо, є шкідливим з таких причин, як піратство, нелегальний вміст або шкідливе програмне забезпечення. \n\nРепозиторії, позначені як шкідливі, часто поширюють програмне забезпечення з неочікуваними ефектами, як у вигляді безкоштовних платних пакетів, так і у вигляді інших шкідливих пакетів. Це може мати довготривалий вплив на ваш пристрій і конфіденційність, навіть іноді впливає на вашу здатність до джейлбрейку. Ми рекомендуємо вам бути дуже обережними, щоб уникнути шкідливого програмного забезпечення.";
+"Dangerous_Repo.Continue" = "Я приймаю ризики, продовжити";
+"Dangerous_Repo.Cancel" = "Поверніть мене в зону безпеки";
+"Dangerous_Repo.Last_Chance.Title" = "Додати шкідливий репозиторій?";
+"Dangerous_Repo.Last_Chance.Body" = "Небезпечні репозиторії можуть мати руйнівний вплив на вашу здатність користуватися пристроєм або зробити джейлбрейк. Ми наполегливо рекомендуємо вам повернутися для вашої власної безпеки. Ви впевнені, що хочете додати %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Продовжити";
+"Dangerous_Repo.Last_Chance.Cancel" = "Повернутись";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "Експортувати";
+"Export_Packages" = "Бажаєте експортувати список пакетів? Це скопіює всі назви пакетів та їхні версії до буфера обміну.";
+"Export_Sources" = "Бажаєте експортувати свій список джерел? Це скопіює всі URL-адреси джерел до буфера обміну.";
+"Export_Yes" = "Так, копіювати.";
+"Export_No" = "Ні, скасувати.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Переглянути опис";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Скопіювати ID";
