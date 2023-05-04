@@ -45,9 +45,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>URL</string>
+        <string>Bağlantı</string>
         <key>other</key>
-        <string>URL'ler</string>
+        <string>Bağlantılar</string>
       </dict>
     </dict>
     <key>Package_Queue_Count</key>
