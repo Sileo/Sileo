@@ -23,7 +23,7 @@
 "Cancel" = "إلغاء";
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
-"Sileo_Team" = "فريق سيلو";
+"Sileo_Team" = "فريق Sileo";
 "Warning" = "تحذير";
 "Edit" = "تعديل";
 
@@ -41,7 +41,7 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
+"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدًا من أنك تعرف ما تفعله.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
@@ -114,7 +114,7 @@
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
-"Add_Dist_Repo" = "Add Dist Repo";
+"Add_Dist_Repo" = "إضافة مستودع ضار";
 "Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح⁉️، قد يكون المستودع غير متصل بـ الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
@@ -191,7 +191,7 @@
 "Highlight_Color" = "لون الضوء ";
 "Seperator_Color" = "لون المقسم";
 "Header_Color" = "لون المقدمة";
-"Banner_Color" = "Banner Color";
+"Banner_Color" = "لون الشعار";
 
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
