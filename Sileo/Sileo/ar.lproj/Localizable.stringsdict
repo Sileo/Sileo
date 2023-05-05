@@ -23,7 +23,7 @@
         <key>many</key>
         <string>مصادر</string>
         <key>other</key>
-        <string>مصدر</string>
+        <string>مصادر</string>
       </dict>
     </dict>
     <key>Auto_Add_Pasteboard_Sources.Button.Add</key>
@@ -57,7 +57,7 @@
       <key>urls</key>
       <dict>
         <key>zero</key>
-        <string>الرابط</string>
+        <string>عنوان URL</string>
         <key>NSStringFormatSpecTypeKey</key>
         <string>NSStringPluralRuleType</string>
         <key>NSStringFormatValueTypeKey</key>
@@ -65,7 +65,7 @@
         <key>one</key>
         <string>عنوان URL</string>
         <key>two</key>
-        <string>عنوان URL</string>
+        <string>عنوانيْ URL</string>
         <key>few</key>
         <string>عنوان URL</string>
         <key>many</key>
@@ -85,7 +85,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>zero</key>
-        <string>%d حزمه</string>
+        <string>%d حزمة</string>
         <key>one</key>
         <string>%d حزمة</string>
         <key>two</key>
