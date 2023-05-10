@@ -6,7 +6,7 @@
 //  Copyright © 2021 Amy While. All rights reserved.
 //
 
-import Foundation
+import UIKit
 // import DepictionKit
 import Evander
 import ZippyJSON
@@ -45,7 +45,7 @@ final class CanisterResolver {
             self.savedSearch.append(query)
             var change = false
             for package in response.data ?? [] {
-                if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false {
+                if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false && !DpkgWrapper.architecture.valid(arch: package.architecture) {
                     change = true
                     self.packages.append(package)
                 }
@@ -80,7 +80,7 @@ final class CanisterResolver {
                 self.savedSearch += packages
                 var change = false
                 for package in response.data ?? [] {
-                    if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false {
+                    if !self.packages.contains(where: { $0.package == package.package }) && package.repository.isBootstrap == false && !DpkgWrapper.architecture.valid(arch: package.architecture) {
                         change = true
                         self.packages.append(package)
                     }

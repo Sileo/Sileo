@@ -21,7 +21,7 @@ struct DPKGArchitecture {
     let primary: Architecture
     let foreign: Set<Architecture>
     
-    func valid(arch: String?) -> Bool {
+    public func valid(arch: String?) -> Bool {
         guard let arch else {
             return false
         }
@@ -31,7 +31,33 @@ struct DPKGArchitecture {
         guard let arch = Architecture(rawValue: arch) else {
             return false
         }
-        return primary == arch || foreign.contains(arch)
+        return arch == primary || foreign.contains(arch)
+    }
+    
+    public func valid(arch: DPKGArchitecture?) -> Bool {
+        guard let arch else {
+            return false
+        }
+        let primary = arch.primary
+        if self.primary == primary || self.foreign.contains(primary) {
+            return true
+        }
+        if arch.foreign.contains(self.primary) {
+            return true
+        }
+        for arch in arch.foreign {
+            if arch == self.primary || self.foreign.contains(arch) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public func valid(arch: Architecture?) -> Bool {
+        guard let arch else {
+            return false
+        }
+        return self.primary == arch || self.foreign.contains(arch)
     }
     
 }
