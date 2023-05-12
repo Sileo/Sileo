@@ -8,7 +8,7 @@
  LOCALISATIONS
  */
 
-"Unknown" = "Произошла ошибка.";
+"Unknown" = "Произошла неизвестная ошибка.";
 "Error_Indicator" = "Ошибка: %@";
 
 "No_Package.Title" = "Не удалось найти пакет %@ в добавленных репозиториях.";
@@ -17,7 +17,7 @@
 "Invalid_URL.Title" = "Неверный URL";
 
 "Download_Size_Mismatch" = "Ожидался размер %@, вместо, получен %@.";
-"Download_Failing_Status_Code" = "Ошиька сос статусом %ld";
+"Download_Failing_Status_Code" = "Ошибка со статусом %ld";
 "Download_Hash_Mismatch" = "Ожидался хэш %@, вместо, получен %@.";
 "Untrusted_Package" = "Пакет %@ ненадежный и не может быть проверен";
 
@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Не удалось завершить покупку";
 "Purchase_Auth_Complete_Fail.Title" = "Не удалось завершить аутентифицирование";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Не удалось импортировать тему(ы)";
