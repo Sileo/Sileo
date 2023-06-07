@@ -26,6 +26,9 @@
 "Sileo_Team" = "Zespół Sileo";
 "Warning" = "Uwaga";
 "Edit" = "Edytuj";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Odświeżanie Aplikacji w Tle";
@@ -98,7 +101,7 @@
 "Refreshing_Sources_Page" = "Odświeżanie źródeł";
 "Package_Installed_Files_Page" = "Zainstalowane pliki";
 "Refresh" = "Odśwież";
-"Remove" = "Usuń";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Wszsytkie pakiety";
 "All_Packages.Cell_Subtitle" = "Pokaż wszystkie pakiety ze swoich źródeł";
@@ -233,3 +236,11 @@
 "View_Depiction" = "Wyświetl opis";
 
 "Copy_ID" = "Kopiuj ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";
