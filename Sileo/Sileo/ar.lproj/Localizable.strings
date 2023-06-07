@@ -26,9 +26,9 @@
 "Sileo_Team" = "فريق Sileo";
 "Warning" = "تحذير";
 "Edit" = "تعديل";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Why" = "لماذا";
+"Deny" = "رفض";
+"Accept" = "موافقة";
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
@@ -101,7 +101,7 @@
 "Refreshing_Sources_Page" = "تحديث المصادر";
 "Package_Installed_Files_Page" = "الملفات المثبتة";
 "Refresh" = "تحديث";
-"Remove" = "Remove";
+"Remove" = "إزالة";
 
 "All_Packages.Title" = "كل الحزم";
 "All_Packages.Cell_Subtitle" = "شاهد كل الحزم من المصادر الخاصة بك";
