@@ -89,7 +89,7 @@
 "Packages_By_Author" = "Пакети від %@"; // %@ = author name
 
 "Featured_Page" = "Рекомендоване";
-"News_Page" = "Нові";
+"News_Page" = "Нове";
 "Sources_Page" = "Джерела";
 "Packages_Page" = "Пакети";
 "Search_Page" = "Пошук";
