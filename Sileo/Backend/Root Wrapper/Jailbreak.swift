@@ -41,6 +41,7 @@ enum Jailbreak: String, Codable {
     case palera1n_rootless16 = "palera1n Rootless (iOS 16)"
     case palera1n_rootful15 = "palera1n Rootful (iOS 15)"
     case palera1n_rootful16 = "palera1n Rootful (iOS 16)"
+    case palera1n17 = "palera1n (iPadOS 17)"
     
     // Xina
     case xina15 = "XinaA15 (iOS 15)"
@@ -65,7 +66,7 @@ enum Jailbreak: String, Codable {
         return String(cString: archRaw)
     }
     
-    static private let supported: Set<Jailbreak> = [.chimera, .odyssey, .taurine, .odysseyra1n12, .odysseyra1n13, .odysseyra1n14, .palera1n_rootful15, .palera1n_rootful16, .palera1n_rootless15, .palera1n_rootless16, .fugu15, .dopamine]
+    static private let supported: Set<Jailbreak> = [.chimera, .odyssey, .taurine, .odysseyra1n12, .odysseyra1n13, .odysseyra1n14, .palera1n_rootful15, .palera1n_rootful16, .palera1n_rootless15, .palera1n_rootless16, .palera1n17, .fugu15, .dopamine]
     public var supportsUserspaceReboot: Bool {
         Self.supported.contains(self)
     }
@@ -81,7 +82,12 @@ enum Jailbreak: String, Codable {
         
         let arm64e = Self.arch() == "arm64e"
         
-        if #available(iOS 16.0, *) {
+        if #available(iOS 17.0, *) {
+            if rootless_procursus.exists {
+                self = .palera1n17
+                return
+            }
+        } else if #available(iOS 16.0, *) {
             if palecursus.exists {
                 self = .palera1n_rootful16
                 return
