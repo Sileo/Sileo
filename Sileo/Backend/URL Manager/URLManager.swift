@@ -10,6 +10,7 @@ import Foundation
 import SafariServices
 
 class URLManager {
+    
     static func url(package: String) -> String {
         "sileo://package/" + package
     }
@@ -29,6 +30,11 @@ class URLManager {
             request.setValue(UIDevice.current.uniqueIdentifier, forHTTPHeaderField: "X-Unique-ID")
             request.setValue(UIDevice.current.systemVersion, forHTTPHeaderField: "X-Firmware")
         }
+        
+        for (key, value) in UIDevice.current.headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        
         return request
     }
     
@@ -79,4 +85,5 @@ class URLManager {
         alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
         return alertController
     }
+    
 }

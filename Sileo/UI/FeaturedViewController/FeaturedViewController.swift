@@ -40,6 +40,25 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
             self.activityIndicatorView?.isHidden = true
         })
         
+        let canisterURL = URL(string: "https://api.canister.me/v2/")!
+        EvanderNetworking.request(url: canisterURL, type: [String: Any].self) { _, _, _, dict in
+            guard let dict = dict,
+                  let data = dict["data"] as? [String: Any],
+                  let info = data["reference"] as? [String: Any],
+                  let privacy_policy = info["privacy_policy"] as? String,
+                  let privacyURL = URL(string: privacy_policy)  else {
+                return
+            }
+            let changedDate = info["privacy_updated"] as? String
+            if UserDefaults.standard.object(forKey: "CanisterIngest") == nil || changedDate != UserDefaults.standard.string(forKey: "CanisterUpdateDate") {
+                UserDefaults.standard.setValue(changedDate, forKey: "CanisterUpdateDate")
+                DispatchQueue.main.async { [self] in
+                    let vc = PrivacyViewController.viewController(privacyLink: privacyURL)
+                    self.present(vc, animated: true)
+                }
+            }
+        }
+        
         #if targetEnvironment(simulator) || TARGET_SANDBOX
         #else
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
@@ -118,7 +137,12 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         #if targetEnvironment(macCatalyst)
         let deviceName = "mac"
         #else
-        let deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        let deviceName: String
+        if DpkgWrapper.architecture.primary == .rootless {
+            deviceName = "iphoneos-arm64"
+        } else {
+            deviceName = UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone"
+        }
         #endif
         guard let jsonURL = StoreURL("featured-\(deviceName).json") else {
             return

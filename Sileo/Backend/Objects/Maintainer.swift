@@ -12,14 +12,16 @@ struct Maintainer: Decodable {
     
     let name: String?
     let email: String?
+    let string: String?
 
     init(string: String?) {
         guard let inputString = string else {
             self.name = nil
             self.email = nil
+            self.string = nil
             return
         }
-        
+        self.string = string
         if let emailStartIndex = inputString.range(of: "<")?.lowerBound {
             let nameRange = inputString.startIndex..<emailStartIndex
             let name = inputString[nameRange].trimmingCharacters(in: .whitespaces)

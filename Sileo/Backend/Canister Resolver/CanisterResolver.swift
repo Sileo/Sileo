@@ -180,6 +180,52 @@ final class CanisterResolver {
         return buffer
     }
     
+    private struct IngestPackage: Codable {
+        
+        let package_id: String
+        let package_version: String
+        let package_author: String?
+        let package_maintainer: String?
+        let repository_uri: String?
+        
+        init(package: Package) {
+            self.package_id = package.packageID
+            self.package_version = package.version
+            self.package_author = package.author?.string
+            self.package_maintainer = package.maintainer?.string
+            self.repository_uri = package.sourceRepo?.displayURL
+        }
+        
+    }
+    
+    public func ingest(packages: [Package]) {
+        print("Ingesating?")
+        guard !packages.isEmpty else {
+            return
+        }
+        var toIngest = [IngestPackage]()
+        toIngest.reserveCapacity(packages.count)
+        for package in packages {
+            toIngest.append(.init(package: package))
+        }
+        
+        guard let data = try? JSONEncoder().encode(toIngest) else {
+            return
+        }
+
+        let url = URL(string: "https://api.canister.me/v2/jailbreak/download/ingest")!
+        var urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        urlRequest.httpMethod = "POST"
+        for (key, value) in UIDevice.current.headers {
+            urlRequest.addValue(value, forHTTPHeaderField: key)
+        }
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = data
+        
+        EvanderNetworking.request(request: urlRequest, type: [String: Any].self) { _, _, _, _ in }
+         
+    }
+    
     static let refreshList = Notification.Name("Canister.RefreshList")
 }
 

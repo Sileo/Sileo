@@ -54,6 +54,38 @@ final class PrivateIdentifiers {
         cfMajorVersion = String(format: "%d", cfVersionInt)
     }
     
+    public lazy var headers: [String: String] = {
+        /*
+         Example:
+         Sec-CH-UA: Sileo;v=2.4.4;t=client,dopamine;v=1.0.1;t=jailbreak,procursus;t=distribution
+         Sec-CH-UA-Platform: iphoneos
+         Sec-CH-UA-Platform-Version: 15.4.1
+         Sec-CH-UA-Arch: iphoneos-arm64
+         Sec-CH-UA-Bitness: 64
+         Sec-CH-UA-Model: iPhone11,9
+         */
+        let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let jb = Jailbreak.current.rawValue.split(separator: " ").first!.lowercased()
+        let bootstrap = Jailbreak.bootstrap.rawValue.lowercased()
+        #if targetEnvironment(macCatalyst)
+        let platform = "macos"
+        #else
+        let platform = "iphoneos"
+        #endif
+        let version = UIDevice.current.systemVersion
+        let arch = DpkgWrapper.architecture.primary.rawValue
+        let bitness = MemoryLayout<Int>.size * 8
+        let model = self.platform
+        return [
+            "Sec-CH-UA": "Sileo;v=\(appVersion);t=client,\(jb);t=jailbreak,\(bootstrap);t=distribution",
+            "Sec-CH-UA-Platform": platform,
+            "Sec-CH-UA-Platform-Version": version,
+            "Sec-CH-UA-Arch": arch,
+            "Sec-CH-UA-Bitness": "\(bitness)",
+            "Sec-CH-UA-Model": model
+        ]
+    }()
+    
 }
 
 extension UIDevice {
@@ -76,6 +108,10 @@ extension UIDevice {
     
     var cfMajorVersion: String {
         PrivateIdentifiers.shared.cfMajorVersion
+    }
+    
+    public var headers: [String: String] {
+        PrivateIdentifiers.shared.headers
     }
     
 }
