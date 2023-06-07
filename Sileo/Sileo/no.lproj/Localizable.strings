@@ -26,6 +26,9 @@
 "Sileo_Team" = "Sileo utviklere";
 "Warning" = "Advarsel";
 "Edit" = "Rediger";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Bakgrunnsoppdatering";
@@ -98,7 +101,7 @@
 "Refreshing_Sources_Page" = "Oppdaterer kilder";
 "Package_Installed_Files_Page" = "Installerte filer";
 "Refresh" = "Oppdater";
-"Remove" = "Fjern";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Alle pakker";
 "All_Packages.Cell_Subtitle" = "Se alle pakkene fra kildene dine";
@@ -233,3 +236,11 @@
 "View_Depiction" = "Vis beskrivelse";
 
 "Copy_ID" = "Copy ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";
