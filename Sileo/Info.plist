@@ -261,6 +261,33 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Cookie</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Cookie</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>palera1n</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>palera1n</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Dopamine</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Dopamine</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
@@ -483,6 +510,33 @@
 				<key>UIPrerenderedIcon</key>
 				<true/>
 			</dict>
+			<key>Cookie</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Cookie~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>Dopamine</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Dopamine~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>palera1n</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>palera1n~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
@@ -539,7 +593,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>SileoRootDaemon</key>
-		<string>identifier "SileoRootDaemon" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Amelia While (B2TU49334J)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier &quot;SileoRootDaemon&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: Amelia While (B2TU49334J)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>

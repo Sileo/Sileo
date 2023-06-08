@@ -94,6 +94,42 @@
 		E10C54592707DC92008BD0AA /* Evander in Frameworks */ = {isa = PBXBuildFile; productRef = E10C54582707DC92008BD0AA /* Evander */; };
 		E10C545B2707DC9C008BD0AA /* Evander in Frameworks */ = {isa = PBXBuildFile; productRef = E10C545A2707DC9C008BD0AA /* Evander */; };
 		E10C545D2707DCA5008BD0AA /* Evander in Frameworks */ = {isa = PBXBuildFile; productRef = E10C545C2707DCA5008BD0AA /* Evander */; };
+		E1138BE92A3252ED00887BFE /* Dopamine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE52A3252ED00887BFE /* Dopamine@3x.png */; };
+		E1138BEA2A3252ED00887BFE /* Dopamine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE52A3252ED00887BFE /* Dopamine@3x.png */; };
+		E1138BEB2A3252ED00887BFE /* Dopamine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE52A3252ED00887BFE /* Dopamine@3x.png */; };
+		E1138BEC2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE62A3252ED00887BFE /* Dopamine~ipad@2x.png */; };
+		E1138BED2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE62A3252ED00887BFE /* Dopamine~ipad@2x.png */; };
+		E1138BEE2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE62A3252ED00887BFE /* Dopamine~ipad@2x.png */; };
+		E1138BEF2A3252ED00887BFE /* Dopamine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE72A3252ED00887BFE /* Dopamine@2x.png */; };
+		E1138BF02A3252ED00887BFE /* Dopamine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE72A3252ED00887BFE /* Dopamine@2x.png */; };
+		E1138BF12A3252ED00887BFE /* Dopamine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE72A3252ED00887BFE /* Dopamine@2x.png */; };
+		E1138BF22A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE82A3252ED00887BFE /* Dopamine~ipad@3x.png */; };
+		E1138BF32A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE82A3252ED00887BFE /* Dopamine~ipad@3x.png */; };
+		E1138BF42A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BE82A3252ED00887BFE /* Dopamine~ipad@3x.png */; };
+		E1138BF92A32535900887BFE /* palera1n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF52A32535900887BFE /* palera1n@3x.png */; };
+		E1138BFA2A32535900887BFE /* palera1n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF52A32535900887BFE /* palera1n@3x.png */; };
+		E1138BFB2A32535900887BFE /* palera1n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF52A32535900887BFE /* palera1n@3x.png */; };
+		E1138BFC2A32535900887BFE /* palera1n~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF62A32535900887BFE /* palera1n~ipad@3x.png */; };
+		E1138BFD2A32535900887BFE /* palera1n~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF62A32535900887BFE /* palera1n~ipad@3x.png */; };
+		E1138BFE2A32535900887BFE /* palera1n~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF62A32535900887BFE /* palera1n~ipad@3x.png */; };
+		E1138BFF2A32535900887BFE /* palera1n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF72A32535900887BFE /* palera1n@2x.png */; };
+		E1138C002A32535900887BFE /* palera1n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF72A32535900887BFE /* palera1n@2x.png */; };
+		E1138C012A32535900887BFE /* palera1n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF72A32535900887BFE /* palera1n@2x.png */; };
+		E1138C022A32535900887BFE /* palera1n~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF82A32535900887BFE /* palera1n~ipad@2x.png */; };
+		E1138C032A32535900887BFE /* palera1n~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF82A32535900887BFE /* palera1n~ipad@2x.png */; };
+		E1138C042A32535900887BFE /* palera1n~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138BF82A32535900887BFE /* palera1n~ipad@2x.png */; };
+		E1138C092A32536800887BFE /* Cookie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C052A32536700887BFE /* Cookie@3x.png */; };
+		E1138C0A2A32536800887BFE /* Cookie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C052A32536700887BFE /* Cookie@3x.png */; };
+		E1138C0B2A32536800887BFE /* Cookie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C052A32536700887BFE /* Cookie@3x.png */; };
+		E1138C0C2A32536800887BFE /* Cookie~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C062A32536700887BFE /* Cookie~ipad@3x.png */; };
+		E1138C0D2A32536800887BFE /* Cookie~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C062A32536700887BFE /* Cookie~ipad@3x.png */; };
+		E1138C0E2A32536800887BFE /* Cookie~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C062A32536700887BFE /* Cookie~ipad@3x.png */; };
+		E1138C0F2A32536800887BFE /* Cookie~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C072A32536700887BFE /* Cookie~ipad@2x.png */; };
+		E1138C102A32536800887BFE /* Cookie~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C072A32536700887BFE /* Cookie~ipad@2x.png */; };
+		E1138C112A32536800887BFE /* Cookie~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C072A32536700887BFE /* Cookie~ipad@2x.png */; };
+		E1138C122A32536800887BFE /* Cookie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C082A32536700887BFE /* Cookie@2x.png */; };
+		E1138C132A32536800887BFE /* Cookie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C082A32536700887BFE /* Cookie@2x.png */; };
+		E1138C142A32536800887BFE /* Cookie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1138C082A32536700887BFE /* Cookie@2x.png */; };
 		E12301CE25F55BAF000B2AE0 /* CSActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B58472581A7E90064CD71 /* CSActionItem.swift */; };
 		E128181E26BBFAA500D2553B /* APTWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD3CCC231118A500D86A52 /* APTWrapper.swift */; };
 		E128181F26BBFAA500D2553B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183CFAF2318D1FF00D3AF3B /* AppDelegate.swift */; };
@@ -1267,6 +1303,18 @@
 		CFBC7FDE222041290066D501 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
 		CFE8CB13227433700066D501 /* NewsDateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDateHeader.xib; sourceTree = "<group>"; };
 		CFE8CB152274589F0066D501 /* NewsArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticlesViewController.xib; sourceTree = "<group>"; };
+		E1138BE52A3252ED00887BFE /* Dopamine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dopamine@3x.png"; sourceTree = "<group>"; };
+		E1138BE62A3252ED00887BFE /* Dopamine~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dopamine~ipad@2x.png"; sourceTree = "<group>"; };
+		E1138BE72A3252ED00887BFE /* Dopamine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dopamine@2x.png"; sourceTree = "<group>"; };
+		E1138BE82A3252ED00887BFE /* Dopamine~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dopamine~ipad@3x.png"; sourceTree = "<group>"; };
+		E1138BF52A32535900887BFE /* palera1n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palera1n@3x.png"; sourceTree = "<group>"; };
+		E1138BF62A32535900887BFE /* palera1n~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palera1n~ipad@3x.png"; sourceTree = "<group>"; };
+		E1138BF72A32535900887BFE /* palera1n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palera1n@2x.png"; sourceTree = "<group>"; };
+		E1138BF82A32535900887BFE /* palera1n~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palera1n~ipad@2x.png"; sourceTree = "<group>"; };
+		E1138C052A32536700887BFE /* Cookie@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cookie@3x.png"; sourceTree = "<group>"; };
+		E1138C062A32536700887BFE /* Cookie~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cookie~ipad@3x.png"; sourceTree = "<group>"; };
+		E1138C072A32536700887BFE /* Cookie~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cookie~ipad@2x.png"; sourceTree = "<group>"; };
+		E1138C082A32536700887BFE /* Cookie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cookie@2x.png"; sourceTree = "<group>"; };
 		E128194526BBFAA500D2553B /* Sileo (Test Handler).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sileo (Test Handler).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E128199426BBFBA300D2553B /* Sileo Backend Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sileo Backend Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E128199826BBFBA300D2553B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1868,6 +1916,9 @@
 		49CE7CB42607F9A400A20711 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E1138BD42A32522C00887BFE /* Cookie */,
+				E1138BD32A32522600887BFE /* palera1n */,
+				E1138BD22A32522000887BFE /* Dopamine */,
 				E155D48228CE5A1900AC7AE0 /* Cheyote */,
 				E155D49128CE5A1900AC7AE0 /* Electra */,
 				E155D48C28CE5A1900AC7AE0 /* FlowerSileo */,
@@ -2026,6 +2077,39 @@
 				FB40262523DE5547002D97FE /* SettingsViewController.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		E1138BD22A32522000887BFE /* Dopamine */ = {
+			isa = PBXGroup;
+			children = (
+				E1138BE72A3252ED00887BFE /* Dopamine@2x.png */,
+				E1138BE52A3252ED00887BFE /* Dopamine@3x.png */,
+				E1138BE62A3252ED00887BFE /* Dopamine~ipad@2x.png */,
+				E1138BE82A3252ED00887BFE /* Dopamine~ipad@3x.png */,
+			);
+			path = Dopamine;
+			sourceTree = "<group>";
+		};
+		E1138BD32A32522600887BFE /* palera1n */ = {
+			isa = PBXGroup;
+			children = (
+				E1138BF72A32535900887BFE /* palera1n@2x.png */,
+				E1138BF52A32535900887BFE /* palera1n@3x.png */,
+				E1138BF82A32535900887BFE /* palera1n~ipad@2x.png */,
+				E1138BF62A32535900887BFE /* palera1n~ipad@3x.png */,
+			);
+			path = palera1n;
+			sourceTree = "<group>";
+		};
+		E1138BD42A32522C00887BFE /* Cookie */ = {
+			isa = PBXGroup;
+			children = (
+				E1138C082A32536700887BFE /* Cookie@2x.png */,
+				E1138C052A32536700887BFE /* Cookie@3x.png */,
+				E1138C072A32536700887BFE /* Cookie~ipad@2x.png */,
+				E1138C062A32536700887BFE /* Cookie~ipad@3x.png */,
+			);
+			path = Cookie;
 			sourceTree = "<group>";
 		};
 		E128199526BBFBA300D2553B /* Sileo Backend Tests */ = {
@@ -3428,6 +3512,7 @@
 				E12818ED26BBFAA500D2553B /* Sus~ipad@3x.png in Resources */,
 				E12818EE26BBFAA500D2553B /* NewsPlaceholderCollectionViewCell.xib in Resources */,
 				E12818EF26BBFAA500D2553B /* DepictionSubpageViewController.xib in Resources */,
+				E1138C0E2A32536800887BFE /* Cookie~ipad@3x.png in Resources */,
 				E155D4E728CE5A7100AC7AE0 /* DarkMagic@2x.png in Resources */,
 				E12818F026BBFAA500D2553B /* DownloadsTableViewController.xib in Resources */,
 				E12818F126BBFAA500D2553B /* Errors.strings in Resources */,
@@ -3442,6 +3527,7 @@
 				E12818F626BBFAA500D2553B /* OG@2x.png in Resources */,
 				E12818F726BBFAA500D2553B /* Sus@2x.png in Resources */,
 				E12818F826BBFAA500D2553B /* FlaggedSourceWarningViewController.xib in Resources */,
+				E1138BF12A3252ED00887BFE /* Dopamine@2x.png in Resources */,
 				E12818F926BBFAA500D2553B /* Procursus~ipad@2x.png in Resources */,
 				E12818FA26BBFAA500D2553B /* MangoCrazy@2x.png in Resources */,
 				E155D4D628CE5A5B00AC7AE0 /* Hazel@2x.png in Resources */,
@@ -3464,6 +3550,7 @@
 				E128190B26BBFAA500D2553B /* BlueLemonade~ipad@3x.png in Resources */,
 				E128190C26BBFAA500D2553B /* CottonCandy@3x.png in Resources */,
 				E155D4F828CE5A8600AC7AE0 /* Stardust@3x.png in Resources */,
+				E1138C112A32536800887BFE /* Cookie~ipad@2x.png in Resources */,
 				E128190D26BBFAA500D2553B /* Main.storyboard in Resources */,
 				E128190E26BBFAA500D2553B /* NewsArticleCollectionViewCell.xib in Resources */,
 				E155D4A728CE5A1900AC7AE0 /* Odyssey@3x.png in Resources */,
@@ -3474,19 +3561,24 @@
 				E128191426BBFAA500D2553B /* CoolBreeze~ipad@2x.png in Resources */,
 				E128191526BBFAA500D2553B /* Sus~ipad@2x.png in Resources */,
 				E128191626BBFAA500D2553B /* OceanicBlue~ipad@3x.png in Resources */,
+				E1138C042A32535900887BFE /* palera1n~ipad@2x.png in Resources */,
 				E128191726BBFAA500D2553B /* Nightly~ipad@2x.png in Resources */,
 				E155D4A428CE5A1900AC7AE0 /* Odyssey@2x.png in Resources */,
 				E155D4E428CE5A7100AC7AE0 /* DarkMagic@3x.png in Resources */,
 				E128191826BBFAA500D2553B /* MangoCrazy~ipad@2x.png in Resources */,
+				E1138BEE2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */,
 				E128191926BBFAA500D2553B /* NewsArticlesViewController.xib in Resources */,
 				E128191A26BBFAA500D2553B /* Nightly@2x.png in Resources */,
 				E128191B26BBFAA500D2553B /* NewsDateHeader.xib in Resources */,
 				E128191C26BBFAA500D2553B /* CottonCandy~ipad@2x.png in Resources */,
+				E1138C0B2A32536800887BFE /* Cookie@3x.png in Resources */,
 				E128191D26BBFAA500D2553B /* SugarFree@2x.png in Resources */,
 				E155D49E28CE5A1900AC7AE0 /* Cheyote@3x.png in Resources */,
 				E155D4F228CE5A8600AC7AE0 /* Stardust~ipad@2x.png in Resources */,
 				E155D4B628CE5A1900AC7AE0 /* FlowerSileo@2x.png in Resources */,
+				E1138BEB2A3252ED00887BFE /* Dopamine@3x.png in Resources */,
 				E128191E26BBFAA500D2553B /* NewsViewController.xib in Resources */,
+				E1138C142A32536800887BFE /* Cookie@2x.png in Resources */,
 				E155D4AA28CE5A1900AC7AE0 /* Odyssey~ipad@3x.png in Resources */,
 				E128191F26BBFAA500D2553B /* PackageCollectionViewCell.xib in Resources */,
 				E128192026BBFAA500D2553B /* BlueLemonade@3x.png in Resources */,
@@ -3498,12 +3590,14 @@
 				E128192426BBFAA500D2553B /* PackageListViewController.xib in Resources */,
 				E128192526BBFAA500D2553B /* OceanicBlue@2x.png in Resources */,
 				E128192626BBFAA500D2553B /* Pride~ipad@2x.png in Resources */,
+				E1138BFB2A32535900887BFE /* palera1n@3x.png in Resources */,
 				E128192726BBFAA500D2553B /* BlueLemonade~ipad@2x.png in Resources */,
 				E128192826BBFAA500D2553B /* StrawberrySunset~ipad@2x.png in Resources */,
 				E128192926BBFAA500D2553B /* PackageViewController.xib in Resources */,
 				E155D4D328CE5A5B00AC7AE0 /* Hazel@3x.png in Resources */,
 				E128192A26BBFAA500D2553B /* Chimera@2x.png in Resources */,
 				E128192B26BBFAA500D2553B /* Nightly@3x.png in Resources */,
+				E1138BFE2A32535900887BFE /* palera1n~ipad@3x.png in Resources */,
 				E155D4C228CE5A1900AC7AE0 /* Electra@3x.png in Resources */,
 				E128192C26BBFAA500D2553B /* CottonCandy@2x.png in Resources */,
 				E155D4DE28CE5A7100AC7AE0 /* DarkMagic~ipad@3x.png in Resources */,
@@ -3522,6 +3616,8 @@
 				E128193426BBFAA500D2553B /* OG~ipad@3x.png in Resources */,
 				E128193626BBFAA500D2553B /* SugarFree~ipad@3x.png in Resources */,
 				E128193726BBFAA500D2553B /* SourcesErrorsViewController.xib in Resources */,
+				E1138BF42A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */,
+				E1138C012A32535900887BFE /* palera1n@2x.png in Resources */,
 				E128193826BBFAA500D2553B /* StrawberrySunset~ipad@3x.png in Resources */,
 				E128193926BBFAA500D2553B /* CoolBreeze@3x.png in Resources */,
 				E128193A26BBFAA500D2553B /* Taurine@3x.png in Resources */,
@@ -3552,6 +3648,7 @@
 				E1A2D13D281F30EE0006411B /* SugarFree~ipad@3x.png in Resources */,
 				E1A2D123281F30CF0006411B /* CoolBreeze~ipad@3x.png in Resources */,
 				F139D13722EA9209007F5C0D /* Errors.strings in Resources */,
+				E1138BFD2A32535900887BFE /* palera1n~ipad@3x.png in Resources */,
 				E155D49A28CE5A1900AC7AE0 /* Cheyote~ipad@3x.png in Resources */,
 				E1A2D11D281F30CB0006411B /* Chimera~ipad@2x.png in Resources */,
 				E155D4B828CE5A1900AC7AE0 /* FlowerSileo@3x.png in Resources */,
@@ -3560,9 +3657,12 @@
 				F139D13422EA9209007F5C0D /* FeaturedViewController.xib in Resources */,
 				E1D2E2D826C3383D00444437 /* Mixture@2x.png in Resources */,
 				E1A2D13C281F30EE0006411B /* SugarFree@2x.png in Resources */,
+				E1138BEA2A3252ED00887BFE /* Dopamine@3x.png in Resources */,
+				E1138C132A32536800887BFE /* Cookie@2x.png in Resources */,
 				E155D4E628CE5A7100AC7AE0 /* DarkMagic@2x.png in Resources */,
 				E1D2E2D626C3383D00444437 /* Mixture~ipad@2x.png in Resources */,
 				E1D2E2DA26C3383D00444437 /* Mixture@3x.png in Resources */,
+				E1138BED2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */,
 				E155D4F728CE5A8600AC7AE0 /* Stardust@3x.png in Resources */,
 				F139D13222EA9209007F5C0D /* FlaggedSourceWarningViewController.xib in Resources */,
 				E155D4BB28CE5A1900AC7AE0 /* Electra~ipad@2x.png in Resources */,
@@ -3589,9 +3689,11 @@
 				F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */,
 				E155D4B528CE5A1900AC7AE0 /* FlowerSileo@2x.png in Resources */,
 				F11E22E22500345400CC58D1 /* NewsPlaceholderCollectionViewCell.xib in Resources */,
+				E1138BFA2A32535900887BFE /* palera1n@3x.png in Resources */,
 				E1DC861026697CD600B3DC42 /* Pride~ipad@2x.png in Resources */,
 				E1D2E2D026C3383D00444437 /* Midnight@2x.png in Resources */,
 				F139D14322EA9209007F5C0D /* Main.storyboard in Resources */,
+				E1138C002A32535900887BFE /* palera1n@2x.png in Resources */,
 				E1A2D136281F30EB0006411B /* StrawberrySunset~ipad@3x.png in Resources */,
 				F139D13822EA9209007F5C0D /* NewsArticleCollectionViewCell.xib in Resources */,
 				E1A2D145281F30F40006411B /* Taurine~ipad@2x.png in Resources */,
@@ -3612,6 +3714,7 @@
 				E155D4F128CE5A8600AC7AE0 /* Stardust~ipad@2x.png in Resources */,
 				E13BD77C2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
 				E1A2D129281F30D70006411B /* MangoCrazy~ipad@2x.png in Resources */,
+				E1138BF32A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */,
 				E155D4A028CE5A1900AC7AE0 /* Cheyote@2x.png in Resources */,
 				E1A2D143281F30F40006411B /* Taurine~ipad@3x.png in Resources */,
 				E1A2D121281F30CF0006411B /* CoolBreeze@3x.png in Resources */,
@@ -3619,6 +3722,7 @@
 				E1A2D125281F30D30006411B /* CottonCandy@2x.png in Resources */,
 				E155D4BE28CE5A1900AC7AE0 /* Electra~ipad@3x.png in Resources */,
 				E155D4A628CE5A1900AC7AE0 /* Odyssey@3x.png in Resources */,
+				E1138C0A2A32536800887BFE /* Cookie@3x.png in Resources */,
 				E1A2D12B281F30D70006411B /* MangoCrazy~ipad@3x.png in Resources */,
 				E155D49728CE5A1900AC7AE0 /* Cheyote~ipad@2x.png in Resources */,
 				E155D4DD28CE5A7100AC7AE0 /* DarkMagic~ipad@3x.png in Resources */,
@@ -3634,15 +3738,18 @@
 				E1A2D12F281F30DE0006411B /* OceanicBlue~ipad@3x.png in Resources */,
 				F139D12F22EA9209007F5C0D /* PackageListHeader.xib in Resources */,
 				E1BB50E2260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
+				E1138C102A32536800887BFE /* Cookie~ipad@2x.png in Resources */,
 				E155D4A928CE5A1900AC7AE0 /* Odyssey~ipad@3x.png in Resources */,
 				F139D12E22EA9209007F5C0D /* PackageListHeaderBlank.xib in Resources */,
 				F139D13D22EA9209007F5C0D /* PackageListViewController.xib in Resources */,
+				E1138C0D2A32536800887BFE /* Cookie~ipad@3x.png in Resources */,
 				F139D13922EA9209007F5C0D /* PackageViewController.xib in Resources */,
 				E1A2D142281F30F40006411B /* Taurine@3x.png in Resources */,
 				E1A2D133281F30E60006411B /* Procursus~ipad@2x.png in Resources */,
 				E1BB50E4260E913A00F870B8 /* OG@3x.png in Resources */,
 				E1A2D132281F30E60006411B /* Procursus@2x.png in Resources */,
 				E1A2D137281F30EB0006411B /* StrawberrySunset@2x.png in Resources */,
+				E1138BF02A3252ED00887BFE /* Dopamine@2x.png in Resources */,
 				E1A2D12E281F30DE0006411B /* OceanicBlue~ipad@2x.png in Resources */,
 				E155D49D28CE5A1900AC7AE0 /* Cheyote@3x.png in Resources */,
 				E155D4B228CE5A1900AC7AE0 /* FlowerSileo~ipad@3x.png in Resources */,
@@ -3656,6 +3763,7 @@
 				E1A2D138281F30EB0006411B /* StrawberrySunset@3x.png in Resources */,
 				E1A2D122281F30CF0006411B /* CoolBreeze~ipad@2x.png in Resources */,
 				E1A2D13F281F30F10006411B /* Sus~ipad@3x.png in Resources */,
+				E1138C032A32535900887BFE /* palera1n~ipad@2x.png in Resources */,
 				F139D13322EA9209007F5C0D /* SourcesErrorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3701,11 +3809,13 @@
 				E1BB50E3260E913A00F870B8 /* OG@3x.png in Resources */,
 				E1DC861126697CD600B3DC42 /* Pride~ipad@3x.png in Resources */,
 				F149E0C020B6040B005CA30B /* LaunchScreen.storyboard in Resources */,
+				E1138C0F2A32536800887BFE /* Cookie~ipad@2x.png in Resources */,
 				E155D4D128CE5A5B00AC7AE0 /* Hazel@3x.png in Resources */,
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
 				E155D4DF28CE5A7100AC7AE0 /* DarkMagic~ipad@2x.png in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
 				E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
+				E1138BE92A3252ED00887BFE /* Dopamine@3x.png in Resources */,
 				E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */,
 				493B23D426098104007D605F /* Chimera~ipad@3x.png in Resources */,
 				E1DC860D26697CD600B3DC42 /* Pride@2x.png in Resources */,
@@ -3730,6 +3840,7 @@
 				E13BD7792645E1AA006A5EF2 /* Nightly~ipad@2x.png in Resources */,
 				E155D4AB28CE5A1900AC7AE0 /* Odyssey~ipad@2x.png in Resources */,
 				E155D4AE28CE5A1900AC7AE0 /* FlowerSileo~ipad@2x.png in Resources */,
+				E1138C122A32536800887BFE /* Cookie@2x.png in Resources */,
 				49CE7CD52607F9A400A20711 /* MangoCrazy~ipad@2x.png in Resources */,
 				CFE8CB162274589F0066D501 /* NewsArticlesViewController.xib in Resources */,
 				E155D4F028CE5A8600AC7AE0 /* Stardust~ipad@2x.png in Resources */,
@@ -3749,6 +3860,7 @@
 				C305468621D6900C003E73FC /* PackageListHeader.xib in Resources */,
 				F1974939213695660065E630 /* PackageListHeaderBlank.xib in Resources */,
 				493B23E826098132007D605F /* OceanicBlue@3x.png in Resources */,
+				E1138C092A32536800887BFE /* Cookie@3x.png in Resources */,
 				F1B99F0720DBE64700374C27 /* PackageListViewController.xib in Resources */,
 				493B23EB26098132007D605F /* OceanicBlue@2x.png in Resources */,
 				E1DC860F26697CD600B3DC42 /* Pride~ipad@2x.png in Resources */,
@@ -3758,15 +3870,20 @@
 				F1D113FA20DC608900C8F051 /* PackageViewController.xib in Resources */,
 				493B23D226098104007D605F /* Chimera@2x.png in Resources */,
 				E155D4A828CE5A1900AC7AE0 /* Odyssey~ipad@3x.png in Resources */,
+				E1138C0C2A32536800887BFE /* Cookie~ipad@3x.png in Resources */,
 				E13BD77B2645E1AA006A5EF2 /* Nightly@3x.png in Resources */,
+				E1138BFC2A32535900887BFE /* palera1n~ipad@3x.png in Resources */,
 				493B23E026098116007D605F /* CottonCandy@2x.png in Resources */,
 				49CE7CD22607F9A400A20711 /* MangoCrazy@3x.png in Resources */,
+				E1138BF92A32535900887BFE /* palera1n@3x.png in Resources */,
 				49CE7CDD2607F9A400A20711 /* Taurine~ipad@2x.png in Resources */,
 				49CE7CD82607F9A400A20711 /* SugarFree@3x.png in Resources */,
+				E1138BFF2A32535900887BFE /* palera1n@2x.png in Resources */,
 				493B23DF26098116007D605F /* CottonCandy~ipad@3x.png in Resources */,
 				E1BB50E1260E913A00F870B8 /* OG~ipad@2x.png in Resources */,
 				49CE7CE02607F9A400A20711 /* CoolBreeze@2x.png in Resources */,
 				49CE7CD02607F9A400A20711 /* BlueLemonade@2x.png in Resources */,
+				E1138BEF2A3252ED00887BFE /* Dopamine@2x.png in Resources */,
 				E155D49C28CE5A1900AC7AE0 /* Cheyote@3x.png in Resources */,
 				E155D4B128CE5A1900AC7AE0 /* FlowerSileo~ipad@3x.png in Resources */,
 				E1D2E2CF26C3383D00444437 /* Midnight@2x.png in Resources */,
@@ -3775,9 +3892,12 @@
 				E155D4C028CE5A1900AC7AE0 /* Electra@3x.png in Resources */,
 				F1B4B57D216197DD004F160E /* SourcesErrorsViewController.xib in Resources */,
 				E155D4C328CE5A1900AC7AE0 /* Electra@2x.png in Resources */,
+				E1138BEC2A3252ED00887BFE /* Dopamine~ipad@2x.png in Resources */,
 				493B240426098169007D605F /* StrawberrySunset~ipad@3x.png in Resources */,
+				E1138BF22A3252ED00887BFE /* Dopamine~ipad@3x.png in Resources */,
 				49CE7CDF2607F9A400A20711 /* CoolBreeze@3x.png in Resources */,
 				E1D2E2D726C3383D00444437 /* Mixture@2x.png in Resources */,
+				E1138C022A32535900887BFE /* palera1n~ipad@2x.png in Resources */,
 				49CE7CDA2607F9A400A20711 /* Taurine@3x.png in Resources */,
 				49CE7CD42607F9A400A20711 /* MangoCrazy~ipad@3x.png in Resources */,
 			);
@@ -4756,7 +4876,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4809,7 +4929,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4861,7 +4981,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5046,7 +5166,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5101,7 +5221,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.4.6;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5267,7 +5387,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.6;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5321,7 +5441,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.4.6;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5496,7 +5616,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5559,7 +5679,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
