@@ -385,6 +385,9 @@ class DownloadsTableViewController: SileoViewController {
         
         detailsAttributedString = NSMutableAttributedString(string: "")
         let installs = installations + upgrades + installdeps
+        if UserDefaults.standard.bool(forKey: "CanisterIngest", fallback: false) {
+            CanisterResolver.shared.ingest(packages: installs.map { $0.package })
+        }
         let removals = uninstallations + uninstalldeps
         self.actions += installs.map { InstallOperation(package: $0.package, operation: .install) }
         self.actions += removals.map { InstallOperation(package: $0.package, operation: .removal) }

@@ -65,6 +65,15 @@
         }
       },
       {
+        "package": "Onboarding",
+        "repositoryURL": "https://github.com/elihwyma/Onboarding",
+        "state": {
+          "branch": null,
+          "revision": "a812902731170e77b5cccab8403152d683a04134",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "SQLite.swift",
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {

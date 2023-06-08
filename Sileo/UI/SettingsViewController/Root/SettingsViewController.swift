@@ -95,7 +95,7 @@ extension SettingsViewController { // UITableViewDataSource
         case 2:
             return 11
         case 3: // About section
-            return 4
+            return 5
         default:
             return 0
         }
@@ -234,6 +234,11 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.textLabel?.text = String(localizationKey: "Language")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
+            case 4:
+                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "LicenseCellIdentifier")
+                cell.textLabel?.text = String(localizationKey: "Canister_Policy")
+                cell.accessoryType = .disclosureIndicator
+                return cell
             default:
                 fatalError("You done goofed")
             }
@@ -299,6 +304,9 @@ extension SettingsViewController { // UITableViewDataSource
             case 3:
                 let languageSelection = LanguageSelectionViewController(style: .grouped)
                 self.navigationController?.pushViewController(languageSelection, animated: true)
+            case 4:
+                let vc = PrivacyViewController.viewController(privacyLink: canisterPrivacyPolicy)
+                self.present(vc, animated: true)
             default: break
             }
         default:

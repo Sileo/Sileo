@@ -507,6 +507,11 @@
 		E19CC2D4269C6DFA0059251F /* SileoRootDaemon in Copy Files */ = {isa = PBXBuildFile; fileRef = E1D338FE269C3ECB00933AA5 /* SileoRootDaemon */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E19CC2DD269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
 		E19CC2DE269C867C0059251F /* RootDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */; };
+		E19D4C0B2A30FE1800910265 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D4C0A2A30FE1800910265 /* PrivacyViewController.swift */; };
+		E19D4C0C2A30FE1800910265 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D4C0A2A30FE1800910265 /* PrivacyViewController.swift */; };
+		E19D4C0D2A30FE1800910265 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D4C0A2A30FE1800910265 /* PrivacyViewController.swift */; };
+		E19D4C0F2A30FEB800910265 /* Onboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E19D4C0E2A30FEB800910265 /* Onboarding */; };
+		E19D4C112A30FEBF00910265 /* Onboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E19D4C102A30FEBF00910265 /* Onboarding */; };
 		E19E230429CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
 		E19E230529CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
 		E19E230629CC9921004A52FA /* decompression.c in Sources */ = {isa = PBXBuildFile; fileRef = E19E230329CC9921004A52FA /* decompression.c */; };
@@ -623,6 +628,7 @@
 		E1D44BB92665093A00A12A77 /* SileoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D44BB72665093A00A12A77 /* SileoTableView.swift */; };
 		E1D6DFB7268BA730005BF9EA /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
 		E1D6DFB8268BA730005BF9EA /* APTJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6DFB6268BA72F005BF9EA /* APTJsonParser.swift */; };
+		E1D90DC02A30E77400F8CBAF /* Onboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E1D90DBF2A30E77400F8CBAF /* Onboarding */; };
 		E1DC860D26697CD600B3DC42 /* Pride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860926697CD600B3DC42 /* Pride@2x.png */; platformFilter = ios; };
 		E1DC860E26697CD600B3DC42 /* Pride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860926697CD600B3DC42 /* Pride@2x.png */; };
 		E1DC860F26697CD600B3DC42 /* Pride~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC860A26697CD600B3DC42 /* Pride~ipad@2x.png */; platformFilter = ios; };
@@ -1349,6 +1355,7 @@
 		E191837B29CF5F48009AA62E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E19CC2D8269C7D740059251F /* CodeSignUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignUpdate.swift; sourceTree = "<group>"; };
 		E19CC2DC269C867C0059251F /* RootDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDaemonProtocol.swift; sourceTree = "<group>"; };
+		E19D4C0A2A30FE1800910265 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		E19E230229CC985D004A52FA /* decompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decompression.h; sourceTree = "<group>"; };
 		E19E230329CC9921004A52FA /* decompression.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = decompression.c; sourceTree = "<group>"; };
 		E1A0645929E9E97500B9E0B1 /* OperationQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+Extensions.swift"; sourceTree = "<group>"; };
@@ -1601,6 +1608,7 @@
 			files = (
 				E10C545D2707DCA5008BD0AA /* Evander in Frameworks */,
 				E12818D826BBFAA500D2553B /* libz.tbd in Frameworks */,
+				E19D4C112A30FEBF00910265 /* Onboarding in Frameworks */,
 				E12818D926BBFAA500D2553B /* libbz2.tbd in Frameworks */,
 				E12818DA26BBFAA500D2553B /* SQLite in Frameworks */,
 				E12818DB26BBFAA500D2553B /* LNZTreeView in Frameworks */,
@@ -1636,6 +1644,7 @@
 			files = (
 				E10C545B2707DC9C008BD0AA /* Evander in Frameworks */,
 				E14C5ED226680E090080BFCE /* libz.tbd in Frameworks */,
+				E19D4C0F2A30FEB800910265 /* Onboarding in Frameworks */,
 				E14C5EC8266803F30080BFCE /* libbz2.tbd in Frameworks */,
 				E162DA0827BE78E100DDD3E4 /* Alderis in Frameworks */,
 				E19A5354261743BA00BB8A69 /* SQLite in Frameworks */,
@@ -1668,6 +1677,7 @@
 				E10C54592707DC92008BD0AA /* Evander in Frameworks */,
 				E172ACE7279490DF0066933E /* Down in Frameworks */,
 				E1C92EE5294B5B8B007079E8 /* liblzma.5.tbd in Frameworks */,
+				E1D90DC02A30E77400F8CBAF /* Onboarding in Frameworks */,
 				A8A0EA4B2665AAC900CD772C /* libzstd.1.tbd in Frameworks */,
 				E19F95A0269245E4002ABB8C /* LNPopupController-Static in Frameworks */,
 			);
@@ -2243,6 +2253,14 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		E19D4C092A30FE0300910265 /* Privacy View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E19D4C0A2A30FE1800910265 /* PrivacyViewController.swift */,
+			);
+			path = "Privacy View Controller";
+			sourceTree = "<group>";
+		};
 		E1BB50D8260E912000F870B8 /* OG */ = {
 			isa = PBXGroup;
 			children = (
@@ -2786,6 +2804,7 @@
 		F1B99EE620DB671300374C27 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E19D4C092A30FE0300910265 /* Privacy View Controller */,
 				E14E4D6126DED566002AE3B4 /* NativePackageViewController */,
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
 				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
@@ -3176,6 +3195,7 @@
 				E10C545C2707DCA5008BD0AA /* Evander */,
 				E172ACEA279490E90066933E /* Down */,
 				E19E230C29CCA9E7004A52FA /* ZippyJSON */,
+				E19D4C102A30FEBF00910265 /* Onboarding */,
 			);
 			productName = iTweak;
 			productReference = E128194526BBFAA500D2553B /* Sileo (Test Handler).app */;
@@ -3243,6 +3263,7 @@
 				E172ACE8279490E40066933E /* Down */,
 				E162DA0727BE78E100DDD3E4 /* Alderis */,
 				E19E230A29CCA9E0004A52FA /* ZippyJSON */,
+				E19D4C0E2A30FEB800910265 /* Onboarding */,
 			);
 			productName = iTweak;
 			productReference = F139D14C22EA9209007F5C0D /* Sileo Demo.app */;
@@ -3276,6 +3297,7 @@
 				E172ACE6279490DF0066933E /* Down */,
 				E162DA0527BE78CF00DDD3E4 /* Alderis */,
 				E19E230829CCA9D5004A52FA /* ZippyJSON */,
+				E1D90DBF2A30E77400F8CBAF /* Onboarding */,
 			);
 			productName = iTweak;
 			productReference = F149E0AD20B6040B005CA30B /* Sileo.app */;
@@ -3368,6 +3390,7 @@
 				E172ACE5279490DF0066933E /* XCRemoteSwiftPackageReference "Down" */,
 				E162DA0427BE78CF00DDD3E4 /* XCRemoteSwiftPackageReference "Alderis" */,
 				E19E230729CCA9D5004A52FA /* XCRemoteSwiftPackageReference "ZippyJSON" */,
+				E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */,
 			);
 			productRefGroup = F149E0AE20B6040B005CA30B /* Products */;
 			projectDirPath = "";
@@ -4015,6 +4038,7 @@
 				E12818C726BBFAA500D2553B /* String+Utilities.swift in Sources */,
 				E12818C826BBFAA500D2553B /* TabBar.swift in Sources */,
 				E19E230629CC9921004A52FA /* decompression.c in Sources */,
+				E19D4C0D2A30FE1800910265 /* PrivacyViewController.swift in Sources */,
 				E12818C926BBFAA500D2553B /* UIColor+HTMLColors.m in Sources */,
 				E12818CA26BBFAA500D2553B /* UIPasteboard+Sources.swift in Sources */,
 				E12818CB26BBFAA500D2553B /* WhiteBlur.m in Sources */,
@@ -4219,6 +4243,7 @@
 				F1AB913122ED12070054341B /* SourcesTableViewCell.swift in Sources */,
 				F139D0CE22EA9209007F5C0D /* String+Utilities.swift in Sources */,
 				F1AB911F22ED02900054341B /* TabBar.swift in Sources */,
+				E19D4C0C2A30FE1800910265 /* PrivacyViewController.swift in Sources */,
 				E1A0646829EB16C400B9E0B1 /* Bootstrap.swift in Sources */,
 				F139D0E822EA9209007F5C0D /* UIColor+HTMLColors.m in Sources */,
 				370531E128207C8D00B67743 /* ThemesSectionViewController.swift in Sources */,
@@ -4409,6 +4434,7 @@
 				F1AB911E22ED02900054341B /* TabBar.swift in Sources */,
 				F120234121470F69005EAFAC /* UIColor+HTMLColors.m in Sources */,
 				E19E230429CC9921004A52FA /* decompression.c in Sources */,
+				E19D4C0B2A30FE1800910265 /* PrivacyViewController.swift in Sources */,
 				F13AEE6C22F75913004BAA05 /* UIPasteboard+Sources.swift in Sources */,
 				56A5989D214657BB00677FCA /* WhiteBlur.m in Sources */,
 				F102D1E322CD514C00A4C9BA /* WishListManager.swift in Sources */,
@@ -5060,6 +5086,7 @@
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5074,7 +5101,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.4.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5084,7 +5111,9 @@
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TARGET_SANDBOX;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
@@ -5224,6 +5253,7 @@
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5237,7 +5267,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.4.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5246,7 +5276,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TARGET_SANDBOX;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
@@ -5274,6 +5306,7 @@
 					"\"$(SRCROOT)/Sileo/Backend/Decompress/libarchive\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5288,7 +5321,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.4.6;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5298,7 +5331,9 @@
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TARGET_SANDBOX;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sileo/Sileo-Bridging-Header.h";
@@ -5734,6 +5769,14 @@
 				kind = branch;
 			};
 		};
+		E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/Onboarding";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/LNZTreeView";
@@ -5850,6 +5893,16 @@
 			package = E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */;
 			productName = LNZTreeView;
 		};
+		E19D4C0E2A30FEB800910265 /* Onboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */;
+			productName = Onboarding;
+		};
+		E19D4C102A30FEBF00910265 /* Onboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */;
+			productName = Onboarding;
+		};
 		E19E230829CCA9D5004A52FA /* ZippyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E19E230729CCA9D5004A52FA /* XCRemoteSwiftPackageReference "ZippyJSON" */;
@@ -5874,6 +5927,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E19F959E269245CB002ABB8C /* XCRemoteSwiftPackageReference "LNPopupController" */;
 			productName = "LNPopupController-Static";
+		};
+		E1D90DBF2A30E77400F8CBAF /* Onboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */;
+			productName = Onboarding;
 		};
 		E1EA1CFE2615008100E56882 /* LNZTreeView */ = {
 			isa = XCSwiftPackageProductDependency;

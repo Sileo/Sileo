@@ -58,6 +58,7 @@ enum Jailbreak: String, Codable {
     
     case mac = "macOS"
     case other = "Other"
+    case simulator = "Simulator"
     
     fileprivate static func arch() -> String {
         guard let archRaw = NXGetLocalArchInfo().pointee.name else {
@@ -72,6 +73,11 @@ enum Jailbreak: String, Codable {
     }
     
     private init() {
+        #if targetEnvironment(simulator)
+        self = .simulator
+        return
+        #endif
+        
         let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
         let procursus = URL(fileURLWithPath: "/.procursus_strapped")
         let rootless_procursus = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
