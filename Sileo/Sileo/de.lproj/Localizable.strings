@@ -26,6 +26,9 @@
 "Sileo_Team" = "Sileo-Team";
 "Warning" = "Warnung";
 "Edit" = "Bearbeiten";
+"Why" = "Warum";
+"Deny" = "Ablehnen";
+"Accept" = "Akzeptieren";
 
 // Popup messages
 "Background_App_Refresh" = "App-Hintergrundaktualisierung";
@@ -235,3 +238,11 @@ Die Quelle ist möglicherweise offline oder du hast sie falsch eingegeben. Möch
 "View_Depiction" = "Paketbeschreibung anzeigen";
 
 "Copy_ID" = "ID kopieren";
+"Canister_Policy" = "Canister Datenschutzerklärung";
+"Download_Analytics" = "Analyse herunterladen";
+"Provided_Canister" = "Bereitgestellt von Canister";
+"Data_Collected" = "Die gesammelten Daten werden verwendet, um die Highlight-Seite und verschiedene Empfehlungen zu aktualisieren.";
+"Change_Later" = "Du kannst deine Auswahl jederzeit ändern.";
+"Whats_Collected" = "Was wurde gesammelt";
+"Non_Identifying" = "Es werden nur Paket- und nicht identifizierende Geräteinformationen gesammelt.";
+"Privacy_Policy" = "Datenschutzerklärung";

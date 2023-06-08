@@ -26,6 +26,9 @@
 "Sileo_Team" = "Sileo 团队";
 "Warning" = "警告";
 "Edit" = "编辑";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "后台App刷新";
@@ -98,7 +101,7 @@
 "Refreshing_Sources_Page" = "正在刷新软件源";
 "Package_Installed_Files_Page" = "已安装的文件";
 "Refresh" = "刷新";
-"Remove" = "移除";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "所有软件包";
 "All_Packages.Cell_Subtitle" = "查看已经添加的软件源的所有软件包";
@@ -233,3 +236,11 @@
 "View_Depiction" = "查看介绍";
 
 "Copy_ID" = "复制 ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";

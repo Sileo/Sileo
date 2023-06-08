@@ -26,6 +26,9 @@
 "Sileo_Team" = "Đội Sileo";
 "Warning" = "Cảnh báo";
 "Edit" = "Sửa đổi";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Làm mới ứng dụng nền";
@@ -93,12 +96,12 @@
 "Sources_Page" = "Nguồn";
 "Packages_Page" = "Gói";
 "Search_Page" = "Tìm Kiếm";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Tìm kiếm gần đây";
+"Clear_Search_History" = "Xóa";
 "Refreshing_Sources_Page" = "Làm mới nguồn";
 "Package_Installed_Files_Page" = "Tệp đã cài đặt";
 "Refresh" = "Làm mới";
-"Remove" = "Xóa";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tất cả gói";
 "All_Packages.Cell_Subtitle" = "Xem tất cả các gói từ các nguồn của bạn";
@@ -152,7 +155,7 @@
 "Tint_Color" = "Màu sắc";
 "Reset_Tint_Color" = "Đặt lại màu sắc";
 "Auto_Complete_Queue" = "Tự động hoàn thành danh sách chờ";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Lịch sử tìm kiếm";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Tự động xác nhận nâng cấp tất cả lối tắt";
 "Swipe_Actions" = "Thao tác vuốt";
 "Show_Provisional" = "Hiển thị các Gói hàng từ Canister";
@@ -179,19 +182,19 @@
 "System" = "Hệ thống";
 "Theme_Settings" = "Cài đặt chủ đề";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Quản lý theme";
+"Create_Theme" = "Tạo theme";
+"Import_Themes" = "Nhập theme";
+"Theme_Name" = "Tên chủ đề";
+"Export_Themes" = "Xuất chủ đề";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
+"Background_Color" = "Màu nền";
+"Secondary_Background_Color" = "Màu nền thứ cấp";
+"Label_Color" = "Màu nhãn";
+"Highlight_Color" = "Màu đánh dấu";
 "Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Header_Color" = "Màu tiêu đề";
+"Banner_Color" = "Màu banner";
 
 
 "Cydia_Sign_In" = "Đăng nhập vào Cydia Store";
@@ -233,3 +236,11 @@
 "View_Depiction" = "Xem mô tả";
 
 "Copy_ID" = "Sao chép ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";

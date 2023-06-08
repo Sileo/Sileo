@@ -26,6 +26,9 @@
 "Sileo_Team" = "Zespół Sileo";
 "Warning" = "Uwaga";
 "Edit" = "Edytuj";
+"Why" = "Dlaczego";
+"Deny" = "Odmów";
+"Accept" = "Zaakceptuj";
 
 // Popup messages
 "Background_App_Refresh" = "Odświeżanie Aplikacji w Tle";
@@ -233,3 +236,11 @@
 "View_Depiction" = "Wyświetl opis";
 
 "Copy_ID" = "Kopiuj ID";
+"Canister_Policy" = "Polityka Prywatności Canister";
+"Download_Analytics" = "Pobierz dane analityczne";
+"Provided_Canister" = "Dostarczone przez Canister";
+"Data_Collected" = "Zebrane dane są używane by zaaktualizować stronę wyróżnione, oraz do rekomendowania źródeł.";
+"Change_Later" = "Zawsze możesz zmienić swoją decyzję.";
+"Whats_Collected" = "Jakie dane zbieramy";
+"Non_Identifying" = "Gromadzone są jedynie dane o pakietach i nieidentyfikujące informacje.";
+"Privacy_Policy" = "Polityka Prywatności";

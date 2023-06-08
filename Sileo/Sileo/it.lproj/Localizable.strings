@@ -26,6 +26,9 @@
 "Sileo_Team" = "Team di Sileo";
 "Warning" = "Attenzione";
 "Edit" = "Modifica";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Aggiornamento delle app in background";
@@ -93,12 +96,12 @@
 "Sources_Page" = "Sorgenti";
 "Packages_Page" = "Pacchetti";
 "Search_Page" = "Cerca";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Cercati di recente";
+"Clear_Search_History" = "Elimina";
 "Refreshing_Sources_Page" = "Aggiornamento delle Sorgenti";
 "Package_Installed_Files_Page" = "File Installati";
 "Refresh" = "Aggiorna";
-"Remove" = "Rimuovi";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Tutti i Pacchetti";
 "All_Packages.Cell_Subtitle" = "Visualizza tutti i pacchetti delle tue sorgenti";
@@ -152,7 +155,7 @@
 "Tint_Color" = "Colore del Testo";
 "Reset_Tint_Color" = "Ripristina il Colore del Testo";
 "Auto_Complete_Queue" = "Termina coda automaticamente";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Mostra Cronologia Ricerche";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Conferma In Automatico \"Aggiorna Tutto\"";
 "Swipe_Actions" = "Azioni di Scorrimento";
 "Show_Provisional" = "Mostra i Pacchetti del Canister";
@@ -179,19 +182,19 @@
 "System" = "Sistema";
 "Theme_Settings" = "Impostazioni del Tema";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Gestisci Temi";
+"Create_Theme" = "Crea Tema";
+"Import_Themes" = "Importa temi";
+"Theme_Name" = "Nome del tema";
+"Export_Themes" = "Esporta tema";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Colore di Sfondo";
+"Secondary_Background_Color" = "Colore Di Sfondo Secondario";
+"Label_Color" = "Colore Label";
+"Highlight_Color" = "Colore Highlight";
+"Seperator_Color" = "Colore Seperator";
+"Header_Color" = "Colore Header";
+"Banner_Color" = "Colore banner";
 
 
 "Cydia_Sign_In" = "Accedi allo Store di Cydia";
@@ -232,4 +235,12 @@
 // Depcitions
 "View_Depiction" = "Visualizza la Descrizione";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Copia ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";

@@ -23,9 +23,12 @@
 "Cancel" = "إلغاء";
 "Acknowledge" = "إقرار";
 "Remove" = "إزالة";
-"Sileo_Team" = "فريق سيلو";
+"Sileo_Team" = "فريق Sileo";
 "Warning" = "تحذير";
 "Edit" = "تعديل";
+"Why" = "لماذا";
+"Deny" = "رفض";
+"Accept" = "موافقة";
 
 // Popup messages
 "Background_App_Refresh" = "تحديث التطبيق في الخلفية";
@@ -41,7 +44,7 @@
 "Download_Starting" = "جارِ البدء...";
 "Download_Progress" = "%@ من %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدا من أنك تعرف ما تفعله.";
+"Essential_Warning" = "يتم سرد الحزم التالية على أنها أساسية / مطلوبة: %@ \n قد تتسبب إزالة هذه في تلف لا يمكن إصلاحه في جهازك وقد تتطلب منك استعادتها. استمر فقط إذا كنت متأكدًا من أنك تعرف ما تفعله.";
 
 "Queue_Confirm_Button" = "تأكيد";
 "Queue_Clear_Button" = "مسح قائمة الإنتظار";
@@ -51,7 +54,7 @@
 "Package_Reinstall_Action" = "إعادة التثبيت";
 "Package_Uninstall_Action" = "إلغاء التثبيت";
 "Package_Modify_Action" = "تعديل";
-"Package_Get_Action" = "جلب";
+"Package_Get_Action" = "تثبيت";
 "Package_Queue_Action" = "قائمة الإنتظار";
 "Package_Cancel_Action" = "إلغاء";
 "Package_Paid" = "مدفوع";
@@ -80,7 +83,7 @@
 "Package_Search.Placeholder" = "ابحث عن الحزم";
 "Sort_Name" = "الاسم";
 "Sort_Date" = "التاريخ";
-"Sort_Install_Size" = "خجم المثبت";
+"Sort_Install_Size" = "الحجم المثبت";
 "Sort_By" = "فرز حسب:";
 
 "Package_Unavailable" = "حزمة غير متاحة";
@@ -114,8 +117,8 @@
 "Add_Source.Title" = "إضافة مصدر";
 "Add_Source.Body" = "إضافة عنوان APT URL";
 "Add_Source.Button.Add" = "إضافة المصدر";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ لا يبدو أن المستودع صالح⁉️، قد يكون المستودع غير متصل بـ الانترنت أو قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
+"Add_Dist_Repo" = "إضافة مستودع ضار";
+"Incorrect_Repo" = "لا يبدو أن المستودع %@ صالح!، قد يكون المستودع غير متاح أو أنك قد أدخلته بشكل غير صحيح. هل تريد إضافته على أي حال؟";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "الإدخال يدويًا";
 
@@ -149,10 +152,10 @@
 "Settings_Page_Title" = "الإعدادات";
 "Dark_Mode_Toggle" = "الوضع الداكن";
 "Theme" = "السمة";
-"Tint_Color" = "لون الصبغة";
-"Reset_Tint_Color" = "إعادة تعيين لون الصبغة";
+"Tint_Color" = "اللون الثانوي";
+"Reset_Tint_Color" = "إعادة تعيين اللون الثانوي";
 "Auto_Complete_Queue" = "إكمال تلقائي لقائمة الانتظار";
-"Show_Search_History" = "اظهار سجل البحث";
+"Show_Search_History" = "إظهار سجل البحث";
 "Auto_Confirm_Upgrade_All_Shortcut" = "تأكيد تلقائي لترقية جميع الاختصارات";
 "Swipe_Actions" = "إجراءات السحب";
 "Show_Provisional" = "إظهار الحزم من Canister";
@@ -165,33 +168,33 @@
 "Cache_Size" = "حجم ذاكرة التخزين المؤقت";
 "Clear_Cache" = "تنظيف ذاكرة التخزين المؤقت للشبكة";
 "Clear_Cache_Message" = "هل تريد مسح ذاكرة التخزين المؤقت للشبكة؟ هذا سوف يحرر %@";
-"Language" = "الُغة";
-"Use_System_Language" = "استخدم لغة النظام";
+"Language" = "اللغة";
+"Use_System_Language" = "استخدام لغة النظام";
 "Apply_Changes" = "تطبيق التغييرات";
-"Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل سيلو";
-"Help_Translate" = "ساعد في ترجمة سيلو";
+"Apply_Changes_Confirm" = "سيتطلب تطبيق التغييرات إعادة تشغيل Sileo";
+"Help_Translate" = "ساهم في ترجمة Sileo";
 "Always_Show_Install_Log" = "إظهار سجل التثبيت دائمًا";
 "Auto_Show_Queue" = "إظهار قائمة الانتظار عند ترقية الكل";
 
-"Sileo_Light" = "سيلو فاتح";
-"Sileo_Dark" = "سيلو داكن";
+"Sileo_Light" = "النمط الفاتح";
+"Sileo_Dark" = "النمط الداكن";
 "Sileo_Adaptive" = "تكيُّف سيلو";
 "System" = "النظام";
-"Theme_Settings" = "إعدادات السمة";
+"Theme_Settings" = "إعدادات المظهر";
 
-"Manage_Themes" = "ادارة الثيمات";
-"Create_Theme" = "انشاء ثيم";
-"Import_Themes" = "استيراد ثيم";
-"Theme_Name" = "اسم الثيم";
-"Export_Themes" = "تصدير الثيم";
+"Manage_Themes" = "إدارة المظهر";
+"Create_Theme" = "إنشاء مظهر";
+"Import_Themes" = "استيراد مظهر";
+"Theme_Name" = "اسم المظهر";
+"Export_Themes" = "تصدير المظهر";
 
 "Background_Color" = "لون الخلفية";
 "Secondary_Background_Color" = "لون الخلفية الثانوي";
-"Label_Color" = "لون الزر";
-"Highlight_Color" = "لون الضوء ";
+"Label_Color" = "لون التسمية";
+"Highlight_Color" = "لون البارز";
 "Seperator_Color" = "لون المقسم";
 "Header_Color" = "لون المقدمة";
-"Banner_Color" = "Banner Color";
+"Banner_Color" = "لون الشعار";
 
 
 "Cydia_Sign_In" = "تسجيل الدخول إلى متجر Cydia";
@@ -206,17 +209,17 @@
 "Open_In_Filza" = "فتح في Filza";
 "Copy_Path" = "نسخ المسار";
 
-"After_Install_Relaunch" = "إعادة تشغيل سيلو";
+"After_Install_Relaunch" = "إعادة تشغيل Sileo";
 "After_Install_Respring" = "إعادة تشغيل واجهة النظام";
 "After_Install_Reboot" = "إعادة تشغيل الجهاز";
-"After_Install_Relaunch_Later" = "إعادة تشغيل سيلو لاحقًا";
+"After_Install_Relaunch_Later" = "إعادة تشغيل Sileo لاحقًا";
 "After_Install_Respring_Later" = "إعادة تشغيل واجهة النظام لاحقًا";
 "After_Install_Reboot_Later" = "إعادة تشغيل الجهاز لاحقًا";
 
 "Dangerous_Repo.Title" = "مستودع خطر";
 "Dangerous_Repo.Body" = "أنت تحاول إضافة مستودع معروف عنه أنه ضار لأسباب مثل القرصنة، المحتوى الغير قانوني أو البرامج الضارة.\n\nالمستودعات التي تم وضع علامة عليها بأنها ضارة غالبًا ما توزع برمجيات ذات تأثيرات غير متوقعة، سواءً على شكل حزم مدفوعة مجانًا أو غيرها من الحزم الخبيثة. يمكن أن يكون لهذا تأثيرات دائمة على جهازك وخصوصيتك، وقد يؤثر في بعض الأحيان في مقدرتك على عمل الجيلبريك لجهازك. نحن ننصحك بتوخي الحذر الشديد وتجنب مثل هذه البرمجيات الضارة.";
-"Dangerous_Repo.Continue" = "أنا أقبل المخاطره، استمرار";
-"Dangerous_Repo.Cancel" = "الغاء اضافه المستودع";
+"Dangerous_Repo.Continue" = "أنا أقبل المخاطر، استمرار";
+"Dangerous_Repo.Cancel" = "العودة إلى بر الأمان";
 "Dangerous_Repo.Last_Chance.Title" = "إضافة المستودع الضار؟";
 "Dangerous_Repo.Last_Chance.Body" = "المستودعات الخطرة يمكن أن يكون لها تأثيرات مدمرة على قدرتك على استخدام جهازك أو على الجيلبريك. نحن ننصحك بشدة بالعودة من أجل سلامتك."; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "استمرار";
@@ -232,4 +235,12 @@
 // Depcitions
 "View_Depiction" = "عرض الوصف";
 
-"Copy_ID" = "IDانسخ ال";
+"Copy_ID" = "نسخ المعرف";
+"Canister_Policy" = "سياسة خصوصية Canister";
+"Download_Analytics" = "تنزيل التحليلات";
+"Provided_Canister" = "مقدمة من Canister";
+"Data_Collected" = "تستخدم البيانات التي يتم تجميعها لتحديث صفحة مميز والتوصية بالمصادر المختلفة.";
+"Change_Later" = "يمكنك دائمًا تغيير اختيارك لاحقًا.";
+"Whats_Collected" = "مالذي يتم جمعه";
+"Non_Identifying" = "فقط معلومات عن الحزم وبعض المعلومات عن الجهاز غير الحساسة هي التي يتم جمعها.";
+"Privacy_Policy" = "سياسة الخصوصية";

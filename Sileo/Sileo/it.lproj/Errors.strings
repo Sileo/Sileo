@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Non è stato possibile completare l'acquisto";
 "Purchase_Auth_Complete_Fail.Title" = "Non è stato possibile completare l'autenticazione";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Impossibile importare i temi";

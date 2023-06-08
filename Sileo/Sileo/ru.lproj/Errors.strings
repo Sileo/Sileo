@@ -8,7 +8,7 @@
  LOCALISATIONS
  */
 
-"Unknown" = "Произошла ошибка.";
+"Unknown" = "Произошла неизвестная ошибка.";
 "Error_Indicator" = "Ошибка: %@";
 
 "No_Package.Title" = "Не удалось найти пакет %@ в добавленных репозиториях.";
@@ -17,13 +17,13 @@
 "Invalid_URL.Title" = "Неверный URL";
 
 "Download_Size_Mismatch" = "Ожидался размер %@, вместо, получен %@.";
-"Download_Failing_Status_Code" = "Ошиька сос статусом %ld";
+"Download_Failing_Status_Code" = "Ошибка со статусом %ld";
 "Download_Hash_Mismatch" = "Ожидался хэш %@, вместо, получен %@.";
 "Untrusted_Package" = "Пакет %@ ненадежный и не может быть проверен";
 
 "Insecure_Paid_Download" = "URL скачивания оплаченных авторизированных пакетов должны быть защищенными (HTTPS).";
 
-"Invalid_Payment_Provider_Response" = "Поставщик платежа вернул неверный ответ.";
+"Invalid_Payment_Provider_Response" = "Платёжный провайдер вернул неверный ответ.";
 "No_Payment_Provider" = "Этот репозиторий не поддерживает покупки Sileo. Если это купленный пакет из Cydia Store, вы можете подключить свой аккаунт.";
 
 "Package_Unavailable" = "Этот пакет недоступен в ваших добавленных репозиториях. Пожалуйста, проверьте, что репозиторий %@ доступен.";
@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Не удалось завершить покупку";
 "Purchase_Auth_Complete_Fail.Title" = "Не удалось завершить аутентифицирование";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Не удалось импортировать тему(ы)";

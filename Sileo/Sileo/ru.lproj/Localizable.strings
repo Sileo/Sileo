@@ -12,7 +12,7 @@
 "About" = "О программе";
 "Close" = "Закрыть";
 "Double tap to open." = "Нажмите два раза, чтобы открыть.";
-"Untitled_Repo" = "Репозиторий без названия";
+"Untitled_Repo" = "Безымянный репозиторий";
 "OK" = "ОК";
 "Done" = "Готово";
 "Done_Editing" = "Готово";
@@ -26,10 +26,13 @@
 "Sileo_Team" = "Команда Sileo";
 "Warning" = "Предупреждение";
 "Edit" = "Изменить";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Обновление фоновых приложений";
-"Background_App_Refresh_Message" = "Для быстрой и оптимальной работы рекомендуется включить фоновое обновление приложения. Вы также сможете получать уведомления, когда ваши твики обновляться!";
+"Background_App_Refresh_Message" = "Для лучшей и быстрой работы рекомендуется включить фоновое обновление приложения. Вы также можете получать уведомления при обновлении твиков!";
 "Upgrade_All_Shortcut_Processing_Message" = "Обновление всех источников и пакетов...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -93,12 +96,12 @@
 "Sources_Page" = "Источники";
 "Packages_Page" = "Пакеты";
 "Search_Page" = "Поиск";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "Недавние запросы";
+"Clear_Search_History" = "Очистить";
 "Refreshing_Sources_Page" = "Обновление источников";
 "Package_Installed_Files_Page" = "Установленные файлы";
 "Refresh" = "Обновить";
-"Remove" = "Удалить";
+"Remove" = "Remove";
 
 "All_Packages.Title" = "Все пакеты";
 "All_Packages.Cell_Subtitle" = "Посмотреть все пакеты из ваших источников";
@@ -152,7 +155,7 @@
 "Tint_Color" = "Цвет оттенка";
 "Reset_Tint_Color" = "Сбросить цвет оттенка";
 "Auto_Complete_Queue" = "Автоматически завершать очередь";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Показать историю поиска";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Автоматическое подтверждение обновления всех ярлыков";
 "Swipe_Actions" = "Смахнуть";
 "Show_Provisional" = "Показать предварительный пакет";
@@ -179,19 +182,19 @@
 "System" = "Система";
 "Theme_Settings" = "Настройки темы";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Управление темами";
+"Create_Theme" = "Создать тему";
+"Import_Themes" = "Импорт тем";
+"Theme_Name" = "Название темы";
+"Export_Themes" = "Экспорт тем";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Цвет фона";
+"Secondary_Background_Color" = "Дополнительный цвет фона";
+"Label_Color" = "Цвет метки";
+"Highlight_Color" = "Цвет выделения";
+"Seperator_Color" = "Цвет разделителя";
+"Header_Color" = "Цвет заголовка";
+"Banner_Color" = "Цвет баннера";
 
 
 "Cydia_Sign_In" = "Войти в Cydia Store";
@@ -232,4 +235,12 @@
 // Depcitions
 "View_Depiction" = "Посмотреть описание";
 
-"Copy_ID" = "Copy ID";
+"Copy_ID" = "Скопировать ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";

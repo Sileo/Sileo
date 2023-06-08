@@ -26,6 +26,9 @@
 "Sileo_Team" = "Sileo Span";
 "Warning" = "Waarskuwing";
 "Edit" = "Edit";
+"Why" = "Why";
+"Deny" = "Deny";
+"Accept" = "Accept";
 
 // Popup messages
 "Background_App_Refresh" = "Background App Refresh";
@@ -233,3 +236,11 @@
 "View_Depiction" = "View Depiction";
 
 "Copy_ID" = "Copy ID";
+"Canister_Policy" = "Canister Privacy Policy";
+"Download_Analytics" = "Download Analytics";
+"Provided_Canister" = "Provided by Canister";
+"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Change_Later" = "You can always change your choice later.";
+"Whats_Collected" = "What's Collected";
+"Non_Identifying" = "Only package and non-identifying device information is collected.";
+"Privacy_Policy" = "Privacy Policy";
