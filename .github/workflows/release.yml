@@ -1,0 +1,123 @@
+on:
+  release:
+    types: [published]
+
+name: Build
+jobs:
+  make:
+    name: Build and Upload Sileo
+    runs-on: macos-12
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          submodules: recursive
+          token: ${{ secrets.SILEO_PAT }}
+      - name: Import all certificates
+        env:
+          DEVELOPMENT_PASSWORD: ${{ secrets.DEVELOPMENT_PASSWORD }}
+          DEVELOPMENT_CERTIFICATE: ${{ secrets.DEVELOPMENT_CERTIFICATE }}
+          DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+          DISTRIBUTION_PASSWORD: ${{ secrets.DISTRIBUTION_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          security create-keychain -p "" build.keychain
+          security list-keychains -s build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "" build.keychain
+          security set-keychain-settings
+          security import <(echo $DEVELOPMENT_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $DEVELOPMENT_PASSWORD \
+                          -T /usr/bin/codesign
+          security import <(echo $DISTRIBUTION_CERTIFICATE | base64 --decode) \
+                          -f pkcs12 \
+                          -k build.keychain \
+                          -P $DISTRIBUTION_PASSWORD \
+                          -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
+
+      - name: Setup Procursus Bootstrap (install)
+        run: |
+          wget https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-amd64.tar.zst
+          sudo gtar --preserve-permissions -xkf ./bootstrap-darwin-amd64.tar.zst -C /
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+          PATH=/opt/procursus/sbin:/opt/procursus/bin:$PATH sudo /opt/procursus/bin/apt update
+          sudo /opt/procursus/bin/apt -V full-upgrade -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew 
+        continue-on-error: true
+      
+      - name: Upgrade
+        run: |
+          sudo /opt/procursus/bin/apt -V upgrade -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew
+    
+      - name: Upgrade and install
+        run: |
+          sudo /opt/procursus/bin/apt install zstd apt-utils ldid xz-utils bzip2 lz4 -y --allow-downgrades -oDpkg::Options::=--force-confdef -oDpkg::Options::=--force-confnew
+        
+      - name: Add Procursus to PATH
+        run: |
+          echo '/opt/procursus/sbin:/opt/procursus/bin' >> $GITHUB_PATH
+
+      - name: Select Correct Xcode (14.2)
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_14.2.app
+
+      - name: Build Sileo (iphoneos-arm)
+        run: |
+          make clean package DEBUG=0 ALL_BOOTSTRAPS=1
+
+      - name: Build Sileo (iphoneos-arm64)
+        run: |
+          make clean package DEBUG=0 ALL_BOOTSTRAPS=1 SILEO_PLATFORM=iphoneos-arm64
+
+      - name: Build Sileo (darwin-amd64)
+        run: |
+          make clean package DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-amd64
+
+      - name: Build Sileo (darwin-arm64)
+        run: |
+          make clean package DEBUG=0 AUTOMATION=1 SILEO_PLATFORM=darwin-arm64
+      
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+
+      - name: Push To Amy Repo
+        env:
+          AMY_GITHUB_TOKEN: ${{ secrets.AMY_GITHUB }}
+        run: |
+          git config --global user.name "Amy While (Automated)"
+          git config --global user.email "26681721+elihwyma@users.noreply.github.com"
+          git config --global credential.helper cache 
+
+          git clone https://${{ env.AMY_GITHUB_TOKEN }}@github.com/elihwyma/amy-repo.git
+          mv packages/* amy-repo/pool/
+          cd amy-repo
+          ./repo.sh
+          git add . 
+          git commit -m "build: sileo"
+          git push
+          cd ..
+          rf -rf amy-repo
+
+      - name: Push To Sileo Repo
+        env:
+          AMY_GITHUB_TOKEN: ${{ secrets.AMY_GITHUB }}
+        run: |
+          git config --global user.name "Amy While (Automated)"
+          git config --global user.email "26681721+elihwyma@users.noreply.github.com"
+          git config --global credential.helper cache 
+
+          git clone https://${{ env.AMY_GITHUB_TOKEN }}@github.com/sileo/repo.git
+          mv packages/* repo/pool/
+          cd repo
+          ./repo.sh
+          git add . 
+          git commit -m "build: sileo"
+          git push
+          cd ..
+          rm -rf repo
