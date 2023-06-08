@@ -55,6 +55,7 @@ enum Jailbreak: String, Codable {
     case bakera1n_rootless16 = "bakera1n Rootless (iOS 16)"
     case bakera1n_rootful15 = "bakera1n Rootful (iOS 15)"
     case bakera1n_rootful16 = "bakera1n Rootful (iOS 16)"
+    case bakera1n17 = "bakera1n (iPadOS 17)"
     
     case mac = "macOS"
     case other = "Other"
@@ -89,7 +90,10 @@ enum Jailbreak: String, Codable {
         let arm64e = Self.arch() == "arm64e"
         
         if #available(iOS 17.0, *) {
-            if rootless_procursus.exists {
+            if bakera1n.exists && rootless_procursus.exists {
+                self = .bakera1n17
+                return
+            } else if rootless_procursus.exists {
                 self = .palera1n17
                 return
             }
