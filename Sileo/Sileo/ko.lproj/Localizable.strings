@@ -9,7 +9,7 @@
 */
 // Common Prompts
 
-"About" = "About";
+"About" = "정보";
 "Close" = "닫기";
 "Double tap to open." = "두번 탭해서 열기.";
 "Untitled_Repo" = "제목 없는 리포";
@@ -24,11 +24,11 @@
 "Acknowledge" = "승인";
 "Remove" = "삭제";
 "Sileo_Team" = "Sileo Team";
-"Warning" = "Warning";
-"Edit" = "Edit";
+"Warning" = "주의";
+"Edit" = "수정";
 "Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Deny" = "거절";
+"Accept" = "허용";
 
 // Popup messages
 "Background_App_Refresh" = "백그라운드 앱 새로 고침";
