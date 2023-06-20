@@ -24,11 +24,11 @@
 "Acknowledge" = "J'ai compris";
 "Remove" = "Supprimer";
 "Sileo_Team" = "Équipe Sileo";
-"Warning" = "Warning";
-"Edit" = "Edit";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Warning" = "Avertissement";
+"Edit" = "Modifier";
+"Why" = "Pourquoi";
+"Deny" = "Refuser";
+"Accept" = "Accepter";
 
 // Popup messages
 "Background_App_Refresh" = "Actualiser (arrière-plan)";
