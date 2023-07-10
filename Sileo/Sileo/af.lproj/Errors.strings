@@ -35,7 +35,7 @@ Herinstalleer asseblief Sileo met SSH.";
 "FixingDpkg.Title" = "Dpkg Onderbreuk";
 "FixingDpkg.Body" = "Dpkg was onderbreek. Wag asseblief terwyl ons probeer om die probleem op te los.";
 
-"Invalid_Data" = "Invalid Data";
+"Invalid_Data" = "Ongeldige data";
 "Try_Later" = "Probeer weer later asseblief.";
 
 "Sileo_Update_Required.Title" = "Sileo Update Required";
