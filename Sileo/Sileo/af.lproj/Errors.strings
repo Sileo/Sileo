@@ -28,7 +28,7 @@
 
 "Package_Unavailable" = "Hierdie paket is nie van jou geïnstalleerde bronne beskikbaar nie. Kyk asseblief om seker te maak dat die %@ repo beskikbaar is.";
 
-"Installation_Error.Title" = "Installation Error";
+"Installation_Error.Title" = "Installasiefout";
 "Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
 
 "FixingDpkg.Title" = "Dpkg Onderbreuk";
