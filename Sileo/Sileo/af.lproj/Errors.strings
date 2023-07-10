@@ -29,10 +29,11 @@
 "Package_Unavailable" = "Hierdie paket is nie van jou geïnstalleerde bronne beskikbaar nie. Kyk asseblief om seker te maak dat die %@ repo beskikbaar is.";
 
 "Installation_Error.Title" = "Installasiefout";
-"Installation_Error.Body" = "Sileo was unable to acquire root permissions. Please reinstall Sileo using SSH.";
+"Installation_Error.Body" = "Sileo kon nie worteltoestemmings verkry nie.
+Herinstalleer asseblief Sileo met SSH.";
 
 "FixingDpkg.Title" = "Dpkg Onderbreuk";
-"FixingDpkg.Body" = "Dpkg was interrupted. Please wait while we attempt to fix the issue.";
+"FixingDpkg.Body" = "Dpkg was onderbreek. Wag asseblief terwyl ons probeer om die probleem op te los.";
 
 "Invalid_Data" = "Invalid Data";
 "Try_Later" = "Probeer weer later asseblief.";
