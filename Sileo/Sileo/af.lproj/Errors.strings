@@ -38,15 +38,15 @@ Herinstalleer asseblief Sileo met SSH.";
 "Invalid_Data" = "Ongeldige data";
 "Try_Later" = "Probeer weer later asseblief.";
 
-"Sileo_Update_Required.Title" = "Sileo Update Required";
-"Featured_Requires_Sileo_Update" = "A Sileo update is required to view the featured tab. The featured tab may be rendered incorrectly.";
-"Depiction_Requires_Sileo_Update" = "A Sileo update is required to view this page. The page may be rendered incorrectly.";
+"Sileo_Update_Required.Title" = "Sileo-Opdatering Vereis";
+"Featured_Requires_Sileo_Update" = "'n Sileo-opdatering is vereis om die uitgestalde oortjie te sien. Die uitgestalde oortjie kan dalk verkeerd weergegee word.";
+"Depiction_Requires_Sileo_Update" = "'n Sileo-opdatering is vereis om hierdie bladsy te sien. Die bladsy kan dalk verkeerd weergegee word.";
 
 "Form_Error.Title" = "Kon Nie Vorm Laai Nie";
-"Form_Load_Error" = "The form could not be loaded from the server.";
-"Invalid_Form_Data" = "The server provided invalid form data.";
-"Form_Submit_Failure" = "An error occurred while attempting to submit the form: %@";
-"Form_Submit_Error.Title" = "Couldn't Submit Form";
+"Form_Load_Error" = "Die vorm kon nie van die bediener af gelaai word nie.";
+"Invalid_Form_Data" = "Die bediener het ongeldige vormdata verskaf.";
+"Form_Submit_Failure" = "'n Fout het voorgekom tydens die poging om die vorm in te dien: %@";
+"Form_Submit_Error.Title" = "Kon Nie Vorm Indien Nie";
 "Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
 
 "Email_Unavailable.Title" = "Kon Nie E-pos Stuur Nie";
