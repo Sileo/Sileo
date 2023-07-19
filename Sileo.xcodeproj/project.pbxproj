@@ -5197,7 +5197,7 @@
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_ENTITLEMENTS = "Sileo/Sileo-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_SANDBOX=1";
@@ -5227,7 +5227,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "-flto";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -5361,7 +5361,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sileo/Sileo-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -5393,7 +5393,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -5417,7 +5417,7 @@
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_ENTITLEMENTS = "Sileo/Sileo-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = DLSL362JHJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_SANDBOX=1";
@@ -5447,7 +5447,7 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "-flto";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.SileoDemo;
 				PRODUCT_MODULE_NAME = Sileo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
