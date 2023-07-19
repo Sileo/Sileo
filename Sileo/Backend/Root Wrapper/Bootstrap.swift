@@ -9,9 +9,7 @@
 import Foundation
 
 enum Bootstrap: String, Codable {
-    
-    static let rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped").exists
-    
+        
     static let procursus_rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped").exists
     static let procursus_rootful = URL(fileURLWithPath: "/.procursus_strapped").exists
     
