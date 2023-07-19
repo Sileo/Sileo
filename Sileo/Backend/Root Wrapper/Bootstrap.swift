@@ -25,32 +25,40 @@ enum Bootstrap: String, Codable {
     
     init(jailbreak: Jailbreak) {
         switch jailbreak {
+            
         case .electra:
             self = .electra_strap
+            
         case .chimera:
             if Bootstrap.procursus_rootful {
                 self = .procursus
             } else {
                 self = .electra_strap
             }
+            
         case .unc0ver:
             if #available(iOS 11.0, *) {
                 self = .unc0ver_strap
             } else {
                 self = .elucubratus
             }
+            
         case .checkra1n:
             self = .elucubratus
+            
         case .odysseyra1n:
             self = .procursus
-        case .palera1n_legacy, .palera1n_rootful, .palera1n_rootless:
+            
+        case .palera1n_legacy, .palera1n_rootful, .palera1n_rootless, .bakera1n_rootful, .bakera1n_rootless:
             if Bootstrap.procursus_rootful || Bootstrap.procursus_rootless {
                 self = .procursus
             } else {
                 self = .other_strap
             }
+            
         case .xina15:
             self = .xinaa15_strap
+            
         default:
             self = .other_strap
         }

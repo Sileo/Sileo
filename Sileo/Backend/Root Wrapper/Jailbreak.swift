@@ -15,37 +15,37 @@ enum Jailbreak: String, Codable {
     static let bootstrap = Bootstrap(jailbreak: current)
     
     /// Coolstar jailbreaks
-    case electra = "Electra"
-    case chimera = "Chimera"
-    case odyssey = "Odyssey"
-    case taurine = "Taurine"
+    case electra =           "Electra"
+    case chimera =           "Chimera"
+    case odyssey =           "Odyssey"
+    case taurine =           "Taurine"
     
     /// unc0ver jailbreak
-    case unc0ver = "unc0ver"
+    case unc0ver =           "unc0ver"
     
     /// checkra1n-type jailbreaks
-    case checkra1n = "checkra1n"
-    case odysseyra1n = "Odysseyra1n"
+    case checkra1n =         "checkra1n"
+    case odysseyra1n =       "Odysseyra1n"
     
+    case palera1n =          "palera1n"
     case palera1n_rootless = "palera1n • Rootless"
-    case palera1n_rootful = "palera1n • Rootful"
-    case palera1n_legacy = "palera1n • Legacy"
-    case palera1n = "palera1n"
-    
+    case palera1n_rootful =  "palera1n • Rootful"
+    case palera1n_legacy =   "palera1n • Legacy"
+
+    case bakera1n =          "bakera1n"
     case bakera1n_rootless = "bakera1n • Rootless"
-    case bakera1n_rootful = "bakera1n • Rootful"
-    case bakera1n = "bakera1n"
+    case bakera1n_rootful =  "bakera1n • Rootful"
     
     /// Xina
-    case xina15 = "XinaA15"
+    case xina15 =            "XinaA15"
     
     /// Fugu15
-    case fugu15 = "Fugu15"
-    case dopamine = "Dopamine"
+    case fugu15 =            "Fugu15"
+    case dopamine =          "Dopamine"
     
-    case mac = "macOS"
-    case other = "Unknown Jailbreak"
-    case simulator = "Simulator"
+    case mac =               "macOS"
+    case other =             "Unknown Jailbreak"
+    case simulator =         "Simulator"
     
     fileprivate static func arch() -> String {
         guard let archRaw = NXGetLocalArchInfo().pointee.name else {
@@ -54,9 +54,19 @@ enum Jailbreak: String, Codable {
         return String(cString: archRaw)
     }
     
+    // Supported for userspace reboots
     static private let supported: Set<Jailbreak> = [
-        .chimera, .odyssey, .taurine, .odysseyra1n, .palera1n_rootful, .palera1n_rootless, .fugu15, .dopamine
+        .chimera, .odyssey, .taurine,
+        
+        .odysseyra1n, .checkra1n,
+        
+        .palera1n, .palera1n_rootful, .palera1n_rootless,
+        
+        .bakera1n, .bakera1n_rootful, .bakera1n_rootless,
+        
+        .fugu15, .dopamine
     ]
+    
     public var supportsUserspaceReboot: Bool {
         Self.supported.contains(self)
     }
@@ -66,9 +76,7 @@ enum Jailbreak: String, Codable {
         self = .simulator
         return
         #endif
-        
-        let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
-        
+                
         let checkra1n = URL(fileURLWithPath: "/var/checkra1n.dmg")
         let bakera1n = URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
         let palera1n = URL(fileURLWithPath: "/cores/jbloader")
@@ -112,7 +120,7 @@ enum Jailbreak: String, Codable {
                 self = .palera1n
             }
             
-        case palera1n_Legacy.exists:
+        case palera1n_Legacy.exists && !arm64e:
             self = .palera1n_legacy
             return
             
@@ -130,7 +138,7 @@ enum Jailbreak: String, Codable {
             return
             
             // 14.x- jailbreaks
-        case checkra1n.exists:
+        case checkra1n.exists && !arm64e:
             if Bootstrap.procursus_rootful {
                 self = .odysseyra1n
                 return
