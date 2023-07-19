@@ -91,7 +91,7 @@ enum Jailbreak: String, Codable {
             if Bootstrap.procursus_rootless {
                 self = .bakera1n_rootless
                 return
-            } else {
+            } else if Bootstrap.procursus_rootful {
                 self = .bakera1n_rootful
                 return
             }
@@ -101,7 +101,7 @@ enum Jailbreak: String, Codable {
             if Bootstrap.procursus_rootless {
                 self = .palera1n_rootless
                 return
-            } else {
+            } else if Bootstrap.procursus_rootful {
                 self = .palera1n_rootful
                 return
             }
