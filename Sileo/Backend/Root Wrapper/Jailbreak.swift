@@ -60,7 +60,7 @@ enum Jailbreak: String, Codable {
         
         .odysseyra1n, .checkra1n,
         
-        .palera1n, .palera1n_rootful, .palera1n_rootless,
+        .palera1n, .palera1n_rootful, .palera1n_rootless, .palera1n_legacy,
         
         .bakera1n, .bakera1n_rootful, .bakera1n_rootless,
         
