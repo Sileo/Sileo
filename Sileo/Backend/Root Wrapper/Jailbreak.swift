@@ -30,9 +30,11 @@ enum Jailbreak: String, Codable {
     case palera1n_rootless = "palera1n • Rootless"
     case palera1n_rootful = "palera1n • Rootful"
     case palera1n_legacy = "palera1n • Legacy"
+    case palera1n = "palera1n"
     
     case bakera1n_rootless = "bakera1n • Rootless"
     case bakera1n_rootful = "bakera1n • Rootful"
+    case bakera1n = "bakera1n"
     
     /// Xina
     case xina15 = "XinaA15"
@@ -94,6 +96,8 @@ enum Jailbreak: String, Codable {
             } else if Bootstrap.procursus_rootful {
                 self = .bakera1n_rootful
                 return
+            } else {
+                self = .bakera1n
             }
             
             // palera1n [rootful, rootless]
@@ -104,6 +108,8 @@ enum Jailbreak: String, Codable {
             } else if Bootstrap.procursus_rootful {
                 self = .palera1n_rootful
                 return
+            } else {
+                self = .palera1n
             }
             
         case palera1n_Legacy.exists:
