@@ -12,29 +12,47 @@ enum Bootstrap: String, Codable {
     
     static let rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped").exists
     
+    static let procursus_rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped").exists
+    static let procursus_rootful = URL(fileURLWithPath: "/.procursus_strapped").exists
+    
     case procursus = "Procursus"
-    case xina = "Procursus/Xina"
     case elucubratus = "Bingner/Elucubratus"
-    case electra = "Electra/Chimera"
-    case unc0ver = "Unc0verstrap"
+    
+    case xinaa15_strap = "Procursus/Xina"
+    case electra_strap = "Electra/Chimera"
+    case unc0ver_strap = "Unc0verstrap"
+    case other_strap = "Unknown Bootstrap"
     
     init(jailbreak: Jailbreak) {
         switch jailbreak {
-        case .electra: self = .electra
+        case .electra:
+            self = .electra_strap
         case .chimera:
-            if URL(fileURLWithPath: "/.procursus_strapped").exists {
+            if Bootstrap.procursus_rootful {
                 self = .procursus
             } else {
-                self = .electra
+                self = .electra_strap
             }
-        case .unc0ver11:
-            self = .unc0ver
-        case .unc0ver12, .unc0ver13, .unc0ver14, .checkra1n12, .checkra1n13, .checkra1n14:
+        case .unc0ver:
+            if #available(iOS 11.0, *) {
+                self = .unc0ver_strap
+            } else {
+                self = .elucubratus
+            }
+        case .checkra1n:
             self = .elucubratus
-        case .xina15:
-            self = .xina
-        default:
+        case .odysseyra1n:
             self = .procursus
+        case .palera1n_legacy, .palera1n_rootful, .palera1n_rootless:
+            if Bootstrap.procursus_rootful || Bootstrap.procursus_rootless {
+                self = .procursus
+            } else {
+                self = .other_strap
+            }
+        case .xina15:
+            self = .xinaa15_strap
+        default:
+            self = .other_strap
         }
     }
     
