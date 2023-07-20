@@ -48,7 +48,7 @@
 
 "Queue_Confirm_Button" = "확인";
 "Queue_Clear_Button" = "대기열 비우기";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Cancel_Downloads" = "다운로드 취소";
 
 "Package_Upgrade_Action" = "업그레이드";
 "Package_Reinstall_Action" = "재설치";
@@ -68,7 +68,7 @@
 "Package_Wishlist_Remove" = "위시리스트에서 삭제";
 "Wishlist" = "위시리스트";
 
-"No_New_Packages" = "No New Packages";
+"No_New_Packages" = "새로운 패키지 없음";
 "News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
 
 // Headings for sections in the queue/status popup.
@@ -83,7 +83,7 @@
 "Package_Search.Placeholder" = "패키지 검색";
 "Sort_Name" = "이름";
 "Sort_Date" = "날짜";
-"Sort_Install_Size" = "Installed Size";
+"Sort_Install_Size" = "설치된 크기";
 "Sort_By" = "분류:";
 
 "Package_Unavailable" = "패키지를 사용할 수 없음";
@@ -96,12 +96,12 @@
 "Sources_Page" = "소스";
 "Packages_Page" = "패키지";
 "Search_Page" = "검색";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "검색 기록";
+"Clear_Search_History" = "비우기";
 "Refreshing_Sources_Page" = "소스 새로고침 중";
 "Package_Installed_Files_Page" = "파일 설치됨";
 "Refresh" = "새로고침";
-"Remove" = "Remove";
+"Remove" = "삭제";
 
 "All_Packages.Title" = "모든 패키지";
 "All_Packages.Cell_Subtitle" = "소스에 있는 모든 패키지 보기";
@@ -112,13 +112,13 @@
 "Ignored Updates" = "무시된 업데이트";
 
 "Repos" = "리포";
-"Repo" = "Repository";
+"Repo" = "저장소";
 
 "Add_Source.Title" = "소스 추가";
 "Add_Source.Body" = "APT 주소 추가";
 "Add_Source.Button.Add" = "소스 추가";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "Dist 리포 추가";
+"Incorrect_Repo" = "%@는(은) 유효한 저장소로 보이지 않습니다⁉️ 해당 저장소가 오프라인 상태이거나 잘못 입력한 것 같습니다. 그래도 추가하시겠습니까?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "직접 입력";
 
@@ -134,7 +134,7 @@
 "Package_Changelogs_Unavailable" = "이 패키지에 대한 변경점이 없습니다.";
 
 "Installed_Package_Header" = "설치된 패키지";
-"Installed_Packages" = "Installed Packages";
+"Installed_Packages" = "설치된 패키지";
 "Version" = "버전";
 "Show_Package_Contents_Button" = "패키지 콘텐츠 보기";
 
@@ -146,7 +146,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "구입";
 "Settings_Payment_Provider.No_Purchases" = "구입 안함";
-"Authenticate_To_Purchase" = "Authenticate to complete your purchase";
+"Authenticate_To_Purchase" = "구매를 완료하려면 인증해 주세요.";
 
 "Settings" = "설정";
 "Settings_Page_Title" = "설정";
