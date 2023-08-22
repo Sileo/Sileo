@@ -18,7 +18,6 @@ enum Bootstrap: String, Codable {
     
     case xinaa15_strap = "Procursus/Xina"
     case electra_strap = "Electra/Chimera"
-    case unc0ver_strap = "Unc0verstrap"
     case other_strap = "Unknown Bootstrap"
     
     init(jailbreak: Jailbreak) {
@@ -35,11 +34,7 @@ enum Bootstrap: String, Codable {
             }
             
         case .unc0ver:
-            if #available(iOS 11.0, *) {
-                self = .unc0ver_strap
-            } else {
-                self = .elucubratus
-            }
+            self = .elucubratus
             
         case .checkra1n:
             self = .elucubratus
