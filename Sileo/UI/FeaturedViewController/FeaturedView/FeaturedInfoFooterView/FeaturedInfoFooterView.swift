@@ -20,22 +20,31 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         self.addSubview(label)
         
         let sileoPackage = FeaturedInfoFooterView.package
-        let sileoVersion = sileoPackage?.version ?? "Unknown"
-        
+        var sileoVersion = sileoPackage?.version ?? "Unknown"
+
         let platform = UIDevice.current.platform
         let systemVersion = UIDevice.current.systemVersion
+        var systemPlatform = "iOS"
+        
+        if #available(iOS 13.0, *) {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                systemPlatform = "iPadOS"
+            }
+        }
+        
+        if sileoVersion == "Unknown" {
+            if let sileoVersionBundle = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                sileoVersion = sileoVersionBundle
+            } else {
+                sileoVersion = "Unknown"
+            }
+        }
 
-        label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
+        label.text = "\(platform) • \(systemPlatform) \(systemVersion) • Sileo \(sileoVersion)\n\(Jailbreak.current.rawValue) • \(Jailbreak.bootstrap.rawValue)"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
-        
-        if sileoVersion == "Unknown" {
-            let sileoPackage2 = FeaturedInfoFooterView.package
-            let sileoVersion2 = sileoPackage2?.version ?? Bundle.main.infoDictionary!["CFBundleShortVersionString"] ?? "Unknown"
-            self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
-        }
     }
     
     static var package: Package? {

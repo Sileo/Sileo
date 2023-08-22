@@ -14,52 +14,38 @@ enum Jailbreak: String, Codable {
     static let current = Jailbreak()
     static let bootstrap = Bootstrap(jailbreak: current)
     
-    // Coolstar
-    case electra = "Electra (iOS 11)"
-    case chimera = "Chimera (iOS 12)"
-    case odyssey = "Odyssey (iOS 13)"
-    case taurine = "Taurine (iOS 14)"
+    /// Coolstar jailbreaks
+    case electra =           "Electra"
+    case chimera =           "Chimera"
+    case odyssey =           "Odyssey"
+    case taurine =           "Taurine"
     
-    // unc0ver
-    case unc0ver11 = "unc0ver (iOS 11)"
-    case unc0ver12 = "unc0ver (iOS 12)"
-    case unc0ver13 = "unc0ver (iOS 13)"
-    case unc0ver14 = "unc0ver (iOS 14)"
+    /// unc0ver jailbreak
+    case unc0ver =           "unc0ver"
     
-    // checkra1n
-    case checkra1n12 = "checkra1n (iOS 12)"
-    case checkra1n13 = "checkra1n (iOS 13)"
-    case checkra1n14 = "checkra1n (iOS 14)"
+    /// checkra1n-type jailbreaks
+    case checkra1n =         "checkra1n"
+    case odysseyra1n =       "Odysseyra1n"
     
-    // Odysseyra1n
-    case odysseyra1n12 = "Odysseyra1n (iOS 12)"
-    case odysseyra1n13 = "Odysseyra1n (iOS 13)"
-    case odysseyra1n14 = "Odysseyra1n (iOS 14)"
+    case palera1n =          "palera1n"
+    case palera1n_rootless = "palera1n • Rootless"
+    case palera1n_rootful =  "palera1n • Rootful"
+    case palera1n_legacy =   "palera1n • Legacy"
+
+    case bakera1n =          "bakera1n"
+    case bakera1n_rootless = "bakera1n • Rootless"
+    case bakera1n_rootful =  "bakera1n • Rootful"
     
-    // Palera1n
-    case palera1n_rootless15 = "palera1n Rootless (iOS 15)"
-    case palera1n_rootless16 = "palera1n Rootless (iOS 16)"
-    case palera1n_rootful15 = "palera1n Rootful (iOS 15)"
-    case palera1n_rootful16 = "palera1n Rootful (iOS 16)"
-    case palera1n17 = "palera1n (iPadOS 17)"
+    /// Xina
+    case xina15 =            "XinaA15"
     
-    // Xina
-    case xina15 = "XinaA15 (iOS 15)"
+    /// Fugu15
+    case fugu15 =            "Fugu15"
+    case dopamine =          "Dopamine"
     
-    // Fugu15
-    case fugu15 = "Fugu15 (iOS 15)"
-    case dopamine = "Dopamine (iOS 15)"
-    
-    // Bakera1n
-    case bakera1n_rootless15 = "bakera1n Rootless (iOS 15)"
-    case bakera1n_rootless16 = "bakera1n Rootless (iOS 16)"
-    case bakera1n_rootful15 = "bakera1n Rootful (iOS 15)"
-    case bakera1n_rootful16 = "bakera1n Rootful (iOS 16)"
-    case bakera1n17 = "bakera1n (iPadOS 17)"
-    
-    case mac = "macOS"
-    case other = "Other"
-    case simulator = "Simulator"
+    case mac =               "macOS"
+    case other =             "Unknown Jailbreak"
+    case simulator =         "Simulator"
     
     fileprivate static func arch() -> String {
         guard let archRaw = NXGetLocalArchInfo().pointee.name else {
@@ -68,7 +54,19 @@ enum Jailbreak: String, Codable {
         return String(cString: archRaw)
     }
     
-    static private let supported: Set<Jailbreak> = [.chimera, .odyssey, .taurine, .odysseyra1n12, .odysseyra1n13, .odysseyra1n14, .palera1n_rootful15, .palera1n_rootful16, .palera1n_rootless15, .palera1n_rootless16, .palera1n17, .fugu15, .dopamine]
+    // Supported for userspace reboots
+    static private let supported: Set<Jailbreak> = [
+        .chimera, .odyssey, .taurine,
+        
+        .odysseyra1n, .checkra1n,
+        
+        .palera1n, .palera1n_rootful, .palera1n_rootless, .palera1n_legacy,
+        
+        .bakera1n, .bakera1n_rootful, .bakera1n_rootless,
+        
+        .fugu15, .dopamine
+    ]
+    
     public var supportsUserspaceReboot: Bool {
         Self.supported.contains(self)
     }
@@ -78,150 +76,105 @@ enum Jailbreak: String, Codable {
         self = .simulator
         return
         #endif
-        
-        let palecursus = URL(fileURLWithPath: "/.palecursus_strapped")
-        let procursus = URL(fileURLWithPath: "/.procursus_strapped")
-        let rootless_procursus = URL(fileURLWithPath: "/var/jb/.procursus_strapped")
+                
         let checkra1n = URL(fileURLWithPath: "/var/checkra1n.dmg")
-        let unc0ver = URL(fileURLWithPath: "/.installed_unc0ver")
         let bakera1n = URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
+        let palera1n = URL(fileURLWithPath: "/cores/jbloader")
+        let palera1n_Legacy = URL(fileURLWithPath: "/jbin/post.sh")
         
+        let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
+        let fugu15_max = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
+        let dopamine = URL(fileURLWithPath: "/var/jb/.installed_dopamine")
+        
+        let unc0ver = URL(fileURLWithPath: "/.installed_unc0ver")
+        let taurine = URL(fileURLWithPath: "/taurine/jailbreakd")
+        let odyssey = URL(fileURLWithPath: "/odyssey/jailbreakd")
+        let chimera = URL(fileURLWithPath: "/chimera/jailbreakd")
+        let electra = URL(fileURLWithPath: "/electra/jailbreakd")
         
         let arm64e = Self.arch() == "arm64e"
         
-        if #available(iOS 17.0, *) {
-            if bakera1n.exists && rootless_procursus.exists {
-                self = .bakera1n17
+        switch (true) {
+            
+            // bakera1n [rootful, rootless]
+        case bakera1n.exists && !arm64e:
+            if Bootstrap.procursus_rootless {
+                self = .bakera1n_rootless
                 return
-            } else if rootless_procursus.exists {
-                self = .palera1n17
-                return
-            }
-        } else if #available(iOS 16.0, *) {
-            if palecursus.exists {
-                self = .palera1n_rootful16
-                return
-            } else if bakera1n.exists && procursus.exists {
-                self = .bakera1n_rootful16
-                return
-            } else if bakera1n.exists && rootless_procursus.exists {
-                self = .bakera1n_rootless16
-                return
-            } else if rootless_procursus.exists {
-                self = .palera1n_rootless16
-                return
-            }
-        } else if #available(iOS 15.0, *) {
-            if arm64e {
-                let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
-                if xina.exists {
-                    self = .xina15
-                    return
-                }
-                
-                let fugu = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
-                if fugu.exists {
-                    self = .fugu15
-                    return
-                }
-                
-                let dopamine = URL(fileURLWithPath: "/var/jb/.installed_dopamine")
-                if dopamine.exists {
-                    self = .dopamine
-                    return
-                }
-            } else {
-                if palecursus.exists {
-                    self = .palera1n_rootful15
-                    return
-                } else if bakera1n.exists && procursus.exists {
-                    self = .bakera1n_rootful15
-                    return
-                } else if bakera1n.exists && rootless_procursus.exists {
-                    self = .bakera1n_rootless15
-                    return
-                } else if rootless_procursus.exists {
-                    self = .palera1n_rootless15
-                    return
-                }
-            }
-        } else if #available(iOS 14.0, *) {
-            if procursus.exists {
-                if checkra1n.exists {
-                    self = .odysseyra1n14
-                    return
-                }
-                let taurine = URL(fileURLWithPath: "/taurine/jailbreakd")
-                if taurine.exists {
-                    self = .taurine
-                    return
-                }
-            } else {
-                if unc0ver.exists {
-                    self = .unc0ver14
-                    return
-                } else {
-                    self = .checkra1n14
-                    return
-                }
-            }
-        } else if #available(iOS 13.0, *) {
-            if procursus.exists {
-                if checkra1n.exists {
-                    self = .odysseyra1n13
-                    return
-                }
-                let taurine = URL(fileURLWithPath: "/odyssey/jailbreakd")
-                if taurine.exists {
-                    self = .odyssey
-                    return
-                }
-            } else {
-                if unc0ver.exists {
-                    self = .unc0ver13
-                    return
-                } else {
-                    self = .checkra1n13
-                    return
-                }
-            }
-        } else if #available(iOS 12.0, *) {
-            if procursus.exists {
-                if checkra1n.exists {
-                    self = .odysseyra1n12
-                    return
-                }
-                let taurine = URL(fileURLWithPath: "/chimera/jailbreakd")
-                if taurine.exists {
-                    self = .chimera
-                    return
-                }
-            } else {
-                if unc0ver.exists {
-                    self = .unc0ver12
-                    return
-                } else {
-                    self = .checkra1n12
-                    return
-                }
-            }
-        } else if #available(iOS 11.0, *) {
-            let electra = URL(fileURLWithPath: "/electra/jailbreakd")
-            if electra.exists {
-                self = .electra
+            } else if Bootstrap.procursus_rootful {
+                self = .bakera1n_rootful
                 return
             } else {
-                self = .unc0ver11
+                self = .bakera1n
+            }
+            
+            // palera1n [rootful, rootless]
+        case palera1n.exists && !arm64e:
+            if Bootstrap.procursus_rootless {
+                self = .palera1n_rootless
+                return
+            } else if Bootstrap.procursus_rootful {
+                self = .palera1n_rootful
+                return
+            } else {
+                self = .palera1n
+            }
+            
+        case palera1n_Legacy.exists && !arm64e:
+            self = .palera1n_legacy
+            return
+            
+            // arm64e 15.0+ jailbreaks
+        case xina.exists && arm64e:
+            self = .xina15
+            return
+            
+        case fugu15_max.exists && arm64e:
+            self = .fugu15
+            return
+            
+        case dopamine.exists && arm64e:
+            self = .dopamine
+            return
+            
+            // 14.x- jailbreaks
+        case checkra1n.exists && !arm64e:
+            if Bootstrap.procursus_rootful {
+                self = .odysseyra1n
+                return
+            } else {
+                self = .checkra1n
                 return
             }
-        } else {
+            
+        case unc0ver.exists:
+            self = .unc0ver
+            return
+            
+        case taurine.exists:
+            self = .taurine
+            return
+            
+            // 13.x- jailbreaks
+        case odyssey.exists:
+            self = .odyssey
+            return
+            
+        case chimera.exists:
+            self = .chimera
+            return
+            
+        case electra.exists:
+            self = .electra
+            return
+            
+        default:
             #if targetEnvironment(macCatalyst)
             self = .mac
             return
             #endif
+            self = .other
+            return
         }
-        self = .other
     }
-
-    
 }

@@ -1217,7 +1217,7 @@ final class RepoManager {
     func writeListToFile() {
         repoListLock.wait()
         
-        if Jailbreak.bootstrap != .elucubratus || Jailbreak.bootstrap != .unc0ver {
+        if Jailbreak.bootstrap != .elucubratus {
             var rawRepoList = ""
             var added: Set<String> = []
             for repo in repoList {
