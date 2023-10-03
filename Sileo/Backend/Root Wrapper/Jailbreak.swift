@@ -46,6 +46,9 @@ enum Jailbreak: String, Codable {
     // Xina
     case xina15 = "XinaA15 (iOS 15)"
     
+    //FridaRootManager
+    case frm = "FridaRootManager V1 (iOS 15)"
+    
     // Fugu15
     case fugu15 = "Fugu15 (iOS 15)"
     case dopamine = "Dopamine (iOS 15)"
@@ -142,6 +145,11 @@ enum Jailbreak: String, Codable {
                     return
                 } else if rootless_procursus.exists {
                     self = .palera1n_rootless15
+                    return
+                }
+                let fridarootmgr = URL(fileURLWithPath: "/var/jb/.installed_frida")
+                if fridarootmgr.exists {
+                    self = .frm
                     return
                 }
             }
