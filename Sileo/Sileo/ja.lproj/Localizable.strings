@@ -26,9 +26,9 @@
 "Sileo_Team" = "Sileoチーム";
 "Warning" = "警告";
 "Edit" = "編集";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Why" = "理由";
+"Deny" = "やめる";
+"Accept" = "許可";
 
 // Popup messages
 "Background_App_Refresh" = "Appのバックグラウンド更新";
@@ -96,12 +96,12 @@
 "Sources_Page" = "リポジトリ";
 "Packages_Page" = "パッケージ";
 "Search_Page" = "検索";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
+"Search_History" = "最近の検索";
+"Clear_Search_History" = "削除";
 "Refreshing_Sources_Page" = "リポジトリを更新中";
 "Package_Installed_Files_Page" = "インストール済みファイル";
 "Refresh" = "更新";
-"Remove" = "Remove";
+"Remove" = "削除";
 
 "All_Packages.Title" = "全てのパッケージ";
 "All_Packages.Cell_Subtitle" = "すべてのパッケージを表示";
@@ -155,7 +155,7 @@
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
 "Auto_Complete_Queue" = "オートコンプリートキュー";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "検索履歴を表示";
 "Auto_Confirm_Upgrade_All_Shortcut" = "すべてのアップデートを自動的に実行する3D touch ショートカット";
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canisterからのパッケージを表示";
@@ -182,19 +182,19 @@
 "System" = "システム";
 "Theme_Settings" = "テーマの設定";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "テーマの管理";
+"Create_Theme" = "テーマを作成";
+"Import_Themes" = "テーマをインポート";
+"Theme_Name" = "テーマの名称";
+"Export_Themes" = "テーマをエクスポート";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "背景色";
+"Secondary_Background_Color" = "第二背景色";
+"Label_Color" = "ラベルの色";
+"Highlight_Color" = "強調表示の色";
+"Seperator_Color" = "セパレータの色";
+"Header_Color" = "ヘッダーの色";
+"Banner_Color" = "バナーの色";
 
 
 "Cydia_Sign_In" = "Cydia Store へサインイン";
@@ -235,12 +235,12 @@
 // Depcitions
 "View_Depiction" = "詳細を見る";
 
-"Copy_ID" = "Copy ID";
-"Canister_Policy" = "Canister Privacy Policy";
-"Download_Analytics" = "Download Analytics";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
-"Change_Later" = "You can always change your choice later.";
-"Whats_Collected" = "What's Collected";
-"Non_Identifying" = "Only package and non-identifying device information is collected.";
-"Privacy_Policy" = "Privacy Policy";
+"Copy_ID" = "IDをコピー";
+"Canister_Policy" = "Canisterのプライバシーポリシー";
+"Download_Analytics" = "分析結果をダウンロード";
+"Provided_Canister" = "Canisterによって提供されました";
+"Data_Collected" = "収集されたデータは、注目のページや様々な推奨情報源の更新に使用されます。";
+"Change_Later" = "後で変更することもできます。";
+"Whats_Collected" = "収集されたもの";
+"Non_Identifying" = "パッケージの情報とデバイスを特定できない情報のみが収集されます。";
+"Privacy_Policy" = "プライバシーポリシー";
