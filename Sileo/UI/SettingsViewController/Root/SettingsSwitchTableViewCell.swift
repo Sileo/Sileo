@@ -31,9 +31,14 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         
         self.backgroundColor = .clear
         self.selectionStyle = .none
+        
+        amyPogLabel.numberOfLines = 0
+        amyPogLabel.adjustsFontForContentSizeCategory = true
+        amyPogLabel.lineBreakMode = .byWordWrapping
         amyPogLabel.textColor = .tintColor
+        
         control.onTintColor = .tintColor
-        amyPogLabel.adjustsFontSizeToFitWidth = true
+        
         self.contentView.addSubview(control)
         self.contentView.addSubview(amyPogLabel)
         
@@ -47,15 +52,15 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         amyPogLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         control.leadingAnchor.constraint(equalTo: amyPogLabel.trailingAnchor, constant: 5).isActive = true
         control.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
-        amyPogLabel.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
-        amyPogLabel.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
-        amyPogLabel.setContentCompressionResistancePriority(UILayoutPriority(749), for: .horizontal)
-
+        amyPogLabel.setContentHuggingPriority(.required, for: .vertical)
+        amyPogLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateSileoColors),
                                                name: SileoThemeManager.sileoChangedThemeNotification,
                                                object: nil)
     }
+
     
     @objc public func didChange(sender: UISwitch!) {
         if let key = defaultKey {
@@ -82,5 +87,51 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     @objc private func updateSileoColors() {
         amyPogLabel.textColor = .tintColor
         control.onTintColor = .tintColor
+    }
+}
+
+class SettingsLabelTableViewCell: UITableViewCell {
+    
+    public var amyPogLabel: UILabel = UILabel()
+    public var detailLabel: UILabel = UILabel()
+    
+    var viewControllerForPresentation: UIViewController?
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        
+        amyPogLabel.numberOfLines = 0
+        amyPogLabel.adjustsFontForContentSizeCategory = true
+        amyPogLabel.lineBreakMode = .byWordWrapping
+        amyPogLabel.textColor = .tintColor
+        
+        detailLabel.numberOfLines = 1
+        detailLabel.textColor = .gray
+        
+        contentView.addSubview(amyPogLabel)
+        contentView.addSubview(detailLabel)
+        
+        amyPogLabel.translatesAutoresizingMaskIntoConstraints = false
+        amyPogLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        amyPogLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        amyPogLabel.setContentHuggingPriority(.required, for: .vertical)
+        amyPogLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        
+        detailLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        detailLabel.setContentHuggingPriority(.required, for: .vertical)
+        detailLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+    }
+
+    @objc private func updateSileoColors() {
+        amyPogLabel.textColor = .tintColor
     }
 }

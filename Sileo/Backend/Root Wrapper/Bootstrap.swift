@@ -11,50 +11,26 @@ import Foundation
 enum Bootstrap: String, Codable {
         
     static let procursus_rootless = URL(fileURLWithPath: "/var/jb/.procursus_strapped").exists
-    static let procursus_rootful = URL(fileURLWithPath: "/.procursus_strapped").exists
+    static let procursus_real = URL(fileURLWithPath: "\(CommandPath.prefix)/.procursus_strapped").exists
+    static let chimera_real = URL(fileURLWithPath: "/etc/apt/sources.list.d/chimera.sources").exists
     
-    case procursus = "Procursus"
-    case elucubratus = "Bingner/Elucubratus"
-    
-    case xinaa15_strap = "Procursus/Xina"
-    case electra_strap = "Electra/Chimera"
-    case other_strap = "Unknown Bootstrap"
+    // Not including the electra strap as it's merely the exact same as elucubratus
+    case procursus =        "Procursus"
+    case elucubratus =      "Bingner/Elucubratus"
+    case chimera =          "Chimera Strap"
+    case unknown =          "Unknown Bootstrap (or simulated)"
     
     init(jailbreak: Jailbreak) {
-        switch jailbreak {
-            
-        case .electra:
-            self = .electra_strap
-            
-        case .chimera:
-            if Bootstrap.procursus_rootful {
-                self = .procursus
-            } else {
-                self = .electra_strap
-            }
-            
-        case .unc0ver:
-            self = .elucubratus
-            
-        case .checkra1n:
-            self = .elucubratus
-            
-        case .odysseyra1n, .taurine, .odyssey:
+    #if !targetEnvironment(simulator)
+        if #available(iOS 12.0, *), Bootstrap.procursus_real {
             self = .procursus
-            
-        case .palera1n_legacy, .palera1n_rootful, .palera1n_rootless, .bakera1n_rootful, .bakera1n_rootless:
-            if Bootstrap.procursus_rootful || Bootstrap.procursus_rootless {
-                self = .procursus
-            } else {
-                self = .other_strap
-            }
-            
-        case .xina15:
-            self = .xinaa15_strap
-            
-        default:
-            self = .other_strap
+        }   else if #available(iOS 12.0, *), Bootstrap.chimera_real {
+            self = .chimera
+        } else {
+            self = .elucubratus
         }
+    #else
+        self = .unknown
+    #endif
     }
-    
 }

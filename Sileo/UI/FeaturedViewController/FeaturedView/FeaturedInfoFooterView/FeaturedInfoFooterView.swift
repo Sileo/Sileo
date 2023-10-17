@@ -26,12 +26,13 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         let systemVersion = UIDevice.current.systemVersion
         var systemPlatform = "iOS"
         
+        let Rootless: Bool = !CommandPath.prefix.isEmpty
+        
         if #available(iOS 13.0, *) {
             if UIDevice.current.userInterfaceIdiom == .pad {
                 systemPlatform = "iPadOS"
             }
         }
-        
         if sileoVersion == "Unknown" {
             if let sileoVersionBundle = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 sileoVersion = sileoVersionBundle
@@ -40,7 +41,10 @@ class FeaturedInfoFooterView: FeaturedBaseView {
             }
         }
 
-        label.text = "\(platform) • \(systemPlatform) \(systemVersion) • Sileo \(sileoVersion)\n\(Jailbreak.current.rawValue) • \(Jailbreak.bootstrap.rawValue)"
+        label.text =    """
+                        \(platform) • \(systemPlatform) \(systemVersion) • Sileo \(sileoVersion)
+                        \(Jailbreak.current.rawValue) • \(Jailbreak.bootstrap.rawValue) \(Rootless ? "(Rootless)" : "")
+                        """
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         label.numberOfLines = 3
