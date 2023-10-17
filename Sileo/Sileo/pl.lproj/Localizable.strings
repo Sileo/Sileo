@@ -12,7 +12,7 @@
 "About" = "O Sileo";
 "Close" = "Zamknij";
 "Double tap to open." = "Dotknij dwukrotnie aby otworzyć.";
-"Untitled_Repo" = "Repozytorium Bez Nazwy";
+"Untitled_Repo" = "Repozytorium bez nazwy";
 "OK" = "OK";
 "Done" = "Gotowe";
 "Done_Editing" = "Gotowe";
@@ -31,7 +31,7 @@
 "Accept" = "Zaakceptuj";
 
 // Popup messages
-"Background_App_Refresh" = "Odświeżanie Aplikacji w Tle";
+"Background_App_Refresh" = "Odświeżanie aplikacji w tle";
 "Background_App_Refresh_Message" = "Dla najlepszego i najszybszego doświadczenia z użytkowania zalecane jest włączenie odświeżania aplikacji w tle. Możesz wtedy otrzymywać powiadomienia o dostępnych aktualizacjach!";
 "Upgrade_All_Shortcut_Processing_Message" = "Odświeżam wszystkie źródła i aktualizuję wszystkie pakiety...";
 
@@ -47,8 +47,8 @@
 "Essential_Warning" = "Te paczki są wymagane: %@\n Usunięcie ich może spowodować nieodwracalne zmiany, co może skutkować koniecznością odtworzenia urządzenia. Kontynuuj tylko jeżeli jesteś pewien, że wiesz, co robisz.";
 
 "Queue_Confirm_Button" = "Potwierdź";
-"Queue_Clear_Button" = "Wyczyść Kolejkę";
-"Queue_Cancel_Downloads" = "Anuluj Pobieranie";
+"Queue_Clear_Button" = "Wyczyść kolejkę";
+"Queue_Cancel_Downloads" = "Anuluj pobieranie";
 
 "Package_Upgrade_Action" = "Aktualizuj";
 "Package_Reinstall_Action" = "Przeinstaluj";
@@ -59,8 +59,8 @@
 "Package_Cancel_Action" = "Anuluj";
 "Package_Paid" = "Płatne";
 
-"Package_Share_Action" = "Udostępnij Pakiet…";
-"Package_Developer_Find_Action" = "Więcej od tego Dewelopera";
+"Package_Share_Action" = "Udostępnij pakiet…";
+"Package_Developer_Find_Action" = "Więcej od tego dewelopera";
 "Package_Support_Action" = "Wsparcie";
 "Package_Hold_Enable_Action" = "Ignoruj przyszłe aktualizacje";
 "Package_Hold_Disable_Action" = "Przestań ignorować aktualizacje";
