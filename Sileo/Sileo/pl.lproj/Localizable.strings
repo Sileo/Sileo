@@ -44,7 +44,7 @@
 "Download_Starting" = "Uruchamiam…";
 "Download_Progress" = "%@ z %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "Te paczki są wymagane: %@\n Usunięcie ich może spowodować nieodwracalne zmiany, co może skutkować koniecznością odtworzenia urządzenia. Kontynuuj tylko jeżeli jesteś pewien, że wiesz, co robisz.";
+"Essential_Warning" = "Te pakiety są wymagane: %@\n Usunięcie ich może spowodować nieodwracalne problemy z funkcjonowaniem urządzenia, co może skutkować koniecznością jego odtworzenia. Kontynuuj tylko, jeżeli jesteś pewien, że wiesz, co robisz.";
 
 "Queue_Confirm_Button" = "Potwierdź";
 "Queue_Clear_Button" = "Wyczyść kolejkę";
@@ -103,7 +103,7 @@
 "Refresh" = "Odśwież";
 "Remove" = "Usuń";
 
-"All_Packages.Title" = "Wszsytkie pakiety";
+"All_Packages.Title" = "Wszystkie pakiety";
 "All_Packages.Cell_Subtitle" = "Pokaż wszystkie pakiety ze swoich źródeł";
 
 "All_Categories" = "Wszystkie kategorie";
