@@ -148,7 +148,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
     }
-
     
     func presentPopupController() {
         self.presentPopupController(completion: nil)

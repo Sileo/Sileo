@@ -45,13 +45,14 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         amyPogLabel.translatesAutoresizingMaskIntoConstraints = false
         control.translatesAutoresizingMaskIntoConstraints = false
         
-        control.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        amyPogLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         control.addTarget(self, action: #selector(self.didChange(sender:)), for: .valueChanged)
         
-        amyPogLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        amyPogLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        amyPogLabel.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor).isActive = true
+        amyPogLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant: -55).isActive = true
+        control.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         control.leadingAnchor.constraint(equalTo: amyPogLabel.trailingAnchor, constant: 5).isActive = true
-        control.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
+        control.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         amyPogLabel.setContentHuggingPriority(.required, for: .vertical)
         amyPogLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         
