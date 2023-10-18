@@ -10,7 +10,7 @@ import Alderis
 import UIKit
 import Evander
 
-class SettingsViewController: BaseSettingsViewController, ThemeSelected {
+class SettingsViewController: BaseSettingsViewController, ThemeSelected, UIColorPickerViewControllerDelegate {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
     private var hasLoadedOnce: Bool = false
@@ -346,7 +346,15 @@ extension SettingsViewController { // UITableViewDataSource
             colorPickerViewController.delegate = self
             colorPickerViewController.supportsAlpha = false
             colorPickerViewController.selectedColor = .tintColor
-            self.present(colorPickerViewController, animated: true)
+            
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+            colorPickerViewController.navigationItem.rightBarButtonItem = doneButton
+            
+            let navigationController = UINavigationController(rootViewController: colorPickerViewController)
+            navigationController.modalPresentationStyle = .formSheet
+            navigationController.view.backgroundColor = UIColor.sileoBackgroundColor
+            colorPickerViewController.preferredContentSize = CGSize(width: 320, height: 480)
+            self.present(navigationController, animated: true)
         } else {
             let colorPickerViewController = ColorPickerViewController()
             colorPickerViewController.delegate = self
@@ -361,6 +369,20 @@ extension SettingsViewController { // UITableViewDataSource
         }
         
     }
+    
+    @available(iOS 14.0, *)
+    @objc func doneButtonTapped() {
+        if let colorPickerViewController = presentedViewController as? UINavigationController,
+           let picker = colorPickerViewController.viewControllers.first as? UIColorPickerViewController {
+            let selectedColor = picker.selectedColor
+            SileoThemeManager.shared.setTintColor(selectedColor)
+        
+            colorPickerViewController.dismiss(animated: true, completion: nil)
+        }
+    }
+
+
+
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 1 {
@@ -387,11 +409,3 @@ extension SettingsViewController: ColorPickerDelegate {
     }
 }
 
-@available(iOS 14.0, *)
-extension SettingsViewController: UIColorPickerViewControllerDelegate {
-
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        SileoThemeManager.shared.setTintColor(viewController.selectedColor)
-    }
-    
-}
