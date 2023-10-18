@@ -347,7 +347,7 @@ extension SettingsViewController { // UITableViewDataSource
             colorPickerViewController.supportsAlpha = false
             colorPickerViewController.selectedColor = .tintColor
             
-            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(colorpickerDone))
             colorPickerViewController.navigationItem.rightBarButtonItem = doneButton
             
             let navigationController = UINavigationController(rootViewController: colorPickerViewController)
@@ -371,7 +371,7 @@ extension SettingsViewController { // UITableViewDataSource
     }
     
     @available(iOS 14.0, *)
-    @objc func doneButtonTapped() {
+    @objc func colorpickerDone() {
         if let colorPickerViewController = presentedViewController as? UINavigationController,
            let picker = colorPickerViewController.viewControllers.first as? UIColorPickerViewController {
             let selectedColor = picker.selectedColor
