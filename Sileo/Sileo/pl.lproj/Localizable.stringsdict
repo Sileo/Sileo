@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Pakiet</string>
+        <string>%d pakiet</string>
         <key>few</key>
-        <string>%d Pakiety</string>
+        <string>%d pakiety</string>
         <key>many</key>
-        <string>%d Pakietów</string>
+        <string>%d pakietów</string>
         <key>other</key>
-        <string>%d Pakietów</string>
+        <string>%d pakietów</string>
       </dict>
     </dict>
   </dict>
