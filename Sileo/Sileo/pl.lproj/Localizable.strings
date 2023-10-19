@@ -68,7 +68,7 @@
 "Package_Wishlist_Remove" = "Usuń z listy życzeń";
 "Wishlist" = "Lista życzeń";
 
-"No_New_Packages" = "Brak Nowych Pakietów";
+"No_New_Packages" = "Brak nowych pakietów";
 "News_Check_Later" = "Nie zindeksowano nowych pakietów. Wróć tu za parę godzin, a zobaczysz jak nowe pakiety pojawiają się wraz z aktualizacją repozytoriów.";
 
 // Headings for sections in the queue/status popup.
@@ -133,10 +133,10 @@
 "Package_No_Description_Available" = "Ten pakiet nie ma dostępnego opisu.";
 "Package_Changelogs_Unavailable" = "Ten pakiet nie ma dostępnej historii zmian.";
 
-"Installed_Package_Header" = "Zainstalowany Pakiet";
-"Installed_Packages" = "Zainstalowane Pakiety";
+"Installed_Package_Header" = "Zainstalowany pakiet";
+"Installed_Packages" = "Zainstalowane pakiety";
 "Version" = "Wersja";
-"Show_Package_Contents_Button" = "Pokaż Zawartość Pakietu";
+"Show_Package_Contents_Button" = "Pokaż zawartość pakietu";
 
 "Licenses_Page_Title" = "Licencje";
 "Alternate_Icon_Title" = "Alternatywne ikony";
@@ -152,15 +152,15 @@
 "Settings_Page_Title" = "Ustawienia";
 "Dark_Mode_Toggle" = "Ciemny motyw";
 "Theme" = "Motyw";
-"Tint_Color" = "Odcień Koloru";
-"Reset_Tint_Color" = "Zresetuj Odcień Koloru";
+"Tint_Color" = "Odcień koloru";
+"Reset_Tint_Color" = "Zresetuj odcień koloru";
 "Auto_Complete_Queue" = "Automatycznie Ukończ Kolejkę";
 "Show_Search_History" = "Pokaż historię wyszukiwania";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Skrót automatycznego potwierdzania \"Zaaktualizuj wszystko\"";
 "Swipe_Actions" = "Gesty";
-"Show_Provisional" = "Pokaż Pakiety z Canister";
-"Show_Ignored_Updates" = "Pokaż Ignorowane Aktualizacje";
-"Developer_Mode" = "Tryb Dewelopera";
+"Show_Provisional" = "Pokaż pakiety z Canister";
+"Show_Ignored_Updates" = "Pokaż ignorowane aktualizacje";
+"Developer_Mode" = "Tryb deweloperski";
 "Pog_Developer" = "Jesteś teraz deweloperem!";
 "Developer_Mode_Explain" = "Tryb deweloperski wyłącza wymóg HTTPS przez API płatności.";
 "Auto_Refresh_Sources" = "Automatycznie odświeżaj źródła";
@@ -178,7 +178,7 @@
 
 "Sileo_Light" = "Jasne Sileo";
 "Sileo_Dark" = "Ciemne Sileo";
-"Sileo_Adaptive" = "Automatyczny Motyw Sileo";
+"Sileo_Adaptive" = "Automatyczny motyw Sileo";
 "System" = "System";
 "Theme_Settings" = "Ustawienia motywu";
 
@@ -218,16 +218,16 @@
 
 "Dangerous_Repo.Title" = "Niebezpieczne repozytorium";
 "Dangerous_Repo.Body" = "Probójesz dodać repozytorium które jest szkoliwe ze względu na piractwo, nielegalną zawartość lub szkodliwe oprogramowanie.\n\nRepozytoria oznaczone jako szkodliwe dystrybuują oprogramowanie z nieoczekiwanymi rezultatami, w formie płatnych paczek dostępnych za darmo, lub innych szkodliwych paczek. Mogą one mieć zły wpływ na twoje urządzenie jak i prywatność, a także uniemożliwić ci dalsze korzystanie z jailbreak. Rekomendujemy abyś zachował szczególną ostrożność by uniknąć problemów.";
-"Dangerous_Repo.Continue" = "Akceptuje ryzyko, kontynuuj";
+"Dangerous_Repo.Continue" = "Akceptuję ryzyko, kontynuuj";
 "Dangerous_Repo.Cancel" = "Anuluj dodawanie repozytorium";
 "Dangerous_Repo.Last_Chance.Title" = "Dodać niebezpieczne repozytorium?";
-"Dangerous_Repo.Last_Chance.Body" = "Niebezpieczne repozytoria mogą powodować dewastujące efekty na twoim urządzeniu lub uniemożliwić dalsze korzystanie z jailbreak. Rekomendujemy abyś anulował tą czynność dla swojego bezpieczeństwa. Jesteś pewnien że chcesz dodać %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Niebezpieczne repozytoria mogą powodować dewastujące efekty na twoim urządzeniu lub uniemożliwić dalsze korzystanie z jailbreak. Rekomendujemy, abyś anulował tę czynność dla swojego bezpieczeństwa. Jesteś pewien, że chcesz dodać %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Kontynuuj";
 "Dangerous_Repo.Last_Chance.Cancel" = "Wróć";
 
 // All export-based strings
 "Export" = "Eksportuj";
-"Export_Packages" = "Czy chcesz eksportować listę paczek? To skopiuje nazwy paczek, oraz ich wersje, do schowka.";
+"Export_Packages" = "Czy chcesz eksportować listę paczek? To skopiuje nazwy paczek oraz ich wersje do schowka.";
 "Export_Sources" = "Czy chcesz eksportować listę źródeł? To skopiuje adresy URL źródeł do schowka.";
 "Export_Yes" = "Tak, skopiuj.";
 "Export_No" = "Nie, anuluj.";
@@ -236,11 +236,11 @@
 "View_Depiction" = "Wyświetl opis";
 
 "Copy_ID" = "Kopiuj ID";
-"Canister_Policy" = "Polityka Prywatności Canister";
+"Canister_Policy" = "Polityka prywatności Canister";
 "Download_Analytics" = "Pobierz dane analityczne";
 "Provided_Canister" = "Dostarczone przez Canister";
 "Data_Collected" = "Zebrane dane są używane by zaaktualizować stronę wyróżnione, oraz do rekomendowania źródeł.";
 "Change_Later" = "Zawsze możesz zmienić swoją decyzję.";
 "Whats_Collected" = "Jakie dane zbieramy";
 "Non_Identifying" = "Gromadzone są jedynie dane o pakietach i nieidentyfikujące informacje.";
-"Privacy_Policy" = "Polityka Prywatności";
+"Privacy_Policy" = "Polityka prywatności";
