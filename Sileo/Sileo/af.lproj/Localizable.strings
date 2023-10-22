@@ -68,7 +68,7 @@
 "Package_Wishlist_Remove" = "Verwyder van Wenslys";
 "Wishlist" = "Wenslys";
 
-"No_New_Packages" = "Geen Nuwe Pakkette";
+"No_New_Packages" = "Geen Nuwe Pakkette nie";
 "News_Check_Later" = "Daar is nog geen nuwe pakkette geïndekseer nie. Kom terug oor 'n paar ure en U behoort te sien dat pakkette hier begin verskyn terwyl bewaarplekke opgedateer word.";
 
 // Headings for sections in the queue/status popup.
@@ -130,7 +130,7 @@
 
 "Package_Details_Tab" = "Besonderhede";
 "Package_Changelog_Tab" = "Veranderingslogboek";
-"Package_No_Description_Available" = "Geen besonderhede is beskikbaar vir hierdie pakket nie.";
+"Package_No_Description_Available" = "Geen beskrywing is beskikbaar vir hierdie pakket nie.";
 "Package_Changelogs_Unavailable" = "Veranderingslogboeke is nie beskikbaar vir hierdie pakket nie.";
 
 "Installed_Package_Header" = "Geïnstalleerde Pakket";
@@ -221,26 +221,26 @@
 "Dangerous_Repo.Continue" = "Ek aanvaar die risiko's, gaan voort";
 "Dangerous_Repo.Cancel" = "Neem my terug na veiligheid";
 "Dangerous_Repo.Last_Chance.Title" = "Voeg Skadelike Bewaarplek By?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
-"Dangerous_Repo.Last_Chance.Continue" = "Continue";
-"Dangerous_Repo.Last_Chance.Cancel" = "Go back";
+"Dangerous_Repo.Last_Chance.Body" = "Gevaarlike bewaarplekke kan verwoestende nagevolge hê op U vermoë om U toestel te gebruik of jailbreak. Ons beveel sterk aan dat U teruggaan vir U eie veiligheid. Is U seker U wil %@ bywoeg?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Continue" = "Gaan voort";
+"Dangerous_Repo.Last_Chance.Cancel" = "Gaan terug";
 
 // All export-based strings
-"Export" = "Export";
-"Export_Packages" = "Would you like to export your packages list? This will copy all package names and their versions to your clipboard.";
-"Export_Sources" = "Would you like to export your source list? This will copy all source URLs to your clipboard.";
-"Export_Yes" = "Yes, copy.";
-"Export_No" = "No, cancel.";
+"Export" = "Voer Uit";
+"Export_Packages" = "Wil U U pakkettelys uitvoer? Dit sal alle pakketname en hul weergawes na U knipbord kopieer.";
+"Export_Sources" = "Wil U U bronnelys uitvoer? Dit sal alle bron-URL'e na U knipbord kopieer.";
+"Export_Yes" = "Ja, kopieer.";
+"Export_No" = "Nee, kanselleer.";
 
 // Depcitions
-"View_Depiction" = "View Depiction";
+"View_Depiction" = "Wys Uitbeelding";
 
-"Copy_ID" = "Copy ID";
-"Canister_Policy" = "Canister Privacy Policy";
-"Download_Analytics" = "Download Analytics";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
-"Change_Later" = "You can always change your choice later.";
-"Whats_Collected" = "What's Collected";
-"Non_Identifying" = "Only package and non-identifying device information is collected.";
-"Privacy_Policy" = "Privacy Policy";
+"Copy_ID" = "Kopieer ID";
+"Canister_Policy" = "Canister Privaatheidsbeeld";
+"Download_Analytics" = "Laai Analise Af";
+"Provided_Canister" = "Verskaf deur Canister";
+"Data_Collected" = "Data wat ingesamel word, word gebruik om die uitgestalde bladsy en verskeie aanbevelingsbronne op te dateer.";
+"Change_Later" = "U kan altyd U keuse later verander.";
+"Whats_Collected" = "Wat Word Versamel";
+"Non_Identifying" = "Slegs pakket- en nie-identifiserende toestelinligting word ingesamel.";
+"Privacy_Policy" = "Privaatheidsbeleid";
