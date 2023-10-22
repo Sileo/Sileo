@@ -37,7 +37,7 @@
     <key>Auto_Add_Pasteboard_Sources.Body_Intro</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>Voeg die volgende %#@urls@ by wat op jou plakbord gevind is:</string>
+      <string>Voeg die volgende %#@urls@ by wat op U plakbord gevind is:</string>
       <key>urls</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
