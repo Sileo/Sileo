@@ -13,7 +13,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Bron</string>
         <key>other</key>
         <string>Bronne</string>
       </dict>
@@ -29,7 +29,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lu</string>
         <key>one</key>
-        <string>Source</string>
+        <string>Bron</string>
         <key>other</key>
         <string>Bronne</string>
       </dict>
