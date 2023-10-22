@@ -21,124 +21,124 @@
 "Share" = "Deel";
 "Delete" = "Skraap";
 "Cancel" = "Kanselleer";
-"Acknowledge" = "Acknowledge";
-"Remove" = "Remove";
+"Acknowledge" = "Erken";
+"Remove" = "Verwyder";
 "Sileo_Team" = "Sileo Span";
 "Warning" = "Waarskuwing";
-"Edit" = "Edit";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Edit" = "Verwyder";
+"Why" = "Hoekom";
+"Deny" = "Ontken";
+"Accept" = "Aanvaar";
 
 // Popup messages
-"Background_App_Refresh" = "Background App Refresh";
-"Background_App_Refresh_Message" = "For the best and fastest experience, it is recommended to enable background app refresh. You can also get notifications when your tweaks are updated!";
-"Upgrade_All_Shortcut_Processing_Message" = "Refreshing all sources and upgrading all packages...";
+"Background_App_Refresh" = "Agtergrondprogramverversing";
+"Background_App_Refresh_Message" = "Vir die beste en vinnigste ervaring, word dit aanbeveel om agtergrondprogramverversing te aktiveer. Jy kan ook kennisgewings ontvang wanneer jou tweaks opgedateer word!";
+"Upgrade_All_Shortcut_Processing_Message" = "Verfris tans alle bronne en gradeer alle pakkette op...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
-"Installing_Package_Status" = "Installing";
+"Installing_Package_Status" = "Instaleer";
 "Downloading_Package_Status" = "Aflaai";
-"Queued_Package_Status" = "Queued";
+"Queued_Package_Status" = "Tou gestaan";
 "Ready_Status" = "Gereed";
-"Removal_Queued_Package_Status" = "Queued for Removal";
-"Download_Starting" = "Starting…";
+"Removal_Queued_Package_Status" = "In die ry vir Verwydering";
+"Download_Starting" = "Begin…";
 "Download_Progress" = "%@ van %@"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "The following packages are listed as essential/required: %@\n Removing these could cause irreversible damage to your device and may require you to restore. Only continue if you are certain you know what you're doing.";
+"Essential_Warning" = "Die volgende pakkette is gelys as noodsaaklik/vereis gelys: %@\n Die verwydering hiervan kan onomkeerbare skade aan jou toestel veroorsaak en kan vereis dat jy dit herstel. Gaan net voort as jy seker is dat jy weet wat jy doen.";
 
-"Queue_Confirm_Button" = "Confirm";
-"Queue_Clear_Button" = "Clear Queue";
-"Queue_Cancel_Downloads" = "Cancel Downloads";
+"Queue_Confirm_Button" = "Bevestig";
+"Queue_Clear_Button" = "Vee Lys uit";
+"Queue_Cancel_Downloads" = "Kanselleer Aflaaie";
 
 "Package_Upgrade_Action" = "Gradeer Op";
 "Package_Reinstall_Action" = "Herinstalleer";
-"Package_Uninstall_Action" = "Uninstall";
+"Package_Uninstall_Action" = "Verwyder";
 "Package_Modify_Action" = "Verander";
 "Package_Get_Action" = "Kry";
-"Package_Queue_Action" = "Queue";
+"Package_Queue_Action" = "Voeg by Tou";
 "Package_Cancel_Action" = "Kanselleer";
-"Package_Paid" = "Paid";
+"Package_Paid" = "Gebetaal";
 
-"Package_Share_Action" = "Share Package…";
-"Package_Developer_Find_Action" = "More by this Developer";
-"Package_Support_Action" = "Support";
-"Package_Hold_Enable_Action" = "Ignore Future Updates";
-"Package_Hold_Disable_Action" = "Stop Ignoring Updates";
-"Package_Wishlist_Add" = "Add to Wishlist";
-"Package_Wishlist_Remove" = "Remove from Wishlist";
-"Wishlist" = "Wishlist";
+"Package_Share_Action" = "Deel Pakket…";
+"Package_Developer_Find_Action" = "Meer deur hierdie Ontwikkelaar";
+"Package_Support_Action" = "Ondersteun";
+"Package_Hold_Enable_Action" = "Ignoreer Toekomstige Opdaterings";
+"Package_Hold_Disable_Action" = "Hou op om Toekomstige Opdaterings te Ignoreer";
+"Package_Wishlist_Add" = "Voeg by Wenslys";
+"Package_Wishlist_Remove" = "Verwyder van Wenslys";
+"Wishlist" = "Wenslys";
 
-"No_New_Packages" = "No New Packages";
-"News_Check_Later" = "There are no new packages indexed yet. Come back in a few hours and you should see packages start showing up here as repos get updated.";
+"No_New_Packages" = "Geen Nuwe Pakkette";
+"News_Check_Later" = "Daar is nog geen nuwe pakkette geïndekseer nie. Kom terug oor 'n paar ure en jy behoort te sien dat pakkette hier begin verskyn terwyl bewaarplekke opgedateer word.";
 
 // Headings for sections in the queue/status popup.
-"Queued_Install_Heading" = "Install";
-"Queued_Uninstall_Heading" = "Uninstall";
-"Queued_Update_Heading" = "Update";
-"Download_Errors_Heading" = "Errors";
+"Queued_Install_Heading" = "Installeer";
+"Queued_Uninstall_Heading" = "Verwyder";
+"Queued_Update_Heading" = "Opdateer";
+"Download_Errors_Heading" = "Foute";
 
-"Installed_Heading" = "Installed";
-"Updates_Heading" = "Updates";
-"Upgrade_All_Button" = "Upgrade All";
-"Package_Search.Placeholder" = "Search for Packages";
-"Sort_Name" = "Name";
-"Sort_Date" = "Date";
-"Sort_Install_Size" = "Installed Size";
-"Sort_By" = "Sort by:";
+"Installed_Heading" = "Geïnstalleer";
+"Updates_Heading" = "Opdaterings";
+"Upgrade_All_Button" = "Opgradeer Alles";
+"Package_Search.Placeholder" = "Soek vir Pakkette";
+"Sort_Name" = "Naam";
+"Sort_Date" = "Datum";
+"Sort_Install_Size" = "Geïnstalleerde Grootte";
+"Sort_By" = "Sorteer volgens:";
 
-"Package_Unavailable" = "Package Unavailable";
+"Package_Unavailable" = "Pakket Onbeskikbaar";
 "Package_By_Author" = "%@ by %@"; // first %@ = package name, second %@ = author name
 "By_Author" = "by %@"; // %@ = author name
-"Packages_By_Author" = "Packages by %@"; // %@ = author name
+"Packages_By_Author" = "Pakkette by %@"; // %@ = author name
 
-"Featured_Page" = "Featured";
-"News_Page" = "New";
-"Sources_Page" = "Sources";
-"Packages_Page" = "Packages";
-"Search_Page" = "Search";
-"Search_History" = "Recently Searched";
-"Clear_Search_History" = "Clear";
-"Refreshing_Sources_Page" = "Refreshing Sources";
-"Package_Installed_Files_Page" = "Installed Files";
-"Refresh" = "Refresh";
-"Remove" = "Remove";
+"Featured_Page" = "Uitgestal";
+"News_Page" = "Nuut";
+"Sources_Page" = "Bronne";
+"Packages_Page" = "Pakkette";
+"Search_Page" = "Soek";
+"Search_History" = "Onlangs Gesoek";
+"Clear_Search_History" = "Vee uit";
+"Refreshing_Sources_Page" = "Verfris Bronne";
+"Package_Installed_Files_Page" = "Geïnstalleerde lêers";
+"Refresh" = "Verfris";
+"Remove" = "Verwyder";
 
-"All_Packages.Title" = "All Packages";
-"All_Packages.Cell_Subtitle" = "See all packages from your sources";
+"All_Packages.Title" = "Alle Pakkette";
+"All_Packages.Cell_Subtitle" = "Sien alle pakkette uit jou bronne";
 
-"All_Categories" = "All Categories";
-"Internal_Repo" = "Internal Repos";
-"External_Repo" = "External Repos";
-"Ignored Updates" = "Ignored Updates";
+"All_Categories" = "Alle Kategorieë";
+"Internal_Repo" = "Interne Bewaarplekke";
+"External_Repo" = "Eksterne bewaarplekke";
+"Ignored Updates" = "Geïgnoreerde Opdaterings";
 
-"Repos" = "Repositories";
-"Repo" = "Repository";
+"Repos" = "Bewaarplekke";
+"Repo" = "Bewaarplek";
 
-"Add_Source.Title" = "Add Source";
-"Add_Source.Body" = "Add APT URL";
-"Add_Source.Button.Add" = "Add Source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Source.Title" = "Voeg Bron by";
+"Add_Source.Body" = "Voeg APT URL by";
+"Add_Source.Button.Add" = "Voeg Bron by";
+"Add_Dist_Repo" = "Voeg Verre Bewaarplek by";
+"Incorrect_Repo" = "%@ blyk nie 'n geldige repo te wees nie⁉️ Die repo mag dalk vanlyn wees of jy mag dit dalk verkeerd ingevoer het. Wil jy dit in elk geval byvoeg?";
 
-"Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
+"Auto_Add_Pasteboard_Sources.Button.Manual" = "Voer Handmatig in";
 
-"Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
-"Form_Submitted.Default_Body" = "The form was submitted successfully.";
+"Untitled_Form" = "Titellose Vorm";
+"Form_Submitted.Default_Title" = "Ingediende Vorm";
+"Form_Submitted.Default_Body" = "Die vorm is suksesvol ingedien.";
 
-"Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
+"Web_Depiction_Deprecated_Warning" = "Webaansig-uitbeeldings is afgekeer. Kontak asseblief die bewaarplekonderhouer oor opdatering na inheemse uitbeeldings.";
 
-"Package_Details_Tab" = "Details";
-"Package_Changelog_Tab" = "Changelog";
-"Package_No_Description_Available" = "No description is available for this package.";
-"Package_Changelogs_Unavailable" = "Changelogs are not available for this package.";
+"Package_Details_Tab" = "Besonderhede";
+"Package_Changelog_Tab" = "Veranderingslogboek";
+"Package_No_Description_Available" = "Geen besonderhede is beskikbaar vir hierdie pakket nie.";
+"Package_Changelogs_Unavailable" = "Veranderingslogboeke is nie beskikbaar vir hierdie pakket nie.";
 
-"Installed_Package_Header" = "Installed Package";
-"Installed_Packages" = "Installed Packages";
-"Version" = "Version";
-"Show_Package_Contents_Button" = "Show Package Contents";
+"Installed_Package_Header" = "Geïnstalleerde Pakket";
+"Installed_Packages" = "Geïnstalleerde Pakkette";
+"Version" = "Weergawe";
+"Show_Package_Contents_Button" = "Vys Pakketinhoud";
 
-"Licenses_Page_Title" = "Licenses";
+"Licenses_Page_Title" = "Lisensies";
 "Alternate_Icon_Title" = "Alternate Icons";
 
 "Settings_Payment_Provider_Heading" = "Payment Providers";
