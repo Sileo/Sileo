@@ -47,16 +47,16 @@ Herinstalleer asseblief Sileo met SSH.";
 "Invalid_Form_Data" = "Die bediener het ongeldige vormdata verskaf.";
 "Form_Submit_Failure" = "'n Fout het voorgekom tydens die poging om die vorm in te dien: %@";
 "Form_Submit_Error.Title" = "Kon Nie Vorm Indien Nie";
-"Form_Action_Host_Mismatch" = "The form action's URL host doesn't match the form's origin host.";
+"Form_Action_Host_Mismatch" = "Die vormaksie se URL-gasheer stem nie ooreen met die vorm se oorspronggasheer nie.";
 
 "Email_Unavailable.Title" = "Kon Nie E-pos Stuur Nie";
 "Email_Unavailable.Body" = "Posdienste is nie beskikbaar nie.";
 
 "Settings_Payment_Provider.Profile.Title" = "Kon Nie Profiel Laai Nie";
 
-"Provider_Auth_Fail.Title" = "Couldn't Authenticate Provider";
+"Provider_Auth_Fail.Title" = "Kon Nie Verskaffer Staaf Nie";
 "Purchase_Initiate_Fail.Title" = "Kon Nie Aankoop Begin Nie";
 "Purchase_Complete_Fail.Title" = "Kon Nie Aankoop Voltooi Nie";
-"Purchase_Auth_Complete_Fail.Title" = "Couldn't Complete Authentication";
+"Purchase_Auth_Complete_Fail.Title" = "Kon Nie Verskaffer Voltooi Nie";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Kon Nie Tema(s) Invoer Nie";
