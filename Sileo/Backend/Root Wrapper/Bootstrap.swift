@@ -21,7 +21,9 @@ enum Bootstrap: String, Codable {
     case unknown =          "Unknown Bootstrap (or simulated)"
     
     init(jailbreak: Jailbreak) {
-    #if !targetEnvironment(simulator)
+    #if TARGET_SANDBOX || targetEnvironment(simulator)
+        self = .unknown
+    #else
         if #available(iOS 12.0, *), Bootstrap.procursus_real {
             self = .procursus
         }   else if #available(iOS 12.0, *), Bootstrap.chimera_real {
@@ -29,8 +31,6 @@ enum Bootstrap: String, Codable {
         } else {
             self = .elucubratus
         }
-    #else
-        self = .unknown
     #endif
     }
 }
