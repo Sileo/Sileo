@@ -37,6 +37,7 @@ enum Jailbreak: String, Codable {
     case bakera1n_rootful =  "bakera1n • Rootful"
     
     /// Xina
+    case xina15_legacy =     "XinaA15 • Legacy"
     case xina15 =            "XinaA15"
     
     /// Fugu15
@@ -64,7 +65,7 @@ enum Jailbreak: String, Codable {
         
         .bakera1n, .bakera1n_rootful, .bakera1n_rootless,
         
-        .fugu15, .dopamine
+        .fugu15, .xina, .dopamine
     ]
     
     public var supportsUserspaceReboot: Bool {
@@ -82,7 +83,8 @@ enum Jailbreak: String, Codable {
         let palera1n = URL(fileURLWithPath: "/cores/jbloader")
         let palera1n_Legacy = URL(fileURLWithPath: "/jbin/post.sh")
         
-        let xina = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
+        let xina = URL(fileURLWithPath: "/var/jb/.installed_xina15")
+        let xina_Legacy = URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
         let fugu15_max = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
         let dopamine = URL(fileURLWithPath: "/var/jb/.installed_dopamine")
         
@@ -127,6 +129,10 @@ enum Jailbreak: String, Codable {
             // arm64e 15.0+ jailbreaks
         case xina.exists && arm64e:
             self = .xina15
+            return
+
+        case xina_Legacy.exists && arm64e:
+            self = .xina15_legacy
             return
             
         case fugu15_max.exists && arm64e:
