@@ -241,20 +241,6 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         self.reloadData()
         updateSileoColors()
     }
-    
-    private class func showXinaWarning() {
-        let alert = UIAlertController(title: "XinaA15 no longer supported", message: "XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Guide", style: .default) { _ in
-            UIApplication.shared.open(URL(string: "https://ios.cfw.guide/installing-fugu15max/")!)
-            exit(0)
-        })
-        alert.addAction(UIAlertAction(title: "Close", style: .destructive) { _ in
-            exit(0)
-        })
-        Thread.mainBlock {
-            TabBarController.singleton?.present(alert, animated: true)
-        }
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -264,10 +250,6 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         self.navigationController?.navigationBar._hidesShadow = true
-        
-        if Jailbreak.current == .xina15 {
-            Self.showXinaWarning()
-        }
         
         FRUIView.animate(withDuration: 0.2) {
             self.profileButton?.alpha = 1.0
