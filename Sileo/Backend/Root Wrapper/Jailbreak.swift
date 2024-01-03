@@ -27,6 +27,7 @@ enum Jailbreak: String, Codable {
     case xina15 =            "XinaA15"
     case fugu15 =            "Fugu15"
     case dopamine =          "Dopamine"
+    case nekojb =            "nekoJB"
     case mac =               "macOS"
     case other =             "Unknown Jailbreak"
     case simulator =         "Simulator"
@@ -67,6 +68,7 @@ enum Jailbreak: String, Codable {
         let xina =              URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
         let fugu15_max =        URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
         let dopamine =          URL(fileURLWithPath: "/var/jb/.installed_dopamine")
+        let nekojb =            URL(fileURLWithPath: "/var/jb/.installed_nekojb")
         let unc0ver =           URL(fileURLWithPath: "/.installed_unc0ver")
         let taurine =           URL(fileURLWithPath: "/taurine/jailbreakd")
         let odyssey =           URL(fileURLWithPath: "/odyssey/jailbreakd")
@@ -76,6 +78,7 @@ enum Jailbreak: String, Codable {
         let arm64e = Self.arch() == "arm64e"
         switch (true) {
         case xina.exists && arm64e:                 self = .xina15; return
+        case nekojb.exists:                         self = .nekojb; return
         case fugu15_max.exists && arm64e:           self = .fugu15; return
         case dopamine.exists:                       self = .dopamine; return
         case unc0ver.exists:                        self = .unc0ver; return
