@@ -133,14 +133,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             }
             return
         }
-        
-        popupLock.wait()
-        defer {
-            popupLock.signal()
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.popupLock.wait()
+            
+            DispatchQueue.main.async {
+                self.popupIsPresented = false
+                self.dismissPopupBar(animated: true) {
+                    self.popupLock.signal()
+                    if let completion = completion {
+                        completion()
+                    }
+                }
+            }
         }
-        
-        popupIsPresented = false
-        self.dismissPopupBar(animated: true, completion: completion)
     }
     
     func presentPopupController() {
@@ -276,7 +282,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.itemPositioning = .centered
         if UIDevice.current.userInterfaceIdiom == .pad {
-            self.updatePopup()
+            if self.view.frame.width >= 768 || UIDevice.current.orientation.isPortrait {
+                self.updatePopup()
+            }
         }
     }
     

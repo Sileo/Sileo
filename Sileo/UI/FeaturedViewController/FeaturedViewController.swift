@@ -241,6 +241,17 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         self.reloadData()
         updateSileoColors()
     }
+    
+    private class func showXinaWarning() {
+        let alert = UIAlertController(title: "XinaA15 (Legacy) is not supported", message: "The legacy version of XinaA15 is not supported by Sileo, as its environment makes it impossible for Sileo to support it in a functional manner.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Close", style: .destructive) { _ in
+            exit(0)
+        })
+        Thread.mainBlock {
+            TabBarController.singleton?.present(alert, animated: true)
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -250,6 +261,11 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         self.navigationController?.navigationBar._hidesShadow = true
+        
+
+        if Jailbreak.current == .xina15_legacy {
+            Self.showXinaWarning()
+        }
         
         FRUIView.animate(withDuration: 0.2) {
             self.profileButton?.alpha = 1.0

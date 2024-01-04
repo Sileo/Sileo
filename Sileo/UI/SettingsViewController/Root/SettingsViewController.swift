@@ -10,7 +10,7 @@ import Alderis
 import UIKit
 import Evander
 
-class SettingsViewController: BaseSettingsViewController, ThemeSelected {
+class SettingsViewController: BaseSettingsViewController, ThemeSelected, UIColorPickerViewControllerDelegate {
     private var authenticatedProviders: [PaymentProvider] = Array()
     private var unauthenticatedProviders: [PaymentProvider] = Array()
     private var hasLoadedOnce: Bool = false
@@ -129,6 +129,7 @@ extension SettingsViewController { // UITableViewDataSource
             }
             return UITableViewCell()
         case 1: // Translation Credit Section OR Settings section
+            let cell = SettingsLabelTableViewCell()
             switch indexPath.row {
             case 0:
                 let cell = ThemePickerCell(style: .default, reuseIdentifier: "SettingsCellIdentifier")
@@ -139,25 +140,22 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.subtitle.text = cell.values[cell.pickerView.selectedRow(inComponent: 0)]
                 cell.backgroundColor = .clear
                 cell.title.textColor = .tintColor
-                cell.subtitle.textColor = .tintColor
+                cell.subtitle.textColor = .gray
                 cell.pickerView.textColor = .sileoLabel
                 return cell
             case 1:
                 let cell = SettingsColorTableViewCell()
-                cell.textLabel?.text = String(localizationKey: "Tint_Color")
+                cell.amyPogLabel.text = String(localizationKey: "Tint_Color")
                 return cell
             case 2:
-                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "ResetTintCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Reset_Tint_Color")
+                cell.amyPogLabel.text = String(localizationKey: "Reset_Tint_Color")
                 return cell
             case 3:
-                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "AltIconCell")
-                cell.textLabel?.text = String(localizationKey: "Alternate_Icon_Title")
+                cell.amyPogLabel.text = String(localizationKey: "Alternate_Icon_Title")
                 cell.accessoryType = .disclosureIndicator
                 return cell
             case 4:
-                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "CreateTheme")
-                cell.textLabel?.text = String(localizationKey: "Manage_Themes")
+                cell.amyPogLabel.text = String(localizationKey: "Manage_Themes")
                 cell.accessoryType = .disclosureIndicator
                 return cell
             default:
@@ -194,16 +192,20 @@ extension SettingsViewController { // UITableViewDataSource
                 cell.defaultKey = "ShowSearchHistory"
                 cell.fallback = true
             case 7:
+                cell.amyPogLabel.text = String(localizationKey: "Show_Package_Count")
+                cell.defaultKey = "ShowPackageCount"
+                cell.fallback = true
+            case 8:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Show_Queue")
                 cell.fallback = true
                 cell.defaultKey = "UpgradeAllAutoQueue"
-            case 8:
+            case 9:
                 cell.amyPogLabel.text = String(localizationKey: "Always_Show_Install_Log")
                 cell.defaultKey = "AlwaysShowLog"
-            case 9:
+            case 10:
                 cell.amyPogLabel.text = String(localizationKey: "Auto_Confirm_Upgrade_All_Shortcut")
                 cell.defaultKey = "AutoConfirmUpgradeAllShortcut"
-            case 10:
+            case 11:
                 cell.amyPogLabel.text = String(localizationKey: "Developer_Mode")
                 cell.fallback = false
                 cell.defaultKey = "DeveloperMode"
@@ -213,30 +215,26 @@ extension SettingsViewController { // UITableViewDataSource
             }
             return cell
         case 3: // About section
+            let cell = SettingsLabelTableViewCell()
             switch indexPath.row {
             case 0:
-                let cell = self.reusableCell(withStyle: .value1, reuseIdentifier: "CacheSizeIdenitifer")
-                cell.textLabel?.text = String(localizationKey: "Cache_Size")
-                cell.detailTextLabel?.text = FileManager.default.sizeString(EvanderNetworking._cacheDirectory)
+                cell.amyPogLabel.text = String(localizationKey: "Cache_Size")
+                cell.detailLabel.text = FileManager.default.sizeString(EvanderNetworking._cacheDirectory)
                 return cell
             case 1:
-                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Sileo_Team")
+                cell.amyPogLabel.text = String(localizationKey: "Sileo_Team")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             case 2:
-                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Licenses_Page_Title")
+                cell.amyPogLabel.text = String(localizationKey: "Licenses_Page_Title")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             case 3:
-                let cell: UITableViewCell = self.reusableCell(withStyle: UITableViewCell.CellStyle.default, reuseIdentifier: "LicenseCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Language")
+                cell.amyPogLabel.text = String(localizationKey: "Language")
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             case 4:
-                let cell = self.reusableCell(withStyle: .default, reuseIdentifier: "LicenseCellIdentifier")
-                cell.textLabel?.text = String(localizationKey: "Canister_Policy")
+                cell.amyPogLabel.text = String(localizationKey: "Canister_Policy")
                 cell.accessoryType = .disclosureIndicator
                 return cell
             default:
@@ -348,7 +346,15 @@ extension SettingsViewController { // UITableViewDataSource
             colorPickerViewController.delegate = self
             colorPickerViewController.supportsAlpha = false
             colorPickerViewController.selectedColor = .tintColor
-            self.present(colorPickerViewController, animated: true)
+            
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(colorpickerDone))
+            colorPickerViewController.navigationItem.rightBarButtonItem = doneButton
+            
+            let navigationController = UINavigationController(rootViewController: colorPickerViewController)
+            navigationController.modalPresentationStyle = .formSheet
+            navigationController.view.backgroundColor = UIColor.sileoBackgroundColor
+            colorPickerViewController.preferredContentSize = CGSize(width: 320, height: 480)
+            self.present(navigationController, animated: true)
         } else {
             let colorPickerViewController = ColorPickerViewController()
             colorPickerViewController.delegate = self
@@ -363,6 +369,20 @@ extension SettingsViewController { // UITableViewDataSource
         }
         
     }
+    
+    @available(iOS 14.0, *)
+    @objc func colorpickerDone() {
+        if let colorPickerViewController = presentedViewController as? UINavigationController,
+           let picker = colorPickerViewController.viewControllers.first as? UIColorPickerViewController {
+            let selectedColor = picker.selectedColor
+            SileoThemeManager.shared.setTintColor(selectedColor)
+        
+            colorPickerViewController.dismiss(animated: true, completion: nil)
+        }
+    }
+
+
+
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 1 {
@@ -389,11 +409,3 @@ extension SettingsViewController: ColorPickerDelegate {
     }
 }
 
-@available(iOS 14.0, *)
-extension SettingsViewController: UIColorPickerViewControllerDelegate {
-
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        SileoThemeManager.shared.setTintColor(viewController.selectedColor)
-    }
-    
-}

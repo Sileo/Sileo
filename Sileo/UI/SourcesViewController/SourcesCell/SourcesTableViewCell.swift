@@ -11,8 +11,9 @@ import Evander
 
 class SourcesTableViewCell: BaseSubtitleTableViewCell {
     
-    static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
+    let showTotalPackages: Bool = UserDefaults.standard.bool(forKey: "ShowPackageCount", fallback: false)
     
+    static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
     public weak var repo: Repo? = nil {
         didSet {
             if let repo = repo {
@@ -20,13 +21,13 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.subtitle = repo.displayURL
                 self.progress = repo.totalProgress
                 self.image(repo)
-                installedLabel.text = "\(repo.installed?.count ?? 0)"
+                installedLabel.text = "\(showTotalPackages ? repo.packageArray.count : repo.installed?.count ?? 0)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
                 self.icon = UIImage(named: "All Packages")
                 self.progress = 0
-                installedLabel.text = "\(PackageListManager.shared.installedPackages.count)"
+                installedLabel.text = "\(showTotalPackages ? PackageListManager.shared.allPackagesArray.count : PackageListManager.shared.installedPackages.count)"
             }
         }
     }
@@ -35,14 +36,19 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        accessoryView = UIImageView(image: UIImage(named: "Chevron"))
+        if let image = UIImage(named: "Chevron") {
+            let imageView = UIImageView(image: image)
+            imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = UIColor(red: 105.0/255.0, green: 115.0/255.0, blue: 122.0/255.0, alpha: 1)
+            accessoryView = imageView
+        }
         
         contentView.addSubview(installedLabel)
         installedLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.trailingAnchor.constraint(equalTo: installedLabel.trailingAnchor, constant: 7.5).isActive = true
         installedLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         installedLabel.font = UIFont.systemFont(ofSize: 12)
-        installedLabel.textColor = UIColor(red: 145.0/255.0, green: 155.0/255.0, blue: 162.0/255.0, alpha: 1)
+        installedLabel.textColor = UIColor(red: 125.0/255.0, green: 135.0/255.0, blue: 142.0/255.0, alpha: 1)
     }
     
     required public init?(coder aDecoder: NSCoder) {

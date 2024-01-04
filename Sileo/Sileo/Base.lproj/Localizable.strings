@@ -98,6 +98,7 @@
 "Search_Page" = "Search";
 "Search_History" = "Recently Searched";
 "Clear_Search_History" = "Clear";
+"Show_Package_Count" = "Show Package Count for Sources";
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
 "Refresh" = "Refresh";

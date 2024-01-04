@@ -822,7 +822,7 @@ extension PackageListViewController: UISearchResultsUpdating {
             let packageManager = PackageListManager.shared
             var packages: [Package] = []
 
-            self.showUpdates = query.isEmpty
+            //self.showUpdates = query.isEmpty // Bug that shows "Installed" in repo sections
             
             if let cachedPackages = self.searchCache[query.lowercased()] {
                 packages = cachedPackages
