@@ -25,6 +25,7 @@ enum Jailbreak: String, Codable {
     case palera1n_legacy =   "palera1n (Legacy)"
     case bakera1n =          "bakera1n"
     case xina15 =            "XinaA15"
+    case xina15_legacy =     "XinaA15 (Legacy)"
     case fugu15 =            "Fugu15"
     case dopamine =          "Dopamine"
     case nekojb =            "nekoJB"
@@ -52,7 +53,8 @@ enum Jailbreak: String, Codable {
         .palera1n_legacy,
         .bakera1n,
         .fugu15,
-        .dopamine
+        .dopamine,
+        .xina15
     ]
     
     public var supportsUserspaceReboot: Bool {
@@ -65,7 +67,8 @@ enum Jailbreak: String, Codable {
         let bakera1n =          URL(fileURLWithPath: "/cores/binpack/.installed_overlay")
         let palera1n =          URL(fileURLWithPath: "/cores/jbloader")
         let palera1n_Legacy =   URL(fileURLWithPath: "/jbin/post.sh")
-        let xina =              URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
+        let xina =              URL(fileURLWithPath: "/var/jb/.installed_xina15")
+        let xina_Legacy =       URL(fileURLWithPath: "/var/Liy/.procursus_strapped")
         let fugu15_max =        URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
         let dopamine =          URL(fileURLWithPath: "/var/jb/.installed_dopamine")
         let nekojb =            URL(fileURLWithPath: "/var/jb/.installed_nekojb")
@@ -78,6 +81,7 @@ enum Jailbreak: String, Codable {
         let arm64e = Self.arch() == "arm64e"
         switch (true) {
         case xina.exists && arm64e:                 self = .xina15; return
+        case xina_Legacy.exists && arm64e:          self = .xina15_legacy; return
         case nekojb.exists:                         self = .nekojb; return
         case fugu15_max.exists && arm64e:           self = .fugu15; return
         case dopamine.exists:                       self = .dopamine; return
