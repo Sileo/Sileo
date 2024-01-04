@@ -80,6 +80,7 @@ enum Jailbreak: String, Codable {
         
         let arm64e = Self.arch() == "arm64e"
         switch (true) {
+
         case xina.exists && arm64e:                 self = .xina15; return
         case xina_Legacy.exists && arm64e:          self = .xina15_legacy; return
         case nekojb.exists:                         self = .nekojb; return
@@ -94,6 +95,7 @@ enum Jailbreak: String, Codable {
         case bakera1n.exists && !arm64e:            self = .bakera1n; return
         case palera1n.exists && !arm64e:            self = .palera1n; return
         case palera1n_Legacy.exists && !arm64e:     self = .palera1n_legacy; return
+
         default:
             #if targetEnvironment(macCatalyst)
             self = .mac; return

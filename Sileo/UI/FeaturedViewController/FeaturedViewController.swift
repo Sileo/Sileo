@@ -262,6 +262,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
         self.navigationController?.navigationBar.superview?.tag = WHITE_BLUR_TAG
         self.navigationController?.navigationBar._hidesShadow = true
         
+
         if Jailbreak.current == .xina15_legacy {
             Self.showXinaWarning()
         }
