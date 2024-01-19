@@ -28,7 +28,7 @@
 "Edit" = "Edytuj";
 "Why" = "Dlaczego";
 "Deny" = "Odmów";
-"Accept" = "Zaakceptuj";
+"Accept" = "Udostępniaj";
 
 // Popup messages
 "Background_App_Refresh" = "Odświeżanie aplikacji w tle";
@@ -51,7 +51,7 @@
 "Queue_Cancel_Downloads" = "Anuluj pobieranie";
 
 "Package_Upgrade_Action" = "Aktualizuj";
-"Package_Reinstall_Action" = "Przeinstaluj";
+"Package_Reinstall_Action" = "Reinstaluj";
 "Package_Uninstall_Action" = "Odinstaluj";
 "Package_Modify_Action" = "Modyfikuj";
 "Package_Get_Action" = "Pobierz";
@@ -59,8 +59,8 @@
 "Package_Cancel_Action" = "Anuluj";
 "Package_Paid" = "Płatne";
 
-"Package_Share_Action" = "Udostępnij pakiet…";
-"Package_Developer_Find_Action" = "Więcej od tego dewelopera";
+"Package_Share_Action" = "Udostępnij…";
+"Package_Developer_Find_Action" = "Więcej od dewelopera";
 "Package_Support_Action" = "Wsparcie drogą e-mail";
 "Package_Hold_Enable_Action" = "Ignoruj przyszłe aktualizacje";
 "Package_Hold_Disable_Action" = "Przestań ignorować aktualizacje";
@@ -118,7 +118,7 @@
 "Add_Source.Body" = "Dodaj adres URL APT";
 "Add_Source.Button.Add" = "Dodaj źródło";
 "Add_Dist_Repo" = "Dodaj repozytorium dystrybucyjne";
-"Incorrect_Repo" = "%@ nie jest poprawnym adresem repozytorium!? Repozytorium może być offline, bądź adres został wprowadzony z literówką. Czy chcesz je na pewno dodać?";
+"Incorrect_Repo" = "%@ nie jest poprawnym adresem repozytorium!? Repozytorium może być offline bądź adres został wprowadzony błędnie. Czy na pewno chcesz je dodać?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Wprowadź ręcznie";
 
@@ -174,7 +174,7 @@
 "Apply_Changes_Confirm" = "Zatwierdzenie zmian wymaga restartu Sileo";
 "Help_Translate" = "Pomóż w tłumaczeniu Sileo";
 "Always_Show_Install_Log" = "Zawsze pokazuj dziennik instalacji";
-"Auto_Show_Queue" = "Pokaż kolejkę przy uaktualnieniu wszystkich";
+"Auto_Show_Queue" = "Kolejka przy uaktualnianiu wszystkich";
 
 "Sileo_Light" = "Jasne Sileo";
 "Sileo_Dark" = "Ciemne Sileo";
@@ -189,7 +189,7 @@
 "Export_Themes" = "Eksportuj motyw";
 
 "Background_Color" = "Kolor tła";
-"Secondary_Background_Color" = "Kolor dodatkowego tła";
+"Secondary_Background_Color" = "Dodatkowy kolor tła";
 "Label_Color" = "Kolor etykiet";
 "Highlight_Color" = "Kolor podkreślenia";
 "Seperator_Color" = "Kolor separatora";
@@ -209,26 +209,26 @@
 "Open_In_Filza" = "Otwórz w Filza";
 "Copy_Path" = "Kopiuj ścieżkę";
 
-"After_Install_Relaunch" = "Uruchom ponownie Sileo";
-"After_Install_Respring" = "Uruchom ponownie SpringBoard";
+"After_Install_Relaunch" = "Zrestartuj Sileo";
+"After_Install_Respring" = "Zrestartuj SpringBoard";
 "After_Install_Reboot" = "Uruchom ponownie urządzenie";
-"After_Install_Relaunch_Later" = "Uruchom ponownie Sileo później";
+"After_Install_Relaunch_Later" = "Zrestartuj Sileo później";
 "After_Install_Respring_Later" = "Zrestartuj SpringBoard później";
-"After_Install_Reboot_Later" = "Uruchom urządzenie ponownie później";
+"After_Install_Reboot_Later" = "Uruchom ponownie później";
 
 "Dangerous_Repo.Title" = "Niebezpieczne repozytorium";
-"Dangerous_Repo.Body" = "Probójesz dodać repozytorium które jest szkoliwe ze względu na piractwo, nielegalną zawartość lub szkodliwe oprogramowanie.\n\nRepozytoria oznaczone jako szkodliwe dystrybuują oprogramowanie z nieoczekiwanymi rezultatami, w formie płatnych paczek dostępnych za darmo, lub innych szkodliwych paczek. Mogą one mieć zły wpływ na twoje urządzenie jak i prywatność, a także uniemożliwić ci dalsze korzystanie z jailbreak. Rekomendujemy abyś zachował szczególną ostrożność by uniknąć problemów.";
+"Dangerous_Repo.Body" = "Próbujesz dodać repozytorium które jest oznaczone jako szkodliwe ze względu na piractwo, nielegalną zawartość lub złośliwe oprogramowanie.\n\nTakie repozytoria rozpowszechniają oprogramowanie z nieprzewidywalnymi skutkami, czy to w formie płatnych paczek udostępnianych za darmo, czy też innych niebezpiecznych paczek. Zagrażają one bezpieczeństwu urządzenia, prywatności i potrafią destabilizować jailbreak. Ostrzegamy o konieczności zachowania szczególnej ostrożności, aby uniknąć potencjalnych problemów.";
 "Dangerous_Repo.Continue" = "Akceptuję ryzyko, kontynuuj";
 "Dangerous_Repo.Cancel" = "Anuluj dodawanie repozytorium";
 "Dangerous_Repo.Last_Chance.Title" = "Dodać niebezpieczne repozytorium?";
-"Dangerous_Repo.Last_Chance.Body" = "Niebezpieczne repozytoria mogą powodować dewastujące efekty na twoim urządzeniu lub uniemożliwić dalsze korzystanie z jailbreak. Rekomendujemy, abyś anulował tę czynność dla swojego bezpieczeństwa. Jesteś pewien, że chcesz dodać %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Niebezpieczne repozytoria mogą doprowadzić do nieodwracalnych szkód na twoim urządzeniu lub uniemożliwić dalsze korzystanie z Jailbreak'u. Rekomendujemy, abyś anulował tę czynność dla swojego bezpieczeństwa. Czy na pewno chcesz dodać %@?"; // %@ = repo url
 "Dangerous_Repo.Last_Chance.Continue" = "Kontynuuj";
 "Dangerous_Repo.Last_Chance.Cancel" = "Wróć";
 
 // All export-based strings
 "Export" = "Eksportuj";
-"Export_Packages" = "Czy chcesz eksportować listę paczek? To skopiuje nazwy paczek oraz ich wersje do schowka.";
-"Export_Sources" = "Czy chcesz eksportować listę źródeł? To skopiuje adresy URL źródeł do schowka.";
+"Export_Packages" = "Czy chcesz wyeksportować listę paczek? To skopiuje nazwy paczek oraz ich wersje do schowka.";
+"Export_Sources" = "Czy chcesz wyeksportować listę źródeł? To skopiuje adresy URL źródeł do schowka.";
 "Export_Yes" = "Tak, skopiuj.";
 "Export_No" = "Nie, anuluj.";
 
@@ -237,10 +237,10 @@
 
 "Copy_ID" = "Kopiuj ID";
 "Canister_Policy" = "Polityka prywatności Canister";
-"Download_Analytics" = "Pobierz dane analityczne";
-"Provided_Canister" = "Dostarczone przez Canister";
-"Data_Collected" = "Zebrane dane są używane by zaaktualizować stronę wyróżnione, oraz do rekomendowania źródeł.";
+"Download_Analytics" = "Analizy danych";
+"Provided_Canister" = "Dostarczane przez Canister";
+"Data_Collected" = "Zebrane dane są wykorzystywane do aktualizacji rekomendacji i tym podobnych.";
 "Change_Later" = "Zawsze możesz zmienić swoją decyzję.";
-"Whats_Collected" = "Jakie dane zbieramy";
-"Non_Identifying" = "Gromadzone są jedynie dane o pakietach i nieidentyfikujące informacje.";
+"Whats_Collected" = "Co jest zbierane";
+"Non_Identifying" = "Gromadzone są wyłącznie dane o pakietach i w pełni anonimowe informacje o urządzeniu.";
 "Privacy_Policy" = "Polityka prywatności";
