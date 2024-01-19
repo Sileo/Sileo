@@ -61,7 +61,7 @@
 
 "Package_Share_Action" = "Udostępnij pakiet…";
 "Package_Developer_Find_Action" = "Więcej od tego dewelopera";
-"Package_Support_Action" = "Wsparcie";
+"Package_Support_Action" = "Wsparcie drogą e-mail";
 "Package_Hold_Enable_Action" = "Ignoruj przyszłe aktualizacje";
 "Package_Hold_Disable_Action" = "Przestań ignorować aktualizacje";
 "Package_Wishlist_Add" = "Dodaj do listy życzeń";
@@ -123,7 +123,7 @@
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Wprowadź ręcznie";
 
 "Untitled_Form" = "Formularz bez nazwy";
-"Form_Submitted.Default_Title" = "Zatwierdzony formularz";
+"Form_Submitted.Default_Title" = "Zatwierdzono formularz";
 "Form_Submitted.Default_Body" = "Formularz zatwierdzono poprawnie.";
 
 "Web_Depiction_Deprecated_Warning" = "Widok internetowy jest przestarzały. Poproś opiekuna repozytorium o zaktualizowanie go do natywnych opisów pakietów.";
@@ -152,11 +152,11 @@
 "Settings_Page_Title" = "Ustawienia";
 "Dark_Mode_Toggle" = "Ciemny motyw";
 "Theme" = "Motyw";
-"Tint_Color" = "Odcień koloru";
-"Reset_Tint_Color" = "Zresetuj odcień koloru";
+"Tint_Color" = "Kolor akcentu";
+"Reset_Tint_Color" = "Przywróć domyślny kolor akcentu";
 "Auto_Complete_Queue" = "Automatycznie Ukończ Kolejkę";
 "Show_Search_History" = "Pokaż historię wyszukiwania";
-"Auto_Confirm_Upgrade_All_Shortcut" = "Skrót automatycznego potwierdzania \"Zaaktualizuj wszystko\"";
+"Auto_Confirm_Upgrade_All_Shortcut" = "Auto-zatwierdzanie skrótu \"Zaktualizuj wszystko\"";
 "Swipe_Actions" = "Gesty";
 "Show_Provisional" = "Pokaż pakiety z Canister";
 "Show_Ignored_Updates" = "Pokaż ignorowane aktualizacje";
@@ -164,22 +164,22 @@
 "Pog_Developer" = "Jesteś teraz deweloperem!";
 "Developer_Mode_Explain" = "Tryb deweloperski wyłącza wymóg HTTPS przez API płatności.";
 "Auto_Refresh_Sources" = "Automatycznie odświeżaj źródła";
-"iCloud_Profile" = "Pokaż zdjęcie profilowe z iCloud w Polecanych";
+"iCloud_Profile" = "Profilowe z iCloud w Polecanych";
 "Cache_Size" = "Rozmiar pamięci podręcznej";
 "Clear_Cache" = "Wyczyść pamięć podręczną sieci";
 "Clear_Cache_Message" = "Czy chcesz wyczyścić pamięć podręczną sieci? Zwolni to %@";
 "Language" = "Język";
 "Use_System_Language" = "Używaj języka systemowego";
 "Apply_Changes" = "Zastosuj zmiany";
-"Apply_Changes_Confirm" = "Zatwierdzanie zmian wymaga restartu Sileo";
-"Help_Translate" = "Pomóż tłumaczyć Sileo";
+"Apply_Changes_Confirm" = "Zatwierdzenie zmian wymaga restartu Sileo";
+"Help_Translate" = "Pomóż w tłumaczeniu Sileo";
 "Always_Show_Install_Log" = "Zawsze pokazuj dziennik instalacji";
 "Auto_Show_Queue" = "Pokaż kolejkę przy uaktualnieniu wszystkich";
 
 "Sileo_Light" = "Jasne Sileo";
 "Sileo_Dark" = "Ciemne Sileo";
 "Sileo_Adaptive" = "Automatyczny motyw Sileo";
-"System" = "System";
+"System" = "Systemowy";
 "Theme_Settings" = "Ustawienia motywu";
 
 "Manage_Themes" = "Zarządzaj motywami";
