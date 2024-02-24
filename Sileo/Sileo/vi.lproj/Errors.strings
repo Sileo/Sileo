@@ -11,7 +11,7 @@
 "Unknown" = "Đã xảy ra lỗi không xác định.";
 "Error_Indicator" = "Lỗi: %@";
 
-"No_Package.Title" = "Không tìm thấy gói %@ trong các kho lưu trữ đã thêm.";
+"No_Package.Title" = "Không tìm thấy gói %@ trong các nguồn đã thêm.";
 "No_Package.Body" = "Nếu nguồn vừa cập nhật thêm gói mới, hãy chờ cho Sileo tải lại danh sách gói rồi thử lại. Tìm trợ giúp trực tuyến để biết thêm thông tin.";
 
 "Invalid_URL.Title" = "Liên kết không hợp lệ";
@@ -19,12 +19,12 @@
 "Download_Size_Mismatch" = "Kích thước xác định là %@, nhưng kích thước sau khi tải lại là %@.";
 "Download_Failing_Status_Code" = "Không thành công với mã lỗi %ld";
 "Download_Hash_Mismatch" = "Mã hash xác định là %@, nhưng mã nhận được sau khi tải lại là %@.";
-"Untrusted_Package" = "Gói %@ không đáng tin cậy và không thể được xác thực tính an toàn";
+"Untrusted_Package" = "Gói %@ không đáng tin cậy và không thể xác thực tính an toàn";
 
 "Insecure_Paid_Download" = "Liên kết tải xuống gói được ủy quyền thanh toán phải có kết nối an toàn (phải sử dụng HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Nhà cung cấp thanh toán đã trả về dữ liệu không hợp lệ.";
-"No_Payment_Provider" = "Repo này không hỗ trợ mua Sileo. Nếu đây là gói Cydia Store mà bạn đã mua, bạn có thể liên kết tài khoản của mình để tải xuống.";
+"No_Payment_Provider" = "Nguồn này không hỗ trợ thanh toán trên Sileo. Nếu bạn đã mua gói này trên Cydia, hãy thử đăng nhập vào tài khoản của mình để tải xuống.";
 
 "Package_Unavailable" = "Gói này không có sẵn từ các nguồn đã cài đặt của bạn. Vui lòng kiểm tra để đảm bảo rằng nguồn %@ có sẵn.";
 
