@@ -9,13 +9,13 @@
 */
 // Common Prompts
 
-"About" = "Xem Thêm";
+"About" = "Giới thiệu";
 "Close" = "Đóng";
-"Double tap to open." = "Đúp 2 lần để mở.";
-"Untitled_Repo" = "Kho lưu trữ không tên";
-"OK" = "Đồng Ý";
-"Done" = "Hoàn Thành";
-"Done_Editing" = "Hoàn Thành";
+"Double tap to open." = "Nhấn hai lần để mở.";
+"Untitled_Repo" = "Nguồn không có tên";
+"OK" = "OK";
+"Done" = "Xong";
+"Done_Editing" = "Xong";
 "More_Info" = "Thêm thông tin";
 "Loading" = "Đang Tải…";
 "Share" = "Chia Sẻ";
@@ -238,8 +238,8 @@
 "Copy_ID" = "Sao chép ID";
 "Canister_Policy" = "Chính sách quyền riêng tư của Canister";
 "Download_Analytics" = "Phân tích tải xuống";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
+"Provided_Canister" = "Cung cấp bởi Canister";
+"Data_Collected" = "Dữ liệu thu thập sẽ được sử dụng để cập nhật trang nổi bật và đề xuất các nguồn phổ biến.";
 "Change_Later" = "Bạn luôn có thể thay đổi lựa chọn của mình.";
 "Whats_Collected" = "Những gì được thu thập";
 "Non_Identifying" = "Chỉ những thông tin về gói và không phụ thuộc vào thiết bị được thu thập.";
