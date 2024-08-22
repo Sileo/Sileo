@@ -24,7 +24,7 @@
 "Insecure_Paid_Download" = "Les adresses de téléchargement pour les paquets payants doivent être sécurisées (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Le fournisseur de paiement a délivré une réponse invalide.";
-"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et vouz l'avez déjà acheté, vous pouvez attacher votre compte pour le télécharger.";
+"No_Payment_Provider" = "Cette source ne supporte pas les achats à travers Sileo. Si c'est un paquet provenant du Cydia Store et que vouz l'avez déjà acheté, vous pouvez lier votre compte pour le télécharger.";
 
 "Package_Unavailable" = "Ce paquet n'est pas disponible dans vos sources installés. Veuillez vérifier que la source %@ est disponible.";
 
@@ -35,7 +35,7 @@
 "FixingDpkg.Body" = "Dpkg a été interrompu. Veuillez patienter pendant que nous essayons de réparer le problème.";
 
 "Invalid_Data" = "Données non valides";
-"Try_Later" = "Réessayer plus tard, s'il vous plaît.";
+"Try_Later" = "S'il vous plait, veuillez réessayer plus tard";
 
 "Sileo_Update_Required.Title" = "Une mise à jour de Sileo est requise";
 "Featured_Requires_Sileo_Update" = "Une mise à jour de Sileo est requise pour voir l'onglet de paquets mise en vedette. Cet onglet sera possiblement rendu incorrectement.";
@@ -49,7 +49,7 @@
 "Form_Action_Host_Mismatch" = "L'URL hôte de l'action du formulaire ne correspond pas à celle de ce même formulaire.";
 
 "Email_Unavailable.Title" = "Impossible d'envoyer le mail";
-"Email_Unavailable.Body" = "Les services de courriel ne sont pas disponibles.";
+"Email_Unavailable.Body" = "Les services de mail ne sont pas disponibles.";
 
 "Settings_Payment_Provider.Profile.Title" = "Impossible de charger le profil";
 
@@ -58,4 +58,4 @@
 "Purchase_Complete_Fail.Title" = "Impossible de compléter l'achat";
 "Purchase_Auth_Complete_Fail.Title" = "Impossible de compléter la vérification";
 
-"Couldnt_Import_Themes" = "Couldn't Import theme(s)";
+"Couldnt_Import_Themes" = "Impossible d'importer les thèmes";
