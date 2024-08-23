@@ -69,7 +69,7 @@
 "Wishlist" = "Liste d'intérêt";
 
 "No_New_Packages" = "Pas de nouveau paquets";
-"News_Check_Later" = "Il n'y a pas de nouveau paquet indexé. Revenez dans quelques heures et vous pourrez peut-être commencer à voir des paquets si les repo sont à jour.";
+"News_Check_Later" = "Il n'y a pas de nouveau paquet indexé. Revenez dans quelques heures et vous pourrez peut-être commencer à voir des paquets si les sources sont à jour.";
 
 // Headings for sections in the queue/status popup.
 "Queued_Install_Heading" = "Installer";
@@ -112,13 +112,13 @@
 "Ignored Updates" = "Mises à jour ignorées";
 
 "Repos" = "Sources";
-"Repo" = "Repo";
+"Repo" = "Source";
 
 "Add_Source.Title" = "Ajouter la source";
 "Add_Source.Body" = "Ajouter l'addresse APT";
 "Add_Source.Button.Add" = "Ajouter la source";
-"Add_Dist_Repo" = "Add Dist Repo";
-"Incorrect_Repo" = "%@ does not appear to be a valid repo⁉️ The repo may be offline or you may have entered it incorrectly. Do you want to add it anyway?";
+"Add_Dist_Repo" = "Ajouter le repo dist";
+"Incorrect_Repo" = "%@ n'apparait pas comme une source valide⁉️ La source pourrait être hors-ligne ou vous l'avez peut-être mal écrit. Voulez-vous l'ajouter quand même?";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Entrer manuellement";
 
@@ -139,7 +139,7 @@
 "Show_Package_Contents_Button" = "Afficher le contenu du paquet";
 
 "Licenses_Page_Title" = "Licences";
-"Alternate_Icon_Title" = "Icônes Alternatives";
+"Alternate_Icon_Title" = "Alternatives des icônes";
 
 "Settings_Payment_Provider_Heading" = "Fournisseurs de paiement";
 "Settings_Translations_Heading" = "Traductions";
@@ -155,7 +155,7 @@
 "Tint_Color" = "Couleur d'accentuation";
 "Reset_Tint_Color" = "Restaurer la couleur d'accentuation";
 "Auto_Complete_Queue" = "File d'attente à saisie automatique";
-"Show_Search_History" = "Show Search History";
+"Show_Search_History" = "Montrer l'historique de recherche";
 "Auto_Confirm_Upgrade_All_Shortcut" = "Confirmation automatique lors de la mise à jour de tous les paquets";
 "Swipe_Actions" = "Actions de balayage";
 "Show_Provisional" = "Afficher les paquets trouvés sur Canister";
@@ -169,12 +169,12 @@
 "Clear_Cache" = "Vider le cache réseau";
 "Clear_Cache_Message" = "Voulez-vous vider le cache réseau ? Cela libérera %@";
 "Language" = "Language";
-"Use_System_Language" = "Use System Language";
-"Apply_Changes" = "Apply Changes";
-"Apply_Changes_Confirm" = "Applying Changes will require a restart of Sileo";
-"Help_Translate" = "Help Translate Sileo";
-"Always_Show_Install_Log" = "Always Show Install Log";
-"Auto_Show_Queue" = "Show Queue on Upgrade All";
+"Use_System_Language" = "Utiliser le language systeme";
+"Apply_Changes" = "Appliquer les changements";
+"Apply_Changes_Confirm" = "L'application des changements require a le redémmarage de Sileo";
+"Help_Translate" = "Aide de traduction pour Sileo";
+"Always_Show_Install_Log" = "Toujours afficher les logs d'installation";
+"Auto_Show_Queue" = "Afficher la file d'attente dans toute les mises à jour;
 
 "Sileo_Light" = "Clair";
 "Sileo_Dark" = "Sombre";
@@ -182,19 +182,19 @@
 "System" = "Système";
 "Theme_Settings" = "Paramètres du thème";
 
-"Manage_Themes" = "Manage Themes";
-"Create_Theme" = "Create Theme";
-"Import_Themes" = "Import Themes";
-"Theme_Name" = "Theme name";
-"Export_Themes" = "Export Themes";
+"Manage_Themes" = "Configurer les thèmes";
+"Create_Theme" = "Créer un thème";
+"Import_Themes" = "Importer un thème";
+"Theme_Name" = "Nom du thème";
+"Export_Themes" = "Exporter les thèmes";
 
-"Background_Color" = "Background Color";
-"Secondary_Background_Color" = "Secondary Background Color";
-"Label_Color" = "Label Color";
-"Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
-"Header_Color" = "Header Color";
-"Banner_Color" = "Banner Color";
+"Background_Color" = "Couleur de l'arrière plan";
+"Secondary_Background_Color" = "Couleure secondaire de l'arrière plan";
+"Label_Color" = "Couleur du label";
+"Highlight_Color" = "Couleur des highlights";
+"Seperator_Color" = "Couleur des séparateurs";
+"Header_Color" = "Couleur du header";
+"Banner_Color" = "Couleur de la bannière";
 
 
 "Cydia_Sign_In" = "Se connecter au Cydia Store";
@@ -206,8 +206,8 @@
 
 "Show_Install_Details" = "Afficher les détails";
 "Hide_Install_Details" = "Masquer les détails";
-"Open_In_Filza" = "Open in Filza";
-"Copy_Path" = "Copy Path";
+"Open_In_Filza" = "Ouvrir dans Filza";
+"Copy_Path" = "Copier le chemain";
 
 "After_Install_Relaunch" = "Relancer Sileo";
 "After_Install_Respring" = "Relancer le SpringBoard";
@@ -235,12 +235,12 @@
 // Depcitions
 "View_Depiction" = "Voir la description";
 
-"Copy_ID" = "Copy ID";
-"Canister_Policy" = "Canister Privacy Policy";
-"Download_Analytics" = "Download Analytics";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
-"Change_Later" = "You can always change your choice later.";
-"Whats_Collected" = "What's Collected";
-"Non_Identifying" = "Only package and non-identifying device information is collected.";
-"Privacy_Policy" = "Privacy Policy";
+"Copy_ID" = "Copier l'ID";
+"Canister_Policy" = "Politique de confitiendalité de Canister";
+"Download_Analytics" = "Télecharger les analyses";
+"Provided_Canister" = "Fournis par Canister";
+"Data_Collected" = "Les donnés collectés sont utilisés pour mettre à jour la page featured et une variation de recommandation de source.";
+"Change_Later" = "Vous pouvez toujours changer vôtre choix plus tard.";
+"Whats_Collected" = "Quesqui est collecté ?";
+"Non_Identifying" = "Seulement les informations sur les paquets et les appareils non identifiés est collecté.";
+"Privacy_Policy" = "Politique de confitiendalité";
