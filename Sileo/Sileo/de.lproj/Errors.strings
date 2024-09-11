@@ -12,7 +12,7 @@
 "Error_Indicator" = "Fehler: %@";
 
 "No_Package.Title" = "Das Paket %@ wurde in den aktuell installierten Quellen nicht gefunden.";
-"No_Package.Body" = "Sollte es sich um ein neues Paket handeln, warte bis Sileo fertig geladen hat und versuche es erneut. Sollten trotzdem Fehler auftreten suche im Internet nach weiterer Hilfe.";
+"No_Package.Body" = "Sollte es sich um ein neues Paket handeln, warte bis Sileo fertig geladen hat und versuche es erneut. Sollten trotzdem Fehler auftreten, suche im Internet nach weiterer Hilfe.";
 
 "Invalid_URL.Title" = "Fehlerhafte URL";
 
