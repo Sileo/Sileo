@@ -21,7 +21,7 @@
 "Download_Hash_Mismatch" = "Erwarteter Hash %@, tatsächlicher Hash %@.";
 "Untrusted_Package" = "Das Paket %@ ist nicht vertrauenswürdig und kann nicht überprüft werden";
 
-"Insecure_Paid_Download" = "Der Paketdownload Link muss sicher sein (HTTPS).";
+"Insecure_Paid_Download" = "Zahlungs-Autorisierte Paket-Download-URLs müssen sicher sein (HTTPS).";
 
 "Invalid_Payment_Provider_Response" = "Der Zahlungsanbieter hat eine ungültige Antwort gesendet.";
 "No_Payment_Provider" = "Diese Quelle unterstützt keine Sileo-Käufe. Wenn du dieses Paket bereits im Cydia Store gekauft hast kannst du dein Cydia Store Konto verbinden um es herunterzuladen.";
