@@ -4876,7 +4876,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4929,7 +4929,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.coolstar.SileoStore;
@@ -4981,7 +4981,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = sileostore;
@@ -5166,7 +5166,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5221,7 +5221,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5387,7 +5387,7 @@
 					"$(PROJECT_DIR)/Deps/liblzma",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5441,7 +5441,7 @@
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
 				LLVM_LTO = YES;
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = (
 					"-flto",
 					"$(inherited)",
@@ -5616,7 +5616,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5679,7 +5679,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5781,8 +5781,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/Evander";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = revision;
+				revision = 0059e74d91e8574bee454e748ea6cc188e8b43db;
 			};
 		};
 		E128180C26BBFAA500D2553B /* XCRemoteSwiftPackageReference "Cosmos" */ = {
@@ -5885,8 +5885,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elihwyma/LNPopupController";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = revision;
+				revision = 6cdb4a977b8e0253305cd5009e33028d90631788;
 			};
 		};
 		E1D90DBE2A30E77400F8CBAF /* XCRemoteSwiftPackageReference "Onboarding" */ = {
@@ -5894,7 +5894,7 @@
 			repositoryURL = "https://github.com/elihwyma/Onboarding";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.2;
 			};
 		};
 		E1EA1CFD2615008100E56882 /* XCRemoteSwiftPackageReference "LNZTreeView" */ = {

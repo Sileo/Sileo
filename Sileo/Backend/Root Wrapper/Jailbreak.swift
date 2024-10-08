@@ -19,6 +19,12 @@ enum Jailbreak: String, Codable {
     case chimera =           "Chimera"
     case odyssey =           "Odyssey"
     case taurine =           "Taurine"
+
+    /// Apex jailbreak
+    case apex =              "Apex"
+    
+    // Amethyst jailbreak
+    case amethyst =          "Amethyst"
     
     /// unc0ver jailbreak
     case unc0ver =           "unc0ver"
@@ -58,6 +64,8 @@ enum Jailbreak: String, Codable {
     // Supported for userspace reboots
     static private let supported: Set<Jailbreak> = [
         .chimera, .odyssey, .taurine,
+
+        .apex, .amethyst,
         
         .odysseyra1n, .checkra1n,
         
@@ -65,7 +73,7 @@ enum Jailbreak: String, Codable {
         
         .bakera1n, .bakera1n_rootful, .bakera1n_rootless,
         
-        .fugu15, .xina, .dopamine
+        .fugu15, .dopamine
     ]
     
     public var supportsUserspaceReboot: Bool {
@@ -88,6 +96,8 @@ enum Jailbreak: String, Codable {
         let fugu15_max = URL(fileURLWithPath: "/var/jb/.installed_fugu15max")
         let dopamine = URL(fileURLWithPath: "/var/jb/.installed_dopamine")
         
+        let apex = URL(fileURLWithPath: "/.installed_apex")
+        let amethyst = URL(fileURLWithPath: "/.installed_amethyst")
         let unc0ver = URL(fileURLWithPath: "/.installed_unc0ver")
         let taurine = URL(fileURLWithPath: "/taurine/jailbreakd")
         let odyssey = URL(fileURLWithPath: "/odyssey/jailbreakd")
@@ -139,7 +149,7 @@ enum Jailbreak: String, Codable {
             self = .fugu15
             return
             
-        case dopamine.exists && arm64e:
+        case dopamine.exists:
             self = .dopamine
             return
             
@@ -153,6 +163,14 @@ enum Jailbreak: String, Codable {
                 return
             }
             
+        case apex.exists:
+            self = .apex
+            return
+            
+        case amethyst.exists:
+            self = .amethyst
+            return
+        
         case unc0ver.exists:
             self = .unc0ver
             return

@@ -32,7 +32,7 @@
         "package": "Evander",
         "repositoryURL": "https://github.com/elihwyma/Evander",
         "state": {
-          "branch": "main",
+          "branch": null,
           "revision": "0059e74d91e8574bee454e748ea6cc188e8b43db",
           "version": null
         }
@@ -42,15 +42,15 @@
         "repositoryURL": "https://github.com/michaeleisel/JJLISO8601DateFormatter",
         "state": {
           "branch": null,
-          "revision": "de422afd9a47b72703c30a81423c478337191390",
-          "version": "0.1.6"
+          "revision": "741a9e45db01148a8ac60c5e12f7c978181a22d3",
+          "version": "0.1.8"
         }
       },
       {
         "package": "LNPopupController",
         "repositoryURL": "https://github.com/elihwyma/LNPopupController",
         "state": {
-          "branch": "main",
+          "branch": null,
           "revision": "6cdb4a977b8e0253305cd5009e33028d90631788",
           "version": null
         }
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/elihwyma/Onboarding",
         "state": {
           "branch": null,
-          "revision": "a812902731170e77b5cccab8403152d683a04134",
-          "version": "1.0.1"
+          "revision": "0cc79de9709878187d942d22a64dfd4c2c55a528",
+          "version": "1.0.2"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {
           "branch": null,
-          "revision": "7a2e3cd27de56f6d396e84f63beefd0267b55ccb",
-          "version": "0.14.1"
+          "revision": "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
+          "version": "0.15.3"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/michaeleisel/ZippyJSON.git",
         "state": {
           "branch": null,
-          "revision": "c4ab804780b64979f19268619dfa563b6be58f7d",
-          "version": "1.2.10"
+          "revision": "ddbbc024ba5a826f9676035a0a090a0bc2d40755",
+          "version": "1.2.15"
         }
       },
       {
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/michaeleisel/ZippyJSONCFamily",
         "state": {
           "branch": null,
-          "revision": "8abdd7a5e943afe68e7b03fdaa63b21c042a3893",
-          "version": "1.2.9"
+          "revision": "c1c0f88977359ea85b81e128b2d988e8250dfdae",
+          "version": "1.2.14"
         }
       }
     ]

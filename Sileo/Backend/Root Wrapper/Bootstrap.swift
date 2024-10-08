@@ -36,7 +36,7 @@ enum Bootstrap: String, Codable {
         case .unc0ver, .checkra1n:
             self = .elucubratus
             
-        case .odysseyra1n, .taurine, .odyssey, .fugu15, .xina15, .dopamine:
+        case .odysseyra1n, .taurine, .odyssey, .fugu15, .xina15, .dopamine, .apex, .amethyst:
             self = .procursus
             
         case .palera1n_legacy, .palera1n_rootful, .palera1n_rootless, .bakera1n_rootful, .bakera1n_rootless:
