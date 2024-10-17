@@ -92,14 +92,14 @@
 "Packages_By_Author" = "%@ のパッケージ"; // %@ = author name
 
 "Featured_Page" = "おすすめ";
-"News_Page" = "ニュース";
+"News_Page" = "新着";
 "Sources_Page" = "リポジトリ";
 "Packages_Page" = "パッケージ";
 "Search_Page" = "検索";
 "Search_History" = "最近の検索";
 "Clear_Search_History" = "削除";
 "Refreshing_Sources_Page" = "リポジトリを更新中";
-"Package_Installed_Files_Page" = "インストール済みファイル";
+"Package_Installed_Files_Page" = "インストール済みのファイル";
 "Refresh" = "更新";
 "Remove" = "削除";
 
@@ -115,10 +115,10 @@
 "Repo" = "リポジトリ";
 
 "Add_Source.Title" = "リポジトリを追加";
-"Add_Source.Body" = "リポジトリの URL を入力";
-"Add_Source.Button.Add" = "追加";
+"Add_Source.Body" = "リポジトリのURLを入力";
+"Add_Source.Button.Add" = "リポジトリを追加";
 "Add_Dist_Repo" = "Distリポジトリを追加";
-"Incorrect_Repo" = "%@は有効なリポジトリではないようです。リポジトリがオフラインであるか、間違って入力した可能性があります。追加しますか？";
+"Incorrect_Repo" = "%@は有効なリポジトリではないようです。リポジトリがオフラインであるか、間違って入力した可能性があります。それでも追加しますか？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動で入力";
 
@@ -130,7 +130,7 @@
 
 "Package_Details_Tab" = "詳細";
 "Package_Changelog_Tab" = "更新履歴";
-"Package_No_Description_Available" = "このパッケージでは詳細の表示ができません。";
+"Package_No_Description_Available" = "このパッケージの説明はありません。";
 "Package_Changelogs_Unavailable" = "このパッケージでは更新履歴を表示できません";
 
 "Installed_Package_Header" = "インストール済み";
@@ -145,7 +145,7 @@
 "Settings_Translations_Heading" = "翻訳";
 
 "Settings_Payment_Provider.Purchases_Heading" = "購入済み";
-"Settings_Payment_Provider.No_Purchases" = "購入したパッケージはありません。";
+"Settings_Payment_Provider.No_Purchases" = "購入したパッケージはありません";
 "Authenticate_To_Purchase" = "購入を完了するため、認証を行ってください";
 
 "Settings" = "設定";
@@ -154,9 +154,9 @@
 "Theme" = "テーマ";
 "Tint_Color" = "色合い";
 "Reset_Tint_Color" = "色合いをリセット";
-"Auto_Complete_Queue" = "オートコンプリートキュー";
+"Auto_Complete_Queue" = "自動でキューを完了";
 "Show_Search_History" = "検索履歴を表示";
-"Auto_Confirm_Upgrade_All_Shortcut" = "すべてのアップデートを自動的に実行する3D touch ショートカット";
+"Auto_Confirm_Upgrade_All_Shortcut" = "すべてのアップデートを自動的に実行する3D Touchショートカット";
 "Swipe_Actions" = "スワイプアクション";
 "Show_Provisional" = "Canisterからのパッケージを表示";
 "Show_Ignored_Updates" = "無視したアップデートを表示";
@@ -164,7 +164,7 @@
 "Pog_Developer" = "開発者モードに切り替わりました！";
 "Developer_Mode_Explain" = "開発者モードは、支払い時のAPIのHTTPS要件を無効にします。";
 "Auto_Refresh_Sources" = "リポジトリを自動で更新";
-"iCloud_Profile" = "おすすめページにiCloudプロフィール画像を表示";
+"iCloud_Profile" = "おすすめタブにiCloudプロフィール画像を表示";
 "Cache_Size" = "キャッシュサイズ";
 "Clear_Cache" = "ネットワークのキャッシュをクリア";
 "Clear_Cache_Message" = "ネットワークのキャッシュをクリアしますか？これにより%@の容量を解放します。";
