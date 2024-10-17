@@ -189,10 +189,10 @@
 "Export_Themes" = "テーマをエクスポート";
 
 "Background_Color" = "背景色";
-"Secondary_Background_Color" = "第二背景色";
+"Secondary_Background_Color" = "第二の背景色";
 "Label_Color" = "ラベルの色";
 "Highlight_Color" = "強調表示の色";
-"Seperator_Color" = "セパレータの色";
+"Seperator_Color" = "セパレーターの色";
 "Header_Color" = "ヘッダーの色";
 "Banner_Color" = "バナーの色";
 
