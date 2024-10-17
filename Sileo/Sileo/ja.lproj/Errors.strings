@@ -24,15 +24,15 @@
 "Insecure_Paid_Download" = "有料パッケージをダウンロードする際の URL は保護されている必要があります。(HTTPS)";
 
 "Invalid_Payment_Provider_Response" = "決済サービスプロバイダーからの応答が無効です。";
-"No_Payment_Provider" = "このリポジトリは Sileo からの購入をサポートしていません。 既に Cydia Store で購入済みの場合は、アカウントをリンクすることでダウンロードが可能です。";
+"No_Payment_Provider" = "このリポジトリはSileoからの購入をサポートしていません。既にCydia Storeで購入済みの場合は、アカウントをリンクすることでダウンロードが可能です。";
 
 "Package_Unavailable" = "追加されたリポジトリからこのパッケージをインストールすることはできません。%@ のリポジトリが利用可能か確認してください。";
 
 "Installation_Error.Title" = "インストールエラー";
 "Installation_Error.Body" = "Sileoはroot権限の取得に失敗しました。SSHを利用してSileoを再インストールしてください。";
 
-"FixingDpkg.Title" = "Dpkg が中断されました";
-"FixingDpkg.Body" = "Dpkg が中断されました。 問題が解決されるまでしばらくお待ちください。";
+"FixingDpkg.Title" = "Dpkgが中断されました";
+"FixingDpkg.Body" = "Dpkgが中断されました。問題が解決されるまでしばらくお待ちください。";
 
 "Invalid_Data" = "無効なデータ";
 "Try_Later" = "後ほどお試しください。";
@@ -49,9 +49,9 @@
 "Form_Action_Host_Mismatch" = "フォームアクションの URL ホストがフォームの元のホストと一致しません。";
 
 "Email_Unavailable.Title" = "メールの送信ができません。";
-"Email_Unavailable.Body" = "メールサービスが現在利用できません。";
+"Email_Unavailable.Body" = "メールサービスは現在利用できません。";
 
-"Settings_Payment_Provider.Profile.Title" = "プロフィールが読み込めません。";
+"Settings_Payment_Provider.Profile.Title" = "プロフィールを読み込めませんでした";
 
 "Provider_Auth_Fail.Title" = "決済サービスプロバイダーの認証に失敗しました。";
 "Purchase_Initiate_Fail.Title" = "購入処理を開始できません。";
