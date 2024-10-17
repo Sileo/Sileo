@@ -172,8 +172,8 @@
 "Use_System_Language" = "システム言語を使用";
 "Apply_Changes" = "変更を保存";
 "Apply_Changes_Confirm" = "変更を保存するには、Sileoを再起動する必要があります。";
-"Help_Translate" = "Sileoの翻訳を助ける";
-"Always_Show_Install_Log" = "インストールのログを常に表示する";
+"Help_Translate" = "Sileoの翻訳を手伝う";
+"Always_Show_Install_Log" = "インストールのログを常に表示";
 "Auto_Show_Queue" = "すべてのアップデートを表示";
 
 "Sileo_Light" = "ライト";
@@ -209,10 +209,10 @@
 "Open_In_Filza" = "Filzaで開く";
 "Copy_Path" = "パスをコピー";
 
-"After_Install_Relaunch" = "Sileo を再起動";
-"After_Install_Respring" = "SpringBoard を再起動";
+"After_Install_Relaunch" = "Sileoを再起動";
+"After_Install_Respring" = "SpringBoardを再起動";
 "After_Install_Reboot" = "再起動";
-"After_Install_Relaunch_Later" = "後でSileo を再起動";
+"After_Install_Relaunch_Later" = "後でSileoを再起動";
 "After_Install_Respring_Later" = "後でSpringBoard を再起動";
 "After_Install_Reboot_Later" = "後でデバイスを再起動";
 
@@ -227,8 +227,8 @@
 
 // All export-based strings
 "Export" = "エクスポート";
-"Export_Packages" = "パッケージリストをエクスポートしますか？ これにより、すべてのパッケージ名とそのバージョンがクリップボードにコピーされます。";
-"Export_Sources" = "リポジトリリストをエクスポートしますか？ これにより、すべてのリポジトリ URL がクリップボードにコピーされます。";
+"Export_Packages" = "パッケージリストをエクスポートしますか？これにより、すべてのパッケージ名とそのバージョンがクリップボードにコピーされます。";
+"Export_Sources" = "リポジトリリストをエクスポートしますか？これにより、すべてのリポジトリURLがクリップボードにコピーされます。";
 "Export_Yes" = "はい";
 "Export_No" = "キャンセル";
 
