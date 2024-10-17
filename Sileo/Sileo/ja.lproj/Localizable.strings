@@ -27,8 +27,8 @@
 "Warning" = "警告";
 "Edit" = "編集";
 "Why" = "理由";
-"Deny" = "やめる";
-"Accept" = "許可";
+"Deny" = "拒否";
+"Accept" = "同意";
 
 // Popup messages
 "Background_App_Refresh" = "Appのバックグラウンド更新";
