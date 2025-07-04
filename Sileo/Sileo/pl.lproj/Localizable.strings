@@ -150,7 +150,7 @@
 
 "Settings" = "Ustawienia";
 "Settings_Page_Title" = "Ustawienia";
-"Dark_Mode_Toggle" = "Ciemny motyw";
+"Dark_Mode_Toggle" = "Ciemny";
 "Theme" = "Motyw";
 "Tint_Color" = "Kolor akcentu";
 "Reset_Tint_Color" = "Przywróć domyślny kolor akcentu";
@@ -178,7 +178,7 @@
 
 "Sileo_Light" = "Jasne Sileo";
 "Sileo_Dark" = "Ciemne Sileo";
-"Sileo_Adaptive" = "Automatyczny motyw Sileo";
+"Sileo_Adaptive" = "Automatyczny";
 "System" = "Systemowy";
 "Theme_Settings" = "Ustawienia motywu";
 
