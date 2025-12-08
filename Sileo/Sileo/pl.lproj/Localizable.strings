@@ -17,7 +17,7 @@
 "Done" = "Gotowe";
 "Done_Editing" = "Gotowe";
 "More_Info" = "Więcej informacji";
-"Loading" = "Wczytuję…";
+"Loading" = "Wczytywanie…";
 "Share" = "Udostępnij";
 "Delete" = "Usuń";
 "Cancel" = "Anuluj";
@@ -130,8 +130,8 @@
 
 "Package_Details_Tab" = "Szczegóły";
 "Package_Changelog_Tab" = "Historia zmian";
-"Package_No_Description_Available" = "Ten pakiet nie ma dostępnego opisu.";
-"Package_Changelogs_Unavailable" = "Ten pakiet nie ma dostępnej historii zmian.";
+"Package_No_Description_Available" = "Opis nie jest dostępny dla tego pakietu.";
+"Package_Changelogs_Unavailable" = "Historia zmian nie jest dostępna dla tego pakietu.";
 
 "Installed_Package_Header" = "Zainstalowany pakiet";
 "Installed_Packages" = "Zainstalowane pakiety";
@@ -160,7 +160,7 @@
 "Swipe_Actions" = "Gesty";
 "Show_Provisional" = "Pokaż pakiety z Canister";
 "Show_Ignored_Updates" = "Pokaż ignorowane aktualizacje";
-"Developer_Mode" = "Tryb deweloperski";
+"Developer_Mode" = "Tryb programisty";
 "Pog_Developer" = "Jesteś teraz deweloperem!";
 "Developer_Mode_Explain" = "Tryb deweloperski wyłącza wymóg HTTPS przez API płatności.";
 "Auto_Refresh_Sources" = "Automatycznie odświeżaj źródła";
@@ -199,7 +199,7 @@
 
 "Cydia_Sign_In" = "Zaloguj się do Sklepu Cydia";
 "Payment_Provider_Signed_In" = "Zalogowano";
-"Payment_Provider_Signed_In_With_Name" = "Zalogowano jako %@"; // %@ = user's name
+"Payment_Provider_Signed_In_With_Name" = "Zalogowano się jako %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "Wyloguj się";
 "Payment_Provider_Sign_Out_Confirm.Title" = "Wyloguj się z %@"; // %@ = payment provider name
 "Payment_Provider_Sign_Out_Confirm.Body" = "Nie będziesz mógł pobrać zakupionych pakietów, dopóki nie zalogujesz się ponownie.";
